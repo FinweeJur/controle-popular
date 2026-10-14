@@ -267,7 +267,7 @@ export default function PaletaComandos() {
                     ) : null}
                   </span>
                   {item.rotulo ? (
-                    <span className="shrink-0 rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted">
+                    <span className="shrink-0 rounded bg-surface-2 px-1.5 py-0.5 text-[12px] font-semibold uppercase tracking-wide text-muted">
                       {item.rotulo}
                     </span>
                   ) : null}
@@ -282,7 +282,7 @@ export default function PaletaComandos() {
           )}
         </ul>
 
-        <div className="flex items-center justify-between border-t border-border px-3 py-2 text-[11px] text-muted">
+        <div className="flex items-center justify-between border-t border-border px-3 py-2 text-[12px] text-muted">
           <span className="inline-flex items-center gap-1.5">
             <CornerDownLeft size={12} aria-hidden="true" /> abrir
           </span>

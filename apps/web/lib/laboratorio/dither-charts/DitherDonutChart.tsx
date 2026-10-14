@@ -205,7 +205,7 @@ export function DitherDonutChart({
         <div>
           <h4 className="text-sm font-bold">{title}</h4>
           {subtitle && (
-            <p className={`text-[11px] ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`}>
+            <p className={`text-[12px] ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`}>
               {subtitle}
             </p>
           )}
@@ -241,7 +241,7 @@ export function DitherDonutChart({
                   <span className={`font-semibold ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
                     {slice.value.toLocaleString('pt-BR')}
                   </span>
-                  <span className={`text-[10px] w-8 text-right font-mono ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`}>
+                  <span className={`text-[12px] w-8 text-right font-mono ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`}>
                     {pct}%
                   </span>
                 </div>

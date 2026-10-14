@@ -67,7 +67,7 @@ export default function BlocoPovoGente({ dados, variacao = "povo" }: BlocoPovoGe
               {dados.saude.descricao}
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-border text-[0.7rem] text-text-soft">
+          <div className="mt-4 pt-2 border-t border-border text-[0.75rem] text-text-soft">
             Fonte: {dados.saude.fonte}
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function BlocoPovoGente({ dados, variacao = "povo" }: BlocoPovoGe
               {dados.trabalhoERenda.vulnerabilidade}
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-border text-[0.7rem] text-text-soft">
+          <div className="mt-4 pt-2 border-t border-border text-[0.75rem] text-text-soft">
             Fonte: {dados.trabalhoERenda.fonte}
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function BlocoPovoGente({ dados, variacao = "povo" }: BlocoPovoGe
               {dados.moradia.familiasRisco}
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-border text-[0.7rem] text-text-soft">
+          <div className="mt-4 pt-2 border-t border-border text-[0.75rem] text-text-soft">
             Fonte: {dados.moradia.fonte}
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function BlocoPovoGente({ dados, variacao = "povo" }: BlocoPovoGe
               {dados.cultura.ameacaOuPotencia}
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-border text-[0.7rem] text-text-soft">
+          <div className="mt-4 pt-2 border-t border-border text-[0.75rem] text-text-soft">
             Fonte: {dados.cultura.fonte}
           </div>
         </div>

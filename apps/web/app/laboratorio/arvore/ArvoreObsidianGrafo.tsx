@@ -438,7 +438,7 @@ export default function ArvoreObsidianGrafo() {
             <TreeDeciduous size={15} className="text-primary" />
           </div>
           <p className="mt-1 text-2xl font-bold text-foreground">{NOS_ARVORE.length}</p>
-          <span className="text-[0.68rem] text-text-soft">Páginas, bases e pipelines</span>
+          <span className="text-[0.75rem] text-text-soft">Páginas, bases e pipelines</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-3.5">
@@ -447,7 +447,7 @@ export default function ArvoreObsidianGrafo() {
             <Network size={15} className="text-emerald-500" />
           </div>
           <p className="mt-1 text-2xl font-bold text-foreground">{ARESTAS_ARVORE.length}</p>
-          <span className="text-[0.68rem] text-text-soft">Fluxos de dados e links</span>
+          <span className="text-[0.75rem] text-text-soft">Fluxos de dados e links</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-3.5">
@@ -458,7 +458,7 @@ export default function ArvoreObsidianGrafo() {
           <p className="mt-1 text-2xl font-bold text-foreground">
             {NOS_ARVORE.filter((n) => n.tipoNo === "base_dados" || n.tipoNo === "etl").length}
           </p>
-          <span className="text-[0.68rem] text-text-soft">Postgres, JSON e coletores</span>
+          <span className="text-[0.75rem] text-text-soft">Postgres, JSON e coletores</span>
         </div>
 
         <div className="rounded-xl border border-border bg-surface p-3.5">
@@ -469,7 +469,7 @@ export default function ArvoreObsidianGrafo() {
           <p className="mt-1 text-base font-bold text-foreground">
             {modoVisualizacao === "grafo" ? "Grafo Obsidian" : "Mapa Mental"}
           </p>
-          <span className="text-[0.68rem] text-text-soft">Alternador de 2 modos</span>
+          <span className="text-[0.75rem] text-text-soft">Alternador de 2 modos</span>
         </div>
       </div>
 
@@ -657,7 +657,7 @@ export default function ArvoreObsidianGrafo() {
           />
 
           {/* Legenda de nós */}
-          <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-slate-900/90 p-2.5 backdrop-blur-md text-[0.7rem] text-slate-300 space-y-1 shadow-lg">
+          <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-slate-900/90 p-2.5 backdrop-blur-md text-[0.75rem] text-slate-300 space-y-1 shadow-lg">
             <p className="font-semibold text-slate-100 mb-1 flex items-center gap-1">
               <span>🌳</span> Tipos de Nós:
             </p>
@@ -684,7 +684,7 @@ export default function ArvoreObsidianGrafo() {
             <div className="absolute top-3 right-3 max-w-xs rounded-xl border border-white/15 bg-slate-900/95 p-4 text-xs text-slate-200 backdrop-blur-md shadow-2xl space-y-2">
               <div className="flex items-center justify-between">
                 <span
-                  className="rounded-full px-2 py-0.5 text-[0.65rem] font-bold text-white uppercase tracking-wider"
+                  className="rounded-full px-2 py-0.5 text-[0.75rem] font-bold text-white uppercase tracking-wider"
                   style={{ backgroundColor: noSelecionado.cor }}
                 >
                   {noSelecionado.tipoNo || noSelecionado.subgalho}
@@ -699,14 +699,14 @@ export default function ArvoreObsidianGrafo() {
 
               <h4 className="font-bold text-white text-sm">{noSelecionado.titulo}</h4>
               {noSelecionado.descricao && (
-                <p className="text-[0.72rem] text-slate-300 leading-relaxed">
+                <p className="text-[0.75rem] text-slate-300 leading-relaxed">
                   {noSelecionado.descricao}
                 </p>
               )}
-              <p className="text-[0.72rem] text-slate-400">
+              <p className="text-[0.75rem] text-slate-400">
                 Subgalho: <strong className="text-slate-200">{noSelecionado.subgalho}</strong>
               </p>
-              <p className="text-[0.72rem] text-slate-400">
+              <p className="text-[0.75rem] text-slate-400">
                 Conexões ativas: <strong className="text-slate-200">{noSelecionado.conectados.length}</strong>
               </p>
 
@@ -772,16 +772,16 @@ export default function ArvoreObsidianGrafo() {
                       <span>Pipelines ETL ({etls.length})</span>
                     </div>
                     {etls.length === 0 ? (
-                      <p className="text-[0.7rem] text-text-soft italic">Alimentado por coletores transversais.</p>
+                      <p className="text-[0.75rem] text-text-soft italic">Alimentado por coletores transversais.</p>
                     ) : (
                       <div className="space-y-1.5">
                         {etls.map((n) => (
                           <div
                             key={n.id}
-                            className="rounded-md border border-purple-500/20 bg-surface px-2 py-1 text-[0.72rem] text-foreground"
+                            className="rounded-md border border-purple-500/20 bg-surface px-2 py-1 text-[0.75rem] text-foreground"
                           >
                             <span className="font-semibold block">{n.titulo}</span>
-                            <span className="text-[0.65rem] text-text-soft">{n.descricao}</span>
+                            <span className="text-[0.75rem] text-text-soft">{n.descricao}</span>
                           </div>
                         ))}
                       </div>
@@ -795,16 +795,16 @@ export default function ArvoreObsidianGrafo() {
                       <span>Bases de Dados ({bases.length})</span>
                     </div>
                     {bases.length === 0 ? (
-                      <p className="text-[0.7rem] text-text-soft italic">Persistência no Postgres Guara.</p>
+                      <p className="text-[0.75rem] text-text-soft italic">Persistência no Postgres Guara.</p>
                     ) : (
                       <div className="space-y-1.5">
                         {bases.map((n) => (
                           <div
                             key={n.id}
-                            className="rounded-md border border-cyan-500/20 bg-surface px-2 py-1 text-[0.72rem] text-foreground"
+                            className="rounded-md border border-cyan-500/20 bg-surface px-2 py-1 text-[0.75rem] text-foreground"
                           >
                             <span className="font-semibold block">{n.titulo}</span>
-                            <span className="text-[0.65rem] text-text-soft">{n.descricao}</span>
+                            <span className="text-[0.75rem] text-text-soft">{n.descricao}</span>
                           </div>
                         ))}
                       </div>
@@ -818,16 +818,16 @@ export default function ArvoreObsidianGrafo() {
                       <span>Camadas Lab ({camadas.length})</span>
                     </div>
                     {camadas.length === 0 ? (
-                      <p className="text-[0.7rem] text-text-soft italic">Camadas ativadas no painel do Lab.</p>
+                      <p className="text-[0.75rem] text-text-soft italic">Camadas ativadas no painel do Lab.</p>
                     ) : (
                       <div className="space-y-1.5">
                         {camadas.map((n) => (
                           <div
                             key={n.id}
-                            className="rounded-md border border-pink-500/20 bg-surface px-2 py-1 text-[0.72rem] text-foreground"
+                            className="rounded-md border border-pink-500/20 bg-surface px-2 py-1 text-[0.75rem] text-foreground"
                           >
                             <span className="font-semibold block">{n.titulo}</span>
-                            <span className="text-[0.65rem] text-text-soft">{n.descricao}</span>
+                            <span className="text-[0.75rem] text-text-soft">{n.descricao}</span>
                           </div>
                         ))}
                       </div>
@@ -845,13 +845,13 @@ export default function ArvoreObsidianGrafo() {
                         <Link
                           key={n.id}
                           href={n.href}
-                          className="inline-flex items-center gap-1 rounded-md border border-border bg-surface-2 px-2 py-0.5 text-[0.68rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
+                          className="inline-flex items-center gap-1 rounded-md border border-border bg-surface-2 px-2 py-0.5 text-[0.75rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
                         >
                           <span>{n.rotuloCurto}</span>
                         </Link>
                       ))}
                       {paginas.length > 6 && (
-                        <span className="text-[0.68rem] text-text-soft px-1 self-center">
+                        <span className="text-[0.75rem] text-text-soft px-1 self-center">
                           +{paginas.length - 6} páginas
                         </span>
                       )}
@@ -903,7 +903,7 @@ export default function ArvoreObsidianGrafo() {
                       {n.titulo}
                     </td>
                     <td className="py-2 px-2.5">
-                      <span className="rounded-md bg-surface-2 border border-border px-1.5 py-0.5 text-[0.65rem] uppercase font-bold text-text-soft">
+                      <span className="rounded-md bg-surface-2 border border-border px-1.5 py-0.5 text-[0.75rem] uppercase font-bold text-text-soft">
                         {n.tipoNo || "pagina"}
                       </span>
                     </td>

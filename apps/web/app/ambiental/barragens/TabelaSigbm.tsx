@@ -408,7 +408,7 @@ export default function TabelaSigbm() {
                       }`}
                     >
                       {c.rotulo}
-                      <span aria-hidden="true" className="font-tabular text-[11px]">
+                      <span aria-hidden="true" className="font-tabular text-[12px]">
                         {ativa ? (ordem![1] === "asc" ? "▲" : "▼") : "⇅"}
                       </span>
                     </button>
@@ -435,7 +435,7 @@ export default function TabelaSigbm() {
                     title={`Ver ficha técnica oficial da barragem ${b.nome} (código ${b.id}) no SIGBM/ANM`}
                   >
                     <span>{b.nome}</span>
-                    <span className="text-[10px] text-text-soft">↗</span>
+                    <span className="text-[12px] text-text-soft">↗</span>
                   </a>
                 </td>
                 <td className="whitespace-nowrap px-3 py-2">{b.municipio}</td>

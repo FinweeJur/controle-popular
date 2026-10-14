@@ -77,7 +77,7 @@ export default function AssembleiasPage() {
                 <strong className="block font-bold text-foreground">
                   Auditoria 100% Cívica
                 </strong>
-                <span className="text-muted block text-[11px]">
+                <span className="text-muted block text-[12px]">
                   Dados abertos oficiais auditados
                 </span>
               </div>

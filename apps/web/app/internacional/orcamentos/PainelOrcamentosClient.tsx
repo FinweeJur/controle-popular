@@ -245,7 +245,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 border-t border-border/40">
           {/* Faceta de Bloco Geopolítico */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted uppercase tracking-wider mb-1">
+            <label className="block text-[12px] font-semibold text-muted uppercase tracking-wider mb-1">
               Bloco Geopolítico
             </label>
             <select
@@ -262,7 +262,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
 
           {/* Faceta de Eixo Temático */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted uppercase tracking-wider mb-1">
+            <label className="block text-[12px] font-semibold text-muted uppercase tracking-wider mb-1">
               Eixo Orçamentário
             </label>
             <select
@@ -283,7 +283,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
 
           {/* Critério de Ordenação */}
           <div>
-            <label className="block text-[11px] font-semibold text-muted uppercase tracking-wider mb-1">
+            <label className="block text-[12px] font-semibold text-muted uppercase tracking-wider mb-1">
               Classificar por
             </label>
             <select
@@ -332,7 +332,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                 setBlocoFiltro("todos");
                 setEixoFiltro("todos");
               }}
-              className="text-primary hover:underline font-medium text-[11px]"
+              className="text-primary hover:underline font-medium text-[12px]"
             >
               Redefinir filtros
             </button>
@@ -378,7 +378,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                     {/* Barra Militar */}
                     <div className="h-4 w-full bg-surface-2 rounded-full overflow-hidden flex items-center">
                       <div
-                        className="h-full bg-red-500/80 rounded-full transition-all duration-500 flex items-center justify-end pr-2 text-[10px] text-white font-bold"
+                        className="h-full bg-red-500/80 rounded-full transition-all duration-500 flex items-center justify-end pr-2 text-[12px] text-white font-bold"
                         style={{ width: `${Math.max(pctMilitar, 4)}%` }}
                       >
                         🪖 Militar
@@ -387,7 +387,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                     {/* Barra Clima */}
                     <div className="h-4 w-full bg-surface-2 rounded-full overflow-hidden flex items-center">
                       <div
-                        className="h-full bg-emerald-500/80 rounded-full transition-all duration-500 flex items-center justify-end pr-2 text-[10px] text-white font-bold"
+                        className="h-full bg-emerald-500/80 rounded-full transition-all duration-500 flex items-center justify-end pr-2 text-[12px] text-white font-bold"
                         style={{ width: `${Math.max(pctClima, 4)}%` }}
                       >
                         🌱 Clima
@@ -399,7 +399,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
             })}
           </div>
 
-          <div className="text-[11px] text-muted border-t border-border pt-4">
+          <div className="text-[12px] text-muted border-t border-border pt-4">
             <strong>Fonte dos Dados do Gráfico:</strong> DoD Comptroller (FY2024), EPA / Inflation Reduction Act,
             HM Treasury, BMVg Alemanha e ECCC Canadá. Conversão e consolidação pelo Controle Popular.
           </div>
@@ -411,7 +411,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
         <div className="rounded-2xl border border-border bg-surface overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-surface-2 text-muted uppercase text-[11px] tracking-wider border-b border-border">
+              <thead className="bg-surface-2 text-muted uppercase text-[12px] tracking-wider border-b border-border">
                 <tr>
                   <th scope="col" className="p-3.5 font-semibold">País / Bloco</th>
                   <th scope="col" className="p-3.5 font-semibold">Eixo Temático</th>
@@ -440,7 +440,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                       <td className="p-3.5 font-medium text-foreground whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           <span className="font-semibold">{item.pais}</span>
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-surface border border-border text-muted">
+                          <span className="text-[12px] px-1.5 py-0.5 rounded bg-surface border border-border text-muted">
                             {item.bloco}
                           </span>
                         </div>
@@ -449,7 +449,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                       {/* Eixo Temático com Badge */}
                       <td className="p-3.5 whitespace-nowrap">
                         <span
-                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[12px] font-semibold border ${
                             CORES_BADGE_EIXO[item.eixo]
                           }`}
                         >
@@ -463,7 +463,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                         <div className="font-semibold text-foreground truncate" title={item.programaAgencia}>
                           {item.programaAgencia}
                         </div>
-                        <div className="text-[11px] text-muted truncate" title={item.orgaoExecutor}>
+                        <div className="text-[12px] text-muted truncate" title={item.orgaoExecutor}>
                           {item.orgaoExecutor}
                         </div>
                       </td>
@@ -471,7 +471,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                       {/* Valor em US$ Bi */}
                       <td className="p-3.5 text-right font-mono font-bold text-foreground text-sm whitespace-nowrap">
                         US$ {item.valorUsdBi.toFixed(1)} bi
-                        <div className="text-[10px] text-muted font-normal font-sans">
+                        <div className="text-[12px] text-muted font-normal font-sans">
                           {item.valorMoedaOriginal}
                         </div>
                       </td>
@@ -482,7 +482,7 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
                       </td>
 
                       {/* Exercício */}
-                      <td className="p-3.5 text-muted whitespace-nowrap text-[11px]">
+                      <td className="p-3.5 text-muted whitespace-nowrap text-[12px]">
                         {item.anoExercicio}
                       </td>
 
@@ -557,19 +557,19 @@ export default function PainelOrcamentosClient({ orcamentos }: PainelOrcamentosC
             {/* Métricas Principais */}
             <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-surface-2 border border-border">
               <div>
-                <span className="text-[10px] text-muted uppercase font-semibold block">Dotação em Dólar</span>
+                <span className="text-[12px] text-muted uppercase font-semibold block">Dotação em Dólar</span>
                 <span className="text-lg font-bold font-mono text-foreground">
                   US$ {registroSelecionado.valorUsdBi.toFixed(1)} bi
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-muted uppercase font-semibold block">Moeda de Origem</span>
+                <span className="text-[12px] text-muted uppercase font-semibold block">Moeda de Origem</span>
                 <span className="text-base font-bold font-mono text-foreground">
                   {registroSelecionado.valorMoedaOriginal}
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-muted uppercase font-semibold block">Peso no PIB</span>
+                <span className="text-[12px] text-muted uppercase font-semibold block">Peso no PIB</span>
                 <span className="text-base font-bold font-mono text-foreground">
                   {registroSelecionado.pctPib > 0 ? `${registroSelecionado.pctPib}%` : "Federal"}
                 </span>

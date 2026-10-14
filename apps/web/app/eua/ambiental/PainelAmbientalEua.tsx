@@ -402,7 +402,7 @@ export default function PainelAmbientalEua({ ambiental }: PainelAmbientalEuaProp
 
                   {/* DESTAQUE DA MÉTRICA PRINCIPAL */}
                   <div className="mt-2 rounded-xl bg-surface-elevated p-3 text-right border border-border/60 sm:mt-0 sm:min-w-[180px]">
-                    <span className="block text-[11px] text-muted">
+                    <span className="block text-[12px] text-muted">
                       {item.metricaPrincipalRotulo}
                     </span>
                     <span className="font-mono text-2xl font-bold text-foreground">

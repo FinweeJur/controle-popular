@@ -155,7 +155,7 @@ export function DitherHeatmapGrid({
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-between text-[10px] text-neutral-400 px-1 pt-1">
+        <div className="flex justify-between text-[12px] text-neutral-400 px-1 pt-1">
           {cols.map((c) => (
             <span key={c}>{c}</span>
           ))}

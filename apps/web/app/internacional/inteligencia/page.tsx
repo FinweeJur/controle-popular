@@ -152,7 +152,7 @@ export default function PaginaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalDocumentos} Registros
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Dossiês com links canônicos oficiais e PDFs.
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function PaginaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalOrgaos} Agências
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             FBI, NSA, CIA, SNI, CSIS, MI5, BND, DGSE...
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function PaginaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalPaisesOrigem} Nações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             EUA, Twelve Eyes, Europa e América Latina.
           </div>
         </div>
@@ -191,7 +191,7 @@ export default function PaginaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalDocsMencionamBrasil} Dossiês
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Impacto direto na soberania e história nacional.
           </div>
         </div>

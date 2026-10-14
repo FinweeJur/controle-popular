@@ -206,7 +206,7 @@ export default async function AssembleiaDetalhePage({
           className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
         >
           <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
+            <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-muted">
               <Users size={14} className="text-primary" aria-hidden="true" />
               <span>Cadeiras Parlamentares</span>
             </div>
@@ -219,7 +219,7 @@ export default async function AssembleiaDetalhePage({
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
+            <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-muted">
               <Coins size={14} className="text-emerald-500" aria-hidden="true" />
               <span>Orçamento Anual</span>
             </div>
@@ -232,7 +232,7 @@ export default async function AssembleiaDetalhePage({
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
+            <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-muted">
               <Coins size={14} className="text-indigo-500" aria-hidden="true" />
               <span>Cota de Gabinete</span>
             </div>
@@ -245,7 +245,7 @@ export default async function AssembleiaDetalhePage({
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
+            <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-muted">
               <ShieldCheck size={14} className="text-primary" aria-hidden="true" />
               <span>Regra Constitucional</span>
             </div>
@@ -407,7 +407,7 @@ export default async function AssembleiaDetalhePage({
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-border bg-surface-2 p-4 space-y-2">
-              <span className="text-[10px] font-bold uppercase text-muted block">
+              <span className="text-[12px] font-bold uppercase text-muted block">
                 Localização da Sede
               </span>
               <p className="text-xs font-semibold text-foreground">
@@ -416,13 +416,13 @@ export default async function AssembleiaDetalhePage({
               <p className="text-xs text-muted leading-relaxed">
                 {assembleia.sede.endereco}
               </p>
-              <p className="text-[11px] font-mono text-muted">
+              <p className="text-[12px] font-mono text-muted">
                 CEP: {assembleia.sede.cep} • {assembleia.sede.cidade}-{assembleia.uf}
               </p>
             </div>
 
             <div className="rounded-2xl border border-border bg-surface-2 p-4 space-y-2">
-              <span className="text-[10px] font-bold uppercase text-muted block">
+              <span className="text-[12px] font-bold uppercase text-muted block">
                 Contatos Telefônicos & E-mail
               </span>
               <div className="flex items-center gap-2 text-xs text-foreground">
@@ -445,7 +445,7 @@ export default async function AssembleiaDetalhePage({
             </div>
 
             <div className="rounded-2xl border border-border bg-surface-2 p-4 space-y-2">
-              <span className="text-[10px] font-bold uppercase text-muted block">
+              <span className="text-[12px] font-bold uppercase text-muted block">
                 Dados Abertos & Diário Oficial
               </span>
               <p className="text-xs text-muted leading-relaxed">

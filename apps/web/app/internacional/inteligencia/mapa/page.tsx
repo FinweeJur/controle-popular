@@ -118,7 +118,7 @@ export default function PaginaMapaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {documentos.length} Pontos
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             100% dos relatórios georreferenciados.
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function PaginaMapaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalDocsMencionamBrasil} Registros
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Operação Condor, Amazônia e segurança.
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function PaginaMapaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             {COBERTURA_DESCLASSIFICADOS.totalOrgaos} Serviços
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             FBI, NSA, CIA, SNI, CSIS, MI5, BND...
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function PaginaMapaInteligenciaG20() {
           <div className="mt-2 text-2xl font-bold text-text font-mono">
             100% Livre
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Fontes públicas primárias auditáveis.
           </div>
         </div>

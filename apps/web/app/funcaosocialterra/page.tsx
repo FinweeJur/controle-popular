@@ -252,7 +252,7 @@ export default async function FuncaoSocialTerraPage() {
                         {formatNumberBR(Math.round(l.areaUniversoHa))} ha ·{" "}
                         {l.qtdPoligonos} polígonos
                       </p>
-                      <p className="mt-3 text-[11px] font-medium text-primary">
+                      <p className="mt-3 text-[12px] font-medium text-primary">
                         Ver em {cidade.nome} →
                       </p>
                     </a>

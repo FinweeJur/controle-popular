@@ -281,7 +281,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalPaises}
           </p>
-          <span className="text-[11px] text-text-soft">América Latina</span>
+          <span className="text-[12px] text-text-soft">América Latina</span>
         </div>
 
         <div className="rounded-xl border border-border/60 bg-surface/70 p-4 shadow-sm backdrop-blur">
@@ -292,7 +292,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalInstalacoes}
           </p>
-          <span className="text-[11px] text-text-soft">Georreferenciadas</span>
+          <span className="text-[12px] text-text-soft">Georreferenciadas</span>
         </div>
 
         <div className="rounded-xl border border-border/60 bg-surface/70 p-4 shadow-sm backdrop-blur">
@@ -303,7 +303,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalProjetosLitio}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Projetos & salares
           </span>
         </div>
@@ -316,7 +316,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalMegaminasCobre}
           </p>
-          <span className="text-[11px] text-text-soft">Megaminas ativas</span>
+          <span className="text-[12px] text-text-soft">Megaminas ativas</span>
         </div>
 
         <div className="rounded-xl border border-border/60 bg-surface/70 p-4 shadow-sm backdrop-blur">
@@ -327,7 +327,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalPortosExportadores}
           </p>
-          <span className="text-[11px] text-text-soft">Terminais oceânicos</span>
+          <span className="text-[12px] text-text-soft">Terminais oceânicos</span>
         </div>
 
         <div className="rounded-xl border border-border/60 bg-surface/70 p-4 shadow-sm backdrop-blur">
@@ -338,7 +338,7 @@ export default function PainelAmericaLatina({
           <p className="mt-2 text-2xl font-bold text-text">
             {coberturaEstatica.totalMineradoras}
           </p>
-          <span className="text-[11px] text-text-soft">Transnacionais</span>
+          <span className="text-[12px] text-text-soft">Transnacionais</span>
         </div>
       </section>
 
@@ -455,7 +455,7 @@ export default function PainelAmericaLatina({
         {/* SELECTS DE FACETAS */}
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pt-2 border-t border-border/40">
           <div>
-            <label className="block text-[11px] font-medium text-text-soft mb-1">
+            <label className="block text-[12px] font-medium text-text-soft mb-1">
               País
             </label>
             <select
@@ -473,7 +473,7 @@ export default function PainelAmericaLatina({
           </div>
 
           <div>
-            <label className="block text-[11px] font-medium text-text-soft mb-1">
+            <label className="block text-[12px] font-medium text-text-soft mb-1">
               Tipo de Instalação
             </label>
             <select
@@ -491,7 +491,7 @@ export default function PainelAmericaLatina({
           </div>
 
           <div>
-            <label className="block text-[11px] font-medium text-text-soft mb-1">
+            <label className="block text-[12px] font-medium text-text-soft mb-1">
               Mineral Principal
             </label>
             <select
@@ -550,7 +550,7 @@ export default function PainelAmericaLatina({
                     <span>{BANDEIRAS_PAISES[item.pais] || "🌐"}</span>
                     <span>{item.pais}</span>
                   </span>
-                  <span className="text-[11px] font-semibold text-primary rounded bg-primary/10 px-2 py-0.5">
+                  <span className="text-[12px] font-semibold text-primary rounded bg-primary/10 px-2 py-0.5">
                     {ROTULOS_TIPO[item.tipo] || item.tipo}
                   </span>
                 </div>
@@ -579,7 +579,7 @@ export default function PainelAmericaLatina({
                   </div>
                   <div className="flex items-center justify-between text-text-soft">
                     <span>Bacia / Região:</span>
-                    <span className="text-right text-[11px] text-text truncate max-w-[180px]">
+                    <span className="text-right text-[12px] text-text truncate max-w-[180px]">
                       {item.baciaOuRegiao}
                     </span>
                   </div>
@@ -703,7 +703,7 @@ export default function PainelAmericaLatina({
                     {item.empresa}
                   </td>
                   <td className="p-3 whitespace-nowrap">
-                    <span className="rounded bg-surface-raised px-2 py-0.5 text-[11px] font-medium text-text border border-border">
+                    <span className="rounded bg-surface-raised px-2 py-0.5 text-[12px] font-medium text-text border border-border">
                       {ROTULOS_TIPO[item.tipo] || item.tipo}
                     </span>
                   </td>
@@ -713,7 +713,7 @@ export default function PainelAmericaLatina({
                   <td className="p-3 text-text-soft max-w-[200px] truncate">
                     {item.baciaOuRegiao}
                   </td>
-                  <td className="p-3 text-text-soft whitespace-nowrap text-[11px]">
+                  <td className="p-3 text-text-soft whitespace-nowrap text-[12px]">
                     {item.fonteOficial}
                   </td>
                   <td className="p-3 text-right whitespace-nowrap">
@@ -829,7 +829,7 @@ export default function PainelAmericaLatina({
             </div>
 
             <div className="flex items-center justify-between gap-3 pt-4 border-t border-border">
-              <span className="text-[11px] text-text-soft">
+              <span className="text-[12px] text-text-soft">
                 ID no Contrato: <code className="font-mono">{instalacaoSelecionada.id}</code>
               </span>
               <div className="flex items-center gap-2">

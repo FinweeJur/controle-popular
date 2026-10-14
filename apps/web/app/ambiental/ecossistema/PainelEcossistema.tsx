@@ -473,7 +473,7 @@ export default function PainelEcossistema({
 
                 {/* Sistemas Informatizados */}
                 <div className="mt-3">
-                  <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted">
+                  <span className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-wider text-muted">
                     <Cpu className="h-3 w-3" />
                     <span>Sistemas e Plataformas:</span>
                   </span>
@@ -481,7 +481,7 @@ export default function PainelEcossistema({
                     {inst.sistemasInformatizados.map((sis) => (
                       <span
                         key={sis}
-                        className="rounded-md border border-border bg-surface-2/70 px-2 py-0.5 font-mono text-[11px] text-foreground"
+                        className="rounded-md border border-border bg-surface-2/70 px-2 py-0.5 font-mono text-[12px] text-foreground"
                       >
                         {sis}
                       </span>
@@ -511,7 +511,7 @@ export default function PainelEcossistema({
                   </div>
                   <div className="flex items-start gap-2">
                     <MapPin className="h-3.5 w-3.5 shrink-0 text-muted mt-0.5" />
-                    <span className="text-[11px] leading-tight text-muted">
+                    <span className="text-[12px] leading-tight text-muted">
                       {inst.contatos.endereco}
                     </span>
                   </div>

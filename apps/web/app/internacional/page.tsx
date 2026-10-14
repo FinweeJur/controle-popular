@@ -94,7 +94,7 @@ export default function PaginaHubInternacional() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_MULTILATERAL.totalPaisesMapeados} Nações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Brasil + G8 e potências do G20.
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function PaginaHubInternacional() {
           <div className="mt-2 text-2xl font-bold text-text">
             {(COBERTURA_MULTILATERAL.volumeTotalMineraisToneladas / 1000000).toFixed(0)} Mi t/ano
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Ferro, Lítio, Bauxita e Nióbio.
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function PaginaHubInternacional() {
           <div className="mt-2 text-2xl font-bold text-text">
             {(COBERTURA_MULTILATERAL.areaTotalTerritoriosHectares / 1000000).toFixed(1)} Mi ha
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Funai (BR), BIA (EUA) e CIRNAC (CA).
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function PaginaHubInternacional() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_MULTILATERAL.concessoesSobrepostasTotal} Títulos
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Processos em áreas sensíveis.
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">⚔️ Operações Militares & PMCs</div>
-            <div className="text-[11px] text-text-soft">Intervenções, Golpes, Mercenários e Contratos</div>
+            <div className="text-[12px] text-text-soft">Intervenções, Golpes, Mercenários e Contratos</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -157,7 +157,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Central de Inteligência & Desclassificados</div>
-            <div className="text-[11px] text-text-soft">EUA, FBI, NSA, CIA e Twelve Eyes</div>
+            <div className="text-[12px] text-text-soft">EUA, FBI, NSA, CIA e Twelve Eyes</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -167,7 +167,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">💧⚡ Maiores Consumidores</div>
-            <div className="text-[11px] text-text-soft">Top 50 MG e 20 países do G20 (Água/Luz)</div>
+            <div className="text-[12px] text-text-soft">Top 50 MG e 20 países do G20 (Água/Luz)</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -177,7 +177,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">💰 7 Orçamentos Estratégicos</div>
-            <div className="text-[11px] text-text-soft">Defesa, IA, Clima, Energia e Água de EUA, Canadá e Europa</div>
+            <div className="text-[12px] text-text-soft">Defesa, IA, Clima, Energia e Água de EUA, Canadá e Europa</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -187,7 +187,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇪🇺 Hub Europa</div>
-            <div className="text-[11px] text-text-soft">Litígios BHP Mariana, Roterdã e BAFA</div>
+            <div className="text-[12px] text-text-soft">Litígios BHP Mariana, Roterdã e BAFA</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -197,7 +197,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇨🇦 Hub Canadá</div>
-            <div className="text-[11px] text-text-soft">12 mineradoras na Bolsa de Toronto TSX</div>
+            <div className="text-[12px] text-text-soft">12 mineradoras na Bolsa de Toronto TSX</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -207,7 +207,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇺🇸 Hub Estados Unidos</div>
-            <div className="text-[11px] text-text-soft">SEC EDGAR, fundos e barragens do NID</div>
+            <div className="text-[12px] text-text-soft">SEC EDGAR, fundos e barragens do NID</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -217,7 +217,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🗺️ Mapa Mundial de Defesa</div>
-            <div className="text-[11px] text-text-soft">Geolocalização de conflitos e bases</div>
+            <div className="text-[12px] text-text-soft">Geolocalização de conflitos e bases</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -227,7 +227,7 @@ export default function PaginaHubInternacional() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🔬 Laboratório de Dados</div>
-            <div className="text-[11px] text-text-soft">Caderno Seu Nonô e gráficos interativos</div>
+            <div className="text-[12px] text-text-soft">Caderno Seu Nonô e gráficos interativos</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>

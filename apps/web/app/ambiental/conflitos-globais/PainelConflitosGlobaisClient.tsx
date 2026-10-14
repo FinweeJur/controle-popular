@@ -453,7 +453,7 @@ export default function PainelConflitosGlobaisClient({
                     <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden="true" />
                     <span>{conflito.localidade}</span>
                     <span className="mx-1">·</span>
-                    <span className="font-mono text-[11px]">
+                    <span className="font-mono text-[12px]">
                       {conflito.latitude.toFixed(4)}°, {conflito.longitude.toFixed(4)}°
                     </span>
                   </div>
@@ -517,7 +517,7 @@ export default function PainelConflitosGlobaisClient({
               </div>
 
               {/* Rodapé do Card: Fonte e Citação ABNT */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border/60 text-[11px] text-muted">
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border/60 text-[12px] text-muted">
                 <span>
                   <strong>Fonte Auditada:</strong> {conflito.fonteOficial}
                 </span>

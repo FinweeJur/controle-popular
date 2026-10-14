@@ -230,7 +230,7 @@ export default function PaginaLitigiosClimaticos() {
                 <p className="mt-2 text-xs text-muted">
                   {t.enunciadoResumido}
                 </p>
-                <p className="mt-2 text-[0.7rem] text-muted">
+                <p className="mt-2 text-[0.75rem] text-muted">
                   Fonte: {t.fontePesquisa}{" "}
                   <a
                     href={t.linkFonte}

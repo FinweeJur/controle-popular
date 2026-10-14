@@ -128,7 +128,7 @@ export default function PaginaBarragensGlobais() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_BARRAGENS_GLOBAIS.totalBarragens} Barragens
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Em {COBERTURA_BARRAGENS_GLOBAIS.totalPaises} países e 6 continentes.
           </div>
         </div>
@@ -141,7 +141,7 @@ export default function PaginaBarragensGlobais() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_BARRAGENS_GLOBAIS.totalRejeitos} Estruturas
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             {COBERTURA_BARRAGENS_GLOBAIS.totalRompidaHistorico} rompidas e {COBERTURA_BARRAGENS_GLOBAIS.totalDescaracterizacao} em descaracterização.
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function PaginaBarragensGlobais() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_BARRAGENS_GLOBAIS.totalHidreletricas} Centrais
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Três Gargantas, Itaipu, Belo Monte e mais.
           </div>
         </div>
@@ -167,7 +167,7 @@ export default function PaginaBarragensGlobais() {
           <div className="mt-2 text-2xl font-bold text-text">
             {(COBERTURA_BARRAGENS_GLOBAIS.volumeTotalMm3 / 1000).toFixed(0)} bi m³
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Volume de reservatórios acumulado.
           </div>
         </div>

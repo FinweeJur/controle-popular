@@ -146,7 +146,7 @@ export default function PaginaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalOperacoes} Dossiês
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Conflitos, golpes e contratos auditados.
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function PaginaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalPaisesTeatro} Nações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Em todos os continentes do globo.
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function PaginaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalPMCs + COBERTURA_OPERACOES_MILITARES.totalContratadasDefesa} Entidades
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Mercenários e indústria armamentista.
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function PaginaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalComConexaoBrasilOuLatam} Ações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Golpes e intervenções históricas na região.
           </div>
         </div>

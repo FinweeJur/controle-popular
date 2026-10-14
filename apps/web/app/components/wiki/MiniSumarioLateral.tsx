@@ -84,7 +84,7 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
       onMouseLeave={() => setExpandido(false)}
     >
       <div className="flex flex-col items-end rounded-2xl border border-border bg-surface/90 p-2 shadow-lg backdrop-blur">
-        <div className="mb-1.5 flex items-center justify-between gap-2 border-b border-border/60 px-1 pb-1 text-[0.7rem] font-semibold text-text-soft">
+        <div className="mb-1.5 flex items-center justify-between gap-2 border-b border-border/60 px-1 pb-1 text-[0.75rem] font-semibold text-text-soft">
           <span>{expandido ? "Capítulos da página" : "Capítulos"}</span>
           <div className="flex gap-1">
             <button

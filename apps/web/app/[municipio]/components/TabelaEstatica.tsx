@@ -342,7 +342,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
                         }`}
                       >
                         {c.rotulo}
-                        <span aria-hidden="true" className="font-tabular text-[11px]">
+                        <span aria-hidden="true" className="font-tabular text-[12px]">
                           {ativa ? (ordemAtiva.direcao === "asc" ? "▲" : "▼") : "⇅"}
                         </span>
                       </button>

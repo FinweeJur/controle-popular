@@ -513,7 +513,7 @@ export default function PainelVarasContatosClient({
                     <p className="truncate font-bold text-text">{u.coordenador.nome}</p>
                     <p className="text-xs text-text-soft truncate">{u.coordenador.cargo}</p>
                     {u.designacao?.data && (
-                      <p className="mt-0.5 text-[11px] text-primary truncate">
+                      <p className="mt-0.5 text-[12px] text-primary truncate">
                         Em exercício desde {formatDataBR(u.designacao.data)}
                         {u.designacao.ato ? ` (${u.designacao.ato})` : ""}
                       </p>
@@ -619,7 +619,7 @@ export default function PainelVarasContatosClient({
                     <p className="font-medium line-clamp-1">{u.coordenador.nome}</p>
                     <p className="text-xs text-text-soft">{u.coordenador.cargo}</p>
                     {u.designacao?.data && (
-                      <p className="mt-0.5 text-[11px] text-primary">
+                      <p className="mt-0.5 text-[12px] text-primary">
                         desde {formatDataBR(u.designacao.data)}
                         {u.designacao.ato ? ` · ${u.designacao.ato}` : ""}
                       </p>

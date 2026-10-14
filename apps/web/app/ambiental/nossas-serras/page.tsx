@@ -63,7 +63,7 @@ export default function NossasSerrasIndexPage() {
               <span className="text-2xl">⛰️</span>
               <h2 className="mt-2 font-display text-xl font-bold text-text">{serra.nome}</h2>
               <p className="mt-2 text-xs text-text-soft leading-relaxed">{serra.resumoVozCidada}</p>
-              <div className="mt-3 text-[0.72rem] text-text-soft">
+              <div className="mt-3 text-[0.75rem] text-text-soft">
                 Biomas: {serra.biomas.join(" / ")}
               </div>
             </div>

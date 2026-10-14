@@ -54,18 +54,18 @@ export default function CatalogoCartao({ pagina }: { pagina: PaginaCatalogo }) {
             >
               {iconeTema}
             </span>
-            <span className="font-mono text-[11px] font-bold text-text-soft/70">
+            <span className="font-mono text-[12px] font-bold text-text-soft/70">
               #{String(p.numero).padStart(2, "0")}
             </span>
           </div>
           <div className="flex items-center gap-1">
             {p.destaque && (
-              <span className="rounded bg-primary/20 border border-primary/30 px-1 py-0.5 text-[9px] font-bold uppercase text-primary">
+              <span className="rounded bg-primary/20 border border-primary/30 px-1 py-0.5 text-[12px] font-bold uppercase text-primary">
                 ✦ Destaque
               </span>
             )}
             <span
-              className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider border ${estilo.badge}`}
+              className={`inline-block rounded px-1.5 py-0.5 text-[12px] font-semibold uppercase tracking-wider border ${estilo.badge}`}
             >
               {p.badge}
             </span>
@@ -73,7 +73,7 @@ export default function CatalogoCartao({ pagina }: { pagina: PaginaCatalogo }) {
         </div>
 
         {p.subfrente && (
-          <div className="text-[10px] font-semibold text-text-soft/90 truncate">
+          <div className="text-[12px] font-semibold text-text-soft/90 truncate">
             {p.subfrente}
           </div>
         )}
@@ -85,12 +85,12 @@ export default function CatalogoCartao({ pagina }: { pagina: PaginaCatalogo }) {
           )}
         </h3>
 
-        <p className="line-clamp-2 text-[11px] leading-tight text-text-soft">
+        <p className="line-clamp-2 text-[12px] leading-tight text-text-soft">
           {p.resumo}
         </p>
       </div>
 
-      <div className="mt-2.5 pt-2 border-t border-border/40 flex items-center justify-between text-[10px]">
+      <div className="mt-2.5 pt-2 border-t border-border/40 flex items-center justify-between text-[12px]">
         <code className="font-mono text-text-soft/80 truncate max-w-[130px] sm:max-w-[150px]">
           {p.href.replace("https://github.com/FinweeJur/", "gh:")}
         </code>

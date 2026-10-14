@@ -1336,7 +1336,7 @@ export function CompanheiroFlutuante() {
             }}
           >
             <div className="flex items-start justify-between gap-2 px-2 pb-1">
-              <p className="text-[0.7rem] font-medium text-text-soft">
+              <p className="text-[0.75rem] font-medium text-text-soft">
                 Marque quem anda na tela (pode ser mais de um):
               </p>
               <button
@@ -1388,7 +1388,7 @@ export function CompanheiroFlutuante() {
                         <PetIcone pet={p} altura={16} />
                         <span>{p.nome}</span>
                       </span>
-                      <span className="truncate text-[0.65rem] font-normal text-text-soft">
+                      <span className="truncate text-[0.75rem] font-normal text-text-soft">
                         {p.autor}
                       </span>
                     </button>

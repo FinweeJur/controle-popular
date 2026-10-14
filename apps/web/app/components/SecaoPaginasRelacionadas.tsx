@@ -115,7 +115,7 @@ export default function SecaoPaginasRelacionadas({
                   <span className="truncate">{item.titulo}</span>
                 </span>
                 {item.badge && (
-                  <span className="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full bg-surface text-muted border border-border/50">
+                  <span className="shrink-0 text-[12px] font-medium px-2 py-0.5 rounded-full bg-surface text-muted border border-border/50">
                     {item.badge}
                   </span>
                 )}
@@ -126,7 +126,7 @@ export default function SecaoPaginasRelacionadas({
             </div>
 
             <div className="pt-1 flex items-center justify-between text-xs text-primary font-medium">
-              <span className="text-[11px] font-mono text-muted/70 group-hover:text-muted truncate max-w-[180px]">
+              <span className="text-[12px] font-mono text-muted/70 group-hover:text-muted truncate max-w-[180px]">
                 {item.href}
               </span>
               <span className="inline-flex items-center gap-1 group-hover:translate-x-0.5 transition shrink-0">

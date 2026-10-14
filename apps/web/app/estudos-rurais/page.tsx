@@ -145,7 +145,7 @@ export default function EstudosRuraisPage() {
               <div className="flex min-w-[480px] items-end gap-3 sm:min-w-0">
                 {SERIE_GRAFICO.map((a) => (
                   <div key={a.rotulo} className="flex flex-1 flex-col items-center gap-1.5">
-                    <span className="font-tabular text-[11px] font-medium text-text-soft">
+                    <span className="font-tabular text-[12px] font-medium text-text-soft">
                       {a.total}
                     </span>
                     <div
@@ -157,7 +157,7 @@ export default function EstudosRuraisPage() {
                       }}
                       title={`${a.rotulo}: ${a.total} itens`}
                     />
-                    <span className="font-tabular text-[11px] font-medium text-text-soft">
+                    <span className="font-tabular text-[12px] font-medium text-text-soft">
                       {a.rotulo}
                     </span>
                   </div>

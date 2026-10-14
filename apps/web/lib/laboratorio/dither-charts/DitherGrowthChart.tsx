@@ -282,7 +282,7 @@ export function DitherGrowthChart({
           {ticks.map((t, i) => (
             <span
               key={i}
-              className={`absolute right-0 text-[10px] font-mono ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`}
+              className={`absolute right-0 text-[12px] font-mono ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`}
               style={{
                 top: `${(i / 3) * 82 + 8}%`,
                 transform: 'translateY(-50%)',
@@ -321,7 +321,7 @@ export function DitherGrowthChart({
                   }`}
                   style={{ left: xPos, top: yPos }}
                 >
-                  <div className="text-[10px] text-neutral-400 uppercase">
+                  <div className="text-[12px] text-neutral-400 uppercase">
                     {dates[scrubIndex]}
                   </div>
                   <div>{values[scrubIndex]?.toLocaleString('pt-BR')}</div>
@@ -330,7 +330,7 @@ export function DitherGrowthChart({
             )}
           </div>
 
-          <div className="flex justify-between items-center mt-2 px-1 text-[10px] font-mono opacity-60">
+          <div className="flex justify-between items-center mt-2 px-1 text-[12px] font-mono opacity-60">
             {dateLabels.map((lbl, idx) => (
               <span key={idx}>{lbl}</span>
             ))}

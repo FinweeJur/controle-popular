@@ -383,7 +383,7 @@ export default function AutorizacoesClient({ metadados, imoveis }: Props) {
       <style>{`
         @media print {
           .no-print { display: none !important; }
-          table { font-size: 10px; }
+          table { font-size: 12px; }
           a { text-decoration: none; color: inherit; }
         }
       `}</style>

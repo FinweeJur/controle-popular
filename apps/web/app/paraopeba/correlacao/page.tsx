@@ -76,17 +76,17 @@ export default function CorrelacaoPage() {
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Movimentos detectados</p>
+            <p className="text-[12px] text-text-soft">Movimentos detectados</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">{vale3Movimentos.length}</p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Limiar de variacao</p>
+            <p className="text-[12px] text-text-soft">Limiar de variacao</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">
               {DEFAULT_CONFIG.limiarVariacao}%
             </p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Janela de correlacao</p>
+            <p className="text-[12px] text-text-soft">Janela de correlacao</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">
               {"\u00B1"}{DEFAULT_CONFIG.janelaDias} dias
             </p>
@@ -158,17 +158,17 @@ export default function CorrelacaoPage() {
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Movimentos detectados</p>
+            <p className="text-[12px] text-text-soft">Movimentos detectados</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">{sgmlMovimentos.length}</p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Limiar de variacao</p>
+            <p className="text-[12px] text-text-soft">Limiar de variacao</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">
               {DEFAULT_CONFIG.limiarVariacao}%
             </p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[11px] text-text-soft">Janela de correlacao</p>
+            <p className="text-[12px] text-text-soft">Janela de correlacao</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">
               {"\u00B1"}{DEFAULT_CONFIG.janelaDias} dias
             </p>

@@ -232,7 +232,7 @@ export default function PainelMultinacionaisClient({
           <p className="mt-1 text-xl font-bold tracking-tight text-primary sm:text-2xl font-tabular">
             {formatarMoedaBrl(totalBrlFiltrado)}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             {empresasFiltradas.length} grupos mapeados
           </span>
         </div>
@@ -244,7 +244,7 @@ export default function PainelMultinacionaisClient({
           <p className="mt-1 text-xl font-bold tracking-tight text-text sm:text-2xl font-tabular">
             {formatarMoedaUsd(totalUsdFiltrado)}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Câmbio médio de registro
           </span>
         </div>
@@ -256,7 +256,7 @@ export default function PainelMultinacionaisClient({
           <p className="mt-1 text-xl font-bold tracking-tight text-emerald-600 sm:text-2xl font-tabular">
             {comOffsetPct}%
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             {comOffsetCount} com transferência ou fábrica
           </span>
         </div>
@@ -274,7 +274,7 @@ export default function PainelMultinacionaisClient({
               ).length
             }
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Dependência crítica de substituição
           </span>
         </div>
@@ -324,11 +324,11 @@ export default function PainelMultinacionaisClient({
                       <span className="font-semibold text-text">
                         {empresa.nome}
                       </span>
-                      <span className="text-[11px] text-text-soft">
+                      <span className="text-[12px] text-text-soft">
                         ({empresa.pais_origem})
                       </span>
                       {temOffset && (
-                        <span className="rounded bg-emerald-100 px-1.5 py-0.2 text-[10px] font-medium text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400">
+                        <span className="rounded bg-emerald-100 px-1.5 py-0.2 text-[12px] font-medium text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400">
                           Offset ✓
                         </span>
                       )}
@@ -589,13 +589,13 @@ export default function PainelMultinacionaisClient({
                             <span>{empresa.nome}</span>
                           )}
                         </div>
-                        <div className="text-[11px] text-text-soft">
+                        <div className="text-[12px] text-text-soft">
                           {empresa.pais_origem} · Ticker:{" "}
                           <span className="font-mono">{empresa.ticker}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3 text-text-soft">
-                        <span className="rounded bg-surface-2 px-2 py-0.5 text-[11px]">
+                        <span className="rounded bg-surface-2 px-2 py-0.5 text-[12px]">
                           {empresa.setor}
                         </span>
                       </td>
@@ -629,11 +629,11 @@ export default function PainelMultinacionaisClient({
                       </td>
                       <td className="px-4 py-3 text-center">
                         {temOffset ? (
-                          <span className="inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300">
+                          <span className="inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-[12px] font-bold text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300">
                             Sim
                           </span>
                         ) : (
-                          <span className="inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-bold text-rose-800 dark:bg-rose-950/50 dark:text-rose-300">
+                          <span className="inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[12px] font-bold text-rose-800 dark:bg-rose-950/50 dark:text-rose-300">
                             Não
                           </span>
                         )}
@@ -645,7 +645,7 @@ export default function PainelMultinacionaisClient({
                               isExpandida ? null : empresa.id
                             )
                           }
-                          className="rounded border border-border px-2 py-1 text-[11px] font-medium text-text hover:bg-surface-3 transition-colors"
+                          className="rounded border border-border px-2 py-1 text-[12px] font-medium text-text hover:bg-surface-3 transition-colors"
                         >
                           {isExpandida ? "Fechar ▲" : "Detalhes ▼"}
                         </button>

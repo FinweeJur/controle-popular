@@ -155,7 +155,7 @@ export default function DiretorioInstituicoesClient({
             {reg}
           </button>
         ))}
-        <span className="ml-auto text-text-soft font-mono text-[11px]">
+        <span className="ml-auto text-text-soft font-mono text-[12px]">
           {filtradas.length} órgãos encontrados
         </span>
       </div>
@@ -197,7 +197,7 @@ export default function DiretorioInstituicoesClient({
                       )}
                     </div>
                     <span
-                      className="rounded-full px-2 py-0.5 font-mono text-[11px] font-bold"
+                      className="rounded-full px-2 py-0.5 font-mono text-[12px] font-bold"
                       style={{
                         backgroundColor: `color-mix(in srgb, ${inst.cor || "#0284c7"} 15%, transparent)`,
                         color: inst.cor || "#0284c7",

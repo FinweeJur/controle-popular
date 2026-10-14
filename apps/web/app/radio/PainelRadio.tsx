@@ -361,7 +361,7 @@ export default function PainelRadio({ estacoes }: PainelRadioProps) {
                   </a>
                   {e.transcrevivel && (
                     <span
-                      className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.7rem] text-text-soft"
+                      className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.75rem] text-text-soft"
                       title="Esta estação aceita transcrição ao vivo no navegador"
                     >
                       <IconeRadio size={11} aria-hidden="true" />

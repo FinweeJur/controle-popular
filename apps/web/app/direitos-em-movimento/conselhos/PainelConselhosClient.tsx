@@ -48,7 +48,7 @@ function BotaoCopiar({ texto, rotulo }: { texto: string; rotulo: string }) {
       onClick={copiar}
       aria-label={`Copiar ${rotulo}`}
       className={
-        "inline-flex items-center gap-1 rounded px-1 py-0.5 text-[11px] font-medium transition-colors " +
+        "inline-flex items-center gap-1 rounded px-1 py-0.5 text-[12px] font-medium transition-colors " +
         (copiado
           ? "text-emerald-600"
           : "text-text-soft hover:text-primary hover:bg-surface-2")
@@ -258,7 +258,7 @@ export default function PainelConselhosClient({
                       aria-valuemax={conselhosIniciais.length}
                     />
                   </div>
-                  <span className="text-[11px] text-text-soft">{pct}% do acervo</span>
+                  <span className="text-[12px] text-text-soft">{pct}% do acervo</span>
                 </div>
               );
             })}
@@ -498,14 +498,14 @@ export default function PainelConselhosClient({
                   <tr key={c.id} className="hover:bg-surface-2/40">
                     <td className="p-3">
                       <span className="font-mono font-bold text-foreground block">{c.sigla}</span>
-                      <span className="text-[11px] text-text-soft">{c.nome}</span>
+                      <span className="text-[12px] text-text-soft">{c.nome}</span>
                     </td>
                     <td className="p-3 whitespace-nowrap">
                       <span className="rounded px-1.5 py-0.5 text-[0.9em] font-medium border border-border">
                         {ROTULOS_CATEGORIA[c.categoria]?.label || c.categoria}
                       </span>
                     </td>
-                    <td className="p-3 whitespace-nowrap font-mono text-[11px]">
+                    <td className="p-3 whitespace-nowrap font-mono text-[12px]">
                       {c.esfera.toUpperCase()} • {c.uf || "BR"}
                     </td>
                     <td className="p-3 max-w-xs text-text-soft">

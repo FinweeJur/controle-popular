@@ -377,7 +377,7 @@ export default function PainelContratosEua({ contratos }: PainelContratosEuaProp
 
                 {/* VALOR FINANCEIRO */}
                 <div className="mt-2 rounded-xl bg-surface-elevated p-3 text-right border border-border/60 sm:mt-0 sm:min-w-[190px]">
-                  <span className="block text-[11px] text-muted">Volume Financeiro Oficial</span>
+                  <span className="block text-[12px] text-muted">Volume Financeiro Oficial</span>
                   <span className="font-mono text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                     {formatarValorUsd(item.valorUsdMilhoes)}
                   </span>

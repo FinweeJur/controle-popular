@@ -95,7 +95,7 @@ export default function SubNavEua({ rotaAtiva }: SubNavEuaProps) {
               <div className="flex flex-col text-left">
                 <span className="font-semibold leading-tight">{item.rotulo}</span>
                 <span
-                  className={`text-[11px] leading-tight ${
+                  className={`text-[12px] leading-tight ${
                     ativa ? "text-sky-100" : "text-muted group-hover:text-foreground/80"
                   }`}
                 >

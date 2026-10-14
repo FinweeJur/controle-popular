@@ -379,7 +379,7 @@ export default function PainelEmpresasSec({ empresas }: PainelEmpresasSecProps) 
                     <h2 className="font-display text-lg font-bold text-foreground">
                       {empresa.nome}
                     </h2>
-                    <span className="rounded-full bg-surface-elevated px-2.5 py-0.5 text-[11px] font-medium text-muted border border-border/60">
+                    <span className="rounded-full bg-surface-elevated px-2.5 py-0.5 text-[12px] font-medium text-muted border border-border/60">
                       {empresa.tipoEntidade}
                     </span>
                   </div>
@@ -392,7 +392,7 @@ export default function PainelEmpresasSec({ empresas }: PainelEmpresasSecProps) 
                 {/* ATIVOS SOB GESTÃO E CIK */}
                 <div className="flex flex-wrap items-center gap-3 sm:flex-col sm:items-end sm:gap-1">
                   <div className="text-right">
-                    <span className="block text-[11px] text-muted">Ativos / Porte</span>
+                    <span className="block text-[12px] text-muted">Ativos / Porte</span>
                     <span className="font-mono text-base font-bold text-emerald-600 dark:text-emerald-400">
                       {formatarAtivosUsd(empresa.ativosSobGestaoUsdBilhoes)}
                     </span>

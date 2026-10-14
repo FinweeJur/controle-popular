@@ -50,7 +50,7 @@ function CartaoDestaque({
       >
         <Link href={href} className="group flex h-full flex-col justify-between">
           <div>
-            <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">
+            <span className="text-[12px] font-bold uppercase text-emerald-600 dark:text-emerald-400">
               {etiqueta}
             </span>
             <h3 className="font-display text-base font-bold text-foreground group-hover:text-emerald-500 mt-1">

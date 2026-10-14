@@ -257,11 +257,11 @@ export default function BarraIdiomaTrilingue({
               <div>
                 <div className="flex items-center justify-between gap-1">
                   <span className="font-bold text-foreground">{item.sigla}</span>
-                  <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                  <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[12px] font-semibold text-primary">
                     ≈ {item.equivalenteBrasil}
                   </span>
                 </div>
-                <p className="text-[11px] text-muted mt-1 leading-relaxed">
+                <p className="text-[12px] text-muted mt-1 leading-relaxed">
                   {t(item.explicacao, idioma)}
                 </p>
               </div>
@@ -269,7 +269,7 @@ export default function BarraIdiomaTrilingue({
                 href={item.urlOficial}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:underline pt-1"
+                className="inline-flex items-center gap-1 text-[12px] font-semibold text-primary hover:underline pt-1"
               >
                 {t(UI_INTERNACIONAL.fonteDiretaBotao, idioma)}
               </a>

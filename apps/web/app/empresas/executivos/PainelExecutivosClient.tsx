@@ -748,7 +748,7 @@ export default function PainelExecutivosClient({ executivos }: Props) {
                 <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
                   💰 1.000 Maiores Fortunas Mundiais
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 As famílias controladoras e grandes acionistas, rendimentos mensais e equivalência em extrema pobreza.
@@ -768,7 +768,7 @@ export default function PainelExecutivosClient({ executivos }: Props) {
                 <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
                   🌐 Monopólios, Holdings e Trustes
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Grafo 60fps</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Grafo 60fps</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Visualização em Canvas 60fps das redes de controle cruzado dos Big Three e cartéis de commodities.

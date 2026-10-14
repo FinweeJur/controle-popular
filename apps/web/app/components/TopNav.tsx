@@ -422,7 +422,7 @@ export default function TopNav() {
                                 <span className="truncate">{link.label}</span>
                               </div>
                               {link.destaque && (
-                                <span className="shrink-0 text-[9px] font-bold tracking-wider text-primary uppercase">
+                                <span className="shrink-0 text-[12px] font-bold tracking-wider text-primary uppercase">
                                   ✦
                                 </span>
                               )}
@@ -498,7 +498,7 @@ export default function TopNav() {
             title="Busca rápida (Ctrl+K)"
           >
             <Search size={13} aria-hidden="true" />
-            <kbd className="font-mono text-[10px] opacity-70">Ctrl K</kbd>
+            <kbd className="font-mono text-[12px] opacity-70">Ctrl K</kbd>
           </button>
           <OuvirNavbar />
           <Link

@@ -166,7 +166,7 @@ export function DitherBarChart({
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-between text-[11px] text-neutral-400 px-1 pt-1">
+        <div className="flex justify-between text-[12px] text-neutral-400 px-1 pt-1">
           {labels.map((lbl, idx) => (
             <span key={lbl} className={hoveredIdx === idx ? 'text-white font-bold' : ''}>{lbl}</span>
           ))}

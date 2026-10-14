@@ -409,7 +409,7 @@ export default function PainelBarragensGlobaisClient({
           <div className="mt-3 rounded-xl border border-primary/30 bg-surface p-3.5 shadow-xs animate-in fade-in duration-200">
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1.5">
-                <span className="inline-block rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+                <span className="inline-block rounded-md bg-primary/10 px-2 py-0.5 text-[12px] font-bold text-primary">
                   Resposta Cívica Verificada:
                 </span>
                 <p className="text-sm font-semibold text-text">
@@ -543,7 +543,7 @@ export default function PainelBarragensGlobaisClient({
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 pt-2 border-t border-border">
           {/* Tipo de barragem */}
           <div>
-            <label className="block text-[11px] font-semibold text-text-soft mb-1">
+            <label className="block text-[12px] font-semibold text-text-soft mb-1">
               Tipo / Finalidade
             </label>
             <select
@@ -561,7 +561,7 @@ export default function PainelBarragensGlobaisClient({
 
           {/* Continente */}
           <div>
-            <label className="block text-[11px] font-semibold text-text-soft mb-1">
+            <label className="block text-[12px] font-semibold text-text-soft mb-1">
               Continente
             </label>
             <select
@@ -581,7 +581,7 @@ export default function PainelBarragensGlobaisClient({
 
           {/* Status Operacional */}
           <div>
-            <label className="block text-[11px] font-semibold text-text-soft mb-1">
+            <label className="block text-[12px] font-semibold text-text-soft mb-1">
               Status Operacional
             </label>
             <select
@@ -599,7 +599,7 @@ export default function PainelBarragensGlobaisClient({
 
           {/* Risco / Hazard */}
           <div>
-            <label className="block text-[11px] font-semibold text-text-soft mb-1">
+            <label className="block text-[12px] font-semibold text-text-soft mb-1">
               Gravidade do Risco
             </label>
             <select
@@ -654,7 +654,7 @@ export default function PainelBarragensGlobaisClient({
               <Mountain size={16} className="text-primary" />
               <span>Comparativo de Altura Estrutural (Maiores Barragens Filtradas)</span>
             </h3>
-            <span className="text-[11px] text-text-soft">
+            <span className="text-[12px] text-text-soft">
               Escala em metros lineares (gráfico SVG nativo)
             </span>
           </div>
@@ -758,7 +758,7 @@ export default function PainelBarragensGlobaisClient({
             </svg>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-text-soft pt-1 border-t border-border">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-[12px] text-text-soft pt-1 border-t border-border">
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-500 inline-block" /> Rejeitos
@@ -874,7 +874,7 @@ export default function PainelBarragensGlobaisClient({
                       <div className="font-bold text-text group-hover:text-primary transition-colors">
                         {b.nome}
                       </div>
-                      <div className="text-[11px] text-text-soft">
+                      <div className="text-[12px] text-text-soft">
                         {b.operador}
                       </div>
                     </td>
@@ -882,17 +882,17 @@ export default function PainelBarragensGlobaisClient({
                     {/* País e Bacia */}
                     <td className="p-3.5">
                       <div className="font-semibold text-text">{b.pais}</div>
-                      <div className="text-[11px] text-text-soft truncate max-w-[180px]">
+                      <div className="text-[12px] text-text-soft truncate max-w-[180px]">
                         {b.rioOuBacia}
                       </div>
                     </td>
 
                     {/* Tipo e Estrutura */}
                     <td className="p-3.5">
-                      <span className="inline-block rounded-md bg-surface-2 border border-border px-2 py-0.5 text-[11px] font-semibold text-text">
+                      <span className="inline-block rounded-md bg-surface-2 border border-border px-2 py-0.5 text-[12px] font-semibold text-text">
                         {rotuloTipo(b.tipoBarragem)}
                       </span>
-                      <div className="text-[10px] text-text-soft mt-0.5">
+                      <div className="text-[12px] text-text-soft mt-0.5">
                         {b.tipoEstrutura}
                       </div>
                     </td>
@@ -900,7 +900,7 @@ export default function PainelBarragensGlobaisClient({
                     {/* Altura */}
                     <td className="p-3.5 whitespace-nowrap">
                       <span className="font-bold text-text">{b.alturaMetros}</span>
-                      <span className="text-[11px] text-text-soft ml-0.5">m</span>
+                      <span className="text-[12px] text-text-soft ml-0.5">m</span>
                     </td>
 
                     {/* Volume */}
@@ -910,7 +910,7 @@ export default function PainelBarragensGlobaisClient({
                           ? `${(b.volumeCapacidadeMm3 / 1000).toFixed(1)} bi`
                           : `${b.volumeCapacidadeMm3.toFixed(1)}`}
                       </span>
-                      <span className="text-[11px] text-text-soft ml-0.5">
+                      <span className="text-[12px] text-text-soft ml-0.5">
                         {b.volumeCapacidadeMm3 >= 1000 ? "m³" : "Mm³"}
                       </span>
                     </td>
@@ -918,13 +918,13 @@ export default function PainelBarragensGlobaisClient({
                     {/* Risco / Status */}
                     <td className="p-3.5">
                       <span
-                        className={`inline-block rounded-md border px-2 py-0.5 text-[10px] font-bold ${badgeStatusClasse(
+                        className={`inline-block rounded-md border px-2 py-0.5 text-[12px] font-bold ${badgeStatusClasse(
                           b.statusOperacional
                         )}`}
                       >
                         {rotuloStatus(b.statusOperacional)}
                       </span>
-                      <div className="text-[11px] text-text-soft mt-0.5 line-clamp-1 max-w-[200px]">
+                      <div className="text-[12px] text-text-soft mt-0.5 line-clamp-1 max-w-[200px]">
                         {b.classificacaoRiscoOuHazard}
                       </div>
                     </td>
@@ -938,7 +938,7 @@ export default function PainelBarragensGlobaisClient({
                         <button
                           type="button"
                           onClick={() => setBarragemModal(b)}
-                          className="rounded-lg border border-border bg-surface px-2.5 py-1 text-[11px] font-semibold text-text hover:bg-surface-2 transition"
+                          className="rounded-lg border border-border bg-surface px-2.5 py-1 text-[12px] font-semibold text-text hover:bg-surface-2 transition"
                         >
                           Ver Detalhes
                         </button>
@@ -971,13 +971,13 @@ export default function PainelBarragensGlobaisClient({
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <span
-                    className={`inline-block rounded-md border px-2 py-0.5 text-[10px] font-bold ${badgeStatusClasse(
+                    className={`inline-block rounded-md border px-2 py-0.5 text-[12px] font-bold ${badgeStatusClasse(
                       b.statusOperacional
                     )}`}
                   >
                     {rotuloStatus(b.statusOperacional)}
                   </span>
-                  <span className="text-[11px] text-text-soft font-semibold">
+                  <span className="text-[12px] text-text-soft font-semibold">
                     {b.anoConclusao}
                   </span>
                 </div>
@@ -997,11 +997,11 @@ export default function PainelBarragensGlobaisClient({
               <div>
                 <div className="grid grid-cols-2 gap-2 pt-3 border-t border-border text-xs mb-3">
                   <div>
-                    <span className="text-[10px] text-text-soft block">Altura</span>
+                    <span className="text-[12px] text-text-soft block">Altura</span>
                     <span className="font-bold text-text">{b.alturaMetros}m</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-text-soft block">Volume</span>
+                    <span className="text-[12px] text-text-soft block">Volume</span>
                     <span className="font-bold text-text">
                       {b.volumeCapacidadeMm3 >= 1000
                         ? `${(b.volumeCapacidadeMm3 / 1000).toFixed(1)} bi m³`
@@ -1094,17 +1094,17 @@ export default function PainelBarragensGlobaisClient({
             {/* Metadados técnicos */}
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 text-xs">
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Tipo Estrutural</span>
+                <span className="text-[12px] text-text-soft block">Tipo Estrutural</span>
                 <span className="font-bold text-text">{barragemModal.tipoEstrutura}</span>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Altura do Barramento</span>
+                <span className="text-[12px] text-text-soft block">Altura do Barramento</span>
                 <span className="font-bold text-text">{barragemModal.alturaMetros} metros</span>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Volume / Capacidade</span>
+                <span className="text-[12px] text-text-soft block">Volume / Capacidade</span>
                 <span className="font-bold text-text">
                   {barragemModal.volumeCapacidadeMm3 >= 1000
                     ? `${(barragemModal.volumeCapacidadeMm3 / 1000).toFixed(2)} bilhões de m³`
@@ -1113,18 +1113,18 @@ export default function PainelBarragensGlobaisClient({
               </div>
 
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Operador / Concessionária</span>
+                <span className="text-[12px] text-text-soft block">Operador / Concessionária</span>
                 <span className="font-bold text-text">{barragemModal.operador}</span>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Ano de Conclusão</span>
+                <span className="text-[12px] text-text-soft block">Ano de Conclusão</span>
                 <span className="font-bold text-text">{barragemModal.anoConclusao}</span>
               </div>
 
               <div className="rounded-xl border border-border bg-surface-2 p-3">
-                <span className="text-[10px] text-text-soft block">Coordenadas WGS84</span>
-                <span className="font-mono font-bold text-text text-[11px]">
+                <span className="text-[12px] text-text-soft block">Coordenadas WGS84</span>
+                <span className="font-mono font-bold text-text text-[12px]">
                   {barragemModal.latitude.toFixed(4)}, {barragemModal.longitude.toFixed(4)}
                 </span>
               </div>
@@ -1132,7 +1132,7 @@ export default function PainelBarragensGlobaisClient({
 
             {/* Classificação de risco */}
             <div className="rounded-2xl border border-border bg-surface-2 p-3.5 text-xs">
-              <span className="text-[10px] text-text-soft block font-semibold mb-0.5">
+              <span className="text-[12px] text-text-soft block font-semibold mb-0.5">
                 Classificação de Risco / Situação no Cadastro
               </span>
               <p className="font-bold text-text">
@@ -1142,7 +1142,7 @@ export default function PainelBarragensGlobaisClient({
 
             {/* Rodapé do modal com link direto à fonte oficial */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3 border-t border-border">
-              <div className="text-[11px] text-text-soft">
+              <div className="text-[12px] text-text-soft">
                 Órgão Regulador / Base Oficial:{" "}
                 <strong className="text-text">{barragemModal.orgaoReguladorOuBase}</strong>
               </div>

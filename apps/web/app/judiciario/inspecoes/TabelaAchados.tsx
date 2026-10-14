@@ -326,7 +326,7 @@ export default function TabelaAchados() {
                       {l.temas.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft"
+                          className="rounded-full border border-border px-2 py-0.5 text-[12px] text-text-soft"
                         >
                           {TEMA_ROTULOS[t] ?? t}
                         </span>

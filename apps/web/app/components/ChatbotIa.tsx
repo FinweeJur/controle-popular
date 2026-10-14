@@ -161,7 +161,7 @@ function BlocoRespostaEscada({
       <div className="flex items-start justify-between gap-2">
         <div>
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[0.68rem] font-bold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
+            <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[0.75rem] font-bold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
               <Sparkles className="h-2.5 w-2.5" />
               {resultado.categoria ?? "Resposta Direta"}
             </span>

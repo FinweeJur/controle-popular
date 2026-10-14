@@ -164,7 +164,7 @@ export function BotaoPularAnimacao({
         aoPular();
       }}
       title="Exibir todo o texto de imediato (atalho de acessibilidade)"
-      className="mt-2 inline-flex items-center gap-1 rounded-md border border-border bg-surface px-2 py-0.5 text-[0.7rem] font-medium text-text-soft hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors cursor-pointer"
+      className="mt-2 inline-flex items-center gap-1 rounded-md border border-border bg-surface px-2 py-0.5 text-[0.75rem] font-medium text-text-soft hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors cursor-pointer"
     >
       <FastForward size={11} />
       <span>Pular animação</span>

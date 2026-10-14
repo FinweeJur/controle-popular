@@ -59,7 +59,7 @@ export default function LaboratorioPage() {
         >
           <span>🌳</span>
           <span>Árvore de Conexões</span>
-          <span className="text-[0.65rem] opacity-70">Obsidian Graph</span>
+          <span className="text-[0.75rem] opacity-70">Obsidian Graph</span>
         </Link>
       </header>
 

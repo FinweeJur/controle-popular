@@ -665,7 +665,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
           <div className="overflow-x-auto rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface)]">
             <table className="w-full min-w-[1020px] text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--cp-border)] bg-[var(--cp-surface-2,var(--cp-surface))] uppercase tracking-wider text-[11px] opacity-75">
+                <tr className="border-b border-[var(--cp-border)] bg-[var(--cp-surface-2,var(--cp-surface))] uppercase tracking-wider text-[12px] opacity-75">
                   {COLUNAS.map((c) => (
                     <th key={c.chave} className={`px-2 py-2 font-semibold ${c.thClass}`}>
                       <button
@@ -686,7 +686,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                         }`}
                       >
                         {c.titulo}
-                        <span className="text-[10px] opacity-60">
+                        <span className="text-[12px] opacity-60">
                           {ordem.chave === c.chave ? (ordem.desc ? "▼" : "▲") : "⇅"}
                         </span>
                       </button>
@@ -708,19 +708,19 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                       key={`${l.orgao}-${l.processo}-${i}`}
                       className="align-top hover:bg-[var(--cp-surface-2,var(--cp-surface))]/60 transition"
                     >
-                      <td className="px-2 py-2 font-semibold text-center whitespace-nowrap text-[11px]">
+                      <td className="px-2 py-2 font-semibold text-center whitespace-nowrap text-[12px]">
                         {l.orgao}
                       </td>
-                      <td className="px-1.5 py-2 font-bold text-center text-[11px]">
+                      <td className="px-1.5 py-2 font-bold text-center text-[12px]">
                         {l.uf ?? "—"}
                       </td>
-                      <td className="px-1.5 py-2 font-tabular text-center text-[11px]">
+                      <td className="px-1.5 py-2 font-tabular text-center text-[12px]">
                         {l.ano ?? "—"}
                       </td>
                       <td className="px-2.5 py-2 min-w-[190px] max-w-[270px] whitespace-normal break-words">
                         <div className="font-medium text-[var(--cp-foreground)] leading-tight">{l.tipo}</div>
                         {microresumo && (
-                          <div className="mt-1 text-[11px] opacity-75 leading-snug break-words">
+                          <div className="mt-1 text-[12px] opacity-75 leading-snug break-words">
                             {microresumo}
                           </div>
                         )}
@@ -731,7 +731,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                                 key={tg}
                                 type="button"
                                 onClick={() => setFiltro((f) => ({ ...f, tag: tg }))}
-                                className="rounded px-1.5 py-0.2 text-[10px] bg-[var(--cp-surface-2,var(--cp-surface))] border border-[var(--cp-border)] hover:border-[var(--cp-primary)] opacity-70 hover:opacity-100"
+                                className="rounded px-1.5 py-0.2 text-[12px] bg-[var(--cp-surface-2,var(--cp-surface))] border border-[var(--cp-border)] hover:border-[var(--cp-primary)] opacity-70 hover:opacity-100"
                               >
                                 #{tg}
                               </button>
@@ -741,7 +741,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                       </td>
                       <td className="px-2 py-2 w-[95px] whitespace-normal break-words">
                         <span
-                          className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold leading-tight ${
+                          className={`inline-block rounded px-1.5 py-0.5 text-[12px] font-semibold leading-tight ${
                             porte.includes("Excepcional") || porte.includes("PAC")
                               ? "bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30"
                               : porte.includes("Grande")
@@ -756,7 +756,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                           {porte}
                         </span>
                         {l.tamanho_detalhe && (
-                          <div className="mt-1 text-[10px] opacity-70 break-words leading-tight" title={l.tamanho_detalhe}>
+                          <div className="mt-1 text-[12px] opacity-70 break-words leading-tight" title={l.tamanho_detalhe}>
                             {l.tamanho_detalhe}
                           </div>
                         )}
@@ -779,15 +779,15 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                       <td className="px-2 py-2 w-[90px] whitespace-normal break-words opacity-80 leading-tight">
                         {l.bacia ?? "—"}
                       </td>
-                      <td className="px-1.5 py-2 w-[72px] font-tabular text-[11px] whitespace-nowrap text-center opacity-85">
+                      <td className="px-1.5 py-2 w-[72px] font-tabular text-[12px] whitespace-nowrap text-center opacity-85">
                         {l.data_inicio ?? "—"}
                       </td>
-                      <td className="px-1.5 py-2 w-[72px] font-tabular text-[11px] whitespace-nowrap text-center opacity-85">
+                      <td className="px-1.5 py-2 w-[72px] font-tabular text-[12px] whitespace-nowrap text-center opacity-85">
                         {l.data_fim ?? "—"}
                       </td>
                       <td className="px-2 py-2 w-[85px] text-center">
                         <span
-                          className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-medium leading-tight ${
+                          className={`inline-block rounded px-1.5 py-0.5 text-[12px] font-medium leading-tight ${
                             /conced|deferid|ativ|v[aá]lid/i.test(l.situacao ?? "")
                               ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                               : /cancel|vencid|indefer|embarg/i.test(l.situacao ?? "")
@@ -798,7 +798,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                           {l.situacao ?? "—"}
                         </span>
                       </td>
-                      <td className="px-2 py-2 w-[115px] font-tabular font-mono text-[11px] whitespace-normal break-all leading-tight">
+                      <td className="px-2 py-2 w-[115px] font-tabular font-mono text-[12px] whitespace-normal break-all leading-tight">
                         {l.link_oficial ? (
                           <a
                             href={l.link_oficial}
@@ -808,7 +808,7 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                             title={`Consultar processo ${l.processo} no sistema oficial do órgão`}
                           >
                             <span>{l.processo}</span>
-                            <span className="text-[10px] opacity-70 shrink-0">↗</span>
+                            <span className="text-[12px] opacity-70 shrink-0">↗</span>
                           </a>
                         ) : (
                           <span>{l.processo}</span>
@@ -820,13 +820,13 @@ export default function TabelaLicencas({ linhas }: { linhas: LinhaLicencaUnifica
                             href={l.link_oficial}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded px-1.5 py-0.5 text-[10px] font-medium bg-[var(--cp-primary)]/10 text-[var(--cp-primary)] hover:bg-[var(--cp-primary)]/20 transition border border-[var(--cp-primary)]/20"
+                            className="inline-flex items-center justify-center rounded px-1.5 py-0.5 text-[12px] font-medium bg-[var(--cp-primary)]/10 text-[var(--cp-primary)] hover:bg-[var(--cp-primary)]/20 transition border border-[var(--cp-primary)]/20"
                             title={`Página oficial do ato no sistema do ${l.orgao}`}
                           >
                             Fonte ↗
                           </a>
                         ) : (
-                          <span className="opacity-30 text-[10px]">—</span>
+                          <span className="opacity-30 text-[12px]">—</span>
                         )}
                       </td>
                     </tr>

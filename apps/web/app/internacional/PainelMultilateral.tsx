@@ -347,7 +347,7 @@ export default function PainelMultilateral({
         >
           <Users size={16} />
           <span>{ui.abaSociais}</span>
-          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
+          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[12px]">
             {indicadores.length}
           </span>
         </button>
@@ -363,7 +363,7 @@ export default function PainelMultilateral({
         >
           <Globe size={16} />
           <span>{ui.abaComercio}</span>
-          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
+          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[12px]">
             {comercio.length}
           </span>
         </button>
@@ -379,7 +379,7 @@ export default function PainelMultilateral({
         >
           <Compass size={16} />
           <span>{ui.abaTerritorios}</span>
-          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px]">
+          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[12px]">
             {territorios.length}
           </span>
         </button>
@@ -449,7 +449,7 @@ export default function PainelMultilateral({
         <div className="space-y-4">
           <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
             <table className="w-full text-left text-xs text-text">
-              <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[10px]">
+              <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[12px]">
                 <tr>
                   <th scope="col" className="p-3">
                     <button
@@ -527,12 +527,12 @@ export default function PainelMultilateral({
                             <div className="font-bold text-text flex items-center gap-1">
                               {item.pais}
                               {ehBrasil && (
-                                <span className="rounded bg-primary/20 text-primary text-[9px] px-1 py-0.2 uppercase">
+                                <span className="rounded bg-primary/20 text-primary text-[12px] px-1 py-0.2 uppercase">
                                   {ui.referencia}
                                 </span>
                               )}
                             </div>
-                            <div className="text-[10px] text-text-soft">{item.codigoIso3}</div>
+                            <div className="text-[12px] text-text-soft">{item.codigoIso3}</div>
                           </div>
                         </div>
                       </td>
@@ -572,7 +572,7 @@ export default function PainelMultilateral({
                           href={item.urlOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-medium"
+                          className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-medium"
                         >
                           {item.fonteOficial.split("/")[0]} <ExternalLink size={10} />
                         </a>
@@ -597,7 +597,7 @@ export default function PainelMultilateral({
               >
                 <div className="flex items-center justify-between border-b border-border pb-2">
                   <span className="text-xs font-bold text-primary">{c.mineralOuCommodity}</span>
-                  <span className="text-[10px] rounded bg-surface-2 px-1.5 py-0.5 text-text-soft font-mono">
+                  <span className="text-[12px] rounded bg-surface-2 px-1.5 py-0.5 text-text-soft font-mono">
                     HS {c.codigoHs}
                   </span>
                 </div>
@@ -622,7 +622,7 @@ export default function PainelMultilateral({
                       US$ {c.valorFobUsdMilhoes.toLocaleString(idioma === "en" ? "en-US" : "pt-BR")} {ui.milhoesUsd}
                     </span>
                   </div>
-                  <div className="pt-2 text-[11px] text-text-soft border-t border-border">
+                  <div className="pt-2 text-[12px] text-text-soft border-t border-border">
                     <div>{ui.portoEmbarque} <strong>{c.portoEmbarqueBrasil}</strong></div>
                     <div>{ui.portoEntrega} <strong>{c.portoDestino}</strong></div>
                   </div>
@@ -632,7 +632,7 @@ export default function PainelMultilateral({
                     href={c.urlOficial}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-semibold"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-semibold"
                   >
                     {c.fonteNome} <ExternalLink size={10} />
                   </a>
@@ -655,9 +655,9 @@ export default function PainelMultilateral({
                 <div className="flex items-center justify-between border-b border-border pb-2">
                   <div>
                     <h4 className="text-xs font-bold text-text">{t.nomeTerritorio}</h4>
-                    <span className="text-[10px] text-text-soft">{t.pais}</span>
+                    <span className="text-[12px] text-text-soft">{t.pais}</span>
                   </div>
-                  <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[12px] font-bold text-emerald-600 dark:text-emerald-400">
                     {t.statusDemarcacao}
                   </span>
                 </div>
@@ -687,7 +687,7 @@ export default function PainelMultilateral({
                     <span className="font-semibold text-text">{t.focosCalorAnuaisSat} {ui.focosAno}</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between border-t border-border pt-2 text-[11px]">
+                <div className="flex items-center justify-between border-t border-border pt-2 text-[12px]">
                   <span className="text-text-soft">{t.orgaoResponsavel}</span>
                   <a
                     href={t.urlOficial}

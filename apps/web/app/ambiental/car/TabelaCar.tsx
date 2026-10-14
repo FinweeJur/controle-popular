@@ -777,7 +777,7 @@ export default function TabelaCar({
                       width: `${(agregados.statusDist.emAnalise / agregados.totalItens) * 100}%`,
                     }}
                     title={`Em Análise: ${agregados.statusDist.emAnalise}`}
-                    className="flex items-center justify-center bg-amber-500 text-[11px] font-bold text-amber-950 transition-all"
+                    className="flex items-center justify-center bg-amber-500 text-[12px] font-bold text-amber-950 transition-all"
                   >
                     {agregados.statusDist.emAnalise > 0 ? `${agregados.statusDist.emAnalise}` : ""}
                   </div>
@@ -786,7 +786,7 @@ export default function TabelaCar({
                       width: `${(agregados.statusDist.pendencias / agregados.totalItens) * 100}%`,
                     }}
                     title={`Pendências: ${agregados.statusDist.pendencias}`}
-                    className="flex items-center justify-center bg-orange-500 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-orange-500 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.statusDist.pendencias > 0
                       ? `${agregados.statusDist.pendencias}`
@@ -797,7 +797,7 @@ export default function TabelaCar({
                       width: `${(agregados.statusDist.aprovado / agregados.totalItens) * 100}%`,
                     }}
                     title={`Aprovado: ${agregados.statusDist.aprovado}`}
-                    className="flex items-center justify-center bg-emerald-600 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-emerald-600 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.statusDist.aprovado > 0 ? `${agregados.statusDist.aprovado}` : ""}
                   </div>
@@ -806,7 +806,7 @@ export default function TabelaCar({
                       width: `${(agregados.statusDist.cancelado / agregados.totalItens) * 100}%`,
                     }}
                     title={`Cancelado: ${agregados.statusDist.cancelado}`}
-                    className="flex items-center justify-center bg-zinc-500 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-zinc-500 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.statusDist.cancelado > 0
                       ? `${agregados.statusDist.cancelado}`
@@ -820,7 +820,7 @@ export default function TabelaCar({
               )}
             </div>
 
-            <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-text-soft">
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-text-soft">
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
                 Em Análise ({agregados.statusDist.emAnalise})
@@ -862,7 +862,7 @@ export default function TabelaCar({
                       width: `${(agregados.porteDist.pequeno / agregados.totalItens) * 100}%`,
                     }}
                     title={`Pequeno: ${agregados.porteDist.pequeno}`}
-                    className="flex items-center justify-center bg-blue-600 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-blue-600 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.porteDist.pequeno > 0 ? `${agregados.porteDist.pequeno}` : ""}
                   </div>
@@ -871,7 +871,7 @@ export default function TabelaCar({
                       width: `${(agregados.porteDist.medio / agregados.totalItens) * 100}%`,
                     }}
                     title={`Médio: ${agregados.porteDist.medio}`}
-                    className="flex items-center justify-center bg-indigo-600 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-indigo-600 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.porteDist.medio > 0 ? `${agregados.porteDist.medio}` : ""}
                   </div>
@@ -880,7 +880,7 @@ export default function TabelaCar({
                       width: `${(agregados.porteDist.grande / agregados.totalItens) * 100}%`,
                     }}
                     title={`Grande: ${agregados.porteDist.grande}`}
-                    className="flex items-center justify-center bg-amber-700 text-[11px] font-bold text-white transition-all"
+                    className="flex items-center justify-center bg-amber-700 text-[12px] font-bold text-white transition-all"
                   >
                     {agregados.porteDist.grande > 0 ? `${agregados.porteDist.grande}` : ""}
                   </div>
@@ -892,7 +892,7 @@ export default function TabelaCar({
               )}
             </div>
 
-            <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-text-soft">
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-text-soft">
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block" />
                 Pequeno ≤4 MF ({agregados.porteDist.pequeno})
@@ -936,7 +936,7 @@ export default function TabelaCar({
               <Clock className="w-4 h-4 text-amber-600 animate-pulse" />
               Tempo Médio em Análise
             </span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-900 dark:text-amber-200">
+            <span className="px-2 py-0.5 rounded text-[12px] font-bold bg-amber-500/20 text-amber-900 dark:text-amber-200">
               Gargalo IEF
             </span>
           </div>
@@ -1236,7 +1236,7 @@ export default function TabelaCar({
                         <div className="font-semibold text-sm text-text leading-snug group-hover:text-primary transition-colors">
                           {r.nomeImovel}
                         </div>
-                        <div className="mt-1 flex items-center gap-1.5 font-mono text-[11px] text-text-soft font-tabular">
+                        <div className="mt-1 flex items-center gap-1.5 font-mono text-[12px] text-text-soft font-tabular">
                           <span className="truncate max-w-[190px]" title={r.codigoCar}>
                             {r.codigoCar}
                           </span>
@@ -1255,7 +1255,7 @@ export default function TabelaCar({
                           </button>
                         </div>
                         <div className="mt-1 inline-flex items-center gap-1">
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-surface-2 border border-border text-text-soft">
+                          <span className="text-[12px] px-1.5 py-0.5 rounded bg-surface-2 border border-border text-text-soft">
                             {r.setor}
                           </span>
                         </div>
@@ -1264,7 +1264,7 @@ export default function TabelaCar({
                       {/* Coluna 2: Município e URFBio */}
                       <td className="px-3.5 py-3 align-top">
                         <div className="font-medium text-text">{r.municipio}</div>
-                        <div className="text-[11px] text-text-soft mt-0.5 flex items-center gap-1">
+                        <div className="text-[12px] text-text-soft mt-0.5 flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary/70 inline-block" />
                           {r.urfbio}
                         </div>
@@ -1273,7 +1273,7 @@ export default function TabelaCar({
                       {/* Coluna 3: Porte e Módulos Fiscais */}
                       <td className="px-3.5 py-3 align-top text-center">
                         <div>{renderPorteBadge(r.porte, r.modulosFiscais)}</div>
-                        <div className="mt-1 font-tabular text-[11px] text-text-soft">
+                        <div className="mt-1 font-tabular text-[12px] text-text-soft">
                           {r.modulosFiscais.toLocaleString("pt-BR", {
                             maximumFractionDigits: 1,
                           })}{" "}
@@ -1286,17 +1286,17 @@ export default function TabelaCar({
                         <span className="font-semibold text-text">
                           {formatNumberBR(Math.round(r.areaHa))}
                         </span>
-                        <span className="text-[11px] text-text-soft ml-1">ha</span>
+                        <span className="text-[12px] text-text-soft ml-1">ha</span>
                       </td>
 
                       {/* Coluna 5: Tempo em Análise (dias + meses) */}
                       <td className="px-3.5 py-3 align-top text-right">
                         <div className="font-semibold font-tabular text-text">
                           {formatNumberBR(r.tempoAnaliseDias)}{" "}
-                          <span className="text-[11px] font-normal text-text-soft">dias</span>
+                          <span className="text-[12px] font-normal text-text-soft">dias</span>
                         </div>
                         <div
-                          className={`text-[11px] font-medium font-tabular mt-0.5 ${
+                          className={`text-[12px] font-medium font-tabular mt-0.5 ${
                             r.tempoAnaliseDias > 730
                               ? "text-amber-800 dark:text-amber-300 font-bold"
                               : "text-text-soft"
@@ -1324,7 +1324,7 @@ export default function TabelaCar({
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => copiarCodigoCar(r.codigoCar)}
-                            className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[11px] font-medium text-primary hover:text-primary/80 transition-colors"
+                            className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[12px] font-medium text-primary hover:text-primary/80 transition-colors"
                             title="Abre a Consulta Pública oficial do SICAR e copia o código CAR para colar na busca"
                           >
                             <span>SICAR</span>
@@ -1335,7 +1335,7 @@ export default function TabelaCar({
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => copiarCodigoCar(r.codigoCar)}
-                            className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[11px] font-medium text-emerald-700 dark:text-emerald-300 hover:opacity-80 transition-colors"
+                            className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded border border-border bg-surface-2 hover:bg-border/40 text-[12px] font-medium text-emerald-700 dark:text-emerald-300 hover:opacity-80 transition-colors"
                             title="Abre o portal CAR 2.0 MG (CSR/UFMG) e copia o código CAR para gerar o relatório"
                           >
                             <span>CAR 2.0</span>

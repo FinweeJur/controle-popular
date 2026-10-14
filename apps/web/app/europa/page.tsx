@@ -97,7 +97,7 @@ export default function PaginaHubEuropa() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🌐 Hub Multilateral</div>
-            <div className="text-[11px] text-text-soft">ONU, UNESCO, OMS, OMC e G20</div>
+            <div className="text-[12px] text-text-soft">ONU, UNESCO, OMS, OMC e G20</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -107,7 +107,7 @@ export default function PaginaHubEuropa() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇨🇦 Hub Canadá</div>
-            <div className="text-[11px] text-text-soft">12 mineradoras na Bolsa de Toronto TSX</div>
+            <div className="text-[12px] text-text-soft">12 mineradoras na Bolsa de Toronto TSX</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -117,7 +117,7 @@ export default function PaginaHubEuropa() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🇺🇸 Hub Estados Unidos</div>
-            <div className="text-[11px] text-text-soft">SEC EDGAR, fundos e barragens do NID</div>
+            <div className="text-[12px] text-text-soft">SEC EDGAR, fundos e barragens do NID</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>
@@ -127,7 +127,7 @@ export default function PaginaHubEuropa() {
         >
           <div>
             <div className="text-xs font-bold text-text group-hover:text-primary">🕵️ Central de Inteligência</div>
-            <div className="text-[11px] text-text-soft">G20, Europa e Twelve Eyes</div>
+            <div className="text-[12px] text-text-soft">G20, Europa e Twelve Eyes</div>
           </div>
           <ArrowRight size={14} className="text-text-soft group-hover:text-primary" />
         </Link>

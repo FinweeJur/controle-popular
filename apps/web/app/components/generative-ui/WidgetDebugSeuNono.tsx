@@ -110,24 +110,24 @@ export default function WidgetDebugSeuNono() {
       {/* Métricas e hiperparâmetros */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         <div className="rounded-xl border border-border bg-surface-2/60 p-3">
-          <div className="text-[10px] font-bold uppercase text-text-soft">Busca Híbrida</div>
+          <div className="text-[12px] font-bold uppercase text-text-soft">Busca Híbrida</div>
           <div className="mt-1 text-sm font-bold text-text">60% Cosseno ⊕ 40% BM25</div>
-          <div className="text-[10px] text-text-soft mt-0.5">Equilíbrio semântico e exato.</div>
+          <div className="text-[12px] text-text-soft mt-0.5">Equilíbrio semântico e exato.</div>
         </div>
         <div className="rounded-xl border border-border bg-surface-2/60 p-3">
-          <div className="text-[10px] font-bold uppercase text-text-soft">Limiar de Abstenção</div>
+          <div className="text-[12px] font-bold uppercase text-text-soft">Limiar de Abstenção</div>
           <div className="mt-1 text-sm font-bold text-text">0.10 (Fidelidade)</div>
-          <div className="text-[10px] text-text-soft mt-0.5">Recusa responder sem fonte.</div>
+          <div className="text-[12px] text-text-soft mt-0.5">Recusa responder sem fonte.</div>
         </div>
         <div className="rounded-xl border border-border bg-surface-2/60 p-3">
-          <div className="text-[10px] font-bold uppercase text-text-soft">Janela Top-K</div>
+          <div className="text-[12px] font-bold uppercase text-text-soft">Janela Top-K</div>
           <div className="mt-1 text-sm font-bold text-text">3 Chunks Citados</div>
-          <div className="text-[10px] text-text-soft mt-0.5">Citações inline obrigatórias.</div>
+          <div className="text-[12px] text-text-soft mt-0.5">Citações inline obrigatórias.</div>
         </div>
         <div className="rounded-xl border border-border bg-surface-2/60 p-3">
-          <div className="text-[10px] font-bold uppercase text-text-soft">Alvo de Execução</div>
+          <div className="text-[12px] font-bold uppercase text-text-soft">Alvo de Execução</div>
           <div className="mt-1 text-sm font-bold text-primary">Runtime Seguro</div>
-          <div className="text-[10px] text-text-soft mt-0.5">Sem rebuild desnecessário.</div>
+          <div className="text-[12px] text-text-soft mt-0.5">Sem rebuild desnecessário.</div>
         </div>
       </div>
 
@@ -180,7 +180,7 @@ export default function WidgetDebugSeuNono() {
         <div className="space-y-2 pt-2">
           <div className="flex items-center justify-between text-xs text-text-soft">
             <span className="font-semibold text-text">Chunks Recuperados do Acervo ({chunks.length}):</span>
-            <span className="text-[11px]">Status da verificação: <strong className="text-emerald-500 uppercase">OK</strong></span>
+            <span className="text-[12px]">Status da verificação: <strong className="text-emerald-500 uppercase">OK</strong></span>
           </div>
 
           <div className="space-y-2">
@@ -193,14 +193,14 @@ export default function WidgetDebugSeuNono() {
                   <span className="font-bold text-text">
                     [{c.indice}] {c.titulo}
                   </span>
-                  <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold text-primary">
+                  <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[12px] font-bold text-primary">
                     Score: {(c.score * 100).toFixed(0)}% ({c.tipo})
                   </span>
                 </div>
-                <p className="text-text-soft italic text-[11px]">
+                <p className="text-text-soft italic text-[12px]">
                   &quot;{c.trecho}&quot;
                 </p>
-                <div className="text-[10px] text-text-soft">
+                <div className="text-[12px] text-text-soft">
                   Rota indexada: <code className="text-text">{c.rota}</code>
                 </div>
               </div>

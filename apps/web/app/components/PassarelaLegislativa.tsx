@@ -212,7 +212,7 @@ export default function PassarelaLegislativa({
           >
             <div>
               <div className="flex items-center justify-between gap-2">
-                <span className="rounded-md bg-surface px-2 py-0.5 text-[0.72rem] font-semibold tracking-wider text-text-soft uppercase">
+                <span className="rounded-md bg-surface px-2 py-0.5 text-[0.75rem] font-semibold tracking-wider text-text-soft uppercase">
                   {dest.rotuloBadge}
                 </span>
                 {dest.icone === "normas" ? (

@@ -107,7 +107,7 @@ export default function OuvirNavbar() {
           <select
             value={leitor.idioma}
             onChange={(e) => definirIdioma(e.target.value)}
-            className="max-w-[8.5rem] appearance-none truncate rounded-md border border-border bg-surface py-1 pl-6 pr-2 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+            className="max-w-[8.5rem] appearance-none truncate rounded-md border border-border bg-surface py-1 pl-6 pr-2 text-[12px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
           >
             {opcoes.map((o) => (
               <option key={o.codigo} value={o.codigo}>
@@ -120,7 +120,7 @@ export default function OuvirNavbar() {
           type="button"
           onClick={iniciar}
           aria-label="Ouvir esta pagina em voz alta, no idioma escolhido"
-          className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[11px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+          className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[12px] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
         >
           <Volume2 size={13} aria-hidden="true" className="shrink-0" />
           <span className="hidden sm:inline">Ouvir</span>
@@ -132,7 +132,7 @@ export default function OuvirNavbar() {
   if (leitor.estado === "carregando") {
     return (
       <div className="flex items-center gap-1" role="status" aria-live="polite">
-        <span className="flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+        <span className="flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[12px] font-medium text-primary">
           <Loader2 size={13} aria-hidden="true" className="animate-spin" />
           <span className="hidden sm:inline">Preparando...</span>
           <span className="sr-only">Preparando a leitura.</span>
@@ -141,7 +141,7 @@ export default function OuvirNavbar() {
           type="button"
           onClick={parar}
           aria-label="Cancelar leitura"
-          className="cp-btn-anim flex items-center justify-center rounded-md border border-border px-2 py-1 text-[11px] text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+          className="cp-btn-anim flex items-center justify-center rounded-md border border-border px-2 py-1 text-[12px] text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
         >
           <Square size={12} aria-hidden="true" />
         </button>
@@ -156,7 +156,7 @@ export default function OuvirNavbar() {
         onClick={leitor.estado === "falando" ? pausar : retomar}
         aria-pressed={leitor.estado === "falando"}
         aria-label={leitor.estado === "falando" ? "Pausar leitura" : "Retomar leitura"}
-        className="cp-btn-anim flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary transition-colors duration-150 hover:bg-primary/20"
+        className="cp-btn-anim flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[12px] font-medium text-primary transition-colors duration-150 hover:bg-primary/20"
       >
         {leitor.estado === "falando" ? (
           <Pause size={13} aria-hidden="true" />
@@ -171,7 +171,7 @@ export default function OuvirNavbar() {
         type="button"
         onClick={parar}
         aria-label="Parar leitura"
-        className="cp-btn-anim flex items-center justify-center rounded-md border border-border px-2 py-1 text-[11px] text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+        className="cp-btn-anim flex items-center justify-center rounded-md border border-border px-2 py-1 text-[12px] text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
       >
         <Square size={12} aria-hidden="true" />
       </button>

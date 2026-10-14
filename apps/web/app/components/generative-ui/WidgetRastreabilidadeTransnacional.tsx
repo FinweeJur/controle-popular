@@ -201,15 +201,15 @@ export default function WidgetRastreabilidadeTransnacional() {
             <span>🇧🇷</span>
           </div>
           <div className="font-semibold text-xs text-text">{atual.minaBrasil.nome}</div>
-          <div className="text-[11px] text-text-soft">{atual.minaBrasil.municipio}</div>
-          <div className="pt-1 text-[11px] text-text-soft">
+          <div className="text-[12px] text-text-soft">{atual.minaBrasil.municipio}</div>
+          <div className="pt-1 text-[12px] text-text-soft">
             <span className="font-semibold text-text">{atual.minaBrasil.processosAnm}</span> processos minerários ativos.
           </div>
           <a
             href={atual.minaBrasil.anmUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-medium"
+            className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-medium"
           >
             Consultar ANM <ExternalLink size={10} />
           </a>
@@ -225,8 +225,8 @@ export default function WidgetRastreabilidadeTransnacional() {
             <span>⚓</span>
           </div>
           <div className="font-semibold text-xs text-text">{atual.escoamento.porto}</div>
-          <div className="text-[11px] text-text-soft">Destino: {atual.escoamento.destino}</div>
-          <div className="pt-1 text-[11px] text-text-soft">
+          <div className="text-[12px] text-text-soft">Destino: {atual.escoamento.destino}</div>
+          <div className="pt-1 text-[12px] text-text-soft">
             Ferrovias e portos de escoamento marítimo internacional.
           </div>
         </div>
@@ -241,15 +241,15 @@ export default function WidgetRastreabilidadeTransnacional() {
             <span>{atual.bandeira}</span>
           </div>
           <div className="font-semibold text-xs text-text">{atual.bolsaExterior.ticker}</div>
-          <div className="text-[11px] text-text-soft">{atual.bolsaExterior.bolsa}</div>
-          <div className="pt-1 text-[11px] text-text-soft">
+          <div className="text-[12px] text-text-soft">{atual.bolsaExterior.bolsa}</div>
+          <div className="pt-1 text-[12px] text-text-soft">
             Prestação de contas contábeis e formulários anuais.
           </div>
           <a
             href={atual.bolsaExterior.relatorioUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] text-purple-600 dark:text-purple-400 hover:underline font-medium"
+            className="inline-flex items-center gap-1 text-[12px] text-purple-600 dark:text-purple-400 hover:underline font-medium"
           >
             Relatórios oficiais <ExternalLink size={10} />
           </a>
@@ -267,10 +267,10 @@ export default function WidgetRastreabilidadeTransnacional() {
           <div className="font-semibold text-xs text-text">
             {atual.acionistasFundos.nomes[0]}
           </div>
-          <div className="text-[11px] text-text-soft">
+          <div className="text-[12px] text-text-soft">
             {atual.acionistasFundos.nomes.slice(1).join(", ")}
           </div>
-          <div className="pt-1 text-[10px] text-text-soft border-t border-border mt-1">
+          <div className="pt-1 text-[12px] text-text-soft border-t border-border mt-1">
             <ShieldCheck size={11} className="inline mr-1 text-emerald-600" />
             {atual.acionistasFundos.marcoregulador}
           </div>

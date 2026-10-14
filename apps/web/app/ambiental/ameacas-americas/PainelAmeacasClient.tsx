@@ -295,7 +295,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
                     <button
                       type="button"
                       onClick={() => handlePerguntarSeuNono(p.pergunta)}
-                      className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:underline"
+                      className="mt-2 inline-flex items-center gap-1 text-[12px] font-semibold text-primary hover:underline"
                     >
                       <span>Aprofundar no chat</span>
                       <ExternalLink size={11} />
@@ -397,7 +397,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
               <span className="font-semibold text-foreground">
                 {contagemCategoriaFiltrada.especie} Espécies
               </span>
-              <span className="block text-[11px] text-muted">Fauna ameaçada</span>
+              <span className="block text-[12px] text-muted">Fauna ameaçada</span>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs">
@@ -406,7 +406,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
               <span className="font-semibold text-foreground">
                 {contagemCategoriaFiltrada.rio} Rios
               </span>
-              <span className="block text-[11px] text-muted">Bacias em estresse</span>
+              <span className="block text-[12px] text-muted">Bacias em estresse</span>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs">
@@ -415,7 +415,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
               <span className="font-semibold text-foreground">
                 {contagemCategoriaFiltrada.serra} Serras
               </span>
-              <span className="block text-[11px] text-muted">Cordilheiras e cumes</span>
+              <span className="block text-[12px] text-muted">Cordilheiras e cumes</span>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs">
@@ -424,7 +424,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
               <span className="font-semibold text-foreground">
                 {contagemCategoriaFiltrada.comunidade} Comunidades
               </span>
-              <span className="block text-[11px] text-muted">Povos tradicionais</span>
+              <span className="block text-[12px] text-muted">Povos tradicionais</span>
             </div>
           </div>
         </div>
@@ -724,7 +724,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
                                 <strong className="text-foreground">Vetores de Pressão:</strong>{" "}
                                 {item.vetoresPressao}
                               </div>
-                              <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted pt-1">
+                              <div className="flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-muted pt-1">
                                 <span>
                                   <strong>Extensão / População:</strong> {item.extensaoOuPopulacao}
                                 </span>
@@ -742,7 +742,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
                         {/* Coluna País e Região */}
                         <td className="px-4 py-3 align-top whitespace-nowrap text-xs">
                           <span className="font-medium text-foreground block">{item.pais}</span>
-                          <span className="text-muted block text-[11px] truncate max-w-[160px]">
+                          <span className="text-muted block text-[12px] truncate max-w-[160px]">
                             {item.regiao}
                           </span>
                         </td>
@@ -768,7 +768,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
                           <span className="text-foreground font-medium block truncate">
                             {item.statusConservacao}
                           </span>
-                          <span className="text-muted text-[11px] block line-clamp-1">
+                          <span className="text-muted text-[12px] block line-clamp-1">
                             {item.vetoresPressao}
                           </span>
                         </td>
@@ -819,7 +819,7 @@ export default function PainelAmeacasClient({ registrosIniciais }: Props) {
           Nenhuma inferência sobre culpa criminal de terceiros é feita sem trânsito em julgado. As fontes oficiais
           são hiperlinkadas e verificadas no ato da publicação no padrão ABNT (Autor, Data).
         </p>
-        <p className="text-[11px] opacity-80">
+        <p className="text-[12px] opacity-80">
           Última medição e consolidação técnica realizada em 01/10/2026. Acervo compactado via{" "}
           <code>compactar.ts</code> em <code>apps/web/data/ambiente/ameacas-americas.compact.json</code>.
         </p>

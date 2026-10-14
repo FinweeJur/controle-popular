@@ -82,68 +82,68 @@ export default function MesaDiretoraCard({
           <div className="grid gap-3 sm:grid-cols-2">
             {/* 1º Vice-Presidente */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 1º Vice-Presidente
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.primeiroVicePresidente.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.primeiroVicePresidente.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.primeiroVicePresidente.partido})</span>
             </div>
 
             {/* 2º Vice-Presidente */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 2º Vice-Presidente
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.segundoVicePresidente.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.segundoVicePresidente.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.segundoVicePresidente.partido})</span>
             </div>
 
             {/* 1º Secretário */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 1º Secretário (Administração)
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.primeiroSecretario.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.primeiroSecretario.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.primeiroSecretario.partido})</span>
             </div>
 
             {/* 2º Secretário */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 2º Secretário
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.segundoSecretario.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.segundoSecretario.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.segundoSecretario.partido})</span>
             </div>
 
             {/* Ouvidoria */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 Ouvidor Parlamentar
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.ouvidor.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.ouvidor.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.ouvidor.partido})</span>
             </div>
 
             {/* Procuradoria da Mulher */}
             <div className="rounded-xl border border-border bg-surface-2 p-3.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
                 Procuradora da Mulher
               </span>
               <p className="font-display text-sm font-bold text-foreground mt-0.5">
                 {mesa.procuradoraMulher.nome}
               </p>
-              <span className="text-[11px] text-muted">({mesa.procuradoraMulher.partido})</span>
+              <span className="text-[12px] text-muted">({mesa.procuradoraMulher.partido})</span>
             </div>
           </div>
         </div>

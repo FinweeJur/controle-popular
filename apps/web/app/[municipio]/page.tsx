@@ -523,7 +523,7 @@ export default async function HomePage({
                         * "IDEB (anos finais) — 3,8 pontos" não informa quem
                         * não sabe o que é IDEB nem qual é a escala. */}
                       {EXPLICACAO_INDICADOR[nome] ? (
-                        <p className="mt-2 text-[11px] leading-snug text-text-soft">
+                        <p className="mt-2 text-[12px] leading-snug text-text-soft">
                           {EXPLICACAO_INDICADOR[nome]}
                         </p>
                       ) : null}
@@ -532,7 +532,7 @@ export default async function HomePage({
                         * pobreza são do Censo de 2010 e ficavam lado a lado
                         * com números de 2025, sem distinção. */}
                       {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL) ? (
-                        <p className="mt-1 text-[11px] leading-snug text-text-soft opacity-80">
+                        <p className="mt-1 text-[12px] leading-snug text-text-soft opacity-80">
                           {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL)}
                         </p>
                       ) : null}
@@ -546,7 +546,7 @@ export default async function HomePage({
                           href={FONTE_OFICIAL[row.fonte].url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-2 inline-block text-[11px] font-medium text-primary underline underline-offset-2"
+                          className="mt-2 inline-block text-[12px] font-medium text-primary underline underline-offset-2"
                         >
                           {FONTE_OFICIAL[row.fonte].rotulo} ↗
                         </a>
@@ -954,7 +954,7 @@ export default async function HomePage({
                           />
                         </div>
                         {o.areaTematica && (
-                          <p className="mt-2 text-[11px] text-text-soft">{o.areaTematica}</p>
+                          <p className="mt-2 text-[12px] text-text-soft">{o.areaTematica}</p>
                         )}
                       </div>
                     </Link>

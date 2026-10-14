@@ -292,7 +292,7 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
             <button
               type="button"
               onClick={() => void ligar()}
-              className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[0.7rem] font-semibold text-white hover:opacity-90"
+              className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[0.75rem] font-semibold text-white hover:opacity-90"
               title="Roda no seu aparelho: o áudio não sai daqui"
             >
               <Play size={11} aria-hidden="true" /> Ligar
@@ -301,7 +301,7 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
             <button
               type="button"
               onClick={parar}
-              className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[0.7rem] font-semibold text-text-soft hover:border-primary hover:text-primary"
+              className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[0.75rem] font-semibold text-text-soft hover:border-primary hover:text-primary"
             >
               <Square size={11} aria-hidden="true" /> Parar
             </button>
@@ -362,7 +362,7 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
               </div>
 
               <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.65rem] text-text-soft">
+                <span className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.75rem] text-text-soft">
                   <TriangleAlert size={10} aria-hidden="true" />
                   gerado por máquina — pode errar
                 </span>
@@ -374,7 +374,7 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
                       const el = scrollerRef.current;
                       if (el) el.scrollTop = el.scrollHeight;
                     }}
-                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[0.7rem] font-semibold text-primary hover:bg-primary/20"
+                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[0.75rem] font-semibold text-primary hover:bg-primary/20"
                   >
                     <Pause size={11} aria-hidden="true" /> voltar ao vivo
                   </button>

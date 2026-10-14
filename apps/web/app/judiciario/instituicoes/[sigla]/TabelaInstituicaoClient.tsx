@@ -235,7 +235,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-lg sm:text-xl font-bold tracking-tight text-text">
             {instituicao.orcamento.total}
           </div>
-          <p className="mt-0.5 text-[11px] text-text-soft">
+          <p className="mt-0.5 text-[12px] text-text-soft">
             LOA {instituicao.orcamento.ano}
           </p>
         </div>
@@ -248,7 +248,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-sm sm:text-base font-bold tracking-tight text-text truncate">
             {membros}
           </div>
-          <p className="mt-0.5 text-[11px] text-text-soft">
+          <p className="mt-0.5 text-[12px] text-text-soft">
             {instituicao.estruturaPessoal?.servidoresEfetivos || "Servidores ativos"}
           </p>
         </div>
@@ -261,7 +261,7 @@ export default function TabelaInstituicaoClient({
           <div className="mt-2 font-display text-lg sm:text-xl font-bold tracking-tight text-text">
             {totalAtos}
           </div>
-          <p className="mt-0.5 text-[11px] text-text-soft">
+          <p className="mt-0.5 text-[12px] text-text-soft">
             Documentos auditados
           </p>
         </div>
@@ -276,7 +276,7 @@ export default function TabelaInstituicaoClient({
               instituicao.estruturaPessoal?.nucleosAtendimento ||
               instituicao.esfera}
           </div>
-          <p className="mt-0.5 text-[11px] text-text-soft">
+          <p className="mt-0.5 text-[12px] text-text-soft">
             {instituicao.uf ? `Estado: ${instituicao.uf}` : "Âmbito Nacional"}
           </p>
         </div>

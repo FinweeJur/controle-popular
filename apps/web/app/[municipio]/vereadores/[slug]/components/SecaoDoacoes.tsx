@@ -61,7 +61,7 @@ function LinhaDoador({ d }: { d: { doador_nome: string | null; doador_tipo: stri
       <span className="text-text-soft">
         {d.doador_nome ?? "—"}
         {d.doador_tipo && (
-          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+          <span className="ml-1.5 rounded-full bg-surface-2 px-1.5 py-0.5 text-[12px] font-semibold uppercase tracking-wide">
             {d.doador_tipo === "PJ" ? "empresa" : "pessoa"}
           </span>
         )}

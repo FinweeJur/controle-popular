@@ -340,7 +340,7 @@ export default function TabelaProposicoes({
       {/* ═══ TABELA RESPONSIVA COM LINKS VERIFICADOS ═══ */}
       <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
         <table className="w-full text-left text-xs sm:text-sm">
-          <thead className="border-b border-border bg-surface-2 text-[11px] font-semibold text-muted uppercase tracking-wider">
+          <thead className="border-b border-border bg-surface-2 text-[12px] font-semibold text-muted uppercase tracking-wider">
             <tr>
               <th
                 onClick={() => alternarOrdenacao("codigo")}
@@ -414,17 +414,17 @@ export default function TabelaProposicoes({
                         <div className="font-mono font-bold text-foreground">
                           {prop.codigo}
                         </div>
-                        <span className="inline-block mt-0.5 rounded px-1.5 py-0.2 text-[10px] bg-surface-2 border border-border text-muted">
+                        <span className="inline-block mt-0.5 rounded px-1.5 py-0.2 text-[12px] bg-surface-2 border border-border text-muted">
                           {abrangencia}
                         </span>
                       </td>
                       <td className="px-3 py-3 whitespace-nowrap">
-                        <span className="rounded-md border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+                        <span className="rounded-md border border-primary/30 bg-primary/10 px-2 py-0.5 text-[12px] font-bold text-primary">
                           {prop.tipo}
                         </span>
                       </td>
                       <td className="px-3 py-3 whitespace-nowrap">
-                        <span className="inline-block rounded-md border border-border bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-foreground">
+                        <span className="inline-block rounded-md border border-border bg-surface-2 px-2 py-0.5 text-[12px] font-medium text-foreground">
                           {tema}
                         </span>
                       </td>
@@ -438,13 +438,13 @@ export default function TabelaProposicoes({
                           <span key={a.nome}>
                             {i > 0 && ", "}
                             <strong className="text-foreground">{a.nome}</strong>{" "}
-                            <span className="text-[10px]">({a.partido} - {siglaAssembleia})</span>
+                            <span className="text-[12px]">({a.partido} - {siglaAssembleia})</span>
                           </span>
                         ))}
                       </td>
                       <td className="px-3 py-3 whitespace-nowrap">
                         <span
-                          className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
+                          className={`inline-block rounded-full px-2.5 py-0.5 text-[12px] font-semibold ${
                             prop.situacao.includes("Aprovado") || prop.situacao.includes("Sancionado")
                               ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
                               : prop.situacao.includes("Pronto")
@@ -455,7 +455,7 @@ export default function TabelaProposicoes({
                           {prop.situacao}
                         </span>
                         {dataAprov && (
-                          <span className="block text-[10px] font-mono text-emerald-600 dark:text-emerald-400 mt-0.5">
+                          <span className="block text-[12px] font-mono text-emerald-600 dark:text-emerald-400 mt-0.5">
                             Aprov.: {dataAprov}
                           </span>
                         )}
@@ -479,7 +479,7 @@ export default function TabelaProposicoes({
                             <GitCommit size={12} aria-hidden="true" />
                             <span>Trâmite</span>
                             {totalTramitacoes > 0 && (
-                              <span className="rounded-full bg-primary/20 px-1.5 py-0.2 text-[10px] font-bold text-primary">
+                              <span className="rounded-full bg-primary/20 px-1.5 py-0.2 text-[12px] font-bold text-primary">
                                 {totalTramitacoes}
                               </span>
                             )}

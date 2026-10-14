@@ -129,7 +129,7 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
         aria-expanded={aberto}
         aria-haspopup="listbox"
         aria-label={`Tema visual atual: ${temaAtual.label}. Clique para alternar temas e biomas.`}
-        className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 py-1 text-[11px] font-medium text-text transition-colors duration-150 hover:border-primary hover:text-primary"
+        className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 py-1 text-[12px] font-medium text-text transition-colors duration-150 hover:border-primary hover:text-primary"
       >
         <span
           className="inline-block h-2.5 w-2.5 rounded-full border border-black/20 shrink-0"

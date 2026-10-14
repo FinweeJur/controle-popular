@@ -75,7 +75,7 @@ export default function HubAssembleiasClient({
         className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
       >
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
             Casas Legislativas
           </span>
           <span className="mt-1 block font-display text-2xl sm:text-3xl font-bold text-foreground">
@@ -87,7 +87,7 @@ export default function HubAssembleiasClient({
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
             Deputados em Exercício
           </span>
           <span className="mt-1 block font-display text-2xl sm:text-3xl font-bold text-primary">
@@ -99,7 +99,7 @@ export default function HubAssembleiasClient({
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
             Comissões Mapeadas
           </span>
           <span className="mt-1 block font-display text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">
@@ -111,7 +111,7 @@ export default function HubAssembleiasClient({
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
             Transparência & Processos
           </span>
           <span className="mt-1 block font-display text-2xl sm:text-3xl font-bold text-indigo-600 dark:text-indigo-400">
@@ -141,7 +141,7 @@ export default function HubAssembleiasClient({
 
         {/* Abas de Região (com rolagem suave sem quebra) */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <span className="font-bold uppercase tracking-wider text-muted shrink-0 text-[10px] mr-1">
+          <span className="font-bold uppercase tracking-wider text-muted shrink-0 text-[12px] mr-1">
             Região:
           </span>
           {REGIOES.map((reg) => {
@@ -186,7 +186,7 @@ export default function HubAssembleiasClient({
                   <span className="inline-flex items-center gap-1.5 rounded-lg border border-primary/30 bg-primary/10 px-2.5 py-0.5 font-mono text-xs font-bold text-primary">
                     {a.sigla}
                   </span>
-                  <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-semibold text-muted">
+                  <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[12px] font-semibold text-muted">
                     {a.regiao} • {a.uf}
                   </span>
                 </div>
@@ -201,13 +201,13 @@ export default function HubAssembleiasClient({
                 {/* Métricas rápidas */}
                 <div className="mt-4 grid grid-cols-2 gap-2 border-t border-border/40 pt-3 text-xs">
                   <div>
-                    <span className="text-[10px] uppercase text-muted block">Deputados:</span>
+                    <span className="text-[12px] uppercase text-muted block">Deputados:</span>
                     <span className="font-display text-base font-bold text-foreground">
                       {a.totalDeputados} cadeiras
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase text-muted block">Orçamento:</span>
+                    <span className="text-[12px] uppercase text-muted block">Orçamento:</span>
                     <span className="font-display text-base font-bold text-foreground">
                       R$ {a.orcamentoAnual.valorMilhoes.toLocaleString("pt-BR")} mi
                     </span>
@@ -216,10 +216,10 @@ export default function HubAssembleiasClient({
 
                 {/* Presidência atual */}
                 <div className="mt-3 rounded-xl bg-surface-2 p-2.5 text-xs">
-                  <span className="text-[10px] text-muted block">Presidência da Casa:</span>
+                  <span className="text-[12px] text-muted block">Presidência da Casa:</span>
                   <span className="font-semibold text-foreground">
                     {a.mesaDiretora.presidente.nome}{" "}
-                    <span className="text-[10px] text-muted">
+                    <span className="text-[12px] text-muted">
                       ({a.mesaDiretora.presidente.partido})
                     </span>
                   </span>
@@ -241,7 +241,7 @@ export default function HubAssembleiasClient({
                     href={a.contatos.processoLegislativo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-[11px] font-semibold text-muted hover:text-foreground transition"
+                    className="flex flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-[12px] font-semibold text-muted hover:text-foreground transition"
                     title="Processo Legislativo oficial"
                   >
                     <span>Processo</span>
@@ -252,7 +252,7 @@ export default function HubAssembleiasClient({
                     href={a.transmissao.tvAssembleia}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-[11px] font-semibold text-muted hover:text-foreground transition"
+                    className="flex flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-[12px] font-semibold text-muted hover:text-foreground transition"
                     title="Transmissão ao vivo / TV Assembleia"
                   >
                     <Video size={11} aria-hidden="true" />

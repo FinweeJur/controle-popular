@@ -159,7 +159,7 @@ export default function BuscaGlobal() {
             </button>
           ) : (
             <kbd
-              className="hidden sm:inline-block text-[10px] font-mono text-text-soft opacity-60 bg-surface border border-border/80 px-1 py-0.2 rounded"
+              className="hidden sm:inline-block text-[12px] font-mono text-text-soft opacity-60 bg-surface border border-border/80 px-1 py-0.2 rounded"
               title="Pressione Enter para pesquisar"
             >
               ↵
@@ -172,7 +172,7 @@ export default function BuscaGlobal() {
           {/* Páginas e Hubs do Portal em destaque */}
           {paginasPortal.length > 0 && (
             <li className="mb-2 space-y-1">
-              <span className="px-3 text-[11px] font-semibold uppercase tracking-wider text-text-soft">
+              <span className="px-3 text-[12px] font-semibold uppercase tracking-wider text-text-soft">
                 Páginas do Portal
               </span>
               {paginasPortal.map((p) => (
@@ -189,7 +189,7 @@ export default function BuscaGlobal() {
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-sm font-semibold text-text">{p.titulo}</span>
-                    <span className="rounded bg-primary/20 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                    <span className="rounded bg-primary/20 px-1.5 py-0.5 text-[12px] font-semibold text-primary">
                       {p.rotulo}
                     </span>
                   </div>

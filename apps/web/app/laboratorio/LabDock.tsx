@@ -102,7 +102,7 @@ export default function LabDock({ active, onSelect, camadas, ligadas }: LabDockP
             onClick={() => onSelect(item.key)}
             aria-pressed={isAtivo}
             title={item.label}
-            className={`flex shrink-0 flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-[10px] font-medium transition-colors sm:px-3 sm:text-xs ${
+            className={`flex shrink-0 flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-[12px] font-medium transition-colors sm:px-3 sm:text-xs ${
               isAtivo
                 ? "bg-primary/15 text-primary"
                 : "text-text-soft hover:bg-surface-hover hover:text-text"

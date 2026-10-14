@@ -130,7 +130,7 @@ export default function PainelLugar({
               </span>
               <h2 className="text-sm font-semibold text-text">Atos Oficiais e Monitoramento Ambiental</h2>
             </div>
-            <span className="text-[0.72rem] text-text-soft">Gráfico nativo SVG</span>
+            <span className="text-[0.75rem] text-text-soft">Gráfico nativo SVG</span>
           </div>
 
           <div className="mt-4 h-24 w-full">
@@ -155,7 +155,7 @@ export default function PainelLugar({
                       x={x + barWidth / 2}
                       y="68"
                       textAnchor="middle"
-                      className="fill-current text-[11px] text-text-soft font-tabular"
+                      className="fill-current text-[12px] text-text-soft font-tabular"
                     >
                       {d.rotulo}
                     </text>
@@ -211,7 +211,7 @@ export default function PainelLugar({
                   <td className="py-2.5 font-medium">{item.municipio}</td>
                   <td className="py-2.5 text-text-soft">{item.atoOuLicenca}</td>
                   <td className="py-2.5">
-                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[0.7rem] font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[0.75rem] font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
                       {item.situacao}
                     </span>
                   </td>

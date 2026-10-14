@@ -150,11 +150,11 @@ export function SessaoCompanheiro() {
             </button>
           </div>
 
-          {erro && <p className="mt-2 text-[.72rem] text-alert">{erro}</p>}
+          {erro && <p className="mt-2 text-[0.75rem] text-alert">{erro}</p>}
 
           {sessao && (
             <>
-              <p className="mt-1 text-[.72rem] leading-relaxed text-text-soft">
+              <p className="mt-1 text-[0.75rem] leading-relaxed text-text-soft">
                 No app Seu Nonô (desktop), escolha <strong>Entrar numa sessão</strong> e digite:
               </p>
               <div className="mt-2 flex items-center justify-between gap-2 rounded-lg border border-border bg-surface-2 px-2.5 py-1.5">
@@ -170,7 +170,7 @@ export function SessaoCompanheiro() {
                   {copiado ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
                 </button>
               </div>
-              <p className="mt-1.5 text-[.68rem] text-text-soft">
+              <p className="mt-1.5 text-[0.75rem] text-text-soft">
                 {pareada ? "Conectado. Pergunte pelo bichinho." : "Aguardando o bichinho entrar..."}
               </p>
             </>
@@ -179,7 +179,7 @@ export function SessaoCompanheiro() {
           {turno && (
             <div className="mt-2 border-t border-border pt-2">
               {turno.pergunta && (
-                <p className="text-[.72rem] text-text-soft">
+                <p className="text-[0.75rem] text-text-soft">
                   <strong className="text-text">Pergunta:</strong> {turno.pergunta}
                 </p>
               )}

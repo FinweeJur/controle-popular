@@ -294,14 +294,14 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                   >
                     Perguntar sobre a atuação ✉
                   </a>
-                  <p className="mt-2 text-[11px] text-text-soft">
+                  <p className="mt-2 text-[12px] text-text-soft">
                     Abre um e-mail já endereçado ao vereador, com um rascunho que
                     cita a área de atuação dele — é só escrever sua pergunta.
                   </p>
                 </>
               ) : (
                 fonteCamara.url && (
-                  <p className="mt-2 text-[11px] text-text-soft">
+                  <p className="mt-2 text-[12px] text-text-soft">
                     Sem e-mail individual cadastrado nesta fonte — fale com a{" "}
                     <a href={fonteCamara.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
                       {fonteCamara.label} ↗

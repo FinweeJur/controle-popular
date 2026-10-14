@@ -178,7 +178,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-primary sm:text-2xl font-tabular">
             {formatarMoedaBrl(agregados.valorTotalBrl)}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             {itensFiltrados.length} projetos mapeados
           </span>
         </div>
@@ -190,7 +190,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-text sm:text-2xl font-tabular">
             {formatarMoedaUsd(agregados.valorTotalUsd)}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Câmbio de referência oficial
           </span>
         </div>
@@ -202,7 +202,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-emerald-600 sm:text-2xl font-tabular">
             {agregados.totalEditaisAbertos}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Em disputa ativa na B3 e órgãos
           </span>
         </div>
@@ -214,7 +214,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-text sm:text-2xl font-tabular">
             {agregados.totalPaisesEnvolvidos}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             EUA + 10 principais nações da Europa
           </span>
         </div>
@@ -260,11 +260,11 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                       <span className="font-semibold text-text truncate max-w-sm sm:max-w-md">
                         {item.titulo}
                       </span>
-                      <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[10px] text-text-soft">
+                      <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[12px] text-text-soft">
                         {item.pais_lider}
                       </span>
                       {isEdital && (
-                        <span className="rounded bg-emerald-100 px-1.5 py-0.2 text-[10px] font-bold text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400">
+                        <span className="rounded bg-emerald-100 px-1.5 py-0.2 text-[12px] font-bold text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400">
                           Edital Aberto ⚡
                         </span>
                       )}
@@ -486,12 +486,12 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                             <span className="text-xs">↗</span>
                           </a>
                         </div>
-                        <div className="text-[11px] text-text-soft truncate mt-0.5">
+                        <div className="text-[12px] text-text-soft truncate mt-0.5">
                           {item.entidades_principais.slice(0, 3).join(" · ")}
                         </div>
                       </td>
                       <td className="px-4 py-3 text-text-soft">
-                        <span className="rounded bg-surface-2 px-2 py-0.5 text-[11px]">
+                        <span className="rounded bg-surface-2 px-2 py-0.5 text-[12px]">
                           {item.setor_rotulo}
                         </span>
                       </td>
@@ -499,11 +499,11 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                         <span className="font-semibold text-primary">
                           {item.pais_lider}
                         </span>{" "}
-                        <span className="text-[11px] text-text-soft">
+                        <span className="text-[12px] text-text-soft">
                           ({item.paises.filter((p) => p !== item.pais_lider).join(", ")})
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-text-soft text-[11px]">
+                      <td className="px-4 py-3 text-text-soft text-[12px]">
                         {item.tipo_instrumento}
                       </td>
                       <td className="px-4 py-3 text-right font-semibold text-text font-tabular">
@@ -514,11 +514,11 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                       </td>
                       <td className="px-4 py-3 text-center">
                         {isEdital ? (
-                          <span className="inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300">
+                          <span className="inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-[12px] font-bold text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300">
                             Disputa Aberta
                           </span>
                         ) : (
-                          <span className="inline-flex rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-medium text-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+                          <span className="inline-flex rounded-full bg-blue-100 px-2 py-0.5 text-[12px] font-medium text-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
                             {item.status.split("/")[0]}
                           </span>
                         )}
@@ -528,7 +528,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                           onClick={() =>
                             setItemExpandido(isExpandido ? null : item.id)
                           }
-                          className="rounded border border-border px-2 py-1 text-[11px] font-medium text-text hover:bg-surface-3 transition-colors"
+                          className="rounded border border-border px-2 py-1 text-[12px] font-medium text-text hover:bg-surface-3 transition-colors"
                         >
                           {isExpandido ? "Fechar ▲" : "Pronunciamentos ▼"}
                         </button>
@@ -568,7 +568,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                               <blockquote className="rounded-lg bg-surface-1 p-3 border-l-4 border-primary text-xs italic text-text leading-relaxed">
                                 "{item.pronunciamentos_oficiais}"
                               </blockquote>
-                              <div className="text-[11px] text-text-soft pt-1">
+                              <div className="text-[12px] text-text-soft pt-1">
                                 <span>Fonte Oficial Registrada: </span>
                                 <a
                                   href={item.fonte_url}
@@ -592,7 +592,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                                   {item.contrapartidas_e_impacto_social}
                                 </p>
                               </div>
-                              <div className="text-[11px] text-text-soft">
+                              <div className="text-[12px] text-text-soft">
                                 Data do registro oficial: <strong>{item.data_registro}</strong>
                               </div>
                             </div>

@@ -170,7 +170,7 @@ export default function PppClient({ metadados, contratos }: Props) {
         @media print {
           .ppp-sem-impressao { display: none !important; }
           .ppp-card { break-inside: avoid; border: 1px solid #999 !important; }
-          .ppp-tabela { font-size: 10px !important; }
+          .ppp-tabela { font-size: 12px !important; }
           .ppp-tabela a { color: #000 !important; }
         }
       `}</style>
@@ -401,7 +401,7 @@ export default function PppClient({ metadados, contratos }: Props) {
                     </td>
                     <td className="p-3">
                       <span
-                        className={`inline-flex rounded border px-2 py-0.5 text-[11px] font-medium ${
+                        className={`inline-flex rounded border px-2 py-0.5 text-[12px] font-medium ${
                           CLASSE_NATUREZA[item.natureza] ?? "border-border bg-surface-2 text-text-soft"
                         }`}
                       >
@@ -411,7 +411,7 @@ export default function PppClient({ metadados, contratos }: Props) {
                     <td className="p-3 text-xs text-text-soft">{rotuloSetor(item.setor)}</td>
                     <td className="p-3 text-xs">
                       <span className="block font-semibold text-text">{item.concessionaria}</span>
-                      <span className="font-mono text-[11px] text-text-soft">
+                      <span className="font-mono text-[12px] text-text-soft">
                         {/^\d{14}$/.test(item.cnpjConcessionaria)
                           ? formatCNPJ(item.cnpjConcessionaria)
                           : item.cnpjConcessionaria}

@@ -112,7 +112,7 @@ export default function PaginaAmeacasAmericas() {
           <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-foreground">
             {c.totalAmeacas}
           </p>
-          <span className="block text-[11px] text-muted">Mapeadas em 11 países</span>
+          <span className="block text-[12px] text-muted">Mapeadas em 11 países</span>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm">
@@ -125,7 +125,7 @@ export default function PaginaAmeacasAmericas() {
           <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">
             {c.totalEspecies}
           </p>
-          <span className="block text-[11px] text-muted">Fauna sob risco crítico</span>
+          <span className="block text-[12px] text-muted">Fauna sob risco crítico</span>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm">
@@ -138,7 +138,7 @@ export default function PaginaAmeacasAmericas() {
           <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-sky-600 dark:text-sky-400">
             {c.totalRios}
           </p>
-          <span className="block text-[11px] text-muted">Águas sob estresse e lama</span>
+          <span className="block text-[12px] text-muted">Águas sob estresse e lama</span>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm">
@@ -151,7 +151,7 @@ export default function PaginaAmeacasAmericas() {
           <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-amber-600 dark:text-amber-400">
             {c.totalSerras}
           </p>
-          <span className="block text-[11px] text-muted">Cordilheiras e canga</span>
+          <span className="block text-[12px] text-muted">Cordilheiras e canga</span>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-sm col-span-2 sm:col-span-1">
@@ -164,7 +164,7 @@ export default function PaginaAmeacasAmericas() {
           <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-rose-600 dark:text-rose-400">
             {c.totalComunidades}
           </p>
-          <span className="block text-[11px] text-muted">Indígenas, quilombos e ribeirinhos</span>
+          <span className="block text-[12px] text-muted">Indígenas, quilombos e ribeirinhos</span>
         </div>
       </section>
 

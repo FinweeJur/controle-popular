@@ -131,7 +131,7 @@ export default function CitarPagina() {
               )}
             </button>
           </span>
-          <pre className="whitespace-pre-wrap break-words font-mono text-[11px] leading-relaxed text-muted">
+          <pre className="whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed text-muted">
             {texto}
           </pre>
         </span>

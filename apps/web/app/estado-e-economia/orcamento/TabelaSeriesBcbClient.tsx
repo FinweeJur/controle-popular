@@ -42,7 +42,7 @@ export default function TabelaSeriesBcbClient({ dados }: Props) {
     <section aria-labelledby="titulo-series-bcb" className="mb-8 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs">
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-accent block">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-accent block">
             Banco Central do Brasil — SGS Oficial
           </span>
           <h2 id="titulo-series-bcb" className="font-display text-lg font-bold text-foreground">
@@ -118,7 +118,7 @@ export default function TabelaSeriesBcbClient({ dados }: Props) {
                     isPositivo ? "bg-accent/80 hover:bg-accent" : "bg-alert/80 hover:bg-alert"
                   }`}
                 />
-                <div className="absolute bottom-full mb-1 hidden group-hover:block z-10 bg-black/90 text-white text-[10px] rounded px-1.5 py-0.5 whitespace-nowrap">
+                <div className="absolute bottom-full mb-1 hidden group-hover:block z-10 bg-black/90 text-white text-[12px] rounded px-1.5 py-0.5 whitespace-nowrap">
                   {p.data}: {p.valor} {serieAtiva.unidade}
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function TabelaSeriesBcbClient({ dados }: Props) {
         </table>
       </div>
 
-      <footer className="mt-3 flex items-center justify-between text-[11px] text-muted">
+      <footer className="mt-3 flex items-center justify-between text-[12px] text-muted">
         <span>
           Fonte: <a href={dados.urlFonte} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Banco Central do Brasil</a> · Série {serieAtiva.codigoSGS}
         </span>

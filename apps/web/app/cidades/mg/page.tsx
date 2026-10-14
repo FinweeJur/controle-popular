@@ -110,7 +110,7 @@ export default async function PageCidadesMG() {
                 <span className="font-semibold text-sm block">{polo.nome}</span>
                 <span className="text-xs text-text_soft">{polo.microrregiao}</span>
               </div>
-              <span className="text-[11px] text-emerald-600 mt-2 font-mono">IBGE: {polo.ibge7}</span>
+              <span className="text-[12px] text-emerald-600 mt-2 font-mono">IBGE: {polo.ibge7}</span>
             </Link>
           ))}
         </div>

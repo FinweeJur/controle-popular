@@ -589,25 +589,25 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                       <div className="font-semibold text-foreground flex items-center gap-1.5">
                         {item.nome}
                         {item.tipo === "familia" && (
-                          <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                          <span className="text-[12px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
                             Família
                           </span>
                         )}
                       </div>
-                      <div className="text-[11px] text-muted truncate max-w-[220px]">
+                      <div className="text-[12px] text-muted truncate max-w-[220px]">
                         {item.principaisEmpresas.join(", ")}
                       </div>
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-mono text-[10px] px-1 py-0.5 rounded bg-surface-2 text-muted border border-border/50">
+                        <span className="font-mono text-[12px] px-1 py-0.5 rounded bg-surface-2 text-muted border border-border/50">
                           {item.codigoIsoPais}
                         </span>
                         <span className="text-foreground">{item.paisOrigem}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-muted">
-                      <span className="inline-block px-2 py-0.5 rounded-full bg-surface-2 text-[11px] text-foreground border border-border/40">
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-surface-2 text-[12px] text-foreground border border-border/40">
                         {item.setorAtuacao}
                       </span>
                     </td>
@@ -615,7 +615,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                       <div className="font-bold text-emerald-600 dark:text-emerald-400">
                         US$ {item.patrimonioLiquidoUsdBi.toFixed(1)} Bi
                       </div>
-                      <div className="text-[10px] text-muted">
+                      <div className="text-[12px] text-muted">
                         R$ {item.patrimonioLiquidoBrlBi.toFixed(1)} Bi
                       </div>
                     </td>
@@ -623,7 +623,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                       <div className="font-semibold text-primary">
                         US$ {item.rendimentoMensalEstimadoUsdMi.toFixed(1)} Mi
                       </div>
-                      <div className="text-[10px] text-muted">
+                      <div className="text-[12px] text-muted">
                         R$ {item.rendimentoMensalEstimadoBrlMi.toFixed(1)} Mi/mês
                       </div>
                     </td>
@@ -631,7 +631,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                       <div className="font-bold text-foreground">
                         {item.equivalenciaPessoasPobrezaExtrema.toLocaleString("pt-BR")}
                       </div>
-                      <div className="text-[10px] text-muted">
+                      <div className="text-[12px] text-muted">
                         ou {item.equivalenciaSalariosMinimosBrasil.toLocaleString("pt-BR")} salários mín.
                       </div>
                     </td>
@@ -640,7 +640,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                         href={item.urlFonteOficial}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium bg-surface-2 hover:bg-primary hover:text-white text-muted transition border border-border/50"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[12px] font-medium bg-surface-2 hover:bg-primary hover:text-white text-muted transition border border-border/50"
                         title={`Abrir fonte primária regulatória (${item.fonteOficialNome})`}
                       >
                         <span>Fonte</span>
@@ -728,7 +728,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                 <p className="text-base font-bold font-mono text-emerald-600 dark:text-emerald-400">
                   US$ {itemSelecionado.patrimonioLiquidoUsdBi.toFixed(1)} Bi
                 </p>
-                <p className="text-[11px] text-muted">R$ {itemSelecionado.patrimonioLiquidoBrlBi.toFixed(1)} Bilhões</p>
+                <p className="text-[12px] text-muted">R$ {itemSelecionado.patrimonioLiquidoBrlBi.toFixed(1)} Bilhões</p>
               </div>
 
               <div className="p-3 rounded-xl bg-surface-2 space-y-1">
@@ -736,7 +736,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                 <p className="text-base font-bold font-mono text-primary">
                   US$ {itemSelecionado.rendimentoMensalEstimadoUsdMi.toFixed(1)} Mi
                 </p>
-                <p className="text-[11px] text-muted">R$ {itemSelecionado.rendimentoMensalEstimadoBrlMi.toFixed(1)} Mi/mês</p>
+                <p className="text-[12px] text-muted">R$ {itemSelecionado.rendimentoMensalEstimadoBrlMi.toFixed(1)} Mi/mês</p>
               </div>
             </div>
 
@@ -811,7 +811,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                   <Network className="h-4 w-4 text-primary" aria-hidden="true" />
                   Monopólios e Holdings
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Grafo 60fps</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Grafo 60fps</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Grafo interativo das holdings, Big Three, cartel de grãos e índices de concentração HHI.
@@ -832,7 +832,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                   <Building2 className="h-4 w-4 text-emerald-500" aria-hidden="true" />
                   CEOs e Conselhos
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Governança</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Governança</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Mapeamento de 143 executivos e membros de conselho das 36 maiores empresas no Brasil.
@@ -853,7 +853,7 @@ export default function PainelFortunasClient({ fortunas }: Props) {
                   <Flame className="h-4 w-4 text-rose-500" aria-hidden="true" />
                   Crise Climática & Emissões
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Climate TRACE</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Climate TRACE</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Emissões dos países do G20 e as 20 mega-instalações industriais mais poluidoras do planeta.

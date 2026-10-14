@@ -234,7 +234,7 @@ export default function PainelAmbientalCanada({
             <div className="pt-1 font-mono text-alert font-bold">
               25.000.000 m³ despejados
             </div>
-            <div className="text-[11px] text-muted">
+            <div className="text-[12px] text-muted">
               Causa: falha de cisalhamento em camada oculta de argila glacial na fundação.
             </div>
           </div>
@@ -250,7 +250,7 @@ export default function PainelAmbientalCanada({
             <div className="pt-1 font-mono text-alert font-bold">
               39.000.000 m³ despejados
             </div>
-            <div className="text-[11px] text-muted">
+            <div className="text-[12px] text-muted">
               Causa: alteamento sobre rejeito arenoso mal drenado e liquefação estática.
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function PainelAmbientalCanada({
             <div className="pt-1 font-mono text-alert font-bold">
               12.000.000 m³ despejados
             </div>
-            <div className="text-[11px] text-muted">
+            <div className="text-[12px] text-muted">
               Causa: liquefação estática por deformação lenta (creep) e perda de sucção.
             </div>
           </div>

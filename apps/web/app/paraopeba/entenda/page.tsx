@@ -52,7 +52,7 @@ export default function EntendaPage() {
       <section className="mt-10">
         <h2 className="font-display text-xl font-semibold">
           Perguntas frequentes{" "}
-          <span className="font-mono text-[11px] font-normal text-text-soft">
+          <span className="font-mono text-[12px] font-normal text-text-soft">
             {formatNumberBR(PERGUNTAS_PARAOPEBA.length)}
           </span>
         </h2>
@@ -72,7 +72,7 @@ export default function EntendaPage() {
       <section className="mt-12">
         <h2 className="font-display text-xl font-semibold">
           Glossário{" "}
-          <span className="font-mono text-[11px] font-normal text-text-soft">
+          <span className="font-mono text-[12px] font-normal text-text-soft">
             {formatNumberBR(GLOSSARIO_PARAOPEBA.length)}
           </span>
         </h2>

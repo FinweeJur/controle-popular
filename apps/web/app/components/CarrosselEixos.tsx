@@ -239,7 +239,7 @@ export function CardCarousel({
                 </span>
                 {/* Badge do número no canto superior esquerdo */}
                 <span
-                  className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-extrabold text-white shadow-md"
+                  className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[12px] font-extrabold text-white shadow-md"
                   style={{ backgroundColor: item.corVar }}
                 >
                   {item.title.split('.')[0]}.

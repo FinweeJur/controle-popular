@@ -280,7 +280,7 @@ export default function PainelEditais({
                         className="inline-flex cursor-pointer items-center gap-1 hover:text-text"
                       >
                         <span>{col.rotulo}</span>
-                        <span className="font-mono text-[10px]">
+                        <span className="font-mono text-[12px]">
                           {ativa ? (ordem.direcao === "asc" ? "▲" : "▼") : "⇅"}
                         </span>
                       </button>
@@ -331,7 +331,7 @@ export default function PainelEditais({
                         {item.objeto}
                       </p>
                       {item.condicoesEPrazos && (
-                        <p className="mt-1 line-clamp-1 text-[11px] text-text-soft/80 italic">
+                        <p className="mt-1 line-clamp-1 text-[12px] text-text-soft/80 italic">
                           Prazos: {item.condicoesEPrazos}
                         </p>
                       )}

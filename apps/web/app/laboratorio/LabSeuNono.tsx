@@ -233,7 +233,7 @@ export default function LabSeuNono({
           <div className="flex items-center gap-2">
             <Sparkles size={18} className="text-accent" aria-hidden="true" />
             <h2 className="text-sm font-semibold text-text">Seu Nonô</h2>
-            <span className="ml-auto text-[10px] text-text-soft">Laboratório Cívico</span>
+            <span className="ml-auto text-[12px] text-text-soft">Laboratório Cívico</span>
           </div>
 
           {/* Seletor de abas principais */}
@@ -298,7 +298,7 @@ export default function LabSeuNono({
               <Section title="Filtros Rápidos">
                 <div className="flex flex-col gap-2">
                   <label className="flex flex-col gap-1">
-                    <span className="text-[10px] font-medium text-text-soft">Período</span>
+                    <span className="text-[12px] font-medium text-text-soft">Período</span>
                     <select
                       value={periodo}
                       onChange={(e) => setPeriodo(e.target.value)}
@@ -311,7 +311,7 @@ export default function LabSeuNono({
                   </label>
 
                   <label className="flex flex-col gap-1">
-                    <span className="text-[10px] font-medium text-text-soft">Estado (UF)</span>
+                    <span className="text-[12px] font-medium text-text-soft">Estado (UF)</span>
                     <select
                       value={uf}
                       onChange={(e) => setUf(e.target.value)}
@@ -324,7 +324,7 @@ export default function LabSeuNono({
                   </label>
 
                   <label className="flex flex-col gap-1">
-                    <span className="text-[10px] font-medium text-text-soft">Categoria</span>
+                    <span className="text-[12px] font-medium text-text-soft">Categoria</span>
                     <select
                       value={categoria}
                       onChange={(e) => setCategoria(e.target.value)}
@@ -337,7 +337,7 @@ export default function LabSeuNono({
                   </label>
 
                   <label className="flex flex-col gap-1">
-                    <span className="text-[10px] font-medium text-text-soft">Fonte de dados</span>
+                    <span className="text-[12px] font-medium text-text-soft">Fonte de dados</span>
                     <select
                       value={fonte}
                       onChange={(e) => setFonte(e.target.value)}
@@ -398,7 +398,7 @@ export default function LabSeuNono({
                             className="accent-primary"
                           />
                           <span className="flex-1 truncate">{c.nome}</span>
-                          <span className="text-[9px] uppercase text-text-soft">{c.categoria}</span>
+                          <span className="text-[12px] uppercase text-text-soft">{c.categoria}</span>
                         </label>
                       </li>
                     );
@@ -462,7 +462,7 @@ export default function LabSeuNono({
                         rotulo={p.pergunta}
                         classeExtra="w-full justify-start text-left text-xs"
                       />
-                      <div className="text-[10px] text-text-soft">{p.contexto}</div>
+                      <div className="text-[12px] text-text-soft">{p.contexto}</div>
                     </li>
                   ))}
                 </ul>
@@ -476,7 +476,7 @@ export default function LabSeuNono({
                       className="flex items-center justify-between rounded-md border border-border bg-surface px-2.5 py-1.5"
                     >
                       <span className="truncate font-medium text-text">{c.nome}</span>
-                      <span className="text-[10px] uppercase text-text-soft">{c.categoria}</span>
+                      <span className="text-[12px] uppercase text-text-soft">{c.categoria}</span>
                     </div>
                   ))}
                 </div>
@@ -546,7 +546,7 @@ export default function LabSeuNono({
         {/* Rodapé de acessibilidade */}
         <footer className="border-t border-border px-4 py-2.5 bg-surface">
           <div className="flex items-center justify-between text-xs text-text-soft">
-            <span className="text-[10px]">Acessibilidade:</span>
+            <span className="text-[12px]">Acessibilidade:</span>
             <div className="flex items-center gap-1">
               <button
                 type="button"

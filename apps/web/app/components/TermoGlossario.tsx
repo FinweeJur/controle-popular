@@ -49,7 +49,7 @@ export default function TermoGlossario({
         aria-expanded={aberto}
         aria-label={`O que é ${termo.termo}?`}
         title={`O que é ${termo.termo}?`}
-        className="ml-0.5 rounded px-1 align-super text-[10px] font-bold text-primary hover:bg-primary/10"
+        className="ml-0.5 rounded px-1 align-super text-[12px] font-bold text-primary hover:bg-primary/10"
       >
         ?
       </button>

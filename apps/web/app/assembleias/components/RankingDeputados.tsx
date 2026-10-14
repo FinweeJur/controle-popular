@@ -82,7 +82,7 @@ export default function RankingDeputados({
               <strong>Participação em Comissões (25%):</strong> Atuação ativa como presidente, vice ou membro titular em comissões permanentes e CPIs.
             </li>
           </ul>
-          <p className="mt-3 text-[11px] text-muted italic">
+          <p className="mt-3 text-[12px] text-muted italic">
             * Ressalva editorial: O índice é instrumento de fiscalização cidadã, não constitui juízo de valor pessoal sobre qualquer parlamentar.
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function RankingDeputados({
                   >
                     {posicao}º
                   </span>
-                  <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-semibold text-muted">
+                  <span className="rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[12px] font-semibold text-muted">
                     {dep.partido}
                   </span>
                 </div>
@@ -164,14 +164,14 @@ export default function RankingDeputados({
               {/* Comissões integradas */}
               {dep.comissoesIntegradas.length > 0 && (
                 <div className="mt-4 pt-3 border-t border-border/40">
-                  <span className="block text-[10px] font-semibold uppercase tracking-wider text-muted mb-1">
+                  <span className="block text-[12px] font-semibold uppercase tracking-wider text-muted mb-1">
                     Comissões:
                   </span>
                   <div className="flex flex-wrap gap-1">
                     {dep.comissoesIntegradas.map((sigla) => (
                       <span
                         key={sigla}
-                        className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-mono text-foreground border border-border"
+                        className="rounded bg-surface-2 px-1.5 py-0.5 text-[12px] font-mono text-foreground border border-border"
                       >
                         {sigla}
                       </span>

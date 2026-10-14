@@ -200,7 +200,7 @@ export default function EixoCentralPage() {
             >
               <Link href="/editais" className="group flex h-full flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase text-primary">✦ Diário Oficial</span>
+                  <span className="text-[12px] font-bold uppercase text-primary">✦ Diário Oficial</span>
                   <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
                     Radar de Editais (DO-MG)
                   </h3>
@@ -224,7 +224,7 @@ export default function EixoCentralPage() {
             >
               <Link href="/biblioteca" className="group flex h-full flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase text-primary">✦ Acervo Público</span>
+                  <span className="text-[12px] font-bold uppercase text-primary">✦ Acervo Público</span>
                   <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
                     Biblioteca Digital (24k+)
                   </h3>
@@ -248,7 +248,7 @@ export default function EixoCentralPage() {
             >
               <Link href="/laboratorio/arvore" className="group flex h-full flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase text-primary">✦ Grafo Interativo</span>
+                  <span className="text-[12px] font-bold uppercase text-primary">✦ Grafo Interativo</span>
                   <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
                     Árvore de Conexões (3D)
                   </h3>
@@ -272,7 +272,7 @@ export default function EixoCentralPage() {
             >
               <Link href="/assistente" className="group flex h-full flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase text-primary">✦ IA Cívica</span>
+                  <span className="text-[12px] font-bold uppercase text-primary">✦ IA Cívica</span>
                   <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary mt-1">
                     Assistente Seu Nonô
                   </h3>
@@ -342,7 +342,7 @@ export default function EixoCentralPage() {
                   {sub.tagsRelacionadas.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-muted"
+                      className="rounded bg-surface-2 px-1.5 py-0.5 text-[12px] font-medium text-muted"
                     >
                       #{tag}
                     </span>

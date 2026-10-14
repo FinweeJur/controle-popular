@@ -292,7 +292,7 @@ export default function EmpresasClient({ entidades }: Props) {
         <div className="relative overflow-hidden rounded-2xl border border-rose-500/25 bg-gradient-to-br from-rose-500/5 via-surface to-surface p-5 shadow-xs transition hover:border-rose-500/45">
           <div className="flex items-start justify-between gap-3">
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-2.5 py-0.5 text-[11px] font-bold text-rose-600 dark:text-rose-400">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-2.5 py-0.5 text-[12px] font-bold text-rose-600 dark:text-rose-400">
                 <span>🇨🇦 Bolsa de Toronto (TSX & TSXV)</span>
               </div>
               <h3 className="font-display text-base font-bold text-foreground">
@@ -304,7 +304,7 @@ export default function EmpresasClient({ entidades }: Props) {
             </div>
           </div>
           <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between">
-            <span className="text-[11px] font-medium text-muted">12 mineradoras · 8 barragens</span>
+            <span className="text-[12px] font-medium text-muted">12 mineradoras · 8 barragens</span>
             <Link
               href="/canada/mineracao"
               className="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 transition shadow-2xs"
@@ -319,7 +319,7 @@ export default function EmpresasClient({ entidades }: Props) {
         <div className="relative overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/5 via-surface to-surface p-5 shadow-xs transition hover:border-blue-500/45">
           <div className="flex items-start justify-between gap-3">
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-bold text-blue-600 dark:text-blue-400">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[12px] font-bold text-blue-600 dark:text-blue-400">
                 <span>🇺🇸 SEC (Securities and Exchange Commission)</span>
               </div>
               <h3 className="font-display text-base font-bold text-foreground">
@@ -331,7 +331,7 @@ export default function EmpresasClient({ entidades }: Props) {
             </div>
           </div>
           <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between">
-            <span className="text-[11px] font-medium text-muted">Form 20-F · Gestoras globais</span>
+            <span className="text-[12px] font-medium text-muted">Form 20-F · Gestoras globais</span>
             <Link
               href="/eua/empresas"
               className="inline-flex items-center gap-1.5 rounded-xl border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition shadow-2xs"
@@ -543,12 +543,12 @@ export default function EmpresasClient({ entidades }: Props) {
                           {e.nome}
                         </Link>
                         {e.tipo === "empresa_canada" && (
-                          <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700 dark:bg-rose-950/60 dark:text-rose-300">
+                          <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[12px] font-semibold text-rose-700 dark:bg-rose-950/60 dark:text-rose-300">
                             Canadá (TSX)
                           </span>
                         )}
                         {e.tipo === "fundo_eua" && (
-                          <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300">
+                          <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[12px] font-semibold text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300">
                             Fundo Global
                           </span>
                         )}
@@ -560,7 +560,7 @@ export default function EmpresasClient({ entidades }: Props) {
                         <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-bold">
                           <TrendingUp size={10} />
                           {e.ticker}
-                          {e.bolsa && <span className="text-[10px] font-normal text-muted">({e.bolsa})</span>}
+                          {e.bolsa && <span className="text-[12px] font-normal text-muted">({e.bolsa})</span>}
                         </span>
                       ) : (
                         <span className="text-muted text-xs">Capital fechado</span>

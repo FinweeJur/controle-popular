@@ -132,7 +132,7 @@ export default function PaginaCarAmbiental() {
             className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-semibold text-emerald-800 hover:bg-emerald-200 transition-colors dark:bg-emerald-950/60 dark:text-emerald-300 dark:hover:bg-emerald-900/60"
           >
             <span>IEF / Sisema MG</span>
-            <span aria-hidden="true" className="text-[10px]">↗</span>
+            <span aria-hidden="true" className="text-[12px]">↗</span>
           </a>
           <a
             href="https://csr.ufmg.br/car20_mg/"
@@ -142,7 +142,7 @@ export default function PaginaCarAmbiental() {
             className="inline-flex items-center gap-1 rounded-full bg-indigo-100 px-3 py-0.5 text-xs font-semibold text-indigo-800 hover:bg-indigo-200 transition-colors dark:bg-indigo-950/60 dark:text-indigo-300 dark:hover:bg-indigo-900/60"
           >
             <span>CAR 2.0 MG (CSR / UFMG)</span>
-            <span aria-hidden="true" className="text-[10px]">↗</span>
+            <span aria-hidden="true" className="text-[12px]">↗</span>
           </a>
           <a
             href="https://consulta.car.gov.br/"
@@ -152,7 +152,7 @@ export default function PaginaCarAmbiental() {
             className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-0.5 text-xs font-semibold text-blue-800 hover:bg-blue-200 transition-colors dark:bg-blue-950/60 dark:text-blue-300 dark:hover:bg-blue-900/60"
           >
             <span>SICAR Nacional (MAPA / MMA)</span>
-            <span aria-hidden="true" className="text-[10px]">↗</span>
+            <span aria-hidden="true" className="text-[12px]">↗</span>
           </a>
           <span className="rounded-full bg-amber-100 px-3 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
             14 Polos Regionais (URFBios)
@@ -233,7 +233,7 @@ export default function PaginaCarAmbiental() {
                 Em dias de espera acumulada desde a inscrição no SICAR
               </p>
             </div>
-            <span className="rounded-md bg-surface-3 px-2 py-1 text-[11px] font-mono font-semibold text-muted">
+            <span className="rounded-md bg-surface-3 px-2 py-1 text-[12px] font-mono font-semibold text-muted">
               14 URFBios
             </span>
           </div>
@@ -295,7 +295,7 @@ export default function PaginaCarAmbiental() {
                 <div className="h-3 w-full overflow-hidden rounded-full bg-surface-3">
                   <div className="h-full rounded-full bg-emerald-600 dark:bg-emerald-500" style={{ width: "92.8%" }} />
                 </div>
-                <p className="mt-1 text-[11px] text-muted">
+                <p className="mt-1 text-[12px] text-muted">
                   Agricultura familiar, posseiros e pequenos sitiantes: prioridade legal da Lei 12.651/2012.
                 </p>
               </div>
@@ -326,7 +326,7 @@ export default function PaginaCarAmbiental() {
                 <div className="h-3 w-full overflow-hidden rounded-full bg-surface-3">
                   <div className="h-full rounded-full bg-purple-600 dark:bg-purple-500" style={{ width: "1.9%" }} />
                 </div>
-                <p className="mt-1 text-[11px] text-muted">
+                <p className="mt-1 text-[12px] text-muted">
                   Grandes fazendas, empresas de silvicultura (eucalipto/celulose) e mineradoras.
                 </p>
               </div>

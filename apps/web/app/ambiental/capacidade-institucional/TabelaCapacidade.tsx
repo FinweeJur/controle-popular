@@ -1031,10 +1031,10 @@ export default function TabelaCapacidade() {
                         <div className="font-bold text-foreground hover:text-primary">
                           {orgao.sigla}
                         </div>
-                        <div className="text-[11px] text-text-soft line-clamp-1 max-w-[200px]" title={orgao.nomeCompleto}>
+                        <div className="text-[12px] text-text-soft line-clamp-1 max-w-[200px]" title={orgao.nomeCompleto}>
                           {orgao.nomeCompleto}
                         </div>
-                        <div className="text-[10px] text-muted line-clamp-1 max-w-[200px]" title={orgao.papelRegulatorio}>
+                        <div className="text-[12px] text-muted line-clamp-1 max-w-[200px]" title={orgao.papelRegulatorio}>
                           {orgao.papelRegulatorio}
                         </div>
                       </td>
@@ -1042,7 +1042,7 @@ export default function TabelaCapacidade() {
                       {/* Esfera */}
                       <td className="p-3.5 whitespace-nowrap">
                         <span
-                          className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
+                          className={`rounded-full px-2 py-0.5 text-[12px] font-medium ${
                             esferaRotulo === "Estadual MG"
                               ? "bg-primary/10 text-primary border border-primary/20"
                               : esferaRotulo === "Federal"
@@ -1057,7 +1057,7 @@ export default function TabelaCapacidade() {
                       {/* Efetivo 2026 */}
                       <td className="p-3.5 text-right font-tabular whitespace-nowrap font-medium text-foreground">
                         {formatNumberBR(ef26)}
-                        <span className="block text-[10px] text-muted">
+                        <span className="block text-[12px] text-muted">
                           (era {formatNumberBR(ef16)})
                         </span>
                       </td>
@@ -1095,7 +1095,7 @@ export default function TabelaCapacidade() {
                       {/* Processos Represados */}
                       <td className="p-3.5 text-right font-tabular whitespace-nowrap font-medium text-foreground">
                         {formatNumberBR(orgao.processosAtivosEstimados)}
-                        <span className="block text-[10px] text-muted">
+                        <span className="block text-[12px] text-muted">
                           {orgao.analistasProcessamento} analistas
                         </span>
                       </td>
@@ -1121,7 +1121,7 @@ export default function TabelaCapacidade() {
                           {orgao.ultimoConcurso?.ano} ({orgao.ultimoConcurso?.vagas} vagas)
                         </div>
                         <span
-                          className={`text-[10px] ${
+                          className={`text-[12px] ${
                             (orgao.ultimoConcurso?.hiatoAnosAnterior || 0) >= 12
                               ? "text-alert font-bold"
                               : "text-muted"
@@ -1137,7 +1137,7 @@ export default function TabelaCapacidade() {
                           <button
                             type="button"
                             onClick={() => setOrgaoSelecionado(orgao)}
-                            className="rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[11px] font-semibold text-primary hover:border-primary hover:bg-primary/5 transition"
+                            className="rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[12px] font-semibold text-primary hover:border-primary hover:bg-primary/5 transition"
                             title="Ver organograma detalhado e atribuições"
                           >
                             Organograma
@@ -1182,11 +1182,11 @@ export default function TabelaCapacidade() {
                   <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
                     {orgaoSelecionado.sigla}
                   </span>
-                  <span className="rounded-md bg-surface-2 border border-border px-2 py-0.5 text-[11px] text-muted">
+                  <span className="rounded-md bg-surface-2 border border-border px-2 py-0.5 text-[12px] text-muted">
                     {classificarEsfera(orgaoSelecionado)} ({orgaoSelecionado.uf})
                   </span>
                   <span
-                    className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
+                    className={`rounded-md px-2 py-0.5 text-[12px] font-bold ${
                       orgaoSelecionado.variacaoPercentualEfetivo2016_2026 <= -30
                         ? "bg-alert/10 text-alert"
                         : "bg-amber-500/10 text-amber-700 dark:text-amber-300"
@@ -1275,7 +1275,7 @@ export default function TabelaCapacidade() {
                       <Layers className="h-4 w-4 text-primary" />
                       Estrutura Organizacional e Diretorias
                     </h3>
-                    <span className="text-[11px] text-muted">
+                    <span className="text-[12px] text-muted">
                       Links diretos e contatos dos responsáveis
                     </span>
                   </div>
@@ -1288,7 +1288,7 @@ export default function TabelaCapacidade() {
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div>
-                            <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold text-primary mr-1.5">
+                            <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[12px] font-bold text-primary mr-1.5">
                               {area.sigla}
                             </span>
                             <strong className="text-foreground text-xs font-bold">
@@ -1300,7 +1300,7 @@ export default function TabelaCapacidade() {
                             href={area.urlPagina}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 text-[11px] font-semibold text-primary hover:underline shrink-0"
+                            className="flex items-center gap-1 text-[12px] font-semibold text-primary hover:underline shrink-0"
                             title="Acessar página oficial desta diretoria"
                           >
                             <span>Página da Área</span>
@@ -1312,7 +1312,7 @@ export default function TabelaCapacidade() {
                           {area.funcao}
                         </p>
 
-                        <div className="pt-2 border-t border-border/60 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+                        <div className="pt-2 border-t border-border/60 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px]">
                           <div>
                             <span className="text-muted block">Responsável:</span>
                             <span className="font-semibold text-foreground">
@@ -1350,7 +1350,7 @@ export default function TabelaCapacidade() {
                 <div className="space-y-5">
                   {/* Titular */}
                   <div className="rounded-2xl border border-border bg-surface-2/50 p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
                       Comando e Titularidade
                     </span>
                     <div className="flex items-center gap-3">
@@ -1366,7 +1366,7 @@ export default function TabelaCapacidade() {
                         </p>
                       </div>
                     </div>
-                    <div className="pt-1 border-t border-border/50 flex flex-wrap gap-4 text-[11px]">
+                    <div className="pt-1 border-t border-border/50 flex flex-wrap gap-4 text-[12px]">
                       <span>Tel: <strong>{orgaoSelecionado.lideranca.telefone}</strong></span>
                       <span>Email: <strong>{orgaoSelecionado.lideranca.email}</strong></span>
                     </div>
@@ -1374,7 +1374,7 @@ export default function TabelaCapacidade() {
 
                   {/* Marco Legal */}
                   <div className="rounded-2xl border border-border bg-surface p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
                       <Landmark className="h-3.5 w-3.5 text-primary" />
                       Marco Legal Instituidor e Regulamentar
                     </span>
@@ -1389,7 +1389,7 @@ export default function TabelaCapacidade() {
 
                   {/* Atribuições Legais */}
                   <div className="space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
                       Responsabilidades Legais e Atribuições
                     </span>
                     <ul className="space-y-2">
@@ -1417,7 +1417,7 @@ export default function TabelaCapacidade() {
                         Histórico do Concurso Público
                       </span>
                       <span
-                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
+                        className={`rounded-full px-2.5 py-0.5 text-[12px] font-bold ${
                           (orgaoSelecionado.ultimoConcurso?.hiatoAnosAnterior || 0) >= 12
                             ? "bg-alert/15 text-alert"
                             : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
@@ -1429,25 +1429,25 @@ export default function TabelaCapacidade() {
 
                     <div className="grid grid-cols-2 gap-3 text-xs pt-1">
                       <div className="rounded-xl border border-border bg-surface p-3">
-                        <span className="text-muted block text-[10px]">Ano do Último Edital</span>
+                        <span className="text-muted block text-[12px]">Ano do Último Edital</span>
                         <strong className="font-tabular text-lg text-foreground">
                           {orgaoSelecionado.ultimoConcurso?.ano}
                         </strong>
                       </div>
                       <div className="rounded-xl border border-border bg-surface p-3">
-                        <span className="text-muted block text-[10px]">Vagas Ofertadas</span>
+                        <span className="text-muted block text-[12px]">Vagas Ofertadas</span>
                         <strong className="font-tabular text-lg text-foreground">
                           {orgaoSelecionado.ultimoConcurso?.vagas}
                         </strong>
                       </div>
                       <div className="rounded-xl border border-border bg-surface p-3">
-                        <span className="text-muted block text-[10px]">Tempo de Espera (Hiato)</span>
+                        <span className="text-muted block text-[12px]">Tempo de Espera (Hiato)</span>
                         <strong className="font-tabular text-lg text-alert">
                           {orgaoSelecionado.ultimoConcurso?.hiatoAnosAnterior} anos
                         </strong>
                       </div>
                       <div className="rounded-xl border border-border bg-surface p-3">
-                        <span className="text-muted block text-[10px]">Banca Organizadora</span>
+                        <span className="text-muted block text-[12px]">Banca Organizadora</span>
                         <strong className="text-sm text-foreground">
                           {orgaoSelecionado.ultimoConcurso?.banca}
                         </strong>
@@ -1483,7 +1483,7 @@ export default function TabelaCapacidade() {
                 <div className="space-y-4">
                   {/* Sede e Endereço */}
                   <div className="rounded-2xl border border-border bg-surface p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
                       <MapPin className="h-3.5 w-3.5 text-primary" />
                       Endereço da Sede Oficial
                     </span>
@@ -1495,7 +1495,7 @@ export default function TabelaCapacidade() {
                   {/* Telefones e Emails */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="rounded-2xl border border-border bg-surface p-4 space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
                         <Phone className="h-3.5 w-3.5 text-primary" />
                         Telefones da Sede
                       </span>
@@ -1505,7 +1505,7 @@ export default function TabelaCapacidade() {
                     </div>
 
                     <div className="rounded-2xl border border-border bg-surface p-4 space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
                         <Mail className="h-3.5 w-3.5 text-primary" />
                         E-mail Geral
                       </span>
@@ -1520,7 +1520,7 @@ export default function TabelaCapacidade() {
 
                   {/* Ouvidoria */}
                   <div className="rounded-2xl border border-border bg-surface-2/50 p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
                       Canal Oficial de Ouvidoria / Denúncias
                     </span>
                     <p className="text-xs font-semibold text-foreground">
@@ -1545,14 +1545,14 @@ export default function TabelaCapacidade() {
                   {/* Sedes Regionais se houver */}
                   {orgaoSelecionado.contatos.sedesRegionais && orgaoSelecionado.contatos.sedesRegionais.length > 0 && (
                     <div className="rounded-2xl border border-border bg-surface p-4 space-y-2">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-muted">
                         Unidades Regionais de Atendimento
                       </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12px]">
                         {orgaoSelecionado.contatos.sedesRegionais.map((reg, idx) => (
                           <div key={idx} className="rounded-xl border border-border/60 bg-surface-2/30 p-2.5 space-y-0.5">
                             <strong className="text-foreground block">{reg.nome} ({reg.cidade})</strong>
-                            <p className="text-muted text-[10px]">{reg.endereco}</p>
+                            <p className="text-muted text-[12px]">{reg.endereco}</p>
                             <p className="font-tabular text-text-soft">{reg.telefone}</p>
                           </div>
                         ))}

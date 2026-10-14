@@ -246,7 +246,7 @@ export default function MapaDesclassificadosClient({
               <strong>{documentos.length}</strong> locais de inteligência desclassificados
             </span>
           </div>
-          <span className="hidden sm:inline text-[11px] text-slate-500">
+          <span className="hidden sm:inline text-[12px] text-slate-500">
             Projeção Cártográfica Equirretangular · Clique no marcador para inspecionar
           </span>
         </div>
@@ -562,7 +562,7 @@ export default function MapaDesclassificadosClient({
                   {doc.bandeiraPais}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between text-[11px]">
+                  <div className="flex items-center justify-between text-[12px]">
                     <span className="font-bold text-primary truncate">{doc.orgaoInteligencia}</span>
                     <span className="font-mono text-muted">{doc.dataPublicacao.substring(0, 4)}</span>
                   </div>
@@ -570,7 +570,7 @@ export default function MapaDesclassificadosClient({
                     {doc.titulo}
                   </div>
                   {doc.localidadeFoco && (
-                    <div className="text-[10px] text-muted truncate mt-0.5">
+                    <div className="text-[12px] text-muted truncate mt-0.5">
                       📍 {doc.localidadeFoco}
                     </div>
                   )}

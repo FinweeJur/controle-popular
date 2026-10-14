@@ -55,7 +55,7 @@ export default function LoadingOverlay() {
             <DotsRing size={14} className="text-text" />
             <span>Navegando no portal…</span>
           </div>
-          <span className="font-tabular text-text-soft bg-surface-2 px-1.5 py-0.5 rounded text-[11px]">
+          <span className="font-tabular text-text-soft bg-surface-2 px-1.5 py-0.5 rounded text-[12px]">
             {segundos}s
           </span>
         </div>

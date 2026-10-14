@@ -689,7 +689,7 @@ export default function PainelRecursosEstadosClient({
                       <div className="text-xs text-muted flex items-center gap-1.5">
                         <span>{item.capital}</span>
                         <span>·</span>
-                        <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[10px]">
+                        <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[12px]">
                           {item.regiao}
                         </span>
                       </div>
@@ -703,7 +703,7 @@ export default function PainelRecursosEstadosClient({
                             {(item.outorgas.vazaoTotalM3AnoMilhoes / 1000).toFixed(2).replace(".", ",")}{" "}
                             bi m³
                           </span>
-                          <span className="block text-[11px] text-muted">
+                          <span className="block text-[12px] text-muted">
                             {item.outorgas.totalInterferencias.toLocaleString("pt-BR")} pontos
                           </span>
                         </td>
@@ -720,7 +720,7 @@ export default function PainelRecursosEstadosClient({
                           <span className="font-bold text-foreground">
                             R$ {item.energia.tarifaResidencialKwhBrl.toFixed(2).replace(".", ",")}
                           </span>
-                          <span className="block text-[11px] text-muted">/ kWh residencial</span>
+                          <span className="block text-[12px] text-muted">/ kWh residencial</span>
                         </td>
                         <td className="py-3.5 px-3 text-right font-mono">
                           <span
@@ -743,7 +743,7 @@ export default function PainelRecursosEstadosClient({
                           R$ {item.combustivel.totalGastoAnualBrlMilhoes.toFixed(1).replace(".", ",")}{" "}
                           Mi
                         </span>
-                        <span className="block text-[11px] text-muted">
+                        <span className="block text-[12px] text-muted">
                           {item.combustivel.consumoEstimadoLitrosMilhoes.toFixed(1).replace(".", ",")}{" "}
                           Mi L ({item.combustivel.combustivelMaisConsumido})
                         </span>
@@ -760,7 +760,7 @@ export default function PainelRecursosEstadosClient({
                             .replace(".", ",")}{" "}
                           Bi
                         </span>
-                        <span className="block text-[11px] text-muted">
+                        <span className="block text-[12px] text-muted">
                           {item.ppps.totalContratosAtivos} contratos
                         </span>
                       </td>
@@ -777,7 +777,7 @@ export default function PainelRecursosEstadosClient({
                               .replace(".", ",")}{" "}
                             Mi
                           </span>
-                          <span className="block text-[11px] text-muted">
+                          <span className="block text-[12px] text-muted">
                             {item.totalDeputados} dep. (~R${" "}
                             {item.emendas.cotaMediaPorDeputadoBrlMilhoes
                               .toFixed(1)
@@ -867,7 +867,7 @@ export default function PainelRecursosEstadosClient({
                     href={estadoModal.outorgas.fonteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline"
                   >
                     <span>Fonte Oficial</span>
                     <ExternalLink size={11} />
@@ -889,7 +889,7 @@ export default function PainelRecursosEstadosClient({
                   <p>
                     <strong>Uso Predominante:</strong> {estadoModal.outorgas.finalidadePredominante}
                   </p>
-                  <p className="text-muted text-[11px]">
+                  <p className="text-muted text-[12px]">
                     <strong>Bacias:</strong> {estadoModal.outorgas.baciasPrincipais.join(", ")}
                   </p>
                 </div>
@@ -905,7 +905,7 @@ export default function PainelRecursosEstadosClient({
                     href={estadoModal.energia.fonteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline"
                   >
                     <span>CCEE / ANEEL</span>
                     <ExternalLink size={11} />
@@ -929,7 +929,7 @@ export default function PainelRecursosEstadosClient({
                       {estadoModal.energia.assimetriaTarifariaRatio.toFixed(2).replace(".", ",")}x mais caro
                     </span>
                   </p>
-                  <p className="text-muted text-[11px]">
+                  <p className="text-muted text-[12px]">
                     <strong>Matriz Predominante:</strong> {estadoModal.energia.fonteMatrizPredominante} (
                     {estadoModal.energia.capacidadeInstaladaMw.toLocaleString("pt-BR")} MW instalados)
                   </p>
@@ -946,7 +946,7 @@ export default function PainelRecursosEstadosClient({
                     href={estadoModal.combustivel.fonteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline"
                   >
                     <span>PNCP / ANP</span>
                     <ExternalLink size={11} />
@@ -970,7 +970,7 @@ export default function PainelRecursosEstadosClient({
                     <strong>Preço de Referência ANP:</strong> R${" "}
                     {estadoModal.combustivel.precoMedioAnpBrlLitro.toFixed(2).replace(".", ",")} / L
                   </p>
-                  <p className="text-muted text-[11px]">
+                  <p className="text-muted text-[12px]">
                     <strong>Fiscalização:</strong> {estadoModal.combustivel.orgaoFiscalizador}
                   </p>
                 </div>
@@ -986,7 +986,7 @@ export default function PainelRecursosEstadosClient({
                     href={estadoModal.ppps.fonteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline"
                   >
                     <span>Portal de Parcerias</span>
                     <ExternalLink size={11} />
@@ -1004,7 +1004,7 @@ export default function PainelRecursosEstadosClient({
                   <p>
                     <strong>Concessão Destaque:</strong> {estadoModal.ppps.concessaoDestaque}
                   </p>
-                  <p className="text-muted text-[11px]">
+                  <p className="text-muted text-[12px]">
                     <strong>Setores:</strong> {estadoModal.ppps.setoresPrioritarios.join(", ")}
                   </p>
                 </div>
@@ -1020,7 +1020,7 @@ export default function PainelRecursosEstadosClient({
                     href={estadoModal.emendas.fonteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline"
                   >
                     <span>Transparência ALE{estadoModal.uf}</span>
                     <ExternalLink size={11} />
@@ -1028,21 +1028,21 @@ export default function PainelRecursosEstadosClient({
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-foreground">
                   <div className="p-2 rounded-lg bg-surface border border-border/40">
-                    <span className="text-muted block text-[11px]">Total Autorizado:</span>
+                    <span className="text-muted block text-[12px]">Total Autorizado:</span>
                     <span className="font-bold font-mono">
                       R$ {estadoModal.emendas.totalEmendasAutorizadasBrlMilhoes.toFixed(1).replace(".", ",")}{" "}
                       Mi
                     </span>
                   </div>
                   <div className="p-2 rounded-lg bg-surface border border-border/40">
-                    <span className="text-muted block text-[11px]">Cota / Deputado:</span>
+                    <span className="text-muted block text-[12px]">Cota / Deputado:</span>
                     <span className="font-bold font-mono">
                       ~R$ {estadoModal.emendas.cotaMediaPorDeputadoBrlMilhoes.toFixed(2).replace(".", ",")}{" "}
                       Mi
                     </span>
                   </div>
                   <div className="p-2 rounded-lg bg-surface border border-border/40">
-                    <span className="text-muted block text-[11px]">Transferências PIX:</span>
+                    <span className="text-muted block text-[12px]">Transferências PIX:</span>
                     <span className="font-bold font-mono text-amber-600 dark:text-amber-400">
                       {estadoModal.emendas.percentualEmendasPix.toFixed(1).replace(".", ",")}% do total
                     </span>

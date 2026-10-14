@@ -89,7 +89,7 @@ export default function NavegacaoAbasCanada({ abaAtiva }: NavegacaoAbasCanadaPro
               <span>{item.rotulo}</span>
               {item.badge && (
                 <span
-                  className={`hidden sm:inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                  className={`hidden sm:inline-block rounded-full px-2 py-0.5 text-[12px] font-bold ${
                     ativa
                       ? "bg-emerald-700 text-emerald-100"
                       : "bg-surface-elevated text-muted"

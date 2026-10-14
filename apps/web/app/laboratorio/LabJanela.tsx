@@ -160,7 +160,7 @@ export default function LabJanela({
           href={dados.fonteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-1 text-[10px] text-primary hover:underline"
+          className="inline-flex shrink-0 items-center gap-1 text-[12px] text-primary hover:underline"
         >
           Fonte <ExternalLink size={10} />
         </a>
@@ -178,7 +178,7 @@ export default function LabJanela({
               type="button"
               onClick={() => onGraficoChange(id)}
               aria-pressed={tipoGrafico === id}
-              className={`flex cursor-pointer items-center gap-1 rounded border px-1.5 py-1 text-[10px] font-medium transition-colors ${
+              className={`flex cursor-pointer items-center gap-1 rounded border px-1.5 py-1 text-[12px] font-medium transition-colors ${
                 tipoGrafico === id
                   ? "border-primary bg-primary/10 text-primary"
                   : "border-border bg-surface text-text-soft hover:bg-surface-2"
@@ -216,7 +216,7 @@ export default function LabJanela({
         {renderChart(tipoGrafico, itensFiltrados)}
         {itensFiltrados.length > 0 && (
           <div className="mt-2 max-h-40 overflow-auto rounded border border-border/50">
-            <table className="w-full text-[10px] text-text-soft">
+            <table className="w-full text-[12px] text-text-soft">
               <caption className="sr-only">Tabela da camada {dados.titulo}</caption>
               <thead>
                 <tr className="border-b border-border text-left">
@@ -239,7 +239,7 @@ export default function LabJanela({
         )}
       </div>
 
-      <p className="mt-2 text-[10px] text-text-soft">{dados.fonteLabel}</p>
+      <p className="mt-2 text-[12px] text-text-soft">{dados.fonteLabel}</p>
     </section>
   );
 }

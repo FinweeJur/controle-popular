@@ -660,7 +660,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
           >
             <Network className="h-4 w-4" />
             <span>Grafo em Canvas</span>
-            <span className="hidden sm:inline rounded-md bg-white/20 px-1.5 py-0.2 text-[10px]">
+            <span className="hidden sm:inline rounded-md bg-white/20 px-1.5 py-0.2 text-[12px]">
               60fps
             </span>
           </button>
@@ -676,7 +676,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
           >
             <GitBranch className="h-4 w-4" />
             <span>Mapa Mental SVG</span>
-            <span className="hidden sm:inline rounded-md bg-white/20 px-1.5 py-0.2 text-[10px]">
+            <span className="hidden sm:inline rounded-md bg-white/20 px-1.5 py-0.2 text-[12px]">
               Hierárquico
             </span>
           </button>
@@ -793,14 +793,14 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                   onClick={() => {
                     isSimActiveRef.current = !isSimActiveRef.current;
                   }}
-                  className="rounded-lg px-2 py-1 text-[11px] font-medium hover:bg-white/10 transition"
+                  className="rounded-lg px-2 py-1 text-[12px] font-medium hover:bg-white/10 transition"
                 >
                   Física: {isSimActiveRef.current ? "Ativa" : "Pausada"}
                 </button>
               </div>
 
               {/* Legenda de Níveis Flutuante */}
-              <div className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-slate-900/85 backdrop-blur-md px-3 py-2 text-[11px] text-slate-300">
+              <div className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-slate-900/85 backdrop-blur-md px-3 py-2 text-[12px] text-slate-300">
                 <span className="font-semibold text-white">Níveis:</span>
                 <span className="inline-flex items-center gap-1">
                   <span className="h-2.5 w-2.5 rounded-full bg-purple-500" />
@@ -821,7 +821,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
               </div>
 
               {/* Dica de Interatividade */}
-              <div className="absolute top-3 right-3 z-10 hidden sm:block text-[11px] text-slate-400 bg-slate-900/70 px-2.5 py-1 rounded-lg backdrop-blur-sm">
+              <div className="absolute top-3 right-3 z-10 hidden sm:block text-[12px] text-slate-400 bg-slate-900/70 px-2.5 py-1 rounded-lg backdrop-blur-sm">
                 🖱️ Arraste nós · Roda do mouse amplia · Clique para detalhes
               </div>
 
@@ -876,7 +876,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                             : "border-purple-200 dark:border-purple-900/40 bg-purple-50/50 dark:bg-purple-950/20 hover:border-primary/50"
                         }`}
                       >
-                        <div className="text-[10px] font-semibold text-purple-600 dark:text-purple-400">
+                        <div className="text-[12px] font-semibold text-purple-600 dark:text-purple-400">
                           {dadosArvoreFoco.holding!.siglaOuTicker}
                         </div>
                         <div className="text-sm font-bold text-foreground mt-0.5">
@@ -885,7 +885,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                         <div className="text-xs text-muted mt-1">
                           {dadosArvoreFoco.holding!.valorMercadoOuAtivos}
                         </div>
-                        <div className="mt-2 text-[11px] text-muted line-clamp-2">
+                        <div className="mt-2 text-[12px] text-muted line-clamp-2">
                           {dadosArvoreFoco.holding!.descricao}
                         </div>
                       </div>
@@ -907,7 +907,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                                 : "border-blue-200 dark:border-blue-900/40 bg-blue-50/50 dark:bg-blue-950/20 hover:border-primary/50"
                             }`}
                           >
-                            <div className="flex items-center justify-between text-[10px]">
+                            <div className="flex items-center justify-between text-[12px]">
                               <span className="font-semibold text-blue-600 dark:text-blue-400">
                                 {item.siglaOuTicker}
                               </span>
@@ -916,7 +916,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                             <div className="text-xs font-bold text-foreground mt-1">
                               {item.nome}
                             </div>
-                            <div className="text-[11px] text-muted mt-0.5">
+                            <div className="text-[12px] text-muted mt-0.5">
                               {item.valorMercadoOuAtivos}
                             </div>
                           </div>
@@ -940,13 +940,13 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                                 : "border-emerald-200 dark:border-emerald-900/40 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-primary/50"
                             }`}
                           >
-                            <div className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                            <div className="text-[12px] font-semibold text-emerald-600 dark:text-emerald-400">
                               {item.tipoRotulo}
                             </div>
                             <div className="text-xs font-bold text-foreground mt-1">
                               {item.nome}
                             </div>
-                            <div className="text-[11px] text-muted mt-0.5">
+                            <div className="text-[12px] text-muted mt-0.5">
                               Controlador: {item.controladorPrincipal}
                             </div>
                           </div>
@@ -970,13 +970,13 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                                 : "border-amber-200 dark:border-amber-900/40 bg-amber-50/50 dark:bg-amber-950/20 hover:border-primary/50"
                             }`}
                           >
-                            <div className="text-[10px] font-semibold text-amber-600 dark:text-amber-400">
+                            <div className="text-[12px] font-semibold text-amber-600 dark:text-amber-400">
                               {item.siglaOuTicker}
                             </div>
                             <div className="text-xs font-bold text-foreground mt-1">
                               {item.nome}
                             </div>
-                            <div className="text-[11px] text-muted mt-0.5">
+                            <div className="text-[12px] text-muted mt-0.5">
                               {item.jurisdicao}
                             </div>
                           </div>
@@ -1060,13 +1060,13 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                             <div className="font-bold text-foreground text-xs sm:text-sm">
                               {item.nome}
                             </div>
-                            <div className="text-[11px] text-muted">
+                            <div className="text-[12px] text-muted">
                               {item.siglaOuTicker} · {item.paisOrigem}
                             </div>
                           </td>
                           <td className="p-3.5">
                             <span
-                              className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-semibold border ${estiloNivel.bg} ${estiloNivel.border} ${estiloNivel.text}`}
+                              className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[12px] font-semibold border ${estiloNivel.bg} ${estiloNivel.border} ${estiloNivel.text}`}
                             >
                               L{item.nivelHierarquico} · {item.tipoRotulo.split(" ")[0]}
                             </span>
@@ -1081,7 +1081,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                           </td>
                           <td className="p-3.5 text-right font-mono">
                             <span
-                              className={`rounded px-1.5 py-0.5 text-[11px] font-bold ${
+                              className={`rounded px-1.5 py-0.5 text-[12px] font-bold ${
                                 item.hhiSetorial >= 2500
                                   ? "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300"
                                   : "bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300"
@@ -1095,7 +1095,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                               href={item.urlOficial}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[11px] text-primary hover:bg-primary/10 transition"
+                              className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[12px] text-primary hover:bg-primary/10 transition"
                               title={item.fontesOficiais}
                             >
                               <span>Ver</span>
@@ -1121,7 +1121,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                 <div>
                   <div className="flex items-center gap-2">
                     <span
-                      className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold border ${
+                      className={`inline-flex items-center rounded-md px-2 py-0.5 text-[12px] font-bold border ${
                         CORES_NIVEL[noSelecionado.nivelHierarquico]?.bg
                       } ${CORES_NIVEL[noSelecionado.nivelHierarquico]?.text} ${
                         CORES_NIVEL[noSelecionado.nivelHierarquico]?.border
@@ -1129,7 +1129,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                     >
                       Nível {noSelecionado.nivelHierarquico} · {noSelecionado.tipoRotulo}
                     </span>
-                    <span className="text-[11px] font-mono text-muted">
+                    <span className="text-[12px] font-mono text-muted">
                       {noSelecionado.siglaOuTicker}
                     </span>
                   </div>
@@ -1155,19 +1155,19 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
               {/* Métricas Concorrenciais */}
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="rounded-xl border border-border bg-muted/10 p-3">
-                  <div className="text-[10px] text-muted">Market Share Setorial</div>
+                  <div className="text-[12px] text-muted">Market Share Setorial</div>
                   <div className="text-lg font-bold font-mono text-foreground mt-0.5">
                     {noSelecionado.participacaoMercadoPct}%
                   </div>
-                  <div className="text-[10px] text-muted">no Brasil</div>
+                  <div className="text-[12px] text-muted">no Brasil</div>
                 </div>
 
                 <div className="rounded-xl border border-border bg-muted/10 p-3">
-                  <div className="text-[10px] text-muted">Índice HHI Setor</div>
+                  <div className="text-[12px] text-muted">Índice HHI Setor</div>
                   <div className="text-lg font-bold font-mono text-red-600 dark:text-red-400 mt-0.5">
                     {noSelecionado.hhiSetorial}
                   </div>
-                  <div className="text-[10px] text-muted">CADE &gt; 2.500</div>
+                  <div className="text-[12px] text-muted">CADE &gt; 2.500</div>
                 </div>
               </div>
 
@@ -1198,7 +1198,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                   <Building className="h-3.5 w-3.5 text-primary" />
                   <span>Ativos Estratégicos & Infraestrutura:</span>
                 </div>
-                <p className="text-muted leading-relaxed text-[11px]">
+                <p className="text-muted leading-relaxed text-[12px]">
                   {noSelecionado.ativosEstrategicos}
                 </p>
               </div>
@@ -1209,7 +1209,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                   <AlertTriangle className="h-3.5 w-3.5" />
                   <span>Riscos de Monopólio & Antitruste:</span>
                 </div>
-                <p className="text-muted leading-relaxed text-[11px]">
+                <p className="text-muted leading-relaxed text-[12px]">
                   {noSelecionado.riscosAntitruste}
                 </p>
               </div>
@@ -1229,7 +1229,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                       >
                         <div>
                           <div className="font-semibold text-foreground">{c.nome}</div>
-                          <div className="text-[10px] text-muted">{aresta.tipoRotulo}</div>
+                          <div className="text-[12px] text-muted">{aresta.tipoRotulo}</div>
                         </div>
                         {aresta.participacaoPct ? (
                           <span className="font-mono text-xs font-bold text-primary">
@@ -1257,7 +1257,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                       >
                         <div>
                           <div className="font-semibold text-foreground">{s.nome}</div>
-                          <div className="text-[10px] text-muted">{aresta.tipoRotulo}</div>
+                          <div className="text-[12px] text-muted">{aresta.tipoRotulo}</div>
                         </div>
                         {aresta.participacaoPct ? (
                           <span className="font-mono text-xs font-bold text-primary">
@@ -1354,7 +1354,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
               key={setor.setorId}
               className="rounded-xl border border-border bg-muted/10 p-4 space-y-2"
             >
-              <div className="text-[11px] font-semibold text-muted line-clamp-1">
+              <div className="text-[12px] font-semibold text-muted line-clamp-1">
                 {setor.nome}
               </div>
               <div className="flex items-baseline justify-between">
@@ -1363,7 +1363,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                 </span>
                 <span className="text-xs font-mono text-muted">CR4: {setor.cr4Pct}%</span>
               </div>
-              <div className="text-[10px] text-muted line-clamp-2">
+              <div className="text-[12px] text-muted line-clamp-2">
                 {setor.classificacao}
               </div>
             </div>
@@ -1395,7 +1395,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                 <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
                   💰 1.000 Maiores Fortunas Mundiais
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Novo</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Catálogo dos bilionários e dinastias que controlam as holdings, com rendimento mensal e equivalência com extrema pobreza.
@@ -1415,7 +1415,7 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                 <span className="text-xs font-semibold text-foreground group-hover:text-primary transition flex items-center gap-1.5">
                   👔 Diretores, CEOs e Conselhos
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-surface text-muted">Governança</span>
+                <span className="text-[12px] px-2 py-0.5 rounded bg-surface text-muted">Governança</span>
               </div>
               <p className="text-xs text-muted leading-relaxed">
                 Composição estatutária das 36 maiores corporações no Brasil e mapeamento de conselhos entrelaçados (interlocking).

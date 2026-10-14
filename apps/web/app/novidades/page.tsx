@@ -104,7 +104,7 @@ export default function NovidadesPage() {
               className="relative rounded-xl border border-border bg-surface p-5 transition-colors hover:border-primary"
             >
               {novo && (
-                <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-primary-ink">
+                <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[12px] font-bold uppercase tracking-wider text-primary-ink">
                   Novo
                 </span>
               )}
@@ -118,7 +118,7 @@ export default function NovidadesPage() {
                   }).format(new Date(item.data + "T12:00:00Z"))}
                 </time>
                 <span
-                  className="rounded-md px-1.5 py-0.5 text-[11px] font-medium"
+                  className="rounded-md px-1.5 py-0.5 text-[12px] font-medium"
                   style={{
                     color: COR_FRENTE[item.frente] || "var(--cp-primary)",
                     backgroundColor: `color-mix(in srgb, ${COR_FRENTE[item.frente] || "var(--cp-primary)"} 10%, transparent)`,

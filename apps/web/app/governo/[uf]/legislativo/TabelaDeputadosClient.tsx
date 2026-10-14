@@ -198,7 +198,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-primary sm:text-2xl font-tabular">
             {deputadosFiltrados.length}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             de {assembleia.total_cadeiras} cadeiras na {assembleia.sigla}
           </span>
         </div>
@@ -210,7 +210,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-emerald-600 sm:text-2xl font-tabular">
             {agregados.mediaPresencaPct}%
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Presença nominal em plenário
           </span>
         </div>
@@ -222,7 +222,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-text sm:text-2xl font-tabular">
             {formatarMoedaBrl(agregados.totalGastoCotaBrl)}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Gastos reembolsados no ano
           </span>
         </div>
@@ -234,7 +234,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
           <p className="mt-1 text-xl font-bold tracking-tight text-text sm:text-2xl font-tabular">
             {agregados.totalRequerimentosFiscalizacao}
           </p>
-          <span className="text-[11px] text-text-soft">
+          <span className="text-[12px] text-text-soft">
             Requerimentos a secretarias
           </span>
         </div>
@@ -274,10 +274,10 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
                       <span className="font-semibold text-text">
                         {deputado.atividade.posicao_ranking}º {deputado.nome}
                       </span>
-                      <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[10px] text-text-soft font-mono">
+                      <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[12px] text-text-soft font-mono">
                         {deputado.partido}
                       </span>
-                      <span className="text-[11px] text-text-soft hidden sm:inline">
+                      <span className="text-[12px] text-text-soft hidden sm:inline">
                         ({deputado.municipio_origem})
                       </span>
                     </div>
@@ -495,7 +495,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
                             <span className="font-semibold text-text">{d.nome}</span>
                           )}
                         </div>
-                        <div className="text-[11px] text-text-soft">
+                        <div className="text-[12px] text-text-soft">
                           <span className="font-mono font-bold text-primary">
                             {d.partido}
                           </span>{" "}
@@ -518,7 +518,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
                       </td>
                       <td className="px-4 py-3 text-right font-tabular text-text">
                         {d.atividade.projetos_apresentados}{" "}
-                        <span className="text-[10px] text-text-soft">
+                        <span className="text-[12px] text-text-soft">
                           ({d.atividade.projetos_aprovados} aprovados)
                         </span>
                       </td>
@@ -536,7 +536,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
                           onClick={() =>
                             setDeputadoExpandido(isExpandido ? null : d.id)
                           }
-                          className="rounded border border-border px-2 py-1 text-[11px] font-medium text-text hover:bg-surface-3 transition-colors"
+                          className="rounded border border-border px-2 py-1 text-[12px] font-medium text-text hover:bg-surface-3 transition-colors"
                         >
                           {isExpandido ? "Fechar ▲" : "Ver Raio-X ▼"}
                         </button>
@@ -649,7 +649,7 @@ export default function TabelaDeputadosClient({ assembleia }: Props) {
                                     {d.atividade.coerencia_pct}%
                                   </span>
                                 </div>
-                                <div className="border-t border-border pt-1 text-[11px] text-text-soft">
+                                <div className="border-t border-border pt-1 text-[12px] text-text-soft">
                                   Aliança: <em>{d.bloco}</em>
                                 </div>
                               </div>

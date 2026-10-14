@@ -446,7 +446,7 @@ export default function PlayerRadio() {
                 if (grupo.length === 0) return null;
                 return (
                   <div key={tipo} className="mb-1.5 last:mb-0">
-                    <p className="px-1 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-text-soft">
+                    <p className="px-1 py-1 text-[0.75rem] font-bold uppercase tracking-wide text-text-soft">
                       {ROTULO_TIPO[tipo]}
                     </p>
                     <ul>
@@ -466,7 +466,7 @@ export default function PlayerRadio() {
                                 {e.nome}
                               </span>
                               {ativa && carregando && (
-                                <span className="shrink-0 text-[0.65rem] font-medium text-primary">
+                                <span className="shrink-0 text-[0.75rem] font-medium text-primary">
                                   Sintonizando…
                                 </span>
                               )}
@@ -532,7 +532,7 @@ export default function PlayerRadio() {
               />
               <span
                 aria-hidden="true"
-                className="text-[0.65rem] font-medium tabular-nums text-text-soft"
+                className="text-[0.75rem] font-medium tabular-nums text-text-soft"
               >
                 {mudo || volume === 0 ? "mudo" : `${Math.round(volume * 100)}%`}
               </span>

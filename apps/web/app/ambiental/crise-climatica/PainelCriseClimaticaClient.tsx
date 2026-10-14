@@ -522,7 +522,7 @@ export default function PainelCriseClimaticaClient() {
               Gráfico vetorial de alta legibilidade com contraste auditado (OKLCH).
             </p>
           </div>
-          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[12px] font-semibold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
             Dados 2024–2026
           </span>
         </div>
@@ -542,7 +542,7 @@ export default function PainelCriseClimaticaClient() {
                       <span>{p.bandeira}</span>
                       <span>{p.pais}</span>
                       {ehBrasil && (
-                        <span className="rounded bg-emerald-500/10 px-1.5 py-0.2 text-[10px] font-bold text-emerald-700 dark:text-emerald-300">
+                        <span className="rounded bg-emerald-500/10 px-1.5 py-0.2 text-[12px] font-bold text-emerald-700 dark:text-emerald-300">
                           Brasil (Foco Cívico)
                         </span>
                       )}
@@ -725,14 +725,14 @@ export default function PainelCriseClimaticaClient() {
                             <span className="text-base">{p.bandeira}</span>
                             <div>
                               <span className="font-semibold text-foreground">{p.pais}</span>
-                              <span className="ml-1 text-[11px] text-muted">({p.codigoIso3})</span>
-                              <div className="text-[11px] text-muted">{p.continente}</div>
+                              <span className="ml-1 text-[12px] text-muted">({p.codigoIso3})</span>
+                              <div className="text-[12px] text-muted">{p.continente}</div>
                             </div>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-right font-mono font-semibold text-foreground">
                           {formatNumberBR(p.emissoesTotaisMtCo2e)} Mt
-                          <span className="block text-[11px] font-normal text-muted">
+                          <span className="block text-[12px] font-normal text-muted">
                             {p.variacaoDecenalPct > 0 ? `+${p.variacaoDecenalPct}%` : `${p.variacaoDecenalPct}%`} em 10a
                           </span>
                         </td>
@@ -744,11 +744,11 @@ export default function PainelCriseClimaticaClient() {
                         </td>
                         <td className="px-4 py-3 max-w-xs">
                           <div className="text-foreground line-clamp-1 font-medium">{p.setorLiderEmissao}</div>
-                          <div className="text-[11px] text-muted line-clamp-1">{p.observacaoCivica}</div>
+                          <div className="text-[12px] text-muted line-clamp-1">{p.observacaoCivica}</div>
                         </td>
                         <td className="px-4 py-3">
                           <span
-                            className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                            className={`inline-block rounded-full px-2 py-0.5 text-[12px] font-semibold ${
                               p.classificacaoCat === "Compatível 1.5°C"
                                 ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300"
                                 : p.classificacaoCat === "Quase Suficiente"
@@ -760,7 +760,7 @@ export default function PainelCriseClimaticaClient() {
                           >
                             {p.classificacaoCat}
                           </span>
-                          <span className="block text-[10px] text-muted mt-0.5">
+                          <span className="block text-[12px] text-muted mt-0.5">
                             Net-Zero: {p.anoNetZero}
                           </span>
                         </td>
@@ -769,7 +769,7 @@ export default function PainelCriseClimaticaClient() {
                             href={p.urlFonteOficial}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
+                            className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
                           >
                             <span>Fonte</span>
                             <ExternalLink className="h-3 w-3" />
@@ -845,34 +845,34 @@ export default function PainelCriseClimaticaClient() {
                     <tr key={inst.id} className="transition-colors hover:bg-surface-2/60">
                       <td className="px-4 py-3">
                         <div className="font-semibold text-foreground">{inst.nomeInstalacao}</div>
-                        <div className="text-[11px] text-muted">{inst.operadorControlador}</div>
+                        <div className="text-[12px] text-muted">{inst.operadorControlador}</div>
                       </td>
                       <td className="px-4 py-3">
                         <div className="text-foreground font-medium">{inst.pais}</div>
-                        <div className="text-[11px] text-muted">{inst.cidadeEstado}</div>
+                        <div className="text-[12px] text-muted">{inst.cidadeEstado}</div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="inline-block rounded bg-surface-3 px-2 py-0.5 text-[11px] font-medium text-foreground">
+                        <span className="inline-block rounded bg-surface-3 px-2 py-0.5 text-[12px] font-medium text-foreground">
                           {inst.tipoAtividade}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-right font-mono font-bold text-rose-600 dark:text-rose-400">
                         {inst.emissoesAnuaisMtCo2e} Mt CO₂e
-                        <span className="block text-[10px] font-normal text-muted">ano base {inst.anoReferencia}</span>
+                        <span className="block text-[12px] font-normal text-muted">ano base {inst.anoReferencia}</span>
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-foreground font-semibold">
                         {inst.equivalenciaCarrosPasseioMilhoes} milhões
                       </td>
                       <td className="px-4 py-3 max-w-xs">
                         <div className="text-foreground font-medium truncate">{inst.combustivelPrincipal}</div>
-                        <div className="text-[11px] text-muted line-clamp-1">{inst.contextoImpacto}</div>
+                        <div className="text-[12px] text-muted line-clamp-1">{inst.contextoImpacto}</div>
                       </td>
                       <td className="px-4 py-3 text-right">
                         <a
                           href={inst.urlFonteOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
+                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
                         >
                           <span>Fonte</span>
                           <ExternalLink className="h-3 w-3" />
@@ -939,25 +939,25 @@ export default function PainelCriseClimaticaClient() {
                     <tr key={a.id} className="transition-colors hover:bg-surface-2/60">
                       <td className="px-4 py-3">
                         <div className="font-semibold text-foreground">{a.tituloEvento}</div>
-                        <span className="inline-block mt-0.5 rounded bg-surface-3 px-1.5 py-0.2 text-[10px] font-medium text-muted">
+                        <span className="inline-block mt-0.5 rounded bg-surface-3 px-1.5 py-0.2 text-[12px] font-medium text-muted">
                           {a.categoria}
                         </span>
                       </td>
                       <td className="px-4 py-3">
                         <div className="text-foreground font-medium">{a.regiaoAfetada}</div>
-                        <div className="text-[11px] text-muted">{a.paisesAbrangidos}</div>
+                        <div className="text-[12px] text-muted">{a.paisesAbrangidos}</div>
                       </td>
                       <td className="px-4 py-3 font-mono font-medium text-foreground">
                         {a.anoInicio === a.anoFim ? a.anoInicio : `${a.anoInicio}–${a.anoFim}`}
                       </td>
                       <td className="px-4 py-3">
                         <div className="font-semibold text-foreground">{a.anomaliaOuMagnitude}</div>
-                        <div className="text-[11px] text-muted line-clamp-1">{a.populacaoOuAreaImpactada}</div>
+                        <div className="text-[12px] text-muted line-clamp-1">{a.populacaoOuAreaImpactada}</div>
                       </td>
                       <td className="px-4 py-3 text-right font-mono font-bold text-amber-600 dark:text-amber-400">
                         USD {a.danosEconomicosUsdBilhoes} bi
                       </td>
-                      <td className="px-4 py-3 text-muted text-[11px] max-w-xs">
+                      <td className="px-4 py-3 text-muted text-[12px] max-w-xs">
                         <div className="font-medium text-foreground">{a.orgaoMonitoramento}</div>
                         <div className="line-clamp-1">{a.sumarioCientifico}</div>
                       </td>
@@ -966,7 +966,7 @@ export default function PainelCriseClimaticaClient() {
                           href={a.urlBoletimOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
+                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
                         >
                           <span>Boletim</span>
                           <ExternalLink className="h-3 w-3" />
@@ -1037,7 +1037,7 @@ export default function PainelCriseClimaticaClient() {
                     <tr key={s.id} className="transition-colors hover:bg-surface-2/60">
                       <td className="px-4 py-3">
                         <div className="font-semibold text-foreground">{s.setorEconomico}</div>
-                        <div className="text-[11px] text-muted">{s.subsetor}</div>
+                        <div className="text-[12px] text-muted">{s.subsetor}</div>
                       </td>
                       <td className="px-4 py-3 text-right font-mono font-bold text-sky-600 dark:text-sky-400">
                         {s.emissaoGlobalAnualGtCo2e} Gt CO₂e
@@ -1049,21 +1049,21 @@ export default function PainelCriseClimaticaClient() {
                         <div className="font-mono text-foreground">
                           {s.valorIntensidadeFossil} → <strong className="text-emerald-600 dark:text-emerald-400">{s.valorIntensidadeLimpa}</strong>
                         </div>
-                        <div className="text-[10px] text-muted">{s.intensidadeCarbonoUnidade}</div>
+                        <div className="text-[12px] text-muted">{s.intensidadeCarbonoUnidade}</div>
                       </td>
                       <td className="px-4 py-3 text-right font-mono font-bold text-emerald-600 dark:text-emerald-400">
                         -{s.potencialReducaoPct}%
                       </td>
                       <td className="px-4 py-3 max-w-xs">
                         <div className="text-foreground font-medium truncate">{s.tecnologiaChaveTransicao}</div>
-                        <div className="text-[11px] text-muted line-clamp-1">{s.desafioTransição}</div>
+                        <div className="text-[12px] text-muted line-clamp-1">{s.desafioTransição}</div>
                       </td>
                       <td className="px-4 py-3 text-right">
                         <a
                           href={s.urlFonteOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[11px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
+                          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-foreground hover:bg-surface-3 hover:text-emerald-600 transition-colors"
                         >
                           <span>Roteiro</span>
                           <ExternalLink className="h-3 w-3" />
@@ -1092,7 +1092,7 @@ export default function PainelCriseClimaticaClient() {
               <h3 className="font-display text-base font-bold text-foreground">
                 Pergunte ao Seu Nonô & Alceu Dispor: Como a Crise Climática afeta o Brasil?
               </h3>
-              <span className="rounded-full bg-emerald-600/10 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300">
+              <span className="rounded-full bg-emerald-600/10 px-2 py-0.5 text-[12px] font-bold text-emerald-700 dark:text-emerald-300">
                 Assistente Cívico ONSA
               </span>
             </div>

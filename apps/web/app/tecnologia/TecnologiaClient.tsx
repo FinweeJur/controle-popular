@@ -663,7 +663,7 @@ export default function TecnologiaClient() {
                     {(EXTRAS[p.id]?.selos ?? []).map((s) => (
                       <span
                         key={s}
-                        className="rounded-full border border-border/60 bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-muted"
+                        className="rounded-full border border-border/60 bg-surface-2 px-2 py-0.5 text-[12px] font-medium text-muted"
                       >
                         {SELOS[s]}
                       </span>

@@ -221,7 +221,7 @@ export default function PericiaPage() {
                     <a
                       key={tema}
                       href={`/paraopeba/auditoria?tema=${tema}`}
-                      className="rounded-full border border-border px-2 py-0.5 text-[11px] text-text-soft hover:border-primary hover:text-primary"
+                      className="rounded-full border border-border px-2 py-0.5 text-[12px] text-text-soft hover:border-primary hover:text-primary"
                       title="Ver o que a auditoria independente acompanhou neste eixo"
                     >
                       {TEMA_AJRI_LABEL[tema]}

@@ -118,7 +118,7 @@ export default function PaginaMapaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalOperacoes} Eventos
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             100% com coordenadas geográficas exatas.
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function PaginaMapaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalPaisesTeatro} Nações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Conflitos em todos os continentes.
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function PaginaMapaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalPMCs + COBERTURA_OPERACOES_MILITARES.totalContratadasDefesa} Entidades
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Corporações bélicas e mercenários privados.
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function PaginaMapaOperacoesMilitares() {
           <div className="mt-2 text-2xl font-bold text-text">
             {COBERTURA_OPERACOES_MILITARES.totalComConexaoBrasilOuLatam} Ações
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Golpes e intervenções na região.
           </div>
         </div>

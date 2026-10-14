@@ -148,7 +148,7 @@ export default function IndiceRiscoDireitosCard({
             O score geral (0–100) é a <strong>média ponderada</strong> de quatro
             dimensões, cada uma também de 0 a 100:
           </p>
-          <p className="overflow-x-auto rounded bg-surface px-3 py-2 font-mono text-[.72rem] text-text">
+          <p className="overflow-x-auto rounded bg-surface px-3 py-2 font-mono text-[0.75rem] text-text">
             0,30×Saúde + 0,30×Socioambiental + 0,25×Integridade + 0,15×Opacidade
           </p>
           <p>
@@ -241,7 +241,7 @@ export default function IndiceRiscoDireitosCard({
             </div>
           </div>
 
-          <p className="text-[.7rem] italic">
+          <p className="text-[0.75rem] italic">
             Legenda: <span className="font-mono">▲</span> limiar cruzado (somou
             pontos) · <span className="font-mono">·</span> medido, abaixo do
             limiar · <span className="font-mono">–</span> não coletado (não é

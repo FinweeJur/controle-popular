@@ -256,7 +256,7 @@ export function SeuNonoBusca({
                   <span className="flex items-center gap-2">
                     <span className="truncate text-sm font-medium text-text">{item.titulo}</span>
                     {item.rotulo ? (
-                      <span className="shrink-0 rounded bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                      <span className="shrink-0 rounded bg-primary/15 px-1.5 py-0.5 text-[12px] font-semibold text-primary">
                         {item.rotulo}
                       </span>
                     ) : null}

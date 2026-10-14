@@ -616,10 +616,10 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2 text-xs">
-                    <span className={`rounded-md border px-2 py-0.5 text-[10px] font-bold ${badge.cor}`}>
+                    <span className={`rounded-md border px-2 py-0.5 text-[12px] font-bold ${badge.cor}`}>
                       {badge.rotulo}
                     </span>
-                    <span className="font-mono text-[11px] text-text-soft">
+                    <span className="font-mono text-[12px] text-text-soft">
                       {op.duracaoEstimada}
                     </span>
                   </div>
@@ -628,7 +628,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                     <h3 className="font-bold text-sm text-text leading-snug line-clamp-2">
                       {op.codinome}
                     </h3>
-                    <div className="text-[11px] font-semibold text-primary mt-0.5">
+                    <div className="text-[12px] font-semibold text-primary mt-0.5">
                       📍 {op.localidadeFoco}, {op.paisTeatro}
                     </div>
                   </div>
@@ -637,7 +637,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                     {op.resumo}
                   </p>
 
-                  <div className="text-[10px] text-text-soft space-y-0.5 pt-2 border-t border-border/60">
+                  <div className="text-[12px] text-text-soft space-y-0.5 pt-2 border-t border-border/60">
                     <div className="flex justify-between">
                       <span>Patrocinadores:</span>
                       <strong className="text-text truncate max-w-[170px]">
@@ -668,14 +668,14 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                     <button
                       type="button"
                       onClick={() => setOperacaoSelecionada(op)}
-                      className="inline-flex items-center gap-1 text-[11px] text-text-soft hover:text-primary font-semibold"
+                      className="inline-flex items-center gap-1 text-[12px] text-text-soft hover:text-primary font-semibold"
                     >
                       <Eye size={12} />
                       <span>{ui.btnDetalhes}</span>
                     </button>
                     <Link
                       href={`/internacional/operacoes-militares/mapa?id=${encodeURIComponent(op.id)}`}
-                      className="inline-flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400 hover:underline font-semibold"
+                      className="inline-flex items-center gap-1 text-[12px] text-red-600 dark:text-red-400 hover:underline font-semibold"
                       title="Ver localização desta ação no mapa mundial"
                     >
                       <MapPin size={12} />
@@ -688,7 +688,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                       href={op.urlFonteOficial}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-bold"
+                      className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-bold"
                       title="Página da fonte oficial"
                     >
                       <span>Fonte</span>
@@ -706,7 +706,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
       {modoVisualizacao === "tabela" && (
         <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
           <table className="w-full text-left text-xs text-text">
-            <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[10px]">
+            <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[12px]">
               <tr>
                 <th scope="col" className="p-3">
                   <button
@@ -761,25 +761,25 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                     key={op.id}
                     className="transition-colors hover:bg-surface-2/60"
                   >
-                    <td className="p-3 font-mono font-semibold text-[11px] whitespace-nowrap">
+                    <td className="p-3 font-mono font-semibold text-[12px] whitespace-nowrap">
                       {op.duracaoEstimada}
                     </td>
                     <td className="p-3">
                       <div className="font-bold text-text">
                         {op.codinome}
                       </div>
-                      <p className="text-[11px] text-text-soft line-clamp-1 mt-0.5">
+                      <p className="text-[12px] text-text-soft line-clamp-1 mt-0.5">
                         {op.resumo}
                       </p>
                     </td>
                     <td className="p-3 whitespace-nowrap">
-                      <span className={`rounded-md border px-2 py-0.5 text-[10px] font-bold ${badge.cor}`}>
+                      <span className={`rounded-md border px-2 py-0.5 text-[12px] font-bold ${badge.cor}`}>
                         {badge.rotulo}
                       </span>
                     </td>
                     <td className="p-3 hidden sm:table-cell whitespace-nowrap">
                       <div className="font-semibold text-text">{op.paisTeatro}</div>
-                      <div className="text-[10px] text-text-soft">{op.localidadeFoco}</div>
+                      <div className="text-[12px] text-text-soft">{op.localidadeFoco}</div>
                     </td>
                     <td className="p-3 hidden md:table-cell text-text-soft">
                       {op.paisesPatrocinadores.join(", ")}
@@ -789,14 +789,14 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                         <button
                           type="button"
                           onClick={() => setOperacaoSelecionada(op)}
-                          className="rounded-lg bg-surface-2 px-2 py-1 text-[11px] font-semibold text-text hover:text-primary transition-colors"
+                          className="rounded-lg bg-surface-2 px-2 py-1 text-[12px] font-semibold text-text hover:text-primary transition-colors"
                           title="Ver ficha completa"
                         >
                           <Eye size={12} />
                         </button>
                         <Link
                           href={`/internacional/operacoes-militares/mapa?id=${encodeURIComponent(op.id)}`}
-                          className="rounded-lg bg-red-500/10 border border-red-500/20 px-2 py-1 text-[11px] font-semibold text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-colors inline-flex items-center gap-1"
+                          className="rounded-lg bg-red-500/10 border border-red-500/20 px-2 py-1 text-[12px] font-semibold text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-colors inline-flex items-center gap-1"
                           title="Ver localização desta ação no mapa mundial"
                         >
                           <MapPin size={11} />
@@ -805,7 +805,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
                           href={op.urlFonteOficial}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-lg border border-border bg-surface px-2 py-1 text-[11px] font-semibold text-primary hover:bg-surface-2 transition-colors inline-flex items-center gap-1"
+                          className="rounded-lg border border-border bg-surface px-2 py-1 text-[12px] font-semibold text-primary hover:bg-surface-2 transition-colors inline-flex items-center gap-1"
                           title="Abrir página oficial da fonte"
                         >
                           <ExternalLink size={11} />
@@ -854,7 +854,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
               <div>
                 <div className="flex items-center gap-2 text-xs font-bold mb-1">
                   <span
-                    className={`rounded-md border px-2 py-0.5 text-[10px] ${
+                    className={`rounded-md border px-2 py-0.5 text-[12px] ${
                       formatarBadgeTipo(operacaoSelecionada.tipoOperacao).cor
                     }`}
                   >
@@ -894,26 +894,26 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
               </div>
 
               <div className="border-l-2 border-primary pl-3 py-1 bg-primary/5 rounded-r-xl">
-                <span className="text-[11px] font-bold text-primary block mb-0.5">
+                <span className="text-[12px] font-bold text-primary block mb-0.5">
                   {ui.detalheDesfecho}
                 </span>
-                <p className="text-[11px] text-text-soft">
+                <p className="text-[12px] text-text-soft">
                   {operacaoSelecionada.desfechoSoberania}
                 </p>
               </div>
 
               {operacaoSelecionada.conexaoBrasilOuAmericaLatina && (
                 <div className="border-l-2 border-emerald-500 pl-3 py-1 bg-emerald-500/5 rounded-r-xl">
-                  <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 block mb-0.5">
+                  <span className="text-[12px] font-bold text-emerald-700 dark:text-emerald-400 block mb-0.5">
                     {ui.detalheLatam}
                   </span>
-                  <p className="text-[11px] text-text-soft">
+                  <p className="text-[12px] text-text-soft">
                     {operacaoSelecionada.conexaoBrasilOuAmericaLatina}
                   </p>
                 </div>
               )}
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-border text-[11px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-border text-[12px]">
                 <div>
                   <span className="text-text-soft block font-semibold">{ui.detalheBaixas}</span>
                   <strong className="text-red-600 dark:text-red-400 block mt-0.5">
@@ -941,7 +941,7 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
               </div>
 
               {/* Forças e PMCs */}
-              <div className="pt-2 border-t border-border space-y-1 text-[11px]">
+              <div className="pt-2 border-t border-border space-y-1 text-[12px]">
                 <div>
                   <strong className="text-text-soft">{ui.detalheForcas} </strong>
                   <span className="text-text">

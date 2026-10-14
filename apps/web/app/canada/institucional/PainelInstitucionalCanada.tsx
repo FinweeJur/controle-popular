@@ -229,7 +229,7 @@ export default function PainelInstitucionalCanada({
           <div className="rounded-xl bg-surface-2 p-4 space-y-2 border border-border">
             <div className="font-bold text-foreground text-sm flex items-center justify-between">
               <span>🏛️ Ouvidoria Federal CORE</span>
-              <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[10px] text-emerald-700 dark:text-emerald-300 font-semibold">
+              <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[12px] text-emerald-700 dark:text-emerald-300 font-semibold">
                 Sem Custo
               </span>
             </div>
@@ -258,7 +258,7 @@ export default function PainelInstitucionalCanada({
           <div className="rounded-xl bg-surface-2 p-4 space-y-2 border border-border">
             <div className="font-bold text-foreground text-sm flex items-center justify-between">
               <span>📋 Pedidos de Informação ATIP</span>
-              <span className="rounded bg-blue-500/10 px-1.5 py-0.5 text-[10px] text-blue-700 dark:text-blue-300 font-semibold">
+              <span className="rounded bg-blue-500/10 px-1.5 py-0.5 text-[12px] text-blue-700 dark:text-blue-300 font-semibold">
                 LAI Canadense
               </span>
             </div>

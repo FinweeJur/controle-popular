@@ -65,7 +65,7 @@ export function SecaoCusto({ cidade, custo, fonteCamara, vereadoresDaCasa, anoPa
               </p>
             )}
             {custo.competencia && (
-              <p className="mt-1.5 text-[11px] text-text-soft">
+              <p className="mt-1.5 text-[12px] text-text-soft">
                 Valor vigente em {formatDateBR(custo.competencia).slice(3)}. É
                 o mesmo para todos os {vereadoresDaCasa} vereadores — fixado
                 por lei, não por desempenho.
@@ -87,13 +87,13 @@ export function SecaoCusto({ cidade, custo, fonteCamara, vereadoresDaCasa, anoPa
                   <span className="font-tabular text-base font-semibold text-text">
                     <Moeda value={a.total} />
                   </span>
-                  <span className="text-[11px] text-text-soft">
+                  <span className="text-[12px] text-text-soft">
                     {formatNumberBR(a.qtd)} desp.
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="mt-2 text-[11px] text-text-soft">
+            <p className="mt-2 text-[12px] text-text-soft">
               Custeio do gabinete: material de escritório, serviços
               postais, gráfica e afins.{" "}
               {anoParcial != null && (

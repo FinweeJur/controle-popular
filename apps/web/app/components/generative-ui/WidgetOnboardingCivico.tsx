@@ -125,7 +125,7 @@ export default function WidgetOnboardingCivico({
                 {selecionado ? (
                   <CheckCircle2 size={16} className="text-primary" />
                 ) : (
-                  <span className="text-[10px] uppercase font-bold text-text-soft">
+                  <span className="text-[12px] uppercase font-bold text-text-soft">
                     Passo {idx + 1}
                   </span>
                 )}

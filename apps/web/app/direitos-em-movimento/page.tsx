@@ -147,7 +147,7 @@ export default async function DireitosEmMovimentoHub() {
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>
-              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Memória Operária</span>
+              <span className="text-[12px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Memória Operária</span>
               <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
                 Linha do Tempo das Lutas
               </h3>
@@ -166,7 +166,7 @@ export default async function DireitosEmMovimentoHub() {
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>
-              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Biblioteca Jurídica</span>
+              <span className="text-[12px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Biblioteca Jurídica</span>
               <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
                 Que Lei Protege Isso
               </h3>
@@ -185,7 +185,7 @@ export default async function DireitosEmMovimentoHub() {
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>
-              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ SUS & Vida</span>
+              <span className="text-[12px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ SUS & Vida</span>
               <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
                 Saúde Pública & SUS
               </h3>
@@ -207,7 +207,7 @@ export default async function DireitosEmMovimentoHub() {
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>
-              <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Conta de Luz e Água</span>
+              <span className="text-[12px] font-bold uppercase text-amber-600 dark:text-amber-400">✦ Conta de Luz e Água</span>
               <h3 className="font-display text-base font-bold text-foreground group-hover:text-amber-500 mt-1">
                 Tarifa Social de Água & Luz
               </h3>
@@ -402,7 +402,7 @@ function PortaCard({
             {titulo}
           </h2>
           <p className="mt-2 text-[.95em] text-text-soft">{descricao}</p>
-          <p className="mt-3 text-[11px] font-medium text-text-soft">{numero}</p>
+          <p className="mt-3 text-[12px] font-medium text-text-soft">{numero}</p>
           <span className="mt-5 font-medium text-primary">{cta}</span>
         </a>
       </BorderGlow>

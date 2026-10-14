@@ -284,7 +284,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             {agregadosDinamicos.totalPaises} de {coberturaEstatica.totalPaises}
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Reino Unido, Alemanha, França, Holanda e mais.
           </div>
         </div>
@@ -297,7 +297,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             {agregadosDinamicos.totalLitigiosTransnacionais + agregadosDinamicos.totalPrecedentesJurisdicionais}
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             High Court Londres, Roterdã e Paris.
           </div>
         </div>
@@ -310,7 +310,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             £ 36 bi
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             ~R$ 260 bilhões no caso BHP Mariana.
           </div>
         </div>
@@ -323,7 +323,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             {agregadosDinamicos.totalOperacoesCorporativas}
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Enel, Santander, EDP, Neoenergia, Total.
           </div>
         </div>
@@ -336,7 +336,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             {agregadosDinamicos.municipiosBrasileirosConectados}
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             Com territórios ou impactos catalogados.
           </div>
         </div>
@@ -349,7 +349,7 @@ export default function PainelEuropa({
           <div className="mt-2 text-2xl font-bold text-text">
             {agregadosDinamicos.totalRegulacoesDueDiligence}
           </div>
-          <div className="mt-1 text-[11px] text-text-soft">
+          <div className="mt-1 text-[12px] text-text-soft">
             LkSG Alemanha, EUDR e CSDDD europeus.
           </div>
         </div>
@@ -444,7 +444,7 @@ export default function PainelEuropa({
         {/* BARRA DE FILTROS FACETADOS (QUALIDADE 2) */}
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5 pt-2 border-t border-border/60">
           <div>
-            <label className="mb-1 block text-[11px] font-semibold text-text-soft">
+            <label className="mb-1 block text-[12px] font-semibold text-text-soft">
               País Sede / Origem
             </label>
             <select
@@ -462,7 +462,7 @@ export default function PainelEuropa({
           </div>
 
           <div>
-            <label className="mb-1 block text-[11px] font-semibold text-text-soft">
+            <label className="mb-1 block text-[12px] font-semibold text-text-soft">
               Categoria Cívica
             </label>
             <select
@@ -480,7 +480,7 @@ export default function PainelEuropa({
           </div>
 
           <div>
-            <label className="mb-1 block text-[11px] font-semibold text-text-soft">
+            <label className="mb-1 block text-[12px] font-semibold text-text-soft">
               Setor Econômico
             </label>
             <select
@@ -498,7 +498,7 @@ export default function PainelEuropa({
           </div>
 
           <div>
-            <label className="mb-1 block text-[11px] font-semibold text-text-soft">
+            <label className="mb-1 block text-[12px] font-semibold text-text-soft">
               Município Impactado
             </label>
             <select
@@ -516,7 +516,7 @@ export default function PainelEuropa({
           </div>
 
           <div>
-            <label className="mb-1 block text-[11px] font-semibold text-text-soft">
+            <label className="mb-1 block text-[12px] font-semibold text-text-soft">
               Status Processual
             </label>
             <select
@@ -602,12 +602,12 @@ export default function PainelEuropa({
                     <span className="text-xs font-bold text-text">
                       {item.paisOrigem}
                     </span>
-                    <span className="text-[10px] text-text-soft font-mono">
+                    <span className="text-[12px] text-text-soft font-mono">
                       ({item.codigoIsoPais})
                     </span>
                   </div>
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold border ${
+                    className={`rounded-full px-2.5 py-0.5 text-[12px] font-semibold border ${
                       item.categoria === "Litígio Transnacional"
                         ? "bg-red-500/10 border-red-500/30 text-red-700 dark:text-red-400"
                         : item.categoria === "Devida Diligência & Regulação"
@@ -634,7 +634,7 @@ export default function PainelEuropa({
 
                 {/* CONTEXTO CÍVICO SEU NONÔ (QUALIDADE 5: FRASES CURTAS) */}
                 <div className="mt-3 rounded-xl bg-primary/5 border border-primary/15 p-2.5">
-                  <div className="flex items-center gap-1 text-[11px] font-bold text-primary mb-1">
+                  <div className="flex items-center gap-1 text-[12px] font-bold text-primary mb-1">
                     <Sparkles size={12} />
                     <span>Resumo Seu Nonô</span>
                   </div>
@@ -658,7 +658,7 @@ export default function PainelEuropa({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-text-soft">Processo / Ato:</span>
-                    <span className="font-mono text-[11px] text-text">
+                    <span className="font-mono text-[12px] text-text">
                       {item.processoOuRegistroNumero}
                     </span>
                   </div>
@@ -678,7 +678,7 @@ export default function PainelEuropa({
                   )}
                   <div className="flex items-center justify-between">
                     <span className="text-text-soft">Status:</span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-text">
+                    <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-text">
                       <CheckCircle2 size={12} className="text-primary" />
                       {item.statusProcessual}
                     </span>
@@ -799,7 +799,7 @@ export default function PainelEuropa({
                       <div className="font-bold text-text">
                         {item.empresaEstrangeira}
                       </div>
-                      <div className="text-[11px] text-text-soft font-mono">
+                      <div className="text-[12px] text-text-soft font-mono">
                         {item.identificadorFiscalEstrangeiro}
                       </div>
                     </td>
@@ -807,7 +807,7 @@ export default function PainelEuropa({
                       <div className="text-text font-medium">
                         {item.empresaBrasileira}
                       </div>
-                      <div className="text-[10px] text-text-soft">
+                      <div className="text-[12px] text-text-soft">
                         {item.setorEconomico}
                       </div>
                     </td>
@@ -819,9 +819,9 @@ export default function PainelEuropa({
                     </td>
                     <td className="p-3 max-w-xs truncate" title={item.orgaoJulgadorOuRegulador}>
                       <div className="text-text truncate">{item.orgaoJulgadorOuRegulador}</div>
-                      <div className="text-[10px] font-mono text-text-soft">{item.processoOuRegistroNumero}</div>
+                      <div className="text-[12px] font-mono text-text-soft">{item.processoOuRegistroNumero}</div>
                     </td>
-                    <td className="p-3 whitespace-nowrap font-mono text-[11px] text-text-soft">
+                    <td className="p-3 whitespace-nowrap font-mono text-[12px] text-text-soft">
                       {item.dataAto}
                     </td>
                     <td className="p-3 whitespace-nowrap font-semibold text-text">
@@ -905,19 +905,19 @@ export default function PainelEuropa({
 
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <div className="p-3 rounded-xl bg-background border border-border">
-                  <span className="text-text-soft block text-[11px]">Órgão ou Tribunal</span>
+                  <span className="text-text-soft block text-[12px]">Órgão ou Tribunal</span>
                   <span className="font-semibold text-text">{itemSelecionado.orgaoJulgadorOuRegulador}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-background border border-border">
-                  <span className="text-text-soft block text-[11px]">Número do Processo</span>
+                  <span className="text-text-soft block text-[12px]">Número do Processo</span>
                   <span className="font-mono text-text">{itemSelecionado.processoOuRegistroNumero}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-background border border-border">
-                  <span className="text-text-soft block text-[11px]">Marco Legal Invocado</span>
+                  <span className="text-text-soft block text-[12px]">Marco Legal Invocado</span>
                   <span className="font-semibold text-text">{itemSelecionado.marcoLegal}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-background border border-border">
-                  <span className="text-text-soft block text-[11px]">Status Processual</span>
+                  <span className="text-text-soft block text-[12px]">Status Processual</span>
                   <span className="font-semibold text-text">{itemSelecionado.statusProcessual}</span>
                 </div>
               </div>

@@ -467,7 +467,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <div className="text-2xl font-bold font-mono text-text">
             {documentos.length}
           </div>
-          <div className="text-[10px] text-text-soft mt-1">
+          <div className="text-[12px] text-text-soft mt-1">
             Acervo histórico oficial auditado
           </div>
         </div>
@@ -480,7 +480,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <div className="text-2xl font-bold font-mono text-text">
             {orgaosUnicos.length}
           </div>
-          <div className="text-[10px] text-text-soft mt-1">
+          <div className="text-[12px] text-text-soft mt-1">
             CIA, FBI, SNI, CSIS, MI5, BND...
           </div>
         </div>
@@ -493,7 +493,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <div className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
             {documentos.filter((d) => d.paisesMencionados.includes("Brasil")).length}
           </div>
-          <div className="text-[10px] text-text-soft mt-1">
+          <div className="text-[12px] text-text-soft mt-1">
             Impacto direto no Brasil e América do Sul
           </div>
         </div>
@@ -506,7 +506,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <div className="text-2xl font-bold font-mono text-text">
             ~34 {ui.anosMedios}
           </div>
-          <div className="text-[10px] text-text-soft mt-1">
+          <div className="text-[12px] text-text-soft mt-1">
             Desclassificação por FOIA e Comissões
           </div>
         </div>
@@ -706,14 +706,14 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
 
         {/* PÍLULAS DE ACESSO RÁPIDO: ALIANÇAS E ÓRGÃOS DE DESTAQUE */}
         <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
-          <span className="text-[11px] text-text-soft font-semibold mr-1">Filtro rápido:</span>
+          <span className="text-[12px] text-text-soft font-semibold mr-1">Filtro rápido:</span>
           <button
             type="button"
             onClick={() => {
               setFiltroAlianca("__todas__");
               setFiltroOrgao("__todos__");
             }}
-            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-semibold transition-colors ${
               filtroAlianca === "__todas__" && filtroOrgao === "__todos__"
                 ? "bg-primary text-white"
                 : "bg-surface-2 text-text-soft hover:text-text"
@@ -724,7 +724,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroAlianca(filtroAlianca === "Five Eyes" ? "__todas__" : "Five Eyes")}
-            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-semibold transition-colors ${
               filtroAlianca === "Five Eyes"
                 ? "bg-sky-600 text-white font-bold"
                 : "bg-sky-500/10 text-sky-700 dark:text-sky-300 hover:bg-sky-500/20"
@@ -735,7 +735,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroAlianca(filtroAlianca === "Nine Eyes" ? "__todas__" : "Nine Eyes")}
-            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-semibold transition-colors ${
               filtroAlianca === "Nine Eyes"
                 ? "bg-indigo-600 text-white font-bold"
                 : "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20"
@@ -746,7 +746,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroAlianca(filtroAlianca === "Twelve Eyes" ? "__todas__" : "Twelve Eyes")}
-            className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-semibold transition-colors ${
               filtroAlianca === "Twelve Eyes"
                 ? "bg-purple-600 text-white font-bold"
                 : "bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-500/20"
@@ -758,7 +758,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroOrgao(filtroOrgao === "FBI" ? "__todos__" : "FBI")}
-            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2 py-1 text-[12px] font-semibold transition-colors ${
               filtroOrgao === "FBI"
                 ? "bg-primary text-white font-bold"
                 : "bg-surface-2 text-text-soft hover:text-text"
@@ -769,7 +769,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroOrgao(filtroOrgao === "NSA" ? "__todos__" : "NSA")}
-            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2 py-1 text-[12px] font-semibold transition-colors ${
               filtroOrgao === "NSA"
                 ? "bg-primary text-white font-bold"
                 : "bg-surface-2 text-text-soft hover:text-text"
@@ -780,7 +780,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           <button
             type="button"
             onClick={() => setFiltroOrgao(filtroOrgao === "CIA" ? "__todos__" : "CIA")}
-            className={`rounded-lg px-2 py-1 text-[11px] font-semibold transition-colors ${
+            className={`rounded-lg px-2 py-1 text-[12px] font-semibold transition-colors ${
               filtroOrgao === "CIA"
                 ? "bg-primary text-white font-bold"
                 : "bg-surface-2 text-text-soft hover:text-text"
@@ -799,7 +799,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
           filtroAlianca !== "__todas__" ||
           filtroNatureza !== "__todas__" ||
           filtroEscopo !== "todos") && (
-          <div className="flex items-center justify-between text-[11px] text-text-soft pt-1">
+          <div className="flex items-center justify-between text-[12px] text-text-soft pt-1">
             <span>
               Exibindo <strong>{documentosFiltrados.length}</strong> de {documentos.length} documentos
             </span>
@@ -834,11 +834,11 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                     </div>
                     <div className="flex items-center gap-1">
                       {citaBrasil && (
-                        <span className="rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-1.5 py-0.5 text-[9px] uppercase">
+                        <span className="rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-1.5 py-0.5 text-[12px] uppercase">
                           🇧🇷 Brasil
                         </span>
                       )}
-                      <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] text-text-soft font-mono">
+                      <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[12px] text-text-soft font-mono">
                         {doc.quantidadePaginas}p
                       </span>
                     </div>
@@ -848,12 +848,12 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                   {(doc.aliancaInteligencia || doc.naturezaDocumento) && (
                     <div className="flex flex-wrap items-center gap-1">
                       {doc.aliancaInteligencia && (
-                        <span className="rounded-md bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.5 text-[9px]">
+                        <span className="rounded-md bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.5 text-[12px]">
                           👁️ {doc.aliancaInteligencia}
                         </span>
                       )}
                       {doc.naturezaDocumento && (
-                        <span className="rounded-md bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.5 text-[9px]">
+                        <span className="rounded-md bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.5 text-[12px]">
                           {doc.naturezaDocumento}
                         </span>
                       )}
@@ -864,7 +864,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                     {doc.titulo}
                   </h3>
 
-                  <p className="text-[11px] text-text-soft line-clamp-3 leading-relaxed">
+                  <p className="text-[12px] text-text-soft line-clamp-3 leading-relaxed">
                     {doc.resumo}
                   </p>
 
@@ -872,14 +872,14 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                     {doc.temas.slice(0, 3).map((tema) => (
                       <span
                         key={tema}
-                        className="rounded-md bg-surface-2 px-1.5 py-0.5 text-[10px] text-text-soft font-medium"
+                        className="rounded-md bg-surface-2 px-1.5 py-0.5 text-[12px] text-text-soft font-medium"
                       >
                         {tema}
                       </span>
                     ))}
                   </div>
 
-                  <div className="text-[10px] text-text-soft space-y-0.5 pt-2 border-t border-border/60">
+                  <div className="text-[12px] text-text-soft space-y-0.5 pt-2 border-t border-border/60">
                     <div className="flex justify-between">
                       <span>Produção Original:</span>
                       <strong className="text-text font-mono">{doc.dataPublicacao}</strong>
@@ -904,14 +904,14 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                     <button
                       type="button"
                       onClick={() => setDocumentoSelecionado(doc)}
-                      className="inline-flex items-center gap-1 text-[11px] text-text-soft hover:text-primary font-semibold"
+                      className="inline-flex items-center gap-1 text-[12px] text-text-soft hover:text-primary font-semibold"
                     >
                       <Eye size={12} />
                       <span>{ui.btnDetalhes}</span>
                     </button>
                     <Link
                       href={`/internacional/desclassificados/mapa?id=${encodeURIComponent(doc.id)}`}
-                      className="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+                      className="inline-flex items-center gap-1 text-[12px] text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
                       title="Ver localização deste relatório no mapa mundial"
                     >
                       <MapPin size={12} />
@@ -924,7 +924,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                       href={doc.urlPdfOriginal}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-bold"
+                      className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-bold"
                       title="Download do PDF oficial com carimbos originais"
                     >
                       <FileDown size={12} />
@@ -934,7 +934,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                       href={doc.urlOficialCustodia}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline font-bold"
+                      className="inline-flex items-center gap-1 text-[12px] text-primary hover:underline font-bold"
                       title="Página do documento na instituição arquivística oficial"
                     >
                       <ExternalLink size={11} />
@@ -951,7 +951,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
       {modoVisualizacao === "tabela" && (
         <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
           <table className="w-full text-left text-xs text-text">
-            <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[10px]">
+            <thead className="border-b border-border bg-surface-2 text-text-soft uppercase tracking-wider text-[12px]">
               <tr>
                 <th scope="col" className="p-3">
                   <button
@@ -1013,10 +1013,10 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                       citaBrasil ? "bg-primary/5" : ""
                     }`}
                   >
-                    <td className="p-3 font-mono font-semibold text-[11px] whitespace-nowrap">
+                    <td className="p-3 font-mono font-semibold text-[12px] whitespace-nowrap">
                       {doc.dataPublicacao}
                     </td>
-                    <td className="p-3 font-mono text-[11px] text-emerald-600 dark:text-emerald-400 hidden sm:table-cell whitespace-nowrap">
+                    <td className="p-3 font-mono text-[12px] text-emerald-600 dark:text-emerald-400 hidden sm:table-cell whitespace-nowrap">
                       {doc.dataDesclassificacao}
                     </td>
                     <td className="p-3 whitespace-nowrap">
@@ -1026,31 +1026,31 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                         </span>
                         <span className="font-bold text-primary">{doc.orgaoInteligencia}</span>
                       </div>
-                      <div className="text-[10px] text-text-soft">{doc.codigoIsoPais}</div>
+                      <div className="text-[12px] text-text-soft">{doc.codigoIsoPais}</div>
                     </td>
                     <td className="p-3">
                       <div className="font-bold text-text flex items-center gap-1.5 flex-wrap">
                         <span>{doc.titulo}</span>
                         {citaBrasil && (
-                          <span className="rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-1 py-0.2 text-[9px] uppercase">
+                          <span className="rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-1 py-0.2 text-[12px] uppercase">
                             🇧🇷 Brasil
                           </span>
                         )}
                         {doc.aliancaInteligencia && (
-                          <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[9px]">
+                          <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[12px]">
                             👁️ {doc.aliancaInteligencia}
                           </span>
                         )}
                         {doc.naturezaDocumento && (
-                          <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[9px]">
+                          <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[12px]">
                             {doc.naturezaDocumento}
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] text-text-soft line-clamp-1 mt-0.5">
+                      <p className="text-[12px] text-text-soft line-clamp-1 mt-0.5">
                         {doc.resumo}
                       </p>
-                      <div className="text-[10px] text-text-soft font-mono mt-0.5">
+                      <div className="text-[12px] text-text-soft font-mono mt-0.5">
                         {doc.numeroRegistroOficial}
                       </div>
                     </td>
@@ -1062,14 +1062,14 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                         <button
                           type="button"
                           onClick={() => setDocumentoSelecionado(doc)}
-                          className="rounded-lg bg-surface-2 px-2 py-1 text-[11px] font-semibold text-text hover:text-primary transition-colors"
+                          className="rounded-lg bg-surface-2 px-2 py-1 text-[12px] font-semibold text-text hover:text-primary transition-colors"
                           title="Ver ficha arquivística"
                         >
                           <Eye size={12} />
                         </button>
                         <Link
                           href={`/internacional/desclassificados/mapa?id=${encodeURIComponent(doc.id)}`}
-                          className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors inline-flex items-center gap-1"
+                          className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 text-[12px] font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors inline-flex items-center gap-1"
                           title="Ver localização deste relatório no mapa mundial"
                         >
                           <MapPin size={11} />
@@ -1078,7 +1078,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                           href={doc.urlPdfOriginal}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-lg bg-primary px-2 py-1 text-[11px] font-bold text-white hover:opacity-90 transition-opacity inline-flex items-center gap-1"
+                          className="rounded-lg bg-primary px-2 py-1 text-[12px] font-bold text-white hover:opacity-90 transition-opacity inline-flex items-center gap-1"
                           title="Baixar PDF original"
                         >
                           <FileDown size={11} />
@@ -1088,7 +1088,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                           href={doc.urlOficialCustodia}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-lg border border-border bg-surface px-2 py-1 text-[11px] font-semibold text-primary hover:bg-surface-2 transition-colors inline-flex items-center gap-1"
+                          className="rounded-lg border border-border bg-surface px-2 py-1 text-[12px] font-semibold text-primary hover:bg-surface-2 transition-colors inline-flex items-center gap-1"
                           title="Abrir página oficial do arquivo"
                         >
                           <ExternalLink size={11} />
@@ -1130,16 +1130,16 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-primary mb-1">
                   <span>{documentoSelecionado.bandeiraPais}</span>
                   <span>{documentoSelecionado.nomeCompletoOrgao}</span>
-                  <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[10px] text-text-soft">
+                  <span className="rounded bg-surface-2 px-1.5 py-0.2 text-[12px] text-text-soft">
                     {documentoSelecionado.continente}
                   </span>
                   {documentoSelecionado.aliancaInteligencia && (
-                    <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[10px]">
+                    <span className="rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 font-bold px-1.5 py-0.2 text-[12px]">
                       👁️ {documentoSelecionado.aliancaInteligencia}
                     </span>
                   )}
                   {documentoSelecionado.naturezaDocumento && (
-                    <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[10px]">
+                    <span className="rounded bg-purple-500/10 text-purple-700 dark:text-purple-300 font-semibold px-1.5 py-0.2 text-[12px]">
                       {documentoSelecionado.naturezaDocumento}
                     </span>
                   )}
@@ -1161,7 +1161,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
             <div className="space-y-3 text-xs text-text leading-relaxed">
               <div>
                 <span className="text-text-soft font-semibold">{ui.detalheNumeroRegistro} </span>
-                <strong className="font-mono text-primary text-[11px]">
+                <strong className="font-mono text-primary text-[12px]">
                   {documentoSelecionado.numeroRegistroOficial}
                 </strong>
               </div>
@@ -1171,15 +1171,15 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
               </div>
 
               <div className="border-l-2 border-emerald-500 pl-3 py-1 bg-emerald-500/5 rounded-r-xl">
-                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 block mb-0.5">
+                <span className="text-[12px] font-bold text-emerald-700 dark:text-emerald-400 block mb-0.5">
                   {ui.detalheContextoBrasil}
                 </span>
-                <p className="text-[11px] text-text-soft">
+                <p className="text-[12px] text-text-soft">
                   {documentoSelecionado.contextoBrasil}
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-border text-[11px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-border text-[12px]">
                 <div>
                   <span className="text-text-soft block">Data Original:</span>
                   <strong className="font-mono">{documentoSelecionado.dataPublicacao}</strong>
@@ -1202,7 +1202,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                 </div>
               </div>
 
-              <div className="space-y-1.5 pt-2 border-t border-border text-[11px]">
+              <div className="space-y-1.5 pt-2 border-t border-border text-[12px]">
                 <div>
                   <strong className="text-text-soft">{ui.detalhePaises} </strong>
                   <span className="text-text">{documentoSelecionado.paisesMencionados.join(", ")}</span>
@@ -1217,7 +1217,7 @@ export default function PainelDesclassificados({ documentos }: PainelDesclassifi
                     {documentoSelecionado.assuntos.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] text-text-soft"
+                        className="rounded bg-surface-2 px-1.5 py-0.5 text-[12px] text-text-soft"
                       >
                         #{tag}
                       </span>

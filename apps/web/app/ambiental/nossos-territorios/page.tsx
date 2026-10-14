@@ -63,7 +63,7 @@ export default function NossosTerritoriosIndexPage() {
               <span className="text-2xl">🌱</span>
               <h2 className="mt-2 font-display text-xl font-bold text-text">{ter.nome}</h2>
               <p className="mt-2 text-xs text-text-soft leading-relaxed">{ter.resumoVozCidada}</p>
-              <div className="mt-3 text-[0.72rem] text-text-soft">
+              <div className="mt-3 text-[0.75rem] text-text-soft">
                 Biomas: {ter.biomas.join(" / ")}
               </div>
             </div>

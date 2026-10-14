@@ -19,12 +19,12 @@ export default function CartaoPonteSanfona({ ponte }: { ponte: PonteEntreFrentes
 
   const badgeConfianca =
     ponte.nivelConfianca === "fato_documentado" ? (
-      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[0.72rem] font-semibold text-emerald-800 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-800">
+      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[0.75rem] font-semibold text-emerald-800 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-800">
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
         Fato documentado
       </span>
     ) : (
-      <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[0.72rem] font-semibold text-amber-800 border border-amber-300 dark:bg-amber-950 dark:text-amber-300 dark:border-amber-800">
+      <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[0.75rem] font-semibold text-amber-800 border border-amber-300 dark:bg-amber-950 dark:text-amber-300 dark:border-amber-800">
         <span className="h-1.5 w-1.5 rounded-full bg-amber-600" />
         Sinal de investigação
       </span>
@@ -57,7 +57,7 @@ export default function CartaoPonteSanfona({ ponte }: { ponte: PonteEntreFrentes
         )}
 
         {ponte.fonteOficial && (
-          <div className="mt-2 text-[0.72rem] text-text-soft opacity-80">
+          <div className="mt-2 text-[0.75rem] text-text-soft opacity-80">
             Fonte do vínculo: {ponte.fonteOficial}
           </div>
         )}

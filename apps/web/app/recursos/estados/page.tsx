@@ -168,7 +168,7 @@ export default function RecursosEstadosPage() {
             <div className="font-mono text-xl font-extrabold text-foreground">
               {cob.vazaoTotalM3AnoBilhoes.toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bi m³/ano
             </div>
-            <p className="text-[11px] text-muted leading-tight">
+            <p className="text-[12px] text-muted leading-tight">
               {cob.totalInterferenciasAguaNacional.toLocaleString("pt-BR")} interferências ativas (SNIRH/ANA).
             </p>
           </div>
@@ -182,7 +182,7 @@ export default function RecursosEstadosPage() {
             <div className="font-mono text-xl font-extrabold text-foreground">
               {cob.assimetriaTarifariaMediaNacional.toFixed(2).replace(".", ",")}x
             </div>
-            <p className="text-[11px] text-muted leading-tight">
+            <p className="text-[12px] text-muted leading-tight">
               Cidadão paga em média 75% a mais por kWh que a grande indústria.
             </p>
           </div>
@@ -196,7 +196,7 @@ export default function RecursosEstadosPage() {
             <div className="font-mono text-xl font-extrabold text-foreground">
               R$ {cob.totalGastoCombustivelPublicoBrlBilhoes.toFixed(1).replace(".", ",")} Bi/ano
             </div>
-            <p className="text-[11px] text-muted leading-tight">
+            <p className="text-[12px] text-muted leading-tight">
               Compras públicas de abastecimento registradas no PNCP e TCEs.
             </p>
           </div>
@@ -210,7 +210,7 @@ export default function RecursosEstadosPage() {
             <div className="font-mono text-xl font-extrabold text-foreground">
               R$ {cob.totalPppsContratadasBrlBilhoes.toFixed(1).replace(".", ",")} Bi
             </div>
-            <p className="text-[11px] text-muted leading-tight">
+            <p className="text-[12px] text-muted leading-tight">
               Investimentos contratados em rodovias, transporte e saneamento.
             </p>
           </div>
@@ -224,7 +224,7 @@ export default function RecursosEstadosPage() {
             <div className="font-mono text-xl font-extrabold text-foreground">
               R$ {cob.totalEmendasEstaduaisBrlBilhoes.toFixed(1).replace(".", ",")} Bi
             </div>
-            <p className="text-[11px] text-muted leading-tight">
+            <p className="text-[12px] text-muted leading-tight">
               Orçamento impositivo anual votado nas 27 Assembleias Legislativas.
             </p>
           </div>

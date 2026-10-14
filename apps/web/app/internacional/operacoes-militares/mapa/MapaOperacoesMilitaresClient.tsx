@@ -297,7 +297,7 @@ export default function MapaOperacoesMilitaresClient({
               <strong>{operacoes.length}</strong> teatros e contratos geolocalizados
             </span>
           </div>
-          <span className="hidden sm:inline text-[11px] text-slate-500">
+          <span className="hidden sm:inline text-[12px] text-slate-500">
             Projeção Cártográfica Equirretangular · Clique no marcador para inspecionar
           </span>
         </div>
@@ -442,7 +442,7 @@ export default function MapaOperacoesMilitaresClient({
               <span>Proxy / Guerrilhas</span>
             </span>
           </div>
-          <span className="text-[11px] text-slate-400">
+          <span className="text-[12px] text-slate-400">
             {operacoesVisiveis.length} eventos no mapa
           </span>
         </div>
@@ -646,14 +646,14 @@ export default function MapaOperacoesMilitaresClient({
                   style={{ backgroundColor: cor }}
                 />
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between text-[11px]">
+                  <div className="flex items-center justify-between text-[12px]">
                     <span className="font-bold text-foreground truncate">{op.codinome}</span>
                     <span className="font-mono text-muted">{op.anoInicio}</span>
                   </div>
                   <div className="text-xs text-muted line-clamp-1 leading-snug">
                     {op.titulo}
                   </div>
-                  <div className="text-[10px] text-muted truncate mt-0.5">
+                  <div className="text-[12px] text-muted truncate mt-0.5">
                     📍 {op.localidadeFoco}, {op.paisTeatro}
                   </div>
                 </div>
