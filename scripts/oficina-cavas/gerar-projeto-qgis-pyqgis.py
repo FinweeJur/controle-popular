@@ -19,14 +19,67 @@ from pathlib import Path
 from qgis.core import (  # noqa: E402
     QgsApplication,
     QgsCoordinateReferenceSystem,
+    QgsFillSymbol,
+    QgsMarkerSymbol,
     QgsProject,
     QgsRasterLayer,
+    QgsSingleSymbolRenderer,
     QgsVectorLayer,
 )
 
 _RAIZ = Path(__file__).resolve().parents[2]
 _CACHE = _RAIZ / "scripts" / ".cache" / "cavas-calibracao"
 _SAIDA = _CACHE / "qgis"
+
+
+def _estilizar_cenas(layer: QgsVectorLayer) -> None:
+    """Cenas CBERS: contorno azul, SEM preenchimento — o basemap fica visivel.
+
+    O defeito medido 14/10: preenchimento verde opaco cobria o OSM inteiro.
+    """
+    simb = QgsFillSymbol.createSimple({
+        "color": "0,0,255,0",       # alpha 0 = invisivel
+        "outline_color": "0,80,200,160",
+        "outline_width": "0.4",
+        "style": "no",
+    })
+    layer.setRenderer(QgsSingleSymbolRenderer(simb))
+
+
+def _estilizar_ibama(layer: QgsVectorLayer) -> None:
+    """Autuados IBAMA: triangulo vermelho, transparente no centro."""
+    simb = QgsMarkerSymbol.createSimple({
+        "name": "triangle",
+        "color": "220,20,60,140",
+        "outline_color": "150,0,40,200",
+        "outline_width": "0.3",
+        "size": "3",
+    })
+    layer.setRenderer(QgsSingleSymbolRenderer(simb))
+
+
+def _estilizar_recortes(layer: QgsVectorLayer) -> None:
+    """Recortes: circulo verde-escuro uniforme.
+
+    O score_cava fica no painel de atributos; filtrar la e mais
+    simples que montar renderer graduado no PyQGIS (medido 14/10:
+    QgsGradientColorRamp nao aceita string direto no construtor).
+    """
+    simb = QgsMarkerSymbol.createSimple({
+        "name": "circle",
+        "color": "34,139,34,180",   # verde escuro
+        "outline_color": "0,80,0,200",
+        "outline_width": "0.2",
+        "size": "2",
+    })
+    layer.setRenderer(QgsSingleSymbolRenderer(simb))
+
+
+_ESTILOS = {
+    "Cenas CBERS-4A": _estilizar_cenas,
+    "Autuados IBAMA MG": _estilizar_ibama,
+    "Recortes cavas": _estilizar_recortes,
+}
 
 
 def main() -> int:
@@ -48,7 +101,7 @@ def main() -> int:
     else:
         print("basemap OSM: FALHOU (rede?); seguindo sem ele")
 
-    # ─── 2. Camadas vetoriais dos GeoJSONs ────────────────────────────────
+    # ─── 2. Camadas vetoriais dos GeoJSONs, com estilo proprio ────────────
     camadas = [
         (_SAIDA / "cenas-cbers.geojson", "Cenas CBERS-4A", "Polygon"),
         (_SAIDA / "positivos-ibama.geojson", "Autuados IBAMA MG", "Point"),
@@ -61,13 +114,15 @@ def main() -> int:
         uri = f"{caminho}|layername={caminho.stem}"
         layer = QgsVectorLayer(uri, nome, "ogr")
         if not layer.isValid():
-            # Fallback sem layername (GeoJSON simples)
             layer = QgsVectorLayer(str(caminho), nome, "ogr")
-        if layer.isValid():
-            projeto.addMapLayer(layer)
-            print(f"{nome}: OK ({layer.featureCount()} feats)")
-        else:
+        if not layer.isValid():
             print(f"{nome}: FALHOU ao carregar")
+            continue
+        estilo = _ESTILOS.get(nome)
+        if estilo:
+            estilo(layer)
+        projeto.addMapLayer(layer)
+        print(f"{nome}: OK ({layer.featureCount()} feats, estilo aplicado)")
 
     # ─── 3. Extent do mapa (MG) ───────────────────────────────────────────
     canvas = app.mapCanvas() if hasattr(app, "mapCanvas") else None
