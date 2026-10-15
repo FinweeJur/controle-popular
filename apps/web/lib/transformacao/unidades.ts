@@ -81,6 +81,32 @@ const FATORES: Record<string, Record<string, Record<string, number>>> = {
   },
 };
 
+/** Tabela de um dominio: unidade origem → (unidade destino → fator). */
+type Tabela = Record<string, Record<string, number>>;
+
+/**
+ * Fator direto de→para, ou `undefined` quando a tabela nao traz o par.
+ * Funcao separada do `converter` porque o CodeScene mede complexidade
+ * ciclomatica POR funcao (teto 9): com tudo num so corpo, `converter`
+ * chegou a 11 (medido na CI de 15/10/2026). Quebrar em pecas com um
+ * proposito cada e o proprio remedio indicado no Pilar 3 do plano.
+ */
+function fatorDireto(tabela: Tabela, de: string, para: string): number | undefined {
+  return tabela[de]?.[para];
+}
+
+/**
+ * Fator transitivo de 1 nivel: de → intermediario → para. Devolve o
+ * primeiro caminho que fecha, no produto dos dois trechos.
+ */
+function fatorTransito(tabela: Tabela, de: string, para: string): number | undefined {
+  for (const [intermediario, trecho] of Object.entries(tabela[de] ?? {})) {
+    const fim = tabela[intermediario]?.[para];
+    if (fim !== undefined) return trecho * fim;
+  }
+  return undefined;
+}
+
 /**
  * Converte valor entre unidades do mesmo dominio.
  *
@@ -90,13 +116,11 @@ const FATORES: Record<string, Record<string, Record<string, number>>> = {
 export function converter(valor: number, de: string, para: string, dominio: string): number {
   if (de === para) return valor;
   const tabela = FATORES[dominio];
-  const fator = tabela?.[de]?.[para];
-  if (fator !== undefined) return valor * fator;
-  for (const intermediario of Object.keys(tabela?.[de] ?? {})) {
-    const fator2 = tabela?.[intermediario]?.[para];
-    if (fator2 !== undefined) return valor * tabela[de][intermediario] * fator2;
-  }
-  throw new Error(`Conversao ${dominio}:${de}→${para} nao encontrada`);
+  const fator = tabela
+    ? (fatorDireto(tabela, de, para) ?? fatorTransito(tabela, de, para))
+    : undefined;
+  if (fator === undefined) throw new Error(`Conversao ${dominio}:${de}→${para} nao encontrada`);
+  return valor * fator;
 }
 
 const MOEDAS: Record<string, string> = {
