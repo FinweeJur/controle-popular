@@ -1,18 +1,18 @@
 {
-  "geradoEm": "2026-10-15T12:53:59.131Z",
+  "geradoEm": "2026-10-15T16:18:19.954Z",
   "totalPecas": 450,
-  "baselineSha": "8eb3d74612bc41bb",
+  "baselineSha": "d0f6de0324a8368b",
   "rebuild": false,
-  "novos": [
+  "novos": [],
+  "modificados": [
     {
-      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-15|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE",
-      "frente": "judiciario",
-      "rota": "/judiciario/contatos",
-      "titulo": "CONCEDE LICENÇA PATERNIDADE",
-      "fonteUrl": "/judiciario/contatos",
-      "texto": "OUTRO publicada em 2026-10-15. Pessoa: CONCEDE LICENÇA PATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+      "id": "blog:repasse-acordo-vale-853-municipios-minas",
+      "frente": "geral",
+      "rota": "/noticias/repasse-acordo-vale-853-municipios-minas",
+      "titulo": "Acordo de Reparação de Brumadinho repassa R$ 1,64 bilhão aos 853 municípios mineiros",
+      "fonteUrl": "/noticias/repasse-acordo-vale-853-municipios-minas",
+      "texto": "O rateio do Acordo de Reparação de Brumadinho distribuiu R$ 1,64 bilhão a todos os municípios mineiros. A lista traz o valor por cidade e mais 361 repasses complementares.\nO Acordo de Reparação de Brumadinho repassou R$ 1,64 bilhão aos municípios de Minas. O rateio principal alcançou as 853 cidades, segundo o [Governo de MG](https://www.mg.gov.br/pro-brumadinho/pagina/reparacao-brumadinho-repasses-aos-853-municipios-de-mg). O dado foi atualizado na fonte em 11/08/2026. A lista do portal traz o valor de cada município.\nBelo Horizonte recebeu o maior valor, de R$ 50 milhões. Contagem aparece com R$ 31 milhões e Uberlândia com R$ 30 milhões. Betim e Divinópolis ficaram com R$ 15 milhões cada. Brumadinho, epicentro do crime, consta com R$ 2,5 milhões."
     }
   ],
-  "modificados": [],
   "removidos": []
 }

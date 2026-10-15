@@ -1,10 +1,10 @@
 {
-  "data": "2026-10-14",
-  "geradoEm": "2026-10-15T13:33:56.275Z",
+  "data": "2026-10-15",
+  "geradoEm": "2026-10-15T16:18:19.407Z",
   "origem": "Banco Central do Brasil (PTAX)",
   "fonte": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/",
   "cotacoes": {
-    "USD": 5.0441,
-    "EUR": 5.6749
+    "USD": 5.0521,
+    "EUR": 5.6609
   }
 }
