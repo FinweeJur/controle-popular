@@ -1,88 +1,139 @@
 #!/usr/bin/env node
 /**
- * scripts/whatsapp-processor.mts — Processador autônomo de mensagens WhatsApp.
+ * scripts/whatsapp-processor.mts — Processador WhatsApp via Hermes Agent.
  *
- * Lê novas mensagens de logs/whatsapp-inbox.jsonl, faz busca na internet
- * via DuckDuckGo e grava respostas em logs/whatsapp-outbox.jsonl.
- * O bot Go (bots/whatsapp/whatsapp-bot) envia as respostas pelo WhatsApp.
+ * Lê novas mensagens de logs/whatsapp-inbox.jsonl, envia para o Hermes Agent
+ * (via proxy OpenAI-compatible ou CLI fallback), e grava resposta em outbox.
  *
- * Uso (loop autônomo):
- *   npx tsx scripts/whatsapp-processor.mts
+ * Estratégia em cascata (lazy senior dev):
+ *   1. Hermes Proxy API  (http://127.0.0.1:8080/v1/chat/completions) — rápido, HTTP persistente
+ *   2. Hermes CLI        (hermes chat -q) — full agent + tools, mas mais lento
+ *   3. Ollama API        (http://127.0.0.1:11434/api/chat) — fallback local, modelo sabia-finetuned
  *
- * Uso (processa uma vez e sai):
- *   npx tsx scripts/whatsapp-processor.mts --once
- *
- * Env vars:
- *   WHATSAPP_PROCESSOR_OFFSET — path do arquivo de offset (default: bots/whatsapp/.whatsapp-processor-offset)
+ * Uso:
+ *   npx tsx scripts/whatsapp-processor.mts          # loop 5s
+ *   npx tsx scripts/whatsapp-processor.mts --once    # processa uma vez
  */
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const RAIZ = path.resolve(import.meta.dirname, "..");
 const INBOX = path.join(RAIZ, "logs", "whatsapp-inbox.jsonl");
 const OUTBOX = path.join(RAIZ, "logs", "whatsapp-outbox.jsonl");
-const OFFSET_FILE = process.env.WHATSAPP_PROCESSOR_OFFSET ||
+const OFFSET_FILE =
+  process.env.WHATSAPP_PROCESSOR_OFFSET ||
   path.join(RAIZ, "bots", "whatsapp", ".whatsapp-processor-offset");
 
-/**
- * Busca na internet via DuckDuckGo HTML e retorna os top resultados.
- * Sem API key — usa a versão HTML do DuckDuckGo.
- */
-async function buscarWeb(query) {
-  const encoded = encodeURIComponent(query);
-  const url = `https://html.duckduckgo.com/html/?q=${encoded}`;
+const HERMES_PROXY_URL = "http://127.0.0.1:8080/v1/chat/completions";
+const OLLAMA_URL = "http://127.0.0.1:11434/api/chat";
+const HERMES_MODEL = "upstage/solar-pro4:free";
+const OLLAMA_MODEL = "sabia-finetuned:latest";
+const TMP_QUERY = path.join(RAIZ, "logs", ".whatsapp-query.json");
 
+// ─── 1. Hermes Proxy API (OpenAI-compatible) ──────────────────────────────
+
+function callHermesProxy(query: string): string | null {
   try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml",
-        "Accept-Language": "pt-BR,pt;q=0.9",
-      },
-      signal: AbortSignal.timeout(10000),
-    });
-
-    if (!res.ok) {
-      return `⚠️ Busca retornou erro HTTP ${res.status}`;
-    }
-
-    const html = await res.text();
-
-    // Extrai resultados — DuckDuckGo HTML usa class="result__a" e "result__snippet"
-    const tituloPattern = /class="result__a"[^>]*>([^<]+)/g;
-    const snippetPattern = /class="result__snippet"[^>]*>([^<]+)/g;
-
-    const titulos = [...html.matchAll(tituloPattern)].map(m =>
-      m[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#x27;/g, "'").replace(/&quot;/g, '"')
+    fs.writeFileSync(
+      TMP_QUERY,
+      JSON.stringify({
+        model: "gpt-3.5-turbo", // proxy handles model mapping
+        messages: [{ role: "user", content: query }],
+        max_tokens: 2048,
+        temperature: 0.7,
+      }),
     );
-    const snippets = [...html.matchAll(snippetPattern)].map(m =>
-      m[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim()
+    const curlPath = TMP_QUERY.replace(/\\/g, "/");
+    const result = execSync(
+      `curl -s --max-time 25 -X POST ${HERMES_PROXY_URL} ` +
+        `-H "Content-Type: application/json" ` +
+        `-d @${curlPath}`,
+      { encoding: "utf-8", timeout: 30000, cwd: RAIZ, windowsHide: true },
     );
-
-    let resposta = `🔍 **Busca:** ${query}\n\n`;
-
-    if (titulos.length === 0) {
-      return `🔍 Busca: ${query}\n\nNenhum resultado encontrado no DuckDuckGo.`;
-    }
-
-    const max = Math.min(titulos.length, 3, snippets.length);
-    for (let i = 0; i < max; i++) {
-      resposta += `**${i + 1}.** ${titulos[i]}\n`;
-      if (snippets[i]) {
-        resposta += `   ${snippets[i]}\n\n`;
-      }
-    }
-
-    return resposta.trim();
-  } catch (e) {
-    return `⚠️ Erro na busca: ${(e as Error).message}`;
+    const parsed = JSON.parse(result);
+    const content = parsed.choices?.[0]?.message?.content?.trim();
+    if (content && content.length > 2) return content;
+    return null;
+  } catch {
+    return null;
   }
 }
 
-/**
- * Lê o offset atual do processor.
- */
-function lerOffset() {
+// ─── 2. Hermes CLI (full agent — tools, web search, etc.) ──────────────────
+
+function callHermesCLI(query: string): string | null {
+  try {
+    const cmd = `hermes chat -q ${JSON.stringify(query)} -Q --max-turns 5 --source whatsapp`;
+    const result = execSync(cmd, {
+      encoding: "utf-8",
+      timeout: 120000,
+      cwd: RAIZ,
+      windowsHide: true,
+      env: { ...process.env, FORCE_COLOR: "0" },
+    });
+    const trimmed = result.trim();
+    return trimmed.length > 2 ? trimmed : null;
+  } catch (e: any) {
+    const stdout = e.stdout?.toString().trim();
+    if (stdout && stdout.length > 5) return stdout;
+    return null;
+  }
+}
+
+// ─── 3. Ollama fallback (local, rápido) ─────────────────────────────────────
+
+function callOllamaFallback(query: string): string {
+  try {
+    fs.writeFileSync(
+      TMP_QUERY,
+      JSON.stringify({
+        model: OLLAMA_MODEL,
+        messages: [{ role: "user", content: query }],
+        stream: false,
+        options: { temperature: 0.7, num_ctx: 4096 },
+      }),
+    );
+    const curlPath = TMP_QUERY.replace(/\\/g, "/");
+    const result = execSync(
+      `curl -s --max-time 25 -X POST ${OLLAMA_URL} ` +
+        `-H "Content-Type: application/json" ` +
+        `-d @${curlPath}`,
+      { encoding: "utf-8", timeout: 30000, cwd: RAIZ, windowsHide: true },
+    );
+    const parsed = JSON.parse(result);
+    return parsed.message?.content?.trim() || "⚠️ Sem resposta do modelo.";
+  } catch {
+    return `⚠️ Hermes e Ollama indisponíveis. Tente novamente em instantes.`;
+  }
+}
+
+// ─── Interface unificada ────────────────────────────────────────────────────
+
+function callHermes(query: string): string {
+  // 1. Hermes Proxy (mais rápido)
+  const proxyResult = callHermesProxy(query);
+  if (proxyResult) {
+    console.log("   [via Hermes Proxy]");
+    return proxyResult;
+  }
+
+  // 2. Hermes CLI (full agent)
+  console.log("   [proxy offline — tentando CLI...]");
+  const cliResult = callHermesCLI(query);
+  if (cliResult) {
+    console.log("   [via Hermes CLI]");
+    return cliResult;
+  }
+
+  // 3. Ollama fallback
+  console.log("   [CLI offline — fallback Ollama...]");
+  return callOllamaFallback(query);
+}
+
+// ─── Inbox / Outbox / Offset ────────────────────────────────────────────────
+
+function lerOffset(): number {
   try {
     const data = fs.readFileSync(OFFSET_FILE, "utf-8");
     const n = parseInt(data.trim(), 10);
@@ -92,33 +143,23 @@ function lerOffset() {
   }
 }
 
-/**
- * Salva o offset atual.
- */
-function gravarOffset(n) {
-  const dir = path.dirname(OFFSET_FILE);
-  fs.mkdirSync(dir, { recursive: true });
+function gravarOffset(n: number) {
+  fs.mkdirSync(path.dirname(OFFSET_FILE), { recursive: true });
   fs.writeFileSync(OFFSET_FILE, String(n), "utf-8");
 }
 
-/**
- * Escreve uma entrada no outbox.
- */
-function escreverOutbox(texto, grupo) {
-  const dir = path.dirname(OUTBOX);
-  fs.mkdirSync(dir, { recursive: true });
+function escreverOutbox(texto: string, grupo: string) {
+  fs.mkdirSync(path.dirname(OUTBOX), { recursive: true });
   const entry = { texto, grupo: grupo || "" };
   fs.appendFileSync(OUTBOX, JSON.stringify(entry) + "\n", "utf-8");
 }
 
-/**
- * Processa novas mensagens da inbox.
- */
-async function processarInbox() {
+async function processarInbox(): Promise<number> {
   if (!fs.existsSync(INBOX)) return 0;
 
   const offset = lerOffset();
-  const lines = fs.readFileSync(INBOX, "utf-8")
+  const lines = fs
+    .readFileSync(INBOX, "utf-8")
     .split(/\r?\n/)
     .filter(Boolean);
 
@@ -126,59 +167,57 @@ async function processarInbox() {
   for (let i = offset; i < lines.length; i++) {
     const line = lines[i];
     novas++;
-    let entry;
+
+    let entry: any;
     try {
       entry = JSON.parse(line);
     } catch {
       continue;
     }
 
-    console.log(`📩 Processando: [${entry.de}] ${entry.texto?.slice(0, 80)}`);
+    const texto = entry.texto || "";
+    if (!texto || texto === "[mensagem não-texto]") {
+      console.log(`⏭️  [${entry.de}] mensagem não-texto`);
+      gravarOffset(i + 1);
+      continue;
+    }
 
-    // Busca na internet
-    const query = entry.texto || "";
-    const resultado = await buscarWeb(query);
+    console.log(`📩 [${entry.de}] ${texto.slice(0, 80)}`);
+    const resultado = callHermes(texto);
+    console.log(`   → ${resultado.slice(0, 80)}...`);
 
-    // Escreve resposta no outbox
-    escreverOutbox(resultado, entry.grupo);
-    console.log(`📤 Resposta escrita no outbox para ${entry.grupo || "grupo default"}`);
-
+    escreverOutbox(resultado, entry.grupo || "");
     gravarOffset(i + 1);
   }
 
   return novas;
 }
 
-// ============================================================================
-// MAIN
-// ============================================================================
+// ─── MAIN ───────────────────────────────────────────────────────────────────
 
 async function main() {
   const args = process.argv.slice(2);
   const once = args.includes("--once");
 
-  console.log("🤖 WhatsApp Processor ativo");
-  if (once) {
-    console.log("   (modo --once: processa uma vez e sai)\n");
-  } else {
-    console.log("   (loop contínuo — Ctrl+C para parar)\n");
-  }
+  console.log("🤖 WhatsApp Processor (Hermes Agent)");
+  console.log(`   ${HERMES_MODEL} (proxy) → CLI → ${OLLAMA_MODEL} (fallback)`);
+  console.log(`   ${once ? "(modo --once)" : "(loop 5s)"}`);
 
   if (once) {
     const count = await processarInbox();
-    console.log(`\n📦 Processadas ${count} nova(s) mensagem(ns).`);
+    console.log(`\n📦 ${count} mensagem(ns) processada(s).`);
     return;
   }
 
-  // Loop contínuo
-  const interval = 5000; // 5s entre checagens
+  await processarInbox();
+
   setInterval(async () => {
     try {
       await processarInbox();
     } catch (e) {
-      console.error("❌ Erro no processamento:", (e as Error).message);
+      console.error("❌ Erro:", (e as Error).message);
     }
-  }, interval);
+  }, 5000);
 }
 
 main().catch((e) => {
