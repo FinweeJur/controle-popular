@@ -1,13 +1,13 @@
 {
-  "atualizadoEm": "2026-10-14T21:00:23.755Z",
+  "atualizadoEm": "2026-10-15T22:20:22.135Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 292,
+  "latenciaMs": 530,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-14T21:00:23.744Z",
-    "totalBasesVerificadas": 659,
+    "atualizadoEm": "2026-10-15T22:20:22.123Z",
+    "totalBasesVerificadas": 703,
     "basesVazias": [],
     "basesCorrompidas": [],
     "basesEstagnadas": [],
@@ -15,7 +15,7 @@
     "etlsPendentes": [],
     "statusGeral": "SAUDAVEL",
     "resumoLinhas": [
-      "Bases verificadas: 659 arquivos JSON",
+      "Bases verificadas: 703 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
       "Bases com estagnação (>60d): 0",
@@ -25,12 +25,21 @@
   "paginas": {
     "base": "https://www.controlepopular.com.br",
     "total": 100,
-    "ok": 100,
-    "falhas": [],
+    "ok": 98,
+    "falhas": [
+      {
+        "rota": "/empresas/executivos",
+        "status": 0
+      },
+      {
+        "rota": "/eua",
+        "status": 0
+      }
+    ],
     "siteInteiroFora": false,
-    "inicioEm": "2026-10-14T20:50:07.030Z",
-    "terminoEm": "2026-10-14T20:52:45.803Z",
-    "duracaoMs": 158773
+    "inicioEm": "2026-10-15T22:05:26.679Z",
+    "terminoEm": "2026-10-15T22:08:29.086Z",
+    "duracaoMs": 182407
   },
   "erro": null
 }
