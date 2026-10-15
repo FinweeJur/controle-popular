@@ -471,7 +471,8 @@ func main() {
 		return
 	}
 
-	// Pairing via código (alternativa ao QR — mais confiável)
+	// Check se já emparelado usando o device do store (não IsLoggedIn — só seta após Connect)
+	alreadyPaired := device != nil && device.ID != nil && device.ID.User != ""
 	if pairPhone != "" {
 		fmt.Printf("📱 Gerando código de emparelhamento para %s...\n", pairPhone)
 		// GetQRChannel deve ser chamado ANTES de Connect (whatsmeow requirement)
@@ -513,7 +514,7 @@ func main() {
 		fmt.Println("   2. Settings → Linked Devices → Enter Code")
 		fmt.Println("   3. Digite o código acima")
 		fmt.Println("   Pode levar alguns segundos para o pairing completar...")
-	} else if !client.IsLoggedIn() {
+	} else if !alreadyPaired {
 		qrChan, err := client.GetQRChannel(context.Background())
 		if err != nil {
 			fmt.Printf("❌ Erro ao iniciar QR channel: %v\n", err)
