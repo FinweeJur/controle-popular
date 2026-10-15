@@ -6,7 +6,8 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { converter, formatar } from "./unidades";
+import cambioDia from "../../data/cambio-dia.json";
+import { converter, formatar, tabelaMoeda } from "./unidades";
 
 describe("converter", () => {
   it("direta: quilometro → metro", () => {
@@ -26,16 +27,48 @@ describe("converter", () => {
     expect(converter(1460, "dia", "ano", "tempo")).toBeCloseTo(4, 5);
   });
 
-  it("moeda com fator fixo: dolar → real", () => {
-    expect(converter(418, "dolar", "real", "moeda")).toBeCloseTo(2299, 0);
-  });
-
   it("ida e volta: hora → dia → hora preserva o valor", () => {
     expect(converter(converter(5, "hora", "dia", "tempo"), "dia", "hora", "tempo")).toBeCloseTo(5, 5);
   });
 
   it("conversao inexistente lança", () => {
     expect(() => converter(1, "litro", "metro", "comprimento")).toThrow();
+  });
+});
+
+describe("operacao por inteiro (exatidao do piloto da Fase 6)", () => {
+  // `x * (1/1e6)` e `x / 1e6` podem diferir em 1 ulp; o portal escrevia
+  // `x / 1e6`, entao a conversao tem de bater bit a bit com a divisao.
+  it("escala: unidade → milhao e a divisao exata de antes", () => {
+    expect(converter(49_999_999, "unidade", "milhao", "escala")).toBe(49_999_999 / 1e6);
+  });
+
+  it("tempo: dia → ano e a divisao exata de antes", () => {
+    expect(converter(50, "dia", "ano", "tempo")).toBe(50 / 365);
+  });
+
+  it("ida e volta fica exata em escala", () => {
+    expect(converter(converter(49_999_999, "unidade", "milhao", "escala"), "milhao", "unidade", "escala")).toBe(
+      49_999_999
+    );
+  });
+});
+
+describe("moeda", () => {
+  it("usa a PTAX do dia quando o arquivo tem cotacao valida", () => {
+    expect(converter(1, "dolar", "real", "moeda")).toBe(cambioDia.cotacoes.USD);
+    expect(converter(1, "euro", "real", "moeda")).toBe(cambioDia.cotacoes.EUR);
+  });
+
+  it("cai no fator de referencia sem cotacao (fallback gracioso)", () => {
+    expect(tabelaMoeda(null).dolar.real).toBe(5.5);
+    expect(tabelaMoeda({}).real.dolar).toBeCloseTo(1 / 5.5, 12);
+    expect(tabelaMoeda({ USD: Number.NaN }).dolar.real).toBe(5.5);
+  });
+
+  it("a matriz e coerente com a base em real (ida e volta)", () => {
+    const ida = converter(418, "dolar", "real", "moeda");
+    expect(converter(ida, "real", "dolar", "moeda")).toBeCloseTo(418, 9);
   });
 });
 

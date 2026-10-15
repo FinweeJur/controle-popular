@@ -65,6 +65,12 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      # POR QUE continue-on-error: BC fora do ar nao derruba a esteira — sem cotacao o consumidor cai no fator fixo.
+      - name: Cotacao do dia (Banco Central)
+        working-directory: apps/web
+        continue-on-error: true
+        run: npx tsx scripts/coletar-cambio.mts
+
       # Detector de mudancas: compara o acervo com a baseline (sha256 por
       # pedaco) e escreve data/acervo-baseline.json + data/acervo-delta.json.
       - name: Detectar mudancas no acervo
@@ -78,13 +84,15 @@ jobs:
         working-directory: apps/web
         run: npx tsx scripts/gerar-respostas-curadas.mts >> "$GITHUB_STEP_SUMMARY"
 
-      # Commit so dos dois JSONs derivados, git na mao (o repo nao usa
+      # Commit so dos JSONs derivados, git na mao (o repo nao usa
       # action de auto-commit). [skip ci] impede o reentro no proprio gatilho.
-      - name: Commitar baseline e delta
+      # Vao os tres: baseline e delta do acervo + a cotacao do dia, que e
+      # fonte de numero e precisa estar versionada junto com a data.
+      - name: Commitar baseline, delta e cotacao
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/web/data/acervo-baseline.json apps/web/data/acervo-delta.json
+          git add apps/web/data/acervo-baseline.json apps/web/data/acervo-delta.json apps/web/data/cambio-dia.json
           if git diff --cached --quiet; then echo "sem mudancas"; exit 0; fi
-          git commit -m "ci: atualiza baseline e delta do acervo RAG [skip ci]"
+          git commit -m "ci: atualiza baseline, delta do acervo e cotacao do dia [skip ci]"
           git push

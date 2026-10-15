@@ -527,22 +527,27 @@ saiu (nota na Fase 2) e o commit e so dos dois JSONs derivados, com
 `[skip ci]` para nao reentrar no proprio gatilho. As sugestoes de curadoria
 vao para o step summary, nao para commit.
 
-### Fase 5 — Cambio em tempo real (2-3 h, apos Fase 1)
+### Fase 5 — Cambio em tempo real (executada em 15/10/2026)
 
-- [ ] Criar `scripts/coletar-cambio.mts` (API BC, 1 entrada/dia)
-- [ ] Integrar com `unidades.ts` (le JSON, fallback fator fixo)
-- [ ] Adicionar step no `ingestao-rag.yml`
+- [x] Criar `scripts/coletar-cambio.mts` (PTAX do BC + fallback AwesomeAPI,
+      1 entrada/dia, exit 0 gracioso sem rede)
+- [x] Integrar com `unidades.ts` (le `data/cambio-dia.json`, fallback fator
+      fixo via `tabelaMoeda(null)`)
+- [x] Adicionar step no `ingestao-rag.yml` (`continue-on-error`) e o JSON
+      no commit da CI
 
-**Nao executada de proposito:** o fator fixo da tabela ja converte (5,50
-R$/US$ de referencia) e a funcao `converter()` nao muda quando a API entrar
-— so muda a fonte do fator. Abrir quando o dono pedir cotacao do dia.
+A funcao `converter()` nao mudou de assinatura — so mudou a fonte do fator
+de moeda: base `MOEDA_BRL` fixa, sobrescrita pela PTAX do dia quando o
+arquivo tem cotacao valida. Sem cotacao, o portal converte pelo fator de
+referencia de antes.
 
 ### Fase 6 — Migracao gradual de componentes (ongoing)
 
 - [x] Identificar componentes com formatacao inline (3 alvos migrados no piloto)
-- [ ] Migrar para `converter()` + `formatar()` um a um (fila: `cota-parlamentar`,
-      `PainelEuropa`, `consumo-corporativo` — so depois de resolver o
-      arredondamento `*(1/1e6)` vs `/1e6` nos thresholds)
+- [x] Migrar para `converter()` + `formatar()` um a um (fila: `cota-parlamentar`,
+      `PainelEuropa`, `consumo-corporativo`) — **condicao levantada**: a
+      `operacaoExata()` de 15/10 prefere `x / 1e6` a `x * (1/1e6)`, que e o
+      que o codigo de antes fazia, entao limiar de `toFixed` nao muda de digito
 - [ ] Cada migracao: tsc + vitest + CodeScene delta
 
 ## Riscos e metricas

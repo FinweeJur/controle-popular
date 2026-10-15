@@ -18,8 +18,17 @@
  * - Zero dependencia nova: stdlib `Intl.NumberFormat` para formatacao.
  * - Busca transitiva limitada a 1 nivel (de → intermediario → para) —
  *   cobre a tabela real sem grafo completo (YAGNI).
- * - Moeda usa cambio fixo de referencia (Pilar 2b troca por PTAX do dia).
+ * - Moeda: os pares sao derivados de uma base "1 unidade em reais"
+ *   (`MOEDA_BRL`), que a CI atualiza todo dia com a PTAX do Banco Central
+ *   (`scripts/coletar-cambio.mts` → `data/cambio-dia.json`). Sem cotacao
+ *   valida, a base fica na de referencia — fallback gracioso do Pilar 2b.
+ * - Multiplicacao e divisao por inteiro sao exatas em ponto flutuante;
+ *   `x * (1/1e6)` e `x / 1e6` podem diferir em 1 ulp e um limite de
+ *   arredondamento enxerga a diferenca. Por isso `converter()` prefere a
+ *   operacao por inteiro quando a tabela a tem (ver `operacaoExata`).
  */
+
+import cambioDia from "@/data/cambio-dia.json";
 
 const FATORES: Record<string, Record<string, Record<string, number>>> = {
   tempo: {
@@ -40,14 +49,6 @@ const FATORES: Record<string, Record<string, Record<string, number>>> = {
     pe: { metro: 0.3048, centimetro: 30.48 },
     jarda: { metro: 0.9144 },
     quadra: { metro: 110, quilometro: 0.11 },
-  },
-  moeda: {
-    // fatores estaticos (cambio fixo de referencia); atualizacao via API no Pilar 2b
-    real: { dolar: 1 / 5.5, euro: 1 / 6.0, yuan: 1 / 0.76, libra: 1 / 7.0 },
-    dolar: { real: 5.5, euro: 1 / 1.09, yuan: 7.24, libra: 1 / 1.27 },
-    euro: { real: 6.0, dolar: 1.09 },
-    yuan: { real: 0.76, dolar: 1 / 7.24 },
-    libra: { real: 7.0, dolar: 1.27 },
   },
   energia: {
     watt: { quilowatt: 1 / 1000, megawatt: 1 / 1e6, gigawatt: 1 / 1e9, cavaloVapor: 1 / 745.7 },
@@ -81,8 +82,71 @@ const FATORES: Record<string, Record<string, Record<string, number>>> = {
   },
 };
 
+/**
+ * Base da moeda: quanto vale 1 unidade em REAIS.
+ *
+ * Uma fonte so para todo o dominio — a matriz inteira sai daqui
+ * (`tabelaMoeda`), o que impede taxa contraditoria entre pares. Os valores
+ * fixos sao a cotacao de referencia; a CI troca `dolar` e `euro` pela PTAX
+ * do dia em `brlVigente()`.
+ */
+const MOEDA_BRL: Record<string, number> = {
+  real: 1,
+  dolar: 5.5,
+  euro: 6.0,
+  yuan: 0.76,
+  libra: 7.0,
+};
+
 /** Tabela de um dominio: unidade origem → (unidade destino → fator). */
 type Tabela = Record<string, Record<string, number>>;
+
+/** Cotacoes aceitas do arquivo do dia: so as duas que o BC publica em real. */
+interface Cotacoes {
+  USD?: number;
+  EUR?: number;
+}
+
+/** Numero utilizavel como cotacao: presente, finito e positivo. */
+function numeroPositivo(valor: unknown): valor is number {
+  return typeof valor === "number" && Number.isFinite(valor) && valor > 0;
+}
+
+/**
+ * Base em real VIGENTE: PTAX do dia quando o arquivo tem cotacao valida,
+ * senão a de referencia do `MOEDA_BRL`. Fallback gracioso (Pilar 2b): API
+ * fora, sem rede ou primeiro build — a conversao continua funcionando.
+ */
+function brlVigente(cotacoes?: Cotacoes | null): Record<string, number> {
+  const brl = { ...MOEDA_BRL };
+  if (numeroPositivo(cotacoes?.USD)) brl.dolar = cotacoes.USD;
+  if (numeroPositivo(cotacoes?.EUR)) brl.euro = cotacoes.EUR;
+  return brl;
+}
+
+/**
+ * Matriz de moeda derivada da base em real: `fator(de→para) = brl[de] /
+ * brl[para]`. Exportada para o teste (e para auditoria) exercitar o
+ * fallback sem depender do arquivo do dia.
+ */
+export function tabelaMoeda(cotacoes?: Cotacoes | null): Tabela {
+  const brl = brlVigente(cotacoes);
+  const tabela: Tabela = {};
+  for (const de of Object.keys(brl)) {
+    const linha: Record<string, number> = {};
+    for (const para of Object.keys(brl)) {
+      if (para !== de) linha[para] = brl[de] / brl[para];
+    }
+    tabela[de] = linha;
+  }
+  return tabela;
+}
+
+/** Tabela do dominio consultado; moeda sai da base vigente do dia. */
+function tabelaDoDominio(dominio: string): Tabela | undefined {
+  if (dominio === "moeda") return tabelaMoeda(cambioDia.cotacoes);
+  return FATORES[dominio];
+}
 
 /**
  * Fator direto de→para, ou `undefined` quando a tabela nao traz o par.
@@ -108,19 +172,45 @@ function fatorTransito(tabela: Tabela, de: string, para: string): number | undef
 }
 
 /**
+ * Escolhe a operacao mais EXATA disponivel para de→para:
+ *
+ * 1. multiplicar por fator inteiro (exato em ponto flutuante);
+ * 2. dividir pelo inverso quando ele e inteiro — e aqui mora o ganho:
+ *    `x / 1e6` e o que o codigo do portal ja fazia, enquanto `x * (1/1e6)`
+ *    pode acabar 1 ulp abaixo e trocar o digito num `toFixed` (medido no
+ *    piloto da Fase 6, 15/10/2026);
+ * 3. sem inteiro em nenhum dos dois lados, multiplica pelo fator direto.
+ *
+ * Devolve `null` quando nao ha par direto nem inverso — e o chamador tenta
+ * a transitividade.
+ */
+function operacaoExata(tabela: Tabela, de: string, para: string): { tipo: "mul" | "div"; fator: number } | null {
+  const direto = fatorDireto(tabela, de, para);
+  if (direto !== undefined && Number.isInteger(direto)) return { tipo: "mul", fator: direto };
+  const inverso = fatorDireto(tabela, para, de);
+  if (inverso !== undefined && Number.isInteger(inverso)) return { tipo: "div", fator: inverso };
+  if (direto !== undefined) return { tipo: "mul", fator: direto };
+  return null;
+}
+
+/**
  * Converte valor entre unidades do mesmo dominio.
  *
- * Busca fator direto; se nao houver, tenta 1 nivel de transitividade
- * (de → intermediario → para). Lanca Error se nao houver caminho.
+ * Ordem: fator direto (preferindo a operacao por inteiro), depois
+ * transitividade de 1 nivel (de → intermediario → para). Lanca Error
+ * quando nao ha caminho — conversao desconhecida tem de gritar, nao
+ * devolver numero inventado.
  */
 export function converter(valor: number, de: string, para: string, dominio: string): number {
   if (de === para) return valor;
-  const tabela = FATORES[dominio];
-  const fator = tabela
-    ? (fatorDireto(tabela, de, para) ?? fatorTransito(tabela, de, para))
-    : undefined;
-  if (fator === undefined) throw new Error(`Conversao ${dominio}:${de}→${para} nao encontrada`);
-  return valor * fator;
+  const tabela = tabelaDoDominio(dominio);
+  const op = tabela ? operacaoExata(tabela, de, para) : null;
+  if (op) return op.tipo === "mul" ? valor * op.fator : valor / op.fator;
+  const transitivo = tabela ? fatorTransito(tabela, de, para) : undefined;
+  if (transitivo === undefined) {
+    throw new Error(`Conversao ${dominio}:${de}→${para} nao encontrada`);
+  }
+  return valor * transitivo;
 }
 
 const MOEDAS: Record<string, string> = {
