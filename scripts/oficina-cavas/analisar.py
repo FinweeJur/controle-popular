@@ -50,6 +50,15 @@ DIR_MODELO_BASE = _TMP / "opencode" / "cavas" / "chinese-clip"
 DIR_TREINO_V7 = _TMP / "opencode" / "cavas" / "treino-v7"
 LIMIAR_V7 = 0.65
 
+# Calibração por temperatura (medido 15/10/2026): os logits do v7 saem
+# comprimidos — a cabeça Linear(512,1) tem peso ~0.030, então o sigmoid
+# do positivo fica preso em ~0.658 (nunca passa de 0,70). Dividir o logit
+# por T=0.5 antes do sigmoid ESTICA a distribuição sem mudar a ordem das
+# predições: no holdout o F1 fica 0,834 estável de limiar 0,5 a 0,9, o que
+# permite refiltrar rígido (limiar alto) sem perder os positivos bons.
+# Fonte da medição: scripts/oficina-cavas/calibrar-modelo.py --otimizar.
+TEMPERATURA_CALIB = 0.5
+
 # Constantes de nuvem no JPEG 8-bit (mesmas regras do coletor, adaptadas
 # de uint16 para uint8 ÔÇö os limiares de satura├º├úo e brilho s├úo adimensionais,
 # ent├úo valem igual).
@@ -170,7 +179,9 @@ class PontuadorV7:
                 out = self.modelo.get_image_features(pixel_values=pv)
                 emb = F.normalize(out.pooler_output, dim=-1)
                 logit = self.cabeca(emb.float()).squeeze(-1)
-                return float(torch.sigmoid(logit).cpu().item())
+                # Temperatura de calibração: estica o logit comprimido do v7.
+                prob = torch.sigmoid(logit / TEMPERATURA_CALIB)
+                return float(prob.cpu().item())
         except Exception:
             return None
 
