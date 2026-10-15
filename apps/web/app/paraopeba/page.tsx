@@ -180,8 +180,7 @@ export default async function ParaopebaHome() {
         cor={ZONA.cor}
         idFotoBrasilComS="00085"
       >
-        <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." />
-      </HeaderFrenteBrasilComS>
+        <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." /></HeaderFrenteBrasilComS>
 
       <DataColeta coletadoEm={cob.geradoEm} fonte="ATI — Biblioteca das assessorias (acervo Pró-Brumadinho)" />
 

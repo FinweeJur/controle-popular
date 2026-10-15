@@ -155,8 +155,7 @@ export default async function EmpresaPage({ params }: Props) {
             {nome}
           </h1>
           <p className="mt-2 text-sm sm:text-base text-muted leading-relaxed">
-            {entidade?.investimentoBrasil || empresaLegada?.descricao}
-          </p>
+            {entidade?.investimentoBrasil || empresaLegada?.descricao}</p>
           <DataColeta coletadoEm={dataDoAcervo(obterCatalogoDocumentos())} fonte="documentos oficiais publicados pela empresa (RI, CVM, CDP)" />
         </div>
 
