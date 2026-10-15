@@ -465,7 +465,8 @@ Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
 ## 8. Padrão de dados: a regra das qualidades da informação
 
 **Regra do dono, 21/08/2026 (consolidada e expandida em 25/09/2026;
-sétima qualidade acrescentada em 10/10/2026).**
+sétima qualidade acrescentada em 10/10/2026; oitava em 15/10/2026 —
+rastreabilidade temporal, PLANO-DATA-DO-DADO).**
 Vale para toda página que publica acervo ou lista de dados — licenciamento,
 TACs, convênios, decisões, barragens, estudos, contratos, compras e territórios:
 
@@ -497,7 +498,17 @@ TACs, convênios, decisões, barragens, estudos, contratos, compras e territóri
    sem coluna cortada e sem rótulo escondido. Conteúdo largo (tabela, gráfico,
    mapa) **rola dentro do quadro**, nunca estoura a tela. Conferência em 390 px:
    `document.documentElement.scrollWidth === window.innerWidth`. Detalhe de
-   implementação e o defeito medido em 10/10/2026 na §5.14.
+    implementação e o defeito medido em 10/10/2026 na §5.14.
+ 8. **Rastreável no tempo (15/10/2026 — PLANO-DATA-DO-DADO):** página de dado
+    e post com número mostram a data da coleta da fonte, visível e derivada do
+    dado (`<DataColeta>`, `<time>`, carimbo `geradoEm` do arquivo, nascido na
+    escrita bem-sucedida do coletor), com a competência por programa quando os
+    cortes diferem. Data digitada na mão é tão dano quanto número digitado na
+    mão — ela apodrece sozinha e o leitor não tem como saber. Fiscalização:
+    `scripts/checar-data-coleta.py` (porteiro D1, catraca) e
+    `scripts/vigia-coletores.mts` (frescor das 34 fontes do registry, vermelho
+    só para regressão de coletor). A checagem no browser (D2, Playwright) é a
+    fase seguinte do plano.
 
 Essa regra não dispensa:
 
@@ -506,10 +517,10 @@ Essa regra não dispensa:
   (`TS2590: union type too complex` foi o aviso do TypeScript);
 - gráfico com alternativa em texto ou tabela; cor nunca é o único canal;
 - número na tela vem de constante medida com data — não digite total à mão;
-- **página que lê do banco só mostra as sete qualidades quando o banco responde.**
+- **página que lê do banco só mostra as oito qualidades quando o banco responde.**
   Conferir `/ambiental/licenciamento` e `/ambiental/copam` exige HTML
   pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
-- **a régua do celular precede as demais (§5.14):** nenhuma das sete qualidades
+- **a régua do celular precede as demais (§5.14):** nenhuma das oito qualidades
   vale se a coluna não é legível e a página não cabe numa tela de 390 px.
 
 ## 9. Como verificar

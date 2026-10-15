@@ -7,6 +7,10 @@ name: Padrao pagina
 # (dívida ja registrada — 97 paginas parciais — nao trava commit alheio).
 # Subir a régua apos consertar paginas: python scripts/verificar-padrao-pagina.py
 # --gravar-catraca docs/relatorios-automacao/padrao-catraca.json
+# Segundo porteiro (D1, 15/10/2026): data de coleta visivel nas rotas de dado
+# do registry (PLANO-DATA-DO-DADO.md). Regua propria:
+# docs/relatorios-automacao/padrao-catraca-datas.json; subir a régua com
+# python scripts/checar-data-coleta.py --gravar-catraca <mesmo caminho>.
 
 on:
   push:
@@ -15,6 +19,7 @@ on:
     paths:
       - "apps/web/**"
       - "scripts/verificar-padrao-pagina.py"
+      - "scripts/checar-data-coleta.py"
       - ".github/workflows/padrao-pagina.yml"
   workflow_dispatch:
 
@@ -28,3 +33,5 @@ jobs:
           python-version: "3.12"
       - name: Verificar padrao das paginas do top 100 (catraca)
         run: python scripts/verificar-padrao-pagina.py --catraca docs/relatorios-automacao/padrao-catraca.json
+      - name: Porteiro D1 - data de coleta visivel nas rotas do registry (catraca)
+        run: python scripts/checar-data-coleta.py --catraca docs/relatorios-automacao/padrao-catraca-datas.json

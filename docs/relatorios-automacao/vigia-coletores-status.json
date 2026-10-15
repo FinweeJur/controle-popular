@@ -1,0 +1,293 @@
+{
+ "geradoEm": "2026-10-15T20:12:59.749Z",
+ "regra": {
+  "tempo-real": 2,
+  "diaria": 3,
+  "semanal": 10,
+  "mensal": 40,
+  "anual": 400,
+  "estatica": null
+ },
+ "linhas": [
+  {
+   "fonte": "transferegov-convenios",
+   "nome": "Transferegov / Convênios Federais",
+   "arquivo": "apps/web/lib/ambiental/convenios-federais-mg.ts",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "comunicabr-repasses",
+   "nome": "ComunicaBR — Ações e Repasses do Governo Federal",
+   "arquivo": "apps/web/public/data/comunicabr-31.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-08-15T19:30:29.679Z",
+   "lagDias": 61,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "salic-rouanet",
+   "nome": "SALIC — Lei Rouanet",
+   "arquivo": "apps/web/data/rouanet-mg-projetos.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-08-15",
+   "lagDias": 61,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "congresso-mg-parlamentares",
+   "nome": "Parlamentares de MG (Câmara/Senado via DadosAbertosBrasil)",
+   "arquivo": "apps/web/data/congresso-mg.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-08-31T21:00:32.820992+00:00",
+   "lagDias": 44,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "sirenejud-cnj",
+   "nome": "SIRENEJud (Processos Ambientais do Judiciário)",
+   "arquivo": "etl/betim/dados/sirenejud-mg.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-08-30",
+   "lagDias": 46,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "cnj-inspecoes",
+   "nome": "Biblioteca de Inspeções da Corregedoria Nacional de Justiça",
+   "arquivo": "etl/betim/dados/inspecoes-cnj-bundle.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "funai-terras-indigenas",
+   "nome": "Geosserviços de Terras Indígenas (WFS FUNAI)",
+   "arquivo": "apps/web/public/terras/globo/dados/camadas/terras-indigenas.geojson",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "incra-quilombolas",
+   "nome": "Acervo Fundiário e Territórios Quilombolas (WFS INCRA)",
+   "arquivo": "apps/web/public/terras/globo/dados/camadas/territorios-quilombolas.geojson",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "sigmine-anm",
+   "nome": "SIGMINE — Sistema de Informações Geográficas da Mineração",
+   "arquivo": "apps/web/public/terras/globo/dados/camadas/sigmine-operacao.geojson",
+   "frequencia": "diaria",
+   "tetoDias": 3,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "fgv-paraopeba",
+   "nome": "Auditoria FGV — Projeto Rio Paraopeba (Anexos I.3 e I.4)",
+   "arquivo": "etl/betim/dados/execucao-fgv-bundle.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "repasse-brumadinho",
+   "nome": "Repasse aos Municípios (Lei Estadual 23.830/2021)",
+   "arquivo": "apps/web/public/data/repasse-brumadinho-mg.json",
+   "frequencia": "estatica",
+   "tetoDias": null,
+   "carimbo": "2026-08-15T21:51:45.965Z",
+   "lagDias": 60,
+   "veredito": "isenta"
+  },
+  {
+   "fonte": "auditoria-ajri",
+   "nome": "Auditoria AJRI (AECOM / Brumadinho)",
+   "arquivo": "etl/betim/dados/sintese-ajri-bundle.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "biblioteca-atis",
+   "nome": "Biblioteca das Assessorias Técnicas Independentes (ATIs)",
+   "arquivo": "apps/web/public/data/biblioteca-ati.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": "2026-08-26T17:39:14.994Z",
+   "lagDias": 50,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "sigbm-barragens",
+   "nome": "SIGBM — Sistema Integrado de Gestão de Barragens de Mineração",
+   "arquivo": "apps/web/data/barragens-sigbm.json",
+   "frequencia": "diaria",
+   "tetoDias": 3,
+   "carimbo": "2026-09-07",
+   "lagDias": 38,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "ibama-licencas-sancoes",
+   "nome": "IBAMA — Licenciamento Federal, Autos de Infração e Julgamentos",
+   "arquivo": "apps/web/data/ibama-mg.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": "2026-08-31",
+   "lagDias": 45,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "cge-decisoes-lai",
+   "nome": "Decisões de Recursos de LAI da CGE-MG",
+   "arquivo": "apps/web/data/decisoes-cge-lai.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-08-31",
+   "lagDias": 45,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "gtac-semad",
+   "nome": "GTAC — Cadastro de TACs Ambientais de Minas Gerais",
+   "arquivo": "etl/betim/dados/tac-gtac-bundle.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": null,
+   "lagDias": null,
+   "veredito": "sem-carimbo"
+  },
+  {
+   "fonte": "biblioteca-desastres",
+   "nome": "Biblioteca unificada dos crimes socioambientais (Mariana e Brumadinho)",
+   "arquivo": "apps/web/public/data/biblioteca-desastres.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": "2026-09-07T04:20:29.869Z",
+   "lagDias": 38,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "noticias-desastres",
+   "nome": "Radar de notícias dos crimes socioambientais",
+   "arquivo": "apps/web/data/noticias-desastres.json",
+   "frequencia": "diaria",
+   "tetoDias": 3,
+   "carimbo": "2026-09-01T10:56:39.570632+00:00",
+   "lagDias": 44,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "vale-b3-cvm",
+   "nome": "Observatório Vale S.A. (B3 Séries Históricas + CVM + SIGMINE/SIGBM)",
+   "arquivo": "apps/web/data/vale3-cotacoes.json",
+   "frequencia": "diaria",
+   "tetoDias": 3,
+   "carimbo": "2026-08-30",
+   "lagDias": 46,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "socios-vale",
+   "nome": "Socios da Vale S.A. (brasil.io)",
+   "arquivo": "apps/web/data/socios-vale.json",
+   "frequencia": "estatica",
+   "tetoDias": null,
+   "carimbo": "2026-09-01T14:39:35.119Z",
+   "lagDias": 44,
+   "veredito": "isenta"
+  },
+  {
+   "fonte": "mpmg-coerdoce",
+   "nome": "MPMG — Procuradoria de Justiça de Meio Ambiente (Coerdoce)",
+   "arquivo": "apps/web/data/mpmg-coerdoce.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-09-06T03:04:42.238458+00:00",
+   "lagDias": 39,
+   "veredito": "ok"
+  },
+  {
+   "fonte": "mpmg-nucard",
+   "nome": "MPMG — Núcleo de Acompanhamento de Reparações por Desastres (NUCARD)",
+   "arquivo": "apps/web/data/mpmg-nucard.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-09-06T14:23:57.413749+00:00",
+   "lagDias": 39,
+   "veredito": "ok"
+  },
+  {
+   "fonte": "mpf-grandes-casos",
+   "nome": "MPF — Procuradoria-Geral da República (Grandes Casos)",
+   "arquivo": "apps/web/data/mpf-grandes-casos.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": "2026-09-06T03:04:42.242456+00:00",
+   "lagDias": 39,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "dpu-comite-tematico",
+   "nome": "DPU — Comitê Temático Rio Doce/Brumadinho",
+   "arquivo": "apps/web/data/dpu-comite-tematico.json",
+   "frequencia": "semanal",
+   "tetoDias": 10,
+   "carimbo": "2026-09-06T03:01:25.201481+00:00",
+   "lagDias": 39,
+   "veredito": "atrasada"
+  },
+  {
+   "fonte": "dpmg-notas",
+   "nome": "DPMG — Defensoria Pública de Minas Gerais",
+   "arquivo": "apps/web/data/biblioteca-desastres-unificada.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-09-07T04:12:19.758753Z",
+   "lagDias": 38,
+   "veredito": "ok"
+  },
+  {
+   "fonte": "vale-sigma-lithium",
+   "nome": "Vale S.A. e Sigma Lithium — Documentos e Ações",
+   "arquivo": "apps/web/data/vale-sigma-lithium.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-09-06T16:00:48.074119+00:00",
+   "lagDias": 39,
+   "veredito": "ok"
+  },
+  {
+   "fonte": "sinesp-vde",
+   "nome": "SINESP VDE — Vítimas de Eventos Delituosos",
+   "arquivo": "apps/web/data/sinesp-vde-2026.json",
+   "frequencia": "mensal",
+   "tetoDias": 40,
+   "carimbo": "2026-09-06T15:01:13.024220+00:00",
+   "lagDias": 39,
+   "veredito": "ok"
+  }
+ ]
+}

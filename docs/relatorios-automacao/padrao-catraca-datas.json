@@ -1,0 +1,19 @@
+{
+ "gravadaEm": "2026-10-15T20:09:39.263135+00:00",
+ "estados": {
+  "/[municipio]/prefeitura": "datada",
+  "/dados/comunicabr": "datada",
+  "/congresso/parlamentares": "isenta",
+  "/judiciario/sirenejud": "datada",
+  "/judiciario/inspecoes": "datada",
+  "/funcaosocialterra/mapa": "isenta",
+  "/paraopeba/execucao": "datada",
+  "/paraopeba/auditoria": "isenta",
+  "/ambiental/crimes-socioambientais": "datada",
+  "/ambiental/barragens/sigbm": "datada",
+  "/ambiental/ibama": "datada",
+  "/ambiental/decisoes-lai": "datada",
+  "/ambiental/tac": "datada",
+  "/paraopeba/vale": "datada"
+ }
+}

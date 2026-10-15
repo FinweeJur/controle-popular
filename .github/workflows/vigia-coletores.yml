@@ -1,0 +1,52 @@
+name: Vigia coletores
+
+# Vigia do frescor (PLANO-DATA-DO-DADO.md, Fase 5 — dono aprovou 15/10/2026):
+# le o registry de fontes, mede o lag de cada dump contra o carimbo `geradoEm`
+# (nascido na escrita bem-sucedida do coletor) e publica o registro da rodada.
+# Vermelho SO para regressao — fonte que a catraca nao conhecia e agora esta
+# atrasada ou sumida (coletor que PAROU de funcionar). As 13 fontes ja
+# vermelhas no nascimento do vigia estao registradas na catraca como divida;
+# devem descer uma a uma, com re-coleta, nunca apagando a régua.
+# So le disco: nao coleta, nao liga VM, nao toca rede — custo zero, por isso
+# roda todo dia as 13:00 UTC, depois das ETLs da manha e do cavas das 12:30.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  vigiar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Medir frescor das fontes do registry (catraca)
+        id: medir
+        # exit 0 sempre aqui: o vermelho e decidido depois de publicar o
+        # registro da rodada — falhar antes jogaria fora a evidencia.
+        run: |
+          set +e
+          npx tsx scripts/vigia-coletores.mts --catraca docs/relatorios-automacao/vigia-coletores-catraca.json
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Publicar registro da rodada
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/relatorios-automacao/vigia-coletores-status.json
+          if git diff --cached --quiet; then echo "sem mudancas"; exit 0; fi
+          git commit -m "ci: registro do vigia de coletores [skip ci]"
+          git push
+      - name: Vermelho so para regressao de coletor
+        run: |
+          if [ "${{ steps.medir.outputs.code }}" != "0" ]; then
+            echo "::error::o vigia pegou coletor novo parado — ver a tabela no passo Medir"
+            exit 1
+          fi

@@ -5,7 +5,7 @@
 > **Última medição:** 2026-10-13
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [DESENVOLVIMENTO.md](DESENVOLVIMENTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [PADRAO-VISUAL.md](../04-arquitetura/PADRAO-VISUAL.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** pagina wiki, IndiceWiki, SecaoWiki, MiniSumarioLateral, LinksRelacionados, ResumoExpandivel, IndicePagina, ancoras, top-100, next/link, acessibilidade, seis qualidades
+> **Palavras-chave:** pagina wiki, IndiceWiki, SecaoWiki, MiniSumarioLateral, LinksRelacionados, ResumoExpandivel, IndicePagina, ancoras, top-100, next/link, acessibilidade, oito qualidades
 
 ## Sumário
 
@@ -18,7 +18,7 @@
 - [5. Sumário ao final da página (IndicePagina)](#5-sumário-ao-final-da-página-indicepagina)
 - [6. Links relacionados nos dois pontos](#6-links-relacionados-nos-dois-pontos)
 - [7. Gráficos SVG nativo acessível](#7-gráficos-svg-nativo-acessível)
-- [8. Seis qualidades de dados](#8-seis-qualidades-de-dados)
+- [8. Oito qualidades de dados](#8-oito-qualidades-de-dados)
 - [9. Fonte oficial em formato ABNT](#9-fonte-oficial-em-formato-abnt)
 - [10. Links internos sempre via next/link](#10-links-internos-sempre-via-nextlink)
 - [11. Acessibilidade](#11-acessibilidade)
@@ -167,7 +167,7 @@ descrição curta**.
 - ✅ `role="img"` + `<title>`/`aria-label` descrevendo o que o gráfico
   mostra.
 
-## 8. Seis qualidades de dados
+ ## 8. Oito qualidades de dados
 
 Vale para toda página que publica acervo ou lista
 (§8 do [`AGENTS.md`](/AGENTS.md)):
@@ -180,9 +180,11 @@ Vale para toda página que publica acervo ou lista
 | 4 | Cartões de topo | agregados **medidos e datados**, nunca digitados à mão |
 | 5 | Contexto no Seu Nonô | tags e metadados da base alimentam o assistente, resposta em frases curtas com link oficial |
 | 6 | Exportação e impressão | CSV do que está **filtrado na tela**, separador `;`, **BOM UTF-8** (`\uFEFF`), + CSS `@media print` |
+| 7 | Responsiva (10/10/2026) | legível em 390 px, tabela/gráfico rolam dentro do quadro, `main` com `w-full` (§5.14 do AGENTS) |
+| 8 | Rastreável no tempo (15/10/2026) | `<DataColeta>` com a data do carimbo do arquivo (`geradoEm`); post com número mostra `dadosColetadosAte`; data digitada na mão é dano — porteiro `scripts/checar-data-coleta.py` |
 
 Não dispensa: página de servidor importa o **agregado** (`COBERTURA_*`),
-nunca o array inteiro; e **página que lê do banco só mostra as seis
+nunca o array inteiro; e **página que lê do banco só mostra as oito
 qualidades quando o banco responde** — "página vazia" ≠ "código faltando".
 
 ## 9. Fonte oficial em formato ABNT
@@ -247,7 +249,7 @@ Uma linha por item. Tudo `[x]` antes do commit.
 | [ ] | 5. Sumário do rodapé | `IndicePagina` automático, ≥ 2 headings |
 | [ ] | 6. Links relacionados | bloco no topo + `LinksRelacionados` no rodapé, ≤ ~5 cada |
 | [ ] | 7. Gráficos | SVG nativo, alternativa em texto/tabela, cor não sozinha |
-| [ ] | 8. Seis qualidades | fonte, busca, ordenação, cartões, Seu Nonô, CSV+BOM+print |
+| [ ] | 8. Oito qualidades | fonte, busca, ordenação, cartões datados, Seu Nonô, CSV+BOM+print, 390 px, data de coleta visível (`DataColeta`) |
 | [ ] | 9. Fonte ABNT | Autor, Data, hiperlink e botão "Fonte"; dupla verificação |
 | [ ] | 10. `next/link` | nenhum `<a href>` cru para página interna |
 | [ ] | 11. Acessibilidade | `aria-label`, foco visível, AA 4,5:1, alvo ≥ 24 px |
