@@ -891,26 +891,48 @@ function formatarReais(bruto: number): string {
 /** Subindicador do codec ComunicaBR (um dos ramos de "transferências"). */
 type SubTransferencia = MunicipioComunicaBR["categorias"][number]["subindicadores"][number];
 
+/** Um repasse nomeado, pronto para virar linha — objeto, não args soltos. */
+interface RepasseInfo {
+  rotulo: string;
+  valor: string | null | undefined;
+  referencia: string | null | undefined;
+}
+
+/** Programa dentro do subindicador de repasses às pessoas. */
+interface ProgramaPessoas {
+  pessoas: SubTransferencia | undefined;
+  rotulo: string;
+  prefixo: string;
+}
+
 /** Uma linha "Rótulo: R$ x (até corte)" — `null` quando o valor não existe. */
-function linhaFormatada(rotulo: string, valor: string | null | undefined, referencia: string | null | undefined): string | null {
-  if (!valor) return null;
-  const corte = soOCorte(referencia ?? null);
-  return `${rotulo}: ${valor}${corte ? ` (até ${corte})` : ""}`;
+function linhaFormatada(linha: RepasseInfo): string | null {
+  if (!linha.valor) return null;
+  const corte = soOCorte(linha.referencia ?? null);
+  return `${linha.rotulo}: ${linha.valor}${corte ? ` (até ${corte})` : ""}`;
 }
 
 /** Linha do repasse direto ao ente (o valor do próprio subindicador). */
-function linhaDoEnte(rotulo: string, sub: SubTransferencia | undefined): string | null {
-  return linhaFormatada(rotulo, sub?.valor, sub?.referencia);
+function linhaDoEnte(entes: SubTransferencia | undefined): string | null {
+  return linhaFormatada({
+    rotulo: "Prefeituras",
+    valor: entes?.valor ?? null,
+    referencia: entes?.referencia ?? null,
+  });
 }
 
 /**
- * Linha de um programa dentro do subindicador de repasses às pessoas. O corte
- * temporal vem do PRÓPRIO item (Bolsa Família até jul/2026, BPC até jun/2026…),
- * com o corte do subindicador como reserva quando o item não declara o seu.
+ * Linha de um programa de repasse às pessoas. O corte temporal vem do PRÓPRIO
+ * item (Bolsa Família até jul/2026, BPC até jun/2026…), com o corte do
+ * subindicador como reserva quando o item não declara o seu.
  */
-function linhaDoPrograma(rotulo: string, pessoas: SubTransferencia | undefined, prefixo: string): string | null {
-  const item = pessoas?.itens.find((i) => i.titulo.startsWith(prefixo) && i.valor);
-  return linhaFormatada(rotulo, item?.valor, item?.referencia ?? pessoas?.referencia);
+function linhaDoPrograma(p: ProgramaPessoas): string | null {
+  const item = p.pessoas?.itens.find((i) => i.titulo.startsWith(p.prefixo) && i.valor);
+  return linhaFormatada({
+    rotulo: p.rotulo,
+    valor: item?.valor ?? null,
+    referencia: item?.referencia ?? p.pessoas?.referencia ?? null,
+  });
 }
 
 /** Acrescenta a linha do total somado (entes + pessoas) quando há soma. */
@@ -933,11 +955,11 @@ function linhasDeRepasses(m: MunicipioComunicaBR): string[] | null {
   const entes = achou("entes federados");
   const pessoas = achou("às pessoas");
   const linhas = [
-    linhaDoEnte("Prefeituras", entes),
-    linhaDoPrograma("Bolsa Família", pessoas, "Bolsa Família"),
-    linhaDoPrograma("BPC", pessoas, "BPC"),
-    linhaDoPrograma("Seguro-Desemprego", pessoas, "Seguro-Desemprego"),
-    linhaDoPrograma("Previdência (benefícios)", pessoas, "Benefícios Previdenciários"),
+    linhaDoEnte(entes),
+    linhaDoPrograma({ pessoas, rotulo: "Bolsa Família", prefixo: "Bolsa Família" }),
+    linhaDoPrograma({ pessoas, rotulo: "BPC", prefixo: "BPC" }),
+    linhaDoPrograma({ pessoas, rotulo: "Seguro-Desemprego", prefixo: "Seguro-Desemprego" }),
+    linhaDoPrograma({ pessoas, rotulo: "Previdência (benefícios)", prefixo: "Benefícios Previdenciários" }),
   ].filter((l): l is string => l !== null);
   if (!linhas.length) return null;
   return comLinhaDeTotal(linhas, entes, pessoas);
