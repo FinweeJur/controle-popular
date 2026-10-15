@@ -442,6 +442,11 @@ F↔C com offset, dB logaritmico) = `ponytail: add quando aparecer no portal`.
   `dpkg` interrompido, `shallow.lock` travado. Corrigidos 12-13/10.
 - Pendencia: verificar proximo run agendado (cron diario 12:30 UTC)
   para confirmar que a coleta fecha.
+- **Verificado em 15/10 13:35 UTC:** o cron de hoje nao disparou (run
+  nenhum de 15/10, fila e em-andamento vazios) e o ultimo run e o de
+  14/10 17:27 UTC, falhou com "Nenhum manifesto novo em 72 min".
+  Pendencia continua aberta: proximo passo e o dono decidir o
+  disparo manual (Nota B4 do ESTADO.md — o run liga a VM).
 
 ### ETLs skipped — DB Heroku nao acessivel da CI
 
@@ -469,8 +474,14 @@ F↔C com offset, dB logaritmico) = `ponytail: add quando aparecer no portal`.
 ### Fase 0 — Corrigir pendencias (1-2 h)
 
 - [x] Corrigir `ESTEIRA-CAVAS.md` (metadados + sumario)
-- [ ] Verificar proximo run do `cavas-preparador.yml`
-- [ ] Registrar pendencia CNDH em ESTADO.md (Bloco B)
+- [x] Verificar proximo run do `cavas-preparador.yml` — **medido 15/10 13:35
+      UTC: o cron das 12:30 UTC de hoje NAO disparou** (nenhum run de 15/10;
+      nenhum em andamento nem na fila). Ultimo run continua sendo o de
+      14/10 17:27 UTC, que falhou em 1 h 42 com "Nenhum manifesto novo em
+      72 min" (positivos 3, negativos 0). O disparo manual so acontece com
+      o dono (ESTADO.md, Nota B4: o run liga a VM e gasta credito).
+- [x] Registrar pendencia CNDH em ESTADO.md (Bloco B) — virou a linha
+      **B10** de `docs/02-estado/ESTADO.md`
 
 ### Fase 1 — `lib/transformacao/unidades.ts` (2-3 h)
 
