@@ -10,8 +10,9 @@
 //   WHATSAPP_STORE_PATH      — caminho do SQLite store (default: bots/whatsapp/store.db)
 //
 // Uso:
-//   go run bots/whatsapp/                 # inicia o bot (QR code na primeira vez)
-//   go run bots/whatsapp/ --list-groups   # lista grupos (para achar o JID)
+//   go run ./bots/whatsapp/                 # inicia o bot (QR code na primeira vez)
+//   go run ./bots/whatsapp/ --pair-code 553182377181  # código pra digitar no app
+//   go run ./bots/whatsapp/ --list-groups   # lista grupos (para achar o JID)
 package main
 
 import (
@@ -384,9 +385,20 @@ func main() {
 	carregarEnv()
 
 	listGroups := false
-	for _, arg := range os.Args[1:] {
-		if arg == "--list-groups" {
+	pairPhone := ""
+	args := os.Args[1:]
+	for i := 0; i < len(args); i++ {
+		switch args[i] {
+		case "--list-groups":
 			listGroups = true
+		case "--pair-code":
+			if i+1 < len(args) {
+				i++
+				pairPhone = args[i]
+			} else {
+				fmt.Println("Uso: --pair-code <número-do-telefone>")
+				os.Exit(1)
+			}
 		}
 	}
 
@@ -445,11 +457,12 @@ func main() {
 	})
 
 	if listGroups {
-		if !client.IsLoggedIn() {
-			fmt.Println("❌ Necessário fazer pairing primeiro. Execute sem --list-groups e escaneie o QR code.")
+		fmt.Println("🔗 Conectando ao WhatsApp (sessão salva no store)...")
+		go client.Connect()
+		if !client.WaitForConnection(15 * time.Second) {
+			fmt.Println("❌ Timeout conectando — pairing necessário. Rode sem --list-groups primeiro.")
 			os.Exit(1)
 		}
-		go client.Connect()
 		if err := listarGrupos(client); err != nil {
 			fmt.Printf("❌ Erro: %v\n", err)
 			os.Exit(1)
@@ -458,8 +471,49 @@ func main() {
 		return
 	}
 
-	// Pairing QR (primeira vez)
-	if !client.IsLoggedIn() {
+	// Pairing via código (alternativa ao QR — mais confiável)
+	if pairPhone != "" {
+		fmt.Printf("📱 Gerando código de emparelhamento para %s...\n", pairPhone)
+		// GetQRChannel deve ser chamado ANTES de Connect (whatsmeow requirement)
+		qrChan, err := client.GetQRChannel(context.Background())
+		if err != nil {
+			fmt.Printf("❌ Erro ao iniciar: %v\n", err)
+			os.Exit(1)
+		}
+		go client.Connect()
+		// Aguarda primeiro evento QR (garante conexão WebSocket estabelecida)
+		fmt.Println("📶 Conectando ao WhatsApp...")
+		qrReceived := false
+		for evt := range qrChan {
+			if evt.Event == whatsmeow.QRChannelEventCode {
+				qrReceived = true
+				break
+			}
+			if evt.Event == "timeout" {
+				fmt.Println("❌ Timeout conectando ao WhatsApp")
+				os.Exit(1)
+			}
+		}
+		// Drain resto do canal em background (QR codes expirados)
+		go func() {
+			for range qrChan {}
+		}()
+		if !qrReceived {
+			fmt.Println("❌ Não recebi confirmação de conexão")
+			os.Exit(1)
+		}
+		time.Sleep(2 * time.Second)
+		code, err := client.PairPhone(ctx, pairPhone, false, whatsmeow.PairClientChrome, "Chrome (Windows)")
+		if err != nil {
+			fmt.Printf("❌ Erro no pair code: %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("📱 Código de emparelhamento: %s\n", code)
+		fmt.Println("   1. Abra WhatsApp no celular")
+		fmt.Println("   2. Settings → Linked Devices → Enter Code")
+		fmt.Println("   3. Digite o código acima")
+		fmt.Println("   Pode levar alguns segundos para o pairing completar...")
+	} else if !client.IsLoggedIn() {
 		qrChan, err := client.GetQRChannel(context.Background())
 		if err != nil {
 			fmt.Printf("❌ Erro ao iniciar QR channel: %v\n", err)
