@@ -329,7 +329,7 @@ E-mail: `);
                     id: "justica",
                     icon: Scale,
                     label: "Judiciário & Reparação",
-                    desc: "Execução do Acordo da Vale, Samarco e litígios ambientais.",
+                    desc: "Execução do Acordo de Brumadinho, de Mariana e litígios ambientais.",
                   },
                   {
                     id: "novidades",

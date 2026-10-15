@@ -13,6 +13,7 @@
 - [Como foi gerado](#como-foi-gerado)
 - [Escolha do modelo (medida)](#escolha-do-modelo-medida)
 - [O que falta (185)](#o-que-falta-185)
+- [Revisão humana do dono (15/10/2026)](#revisão-humana-do-dono-15102026)
 - [Entradas por frente](#entradas-por-frente)
 - [Como aprovar](#como-aprovar)
 
@@ -62,6 +63,43 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 - Refine aceito pela verificação: **164**.
 - Refine descartado (vale só a bruta do template): **21**.
 - Nenhum CPF ou dado pessoal detectado nas 185 sugestões.
+- No pente fino de 15/10, o dono **reprovou 1** (item 74): virou túmulo.
+  Restam **184 candidatas** à aprovação.
+
+## Revisão humana do dono (15/10/2026)
+
+O dono leu as entradas e passou um pente fino com seis critérios,
+aplicados a todas as 185:
+
+1. Pergunta é pergunta real, nunca `Como consulto <título de página>?` —
+   112 entradas vieram assim, com erro de concordância (itens 61, 74, 77, 78).
+2. Pergunta de número se responde com o NÚMERO, não só com a página: os
+   itens 9, 45, 50 e 65 ganharam valores medidos em
+   `public/data/comunicabr-31.json` (Betim R$ 900,8 mi; Minas R$ 68,8 bi
+   em 2026, com a competência de cada programa).
+3. Contagens conferidas contra o dado do repo: a Biblioteca tem agora
+   **424 teses de 73 universidades** (commits de 14/10); a lista "UFMG,
+   IFMG, CEFET-MG e UFRJ" e o "22 estudos" estavam mortos — o acervo é
+   458 documentos + 424 teses (itens 37, 40, 71).
+4. Nada de "disparidade histórica" entre órgãos diferentes: os itens 43,
+   44 e os do judiciario dizem "TJMG recebe R$ 14,96 bi; MPMG, R$ 4,09 bi;
+   DPMG, R$ 1,10 bi — menos de 8% do TJMG" (LOA 2025, Lei estadual
+   25.124/2024).
+5. "Acordo da Vale" não existe como nome — há vários TACs e acordos com a
+   Vale. O item 74 foi reprovado; o rateio de R$ 1,64 bi é o rateio
+   estadual do Acordo de Reparação de Brumadinho (Lei 23.830/2021, art. 5º).
+6. O item 63 fala de código aberto e autonomia tecnológica, não de
+   "integridade".
+
+Correções de fato pelo caminho: os números do CAR nas curadas seguiram o
+dado (`car-mg.json`, extração 20/08/2026: 78,4% em análise, média de
+1.577 dias), e o cadastro do MTE ganhou o nome oficial ("Cadastro de
+Empregadores", Portaria Interministerial nº 18/2024) com o termo
+"trabalho em condições análogas à escravidão".
+
+Os campos editados à mão mantêm o rótulo `(llama3.2:3b)` como procedência
+do rascunho. Continua valendo: nada entra no `SeuNonoData.ts` sem o dono
+dizer, item por item.
 
 ## Entradas por frente
 
@@ -69,11 +107,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 1. Soma dos R$ 251 bilhões monitorados no painel do portal
 
-**Pergunta:** Como consulto Soma dos R$ 251 bilhões monitorados no painel do portal?
+**Pergunta:** Quanto o portal monitora em dinheiro no painel?
 
-**Resposta refinada (llama3.2:3b):** O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular (fonte: /)
+**Resposta refinada (llama3.2:3b):** O painel do portal monitora R$ 251 bilhões. O Rio Doce traz R$ 171 bilhões. Brumadinho soma R$ 37,7 bilhões. A Justiça de Minas pesa R$ 20,1 bilhões. As cidades estratégicas completam com R$ 22,7 bilhões (fonte: /)
 
-**Resposta bruta (template):** O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. (fonte: /)
+**Resposta bruta (template):** O painel do portal monitora R$ 251 bilhões. O Rio Doce traz R$ 171 bilhões. Brumadinho soma R$ 37,7 bilhões. A Justiça de Minas pesa R$ 20,1 bilhões. As cidades estratégicas completam com R$ 22,7 bilhões. (fonte: /)
 
 **Fonte:** /
 
@@ -83,9 +121,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto Betim recebe de transferências federais?
 
-**Resposta refinada (llama3.2:3b):** O painel ComunicaBR detalha transferências da União para saúde, SUS, Bolsa Família e Fundeb em Betim. (fonte: /dados/comunicabr)
+**Resposta refinada (llama3.2:3b):** Betim soma R$ 900,8 milhões recebidos da União em 2026. A prefeitura recebe R$ 306,9 milhões até abril. O Bolsa Família paga R$ 132,0 milhões até julho. O BPC soma R$ 84,6 milhões até junho. O seguro-desemprego chega a R$ 86,2 milhões até junho. A previdência paga R$ 291,0 milhões até março. Em 2025 o repasse à prefeitura foi de R$ 566,6 milhões. O painel ComunicaBR mostra os valores por programa (fonte: /dados/comunicabr)
 
-**Resposta bruta (template):** O painel ComunicaBR detalha transferências da União para saúde, SUS, Bolsa Família e Fundeb em Betim. (fonte: /dados/comunicabr)
+**Resposta bruta (template):** Betim soma R$ 900,8 milhões recebidos da União em 2026. A prefeitura recebe R$ 306,9 milhões até abril. O Bolsa Família paga R$ 132,0 milhões até julho. O BPC soma R$ 84,6 milhões até junho. O seguro-desemprego chega a R$ 86,2 milhões até junho. A previdência paga R$ 291,0 milhões até março. Em 2025 o repasse à prefeitura foi de R$ 566,6 milhões. O painel ComunicaBR mostra os valores por programa. (fonte: /dados/comunicabr)
 
 **Fonte:** /dados/comunicabr
 
@@ -107,9 +145,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar estudos acadêmicos e pesquisas sobre as mineradoras?
 
-**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada reúne teses e pesquisas da UFMG, IFMG, CEFET-MG e UFRJ sobre barragens e bacias. (fonte: /biblioteca)
+**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada reúne 424 teses e dissertações de 73 universidades. O acervo foi integrado em 14/10/2026. UFMG e UFOP lideram, com 30 trabalhos cada (fonte: /biblioteca)
 
-**Resposta bruta (template):** A Biblioteca Unificada reúne teses e pesquisas da UFMG, IFMG, CEFET-MG e UFRJ sobre barragens e bacias. (fonte: /biblioteca)
+**Resposta bruta (template):** A Biblioteca Unificada reúne 424 teses e dissertações de 73 universidades. O acervo foi integrado em 14/10/2026. UFMG e UFOP lideram, com 30 trabalhos cada. (fonte: /biblioteca)
 
 **Fonte:** /biblioteca
 
@@ -127,13 +165,13 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Peça:** contexto:27:3 · geral · /estado-e-economia/orcamento
 
-#### 40. Onde ver as pesquisas da UFMG, IFMG, CEFET e UFRJ?
+#### 40. Quantas teses e dissertações há na Biblioteca Unificada?
 
-**Pergunta:** Onde ver as pesquisas da UFMG, IFMG, CEFET e UFRJ?
+**Pergunta:** Quantas teses e dissertações há na Biblioteca Unificada?
 
-**Resposta refinada (llama3.2:3b):** O acervo acadêmico reúne 22 estudos científicos sobre metais pesados, enchentes, drenagem e barragens. (fonte: /biblioteca)
+**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada soma 424 teses e dissertações de 73 universidades. O acervo total tem 458 documentos, com 18 estudos acadêmicos. A integração é de 14/10/2026. UFMG e UFOP lideram, com 30 cada (fonte: /biblioteca)
 
-**Resposta bruta (template):** O acervo acadêmico reúne 22 estudos científicos sobre metais pesados, enchentes, drenagem e barragens. (fonte: /biblioteca)
+**Resposta bruta (template):** A Biblioteca Unificada soma 424 teses e dissertações de 73 universidades. O acervo total tem 458 documentos, com 18 estudos acadêmicos. A integração é de 14/10/2026. UFMG e UFOP lideram, com 30 cada. (fonte: /biblioteca)
 
 **Fonte:** /biblioteca
 
@@ -155,9 +193,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Qual o impacto do orçamento da Justiça nas contas de MG?
 
-**Resposta refinada (llama3.2:3b):** Veja o comparativo entre a arrecadação de impostos (ICMS e IPVA) e os repasses obrigatórios aos poderes (fonte: /estado-e-economia/orcamento)
+**Resposta refinada (llama3.2:3b):** O TJMG custa R$ 14,96 bilhões na LOA 2025. A folha de pessoal consome R$ 11,61 bilhões, 77,6% do total. O valor equivale a 5,51% da receita corrente líquida de Minas. A página compara arrecadação e repasses aos poderes (fonte: /estado-e-economia/orcamento)
 
-**Resposta bruta (template):** Veja o comparativo entre a arrecadação de impostos (ICMS e IPVA) e os repasses obrigatórios aos poderes. (fonte: /estado-e-economia/orcamento)
+**Resposta bruta (template):** O TJMG custa R$ 14,96 bilhões na LOA 2025. A folha de pessoal consome R$ 11,61 bilhões, 77,6% do total. O valor equivale a 5,51% da receita corrente líquida de Minas. A página compara arrecadação e repasses aos poderes. (fonte: /estado-e-economia/orcamento)
 
 **Fonte:** /estado-e-economia/orcamento
 
@@ -165,11 +203,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 44. Onde ver as notícias investigativas sobre gastos dos tribunais?
 
-**Pergunta:** Onde ver as notícias investigativas sobre gastos dos tribunais?
+**Pergunta:** Quanto cada órgão da Justiça de Minas recebe no orçamento?
 
-**Resposta refinada (llama3.2:3b):** Reportagens detalham orçamentos de R$ 14,9 bi no TJMG e disparidade histórica com a Defensoria Pública (fonte: /noticias)
+**Resposta refinada (llama3.2:3b):** Reportagens comparam os orçamentos da Justiça mineira na LOA 2025. TJMG recebe R$ 14,96 bilhões; MPMG, R$ 4,09 bilhões; DPMG, R$ 1,10 bilhão — menos de 8% do TJMG (fonte: /noticias)
 
-**Resposta bruta (template):** Reportagens detalham orçamentos de R$ 14,9 bi no TJMG e disparidade histórica com a Defensoria Pública. (fonte: /noticias)
+**Resposta bruta (template):** Reportagens comparam os orçamentos da Justiça mineira na LOA 2025. TJMG recebe R$ 14,96 bilhões; MPMG, R$ 4,09 bilhões; DPMG, R$ 1,10 bilhão — menos de 8% do TJMG. (fonte: /noticias)
 
 **Fonte:** /noticias
 
@@ -179,9 +217,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto meu município recebe de repasses federais da União?
 
-**Resposta refinada (llama3.2:3b):** O ComunicaBR detalha transferências do Bolsa Família, SUS, Fundeb e BPC para os 853 municípios mineiros. (fonte: /dados/comunicabr)
+**Resposta refinada (llama3.2:3b):** Minas recebe R$ 68,80 bilhões da União em 2026. Belo Horizonte soma R$ 7,79 bilhões; Betim, R$ 900,8 milhões. O repasse às prefeituras vai até abril de 2026. Bolsa Família vai até julho, BPC e seguro-desemprego até junho, previdência até março. O painel ComunicaBR mostra o valor da sua cidade (fonte: /dados/comunicabr)
 
-**Resposta bruta (template):** O ComunicaBR detalha transferências do Bolsa Família, SUS, Fundeb e BPC para os 853 municípios mineiros. (fonte: /dados/comunicabr)
+**Resposta bruta (template):** Minas recebe R$ 68,80 bilhões da União em 2026. Belo Horizonte soma R$ 7,79 bilhões; Betim, R$ 900,8 milhões. O repasse às prefeituras vai até abril de 2026. Bolsa Família vai até julho, BPC e seguro-desemprego até junho, previdência até março. O painel ComunicaBR mostra o valor da sua cidade. (fonte: /dados/comunicabr)
 
 **Fonte:** /dados/comunicabr
 
@@ -203,9 +241,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto a União transfere aos municípios de MG pelo ComunicaBR?
 
-**Resposta refinada (llama3.2:3b):** Consulte transferências federais para saúde, educação e programas sociais nos 853 municípios. (fonte: /dados/comunicabr)
+**Resposta refinada (llama3.2:3b):** Em 2026, a União repassa R$ 68,80 bilhões a 853 municípios de Minas. As prefeituras recebem R$ 29,87 bilhões. O Bolsa Família soma R$ 6,79 bilhões e o BPC, R$ 5,75 bilhões. Os benefícios previdenciários chegam a R$ 23,31 bilhões. O seguro-desemprego paga R$ 3,08 bilhões. Cada programa tem data de corte (fonte: /dados/comunicabr)
 
-**Resposta bruta (template):** Consulte transferências federais para saúde, educação e programas sociais nos 853 municípios. (fonte: /dados/comunicabr)
+**Resposta bruta (template):** Em 2026, a União repassa R$ 68,80 bilhões a 853 municípios de Minas. As prefeituras recebem R$ 29,87 bilhões. O Bolsa Família soma R$ 6,79 bilhões e o BPC, R$ 5,75 bilhões. Os benefícios previdenciários chegam a R$ 23,31 bilhões. O seguro-desemprego paga R$ 3,08 bilhões. Cada programa tem data de corte. (fonte: /dados/comunicabr)
 
 **Fonte:** /dados/comunicabr
 
@@ -285,23 +323,23 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 61. Governo: Prometeu? Cumpriu?
 
-**Pergunta:** Governo: Prometeu? Cumpriu?
+**Pergunta:** O governador do meu estado cumpriu as promessas de campanha?
 
-**Resposta refinada (llama3.2:3b):** Fiscalização de promessas de campanha e metas dos 27 governos estaduais e capitais (fonte: /governo)
+**Resposta refinada (llama3.2:3b):** O portal monitora as promessas dos 27 governos estaduais e das capitais. Cada meta tem status de cumprimento. Veja o painel Prometeu? Cumpriu? por estado (fonte: /governo)
 
-**Resposta bruta (template):** Fiscalização de promessas de campanha e metas dos 27 governos estaduais e capitais. (fonte: /governo)
+**Resposta bruta (template):** O portal monitora as promessas dos 27 governos estaduais e das capitais. Cada meta tem status de cumprimento. Veja o painel Prometeu? Cumpriu? por estado. (fonte: /governo)
 
 **Fonte:** /governo
 
 **Peça:** pagina:governo-hub · geral · /governo
 
-#### 63. Tecnologia Livre & Integridade
+#### 63. Código aberto e autonomia tecnológica no portal
 
-**Pergunta:** Como consulto Tecnologia Livre & Integridade?
+**Pergunta:** O portal usa código aberto e garante autonomia tecnológica?
 
-**Resposta refinada (llama3.2:3b):** Infraestrutura soberana de IA com modelos abertos, regras de Zero-Secret e respeito rigoroso à LGPD (fonte: /tecnologia)
+**Resposta refinada (llama3.2:3b):** O portal usa código aberto e infraestrutura soberana. Os modelos de IA são abertos, sem segredo escondido. As regras zero-secreto e a LGPD limitam o uso de dados (fonte: /tecnologia)
 
-**Resposta bruta (template):** Infraestrutura soberana de IA com modelos abertos, regras de Zero-Secret e respeito rigoroso à LGPD. (fonte: /tecnologia)
+**Resposta bruta (template):** O portal usa código aberto e infraestrutura soberana. Os modelos de IA são abertos, sem segredo escondido. As regras zero-secreto e a LGPD limitam o uso de dados. (fonte: /tecnologia)
 
 **Fonte:** /tecnologia
 
@@ -309,11 +347,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 65. ComunicaBR — Repasses Federais nos Municípios
 
-**Pergunta:** Como consulto ComunicaBR — Repasses Federais nos Municípios?
+**Pergunta:** Quanto a União repassa aos municípios de Minas pelo ComunicaBR?
 
-**Resposta refinada (llama3.2:3b):** Transferências diretas da União para os 853 municípios de Minas Gerais em programas sociais, saúde e educação. (fonte: /dados/comunicabr)
+**Resposta refinada (llama3.2:3b):** A União transfere R$ 68,80 bilhões aos 853 municípios mineiros em 2026. As prefeituras recebem até abril, o Bolsa Família até julho. O BPC e o seguro-desemprego vão até junho, a previdência até março. O painel mostra o valor por cidade (fonte: /dados/comunicabr)
 
-**Resposta bruta (template):** Transferências diretas da União para os 853 municípios de Minas Gerais em programas sociais, saúde e educação. (fonte: /dados/comunicabr)
+**Resposta bruta (template):** A União transfere R$ 68,80 bilhões aos 853 municípios mineiros em 2026. As prefeituras recebem até abril, o Bolsa Família até julho. O BPC e o seguro-desemprego vão até junho, a previdência até março. O painel mostra o valor por cidade. (fonte: /dados/comunicabr)
 
 **Fonte:** /dados/comunicabr
 
@@ -321,7 +359,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 67. Estados Unidos — Corporações & Fundos na SEC
 
-**Pergunta:** Como consulto Estados Unidos — Corporações & Fundos na SEC?
+**Pergunta:** Onde vejo as empresas americanas registradas na SEC?
 
 **Resposta refinada (llama3.2:3b):** Mercado de capitais norte-americano: formulários Form 20-F, 10-K, recibos ADR e fundos globais (fonte: /eua/empresas)
 
@@ -333,7 +371,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 68. Cavas de Mineração em Minas Gerais
 
-**Pergunta:** Como consulto Cavas de Mineração em Minas Gerais?
+**Pergunta:** Onde vejo as cavas de mineração mapeadas em Minas?
 
 **Resposta refinada (llama3.2:3b):** Série anual da mineração mapeada por satélite em MG e cruzamento de uma amostra de cavas com os polígonos da ANM, com camadas no globo 3D (fonte: /mineracao/cavas)
 
@@ -343,13 +381,13 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Peça:** pagina:mineracao-cavas · geral · /mineracao/cavas
 
-#### 71. Biblioteca reúne 458 documentos oficiais sobre barragens e a Vale
+#### 71. Biblioteca reúne 458 documentos e 424 teses sobre barragens e mineração
 
-**Pergunta:** Como consulto Biblioteca reúne 458 documentos oficiais sobre barragens e a Vale?
+**Pergunta:** Quantos documentos há na Biblioteca Unificada?
 
-**Resposta refinada (llama3.2:3b):** O acervo unificado do portal reúne documentos públicos, relatórios corporativos e produção acadêmica sobre barragens, mineração e transparência. A biblioteca do portal (/biblioteca) reúne 458 documentos sobre barragens e mineração. O acervo foi atualizado em 01/10/2026, segundo o registro interno. (fonte: /noticias/biblioteca-documentos-barragens-vale)
+**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada reúne 458 documentos sobre barragens e mineração, atualizados em 01/10/2026. O acervo integra 424 teses e dissertações de 73 universidades, desde 14/10/2026. A página /biblioteca mostra os dois conjuntos (fonte: /noticias/biblioteca-documentos-barragens-vale)
 
-**Resposta bruta (template):** O acervo unificado do portal reúne documentos públicos, relatórios corporativos e produção acadêmica sobre barragens, mineração e transparência. A biblioteca do portal (/biblioteca) reúne 458 documentos sobre barragens e mineração. O acervo foi atualizado em 01/10/2026, segundo o registro interno. (fonte: /noticias/biblioteca-documentos-barragens-vale)
+**Resposta bruta (template):** A Biblioteca Unificada reúne 458 documentos sobre barragens e mineração, atualizados em 01/10/2026. O acervo integra 424 teses e dissertações de 73 universidades, desde 14/10/2026. A página /biblioteca mostra os dois conjuntos. (fonte: /noticias/biblioteca-documentos-barragens-vale)
 
 **Fonte:** /noticias/biblioteca-documentos-barragens-vale
 
@@ -357,9 +395,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 72. IPCA, Selic e dólar: os números que mexem no orçamento
 
-**Pergunta:** Como consulto IPCA, Selic e dólar: os números que mexem no orçamento?
+**Pergunta:** Onde vejo as séries de inflação, juros e câmbio?
 
-**Resposta refinada (llama3.2:3b):** O portal reúne as séries oficiais do Banco Central sobre inflação, juros e câmbio. Os indicadores ajudam a entender o orçamento de famílias e governos. As séries do Banco Central (https://www3.bcb.gov.br/sgspub/) mostram a inflação e os juros oficiais. Em agosto de 2026, o IPCA ficou em -0,32%. (fonte: /noticias/ipca-selic-dolar-orcamento-banco-central)
+**Resposta refinada (llama3.2:3b):** O portal reúne as séries oficiais do Banco Central sobre inflação, juros e câmbio. Os indicadores ajudam a entender o orçamento de famílias e governos. As séries do Banco Central (https://www3.bcb.gov.br/sgspub/) mostram a inflação e os juros oficiais. Em agosto de 2026, o IPCA ficou em -0,32% (fonte: /noticias/ipca-selic-dolar-orcamento-banco-central)
 
 **Resposta bruta (template):** O portal reúne as séries oficiais do Banco Central sobre inflação, juros e câmbio. Os indicadores ajudam a entender o orçamento de famílias e governos. As séries do Banco Central (https://www3.bcb.gov.br/sgspub/) mostram a inflação e os juros oficiais. Em agosto de 2026, o IPCA ficou em -0,32%. (fonte: /noticias/ipca-selic-dolar-orcamento-banco-central)
 
@@ -369,35 +407,27 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 73. 870 convênios ambientais somam R$ 477 milhões em Minas
 
-**Pergunta:** Como consulto 870 convênios ambientais somam R$ 477 milhões em Minas?
+**Pergunta:** Quanto somam os convênios ambientais de Minas Gerais?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
-**Resposta bruta (template):** O portal reuniu 870 convênios ambientais de Minas, com valor, órgão e prazo. A lista mostra quanto o estado prometeu gastar e quantos acordos foram adiados. O portal reuniu 870 convênios ambientais firmados em Minas Gerais. O valor somado chega a R$ 477,4 milhões, segundo o acervo. (fonte: /noticias/convenios-ambientais-minas-semad)
+**Resposta bruta (template):** O portal reuniu 870 convênios ambientais de Minas Gerais. A soma chega a R$ 477,4 milhões, entre 2007 e 2026. A lista mostra valor, órgão, prazo e acordos adiados. (fonte: /noticias/convenios-ambientais-minas-semad)
 
 **Fonte:** /noticias/convenios-ambientais-minas-semad
 
 **Peça:** blog:convenios-ambientais-minas-semad · geral · /noticias/convenios-ambientais-minas-semad
 
-#### 74. Acordo da Vale repassa R$ 1,64 bilhão aos 853 municípios de Minas
+#### 74. ❌ REPROVADA pelo dono em 15/10 — "Acordo da Vale" é genérico
 
-**Pergunta:** Como consulto Acordo da Vale repassa R$ 1,64 bilhão aos 853 municípios de Minas?
-
-**Resposta refinada (llama3.2:3b):** O rateio do Acordo de Reparação de Brumadinho distribuiu R$ 1,64 bilhão a todos os municípios mineiros. A lista traz o valor por cidade e mais 361 repasses complementares. O Acordo de Reparação de Brumadinho repassou R$ 1,64 bilhão aos municípios de Minas.(fonte: /noticias/repasse-acordo-vale-853-municipios-minas)
-
-**Resposta bruta (template):** O rateio do Acordo de Reparação de Brumadinho distribuiu R$ 1,64 bilhão a todos os municípios mineiros. A lista traz o valor por cidade e mais 361 repasses complementares. O Acordo de Reparação de Brumadinho repassou R$ 1,64 bilhão aos municípios de Minas. (fonte: /noticias/repasse-acordo-vale-853-municipios-minas)
-
-**Fonte:** /noticias/repasse-acordo-vale-853-municipios-minas
-
-**Peça:** blog:repasse-acordo-vale-853-municipios-minas · geral · /noticias/repasse-acordo-vale-853-municipios-minas
+O rateio de R$ 1,64 bilhão é o rateio ESTADUAL do Acordo Judicial de Reparação Integral — Brumadinho (Vale S.A.), criado pela Lei 23.830/2021, art. 5º. Há vários TACs e acordos com a Vale (Brumadinho, Rio Doce/Mariana); "acordo da Vale" é tecnicamente errado. A pergunta também tinha erro de concordância. Fora das perguntas pré-curadas. Ver dado: `public/data/repasse-brumadinho-mg.json` (11/08/2026).
 
 #### 75. Portal mapeia 445 canais de pedido de informação pública
 
-**Pergunta:** Como consulto Portal mapeia 445 canais de pedido de informação pública?
+**Pergunta:** Quantos canais de pedido de informação o portal mapeia?
 
-**Resposta refinada (llama3.2:3b):** O portal reuniu 445 canais de acesso à informação no país, com endére e categoria. A Lei de Acesso ÎA Informação garante resposta em até 20 dias. O portal reuniu 445 canais de acesso à informação no paíss. A lista inclui 199 prefeituras e 199 câmaras municipais. (fonte: /noticias/canais-pedido-informacao-lai-portal)
+**Resposta refinada (llama3.2:3b):** O portal mapeia 445 canais de acesso à informação no país. São 199 prefeituras, 199 câmaras, concessionárias e órgãos federais. A LAI garante resposta em até 20 dias. Cada canal traz endereço e categoria. (fonte: /noticias/canais-pedido-informacao-lai-portal)
 
-**Resposta bruta (template):** O portal reuniu 445 canais de acesso à informação no país, com endereço e categoria. A Lei de Acesso à Informação garante resposta em até 20 dias. O portal reuniu 445 canais de acesso à informação no país. A lista inclui 199 prefeituras e 199 câmaras municipais. (fonte: /noticias/canais-pedido-informacao-lai-portal)
+**Resposta bruta (template):** O portal mapeia 445 canais de acesso à informação no país. São 199 prefeituras, 199 câmaras, concessionárias e órgãos federais. A LAI garante resposta em até 20 dias. Cada canal traz endereço e categoria. (fonte: /noticias/canais-pedido-informacao-lai-portal)
 
 **Fonte:** /noticias/canais-pedido-informacao-lai-portal
 
@@ -405,23 +435,23 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 76. 710 conselhos de direitos fiscalizam políticas públicas no país
 
-**Pergunta:** Como consulto 710 conselhos de direitos fiscalizam políticas públicas no país?
+**Pergunta:** Quantos conselhos de direitos existem no país?
 
-**Resposta refinada (llama3.2:3b):** O portal mapeou 710 conselhos de direitos no país, com a categoria e a esfera de cada um. Os conselhos são a porta de entrada da participação popular. O portal mapeou 710 conselhos de direitos em todo o país. Desses, 597 atuam na esfera municipal e 108 na estadual. (fonte: /noticias/conselhos-direitos-politicas-publicas)
+**Resposta refinada (llama3.2:3b):** O portal mapeou 710 conselhos de direitos no país. Desses, 597 são municipais, 108 estaduais e 5 federais. Cada conselho traz categoria e esfera. Eles são a porta da participação popular. (fonte: /noticias/conselhos-direitos-politicas-publicas)
 
-**Resposta bruta (template):** O portal mapeou 710 conselhos de direitos no país, com a categoria e a esfera de cada um. Os conselhos são a porta de entrada da participação popular. O portal mapeou 710 conselhos de direitos em todo o país. Desses, 597 atuam na esfera municipal e 108 na estadual. (fonte: /noticias/conselhos-direitos-politicas-publicas)
+**Resposta bruta (template):** O portal mapeou 710 conselhos de direitos no país. Desses, 597 são municipais, 108 estaduais e 5 federais. Cada conselho traz categoria e esfera. Eles são a porta da participação popular. (fonte: /noticias/conselhos-direitos-politicas-publicas)
 
 **Fonte:** /noticias/conselhos-direitos-politicas-publicas
 
 **Peça:** blog:conselhos-direitos-politicas-publicas · geral · /noticias/conselhos-direitos-politicas-publicas
 
-#### 77. 181 empresas entram em cadastro de trabalho análogo ao escravo
+#### 77. MTE cadastra 181 empresas por trabalho em condições análogas à escravidão
 
-**Pergunta:** Como consulto 181 empresas entram em cadastro de trabalho análogo ao escravo?
+**Pergunta:** Quantas empresas estão no cadastro de trabalho análogo à escravidão do MTE?
 
-**Resposta refinada (llama3.2:3b):** O Cadastro de Empregadores do Ministério do Trabalho e Emprego expõe empresas autuadas por trabalho análogo à escravidão. O portal detalha os registros por estado. (fonte: /noticias/cadastro-empregadores-trabalho-escravo-mte)
+**Resposta refinada (llama3.2:3b):** O Cadastro de Empregadores expõe empresas em casos de trabalho análogo à escravidão. São 181 empresas, 190 registros e 1.867 trabalhadores em 23 estados. O dado é de 28/09/2026. A Portaria 18/2024 do MTE, MDHC e MIR criou o cadastro (fonte: /noticias/cadastro-empregadores-trabalho-escravo-mte)
 
-**Resposta bruta (template):** O Cadastro de Empregadores do Ministério do Trabalho e Emprego expõe empresas autuadas por trabalho análogo à escravidão. O portal detalha os registros por estado. (fonte: /noticias/cadastro-empregadores-trabalho-escravo-mte)
+**Resposta bruta (template):** O Cadastro de Empregadores expõe empresas em casos de trabalho análogo à escravidão. São 181 empresas, 190 registros e 1.867 trabalhadores em 23 estados. O dado é de 28/09/2026. A Portaria 18/2024 do MTE, MDHC e MIR criou o cadastro. (fonte: /noticias/cadastro-empregadores-trabalho-escravo-mte)
 
 **Fonte:** /noticias/cadastro-empregadores-trabalho-escravo-mte
 
@@ -429,11 +459,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 78. Fila do CAR no IEF leva 4 anos, mas grandes empreendimentos tramitam em meses
 
-**Pergunta:** Como consulto Fila do CAR no IEF leva 4 anos, mas grandes empreendimentos tramitam em meses?
+**Pergunta:** Por que a fila do CAR no IEF demora tantos anos?
 
-**Resposta refinada (llama3.2:3b):** Radiografia inédita do ONSA revela que 76,9% dos 1,16 milhão de imóveis do CAR em Minas Gerais estão paralisados em análise. A média estadual supera 1.564 dias de espera, mas setores de silvicultura e mineração contam com ritos acelerados, assessorias privadas e análise automatizada. (fonte: /noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores)
+**Resposta refinada (llama3.2:3b):** O CAR de Minas tem 1,16 milhão de imóveis no IEF. Dos registros, 78,4% seguem paralisados em análise. A espera média passa de 1.577 dias, mais de quatro anos. Silvicultura e mineração tramitam em meses, com ritos acelerados. O dado é de 20/08/2026 (fonte: /noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores)
 
-**Resposta bruta (template):** Radiografia inédita do ONSA revela que 76,9% dos 1,16 milhão de imóveis do CAR em Minas Gerais estão paralisados em análise. A média estadual supera 1.564 dias de espera, mas setores de silvicultura e mineração contam com ritos acelerados, assessorias privadas e análise automatizada. (fonte: /noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores)
+**Resposta bruta (template):** O CAR de Minas tem 1,16 milhão de imóveis no IEF. Dos registros, 78,4% seguem paralisados em análise. A espera média passa de 1.577 dias, mais de quatro anos. Silvicultura e mineração tramitam em meses, com ritos acelerados. O dado é de 20/08/2026. (fonte: /noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores)
 
 **Fonte:** /noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores
 
@@ -441,7 +471,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 79. Laboratório de dados: compare séries públicas em gráficos de pontos
 
-**Pergunta:** Como consulto Laboratório de dados: compare séries públicas em gráficos de pontos?
+**Pergunta:** Como comparar séries públicas em gráficos no Laboratório?
 
 **Resposta refinada (llama3.2:3b):** O portal lançou o Laboratório de Dados. O leitor escolhe dois acervos no dock e analisa indicadores lado a lado em gráficos de pontos. A busca global agora direciona palavras-chave para as janelas. Consultar dados públicos em tabelas extensas costuma afastar quem busca respostas rápidas. (fonte: /noticias/laboratorio-de-dados-do-portal)
 
@@ -453,7 +483,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 80. Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas
 
-**Pergunta:** Como consulto Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas?
+**Pergunta:** O que o satélite CBERS-6 vai monitorar na Amazônia?
 
 **Resposta refinada (llama3.2:3b):** Brasil e China aprovam cronograma de desenvolvimento do satélite ambiental CBERS-6. Novo sensor de radar óptico superará limitações climáticas na fiscalização florestal. (fonte: /noticias/satelite-cbers-6-cooperacao-espacial-amazonia)
 
@@ -465,11 +495,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 81. Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano
 
-**Pergunta:** Como consulto Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano?
+**Pergunta:** Qual é a taxa média do cheque especial?
 
-**Resposta refinada (llama3.2:3b):** Atualização das séries econômicas do Banco Central reúne taxas de juros, inflação e endividamento. Crédito rotativo permanece elevado enquanto dívida líquida atinge 61% do PIB. (fonte: /noticias/indicadores-economicos-banco-central-credito-inflacao)
+**Resposta refinada (llama3.2:3b):** O cheque especial tem taxa média de 128% ao ano. O dado vem das séries do Banco Central. A dívida líquida do setor público atinge 61% do PIB. As séries reúnem juros, inflação e endividamento. (fonte: /noticias/indicadores-economicos-banco-central-credito-inflacao)
 
-**Resposta bruta (template):** Atualização das séries econômicas do Banco Central reúne taxas de juros, inflação e endividamento. Crédito rotativo permanece elevado enquanto dívida líquida atinge 61% do PIB. (fonte: /noticias/indicadores-economicos-banco-central-credito-inflacao)
+**Resposta bruta (template):** O cheque especial tem taxa média de 128% ao ano. O dado vem das séries do Banco Central. A dívida líquida do setor público atinge 61% do PIB. As séries reúnem juros, inflação e endividamento. (fonte: /noticias/indicadores-economicos-banco-central-credito-inflacao)
 
 **Fonte:** /noticias/indicadores-economicos-banco-central-credito-inflacao
 
@@ -477,11 +507,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 82. Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país
 
-**Pergunta:** Como consulto Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país?
+**Pergunta:** Quantos distritos rurais estão sem cobertura celular no Brasil?
 
-**Resposta refinada (llama3.2:3b):** Mapeamento das antenas de telefonia móvel revela exclusío digital em centenas de municípios. PopulaÚscões rurais enfrentam barreiras de acesso a serviços p»ablcs e bancos digitais. A Anatel (https://dados.gov.br/dados/conjuntos-dados/smp-cobertura) mapeou as antenas de telefonia celular no Brasil. (fonte: /noticias/cobertura-celular-anatel-desertos-digitais-brasil)
+**Resposta refinada (llama3.2:3b):** A Anatel mapeia a cobertura de celular no país. Mais de 1.400 distritos rurais seguem sem sinal. Populações rurais ficam longe de serviços públicos e bancos digitais. O mapeamento está em dados abertos da Anatel (https://dados.gov.br/dados/conjuntos-dados/smp-cobertura). (fonte: /noticias/cobertura-celular-anatel-desertos-digitais-brasil)
 
-**Resposta bruta (template):** Mapeamento das antenas de telefonia móvel revela exclusão digital em centenas de municípios. Populações rurais enfrentam barreiras de acesso a serviços públicos e bancos digitais. A Anatel (https://dados.gov.br/dados/conjuntos-dados/smp-cobertura) mapeou as antenas de telefonia celular no Brasil. (fonte: /noticias/cobertura-celular-anatel-desertos-digitais-brasil)
+**Resposta bruta (template):** A Anatel mapeia a cobertura de celular no país. Mais de 1.400 distritos rurais seguem sem sinal. Populações rurais ficam longe de serviços públicos e bancos digitais. O mapeamento está em dados abertos da Anatel (https://dados.gov.br/dados/conjuntos-dados/smp-cobertura). (fonte: /noticias/cobertura-celular-anatel-desertos-digitais-brasil)
 
 **Fonte:** /noticias/cobertura-celular-anatel-desertos-digitais-brasil
 
@@ -489,7 +519,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 83. Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias
 
-**Pergunta:** Como consulto Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias?
+**Pergunta:** Quanto gastam as assembleias legislativas estaduais?
 
 **Resposta refinada (llama3.2:3b):** Mapeamento inédito consolida gastos dos legislativos estaduais em Minas Gerais e São Paulo. Cada deputado dispõe de dezenas de assessores e recursos para despesas de mandato. (fonte: /noticias/gastos-salarios-parlamentares-assembleias-estaduais)
 
@@ -501,11 +531,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 84. Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais
 
-**Pergunta:** Como consulto Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais?
+**Pergunta:** Qual a diferença de preço da gasolina entre capitais?
 
-**Resposta refinada (llama3.2:3b):** Levantamento semanal da ANP revela disparidade acentuada nos preços da gasolina pelo país. Custo do transporte e alíquotas estaduais explicam diferenças de até 30% nos postos. (fonte: /noticias/preco-gasolina-capitais-cidades-estrategicas-anp)
+**Resposta refinada (llama3.2:3b):** A ANP pesquisa o preço da gasolina toda semana. A diferença chega a R$ 1,67 por litro entre capitais. Impostos estaduais e custo do transporte explicam a variação. (fonte: /noticias/preco-gasolina-capitais-cidades-estrategicas-anp)
 
-**Resposta bruta (template):** Levantamento semanal da ANP revela disparidade acentuada nos preços da gasolina pelo país. Custo do transporte e alíquotas estaduais explicam diferenças de até 30% nos postos. (fonte: /noticias/preco-gasolina-capitais-cidades-estrategicas-anp)
+**Resposta bruta (template):** A ANP pesquisa o preço da gasolina toda semana. A diferença chega a R$ 1,67 por litro entre capitais. Impostos estaduais e custo do transporte explicam a variação. (fonte: /noticias/preco-gasolina-capitais-cidades-estrategicas-anp)
 
 **Fonte:** /noticias/preco-gasolina-capitais-cidades-estrategicas-anp
 
@@ -513,7 +543,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 85. Leilões ferroviários atraem consórcios globais para modernizar transporte de cargas
 
-**Pergunta:** Como consulto Leilões ferroviários atraem consórcios globais para modernizar transporte de cargas?
+**Pergunta:** Onde ver os leilões ferroviários em andamento?
 
 **Resposta refinada (llama3.2:3b):** Governo federal promove leilões de concessão para modernização da Malha Oeste e Ferrogrão. Fabricantes da Europa, Estados Unidos e China disputam fornecimento de locomotivas e trilhos. O Ministério dos Transportes prepara a licitação internacional de concessão da Malha Oeste ferroviária. (fonte: /noticias/leiloes-ferroviarios-malha-oeste-disputa-internacional)
 
@@ -525,7 +555,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 86. Séries econômicas do Banco Central explicam pressão sobre orçamentos dos estados
 
-**Pergunta:** Como consulto Séries econômicas do Banco Central explicam pressão sobre orçamentos dos estados?
+**Pergunta:** Como a economia afeta o orçamento dos estados?
 
 **Resposta refinada (llama3.2:3b):** Integração com a API do Banco Central revela evolução da dívida líquida do setor público. Juros altos e inflação limitam capacidade fiscal de governos estaduais e prefeituras. O portal integrou indicadores macroeconômicos oficiais da API do Banco Central do Brasil. (fonte: /noticias/series-economicas-banco-central-orcamento-estados-municipios)
 
@@ -537,7 +567,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 87. Automação diária do Portal Nacional de Contratações Públicas assegura fiscalização cívica
 
-**Pergunta:** Como consulto Automação diária do Portal Nacional de Contratações Públicas assegura fiscalização cívica?
+**Pergunta:** Como o portal acompanha as compras públicas do PNCP?
 
 **Resposta refinada (llama3.2:3b):** Rotina automatizada analisa compras públicas publicadas no PNCP sob a Lei 14.133. Sistema sanitiza dados de pessoas físicas e consolida contratos em formato aberto. A nova Lei de Licitações centraliza compras governamentais no portal nacional PNCP. (fonte: /noticias/automacao-diaria-pncp-compras-publicas-lgpd)
 
@@ -549,7 +579,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 88. Assembleias legislativas estaduais passam a ter gastos e atuação parlamentar monitorados
 
-**Pergunta:** Como consulto Assembleias legislativas estaduais passam a ter gastos e atuação parlamentar monitorados?
+**Pergunta:** Onde acompanhar os gastos dos deputados estaduais?
 
 **Resposta refinada (llama3.2:3b):** Novo módulo do portal acompanha o desempenho dos deputados estaduais de MG e SP. Dados oficiais detalham o uso de verbas públicas e proposições apresentadas. O portal Controle Popular ampliou a fiscalização cívica para os parlamentos estaduais brasileiros. (fonte: /noticias/transparencia-assembleias-legislativas-almg-alesp)
 
@@ -561,7 +591,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 89. Cobertura de telefonia celular e 5G expõe desigualdades de conectividade no país
 
-**Pergunta:** Como consulto Cobertura de telefonia celular e 5G expõe desigualdades de conectividade no país?
+**Pergunta:** Onde o 5G ainda não chegou no Brasil?
 
 **Resposta refinada (llama3.2:3b):** Dados da Anatel revelam concentração da tecnologia 5G nos grandes centros urbanos. Rodovias federais e áreas rurais continuam com acesso restrito a redes velozes. O sinal de internet móvel de alta velocidade ainda não alcança toda população. (fonte: /noticias/cobertura-telefonia-movel-5g-anatel-desigualdades)
 
@@ -573,7 +603,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 90. Preço dos combustíveis revela fortes disparidades entre capitais e cidades estratégicas
 
-**Pergunta:** Como consulto Preço dos combustíveis revela fortes disparidades entre capitais e cidades estratégicas?
+**Pergunta:** Quanto varia o preço dos combustíveis entre cidades?
 
 **Resposta refinada (llama3.2:3b):** Série histórica da ANP aponta diferenças expressivas no preço médio da gasolina comum. Custo do refino, impostos estaduais e logística definem os valores na bomba. A Agência Nacional do Petróleo pesquisa preços de combustíveis semanalmente em todo país. (fonte: /noticias/preco-combustiveis-anp-capitais-200-cidades-polos)
 
@@ -585,7 +615,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 91. Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil
 
-**Pergunta:** Como consulto Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil?
+**Pergunta:** Quanto as empresas chinesas investem no Brasil?
 
 **Resposta refinada (llama3.2:3b):** Empresas da China expandem atuação no setor elétrico e no transporte público brasileiro. Investimentos da State Grid e BYD ultrapassam quarenta bilhões de reais. (fonte: /noticias/investimentos-chineses-transmissao-mobilidade-eletrica)
 
@@ -597,7 +627,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 92. Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos
 
-**Pergunta:** Como consulto Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos?
+**Pergunta:** Quanto o Brasil negocia em parcerias internacionais?
 
 **Resposta refinada (llama3.2:3b):** Novo painel cívico acompanha negociações bilaterais em mineração, hidrogênio verde, ferrovias e tecnologia. Aportes previstos ultrapassam duzentos bilhões de reais. O governo federal mantém negociações diplomáticas e comerciais para projetos de grande porte. (fonte: /noticias/acordos-internacionais-sete-setores-estrategicos)
 
@@ -609,9 +639,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 93. As páginas mais acessadas do portal e as garantias de transparência cívica e proteção de dados
 
-**Pergunta:** Como consulto As páginas mais acessadas do portal e as garantias de transparência cívica e proteção de dados?
+**Pergunta:** Quais são as páginas mais acessadas do portal?
 
-**Resposta refinada (llama3.2:3b):** Para consultar as páginas mais acessadas do portal, você pode acessar o painel de controle e visualizar os rankings de tráfego. As garantias de transparência cívica incluem a divulgação de termos de uso que protegem os direitos dos titulares de dados, além da transparência passiva. A transparência sobre o próprio portal é parte do compromisso público do Controle Popular. (fonte: /noticias/transparencia-passiva-dados-populares-e-lgpd)
+**Resposta refinada (llama3.2:3b):** O ranking de páginas populares mostra a busca por prestação de contas. Os termos de uso formalizam direitos dos titulares e a transparência passiva. A transparência sobre o próprio portal é parte do compromisso público do Controle Popular. (fonte: /noticias/transparencia-passiva-dados-populares-e-lgpd)
 
 **Resposta bruta (template):** Ranking de páginas populares evidencia a busca por prestação de contas. Termos de uso formalizam direitos dos titulares e transparência passiva. A transparência sobre o próprio portal é parte do compromisso público do Controle Popular. (fonte: /noticias/transparencia-passiva-dados-populares-e-lgpd)
 
@@ -621,7 +651,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 94. Corregedoria e controle externo: o que o CNJ e o CNMP determinaram nos tribunais de MG
 
-**Pergunta:** Como consulto Corregedoria e controle externo: o que o CNJ e o CNMP determinaram nos tribunais de MG?
+**Pergunta:** O que o CNJ e o CNMP apuraram nos tribunais de MG?
 
 **Resposta refinada (llama3.2:3b):** Mapeamento inédito consolida os apontamentos dos conselhos nacionais da Justiça e do Ministério Público sobre produtividade e despesas. O Poder Judiciário e o Ministério Público mineiros contam com mais de R$ 20,1 bilhões em orçamento anual somado. (fonte: /noticias/recomendacoes-cnj-cnmp-e-inspecoes-da-justica)
 
@@ -633,7 +663,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 95. Panorama das 199 cidades: população, barragens e terras sob vigilância
 
-**Pergunta:** Como consulto Panorama das 199 cidades: população, barragens e terras sob vigilância?
+**Pergunta:** Quantas cidades estratégicas o portal monitora?
 
 **Resposta refinada (llama3.2:3b):** Levantamento reúne indicadores de moradores, rios e barragens. Cobre 199 cidades estratégicas monitoradas pelo portal. O portal reúne 199 cidades na página de Cidades Estratégicas (/cidades). São 27 capitais e 172 cidades polo do interior. O portal usa o código do IBGE. (fonte: /noticias/terra-e-territorios-199-cidades)
 
@@ -645,11 +675,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 96. Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais
 
-**Pergunta:** Como consulto Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais?
+**Pergunta:** Quanto Minas Gerais arrecadou em 2024?
 
-**Resposta refinada (llama3.2:3b):** Análise fiscal mostra o crescimento da receita mineira. Detalha o ICMS, imposto sobre circulação de mercadorias. Mostra também o IPVA, imposto sobre veículos. Reúne contratações públicas catalogadas no PNCP, o Portal Nacional de Contratações Públicas. Minas Gerais arrecadou R$ 123,6 bilhões em 2024. (fonte: /noticias/estado-e-economia-pncp-compras)
+**Resposta refinada (llama3.2:3b):** Análises fiscais mostram o crescimento da receita mineira, com detalhe do ICMS e do IPVA. Reúne também as contratações públicas catalogadas no PNCP. Minas Gerais arrecadou R$ 123,6 bilhões em 2024. (fonte: /noticias/estado-e-economia-pncp-compras)
 
-**Resposta bruta (template):** Análise fiscal mostra o crescimento da receita mineira. Detalha o ICMS, imposto sobre circulação de mercadorias. Mostra também o IPVA, imposto sobre veículos. Reúne contratações públicas catalogadas no PNCP, o Portal Nacional de Contratações Públicas. Minas Gerais arrecadou R$ 123,6 bilhões em 2024. (fonte: /noticias/estado-e-economia-pncp-compras)
+**Resposta bruta (template):** Análises fiscais mostram o crescimento da receita mineira, com detalhe do ICMS e do IPVA. Reúne também as contratações públicas catalogadas no PNCP. Minas Gerais arrecadou R$ 123,6 bilhões em 2024. (fonte: /noticias/estado-e-economia-pncp-compras)
 
 **Fonte:** /noticias/estado-e-economia-pncp-compras
 
@@ -657,11 +687,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 97. Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades
 
-**Pergunta:** Como consulto Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades?
+**Pergunta:** Onde ver as votações do Congresso Nacional?
 
-**Resposta refinada (llama3.2:3b):** Análise monitora votações na Câmara e no Senado. Mostra como as decisões afetam municípios e políticas públicas. O portal reúne votações e presença de 513 deputados federais e 81 senadores. Os dados vêm dos portais abertos da Câmara e do Senado. (fonte: /noticias/congresso-nacional-direitos-votacoes)
+**Resposta refinada (llama3.2:3b):** Análises monitoram votações na Câmara e no Senado. Mostram como as decisões afetam municípios e políticas públicas. O portal reúne votações e presença de 513 deputados federais e 81 senadores. Os dados vêm dos portais abertos da Câmara e do Senado. (fonte: /noticias/congresso-nacional-direitos-votacoes)
 
-**Resposta bruta (template):** Análise monitora votações na Câmara e no Senado. Mostra como as decisões afetam municípios e políticas públicas. O portal reúne votações e presença de 513 deputados federais e 81 senadores. Os dados vêm dos portais abertos da Câmara e do Senado. (fonte: /noticias/congresso-nacional-direitos-votacoes)
+**Resposta bruta (template):** Análises monitoram votações na Câmara e no Senado. Mostram como as decisões afetam municípios e políticas públicas. O portal reúne votações e presença de 513 deputados federais e 81 senadores. Os dados vêm dos portais abertos da Câmara e do Senado. (fonte: /noticias/congresso-nacional-direitos-votacoes)
 
 **Fonte:** /noticias/congresso-nacional-direitos-votacoes
 
@@ -669,11 +699,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 98. Tribunais em Minas Gerais: vagas, indicações e o mapa do judiciário estadual
 
-**Pergunta:** Como consulto Tribunais em Minas Gerais: vagas, indicações e o mapa do judiciário estadual?
+**Pergunta:** Onde ver o mapa dos tribunais de Minas Gerais?
 
-**Resposta refinada (llama3.2:3b):** Levantamento analisa a composição dos tribunais. Cobre nomeações para a segunda instância. Também mostra as condições das unidades de detenção. O portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de Judiciário (/judiciario). (fonte: /noticias/judiciario-transparencia-tribunais)
+**Resposta refinada (llama3.2:3b):** O levantamento analisa a composição dos tribunais e as nomeações para a segunda instância. Também mostra as condições das unidades de detenção. O portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de Judiciário (/judiciario). (fonte: /noticias/judiciario-transparencia-tribunais)
 
-**Resposta bruta (template):** Levantamento analisa a composição dos tribunais. Cobre nomeações para a segunda instância. Também mostra as condições das unidades de detenção. O portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de Judiciário (/judiciario). (fonte: /noticias/judiciario-transparencia-tribunais)
+**Resposta bruta (template):** O levantamento analisa a composição dos tribunais e as nomeações para a segunda instância. Também mostra as condições das unidades de detenção. O portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de Judiciário (/judiciario). (fonte: /noticias/judiciario-transparencia-tribunais)
 
 **Fonte:** /noticias/judiciario-transparencia-tribunais
 
@@ -681,11 +711,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 99. TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consomem 5,5% da receita de Minas
 
-**Pergunta:** Como consulto TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consomem 5,5% da receita de Minas?
+**Pergunta:** Quanto o TJMG vai gastar na LOA 2025?
 
-**Resposta refinada (llama3.2:3b):** Análise detalha as contas do Judiciário mineiro. Mostra o peso da folha de magistrados e servidores. Também explica o papel do FEPJ, o Fundo Especial do Poder Judiciário. O Órgão Especial do TJMG aprovou proposta de R$ 14,96 bilhões. TJMG é o Tribunal de Justiça de Minas Gerais. (fonte: /noticias/tjmg-orcamento-folha-indicacoes)
+**Resposta refinada (llama3.2:3b):** A análise detalha as contas do Judiciário mineiro e o peso da folha de magistrados e servidores. Também explica o papel do FEPJ, o Fundo Especial do Poder Judiciário. O Órgão Especial do TJMG aprovou proposta de R$ 14,96 bilhões. TJMG é o Tribunal de Justiça de Minas Gerais. (fonte: /noticias/tjmg-orcamento-folha-indicacoes)
 
-**Resposta bruta (template):** Análise detalha as contas do Judiciário mineiro. Mostra o peso da folha de magistrados e servidores. Também explica o papel do FEPJ, o Fundo Especial do Poder Judiciário. O Órgão Especial do TJMG aprovou proposta de R$ 14,96 bilhões. TJMG é o Tribunal de Justiça de Minas Gerais. (fonte: /noticias/tjmg-orcamento-folha-indicacoes)
+**Resposta bruta (template):** A análise detalha as contas do Judiciário mineiro e o peso da folha de magistrados e servidores. Também explica o papel do FEPJ, o Fundo Especial do Poder Judiciário. O Órgão Especial do TJMG aprovou proposta de R$ 14,96 bilhões. TJMG é o Tribunal de Justiça de Minas Gerais. (fonte: /noticias/tjmg-orcamento-folha-indicacoes)
 
 **Fonte:** /noticias/tjmg-orcamento-folha-indicacoes
 
@@ -693,11 +723,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 100. DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas
 
-**Pergunta:** Como consulto DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas?
+**Pergunta:** Qual o orçamento da Defensoria Pública de Minas?
 
-**Resposta refinada (llama3.2:3b):** Levantamento mostra a desigualdade orçamentária do sistema de justiça. No ritmo atual, universalizar a Defensoria levaria mais de 140 anos. A DPMG recebeu R$ 1,104 bilhão na LOA 2025. DPMG é a Defensoria Pública de Minas Gerais. A LOA é a Lei Orçamentária Anual (fonte: /noticias/dpmg-acesso-justica-defensoria)
+**Resposta refinada (llama3.2:3b):** O levantamento compara os orçamentos do sistema de justiça de Minas. No ritmo atual, universalizar a Defensoria levaria mais de 140 anos. A DPMG recebeu R$ 1,104 bilhão na LOA 2025. DPMG é a Defensoria Pública de Minas Gerais. LOA é a Lei Orçamentária Anual (fonte: /noticias/dpmg-acesso-justica-defensoria)
 
-**Resposta bruta (template):** Levantamento mostra a desigualdade orçamentária do sistema de justiça. No ritmo atual, universalizar a Defensoria levaria mais de 140 anos. A DPMG recebeu R$ 1,104 bilhão na LOA 2025. DPMG é a Defensoria Pública de Minas Gerais. A LOA é a Lei Orçamentária Anual. (fonte: /noticias/dpmg-acesso-justica-defensoria)
+**Resposta bruta (template):** O levantamento compara os orçamentos do sistema de justiça de Minas. No ritmo atual, universalizar a Defensoria levaria mais de 140 anos. A DPMG recebeu R$ 1,104 bilhão na LOA 2025. DPMG é a Defensoria Pública de Minas Gerais. LOA é a Lei Orçamentária Anual. (fonte: /noticias/dpmg-acesso-justica-defensoria)
 
 **Fonte:** /noticias/dpmg-acesso-justica-defensoria
 
@@ -705,11 +735,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 101. MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate
 
-**Pergunta:** Como consulto MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate?
+**Pergunta:** Quanto custa o Ministério Público de Minas Gerais?
 
-**Resposta refinada (llama3.2:3b):** Análise examina o orçamento do Ministério Público de Minas Gerais. Cobre custeio, limites da Lei de Responsabilidade Fiscal e penduricalhos. O MPMG, o Ministério Público de Minas Gerais, tem orçamento de R$ 4,088 bilhões. O valor consta na LOA 2025, a Lei Orçamentária Anual. (fonte: /noticias/mpmg-promotorias-fiscalizacao)
+**Resposta refinada (llama3.2:3b):** A análise examina o orçamento do Ministério Público de Minas Gerais, o custeio e os limites da Lei de Responsabilidade Fiscal. O MPMG tem orçamento de R$ 4,088 bilhões. O valor consta na LOA 2025, a Lei Orçamentária Anual. (fonte: /noticias/mpmg-promotorias-fiscalizacao)
 
-**Resposta bruta (template):** Análise examina o orçamento do Ministério Público de Minas Gerais. Cobre custeio, limites da Lei de Responsabilidade Fiscal e penduricalhos. O MPMG, o Ministério Público de Minas Gerais, tem orçamento de R$ 4,088 bilhões. O valor consta na LOA 2025, a Lei Orçamentária Anual. (fonte: /noticias/mpmg-promotorias-fiscalizacao)
+**Resposta bruta (template):** A análise examina o orçamento do Ministério Público de Minas Gerais, o custeio e os limites da Lei de Responsabilidade Fiscal. O MPMG tem orçamento de R$ 4,088 bilhões. O valor consta na LOA 2025, a Lei Orçamentária Anual. (fonte: /noticias/mpmg-promotorias-fiscalizacao)
 
 **Fonte:** /noticias/mpmg-promotorias-fiscalizacao
 
@@ -717,11 +747,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 102. Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA
 
-**Pergunta:** Como consulto Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA?
+**Pergunta:** Quantas licenças ambientais Minas Gerais monitora?
 
-**Resposta refinada (llama3.2:3b):** Panorama descritivo compila licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta na gestão ambiental de Minas Gerais. A frente ambiental do portal reúne mais de 19 mil registros de licenciamento. (fonte: /noticias/meio-ambiente-barragens-licenciamento-mg)
+**Resposta refinada (llama3.2:3b):** O panorama compila licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta. A frente ambiental do portal reúne mais de 19 mil registros de licenciamento. (fonte: /noticias/meio-ambiente-barragens-licenciamento-mg)
 
-**Resposta bruta (template):** Panorama descritivo compila licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta na gestão ambiental de Minas Gerais. A frente ambiental do portal reúne mais de 19 mil registros de licenciamento. (fonte: /noticias/meio-ambiente-barragens-licenciamento-mg)
+**Resposta bruta (template):** O panorama compila licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta. A frente ambiental do portal reúne mais de 19 mil registros de licenciamento. (fonte: /noticias/meio-ambiente-barragens-licenciamento-mg)
 
 **Fonte:** /noticias/meio-ambiente-barragens-licenciamento-mg
 
@@ -729,11 +759,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 103. Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas
 
-**Pergunta:** Como consulto Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas?
+**Pergunta:** Quanto vale a repactuação do Rio Doce?
 
-**Resposta refinada (llama3.2:3b):** Auditoria financeira da repactuação da Bacia do Rio Doce analisa os compromissos das mineradoras. Mostra os R$ 2,9 bilhões em caixa no Estado e os R$ 338 milhões efetivamente pagos. A barragem de Fundão rompeu em 5 de novembro de 2015, em Mariana. (fonte: /noticias/mariana-repactuacao-rio-doce-recursos)
+**Resposta refinada (llama3.2:3b):** O acordo do Rio Doce envolve Samarco, Vale e BHP. O valor nominal é de R$ 132 bilhões. O painel do portal contabiliza R$ 171 bilhões para a bacia. A auditoria mostra R$ 2,9 bilhões em caixa no estado. Os pagamentos efetivos somam R$ 338 milhões. A barragem de Fundão rompeu em 5 de novembro de 2015, em Mariana. (fonte: /noticias/mariana-repactuacao-rio-doce-recursos)
 
-**Resposta bruta (template):** Auditoria financeira da repactuação da Bacia do Rio Doce analisa os compromissos das mineradoras. Mostra os R$ 2,9 bilhões em caixa no Estado e os R$ 338 milhões efetivamente pagos. A barragem de Fundão rompeu em 5 de novembro de 2015, em Mariana. (fonte: /noticias/mariana-repactuacao-rio-doce-recursos)
+**Resposta bruta (template):** O acordo do Rio Doce envolve Samarco, Vale e BHP. O valor nominal é de R$ 132 bilhões. O painel do portal contabiliza R$ 171 bilhões para a bacia. A auditoria mostra R$ 2,9 bilhões em caixa no estado. Os pagamentos efetivos somam R$ 338 milhões. A barragem de Fundão rompeu em 5 de novembro de 2015, em Mariana. (fonte: /noticias/mariana-repactuacao-rio-doce-recursos)
 
 **Fonte:** /noticias/mariana-repactuacao-rio-doce-recursos
 
@@ -741,11 +771,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 104. Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035
 
-**Pergunta:** Como consulto Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035?
+**Pergunta:** Quantas barragens a montante faltam desfazer em Minas?
 
-**Resposta refinada (llama3.2:3b):** Investigue as 45 barragens a montante de Minas Gerais, mostrando os níveis de emergência e a morosidade no desmanche das estruturas de risco. A Lei Estadual nº 23.291/2019 foi aprovada por unanimidade pela Assembleia Legislativa. (fonte: /noticias/barragens-descaracterizacao-prazos-mg)
+**Resposta refinada (llama3.2:3b):** A investigação detalha as 45 barragens a montante de Minas Gerais. Vinte e três estruturas seguem pendentes, com prazos adiados até 2035. A Lei Estadual 23.291/2019 nasceu depois de Brumadinho. Ela foi aprovada por unanimidade pela Assembleia Legislativa. (fonte: /noticias/barragens-descaracterizacao-prazos-mg)
 
-**Resposta bruta (template):** Investigação cívica detalha as 45 barragens a montante de Minas Gerais. Mostra os níveis de emergência e a morosidade no desmanche das estruturas de risco. A Lei Estadual nº 23.291/2019 nasceu depois do desastre de Brumadinho. Ela foi aprovada por unanimidade pela Assembleia Legislativa. (fonte: /noticias/barragens-descaracterizacao-prazos-mg)
+**Resposta bruta (template):** A investigação detalha as 45 barragens a montante de Minas Gerais. Vinte e três estruturas seguem pendentes, com prazos adiados até 2035. A Lei Estadual 23.291/2019 nasceu depois de Brumadinho. Ela foi aprovada por unanimidade pela Assembleia Legislativa. (fonte: /noticias/barragens-descaracterizacao-prazos-mg)
 
 **Fonte:** /noticias/barragens-descaracterizacao-prazos-mg
 
@@ -753,19 +783,20 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 105. Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP
 
-**Pergunta:** Como consulto Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP?
+**Pergunta:** Qual o orçamento de Belo Horizonte e quantos contratos tem?
 
-**Resposta refinada (llama3.2:3b):** Para consultar o orçamento de Belo Horizonte e mais informações sobre os contratos no PNCP, acesse o site do Instituto Brasileiro de Geografia e Estatística (IBGE) para obter detalhes sobre a execução orçamentária da cidade. Belo Horizonte tem uma população de 2.315.560 moradores, segundo o Censo Demográfico do IBGE. (fonte: /noticias/belo-horizonte-contratos-orcamento-capital)
+**Resposta refinada (llama3.2:3b):** A auditoria examina a execução orçamentária de Belo Horizonte, de R$ 19 bilhões. A capital tem mais de 6.800 contratos no PNCP. Belo Horizonte soma 2.315.560 moradores, pelo Censo do IBGE. IBGE é o Instituto Brasileiro de Geografia e Estatística. (fonte: /noticias/belo-horizonte-contratos-orcamento-capital)
 
-**Resposta bruta (template):** Auditoria cívica examina a execução orçamentária de Belo Horizonte. Mostra o volume recorde de contratações públicas e os indicadores de saneamento e educação. Belo Horizonte tem 2.315.560 moradores, segundo o Censo Demográfico do IBGE. IBGE é o Instituto Brasileiro de Geografia e Estatística. (fonte: /noticias/belo-horizonte-contratos-orcamento-capital)
+**Resposta bruta (template):** A auditoria examina a execução orçamentária de Belo Horizonte, de R$ 19 bilhões. A capital tem mais de 6.800 contratos no PNCP. Belo Horizonte soma 2.315.560 moradores, pelo Censo do IBGE. IBGE é o Instituto Brasileiro de Geografia e Estatística. (fonte: /noticias/belo-horizonte-contratos-orcamento-capital)
 
 **Fonte:** /noticias/belo-horizonte-contratos-orcamento-capital
 
 **Peça:** blog:belo-horizonte-contratos-orcamento-capital · geral · /noticias/belo-horizonte-contratos-orcamento-capital
 
+
 #### 106. Como falar com a Justiça: varas, gabinetes e balcões de atendimento em Minas Gerais
 
-**Pergunta:** Como falar com a Justiça: varas, gabinetes e balcões de atendimento em Minas Gerais
+**Pergunta:** Como falar com a Justiça em Minas Gerais?
 
 **Resposta refinada (llama3.2:3b):** O Controle Popular publica o primeiro mapa completo das comarcas e varas do TJMG. O TJMG é o Tribunal de Justiça de Minas Gerais. Os dados de contato foram verificados. São telefone, e-mail e endereço de 298 comarcas. Elas se distribuem nos 853 municípios de Minas Gerais (fonte: /noticias/judiciario-varas-gabinetes-como-acessar)
 
@@ -777,7 +808,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 107. LAI completa 13 anos: como qualquer pessoa pode pedir informação a qualquer órgão público
 
-**Pergunta:** Como consulto LAI completa 13 anos: como qualquer pessoa pode pedir informação a qualquer órgão público?
+**Pergunta:** Como pedir informação a um órgão público pela LAI?
 
 **Resposta refinada (llama3.2:3b):** A Lei de Acesso à Informação (LAI) garante um direito desde 2011. Qualquer pessoa pode pedir documentos e contratos de órgãos públicos. Não há custo. Não precisa explicar o motivo. O Controle Popular explica como funciona. Reúne os canais de 445 entidades. (fonte: /noticias/lai-acesso-informacao-13-anos-como-pedir)
 
@@ -789,7 +820,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 108. WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA; governo brasileiro anuncia supercomputador e nuvem nacional
 
-**Pergunta:** Como consulto WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA; governo brasileiro anuncia supercomputador e nuvem nacional?
+**Pergunta:** Quantos países fundaram a organização mundial de IA?
 
 **Resposta refinada (llama3.2:3b):** Em 16/07/2026, nasceu a Organização Mundial para Cooperação em Inteligência Artificial (WAICO). A fundação foi em Xangai. Assinaram 29 países, incluindo o Brasil. Em paralelo, o governo brasileiro anunciou nova etapa de infraestrutura de IA. (fonte: /noticias/waico-ia-codigo-aberto-brasil)
 
@@ -801,7 +832,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 109. Minas Gerais tem 20 contratos de concessão que somam R$ 10,48 bilhões
 
-**Pergunta:** Como consulto Minas Gerais tem 20 contratos de concessão que somam R$ 10,48 bilhões?
+**Pergunta:** Quanto vale o pacote de concessões de Minas Gerais?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -813,7 +844,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 110. União mantém 553 imóveis em Minas, e 159 estão sem destinação definida
 
-**Pergunta:** Como consulto União mantém 553 imóveis em Minas, e 159 estão sem destinação definida?
+**Pergunta:** Quantos imóveis da União há em Minas Gerais?
 
 **Resposta refinada (llama3.2:3b):** O Painel de Transparência Ativa da SPU registra 553 imóveis da União em Minas Gerais. Belo Horizonte concentra 267 deles. Outros 159 estão em processo de destinação ou sem definição. A área total cadastrada passa de 35,7 mil hectares. (fonte: /noticias/imoveis-uniao-minas-gerais-spu-destinacoes)
 
@@ -825,9 +856,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 111. Base do IBGE lista os 853 municípios de Minas em 12 mesorregiões
 
-**Pergunta:** Como consulto Base do IBGE lista os 853 municípios de Minas em 12 mesorregiões?
+**Pergunta:** Quantos municípios de Minas estão na base do IBGE?
 
-**Resposta refinada (llama3.2:3b):** A base de municípios do portal reúne os 853 municípios de Minas Gerais. O IBGE os distribui em 12 mesorregiões e 66 microrregiões. As regiões imediatas somam 70 recortes no estado. Cada registro traz o código IBGE de sete dígitos (fonte: /noticias/municipios-minas-gerais-ibge-853-base-cidades)
+**Resposta refinada (llama3.2:3b):** A base de municípios do portal reúne os 853 municípios de Minas Gerais. O IBGE os distribui em 12 mesorregiões e 66 microrregiões. As regiões imediatas somam 70 recortes no estado. Cada registro traz o código IBGE de sete dígitos. (fonte: /noticias/municipios-minas-gerais-ibge-853-base-cidades)
 
 **Resposta bruta (template):** A base de municípios do portal reúne os 853 municípios de Minas Gerais. O IBGE os distribui em 12 mesorregiões e 66 microrregiões. As regiões imediatas somam 70 recortes no estado. Cada registro traz o código IBGE de sete dígitos. (fonte: /noticias/municipios-minas-gerais-ibge-853-base-cidades)
 
@@ -837,7 +868,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 112. Censo 2022 conta 411.846 moradores em Betim, menos que a estimativa de 2021
 
-**Pergunta:** Como consulto Censo 2022 conta 411.846 moradores em Betim, menos que a estimativa de 2021?
+**Pergunta:** Quantos moradores Betim tinha no Censo 2022?
 
 **Resposta refinada (llama3.2:3b):** O Censo 2022 apurou 411.846 moradores em Betim. A estimativa de 2021 apontava 450.024 pessoas. A diferença é de 38.178 moradores. Os dez polos regionais do portal somam 5.584.390 pessoas. (fonte: /noticias/populacao-polos-minas-censo-2022-ibge)
 
@@ -849,9 +880,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 113. Bot do portal fiscaliza bases de dados antes de virarem página pública
 
-**Pergunta:** Como consulto Bot do portal fiscaliza bases de dados antes de virarem página pública?
+**Pergunta:** Como o portal fiscaliza a qualidade dos seus dados?
 
-**Resposta refinada (llama3.2:3b):** O portal mantém um bot que audita suas bases de dados versionadas. A rotina verifica CPF por mod-11 e códigos IBGE de sete dígitos. Ela também acusa duplicatas e valores monetários zerados. O self-test tem 11 verificações e confirma que a régua enxerga (fonte: /noticias/bot-fiscalizacao-bases-portal-qualidade-dado)
+**Resposta refinada (llama3.2:3b):** O portal mantém um bot que audita suas bases de dados versionadas. A rotina verifica CPF por mod-11 e códigos IBGE de sete dígitos. Ela também acusa duplicatas e valores monetários zerados. O self-test tem 11 verificações e confirma que a régua enxerga. (fonte: /noticias/bot-fiscalizacao-bases-portal-qualidade-dado)
 
 **Resposta bruta (template):** O portal mantém um bot que audita suas bases de dados versionadas. A rotina verifica CPF por mod-11 e códigos IBGE de sete dígitos. Ela também acusa duplicatas e valores monetários zerados. O self-test tem 11 verificações e confirma que a régua enxerga. (fonte: /noticias/bot-fiscalizacao-bases-portal-qualidade-dado)
 
@@ -861,7 +892,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 114. Painel multilateral compara Brasil com 13 países em IDH, renda e comércio
 
-**Pergunta:** Como consulto Painel multilateral compara Brasil com 13 países em IDH, renda e comércio?
+**Pergunta:** Com quantos países o painel multilateral compara o Brasil?
 
 **Resposta refinada (llama3.2:3b):** O portal reúne indicadores multilaterais de 14 países. O Brasil tem IDH 0,76 e Gini de 50,3. A Alemanha aparece com IDH 0,95 e Gini de 32,5. A OMC mede 240 milhões de toneladas de minério exportadas à China. O Painel Multilateral (/internacional) reúne 14 países em seis indicadores sociais. (fonte: /noticias/onu-unesco-oms-omc-brasil-indicadores-multilaterais)
 
@@ -873,7 +904,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 115. SEC e USAspending mostram fundos e contratos dos EUA ligados ao Brasil
 
-**Pergunta:** Como consulto SEC e USAspending mostram fundos e contratos dos EUA ligados ao Brasil?
+**Pergunta:** Quanto os fundos dos EUA ligados ao Brasil declaram?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -885,7 +916,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 116. Lei dos EUA responde em 20 dias, mas cadastro da SPU omite autorização
 
-**Pergunta:** Como consulto Lei dos EUA responde em 20 dias, mas cadastro da SPU omite autorização?
+**Pergunta:** Em quanto tempo a lei de acesso dos EUA responde?
 
 **Resposta refinada (llama3.2:3b):** A FOIA americana responde pedidos em até 20 dias úteis. Ela existe desde 1966 e cobre todas as agências federais. A lei canadense ESTMA exige declarar pagamentos acima de CAD 100 mil. No Brasil, a SPU não publica o termo individual de autorização. (fonte: /noticias/transparencia-internacional-brasil-eua-canada-acesso)
 
@@ -897,7 +928,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 117. Três acervos novos do portal cruzam imóveis da União, PPP e municípios
 
-**Pergunta:** Como consulto Três acervos novos do portal cruzam imóveis da União, PPP e municípios?
+**Pergunta:** Que três acervos novos o portal publicou sobre Minas?
 
 **Resposta refinada (llama3.2:3b):** O portal publicou três acervos novos sobre Minas Gerais. São 553 imóveis da União, 20 contratos de PPP e 853 municípios. Cada número vem de fonte oficial e link direto. O método cruza os dados sem afirmar o que a fonte não diz. O primeiro acervo lista 553 imóveis da União em Minas Gerais. (fonte: /noticias/novos-acervos-portal-autorizacoes-ppp-cidades-metodo)
 
@@ -909,7 +940,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 118. Gastos de campanha 2026: publicidade, big tech e custo por voto
 
-**Pergunta:** Como consulto Gastos de campanha 2026: publicidade, big tech e custo por voto?
+**Pergunta:** Quanto dinheiro as campanhas de 2026 já gastaram?
 
 **Resposta refinada (llama3.2:3b):** A eleição de 2026 já tem R$ 3,1 bilhões em despesas pagas. A publicidade digital contratada soma R$ 405,0 milhões. As big techs receberam R$ 272,4 milhões, quase tudo da Meta. As contas fecham em 03/11/2026, e a página reúne filtros. O dinheiro da eleição de 2026 aparece em um só lugar. (fonte: /noticias/gastos-campanha-2026-publicidade-big-tech)
 
@@ -921,11 +952,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 119. A mineração de MG ainda cresce, parou ou encerrou
 
-**Pergunta:** Como consulto A mineração de MG ainda cresce, parou ou encerrou?
+**Pergunta:** A mineração em Minas Gerais cresce, parou ou encerrou?
 
 ⚠️ **refine descartado (números mudaram)** — vale só a resposta bruta.
 
-**Resposta bruta (template):** Estado da janela de 24 meses: ativa. última detecção em 2024; janela de 24 meses termina em 2024. O pico de área nova foi em 2020, que não é o ano do teto da série (1985). No último ano (2024) apareceram 4.234,4 hectares novos. Estado calculado em 29/09/2026 por `lib/cavas/serie.ts`. (fonte: /mineracao/cavas)
+**Resposta bruta (template):** Estado da janela de 24 meses: ativa. Última detecção em 2024; janela de 24 meses termina em 2024. O pico de área nova foi em 2020, que não é o ano do teto da série (1985). No último ano (2024) apareceram 4.234,4 hectares novos. Estado calculado em 29/09/2026 por `lib/cavas/serie.ts`. (fonte: /mineracao/cavas)
 
 **Fonte:** /mineracao/cavas
 
@@ -933,9 +964,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 120. Em operação, indício ou sem cadastro: os três estados de uma cava
 
-**Pergunta:** Como consulto Em operação, indício ou sem cadastro: os três estados de uma cava?
+**Pergunta:** O que são os três estados de uma cava?
 
-**Resposta refinada (llama3.2:3b):** Para consultar os três estados de uma cava, você pode fazer a seguinte solicitação: Amostra de 120 cavas: 84 em operação, 34 com indício processual e 2 sem cadastro na ANM. O estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. O estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. (fonte: /mineracao/cavas)
+**Resposta refinada (llama3.2:3b):** Amostra de 120 cavas: 84 em operação, 34 com indício processual e 2 sem cadastro na ANM. O estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. O estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. (fonte: /mineracao/cavas)
 
 **Resposta bruta (template):** Amostra de 120 cavas: 84 em operação, 34 com indício processual e 2 sem cadastro na ANM. Estado em operação significa dentro de polígono ANM em fase que autoriza extrair na data da coleta. Estado com indício é dentro de polígono ANM sem autorização — conferir na ANM. (fonte: /mineracao/cavas)
 
@@ -945,11 +976,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 121. O que a base de cavas ainda não responde
 
-**Pergunta:** O que a base de cavas ainda não responde
+**Pergunta:** O que a base de cavas ainda não responde?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
-**Resposta bruta (template):** Lacunas declaradas da Fase 5: a coleta cobre só Minas Gerais, não todas as UF. Não há distância até terra indígena nem área de conservação por cava. Não há imagem de satélite com data de cada cava. A resolução é 30 metros por pixel: cava pequena ou sob nuvem aparece atrasada. (fonte: /mineracao/cavas)
+**Resposta bruta (template):** Lacunas declaradas da Fase 5: a coleta cobre só Minas Gerais, não todas as UFs. Não há distância até terra indígena nem área de conservação por cava. Não há imagem de satélite com data de cada cava. A resolução é 30 metros por pixel: cava pequena ou sob nuvem aparece atrasada. (fonte: /mineracao/cavas)
 
 **Fonte:** /mineracao/cavas
 
@@ -957,7 +988,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 122. Diretas Já
 
-**Pergunta:** Como consulto Diretas Já?
+**Pergunta:** O que foi a campanha das Diretas Já?
 
 **Resposta refinada (llama3.2:3b):** Diretas Já (1983-1984): Multidões tomaram as ruas de várias capitais pedindo eleição direta para presidente. A emenda das Diretas foi derrotada em 1984, mas a campanha devolveu a voz popular à política nacional. Fonte: Câmara dos Deputados, 2014. (fonte: https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/diretas-ja)
 
@@ -969,7 +1000,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 123. Lei da Anistia e a luta pela anistia ampla
 
-**Pergunta:** Como consulto Lei da Anistia e a luta pela anistia ampla?
+**Pergunta:** O que fez a Lei da Anistia de 1979?
 
 ⚠️ **refine descartado (saída inválida do modelo)** — vale só a resposta bruta.
 
@@ -981,7 +1012,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 124. Abolição e resistência negra
 
-**Pergunta:** Como consulto Abolição e resistência negra?
+**Pergunta:** Quando o Brasil aboliu a escravidão?
 
 **Resposta refinada (llama3.2:3b):** Abolição e resistência negra (1888): Em 13 de maio de 1888, a Lei Áurea declarou extinta a escravidão no Brasil. A data coroa uma resistência que veio de antes dos quilombos e continuou depois da abolição. Fonte: Fundação Cultural Palmares, 2018. (fonte: https://www.gov.br/palmares/pt-br/assuntos/noticias/130-anos-da-abolicao-da-escravidao-fundacao-palmares-atua-para-promover-mobilidade-social-dos-afro-brasileiros)
 
@@ -993,7 +1024,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 125. Comissão Nacional da Verdade
 
-**Pergunta:** Como consulto Comissão Nacional da Verdade?
+**Pergunta:** O que a Comissão Nacional da Verdade investigou?
 
 **Resposta refinada (llama3.2:3b):** Comissão Nacional da Verdade (2012-2014): A Comissão Nacional da Verdade investigou as violações de direitos humanos da ditadura. O relatório final, de 2014, reúne memória e verdade para o país. Fonte: Arquivo Nacional — Memórias Reveladas, 2014. (fonte: https://cnv.memoriasreveladas.gov.br/)
 
@@ -1005,7 +1036,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 126. Assembleia Nacional Constituinte
 
-**Pergunta:** Como consulto Assembleia Nacional Constituinte?
+**Pergunta:** O que foi a Assembleia Nacional Constituinte?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1017,7 +1048,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 127. Resistência indígena aos grandes projetos da ditadura
 
-**Pergunta:** Como consulto Resistência indígena aos grandes projetos da ditadura?
+**Pergunta:** Como os povos indígenas resistiram às obras da ditadura?
 
 ⚠️ **refine descartado (números mudaram)** — vale só a resposta bruta.
 
@@ -1029,9 +1060,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 128. Guerra de Canudos
 
-**Pergunta:** Como consulto Guerra de Canudos?
+**Pergunta:** O que aconteceu na Guerra de Canudos?
 
-**Resposta refinada (llama3.2:3b):** Guerra de Canudos (1896-1897): No sertão da Bahia, a comunidade de Canudos, liderada por Antônio Conselheiro, resistiu a três expediÇões militares até 1897. A guerra é lembrada como um dos maiores conflitos do interior do paíss. Fonte: FGV - CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-de-canudos)
+**Resposta refinada (llama3.2:3b):** Guerra de Canudos (1896-1897): No sertão da Bahia, a comunidade de Canudos, liderada por Antônio Conselheiro, resistiu a três expedições militares até 1897. A guerra é lembrada como um dos maiores conflitos do interior do país. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-de-canudos)
 
 **Resposta bruta (template):** Guerra de Canudos (1896-1897): No sertão da Bahia, a comunidade de Canudos, liderada por Antônio Conselheiro, resistiu a três expedições militares até 1897. A guerra é lembrada como um dos maiores conflitos do interior do país. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-de-canudos)
 
@@ -1041,7 +1072,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 129. Luta pela terra no Centro-Oeste
 
-**Pergunta:** Como consulto Luta pela terra no Centro-Oeste?
+**Pergunta:** Como é a luta pela terra no Centro-Oeste?
 
 **Resposta refinada (llama3.2:3b):** Luta pela terra no Centro-Oeste (séculos XX e XXI): No Cerrado e no Pantanal, posseiros, indígenas e trabalhadores rurais resistiram à expansão da fronteira agrícola. Os conflitos pela terra marcam a região até hoje. Fonte: Comissão Pastoral da Terra (CPT), 2024. (fonte: https://www.cptnacional.org.br/)
 
@@ -1053,7 +1084,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 130. Greves metalúrgicas do ABC paulista
 
-**Pergunta:** Como consulto Greves metalúrgicas do ABC paulista?
+**Pergunta:** O que mudaram as greves metalúrgicas do ABC?
 
 **Resposta refinada (llama3.2:3b):** Greves metalúrgicas do ABC paulista (1978-1980): Operários metalúrgicos do ABC paulista paralisaram fábricas e criaram um sindicalismo novo. As greves impulsionaram a luta pela redemocratização no país. Fonte: DIEESE, 2019. (fonte: https://www.dieese.org.br/)
 
@@ -1065,9 +1096,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 131. Guerra do Contestado
 
-**Pergunta:** Como consulto Guerra do Contestado?
+**Pergunta:** O que foi a Guerra do Contestado?
 
-**Resposta refinada (llama3.2:3b):** Guerra do Contestado (1912-1916): Camponeses do sul se levantaram contra a expropriação de suas terras na Guerra do Contestado. A luta atravessou o Paraná e Santa Catarina. Fonte: FGV - CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
+**Resposta refinada (llama3.2:3b):** Guerra do Contestado (1912-1916): Camponeses do sul se levantaram contra a expropriação de suas terras na Guerra do Contestado. A luta atravessou o Paraná e Santa Catarina. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
 
 **Resposta bruta (template):** Guerra do Contestado (1912-1916): Camponeses do sul se levantaram contra a expropriação de suas terras na Guerra do Contestado. A luta atravessou o Paraná e Santa Catarina. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
 
@@ -1077,7 +1108,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 132. Revolução Acreana
 
-**Pergunta:** Como consulto Revolução Acreana?
+**Pergunta:** O que foi a Revolução Acreana?
 
 **Resposta refinada (llama3.2:3b):** Revolução Acreana (1899-1903): Seringueiros e moradores do Acre se levantaram para integrar a região ao Brasil, contra o domínio boliviano. A luta terminou com o Tratado de Petrópolis, em 1903. Fonte: Ministério do Turismo, 2023. (fonte: https://www.gov.br/turismo/pt-br/assuntos/noticias/rio-branco-de-seringal-a-capital-do-acre)
 
@@ -1089,7 +1120,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 133. Quilombo dos Palmares
 
-**Pergunta:** Como consulto Quilombo dos Palmares?
+**Pergunta:** O que foi o Quilombo dos Palmares?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1101,7 +1132,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 134. Resistência do povo Mura
 
-**Pergunta:** Como consulto Resistência do povo Mura?
+**Pergunta:** Como o povo Mura resistiu à colonização?
 
 **Resposta refinada (llama3.2:3b):** Resistência do povo Mura (século XVIII): O povo Mura resistiu por décadas à ocupação colonial no médio Amazonas. Sua presença reafirma a história indígena do estado. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Mura)
 
@@ -1113,7 +1144,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 135. Resistência do povo Wajãpi
 
-**Pergunta:** Como consulto Resistência do povo Wajãpi?
+**Pergunta:** Como o povo Wajãpi mantém sua língua e território?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1125,7 +1156,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 136. Revolta dos Malês
 
-**Pergunta:** Como consulto Revolta dos Malês?
+**Pergunta:** O que foi a Revolta dos Malês?
 
 **Resposta refinada (llama3.2:3b):** Revolta dos Malês (1835): Em Salvador, africanos muçulmanos escravizados se organizaram e se levantaram em 1835. A Revolta dos Malês é uma das maiores insurreições urbanas do Brasil. Fonte: Universidade Estadual de Campinas (UNICAMP), 2009. (fonte: https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217)
 
@@ -1137,9 +1168,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 137. Caldeirão de Santa Cruz do Deserto
 
-**Pergunta:** Como consulto Caldeirão de Santa Cruz do Deserto?
+**Pergunta:** O que foi o Caldeirão de Santa Cruz do Deserto?
 
-**Resposta refinada (llama3.2:3b):** Caldeirão de Santa Cruz do Deserto (1936): No Cariri cearense, a comunidade camponesa do Caldeirão reuniu famílias sob o beato José Lourenço. A comunidade foi destrú em 1936, mas segue lembrada como experiência de terra e trabalho. Fonte: Comissó Pastoral da Terra (CPT), 2024. (fonte: https://www.cptnacional.org.br/)
+**Resposta refinada (llama3.2:3b):** Caldeirão de Santa Cruz do Deserto (1936): No Cariri cearense, a comunidade camponesa do Caldeirão reuniu famílias sob o beato José Lourenço. A comunidade foi destruída em 1936, mas segue lembrada como experiência de terra e trabalho. Fonte: Comissão Pastoral da Terra (CPT), 2024. (fonte: https://www.cptnacional.org.br/)
 
 **Resposta bruta (template):** Caldeirão de Santa Cruz do Deserto (1936): No Cariri cearense, a comunidade camponesa do Caldeirão reuniu famílias sob o beato José Lourenço. A comunidade foi destruída em 1936, mas segue lembrada como experiência de terra e trabalho. Fonte: Comissão Pastoral da Terra (CPT), 2024. (fonte: https://www.cptnacional.org.br/)
 
@@ -1149,11 +1180,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 138. Construção de Brasília e os candangos
 
-**Pergunta:** Como consulto Construção de Brasília e os candangos?
+**Pergunta:** Quem construiu a cidade de Brasília?
 
-**Resposta refinada (llama3.2:3b):** Construção de Brasília e os candangos (1957-1960): Os candangos ergueram Brasília no planalto central. A nova capital foi construída pelo trabalho de milhares de operários que migraram para ali. Fonte: Câmara dos Deputados, 2010. (fonte: https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia)
+**Resposta refinada (llama3.2:3b):** Construção de Brasília e os candangos (1957-1960): Os candangos ergueram Brasília no planalto central. A nova capital foi construída pelo trabalho de milhares de operários que migraram para lá. Fonte: Câmara dos Deputados, 2010. (fonte: https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia)
 
-**Resposta bruta (template):** Construção de Brasília e os candangos (1957-1960): Os candangos ergueram Brasília no planalto central. A nova capital foi construída pelo trabalho de milhares de operários que migraram para ali. Fonte: Câmara dos Deputados, 2010. (fonte: https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia)
+**Resposta bruta (template):** Construção de Brasília e os candangos (1957-1960): Os candangos ergueram Brasília no planalto central. A nova capital foi construída pelo trabalho de milhares de operários que migraram para lá. Fonte: Câmara dos Deputados, 2010. (fonte: https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia)
 
 **Fonte:** https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia
 
@@ -1161,7 +1192,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 139. Insurreição de Queimado
 
-**Pergunta:** Como consulto Insurreição de Queimado?
+**Pergunta:** O que foi a Insurreição de Queimado?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1173,7 +1204,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 140. Guerra de Trombas e Formoso
 
-**Pergunta:** Como consulto Guerra de Trombas e Formoso?
+**Pergunta:** O que foi a Guerra de Trombas e Formoso?
 
 **Resposta refinada (llama3.2:3b):** Guerra de Trombas e Formoso (1949-1956): Posseiros do norte de Goiás resistiram a jagunços e grileiros pela posse da terra. A luta de Trombas e Formoso é marco da causa camponesa no estado. Fonte: Comissão Pastoral da Terra (CPT), 2024. (fonte: https://www.cptnacional.org.br/)
 
@@ -1185,7 +1216,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 141. Balaiada
 
-**Pergunta:** Como consulto Balaiada?
+**Pergunta:** O que foi a Balaiada?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1197,9 +1228,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 142. Inconfidência Mineira
 
-**Pergunta:** Como consulto Inconfidência Mineira?
+**Pergunta:** O que foi a Inconfidência Mineira?
 
-**Resposta refinada (llama3.2:3b):** Inconfidçônia Mineira (1789): Em Minas, mineiros e letrados conspiraram contra a Coroa portuguesa. A Inconfidçônia Mineira virou símbolo da luta pela liberdade no Brasil. Fonte: Instituto Brasileiro de Museus (Ibram), 2024. (fonte: https://museudainconfidencia.museus.gov.br/)
+**Resposta refinada (llama3.2:3b):** Inconfidência Mineira (1789): Em Minas, mineiros e letrados conspiraram contra a Coroa portuguesa. A Inconfidência Mineira virou símbolo da luta pela liberdade no Brasil. Fonte: Instituto Brasileiro de Museus (Ibram), 2024. (fonte: https://museudainconfidencia.museus.gov.br/)
 
 **Resposta bruta (template):** Inconfidência Mineira (1789): Em Minas, mineiros e letrados conspiraram contra a Coroa portuguesa. A Inconfidência Mineira virou símbolo da luta pela liberdade no Brasil. Fonte: Instituto Brasileiro de Museus (Ibram), 2024. (fonte: https://museudainconfidencia.museus.gov.br/)
 
@@ -1209,9 +1240,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 143. Resistência Guarani e Kaiowá pela terra
 
-**Pergunta:** Como consulto Resistência Guarani e Kaiowá pela terra?
+**Pergunta:** Como os Guarani e Kaiowá lutam pela terra?
 
-**Resposta refinada (llama3.2:3b):** No Mato Grosso do Sul, os povos Guarani e Kaiowá resistem pela retomada de suas terras. A luta é antiga e segue documentada por instituições públicas. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1)
+**Resposta refinada (llama3.2:3b):** Resistência Guarani e Kaiowá pela terra (séculos XX e XXI): No Mato Grosso do Sul, os povos Guarani e Kaiowá resistem pela retomada de suas terras. A luta é antiga e segue documentada por instituições públicas. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1)
 
 **Resposta bruta (template):** Resistência Guarani e Kaiowá pela terra (séculos XX e XXI): No Mato Grosso do Sul, os povos Guarani e Kaiowá resistem pela retomada de suas terras. A luta é antiga e segue documentada por instituições públicas. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1)
 
@@ -1221,7 +1252,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 144. Resistência do povo Xavante
 
-**Pergunta:** Como consulto Resistência do povo Xavante?
+**Pergunta:** Como o povo Xavante resistiu à colonização?
 
 **Resposta refinada (llama3.2:3b):** Resistência do povo Xavante (século XX): No Mato Grosso, o povo Xavante enfrentou as frentes de colonização e segue lutando por suas terras. Sua história é de resistência na fronteira agrícola. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Xavante)
 
@@ -1233,7 +1264,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 145. Cabanagem
 
-**Pergunta:** Como consulto Cabanagem?
+**Pergunta:** O que foi a Cabanagem?
 
 **Resposta refinada (llama3.2:3b):** Cabanagem (1835-1840): Indígenas, mestiços e pobres do Grão-Pará tomaram Belém na Cabanagem. A revolta chegou a proclamar um governo próprio no norte. Fonte: Multirio — Prefeitura do Rio de Janeiro, 2020. (fonte: https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada)
 
@@ -1245,7 +1276,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 146. Revolta de Princesa
 
-**Pergunta:** Como consulto Revolta de Princesa?
+**Pergunta:** O que foi a Revolta de Princesa?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1257,7 +1288,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 147. Memória de Palmares e de Zumbi
 
-**Pergunta:** Como consulto Memória de Palmares e de Zumbi?
+**Pergunta:** Quem foi Zumbi e por que ele é lembrado?
 
 **Resposta refinada (llama3.2:3b):** Memória de Palmares e de Zumbi (século XVII): Pernambuco guarda parte da memória de Palmares, o maior quilombo do Brasil. Zumbi, símbolo da resistência negra, é lembrado em todo o país. Fonte: Fundação Cultural Palmares, 2020. (fonte: https://www.gov.br/palmares/pt-br/assuntos/noticias/zumbi-heroi-nacional)
 
@@ -1269,7 +1300,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 148. Batalha do Jenipapo
 
-**Pergunta:** Como consulto Batalha do Jenipapo?
+**Pergunta:** O que foi a Batalha do Jenipapo?
 
 **Resposta refinada (llama3.2:3b):** Batalha do Jenipapo (1823): Sertanejos e vaqueiros do Piauí pegaram em armas pela independência do Brasil na Batalha do Jenipapo. O combate é lembrado como o dia em que o povo entrou na luta. Fonte: IPHAN, 2010. (fonte: http://portal.iphan.gov.br/uploads/ckfinder/arquivos/Disserta%C3%A7%C3%A3o%20Deborah%20Padula%20Kishimoto.pdf)
 
@@ -1281,9 +1312,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 149. Guerra do Contestado no Paraná
 
-**Pergunta:** Como consulto Guerra do Contestado no Paraná?
+**Pergunta:** Como a Guerra do Contestado marcou o Paraná?
 
-**Resposta refinada (llama3.2:3b):** Guerra do Contestado no Paraná (1912-1916): Posseiros do Contestado, entre o Paraná e Santa Catarina, resistiram à expulsão de suas terras. A guerra virou símbolo da luta camponesa no sul. Fonte: FGV - CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
+**Resposta refinada (llama3.2:3b):** Guerra do Contestado no Paraná (1912-1916): Posseiros do Contestado, entre o Paraná e Santa Catarina, resistiram à expulsão de suas terras. A guerra virou símbolo da luta camponesa no sul. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
 
 **Resposta bruta (template):** Guerra do Contestado no Paraná (1912-1916): Posseiros do Contestado, entre o Paraná e Santa Catarina, resistiram à expulsão de suas terras. A guerra virou símbolo da luta camponesa no sul. Fonte: FGV — CPDOC, Atlas Histórico do Brasil, 2016. (fonte: https://atlas.fgv.br/verbetes/guerra-do-contestado)
 
@@ -1293,7 +1324,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 150. Revolta da Vacina
 
-**Pergunta:** Como consulto Revolta da Vacina?
+**Pergunta:** O que foi a Revolta da Vacina?
 
 ⚠️ **refine descartado (números mudaram)** — vale só a resposta bruta.
 
@@ -1305,7 +1336,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 151. Mártires de Cunhaú e Uruaçu
 
-**Pergunta:** Como consulto Mártires de Cunhaú e Uruaçu?
+**Pergunta:** Quem foram os Mártires de Cunhaú e Uruaçu?
 
 **Resposta refinada (llama3.2:3b):** Mártires de Cunhaú e Uruaçu (1645): No interior do Rio Grande do Norte, colonos e religiosos foram mortos por forças ligadas aos holandeses em 1645. A memória dos mártires de Cunhaú e Uruaçu é guardada até hoje. Fonte: Universidade Católica Dom Bosco (UCDB), 2019. (fonte: https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/)
 
@@ -1317,7 +1348,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 152. Massacre de Corumbiara
 
-**Pergunta:** Como consulto Massacre de Corumbiara?
+**Pergunta:** O que foi o Massacre de Corumbiara?
 
 **Resposta refinada (llama3.2:3b):** Massacre de Corumbiara (1995): Em Corumbiara, trabalhadores rurais sem terra foram atacados por forças policiais em 1995. O caso é marco da luta pela terra e dos direitos humanos no campo. Fonte: Câmara dos Deputados, 2010. (fonte: http://www2.camara.leg.br/camaranoticias/noticias/DIREITOS-HUMANOS/440982-CCJ-APROVA-ANISTIA-A-SEM-TERRAS-E-POLICIAIS-DO-MASSACRE-DE-CORUMBIARA.html)
 
@@ -1329,7 +1360,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 153. Luta Yanomami pela terra
 
-**Pergunta:** Como consulto Luta Yanomami pela terra?
+**Pergunta:** Como os Yanomami lutam pela terra?
 
 **Resposta refinada (llama3.2:3b):** Luta Yanomami pela terra (décadas de 1980-1990): O povo Yanomami resiste no extremo norte por suas terras e pela proteção da floresta. A luta garantiu a demarcação da Terra Indígena Yanomami na década de 1990. Fonte: Instituto Socioambiental (ISA), 2023. (fonte: https://pib.socioambiental.org/pt/Povo:Yanomami)
 
@@ -1341,7 +1372,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 154. Revolução Farroupilha
 
-**Pergunta:** Como consulto Revolução Farroupilha?
+**Pergunta:** O que foi a Revolução Farroupilha?
 
 **Resposta refinada (llama3.2:3b):** Revolução Farroupilha (1835-1845): No Rio Grande do Sul, estancieiros e peões se levantaram contra o governo imperial na Revolução Farroupilha. Os farroupilhas chegaram a proclamar a República de Piratini. Fonte: Universidade de São Paulo (USP), 2015. (fonte: https://www.revistas.usp.br/revhistoria/article/view/89008)
 
@@ -1353,7 +1384,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 155. Guerra do Contestado
 
-**Pergunta:** Como consulto Guerra do Contestado?
+**Pergunta:** O que foi a Guerra do Contestado?
 
 **Resposta refinada (llama3.2:3b):** Guerra do Contestado (1912-1916): Em Santa Catarina, camponeses que perderam suas terras se organizaram e resistiram na Guerra do Contestado. A luta envolveu milhares de pessoas do sertão catarinense. Fonte: Senado Federal — Agência Senado, 2016. (fonte: https://www12.senado.leg.br/noticias/materias/2016/07/01/ha-100-anos-o-fim-da-sangrenta-guerra-do-contestado)
 
@@ -1365,7 +1396,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 156. Emancipação política de Sergipe
 
-**Pergunta:** Como consulto Emancipação política de Sergipe?
+**Pergunta:** Quando Sergipe se emancipou da Bahia?
 
 **Resposta refinada (llama3.2:3b):** Emancipação política de Sergipe (1820): Sergipe conquistou sua autonomia política em 1820, separando-se da capitania da Bahia. A emancipação é marco da identidade do estado. Fonte: Governo do Estado de Sergipe, 2020. (fonte: https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica)
 
@@ -1377,7 +1408,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 157. Diretas Já no Vale do Anhangabaú
 
-**Pergunta:** Como consulto Diretas Já no Vale do Anhangabaú?
+**Pergunta:** O que aconteceu no Vale do Anhangabaú em 1984?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1389,7 +1420,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 158. Quilombo Kalunga
 
-**Pergunta:** Como consulto Quilombo Kalunga?
+**Pergunta:** O que é o Quilombo Kalunga?
 
 **Resposta refinada (llama3.2:3b):** Quilombo Kalunga (século XVIII até hoje): O Quilombo Kalunga, no Tocantins e em Goiás, é o maior território quilombola do país. A comunidade luta há séculos pelo reconhecimento de suas terras. Fonte: SciELO, 2016. (fonte: http://www.scielo.br/j/his/a/jtQFPnNpKRmmzcyPqBQddmP/?lang=pt)
 
@@ -1401,7 +1432,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 159. Caminhada em defesa do Rio Paraopeba
 
-**Pergunta:** Como consulto Caminhada em defesa do Rio Paraopeba?
+**Pergunta:** Por que se caminha em defesa do Rio Paraopeba?
 
 **Resposta refinada (llama3.2:3b):** Caminhada em defesa do Rio Paraopeba (desde 2022): Depois do rompimento da barragem em Brumadinho, moradoras e moradores do distrito de Santa Izabel, às margens do Paraopeba, passaram a se organizar em caminhadas e atos pela água limpa e pela reparação. (fonte: https://www.brasildefato.com.br/2022/01/26/moradores-de-comunidade-em-betim-mg-realizam-caminhada-em-defesa-do-rio-paraopeba/)
 
@@ -1413,7 +1444,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 160. Memorial Brumadinho
 
-**Pergunta:** Como consulto Memorial Brumadinho?
+**Pergunta:** O que é o Memorial Brumadinho?
 
 **Resposta refinada (llama3.2:3b):** Memorial Brumadinho (desde 2019): Depois do rompimento da barragem da Mina Córrego do Feijão, em 25 de janeiro de 2019, as famílias das 272 vítimas se mobilizaram para preservar a memória. O Memorial Brumadinho, no próprio local da tragédia, é uma conquista coletiva delas. (fonte: https://memorialbrumadinho.org.br/memorial-brumadinho/sobre/)
 
@@ -1425,7 +1456,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 161. Parque do Biribiri público
 
-**Pergunta:** Como consulto Parque do Biribiri público?
+**Pergunta:** Por que os moradores de Diamantina defendem Biribiri?
 
 **Resposta refinada (llama3.2:3b):** Parque do Biribiri público (desde 2026): Moradoras e moradores de Diamantina se organizam para manter o Parque Estadual do Biribiri sob gestão pública, contra a concessão à iniciativa privada. A mobilização cobra participação da comunidade nas decisões sobre o parque. (fonte: https://www.brasildefato.com.br/2026/07/06/moradores-de-diamantina-mg-lutam-para-manter-parque-do-biribiri-publico/)
 
@@ -1437,9 +1468,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 162. Massacre de Felisburgo
 
-**Pergunta:** Como consulto Massacre de Felisburgo?
+**Pergunta:** O que foi o Massacre de Felisburgo?
 
-**Resposta refinada (llama3.2:3b):** Massacre de Felisburgo (2003): Em 20 de novembro de 2003, cinco militantes do MST foram assassinados em Felisburgo, no interior de Minas Gerais. O crime &quot;Massacre de Felisburgo&quot; é lembrado como um dos episódios mais graves da luta pela terra no estado. Fonte: Brasil de Fato — imprensa popular, 2024. (fonte: https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/)
+**Resposta refinada (llama3.2:3b):** Massacre de Felisburgo (2003): Em 20 de novembro de 2003, cinco militantes do MST foram assassinados em Felisburgo, no interior de Minas Gerais. O crime é lembrado como um dos episódios mais graves da luta pela terra no estado. Fonte: Brasil de Fato — imprensa popular, 2024. (fonte: https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/)
 
 **Resposta bruta (template):** Massacre de Felisburgo (2003): Em 20 de novembro de 2003, cinco militantes do MST foram assassinados em Felisburgo, no interior de Minas Gerais. O crime é lembrado como um dos episódios mais graves da luta pela terra no estado. Fonte: Brasil de Fato — imprensa popular, 2024. (fonte: https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/)
 
@@ -1449,7 +1480,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 163. Atingidos do Rio Doce cobram reparação
 
-**Pergunta:** Como consulto Atingidos do Rio Doce cobram reparação?
+**Pergunta:** Como os atingidos do Rio Doce cobram reparação?
 
 **Resposta refinada (llama3.2:3b):** Atingidos do Rio Doce cobram reparação desde 2015. Depois do rompimento da barragem de Fundão, moradoras e moradores de Governador Valadares se organizaram em atos para cobrar reparação e água limpa. A cidade enfrentou a interrupção do abastecimento. (fonte: https://www.brasildefato.com.br/2016/04/18/ato-em-governador-valadares-mg-denuncia-descaso-da-samarco-com-atingidos/)
 
@@ -1461,7 +1492,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 164. Massacre de Ipatinga
 
-**Pergunta:** Como consulto Massacre de Ipatinga?
+**Pergunta:** O que foi o Massacre de Ipatinga?
 
 **Resposta refinada (llama3.2:3b):** Massacre de Ipatinga (1963): Em 7 de outubro de 1963, trabalhadores da Usiminas, em Ipatinga, foram atacados a tiros pela Polícia Militar e pela vigilância da empresa durante uma greve. O episódio é lembrado como o conflito operário mais sangrento do país. (fonte: http://querepublicaeessa.an.gov.br/index.php/que-republica-e-essa/assuntos/temas/78-secoes-anteriores/67-surpresa/426-massacre-de-ipatinga)
 
@@ -1473,7 +1504,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 165. Rompimento da barragem de Fundão
 
-**Pergunta:** Como consulto Rompimento da barragem de Fundão?
+**Pergunta:** Quando rompeu a barragem de Fundão?
 
 **Resposta refinada (llama3.2:3b):** Rompimento da barragem de Fundão (2015): Em 5 de novembro de 2015, o rompimento da barragem de Fundão, da Samarco (Vale e BHP), destruiu o distrito de Bento Rodrigues e matou 19 pessoas. A lama seguiu pelo rio Doce; a luta das pessoas atingidas por reparação continua. (fonte: https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/)
 
@@ -1485,9 +1516,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 166. Base de dados: 199 Cidades Estratégicas do Brasil
 
-**Pergunta:** Como consulto Base de dados: 199 Cidades Estratégicas do Brasil?
+**Pergunta:** Que base existe sobre as Cidades Estratégicas do Brasil?
 
-**Resposta refinada (llama3.2:3b):** O portal publica a base &quot;199 Cidades Estratégicas do Brasil&quot; (199 registros, JSON), com origem em IBGE / DATASUS / Ministério da Saúde. Aparece em: /cidades, /terra-e-territorios, /noticias. Fonte: https://cidades.ibge.gov.br (fonte: https://cidades.ibge.gov.br)
+**Resposta refinada (llama3.2:3b):** O portal publica a base "199 Cidades Estratégicas do Brasil" (199 registros, JSON), com origem em IBGE / DATASUS / Ministério da Saúde. Aparece em: /cidades, /terra-e-territorios, /noticias. Fonte: https://cidades.ibge.gov.br. (fonte: https://cidades.ibge.gov.br)
 
 **Resposta bruta (template):** O portal publica a base "199 Cidades Estratégicas do Brasil" (199 registros, JSON), com origem em IBGE / DATASUS / Ministério da Saúde. Aparece em: /cidades, /terra-e-territorios, /noticias. Fonte: https://cidades.ibge.gov.br. (fonte: https://cidades.ibge.gov.br)
 
@@ -1497,9 +1528,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 167. Base de dados: Transferências Federais nos Municípios (ComunicaBR)
 
-**Pergunta:** Como consulto Base de dados: Transferências Federais nos Municípios (ComunicaBR)?
+**Pergunta:** Como consultar as transferências federais por município?
 
-**Resposta refinada (llama3.2:3b):** Para consultar a base de dados Transferências Federais nos Municípios (ComunicaBR), acesse o portal publicando a base com 853 registros em formato JSON Compacto, originada na Secretaria de Comunicação Social da Presidência da República (SECOM). Acesse em /dados/comunicabr, /[municipio], ou /indice. (fonte: https://comunicabr.com.br)
+**Resposta refinada (llama3.2:3b):** O portal publica a base "Transferências Federais nos Municípios (ComunicaBR)" (853 registros, JSON (Codec Compacto)), com origem em Secretaria de Comunicação Social da Presidência da República (SECOM). Aparece em: /dados/comunicabr, /[municipio], /indice. Fonte: https://comunicabr.com.br. (fonte: https://comunicabr.com.br)
 
 **Resposta bruta (template):** O portal publica a base "Transferências Federais nos Municípios (ComunicaBR)" (853 registros, JSON (Codec Compacto)), com origem em Secretaria de Comunicação Social da Presidência da República (SECOM). Aparece em: /dados/comunicabr, /[municipio], /indice. Fonte: https://comunicabr.com.br. (fonte: https://comunicabr.com.br)
 
@@ -1509,7 +1540,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 169. Base de dados: Incentivadores Culturais e Projetos (Lei Rouanet)
 
-**Pergunta:** Como consulto Base de dados: Incentivadores Culturais e Projetos (Lei Rouanet)?
+**Pergunta:** Que base existe sobre incentivadores da Lei Rouanet?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1521,9 +1552,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 171. Bases de Empresas, ESG e incentivos culturais
 
-**Pergunta:** Como consulto Bases de Empresas, ESG e incentivos culturais?
+**Pergunta:** Que bases de dados o portal tem sobre empresas?
 
-**Resposta refinada (llama3.2:3b):** Tema &quot;Empresas, ESG e incentivos culturais&quot;: 34 arquivo(s), 73.6 MB, 297 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /empresas)
+**Resposta refinada (llama3.2:3b):** Tema "Empresas, ESG e incentivos culturais": 34 arquivo(s), 73.6 MB, 297 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /empresas)
 
 **Resposta bruta (template):** Tema "Empresas, ESG e incentivos culturais": 34 arquivo(s), 73.6 MB, 297 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /empresas)
 
@@ -1533,9 +1564,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 173. Bases de Municípios, contratos e indicadores locais
 
-**Pergunta:** Como consulto Bases de Municípios, contratos e indicadores locais?
+**Pergunta:** Que bases existem sobre municípios, contratos e indicadores locais?
 
-**Resposta refinada (llama3.2:3b):** Tema &quot;Municípios, contratos e indicadores locais&quot;: 83 arquivo(s), 9.3 MB, 40016 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /cidades)
+**Resposta refinada (llama3.2:3b):** Tema "Municípios, contratos e indicadores locais": 83 arquivo(s), 9.3 MB, 40016 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /cidades)
 
 **Resposta bruta (template):** Tema "Municípios, contratos e indicadores locais": 83 arquivo(s), 9.3 MB, 40016 registros contados (contagem parcial: arquivos grandes não abertos). (fonte: /cidades)
 
@@ -1545,9 +1576,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 177. Bases de Gestão e governo
 
-**Pergunta:** Como consulto Bases de Gestão e governo?
+**Pergunta:** Que bases de dados o portal tem sobre gestão?
 
-**Resposta refinada (llama3.2:3b):** Tema &quot;Gestão e governo&quot;: 36 arquivo(s), 1.2 MB, 690 registros contados. Exemplos: editais-consolidado.json, gestao-aracuai.json, gestao-betim.json, gestao-bh.json, gestao-capitais.json, gestao-polos.json. Página do tema: /governo. Inventário medido em 30/09/2026. (fonte: /governo)
+**Resposta refinada (llama3.2:3b):** Tema "Gestão e governo": 36 arquivo(s), 1.2 MB, 690 registros contados. Exemplos: editais-consolidado.json, gestao-aracuai.json, gestao-betim.json, gestao-bh.json, gestao-capitais.json, gestao-polos.json. Página do tema: /governo. Inventário medido em 30/09/2026. (fonte: /governo)
 
 **Resposta bruta (template):** Tema "Gestão e governo": 36 arquivo(s), 1.2 MB, 690 registros contados. Exemplos: editais-consolidado.json, gestao-aracuai.json, gestao-betim.json, gestao-bh.json, gestao-capitais.json, gestao-polos.json. Página do tema: /governo. Inventário medido em 30/09/2026. (fonte: /governo)
 
@@ -1557,7 +1588,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 179. Bases de Notícias e clipping do portal
 
-**Pergunta:** Como consulto Bases de Notícias e clipping do portal?
+**Pergunta:** Que bases de notícias e clipping o portal tem?
 
 **Resposta refinada (llama3.2:3b):** Tema "Notícias e clipping do portal": 5 arquivo(s), 0.8 MB, 173 registros contados. Exemplos: noticias-portal.json, dados.compact.json, noticias-vale.json, clipping-ati.json, clipping-ij.json. Página do tema: /noticias. Inventário medido em 30/09/2026. (fonte: /noticias)
 
@@ -1569,9 +1600,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 180. Bases de Outras bases do portal
 
-**Pergunta:** Como consulto Bases de Outras bases do portal?
+**Pergunta:** Que outras bases de dados o portal guarda?
 
-**Resposta refinada (llama3.2:3b):** Tema &quot;Outras bases do portal&quot;: 10 arquivo(s), 0,7 MB, 374 registros contados. Exemplos: assistente-acervo.json, biblioteca-unificada.json, catalogo-bases-dados.json, documentos-espelho-r2.json, edicoes.json, catalogo.json. Página do tema: /busca. Inventário medido em 30/09/2026. (fonte: /busca)
+**Resposta refinada (llama3.2:3b):** Tema "Outras bases do portal": 10 arquivo(s), 0.7 MB, 374 registros contados. Exemplos: assistente-acervo.json, biblioteca-unificada.json, catalogo-bases-dados.json, documentos-espelho-r2.json, edicoes.json, catalogo.json. Página do tema: /busca. Inventário medido em 30/09/2026. (fonte: /busca)
 
 **Resposta bruta (template):** Tema "Outras bases do portal": 10 arquivo(s), 0.7 MB, 374 registros contados. Exemplos: assistente-acervo.json, biblioteca-unificada.json, catalogo-bases-dados.json, documentos-espelho-r2.json, edicoes.json, catalogo.json. Página do tema: /busca. Inventário medido em 30/09/2026. (fonte: /busca)
 
@@ -1581,9 +1612,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 182. Bases de Estado e economia
 
-**Pergunta:** Como consulto Bases de Estado e economia?
+**Pergunta:** Que bases existem sobre estado e economia?
 
-**Resposta refinada (llama3.2:3b):** Tema Estado e economia: 4 arquivo(s), 0.3 MB, 42 registros contados. Exemplos: fontes-27-estados.json, indicadores-regionais.json, series-economicas-bcb.json, sgml-cotacoes.json. Página do tema: /estado-e-economia. Inventário medido em 30/09/2026. (fonte: /estado-e-economia)
+**Resposta refinada (llama3.2:3b):** Tema "Estado e economia": 4 arquivo(s), 0.3 MB, 42 registros contados. Exemplos: fontes-27-estados.json, indicadores-regionais.json, series-economicas-bcb.json, sgml-cotacoes.json. Página do tema: /estado-e-economia. Inventário medido em 30/09/2026. (fonte: /estado-e-economia)
 
 **Resposta bruta (template):** Tema "Estado e economia": 4 arquivo(s), 0.3 MB, 42 registros contados. Exemplos: fontes-27-estados.json, indicadores-regionais.json, series-economicas-bcb.json, sgml-cotacoes.json. Página do tema: /estado-e-economia. Inventário medido em 30/09/2026. (fonte: /estado-e-economia)
 
@@ -1593,9 +1624,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 185. Bases de Transparência dos Estados Unidos
 
-**Pergunta:** Como consulto Bases de Transparência dos Estados Unidos?
+**Pergunta:** Que bases de transparência dos EUA o portal tem?
 
-**Resposta refinada (llama3.2:3b):** Para consultar as Bases de Transparção dos Estados Unidos, acesse o tema "Transparção dos Estados Unidos" no portal, onde encontrarªs arquivos em formato JSON com 7 arquivos, 0 MB e 21 registros contados. Exemplos incluem ambiental-clima.compact.json, ambiental-natureza-eua.compact.json, contratos-comercio.compact.json, contratos-usaspending.compact.json, empresas-sec.compact.json, institucional-corte.compact.json. (fonte: /eua)
+**Resposta refinada (llama3.2:3b):** Tema "Transparência dos Estados Unidos": 7 arquivo(s), 0 MB, 21 registros contados. Exemplos: ambiental-clima.compact.json, ambiental-natureza-eua.compact.json, contratos-comercio.compact.json, contratos-usaspending.compact.json, empresas-sec.compact.json, institucional-corte.compact.json. (fonte: /eua)
 
 **Resposta bruta (template):** Tema "Transparência dos Estados Unidos": 7 arquivo(s), 0 MB, 21 registros contados. Exemplos: ambiental-clima.compact.json, ambiental-natureza-eua.compact.json, contratos-comercio.compact.json, contratos-usaspending.compact.json, empresas-sec.compact.json, institucional-corte.compact.json. (fonte: /eua)
 
@@ -1603,15 +1634,16 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Peça:** bases:tema:eua · geral · /eua
 
+
 ### Frente `judiciario` (5)
 
-#### 2. Orçamento do TJMG, MPMG e DPMG e a disparidade institucional
+#### 2. Orçamento do TJMG, MPMG e DPMG na LOA 2025
 
-**Pergunta:** O que o portal reúne sobre Orçamento do TJMG, MPMG e DPMG e a disparidade institucional?
+**Pergunta:** Quanto o estado destina ao TJMG, MPMG e DPMG?
 
-**Resposta refinada (llama3.2:3b):** O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. (fonte: /judiciario/instituicoes)
+**Resposta refinada (llama3.2:3b):** TJMG recebe R$ 14,96 bi, MPMG R$ 4,09 bi, DPMG R$ 1,10 bi. A DPMG fica com menos de 8% do TJMG. Em 2026, MPMG terá R$ 4,57 bi e DPMG, R$ 1,21 bi. (fonte: /judiciario/instituicoes)
 
-**Resposta bruta (template):** O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. (fonte: /judiciario/instituicoes)
+**Resposta bruta (template):** TJMG recebe R$ 14,96 bi, MPMG R$ 4,09 bi, DPMG R$ 1,10 bi. A DPMG fica com menos de 8% do TJMG. Em 2026, MPMG terá R$ 4,57 bi e DPMG, R$ 1,21 bi. (fonte: /judiciario/instituicoes)
 
 **Fonte:** /judiciario/instituicoes
 
@@ -1621,9 +1653,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Qual o orçamento dos órgãos do Sistema de Justiça em MG?
 
-**Resposta refinada (llama3.2:3b):** O TJMG recebe R$ 14,96 bi e o MPMG R$ 4,09 bi, enquanto a DPMG tem déficit de 176 comarcas. (fonte: /judiciario/instituicoes)
+**Resposta refinada (llama3.2:3b):** O TJMG recebe R$ 14,96 bi e o MPMG, R$ 4,09 bi. A DPMG fica com R$ 1,10 bi na LOA 2025. Em 2026, MPMG terá R$ 4,57 bi e DPMG, R$ 1,21 bi. (fonte: /judiciario/instituicoes)
 
-**Resposta bruta (template):** O TJMG recebe R$ 14,96 bi e o MPMG R$ 4,09 bi, enquanto a DPMG tem déficit de 176 comarcas. (fonte: /judiciario/instituicoes)
+**Resposta bruta (template):** O TJMG recebe R$ 14,96 bi e o MPMG, R$ 4,09 bi. A DPMG fica com R$ 1,10 bi na LOA 2025. Em 2026, MPMG terá R$ 4,57 bi e DPMG, R$ 1,21 bi. (fonte: /judiciario/instituicoes)
 
 **Fonte:** /judiciario/instituicoes
 
@@ -1633,9 +1665,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto o TJMG e o MPMG gastam com folha e verbas indenizatórias?
 
-**Resposta refinada (llama3.2:3b):** As fichas analíticas mostram R$ 1,85 bi em indenizações no TJMG e a disparidade com a Defensoria Pública (fonte: /judiciario/instituicoes)
+**Resposta refinada (llama3.2:3b):** O TJMG prevê R$ 11,61 bi de folha, 77,6% do próprio orçamento. As fichas registram R$ 1,85 bi em indenizações. Para o MPMG, a página traz fichas analíticas. (fonte: /judiciario/instituicoes)
 
-**Resposta bruta (template):** As fichas analíticas mostram R$ 1,85 bi em indenizações no TJMG e a disparidade com a Defensoria Pública. (fonte: /judiciario/instituicoes)
+**Resposta bruta (template):** O TJMG prevê R$ 11,61 bi de folha, 77,6% do próprio orçamento. As fichas registram R$ 1,85 bi em indenizações. Para o MPMG, a página traz fichas analíticas. (fonte: /judiciario/instituicoes)
 
 **Fonte:** /judiciario/instituicoes
 
@@ -1643,11 +1675,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 66. Fichas do Judiciário (TJMG, MPMG, DPMG, TCEMG)
 
-**Pergunta:** O que o portal reúne sobre Fichas do Judiciário (TJMG, MPMG, DPMG, TCEMG)?
+**Pergunta:** Que dados o portal tem dos órgãos do Judiciário?
 
-**Resposta refinada (llama3.2:3b):** Orçamentos, folhas de pagamento, penduricalhos e fiscalização externa dos órgãos de controle de Minas Gerais (fonte: /judiciario/instituicoes)
+**Resposta refinada (llama3.2:3b):** O portal traz orçamentos, folhas e penduricalhos dos órgãos. Inclui a fiscalização externa do Judiciário mineiro. (fonte: /judiciario/instituicoes)
 
-**Resposta bruta (template):** Orçamentos, folhas de pagamento, penduricalhos e fiscalização externa dos órgãos de controle de Minas Gerais. (fonte: /judiciario/instituicoes)
+**Resposta bruta (template):** O portal traz orçamentos, folhas e penduricalhos dos órgãos. Inclui a fiscalização externa do Judiciário mineiro. (fonte: /judiciario/instituicoes)
 
 **Fonte:** /judiciario/instituicoes
 
@@ -1655,7 +1687,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 176. Bases de Judiciário
 
-**Pergunta:** O que o portal reúne sobre Bases de Judiciário?
+**Pergunta:** Que bases de dados sobre o Judiciário existem no portal?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -1669,11 +1701,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 3. Como pesquisar contratos e licitações de prefeituras no portal
 
-**Pergunta:** Como pesquisar contratos e licitações de prefeituras no portal
+**Pergunta:** Como pesquisar contratos e licitações das prefeituras?
 
-**Resposta refinada (llama3.2:3b):** Acesse a página da cidade (ex: Betim, BH, Diamantina, Araçuaí, Itinga) e clique em 'Contratos' ou 'Licitações'. (fonte: /betim/prefeitura/contratos)
+**Resposta refinada (llama3.2:3b):** Acesse a página da cidade e abra 'Contratos' ou 'Licitações'. Betim, BH, Diamantina, Araçuaí e Itinga têm esse menu. (fonte: /betim/prefeitura/contratos)
 
-**Resposta bruta (template):** O portal audita contratações públicas municipais conectando-se ao PNCP (Portal Nacional de Contratações Públicas) e aos Diários Oficiais. Para pesquisar: acesse a página da cidade (ex: Betim, BH, Diamantina, Araçuaí, Itinga) e clique em 'Contratos' ou 'Licitações'. (fonte: /betim/prefeitura/contratos)
+**Resposta bruta (template):** O portal audita contratações municipais via PNCP e Diários Oficiais. O PNCP é o portal nacional de contratações públicas. Acesse a página da cidade e abra 'Contratos' ou 'Licitações'. (fonte: /betim/prefeitura/contratos)
 
 **Fonte:** /betim/prefeitura/contratos
 
@@ -1683,9 +1715,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde ver as despesas orçamentárias de Betim?
 
-**Resposta refinada (llama3.2:3b):** Consulte o demonstrativo das despesas por função e subfunção para ver onde o orçamento municipal é executado, (fonte: /betim/prefeitura/despesas)
+**Resposta refinada (llama3.2:3b):** Consulte o demonstrativo de despesas por função e subfunção. Veja onde o orçamento municipal é executado. (fonte: /betim/prefeitura/despesas)
 
-**Resposta bruta (template):** Consulte o demonstrativo das despesas por função e subfunção (saúde, educação, saneamento) para ver onde o orçamento municipal é executado. (fonte: /betim/prefeitura/despesas)
+**Resposta bruta (template):** Consulte o demonstrativo por função: saúde, educação e saneamento. Veja onde o orçamento municipal é executado. (fonte: /betim/prefeitura/despesas)
 
 **Fonte:** /betim/prefeitura/despesas
 
@@ -1695,9 +1727,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais contratos foram firmados para essas despesas?
 
-**Resposta refinada (llama3.2:3b):** A lista de contratos detalha valores, fornecedores e alertas de concentração nas áreas de saúde, educação e obras. (fonte: /betim/prefeitura/contratos)
+**Resposta refinada (llama3.2:3b):** A lista de contratos traz valores e fornecedores. Há alertas de concentração em saúde, educação e obras. (fonte: /betim/prefeitura/contratos)
 
-**Resposta bruta (template):** A lista de contratos detalha valores, fornecedores e alertas de concentração nas áreas de saúde, educação e obras. (fonte: /betim/prefeitura/contratos)
+**Resposta bruta (template):** A lista de contratos traz valores e fornecedores. Há alertas de concentração em saúde, educação e obras. (fonte: /betim/prefeitura/contratos)
 
 **Fonte:** /betim/prefeitura/contratos
 
@@ -1719,9 +1751,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais contratos foram emitidos para esses fornecedores?
 
-**Resposta refinada (llama3.2:3b):** A página de contratos lista cada contratação individual com vigência, valor e indícios de alerta. (fonte: /betim/prefeitura/contratos)
+**Resposta refinada (llama3.2:3b):** A página lista cada contratação com vigência e valor. Cada registro traz indícios de alerta. (fonte: /betim/prefeitura/contratos)
 
-**Resposta bruta (template):** A página de contratos lista cada contratação individual com vigência, valor e indícios de alerta. (fonte: /betim/prefeitura/contratos)
+**Resposta bruta (template):** A página lista cada contratação com vigência e valor. Cada registro traz indícios de alerta. (fonte: /betim/prefeitura/contratos)
 
 **Fonte:** /betim/prefeitura/contratos
 
@@ -1731,9 +1763,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Qual o valor total de compras da prefeitura?
 
-**Resposta refinada (llama3.2:3b):** Veja a execução financeira de cada órgão e secretaria na página de despesas públicas municipais (fonte: /betim/prefeitura/despesas)
+**Resposta refinada (llama3.2:3b):** Veja a execução financeira por órgão e secretaria. Está na página de despesas de Betim. (fonte: /betim/prefeitura/despesas)
 
-**Resposta bruta (template):** Veja a execução financeira de cada órgão e secretaria na página de despesas públicas municipais. (fonte: /betim/prefeitura/despesas)
+**Resposta bruta (template):** Veja a execução financeira por órgão e secretaria. Está na página de despesas de Betim. (fonte: /betim/prefeitura/despesas)
 
 **Fonte:** /betim/prefeitura/despesas
 
@@ -1743,9 +1775,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto o município gasta com folha de pagamento?
 
-**Resposta refinada (llama3.2:3b):** A composição das despesas públicas municipais detalha gastos com pessoal e encargos por secretaria. (fonte: /betim/prefeitura/despesas)
+**Resposta refinada (llama3.2:3b):** A composição das despesas detalha pessoal e encargos. Os valores vêm separados por secretaria. (fonte: /betim/prefeitura/despesas)
 
-**Resposta bruta (template):** A composição das despesas públicas municipais detalha gastos com pessoal e encargos por secretaria. (fonte: /betim/prefeitura/despesas)
+**Resposta bruta (template):** A composição das despesas detalha pessoal e encargos. Os valores vêm separados por secretaria. (fonte: /betim/prefeitura/despesas)
 
 **Fonte:** /betim/prefeitura/despesas
 
@@ -1755,7 +1787,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como os vereadores votaram nas matérias legislativas?
 
-**Resposta refinada (llama3.2:3b):** Acompanhe as atas e registros de votações nominais da Câmara Municipal de Betim (fonte: /betim/camara/votacoes)
+**Resposta refinada (llama3.2:3b):** Acompanhe as atas e registros de votações nominais da Câmara Municipal de Betim. (fonte: /betim/camara/votacoes)
 
 **Resposta bruta (template):** Acompanhe as atas e registros de votações nominais da Câmara Municipal de Betim. (fonte: /betim/camara/votacoes)
 
@@ -1767,7 +1799,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais leis municipais foram aprovadas recentemente?
 
-**Resposta refinada (llama3.2:3b):** Consulte o acervo legislativo municipal com leis ordinárias, complementares e decretos (fonte: /betim/camara/legislacao)
+**Resposta refinada (llama3.2:3b):** Consulte o acervo legislativo municipal com leis ordinárias, complementares e decretos. (fonte: /betim/camara/legislacao)
 
 **Resposta bruta (template):** Consulte o acervo legislativo municipal com leis ordinárias, complementares e decretos. (fonte: /betim/camara/legislacao)
 
@@ -1777,11 +1809,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 59. Betim — Câmara
 
-**Pergunta:** Onde vejo Betim — Câmara no portal?
+**Pergunta:** Onde vejo os dados da Câmara de Betim?
 
-**Resposta refinada (llama3.2:3b):** Dados da Câmara Municipal de Betim: vereadores, votações, legislação e proposições. Vereadores com dados de contato e histórico Votações de matérias legislativas Legislação municipal (leis, decretos) Proposições em tramitação (fonte: /betim/camara)
+**Resposta refinada (llama3.2:3b):** Dados da Câmara de Betim: vereadores, votações, legislação e proposições. Há contatos e histórico dos vereadores. Também leis, decretos e proposições em tramitação. (fonte: /betim/camara)
 
-**Resposta bruta (template):** Dados da Câmara Municipal de Betim: vereadores, votações, legislação e proposições. Vereadores com dados de contato e histórico Votações de matérias legislativas Legislação municipal (leis, decretos) Proposições em tramitação (fonte: /betim/camara)
+**Resposta bruta (template):** Dados da Câmara de Betim: vereadores, votações, legislação e proposições. Há contatos e histórico dos vereadores. Também leis, decretos e proposições em tramitação. (fonte: /betim/camara)
 
 **Fonte:** /betim/camara
 
@@ -1791,11 +1823,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 4. Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema)
 
-**Pergunta:** O que o portal mostra sobre Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema)?
+**Pergunta:** Como consultar licenças ambientais da SEMAD em MG?
 
-**Resposta refinada (llama3.2:3b):** O painel do ONSA reúne o censo completo de mais de 19.700 empreendimentos com licença ambiental deferida na SEMAD, mostrando todos os dados sobre Licenciamento ambiental em Minas Gerais (SEMAD / IDE-Sisema). (fonte: /ambiental/licenciamento)
+**Resposta refinada (llama3.2:3b):** O painel do ONSA reúne o censo de licenciamento da SEMAD. São mais de 19.700 empreendimentos com licença deferida em MG. (fonte: /ambiental/licenciamento)
 
-**Resposta bruta (template):** O painel do ONSA reúne o censo completo de mais de 19.700 empreendimentos com licença ambiental deferida em Minas Gerais pela SEMAD (Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável). (fonte: /ambiental/licenciamento)
+**Resposta bruta (template):** O painel do ONSA reúne o censo de licenciamento da SEMAD. São mais de 19.700 empreendimentos com licença deferida em MG. A SEMAD é a secretaria estadual de meio ambiente. (fonte: /ambiental/licenciamento)
 
 **Fonte:** /ambiental/licenciamento
 
@@ -1805,9 +1837,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar licenças ambientais de aterros e destinação?
 
-**Resposta refinada (llama3.2:3b):** O ONSA monitora os processos de licenciamento ambiental de empreendimentos de resíduos sólidos em MG, consulte as licenças ambientais no site /ambiental/licenciamento (fonte: /ambiental/licenciamento)
+**Resposta refinada (llama3.2:3b):** O ONSA monitora o licenciamento de resíduos sólidos em MG. Consulte as licenças de aterros e destinação no painel. (fonte: /ambiental/licenciamento)
 
-**Resposta bruta (template):** O ONSA monitora os processos de licenciamento ambiental de empreendimentos de resíduos sólidos em MG. (fonte: /ambiental/licenciamento)
+**Resposta bruta (template):** O ONSA monitora o licenciamento de empreendimentos de resíduos sólidos. São aterros e unidades de destinação em MG. (fonte: /ambiental/licenciamento)
 
 **Fonte:** /ambiental/licenciamento
 
@@ -1817,9 +1849,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar as ações de crimes socioambientais e TACs?
 
-**Resposta refinada (llama3.2:3b):** A Biblioteca de Crimes Socioambientais reúne 936 laudos periciais e termos de ajustamento de conduta, consulte em: /ambiental/crimes-socioambientais (fonte: /ambiental/crimes-socioambientais)
+**Resposta refinada (llama3.2:3b):** A Biblioteca de Crimes Socioambientais reúne 936 laudos periciais e TACs. (fonte: /ambiental/crimes-socioambientais)
 
-**Resposta bruta (template):** A Biblioteca de Crimes Socioambientais reúne 936 laudos periciais e termos de ajustamento de conduta. (fonte: /ambiental/crimes-socioambientais)
+**Resposta bruta (template):** A Biblioteca de Crimes Socioambientais reúne 936 laudos periciais e TACs. (fonte: /ambiental/crimes-socioambientais)
 
 **Fonte:** /ambiental/crimes-socioambientais
 
@@ -1829,9 +1861,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar os TACs firmados por mineradoras e órgãos públicos?
 
-**Resposta refinada (llama3.2:3b):** O acervo de TACs reúne termos de ajustamento de conduta firmados pelo MPMG, IBAMA e FEAM. (fonte: /ambiental/tac)
+**Resposta refinada (llama3.2:3b):** O acervo reúne TACs firmados pelo MPMG, IBAMA e FEAM. Há termos firmados com mineradoras. (fonte: /ambiental/tac)
 
-**Resposta bruta (template):** O acervo de TACs reúne termos de ajustamento de conduta firmados pelo MPMG, IBAMA e FEAM. (fonte: /ambiental/tac)
+**Resposta bruta (template):** O acervo reúne TACs firmados pelo MPMG, IBAMA e FEAM. Há termos firmados com mineradoras. (fonte: /ambiental/tac)
 
 **Fonte:** /ambiental/tac
 
@@ -1841,7 +1873,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais empreendimentos têm processos de licenciamento em curso?
 
-**Resposta refinada (llama3.2:3b):** Acesse a base de 19 mil licenças deferidas e em tramitação na SEMAD/Sisema (fonte: /ambiental/licenciamento)
+**Resposta refinada (llama3.2:3b):** Acesse a base de 19 mil licenças deferidas e em tramitação na SEMAD/Sisema. (fonte: /ambiental/licenciamento)
 
 **Resposta bruta (template):** Acesse a base de 19 mil licenças deferidas e em tramitação na SEMAD/Sisema. (fonte: /ambiental/licenciamento)
 
@@ -1853,9 +1885,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar o acervo de relatórios técnicos das ATIs?
 
-**Resposta refinada (llama3.2:3b):** A Biblioteca das ATIs reúne mais de 640 documentos elaborados por AEDAS, Guaicuy, NACAB e ADAI. (fonte: /ambiental/crimes-socioambientais)
+**Resposta refinada (llama3.2:3b):** A Biblioteca das ATIs reúne mais de 640 documentos. Foram elaborados por AEDAS, Guaicuy, NACAB e ADAI. (fonte: /ambiental/crimes-socioambientais)
 
-**Resposta bruta (template):** A Biblioteca das ATIs reúne mais de 640 documentos elaborados por AEDAS, Guaicuy, NACAB e ADAI. (fonte: /ambiental/crimes-socioambientais)
+**Resposta bruta (template):** A Biblioteca das ATIs reúne mais de 640 documentos. Foram elaborados por AEDAS, Guaicuy, NACAB e ADAI. (fonte: /ambiental/crimes-socioambientais)
 
 **Fonte:** /ambiental/crimes-socioambientais
 
@@ -1865,7 +1897,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Qual lei protege a minha comunidade?
 
-**Resposta refinada (llama3.2:3b):** Consulte o catálogo de legislação de direitos sociais, proteção socioambiental e patrimônio (fonte: /ambiental/legislacao)
+**Resposta refinada (llama3.2:3b):** Consulte o catálogo de legislação de direitos sociais, proteção socioambiental e patrimônio. (fonte: /ambiental/legislacao)
 
 **Resposta bruta (template):** Consulte o catálogo de legislação de direitos sociais, proteção socioambiental e patrimônio. (fonte: /ambiental/legislacao)
 
@@ -1877,9 +1909,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar o acervo pericial dos crimes de barragens?
 
-**Resposta refinada (llama3.2:3b):** Acesse os laudos técnicos, termos de compromisso e planos de saúde das bacias atingidas. (fonte: /ambiental/crimes-socioambientais)
+**Resposta refinada (llama3.2:3b):** Acesse os laudos técnicos e termos de compromisso. Há planos de saúde das bacias atingidas. (fonte: /ambiental/crimes-socioambientais)
 
-**Resposta bruta (template):** Acesse os laudos técnicos, termos de compromisso e planos de saúde das bacias atingidas. (fonte: /ambiental/crimes-socioambientais)
+**Resposta bruta (template):** Acesse os laudos técnicos e termos de compromisso. Há planos de saúde das bacias atingidas. (fonte: /ambiental/crimes-socioambientais)
 
 **Fonte:** /ambiental/crimes-socioambientais
 
@@ -1889,9 +1921,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar os laudos periciais e ações judiciais de Mariana?
 
-**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada reúne os TACs do Rio Doce, pareceres epidemiológicos e ações civis públicas. (fonte: /ambiental/crimes-socioambientais)
+**Resposta refinada (llama3.2:3b):** A Biblioteca Unificada reúne os TACs do Rio Doce. Tem pareceres epidemiológicos e ações civis públicas. (fonte: /ambiental/crimes-socioambientais)
 
-**Resposta bruta (template):** A Biblioteca Unificada reúne os TACs do Rio Doce, pareceres epidemiológicos e ações civis públicas. (fonte: /ambiental/crimes-socioambientais)
+**Resposta bruta (template):** A Biblioteca Unificada reúne os TACs do Rio Doce. Tem pareceres epidemiológicos e ações civis públicas. (fonte: /ambiental/crimes-socioambientais)
 
 **Fonte:** /ambiental/crimes-socioambientais
 
@@ -1901,9 +1933,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como fiscalizar o novo acordo de R$ 171 bilhões de Mariana?
 
-**Resposta refinada (llama3.2:3b):** Consulte o painel de Mariana com o cronograma de repasses municipais e execução de obras em MG. (fonte: /ambiental/mariana)
+**Resposta refinada (llama3.2:3b):** O painel acompanha o Acordo de Repactuação do Rio Doce. O acordo foi homologado em 25/10/2024, com R$ 132 bi nominal. Os consolidados do portal somam R$ 169,68 bi (03/09/2026). A home mostra R$ 171 bi, valor arredondado. (fonte: /ambiental/mariana)
 
-**Resposta bruta (template):** Consulte o painel de Mariana com o cronograma de repasses municipais e execução de obras em MG. (fonte: /ambiental/mariana)
+**Resposta bruta (template):** O painel acompanha o Acordo de Repactuação do Rio Doce. O acordo foi homologado em 25/10/2024, com R$ 132 bi nominal. Os consolidados do portal somam R$ 169,68 bi (03/09/2026). A home mostra R$ 171 bi, valor arredondado. (fonte: /ambiental/mariana)
 
 **Fonte:** /ambiental/mariana
 
@@ -1913,9 +1945,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como checar a estabilidade das barragens dessas empresas?
 
-**Resposta refinada (llama3.2:3b):** O painel do SIGBM/ANM monitora estruturas de contenção de rejeitos com alertas de emergência e nível de risco. (fonte: /ambiental/barragens)
+**Resposta refinada (llama3.2:3b):** O painel do SIGBM/ANM monitora barragens de rejeitos. Há alertas de emergência e nível de risco. (fonte: /ambiental/barragens)
 
-**Resposta bruta (template):** O painel do SIGBM/ANM monitora estruturas de contenção de rejeitos com alertas de emergência e nível de risco. (fonte: /ambiental/barragens)
+**Resposta bruta (template):** O painel do SIGBM/ANM monitora barragens de rejeitos. Há alertas de emergência e nível de risco. (fonte: /ambiental/barragens)
 
 **Fonte:** /ambiental/barragens
 
@@ -1925,9 +1957,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar os TACs firmados perante o Ministério Público?
 
-**Resposta refinada (llama3.2:3b):** Consulte o painel de Termos de Ajustamento de Conduta com valores e status de cumprimento em MG. (fonte: /ambiental/tac)
+**Resposta refinada (llama3.2:3b):** Consulte o painel de TACs ambientais de MG. Ele traz valores e status de cumprimento. (fonte: /ambiental/tac)
 
-**Resposta bruta (template):** Consulte o painel de Termos de Ajustamento de Conduta com valores e status de cumprimento em MG. (fonte: /ambiental/tac)
+**Resposta bruta (template):** Consulte o painel de TACs ambientais de MG. Ele traz valores e status de cumprimento. (fonte: /ambiental/tac)
 
 **Fonte:** /ambiental/tac
 
@@ -1949,9 +1981,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde consultar termos de ajuste de conduta (TACs) ambientais em MG?
 
-**Resposta refinada (llama3.2:3b):** O acervo de TACs reúne mais de 8.900 termos do MPMG e IBAMA com valores e obrigações, consulte em: /ambiental/tac (fonte: /ambiental/tac)
+**Resposta refinada (llama3.2:3b):** O acervo reúne mais de 8.900 TACs do MPMG e IBAMA. Cada termo traz valores e obrigações. (fonte: /ambiental/tac)
 
-**Resposta bruta (template):** O acervo de TACs reúne mais de 8.900 termos do MPMG e IBAMA com valores e obrigações. (fonte: /ambiental/tac)
+**Resposta bruta (template):** O acervo reúne mais de 8.900 TACs do MPMG e IBAMA. Cada termo traz valores e obrigações. (fonte: /ambiental/tac)
 
 **Fonte:** /ambiental/tac
 
@@ -1959,11 +1991,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 62. Nossos Rios, Serras & Patrimônio Cultural
 
-**Pergunta:** O que o portal mostra sobre Nossos Rios, Serras & Patrimônio Cultural?
+**Pergunta:** Como consultar rios, serras e patrimônio cultural de MG?
 
-**Resposta refinada (llama3.2:3b):** Qualidade da água das 7 bacias de MG, proteção de serras de recarga e acervo do patrimônio tombado. (fonte: /ambiental/nossos-rios)
+**Resposta refinada (llama3.2:3b):** Mostra a qualidade da água das 7 bacias de MG. Cobre serras de recarga e patrimônio tombado. (fonte: /ambiental/nossos-rios)
 
-**Resposta bruta (template):** Qualidade da água das 7 bacias de MG, proteção de serras de recarga e acervo do patrimônio tombado. (fonte: /ambiental/nossos-rios)
+**Resposta bruta (template):** Mostra a qualidade da água das 7 bacias de MG. Cobre serras de recarga e patrimônio tombado. (fonte: /ambiental/nossos-rios)
 
 **Fonte:** /ambiental/nossos-rios
 
@@ -1971,11 +2003,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 64. Condicionantes Ambientais de Barragens
 
-**Pergunta:** O que o portal mostra sobre Condicionantes Ambientais de Barragens?
+**Pergunta:** Como fiscalizar as condicionantes de barragens em MG?
 
-**Resposta refinada (llama3.2:3b):** Auditoria do cumprimento de condicionantes das licenças prévias e TACs de grandes barragens em Minas Gerais. (fonte: /ambiental/condicionantes)
+**Resposta refinada (llama3.2:3b):** Audita o cumprimento das condicionantes das licenças e TACs. Cobre as grandes barragens de Minas Gerais. (fonte: /ambiental/condicionantes)
 
-**Resposta bruta (template):** Auditoria do cumprimento de condicionantes das licenças prévias e TACs de grandes barragens em Minas Gerais. (fonte: /ambiental/condicionantes)
+**Resposta bruta (template):** Audita o cumprimento das condicionantes das licenças e TACs. Cobre as grandes barragens de Minas Gerais. (fonte: /ambiental/condicionantes)
 
 **Fonte:** /ambiental/condicionantes
 
@@ -1983,11 +2015,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 70. Dossiês Desclassificados de Inteligência & Twelve Eyes
 
-**Pergunta:** O que o portal mostra sobre Dossiês Desclassificados de Inteligência & Twelve Eyes?
+**Pergunta:** Onde vejo os dossiês de inteligência desclassificados?
 
-**Resposta refinada (llama3.2:3b):** Auditoria cívica de 84 relatórios da CIA, FBI, NSA, SNI e alianças Five Eyes, Nine Eyes e Twelve Eyes. (fonte: /internacional/inteligencia)
+**Resposta refinada (llama3.2:3b):** É uma auditoria cívica de 84 relatórios de inteligência. Inclui CIA, FBI, NSA, SNI e alianças Five a Twelve Eyes. (fonte: /internacional/inteligencia)
 
-**Resposta bruta (template):** Auditoria cívica de 84 relatórios da CIA, FBI, NSA, SNI e alianças Five Eyes, Nine Eyes e Twelve Eyes. (fonte: /internacional/inteligencia)
+**Resposta bruta (template):** É uma auditoria cívica de 84 relatórios de inteligência. Inclui CIA, FBI, NSA, SNI e alianças Five a Twelve Eyes. (fonte: /internacional/inteligencia)
 
 **Fonte:** /internacional/inteligencia
 
@@ -1995,9 +2027,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 170. Bases de Licenças ambientais estaduais e federais
 
-**Pergunta:** O que o portal mostra sobre Bases de Licenças ambientais estaduais e federais?
+**Pergunta:** Que bases de licenças ambientais estaduais e federais existem?
 
-**Resposta refinada (llama3.2:3b):** O portal mostra 15 arquivos sobre licenças ambientais estaduais e federais, com 89,9 MB de tamanho total, e 102 registros contados, incluindo arquivos grandes que ainda não foram abertos. Exemplos incluem cetesb-sp-licencas.json, fepam-rs-licencas.json, iat-pr-licencas.json, ibama-licencas.json, ibram-df-licencas.json e iema-es-licencas.json. (fonte: /ambiental/licencas)
+**Resposta refinada (llama3.2:3b):** São 15 arquivos de licenças ambientais, com 89,9 MB. Os registros contados somam 102. Contagem parcial: arquivos grandes não abertos. Exemplos: cetesb-sp, fepam-rs, iat-pr e ibama. (fonte: /ambiental/licencas)
 
 **Resposta bruta (template):** Tema "Licenças ambientais estaduais e federais": 15 arquivo(s), 89.9 MB, 102 registros contados (contagem parcial: arquivos grandes não abertos). Exemplos: cetesb-sp-licencas.json, fepam-rs-licencas.json, iat-pr-licencas.json, ibama-licencas.json, ibram-df-licencas.json, iema-es-licencas.json. (fonte: /ambiental/licencas)
 
@@ -2007,9 +2039,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 172. Bases de Outorgas de água (ANA/IGAM)
 
-**Pergunta:** O que o portal mostra sobre Bases de Outorgas de água (ANA/IGAM)?
+**Pergunta:** Que bases de outorgas de água (ANA/IGAM) existem?
 
-**Resposta refinada (llama3.2:3b):** O portal mostra 2 arquivos sobre Outorgas de água (ANA/IGAM), com 21 MB, em /ambiental/nossos-rios, inventário medido em 30/09/2026, (fonte: /ambiental/nossos-rios)
+**Resposta refinada (llama3.2:3b):** São 2 arquivos de outorgas de água, com 21 MB. Exemplos: ana-outorgas.json e igam-outorgas.json. Inventário medido em 30/09/2026. (fonte: /ambiental/nossos-rios)
 
 **Resposta bruta (template):** Tema "Outorgas de água (ANA/IGAM)": 2 arquivo(s), 21 MB (contagem parcial: arquivos grandes não abertos). Exemplos: ana-outorgas.json, igam-outorgas.json. Página do tema: /ambiental/nossos-rios. Inventário medido em 30/09/2026. (fonte: /ambiental/nossos-rios)
 
@@ -2019,9 +2051,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 174. Bases de Meio ambiente e territórios
 
-**Pergunta:** O que o portal mostra sobre Bases de Meio ambiente e territórios?
+**Pergunta:** Que bases de meio ambiente e territórios existem no portal?
 
-**Resposta refinada (llama3.2:3b):** Tema “Meio ambiente e territórios”: 12 arquivo(s), 8 MB, 1000 registros contados. Exemplos: bases-clima-risco.json, car-mg.json, destinacoes-uniao-mg.json, ecossistema-ambiental-nacional.json, ibama-autos-infracao.json, ibama-mg.json. Página do tema: /ambiental. Inventário medido em 30/09/2026 (fonte: /ambiental)
+**Resposta refinada (llama3.2:3b):** São 12 arquivos, 8 MB e 1000 registros contados. Exemplos: car-mg.json, ibama-mg.json e bases-clima-risco.json. Inventário medido em 30/09/2026. (fonte: /ambiental)
 
 **Resposta bruta (template):** Tema "Meio ambiente e territórios": 12 arquivo(s), 8 MB, 1000 registros contados. Exemplos: bases-clima-risco.json, car-mg.json, destinacoes-uniao-mg.json, ecossistema-ambiental-nacional.json, ibama-autos-infracao.json, ibama-mg.json. Página do tema: /ambiental. Inventário medido em 30/09/2026. (fonte: /ambiental)
 
@@ -2031,9 +2063,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 183. Bases de Organismos multilaterais
 
-**Pergunta:** O que o portal mostra sobre Bases de Organismos multilaterais?
+**Pergunta:** Que bases sobre organismos multilaterais existem?
 
-**Resposta refinada (llama3.2:3b):** 6 arquivos, 0.2 MB, 18 registros contados. Exemplos: europa-transnacional.compact.json, comercio-commodities.compact.json, desclassificados-g20.compact.json, europa-transnacional.compact.json, indicadores-sociais.compact.json, terra-territorios-global.compact.json (fonte: /internacional)
+**Resposta refinada (llama3.2:3b):** São 6 arquivos, 0,2 MB e 18 registros. Exemplos: europa-transnacional e comercio-commodities. (fonte: /internacional)
 
 **Resposta bruta (template):** Tema "Organismos multilaterais": 6 arquivo(s), 0.2 MB, 18 registros contados. Exemplos: europa-transnacional.compact.json, comercio-commodities.compact.json, desclassificados-g20.compact.json, europa-transnacional.compact.json, indicadores-sociais.compact.json, terra-territorios-global.compact.json. (fonte: /internacional)
 
@@ -2045,11 +2077,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 5. Central de Canais LAI (445 entidades) e Conselhos de Direitos (710 colegiados)
 
-**Pergunta:** Como consulto Central de Canais LAI (445 entidades) e Conselhos de Direitos (710 colegiados)?
+**Pergunta:** Quantos canais LAI e conselhos o portal reúne?
 
-**Resposta refinada (llama3.2:3b):** A Central de Canais LAI reúne 445 entidades públicas brasileiras com e-mail, telefone, e-SIC e modelo de pedido pronto. (fonte: /direitos-em-movimento/informacao)
+**Resposta refinada (llama3.2:3b):** São 445 canais de LAI com e-mail, telefone e e-SIC. O diretório de conselhos lista 710 colegiados. (fonte: /direitos-em-movimento/informacao)
 
-**Resposta bruta (template):** A Central de Canais LAI reúne 445 entidades públicas brasileiras (prefeituras, câmaras, tribunais, órgãos federais e concessionárias de água/energia) com e-mail, telefone, e-SIC e modelo de pedido pronto. (fonte: /direitos-em-movimento/informacao)
+**Resposta bruta (template):** A Central de Canais LAI reúne 445 entidades públicas. São prefeituras, câmaras, tribunais, órgãos federais e concessionárias. Cada canal traz e-mail, telefone, e-SIC e modelo de pedido. Os conselhos listam 710 colegiados. (fonte: /direitos-em-movimento/informacao)
 
 **Fonte:** /direitos-em-movimento/informacao
 
@@ -2061,9 +2093,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como estão as contratações e empregos formais na cidade?
 
-**Resposta refinada (llama3.2:3b):** O Eixo Direitos em Movimento monitora admissões do CAGED e geração de renda em Betim. (fonte: /direitos-em-movimento/trabalho-e-renda)
+**Resposta refinada (llama3.2:3b):** O eixo monitora admissões do CAGED em Betim. Mostra também a geração de renda na cidade. (fonte: /direitos-em-movimento/trabalho-e-renda)
 
-**Resposta bruta (template):** O Eixo Direitos em Movimento monitora admissões do CAGED e geração de renda em Betim. (fonte: /direitos-em-movimento/trabalho-e-renda)
+**Resposta bruta (template):** O eixo monitora admissões do CAGED, o cadastro oficial de vagas formais. Mostra também a geração de renda em Betim. (fonte: /direitos-em-movimento/trabalho-e-renda)
 
 **Fonte:** /direitos-em-movimento/trabalho-e-renda
 
@@ -2073,7 +2105,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como fazer denúncias de desvio de verbas ou dano ambiental?
 
-**Resposta refinada (llama3.2:3b):** Acesse formulários e contatos de ouvidorias do Ministério Público e tribunais de contas (fonte: /direitos-em-movimento/denuncia)
+**Resposta refinada (llama3.2:3b):** Acesse formulários e contatos de ouvidorias do Ministério Público e tribunais de contas. (fonte: /direitos-em-movimento/denuncia)
 
 **Resposta bruta (template):** Acesse formulários e contatos de ouvidorias do Ministério Público e tribunais de contas. (fonte: /direitos-em-movimento/denuncia)
 
@@ -2097,9 +2129,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Onde acessar os canais de fiscalização cidadã?
 
-**Resposta refinada (llama3.2:3b):** Acesse guias passo a passo para requisições de Lei de Acesso à Informação e den…ncias. (fonte: /direitos-em-movimento)
+**Resposta refinada (llama3.2:3b):** Acesse guias passo a passo de pedidos de LAI e denúncias. (fonte: /direitos-em-movimento)
 
-**Resposta bruta (template):** Acesse guias passo a passo para requisições de Lei de Acesso à Informação e denúncias. (fonte: /direitos-em-movimento)
+**Resposta bruta (template):** Acesse guias passo a passo de pedidos de LAI e denúncias. LAI é a Lei de Acesso à Informação. (fonte: /direitos-em-movimento)
 
 **Fonte:** /direitos-em-movimento
 
@@ -2107,11 +2139,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 60. Direitos em Movimento
 
-**Pergunta:** Como consulto Direitos em Movimento?
+**Pergunta:** Onde buscar ajuda e canais de denúncia?
 
-**Resposta refinada (llama3.2:3b):** Onde buscar ajuda, como se defender, canais de denúncia e proteção de direitos. Canais de denúncia por tipo de violação Assistência jurídica e social Proteção de direitos trabalhistas Direitos de idosos, crianças e mulheres Defesa do consumidor (fonte: /direitos-em-movimento/denuncia)
+**Resposta refinada (llama3.2:3b):** O portal mostra onde buscar ajuda e como se defender. Há canais de denúncia por tipo de violação. Inclui direitos de idosos, crianças e mulheres. Há ainda proteção trabalhista e defesa do consumidor. (fonte: /direitos-em-movimento/denuncia)
 
-**Resposta bruta (template):** Onde buscar ajuda, como se defender, canais de denúncia e proteção de direitos. Canais de denúncia por tipo de violação Assistência jurídica e social Proteção de direitos trabalhistas Direitos de idosos, crianças e mulheres Defesa do consumidor (fonte: /direitos-em-movimento/denuncia)
+**Resposta bruta (template):** O portal mostra onde buscar ajuda e como se defender. Há canais de denúncia por tipo de violação. Inclui direitos de idosos, crianças e mulheres. Há ainda proteção trabalhista e defesa do consumidor. (fonte: /direitos-em-movimento/denuncia)
 
 **Fonte:** /direitos-em-movimento/denuncia
 
@@ -2119,7 +2151,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 178. Bases de Conselhos de direitos e colegiados
 
-**Pergunta:** Como consulto Bases de Conselhos de direitos e colegiados?
+**Pergunta:** Que bases de conselhos de direitos o portal tem?
 
 ⚠️ **refine descartado (números mudaram)** — vale só a resposta bruta.
 
@@ -2131,7 +2163,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 181. Bases de Canais de acesso à informação (LAI)
 
-**Pergunta:** Como consulto Bases de Canais de acesso à informação (LAI)?
+**Pergunta:** Que bases de canais de LAI existem no portal?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -2147,9 +2179,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais bancadas concentram mais alertas?
 
-**Resposta refinada (llama3.2:3b):** Acompanhe a distribuição partidária e regional das emendas e projetos de interesse da cidadania. (fonte: /congresso/bancadas)
+**Resposta refinada (llama3.2:3b):** O painel compara emendas e projetos por partido e região. São 354 bancadas cadastradas, com contagem de membros. (fonte: /congresso/bancadas)
 
-**Resposta bruta (template):** Acompanhe a distribuição partidária e regional das emendas e projetos de interesse da cidadania. (fonte: /congresso/bancadas)
+**Resposta bruta (template):** O painel compara emendas e projetos por partido e região. São 354 bancadas cadastradas, com contagem de membros. (fonte: /congresso/bancadas)
 
 **Fonte:** /congresso/bancadas
 
@@ -2159,9 +2191,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como atuam as bancadas estaduais no Congresso?
 
-**Resposta refinada (llama3.2:3b):** Veja como cada bancada se posiciona e como as emendas orçamentárias afetam os municípios (fonte: /congresso/bancadas)
+**Resposta refinada (llama3.2:3b):** Veja como cada bancada se posiciona no Congresso. Mostra também o efeito das emendas nos municípios. (fonte: /congresso/bancadas)
 
-**Resposta bruta (template):** Veja como cada bancada se posiciona e como as emendas orçamentárias afetam os municípios. (fonte: /congresso/bancadas)
+**Resposta bruta (template):** Veja como cada bancada se posiciona no Congresso. Mostra também o efeito das emendas nos municípios. (fonte: /congresso/bancadas)
 
 **Fonte:** /congresso/bancadas
 
@@ -2171,9 +2203,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como os deputados votam nas pautas de meio ambiente e direitos?
 
-**Resposta refinada (llama3.2:3b):** O painel de votações nominais registra cada voto em plenário para você fiscalizar a atuação de cada eleito. (fonte: /congresso/votacoes)
+**Resposta refinada (llama3.2:3b):** O painel registra cada voto nominal em plenário. Assim você fiscaliza a atuação de cada eleito. (fonte: /congresso/votacoes)
 
-**Resposta bruta (template):** O painel de votações nominais registra cada voto em plenário para você fiscalizar a atuação de cada eleito. (fonte: /congresso/votacoes)
+**Resposta bruta (template):** O painel registra cada voto nominal em plenário. Assim você fiscaliza a atuação de cada eleito. (fonte: /congresso/votacoes)
 
 **Fonte:** /congresso/votacoes
 
@@ -2183,9 +2215,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quais alertas de fiscalização cidadã foram registrados?
 
-**Resposta refinada (llama3.2:3b):** Pontos de atenção e indícios em convênios e emendas de bancada para acompanhamento social. (fonte: /congresso/alertas)
+**Resposta refinada (llama3.2:3b):** O painel lista 18 alertas de atenção, medidos em 09/08/2026. Eles apontam indícios em convênios e emendas de bancada. (fonte: /congresso/alertas)
 
-**Resposta bruta (template):** Pontos de atenção e indícios em convênios e emendas de bancada para acompanhamento social. (fonte: /congresso/alertas)
+**Resposta bruta (template):** O painel lista 18 alertas de atenção, medidos em 09/08/2026. Eles apontam indícios em convênios e emendas de bancada. (fonte: /congresso/alertas)
 
 **Fonte:** /congresso/alertas
 
@@ -2195,9 +2227,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como comparar a atuação estadual com a Câmara dos Deputados?
 
-**Resposta refinada (llama3.2:3b):** O ranking do Congresso aplica a mesma régua garantista de direitos e presença em plenário, (fonte: /congresso/parlamentares)
+**Resposta refinada (llama3.2:3b):** O ranking do Congresso usa a mesma régua da Assembleia. Ele mede defesa de direitos e presença em plenário. (fonte: /congresso/parlamentares)
 
-**Resposta bruta (template):** O ranking do Congresso aplica a mesma régua garantista de direitos e presença em plenário. (fonte: /congresso/parlamentares)
+**Resposta bruta (template):** O ranking do Congresso usa a mesma régua da Assembleia. Ele mede defesa de direitos e presença em plenário. (fonte: /congresso/parlamentares)
 
 **Fonte:** /congresso/parlamentares
 
@@ -2209,9 +2241,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Qual o valor já executado nos 26 municípios atingidos?
 
-**Resposta refinada (llama3.2:3b):** Consulte a execução orçamentária detalhada da cota municipal do acordo de R$ 37,7 bi. (fonte: /paraopeba/execucao)
+**Resposta refinada (llama3.2:3b):** O valor atualizado dos projetos é R$ 5,48 bi, auditado pela FGV. Desse total, 73,8% já foi pago (relatório de 20/07/2026). (fonte: /paraopeba/execucao)
 
-**Resposta bruta (template):** Consulte a execução orçamentária detalhada da cota municipal do acordo de R$ 37,7 bi. (fonte: /paraopeba/execucao)
+**Resposta bruta (template):** O valor atualizado dos projetos é R$ 5,48 bi, auditado pela FGV. Desse total, 73,8% já foi pago (relatório de 20/07/2026). (fonte: /paraopeba/execucao)
 
 **Fonte:** /paraopeba/execucao
 
@@ -2221,9 +2253,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Quanto cada município do Paraopeba já recebeu do Acordo?
 
-**Resposta refinada (llama3.2:3b):** Tabela completa de execução financeira e obras municipais financiadas pela reparação. (fonte: /paraopeba/execucao)
+**Resposta refinada (llama3.2:3b):** A tabela mostra o pago em cada um dos 26 municípios. O total auditado pela FGV é R$ 5,48 bi (20/07/2026). (fonte: /paraopeba/execucao)
 
-**Resposta bruta (template):** Tabela completa de execução financeira e obras municipais financiadas pela reparação. (fonte: /paraopeba/execucao)
+**Resposta bruta (template):** A tabela mostra o pago em cada um dos 26 municípios. O total auditado pela FGV é R$ 5,48 bi (20/07/2026). (fonte: /paraopeba/execucao)
 
 **Fonte:** /paraopeba/execucao
 
@@ -2233,9 +2265,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como comparar o acordo do Rio Doce com o do Paraopeba (Brumadinho)?
 
-**Resposta refinada (llama3.2:3b):** Consulte a execução financeira de R$ 5,48 bi aos municípios do Paraopeba e auditorias da FGV e AECOM (fonte: /paraopeba)
+**Resposta refinada (llama3.2:3b):** O Acordo de Mariana (Rio Doce) tem R$ 132 bi nominal. O de Brumadinho (Paraopeba) tem R$ 37,68 bi. Juntos, somam R$ 169,68 bi em 03/09/2026. (fonte: /paraopeba)
 
-**Resposta bruta (template):** Consulte a execução financeira de R$ 5,48 bi aos municípios do Paraopeba e auditorias da FGV e AECOM. (fonte: /paraopeba)
+**Resposta bruta (template):** O Acordo de Mariana (Rio Doce) tem R$ 132 bi nominal. O de Brumadinho (Paraopeba) tem R$ 37,68 bi. Juntos, somam R$ 169,68 bi em 03/09/2026. (fonte: /paraopeba)
 
 **Fonte:** /paraopeba
 
@@ -2243,7 +2275,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 175. Bases de Reparação do Rio Doce e do Paraopeba
 
-**Pergunta:** O que o portal mostra sobre Bases de Reparação do Rio Doce e do Paraopeba?
+**Pergunta:** Que bases de reparação do Rio Doce e Paraopeba existem?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -2259,9 +2291,9 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 **Pergunta:** Como visualizar assentamentos e terras tradicionais no mapa 3D?
 
-**Resposta refinada (llama3.2:3b):** Abra o Globo 3D de Terras com camadas de Unidades de Conservação, CAR e requerimentos minerrios. (fonte: /funcaosocialterra/mapa)
+**Resposta refinada (llama3.2:3b):** Abra o Globo 3D de Terras. Ele mostra UCs, CAR e requerimentos minerários. UCs são unidades de conservação. (fonte: /funcaosocialterra/mapa)
 
-**Resposta bruta (template):** Abra o Globo 3D de Terras com camadas de Unidades de Conservação, CAR e requerimentos minerários. (fonte: /funcaosocialterra/mapa)
+**Resposta bruta (template):** Abra o Globo 3D de Terras. Ele mostra UCs, CAR e requerimentos minerários. UCs são unidades de conservação. (fonte: /funcaosocialterra/mapa)
 
 **Fonte:** /funcaosocialterra/mapa
 
@@ -2269,11 +2301,11 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 69. América Latina & Mineração Transnacional
 
-**Pergunta:** O que o portal mostra sobre América Latina & Mineração Transnacional?
+**Pergunta:** Onde vejo a mineração transnacional na América Latina?
 
-**Resposta refinada (llama3.2:3b):** Observatório de 51 instalações estratégicas de mineração em 9 países da América Latina integradas ao Globo 3D Terras (fonte: /america-latina)
+**Resposta refinada (llama3.2:3b):** O observatório mapeia 51 instalações de mineração. São 9 países da América Latina, no Globo 3D Terras. (fonte: /america-latina)
 
-**Resposta bruta (template):** Observatório de 51 instalações estratégicas de mineração em 9 países da América Latina integradas ao Globo 3D Terras. (fonte: /america-latina)
+**Resposta bruta (template):** O observatório mapeia 51 instalações de mineração. São 9 países da América Latina, no Globo 3D Terras. (fonte: /america-latina)
 
 **Fonte:** /america-latina
 
@@ -2281,7 +2313,7 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 168. Base de dados: Cadastro Nacional de Unidades de Conservação (CNUC)
 
-**Pergunta:** O que o portal mostra sobre Base de dados: Cadastro Nacional de Unidades de Conservação (CNUC)?
+**Pergunta:** Que dados o portal tem sobre unidades de conservação?
 
 ⚠️ **refine descartado (fonte alterada pelo modelo)** — vale só a resposta bruta.
 
@@ -2293,15 +2325,16 @@ Escolha: **`llama3.2:3b`**, por dado, não por opinião.
 
 #### 184. Bases de Terras, territórios, patrimônio e povos
 
-**Pergunta:** O que o portal mostra sobre Bases de Terras, territórios, patrimônio e povos?
+**Pergunta:** Que bases de terras, territórios e povos existem?
 
-**Resposta refinada (llama3.2:3b):** Tem 2 arquivo(s), 0.1 MB, 161 registros contados. Exemplos: estudos-rurais.json, patrimonio-tombado-iepha.json. Página do tema: /funcaosocialterra. Inventário medido em 30/09/2026. (fonte: /funcaosocialterra)
+**Resposta refinada (llama3.2:3b):** São 2 arquivos, 0,1 MB e 161 registros contados. Exemplos: estudos-rurais.json e patrimonio-tombado-iepha.json. Inventário medido em 30/09/2026. (fonte: /funcaosocialterra)
 
 **Resposta bruta (template):** Tema "Terras, territórios, patrimônio e povos": 2 arquivo(s), 0.1 MB, 161 registros contados. Exemplos: estudos-rurais.json, patrimonio-tombado-iepha.json. Página do tema: /funcaosocialterra. Inventário medido em 30/09/2026. (fonte: /funcaosocialterra)
 
 **Fonte:** /funcaosocialterra
 
 **Peça:** bases:tema:terras · funcaosocialterra · /funcaosocialterra
+
 
 ## Como aprovar
 
@@ -2319,3 +2352,4 @@ Nada foi aplicado no código. O fluxo é este:
 
 Regra editorial do repo: resposta curada só entra com revisão do dono.
 Este doc é o material de revisão; o dono é quem aprova.
+

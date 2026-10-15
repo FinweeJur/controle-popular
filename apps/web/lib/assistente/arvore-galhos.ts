@@ -899,7 +899,7 @@ export const ARESTAS_ARVORE: ArestaArvore[] = [
   // Cruzamentos temáticos do Eixo 3
   { fonte: "est-orcamento", alvo: "ter-cidades", tipo: "relacionado", descricao: "Cota-parte de ICMS e IPVA" },
   { fonte: "est-compras", alvo: "ter-betim", tipo: "relacionado", descricao: "Contratos de Betim no PNCP" },
-  { fonte: "est-empresas", alvo: "ter-brumadinho", tipo: "relacionado", descricao: "Acordos com a Vale" },
+  { fonte: "est-empresas", alvo: "ter-brumadinho", tipo: "relacionado", descricao: "Vale e o Acordo de Brumadinho" },
   { fonte: "est-ppp", alvo: "est-compras", tipo: "relacionado", descricao: "Concessões e Contratos Públicos" },
   { fonte: "est-internacional", alvo: "est-empresas", tipo: "relacionado", descricao: "Corporações no Cenário Global" },
   { fonte: "est-eua", alvo: "est-empresas", tipo: "relacionado", descricao: "Fundos e Formulários SEC" },
