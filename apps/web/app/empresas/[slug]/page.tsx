@@ -26,7 +26,12 @@ import { listarTodasEntidades, obterEntidadePorSlug } from "@/lib/empresas/entid
 import { obterEmpresa, EMPRESAS } from "@/lib/empresas/dados";
 import { processosPorEmpresa } from "@/lib/empresas/sigmine";
 import { NOTICIAS_SIGMA_LITHIUM, NOTICIAS_VALE } from "@/lib/empresas/noticias";
-import { listarDocumentosPorEmpresa } from "@/lib/empresas/empresas-documentos";
+// O carimbo mostrado é o de `empresas-documentos.json` (acervo versionado dos
+// documentos oficiais publicados) via `dataDoAcervo` — a ficha técnica da
+// entidade não tem carimbo no arquivo, e data digitada é proibida (§8, oitava).
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
+import DataColeta from "@/app/components/DataColeta";
+import { listarDocumentosPorEmpresa, obterCatalogoDocumentos } from "@/lib/empresas/empresas-documentos";
 import { listarDocumentosAcademicos } from "@/lib/biblioteca/unificada";
 
 interface Props {
@@ -152,6 +157,7 @@ export default async function EmpresaPage({ params }: Props) {
           <p className="mt-2 text-sm sm:text-base text-muted leading-relaxed">
             {entidade?.investimentoBrasil || empresaLegada?.descricao}
           </p>
+          <DataColeta coletadoEm={dataDoAcervo(obterCatalogoDocumentos())} fonte="documentos oficiais publicados pela empresa (RI, CVM, CDP)" />
         </div>
 
         {/* Metadados Chave */}

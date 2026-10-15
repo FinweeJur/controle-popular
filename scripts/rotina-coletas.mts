@@ -135,6 +135,12 @@ const MAPA_SCRIPTS: Record<string, { tipo: "ts" | "py"; comando: string }> = {
     tipo: "ts",
     comando: "scripts/coletar-vale-monitoramento.mts",
   },
+  // Camada WFS da FUNAI (15/10/2026): virou snapshot manual em 08/09 e o
+  // globo envelhecia sem writer. O coletor renova e carimba `geradoEm`.
+  "funai-terras-indigenas": {
+    tipo: "ts",
+    comando: "scripts/coletar-terras-indigenas.mts",
+  },
   // ── Ligados em 04/09 pelo plano COLETA-MELHORIAS-2026-09 (acao 1 e 4):
   // os quatro coletores que existiam SAIDOS da agenda. O wrapper de diario
   // roda sigpub (Diamantina) e domweb (BH) por cidade; o --seco do wrapper
@@ -284,14 +290,49 @@ function registrarQuarentena(slug: string, sucesso: boolean): void {
  * arvore para humanos olharem — nao vai para repositorio publico.
  */
 function publicarDadosColetados(escopo: string): boolean {
-  const caminhosDado = ["apps/web/data", "apps/web/public/data"];
-  const sujoDado = spawnSync("git", ["status", "--porcelain", "--", ...caminhosDado], {
+  // FLORESTA NOVA (15/10/2026): o fluxo antigo (`git add` + `commit --only`
+  // + rebase NA ARVORE LOCAL) morreu quando a main local deixou de ser
+  // confiavel — varias sessoes dividem o mesmo checkout, a arvore esta
+  // quase sempre suja e o HEAD atrasado. O rebase embaralhava sessoes e o
+  // push falhava em silencio: foi assim que as fontes envelheceram 60 dias
+  // com a rotina "rodando". Agora e o fluxo da regra da casa: worktree
+  // temporario sobre origin/main, copia SO dos arquivos de dado que esta
+  // rodada sabe escrever (caminhoArquivo do registry para os slugs do
+  // MAPA), commit e push la. A arvore local nao e tocada por git nenhum.
+  const alvos = [...new Set(
+    Object.keys(MAPA_SCRIPTS)
+      .map((slug) => REGISTRY_FONTES[slug]?.caminhoArquivo)
+      .filter((c): c is string => Boolean(c)),
+  )];
+  const wt = path.join(RAIZ, ".rotina-push-wt");
+
+  spawnSync("git", ["fetch", "origin", "--quiet"], { cwd: RAIZ });
+  fs.rmSync(wt, { recursive: true, force: true });
+  const addWt = spawnSync("git", ["worktree", "add", "--detach", wt, "origin/main"], {
     cwd: RAIZ,
     encoding: "utf-8",
   });
-  const alterados = (sujoDado.stdout ?? "").trim();
+  if (addWt.status !== 0) {
+    console.log(`❌ worktree de publicacao falhou: ${(addWt.stderr ?? "").slice(0, 200)}`);
+    return false;
+  }
+
+  for (const rel of alvos) {
+    const origem = path.join(RAIZ, rel);
+    if (!fs.existsSync(origem)) continue;
+    const destino = path.join(wt, rel);
+    fs.mkdirSync(path.dirname(destino), { recursive: true });
+    fs.copyFileSync(origem, destino);
+  }
+
+  const sujo = spawnSync("git", ["status", "--porcelain", "--", ...alvos], {
+    cwd: wt,
+    encoding: "utf-8",
+  });
+  const alterados = (sujo.stdout ?? "").trim();
   if (!alterados) {
-    console.log("\n📦 Sem dado novo para publicar (nada alterado em apps/web/data*).");
+    console.log("\n📦 Sem dado novo para publicar (worktree igual ao origin).");
+    spawnSync("git", ["worktree", "remove", "--force", wt], { cwd: RAIZ });
     return true;
   }
   console.log(`\n📦 Publicando dado coletado (${alterados.split("\n").length} arquivos):`);
@@ -301,45 +342,46 @@ function publicarDadosColetados(escopo: string): boolean {
     `dados(${escopo}): coleta automatizada de ${new Date().toISOString().slice(0, 10)}`,
     "",
     "Commitado pela rotina de coleta apos varredura de dado pessoal (mod-11)",
-    "ter passado. Arquivos: apps/web/data e apps/web/public/data apenas.",
+    "ter passado. Worktree limpo sobre origin/main; so os caminhoArquivo do",
+    "registry desta rodada entram, nunca codigo nem resto da arvore.",
     "",
     "Co-Authored-By: Hermes <agent@controlepopular.com.br>",
   ].join("\n");
   const arqMsg = path.join(RAIZ, ".git", "MENSAGEM-DADO-ROTINA.txt");
   fs.writeFileSync(arqMsg, msg, "utf-8");
 
-  const add = spawnSync("git", ["add", "--", ...caminhosDado], { cwd: RAIZ, encoding: "utf-8" });
-  if (add.status !== 0) {
-    console.log(`❌ git add dos dados falhou: ${add.stderr}`);
-    return false;
-  }
-  // --only com os caminhos: nunca um `git commit` solto, que pegaria o
-  // staging de outra sessao (regra 5 da casa, vale ate para rotina).
-  const commit = spawnSync("git", ["commit", "-F", arqMsg, "--", ...caminhosDado], { cwd: RAIZ, encoding: "utf-8" });
-  if (commit.status !== 0) {
-    console.log(`❌ git commit dos dados falhou: ${(commit.stdout + commit.stderr).slice(0, 400)}`);
-    return false;
-  }
-  // Push com rebase: a main e compartilhada, e a esteira das 05:50 espera
-  // encontrar o commit dela aqui. Fora do ar, o proximo deploy pega.
-  for (let tentativa = 1; tentativa <= 4; tentativa++) {
-    const fetch = spawnSync("git", ["fetch", "origin", "--quiet"], { cwd: RAIZ, encoding: "utf-8" });
-    if (fetch.status === 0) {
-      spawnSync("git", ["rebase", "origin/main"], { cwd: RAIZ, encoding: "utf-8" });
+  let publicado = false;
+  for (let tentativa = 1; tentativa <= 4 && !publicado; tentativa++) {
+    spawnSync("git", ["add", "--", ...alvos], { cwd: wt });
+    const commit = spawnSync("git", ["commit", "-F", arqMsg, "--", ...alvos], {
+      cwd: wt,
+      encoding: "utf-8",
+    });
+    if (commit.status !== 0) {
+      console.log(`❌ git commit dos dados falhou: ${(commit.stdout + commit.stderr).slice(0, 400)}`);
+      break;
     }
-    const push = spawnSync("git", ["push", "origin", "HEAD:main"], { cwd: RAIZ, encoding: "utf-8" });
+    spawnSync("git", ["fetch", "origin", "--quiet"], { cwd: wt });
+    const rebase = spawnSync("git", ["rebase", "origin/main"], { cwd: wt, encoding: "utf-8" });
+    if (rebase.status !== 0) {
+      console.log(`⚠️ rebase no worktree falhou (tentativa ${tentativa}); tentando push direto`);
+      spawnSync("git", ["rebase", "--abort"], { cwd: wt });
+    }
+    const push = spawnSync("git", ["push", "origin", "HEAD:main"], { cwd: wt, encoding: "utf-8" });
     if (push.status === 0) {
       console.log(`✅ Dado publicado no GitHub (tentativa ${tentativa}).`);
-      return true;
+      publicado = true;
+      break;
     }
     console.log(`⚠️ push falhou (tentativa ${tentativa}/4): ${(push.stderr ?? "").slice(0, 160)}`);
-    spawnSync("git", ["rebase", "--abort"], { cwd: RAIZ, encoding: "utf-8" }); // limpa estado, se rebase empacou
-    // backoff sincrono e portavel: Atomics.wait bloqueia a thread sem
-    // depender de binario `sleep` (que nao existe no Windows fora do bash).
+    // backoff portavel: Atomics.wait bloqueia sem depender de binario sleep.
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, tentativa * 30_000);
   }
-  console.log("⚠️ Dado commitado localmente, mas push falhou 4x — a rede esta fora. O proximo autodeploy ou uma rodada manual publica.");
-  return false;
+  if (!publicado) {
+    console.log("⚠️ Dado coletado ficou na arvore local — publicador nao conseguiu. A proxima rodada tenta de novo.");
+  }
+  spawnSync("git", ["worktree", "remove", "--force", wt], { cwd: RAIZ });
+  return publicado;
 }
 
 function varrerDadoPessoal(): boolean {

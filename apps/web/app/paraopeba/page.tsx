@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+// Data do dado publicada no hub: o carimbo `gerado_em` de `biblioteca-ati.json`,
+// exposto por `coberturaBiblioteca()` — único acervo do hub com carimbo no arquivo.
+import DataColeta from "@/app/components/DataColeta";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
@@ -179,6 +182,8 @@ export default async function ParaopebaHome() {
       >
         <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." />
       </HeaderFrenteBrasilComS>
+
+      <DataColeta coletadoEm={cob.geradoEm} fonte="ATI — Biblioteca das assessorias (acervo Pró-Brumadinho)" />
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {BLOCOS.map((b) => (
