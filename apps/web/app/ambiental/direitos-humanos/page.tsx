@@ -72,17 +72,17 @@ export default function PaginaDireitosHumanos() {
         <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-muted">Relatórios Catalogados</span>
           <p className="mt-2 font-display text-3xl font-bold text-foreground">{relatorios.length}</p>
-          <span className="mt-1 block text-xs text-muted">CIDH, REDESCA, ONU ACNUDH e CNDH</span>
+          <span className="mt-1 block text-sm text-muted">CIDH, REDESCA, ONU ACNUDH e CNDH</span>
         </div>
         <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-muted">Recomendações ao Brasil</span>
           <p className="mt-2 font-display text-3xl font-bold text-blue-600 dark:text-blue-400">30+ medidas</p>
-          <span className="mt-1 block text-xs text-muted">Reparação de barragens, demarcações e combate à tortura</span>
+          <span className="mt-1 block text-sm text-muted">Reparação de barragens, demarcações e combate à tortura</span>
         </div>
         <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-muted">Municípios em Destaque</span>
           <p className="mt-2 font-display text-3xl font-bold text-foreground">12 polos</p>
-          <span className="mt-1 block text-xs text-muted">Mariana, Brumadinho, Araçuaí, Itinga, BH, SP e Rio</span>
+          <span className="mt-1 block text-sm text-muted">Mariana, Brumadinho, Araçuaí, Itinga, BH, SP e Rio</span>
         </div>
       </section>
 
@@ -91,7 +91,7 @@ export default function PaginaDireitosHumanos() {
         <h2 className="font-display text-lg font-bold text-foreground">
           Eixos Temáticos Monitorados nos Relatórios
         </h2>
-        <p className="mt-1 text-xs text-muted">
+        <p className="mt-1 text-sm text-muted">
           Distribuição dos relatórios segundo o foco principal de investigação e recomendações (CIDH/ONU/CNDH).
         </p>
 
@@ -126,7 +126,7 @@ export default function PaginaDireitosHumanos() {
             <h2 className="font-display text-xl font-bold text-foreground">
               Documentos Temáticos e Missões Oficiais
             </h2>
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted">
               Recomendações e relatórios vinculantes sobre o Brasil e comunidades atingidas.
             </p>
           </div>

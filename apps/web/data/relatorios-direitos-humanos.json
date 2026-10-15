@@ -34,8 +34,8 @@
       "Fortalecer o Programa Nacional de Proteção a Defensores de Direitos Humanos, Comunicadores e Ambientalistas.",
       "Implementar plano emergencial para erradicar a superlotação e tortura nas prisões brasileiras."
     ],
-    "linkOficial": "https://www.oas.org/pt/cidh/relatorios/ia/Brasil2021/relatorio-brasil2021-pt.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cidh-brasil-pais-2021.pdf",
+    "linkOficial": "https://www.oas.org/pt/cidh/relatorios/pdfs/Brasil2021-pt.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cidh-brasil-pais-2021.pdf",
     "tamanhoKb": 46
   },
   {
@@ -68,7 +68,7 @@
       "Garantir que comunidades atingidas tenham assessoria técnica independente financiada pelas empresas responsáveis."
     ],
     "linkOficial": "https://www.oas.org/es/cidh/informes/pdfs/EmpresasDDHH.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/redesca-empresas-direitos-humanos-2019.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/redesca-empresas-direitos-humanos-2019.pdf",
     "tamanhoKb": 4274
   },
   {
@@ -103,8 +103,8 @@
       "Respeitar o direito de consentimento prévio, livre e informado antes de qualquer concessão mineral ou energética.",
       "Combater a intrusão ilegal de garimpeiros, madeireiros e grileiros em terras indígenas e territórios quilombolas."
     ],
-    "linkOficial": "https://www.oas.org/pt/cidh/indigenas/docs/pdf/Tierras-Ancestrales.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cidh-povos-indigenas-terras-ancestrais.pdf",
+    "linkOficial": "https://www.oas.org/en/iachr/indigenous/docs/pdf/AncestralLands.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cidh-povos-indigenas-terras-ancestrais.pdf",
     "tamanhoKb": 46
   },
   {
@@ -139,8 +139,8 @@
       "Implementar políticas de combate ao racismo ambiental que sobrecarrega territórios negros com lixões e poluição.",
       "Garantir a preservação dos saberes tradicionais, do artesanato e das práticas agrícolas de subsistência."
     ],
-    "linkOficial": "https://www.oas.org/es/cidh/informes/pdfs/Afrodescendientes-2021.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cidh-afrodescendentes-quilombolas-2021.pdf",
+    "linkOficial": "https://www.oas.org/en/sare/publications/AfDes2021_ENG.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cidh-afrodescendentes-quilombolas-2021.pdf",
     "tamanhoKb": 46
   },
   {
@@ -174,8 +174,8 @@
       "Assegurar acesso irrestrito e sem aviso prévio dos mecanismos estaduais e nacionais de combate à tortura (MNPCT).",
       "Priorizar medidas cautelares alternativas à prisão para evitar o encarceramento em massa de populações vulneráveis."
     ],
-    "linkOficial": "https://www.oas.org/es/cidh/informes/pdfs/PrisionPreventiva-2022.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cidh-mnpct-combate-tortura-2022.pdf",
+    "linkOficial": "https://www.oas.org/es/cidh/informes/pdfs/PrisionPreventiva.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cidh-mnpct-combate-tortura-2022.pdf",
     "tamanhoKb": 46
   },
   {
@@ -208,7 +208,7 @@
       "Proibir o corte de água por inadimplência em famílias de extrema pobreza e vulnerabilidade social."
     ],
     "linkOficial": "https://documents.un.org/doc/undoc/gen/g16/143/84/pdf/g1614384.pdf",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/onu-agua-saneamento-brasil.pdf",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/onu-agua-saneamento-brasil.pdf",
     "tamanhoKb": 82
   },
   {
@@ -268,8 +268,8 @@
       "Reconhecimento pleno do protagonismo das comissões de atingidos nas repactuações judiciais de Mariana e Brumadinho.",
       "Criação de centros especializados do SUS para atendimento em saúde mental nos municípios atingidos."
     ],
-    "linkOficial": "https://www.gov.br/participamaisbrasil/cndh",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cndh-relatorio-bacias-doce-paraopeba.pdf",
+    "linkOficial": "https://www.gov.br/mdh/pt-br/acesso-a-informacao/participacao-social/conselho-nacional-de-direitos-humanos-cndh/relatorios",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cndh-relatorio-bacias-doce-paraopeba.pdf",
     "tamanhoKb": 21
   },
   {
@@ -301,8 +301,8 @@
       "Garantir a salvaguarda de nascentes, veredas e poços artesianos comunitários no semiárido.",
       "Exigir destinação de royalties e contrapartidas tributárias diretamente aos fundos comunitários das cidades do Vale."
     ],
-    "linkOficial": "https://www.gov.br/participamaisbrasil/cndh",
-    "arquivoLocal": "acervo-documentos/direitos-humanos/cndh-semiarido-povos-tradicionais.pdf",
+    "linkOficial": "https://www.gov.br/mdh/pt-br/acesso-a-informacao/participacao-social/conselho-nacional-de-direitos-humanos-cndh/relatorios",
+    "arquivoLocal": "/acervo-documentos/direitos-humanos/cndh-semiarido-povos-tradicionais.pdf",
     "tamanhoKb": 21
   }
 ]
