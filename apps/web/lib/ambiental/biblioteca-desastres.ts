@@ -7,6 +7,7 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 
 export interface ItemDocumentoDesastre {
   id: string;
@@ -60,6 +61,9 @@ interface DadosBiblioteca {
 }
 
 export interface CatalogoBibliotecaDesastres {
+  /** Data do carimbo do agregado (`geradoEm` do JSON, via `dataDoAcervo`) —
+   *  a tela mostra em `DataColeta`; nunca digitada à mão (oitava qualidade). */
+  geradoEm: string | null;
   total_documentos: number;
   totais: {
     brumadinho_paraopeba: number;
@@ -151,6 +155,7 @@ export function carregarBibliotecaDesastres(): CatalogoBibliotecaDesastres {
   const tipos_disponiveis = [...new Set(documentos.map((d) => d.tipo).filter(Boolean))].sort();
 
   cacheBiblioteca = {
+    geradoEm: dataDoAcervo(dados),
     total_documentos: documentos.length,
     totais: {
       brumadinho_paraopeba,

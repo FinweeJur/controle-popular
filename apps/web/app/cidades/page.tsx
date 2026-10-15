@@ -13,10 +13,12 @@
 
 import Link from "next/link";
 import CapaFrente from "@/app/components/CapaFrente";
+import DataColeta from "@/app/components/DataColeta";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import {
+  DATA_CIDADES_ESTRATEGICAS,
   listarCidadesEstrategicas,
   obterEstatisticasExpansao,
 } from "@/lib/cidades/estrategicas";
@@ -133,6 +135,12 @@ export default function PaginaCidadesEstrategicas() {
             contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
           </p>
         </header>
+
+        {/* Data da coleta visível — vem do carimbo `gerado_em` do JSON, nunca digitada. */}
+        <DataColeta
+          coletadoEm={DATA_CIDADES_ESTRATEGICAS}
+          fonte="IBGE (malha municipal e estimativas) + DATASUS"
+        />
 
         {/* Banner de atalho para Varas e Fóruns das Cidades */}
         <div className="mb-8 rounded-2xl border border-primary/30 bg-primary/5 p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

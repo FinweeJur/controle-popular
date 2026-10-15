@@ -9,6 +9,7 @@
  */
 
 import statsJson from "@/data/judiciario-contatos-stats.json";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 import type { ResumoEstatisticasContatos } from "./contatos-tipos";
 
 const STATS = statsJson as {
@@ -22,6 +23,13 @@ const STATS = statsJson as {
   ufsAtendidas?: number;
   totalBalcoesVirtuais?: number;
 };
+
+/**
+ * Data da última coleta do agregado (carimbo `geradoEm` do stats.json),
+ * lida do próprio arquivo — a página mostra em `DataColeta`; nunca se
+ * digita essa data em outro lugar (oitava qualidade, PLANO-DATA-DO-DADO).
+ */
+export const DATA_CONTATOS_STATS: string | null = dataDoAcervo(statsJson);
 
 export function obterEstatisticasContatos(): ResumoEstatisticasContatos {
   const porTipo = STATS.porTipo;

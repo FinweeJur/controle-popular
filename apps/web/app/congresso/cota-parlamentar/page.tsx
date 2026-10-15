@@ -12,6 +12,8 @@
 // de erro — além de fugir da operação exata que a tabela escolhe.
 import type { Metadata } from "next";
 import { carregarCeapNacional } from "@/lib/congresso/ceap-nacional-dados";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
+import DataColeta from "@/app/components/DataColeta";
 import TabelaCeap from "./TabelaCeap";
 import { metadataEditavel } from "@/lib/edicoes";
 import { converter } from "@/lib/transformacao/unidades";
@@ -48,6 +50,11 @@ export default function CotaParlamentarPage() {
           Gastos de gabinete e reembolsos declarados por parlamentares da Câmara dos Deputados em todo o território nacional.
           Acompanhe os valores utilizados e os fornecedores mais acionados.
         </p>
+        <DataColeta
+          coletadoEm={dataDoAcervo(dados)}
+          fonte="CEAP/Câmara dos Deputados (compilação do portal)"
+          competencia="reembolsos da série nacional"
+        />
       </header>
 
       {/* Cartões de Topo */}

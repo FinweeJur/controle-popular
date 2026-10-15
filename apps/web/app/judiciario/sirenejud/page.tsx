@@ -3,6 +3,8 @@ import NextLink from "next/link";
 import Link from "@/lib/judiciario/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarSirenejudBrasil } from "@/lib/judiciario/sirenejud-brasil";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
+import DataColeta from "@/app/components/DataColeta";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
@@ -63,6 +65,11 @@ export default function JudiciarioSirenejudPage() {
           </strong>{" "}
           — os números valem até essa data.
         </p>
+        <DataColeta
+          coletadoEm={dataDoAcervo(d)}
+          fonte="SIRENEJud/CNJ (arquivo em massa)"
+          competencia="contagens extraídas do parquet-base do CNJ"
+        />
         <p className="opacity-80">
           Cobertura da fonte: {d.cobertura}. O recorte de Minas Gerais, município a
           município, está em{" "}

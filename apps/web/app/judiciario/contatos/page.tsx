@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
-import { obterEstatisticasContatos } from "@/lib/judiciario/contatos-estatisticas";
+import { obterEstatisticasContatos, DATA_CONTATOS_STATS } from "@/lib/judiciario/contatos-estatisticas";
+import DataColeta from "@/app/components/DataColeta";
 import PainelVarasContatosClient from "./PainelVarasContatosClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
@@ -83,6 +84,11 @@ export default function PaginaContatosJudiciario() {
             Reunimos os contatos verificados de 990 unidades judiciárias: e-mail institucional oficial, telefone com DDD,
             endereço com CEP, nome e cargo do magistrado titular, e link direto para atendimento por videoconferência no Balcão Virtual — cobrindo todas as 298 comarcas de Minas Gerais e os polos estratégicos do país.
           </p>
+          <DataColeta
+            coletadoEm={DATA_CONTATOS_STATS}
+            fonte="catálogo de unidades judiciárias (CNJ)"
+            competencia="e-mails, telefones e balcões verificados na coleta"
+          />
         </div>
 
         {/* Sumário Interno (Padrão Wiki) */}

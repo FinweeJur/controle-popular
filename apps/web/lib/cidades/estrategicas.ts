@@ -9,6 +9,7 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 
 export type RegiaoBrasil = "Norte" | "Nordeste" | "Centro-Oeste" | "Sudeste" | "Sul";
 export type TipoCidade = "capital" | "polo-interior";
@@ -74,6 +75,21 @@ export function carregarCatalogoCidades(): CatalogoCidadesEstrategicas {
   cacheCatalogo = JSON.parse(raw) as CatalogoCidadesEstrategicas;
   return cacheCatalogo;
 }
+
+/**
+ * Data da última coleta do catálogo, lida do carimbo `gerado_em` do próprio
+ * JSON (PLANO-DATA-DO-DADO: a página `/cidades` mostra em `DataColeta`; data
+ * digitada à mão é proibida). Se o carimbo faltar, vira `null` — `DataColeta`
+ * não renderiza nada e o porteiro cobra. O `try` existe para não derrubar,
+ * no carregamento do módulo, quem importa este arquivo sem usar o catálogo.
+ */
+export const DATA_CIDADES_ESTRATEGICAS: string | null = (() => {
+  try {
+    return dataDoAcervo(carregarCatalogoCidades());
+  } catch {
+    return null;
+  }
+})();
 
 /** Retorna a lista completa das 199 cidades estratégicas. */
 export function listarCidadesEstrategicas(): CidadeEstrategica[] {

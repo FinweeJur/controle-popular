@@ -19,6 +19,7 @@ import {
 import TabelaDesastresClient from "./TabelaDesastresClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
+import DataColeta from "@/app/components/DataColeta";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
@@ -29,7 +30,7 @@ export const metadata = {
 };
 
 export default function PaginaCrimesSocioambientais() {
-  const { documentos, totais, total_documentos, regioes_disponiveis, tipos_disponiveis } = carregarBibliotecaDesastres();
+  const { geradoEm, documentos, totais, total_documentos, regioes_disponiveis, tipos_disponiveis } = carregarBibliotecaDesastres();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -56,6 +57,11 @@ export default function PaginaCrimesSocioambientais() {
           <BotaoAlertaContextual tipo="resumo_pagina" titulo="Biblioteca Unificada dos Desastres de Barragens" orgaoTerritorio="Minas Gerais, Espírito Santo e Bahia" identificador="ONSA / Controle Popular" link="https://controlepopular.com.br/ambiental/crimes-socioambientais" resumo={`${total_documentos} laudos periciais, termos de ajustamento e estudos de saúde das bacias do Paraopeba e Rio Doce.`} rotulo="Disparar Acervo Documental no WhatsApp" />
         </div>
       </header>
+
+      <DataColeta
+        coletadoEm={geradoEm}
+        fonte="Biblioteca unificada Mariana + Brumadinho (ATIs, MPMG, MPF, DPU, DPMG)"
+      />
 
       <section aria-label="Indicadores da biblioteca" className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div className="rounded-xl border border-border bg-surface p-4 text-center">

@@ -9,6 +9,7 @@ import {
   listarAnos,
 } from "@/lib/editais/dados";
 import { metadataEditavel } from "@/lib/edicoes";
+import DataColeta from "@/app/components/DataColeta";
 import PainelEditais from "./PainelEditais";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
@@ -53,6 +54,12 @@ export default function EditaisPage() {
           alienações do Detran e termos de parceria para garantir ampla transparência e oportunidade cívica de participação.
         </p>
       </header>
+
+      {/* Data da coleta visível — vem do carimbo `atualizadoEm` do JSON do radar, nunca digitada. */}
+      <DataColeta
+        coletadoEm={COBERTURA_EDITAIS.atualizadoEm}
+        fonte="Radar Diário Oficial Eletrônico de Minas Gerais"
+      />
 
       {/* ─── CARTÕES DE TOPO (STATUS & AGREGADOS) ─────────────────────── */}
       <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">

@@ -13,6 +13,7 @@ import TabelaIbamaClient from "./TabelaIbamaClient";
 import TabelaIbamaAutos from "./TabelaIbamaAutos";
 import { obterIbamaAutos } from "@/lib/server-only/dados-ibama-autos";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import DataColeta from "@/app/components/DataColeta";
 
 export const metadata: Metadata = {
   title: "Licenciamento e Fiscalização Federal (IBAMA em MG) — Controle Popular",
@@ -90,6 +91,11 @@ export default function IbamaIndexPage() {
           autuações por infrações ambientais e histórico de julgamentos pelo IBAMA.
         </p>
       </header>
+
+      <DataColeta
+        coletadoEm={COBERTURA_IBAMA_MG.coletadoEm}
+        fonte="IBAMA — licenças federais e autos de infração julgados em MG"
+      />
 
       {/* Regra 2: Cartões de Topo / KPIs */}
       <section className="mb-10">

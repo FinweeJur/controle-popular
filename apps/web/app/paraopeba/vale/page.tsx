@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Moeda from "@/app/components/Moeda";
+import DataColeta from "@/app/components/DataColeta";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import { ZONAS } from "@/lib/zonas";
@@ -376,6 +378,9 @@ export default function ValePage() {
         {formatDateBR(primeiro.data)} a {formatDateBR(ultimo.data)}. O preço da ação não mede o
         dano do rompimento nem o andamento da reparação: é contexto de mercado, e nada mais.
       </p>
+
+      {/* Data da última escrita do dump — vem do carimbo do arquivo, nunca do dedo. */}
+      <DataColeta coletadoEm={dataDoAcervo(acervoBruto)} fonte="fechamentos VALE3 na B3 (dump versionado)" />
 
       {/* Navegação integrada do monitoramento Vale no portal */}
       <div className="mt-5 flex flex-wrap gap-2 border-b border-border pb-4">

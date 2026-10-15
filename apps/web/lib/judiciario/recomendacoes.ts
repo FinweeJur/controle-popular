@@ -1,5 +1,13 @@
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import dadosJson from "@/data/judiciario/recomendacoes-cnj-cnmp.json";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
+
+/**
+ * Data da última escrita do acervo (carimbo `gerado_em` do coletor), lida do
+ * próprio JSON — a página mostra em `DataColeta`; ninguém digita essa data
+ * (oitava qualidade, PLANO-DATA-DO-DADO).
+ */
+export const DATA_RECOMENDACOES: string | null = dataDoAcervo(dadosJson);
 
 export type OrgaoFiscalizador = "CNJ" | "CNMP";
 export type TipoAtoJudiciario = "determinação" | "recomendação";

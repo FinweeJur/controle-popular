@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { obterCatalogoDocumentos } from "@/lib/empresas/empresas-documentos";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
+import DataColeta from "@/app/components/DataColeta";
 import BibliotecaEmpresasClient from "./BibliotecaEmpresasClient";
 
 export const metadata: Metadata = {
@@ -43,6 +45,11 @@ export default function DocumentosEmpresasPage() {
           Consulte relatórios anuais de sustentabilidade, auditorias financeiras independentes, metas de descarbonização e conformidade com direitos humanos. 
           Cada documento conta com espelho no bucket de armazenamento em nuvem R2 para garantia de acesso perpétuo e link direto para a fonte oficial.
         </p>
+        <DataColeta
+          coletadoEm={dataDoAcervo(catalogo)}
+          fonte="portais de RI, CVM/SEC, GRI/TCFD (acervo do portal)"
+          competencia="documentos públicos verificados com link canônico"
+        />
       </header>
 
       {/* Painel Interativo com Gráficos, Filtros e Tabela */}

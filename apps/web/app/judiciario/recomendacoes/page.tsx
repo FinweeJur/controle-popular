@@ -4,7 +4,8 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
-import { obterRecomendacoes } from "@/lib/judiciario/recomendacoes";
+import { obterRecomendacoes, DATA_RECOMENDACOES } from "@/lib/judiciario/recomendacoes";
+import DataColeta from "@/app/components/DataColeta";
 
 export const metadata: Metadata = {
   title: "Recomendações e Cobranças do CNJ e CNMP | Controle Popular",
@@ -89,6 +90,11 @@ export default function PaginaRecomendacoesJudiciario() {
             retido em precatórios e ausência de audiências de custódia. Nós traduzimos os despachos
             técnicos para microresumos que qualquer cidadão entende.
           </p>
+          <DataColeta
+            coletadoEm={DATA_RECOMENDACOES}
+            fonte="CNJ & CNMP (relatórios de inspeção)"
+            competencia="atos de 2008 a 2026"
+          />
         </header>
 
         {/* Sumário Interno (Padrão Wiki) */}

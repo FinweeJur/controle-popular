@@ -7,6 +7,8 @@ import { getVisaoGeral } from "@/lib/betim/prefeitura";
 import { getCaixaDisponivel } from "@/lib/betim/caixa";
 import { getDiarioOficialInfo } from "@/lib/betim/diarioOficial";
 import Moeda from "@/app/components/Moeda";
+import DataColeta from "@/app/components/DataColeta";
+import { arquivoRepasse } from "@/lib/brumadinho/repasse";
 import { formatCurrencyBRL, formatCurrencyCompactaBR, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
@@ -47,10 +49,13 @@ export default async function PrefeituraHubPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const [visaoGeral, caixa, diario] = await Promise.all([
+  const [visaoGeral, caixa, diario, arqRepasse] = await Promise.all([
     getVisaoGeral(cidade.id_municipio),
     getCaixaDisponivel(cidade.id_municipio),
     getDiarioOficialInfo(cidade),
+    // O dump do rateio mora em arquivo (com carimbo `atualizado_na_fonte`);
+    // a data visível vem DELE, nunca digitada na página.
+    arquivoRepasse(),
   ]);
 
   return (
@@ -62,6 +67,11 @@ export default async function PrefeituraHubPage({
         Dados públicos sobre contratos, gastos e estrutura da administração
         municipal de {cidade.nome}, agregados de fontes oficiais.
       </p>
+
+      <DataColeta
+        coletadoEm={arqRepasse?.atualizado_na_fonte ?? null}
+        fonte="rateio do Acordo de Reparação de Brumadinho (Pró-Brumadinho/SEGOV)"
+      />
 
       <nav className="mb-8 flex flex-wrap gap-2 border-b border-border pb-3">
         {TABS.map((tab) =>

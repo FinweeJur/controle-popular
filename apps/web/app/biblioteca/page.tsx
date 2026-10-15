@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, GraduationCap } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DataColeta from "@/app/components/DataColeta";
 // Botão cliente que aciona o Seu Nonô; substitui o link morto
 // `/assistente?pergunta=`, que não disparava o assistente.
 import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
 import {
+  DATA_ACERVO_BIBLIOTECA,
   listarDocumentosUnificados,
   METRICAS_BIBLIOTECA,
 } from "@/lib/biblioteca/unificada";
@@ -118,6 +120,12 @@ export default function BibliotecaGeralPage() {
             </span>
           </div>
         </div>
+
+        <DataColeta
+          coletadoEm={DATA_ACERVO_BIBLIOTECA}
+          fonte="arquivo versionado do portal (documentos, ESG e prestação de contas)"
+          competencia="teses dos atingidos integradas em 14/10/2026"
+        />
       </header>
 
       {/* ═══ COMPONENTE INTERATIVO (REQUISITO DAS 5 COISAS DO AGENTS.MD) ═══ */}

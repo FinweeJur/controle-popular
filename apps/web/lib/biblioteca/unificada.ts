@@ -13,6 +13,7 @@
  */
 
 import dadosBrutos from "@/data/biblioteca-unificada.json";
+import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 
 export interface DocumentoUnificado {
   id: string;
@@ -69,6 +70,13 @@ export const METRICAS_BIBLIOTECA: MetricasBiblioteca = {
 
 export const TODOS_DOCUMENTOS: DocumentoUnificado[] =
   dadosBrutos.itens as DocumentoUnificado[];
+
+/**
+ * Data da última escrita bem-sucedida do arquivo (carimbo `geradoEm` do
+ * gerador da biblioteca). A página mostra em `DataColeta` — nunca se digita
+ * essa data em outro lugar (oitava qualidade, PLANO-DATA-DO-DADO).
+ */
+export const DATA_ACERVO_BIBLIOTECA: string | null = dataDoAcervo(dadosBrutos);
 
 /** Retorna a coleção completa de documentos da biblioteca unificada. */
 export function listarDocumentosUnificados(): DocumentoUnificado[] {
