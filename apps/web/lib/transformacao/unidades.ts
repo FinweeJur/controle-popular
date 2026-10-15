@@ -101,6 +101,26 @@ const MOEDA_BRL: Record<string, number> = {
 /** Tabela de um dominio: unidade origem → (unidade destino → fator). */
 type Tabela = Record<string, Record<string, number>>;
 
+/**
+ * Duas unidades de um lado para o outro.
+ *
+ * As funcoes internas recebem o par como objeto e nao como dois argumentos
+ * soltos: `de` e `para` sao ambos string e trocar a ordem nao levanta erro —
+ * devolve o numero invertido. Argumento nomeado nao deixa essa troca passar
+ * em branco (AGENTS §1: numero errado e dano) e e o formato que o CodeScene
+ * pede para sair da regra Primitive Obsession (medido 15/10/2026).
+ */
+interface Par {
+  de: string;
+  para: string;
+}
+
+/** Pedido de conversao: o numero, o caminho e o dominio dele. */
+interface Pedido extends Par {
+  valor: number;
+  dominio: string;
+}
+
 /** Cotacoes aceitas do arquivo do dia: so as duas que o BC publica em real. */
 interface Cotacoes {
   USD?: number;
@@ -155,17 +175,17 @@ function tabelaDoDominio(dominio: string): Tabela | undefined {
  * chegou a 11 (medido na CI de 15/10/2026). Quebrar em pecas com um
  * proposito cada e o proprio remedio indicado no Pilar 3 do plano.
  */
-function fatorDireto(tabela: Tabela, de: string, para: string): number | undefined {
-  return tabela[de]?.[para];
+function fatorDireto(tabela: Tabela, par: Par): number | undefined {
+  return tabela[par.de]?.[par.para];
 }
 
 /**
  * Fator transitivo de 1 nivel: de → intermediario → para. Devolve o
  * primeiro caminho que fecha, no produto dos dois trechos.
  */
-function fatorTransito(tabela: Tabela, de: string, para: string): number | undefined {
-  for (const [intermediario, trecho] of Object.entries(tabela[de] ?? {})) {
-    const fim = tabela[intermediario]?.[para];
+function fatorTransito(tabela: Tabela, par: Par): number | undefined {
+  for (const [intermediario, trecho] of Object.entries(tabela[par.de] ?? {})) {
+    const fim = tabela[intermediario]?.[par.para];
     if (fim !== undefined) return trecho * fim;
   }
   return undefined;
@@ -184,10 +204,10 @@ function fatorTransito(tabela: Tabela, de: string, para: string): number | undef
  * Devolve `null` quando nao ha par direto nem inverso — e o chamador tenta
  * a transitividade.
  */
-function operacaoExata(tabela: Tabela, de: string, para: string): { tipo: "mul" | "div"; fator: number } | null {
-  const direto = fatorDireto(tabela, de, para);
+function operacaoExata(tabela: Tabela, par: Par): { tipo: "mul" | "div"; fator: number } | null {
+  const direto = fatorDireto(tabela, par);
   if (direto !== undefined && Number.isInteger(direto)) return { tipo: "mul", fator: direto };
-  const inverso = fatorDireto(tabela, para, de);
+  const inverso = fatorDireto(tabela, { de: par.para, para: par.de });
   if (inverso !== undefined && Number.isInteger(inverso)) return { tipo: "div", fator: inverso };
   if (direto !== undefined) return { tipo: "mul", fator: direto };
   return null;
@@ -196,17 +216,19 @@ function operacaoExata(tabela: Tabela, de: string, para: string): { tipo: "mul" 
 /**
  * Converte valor entre unidades do mesmo dominio.
  *
- * Ordem: fator direto (preferindo a operacao por inteiro), depois
- * transitividade de 1 nivel (de → intermediario → para). Lanca Error
- * quando nao ha caminho — conversao desconhecida tem de gritar, nao
- * devolver numero inventado.
+ * Recebe um `Pedido` nomeado — `de` e `para` em posicoes soltas trocam
+ * silenciosamente, e aqui dentro o caminho e: fator direto (preferindo a
+ * operacao por inteiro), depois transitividade de 1 nivel
+ * (de → intermediario → para). Lanca Error quando nao ha caminho —
+ * conversao desconhecida tem de gritar, nao devolver numero inventado.
  */
-export function converter(valor: number, de: string, para: string, dominio: string): number {
+export function converter(pedido: Pedido): number {
+  const { valor, de, para, dominio } = pedido;
   if (de === para) return valor;
   const tabela = tabelaDoDominio(dominio);
-  const op = tabela ? operacaoExata(tabela, de, para) : null;
+  const op = tabela ? operacaoExata(tabela, pedido) : null;
   if (op) return op.tipo === "mul" ? valor * op.fator : valor / op.fator;
-  const transitivo = tabela ? fatorTransito(tabela, de, para) : undefined;
+  const transitivo = tabela ? fatorTransito(tabela, pedido) : undefined;
   if (transitivo === undefined) {
     throw new Error(`Conversao ${dominio}:${de}→${para} nao encontrada`);
   }
@@ -224,9 +246,11 @@ const MOEDAS: Record<string, string> = {
  * Converte e formata em pt-BR com no maximo 2 casas decimais.
  * Dominio "moeda" usa estilo currency; a moeda sai da unidade destino
  * (dolar→USD, euro→EUR, yuan→CNY, libra→GBP, o resto BRL).
+ * Aceita o mesmo `Pedido` nomeado do `converter`.
  */
-export function formatar(valor: number, de: string, para: string, dominio: string): string {
-  const n = converter(valor, de, para, dominio);
+export function formatar(pedido: Pedido): string {
+  const { para, dominio } = pedido;
+  const n = converter(pedido);
   const opcoes: Intl.NumberFormatOptions =
     dominio === "moeda"
       ? { style: "currency", currency: MOEDAS[para] ?? "BRL", maximumFractionDigits: 2 }

@@ -315,6 +315,14 @@ function converter(valor: number, de: string, para: string, dominio: string): nu
 }
 ```
 
+> **Assinatura final (15/10/2026): pedido nomeado.** O esquema acima é o
+> do desenho; o codigo virou `converter({ valor, de, para, dominio })`.
+> Motivo medido: com nove funcoes o modulo estourou as regras de razao do
+> CodeScene (Primitive Obsession 71,4% e String Heavy 61,9%, tetos de 30%
+> e 39%) e a saude caiu de 10,00 para 9,38. Argumento nomeado é o remedio
+> que a propria ferramenta indica — e `de`/`para` trocados deixam de passar
+> em silencio. Vale para `converter()` e `formatar()`.
+
 ### Pilar 2b — Cambio em tempo real (futuro)
 
 Os fatores de moeda acima sao fixos (cambio de referencia). Para
@@ -335,15 +343,15 @@ a fonte do fator.
 import { converter, formatar } from "@/lib/transformacao/unidades";
 
 // No componente:
-const valorEmMilhoes = converter(2300000000, "unidade", "milhao", "escala");
+const valorEmMilhoes = converter({ valor: 2300000000, de: "unidade", para: "milhao", dominio: "escala" });
 // → 2300
 
-const valorEmDolares = converter(2300, "milhao", "dolar", "moeda"); // via real
+const valorEmDolares = converter({ valor: 2300, de: "milhao", para: "dolar", dominio: "moeda" }); // via real
 // → ~418 mi
 
 // Formatador BR:
-formatar(2300, "milhao", "real", "moeda");  // → "R$ 2,3 bilhoes"
-formatar(1460, "dia", "ano", "tempo");      // → "~4 anos"
+formatar({ valor: 2300, de: "milhao", para: "real", dominio: "moeda" });  // → "R$ 2,3 bilhoes"
+formatar({ valor: 1460, de: "dia", para: "ano", dominio: "tempo" });      // → "~4 anos"
 ```
 
 ### Formatacao contextual (formatar())
@@ -536,10 +544,12 @@ vao para o step summary, nao para commit.
 - [x] Adicionar step no `ingestao-rag.yml` (`continue-on-error`) e o JSON
       no commit da CI
 
-A funcao `converter()` nao mudou de assinatura — so mudou a fonte do fator
+A funcao `converter()` nao mudou de comportamento — so mudou a fonte do fator
 de moeda: base `MOEDA_BRL` fixa, sobrescrita pela PTAX do dia quando o
 arquivo tem cotacao valida. Sem cotacao, o portal converte pelo fator de
-referencia de antes.
+referencia de antes. (A passagem para pedido nomeado `{ valor, de, para,
+dominio }` e do mesmo dia, mas e do CodeScene, nao do cambio — ver §
+Funcao pura `converter()`.)
 
 ### Fase 6 — Migracao gradual de componentes (ongoing)
 

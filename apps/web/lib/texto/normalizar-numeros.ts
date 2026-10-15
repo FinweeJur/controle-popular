@@ -45,7 +45,7 @@ export function normalizarNumerosTexto(texto: string | null | undefined): string
   const regexBilhoes = /(R\$\s*)?0[,\.](\d+)\s*(bilh(?:ão|ao|oes|ões))\b/gi;
   resultado = resultado.replace(regexBilhoes, (_match, prefixoMoeda = "", decimais = "") => {
     const valor = parseFloat(`0.${decimais}`);
-    const emMilhoes = converter(valor, 'bilhao', 'milhao', 'escala');
+    const emMilhoes = converter({ valor, de: 'bilhao', para: 'milhao', dominio: 'escala' });
     const strValor = formatarNumeroLimpo(emMilhoes);
     const unidade = emMilhoes === 1 ? "milhão" : "milhões";
     const prefixo = prefixoMoeda ? prefixoMoeda : "";
@@ -57,7 +57,7 @@ export function normalizarNumerosTexto(texto: string | null | undefined): string
   const regexMilhoes = /(R\$\s*)?0[,\.](\d+)\s*(milh(?:ão|ao|oes|ões))\b/gi;
   resultado = resultado.replace(regexMilhoes, (_match, prefixoMoeda = "", decimais = "") => {
     const valor = parseFloat(`0.${decimais}`);
-    const emMil = converter(valor, 'milhao', 'mil', 'escala');
+    const emMil = converter({ valor, de: 'milhao', para: 'mil', dominio: 'escala' });
     const strValor = formatarNumeroLimpo(emMil);
     const prefixo = prefixoMoeda ? prefixoMoeda : "";
     return `${prefixo}${strValor} mil`;
@@ -68,7 +68,7 @@ export function normalizarNumerosTexto(texto: string | null | undefined): string
   const regexMil = /(R\$\s*)?0[,\.](\d+)\s*mil\b/gi;
   resultado = resultado.replace(regexMil, (_match, prefixoMoeda = "", decimais = "") => {
     const valor = parseFloat(`0.${decimais}`);
-    const emUnidades = converter(valor, 'mil', 'unidade', 'escala');
+    const emUnidades = converter({ valor, de: 'mil', para: 'unidade', dominio: 'escala' });
     const strValor = formatarNumeroLimpo(emUnidades);
     const prefixo = prefixoMoeda ? prefixoMoeda : "";
     return `${prefixo}${strValor}`;
@@ -99,7 +99,7 @@ export function normalizarGrandezaValor(
 
   // Se valor < 1:
   if (unidade === "bilhao") {
-    const novoValor = converter(valor, 'bilhao', 'milhao', 'escala');
+    const novoValor = converter({ valor, de: 'bilhao', para: 'milhao', dominio: 'escala' });
     const novaUnidade = novoValor === 1 ? "milhão" : "milhões";
     return {
       valor: novoValor,
@@ -109,7 +109,7 @@ export function normalizarGrandezaValor(
   }
 
   if (unidade === "milhao") {
-    const novoValor = converter(valor, 'milhao', 'mil', 'escala');
+    const novoValor = converter({ valor, de: 'milhao', para: 'mil', dominio: 'escala' });
     return {
       valor: novoValor,
       unidade: "mil",
@@ -118,7 +118,7 @@ export function normalizarGrandezaValor(
   }
 
   // unidade === "mil"
-  const novoValor = converter(valor, 'mil', 'unidade', 'escala');
+  const novoValor = converter({ valor, de: 'mil', para: 'unidade', dominio: 'escala' });
   return {
     valor: novoValor,
     unidade: "",

@@ -59,7 +59,7 @@ export interface IndicadorComparacao {
 /** Repasse federal por habitante (converte R$ milhões para reais). */
 export function repassesPerCapita(c: CidadeComparavel): number | null {
   if (!c.populacao || c.populacao <= 0) return null;
-  return converter(c.repassesMi, "milhao", "unidade", "escala") / c.populacao;
+  return converter({ valor: c.repassesMi, de: "milhao", para: "unidade", dominio: "escala" }) / c.populacao;
 }
 
 /** Estabelecimentos de saúde por 10 mil habitantes. */
