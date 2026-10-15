@@ -105,6 +105,11 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
+# Irmão em scripts/ — garante o diretório no path para funcionar tanto
+# executado direto quanto carregado via importlib (por calibrar-modelo.py).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from hard_negativos import carregar_hard, monta_pesos  # noqa: E402
+
 # Nota de ambiente (medido nesta máquina): o torch 2.5.1 de Windows NÃO
 # aceita PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True (é Linux) —
 # setar aqui só imprime UserWarning. O alívio real para a fragmentação
@@ -1147,11 +1152,12 @@ def treinar(args, registros, idx_treino, idx_val, info_split,
             "é repetida"
         )
     elif args.estrategia == "sobreamostragem":
-        pesos = torch.tensor([
-            ((1.0 / n_pos) if r["rotulo"] == 1 else (1.0 / n_neg))
-            if (n_pos and n_neg) else 1.0
-            for r in treino_ds.registros
-        ], dtype=torch.double)
+        pesos_classe = {1: (1.0 / n_pos if n_pos else 1.0),
+                        0: (1.0 / n_neg if n_neg else 1.0)}
+        pesos = torch.tensor(monta_pesos(
+            treino_ds.registros, pesos_classe,
+            carregar_hard(args.hard_negativos), args.peso_dificil),
+            dtype=torch.double)
         gen = torch.Generator()
         gen.manual_seed(args.seed)
         sampler = WeightedRandomSampler(pesos, num_samples=len(pesos),
@@ -1394,6 +1400,12 @@ def main():
                          "'peso' = pos_weight no loss (default); "
                          "'sobreamostragem' = WeightedRandomSampler "
                          "metade/metade; 'nenhuma' = controle")
+    ap.add_argument("--hard-negativos", type=Path, default=None,
+                    help="arquivo .txt com um hash por linha (os negativos que "
+                         "o modelo insiste chamar de cava); no sorteio de "
+                         "sobreamostragem eles pesam --peso-dificil vezes mais")
+    ap.add_argument("--peso-dificil", type=float, default=3.0,
+                    help="multiplicador de peso dos hard negatives (default 3)")
     ap.add_argument("--split", type=Path, default=SPLIT_PADRAO,
                     help="arquivo JSON que fixa o split por cena; existe = "
                          "é ele que manda (holdout imutável), não existe = "

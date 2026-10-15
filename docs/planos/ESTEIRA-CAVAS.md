@@ -52,8 +52,27 @@ confunde os três.
 dano (regra §7). A separação real exige **geometria em alta resolução**
 (paredes, degraus, água no fundo) — que só o zoom máximo do banco dá — mais o
 descarte de polígonos ANM, água e nuvem. O próximo treino entra com **negativos
-difíceis** (lavoura, desmate, cidade, açude) para o modelo parar de treating
+difíceis** (lavoura, desmate, cidade, açude) para o modelo parar de tratar
 "chão pelado" como cava.
+
+### B: negativos difíceis medidos no mesmo holdout (15/10/2026)
+
+Recolocamos os 1.109 pontos que o modelo erra como `--hard-negativos` e variamos
+o peso no sorteio (`--peso-dificil`). Resultado (n=1039, mesma regra de gate):
+
+| modelo | peso difícil | F1 | precisão | recall | falsos pos (de 476) |
+|---|---|---|---|---|---|
+| v7 | nenhum | 0.834 | 0.766 | 0.917 | 158 |
+| v11 | 3,0 | 0.226 | 0.890 | 0.130 | 9 |
+| v12 | 1,5 | 0.804 | 0.850 | 0.764 | 76 |
+
+Leitura: em 3× o modelo **desaba o recall** (aprende a dizer "não" a quase
+tudo, até às cava reais, que têm a mesma cara que a lavoura) — confirma que
+cor não separa. Em 1,5× existe ponto útil: **corta os falsos positivos à metade
+(158→76)** pagando recall (0.92→0.76). É o botão certo para descoberta
+conservadora: quando o modelo flagra, é mais confiável. Não resolve o teto de
+8,4 m/px (a separação de verdade ainda pede alta resolução), mas melhora a
+precisão sem depender de publicar número inflado.
 
 ## Arquitetura proposta
 
