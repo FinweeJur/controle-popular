@@ -28,6 +28,10 @@ for (const nome of exports) {
   dado[nome] = valor;
 }
 
+// Carimbo de publicação (PLANO-DATA-DO-DADO, Fase 1): a data nasce na escrita
+// bem-sucedida do artefato final — a página lê `geradoEm` do bundle como coleta.
+dado.geradoEm = new Date().toISOString();
+
 const destino = path.resolve(process.cwd(), "..", "..", "etl", "betim", "dados", saida);
 writeFileSync(destino, JSON.stringify(dado));
 console.log(`✓ ${destino} (${Object.keys(dado).join(", ")})`);

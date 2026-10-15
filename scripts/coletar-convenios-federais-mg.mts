@@ -314,6 +314,8 @@ const conteudo = `/**
  */
 
 export const COBERTURA_CONVENIOS_FEDERAIS_MG = {
+  /** Carimbo da escrita bem-sucedida deste coletor (PLANO-DATA-DO-DADO, Fase 1). */
+  geradoEm: "${new Date().toISOString()}",
   convenios: ${total},
   propostas: ${propostasMg.size},
   anoInicial: ${anos[0]},
