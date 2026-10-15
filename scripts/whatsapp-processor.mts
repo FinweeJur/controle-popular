@@ -43,7 +43,7 @@ function callHermesProxy(query: string): string | null {
     fs.writeFileSync(
       TMP_QUERY,
       JSON.stringify({
-        model: "gpt-3.5-turbo", // proxy handles model mapping
+        model: HERMES_MODEL, // usa upstage/solar-mini4:free (grátis no Nous)
         messages: [{ role: "user", content: query }],
         max_tokens: 2048,
         temperature: 0.7,
@@ -72,7 +72,7 @@ function callHermesCLI(query: string): string | null {
     const cmd = `hermes chat -q ${JSON.stringify(query)} -Q --max-turns 5 --source whatsapp`;
     const result = execSync(cmd, {
       encoding: "utf-8",
-      timeout: 120000,
+      timeout: 180000, // ponytail: 180s para web search — 120s era insuficiente
       cwd: RAIZ,
       windowsHide: true,
       env: { ...process.env, FORCE_COLOR: "0" },
@@ -116,24 +116,36 @@ function callOllamaFallback(query: string): string {
 // ─── Interface unificada ────────────────────────────────────────────────────
 
 function callHermes(query: string): string {
-  // 1. Hermes Proxy (mais rápido)
+  // ponytail: cascade reordenada — Proxy (3s) → Ollama (5s) → CLI (300s)
+  // Evita o CLI como 2º passo: ele faz timeout de 120s em msgs complexas,
+  // deixando o fallback Ollama sem tempo pra responder.
+
+  // 1. Hermes Proxy API (rápido, LLM grátis: upstage/solar-mini4:free)
   const proxyResult = callHermesProxy(query);
   if (proxyResult) {
     console.log("   [via Hermes Proxy]");
     return proxyResult;
   }
 
-  // 2. Hermes CLI (full agent)
-  console.log("   [proxy offline — tentando CLI...]");
+  // 2. Ollama fallback (local, rápido)
+  console.log("   [proxy offline — tentando Ollama...]");
+  const ollamaResult = callOllamaFallback(query);
+  if (ollamaResult && !ollamaResult.startsWith("⚠️")) {
+    console.log("   [via Ollama]");
+    return ollamaResult;
+  }
+
+  // 3. Hermes CLI (full agent — tools, web search — último recurso)
+  console.log("   [fallback total — tentando CLI...]");
   const cliResult = callHermesCLI(query);
   if (cliResult) {
     console.log("   [via Hermes CLI]");
     return cliResult;
   }
 
-  // 3. Ollama fallback
-  console.log("   [CLI offline — fallback Ollama...]");
-  return callOllamaFallback(query);
+  // 4. Erro genérico
+  if (ollamaResult) return ollamaResult;
+  return "⚠️ Hermes e Ollama indisponíveis. Tente novamente em instantes.";
 }
 
 // ─── Inbox / Outbox / Offset ────────────────────────────────────────────────
