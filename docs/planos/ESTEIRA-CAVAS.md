@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** mineracao (cavas, modelo VLM)
-> **Última medição:** 2026-10-14
+> **Última medição:** 2026-10-15
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md), [MEDICOES-CAVAS-MINERACAO.md](MEDICOES-CAVAS-MINERACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** cavas, mineracao, modelo, esteira, cbers, anm, calibracao, clip, holdout
@@ -10,6 +10,7 @@
 ## Sumário
 
 - [Problema atual](#problema-atual)
+- [Achados da inspeção humana (15/10/2026)](#achados-da-inspecao-humana-15-10-2026)
 - [Arquitetura proposta](#arquitetura-proposta)
 - [Passos](#passos)
 - [Fontes de dados](#fontes-de-dados)
@@ -20,6 +21,39 @@ Modelo v7 está colado em 0.65 — não discrimina bem. Precisa de:
 1. Banco de cavas reais ANM como referência
 2. Duas esteiras (zoom médio → zoom máximo)
 3. Features geográficas além da imagem
+
+## Achados da inspeção humana (15/10/2026)
+
+Calibração resolvida (T=0.5, medido por `calibrar-modelo.py`): o teto de
+probabilidade subiu de 0,658 para ~0,79 e o F1 ficou estável em 0,834 do
+limiar 0,5 ao 0,7. Mas a **discriminação continua ruim** — e a inspeção
+humana provou por quê.
+
+Decomposição dos "positivos confiantes" (score ≥ 0,65) pela verdade de terra
+do checkpoint (`audit-positivos.py`):
+
+| Origem | n | modelo chama de cava |
+|---|---|---|
+| autorizados ANM (positivos do treino) | 2035 | 1750 |
+| pontos NEGATIVOS (fora de todo SIGBMINE) | 3137 | **1109** |
+
+Os 1.750 são o modelo reconhecendo o que já lhe demos — não descoberta. Os
+**1109 são quase todos falso positivo**: dos 30 mais fortes que um humano olhou
+(`exportar-suspeitas.py` + folha-contato), **0 eram cava ilegal**. Eram rio,
+lago, ilha, cidade, círculo de irrigação, pasto, desmate e nuvem.
+
+`assinatura.py` testou peneira por cor e a **negativa é o achado**: a mediana
+de solo nu (`bare`) é **0,97 tanto nas cavas reais quanto nos falsos**. Cava a
+céu aberto, lavoura e desmate compartilham "muito chão pelado" no recorte de
+4,3 km a 8,4 m/px. Cor não separa; o modelo aprendeu "chão pelado com borda" e
+confunde os três.
+
+**Consequência para o plano:** publicar contagem de "cavas encontradas" seria
+dano (regra §7). A separação real exige **geometria em alta resolução**
+(paredes, degraus, água no fundo) — que só o zoom máximo do banco dá — mais o
+descarte de polígonos ANM, água e nuvem. O próximo treino entra com **negativos
+difíceis** (lavoura, desmate, cidade, açude) para o modelo parar de treating
+"chão pelado" como cava.
 
 ## Arquitetura proposta
 
