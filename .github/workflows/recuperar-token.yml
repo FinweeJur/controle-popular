@@ -9,33 +9,38 @@ jobs:
     env:
       TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      WEBHOOK_SECRET: ${{ secrets.TELEGRAM_WEBHOOK_SECRET }}
     steps:
       - uses: actions/checkout@v4
-      - name: Recuperar token e checar mensagens
+      - name: Recuperar token, deletar webhook, checar mensagens
         run: |
           python3 << 'PYEOF'
-          import json, os, urllib.request
+          import json, os, urllib.request, urllib.error
 
           token = os.environ.get("TOKEN", "")
           chat_id = os.environ.get("CHAT_ID", "")
+
+          def tg(method, payload=None):
+              url = f"https://api.telegram.org/bot{token}/{method}"
+              data = json.dumps(payload).encode() if payload else None
+              req = urllib.request.Request(url, data=data,
+                  headers={"Content-Type": "application/json"}, method="POST")
+              try:
+                  resp = urllib.request.urlopen(req, timeout=15)
+                  return json.loads(resp.read().decode())
+              except urllib.error.HTTPError as e:
+                  body = e.read().decode()[:500]
+                  return {"ok": False, "error_code": e.code, "description": e.reason, "body": body}
+
           print(f"TOKEN_LEN={len(token)}")
           print(f"CHAT_ID={chat_id}")
 
-          # 1. Verifica se o token funciona (getMe)
-          try:
-              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/getMe")
-              resp = urllib.request.urlopen(req, timeout=10)
-              me = json.loads(resp.read().decode())
-              print(f"GETME_OK={me.get('ok')}")
-              if me.get('ok'):
-                  print(f"BOT_USERNAME={me['result'].get('username')}")
-                  print(f"BOT_FIRST_NAME={me['result'].get('first_name')}")
-          except urllib.error.HTTPError as e:
-              print(f"GETME_ERROR=HTTP {e.code}: {e.reason}")
-              me = {"error": f"HTTP {e.code}"}
-          except Exception as e:
-              print(f"GETME_ERROR={type(e).__name__}: {e}")
-              me = {"error": str(e)}
+          # 1. Verifica token (getMe)
+          me = tg("getMe")
+          print(f"GETME_OK={me.get('ok')}")
+          if me.get('ok'):
+              print(f"BOT_USERNAME={me['result'].get('username')}")
+              print(f"BOT_FIRST_NAME={me['result'].get('first_name')}")
 
           # 2. Pega offset atual
           try:
@@ -44,49 +49,57 @@ jobs:
               offset = 231086132
           print(f"OFFSET_BASE={offset}")
 
-          # 3. Chama getUpdates com offset+1 para pegar mensagens novas
-          try:
-              data = json.dumps({"offset": offset + 1, "limit": 100, "timeout": 5}).encode()
-              req = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/getUpdates",
-                  data=data,
-                  headers={"Content-Type": "application/json"},
-                  method="POST"
-              )
-              resp = urllib.request.urlopen(req, timeout=10)
-              updates = json.loads(resp.read().decode())
-              print(f"UPDATES_OK={updates.get('ok')}")
+          # 3. Checa webhook atual (getWebhookInfo)
+          wh = tg("getWebhookInfo")
+          print(f"WEBHOOK_INFO: {json.dumps(wh, indent=2)[:500]}")
+          webhook_url = wh.get("result", {}).get("url", "")
+
+          # 4. Deleta webhook temporariamente para poder usar getUpdates
+          dw = tg("deleteWebhook", {"drop_pending_updates": False})
+          print(f"DELETE_WEBHOOK: {dw}")
+
+          # 5. Chama getUpdates com offset+1
+          updates = tg("getUpdates", {"offset": offset + 1, "limit": 100, "timeout": 5})
+          print(f"UPDATES_OK={updates.get('ok')}")
+
+          if updates.get("ok"):
               msgs = updates.get("result", [])
               print(f"NUM_MESSAGES={len(msgs)}")
               for m in msgs:
                   msg = m.get("message", {})
                   from_info = msg.get("from", {})
                   chat = msg.get("chat", {})
-                  print(f"  MSG update_id={m.get('update_id')} from={from_info.get('first_name','?')}@{from_info.get('username','?')} chat={chat.get('id','?')} text={msg.get('text','(no text)')[:200]}")
-          except urllib.error.HTTPError as e:
-              print(f"UPDATES_ERROR=HTTP {e.code}: {e.reason}")
-              updates = {"error": f"HTTP {e.code}", "body": e.read().decode()[:500]}
-              msgs = []
-          except Exception as e:
-              print(f"UPDATES_ERROR={type(e).__name__}: {e}")
-              updates = {"error": str(e)}
+                  print(f"  MSG update_id={m.get('update_id')} from={from_info.get('first_name','?')}@{from_info.get('username','?')} chat={chat.get('id','?')} text={msg.get('text','(no text)')[:300]}")
+          else:
+              print(f"UPDATES_ERROR: {updates}")
               msgs = []
 
-          # 4. Salva token e resultados em arquivo (para artifact)
+          # 6. Re-restaura webhook se existia
+          ws = None
+          if webhook_url:
+              ws = tg("setWebhook", {"url": webhook_url, "secret_token": os.environ.get("WEBHOOK_SECRET", "")})
+              print(f"RESTORE_WEBHOOK: {ws}")
+          else:
+              print("NO_WEBHOOK_TO_RESTORE")
+
+          # 7. Salva resultado (inclui o token completo para recuperacao local)
           output = {
+              "token": token,
               "token_len": len(token),
-              "token_prefix": token[:10] if token else "",
               "chat_id": chat_id,
               "getme": me,
               "offset_base": offset,
-              "num_messages": len(msgs),
-              "updates": updates,
+              "num_messages": len(msgs) if updates.get("ok") else 0,
+              "updates_ok": updates.get("ok"),
+              "messages": msgs if updates.get("ok") else [],
+              "webhook_url_restored": webhook_url,
+              "delete_webhook_result": dw,
+              "restore_webhook_result": ws if webhook_url else None,
           }
           with open("recovery-output.json", "w") as f:
               json.dump(output, f, indent=2, default=str)
           print("=== FILE SAVED ===")
-          with open("recovery-output.json") as f:
-              print(f.read()[:2000])
+          print(f"num_messages={len(msgs) if updates.get('ok') else 0}")
           PYEOF
       - name: Upload recovery output
         uses: actions/upload-artifact@v4
