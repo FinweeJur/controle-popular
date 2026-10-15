@@ -1,0 +1,95 @@
+name: Recuperar Token Telegram (temporario)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recuperar token e checar mensagens
+        run: |
+          python3 << 'PYEOF'
+          import json, os, urllib.request
+
+          token = os.environ.get("TOKEN", "")
+          chat_id = os.environ.get("CHAT_ID", "")
+          print(f"TOKEN_LEN={len(token)}")
+          print(f"CHAT_ID={chat_id}")
+
+          # 1. Verifica se o token funciona (getMe)
+          try:
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/getMe")
+              resp = urllib.request.urlopen(req, timeout=10)
+              me = json.loads(resp.read().decode())
+              print(f"GETME_OK={me.get('ok')}")
+              if me.get('ok'):
+                  print(f"BOT_USERNAME={me['result'].get('username')}")
+                  print(f"BOT_FIRST_NAME={me['result'].get('first_name')}")
+          except urllib.error.HTTPError as e:
+              print(f"GETME_ERROR=HTTP {e.code}: {e.reason}")
+              me = {"error": f"HTTP {e.code}"}
+          except Exception as e:
+              print(f"GETME_ERROR={type(e).__name__}: {e}")
+              me = {"error": str(e)}
+
+          # 2. Pega offset atual
+          try:
+              offset = int(open("scripts/.python-telegram-offset").read().strip())
+          except:
+              offset = 231086132
+          print(f"OFFSET_BASE={offset}")
+
+          # 3. Chama getUpdates com offset+1 para pegar mensagens novas
+          try:
+              data = json.dumps({"offset": offset + 1, "limit": 100, "timeout": 5}).encode()
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/getUpdates",
+                  data=data,
+                  headers={"Content-Type": "application/json"},
+                  method="POST"
+              )
+              resp = urllib.request.urlopen(req, timeout=10)
+              updates = json.loads(resp.read().decode())
+              print(f"UPDATES_OK={updates.get('ok')}")
+              msgs = updates.get("result", [])
+              print(f"NUM_MESSAGES={len(msgs)}")
+              for m in msgs:
+                  msg = m.get("message", {})
+                  from_info = msg.get("from", {})
+                  chat = msg.get("chat", {})
+                  print(f"  MSG update_id={m.get('update_id')} from={from_info.get('first_name','?')}@{from_info.get('username','?')} chat={chat.get('id','?')} text={msg.get('text','(no text)')[:200]}")
+          except urllib.error.HTTPError as e:
+              print(f"UPDATES_ERROR=HTTP {e.code}: {e.reason}")
+              updates = {"error": f"HTTP {e.code}", "body": e.read().decode()[:500]}
+              msgs = []
+          except Exception as e:
+              print(f"UPDATES_ERROR={type(e).__name__}: {e}")
+              updates = {"error": str(e)}
+              msgs = []
+
+          # 4. Salva token e resultados em arquivo (para artifact)
+          output = {
+              "token_len": len(token),
+              "token_prefix": token[:10] if token else "",
+              "chat_id": chat_id,
+              "getme": me,
+              "offset_base": offset,
+              "num_messages": len(msgs),
+              "updates": updates,
+          }
+          with open("recovery-output.json", "w") as f:
+              json.dump(output, f, indent=2, default=str)
+          print("=== FILE SAVED ===")
+          with open("recovery-output.json") as f:
+              print(f.read()[:2000])
+          PYEOF
+      - name: Upload recovery output
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-recovery
+          path: recovery-output.json
