@@ -56,9 +56,9 @@ export const GOLDEN_SET: CasoGolden[] = [
     nota: "acordo do Rio Doce; duas fontes aceitáveis.",
   },
   {
-    pergunta: "Qual é o orçamento do TJMG, MPMG e DPMG e por que há disparidade?",
+    pergunta: "Quanto recebe cada órgão da Justiça de Minas no orçamento?",
     esperado: { tipo: "fonte", ids: ["macro:orcamento-justica-disparidade"] },
-    nota: "dado macro do Judiciário; siglas T J M G no boost.",
+    nota: "dado macro do Judiciário (LOA 2025); siglas TJMG/MPMG/DPMG no boost.",
   },
   {
     pergunta: "Como pesquisar contratos e licitações de prefeituras no portal?",

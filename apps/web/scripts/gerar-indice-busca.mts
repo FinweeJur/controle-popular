@@ -36,6 +36,12 @@
  * curado + inventário medido, o mesmo acervo do RAG) — ver
  * `docs/planos/PLANO-RAG-COMPLETO.md`.
  *
+ * Desde 15/10/2026 o doc municipal do ComunicaBR indexa o DINHEIRO de verdade:
+ * total e os 5 repasses diretos da União com a competência de cada um
+ * (`fraseRepassesUniao` abaixo, lida do MESMO arquivo compactado que a tela
+ * usa via `expandirArquivo`) — o texto dizia que a cidade "tem indicador";
+ * agora diz quantos reais entraram nela.
+ *
  * O que ENTRA A MAIS, e por que não é a mesma coisa que "indexar título":
  * cada documento ganha até dois lexemas PRÓPRIOS — o número da própria
  * proposição/ato (`"4793"`) e, quando existe abreviação de tipo conhecida
@@ -98,11 +104,88 @@ import { TIPO_PROPOSICAO_LABELS } from "../lib/betim/vereadores.js";
 import { arquivosDoIndice, arquivosDeIndiceVazio, type ArquivoIndice } from "../lib/estatico/emitir.js";
 import type { ManifestoFatias } from "../lib/estatico/fatiar.js";
 import { expandirArquivo, type ArquivoComunicaBR } from "../lib/comunicabr/arquivo.js";
-import type { ItemComunicaBR } from "../lib/comunicabr/indicadores.js";
+import type { ItemComunicaBR, MunicipioComunicaBR } from "../lib/comunicabr/indicadores.js";
 
 /** Ementa exibida/conferida por frase — texto INDEXADO (tsvector/formas) usa
  *  sempre a versão INTEIRA, não a truncada (ver `registrar` abaixo). */
 const LIMITE_EMENTA = 480;
+
+/**
+ * ═══ A FRASE DE DINHEIRO DO DOC MUNICIPAL (pedido do dono, 15/10/2026) ═══
+ *
+ * O doc ComunicaBR indexava só "categoria+subindicador+titulo+fonte" e nenhum
+ * valor — quem buscasse "quanto Betim recebeu" achava a página, não o número.
+ * Estes são os 5 repasses DIRETOS da União por município, cada um com a
+ * competência que a PRÓPRIA fonte declara em `referencia` ("Dados até
+ * abril/2026") — nada é digitado: o texto sai do arquivo `comunicabr-31.json`
+ * expandido pelo MESMO codec da tela (`expandirArquivo`), e o total soma o
+ * `valorBruto` publicado pela fonte.
+ *
+ * Os títulos vêm da fonte com dois-pontos no fim ("Municípios:") — a comparação
+ * tira o ": " final antes de casar. Conferido no arquivo em 15/10/2026 em
+ * Betim, Contagem e Serra da Saudade: os 5 estão na categoria
+ * `transferencias`, nível 1. Item sem valor publicado fica de FORA — zero da
+ * fonte é ausência, não medida (ver `parDeValor` em `lib/comunicabr/indicadores.ts`).
+ */
+const REPASSES_DIRETOS_UNIAO: { rotulo: string; titulo: string }[] = [
+  { rotulo: "prefeituras", titulo: "Municípios" },
+  { rotulo: "Bolsa Família", titulo: "Bolsa Família" },
+  { rotulo: "BPC", titulo: "BPC" },
+  { rotulo: "seguro-desemprego", titulo: "Seguro-Desemprego" },
+  { rotulo: "previdência", titulo: "Benefícios Previdenciários" },
+];
+
+/** Total em reais na escala que a própria fonte usa, com um decimal e vírgula
+ *  pt-BR ("R$ 900,8 milhões"). Abaixo de 1 bi vem em "milhões"; BH sairia em
+ *  "bilhões"; cidade minúscula alguma cairia abaixo de 1 mi — o "mil" cobre. */
+function formatarTotalUniao(bruto: number): string {
+  const comDecimal = (n: number) =>
+    n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  if (bruto >= 1e9) return `R$ ${comDecimal(bruto / 1e9)} bilhões`;
+  if (bruto >= 1e6) return `R$ ${comDecimal(bruto / 1e6)} milhões`;
+  return `R$ ${comDecimal(bruto / 1e3)} mil`;
+}
+
+/**
+ * A frase curta com o total e os 5 valores com competência — ou `null` quando
+ * o município não tem NENHUM dos 5 publicado (então o doc fica exatamente
+ * como era: sem número inventado).
+ *
+ * Ex. medido (Betim, arquivo de 15/08/2026): "Betim recebeu R$ 900,8 milhões
+ * da União em 2026: prefeituras R$ 306,9 mi (até abril); Bolsa Família R$ 132
+ * mi (até julho); BPC R$ 84,6 mi (até junho); seguro-desemprego R$ 86,2 mi
+ * (até junho); previdência R$ 291 mi (até março)."
+ *
+ * Os valores individuais saem como a FONTE formatou (`valor`, string pronta)
+ * — refazê-los inventaria arredondamento que o governo não publicou (mesma
+ * regra documented em `ItemComunicaBR`). O ano do cabeçalho vem das
+ * referências; se algum repasse vier de outro ano, a competência dele mostra
+ * o ano junto, para a frase não mentir.
+ */
+function fraseRepassesUniao(m: MunicipioComunicaBR, nome: string): string | null {
+  const transferencias = m.categorias.find((c) => c.categoria === "transferencias");
+  if (!transferencias) return null;
+  const achados = REPASSES_DIRETOS_UNIAO.flatMap(({ rotulo, titulo }) => {
+    const item = transferencias.itens.find(
+      (i) => i.nivel === 1 && i.valor !== null && i.titulo.replace(/:\s*$/, "").trim() === titulo
+    );
+    return item ? [{ rotulo, item }] : [];
+  });
+  if (achados.length === 0) return null;
+  const corteDe = (referencia: string | null) => /até\s+([^/]+)\/(\d{4})/.exec(referencia ?? "");
+  const anoBase = achados.map(({ item }) => corteDe(item.referencia)?.[2]).find(Boolean);
+  const partes = achados.map(({ rotulo, item }) => {
+    const corte = corteDe(item.referencia);
+    const ate = corte ? (corte[2] !== anoBase ? ` (até ${corte[1]}/${corte[2]})` : ` (até ${corte[1]})`) : "";
+    return `${rotulo} ${item.valor}${ate}`;
+  });
+  const brutos = achados.map(({ item }) => item.valorBruto).filter((b): b is number => b !== null);
+  const abertura =
+    brutos.length > 0
+      ? `${nome} recebeu ${formatarTotalUniao(brutos.reduce((a, b) => a + b, 0))} da União${anoBase ? ` em ${anoBase}` : ""}`
+      : `${nome} tem repasses da União${anoBase ? ` em ${anoBase}` : ""}`;
+  return `${abertura}: ${partes.join("; ")}.`;
+}
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const DIR_SAIDA = path.resolve(AQUI, "../public/busca-indice");
@@ -413,12 +496,18 @@ async function main() {
         }
       }
       if (itensComValor.length === 0) continue;
-      const texto = itensComValor
-        .map((i) => `${i.categoria} ${i.subindicador} ${i.titulo} ${i.fonte ?? ""}`)
-        .join(" ");
       const nomeExibido = m.nomeIbge.replace(/\/[A-Z]{2}$/, "");
+      // A frase de dinheiro entra no texto INDEXADO (vira tsvector e formas de
+      // superfície — buscar "900,8" ou "recebeu" acha a cidade) e na ementa
+      // exibida no card de /busca. `id`, rota e título não mudam; só o texto.
+      const frase = fraseRepassesUniao(m, nomeExibido);
+      const texto = `${frase ? `${frase} ` : ""}${itensComValor
+        .map((i) => `${i.categoria} ${i.subindicador} ${i.titulo} ${i.fonte ?? ""}`)
+        .join(" ")}`;
       const fontes = [...new Set(itensComValor.map((i) => i.fonte).filter((f): f is string => Boolean(f)))].slice(0, 5);
-      const ementa = `${nomeExibido}: ${itensComValor.length} indicador(es) do governo federal publicado(s) — ${fontes.join(", ")}`;
+      const ementa = frase
+        ? `${frase} São ${itensComValor.length} indicador(es) do governo federal publicado(s) — ${fontes.join(", ")}`
+        : `${nomeExibido}: ${itensComValor.length} indicador(es) do governo federal publicado(s) — ${fontes.join(", ")}`;
       const { rows } = await db.execute<{ tsv: string }>(sql`
         select to_tsvector('portuguese', public.unaccent_immutable(${texto}))::text as tsv
       `);

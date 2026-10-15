@@ -984,7 +984,7 @@ export const FRENTES: SeuNonoFrente[] = [
             id: "repasses-853-municipios",
             pergunta: "Quanto o governo federal repassa aos 853 municípios de MG?",
             resposta:
-              "O painel ComunicaBR mapeia R$ 139 bilhões em transferências da União para Bolsa Família, SUS, Fundeb e BPC em cada cidade mineira.",
+              "Em 2026, a União repassou R$ 68,8 bilhões aos 853 municípios de MG. São cinco transferências diretas: prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência (coleta de 15/08/2026).",
             link: { href: "/dados/comunicabr", texto: "ComunicaBR — Repasses Federais" },
           },
         ],
@@ -1621,10 +1621,10 @@ export const PAGINAS_DADOS: PaginaDados[] = [
   {
     id: "comunicabr-federal",
     titulo: "ComunicaBR — Repasses Federais nos Municípios",
-    resumo: "Transferências diretas da União para os 853 municípios de Minas Gerais em programas sociais, saúde e educação.",
+    resumo: "Transferências diretas da União para os 853 municípios de Minas Gerais em cinco repasses, com valor e corte por programa.",
     dados: [
-      "R$ 139 bilhões auditados em transferências do Governo Federal em MG",
-      "Detalhamento por Bolsa Família, SUS, Fundeb, BPC e Farmácia Popular",
+      "R$ 68,8 bilhões repassados em 2026 às 853 cidades (coleta 15/08/2026)",
+      "Detalhamento por prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência",
       "Consulta instantânea por município ou código IBGE",
       "Exportação da série histórica",
     ],

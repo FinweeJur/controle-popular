@@ -76,6 +76,9 @@ import {
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
 import catalogoBases from "@/data/catalogo-bases-dados.json";
 import basesPortal from "@/data/bases-portal.json";
+import { municipioComunicaBR, resumoDosMunicipios } from "@/lib/comunicabr/mg";
+import type { MunicipioComunicaBR } from "@/lib/comunicabr/indicadores";
+import { semAcento } from "@/lib/busca/normalizar";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -435,7 +438,7 @@ const PECAS_MACRO: readonly AcervoFonte[] = [
       "Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + " +
       "Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + " +
       "Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). " +
-      "O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas. " +
+      "O radar acompanha as 199 cidades estratégicas com dados auditados (27 capitais e 172 polos regionais) e 1.389 proposições legislativas. " +
       `O acervo reunido tem ${basesPortal.total_arquivos} bases com ${basesPortal.total_registros} registros medidos em ${basesPortal.temas.length} temas, cada um com link para a fonte oficial.`,
     links: [
       { href: "/", texto: "Painel Geral do Portal" },
@@ -463,13 +466,12 @@ const PECAS_MACRO: readonly AcervoFonte[] = [
     id: "macro:orcamento-justica-disparidade",
     frente: "judiciario",
     rota: "/judiciario/instituicoes",
-    titulo: "Orçamento do TJMG, MPMG e DPMG e a disparidade institucional",
+    titulo: "Orçamento de TJMG, MPMG e DPMG na LOA 2025",
     fonteUrl: "/judiciario/instituicoes",
     texto:
-      "O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. " +
-      "O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. " +
-      "Em contrapartida, a Defensoria Pública de Minas Gerais (DPMG) recebe R$ 1,06 bilhão — um orçamento 14 vezes menor que o TJMG. " +
-      "Essa disparidade orçamentária resulta no déficit da Defensoria Pública em 176 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
+      "O Sistema de Justiça de Minas Gerais recebe R$ 20,1 bilhões na LOA 2025 (Lei estadual 25.124/2024). " +
+      "TJMG recebe R$ 14,96 bilhões; MPMG, R$ 4,09 bilhões; DPMG, R$ 1,10 bilhão — menos de 8% do TJMG. " +
+      "A Defensoria Pública não tem atendimento presencial em 176 das 298 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
     links: [
       { href: "/judiciario/instituicoes", texto: "Fichas Orçamentárias da Justiça MG" },
       { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria Pública" },
@@ -849,4 +851,116 @@ export function montarAcervoDetalhado(): AcervoMontado {
 /** Apenas as fontes — atalho para quem não precisa da cobertura. */
 export function montarAcervo(): AcervoFonte[] {
   return montarAcervoDetalhado().fontes;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+ * DADO DIRETO POR MUNICÍPIO (ComunicaBR) para o RAG do chatbot
+ * ════════════════════════════════════════════════════════════════════════
+ *
+ * Por que existe: até aqui, quando o cidadão perguntava "Quanto Betim recebe
+ * de transferências federais?", o Nonô só APONTAVA a página do ComunicaBR. O
+ * número já está no disco (`public/data/comunicabr-31.json`, 853 municípios de
+ * MG), mas `montarAcervo()` é síncrono e pergunta-independente — o corpus não
+ * pode carregar um pedaço por cidade (seriam 853 × 5 linhas). Então esta busca
+ * roda NA HORA do pedido, no ponto por onde toda resposta passa (a rota
+ * `app/api/chatbot`), e injeta no contexto os ~5 valores reais do município
+ * citado. Não é o `montarAcervo`: é uma função separada e assíncrona, que LÊ o
+ * arquivo por `lib/comunicabr/mg` (com cache), e só o chatbot de runtime chama.
+ *
+ * Regra "o número vem do dado": usamos `valor` e `referencia` EXATAMENTE como o
+ * codec os expande (string formatada pela fonte, corte temporal próprio de cada
+ * programa). Não reformatamos os valores individuais, não inventamos SUS nem
+ * Fundeb (que NÃO são repasse por município), e não prometemos cidade fora dos
+ * 853 de MG — se o nome não está no arquivo, devolvemos `null` e o fluxo
+ * normal segue honesto.
+ */
+
+/** O corte temporal do ComunicaBR ("Dados até julho/2026") em forma curta. */
+function soOCorte(referencia: string | null): string {
+  return referencia ? referencia.replace(/^Dados\s+até\s+/i, "").trim() : "";
+}
+
+/** Reais brutos → "R$ 900,8 mi" / "R$ 2,4 bi" — só para o TOTAL somado. */
+const FMT_REAIS = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
+function formatarReais(bruto: number): string {
+  if (bruto >= 1e9) return `R$ ${FMT_REAIS.format(bruto / 1e9)} bi`;
+  if (bruto >= 1e6) return `R$ ${FMT_REAIS.format(bruto / 1e6)} mi`;
+  return `R$ ${FMT_REAIS.format(bruto)}`;
+}
+
+/**
+ * Monta as linhas dos cinco repasses diretos de UM município já expandido, na
+ * ordem da ficha: prefeituras (entes federados), Bolsa Família, BPC,
+ * Seguro-Desemprego e Benefícios Previdenciários, mais o total (prefeituras +
+ * transferências às pessoas). Retorna `null` quando o município não tem
+ * nenhum desses valores — aí o assistente não promete número.
+ */
+function linhasDeRepasses(m: MunicipioComunicaBR): string[] | null {
+  const cat = m.categorias.find((c) => c.categoria === "transferencias");
+  if (!cat) return null;
+  const aosEntes = cat.subindicadores.find((s) => s.titulo.includes("entes federados"));
+  const asPessoas = cat.subindicadores.find((s) => s.titulo.includes("às pessoas"));
+  const comValor = (sub: typeof asPessoas, prefixo: string) =>
+    sub?.itens.find((i) => i.titulo.startsWith(prefixo) && i.valor);
+
+  const linhas: string[] = [];
+  const linha = (rotulo: string, valor: string | null, referencia: string | null) => {
+    if (!valor) return;
+    const corte = soOCorte(referencia);
+    linhas.push(`${rotulo}: ${valor}${corte ? ` (até ${corte})` : ""}`);
+  };
+  // Corte temporal próprio de cada programa: usa a referência do PRÓPRIO item
+  // (Bolsa Família até jul/2026, BPC até jun/2026…), com o corte do
+  // subindicador como reserva quando o item não declara o seu.
+  const corteDoItem = (item: { referencia: string | null } | undefined, subReferencia: string | null) =>
+    item?.referencia ?? subReferencia;
+  const referenciaPessoas = asPessoas?.referencia ?? null;
+
+  // Prefeituras (repasse direto ao ente) sai do próprio subindicador.
+  linha("Prefeituras", aosEntes?.valor ?? null, aosEntes?.referencia ?? null);
+  linha("Bolsa Família", comValor(asPessoas, "Bolsa Família")?.valor ?? null, corteDoItem(comValor(asPessoas, "Bolsa Família"), referenciaPessoas));
+  linha("BPC", comValor(asPessoas, "BPC")?.valor ?? null, corteDoItem(comValor(asPessoas, "BPC"), referenciaPessoas));
+  linha("Seguro-Desemprego", comValor(asPessoas, "Seguro-Desemprego")?.valor ?? null, corteDoItem(comValor(asPessoas, "Seguro-Desemprego"), referenciaPessoas));
+  linha("Previdência (benefícios)", comValor(asPessoas, "Benefícios Previdenciários")?.valor ?? null, corteDoItem(comValor(asPessoas, "Benefícios Previdenciários"), referenciaPessoas));
+
+  if (linhas.length === 0) return null;
+
+  const total = (aosEntes?.valorBruto ?? 0) + (asPessoas?.valorBruto ?? 0);
+  if (total > 0) linhas.push(`Total: ${formatarReais(total)}`);
+  return linhas;
+}
+
+/**
+ * Se a pergunta citar uma das 853 cidades de MG, devolve ~5 linhas com os
+ * repasses federais diretos reais daquela cidade (para injetar no contexto do
+ * chatbot); caso contrário, `null` (cidade fora de MG ou pergunta sem munícipio
+ * — o fluxo normal segue honesto, sem número inventado).
+ *
+ * @param pergunta texto já sanitizado do cidadão.
+ * @returns bloco de texto com os valores, ou `null`.
+ */
+export async function repassesMunicipioNaPergunta(pergunta: string): Promise<string | null> {
+  const cidades = await resumoDosMunicipios();
+  if (cidades.length === 0) return null;
+  // Pergunta normalizada entre espaços: casa só no limite de palavra, nunca
+  // "Maria" dentro de "Santa Maria de X" trocado. `semAcento` é o MESMO
+  // normalizador da `/busca` (lib/busca/normalizar.ts) — tolerante a acento.
+  const alvo = ` ${semAcento(pergunta).replace(/[^a-z0-9]+/g, " ").trim()} `;
+  // ponytail: linear scan nos 853 nomes; map de lowercase se o perfil de perguntas crescer.
+  let achada: (typeof cidades)[number] | null = null;
+  let maior = 0;
+  for (const c of cidades) {
+    const nome = semAcento(c.nome).replace(/[^a-z0-9]+/g, " ").trim();
+    if (nome.length < 4) continue;
+    if (nome.length > maior && alvo.includes(` ${nome} `)) {
+      achada = c;
+      maior = nome.length;
+    }
+  }
+  if (!achada) return null;
+  const m = await municipioComunicaBR(achada.codigo);
+  if (!m) return null;
+  const linhas = linhasDeRepasses(m);
+  if (!linhas) return null;
+  return `${achada.nome}/MG — repasses federais diretos no ComunicaBR (por programa, cada um com seu corte):\n${linhas.join("\n")}`;
 }

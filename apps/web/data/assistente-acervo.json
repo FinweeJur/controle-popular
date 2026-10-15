@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-30",
+  "geradoEm": "2026-10-15",
   "fontes": [
     {
       "id": "macro:soma-251-bi",
@@ -7,7 +7,7 @@
       "rota": "/",
       "titulo": "Soma dos R$ 251 bilhões monitorados no painel do portal",
       "fonteUrl": "/",
-      "texto": "O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. A soma pública oficial é composta por: Acordo de Repactuação do Rio Doce / Mariana (R$ 171 bilhões) + Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). O radar acompanha 203 cidades (27 capitais e 176 polos estratégicos) e 1.389 proposições legislativas auditadas.",
+      "texto": "O portal Controle Popular monitora R$ 251 bilhões no painel geral de impacto popular. A soma pública oficial é composta por: Acordo de Repactuação do Rio Doce / Mariana (R$ 171 bilhões) + Acordo Judicial de Reparação de Brumadinho / Paraopeba (R$ 37,7 bilhões) + Orçamento anual do Sistema de Justiça de Minas Gerais (R$ 20,1 bilhões somando TJMG, MPMG e DPMG) + Orçamentos e contratos das cidades monitoradas no radar municipal (R$ 22,7 bilhões). O radar acompanha as 199 cidades estratégicas com dados auditados (27 capitais e 172 polos regionais) e 1.389 proposições legislativas. O acervo reunido tem 274 bases com 46273 registros medidos em 22 temas, cada um com link para a fonte oficial.",
       "links": [
         {
           "href": "/",
@@ -49,9 +49,9 @@
       "id": "macro:orcamento-justica-disparidade",
       "frente": "judiciario",
       "rota": "/judiciario/instituicoes",
-      "titulo": "Orçamento do TJMG, MPMG e DPMG e a disparidade institucional",
+      "titulo": "Orçamento de TJMG, MPMG e DPMG na LOA 2025",
       "fonteUrl": "/judiciario/instituicoes",
-      "texto": "O Sistema de Justiça de Minas Gerais consome mais de R$ 20,1 bilhões anuais do orçamento público estadual. O Tribunal de Justiça de Minas Gerais (TJMG) tem orçamento de R$ 14,96 bilhões e o Ministério Público (MPMG) consome R$ 4,09 bilhões anuais. Em contrapartida, a Defensoria Pública de Minas Gerais (DPMG) recebe R$ 1,06 bilhão — um orçamento 14 vezes menor que o TJMG. Essa disparidade orçamentária resulta no déficit da Defensoria Pública em 176 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
+      "texto": "O Sistema de Justiça de Minas Gerais recebe R$ 20,1 bilhões na LOA 2025 (Lei estadual 25.124/2024). TJMG recebe R$ 14,96 bilhões; MPMG, R$ 4,09 bilhões; DPMG, R$ 1,10 bilhão — menos de 8% do TJMG. A Defensoria Pública não tem atendimento presencial em 176 das 298 comarcas mineiras, deixando populações vulneráveis sem assistência jurídica gratuita integral.",
       "links": [
         {
           "href": "/judiciario/instituicoes",
@@ -604,6 +604,20 @@
       ]
     },
     {
+      "id": "pergunta:terra:plataforma-riodoce",
+      "frente": "terra",
+      "rota": "/riodoce",
+      "titulo": "Onde ver o caso Rio Doce reunido em um só lugar?",
+      "fonteUrl": "/riodoce",
+      "texto": "A Plataforma Rio Doce reúne execução do Acordo em MG, processos do DataJud e dados da bacia, com fonte ao lado de cada número.",
+      "links": [
+        {
+          "href": "/riodoce",
+          "texto": "Plataforma Rio Doce"
+        }
+      ]
+    },
+    {
       "id": "pergunta:terra:licenciamento-ambiental",
       "frente": "terra",
       "rota": "/ambiental/licenciamento",
@@ -882,6 +896,76 @@
       ]
     },
     {
+      "id": "pergunta:estado:outorgas-agua-27-estados",
+      "frente": "estado",
+      "rota": "/recursos/estados",
+      "titulo": "Como consultar as outorgas de água dos 27 estados?",
+      "fonteUrl": "/recursos/estados",
+      "texto": "O portal monitora 751 mil outorgas ativas da ANA. Veja vazões e órgãos gestores dos 27 estados.",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "Painel de Recursos dos 27 Estados"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:assimetria-tarifaria-energia",
+      "frente": "estado",
+      "rota": "/recursos/estados",
+      "titulo": "O que é a assimetria tarifária entre o cidadão e a grande indústria?",
+      "fonteUrl": "/recursos/estados",
+      "texto": "O cidadão paga em média 75% a mais pelo kWh. As indústrias compram energia no Mercado Livre mais barato.",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "Comparar Tarifas de Energia"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:combustivel-frotas-estados",
+      "frente": "estado",
+      "rota": "/recursos/estados",
+      "titulo": "Quanto os governos estaduais gastam com combustível e frotas?",
+      "fonteUrl": "/recursos/estados",
+      "texto": "Os 27 estados gastam R$ 3,4 bilhões anuais com frotas públicas. Os dados são auditados no Portal Nacional de Contratações.",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "Gastos com Combustível"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:ppps-concessoes-27-estados",
+      "frente": "estado",
+      "rota": "/recursos/estados",
+      "titulo": "Onde consultar as concessões e PPPs de todos os estados?",
+      "fonteUrl": "/recursos/estados",
+      "texto": "A carteira reúne R$ 214 bilhões em rodovias, saneamento e transportes. Os contratos são auditados pelo BNDES Hub e estados.",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "PPPs e Concessões dos Estados"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:emendas-estaduais-pix",
+      "frente": "estado",
+      "rota": "/recursos/estados",
+      "titulo": "Como fiscalizar as emendas parlamentares e transferências PIX das Assembleias?",
+      "fonteUrl": "/recursos/estados",
+      "texto": "As emendas impositivas somam R$ 12,8 bilhões nos 27 estados. O cidadão fiscaliza cotas por deputado e transferências PIX.",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "Emendas nas 27 Assembleias"
+        }
+      ]
+    },
+    {
       "id": "pergunta:estado:documentacao-tecnica-portal",
       "frente": "estado",
       "rota": "/documentacao",
@@ -956,6 +1040,34 @@
         {
           "href": "/noticias/itinga-transparencia-repasses-litio",
           "texto": "Royalties de Mineração"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:fortunas-mundiais-concentracao",
+      "frente": "estado",
+      "rota": "/empresas/fortunas",
+      "titulo": "Quem são as 1.000 maiores fortunas e quanto ganham por mês?",
+      "fonteUrl": "/empresas/fortunas",
+      "texto": "Mapeamento reúne US$ 13 trilhões em patrimônio. Rendimento mensal sustenta 778 milhões na extrema pobreza.",
+      "links": [
+        {
+          "href": "/empresas/fortunas",
+          "texto": "1.000 Maiores Fortunas Mundiais"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:equivalencia-social-fortunas",
+      "frente": "estado",
+      "rota": "/empresas/fortunas",
+      "titulo": "Como é calculada a equivalência social de renda dos bilionários?",
+      "fonteUrl": "/empresas/fortunas",
+      "texto": "Estimamos retorno anual de 4,5% sobre patrimônio. Comparamos com a linha de pobreza do Banco Mundial.",
+      "links": [
+        {
+          "href": "/empresas/fortunas",
+          "texto": "Ver Calculadora de Equivalência"
         }
       ]
     },
@@ -1064,6 +1176,256 @@
         {
           "href": "https://www.who.int",
           "texto": "Organização Mundial da Saúde (OMS)"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:operacoes-militares-defesa-global",
+      "frente": "estado",
+      "rota": "/internacional/operacoes-militares",
+      "titulo": "O que é o acervo de operações militares e contratos de defesa?",
+      "fonteUrl": "/internacional/operacoes-militares",
+      "texto": "O portal mapeia 48 operações bélicas, deposições de regime e contratos militares. Reúne registros de potências da América do Norte, Europa e demais continentes. Conecta teatros de conflito, acordos armamentistas e empresas militares privadas.",
+      "links": [
+        {
+          "href": "/internacional/operacoes-militares/mapa",
+          "texto": "Mapa Mundial de Defesa"
+        },
+        {
+          "href": "https://www.sipri.org",
+          "texto": "SIPRI Arms Transfers Database"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:orcamentos-estrategicos-eua-canada-europa",
+      "frente": "estado",
+      "rota": "/internacional/orcamentos",
+      "titulo": "Como consultar os orçamentos militar, de inteligência, clima e energia de EUA, Canadá e Europa?",
+      "fonteUrl": "/internacional/orcamentos",
+      "texto": "Consulte o painel de orçamentos estratégicos globais. Compare gastos de defesa, inteligência, água e clima das potências do hemisfério norte.",
+      "links": [
+        {
+          "href": "/internacional",
+          "texto": "Hub Multilateral"
+        },
+        {
+          "href": "/eua",
+          "texto": "Observatório dos EUA"
+        },
+        {
+          "href": "/europa",
+          "texto": "Conexões com a Europa"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:pmc-mercenarios-contratos-privados",
+      "frente": "estado",
+      "rota": "/internacional/operacoes-militares",
+      "titulo": "Como o portal monitora empresas militares privadas (PMCs) e mercenários?",
+      "fonteUrl": "/internacional/operacoes-militares",
+      "texto": "Monitoramos contratos de segurança militar terceirizados por governos no exterior. O acervo lista corporações como Wagner, Academi, DynCorp e CACI. Apresenta faturamentos bilionários, teatros operacionais e relatórios da ONU.",
+      "links": [
+        {
+          "href": "https://www.icrc.org",
+          "texto": "Documento de Montreux (Cruz Vermelha / DHI)"
+        },
+        {
+          "href": "/internacional/operacoes-militares/mapa",
+          "texto": "Mapa de Teatros de Operações"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:mapa-mundial-guerras-conflitos",
+      "frente": "estado",
+      "rota": "/internacional/operacoes-militares/mapa",
+      "titulo": "Onde consultar a geolocalização de guerras e intervenções estrangeiras?",
+      "fonteUrl": "/internacional/operacoes-militares/mapa",
+      "texto": "O Mapa de Defesa geolocaliza todos os teatros de operações e conflitos. Utiliza projeção vetorial interativa com coordenadas precisas e filtros temáticos. Cada ponto no mapa direciona para a ficha completa no acervo.",
+      "links": [
+        {
+          "href": "/internacional/operacoes-militares",
+          "texto": "Acervo Textual de Conflitos"
+        },
+        {
+          "href": "/terras/globo",
+          "texto": "Globo 3D Terras (Camada de Conflitos)"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:monopolios-holdings-big-three",
+      "frente": "estado",
+      "rota": "/empresas/conglomerados",
+      "titulo": "Como funcionam os monopólios e a rede dos Big Three?",
+      "fonteUrl": "/empresas/conglomerados",
+      "texto": "BlackRock, Vanguard e State Street controlam participações simultâneas em corporações concorrentes. O portal exibe grafo interativo em Canvas e índice HHI.",
+      "links": [
+        {
+          "href": "https://www.sec.gov/edgar",
+          "texto": "SEC EDGAR Estados Unidos"
+        },
+        {
+          "href": "/empresas",
+          "texto": "Observatório Geral de Empresas"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:executivos-conselhos-interlocking",
+      "frente": "estado",
+      "rota": "/empresas/executivos",
+      "titulo": "O que são diretorias entrelaçadas e interlocking directorates nas empresas?",
+      "fonteUrl": "/empresas/executivos",
+      "texto": "Ocorre quando os mesmos conselheiros atuam simultaneamente em múltiplas empresas parceiras. O portal mapeia 143 executivos e conselhos das maiores corporações.",
+      "links": [
+        {
+          "href": "https://www.gov.br/cvm",
+          "texto": "Comissão de Valores Mobiliários (CVM)"
+        },
+        {
+          "href": "/empresas/conglomerados",
+          "texto": "Rede de Monopólios e Controle"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:ameacas-socioambientais-americas",
+      "frente": "estado",
+      "rota": "/ambiental/ameacas-americas",
+      "titulo": "Quais são as principais espécies, rios e serras ameaçados nas Américas?",
+      "fonteUrl": "/ambiental/ameacas-americas",
+      "texto": "O portal mapeia 90 ameaças críticas em todo o continente americano. Reúne espécies em extinção, bacias hídricas contaminadas e territórios tradicionais vulnerabilizados.",
+      "links": [
+        {
+          "href": "https://www.icmbio.gov.br",
+          "texto": "ICMBio Livro Vermelho da Fauna"
+        },
+        {
+          "href": "https://www.iucnredlist.org",
+          "texto": "IUCN Red List of Threatened Species"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:barragens-mundiais-rejeitos-energia",
+      "frente": "estado",
+      "rota": "/ambiental/barragens-globais",
+      "titulo": "Onde consultar o monitoramento global de grandes barragens e rejeitos?",
+      "fonteUrl": "/ambiental/barragens-globais",
+      "texto": "O portal cataloga 62 megabarragens mundiais de mineração, energia e abastecimento. Dados integrados ao Globo 3D com fontes da ANM e ICOLD.",
+      "links": [
+        {
+          "href": "/terras/globo",
+          "texto": "Globo 3D Terras (Camada de Barragens)"
+        },
+        {
+          "href": "https://www.icold-cigb.org",
+          "texto": "ICOLD — World Register of Dams"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:conflitos-socioambientais-globais",
+      "frente": "estado",
+      "rota": "/ambiental/conflitos-globais",
+      "titulo": "Como auditar conflitos socioambientais e violações corporativas no mundo?",
+      "fonteUrl": "/ambiental/conflitos-globais",
+      "texto": "Mapeamos 55 conflitos socioambientais emblemáticos com dados do EJAtlas internacional. Apresenta empresas rés, commodities envolvidas, comunidades afetadas e ações judiciais.",
+      "links": [
+        {
+          "href": "https://ejatlas.org",
+          "texto": "EJAtlas — Global Atlas of Environmental Justice"
+        },
+        {
+          "href": "https://www.globalwitness.org",
+          "texto": "Global Witness — Defensores da Terra"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:crise-climatica-poluidores-g20",
+      "frente": "estado",
+      "rota": "/ambiental/crise-climatica",
+      "titulo": "Quais são os maiores emissores e poluidores industriais do planeta?",
+      "fonteUrl": "/ambiental/crise-climatica",
+      "texto": "O acervo reúne o balanço de gases do G20 e vinte mega-poluidores. Cruza dados do Climate TRACE, IPCC e anomalias térmicas do Copernicus.",
+      "links": [
+        {
+          "href": "https://climatetrace.org",
+          "texto": "Climate TRACE Emissões Globais"
+        },
+        {
+          "href": "https://climate.copernicus.eu",
+          "texto": "Copernicus Climate Change Service"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:relatorios-inteligencia-desclassificados-cia-fbi-nsa",
+      "frente": "estado",
+      "rota": "/internacional/inteligencia",
+      "titulo": "O que revelam os relatórios desclassificados da CIA, FBI e NSA?",
+      "fonteUrl": "/internacional/inteligencia",
+      "texto": "O portal audita 84 relatórios da CIA, FBI, NSA e serviços globais. Os documentos revelam espionagem, acordos nucleares e impactos na soberania do Brasil. Cada registro traz link oficial de custódia e download do PDF.",
+      "links": [
+        {
+          "href": "/internacional/inteligencia/mapa",
+          "texto": "Mapa Mundial de Inteligência"
+        },
+        {
+          "href": "/inteligencia",
+          "texto": "Atalho Inteligência Global"
+        },
+        {
+          "href": "https://www.cia.gov/readingroom/",
+          "texto": "CIA FOIA Electronic Reading Room"
+        },
+        {
+          "href": "https://vault.fbi.gov/",
+          "texto": "The FBI Vault (Registros FOIA)"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:aliancas-five-eyes-twelve-eyes-vigilancia",
+      "frente": "estado",
+      "rota": "/internacional/inteligencia",
+      "titulo": "Como funcionam as alianças Five Eyes, Nine Eyes e Twelve Eyes?",
+      "fonteUrl": "/internacional/inteligencia",
+      "texto": "São alianças internacionais de compartilhamento de inteligência de sinais e cibersegurança. Reúnem agências dos Estados Unidos, Reino Unido, Canadá e parceiros da Europa. O acervo disponibiliza relatórios de espionagem e ciberdefesa de cada integrante.",
+      "links": [
+        {
+          "href": "/internacional/inteligencia/mapa",
+          "texto": "Mapa de Órgãos e Alianças"
+        },
+        {
+          "href": "https://www.nsa.gov",
+          "texto": "National Security Agency (NSA)"
+        },
+        {
+          "href": "https://www.gchq.gov.uk",
+          "texto": "GCHQ (Reino Unido)"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:estado:relatorios-atuais-fbi-nsa-ciberseguranca",
+      "frente": "estado",
+      "rota": "/internacional/inteligencia",
+      "titulo": "Onde consultar relatórios atuais e públicos do FBI e da NSA?",
+      "fonteUrl": "/internacional/inteligencia",
+      "texto": "O portal cataloga relatórios públicos de crimes cibernéticos IC3 do FBI. Também audita diretrizes da NSA para proteção de redes e água potável. Todos os documentos possuem hiperlinks diretos para os domínios do governo americano.",
+      "links": [
+        {
+          "href": "https://www.ic3.gov/Media/PDF/AnnualReport/2024_IC3Report.pdf",
+          "texto": "FBI IC3 Cyber Threat Report"
+        },
+        {
+          "href": "https://www.nsa.gov/Press-Room/Cybersecurity-Advisories-Guidance/",
+          "texto": "Diretrizes de Cibersegurança NSA"
         }
       ]
     },
@@ -1240,12 +1602,34 @@
       ]
     },
     {
+      "id": "pergunta:estado:tramitacao-legislativa-tabela",
+      "frente": "estado",
+      "rota": "/assembleias",
+      "titulo": "Como pesquisar a tramitação de projetos de lei por tema, data e autor?",
+      "fonteUrl": "/assembleias",
+      "texto": "Consulte a tabela interativa das 27 Assembleias e do Congresso. Filtre por tema, data de protocolo, aprovação e autor.",
+      "links": [
+        {
+          "href": "/congresso/proposicoes",
+          "texto": "Proposições do Congresso"
+        },
+        {
+          "href": "/assembleias/sp",
+          "texto": "Proposições de SP (ALESP)"
+        },
+        {
+          "href": "/assembleias/mg",
+          "texto": "Proposições de MG (ALMG)"
+        }
+      ]
+    },
+    {
       "id": "pergunta:estado:repasses-853-municipios",
       "frente": "estado",
       "rota": "/dados/comunicabr",
       "titulo": "Quanto o governo federal repassa aos 853 municípios de MG?",
       "fonteUrl": "/dados/comunicabr",
-      "texto": "O painel ComunicaBR mapeia R$ 139 bilhões em transferências da União para Bolsa Família, SUS, Fundeb e BPC em cada cidade mineira.",
+      "texto": "Em 2026, a União repassou R$ 68,8 bilhões aos 853 municípios de MG. São cinco transferências diretas: prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência (coleta de 15/08/2026).",
       "links": [
         {
           "href": "/dados/comunicabr",
@@ -1599,7 +1983,7 @@
       "rota": "/dados/comunicabr",
       "titulo": "Quanto Betim recebe de transferências federais?",
       "fonteUrl": "/dados/comunicabr",
-      "texto": "O painel ComunicaBR detalha transferências da União para saúde, SUS, Bolsa Família e Fundeb em Betim.",
+      "texto": "ComunicaBR: Betim recebe R$ 900,8 milhões da União em 2026, em cinco repasses diretos.",
       "links": [
         {
           "href": "/dados/comunicabr",
@@ -1907,7 +2291,7 @@
       "rota": "/judiciario/instituicoes",
       "titulo": "Qual o orçamento dos órgãos do Sistema de Justiça em MG?",
       "fonteUrl": "/judiciario/instituicoes",
-      "texto": "O TJMG recebe R$ 14,96 bi e o MPMG R$ 4,09 bi, enquanto a DPMG tem déficit de 176 comarcas.",
+      "texto": "TJMG recebe R$ 14,96 bi; MPMG, R$ 4,09 bi; DPMG, R$ 1,10 bi (LOA 2025).",
       "links": [
         {
           "href": "/judiciario/instituicoes",
@@ -1949,7 +2333,7 @@
       "rota": "/judiciario/instituicoes",
       "titulo": "Quanto o TJMG e o MPMG gastam com folha e verbas indenizatórias?",
       "fonteUrl": "/judiciario/instituicoes",
-      "texto": "As fichas analíticas mostram R$ 1,85 bi em indenizações no TJMG e a disparidade com a Defensoria Pública.",
+      "texto": "As fichas mostram pessoal: TJMG R$ 11,61 bi e MPMG R$ 3,06 bi na LOA 2025.",
       "links": [
         {
           "href": "/judiciario/instituicoes",
@@ -2481,7 +2865,7 @@
       "rota": "/biblioteca",
       "titulo": "Onde consultar estudos acadêmicos e pesquisas sobre as mineradoras?",
       "fonteUrl": "/biblioteca",
-      "texto": "A Biblioteca Unificada reúne teses e pesquisas da UFMG, IFMG, CEFET-MG e UFRJ sobre barragens e bacias.",
+      "texto": "O acervo acadêmico reúne 424 teses de 73 universidades, com UFMG e UFOP liderando.",
       "links": [
         {
           "href": "/biblioteca",
@@ -2521,9 +2905,9 @@
       "id": "contexto:28:0",
       "frente": "geral",
       "rota": "/biblioteca",
-      "titulo": "Onde ver as pesquisas da UFMG, IFMG, CEFET e UFRJ?",
+      "titulo": "Onde ver as teses e pesquisas sobre barragens e mineração?",
       "fonteUrl": "/biblioteca",
-      "texto": "O acervo acadêmico reúne 22 estudos científicos sobre metais pesados, enchentes, drenagem e barragens.",
+      "texto": "A biblioteca tem 458 documentos e 424 teses de 73 universidades sobre desastres.",
       "links": [
         {
           "href": "/biblioteca",
@@ -2593,7 +2977,7 @@
       "rota": "/noticias",
       "titulo": "Onde ver as notícias investigativas sobre gastos dos tribunais?",
       "fonteUrl": "/noticias",
-      "texto": "Reportagens detalham orçamentos de R$ 14,9 bi no TJMG e disparidade histórica com a Defensoria Pública.",
+      "texto": "As reportagens acompanham o orçamento de R$ 14,96 bi do TJMG na LOA 2025.",
       "links": [
         {
           "href": "/noticias",
@@ -2607,7 +2991,7 @@
       "rota": "/dados/comunicabr",
       "titulo": "Quanto meu município recebe de repasses federais da União?",
       "fonteUrl": "/dados/comunicabr",
-      "texto": "O ComunicaBR detalha transferências do Bolsa Família, SUS, Fundeb e BPC para os 853 municípios mineiros.",
+      "texto": "ComunicaBR traz cinco repasses diretos por município: prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência.",
       "links": [
         {
           "href": "/dados/comunicabr",
@@ -2962,6 +3346,62 @@
         {
           "href": "/estado-e-economia/orcamento",
           "texto": "Séries do Banco Central"
+        }
+      ]
+    },
+    {
+      "id": "contexto:39:0",
+      "frente": "ambiental",
+      "rota": "/ambiental/mariana",
+      "titulo": "Como está a execução do Acordo do Rio Doce em MG?",
+      "fonteUrl": "/ambiental/mariana",
+      "texto": "O painel de Mariana abre a execução orçamentária em MG: empenho por empenho, do órgão e da iniciativa.",
+      "links": [
+        {
+          "href": "/ambiental/mariana",
+          "texto": "Execução do Acordo em MG"
+        }
+      ]
+    },
+    {
+      "id": "contexto:39:1",
+      "frente": "paraopeba",
+      "rota": "/paraopeba",
+      "titulo": "Como funciona a reparação de Brumadinho?",
+      "fonteUrl": "/paraopeba",
+      "texto": "A Plataforma Paraopeba acompanha o outro caso grande: clipping, linha do tempo, auxílio e execução em 26 municípios.",
+      "links": [
+        {
+          "href": "/paraopeba",
+          "texto": "Plataforma Paraopeba"
+        }
+      ]
+    },
+    {
+      "id": "contexto:39:2",
+      "frente": "judiciario",
+      "rota": "/judiciario",
+      "titulo": "Onde fiscalizar o Judiciário de Minas?",
+      "fonteUrl": "/judiciario",
+      "texto": "A zona Judiciário mostra composição dos tribunais, vagas, inspeções do CNJ e varas com contato por comarca.",
+      "links": [
+        {
+          "href": "/judiciario",
+          "texto": "Zona Judiciário"
+        }
+      ]
+    },
+    {
+      "id": "contexto:39:3",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens",
+      "titulo": "Onde ver barragens de mineração em risco?",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "O painel de barragens reúne as estruturas cadastradas da ANM e a descaracterização exigida pela Lei Mar de Lama.",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Painel de Barragens"
         }
       ]
     },
@@ -3460,12 +3900,34 @@
       ]
     },
     {
+      "id": "pagina:riodoce-hub",
+      "frente": "geral",
+      "rota": "/riodoce",
+      "titulo": "Plataforma Rio Doce",
+      "fonteUrl": "/riodoce",
+      "texto": "Hub do caso do Rio Doce: execução do Acordo em MG, processos consultados ao vivo no DataJud e dados espaciais da bacia.\nExecução do Acordo de Mariana em MG (CKAN oficial do Governo de MG)\nProcessos-chave consultados ao vivo no DataJud (CNJ), sem arquivamento\nCamadas da bacia no WFS da SEMAD — mancha do Fundão medida em 12/10/2026\nLinha do tempo e biblioteca do caso, em construção (Fases 3 e 4)",
+      "links": [
+        {
+          "href": "/riodoce",
+          "texto": "Plataforma Rio Doce"
+        },
+        {
+          "href": "/riodoce/processos",
+          "texto": "Processos (DataJud)"
+        },
+        {
+          "href": "/ambiental/mariana",
+          "texto": "Execução do Acordo (MG)"
+        }
+      ]
+    },
+    {
       "id": "pagina:comunicabr-federal",
       "frente": "geral",
       "rota": "/dados/comunicabr",
       "titulo": "ComunicaBR — Repasses Federais nos Municípios",
       "fonteUrl": "/dados/comunicabr",
-      "texto": "Transferências diretas da União para os 853 municípios de Minas Gerais em programas sociais, saúde e educação.\nR$ 139 bilhões auditados em transferências do Governo Federal em MG\nDetalhamento por Bolsa Família, SUS, Fundeb, BPC e Farmácia Popular\nConsulta instantânea por município ou código IBGE\nExportação da série histórica",
+      "texto": "Transferências diretas da União para os 853 municípios de Minas Gerais em cinco repasses, com valor e corte por programa.\nR$ 68,8 bilhões repassados em 2026 às 853 cidades (coleta 15/08/2026)\nDetalhamento por prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência\nConsulta instantânea por município ou código IBGE\nExportação da série histórica",
       "links": [
         {
           "href": "/dados/comunicabr",
@@ -3633,7 +4095,7 @@
     },
     {
       "id": "pagina:assembleias",
-      "frente": "geral",
+      "frente": "congresso",
       "rota": "/assembleias",
       "titulo": "Assembleias Legislativas dos Estados",
       "fonteUrl": "/assembleias",
@@ -3655,7 +4117,7 @@
     },
     {
       "id": "pagina:internacional-multilateral",
-      "frente": "geral",
+      "frente": "ambiental",
       "rota": "/internacional",
       "titulo": "Transparência Multilateral & Internacional",
       "fonteUrl": "/internacional",
@@ -3676,10 +4138,214 @@
       ]
     },
     {
+      "id": "pagina:operacoes-militares-global",
+      "frente": "ambiental",
+      "rota": "/internacional/operacoes-militares",
+      "titulo": "Operações Militares, Contratos de Defesa e PMCs",
+      "fonteUrl": "/internacional/operacoes-militares",
+      "texto": "Mapeamento georreferenciado de 48 operações bélicas, deposições de regime, corporações mercenárias e contratos armamentistas globais.\n48 operações, intervenções, golpes e contratos militares geolocalizados\nCobertura de potências norte-americanas, europeias e teatros globais\nMonitoramento de PMCs: faturamentos, efetivo e investigações de crimes\nFontes oficiais: CRS, DoD, SIPRI, Nações Unidas e CIJ\nMapa vetorial interativo com navegação bidirecional por ID",
+      "links": [
+        {
+          "href": "/internacional/operacoes-militares",
+          "texto": "Acervo de Operações Militares"
+        },
+        {
+          "href": "/internacional/operacoes-militares/mapa",
+          "texto": "Mapa Mundial de Defesa"
+        },
+        {
+          "href": "/terras/globo",
+          "texto": "Globo 3D Terras (Camada Militar)"
+        }
+      ]
+    },
+    {
+      "id": "pagina:fortunas-mundiais",
+      "frente": "geral",
+      "rota": "/empresas/fortunas",
+      "titulo": "1.000 Maiores Fortunas Mundiais",
+      "fonteUrl": "/empresas/fortunas",
+      "texto": "Catálogo auditável das 1.000 maiores fortunas e dinastias mundiais, com ganho mensal estimado e equivalência social.\n1.000 fortunas acumulando US$ 13,39 trilhões de patrimônio líquido\nRendimento mensal somado estimado em US$ 50,21 bilhões a cada 30 dias\nEquivalência social: sustento de 778,5 milhões de pessoas na extrema pobreza\nFiltros por pessoa física, dinastia familiar, país e setor econômico\nFontes oficiais: WID.world, SEC EDGAR, CVM e Banco Mundial",
+      "links": [
+        {
+          "href": "/empresas/fortunas",
+          "texto": "1.000 Maiores Fortunas Mundiais"
+        },
+        {
+          "href": "/empresas/conglomerados",
+          "texto": "Monopólios e Holdings"
+        },
+        {
+          "href": "/empresas/executivos",
+          "texto": "CEOs e Conselhos"
+        }
+      ]
+    },
+    {
+      "id": "pagina:orcamentos-globais",
+      "frente": "ambiental",
+      "rota": "/internacional/orcamentos",
+      "titulo": "Orçamentos Estratégicos de EUA, Canadá e Europa",
+      "fonteUrl": "/internacional/orcamentos",
+      "texto": "Auditoria comparativa dos 7 orçamentos estratégicos (Militar, Inteligência, Economia, P&D, Água, Energia e Clima) das potências do hemisfério norte.\n7 eixos orçamentários: Militar, Inteligência, Economia, P&D, Água, Energia e Clima\nEUA: US$ 842 bi em defesa e US$ 100 bi em inteligência\nUnião Europeia: € 326 bi em defesa e € 155 bi em ação climática\nCanadá: C$ 31 bi em defesa e metas de transição net-zero\nFontes: OMB, DoD, Treasury, StatsCan, Eurostat e Comissão Europeia",
+      "links": [
+        {
+          "href": "/internacional/orcamentos",
+          "texto": "Orçamentos Estratégicos"
+        },
+        {
+          "href": "/internacional",
+          "texto": "Hub Multilateral"
+        },
+        {
+          "href": "/eua",
+          "texto": "Observatório dos EUA"
+        }
+      ]
+    },
+    {
+      "id": "pagina:recursos-27-estados",
+      "frente": "cidades",
+      "rota": "/recursos/estados",
+      "titulo": "Recursos Públicos e Concessões dos 27 Estados",
+      "fonteUrl": "/recursos/estados",
+      "texto": "Auditoria comparativa dos 27 estados em 5 eixos: outorgas de água, tarifas de energia, combustível de frota, PPPs e emendas parlamentares.\n751 mil interferências e 48,6 bi m³/ano de água outorgada (ANA/SNIRH)\nAssimetria tarifária elétrica: cidadão paga até 1,9x a tarifa industrial\nR$ 3,4 bilhões em compras públicas de combustível registradas no PNCP\nR$ 214,5 bilhões em contratos de PPP e concessões ativas (BNDES Hub)\nR$ 12,8 bilhões em emendas parlamentares votadas em 27 Assembleias",
+      "links": [
+        {
+          "href": "/recursos/estados",
+          "texto": "Painel Recursos dos 27 Estados"
+        },
+        {
+          "href": "/assembleias",
+          "texto": "Assembleias Legislativas"
+        },
+        {
+          "href": "/consumo-corporativo",
+          "texto": "Consumo Corporativo MG & G20"
+        }
+      ]
+    },
+    {
+      "id": "pagina:america-latina-mineracao",
+      "frente": "funcaosocialterra",
+      "rota": "/america-latina",
+      "titulo": "América Latina & Mineração Transnacional",
+      "fonteUrl": "/america-latina",
+      "texto": "Observatório de 51 instalações estratégicas de mineração em 9 países da América Latina integradas ao Globo 3D Terras.\n51 instalações georreferenciadas em 9 países latino-americanos\nTriângulo do Lítio: Salares de Atacama, Hombre Muerto, Olaroz, Cauchari e Uyuni\nMegaminas de cobre: Escondida, Chuquicamata, El Teniente, Antamina e Cerro Verde\nPortos exportadores: Tubarão, Ponta da Madeira, Mejillones, Matarani e Bolívar\nFontes oficiais: ANM, SERNAGEOMIN, INGEMMET, SEGEMAR, SEMARNAT e COMIBOL",
+      "links": [
+        {
+          "href": "/america-latina",
+          "texto": "Mineração na América Latina"
+        },
+        {
+          "href": "/funcaosocialterra/mapa",
+          "texto": "Globo 3D Terras"
+        },
+        {
+          "href": "/empresas",
+          "texto": "Grandes Empresas e Mineradoras"
+        }
+      ]
+    },
+    {
+      "id": "pagina:desclassificados-inteligencia",
+      "frente": "ambiental",
+      "rota": "/internacional/inteligencia",
+      "titulo": "Dossiês Desclassificados de Inteligência & Twelve Eyes",
+      "fonteUrl": "/internacional/inteligencia",
+      "texto": "Auditoria cívica de 84 relatórios da CIA, FBI, NSA, SNI e alianças Five Eyes, Nine Eyes e Twelve Eyes.\n84 relatórios de inteligência desclassificados e relatórios públicos contemporâneos\nCobertura dos EUA (CIA, FBI, NSA) e potências da aliança Twelve Eyes\nImpactos na soberania nacional: Operação Condor, Amazônia e vigilância de sinais\nMetadados arquivísticos completos: código oficial, carimbos, páginas e data original\n100% dos documentos geolocalizados com links diretos para PDF e custódia",
+      "links": [
+        {
+          "href": "/internacional/inteligencia",
+          "texto": "Central de Inteligência"
+        },
+        {
+          "href": "/internacional/inteligencia/mapa",
+          "texto": "Mapa Mundial de Inteligência"
+        },
+        {
+          "href": "/inteligencia",
+          "texto": "Atalho Central de Inteligência"
+        }
+      ]
+    },
+    {
+      "id": "blog:biblioteca-documentos-barragens-vale",
+      "frente": "geral",
+      "rota": "/noticias/biblioteca-documentos-barragens-vale",
+      "titulo": "Biblioteca reúne 458 documentos oficiais sobre barragens e a Vale",
+      "fonteUrl": "/noticias/biblioteca-documentos-barragens-vale",
+      "texto": "O acervo unificado do portal reúne documentos públicos, relatórios corporativos e produção acadêmica sobre barragens, mineração e transparência.\nA [biblioteca do portal](/biblioteca) reúne 458 documentos sobre barragens e mineração. O acervo foi atualizado em 01/10/2026, segundo o registro interno. Há atas, laudos técnicos, relatórios corporativos e produção acadêmica. Cada item aponta para o endereço original do documento.\nSão 91 documentos de instituições de justiça e 20 empresas citadas. Outros 18 itens são produção acadêmica, como artigos e teses. O acervo ainda tem 67 documentos internacionais sobre o tema. A busca por texto ajuda a achar cada peça."
+    },
+    {
+      "id": "blog:ipca-selic-dolar-orcamento-banco-central",
+      "frente": "geral",
+      "rota": "/noticias/ipca-selic-dolar-orcamento-banco-central",
+      "titulo": "IPCA, Selic e dólar: os números que mexem no orçamento",
+      "fonteUrl": "/noticias/ipca-selic-dolar-orcamento-banco-central",
+      "texto": "O portal reúne as séries oficiais do Banco Central sobre inflação, juros e câmbio. Os indicadores ajudam a entender o orçamento de famílias e governos.\nAs séries do [Banco Central](https://www3.bcb.gov.br/sgspub/) mostram a inflação e os juros oficiais. Em agosto de 2026, o IPCA ficou em -0,32%. O INPC teve a mesma variação no mês, segundo o dado. Os índices medem a variação de preços ao consumidor.\nA meta da Selic está definida em 13,75% ao ano. O juro alto encarece o crédito e pressiona a dívida pública. O dólar comercial fechou em R$ 5,1575 em 18/09/2026. O câmbio afeta o preço de combustíveis e de insumos importados."
+    },
+    {
+      "id": "blog:convenios-ambientais-minas-semad",
+      "frente": "geral",
+      "rota": "/noticias/convenios-ambientais-minas-semad",
+      "titulo": "870 convênios ambientais somam R$ 477 milhões em Minas",
+      "fonteUrl": "/noticias/convenios-ambientais-minas-semad",
+      "texto": "O portal reuniu 870 convênios ambientais de Minas, com valor, órgão e prazo. A lista mostra quanto o estado prometeu gastar e quantos acordos foram adiados.\nO portal reuniu 870 convênios ambientais firmados em Minas Gerais. O valor somado chega a R$ 477,4 milhões, segundo o acervo. Os acordos envolvem 373 municípios do estado. A [SEMAD](https://semad.mg.gov.br/) responde por 688 deles.\nO Instituto Estadual de Florestas assina 107 convênios, e o IGAM, 48. Outros 27 ficam com a Fundação Estadual do Meio Ambiente. Ao todo, 415 acordos tiveram o prazo prorrogado. Isso indica projetos que demoraram mais do que o previsto."
+    },
+    {
+      "id": "blog:repasse-acordo-vale-853-municipios-minas",
+      "frente": "geral",
+      "rota": "/noticias/repasse-acordo-vale-853-municipios-minas",
+      "titulo": "Acordo de reparação de Brumadinho repassa R$ 1,64 bilhão aos 853 municípios mineiros",
+      "fonteUrl": "/noticias/repasse-acordo-vale-853-municipios-minas",
+      "texto": "O rateio do Acordo de Reparação de Brumadinho distribuiu R$ 1,64 bilhão a todos os municípios mineiros. A lista traz o valor por cidade e mais 361 repasses complementares.\nO Acordo de Reparação de Brumadinho repassou R$ 1,64 bilhão aos municípios de Minas. O rateio principal alcançou as 853 cidades, segundo o [Governo de MG](https://www.mg.gov.br/pro-brumadinho/pagina/reparacao-brumadinho-repasses-aos-853-municipios-de-mg). O dado foi atualizado na fonte em 11/08/2026. A lista do portal traz o valor de cada município.\nBelo Horizonte recebeu o maior valor, de R$ 50 milhões. Contagem aparece com R$ 31 milhões e Uberlândia com R$ 30 milhões. Betim e Divinópolis ficaram com R$ 15 milhões cada. Brumadinho, epicentro do crime, consta com R$ 2,5 milhões."
+    },
+    {
+      "id": "blog:canais-pedido-informacao-lai-portal",
+      "frente": "geral",
+      "rota": "/noticias/canais-pedido-informacao-lai-portal",
+      "titulo": "Portal mapeia 445 canais de pedido de informação pública",
+      "fonteUrl": "/noticias/canais-pedido-informacao-lai-portal",
+      "texto": "O portal reuniu 445 canais de acesso à informação no país, com endereço e categoria. A Lei de Acesso à Informação garante resposta em até 20 dias.\nO portal reuniu 445 canais de acesso à informação no país. A lista inclui 199 prefeituras e 199 câmaras municipais. Outros 14 canais são de órgãos federais, segundo a coleta. Os dados foram organizados em 08/09/2026 a partir do [Fala.BR](https://falabr.cgu.gov.br/).\nAs concessionárias de água, luz e telefonia somam 26 canais próprios. Em Minas Gerais, o portal lista 43 canais de pedido. A [Lei de Acesso à Informação](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm) garante resposta em até 20 dias. O prazo pode ser prorrogado por mais 10 dias."
+    },
+    {
+      "id": "blog:conselhos-direitos-politicas-publicas",
+      "frente": "geral",
+      "rota": "/noticias/conselhos-direitos-politicas-publicas",
+      "titulo": "710 conselhos de direitos fiscalizam políticas públicas no país",
+      "fonteUrl": "/noticias/conselhos-direitos-politicas-publicas",
+      "texto": "O portal mapeou 710 conselhos de direitos no país, com a categoria e a esfera de cada um. Os conselhos são a porta de entrada da participação popular.\nO portal mapeou 710 conselhos de direitos em todo o país. Desses, 597 atuam na esfera municipal e 108 na estadual. Apenas 5 conselhos são federais, segundo o acervo. A [subfrente de conselhos](/direitos-em-movimento/conselhos) reúne o contato de cada um.\nA saúde e o meio ambiente lideram, com 227 conselhos cada. Na sequência aparecem os conselhos de criança e adolescente. Eles fiscalizam repasses, aprovam planos e acompanham políticas públicas. A participação popular é a porta de entrada do controle social."
+    },
+    {
+      "id": "blog:cadastro-empregadores-trabalho-escravo-mte",
+      "frente": "geral",
+      "rota": "/noticias/cadastro-empregadores-trabalho-escravo-mte",
+      "titulo": "181 empresas entram em cadastro de trabalho análogo ao escravo",
+      "fonteUrl": "/noticias/cadastro-empregadores-trabalho-escravo-mte",
+      "texto": "O Cadastro de Empregadores do Ministério do Trabalho e Emprego expõe empresas autuadas por trabalho análogo à escravidão. O portal detalha os registros por estado.\nO [Cadastro de Empregadores](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/areas-de-atuacao/combate-ao-trabalho-escravo-e-analogo-ao-escravo) tem 190 registros em Minas e no país. Os dados foram atualizados em 28/09/2026 pelo Ministério do Trabalho. A lista reúne 181 empresas e 1.867 trabalhadores envolvidos. Os casos aparecem em 23 estados brasileiros.\nA inclusão no cadastro é ato administrativo do ministério. Cada ficha traz o estabelecimento, o número de trabalhadores e o CNAE. A empresa pode contestar a decisão na Justiça. O cadastro funciona como alerta para compradores e bancos."
+    },
+    {
+      "id": "blog:ideb-media-municipios-minas-inep",
+      "frente": "geral",
+      "rota": "/noticias/ideb-media-municipios-minas-inep",
+      "titulo": "IDEB de treze cidades mineiras tem média 5,53 nos anos iniciais",
+      "fonteUrl": "/noticias/ideb-media-municipios-minas-inep",
+      "texto": "O portal reuniu indicadores do IDEB, do Censo Escolar e do IBGE para treze municípios de Minas. Os dados mostram a distância entre os anos iniciais e finais.\nO portal reuniu indicadores de educação de treze municípios mineiros. A média do [IDEB](https://ideb.inep.gov.br/) nos anos iniciais ficou em 5,53. As notas variam de 5,2 a 5,9 entre as cidades analisadas. Os dados vêm do INEP, com apoio do [Censo Escolar](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados).\nO desempenho cai quando o aluno avança para os anos finais. A média nessa etapa ficou em 4,30 entre os municípios. O intervalo vai de 4,0 a 4,6 nas cidades com dados completos. A queda indica a necessidade de reforço no segundo ciclo do fundamental."
+    },
+    {
+      "id": "blog:rede-sus-estabelecimentos-minas-cnes",
+      "frente": "geral",
+      "rota": "/noticias/rede-sus-estabelecimentos-minas-cnes",
+      "titulo": "Minas Gerais tem 78.329 estabelecimentos de saúde no cadastro do SUS",
+      "fonteUrl": "/noticias/rede-sus-estabelecimentos-minas-cnes",
+      "texto": "O Cadastro Nacional de Estabelecimentos de Saúde reúne hospitais, clínicas, laboratórios e postos de Minas Gerais. O dado permite comparar a rede de cada município.\nO [CNES](https://cnes.datasus.gov.br/) registra 78.329 estabelecimentos de saúde em Minas Gerais. A coleta ocorreu em 06/09/2026 na base oficial do Ministério da Saúde. A lista reúne hospitais, clínicas, laboratórios e postos. Cada unidade traz endereço, gestão e tipo de atendimento no cadastro.\nEm Belo Horizonte, o cadastro reúne 1.280 estabelecimentos de saúde. A cidade conta com 2,45 leitos do SUS por mil habitantes. A Organização Mundial da Saúde recomenda entre 2,5 e 3,0 leitos. Em Betim, o Hospital Regional mantém 340 leitos ativos, segundo o [CNES](https://cnes.datasus.gov.br/)."
+    },
+    {
       "id": "blog:car-ief-mg-tempo-espera-grandes-empreendimentos-servidores",
       "frente": "geral",
       "rota": "/noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores",
-      "titulo": "Fila do CAR no IEF Leva 4 Anos, mas Grandes Empreendimentos Tramitam em Meses",
+      "titulo": "Fila do CAR no IEF leva 4 anos, mas grandes empreendimentos tramitam em meses",
       "fonteUrl": "/noticias/car-ief-mg-tempo-espera-grandes-empreendimentos-servidores",
       "texto": "Radiografia inédita do ONSA revela que 76,9% dos 1,16 milhão de imóveis do CAR em Minas Gerais estão paralisados em análise. A média estadual supera 1.564 dias de espera, mas setores de silvicultura e mineração contam com ritos acelerados, assessorias privadas e análise automatizada. Levantamento aponta colapso de pessoal nos órgãos ambientais.\nO Cadastro Ambiental Rural (CAR) em Minas Gerais atingiu 1,16 milhão de imóveis cadastrados, cobrindo mais de 42,7 milhões de hectares. No entanto, o tempo médio para validação de um cadastro no Instituto Estadual de Florestas (IEF) alcançou a marca de 1.564 dias — mais de quatro anos de espera em fila de análise. Dos cadastros inscritos no estado, 76,9% permanecem paralisados aguardando análise manual ou saneamento de pendências pelo órgão ambiental. O acervo consolidado pelas 14 Unidades Regionais (URFBios) pode ser auditado diretamente no painel [Cadastro Ambiental Rural no IEF/MG](/ambiental/car).\nOs dados oficiais revelam uma profunda assimetria de velocidade conforme o porte e o setor econômico do imóvel rural. Enquanto a agricultura familiar e os pequenos posseiros (imóveis de até 4 Módulos Fiscais) enfrentam esperas que chegam a 1.600 até 2.300 dias (mais de 6 anos), grandes empreendimentos de silvicultura industrial (eucalipto e celulose) e projetos minerários conseguem validação completa em prazos que variam de 90 a 240 dias — até 17 vezes mais rápido que a média geral."
     },
@@ -3687,7 +4353,7 @@
       "id": "blog:laboratorio-de-dados-do-portal",
       "frente": "geral",
       "rota": "/noticias/laboratorio-de-dados-do-portal",
-      "titulo": "Laboratório de Dados: Compare Séries Públicas em Gráficos de Pontos",
+      "titulo": "Laboratório de dados: compare séries públicas em gráficos de pontos",
       "fonteUrl": "/noticias/laboratorio-de-dados-do-portal",
       "texto": "O portal lançou o Laboratório de Dados. O leitor escolhe dois acervos no dock e analisa indicadores lado a lado em gráficos de pontos. A busca global agora direciona palavras-chave direto para as janelas.\nConsultar dados públicos em tabelas extensas costuma afastar quem busca respostas rápidas. O novo [Laboratório de Dados](/laboratorio) aproxima duas realidades ao permitir a comparação visual e imediata de acervos públicos.\nA interface utiliza a técnica dither, transformando números em malhas de pontos em canvas e SVG. Esse estilo destaca proporções e densidades sem exigir bibliotecas pesadas de visualização."
     },
@@ -3695,7 +4361,7 @@
       "id": "blog:satelite-cbers-6-cooperacao-espacial-amazonia",
       "frente": "geral",
       "rota": "/noticias/satelite-cbers-6-cooperacao-espacial-amazonia",
-      "titulo": "Satélite Sino-Brasileiro CBERS-6 Monitorará a Amazônia Através de Nuvens Densas",
+      "titulo": "Satélite Sino-Brasileiro CBERS-6 monitorará a Amazônia através de nuvens densas",
       "fonteUrl": "/noticias/satelite-cbers-6-cooperacao-espacial-amazonia",
       "texto": "Brasil e China aprovam cronograma de desenvolvimento do satélite ambiental CBERS-6. Novo sensor de radar óptico superará limitações climáticas na fiscalização florestal.\nO [Instituto Nacional de Pesquisas Espaciais (INPE)](https://www.gov.br/inpe/pt-br) avança no desenvolvimento do satélite ambiental CBERS-6. A missão internacional é desenvolvida em parceria com a agência espacial da China. O investimento conjunto está orçado em US$ 51 milhões para lançamento em órbita baixa. Os relatórios oficiais do programa constam no [Portal do INPE](https://www.gov.br/inpe/pt-br).\nO satélite utilizará um sensor de radar de abertura sintética denominado SAR. Esta tecnologia emite pulsos capazes de atravessar coberturas de nuvens e névoas intensas. As imagens permitirão ao [Ibama](https://www.gov.br/ibama/pt-br) detectar desmatamentos ilegais e queimadas durante a noite. Os dados captados serão compartilhados gratuitamente com universidades públicas e institutos federais."
     },
@@ -3703,7 +4369,7 @@
       "id": "blog:indicadores-economicos-banco-central-credito-inflacao",
       "frente": "geral",
       "rota": "/noticias/indicadores-economicos-banco-central-credito-inflacao",
-      "titulo": "Dados do Banco Central Apontam Taxa Média do Cheque Especial em 128% ao Ano",
+      "titulo": "Dados do Banco Central apontam taxa média do cheque especial em 128% ao ano",
       "fonteUrl": "/noticias/indicadores-economicos-banco-central-credito-inflacao",
       "texto": "Atualização das séries econômicas do Banco Central reúne taxas de juros, inflação e endividamento. Crédito rotativo permanece elevado enquanto dívida líquida atinge 61% do PIB.\nA base de dados do [Banco Central do Brasil (BCB)](https://dadosabertos.bcb.gov.br) atualizou os indicadores monetários nacionais. O custo médio do cheque especial cobrado aos correntistas bancários atingiu 128,4% ao ano. A taxa básica [Selic](https://www3.bcb.gov.br/sgspub/) mantida pelo Copom permanece no patamar de 10,50% anuais. As estatísticas oficiais estão disponíveis no [Sistema Gerenciador de Séries Temporais](https://www3.bcb.gov.br/sgspub/).\nO índice de inflação oficial [IPCA](https://www.ibge.gov.br) acumulou variação de 4,24% no período de doze meses. Por outro lado, a Dívida Líquida do Setor Público alcançou 61,8% do PIB nacional. O crescimento das despesas financeiras pressiona o orçamento voltado para saúde e educação pública. O monitoramento das contas públicas pode ser acompanhado no [Painel de Orçamento](/estado-e-economia/orcamento)."
     },
@@ -3711,7 +4377,7 @@
       "id": "blog:minerais-criticos-litio-jequitinhonha-soberania",
       "frente": "geral",
       "rota": "/noticias/minerais-criticos-litio-jequitinhonha-soberania",
-      "titulo": "Vale do Jequitinhonha Atrai Corrida Global pelo Lítio com Exigência de Refino Nacional",
+      "titulo": "Vale do Jequitinhonha atrai corrida global pelo lítio com exigência de refino nacional",
       "fonteUrl": "/noticias/minerais-criticos-litio-jequitinhonha-soberania",
       "texto": "Exploração de lítio e terras raras atrai investimentos estrangeiros para municípios do semiárido mineiro. Nova regulação prioriza industrialização local e veta barragens a montante.\nOs municípios de [Araçuaí](/aracuai) e [Itinga](/itinga), no Vale do Jequitinhonha, lideram a mineração de lítio. As jazidas representam 85% das reservas economicamente viáveis conhecidas no Brasil. O mineral é matéria-prima fundamental para fabricação de baterias de veículos elétricos e eletrônicos. Os registros de concessão de lavra foram validados na [Agência Nacional de Mineração (ANM)](https://www.gov.br/anm/pt-br).\nEm Goiás, o município de Minaçu recebeu R$ 1,5 bilhão em terras raras. A mineradora [Serra Verde](https://www.serraverde.com) opera o projeto com apoio financeiro de fundos dos Estados Unidos. O [Ministério de Minas e Energia](https://www.gov.br/mme/pt-br) determinou exigências rígidas de refino e processamento químico local. A norma veda a exportação exclusiva de minério bruto sem agregação de valor."
     },
@@ -3719,7 +4385,7 @@
       "id": "blog:cobertura-celular-anatel-desertos-digitais-brasil",
       "frente": "geral",
       "rota": "/noticias/cobertura-celular-anatel-desertos-digitais-brasil",
-      "titulo": "Dados da Anatel Apontam mais de 1.400 Distritos Rurais sem Cobertura Celular no País",
+      "titulo": "Dados da Anatel apontam mais de 1.400 distritos rurais sem cobertura celular no país",
       "fonteUrl": "/noticias/cobertura-celular-anatel-desertos-digitais-brasil",
       "texto": "Mapeamento das antenas de telefonia móvel revela exclusão digital em centenas de municípios. Populações rurais enfrentam barreiras de acesso a serviços públicos e bancos digitais.\nA [Anatel](https://dados.gov.br/dados/conjuntos-dados/smp-cobertura) mapeou as antenas de telefonia celular no Brasil. A pesquisa constatou que 1.420 distritos municipais rurais não possuem qualquer sinal 4G. Em cidades do interior do Amazonas e Pará, a conectividade atende exclusivamente a sede urbana. As planilhas abertas estão acessíveis nos [Dados Abertos da Anatel](https://dados.gov.br/dados/conjuntos-dados/smp-cobertura).\nA falta de sinal móvel impede o acesso a prontuários eletrônicos e ensino digital. Para atenuar a carência, o [Ministério das Comunicações](https://www.gov.br/mcom/pt-br) aprovou R$ 1,2 bilhão do FUST. O fundo financia conexão de alta velocidade para quatro mil escolas públicas isoladas. As metas contratuais das operadoras privadas são auditadas pelos órgãos federais reguladores."
     },
@@ -3727,7 +4393,7 @@
       "id": "blog:monitoramento-barragens-sigbm-risco-minas-gerais",
       "frente": "geral",
       "rota": "/noticias/monitoramento-barragens-sigbm-risco-minas-gerais",
-      "titulo": "Minas Gerais Concentra 38 Barragens em Nível de Emergência Segundo Dados da ANM",
+      "titulo": "Minas Gerais concentra 38 barragens em nível de emergência segundo dados da ANM",
       "fonteUrl": "/noticias/monitoramento-barragens-sigbm-risco-minas-gerais",
       "texto": "Inventário do SIGBM mapeia 455 barragens de mineração em território mineiro. Três estruturas permanecem em nível máximo de alerta com risco de colapso.\nO [SIGBM da ANM](https://app.anm.gov.br/SIGBM/Publico/GerenciarMetadados) registra 455 barragens de mineração em Minas Gerais. Deste total cadastrado, 38 estruturas operam sob nível oficial de emergência declarado. Três reservatórios permanecem classificados no nível 3 de risco com perigo de rompimento. Os relatórios semanais de fiscalização são publicados pela [Agência Nacional de Mineração](https://www.gov.br/anm/pt-br).\nA barragem Forquilha III da mineradora [Vale](https://www.vale.com), em Ouro Preto, segue sob monitoramento ininterrupto. O Ministério Público acompanha as obras de descaracterização de represas construídas a montante. Paralelamente, o portal fiscaliza a execução do [Acordo Judicial de Reparação](https://www.mg.gov.br) de Brumadinho. O acordo destina R$ 37,68 bilhões para obras socioeconômicas e restauração ecológica regional."
     },
@@ -3735,7 +4401,7 @@
       "id": "blog:gastos-salarios-parlamentares-assembleias-estaduais",
       "frente": "geral",
       "rota": "/noticias/gastos-salarios-parlamentares-assembleias-estaduais",
-      "titulo": "Assembleias Estaduais Consomem Bilhões com Folha Parlamentar e Verbas Indenizatórias",
+      "titulo": "Assembleias estaduais consomem bilhões com folha parlamentar e verbas indenizatórias",
       "fonteUrl": "/noticias/gastos-salarios-parlamentares-assembleias-estaduais",
       "texto": "Mapeamento inédito consolida gastos dos legislativos estaduais em Minas Gerais e São Paulo. Cada deputado dispõe de dezenas de assessores e recursos para despesas de mandato.\nA [Assembleia Legislativa de Minas Gerais (ALMG)](https://www.almg.gov.br/transparencia) conta com 77 deputados estaduais em exercício. Cada parlamentar recebe salário base mensal fixado em R$ 34.774,64. Além do subsídio, cada deputado dispõe de até R$ 41.200,00 para verba indenizatória. Os dados financeiros detalhados foram extraídos do [Portal da ALMG](https://www.almg.gov.br/transparencia).\nNo estado de São Paulo, a [Alesp](https://www.alessp.sp.gov.br/transparencia/) abriga a maior bancada estadual com 94 parlamentares. Os deputados paulistas contam com verba de despesas de gabinete de R$ 50.300,00 mensais. Somados aos salários, os custos operacionais das assembleias ultrapassam R$ 3,8 bilhões ao ano. O cidadão pode auditar as votações na [Alesp Transparência](https://www.alessp.sp.gov.br/transparencia/)."
     },
@@ -3743,7 +4409,7 @@
       "id": "blog:preco-gasolina-capitais-cidades-estrategicas-anp",
       "frente": "geral",
       "rota": "/noticias/preco-gasolina-capitais-cidades-estrategicas-anp",
-      "titulo": "Pesquisa da ANP Mostra Disparidade de até R$ 1,67 no Preço da Gasolina entre Capitais",
+      "titulo": "Pesquisa da ANP mostra disparidade de até R$ 1,67 no preço da gasolina entre capitais",
       "fonteUrl": "/noticias/preco-gasolina-capitais-cidades-estrategicas-anp",
       "texto": "Levantamento semanal da ANP revela disparidade acentuada nos preços da gasolina pelo país. Custo do transporte e alíquotas estaduais explicam diferenças de até 30% nos postos.\nA pesquisa de preços da [Agência Nacional do Petróleo (ANP)](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis) registrou forte variação regional. O preço médio do litro da gasolina comum alcançou R$ 7,12 em Rio Branco. Em Porto Velho, os postos de combustíveis cobraram média de R$ 6,89 por litro. A distância das refinarias eleva o frete de distribuição para os estados da Região Norte.\nEm contrapartida, os postos da cidade de [São Paulo](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis) registraram a menor média nacional. O consumidor paulistano pagou em média R$ 5,45 por litro de gasolina comum. Em [Belo Horizonte](https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis), o combustível registrou valor médio de R$ 5,59 por litro. A diferença de preços entre capitais atinge R$ 1,67 por litro comercializado."
     },
@@ -3751,7 +4417,7 @@
       "id": "blog:leiloes-ferroviarios-malha-oeste-disputa-internacional",
       "frente": "geral",
       "rota": "/noticias/leiloes-ferroviarios-malha-oeste-disputa-internacional",
-      "titulo": "Leilões Ferroviários Atraem Consórcios Globais para Modernizar Transporte de Cargas",
+      "titulo": "Leilões ferroviários atraem consórcios globais para modernizar transporte de cargas",
       "fonteUrl": "/noticias/leiloes-ferroviarios-malha-oeste-disputa-internacional",
       "texto": "Governo federal promove leilões de concessão para modernização da Malha Oeste e Ferrogrão. Fabricantes da Europa, Estados Unidos e China disputam fornecimento de locomotivas e trilhos.\nO Ministério dos Transportes prepara a licitação internacional de concessão da Malha Oeste ferroviária.\nO traçado conecta o Mato Grosso do Sul ao litoral do estado de São Paulo."
     },
@@ -3759,7 +4425,7 @@
       "id": "blog:minerais-criticos-politica-nacional-soberania-jequitinhonha",
       "frente": "geral",
       "rota": "/noticias/minerais-criticos-politica-nacional-soberania-jequitinhonha",
-      "titulo": "Minerais Críticos e Terras Raras Atraem Cooperação Internacional para Minas e Goiás",
+      "titulo": "Minerais críticos e terras raras atraem cooperação internacional para Minas e Goiás",
       "fonteUrl": "/noticias/minerais-criticos-politica-nacional-soberania-jequitinhonha",
       "texto": "Reservas de lítio no Vale do Jequitinhonha e terras raras em Goiás atraem potências globais. Nova legislação proíbe barragens a montante e prioriza industrialização nacional.\nO subsolo brasileiro concentra minerais essenciais para baterias de veículos elétricos e turbinas.\nO Vale do Jequitinhonha em Minas Gerais abriga as maiores reservas nacionais de lítio."
     },
@@ -3767,7 +4433,7 @@
       "id": "blog:series-economicas-banco-central-orcamento-estados-municipios",
       "frente": "geral",
       "rota": "/noticias/series-economicas-banco-central-orcamento-estados-municipios",
-      "titulo": "Séries Econômicas do Banco Central Explicam Pressão sobre Orçamentos dos Estados",
+      "titulo": "Séries econômicas do Banco Central explicam pressão sobre orçamentos dos estados",
       "fonteUrl": "/noticias/series-economicas-banco-central-orcamento-estados-municipios",
       "texto": "Integração com a API do Banco Central revela evolução da dívida líquida do setor público. Juros altos e inflação limitam capacidade fiscal de governos estaduais e prefeituras.\nO portal integrou indicadores macroeconômicos oficiais da API do Banco Central do Brasil.\nAs séries temporais mostram a trajetória da taxa de juros Selic e inflação."
     },
@@ -3775,7 +4441,7 @@
       "id": "blog:automacao-diaria-pncp-compras-publicas-lgpd",
       "frente": "geral",
       "rota": "/noticias/automacao-diaria-pncp-compras-publicas-lgpd",
-      "titulo": "Automação Diária do Portal Nacional de Contratações Públicas Assegura Fiscalização Cívica",
+      "titulo": "Automação diária do Portal Nacional de Contratações Públicas assegura fiscalização cívica",
       "fonteUrl": "/noticias/automacao-diaria-pncp-compras-publicas-lgpd",
       "texto": "Rotina automatizada analisa compras públicas publicadas no PNCP sob a Lei 14.133. Sistema sanitiza dados de pessoas físicas e consolida contratos em formato aberto.\nA nova Lei de Licitações centraliza compras governamentais no portal nacional PNCP.\nO Controle Popular desenvolveu rotina automatizada para baixar contratações diárias de órgãos públicos."
     },
@@ -3783,7 +4449,7 @@
       "id": "blog:transparencia-assembleias-legislativas-almg-alesp",
       "frente": "geral",
       "rota": "/noticias/transparencia-assembleias-legislativas-almg-alesp",
-      "titulo": "Assembleias Legislativas Estaduais Passam a Ter Gastos e Atuação Parlamentar Monitorados",
+      "titulo": "Assembleias legislativas estaduais passam a ter gastos e atuação parlamentar monitorados",
       "fonteUrl": "/noticias/transparencia-assembleias-legislativas-almg-alesp",
       "texto": "Novo módulo do portal acompanha o desempenho dos deputados estaduais de MG e SP. Dados oficiais detalham o uso de verbas públicas e proposições apresentadas.\nO portal Controle Popular ampliou a fiscalização cívica para os parlamentos estaduais brasileiros.\nCento e setenta e um deputados de Minas Gerais e São Paulo são acompanhados."
     },
@@ -3791,7 +4457,7 @@
       "id": "blog:cobertura-telefonia-movel-5g-anatel-desigualdades",
       "frente": "geral",
       "rota": "/noticias/cobertura-telefonia-movel-5g-anatel-desigualdades",
-      "titulo": "Cobertura de Telefonia Celular e 5G Expõe Desigualdades de Conectividade no País",
+      "titulo": "Cobertura de telefonia celular e 5G expõe desigualdades de conectividade no país",
       "fonteUrl": "/noticias/cobertura-telefonia-movel-5g-anatel-desigualdades",
       "texto": "Dados da Anatel revelam concentração da tecnologia 5G nos grandes centros urbanos. Rodovias federais e áreas rurais continuam com acesso restrito a redes velozes.\nO sinal de internet móvel de alta velocidade ainda não alcança toda população.\nDados da Anatel mostram avanço acelerado do sinal 5G nas vinte e sete capitais."
     },
@@ -3799,7 +4465,7 @@
       "id": "blog:preco-combustiveis-anp-capitais-200-cidades-polos",
       "frente": "geral",
       "rota": "/noticias/preco-combustiveis-anp-capitais-200-cidades-polos",
-      "titulo": "Preço dos Combustíveis Revela Fortes Disparidades entre Capitais e Cidades Estratégicas",
+      "titulo": "Preço dos combustíveis revela fortes disparidades entre capitais e cidades estratégicas",
       "fonteUrl": "/noticias/preco-combustiveis-anp-capitais-200-cidades-polos",
       "texto": "Série histórica da ANP aponta diferenças expressivas no preço médio da gasolina comum. Custo do refino, impostos estaduais e logística definem os valores na bomba.\nA Agência Nacional do Petróleo pesquisa preços de combustíveis semanalmente em todo país.\nO levantamento oficial abrange as vinte e sete capitais e duzentos municípios polos."
     },
@@ -3807,7 +4473,7 @@
       "id": "blog:investimentos-chineses-transmissao-mobilidade-eletrica",
       "frente": "geral",
       "rota": "/noticias/investimentos-chineses-transmissao-mobilidade-eletrica",
-      "titulo": "Empresas Chinesas Lideram Concessões de Energia e Eletrificação de Frotas no Brasil",
+      "titulo": "Empresas chinesas lideram concessões de energia e eletrificação de frotas no Brasil",
       "fonteUrl": "/noticias/investimentos-chineses-transmissao-mobilidade-eletrica",
       "texto": "Empresas da China expandem atuação no setor elétrico e no transporte público brasileiro. Investimentos da State Grid e BYD ultrapassam quarenta bilhões de reais.\nA concessionária [State Grid Brasil](https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao) arrematou o maior lote de transmissão da história nacional. A empresa venceu o Leilão 002/2023 promovido pela [ANEEL](https://www.gov.br/aneel/pt-br). O contrato prevê investimento de R$ 18,1 bilhões em linhas de ultra-alta tensão. A linha transmitirá 3.901 quilômetros de energia limpa entre Maranhão e Goiás.\nNo setor automotivo, a fabricante chinesa [BYD](https://www.ba.gov.br) investe R$ 5,5 bilhões na Bahia. O complexo industrial ocupa as antigas instalações fabris no município de Camaçari. O [Governo do Estado da Bahia](https://www.ba.gov.br) concedeu incentivos tributários para a montadora até 2032. O polo produzirá baterias e ônibus elétricos para frotas urbanas municipais."
     },
@@ -3815,7 +4481,7 @@
       "id": "blog:acordos-internacionais-sete-setores-estrategicos",
       "frente": "geral",
       "rota": "/noticias/acordos-internacionais-sete-setores-estrategicos",
-      "titulo": "Brasil Negocia Parcerias Internacionais Bilionárias em Sete Setores Estratégicos",
+      "titulo": "Brasil negocia parcerias internacionais bilionárias em sete setores estratégicos",
       "fonteUrl": "/noticias/acordos-internacionais-sete-setores-estrategicos",
       "texto": "Novo painel cívico acompanha negociações bilaterais em mineração, hidrogênio verde, ferrovias e tecnologia. Aportes previstos ultrapassam duzentos bilhões de reais.\nO governo federal mantém negociações diplomáticas e comerciais para projetos de grande porte. No Ceará, o [Porto do Pecém](https://www.ceara.gov.br) negocia US$ 2 bilhões com a União Europeia. O complexo produzirá hidrogênio verde voltado à exportação de energia limpa para Roterdã. O financiamento é estruturado pelo [BNDES](https://hubdeprojetos.bndes.gov.br) e por fundos europeus de sustentabilidade.\nNo setor de transportes, a [ANTT](https://www.gov.br/antt/pt-br) prepara a concessão da Malha Oeste ferroviária. O projeto orçado em R$ 18,5 bilhões prevê 1.973 quilômetros de ferrovias modernizadas. O traçado ligará o Mato Grosso do Sul aos portos exportadores do estado paulista. Consórcios da Europa e da China analisam os cadernos técnicos do leilão público."
     },
@@ -3823,7 +4489,7 @@
       "id": "blog:fornecedores-multinacionais-brasil-ti-infraestrutura",
       "frente": "geral",
       "rota": "/noticias/fornecedores-multinacionais-brasil-ti-infraestrutura",
-      "titulo": "Contratos Públicos com Multinacionais de Tecnologia e Infraestrutura Somam Bilhões no Brasil",
+      "titulo": "Contratos públicos com multinacionais de tecnologia e infraestrutura somam bilhões no Brasil",
       "fonteUrl": "/noticias/fornecedores-multinacionais-brasil-ti-infraestrutura",
       "texto": "Levantamento revela contratos bilionários da administração pública com multinacionais de tecnologia e transporte. Dados apontam dependência de softwares estrangeiros e infraestrutura crítica.\nA administração pública federal mantém contratos bilionários com grandes corporações internacionais de tecnologia. A empresa [Microsoft](https://compras.dados.gov.br) acumula R$ 2,1 bilhões em contratos federais ativos no país. Os recursos financiam licenças do Azure e programas corporativos para ministérios e tribunais. Os dados completos constam no [Portal de Compras do Governo Federal](https://compras.dados.gov.br).\nA multinacional americana [Oracle](https://compras.dados.gov.br) administra bancos de dados de autarquias sociais estratégicas. Os contratos públicos somam R$ 850 milhões no [Dataprev](https://www.dataprev.gov.br) e no [SERPRO](https://www.serpro.gov.br). Estes servidores processam os pagamentos da previdência social e dados da Receita Federal. O faturamento global de cada empresa foi verificado na [SEC Edgar](https://www.sec.gov/edgar)."
     },
@@ -3847,7 +4513,7 @@
       "id": "blog:vale-b3-cvm-e-execucao-do-acordo-de-brumadinho",
       "frente": "geral",
       "rota": "/noticias/vale-b3-cvm-e-execucao-do-acordo-de-brumadinho",
-      "titulo": "Ações da Vale, documentos na CVM e os R$ 5,48 bilhões pagos pelo Acordo de Brumadinho",
+      "titulo": "Ações da Vale, documentos na CVM e os R$ 5,48 bilhões pagos pelo acordo de Brumadinho",
       "fonteUrl": "/noticias/vale-b3-cvm-e-execucao-do-acordo-de-brumadinho",
       "texto": "Acompanhamento diário conecta o mercado financeiro aos direitos dos atingidos da bacia do Paraopeba. 73,8% dos valores já foram transferidos aos municípios.\nO rompimento da barragem B1 da mina Córrego do Feijão completou mais de sete anos. O portal mantém uma página dedicada às [Ações da Vale na B3 e CVM](/paraopeba/vale), rastreando fatos relevantes, dividendos e cotações da mineradora.\nEm paralelo, o painel de [Execução do Acordo de Brumadinho](/paraopeba/execucao) audita as transferências financeiras homologadas pelo Tribunal de Justiça de Minas Gerais (TJMG)."
     },
@@ -3911,7 +4577,7 @@
       "id": "blog:judiciario-transparencia-tribunais",
       "frente": "geral",
       "rota": "/noticias/judiciario-transparencia-tribunais",
-      "titulo": "Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual",
+      "titulo": "Tribunais em Minas Gerais: vagas, indicações e o mapa do judiciário estadual",
       "fonteUrl": "/noticias/judiciario-transparencia-tribunais",
       "texto": "Levantamento analisa a composição dos tribunais. Cobre nomeações para a segunda instância. Também mostra as condições das unidades de detenção.\nO portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de [Judiciário](/judiciario). O levantamento cobre o Tribunal de Justiça de Minas Gerais. Também cobre tribunais federais. Entre eles, o Tribunal Regional Federal da 6ª Região. E o Tribunal Regional do Trabalho.\nA ferramenta monitora as vagas que abrem na magistratura. O cálculo parte da idade limite de 75 anos. A sociedade acompanha as vagas para desembargador antes das indicações políticas. O Quinto Constitucional forma as listas tríplices. Essa regra reserva uma em cada cinco vagas. As vagas vão para advogados e membros do Ministério Público."
     },
@@ -3943,7 +4609,7 @@
       "id": "blog:vale-reparacao-cotacoes-brumadinho",
       "frente": "geral",
       "rota": "/noticias/vale-reparacao-cotacoes-brumadinho",
-      "titulo": "Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões",
+      "titulo": "Vale S.A.: acompanhamento do acordo de Brumadinho e a execução de R$ 37 bilhões",
       "fonteUrl": "/noticias/vale-reparacao-cotacoes-brumadinho",
       "texto": "Investigação detalha a situação das 26 cidades atingidas. Elas ficam na Bacia do Rio Paraopeba. Mostra metas do acordo judicial e dados econômicos da empresa.\nA barragem B1 da mina Córrego do Feijão rompeu em janeiro de 2019. O desastre matou 272 pessoas em Brumadinho. Destruiu ecossistemas da Bacia do Rio Paraopeba. O caso gerou o Acordo Judicial de Reparação Integral. Foi firmado em fevereiro de 2021. O valor nominal é de R$ 37,68 bilhões. Assinaram a Vale S.A., o governo estadual e órgãos de justiça.\nO portal dedica uma frente exclusiva ao caso na rota [Paraopeba](/paraopeba). Reúne 467 relatórios da auditoria externa independente AECOM. Os relatórios cobrem 16 eixos temáticos. Entre eles, recuperação ambiental, água, saneamento e mobilidade. Também cobrem a saúde mental dos atingidos."
     },
@@ -4071,7 +4737,7 @@
       "id": "blog:ppp-concessoes-minas-gerais-contratos-transparencia",
       "frente": "geral",
       "rota": "/noticias/ppp-concessoes-minas-gerais-contratos-transparencia",
-      "titulo": "Minas Gerais Tem 20 Contratos de Concessão que Somam R$ 10,48 Bilhões",
+      "titulo": "Minas Gerais tem 20 contratos de concessão que somam R$ 10,48 bilhões",
       "fonteUrl": "/noticias/ppp-concessoes-minas-gerais-contratos-transparencia",
       "texto": "Um levantamento do portal mapeia 20 contratos ligados a concessões em Minas Gerais. As rodovias concentram 9 desses contratos. A maior operação é a concessão administrativa de 95 escolas. Os valores iniciais somam R$ 10,48 bilhões.\nO [Portal da Transparência de Minas](https://www.transparencia.mg.gov.br/contratos) reúne 20 contratos ligados a concessões. A base separa três naturezas de contrato estadual. São seis instrumentos de concessão, cinco estudos e nove supervisões. Os valores iniciais somam R$ 10,48 bilhões em contratos assinados.\nO maior contrato é a concessão administrativa de 95 escolas públicas. O [instrumento 9518812](https://www.transparencia.mg.gov.br/contratos) vale R$ 6,7 bilhões. O Lote Sul de Minas aparece com R$ 2,01 bilhões em rodovias. A Rota da Liberdade, entre Ouro Preto e Mariana, soma R$ 1,70 bilhão."
     },
@@ -4079,7 +4745,7 @@
       "id": "blog:imoveis-uniao-minas-gerais-spu-destinacoes",
       "frente": "geral",
       "rota": "/noticias/imoveis-uniao-minas-gerais-spu-destinacoes",
-      "titulo": "União Mantém 553 Imóveis em Minas, e 159 Estão sem Destinação Definida",
+      "titulo": "União mantém 553 imóveis em Minas, e 159 estão sem destinação definida",
       "fonteUrl": "/noticias/imoveis-uniao-minas-gerais-spu-destinacoes",
       "texto": "O Painel de Transparência Ativa da SPU registra 553 imóveis da União em Minas Gerais. Belo Horizonte concentra 267 deles. Outros 159 estão em processo de destinação ou sem definição. A área total cadastrada passa de 35,7 mil hectares.\nO [Painel de Transparência Ativa da SPU](https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html) lista 553 imóveis da União em Minas. Belo Horizonte concentra 267 imóveis federais, quase metade do total. Conselheiro Lafaiete e Pará de Minas somam 41 cada.\nA maior parte dos imóveis tem uso próprio em serviço público, com 212 registros. Outros 80 imóveis estão em processo de destinação. E 79 aparecem sem destinação definida na fonte."
     },
@@ -4087,7 +4753,7 @@
       "id": "blog:municipios-minas-gerais-ibge-853-base-cidades",
       "frente": "geral",
       "rota": "/noticias/municipios-minas-gerais-ibge-853-base-cidades",
-      "titulo": "Base do IBGE Lista os 853 Municípios de Minas em 12 Mesorregiões",
+      "titulo": "Base do IBGE lista os 853 municípios de Minas em 12 mesorregiões",
       "fonteUrl": "/noticias/municipios-minas-gerais-ibge-853-base-cidades",
       "texto": "A base de municípios do portal reúne os 853 municípios de Minas Gerais. O IBGE os distribui em 12 mesorregiões e 66 microrregiões. As regiões imediatas somam 70 recortes no estado. Cada registro traz o código IBGE de sete dígitos.\nA base [municipios-mg.json](/cidades) reúne os 853 municípios mineiros do IBGE. Cada registro traz nome, código de sete dígitos e região. O código de sete dígitos identifica o município no país inteiro. Fonte é a [API de Localidades do IBGE](https://servicodados.ibge.gov.br/api/v1/localidades/estados/MG/municipios).\nO IBGE divide os 853 municípios em 12 mesorregiões. A maior é Sul/Sudoeste de Minas, com 146 municípios. A Zona da Mata reúne 142 municípios mineiros. O estado ainda tem 66 microrregiões e 70 regiões imediatas."
     },
@@ -4095,7 +4761,7 @@
       "id": "blog:populacao-polos-minas-censo-2022-ibge",
       "frente": "geral",
       "rota": "/noticias/populacao-polos-minas-censo-2022-ibge",
-      "titulo": "Censo 2022 Conta 411.846 Moradores em Betim, menos que a Estimativa de 2021",
+      "titulo": "Censo 2022 conta 411.846 moradores em Betim, menos que a estimativa de 2021",
       "fonteUrl": "/noticias/populacao-polos-minas-censo-2022-ibge",
       "texto": "O Censo 2022 apurou 411.846 moradores em Betim. A estimativa de 2021 apontava 450.024 pessoas. A diferença é de 38.178 moradores. Os dez polos regionais do portal somam 5.584.390 pessoas.\nO [Censo 2022 do IBGE](https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93) contou 411.846 moradores em Betim. Em 2021, a estimativa oficial apontava 450.024 pessoas. A contagem do censo ficou 38.178 moradores abaixo da estimativa.\nBelo Horizonte tinha 2.315.560 moradores no Censo 2022. A estimativa de 2021 apontava 2.530.701 pessoas na capital. Uberlândia teve 713.224 moradores na contagem exata. Contagem registrou 621.863 pessoas no mesmo censo."
     },
@@ -4103,7 +4769,7 @@
       "id": "blog:bot-fiscalizacao-bases-portal-qualidade-dado",
       "frente": "geral",
       "rota": "/noticias/bot-fiscalizacao-bases-portal-qualidade-dado",
-      "titulo": "Bot do Portal Fiscaliza Bases de Dados antes de Virarem Página Pública",
+      "titulo": "Bot do portal fiscaliza bases de dados antes de virarem página pública",
       "fonteUrl": "/noticias/bot-fiscalizacao-bases-portal-qualidade-dado",
       "texto": "O portal mantém um bot que audita suas bases de dados versionadas. A rotina verifica CPF por mod-11 e códigos IBGE de sete dígitos. Ela também acusa duplicatas e valores monetários zerados. O self-test tem 11 verificações e confirma que a régua enxerga.\nO [bot de fiscalização](/dados) roda sobre os JSON do diretório apps/web/data. Ele audita três bases-foco e dois diretórios completos. As bases-foco são imóveis da União, PPP de MG e contratos do PNCP. Os diretórios em foco são conselhos e outorgas.\nA rotina procura CPF válido pelo cálculo mod-11, o mesmo do dígito do CPF. O CPF encontrado nunca é impresso inteiro: sai como 123.***.***-09. Códigos IBGE de sete dígitos e CNPJ passam sem acusação. O bot também confere URL de fonte e valor monetário zerado."
     },
@@ -4111,7 +4777,7 @@
       "id": "blog:onu-unesco-oms-omc-brasil-indicadores-multilaterais",
       "frente": "geral",
       "rota": "/noticias/onu-unesco-oms-omc-brasil-indicadores-multilaterais",
-      "titulo": "Painel Multilateral Compara Brasil com 13 Países em IDH, Renda e Comércio",
+      "titulo": "Painel multilateral compara Brasil com 13 países em IDH, renda e comércio",
       "fonteUrl": "/noticias/onu-unesco-oms-omc-brasil-indicadores-multilaterais",
       "texto": "O portal reúne indicadores multilaterais de 14 países. O Brasil tem IDH 0,76 e Gini de 50,3. A Alemanha aparece com IDH 0,95 e Gini de 32,5. A OMC mede 240 milhões de toneladas de minério exportadas à China.\nO [Painel Multilateral](/internacional) reúne 14 países em seis indicadores sociais. O Brasil tem IDH de 0,76, segundo a ONU. O Gini brasileiro de renda é 50,3, medido pelo Banco Mundial. A Alemanha tem IDH de 0,95 e Gini de 32,5.\nO comércio mostra 240 milhões de toneladas de minério indo à China. Esse fluxo soma US$ 22,8 bilhões em valor FOB. Os seis fluxos mapeados somam 292,9 milhões de toneladas. O valor total chega a US$ 39,9 bilhões."
     },
@@ -4119,7 +4785,7 @@
       "id": "blog:eua-sec-usaspending-fundos-contratos-brasil",
       "frente": "geral",
       "rota": "/noticias/eua-sec-usaspending-fundos-contratos-brasil",
-      "titulo": "SEC e USAspending Mostram Fundos e Contratos dos EUA Ligados ao Brasil",
+      "titulo": "SEC e USAspending mostram fundos e contratos dos EUA ligados ao Brasil",
       "fonteUrl": "/noticias/eua-sec-usaspending-fundos-contratos-brasil",
       "texto": "O portal mapeia dez empresas e fundos registrados na SEC dos EUA. A BlackRock declara US$ 10,5 trilhões sob gestão. A Mosaic opera barragens de fosfato em Uberaba, Araxá e Tapira. O USAspending registra o comércio bilateral de US$ 85,2 bilhões.\nA [SEC EDGAR](https://www.sec.gov/edgar) guarda registros de dez empresas ligadas ao Brasil. A BlackRock declara US$ 10,5 trilhões em ativos sob gestão. A Vanguard aparece com US$ 9,3 trilhões. As duas são acionistas relevantes de empresas brasileiras.\nA Mosaic opera barragens de fosfato em Uberaba, Araxá e Tapira. Essas estruturas ficam sob regulação da ANM e da FEAM. A Vale aparece listada em Nova York via ADRs. O CIK 0000917691 reúne seus formulários na SEC."
     },
@@ -4127,7 +4793,7 @@
       "id": "blog:canada-tsx-mineracao-mount-polley-npri-brasil",
       "frente": "geral",
       "rota": "/noticias/canada-tsx-mineracao-mount-polley-npri-brasil",
-      "titulo": "Vale em Toronto e Rompimento de Mount Polley Ligam Mineração do Canadá ao Brasil",
+      "titulo": "Vale em Toronto e rompimento de Mount Polley ligam mineração do Canadá ao Brasil",
       "fonteUrl": "/noticias/canada-tsx-mineracao-mount-polley-npri-brasil",
       "texto": "O portal mapeia 12 mineradoras canadenses com operações no Brasil. A Vale Base Metals tem sede em Toronto e minas em Sudbury. O rompimento de Mount Polley, em 2014, despejou 25 milhões de metros cúbicos. O mesmo perito presidiu os painéis de Mount Polley e de Mariana.\nA base da [TSX](https://www.sedarplus.ca) lista 12 mineradoras canadenses atuantes no Brasil. A Sigma Lithium explora o Grota do Cirilo em Araçuaí e Itinga. O projeto tem 29 processos registrados na ANM. A Vale Base Metals mantém sede em Toronto.\nEm 2014, a barragem de [Mount Polley](https://mines.nrs.gov.bc.ca/p/58851197aaecd9001b8227cc/overview) despejou 25 milhões de metros cúbicos. O caso ocorreu 15 meses antes de Mariana. O mesmo perito canadense presidiu os painéis dos dois desastres. A usina de Sudbury da Vale registra 14,2 milhões de toneladas ao ano."
     },
@@ -4135,7 +4801,7 @@
       "id": "blog:transparencia-internacional-brasil-eua-canada-acesso",
       "frente": "geral",
       "rota": "/noticias/transparencia-internacional-brasil-eua-canada-acesso",
-      "titulo": "Lei dos EUA Responde em 20 Dias, mas Cadastro da SPU Omite Autorização",
+      "titulo": "Lei dos EUA responde em 20 dias, mas cadastro da SPU omite autorização",
       "fonteUrl": "/noticias/transparencia-internacional-brasil-eua-canada-acesso",
       "texto": "A FOIA americana responde pedidos em até 20 dias úteis. Ela existe desde 1966 e cobre todas as agências federais. A lei canadense ESTMA exige declarar pagamentos acima de CAD 100 mil. No Brasil, a SPU não publica o termo individual de autorização.\nA [FOIA](https://www.foia.gov) garante acesso a documentos de agências federais dos EUA. A lei existe desde 1966 e prevê resposta em 20 dias úteis. Qualquer pessoa no mundo pode fazer um pedido.\nO Canadá aprovou a [lei ESTMA](https://natural-resources.canada.ca/our-natural-resources/minerals-mining/mining-policy-taxation-industry/extractive-sector-transparency-measures-act/18188) para o setor extrativo. Ela obriga mineradoras a declarar pagamentos acima de CAD 100 mil. A [Ouvidoria CORE](https://core-ombuds.canada.ca) aceita denúncia em português. Comunidades brasileiras podem usar esse canal gratuito."
     },
@@ -4143,9 +4809,17 @@
       "id": "blog:novos-acervos-portal-autorizacoes-ppp-cidades-metodo",
       "frente": "geral",
       "rota": "/noticias/novos-acervos-portal-autorizacoes-ppp-cidades-metodo",
-      "titulo": "Três Acervos Novos do Portal Cruzam Imóveis da União, PPP e Municípios",
+      "titulo": "Três acervos novos do portal cruzam imóveis da União, PPP e municípios",
       "fonteUrl": "/noticias/novos-acervos-portal-autorizacoes-ppp-cidades-metodo",
       "texto": "O portal publicou três acervos novos sobre Minas Gerais. São 553 imóveis da União, 20 contratos de PPP e 853 municípios. Cada número vem de fonte oficial e link direto. O método cruza os dados sem afirmar o que a fonte não diz.\nO primeiro acervo lista 553 imóveis da União em Minas Gerais. Belo Horizonte concentra 267 deles, e Betim aparece com 25. A base está em [Destinações de Imóveis da União](/ambiental/autorizacoes).\nO segundo reúne 20 contratos de concessão e PPP do estado. As rodovias somam 9 contratos e as escolas lideram em valor. A soma dos valores iniciais chega a R$ 10,48 bilhões. Veja no [painel de PPP](/ambiental/ppp)."
+    },
+    {
+      "id": "blog:gastos-campanha-2026-publicidade-big-tech",
+      "frente": "geral",
+      "rota": "/noticias/gastos-campanha-2026-publicidade-big-tech",
+      "titulo": "Gastos de campanha 2026: publicidade, big tech e custo por voto",
+      "fonteUrl": "/noticias/gastos-campanha-2026-publicidade-big-tech",
+      "texto": "A eleição de 2026 já tem R$ 3,1 bilhões em despesas pagas. A publicidade digital contratada soma R$ 405,0 milhões. As big techs receberam R$ 272,4 milhões, quase tudo da Meta. As contas fecham em 03/11/2026, e a página reúne filtros.\nO dinheiro da eleição de 2026 aparece em um só lugar. A prestação de contas ao TSE soma R$ 6,5 bilhões em receita. São 19.724 candidaturas nos seis cargos disputados. Desses, 18.851 tiveram voto contado e 873 são vedadas ou retiradas.\nO dado é parcial, com selo na página. As contas definitivas valem até 03/11/2026. O segundo turno de 25/10 ainda muda votos."
     },
     {
       "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-09-26|Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA|CONCEDE LICENÇA MATERNIDADE",
@@ -4242,6 +4916,62 @@
       "titulo": "ANEXO ÚNICO",
       "fonteUrl": "/judiciario/contatos",
       "texto": "OUTRO publicada em 2026-09-26. Pessoa: ANEXO ÚNICO. Cargo: . Órgão/local: . Ato: PORTARIA Nº 1062 - REITOR/2026\", leia-se \"ANEXO ÚNICO - PORT. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-09-30|Decreto nº 47.859, de 07/02/2020, EXONERA A PEDIDO, com base|JAIR DAVID",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "JAIR DAVID",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "EXONERAÇÃO publicada em 2026-09-30. Pessoa: JAIR DAVID. Cargo: . Órgão/local: . Ato: Decreto nº 47.859, de 07/02/2020, EXONERA A PEDIDO, com base. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-01|Decreto nº 47. 859, de 07/02/2020, CONCEDE ADICIONAL POR TEM|CONCEDE ADICIONAL POR TEMPO",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE ADICIONAL POR TEMPO",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-01. Pessoa: CONCEDE ADICIONAL POR TEMPO. Cargo: . Órgão/local: . Ato: Decreto nº 47. 859, de 07/02/2020, CONCEDE ADICIONAL POR TEM. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-03|PORTARIA/SRE TEÓFILO OTONI Nº 278/2026|SRE TEÓFILO OTONI",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 278/2026 — SRE TEÓFILO OTONI",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-03. Pessoa: SRE TEÓFILO OTONI. Cargo: TEÓFILO OTONI  PORTARIA/SRE TEÓFILO OTONI Nº 278/2026. Órgão/local: . Ato: PORTARIA/SRE TEÓFILO OTONI Nº 278/2026. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA M|CONCEDE LICENÇA MATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA MATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-14. Pessoa: CONCEDE LICENÇA MATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA M. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA PATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-14. Pessoa: CONCEDE LICENÇA PATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA |CONCEDE LICENÇA MATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA MATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-14. Pessoa: CONCEDE LICENÇA MATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA . Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-15|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA PATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-15. Pessoa: CONCEDE LICENÇA PATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
     },
     {
       "id": "cavas:cobertura",
@@ -5701,7 +6431,7 @@
     },
     {
       "id": "bases:tema:assembleias",
-      "frente": "geral",
+      "frente": "congresso",
       "rota": "/assembleias",
       "titulo": "Bases de Assembleias legislativas estaduais",
       "fonteUrl": "/assembleias",
@@ -5715,7 +6445,7 @@
     },
     {
       "id": "bases:tema:internacional",
-      "frente": "geral",
+      "frente": "ambiental",
       "rota": "/internacional",
       "titulo": "Bases de Organismos multilaterais",
       "fonteUrl": "/internacional",

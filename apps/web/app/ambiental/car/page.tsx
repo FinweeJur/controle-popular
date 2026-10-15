@@ -6,7 +6,7 @@
  * ═══ PAPEL NO PORTAL CÍVICO ═══
  * Apresenta a radiografia de regularização ambiental rural no estado de Minas Gerais:
  * - 1,16 milhão de imóveis rurais sob gestão do Instituto Estadual de Florestas (IEF/MG);
- * - Fila crônica de análise com tempo médio superior a 1.500 dias (~4,3 anos de espera);
+ * - Fila crônica: 78,4% da base represada em análise, tempo médio de 1.577 dias (~4,3 anos de espera);
  * - Mapeamento das 14 Unidades Regionais de Florestas e Biodiversidade (URFBios);
  * - Divisão por portes em Módulos Fiscais (pequeno, médio e grande porte);
  * - Integração e links diretos para a Consulta Pública do SICAR e plataforma CAR 2.0 MG (CSR/UFMG).
@@ -46,10 +46,11 @@ import TabelaCar, { type ImovelCar } from "./TabelaCar";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
+// Descrição sai do dado: obterEstatisticasCar() lê car-mg.json (IEF/SEMAD/SICAR,
+// extração 20/08/2026) — o número viaja com a medição, não se digita à mão.
 export const metadata: Metadata = {
   title: "Cadastro Ambiental Rural (CAR) em Minas Gerais — IEF e CAR 2.0 | Meio Ambiente (ONSA)",
-  description:
-    "Radiografia dos 1,16 milhão de imóveis do CAR em Minas Gerais sob gestão do IEF/MG nas 14 URFBios: tempo médio de espera de 1.564 dias (~4,3 anos), análise por setor, porte e consulta oficial auditada.",
+  description: `Radiografia dos 1,16 milhão de imóveis do CAR em Minas Gerais sob gestão do IEF/MG nas 14 URFBios: tempo médio de espera de ${formatNumberBR(obterEstatisticasCar().tempoMedioAnaliseDias)} dias (~4,3 anos), análise por setor, porte e consulta oficial auditada.`,
 };
 
 /**
@@ -168,8 +169,8 @@ export default function PaginaCarAmbiental() {
         </h1>
         <p className="mt-3 text-base text-muted sm:text-lg max-w-4xl">
           A radiografia da fila de regularização ambiental no Instituto Estadual de Florestas (IEF/MG):
-          mais de <strong>1,16 milhão de imóveis</strong> cadastrados, com <strong>76,9% da base represada</strong> em
-          análise e tempo médio de espera superior a <strong>4 anos (1.564 dias)</strong>.
+          mais de <strong>1,16 milhão de imóveis</strong> cadastrados, com <strong>{formatNumberBR(estatisticas.percentualEmAnalise)}% da base represada</strong> em
+          análise e tempo médio de espera superior a <strong>4 anos ({formatNumberBR(estatisticas.tempoMedioAnaliseDias)} dias)</strong>.
           Dados consolidados pelas 14 Unidades Regionais de Florestas e Biodiversidade (URFBios),
           com cortes por setor, porte em módulos fiscais e busca auditável.
         </p>
@@ -219,7 +220,8 @@ export default function PaginaCarAmbiental() {
             {estatisticas.percentualEmAnalise.toFixed(1)}%
           </p>
           <span className="mt-1 block text-xs text-muted">
-            895 mil imóveis em fila ou pendentes de retificação
+            {/* O nº da fila é o percentual medido aplicado ao total medido — nada digitado à mão. */}
+            {formatNumberBR(Math.round((estatisticas.totalImoveis * estatisticas.percentualEmAnalise) / 100))} imóveis em fila ou pendentes de retificação
           </span>
         </div>
       </section>
@@ -358,8 +360,8 @@ export default function PaginaCarAmbiental() {
             ou posseiro. A existência do registro não equivale à regularidade ambiental nem à titulação fundiária da terra.
           </li>
           <li>
-            <strong>O gargalo crônico do Estado:</strong> Com mais de 76% da base ainda em análise pelo IEF/MG, o tempo médio
-            de espera de 1.564 dias gera insegurança tanto para quem preserva quanto para o combate a fraudes e sobreposições.
+            <strong>O gargalo crônico do Estado:</strong> Com {formatNumberBR(estatisticas.percentualEmAnalise)}% da base ainda em análise pelo IEF/MG, o tempo médio
+            de espera de {formatNumberBR(estatisticas.tempoMedioAnaliseDias)} dias gera insegurança tanto para quem preserva quanto para o combate a fraudes e sobreposições.
           </li>
           <li>
             <strong>Proteção de dados e links oficiais:</strong> Este portal não armazena nem expõe nomes ou CPFs de pessoas físicas.

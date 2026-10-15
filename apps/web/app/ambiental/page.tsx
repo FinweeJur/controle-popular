@@ -102,7 +102,7 @@ function montarBlocosInicio(dados: DadosAmbiental): Bloco[] {
       titulo: "Cadastro Ambiental Rural (CAR / IEF MG)",
       linha: `${formatNumberBR(estatisticasCar.totalImoveis)} imóveis nas 14 URFBios — tempo médio de espera de ${formatNumberBR(estatisticasCar.tempoMedioAnaliseDias)} dias`,
       texto:
-        "O raio-x da fila de análise do IEF/MG: 76,9% dos cadastros represados, divisão por 14 polos regionais, perfil por porte (módulos fiscais), setores econômicos e busca com links oficiais para SICAR e CAR 2.0.",
+        `O raio-x da fila de análise do IEF/MG: ${formatNumberBR(estatisticasCar.percentualEmAnalise)}% dos cadastros represados, divisão por 14 polos regionais, perfil por porte (módulos fiscais), setores econômicos e busca com links oficiais para SICAR e CAR 2.0.`,
       fase: "NOVO",
       href: "/ambiental/car",
       pronta: true,

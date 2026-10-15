@@ -63,7 +63,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Quanto Betim recebe de transferências federais?",
         resposta:
-          "O painel ComunicaBR detalha transferências da União para saúde, SUS, Bolsa Família e Fundeb em Betim.",
+          "ComunicaBR: Betim recebe R$ 900,8 milhões da União em 2026, em cinco repasses diretos.",
         link: "/dados/comunicabr",
         linkTexto: "Transferências federais ComunicaBR",
       },
@@ -276,7 +276,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Qual o orçamento dos órgãos do Sistema de Justiça em MG?",
         resposta:
-          "O TJMG recebe R$ 14,96 bi e o MPMG R$ 4,09 bi, enquanto a DPMG tem déficit de 176 comarcas.",
+          "TJMG recebe R$ 14,96 bi; MPMG, R$ 4,09 bi; DPMG, R$ 1,10 bi (LOA 2025).",
         link: "/judiciario/instituicoes",
         linkTexto: "Fichas TJMG, MPMG e DPMG",
       },
@@ -302,7 +302,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Quanto o TJMG e o MPMG gastam com folha e verbas indenizatórias?",
         resposta:
-          "As fichas analíticas mostram R$ 1,85 bi em indenizações no TJMG e a disparidade com a Defensoria Pública.",
+          "As fichas mostram pessoal: TJMG R$ 11,61 bi e MPMG R$ 3,06 bi na LOA 2025.",
         link: "/judiciario/instituicoes",
         linkTexto: "Gastos da Justiça MG",
       },
@@ -652,7 +652,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Onde consultar estudos acadêmicos e pesquisas sobre as mineradoras?",
         resposta:
-          "A Biblioteca Unificada reúne teses e pesquisas da UFMG, IFMG, CEFET-MG e UFRJ sobre barragens e bacias.",
+          "O acervo acadêmico reúne 424 teses de 73 universidades, com UFMG e UFOP liderando.",
         link: "/biblioteca",
         linkTexto: "Biblioteca & Acervo Acadêmico",
       },
@@ -678,9 +678,9 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/biblioteca",
     sugestoes: [
       {
-        pergunta: "Onde ver as pesquisas da UFMG, IFMG, CEFET e UFRJ?",
+        pergunta: "Onde ver as teses e pesquisas sobre barragens e mineração?",
         resposta:
-          "O acervo acadêmico reúne 22 estudos científicos sobre metais pesados, enchentes, drenagem e barragens.",
+          "A biblioteca tem 458 documentos e 424 teses de 73 universidades sobre desastres.",
         link: "/biblioteca",
         linkTexto: "Acervo Acadêmico e Científico",
       },
@@ -722,7 +722,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Onde ver as notícias investigativas sobre gastos dos tribunais?",
         resposta:
-          "Reportagens detalham orçamentos de R$ 14,9 bi no TJMG e disparidade histórica com a Defensoria Pública.",
+          "As reportagens acompanham o orçamento de R$ 14,96 bi do TJMG na LOA 2025.",
         link: "/noticias",
         linkTexto: "Investigações Noticiosas",
       },
@@ -736,7 +736,7 @@ export const CONTEXTOS: ContextoPagina[] = [
       {
         pergunta: "Quanto meu município recebe de repasses federais da União?",
         resposta:
-          "O ComunicaBR detalha transferências do Bolsa Família, SUS, Fundeb e BPC para os 853 municípios mineiros.",
+          "ComunicaBR traz cinco repasses diretos por município: prefeituras, Bolsa Família, BPC, seguro-desemprego e previdência.",
         link: "/dados/comunicabr",
         linkTexto: "ComunicaBR — Repasses Federais",
       },
