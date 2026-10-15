@@ -558,7 +558,20 @@ Funcao pura `converter()`.)
       `PainelEuropa`, `consumo-corporativo`) — **condicao levantada**: a
       `operacaoExata()` de 15/10 prefere `x / 1e6` a `x * (1/1e6)`, que e o
       que o codigo de antes fazia, entao limiar de `toFixed` nao muda de digito
-- [ ] Cada migracao: tsc + vitest + CodeScene delta
+- [x] Cada migracao: tsc + eslint + suite completa verdes em 15/10
+
+**Medido em 15/10/2026 (3 subagentes, um por arquivo):** 16 divisoes
+literais de escala viraram `converter({ valor, de, para, dominio })`
+em 4 arquivos — `cota-parlamentar/page.tsx` (4, incluindo uma `/ 1e9`
+que a fila nem listava), `europa/PainelEuropa.tsx` (4),
+`consumo-corporativo/page.tsx` (4) e `PainelConsumoCorporativoClient.tsx`
+(4). Fora: os limiares `valor >= 1_000_000` continuam sendo
+comparacao (nao conversao) e ficaram onde estavam; a razao
+`valor / maxVal` da barra do Ceap tambem, porque e proporcao de
+largura, nao escala. **Fora da fila de proposito:** `lib/betim/format.ts`
+— ele nao divide escala, ele ESCOLHE a escala pelo valor arredondado
+(promove `999.999` para `R$ 1 milhao`) e passar por `converter()` so
+adicionaria galho, sem tirar duplicacao.
 
 ## Riscos e metricas
 

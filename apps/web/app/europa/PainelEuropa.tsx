@@ -43,6 +43,7 @@ import type {
 } from "@/lib/internacional/dados-europa";
 import { gerarCsvEuropa, calcularAgregadosEuropa } from "@/lib/internacional/dados-europa";
 import { semAcento } from "@/lib/busca/normalizar";
+import { converter } from "@/lib/transformacao/unidades";
 import BarraIdiomaTrilingue from "@/app/components/BarraIdiomaTrilingue";
 import type { IdiomaExibicao, TextoTrilingue } from "@/lib/internacional/idiomas-internacional";
 
@@ -247,15 +248,15 @@ export default function PainelEuropa({
   const formatarValor = (valor: number, moeda: string) => {
     if (valor === 0) return "Não monetário / Regulatório";
     if (moeda === "GBP") {
-      return `£ ${(valor / 1_000_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bilhões`;
+      return `£ ${converter({ valor, de: "unidade", para: "bilhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bilhões`;
     }
     if (moeda === "EUR") {
-      return `€ ${(valor / 1_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} milhões`;
+      return `€ ${converter({ valor, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} milhões`;
     }
     if (moeda === "USD") {
-      return `US$ ${(valor / 1_000_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bilhões`;
+      return `US$ ${converter({ valor, de: "unidade", para: "bilhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bilhões`;
     }
-    return `R$ ${(valor / 1_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} milhões`;
+    return `R$ ${converter({ valor, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} milhões`;
   };
 
   return (

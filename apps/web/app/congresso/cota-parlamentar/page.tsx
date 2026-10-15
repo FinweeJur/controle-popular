@@ -1,7 +1,20 @@
+// ═══ O QUE É ESTA PÁGINA ═══
+// Auditoria da Cota Parlamentar (CEAP) da Câmara dos Deputados: total
+// reembolsado no país, lançamentos auditados, maiores estados por volume
+// e tabela interativa de parlamentares e fornecedores.
+// ═══ DE ONDE VEM O DADO ═══
+// Tudo vem de `carregarCeapNacional` (`lib/congresso/ceap-nacional-dados`),
+// que carrega os dados nacionais já compilados da CEAP.
+// ═══ POR QUE A ESCALA PASSA POR `lib/transformacao/unidades` ═══
+// Toda conversão de escala (mil, milhão, bilhão) é feita por `converter`,
+// a tabela única desse módulo. NÃO dividir por 1e6/1e9 na mão: número
+// errado é dano (AGENTS.md §1), e conversão espalhada multiplica a chance
+// de erro — além de fugir da operação exata que a tabela escolhe.
 import type { Metadata } from "next";
 import { carregarCeapNacional } from "@/lib/congresso/ceap-nacional-dados";
 import TabelaCeap from "./TabelaCeap";
 import { metadataEditavel } from "@/lib/edicoes";
+import { converter } from "@/lib/transformacao/unidades";
 
 export const metadata: Metadata = metadataEditavel("/congresso/cota-parlamentar", {
   title: "Cota Parlamentar (CEAP) — Controle Popular · Congresso",
@@ -42,7 +55,7 @@ export default function CotaParlamentarPage() {
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
           <span className="block text-xs font-semibold text-text-soft">Total Reembolsado</span>
           <span className="mt-1 block font-mono text-xl font-bold text-accent">
-            R$ {(dados.totalGastoNacional / 1e9).toFixed(2).replace(".", ",")} bi
+            R$ {converter({ valor: dados.totalGastoNacional, de: "unidade", para: "bilhao", dominio: "escala" }).toFixed(2).replace(".", ",")} bi
           </span>
           <span className="text-[12px] text-text-soft">Desde o início da série</span>
         </div>
@@ -58,7 +71,7 @@ export default function CotaParlamentarPage() {
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
           <span className="block text-xs font-semibold text-text-soft">Lançamentos Auditados</span>
           <span className="mt-1 block font-mono text-xl font-bold text-text">
-            {(dados.totalLancamentosAnalisados / 1e6).toFixed(1).replace(".", ",")} mi
+            {converter({ valor: dados.totalLancamentosAnalisados, de: "unidade", para: "milhao", dominio: "escala" }).toFixed(1).replace(".", ",")} mi
           </span>
           <span className="text-[12px] text-text-soft">Comprovantes fiscais</span>
         </div>
@@ -66,7 +79,7 @@ export default function CotaParlamentarPage() {
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
           <span className="block text-xs font-semibold text-text-soft">Maior Gasto Estadual</span>
           <span className="mt-1 block font-mono text-xl font-bold text-primary">
-            {topUfs[0]?.[0]} (R$ {((topUfs[0]?.[1] || 0) / 1e6).toFixed(0)} mi)
+            {topUfs[0]?.[0]} (R$ {converter({ valor: topUfs[0]?.[1] || 0, de: "unidade", para: "milhao", dominio: "escala" }).toFixed(0)} mi)
           </span>
           <span className="text-[12px] text-text-soft">Bancada mais volumosa</span>
         </div>
@@ -86,7 +99,7 @@ export default function CotaParlamentarPage() {
                   <div className="h-full bg-accent transition-all duration-500 rounded" style={{ width: `${pct}%` }} />
                 </div>
                 <span className="w-24 text-right font-mono text-text-soft">
-                  R$ {(valor / 1e6).toFixed(1).replace(".", ",")} mi
+                  R$ {converter({ valor, de: "unidade", para: "milhao", dominio: "escala" }).toFixed(1).replace(".", ",")} mi
                 </span>
               </div>
             );

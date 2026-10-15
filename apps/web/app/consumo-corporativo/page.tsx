@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { COBERTURA_CONSUMIDORES_RECURSOS } from "@/lib/recursos/dados-consumidores";
+import { converter } from "@/lib/transformacao/unidades";
 import PainelConsumoCorporativoClient from "./PainelConsumoCorporativoClient";
 
 export const metadata: Metadata = {
@@ -91,7 +92,7 @@ export default function ConsumoCorporativoPage() {
               <Droplets size={15} />
             </div>
             <div className="font-mono text-xl font-extrabold text-foreground">
-              {(cob.somaAguaTop50MgM3Ano / 1_000_000_000).toLocaleString("pt-BR", {
+              {converter({ valor: cob.somaAguaTop50MgM3Ano, de: "unidade", para: "bilhao", dominio: "escala" }).toLocaleString("pt-BR", {
                 maximumFractionDigits: 2,
               })}{" "}
               bi m³/ano
@@ -99,7 +100,7 @@ export default function ConsumoCorporativoPage() {
             <p className="text-xs text-muted">
               Equivale ao abastecimento de{" "}
               <strong className="text-foreground">
-                {(cob.equivalenciaHumanaAguaTop50Mg / 1_000_000).toLocaleString("pt-BR", {
+                {converter({ valor: cob.equivalenciaHumanaAguaTop50Mg, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", {
                   maximumFractionDigits: 1,
                 })}{" "}
                 milhões de habitantes
@@ -114,7 +115,7 @@ export default function ConsumoCorporativoPage() {
               <Zap size={15} />
             </div>
             <div className="font-mono text-xl font-extrabold text-foreground">
-              {(cob.somaEnergiaTop50MgMwhAno / 1_000_000).toLocaleString("pt-BR", {
+              {converter({ valor: cob.somaEnergiaTop50MgMwhAno, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", {
                 maximumFractionDigits: 1,
               })}{" "}
               TWh/ano
@@ -122,7 +123,7 @@ export default function ConsumoCorporativoPage() {
             <p className="text-xs text-muted">
               Consumo equivalente a{" "}
               <strong className="text-foreground">
-                {(cob.equivalenciaResidenciasEnergiaTop50Mg / 1_000_000).toLocaleString(
+                {converter({ valor: cob.equivalenciaResidenciasEnergiaTop50Mg, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString(
                   "pt-BR",
                   { maximumFractionDigits: 1 }
                 )}{" "}

@@ -38,6 +38,7 @@ import DonutChartResponsivo from "@/app/components/charts/DonutChartResponsivo";
 import BarraIdiomaTrilingue from "@/app/components/BarraIdiomaTrilingue";
 import type { IdiomaExibicao, TextoTrilingue } from "@/lib/internacional/idiomas-internacional";
 import { semAcento } from "@/lib/busca/normalizar";
+import { converter } from "@/lib/transformacao/unidades";
 import {
   obterTop50ConsumidoresMg,
   obterConsumoPaisesG20,
@@ -71,15 +72,15 @@ const PERGUNTA_NONO: TextoTrilingue = {
 function formatarValorEixo(valor: number, eixo: EixoRecurso): string {
   if (eixo === "capital") {
     if (valor >= 1_000_000_000) {
-      return `R$ ${(valor / 1_000_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bi`;
+      return `R$ ${converter({ valor, de: "unidade", para: "bilhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} bi`;
     }
-    return `R$ ${(valor / 1_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} mi`;
+    return `R$ ${converter({ valor, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} mi`;
   }
   if (valor >= 1_000_000_000) {
-    return `${(valor / 1_000_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 2 })} bi`;
+    return `${converter({ valor, de: "unidade", para: "bilhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 2 })} bi`;
   }
   if (valor >= 1_000_000) {
-    return `${(valor / 1_000_000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} mi`;
+    return `${converter({ valor, de: "unidade", para: "milhao", dominio: "escala" }).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} mi`;
   }
   return valor.toLocaleString("pt-BR");
 }
