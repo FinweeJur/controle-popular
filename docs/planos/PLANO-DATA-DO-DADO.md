@@ -9,6 +9,7 @@
 
 ## Sumário
 
+- [Execução (15/10/2026)](#execução-15102026-mesma-tarde-do-plano)
 - [Propósito](#propósito)
 - [O que existe hoje (medido 15/10)](#o-que-existe-hoje-medido-1510)
 - [Princípio inegociável](#princípio-inegociável)
@@ -21,6 +22,21 @@
 - [Fase 6 — travar no §8 como oitava qualidade (palavra final do dono)](#fase-6--travar-no-8-como-oitava-qualidade-palavra-final-do-dono)
 - [Critérios de aceite](#critérios-de-aceite)
 - [Riscos honestos](#riscos-honestos)
+
+## Execução (15/10/2026, mesma tarde do plano)
+
+Fases 0, 1, 2 (primeira onda), 4 (D1), 5 e 6 **executadas**; D2 (browser) e a
+segunda onda do rollout ficam para a próxima sessão.
+
+| Fase | Estado | Medido |
+|---|---|---|
+| 0 | ✅ | `DataColeta.tsx` + `lib/fontes/dataDoArquivo.ts` (leitor tolerante: 8 nomes de campo + 2 apelidos medidos) + 10 testes |
+| 1 | ✅ auditado | 28 arquivos do registry: 19 já datados, 5 writers carimbados agora (`dumpar-modulo-dados.mts`, `coletar-convenios-federais-mg.mts`), 3 isentos por estática, e 8 sem carimbo — 3 geojson sem writer no repo (decisão do dono: criar coletor ou isentar), `sinesp-vde-2026` é snapshot manual, e os apelidos `ultima_atualizacao`/`atualizado_na_fonte` viraram tolerância no leitor (renomear é decisão do dono) |
+| 2 | 1ª onda ✅ | 11 rotas datadas visíveis; 3 isentas com motivo (banco/geojson/bundle); páginas de banco ficam para a fase da data consultada; segunda onda segue o catálogo com o porteiro D1 contando a dívida |
+| 4 D1 | ✅ | `scripts/checar-data-coleta.py` + catraca `padrao-catraca-datas.json` (14 rotas; regressão = vermelho, dívida = aviso) + 2º step no `padrao-pagina.yml` |
+| 4 D2 | ⏳ | browser-asserção Playwright — próxima sessão (molde do `verificar-radio-navegacao.py`) |
+| 5 | ✅ | `scripts/vigia-coletores.mts` + `vigia-coletores.yml` (cron 13:00 UTC). Verdade exposta na primeira rodada: **13 fontes atrasadas, 8 sem carimbo** — catraca nascida com as dívidas registradas; vermelho só para regressão |
+| 6 | ✅ | §8 do AGENTS.md ganhou a oitava qualidade; PADRAO-PAGINA-WIKI passou de "seis" (estava atrás!) para "oito" com as linhas 7 e 8 + checklist |
 
 ## Propósito
 
