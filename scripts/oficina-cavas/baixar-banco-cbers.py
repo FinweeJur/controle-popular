@@ -29,6 +29,7 @@ import hashlib
 import json
 import math
 import sys
+import threading
 import time
 import urllib.request
 from dataclasses import dataclass
@@ -53,12 +54,21 @@ ESCALAS = {
     "maximo": (4301, 512),
 }
 
-# Cache de datasets abertos (rasterio)
-_DATASETS: dict = {}
+# Cache de datasets abertos (rasterio) — thread-local para o runner paralelo.
+# Cada thread guarda os próprios handles; assim um worker nunca fecha o
+# dataset que outro está lendo em meio à leitura (HTTP range).
+_TL = threading.local()
 _ENV = {"GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
         "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif",
         "GDAL_HTTP_HEADERS": f"User-Agent={UA}",
         "GDAL_HTTP_TIMEOUT": "120"}
+
+
+def _cache() -> dict:
+    """Dict de datasets desta thread (cria no primeiro acesso)."""
+    if not hasattr(_TL, "datasets"):
+        _TL.datasets = {}
+    return _TL.datasets
 
 
 @dataclass
@@ -70,11 +80,12 @@ class Estatisticas:
 
 
 def _evict_dataset() -> None:
-    """Remove o dataset mais antigo do cache."""
-    if not _DATASETS:
+    """Remove o dataset mais antigo do cache desta thread."""
+    d = _cache()
+    if not d:
         return
-    antigo = next(iter(_DATASETS))
-    ant_ds = _DATASETS.pop(antigo)
+    antigo = next(iter(d))
+    ant_ds = d.pop(antigo)
     try:
         ant_ds.close()
         c = getattr(ant_ds, "_env_ctx", None)
@@ -85,16 +96,17 @@ def _evict_dataset() -> None:
 
 
 def _abrir(href: str):
-    """Abre TIF remoto via rasterio (HTTP range). Cache de 6 handles."""
+    """Abre TIF remoto via rasterio (HTTP range). Cache de 6 por thread."""
     import rasterio
-    ds = _DATASETS.get(href)
+    d = _cache()
+    ds = d.get(href)
     if ds is None:
         ctx = rasterio.Env(**_ENV)
         ctx.__enter__()
         ds = rasterio.open(href)
         ds._env_ctx = ctx
-        _DATASETS[href] = ds
-        while len(_DATASETS) > 6:
+        d[href] = ds
+        while len(d) > 6:
             _evict_dataset()
     return ds
 
@@ -121,10 +133,11 @@ def _buscar_cena(lon: float, lat: float) -> dict | None:
 
 
 def _fechar_dataset(href: str) -> None:
-    """Fecha e remove dataset do cache."""
-    if href in _DATASETS:
+    """Fecha e remove dataset do cache desta thread."""
+    d = _cache()
+    if href in d:
         try:
-            _DATASETS.pop(href).close()
+            d.pop(href).close()
         except Exception:
             pass
 
