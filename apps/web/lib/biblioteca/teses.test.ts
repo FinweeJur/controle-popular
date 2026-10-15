@@ -25,18 +25,17 @@ describe("acervo de teses sobre Atingidos por Barragens", () => {
     expect(soma).toBe(COBERTURA_TESES.total);
   });
 
-  it("36 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
+  it("29 teses vêm sem link oficial — é lacuna da FONTE, e a página diz isso", () => {
     const semLink = TODAS_TESES.filter((t) => t.links.length === 0);
     for (const t of semLink) {
       expect(t.titulo.trim().length, `título ${t.id}`).toBeGreaterThan(0);
     }
-    // Medido 14/10/2026: 36 dos 424 itens têm o campo 'Link de acesso' do
-    // levantamento vazio. A 37ª (Garcia 2021, do levantamento das ATIs) saiu
-    // da lacuna: handle da USP conferido à mão pelo dono na fonte oficial
-    // (bem abaixo, no teste do link completado). Não se inventa URL para
-    // fechar a lacuna (regra §6 — URL adivinhada não existe). Se o número
-    // mudar, o gerador mudou: medir de novo antes de mexer na constante.
-    expect(semLink.length).toBe(36);
+    // Medido 14/10/2026: 8 das 37 teses que o levantamento deixou sem link
+    // tiveram o handle achado e conferido à mão na página oficial (1 pelo dono,
+    // 7 pelo agente — ver LINKS_COMPLETADOS no gerador). Restam 29 da lista
+    // original (todas do levantamento geral). Não se inventa URL para fechar
+    // lacuna (regra §6). Se o número mudar, o gerador mudou: medir de novo.
+    expect(semLink.length).toBe(29);
   });
 
   it("a única ATI sem link na fonte foi completada à mão com o handle da USP", () => {
@@ -49,6 +48,27 @@ describe("acervo de teses sobre Atingidos por Barragens", () => {
       "https://www.teses.usp.br/teses/disponiveis/107/107131/tde-09082022-144422/",
     );
     expect(garcia!.fonteDoLink).toContain("14/10/2026");
+  });
+
+  it("os 7 handles completados à mão batem o sobrenome+ano e vertem quem conferiu", () => {
+    // Chaves de LINKS_COMPLETADOS: sobrenome da autor(a) + ano, conferidas na
+    // página oficial (Playwright/Edge). Se o dado mudou de sobrenome, o
+    // gerador silencia — este teste impede o silêncio.
+    const chaves: Array<[string, number, string]> = [
+      ["Neiva, Julia", 2024, "tde-14062024-120633"],
+      ["Devóz, Paula", 2024, "tde-07102024-151003"],
+      ["Passos, Renato", 2020, "tde-21012021-123525"],
+      ["Souza, Letícia", 2022, "ufla.br/handle/1/55728"],
+      ["Andrade, Mariana", 2021, "ufla.br/handle/1/49120"],
+      ["Souza, Fernando", 2018, "ufla.br/handle/1/37535"],
+      ["Penha, Eliziane", 2024, "ufla.br/handle/1/60298"],
+    ];
+    for (const [sobrenome, ano, trecho] of chaves) {
+      const tese = TODAS_TESES.find((t) => t.autor.startsWith(sobrenome) && t.ano === ano);
+      expect(tese, `${sobrenome} ${ano}`).toBeDefined();
+      expect(tese!.links.some((l) => l.includes(trecho)), `${sobrenome} ${ano} link`).toBe(true);
+      expect(tese!.fonteDoLink, `${sobrenome} ${ano} fonte`).toContain("14/10/2026");
+    }
   });
 
   it("nenhuma tese tem link inventado — todo link começa com https://", () => {

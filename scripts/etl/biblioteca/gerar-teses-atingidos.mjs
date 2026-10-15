@@ -354,9 +354,38 @@ for (const entrada of entradasCsv) carregarAcervoCsv(entrada, CONTEXTO_ACERVO);
     NAVEGANDO na página oficial da tese — nunca URL adivinhada (AGENTS §6).
     Cada entrada grava quem conferiu e quando. */
 const LINKS_COMPLETADOS = {
+  // Garcia é do levantamento ATI; as outras 7 vieram do geral (424 → 29 sem link).
   "Garcia 2021": {
     links: ["https://www.teses.usp.br/teses/disponiveis/107/107131/tde-09082022-144422/"],
     fonte: "teses.usp.br — handle conferido pelo dono em 14/10/2026",
+  },
+  "Neiva 2024": {
+    links: ["https://teses.usp.br/teses/disponiveis/2/2140/tde-14062024-120633/"],
+    fonte: "teses.usp.br — achado por busca pública; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Devóz 2024": {
+    links: ["https://teses.usp.br/teses/disponiveis/60/60134/tde-07102024-151003/"],
+    fonte: "teses.usp.br — achado por busca pública; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Passos 2020": {
+    links: ["https://teses.usp.br/teses/disponiveis/6/6140/tde-21012021-123525/"],
+    fonte: "teses.usp.br — achado por busca pública; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Souza 2022": {
+    links: ["https://repositorio.ufla.br/handle/1/55728"],
+    fonte: "repositorio.ufla.br — handle da API Discovery; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Andrade 2021": {
+    links: ["https://repositorio.ufla.br/handle/1/49120"],
+    fonte: "repositorio.ufla.br — handle da API Discovery; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Souza 2018": {
+    links: ["https://repositorio.ufla.br/handle/1/37535"],
+    fonte: "repositorio.ufla.br — handle da API Discovery; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
+  },
+  "Penha 2024": {
+    links: ["https://repositorio.ufla.br/handle/1/60298"],
+    fonte: "repositorio.ufla.br — handle da API Discovery; página viva conferida por Playwright (Edge) do agente em 14/10/2026",
   },
 };
 let quantosCompletados = 0;
