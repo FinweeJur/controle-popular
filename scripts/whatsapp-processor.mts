@@ -219,6 +219,12 @@ async function processarInbox(): Promise<number> {
     gravarOffset(i + 1);
   }
 
+  // ponytail: limpa outbox após 15s — Go bot não faz offset tracking, reenviava tudo
+  if (novas > 0) {
+    setTimeout(() => {
+      try { fs.writeFileSync(OUTBOX, "", "utf-8"); } catch {}
+    }, 15000);
+  }
   return novas;
 }
 
