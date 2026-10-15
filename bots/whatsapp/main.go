@@ -297,7 +297,8 @@ func handleMessage(msg *events.Message, client *whatsmeow.Client, grupos []types
 	isGroup := chat.Server == types.GroupServer
 
 	// Resolve LID → telefone (WhatsApp manda LID em vez de número)
-	if !isGroup && sender.Server == types.HiddenUserServer {
+	// Aplica pra grupos E DMs — grupos também podem ter sender como LID
+	if sender.Server == types.HiddenUserServer {
 		if pnr, err := client.Store.LIDs.GetPNForLID(context.Background(), sender); err == nil {
 			senderNum = pnr.User
 		}
