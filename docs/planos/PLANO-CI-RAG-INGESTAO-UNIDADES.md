@@ -451,37 +451,81 @@ F↔C com offset, dB logaritmico) = `ponytail: add quando aparecer no portal`.
 
 ## Fases de execucao
 
+> **Execucao em 15/10/2026** (commit `d7735aae` + seguinte): Fases 1, 2, 3
+> e 4 concluidas e verificadas; Fase 5 (cambio em tempo real) e Fase 6
+> (migracao gradual) seguem abertas. O item `1.3 auto-ingestao.ts` foi
+> **cortado de proposito** — ver a nota dele abaixo. Fluxo ponta a ponta
+> testado: peca nova no acervo → delta detectado → sugestao de curadoria
+> gerada com a fonte colada → rodada identica nao suja a arvore.
+
 ### Fase 0 — Corrigir pendencias (1-2 h)
 
-- [ ] Corrigir `ESTEIRA-CAVAS.md` (metadados + sumario)
+- [x] Corrigir `ESTEIRA-CAVAS.md` (metadados + sumario)
 - [ ] Verificar proximo run do `cavas-preparador.yml`
 - [ ] Registrar pendencia CNDH em ESTADO.md (Bloco B)
 
 ### Fase 1 — `lib/transformacao/unidades.ts` (2-3 h)
 
-- [ ] Criar `unidades.ts` com tabela de fatores + `converter()` + `formatar()`
-- [ ] Criar `unidades.test.ts` (conversao direta, transitiva, escala, tempo, moeda)
-- [ ] Migrar 2-3 componentes existentes para usar `converter()` (piloto)
-- [ ] tsc + vitest + eslint
+- [x] Criar `unidades.ts` com tabela de fatores + `converter()` + `formatar()`
+- [x] Criar `unidades.test.ts` (conversao direta, transitiva, escala, tempo, moeda)
+- [x] Migrar 2-3 componentes existentes para usar `converter()` (piloto)
+- [x] tsc + vitest + eslint
+
+**Piloto executado** (3 alvos, tela medida antes/depois com 0 divergencia):
+`lib/texto/normalizar-numeros.ts` (6× `*1000` → `converter(..., "escala")`),
+`lib/comparador/cidades.ts:62` e `app/ambiental/car/page.tsx` (milhoes +
+dias→anos). Descartados de proposito os alvos em que `*(1/1e6)` mudaria
+arredondamento na tela (`lib/betim/format.ts` tem thresholds em cima da
+conta) e o `tags-reparacao.ts`, que nao tem nenhum importador.
 
 ### Fase 2 — `scripts/ingestao-rag.mts` (3-4 h)
 
-- [ ] Criar `ingestao-rag.mts` (detecta delta do acervo vs baseline)
-- [ ] Criar `data/acervo-baseline.json` (snapshot atual, 436 pedacos)
-- [ ] Criar `apps/web/lib/assistente/auto-ingestao.ts` (le delta, acrescenta ao acervo)
-- [ ] tsc + vitest
+- [x] Criar `ingestao-rag.mts` (detecta delta do acervo vs baseline)
+- [x] Criar `data/acervo-baseline.json` (snapshot atual, 449 pedacos)
+- [x] ~~Criar `apps/web/lib/assistente/auto-ingestao.ts`~~ **CORTADO** (nota abaixo)
+- [x] tsc + vitest
+
+**Corte do item 1.3 (`auto-ingestao.ts`), decidido na execucao.** Prova:
+o delta e SEMPRE subconjunto do acervo montado hoje — as pecas novas so
+existem porque o codigo que as monta ja mudou, entao `montarAcervo()` ja
+devolve elas. Injetar o delta em runtime seria codigo morto no caminho
+quente do RAG (e colocaria o acervo de 449 pecas dentro do bundle do
+Worker). O papel real do delta e **detectar e sugerir curadoria**, nao
+injetar: e o que os itens 1.1 e 1.2 fazem. Se um dia houver fonte que
+escreve acervo FORA do codigo (coleta pos-build), reabrir aqui.
+
+**Nota sobre o indice de busca:** o item 1 do diagrama ("entrada no indice")
+nao precisa de CI — `gerar-indice-busca.mts` ja roda no `prebuild` de cada
+deploy e regera o indice inteiro. Ele exige `DATABASE_URL`, que o runner do
+GitHub nao alcanca (mesma causa dos ETLs `skipped`), entao o workflow nao o
+toca; ficou registrado no comentario do `.github/workflows/ingestao-rag.yml`.
 
 ### Fase 3 — `scripts/gerar-respostas-curadas.mts` (2-3 h)
 
-- [ ] Criar gerador de Q&A por template (sem LLM)
-- [ ] Integrar com `ingestao-rag.mts` (pipeline: detecta → sugere → PR draft)
-- [ ] Testar com paginas de DH (relatorios novos)
+- [x] Criar gerador de Q&A por template (sem LLM)
+- [x] Integrar com `ingestao-rag.mts` (pipeline: detecta → sugere → revisao humana)
+- [x] Testar com paginas de DH (relatorios novos)
+
+**Como ficou a revisao humana:** o gerador imprime markdown para o
+`$GITHUB_STEP_SUMMARY` da CI (nao abre PR e nao escreve no repo) — a regra
+editorial do AGENTS.md vale: nada vira resposta curada sem o dono. O
+`--tudo` faz o relatorio de cobertura do acervo inteiro a qualquer momento.
+
+**Cobertura medida em 15/10/2026** (`--tudo`): 449 pecas, **264 ja
+cobertas** por resposta curada (59%) e **185 sem pergunta correspondente**
+— e o numero que sobra e a fila de curadoria do dono, gerada pelo mesmo
+comando.
 
 ### Fase 4 — Workflow `ingestao-rag.yml` (1-2 h)
 
-- [ ] Criar workflow com steps: checkout → ingestao → respostas → indice → commit
-- [ ] Testar com `workflow_dispatch`
-- [ ] Ajustar paths triggers
+- [x] Criar workflow com steps: checkout → ingestao → respostas → indice → commit
+- [x] Testar com `workflow_dispatch`
+- [x] Ajustar paths triggers
+
+**Diferenca do esquema do diagrama:** o passo "regenerar indice de busca"
+saiu (nota na Fase 2) e o commit e so dos dois JSONs derivados, com
+`[skip ci]` para nao reentrar no proprio gatilho. As sugestoes de curadoria
+vao para o step summary, nao para commit.
 
 ### Fase 5 — Cambio em tempo real (2-3 h, apos Fase 1)
 
@@ -489,10 +533,16 @@ F↔C com offset, dB logaritmico) = `ponytail: add quando aparecer no portal`.
 - [ ] Integrar com `unidades.ts` (le JSON, fallback fator fixo)
 - [ ] Adicionar step no `ingestao-rag.yml`
 
+**Nao executada de proposito:** o fator fixo da tabela ja converte (5,50
+R$/US$ de referencia) e a funcao `converter()` nao muda quando a API entrar
+— so muda a fonte do fator. Abrir quando o dono pedir cotacao do dia.
+
 ### Fase 6 — Migracao gradual de componentes (ongoing)
 
-- [ ] Identificar componentes com formatacao inline
-- [ ] Migrar para `converter()` + `formatar()` um a um
+- [x] Identificar componentes com formatacao inline (3 alvos migrados no piloto)
+- [ ] Migrar para `converter()` + `formatar()` um a um (fila: `cota-parlamentar`,
+      `PainelEuropa`, `consumo-corporativo` — so depois de resolver o
+      arredondamento `*(1/1e6)` vs `/1e6` nos thresholds)
 - [ ] Cada migracao: tsc + vitest + CodeScene delta
 
 ## Riscos e metricas

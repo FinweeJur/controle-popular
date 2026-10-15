@@ -8,9 +8,11 @@
  * (`montarAcervo()`, determinístico, sem fs/rede/banco) contra a baseline
  * versionada em `data/acervo-baseline.json` e emite o delta em
  * `data/acervo-delta.json` (novos / modificados / removidos). Os dois JSONs
- * são versionados — consumidores (`lib/assistente/auto-ingestao.ts`,
- * `gerar-respostas-curadas.mts`) leem o delta; a baseline é a referência da
- * última rodada conhecida.
+ * são versionados — `gerar-respostas-curadas.mts` lê o delta para sugerir
+ * curadoria e a baseline é a referência da última rodada conhecida. A
+ * injeção do delta em runtime (item 1.3 do plano, `auto-ingestao.ts`) foi
+ * CORTADA de propósito: o delta é sempre subconjunto do acervo montado em
+ * código, então injetá-lo seria código morto no caminho quente do RAG.
  *
  * ═══ COMO RODAR ═══
  *
@@ -67,9 +69,8 @@ function assinarMapa(sha: Record<string, string>): string {
  * Compara o acervo atual contra a baseline e produz o delta.
  * `rebuild` também liga quando a mudança passa de 50 peças — regra de risco
  * do PLANO-CI-RAG-INGESTAO-UNIDADES.md: delta grande demais vira rebuild
- * completo. As listas saem do mesmo jeito; quem decide é o consumidor
- * (`auto-ingestao.ts` trata `rebuild: true` ignorando o delta e refazendo
- * tudo). `rebuild` também liga na primeira rodada (sem baseline).
+ * completo. As listas saem do mesmo jeito; quem decide é o consumidor.
+ * `rebuild` também liga na primeira rodada (sem baseline).
  *
  * ponytail: limite fixo de 50, sem configurar — calibrar quando a cadência
  * real de mudança do acervo mudar de patamar.
@@ -108,32 +109,40 @@ function main(): void {
   const pecas = montarAcervo();
   const baseline = carregarBaseline();
   const { shasAtuais, novos, modificados, removidos, rebuild } = calcularDelta(baseline, pecas);
+  const mudou = novos.length > 0 || modificados.length > 0 || removidos.length > 0;
+  // Idempotência: sem mudança e com a baseline já igual, NÃO reescreve nada.
+  // Reescrever só para carimbar hora sujaria a árvore a cada rodada local e
+  // geraria commit de fachada na CI (o guard `git diff --cached --quiet` lá
+  // já cobre, mas aqui o custo seria sujar o `git status` de quem testa).
+  const baselineIgual =
+    baseline !== null && JSON.stringify(baseline.sha) === JSON.stringify(shasAtuais);
+  const escrever = !mudou && baselineIgual ? !existsSync(CAMINHO_DELTA) : true;
 
-  // Delta: formato consumido por auto-ingestao.ts e gerar-respostas-curadas.mts.
-  gravarJson(CAMINHO_DELTA, {
-    geradoEm,
-    totalPecas: pecas.length,
-    baselineSha: assinarMapa(shasAtuais),
-    rebuild,
-    novos,
-    modificados,
-    removidos,
-  });
-
-  // Baseline: SEMPRE reescrita com o estado atual — inclusive sem mudanças
-  // (mesmo conteúdo, novo carimbo de tempo; consumidor não lê a baseline).
-  gravarJson(CAMINHO_BASELINE, { geradoEm, totalPecas: pecas.length, sha: shasAtuais });
+  if (escrever) {
+    // Delta: formato consumido por gerar-respostas-curadas.mts.
+    gravarJson(CAMINHO_DELTA, {
+      geradoEm,
+      totalPecas: pecas.length,
+      baselineSha: assinarMapa(shasAtuais),
+      rebuild,
+      novos,
+      modificados,
+      removidos,
+    });
+    gravarJson(CAMINHO_BASELINE, { geradoEm, totalPecas: pecas.length, sha: shasAtuais });
+  }
 
   console.log(`[ingestao-rag] acervo: ${pecas.length} pecas`);
   console.log(
     `[ingestao-rag] novos: ${novos.length}, modificados: ${modificados.length}, removidos: ${removidos.length}`
   );
   console.log(`[ingestao-rag] rebuild: ${rebuild}`);
-  if (novos.length === 0 && modificados.length === 0 && removidos.length === 0) {
-    console.log("[ingestao-rag] sem mudancas");
-  }
-  console.log(`[ingestao-rag] baseline gravada em ${CAMINHO_BASELINE}`);
-  console.log(`[ingestao-rag] delta gravado em ${CAMINHO_DELTA}`);
+  if (!mudou) console.log("[ingestao-rag] sem mudancas");
+  console.log(
+    escrever
+      ? `[ingestao-rag] baseline gravada em ${CAMINHO_BASELINE}\n[ingestao-rag] delta gravado em ${CAMINHO_DELTA}`
+      : "[ingestao-rag] arquivos intactos (rodada identica a baseline)"
+  );
 }
 
 try {
