@@ -220,8 +220,7 @@ export default function PaginaCarAmbiental() {
             {estatisticas.percentualEmAnalise.toFixed(1)}%
           </p>
           <span className="mt-1 block text-xs text-muted">
-            {/* O nº da fila é o percentual medido aplicado ao total medido — nada digitado à mão. */}
-            {formatNumberBR(Math.round((estatisticas.totalImoveis * estatisticas.percentualEmAnalise) / 100))} imóveis em fila ou pendentes de retificação
+            {/* nº derivado: percentual medido × total medido — nada digitado à mão */} {formatNumberBR(Math.round((estatisticas.totalImoveis * estatisticas.percentualEmAnalise) / 100))} imóveis em fila ou pendentes de retificação
           </span>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { responderComRag, type RespostaRag } from "@/lib/assistente/embeddings/rag";
-import { repassesMunicipioNaPergunta } from "@/lib/assistente/acervo";
+import { perguntaComRepasses } from "@/lib/assistente/acervo";
 import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
 import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
@@ -104,21 +104,10 @@ export async function POST(req: Request): Promise<Response> {
   pergunta = diagnostico.textoSanitizado;
 
   // Dado direto por município: se a pergunta cita uma das 853 cidades de MG,
-  // injeta no contexto os repasses federais reais (ComunicaBR). O ponto ÚNICO
-  // por onde toda resposta IA passa é aqui — o acervo estático do chatbot é
-  // pergunta-independente, então o número da cidade entra na hora do pedido.
-  // Números vindos desta injeção contam como "da pergunta" e o verificador de
-  // citação não os acusa (já que o próprio portal os trouxe, com a fonte).
-  let perguntaParaRag = pergunta;
-  try {
-    const bloco = await repassesMunicipioNaPergunta(pergunta);
-    if (bloco) {
-      perguntaParaRag = `${pergunta}\n\nDADO DIRETO DO PORTAL (ComunicaBR — use estes valores na resposta):\n${bloco}`;
-    }
-  } catch {
-    // Falha de leitura do arquivo nunca derruba o chatbot: sem bloco, o fluxo
-    // normal segue (aponta a página) e nenhum número é prometido.
-  }
+  // perguntaComRepasses() injeta no texto enviado ao RAG os repasses federais
+  // reais (ComunicaBR) — o ponto ÚNICO por onde toda resposta IA passa. A
+  // função nunca lança: sem dado, a pergunta segue pura e o fluxo é honesto.
+  const perguntaParaRag = await perguntaComRepasses(pergunta);
 
   try {
     const resposta: RespostaRag = await responderComRag(perguntaParaRag, { pathname, titulo });

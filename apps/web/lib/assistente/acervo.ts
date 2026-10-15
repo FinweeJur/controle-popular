@@ -888,6 +888,37 @@ function formatarReais(bruto: number): string {
   return `R$ ${FMT_REAIS.format(bruto)}`;
 }
 
+/** Subindicador do codec ComunicaBR (um dos ramos de "transferências"). */
+type SubTransferencia = MunicipioComunicaBR["categorias"][number]["subindicadores"][number];
+
+/** Uma linha "Rótulo: R$ x (até corte)" — `null` quando o valor não existe. */
+function linhaFormatada(rotulo: string, valor: string | null | undefined, referencia: string | null | undefined): string | null {
+  if (!valor) return null;
+  const corte = soOCorte(referencia ?? null);
+  return `${rotulo}: ${valor}${corte ? ` (até ${corte})` : ""}`;
+}
+
+/** Linha do repasse direto ao ente (o valor do próprio subindicador). */
+function linhaDoEnte(rotulo: string, sub: SubTransferencia | undefined): string | null {
+  return linhaFormatada(rotulo, sub?.valor, sub?.referencia);
+}
+
+/**
+ * Linha de um programa dentro do subindicador de repasses às pessoas. O corte
+ * temporal vem do PRÓPRIO item (Bolsa Família até jul/2026, BPC até jun/2026…),
+ * com o corte do subindicador como reserva quando o item não declara o seu.
+ */
+function linhaDoPrograma(rotulo: string, pessoas: SubTransferencia | undefined, prefixo: string): string | null {
+  const item = pessoas?.itens.find((i) => i.titulo.startsWith(prefixo) && i.valor);
+  return linhaFormatada(rotulo, item?.valor, item?.referencia ?? pessoas?.referencia);
+}
+
+/** Acrescenta a linha do total somado (entes + pessoas) quando há soma. */
+function comLinhaDeTotal(linhas: string[], entes: SubTransferencia | undefined, pessoas: SubTransferencia | undefined): string[] {
+  const total = (entes?.valorBruto ?? 0) + (pessoas?.valorBruto ?? 0);
+  return total > 0 ? [...linhas, `Total: ${formatarReais(total)}`] : linhas;
+}
+
 /**
  * Monta as linhas dos cinco repasses diretos de UM município já expandido, na
  * ordem da ficha: prefeituras (entes federados), Bolsa Família, BPC,
@@ -898,36 +929,18 @@ function formatarReais(bruto: number): string {
 function linhasDeRepasses(m: MunicipioComunicaBR): string[] | null {
   const cat = m.categorias.find((c) => c.categoria === "transferencias");
   if (!cat) return null;
-  const aosEntes = cat.subindicadores.find((s) => s.titulo.includes("entes federados"));
-  const asPessoas = cat.subindicadores.find((s) => s.titulo.includes("às pessoas"));
-  const comValor = (sub: typeof asPessoas, prefixo: string) =>
-    sub?.itens.find((i) => i.titulo.startsWith(prefixo) && i.valor);
-
-  const linhas: string[] = [];
-  const linha = (rotulo: string, valor: string | null, referencia: string | null) => {
-    if (!valor) return;
-    const corte = soOCorte(referencia);
-    linhas.push(`${rotulo}: ${valor}${corte ? ` (até ${corte})` : ""}`);
-  };
-  // Corte temporal próprio de cada programa: usa a referência do PRÓPRIO item
-  // (Bolsa Família até jul/2026, BPC até jun/2026…), com o corte do
-  // subindicador como reserva quando o item não declara o seu.
-  const corteDoItem = (item: { referencia: string | null } | undefined, subReferencia: string | null) =>
-    item?.referencia ?? subReferencia;
-  const referenciaPessoas = asPessoas?.referencia ?? null;
-
-  // Prefeituras (repasse direto ao ente) sai do próprio subindicador.
-  linha("Prefeituras", aosEntes?.valor ?? null, aosEntes?.referencia ?? null);
-  linha("Bolsa Família", comValor(asPessoas, "Bolsa Família")?.valor ?? null, corteDoItem(comValor(asPessoas, "Bolsa Família"), referenciaPessoas));
-  linha("BPC", comValor(asPessoas, "BPC")?.valor ?? null, corteDoItem(comValor(asPessoas, "BPC"), referenciaPessoas));
-  linha("Seguro-Desemprego", comValor(asPessoas, "Seguro-Desemprego")?.valor ?? null, corteDoItem(comValor(asPessoas, "Seguro-Desemprego"), referenciaPessoas));
-  linha("Previdência (benefícios)", comValor(asPessoas, "Benefícios Previdenciários")?.valor ?? null, corteDoItem(comValor(asPessoas, "Benefícios Previdenciários"), referenciaPessoas));
-
-  if (linhas.length === 0) return null;
-
-  const total = (aosEntes?.valorBruto ?? 0) + (asPessoas?.valorBruto ?? 0);
-  if (total > 0) linhas.push(`Total: ${formatarReais(total)}`);
-  return linhas;
+  const achou = (nome: string) => cat.subindicadores.find((s) => s.titulo.includes(nome));
+  const entes = achou("entes federados");
+  const pessoas = achou("às pessoas");
+  const linhas = [
+    linhaDoEnte("Prefeituras", entes),
+    linhaDoPrograma("Bolsa Família", pessoas, "Bolsa Família"),
+    linhaDoPrograma("BPC", pessoas, "BPC"),
+    linhaDoPrograma("Seguro-Desemprego", pessoas, "Seguro-Desemprego"),
+    linhaDoPrograma("Previdência (benefícios)", pessoas, "Benefícios Previdenciários"),
+  ].filter((l): l is string => l !== null);
+  if (!linhas.length) return null;
+  return comLinhaDeTotal(linhas, entes, pessoas);
 }
 
 /**
@@ -939,28 +952,56 @@ function linhasDeRepasses(m: MunicipioComunicaBR): string[] | null {
  * @param pergunta texto já sanitizado do cidadão.
  * @returns bloco de texto com os valores, ou `null`.
  */
-export async function repassesMunicipioNaPergunta(pergunta: string): Promise<string | null> {
-  const cidades = await resumoDosMunicipios();
-  if (cidades.length === 0) return null;
-  // Pergunta normalizada entre espaços: casa só no limite de palavra, nunca
-  // "Maria" dentro de "Santa Maria de X" trocado. `semAcento` é o MESMO
-  // normalizador da `/busca` (lib/busca/normalizar.ts) — tolerante a acento.
-  const alvo = ` ${semAcento(pergunta).replace(/[^a-z0-9]+/g, " ").trim()} `;
-  // ponytail: linear scan nos 853 nomes; map de lowercase se o perfil de perguntas crescer.
-  let achada: (typeof cidades)[number] | null = null;
+/** Normaliza texto em palavras minúsculas separadas por espaço (sem acento). */
+function palavrasDe(texto: string): string {
+  return semAcento(texto).replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+/**
+ * A cidade mais longa citada na pergunta (a mais específica vence), ou `null`.
+ * Casa só no limite de palavra — nunca "Maria" solta dentro de "Santa Maria de
+ * X". `semAcento` é o MESMO normalizador da `/busca` (lib/busca/normalizar.ts).
+ * ponytail: varredura linear nos 853 nomes; map de lowercase se o perfil de
+ * perguntas crescer.
+ */
+function municipioMaisLongoCitado(
+  cidades: readonly { codigo: string; nome: string }[],
+  pergunta: string
+): { codigo: string; nome: string } | null {
+  const alvo = ` ${palavrasDe(pergunta)} `;
+  let achada: { codigo: string; nome: string } | null = null;
   let maior = 0;
   for (const c of cidades) {
-    const nome = semAcento(c.nome).replace(/[^a-z0-9]+/g, " ").trim();
-    if (nome.length < 4) continue;
-    if (nome.length > maior && alvo.includes(` ${nome} `)) {
+    const nome = palavrasDe(c.nome);
+    if (nome.length < 4 || nome.length <= maior) continue;
+    if (alvo.includes(` ${nome} `)) {
       achada = c;
       maior = nome.length;
     }
   }
+  return achada;
+}
+
+export async function repassesMunicipioNaPergunta(pergunta: string): Promise<string | null> {
+  const cidades = await resumoDosMunicipios();
+  if (cidades.length === 0) return null;
+  const achada = municipioMaisLongoCitado(cidades, pergunta);
   if (!achada) return null;
   const m = await municipioComunicaBR(achada.codigo);
   if (!m) return null;
   const linhas = linhasDeRepasses(m);
   if (!linhas) return null;
   return `${achada.nome}/MG — repasses federais diretos no ComunicaBR (por programa, cada um com seu corte):\n${linhas.join("\n")}`;
+}
+
+/**
+ * Pergunta enriquecida com os repasses federais da cidade citada, quando
+ * existem. Nunca lança: falha de leitura do arquivo devolve a pergunta pura e
+ * o chatbot segue honesto (aponta a página, nenhum número prometido). É o
+ * único ponto do POST do chatbot que conhece o ComunicaBR por município.
+ */
+export async function perguntaComRepasses(pergunta: string): Promise<string> {
+  const bloco = await repassesMunicipioNaPergunta(pergunta).catch(() => null);
+  if (!bloco) return pergunta;
+  return `${pergunta}\n\nDADO DIRETO DO PORTAL (ComunicaBR — use estes valores na resposta):\n${bloco}`;
 }
