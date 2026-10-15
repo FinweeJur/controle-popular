@@ -296,6 +296,13 @@ func handleMessage(msg *events.Message, client *whatsmeow.Client, grupos []types
 	senderNum := sender.User
 	isGroup := chat.Server == types.GroupServer
 
+	// Resolve LID → telefone (WhatsApp manda LID em vez de número)
+	if !isGroup && sender.Server == types.HiddenUserServer {
+		if pnr, err := client.Store.LIDs.GetPNForLID(context.Background(), sender); err == nil {
+			senderNum = pnr.User
+		}
+	}
+
 	// Filtra: grupo ou DM
 	if isGroup {
 		// Em grupo: verifica se é grupo alvo E mencionou o bot
@@ -416,7 +423,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	database, err := sqlstore.New(ctx, "sqlite", fmt.Sprintf("file:%s?_foreign_keys=true", storePathVal), nil)
+	database, err := sqlstore.New(ctx, "sqlite", fmt.Sprintf("file:%s?_foreign_keys=true&_busy_timeout=30000", storePathVal), nil)
 	if err != nil {
 		fmt.Printf("❌ Erro ao abrir store: %v\n", err)
 		os.Exit(1)
@@ -432,11 +439,15 @@ func main() {
 	// Logger nulo — mantém silencioso, logs via stdout
 	client := whatsmeow.NewClient(device, nil)
 
+	// Channel pra detectar completion via PairSuccess event
+	pairingDone := make(chan struct{})
+
 	// Handler de eventos
 	client.AddEventHandler(func(evt interface{}) {
 		switch e := evt.(type) {
 		case *events.Message:
-			if grupos != nil {
+			isGroupMsg := e.Info.Chat.Server == types.GroupServer
+			if grupos != nil || !isGroupMsg {
 				handleMessage(e, client, grupos, allowed)
 			} else {
 				texto := e.Message.GetConversation()
@@ -447,6 +458,7 @@ func main() {
 			}
 		case *events.PairSuccess:
 			fmt.Println("✅ Pairing concluído! JID:", e.ID, "Platform:", e.Platform)
+			close(pairingDone)
 		case *events.Disconnected:
 			fmt.Println("🔄 Desconectado, reconectando em 5s...")
 			time.Sleep(5 * time.Second)
@@ -482,28 +494,14 @@ func main() {
 			os.Exit(1)
 		}
 		go client.Connect()
-		// Aguarda primeiro evento QR (garante conexão WebSocket estabelecida)
-		fmt.Println("📶 Conectando ao WhatsApp...")
-		qrReceived := false
-		for evt := range qrChan {
-			if evt.Event == whatsmeow.QRChannelEventCode {
-				qrReceived = true
-				break
-			}
-			if evt.Event == "timeout" {
-				fmt.Println("❌ Timeout conectando ao WhatsApp")
-				os.Exit(1)
-			}
-		}
-		// Drain resto do canal em background (QR codes expirados)
+		// Drain QR channel em background — pairing response via PairSuccess handler
 		go func() {
-			for range qrChan {}
+			for evt := range qrChan {
+				fmt.Printf("  [QR evento: %s]\n", evt.Event)
+			}
 		}()
-		if !qrReceived {
-			fmt.Println("❌ Não recebi confirmação de conexão")
-			os.Exit(1)
-		}
-		time.Sleep(2 * time.Second)
+		fmt.Println("📶 Conectando ao WhatsApp...")
+		time.Sleep(3 * time.Second)
 		code, err := client.PairPhone(ctx, pairPhone, false, whatsmeow.PairClientChrome, "Chrome (Windows)")
 		if err != nil {
 			fmt.Printf("❌ Erro no pair code: %v\n", err)
@@ -514,6 +512,16 @@ func main() {
 		fmt.Println("   2. Settings → Linked Devices → Enter Code")
 		fmt.Println("   3. Digite o código acima")
 		fmt.Println("   Pode levar alguns segundos para o pairing completar...")
+
+		// Wait for PairSuccess event (or timeout 160s — pair code validity)
+		select {
+		case <-pairingDone:
+			fmt.Println("✅ Pairing concluído! Store salvo.")
+		case <-time.After(160 * time.Second):
+			fmt.Println("⏰ Timeout do pairing (160s)")
+			client.Disconnect()
+			os.Exit(1)
+		}
 	} else if !alreadyPaired {
 		qrChan, err := client.GetQRChannel(context.Background())
 		if err != nil {
@@ -545,6 +553,30 @@ func main() {
 	} else {
 		fmt.Println("🔑 Já emparelhado — conectando...")
 		go client.Connect()
+		// Fetch LID mappings for allowed numbers (para resolver LIDs em DMs)
+		go func() {
+			if !client.WaitForConnection(15 * time.Second) {
+				return
+			}
+			var jids []types.JID
+			for _, num := range mapKeys(allowed) {
+				if jid, err := types.ParseJID(num); err == nil {
+					jids = append(jids, jid)
+				}
+			}
+			if len(jids) > 0 {
+				client.GetUserInfo(ctx, jids)
+				fmt.Println("📋 LIDs mapeados para contatos autorizados")
+			}
+			// Fetch group metadata for target groups (sync "Trenzim" etc)
+			for _, g := range grupos {
+				if info, err := client.GetGroupInfo(ctx, g); err == nil {
+					fmt.Printf("👥 Grupo sincronizado: %s (%s)\n", info.Name, g.String())
+				} else {
+					fmt.Printf("⚠️  Não foi sincronizar grupo %s: %v\n", g.String(), err)
+				}
+			}
+		}()
 	}
 
 	// Inicia poller de outbox
