@@ -26,11 +26,13 @@ const OFFSET_FILE =
   path.join(RAIZ, "bots", "whatsapp", ".whatsapp-processor-offset");
 
 // Porta 8645 (hermes proxy start --provider nous --port 8645)
+// Modelo FREE testado: upstage/solar-mini4:free ✅
+// poolside/laguna-s-2.1:free: 429 (rate-limited)
 // ponytail: o proxy verifica créditos na hora — models do Nous Free Account estão esgotados.
 // Usar sempre o CLI como fallback primário, proxy como otimização quando houver crédito.
 const HERMES_PROXY_URL = "http://127.0.0.1:8645/v1/chat/completions";
 const OLLAMA_URL = "http://127.0.0.1:11434/api/chat";
-const HERMES_MODEL = "upstage/solar-pro4:free";
+const HERMES_MODEL = "upstage/solar-mini4:free";
 const OLLAMA_MODEL = "sabia-finetuned:latest";
 const TMP_QUERY = path.join(RAIZ, "logs", ".whatsapp-query.json");
 
