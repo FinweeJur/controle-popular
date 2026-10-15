@@ -91,13 +91,15 @@ def _extrair_logits(modelo, cabeca, ctx, holdout):
 
     for item in holdout:
         from PIL import Image
+        import torch.nn.functional as F_
         img = Image.open(item["arquivo"]).convert("RGB")
-        inputs = processador(images=img, return_tensors="pt").to(dispositivo)
+        inputs = processador(images=[img], return_tensors="pt")
+        pv = inputs["pixel_values"].to(dispositivo)
         with torch.no_grad():
-            feats = modelo.get_image_features(**inputs)
-            if hasattr(feats, "pooler_output"):
-                feats = feats.pooler_output
-            logit = cabeca(feats).item()
+            out = modelo.get_image_features(pixel_values=pv)
+            # MESMO caminho do treino e do analisar: pooler + F.normalize(L2).
+            emb = F_.normalize(out.pooler_output, dim=-1)
+            logit = cabeca(emb.float()).squeeze(-1).item()
         logits_list.append(logit)
         labels_list.append(item["rotulo"])
 

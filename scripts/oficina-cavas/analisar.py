@@ -225,28 +225,34 @@ def _pendentes(checkpoint: list[dict], feitos: dict,
     return pend[:limite] if limite else pend
 
 
-def analisar(limite: int | None = None) -> int:
+def analisar(limite: int | None = None, refazer: bool = False) -> int:
     """Analisa recortes pendentes. Devolve quantos novos foram analisados.
 
+    Com refazer=True, re-pontua TODOS os recortes do checkpoint e regrava
+    o analisados.jsonl do zero. Serve para aplicar uma nova calibração
+    (ex.: a temperatura T=0.5 do v7) aos scores já existentes.
+
     O log de eventos fica por conta do orquestrador (oficina.py), que envolve
-    cada est├ígio com o LoggerOficina ÔÇö aqui s├│ imprimimos progresso.
+    cada estágio com o LoggerOficina — aqui só imprimimos progresso.
     """
     checkpoint = ler_checkpoint()
-    feitos = ler_analisados()
+    # refazer: ignora os "feitos" e truncar o arquivo; senão só acrescenta.
+    feitos = {} if refazer else ler_analisados()
     pendentes = _pendentes(checkpoint, feitos, limite)
+    modo = "w" if refazer else "a"
 
     print(f"recortes no checkpoint: {len(checkpoint)} | "
-          f"j├í analisados: {len(feitos)} | novos a analisar: {len(pendentes)}",
+          f"já analisados: {len(feitos)} | novos a analisar: {len(pendentes)}",
           flush=True)
 
     pont = PontuadorV7.disponivel()
     if pont is None:
-        print("AVISO: modelo v7 indispon├¡vel ÔÇö s├│ nuvem_jpg ser├í gravado.",
+        print("AVISO: modelo v7 indisponível — só nuvem_jpg será gravado.",
               flush=True)
 
     _ANALISADOS.parent.mkdir(parents=True, exist_ok=True)
     n_ok = 0
-    with open(_ANALISADOS, "a", encoding="utf-8") as out:
+    with open(_ANALISADOS, modo, encoding="utf-8") as out:
         for item in pendentes:
             reg = _processar_item(item, pont)
             if reg is None:
@@ -256,8 +262,8 @@ def analisar(limite: int | None = None) -> int:
             n_ok += 1
             if n_ok % 25 == 0:
                 print(f"  analisados: +{n_ok} "
-                      f"(├║ltimo score={reg['score_cava']})", flush=True)
-    print(f"an├ílise conclu├¡da: +{n_ok} novos em {len(pendentes)} tentados",
+                      f"(último score={reg['score_cava']})", flush=True)
+    print(f"análise concluída: +{n_ok} novos em {len(pendentes)} tentados",
           flush=True)
     return n_ok
 
@@ -266,10 +272,12 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--limite", type=int, default=None,
                     help="quantos recortes novos analisar nesta rodada")
+    ap.add_argument("--refazer", action="store_true",
+                    help="re-pontua todos os recortes e regrava (nova calibração)")
     args = ap.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    analisar(args.limite)
+    analisar(args.limite, args.refazer)
     return 0
 
 
