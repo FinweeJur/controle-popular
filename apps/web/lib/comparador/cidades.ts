@@ -22,6 +22,10 @@
  * oficiais), com data de geração. A data viaja colada ao número na tela.
  */
 
+// Reais saem de R$ milhões pela tabela única de unidades (fator 1e6, o mesmo
+// de antes), em vez de fator digitado dentro da função — fase 6 do plano.
+import { converter } from "@/lib/transformacao/unidades";
+
 export interface CidadeComparavel {
   id: string;
   nome: string;
@@ -55,7 +59,7 @@ export interface IndicadorComparacao {
 /** Repasse federal por habitante (converte R$ milhões para reais). */
 export function repassesPerCapita(c: CidadeComparavel): number | null {
   if (!c.populacao || c.populacao <= 0) return null;
-  return (c.repassesMi * 1_000_000) / c.populacao;
+  return converter(c.repassesMi, "milhao", "unidade", "escala") / c.populacao;
 }
 
 /** Estabelecimentos de saúde por 10 mil habitantes. */

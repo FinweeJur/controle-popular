@@ -38,6 +38,10 @@ import {
   listarRegistrosCar,
 } from "@/lib/ambiental/car";
 import { formatNumberBR } from "@/lib/betim/format";
+// Conversão por lib/transformacao/unidades: hectares e dias saem da tabela
+// única de unidades do portal (domínios "escala" e "tempo"), eliminando a
+// divisão digitada na página; a formatação na tela não muda.
+import { converter } from "@/lib/transformacao/unidades";
 import TabelaCar, { type ImovelCar } from "./TabelaCar";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -192,7 +196,7 @@ export default function PaginaCarAmbiental() {
         <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-muted">Área Rural Cadastrada</span>
           <p className="mt-2 font-display text-3xl font-bold text-emerald-600 dark:text-emerald-400">
-            {(estatisticas.areaTotalHectares / 1_000_000).toFixed(2)} mi ha
+            {converter(estatisticas.areaTotalHectares, "unidade", "milhao", "escala").toFixed(2)} mi ha
           </p>
           <span className="mt-1 block text-xs text-muted">
             Cobre ~72,8% do território de Minas Gerais
@@ -241,7 +245,7 @@ export default function PaginaCarAmbiental() {
           <div className="mt-4 flex flex-col gap-2.5 max-h-[380px] overflow-y-auto pr-1">
             {urfbiosPorTempo.map((u) => {
               const pct = Math.round((u.tempoMedioAnaliseDias / maxTempoDias) * 100);
-              const anos = (u.tempoMedioAnaliseDias / 365).toFixed(1);
+              const anos = converter(u.tempoMedioAnaliseDias, "dia", "ano", "tempo").toFixed(1);
               return (
                 <div key={u.id} className="text-xs">
                   <div className="mb-1 flex items-center justify-between">

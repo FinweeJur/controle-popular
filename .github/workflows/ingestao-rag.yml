@@ -1,0 +1,90 @@
+# Ingestao automatica no RAG + respostas pre-curadas (Pilar 1, item 1.4 do
+# PLANO-CI-RAG-INGESTAO-UNIDADES.md).
+#
+# O que faz: quando uma pagina nova ou um dado novo entra no portal, a CI
+# detecta a mudanca no acervo, emite o delta e sugere respostas curadas —
+# depois commita os dois JSONs derivados de volta no repositorio. Sem isso,
+# a nova informacao so chegaria ao Seu Nono no proximo build manual.
+#
+# POR QUE ESTES `paths`: sao as tres portas por onde o acervo muda.
+#   - apps/web/app/**           -> pagina nova ou editada vira pedaco do acervo;
+#   - apps/web/data/**          -> dado versionado que o acervo le no build;
+#   - apps/web/lib/assistente/** -> as proprias regras de montagem do acervo.
+# Fora desses caminhos (css, testes, docs) nada do acervo muda, entao a CI
+# nao roda — push de documentacao nao gasta runner a toa.
+#
+# POR QUE `[skip ci]` NA MENSAGEM DE COMMIT: este workflow grava em
+# apps/web/data/, que e justamente um dos gatilhos. Sem o marcador, o proprio
+# commit de dados dispararia a si mesmo em loop infinito. O `[skip ci]` pula
+# TODOS os workflows do repositorio naquele push; os dados derivados entram
+# silenciosos, e o proximo push de codigo real volta a rodar tudo.
+#
+# POR QUE NAO REGERA O INDICE DE BUSCA AQUI: o indice estatico da /busca ja
+# e gerado no `prebuild` de cada deploy (npm script `indice:busca`, que chama
+# apps/web/scripts/gerar-indice-busca.mts) e precisa de DATABASE_URL para
+# ler o banco. O runner do GitHub nao alcanca o banco (mesma razao pela qual
+# os ETLs etl-betim/congresso/judiciario estao skipped desde 08/10). Gerar o
+# indice aqui duplicaria trabalho e falharia por falta de rede com o banco;
+# o indice acompanha o build, como sempre.
+#
+# Sem secrets novos: so `contents: write` para o commit de volta.
+
+name: Ingestao RAG + busca
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web/app/**'
+      - 'apps/web/data/**'
+      - 'apps/web/lib/assistente/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Mesmo padrao do guara-deploy.yml: uma execucao por ref; um push novo
+# cancela a anterior em andamento (nao adianta duas brigando pelo mesmo commit).
+concurrency:
+  group: ingestao-rag-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  delta:
+    name: Detecta delta e sugere respostas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      # Monorepo com workspaces: na raiz, igual ao guara-deploy.yml.
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Detector de mudancas: compara o acervo com a baseline (sha256 por
+      # pedaco) e escreve data/acervo-baseline.json + data/acervo-delta.json.
+      - name: Detectar mudancas no acervo
+        working-directory: apps/web
+        run: npx tsx scripts/ingestao-rag.mts
+
+      # Respostas pre-curadas por template (sem LLM). A saida markdown vai
+      # para o resumo da execucao — eh ali que o humano ve as sugestoes.
+      # `bash -e` do Actions: exit != 0 do script derruba o job.
+      - name: Gerar respostas curadas
+        working-directory: apps/web
+        run: npx tsx scripts/gerar-respostas-curadas.mts >> "$GITHUB_STEP_SUMMARY"
+
+      # Commit so dos dois JSONs derivados, git na mao (o repo nao usa
+      # action de auto-commit). [skip ci] impede o reentro no proprio gatilho.
+      - name: Commitar baseline e delta
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/web/data/acervo-baseline.json apps/web/data/acervo-delta.json
+          if git diff --cached --quiet; then echo "sem mudancas"; exit 0; fi
+          git commit -m "ci: atualiza baseline e delta do acervo RAG [skip ci]"
+          git push
