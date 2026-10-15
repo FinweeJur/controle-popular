@@ -115,6 +115,9 @@ function callOllamaFallback(query: string): string {
 
 // ─── Interface unificada ────────────────────────────────────────────────────
 
+// ponytail: dedup por ID — previne loops de eco do Go bot (mesma mensagem escrita 2x no inbox)
+const processedIds = new Set<string>();
+
 function callHermes(query: string): string {
   // ponytail: cascade reordenada — Proxy (3s) → Ollama (5s) → CLI (300s)
   // Evita o CLI como 2º passo: ele faz timeout de 120s em msgs complexas,
@@ -191,6 +194,15 @@ async function processarInbox(): Promise<number> {
     } catch {
       continue;
     }
+
+    // ponytail: skip duplicates — Go bot às vezes escreve a mesma msg 2x no inbox
+    const dedupKey = entry.id || entry.texto || "";
+    if (dedupKey && processedIds.has(dedupKey)) {
+      console.log(`⏭️  [${entry.de}] duplicada (id=${String(dedupKey).slice(0,12)})`);
+      gravarOffset(i + 1);
+      continue;
+    }
+    if (dedupKey) processedIds.add(dedupKey);
 
     const texto = entry.texto || "";
     if (!texto || texto === "[mensagem não-texto]") {
