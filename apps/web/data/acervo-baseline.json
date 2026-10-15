@@ -1,6 +1,6 @@
 {
-  "geradoEm": "2026-10-15T03:26:17.597Z",
-  "totalPecas": 449,
+  "geradoEm": "2026-10-15T12:53:59.131Z",
+  "totalPecas": 450,
   "sha": {
     "macro:soma-251-bi": "fe028c59bafec00f",
     "macro:acordo-mariana-171-bi": "6a3c7de1d8a24658",
@@ -359,6 +359,7 @@
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA M|CONCEDE LICENÇA MATERNIDADE": "e172f3fd32649a96",
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE": "91dfc649d573b2ca",
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA |CONCEDE LICENÇA MATERNIDADE": "ebd3bda1ad5d5315",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-15|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE": "f864e028948bc22d",
     "cavas:cobertura": "2c36e39aa80b4e25",
     "cavas:estado-janela": "391ad990104f9f08",
     "cavas:tres-estados": "f3f2cf6a7f78e5c0",

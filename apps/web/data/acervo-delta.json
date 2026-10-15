@@ -1,9 +1,18 @@
 {
-  "geradoEm": "2026-10-15T03:26:17.597Z",
-  "totalPecas": 449,
-  "baselineSha": "eb36e5b0c6a597d8",
+  "geradoEm": "2026-10-15T12:53:59.131Z",
+  "totalPecas": 450,
+  "baselineSha": "8eb3d74612bc41bb",
   "rebuild": false,
-  "novos": [],
+  "novos": [
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-15|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA PATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-10-15. Pessoa: CONCEDE LICENÇA PATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    }
+  ],
   "modificados": [],
   "removidos": []
 }
