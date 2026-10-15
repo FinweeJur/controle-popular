@@ -540,6 +540,20 @@
         "3047"
       ],
       "port": 3047
+    },
+    {
+      "//": "Worktree cp-seo (SEO: canonical, sitemap, og:image, posts) -- porta propria, mesma regra dos outros worktrees.",
+      "name": "cp-seo-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3025"],
+      "port": 3025
+    },
+    {
+      "//": "Worktree cp-hero-vivo (abertura animada com Vanta/three.js, Lenis e React Bits nas 5 paginas nobres: home + 4 eixos) -- porta propria, mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. 3046/3047 ja ocupadas por cp-ecossistema e cp-radio (medido 05/10/2026).",
+      "name": "cp-hero-vivo-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3048"],
+      "port": 3048
     }
   ]
 }
