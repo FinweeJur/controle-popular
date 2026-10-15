@@ -83,19 +83,13 @@ export default function IbamaIndexPage() {
         <p className="text-xs font-semibold uppercase tracking-wider text-primary">
           Ambiental · Federal · Fiscalização e Licenciamento
         </p>
-        <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
-          Licenciamento e Fiscalização Federal (IBAMA) em Minas Gerais
-        </h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">Licenciamento e Fiscalização Federal (IBAMA) em Minas Gerais</h1>
         <p className="max-w-3xl text-base text-text-soft">
-          Acompanhamento das licenças ambientais federais de grandes complexos industriais e minerários,
-          autuações por infrações ambientais e histórico de julgamentos pelo IBAMA.
+          Acompanhamento das licenças ambientais federais de grandes complexos industriais e minerários, autuações por infrações ambientais e histórico de julgamentos pelo IBAMA.
         </p>
       </header>
 
-      <DataColeta
-        coletadoEm={COBERTURA_IBAMA_MG.coletadoEm}
-        fonte="IBAMA — licenças federais e autos de infração julgados em MG"
-      />
+      <DataColeta coletadoEm={COBERTURA_IBAMA_MG.coletadoEm} fonte="IBAMA — licenças federais e autos de infração julgados em MG" />
 
       {/* Regra 2: Cartões de Topo / KPIs */}
       <section className="mb-10">

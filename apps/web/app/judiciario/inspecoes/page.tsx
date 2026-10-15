@@ -75,11 +75,7 @@ export default function PaginaInspecoesJudiciario() {
           atrasadas, prisões em flagrante sem audiência de custódia no prazo e o déficit de 59%
           das comarcas mineiras sem atendimento da Defensoria Pública.
         </p>
-        <DataColeta
-          coletadoEm={dataDoAcervo(carregarInspecoesDefensoria())}
-          fonte="Corregedoria Nacional (CNJ) + DPMG"
-          competencia="relatórios de 2008 a 2026"
-        />
+        <DataColeta coletadoEm={dataDoAcervo(carregarInspecoesDefensoria())} fonte="Corregedoria Nacional (CNJ) + DPMG" competencia="relatórios de 2008 a 2026" />
 
         <div className="mt-4 flex flex-wrap gap-2">
           <BotaoAlertaContextual

@@ -375,11 +375,8 @@ export default function ValePage() {
       </h1>
       <p className="mt-2 max-w-3xl text-[1.02em] text-text-soft">
         {formatNumberBR(cotacoes.length)} pregões de VALE3 — a ação ordinária da Vale na B3 — de{" "}
-        {formatDateBR(primeiro.data)} a {formatDateBR(ultimo.data)}. O preço da ação não mede o
-        dano do rompimento nem o andamento da reparação: é contexto de mercado, e nada mais.
+        {formatDateBR(primeiro.data)} a {formatDateBR(ultimo.data)}. O preço da ação não mede o dano do rompimento nem o andamento da reparação: é contexto de mercado, e nada mais.
       </p>
-
-      {/* Data da última escrita do dump — vem do carimbo do arquivo, nunca do dedo. */}
       <DataColeta coletadoEm={dataDoAcervo(acervoBruto)} fonte="fechamentos VALE3 na B3 (dump versionado)" />
 
       {/* Navegação integrada do monitoramento Vale no portal */}

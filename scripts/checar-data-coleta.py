@@ -81,28 +81,27 @@ def arquivo_da_rota(rota):
     return caminho if caminho.exists() else None
 
 
+def linha_da_rota(rota):
+    """Classifica UMA rota: datada, isenta, sem página ou devendo a data."""
+    if rota in ISENTACOES:
+        return {"rota": rota, "estado": "isenta", "motivo": ISENTACOES[rota]}
+    pagina = arquivo_da_rota(rota)
+    if pagina is None:
+        return {"rota": rota, "estado": "sem-pagina", "motivo": "rota dinâmica ou ausente"}
+    tem = bool(MARCADORES.search(pagina.read_text(encoding="utf-8")))
+    estado = "datada" if tem else "falta-data"
+    return {"rota": rota, "estado": estado, "arquivo": str(pagina.relative_to(RAIZ))}
+
+
 def auditar():
     """Mede cada rota de arquivo: datada, isenta ou dívida. Sem opinião."""
     vistos = set()
     resultados = []
     for rota, camada in fonte_rota_e_camada():
-        if rota in vistos or camada not in CAMADAS_ARQUIVO:
+        if camada not in CAMADAS_ARQUIVO or rota in vistos:
             continue
         vistos.add(rota)
-        if rota in ISENTACOES:
-            resultados.append({"rota": rota, "estado": "isenta", "motivo": ISENTACOES[rota]})
-            continue
-        pagina = arquivo_da_rota(rota)
-        if pagina is None:
-            resultados.append({"rota": rota, "estado": "sem-pagina", "motivo": "rota dinâmica ou ausente"})
-            continue
-        texto = pagina.read_text(encoding="utf-8")
-        tem = bool(MARCADORES.search(texto))
-        resultados.append({
-            "rota": rota,
-            "estado": "datada" if tem else "falta-data",
-            "arquivo": str(pagina.relative_to(RAIZ)),
-        })
+        resultados.append(linha_da_rota(rota))
     return resultados
 
 
@@ -128,11 +127,19 @@ def comparar_catraca(resultados, caminho):
         return [{"rota": "__catraca__", "regressao": "arquivo de catraca ausente"}]
     base = json.loads(arquivo.read_text(encoding="utf-8"))["estados"]
     agora = {r["rota"]: r["estado"] for r in resultados}
-    regressoes = []
-    for rota, estado in base.items():
-        if estado == "datada" and agora.get(rota) not in ("datada", "isenta"):
-            regressoes.append({"rota": rota, "regressao": f"estava datada, agora: {agora.get(rota, 'sumiu')}"})
-    return regressoes
+    return [
+        {"rota": r, "regressao": f"estava datada, agora: {agora.get(r, 'sumiu')}"}
+        for r, estado in base.items()
+        if estado == "datada" and agora.get(r) not in ("datada", "isenta")
+    ]
+
+
+def imprimir_tabela(resultados):
+    marca = {"datada": "OK ", "isenta": "-- ", "falta-data": "!!", "sem-pagina": " ."}
+    for r in sorted(resultados, key=lambda x: (x["estado"], x["rota"])):
+        extra = r.get("motivo", r.get("arquivo", ""))
+        print(f"[{marca[r['estado']]}] {r['rota']}  {extra}")
+    print(f"resumo: {resumo(resultados)}")
 
 
 def main():
@@ -143,29 +150,22 @@ def main():
     args = parser.parse_args()
 
     resultados = auditar()
-    cont = resumo(resultados)
-
     if args.gravar_catraca:
         gravar_catraca(resultados, args.gravar_catraca)
-
     if args.json:
-        print(json.dumps({"resumo": cont, "resultados": resultados}, ensure_ascii=False, indent=1))
+        print(json.dumps({"resumo": resumo(resultados), "resultados": resultados}, ensure_ascii=False, indent=1))
     else:
-        for r in sorted(resultados, key=lambda x: (x["estado"], x["rota"])):
-            marca = {"datada": "OK ", "isenta": "-- ", "falta-data": "!!", "sem-pagina": " ."}[r["estado"]]
-            extra = r.get("motivo", r.get("arquivo", ""))
-            print(f"[{marca}] {r['rota']}  {extra}")
-        print(f"resumo: {cont}")
-
-    if args.catraca:
-        regressoes = comparar_catraca(resultados, args.catraca)
-        if regressoes:
-            for g in regressoes:
-                print(f"::error::regressão de data visível: {g['rota']} — {g['regressao']}")
-            sys.exit(1)
+        imprimir_tabela(resultados)
+    if not args.catraca:
+        return 0
+    regressoes = comparar_catraca(resultados, args.catraca)
+    if not regressoes:
         print("catraca: nenhuma regressão (dívidas novas ficam no resumo acima)")
-    return
+        return 0
+    for g in regressoes:
+        print(f"::error::regressão de data visível: {g['rota']} — {g['regressao']}")
+    return 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -35,19 +35,27 @@ const CAMPOS_DATA = [
   "atualizado_na_fonte",
 ] as const;
 
+/** Só objeto de verdade tem cabeçalho; array e primitivo saem fora. */
+function ehObjetoComCabecalho(v: unknown): boolean {
+  if (v === null) return false;
+  if (typeof v !== "object") return false;
+  return !Array.isArray(v);
+}
+
 /**
  * Extrai a primeira data parseável do cabeçalho de um acervo.
  * @param acervo objeto importido do JSON de dados (ou qualquer registro com cabeçalho).
  * @returns a string ISO como está no arquivo, ou `null` quando não há data honesta.
  */
 export function dataDoAcervo(acervo: unknown): string | null {
-  if (!acervo || typeof acervo !== "object") return null;
+  if (!ehObjetoComCabecalho(acervo)) return null;
   const obj = acervo as Record<string, unknown>;
   for (const campo of CAMPOS_DATA) {
     const valor = obj[campo];
-    if (typeof valor === "string" && valor.length >= 10 && !Number.isNaN(Date.parse(valor))) {
-      return valor;
-    }
+    if (typeof valor !== "string") continue;
+    if (valor.length < 10) continue;
+    if (Number.isNaN(Date.parse(valor))) continue;
+    return valor;
   }
   return null;
 }

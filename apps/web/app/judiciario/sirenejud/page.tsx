@@ -59,17 +59,10 @@ export default function JudiciarioSirenejudPage() {
           Judiciário (a mesma do{" "}
           <Link href="/judiciario/numeros" className="underline">Justiça em Números</Link>) os
           processos de tema ambiental, com o município do órgão julgador.{" "}
-          <strong>
-            O arquivo público do CNJ é de {d.arquivo_modificado_em} e a atualização é
-            irregular
-          </strong>{" "}
+          <strong>O arquivo público do CNJ é de {d.arquivo_modificado_em} e a atualização é irregular</strong>{" "}
           — os números valem até essa data.
         </p>
-        <DataColeta
-          coletadoEm={dataDoAcervo(d)}
-          fonte="SIRENEJud/CNJ (arquivo em massa)"
-          competencia="contagens extraídas do parquet-base do CNJ"
-        />
+        <DataColeta coletadoEm={dataDoAcervo(d)} fonte="SIRENEJud/CNJ (arquivo em massa)" competencia="contagens extraídas do parquet-base do CNJ" />
         <p className="opacity-80">
           Cobertura da fonte: {d.cobertura}. O recorte de Minas Gerais, município a
           município, está em{" "}
