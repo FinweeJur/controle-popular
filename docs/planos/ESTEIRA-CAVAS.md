@@ -1,5 +1,20 @@
 # Plano: Esteira de Duas Calibrações para Cavas
 
+> **Tipo:** PLANO
+> **Domínio:** mineracao (cavas, modelo VLM)
+> **Última medição:** 2026-10-14
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [PLANO-GLOBO-CAVAS-MINERACAO.md](PLANO-GLOBO-CAVAS-MINERACAO.md), [MEDICOES-CAVAS-MINERACAO.md](MEDICOES-CAVAS-MINERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** cavas, mineracao, modelo, esteira, cbers, anm, calibracao, clip, holdout
+
+## Sumário
+
+- [Problema atual](#problema-atual)
+- [Arquitetura proposta](#arquitetura-proposta)
+- [Passos](#passos)
+- [Fontes de dados](#fontes-de-dados)
+- [Custo Azure (estimativa)](#custo-azure-estimativa)
+
 ## Problema atual
 Modelo v7 está colado em 0.65 — não discrimina bem. Precisa de:
 1. Banco de cavas reais ANM como referência
