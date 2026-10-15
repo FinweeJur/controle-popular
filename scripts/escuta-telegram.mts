@@ -54,6 +54,8 @@ async function api(metodo: string, corpo: Record<string, unknown>, token: string
   return { ok: r.ok, status: r.status, json: (await r.json()) as Record<string, unknown> };
 }
 
+const WEBHOOK_URL = "https://www.controlepopular.com.br/api/telegram";
+
 async function main() {
   carregarEnv();
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -64,6 +66,7 @@ async function main() {
   }
   let offset = lerOffset();
   console.log("👂 Escuta Telegram iniciada. Offset inicial:", offset ?? "(nenhum)");
+  console.log("💃 Webhook www ativo — aplicando dança deleteWebhook→getUpdates→setWebhook");
   let desdeUltimoBatimento = Date.now();
   const BATIMENTO_MS = 20_000; // a cada ~20s, respira para o watchdog
 
@@ -82,7 +85,20 @@ async function main() {
         allowed_updates: ["message"],
       };
       if (offset !== undefined) corpo.offset = offset + 1;
+      // Dança: desativa webhook → getUpdates → restaura webhook
+      const delWebhook = await api("deleteWebhook", { drop_pending_updates: false }, TOKEN);
+      if (!delWebhook.ok) {
+        console.error(`⚠️ deleteWebhook HTTP ${delWebhook.status}`);
+      }
+
       const res = await api("getUpdates", corpo, TOKEN);
+
+      // Restaura webhook www (mesmo se getUpdates deu erro)
+      const setWebhook = await api("setWebhook", { url: WEBHOOK_URL }, TOKEN);
+      if (!setWebhook.ok) {
+        console.error(`⚠️ setWebhook HTTP ${setWebhook.status}`);
+      }
+
       if (!res.ok) {
         console.error(`⚠️ getUpdates HTTP ${res.status} — aguardando 5s`);
         await new Promise((r) => setTimeout(r, 5000));

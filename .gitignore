@@ -218,6 +218,14 @@ scripts/.vigia-reinicios.json
 # Estado da quarentena de fontes (runtime)
 scripts/.quarentena-fontes.json
 
+# ── Bot WhatsApp (bots/whatsapp/) ──────────────────────────────────────────
+# Store SQLite (sessão do WhatsApp — contém chaves), QR code, binário compilado
+bots/whatsapp/store.db
+bots/whatsapp/*.sqlite
+bots/whatsapp/qr-code.png
+bots/whatsapp/whatsapp-bot
+bots/whatsapp/.whatsapp-*
+
 # Radar de editais: rascunhos locais e processados (estado de maquina, nao dado versionado)
 apps/web/data/radar-editais/pendentes/
 apps/web/data/radar-editais/processados/
