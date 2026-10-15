@@ -10,7 +10,7 @@
   "autor": "ONSA — Observatório Nacional Socioambiental",
   "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir do acervo unificado do portal, auditado pelo ONSA.",
   "publicadoEm": "2026-10-04T12:00:00Z",
-  "atualizadoEm": "2026-10-04T12:00:00Z",
+  "atualizadoEm": "2026-10-15T12:00:00Z",
   "tempoLeituraMin": 3,
   "palavrasChave": [
    "biblioteca",
@@ -52,7 +52,7 @@
   ],
   "recomendacaoVerificar": "Pesquise por tema na [biblioteca](/biblioteca) e abra cada documento pelo link oficial. Há também o acervo do [Paraopeba](/paraopeba).",
   "paragrafos": [
-   "A [biblioteca do portal](/biblioteca) reúne 458 documentos sobre barragens e mineração. O acervo foi atualizado em 01/10/2026, segundo o registro interno. Há atas, laudos técnicos, relatórios corporativos e produção acadêmica. Cada item aponta para o endereço original do documento.",
+   "A [biblioteca do portal](/biblioteca) reúne 458 documentos sobre barragens e mineração, com registro de 01/10/2026, e 424 teses e dissertações de 73 universidades, integradas em 14/10/2026. UFMG e UFOP lideram, com 30 trabalhos cada. Há atas, laudos técnicos, relatórios corporativos e produção acadêmica. Cada item aponta para o endereço original do documento.",
    "São 91 documentos de instituições de justiça e 20 empresas citadas. Outros 18 itens são produção acadêmica, como artigos e teses. O acervo ainda tem 67 documentos internacionais sobre o tema. A busca por texto ajuda a achar cada peça.",
    "O leitor pode pesquisar por tema na [biblioteca](/biblioteca). O material serve para jornalistas, pesquisadores e comunidades. Os documentos do desastre estão também no [acervo do Paraopeba](/paraopeba)."
   ]
@@ -3267,7 +3267,7 @@
   "autor": "ONSA — Observatório Nacional Socioambiental",
   "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
   "publicadoEm": "2026-09-06T22:15:00Z",
-  "atualizadoEm": "2026-09-07T01:30:00Z",
+  "atualizadoEm": "2026-10-15T12:00:00Z",
   "tempoLeituraMin": 7,
   "palavrasChave": [
    "comunicabr",
@@ -3315,6 +3315,7 @@
   "paragrafos": [
    "O governo federal mantém a plataforma ComunicaBR. Ela divulga a atuação e os repasses da União. Mostra cada município brasileiro. O Controle Popular coletou os dados dos 853 municípios de Minas Gerais. Desenvolveu um formato de compressão que consolidou tudo. O resultado é um índice comparável. Veja na página [ComunicaBR](/dados/comunicabr).",
    "O levantamento somou 174.012 indicadores. Eles foram declarados por 21 ministérios federais. O fluxo financeiro acumulado ultrapassa R$ 139 bilhões. Esse dinheiro banca programas sociais, previdenciários e de infraestrutura em Minas. Entre os programas catalogados está o Bolsa Família. Também o BPC (Benefício de Prestação Continuada para idosos e pessoas com deficiência). Há ainda o custeio de equipes de Saúde da Família. E o fornecimento de medicamentos da Farmácia Popular.",
+   "Os R$ 139 bilhões são o fluxo acumulado da fonte, sem recorte de período. O painel do Controle Popular mostra o que tem valor por município: cinco repasses diretos — prefeituras (até abril/2026), Bolsa Família (até julho/2026), BPC e seguro-desemprego (até junho/2026) e benefícios previdenciários (até março/2026) — somando R$ 68,8 bilhões em 2026, na coleta de 15/08/2026. Veja na página [ComunicaBR](/dados/comunicabr).",
    "A auditoria revelou um problema: 61% dos itens vieram vazios. São 106.446 de 174.012 indicadores sem valor publicado pela fonte oficial. Apenas 67.566 itens (39%) tinham dados numéricos preenchidos.",
    "Dado vazio não é inação da prefeitura. É lacuna da fonte federal. Na categoria 'Governo Digital', o sistema veio zerado. Os 853 municípios de Minas ficaram sem dado. Em Meio Ambiente e Infraestrutura, 727 cidades não receberam informação nenhuma.",
    "O ComunicaBR é um canal de comunicação institucional. Não substitui os relatórios contábeis oficiais. Eles são auditados pelo TCU (Tribunal de Contas da União). Também passam pelo SIAFI (Sistema Integrado de Administração Financeira)."
