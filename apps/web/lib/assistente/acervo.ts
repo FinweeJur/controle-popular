@@ -78,7 +78,9 @@ import catalogoBases from "@/data/catalogo-bases-dados.json";
 import basesPortal from "@/data/bases-portal.json";
 import { municipioComunicaBR, resumoDosMunicipios } from "@/lib/comunicabr/mg";
 import type { MunicipioComunicaBR } from "@/lib/comunicabr/indicadores";
-import { semAcento } from "@/lib/busca/normalizar";
+import { municipioMaisLongoCitado } from "@/lib/assistente/cidade-na-pergunta";
+import { blocoRepasseBrumadinho } from "@/lib/assistente/dado-acordo-brumadinho";
+import { blocoCambioSePedir } from "@/lib/assistente/dado-cambio";
 
 /** Um pedaço do acervo — texto + onde apontar a fonte. */
 export interface AcervoFonte {
@@ -974,40 +976,10 @@ function linhasDeRepasses(m: MunicipioComunicaBR): string[] | null {
  * @param pergunta texto já sanitizado do cidadão.
  * @returns bloco de texto com os valores, ou `null`.
  */
-/** Normaliza texto em palavras minúsculas separadas por espaço (sem acento). */
-function palavrasDe(texto: string): string {
-  return semAcento(texto).replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-/**
- * A cidade mais longa citada na pergunta (a mais específica vence), ou `null`.
- * Casa só no limite de palavra — nunca "Maria" solta dentro de "Santa Maria de
- * X". `semAcento` é o MESMO normalizador da `/busca` (lib/busca/normalizar.ts).
- * ponytail: varredura linear nos 853 nomes; map de lowercase se o perfil de
- * perguntas crescer.
- */
-function municipioMaisLongoCitado(
-  cidades: readonly { codigo: string; nome: string }[],
-  pergunta: string
-): { codigo: string; nome: string } | null {
-  const alvo = ` ${palavrasDe(pergunta)} `;
-  let achada: { codigo: string; nome: string } | null = null;
-  let maior = 0;
-  for (const c of cidades) {
-    const nome = palavrasDe(c.nome);
-    if (nome.length < 4 || nome.length <= maior) continue;
-    if (alvo.includes(` ${nome} `)) {
-      achada = c;
-      maior = nome.length;
-    }
-  }
-  return achada;
-}
-
 export async function repassesMunicipioNaPergunta(pergunta: string): Promise<string | null> {
   const cidades = await resumoDosMunicipios();
   if (cidades.length === 0) return null;
-  const achada = municipioMaisLongoCitado(cidades, pergunta);
+  const achada = municipioMaisLongoCitado({ cidades, pergunta });
   if (!achada) return null;
   const m = await municipioComunicaBR(achada.codigo);
   if (!m) return null;
@@ -1017,13 +989,33 @@ export async function repassesMunicipioNaPergunta(pergunta: string): Promise<str
 }
 
 /**
- * Pergunta enriquecida com os repasses federais da cidade citada, quando
- * existem. Nunca lança: falha de leitura do arquivo devolve a pergunta pura e
- * o chatbot segue honesto (aponta a página, nenhum número prometido). É o
- * único ponto do POST do chatbot que conhece o ComunicaBR por município.
+ * Os blocos de dado direto que podem responder NA HORA pela pergunta:
+ * repasses federais (ComunicaBR), repasse do Acordo de Brumadinho e PTAX do
+ * dia. Cada bloco cai sozinho — erro de leitura vira `null` e os outros
+ * seguem; a composição nunca lança. Função privada pequena porque o CodeScene
+ * mede complexidade por função (teto 9) e o ponto de injeção é UM só.
+ */
+async function blocosDeDadoDireto(pergunta: string): Promise<string[]> {
+  const blocos = await Promise.all([
+    repassesMunicipioNaPergunta(pergunta).catch(() => null),
+    blocoRepasseBrumadinho(pergunta).catch(() => null),
+    Promise.resolve()
+      .then(() => blocoCambioSePedir(pergunta))
+      .catch(() => null),
+  ]);
+  return blocos.filter((b): b is string => b !== null);
+}
+
+/**
+ * Pergunta enriquecida com os blocos de dado direto da cidade citada e/ou do
+ * câmbio pedido, quando existem. Nunca lança: falha de leitura devolve a
+ * pergunta pura e o chatbot segue honesto (aponta a página, nenhum número
+ * prometido). É o único ponto do POST do chatbot que injeta dado na pergunta
+ * — os até 3 blocos cabem sob UM cabeçalho só, para a IA não receber a ordem
+ * de "usar estes valores" duplicada.
  */
 export async function perguntaComRepasses(pergunta: string): Promise<string> {
-  const bloco = await repassesMunicipioNaPergunta(pergunta).catch(() => null);
-  if (!bloco) return pergunta;
-  return `${pergunta}\n\nDADO DIRETO DO PORTAL (ComunicaBR — use estes valores na resposta):\n${bloco}`;
+  const blocos = await blocosDeDadoDireto(pergunta);
+  if (blocos.length === 0) return pergunta;
+  return `${pergunta}\n\nDADO DIRETO DO PORTAL (use estes valores na resposta):\n${blocos.join("\n\n")}`;
 }
