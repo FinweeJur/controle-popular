@@ -6,7 +6,7 @@
  * (via proxy OpenAI-compatible ou CLI fallback), e grava resposta em outbox.
  *
  * Estratégia em cascata (lazy senior dev):
- *   1. Hermes Proxy API  (http://127.0.0.1:8080/v1/chat/completions) — rápido, HTTP persistente
+ *   1. Hermes Proxy API  (http://127.0.0.1:8645/v1/chat/completions) — rápido, HTTP persistente
  *   2. Hermes CLI        (hermes chat -q) — full agent + tools, mas mais lento
  *   3. Ollama API        (http://127.0.0.1:11434/api/chat) — fallback local, modelo sabia-finetuned
  *
@@ -25,7 +25,10 @@ const OFFSET_FILE =
   process.env.WHATSAPP_PROCESSOR_OFFSET ||
   path.join(RAIZ, "bots", "whatsapp", ".whatsapp-processor-offset");
 
-const HERMES_PROXY_URL = "http://127.0.0.1:8080/v1/chat/completions";
+// Porta 8645 (hermes proxy start --provider nous --port 8645)
+// ponytail: o proxy verifica créditos na hora — models do Nous Free Account estão esgotados.
+// Usar sempre o CLI como fallback primário, proxy como otimização quando houver crédito.
+const HERMES_PROXY_URL = "http://127.0.0.1:8645/v1/chat/completions";
 const OLLAMA_URL = "http://127.0.0.1:11434/api/chat";
 const HERMES_MODEL = "upstage/solar-pro4:free";
 const OLLAMA_MODEL = "sabia-finetuned:latest";
