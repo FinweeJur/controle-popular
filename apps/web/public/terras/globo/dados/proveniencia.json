@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-10-01T12:55:26.385Z",
+  "gerado_em_utc": "2026-10-16T02:19:55.862Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -88,7 +88,7 @@
       "bytes": 76901,
       "comprimido": false,
       "sha256": "ea7447a9babe3302d09a76aabb0694ad3826c342bd967201df83097df0a77061",
-      "mtime_utc": "2026-10-01T12:55:26.385Z",
+      "mtime_utc": "2026-10-01T13:22:38.064Z",
       "obtencao": "nao_declarada",
       "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
@@ -543,6 +543,17 @@
       "servico": "FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação"
     },
     {
+      "camada": "territorios-quilombolas",
+      "feicoes": 27,
+      "bytes": 614908,
+      "comprimido": false,
+      "sha256": "b6b93a540e198f7cf14dd4bf58e4da73e3209c90525e9211bea99d590a32d981",
+      "mtime_utc": "2026-10-16T02:19:55.862Z",
+      "obtencao": "automatica",
+      "servico": "IBGE — Territórios Quilombolas oficialmente delimitados, Censo 2022 (2ª apuração, 22/12/2023)",
+      "portal": "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Quilombolas_Primeiros_resultados_do_universo/Arquivos_geoespaciais_vetoriais_2a_apuracao_20231222/"
+    },
+    {
       "camada": "torres-celular-mg",
       "feicoes": 12782,
       "bytes": 3805781,
@@ -686,17 +697,6 @@
       "mtime_utc": "2026-09-08T14:43:10.447Z",
       "obtencao": "manual",
       "origem": "INCRA — SIGEF e SNCI Público, pelo Acervo Fundiário",
-      "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
-    },
-    {
-      "camada": "territorios-quilombolas",
-      "feicoes": 27,
-      "bytes": 410252,
-      "comprimido": false,
-      "sha256": "c261190313ca7c79767ee619285c781d4ffbf2ee85be2ff0e30c694c47299c3e",
-      "mtime_utc": "2026-09-08T14:43:10.454Z",
-      "obtencao": "manual",
-      "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
     }
   ],

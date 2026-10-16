@@ -105,16 +105,13 @@ const ORIGENS = {
     portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
   },
   'territorios-quilombolas': {
-    obtencao: 'manual',
-    origem: 'INCRA — Áreas de Quilombolas, pelo Acervo Fundiário',
-    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+    // ⟲ 15/10/2026: a fonte passou a ser coletada AUTOMATICAMENTE do shapefile
+    // do IBGE (Censo 2022, 2ª apuração) — o WFS do Acervo Fundiário (que era
+    // obtenção manual) está morto (timeout) e o coletor trocou de fonte.
+    obtencao: 'automatica',
+    servico: 'IBGE — Territórios Quilombolas oficialmente delimitados, Censo 2022 (2ª apuração, 22/12/2023)',
+    portal: 'https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Quilombolas_Primeiros_resultados_do_universo/Arquivos_geoespaciais_vetoriais_2a_apuracao_20231222/',
   },
-  // Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
-  // INCRA que não entram nas duas fontes acima (ver
-  // scripts/ingerir_incra_quilombolas.py, seção "OS 13 QUE SOBRAVAM AGORA
-  // ENTRAM"). Mesmo serviço (WFS i3Geo do Acervo Fundiário, camada
-  // `quilombolas_mg`, GML), mesma licença ("vedado o uso comercial",
-  // conferida no `AccessConstraints` do `GetCapabilities`).
   'spu-imoveis-uniao': {
     obtencao: 'manual',
     origem: 'SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)',

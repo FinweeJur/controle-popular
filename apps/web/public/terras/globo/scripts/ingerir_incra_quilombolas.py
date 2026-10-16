@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 r"""ingerir_incra_quilombolas.py — baixa a poligonal OFICIAL dos territórios
-quilombolas de MG no Acervo Fundiário do INCRA (camada `quilombolas_mg`) e usa
-ela para dar NOME, MUNICÍPIO e FASE às duas camadas que este projeto já publica
-(`dados/camadas/territorios-quilombolas.geojson`,
-`dados/camadas/territorios-quilombolas-vales.geojson`) — hoje só têm `area_ha`.
+quilombolas de MG (todas as feições casam com `dados/camadas/
+territorios-quilombolas.geojson`).
+
+⟲ 15/10/2026 — FONTE TROCADA: o WFS do Acervo Fundiário do INCRA
+(acervofundiario.incra.gov.br/i3geo/ogc.php) MORREU — medido neste dia,
+timeout mesmo com 90 s e a página nova é iframe dinâmico. A fonte agora é
+o shapefile OFICIAL do IBGE publicado com o Censo 2022 ("Territórios
+Quilombolas oficialmente delimitados", 2ª apuração de 22/12/2023) — o mesmo
+dado oficial: o IBGE recebe a delimitação já consolidada do INCRA. Mecanismo,
+limiares e o que sobrou: comentarios em URL_ZIBGE e ALVOS. As seções de
+história abaixo falam do dia 13/08/2026, não de hoje.
+
+História do desenho (13/08/2026): o script existia para dar NOME, MUNICÍPIO e
+FASE às camadas publicadas, que só tinham `area_ha`.
 
 POR QUE ESTE SCRIPT EXISTE
 
@@ -218,17 +228,38 @@ from __future__ import annotations
 import json
 import math
 import sys
-import urllib.parse
-import urllib.request
-import xml.etree.ElementTree as ET
+import zipfile
 from pathlib import Path
 
+import shapefile
 from shapely.geometry import mapping, shape, Polygon, MultiPolygon
 from shapely.validation import make_valid
 
 LOG = "[ingerir_incra_quilombolas]"
 
-URL_BASE = "http://acervofundiario.incra.gov.br/i3geo/ogc.php"
+# ═══ FONTE TROCADA EM 15/10/2026 ═══
+# O WFS do Acervo Fundiário (i3geo/ogc.php) MORREU: medido neste dia, o
+# ogc.php só responde timeout (mesmo com 90 s) e a página do geodownload
+# virou iframe dinâmico sem lista fixa. O substituto é a poligonal
+# OFICIAL do IBGE publicada com o Censo 2022 — "Territórios Quilombolas
+# oficialmente delimitados", 2ª apuração, 22/12/2023 — que é o mesmo dado
+# oficial (o IBGE recebe a delimitação do INCRA) e vem como shapefile
+# zipado embutindo o mesmo WGS84 (CRS84) das camadas publicadas.
+#
+# Medido ao mudar: BR inteiro tem 495 territórios (fields COD_UF, SG_UF,
+# COD_TQ, NOM_TQ, STATUS); o filtro é SG_UF == "MG". O que o shapefile
+# do IBGE NÃO tem, e o WFS tinha: processo, município, nº de famílias,
+# datas de RTID e superintendência. Esses campos continuam saindo — a
+# fonte deles passa a ser a PRÓPRIA FEIÇÃO ANTIGA já publicada (ver
+# _props_incra_para_saida, que faz o merge). Nunca jogar fora campo que
+# a fonte velha media e a nova não trouxe.
+
+URL_ZIBGE = (
+    "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/"
+    "Quilombolas_Primeiros_resultados_do_universo/"
+    "Arquivos_geoespaciais_vetoriais_2a_apuracao_20231222/"
+    "BR_TQ_2a_apuracao_20231222.zip"
+)
 UA = "Mozilla/5.0 (compatible; ControlePopular/1.0; +https://github.com/FinweeJur/controle-popular)"
 
 DIR_GLOBO = Path(__file__).resolve().parent.parent
@@ -245,81 +276,107 @@ DIR_CAMADAS = DIR_GLOBO / "dados" / "camadas"
 #
 # `apps/web/.tmp-ingest/` está fora de `public/`, então o build não o enxerga.
 DIR_TMP = Path(__file__).resolve().parents[4] / ".tmp-ingest"
-CACHE_RAW = DIR_TMP / "quilombolas_mg_raw.xml"
+CACHE_RAW = DIR_TMP / "BR_TQ_2a_apuracao.zip"
 
 ALVOS = [
-    DIR_CAMADAS / "territorios-quilombolas.geojson",        # bacia do Paraopeba
-    DIR_CAMADAS / "territorios-quilombolas-vales.geojson",  # Jequitinhonha/Mucuri
+    DIR_CAMADAS / "territorios-quilombolas.geojson",
 ]
 
-# Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
-# INCRA que não entram em nenhum dos dois arquivos acima. Ver a seção grande
-# da docstring ("OS 13 QUE SOBRAVAM AGORA ENTRAM") para por que é uma fonte
-# nova e não uma fusão das duas de cima.
-SAIDA_OUTRAS_REGIOES = DIR_CAMADAS / "territorios-quilombolas-outras-regioes.geojson"
+# O arquivo `-vales` morreu na UNIFICAÇÃO de 13/08/2026 (commit b3110b5d): as
+# três fontes regionais viraram UM arquivo de 27 feições. E a "terceira
+# fonte" `-outras-regioes` morreu na mesma decisão — o arquivo antigo nunca
+# chegou a ser commitado e ninguém o consome. O que a fonte tem e nenhuma
+# feição usa fica registrado no LOG (blocos de cobertura abaixo), sem
+# arquivo novo: acrescentar feição no arquivo unificado quebraria o
+# contrato de índice (`#area=<fonte>:<índice>`, testado em
+# js/ui/layerspanel.test.mjs) e abrir a fonte no painel preconizaria
+# duplicata (Pimentel já está no unificado). Enxerto silencioso, nunca.
 
-NS = {"gml": "http://www.opengis.net/gml", "ms": "http://www.omsug.ca/osgis2004"}
+NS = None  # Nenhuma: a fonte nova é shapefile, não GML — o WFS antigo sumiu (15/10/2026).
 
-CAMPOS_INCRA = ["gid", "cd_sr", "nr_process", "nm_comunid", "nm_municip", "cd_uf",
-                "dt_publica", "dt_public1", "nr_familia", "dt_titulac",
-                "area_calc_ha", "responsave", "esfera"]
+CAMPOS_IBGE = ["COD_UF", "SG_UF", "COD_TQ", "NOM_TQ", "STATUS"]
 
 # ~300 m nesta latitude (1° ≈ 111 km). Ver docstring: as 13 correspondências
 # reais medem todas < 30 m; nenhum falso-positivo apareceu até 1 km nos dados
 # de hoje, então esta margem é folgada de propósito para tolerar pequena
 # deriva se o INCRA reprocessar a malha numa atualização futura.
-LIMIAR_DISTANCIA_GRAUS = 0.003
-LIMIAR_RAZAO_AREA = 0.10  # 10%
+# 0,008 graus (~880 m): medido na troca de fonte (15/10/2026). O casamento
+# real mais largo com a delimitação IBGE fica a 0,0056 (Sete Ladeiras,
+# 0,6 km) e os falsos-candidatos mais próximos começam a 0,02 (Lagoa Grande
+# x feição de 58 ha, 2,2 km) — o teto no meio, com margem nos dois lados.
+# O valor anterior (0,003) era calibrado contra a geometria do próprio WFS.
+LIMIAR_DISTANCIA_GRAUS = 0.008
+# 15%: medido na troca de fonte (15/10/2026), Sete Ladeiras e Terra Dura
+# casa centróide a 0,6 km mas com 12,6% de diferença de área -- e a mesma
+# feição JÁ ERA casada no fluxo anterior (licença do WFS morto). 10% era
+# margem calibrada contra a geometria do próprio WFS; a delimitação IBGE é
+# ligeiramente distinta, então a folga subiu 5 pontos, medido antes de travar.
+LIMIAR_RAZAO_AREA = 0.15  # 15%
 
 
-# ─────────────────────────── download e parse do GML ───────────────────────
+# ─────────────────────── download e parse do shapefile IBGE ─────────────────
 
-def _baixar_gml() -> bytes:
-    params = {"tema": "quilombolas_mg", "service": "WFS", "version": "1.1.0",
-              "request": "GetFeature"}
-    url = f"{URL_BASE}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    print(f"{LOG} buscando quilombolas_mg (INCRA/Acervo Fundiário)...")
-    with urllib.request.urlopen(req, timeout=120) as resp:
+import urllib.request
+
+
+def _baixar_zip() -> bytes:
+    req = urllib.request.Request(URL_ZIBGE, headers={"User-Agent": UA})
+    print(f"{LOG} baixando {URL_ZIBGE.rsplit('/', 1)[-1]} (IBGE/Censo 2022, 2a apuracao)...")
+    with urllib.request.urlopen(req, timeout=300) as resp:
         return resp.read()
 
 
-def _pos_list_para_coords(texto: str) -> list[tuple[float, float]]:
-    """'lat lon lat lon ...' (armadilha 2) -> [(lon, lat), ...] GeoJSON."""
-    nums = [float(x) for x in texto.split()]
-    pares = list(zip(nums[0::2], nums[1::2]))
-    return [(lon, lat) for lat, lon in pares]
+def _parse_polygon_pos(pontos: list[tuple[float, float]], indice_parte: int) -> Polygon:
+    """Um anel de coordenadas do shapefile -> Polygon válido.
+
+    Regra de buraco: um anel que fica DENTRO de outro no MESMO território é
+    interior (furo), não é parte externa — sem isso, um furo viraria um
+    "pedaço" falso para o casamento por centróide."""
+    p = Polygon(pontos)
+    if not p.is_valid:
+        p = make_valid(p)
+    return p
 
 
-def _parse_polygon_el(poly_el) -> Polygon:
-    ext = poly_el.find("gml:exterior/gml:LinearRing/gml:posList", NS)
-    exterior = _pos_list_para_coords(ext.text)
-    buracos = [
-        _pos_list_para_coords(interior.text)
-        for interior in poly_el.findall("gml:interior/gml:LinearRing/gml:posList", NS)
-    ]
-    return Polygon(exterior, buracos)
+def _partes_do_shape(reg_shape) -> tuple[object, list[Polygon]]:
+    """Shape pyshp -> (geometria combinada, lista de partes).
+
+    `shape.parts` marca onde cada anel começa em `points`. Anéis do MESMO
+    território que se contêm mutuamente: o contido é buraco do contenedor
+    (caso raro, tratado para o casamento por centróide não ver um "pedaço"
+    fantasma dentro do território)."""
+    aneis = []
+    for i in range(len(reg_shape.parts)):
+        inicio = reg_shape.parts[i]
+        fim = reg_shape.parts[i + 1] if i + 1 < len(reg_shape.parts) else len(reg_shape.points)
+        aneis.append(_parse_polygon_pos(reg_shape.points[inicio:fim], i))
+
+    # Separa externos de buracos: anel contido em outro anel é furo deste.
+    externos = []
+    for i, a in enumerate(aneis):
+        contido = any(
+            j != i and b.contains(a.centroid) and b.area > a.area
+            for j, b in enumerate(aneis)
+        )
+        if not contido:
+            externos.append((i, a))
+
+    buracos_por_indice = {i: [] for i, _ in externos}
+    for i, a in enumerate(aneis):
+        if (i, a) in externos or any(i == x[0] for x in externos):
+            continue
+        for j, ext in externos:
+            if j != i and ext.contains(a.centroid):
+                buracos_por_indice[j].append(a)
+                break
+
+    partes = [Polygon(aneis[j], buracos_por_indice[j]) for j, _ in externos]
 
 
-def _parse_geometria(geom_parent):
-    """Devolve (geometria_shapely, lista_de_partes_shapely).
-
-    Para Polygon simples, `lista_de_partes` tem 1 item (a própria). Para
-    MultiSurface, tem uma Polygon por `surfaceMember` — é o que permite casar
-    cada pedaço com uma feição antiga separada (ver docstring, "Marobá")."""
-    poly_el = geom_parent.find("gml:Polygon", NS)
-    if poly_el is not None:
-        p = _parse_polygon_el(poly_el)
-        return p, [p]
-    ms_el = geom_parent.find("gml:MultiSurface", NS)
-    if ms_el is not None:
-        partes = []
-        for membro in ms_el.findall("gml:surfaceMember", NS):
-            p_el = membro.find("gml:Polygon", NS)
-            if p_el is not None:
-                partes.append(_parse_polygon_el(p_el))
-        return MultiPolygon(partes), partes
-    raise ValueError("geometria GML não reconhecida (nem Polygon, nem MultiSurface)")
+    partes_validas = [p if p.is_valid else make_valid(p) for p in partes]
+    if len(partes_validas) == 1:
+        return partes_validas[0], partes_validas
+    return MultiPolygon(partes_validas), partes_validas
 
 
 def _carregar_incra() -> list[dict]:
@@ -327,23 +384,25 @@ def _carregar_incra() -> list[dict]:
         print(f"{LOG} usando cache local {CACHE_RAW} (apague o arquivo para forçar nova busca).")
         bruto = CACHE_RAW.read_bytes()
     else:
-        bruto = _baixar_gml()
+        bruto = _baixar_zip()
         DIR_TMP.mkdir(parents=True, exist_ok=True)
         CACHE_RAW.write_bytes(bruto)
 
-    # Armadilha 3: aqui o UTF-8 declarado é verdade -- decodificar direto,
-    # NUNCA com o gambiarra .decode('latin-1') do script da FUNAI.
-    texto = bruto.decode("utf-8")
-    root = ET.fromstring(texto)
+    extraido = DIR_TMP / "BR_TQ_descompactado"
+    if not extraido.exists():
+        zipfile.ZipFile(CACHE_RAW).extractall(extraido)
 
+    # O zip traz uma pasta interna com todos os componentes do shapefile;
+    # o .shp é único — achar pelo sufixo, não pelo nome de pasta fixado.
+    shp_path = next(extraido.rglob("*.shp"))
+
+    reader = shapefile.Reader(str(shp_path))
     territorios = []
-    for fm in root.findall("gml:featureMember", NS):
-        feat_el = fm.find("ms:quilombolas_mg", NS)
-        props = {c: (feat_el.find(f"ms:{c}", NS).text or "").strip() for c in CAMPOS_INCRA}
-        geom_parent = feat_el.find("ms:msGeometry", NS)
-        geom, partes = _parse_geometria(geom_parent)
-        if not geom.is_valid:
-            geom = make_valid(geom)
+    for rec, shape_reg in zip(reader.records(), reader.shapes()):
+        props = dict(zip([f[0] for f in reader.fields[1:]], rec))
+        if props.get("SG_UF") != "MG":
+            continue  # o painel do projeto é MG; o resto do BR fica de fora
+        geom, partes = _partes_do_shape(shape_reg)
         territorios.append({"props": props, "geom": geom, "partes": partes})
     return territorios
 
@@ -351,11 +410,20 @@ def _carregar_incra() -> list[dict]:
 # ─────────────────────────── fase deduzida ──────────────────────────────────
 
 def _fase_quilombola(props: dict) -> str:
-    if props.get("dt_titulac"):
+    """Fase da regularização, deduzida — nunca filtro.
+
+    Fonte nova (IBGE, 15/10/2026): o shapefile só traz STATUS
+    ("TITULADO" quando o INCRA já emitiu o título; outras etiquetas da
+    delimitação, p.ex. em titulação). Se as datas antigas do WFS
+    (dt_titulac/dt_publica — hoje nulas na fonte nova, preservadas pela
+    feição antiga no merge) existirem, vencem sobre STATUS: eram a
+    medida fine-grained original deste script."""
+    if props.get("dt_titulac") or str(props.get("STATUS", "")).upper() == "TITULADO":
         return "Titulado"
     if props.get("dt_publica") or props.get("dt_public1"):
         return "RTID publicado — em titulação"
-    return "Sem RTID publicado"
+    return "Oficialmente delimitado — em titulação"
+
 
 
 def _area_ha(poligono) -> float:
@@ -404,27 +472,45 @@ def _casar(geom_antiga, partes_incra: list[tuple[dict, object]]):
 
 # ─────────────────────────── ingestão de cada arquivo ───────────────────────
 
-def _props_incra_para_saida(props_incra: dict, geom_incra) -> dict:
+def _props_incra_para_saida(props_novas: dict, geom_incra, props_antigas: dict | None) -> dict:
     """Esquema de saída comum às TRÊS fontes que este script escreve (as duas
     antigas, casadas por geometria, e a nova `outras-regioes`, direto do
-    INCRA) — ver docstring, "OS 13 QUE SOBRAVAM AGORA ENTRAM"."""
-    return {
-        "nome": props_incra["nm_comunid"],
-        "municipio_nome": props_incra["nm_municip"],
+    INCRA — hoje IBGE) — ver docstring, "OS 13 QUE SOBRAVAM AGORA ENTRAM".
+
+    MERGE (15/10/2026): o shapefile do IBGE tem nome/UF/código/status, mas
+    NÃO tem processo, município, nº de famílias, datas de RTID nem
+    superintendência. Onde existia feição publicada (`props_antigas`), esses
+    campos VÊM DELA — nunca despublicar um dado que a fonte velha media e a
+    nova não carrega. Campos novos do IBGE entram com nomes próprios."""
+    saida = {
+        "nome": props_novas.get("NOM_TQ"),
         "area_ha": round(_area_ha(geom_incra), 1),
-        "fase_quilombola": _fase_quilombola(props_incra),
-        "processo_incra": props_incra["nr_process"] or None,
-        "esfera": props_incra["esfera"] or None,
-        "num_familias": props_incra["nr_familia"] or None,
-        "data_publicacao_rtid": props_incra["dt_publica"] or None,
-        "data_publicacao_rtid_retificacao": props_incra["dt_public1"] or None,
-        "data_titulacao": props_incra["dt_titulac"] or None,
-        "superintendencia_regional_incra": props_incra["cd_sr"] or None,
+        "fase_quilombola": _fase_quilombola(props_novas),
+        "codigo_ibge_tq": props_novas.get("COD_TQ") or None,
+        "status_ibge": props_novas.get("STATUS") or None,
         "fonte_incra": True,
     }
+    herdavel = (
+        "municipio_nome", "processo_incra", "esfera", "num_familias",
+        "data_publicacao_rtid", "data_publicacao_rtid_retificacao",
+        "data_titulacao", "superintendencia_regional_incra",
+    )
+    if props_antigas:
+        for campo in herdavel:
+            if props_antigas.get(campo) is not None:
+                saida[campo] = props_antigas[campo]
+    # Campos que o WFS antigo preenchia e hoje ninguém traz: None explícito,
+    # com lacuna declarada — ausência é informação (regra editorial do repo).
+    for campo in herdavel:
+        saida.setdefault(campo, None)
+    return saida
 
 
-def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tuple[int, int]:
+def _ingerir_arquivo(
+    path: Path,
+    partes_incra: list[tuple[dict, object]],
+    consumidos: set[int],
+) -> tuple[int, int]:
     d = json.loads(path.read_text(encoding="utf-8"))
     n_casou = 0
     n_nao_casou = 0
@@ -439,28 +525,29 @@ def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tup
             props_saida = dict(feat["properties"])
             props_saida["fonte_incra"] = False
             props_saida["aviso"] = (
-                "Não encontrado na camada quilombolas_mg do INCRA (Acervo "
-                "Fundiário) consultada em 13/08/2026 -- mantida a geometria e "
-                "a área já publicadas antes, sem nome nem município."
+                "Não encontrado na poligonal oficialmente delimitada do IBGE "
+                "(Censo 2022, 2a apuracao, baixada em 15/10/2026) -- mantida a "
+                "geometria e a área já publicadas antes, sem nome nem município."
             )
             features_saida.append({
                 "type": "Feature",
                 "properties": props_saida,
                 "geometry": feat["geometry"],
             })
-            print(f"{LOG} {path.name}#{idx}: SEM correspondência no INCRA -- mantido sem nome.")
+            print(f"{LOG} {path.name}#{idx}: SEM correspondência no IBGE -- mantido sem nome.")
             continue
 
-        props_incra, geom_incra = par
+        props_novas, geom_incra = par
         n_casou += 1
-        props_saida = _props_incra_para_saida(props_incra, geom_incra)
+        consumidos.add(id(props_novas))  # território já usado numa camada antiga
+        props_saida = _props_incra_para_saida(props_novas, geom_incra, feat["properties"])
         features_saida.append({
             "type": "Feature",
             "properties": props_saida,
             "geometry": mapping(geom_incra),
         })
-        print(f"{LOG} {path.name}#{idx}: {props_incra['nm_comunid']} "
-              f"({props_incra['nm_municip']}) -- {props_saida['fase_quilombola']}")
+        print(f"{LOG} {path.name}#{idx}: {props_novas['NOM_TQ']} "
+              f"-- {props_saida['fase_quilombola']}")
 
     saida = {
         "type": "FeatureCollection",
@@ -475,105 +562,44 @@ def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tup
     return n_casou, n_nao_casou
 
 
-def _gravar_outras_regioes(territorios_sobrando: list[dict], path: Path) -> int:
-    """Grava a TERCEIRA fonte: os territórios do INCRA que não casaram com
-    nenhuma feição de `territorios-quilombolas(.geojson|-vales.geojson)`.
-
-    UMA feição por território do INCRA (usa `t["geom"]`, a geometria
-    combinada — Polygon ou MultiPolygon), NÃO decomposta em partes soltas:
-    ao contrário de `_todas_as_partes` (usada para casar contra as feições
-    ANTIGAS, que já vinham pré-separadas por parte, ex. Marobá dos
-    Teixeira), aqui não existe feição antiga nenhuma para casar — cada
-    território do INCRA vira UMA feição nova, multi-parte quando o INCRA
-    já o publica assim (Lapinha e Pimentel, 2 e 3 partes). Inventar uma
-    separação que a fonte não tinha antes seria precisão que ninguém pediu.
-    """
-    features_saida = []
-    for t in sorted(territorios_sobrando, key=lambda t: t["props"]["nm_comunid"]):
-        props_saida = _props_incra_para_saida(t["props"], t["geom"])
-        features_saida.append({
-            "type": "Feature",
-            "properties": props_saida,
-            "geometry": mapping(t["geom"]),
-        })
-        print(f"{LOG} outras-regioes: {t['props']['nm_comunid']} "
-              f"({t['props']['nm_municip']}) -- {props_saida['fase_quilombola']}")
-
-    saida = {
-        "type": "FeatureCollection",
-        "name": path.stem,
-        "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
-        "features": features_saida,
-    }
-    with open(path, "w", encoding="utf-8") as fh:
-        json.dump(saida, fh, ensure_ascii=False, separators=(",", ": "))
-    print(f"{LOG} gravado {path} ({path.stat().st_size:,} bytes), {len(features_saida)} feições.")
-    return len(features_saida)
-
-
 def main() -> None:
     territorios = _carregar_incra()
-    print(f"{LOG} {len(territorios)} território(s) quilombola(s) recebido(s) do INCRA em MG.")
-    if len(territorios) != 22:
-        print(f"{LOG} AVISO: esperava 22 (medido em 13/08/2026) e o INCRA devolveu "
-              f"{len(territorios)}. Pode ser atualização real (o Acervo Fundiário é "
-              f"atualizado periodicamente) ou sintoma de outro problema -- conferir "
-              f"antes de publicar se o número mudou muito.")
+    print(f"{LOG} {len(territorios)} território(s) quilombola(s) oficialmente delimitado(s) em MG (IBGE/Censo 2022).")
+    if not territorios:
+        print(f"{LOG} ERRO: zero territórios em MG -- fonte vazia ou filtro quebrado. "
+              f"NÃO publicar.", file=sys.stderr)
+        sys.exit(2)
 
     partes_incra = _todas_as_partes(territorios)
     print(f"{LOG} {len(partes_incra)} parte(s) geométrica(s) desconexa(s) ao todo "
           f"(territórios multi-parte, como Marobá dos Teixeira, contam uma vez por parte).")
 
-    usados = set()
+    consumidos: set[int] = set()  # id(props) dos territórios que casaram
     total_casou = 0
     total_nao_casou = 0
     for path in ALVOS:
         if not path.exists():
             print(f"{LOG} AVISO: {path} não existe -- pulando.", file=sys.stderr)
             continue
-        # Rastreia quais feições do INCRA foram consumidas, para o relatório
-        # de cobertura no final (o que sobrou do lado do INCRA).
-        antes = {id(p) for _, p in partes_incra}
-        casou, nao_casou = _ingerir_arquivo(path, partes_incra)
+        casou, nao_casou = _ingerir_arquivo(path, partes_incra, consumidos)
         total_casou += casou
         total_nao_casou += nao_casou
 
-    # ─── Relatório de cobertura: o que o INCRA tem e nenhuma das duas
-    # camadas usa hoje. Ver docstring, seção "COBERTURA".
-    nomes_usados_por_geometria = set()
-    for path in ALVOS:
-        if not path.exists():
-            continue
-        d = json.loads(path.read_text(encoding="utf-8"))
-        for feat in d["features"]:
-            if feat["properties"].get("fonte_incra"):
-                nomes_usados_por_geometria.add(
-                    (feat["properties"]["nome"], feat["properties"]["municipio_nome"])
-                )
-
-    sobrando = []
-    for t in territorios:
-        chave = (t["props"]["nm_comunid"], t["props"]["nm_municip"])
-        if chave not in nomes_usados_por_geometria:
-            sobrando.append(t)
+    # ─── Relatório de cobertura: o que a fonte tem e nenhuma das duas
+    # camadas usa hoje. Ver docstring, seção "COBERTURA". Consumo rastreado
+    # por identidade de props (COD_TQ), não por nome: o nome pode repetir
+    # entre territórios distintos, o código não.
+    sobrando = [t for t in territorios if id(t["props"]) not in consumidos]
 
     print(f"\n{LOG} RESUMO: {total_casou} feição(ões) ganharam nome, "
-          f"{total_nao_casou} continuam sem correspondência no INCRA.")
-    print(f"{LOG} O INCRA tem {len(sobrando)} território(s) em MG que não entravam em "
-          f"nenhuma das duas camadas antigas (fora das regiões bacia/Jequitinhonha/Mucuri "
-          f"já delimitadas, ou não conferidos contra a malha da bacia -- ver docstring). "
-          f"Gravando como terceira fonte, {SAIDA_OUTRAS_REGIOES.name}:")
+          f"{total_nao_casou} continuam sem correspondência na fonte.")
+    print(f"{LOG} A fonte tem {len(sobrando)} território(s) em MG que não entravam em "
+          f"nenhuma feição publicada (fora das regiões bacia/Jequitinhonha/Mucuri "
+          f"já delimitadas -- ver docstring). Registro de cobertura, sem arquivo novo "
+          f"(a terceira fonte morreu na unificação de 13/08/2026 -- ver ALVOS):")
     for t in sobrando:
         p = t["props"]
-        print(f"{LOG}   - {p['nm_comunid']} ({p['nm_municip']}) -- {p['area_calc_ha']} ha")
-
-    if len(sobrando) != 13:
-        print(f"{LOG} AVISO: esperava 13 território(s) sobrando (medido em 13/08/2026) "
-              f"e achei {len(sobrando)}. Pode ser atualização real do INCRA ou sintoma "
-              f"de outro problema -- conferir antes de publicar se o número mudou muito.")
-
-    n_gravado = _gravar_outras_regioes(sobrando, SAIDA_OUTRAS_REGIOES)
-    print(f"{LOG} {n_gravado} feição(ões) na terceira fonte (esperado: 13).")
+        print(f"{LOG}   - {p['NOM_TQ']} ({p['STATUS']}) -- {round(_area_ha(t['geom']), 1)} ha")
 
 
 if __name__ == "__main__":

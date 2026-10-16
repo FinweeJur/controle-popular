@@ -1349,16 +1349,15 @@ export const CAMADAS = [
   {
     id: 'territorios-quilombolas', assunto: 'terra-publica',
     label: 'Territórios quilombolas',
-    // 2 + 12 + 13 áreas; 22 + 35.908,1 + 105.515,6 ha (INCRA, 13/08/2026 —
-    // ver scripts/ingerir_incra_quilombolas.py). A terceira fonte
-    // (`-outras-regioes`) entrou mais tarde no mesmo dia: os 13 territórios
-    // do INCRA em MG que não caem nem na bacia do Paraopeba nem no
-    // Jequitinhonha/Mucuri — a linha do painel continua sendo UMA só,
-    // "Territórios quilombolas": a unificação que importa (uma chave, não
-    // duas ou três) já tinha acontecido na reorganização por ASSUNTO de mais
-    // cedo em 13/08; o que mudou agora foi só a COBERTURA de dado por trás
-    // dela, nunca o contrato de id/índice das duas fontes antigas.
-    hint: '27 áreas, 141.446 hectares (1.414 km²) de território tradicional titulado ou em titulação pelo INCRA. A maior parte está fora da bacia do Paraopeba e do Jequitinhonha/Mucuri — em municípios do Norte e Noroeste de Minas (105.516 ha) — com 35.908 ha no Jequitinhonha/Mucuri e só 22 hectares na bacia do Paraopeba, uns 31 campos de futebol.',
+    // 27 áreas, 142.727,8 ha (medido 15/10/2026 contra a poligonal
+    // OFICIALMENTE DELIMITADA do IBGE — Censo 2022, 2ª apuração 22/12/2023 —
+    // que substituiu o WFS morto do Acervo Fundiário; ver
+    // scripts/ingerir_incra_quilombolas.py). O que o IBGE traz e nenhuma
+    // feição usou (2 territórios restantes) fica registrado no log do
+    // coletor, não no painel: a unificação de 13/08 fechou o contrato de
+    // este arquivo (id/índice), enxerto novo silencioso quebraria links
+    // `#area=<fonte>:<índice>` já em circulação.
+    hint: '27 áreas, 142.728 hectares (1.427 km²) de território quilombola oficialmente delimitado (IBGE/Censo 2022). A maior parte está fora da bacia do Paraopeba e do Jequitinhonha/Mucuri — em municípios do Norte e Noroeste de Minas.',
     fontes: ['territorios-quilombolas'],
   },
   {
