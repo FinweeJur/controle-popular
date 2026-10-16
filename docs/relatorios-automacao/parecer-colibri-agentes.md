@@ -1,6 +1,6 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
-**Data da Execução:** 15/10/2026, 05:36:59  
+**Data da Execução:** 16/10/2026, 05:32:27  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Ollama Local (http://localhost:11434)
 
@@ -28,7 +28,7 @@
 | SEGURANCA | Produção: X-Content-Type-Options | **APROVADO** | Header retornado por https://controlepopular.com.br: nosniff |
 | SEGURANCA | Varredura Estática de Segredos | **APROVADO** | Nenhum token ou chave de credencial identificado nos arquivos críticos. |
 | SEGURANCA | Supply Chain & Modelos de IA | **APROVADO** | Zero formatos binários (.pickle/.joblib) e zero tokens expostos nos arquivos auditados. |
-| CLOUDFLARE | Teto de 25 MiB do Cloudflare Workers | **APROVADO** | Todos os 200 arquivos de dados em data/ e public/data/ estão dentro do limite. |
+| CLOUDFLARE | Teto de 25 MiB do Cloudflare Workers | **APROVADO** | Todos os 201 arquivos de dados em data/ e public/data/ estão dentro do limite. |
 | PRIVACIDADE | Varredura Mod-11 de CPF nos Acervos | **APROVADO** | Todos os arquivos de dados foram escaneados com ZERO CPFs de pessoas físicas encontrados. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: sigbm | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |
 | QUALIDADE_DADOS | 5 Regras de Qualidade: ibama | **APROVADO** | Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial. |

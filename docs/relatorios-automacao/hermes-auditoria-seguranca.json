@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-10-15T08:35:59.049Z",
+  "geradoEm": "2026-10-16T08:31:27.755Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
   "aprovados": 14,
@@ -64,7 +64,7 @@
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 200 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 201 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",
