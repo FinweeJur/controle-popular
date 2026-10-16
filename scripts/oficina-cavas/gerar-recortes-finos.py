@@ -51,7 +51,7 @@ PAUSA = 2          # cortesia por cena nova (STAC)
 _LOCK_STAC = threading.Lock()
 _LOCK_CKPT = threading.Lock()
 _lock_stat = threading.Lock()
-_stats = {"ok": 0, "falhou": 0, "sem-cena": 0}
+_stats = {"ok": 0, "falhou": 0, "sem-cena": 0, "stac-erro": 0}
 base = None        # módulo baixar-banco-cbers carregado no main
 
 # Nodata máximo aceito num recorte (medido 15/10: a cena mais nova da cava
@@ -88,7 +88,11 @@ def _ler_checkpoint() -> set:
             continue
         try:
             o = json.loads(linha)
-            if o.get("hash"):
+            # stac-erro NAO conta como feito: a cena pode existir, a consulta
+            # e que falhou. Medido 16/10: 14 resets (WinError 10054) em 37 h
+            # de rodada; com o cache antigo, cada reset contaminava uma regiao
+            # inteira como "sem-cena" e a retomada pulava tudo.
+            if o.get("hash") and o.get("status") in ("ok", "sem-cena"):
                 feitos.add(o["hash"])
         except json.JSONDecodeError:
             continue
@@ -124,17 +128,25 @@ def _buscar_cenas(cx: float, cy: float, k: int = CANDIDATAS):
         with urllib.request.urlopen(req, timeout=120) as r:
             return json.load(r).get("features", [])
     except Exception as e:
+        # None = a consulta FALHOU (rede/reset); [] = consultou e nao ha cena.
+        # Confundir os dois perdia cavas boas em silencio (ver _ler_checkpoint).
         print(f"  STAC falhou: {type(e).__name__}: {e}")
-        return []
+        return None
 
 
 def _cenas(cx: float, cy: float, cache: dict):
-    """Candidatas serializadas (cortesia INPE) com cache por região ~0.1°."""
+    """Candidatas serializadas (cortesia INPE) com cache por região ~0.1°.
+
+    So cacheia resposta VALIDA: erro de rede fica de fora do cache e a
+    proxima cava da mesma regiao tenta de novo (corrigido 16/10)."""
     chave = f"{cx:.1f},{cy:.1f}"
     with _LOCK_STAC:
         if chave not in cache:
-            cache[chave] = _buscar_cenas(cx, cy)
+            resposta = _buscar_cenas(cx, cy)
+            if resposta is not None:
+                cache[chave] = resposta
             time.sleep(PAUSA)
+            return resposta
         return cache[chave]
 
 
@@ -227,6 +239,10 @@ def _trabalha(cava: dict, feitos: set, cache: dict) -> None:
     if h in feitos:
         return
     cenas = _cenas(cx, cy, cache)
+    if cenas is None:
+        # consulta falhou: registra e segue; a retomada tenta outra vez
+        _gravar(h, f"{proc}.png", "stac-erro")
+        return
     pan = _primeira_boa(cenas, cx, cy) if cenas else None
     if pan is None:
         _gravar(h, f"{proc}.png", "sem-cena")
