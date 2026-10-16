@@ -215,7 +215,10 @@ async function processarInbox(): Promise<number> {
     const resultado = callHermes(texto);
     console.log(`   → ${resultado.slice(0, 80)}...`);
 
-    escreverOutbox(resultado, entry.grupo || "");
+    const replyGrupo = entry.grupo && entry.grupo !== "status@broadcast"
+  ? entry.grupo
+  : process.env.WHATSAPP_GROUP_JID || "";
+escreverOutbox(resultado, replyGrupo);
     gravarOffset(i + 1);
   }
 
