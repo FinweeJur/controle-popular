@@ -11,6 +11,7 @@
 
 - [Problema atual](#problema-atual)
 - [Achados da inspeção humana (15/10/2026)](#achados-da-inspecao-humana-15-10-2026)
+- [Divisão de trabalho entre as máquinas](#divisao-de-trabalho-entre-as-maquinas)
 - [Arquitetura proposta](#arquitetura-proposta)
 - [Passos](#passos)
 - [Fontes de dados](#fontes-de-dados)
@@ -73,6 +74,24 @@ cor não separa. Em 1,5× existe ponto útil: **corta os falsos positivos à met
 conservadora: quando o modelo flagra, é mais confiável. Não resolve o teto de
 8,4 m/px (a separação de verdade ainda pede alta resolução), mas melhora a
 precisão sem depender de publicar número inflado.
+
+## Divisão de trabalho entre as máquinas
+
+Os downloaders leem a mesma lista (`scripts/dados/cavas-mg/banco-anm.json`,
+versionada 15/10) mas produzem saídas **diferentes** e **retomáveis por hash**,
+então dá para dividir sem sobreposição. Critério: o que usa GPU fica no desktop;
+o que é só rede/CPU vai para o `home-pc` (via Tailscale/Termius).
+
+| Máquina | O que roda | Por quê |
+|---|---|---|
+| **desktop** (este) | `baixar-banco-paralelo.py` (RGB 8 m) + treino/re-pontuação | GPU livre para o modelo |
+| **home-pc** | `gerar-recortes-finos.py` (PAN 2 m) | o mais lento e o que separa mina de campo; sem GPU |
+
+Regra para não errar: **não ligar o PAN no desktop nem o RGB no home-pc** —
+cada script numa máquina só. Os checkpoints são locais (`checkpoint-banco.jsonl`
+e `checkpoint-finos.jsonl`); no fim a gente junta as duas máquinas por sha256,
+sem duplicar imagem. Nada disso é commit (fica em `.cache`); só se commite um
+`.py` consertado.
 
 ## Arquitetura proposta
 
