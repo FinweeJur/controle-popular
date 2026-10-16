@@ -42,11 +42,14 @@ const URL_CAMADA =
   "https://geoserver.funai.gov.br/geoserver/ows?service=WFS&version=1.1.0&request=GetFeature" +
   "&typeName=Funai%3Atis_poligonais&outputFormat=application%2Fjson";
 const AGENTE = "ControlePopular/1.0 (portal civico; coleta de dados abertos)";
-const TENTATIVAS = 5;
+// 8 tentativas com espera crescente (15s, 30s... 2 min): medido 15/10/2026,
+// o GeoServer da FUNAI cai com timeout de render em rajadas curtas e
+// responde pouco depois — a insistência barata é o collector sobreviver.
+const TENTATIVAS = 8;
 
 /** Busca a camada inteira; lanca em XML/HTML de erro ou JSON truncado. */
 function buscarCamada(tentativa: number): any {
-  const buf = execFileSync("curl.exe", ["-sS", "--max-time", "420", "-A", AGENTE, URL_CAMADA], {
+  const buf = execFileSync("curl.exe", ["-sS", "--max-time", "900", "-A", AGENTE, URL_CAMADA], {
     maxBuffer: 128 * 1024 * 1024,
   });
   const texto = buf.toString("utf8");
