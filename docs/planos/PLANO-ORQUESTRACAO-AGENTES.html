@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Orquestração Multi-Agente — Floresta de Apps</title>
+<meta name="description" content="Arquitetura de orquestração multi-agente: Hermes, OpenCode (Go), Antigravity (Gemini), Ollama (Needle) coordenando controle-popular, cutiazinha, foz-juris e sementeira.">
+<link rel="icon" href="data:;base64,">
+<style>
+  :root{
+    --bg:#0d0e10;
+    --card:#16181d;
+    --border:#2a2e37;
+    --text:#e4e7ee;
+    --muted:#8a909c;
+    --accent:#5c7cfa;
+    --green:#43e97b;
+    --amber:#ffd43b;
+    --red:#ff6b6b;
+    --code-bg:#1e2026;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font:400 16px ui-serif,"Georgia",serif;line-height:1.6;background:var(--bg);color:var(--text);max-width:1000px;margin:0 auto;padding:2rem}
+  code{font-family:"Fira Code",monospace;background:var(--code-bg);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.9em}
+  pre{background:var(--code-bg);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--border);font-size:0.85em}
+  h1{color:var(--accent);font-size:1.8em;margin-bottom:0.5em;border-bottom:2px solid var(--border);padding-bottom:0.3em}
+  h2{color:var(--accent);font-size:1.4em;margin:1.5em 0 0.8em}
+  h3{color:var(--amber);font-size:1.1em;margin:1em 0 0.5em}
+  table{width:100%;border-collapse:collapse;margin:1em 0}
+  th,td{border:1px solid var(--border);padding:0.5rem 0.7rem;text-align:left}
+  th{background:var(--card);color:var(--accent)}
+  .callout{background:rgba(92,124,250,0.1);border:1px solid var(--accent);border-radius:8px;padding:1rem;margin:1em 0}
+  .callout.warn{border-color:var(--amber);background:rgba(255,212,59,0.1)}
+  .callout.ok{border-color:var(--green);background:rgba(67,233,123,0.15)}
+  .badge{display:inline-block;padding:0.1rem 0.5rem;border-radius:12px;font-size:0.75em;font-weight:bold}
+  .b-go{background:#4b8bbe;color:#fff}
+  .b-gem{background:#34a8f3;color:#fff}
+  .b-loc{background:#888888;color:#fff}
+  .b-herm{background:#8a2be2;color:#fff}
+  .katex{display:inline-block;font-size:0.9em}
+  ul{margin-left:1.5em}
+  li{margin-bottom:0.3em}
+  .flow-step{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:0.5rem 1rem;margin:0.2rem;font-size:0.85em}
+  .flow-arrow{color:var(--muted);margin:0 0.3em}
+</style>
+</head>
+<body>
+
+<h1>📋 Plano de Orquestração Multi-Agente</h1>
+<p><strong>Floresta de Apps — FinweeJur</strong></p>
+<p>Agentes: Hermes · OpenCode (Go) · Antigravity (Gemini) · Ollama (Needle)</p>
+<p><em>Projects: controle-popular · cutiazinha · foz-juris · sementeira</em></p>
+
+<div class="callout">
+  <strong>⚠️ Objetivo:</strong> Orquestrar agentes de IA em diferentes plataformas para
+  Sugerir → Planejar → Executar → Avaliar → Re-Executar → Atualizar → Monitorar notícias e modelos open-source,
+  aplicado aos quatro projetos centrais da Floresta de Apps.
+</div>
+
+<h2>1. Agentes e Plataformas</h2>
+
+<p><strong>Antes de usar, sempre verifique hardware e modelos.</strong> Ollama só roda se o
+serviço estiver ativo. Teste com <code>/api/chat</code> antes de confiar.</p>
+
+<table>
+<tr><th>Agente</th><th>Plataforma</th><th>Modelo</th><th>Badge</th><th>Especialidade</th><th>Como invocar</th></tr>
+<tr><td><strong>Hermes</strong></td><td>Hermes Desktop</td><td><code>upstage/solar-pro4:free</code> (default)</td><td class="badge b-herm">Hermes</td><td>Orquestrador, decisões, commit/push, auditoria final</td><td>Terraform interno + <code>opencode run</code> + <code>agy</code></td></tr>
+<tr><td><strong>OpenCode Go</strong></td><td>OpenCode CLI</td><td><code>opencodestorage/gpt-oss-20b</code> (OpenCode Go)</td><td class="badge b-go">Go</td><td>Implementação de código, refatoração, testes, PR review</td><td><code>opencode run '...' --model opencodestorage/gpt-oss-20b</code></td></tr>
+<tr><td><strong>Antigravity</strong></td><td>Google Antigravity</td><td><code>gemini-3.8-flash</code> (default) / <code>gemini-4-argon</code> (complexo)</td><td class="badge b-gem">Gemini</td><td>Pesquisa profunda, análise, documentação, revisão criativa</td><td><code>agy run '...' --model gemini-3.8-flash</code></td></tr>
+<tr><td><strong>Needle</strong></td><td>Ollama local</td><td><code>needle</code> (26M params, distillado de Gemini)</td><td class="badge b-loc">Local</td><td>Tarefas repetitivas, triagem, classificação, resumo (sem custo/token)</td><td><code>ollama run needle '...'</code></td></tr>
+<tr><td><strong>Ollama geral</strong></td><td>Ollama local</td><td>qwen2.5-coder:3b, deepseek-r1:7b, llama3.2:3b</td><td class="badge b-loc">Local</td><td>Validação rápida, testes unitários, geração determinística</td><td><code>ollama run qwen2.5-coder:3b '...'</code></td></tr>
+</table>
+
+<blockquote>💡 <strong>Dica do dono:</strong> Tarefas mecânicas + regra clara → Ollama (sem custo).
+Decisão, commit, deploy, auditoria → Hermes/Antigravity/OpenCode. Nunca CPF ou segredo sai do disco.</blockquote>
+
+<h2>2. Arquitetura de Orquestração</h2>
+
+<p>O <strong>Hermes</strong> é o orquestrador. Ele delega tarefas para os outros agentes e
+integra os resultados. Cada subagente trabalha em seu próprio <strong>worktree</strong> ou
+<strong>diretório</strong> para evitar conflitos.</p>
+
+<pre># Worktrees isolados — um por agente/tarefa
+worktree/controle-popular-hermes/   ← Hermes (main, commits diretos)
+worktree/controle-popular-opencode/ ← OpenCode (branch próprio)
+worktree/cutiazinha-antigravity/    ← Antigravity (branch próprio)
+worktree/foz-juris-needle/          ← Needle via Ollama (triagem/classificação)
+</pre>
+
+<p><strong>Comunicação entre agentes:</strong> via arquivos de handoff (markdown/YAML) +
+Telegram. Cada agente escreve seu relatório em <code>worktree/&lt;projeto&gt;/.agents/&lt;nome&gt;/</code></p>
+
+<h3>2.1 Instalação — Passo a Passo</h3>
+
+<h4>2.1.1 — Iniciar Ollama</h4>
+<pre># Começar o serviço do Ollama (Windows: via programas ou systemctl)
+tasklist | grep ollama 2>/dev/null || (ollama serve &)
+sleep 2
+curl -s http://127.0.0.1:11434/api/tags | head -5  # deve retornar JSON</pre>
+
+<h4>2.1.2 — Download do Needle (cactus-compute/needle)</h4>
+<pre># Needle: micromodel 26M params, tool-calling, distillado de Gemini
+# Fonte: https://github.com/cactus-compute/needle  (10k+ stars)
+
+# Opção A — via pip (engine + SDK Python)
+pip install "cactus-needle[train]"
+
+# Opção B — via Ollama (importar os pesos para GGUF)
+# Primeiro baixe os pesos .safetensors/.gguf de cactuscompute.com/needle
+# Depois:  ollama create needle -f Modelfile
+
+# Verificar:
+curl -s http://127.0.0.1:11434/api/generate \
+  -d '{"model":"needle","prompt":"test","stream":false}' | head -5</pre>
+
+<h4>2.1.3 — Instalar Antigravity CLI (agy)</h4>
+<pre># Google Antigravity — CLI para agentes Gemini
+# Fonte: https://antigravity.google/docs/cli-overview
+pip install google-antigravity  # ou download do instalador desktop
+
+# Verificar auth:
+agy --version
+# Autenticar com Google Cloud:
+gcloud auth application-default login
+# Listar modelos:
+agy models list</pre>
+
+<p><strong>Nota:</strong> A Google API já está autenticada em OpenCode.
+Para usar via <code>genai</code> Python, exporte:</p>
+<pre>export GOOGLE_API_KEY="AIza..."  # do scripts/.env (nunca imprimir)</pre>
+
+<h2>3. Workflow Cíclico</h2>
+
+<p><strong>🔁 Cada iteração cicla por estas 7 fases. O Hermes orquestra e decide quando re-executar.</strong></p>
+
+<div class="flow-step">1. SUGERIR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">2. PLANEJAR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">3. EXECUTAR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">4. AVALIAR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">5. RE-EXECUTAR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">6. ATUALIZAR</div> <span class="flow-arrow">→</span>
+<div class="flow-step">7. MONITORAR</div>
+
+<h3>Fase 1 — SUGERIR <span class="badge b-loc">Needle/Ollama</span></h3>
+<ul>
+  <li><strong>Who:</strong> Needle (triagem), Hermes (decisão)</li>
+  <li><strong>O que:</strong> Varre sementeiraprojetos.com.br + GitHub para ideias</li>
+  <li><strong>Método:</strong> Needle classifica issues, bugs e oportunidades por impacto. Hermes prioriza.</li>
+  <li><strong>Saída:</strong> <code>.agents/sugestoes/</code> — ranked list + prioridade</li>
+</ul>
+
+<h3>Fase 2 — PLANEJAR <span class="badge b-gem">Antigravity</span></h3>
+<ul>
+  <li><strong>Who:</strong> Antigravity (Gemini 3.8 Flash)</li>
+  <li><strong>O que:</strong> Lê AGENTS.md de cada projeto + docs/planos/ + sementeiraprojetos.com.br</li>
+  <li><strong>Método:</strong> Gera plano detalhado (milestones, riscos, testes, dependências)</li>
+  <li><strong>Saída:</strong> <code>docs/planos/PLANO-&lt;tarefa&gt;.html</code> + <code>.agents/&lt;agente&gt;/PLANO.md</code></li>
+</ul>
+
+<h3>Fase 3 — EXECUTAR <span class="badge b-go">OpenCode Go</span></h3>
+<ul>
+  <li><strong>Who:</strong> OpenCode Go (gpt-oss-20b)</li>
+  <li><strong>O que:</strong> Implementa o plano — código, testes, refatoração</li>
+  <li><strong>Método:</strong> <code>opencode run '...' --model opencodestorage/gpt-oss-20b --worktree &lt;branch&gt;</code></li>
+  <li><strong>Saída:</strong> Worktree com código + testes passando</li>
+</ul>
+
+<h3>Fase 4 — AVALIAR <span class="badge b-herm">Hermes</span> <span class="badge b-gem">Antigravity</span></h3>
+<ul>
+  <li><strong>Who:</strong> Hermes (auditoria) + Antigravity (review criativa)</li>
+  <li><strong>O que:</strong> Hermes roda <code>tsc</code>, <code>vitest</code>, CodeScene, CPF check.
+    Antigravity revisa qualidade, acessibilidade, docs.</li>
+  <li><strong>Saída:</strong> <code>.agents/&lt;agente&gt;/AVALIACAO.md</code> — pass/fail + issues</li>
+</ul>
+
+<h3>Fase 5 — RE-EXECUTAR (se falhar)</h3>
+<ul>
+  <li><strong>Quem:</strong> Hermes decide · OpenCode re-executa</li>
+  <li><strong>Gatilho:</strong> Qualquer teste, lint, CPF check ou CodeScene falhar</li>
+  <li><strong>Método:</strong> Loop com feedback direcionado · máximo 3 iterações</li>
+</ul>
+
+<h3>Fase 6 — ATUALIZAR <span class="badge b-herm">Hermes</span></h3>
+<ul>
+  <li><strong>Who:</strong> Hermes (commit + push)</li>
+  <li><strong>Regra:</strong> Commit por pathspec, mensagem em arquivo, sempre pushar, nunca <code>--force</code></li>
+  <li><strong>Trailer:</strong> <code>Co-Authored-By: &lt;modelo&gt; &lt;provedor&gt;</code> + <code>Co-Authored-By: &lt;agente&gt; &lt;plataforma&gt;</code></li>
+  <li><strong>Telegram:</strong> <code>sendPhoto</code> com print + texto puro (3 linhas: etapa concluída, próxima, risco/tempo)</li>
+</ul>
+
+<h3>Fase 7 — MONITORAR <span class="badge b-gem">Antigravity</span></h3>
+<ul>
+  <li><strong>Who:</strong> Antigravity (pesquisa) + Needle (triagem local)</ul>
+  <li><strong>O que:</strong> Busca notícias, novos modelos open-source, updates de deps</li>
+  <li><strong>Método:</strong> Antigravity usa web + arXiv + GitHub · Needle tria resultados localmente</li>
+  <li><strong>Saída:</strong> <code>docs/planos/MONITORAMENTO-&lt;data&gt;.md</code></li>
+  <li><strong>Cadência:</strong> Diário (notícias rápidas) · Semanal (modelos/integridade)</li>
+</ul>
+
+<h2>4. Projetos e Focos Iniciais</h2>
+
+<table>
+<tr><th>Projeto</th><th>Stack</th><th>Focus Inicial</th><th>Agente Primário</th></tr>
+<tr><td><strong>Controle Popular</strong></td><td>Next.js 16 · Drizzle · Cloudflare</td><td>Diário Oficial pipeline (R1-R4 completo) · 5 cidades (Betim, Diamantina, BH, Araçuaí, Itinga)</td><td>OpenCode Go</td></tr>
+<tr><td><strong>Cutiazinha</strong></td><td>Go · React/Tailwind · Wails</td><td>Router de tarefas (local vs cloud) · Adapter Needle-Ollama</td><td>Needle + OpenCode Go</td></tr>
+<tr><td><strong>Foz Juris</strong></td><td>Django 5.2 · PyWebView · SQLite</td><td>IA routing (Ollama → Qwen → DeepSeek) · Integração com Antigravity</td><td>Antigravity + OpenCode Go</td></tr>
+<tr><td><strong>Sementeira</strong></td><td>Electron 40 · React 19 · TS</td><td>Motor de conformidade (Ofício 46) · Integração com Antigravity para pesquisa</td><td>Antigravity + OpenCode Go</td></tr>
+</table>
+
+<h3>4.1 Controle Popular — Diário Oficial (prioritário)</h3>
+<p><strong>Status atual:</strong> Fases M1-M4 + E2E concluídas (2026-08-31). Verificado por explorers, workers, reviewers, challengers e auditor final.</p>
+<ul>
+  <li><strong>M1:</strong> Classificador (7 tipos) + extrator de entidades + CPF mod-11 ✅</li>
+  <li><strong>M2:</strong> Ingestion 5 cidades + fatias JSON compactadas ✅</li>
+  <li><strong>M3:</strong> Página <code>/[municipio]/prefeitura/diario</code> (5 coisas) ✅</li>
+  <li><strong>M4:</strong> Linkagem cruzada com contratos/licitações/convênios ✅</li>
+  <li><strong>E2E:</strong> Suíte de testes (2.134 testes) ✅</li>
+</ul>
+<p><strong>Próximos passos (suggestion → plan → execute → evaluate):</p>
+<ol>
+  <li><strong>Sugestão:</strong> Needle tria issues abertas no GitHub do projeto</li>
+  <li><strong>Planejamento:</strong> Antigravity analisa gaps nas 5 cidades + documenta</li>
+  <li><strong>Execução:</strong> OpenCode Go implementa coletores faltantes</li>
+  <li><strong>Avaliação:</strong> Hermes valida CPF/TypeScript/CodeScene + Telegram</li>
+</ol>
+
+<h2>5. Regras de Ouro (do AGENTS.md aplicadas a todos os agentes)</h2>
+
+<div class="callout">
+  <strong>🚫 NUNCA:</strong> <code>git push --force</code>, ler segredos, enviar CPF bruto para IA,<br>
+  publicar sem aprovação do dono, usar <code>git commit</code> sem pathspec.
+</div>
+
+<table>
+<tr><th>Regra</th><th>Aplicação no multi-agente</th></tr>
+<tr><td>Worktree quando há briga</td><td>Cada agente = worktree próprio + branch próprio</td></tr>
+<tr><td>Commit por pathspec</td><td><code>git commit --only &lt;caminho&gt; -F &lt;msg&gt;</code></td></tr>
+<tr><td>Mensagem em arquivo</td><td><code>git commit -F _tmp-commit-msg.txt</code> (nunca <code>-m</code>)</td></tr>
+<tr><td>Coautoria obrigatória</td><td>Modelo + plataforma em <code>Co-Authored-By</code></td></tr>
+<tr><td>CPF mod-11 sempre</td><td><code>scripts/checar-dado-pessoal-em-dado.py</code> no pre-push</td></tr>
+<tr><td>Ollama para repetitivo</td><td>Needle/Ollama faz triagem — nunca decisão/commit</td></tr>
+<tr><td>Nunca segredos no disco</td><td><code>.gitignore</code>, <code>.cursorignore</code>, deny rules no código</td></tr>
+</table>
+
+<h2>6. Telegram — Notificações por Etapa</h2>
+<pre># scripts/telegram-notificar.sh
+# 3 linhas: etapa concluída / próxima / risco
+python scripts/envia-telegram.py "✅ Diário Oficial M1 concluído — 28 fixtures, 100% testes.
+➡️ Próximo: M2 ingestion Betim (3.200 atos).  ~8 min.
+⚠️ RDS us-east-1 — dado fora do BR."
