@@ -199,13 +199,13 @@ def _trabalha(item: dict) -> None:
     for c in cenas:
         c["_centro"] = (cx, cy)
     pan, nuvem = _melhor(cenas)
+    base = {"hash": item["hash"], "lon": round(cx, 6), "lat": round(cy, 6),
+            "tipo": tipo, "label": label, "cena": item.get("cena")}
     if pan is None:
-        _gravar({"hash": item["hash"], "tipo": tipo, "label": label,
-                 "cena": item.get("cena"), "status": "sem-cena"}, False)
+        _gravar({**base, "status": "sem-cena"}, False)
         return
     _salva(pan, _SAIDA / tipo / f"{item['hash']}.png")
-    _gravar({"hash": item["hash"], "arquivo": f"{item['hash']}.png",
-             "tipo": tipo, "label": label, "cena": item.get("cena"),
+    _gravar({**base, "arquivo": f"{item['hash']}.png",
              "nuvem": round(nuvem, 3), "status": "ok"}, True)
 
 
@@ -231,29 +231,90 @@ def _carrega_calib(limite: int):
     return out[:limite] if limite else out
 
 
+def _from_manifesto(o: dict):
+    """Linha do manifesto publicado (lon/lat/tipo) -> item de corte."""
+    if not o.get("hash"):
+        return None
+    if o.get("lon") is None:
+        return None
+    if o.get("tipo") not in ("positivo", "negativo"):
+        return None
+    lon, lat = o["lon"], o["lat"]
+    return {"hash": o["hash"], "tipo": o["tipo"], "cena": o.get("cena"),
+            "bbox": [lon, lat, lon, lat]}
+
+
+def _carrega_manifesto(limite: int, caminho: Path | None = None):
+    """Item pra REGERAR os hashes que a outra máquina publicou (só a lista)."""
+    pub = caminho or (_RC / "scripts" / "dados" / "cavas-2m"
+                      / "checkpoint-2m.jsonl")
+    if not pub.exists():
+        return []
+    out = []
+    for linha in pub.read_text(encoding="utf-8").splitlines():
+        if not linha.strip():
+            continue
+        try:
+            o = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        item = _from_manifesto(o)
+        if item:
+            out.append(item)
+    return out[:limite] if limite else out
+
+
+def _fonte_de(args):
+    if args.fonte == "manifesto":
+        return lambda n: _carrega_manifesto(n, args.manifesto)
+    return _carrega_calib
+
+
+def _seleciona(args, feitos) -> list[dict]:
+    """Universo da fonte -> tira feitos -> filtra tipo -> aplica limite."""
+    alvos = [o for o in _fonte_de(args)(0) if o["hash"] not in feitos]
+    if args.tipo != "ambos":
+        alvos = [o for o in alvos if o.get("tipo") == args.tipo]
+    return alvos[:args.limite] if args.limite else alvos
+
+
+def _executar(alvos: list[dict], workers: int) -> None:
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = [ex.submit(_trabalha, o) for o in alvos]
+        for i, fut in enumerate(as_completed(futs), 1):
+            _colhe(fut, i, len(alvos))
+
+
+def _colhe(fut, i: int, total: int) -> None:
+    try:
+        fut.result()
+    except Exception as e:
+        _stats["falhou"] += 1
+        print(f"  erro: {type(e).__name__}: {e}", flush=True)
+    if i % 25 == 0:
+        print(f"--- {i}/{total} | ok={_stats['ok']} "
+              f"sem-cena={_stats['sem-cena']} ---", flush=True)
+
+
 def main() -> int:
     global base
-    ap = argparse.ArgumentParser(description="Recortes 2m PAN rotulados (calib)")
+    ap = argparse.ArgumentParser(description="Recortes 2m PAN rotulados")
     ap.add_argument("--limite", type=int, default=0)
     ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--fonte", choices=("calib", "manifesto"), default="calib",
+                    help="calib=meu dataset; manifesto=regerar lista da outra máquina")
+    ap.add_argument("--manifesto", type=Path, default=None,
+                    help="caminho do manifesto p/ --fonte manifesto (default: versionado)")
+    ap.add_argument("--tipo", choices=("ambos", "positivo", "negativo"),
+                    default="ambos",
+                    help="só corta desse tipo (negativo=destrava o treino honesto)")
     args = ap.parse_args()
 
     base = _carregar_base()
-    feitos = _ler_cheios()
-    alvos = [o for o in _carrega_calib(args.limite) if o["hash"] not in feitos]
-    print(f"calib rotulados pendentes: {len(alvos)} | workers={args.workers}",
-          flush=True)
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futs = [ex.submit(_trabalha, o) for o in alvos]
-        for i, fut in enumerate(as_completed(futs), 1):
-            try:
-                fut.result()
-            except Exception as e:
-                _stats["falhou"] += 1
-                print(f"  erro: {type(e).__name__}: {e}", flush=True)
-            if i % 25 == 0:
-                print(f"--- {i}/{len(alvos)} | ok={_stats['ok']} "
-                      f"sem-cena={_stats['sem-cena']} ---", flush=True)
+    alvos = _seleciona(args, _ler_cheios())
+    print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
+          f"| workers={args.workers}", flush=True)
+    _executar(alvos, args.workers)
     print(f"\nFim: ok={_stats['ok']} sem-cena={_stats['sem-cena']} "
           f"falhou={_stats['falhou']}", flush=True)
     return 0
