@@ -172,6 +172,29 @@ Entregue nesta rodada (85 testes verdes, `tsc` limpo, CodeScene no commit):
 **Decisões tomadas (ordem do dono, 18/10):** camada no render/build; Fases
 1–3 na mesma rodada; teto pequeno por LLM; re-disparo dos 6 PRs autorizado.
 
+## Fechamento (18/10/2026)
+
+O bot voltou a aceitar sozinho. Depois dos consertos:
+
+1. **PR #15 consolidado e MESCLADO** pelo merge automático (run
+   `39151492134`: testes ✓ 2m41s, sondagem ✓ 53m53s, merge ✓ 53s). A camada
+   na `main` ficou com **2.517 correções**.
+2. A sondagem de ~2.500 links **passou** — antes reprovava 1.762 por tratar
+   403 e timeout como link morto.
+3. Os PRs **#5–#8 e #14** foram fechados como *superseded*: nasceram em bases
+   antigas, viraram não-mescláveis e divergiam entre si (71 urlVelha com
+   urlNova diferente). A consolidação resolveu pela URL mais específica.
+4. CodeScene da nuvem **verde** no commit da refatoração do pipeline.
+
+**Achado operacional:** PR do LinkMender aberto sobre uma base antiga fica
+não-mesclável, e o run passa a usar o workflow daquele commit velho. A rotina
+noturna deve abrir o PR a partir da `main` atual — ou rodar
+`git merge origin/main` no branch antes de abrir.
+
+**Pendente da escada:** os adaptadores de rede do D3 (Playwright abrindo a
+busca do site) e do D4 (print + visão). O núcleo de decisão, memória e tetos
+de LLM já está pronto e testado.
+
 ## Orçamento, privacidade e travas
 
 1. **Gatilho por falha:** LLM e visão só acendem quando D0–D3 falham.
