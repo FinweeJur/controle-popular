@@ -110,6 +110,7 @@ Decisões de 22/08, numa sessão única. **Não reabrir sem remensurar.**
 | 13 | Espelho do código fora do GitHub | ✅ GitLab no lugar do Gitee (29/09) |
 | 14 | Backfill do diário oficial desde jan/2020 | ✅ concluído (30/08) |
 | 15 | Estrutura investigativa do diário: 7 eixos | registrado, sem implementação |
+| 16 | **Checkout canônico só em `X:\DevCoder\controle-popular`** | ✅ executado 18/10: clone de `C:\Users\teste` removido (bundle em `_backup-git`); 9 worktrees arquivadas em `origin/archive/2026-10-18/*`; regra em [CHECKOUT-CANONICO.md](../03-desenvolvimento/CHECKOUT-CANONICO.md) |
 
 ## Fila viva
 

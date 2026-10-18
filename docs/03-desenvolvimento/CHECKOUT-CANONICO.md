@@ -108,6 +108,17 @@ Remove-Item -LiteralPath <clone-antigo> -Recurse -Force
 O bundle é a garantia. Só apague depois de conferir que `origin/main` tem
 tudo que importa.
 
+## Agentes, MausBot e Telegram
+
+- **opencode:** abrir a sessão em `X:\DevCoder\controle-popular`.
+- **Skill `/cp`:** aponta o canônico e manda remeçar com `git fetch`.
+- **MausBot:** cada bot que mexe em código usa `cwd` canônico. No
+  `C:\Users\teste\.openmausbot\bots.json`, o campo `cwd` do **Dev** e do
+  **EstrelaQueBrilha** deve ser `X:\DevCoder\controle-popular` (o arquivo
+  fica travado com o app aberto: feche o MausBot, ajuste e reabra).
+- **Telegram / home-pc:** o canônico lá é `C:\DevCoder\controle-popular`
+  (máquina sem `X:`). O gatilho remoto e o túnel usam esse caminho.
+
 ## O que não é código
 
 Pode ficar em `C:\Users\teste`:
