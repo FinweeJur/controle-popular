@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-10-16T17:10:32.070Z",
+ "geradoEm": "2026-10-18T16:21:33.012Z",
  "regra": {
   "tempo-real": 2,
   "diaria": 3,
@@ -26,7 +26,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-15T19:30:29.679Z",
-   "lagDias": 61,
+   "lagDias": 63,
    "veredito": "atrasada"
   },
   {
@@ -36,7 +36,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-15",
-   "lagDias": 62,
+   "lagDias": 64,
    "veredito": "atrasada"
   },
   {
@@ -46,7 +46,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-31T21:00:32.820992+00:00",
-   "lagDias": 45,
+   "lagDias": 47,
    "veredito": "atrasada"
   },
   {
@@ -56,7 +56,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-30",
-   "lagDias": 47,
+   "lagDias": 49,
    "veredito": "atrasada"
   },
   {
@@ -116,7 +116,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-08-15T21:51:45.965Z",
-   "lagDias": 61,
+   "lagDias": 63,
    "veredito": "isenta"
   },
   {
@@ -136,7 +136,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-26T17:39:14.994Z",
-   "lagDias": 50,
+   "lagDias": 52,
    "veredito": "atrasada"
   },
   {
@@ -146,7 +146,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-09-07",
-   "lagDias": 39,
+   "lagDias": 41,
    "veredito": "atrasada"
   },
   {
@@ -156,7 +156,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-31",
-   "lagDias": 46,
+   "lagDias": 48,
    "veredito": "atrasada"
   },
   {
@@ -166,7 +166,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-31",
-   "lagDias": 46,
+   "lagDias": 48,
    "veredito": "atrasada"
   },
   {
@@ -186,7 +186,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-09-07T04:20:29.869Z",
-   "lagDias": 39,
+   "lagDias": 41,
    "veredito": "atrasada"
   },
   {
@@ -196,7 +196,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-09-01T10:56:39.570632+00:00",
-   "lagDias": 45,
+   "lagDias": 47,
    "veredito": "atrasada"
   },
   {
@@ -206,7 +206,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-08-30",
-   "lagDias": 47,
+   "lagDias": 49,
    "veredito": "atrasada"
   },
   {
@@ -216,7 +216,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-01T14:39:35.119Z",
-   "lagDias": 45,
+   "lagDias": 47,
    "veredito": "isenta"
   },
   {
@@ -226,8 +226,8 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-09-06T03:04:42.238458+00:00",
-   "lagDias": 40,
-   "veredito": "ok"
+   "lagDias": 42,
+   "veredito": "atrasada"
   },
   {
    "fonte": "mpmg-nucard",
@@ -236,8 +236,8 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-09-06T14:23:57.413749+00:00",
-   "lagDias": 40,
-   "veredito": "ok"
+   "lagDias": 42,
+   "veredito": "atrasada"
   },
   {
    "fonte": "mpf-grandes-casos",
@@ -246,7 +246,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-09-06T03:04:42.242456+00:00",
-   "lagDias": 40,
+   "lagDias": 42,
    "veredito": "atrasada"
   },
   {
@@ -256,7 +256,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-09-06T03:01:25.201481+00:00",
-   "lagDias": 40,
+   "lagDias": 42,
    "veredito": "atrasada"
   },
   {
@@ -266,8 +266,8 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-09-07T04:12:19.758753Z",
-   "lagDias": 39,
-   "veredito": "ok"
+   "lagDias": 41,
+   "veredito": "atrasada"
   },
   {
    "fonte": "vale-sigma-lithium",
@@ -276,8 +276,8 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-09-06T16:00:48.074119+00:00",
-   "lagDias": 40,
-   "veredito": "ok"
+   "lagDias": 42,
+   "veredito": "atrasada"
   },
   {
    "fonte": "sinesp-vde",
@@ -286,8 +286,8 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-09-06T15:01:13.024220+00:00",
-   "lagDias": 40,
-   "veredito": "ok"
+   "lagDias": 42,
+   "veredito": "atrasada"
   }
  ]
 }

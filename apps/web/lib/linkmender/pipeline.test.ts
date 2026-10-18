@@ -195,14 +195,16 @@ describe("processarLink (pipeline inteiro, fetch mockado)", () => {
       });
     }) as unknown as FetchFn;
 
-    // Sem título conhecido: critério de título fica "nao-avaliado" e não veta.
+    // Sem título conhecido: a proposta NÃO é automática (vira candidato de
+    // revisão humana, confiança "media") — regra do plano, Fase 2.
     const r = await processarLink(
       { url: urlMentira },
       { fetchFn, sleepFn: SEM_PAUSA, pausaMs: 0 }
     );
     expect(r.verificacao.classe).toBe("MENTIROSO");
-    expect(r.proposta?.urlNova).toBe(urlNova);
-    expect(r.proposta?.criterios).toContain("dominio-r2-ou-proprio");
+    expect(r.proposta).toBeNull();
+    expect(r.candidatoMedia?.url).toBe(urlNova);
+    expect(r.semPropostaMotivo).toContain("revisao humana");
   });
 
   test("link vivo nao gera proposta nem dispara busca", async () => {

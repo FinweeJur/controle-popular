@@ -15,6 +15,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { corrigirDado } from "../linkmender/correcoes";
+
 const cache = new Map<string, unknown>();
 
 export function carregarJsonEtl<T = unknown>(arquivo: string): T {
@@ -40,7 +42,10 @@ export function carregarJsonEtl<T = unknown>(arquivo: string): T {
       }
     }
   }
-  const dado = JSON.parse(bruto) as T;
+  // Camada de correções do LinkMender: troca urlVelha→urlNova antes de o
+  // dado chegar à página. Server-only, então o JSON da camada não infla o
+  // bundle do cliente. Ver docs/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md.
+  const dado = corrigirDado(JSON.parse(bruto) as T);
   cache.set(arquivo, dado);
   return dado;
 }

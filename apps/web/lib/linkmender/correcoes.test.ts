@@ -8,6 +8,7 @@ import {
   aplicarCorrecoesEmDado,
   urlCorrigida,
   carregarCorrecoes,
+  corrigirDado,
 } from "./correcoes";
 
 /**
@@ -142,5 +143,24 @@ describe("camada commitada (apps/web/data/link-correcoes.json)", () => {
     } else {
       expect(urlCorrigida(lista[0].urlVelha)).toBe(lista[0].urlNova);
     }
+  });
+
+  test("corrigirDado aplica a camada a objeto aninhado e preserva o resto", () => {
+    const lista = carregarCorrecoes();
+    if (lista.length === 0) {
+      const d = { fonte: { url: "https://qualquer.gov.br/x" } };
+      expect(corrigirDado(d)).toEqual(d);
+      return;
+    }
+    const alvo = lista[0];
+    const entrada = { a: 1, fonte: { url: alvo.urlVelha, rotulo: "texto" } };
+    const saida = corrigirDado(entrada);
+    expect(saida.fonte.url).toBe(alvo.urlNova);
+    expect(saida.fonte.rotulo).toBe("texto");
+    expect(saida.a).toBe(1);
+  });
+
+  test("carregarCorrecoes cacheia a mesma lista (nao revalida a cada chamada)", () => {
+    expect(carregarCorrecoes()).toBe(carregarCorrecoes());
   });
 });

@@ -1,8 +1,11 @@
 /**
- * LinkMender v2 — Pipeline por link quebrado: verificar → buscar 3× →
- * confirmar por critérios. Tudo injeitado de `fetchFn` e `sleepFn`: o
- * pipeline inteiro roda com fetch mockado (rede desta máquina bloqueada,
- * WinError 10013) e pausa zero nos testes. Primeira rodada real: home-pc.
+ * LinkMender v2 — Pipeline por link quebrado: verificar → buscar → confirmar.
+ * Tudo injetado de `fetchFn` e `sleepFn`: o pipeline inteiro roda com fetch
+ * mockado e pausa zero nos testes. Primeira rodada real: home-pc.
+ *
+ * Política (plano Fase 2): só proposta de confiança "alta" vira correção
+ * automática; a "media" (sem título ou caminho genérico) sai como
+ * `candidatoMedia` para revisão humana.
  */
 
 import {
@@ -10,6 +13,7 @@ import {
   hostAceitavel,
   tipoConteudoDeUrl,
   tipoDeContentType,
+  tituloDaHtml,
 } from "./criterios";
 import type { CandidatoEntrada } from "./criterios";
 import { montarConsultasBusca, buscarNoDuckDuckGo } from "./busca";
@@ -33,21 +37,162 @@ export interface PropostaCorrecao {
 
 export interface ResultadoProcessamento {
   verificacao: Verificacao;
-  /** Proposta aceita pelos critérios — ou null. */
+  /** Proposta aceita pelos critérios (só confiança "alta") — ou null. */
   proposta: PropostaCorrecao | null;
+  /** Candidato de confiança "media" (vai para revisão humana) — ou null. */
+  candidatoMedia: { url: string; motivo: string } | null;
   /** Consultas efetivamente disparadas (trilha; útil no relatório). */
   consultas: { estrategia: string; query: string }[];
   /** Por que não houve proposta, quando não houve. */
   semPropostaMotivo?: string;
 }
 
+interface Deps {
+  fetchFn: FetchFn;
+  sleepFn: (ms: number) => Promise<void>;
+  pausaMs: number;
+}
+
 const MAX_RESULTADOS_POR_BUSCA = 5;
 
+function semProposta(
+  verificacao: Verificacao,
+  consultas: { estrategia: string; query: string }[],
+  motivo: string,
+  candidatoMedia: { url: string; motivo: string } | null = null
+): ResultadoProcessamento {
+  return { verificacao, proposta: null, candidatoMedia, consultas, semPropostaMotivo: motivo };
+}
+
+/** REDIRECT: o servidor apontou o destino; propõe se ele é aceitável e vivo. */
+async function viaRedirect(
+  ctx: ContextoLink,
+  verificacao: Verificacao,
+  consultas: { estrategia: string; query: string }[],
+  deps: Deps
+): Promise<ResultadoProcessamento> {
+  const destino = verificacao.finalUrl as string;
+  let host = "";
+  try {
+    host = new URL(destino).hostname;
+  } catch {
+    return semProposta(verificacao, consultas, "destino do redirect nao parseia");
+  }
+  if (!hostAceitavel(host)) {
+    return semProposta(verificacao, consultas, `destino do redirect em dominio nao aceitavel: ${host}`);
+  }
+  const sondaDestino = classificarVerificacao(destino, await sondar(destino, deps.fetchFn));
+  await deps.sleepFn(deps.pausaMs);
+  if (sondaDestino.classe !== "OK") {
+    return semProposta(verificacao, consultas, `destino do redirect tambem nao vive (${sondaDestino.classe})`);
+  }
+  return {
+    verificacao,
+    candidatoMedia: null,
+    consultas,
+    proposta: {
+      urlVelha: ctx.url,
+      urlNova: destino,
+      criterios: [
+        "redirect-declarado-pelo-servidor",
+        "dominio-" + (host.includes("r2.dev") ? "r2-ou-proprio" : "oficial"),
+        "destino-verificado-vivo",
+      ],
+      estrategia: "redirect",
+    },
+  };
+}
+
+interface CandidataAvaliada {
+  aceita: { urlNova: string; criterios: string[] } | null;
+  media: { url: string; motivo: string } | null;
+}
+
+/** Sonda UMA candidata e decide: aceita (alta), media (humano) ou descarta. */
+async function avaliarCandidata(
+  candidata: string,
+  ctx: ContextoLink,
+  deps: Deps
+): Promise<CandidataAvaliada> {
+  const bruto = await sondar(candidata, deps.fetchFn);
+  const sonda = classificarVerificacao(candidata, bruto);
+  await deps.sleepFn(deps.pausaMs);
+  const entrada: CandidatoEntrada = {
+    urlVelha: ctx.url,
+    urlCandidata: candidata,
+    statusHttp: sonda.statusHttp ?? 0,
+    contentType: sonda.contentType,
+    corpoInicial: bruto.corpoInicial,
+    tituloItem: ctx.titulo ?? null,
+    tituloCandidato: tituloDaHtml(bruto.corpoInicial),
+  };
+  const avaliacao = avaliarCandidato(entrada);
+  if (!avaliacao.aceito) {
+    const media =
+      avaliacao.confianca === "media" ? { url: candidata, motivo: avaliacao.motivos.join("; ") } : null;
+    return { aceita: null, media };
+  }
+  const criterios = rotularTipo(ctx.url, sonda.contentType, avaliacao.criterios);
+  return criterios ? { aceita: { urlNova: candidata, criterios }, media: null } : { aceita: null, media: null };
+}
+
+/** Troca o rótulo genérico de tipo pelo tipo concreto medido. */
+function rotularTipo(urlVelha: string, contentType: string | null, criterios: string[]): string[] | null {
+  const tipoNovo = tipoDeContentType(contentType);
+  const tipoOriginal = tipoConteudoDeUrl(urlVelha);
+  const limpos = criterios.filter((c) => !c.startsWith("tipo-igual-"));
+  if (tipoNovo !== "desconhecido") return [...limpos, `tipo-igual-${tipoNovo}`];
+  if (tipoOriginal !== "desconhecido") return [...limpos, `tipo-igual-${tipoOriginal}`];
+  return null;
+}
+
+/** QUEBRADO/MENTIROSO: dispara as buscas e aceita o primeiro candidato alta. */
+async function viaBusca(
+  ctx: ContextoLink,
+  verificacao: Verificacao,
+  consultas: { estrategia: string; query: string }[],
+  deps: Deps
+): Promise<ResultadoProcessamento> {
+  const planejadas = montarConsultasBusca({
+    url: ctx.url,
+    titulo: ctx.titulo ?? null,
+    orgao: ctx.orgao ?? null,
+  });
+  let media: { url: string; motivo: string } | null = null;
+
+  for (const consulta of planejadas) {
+    consultas.push({ estrategia: consulta.estrategia, query: consulta.query });
+    const busca = await buscarNoDuckDuckGo(consulta.query, deps.fetchFn);
+    await deps.sleepFn(deps.pausaMs);
+    if (!busca.ok) continue;
+
+    for (const candidata of busca.links.slice(0, MAX_RESULTADOS_POR_BUSCA)) {
+      if (candidata === ctx.url) continue;
+      const r = await avaliarCandidata(candidata, ctx, deps);
+      if (r.aceita) {
+        return {
+          verificacao,
+          candidatoMedia: null,
+          consultas,
+          proposta: { urlVelha: ctx.url, urlNova: r.aceita.urlNova, criterios: r.aceita.criterios, estrategia: consulta.estrategia },
+        };
+      }
+      if (r.media && !media) media = r.media;
+    }
+  }
+
+  const base = `nenhum candidato bateu nos criterios apos ${consultas.length} buscas`;
+  return semProposta(
+    verificacao,
+    consultas,
+    media ? `${base}; candidato de revisao humana: ${media.url}` : base,
+    media
+  );
+}
+
 /**
- * Processa UM link: classifica (HTTP + conteúdo). Se REDIRECT para URL
- * aceitável, propõe o destino (o próprio servidor disse para onde o documento
- * foi). Se QUEBRADO ou MENTIROSO, dispara as 3 buscas em ordem e avalia cada
- * candidato pelos critérios — aceita o PRIMEIRO que bater em todos.
+ * Processa UM link: classifica (HTTP + conteúdo). Link vivo não gera nada;
+ * REDIRECT aceitável propõe o destino; QUEBRADO/MENTIROSO entra nas buscas.
  */
 export async function processarLink(
   ctx: ContextoLink,
@@ -57,117 +202,22 @@ export async function processarLink(
     pausaMs?: number;
   } = {}
 ): Promise<ResultadoProcessamento> {
-  const fetchFn = opcoes.fetchFn ?? fetch;
-  const sleepFn = opcoes.sleepFn ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
-  const pausaMs = opcoes.pausaMs ?? 400;
+  const deps: Deps = {
+    fetchFn: opcoes.fetchFn ?? fetch,
+    sleepFn: opcoes.sleepFn ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms))),
+    pausaMs: opcoes.pausaMs ?? 400,
+  };
 
-  const sondaBruta = await sondar(ctx.url, fetchFn);
-  const verificacao = classificarVerificacao(ctx.url, sondaBruta);
-  await sleepFn(pausaMs);
-
+  const verificacao = classificarVerificacao(ctx.url, await sondar(ctx.url, deps.fetchFn));
+  await deps.sleepFn(deps.pausaMs);
   const consultas: { estrategia: string; query: string }[] = [];
-  const semProposta = (motivo: string): ResultadoProcessamento => ({
-    verificacao,
-    proposta: null,
-    consultas,
-    semPropostaMotivo: motivo,
-  });
 
-  if (verificacao.classe === "OK") return semProposta("link vivo");
+  if (verificacao.classe === "OK") return semProposta(verificacao, consultas, "link vivo");
   if (verificacao.classe === "INCONSISTENTE") {
-    return semProposta(verificacao.motivo ?? "inconsistente");
+    return semProposta(verificacao, consultas, verificacao.motivo ?? "inconsistente");
   }
-
-  // REDIRECT: o próprio servidor apontou o destino. Propõe se o destino é
-  // domínio aceitável e vivo (verificação do DESTINO, não só da origem).
   if (verificacao.classe === "REDIRECT" && verificacao.finalUrl) {
-    const destino = verificacao.finalUrl;
-    let host = "";
-    try {
-      host = new URL(destino).hostname;
-    } catch {
-      return semProposta("destino do redirect nao parseia");
-    }
-    if (!hostAceitavel(host)) {
-      return semProposta(`destino do redirect em dominio nao aceitavel: ${host}`);
-    }
-    const sondaDestinoBruta = await sondar(destino, fetchFn);
-    const sondaDestino = classificarVerificacao(destino, sondaDestinoBruta);
-    await sleepFn(pausaMs);
-    if (sondaDestino.classe !== "OK") {
-      return semProposta(`destino do redirect tambem nao vive (${sondaDestino.classe})`);
-    }
-    return {
-      verificacao,
-      proposta: {
-        urlVelha: ctx.url,
-        urlNova: destino,
-        criterios: [
-          "redirect-declarado-pelo-servidor",
-          "dominio-" + (host.includes("r2.dev") ? "r2-ou-proprio" : "oficial"),
-          "destino-verificado-vivo",
-        ],
-        estrategia: "redirect",
-      },
-      consultas,
-    };
+    return viaRedirect(ctx, verificacao, consultas, deps);
   }
-
-  // QUEBRADO / MENTIROSO: 3 buscas com palavras-chave diferentes.
-  const consultasPlanejadas = montarConsultasBusca({
-    url: ctx.url,
-    titulo: ctx.titulo ?? null,
-    orgao: ctx.orgao ?? null,
-  });
-
-  for (const consulta of consultasPlanejadas) {
-    consultas.push({ estrategia: consulta.estrategia, query: consulta.query });
-    const busca = await buscarNoDuckDuckGo(consulta.query, fetchFn);
-    await sleepFn(pausaMs);
-    if (!busca.ok || busca.links.length === 0) continue;
-
-    for (const candidata of busca.links.slice(0, MAX_RESULTADOS_POR_BUSCA)) {
-      if (candidata === ctx.url) continue;
-      const sondaBrutaCand = await sondar(candidata, fetchFn);
-      const sonda = classificarVerificacao(candidata, sondaBrutaCand);
-      await sleepFn(pausaMs);
-      const entrada: CandidatoEntrada = {
-        urlVelha: ctx.url,
-        urlCandidata: candidata,
-        statusHttp: sonda.statusHttp ?? 0,
-        contentType: sonda.contentType,
-        corpoInicial: sondaBrutaCand.corpoInicial,
-        tituloItem: ctx.titulo ?? null,
-        tituloCandidato: null,
-      };
-      const avaliacao = avaliarCandidato(entrada);
-      if (!avaliacao.aceito) continue;
-
-      // O tipo do candidato precisa igualar o do ORIGINAL (criterios.ts já
-      // valida; aqui só rotula o critério com o tipo concreto).
-      const tipoOriginal = tipoConteudoDeUrl(ctx.url);
-      const tipoNovo = tipoDeContentType(sonda.contentType);
-      const criterios = avaliacao.criterios.filter(
-        (c) => !c.startsWith("tipo-igual-")
-      );
-      if (tipoNovo !== "desconhecido") criterios.push(`tipo-igual-${tipoNovo}`);
-      else if (tipoOriginal !== "desconhecido") criterios.push(`tipo-igual-${tipoOriginal}`);
-      else return semProposta("tipo do original indeterminavel");
-
-      return {
-        verificacao,
-        proposta: {
-          urlVelha: ctx.url,
-          urlNova: candidata,
-          criterios,
-          estrategia: consulta.estrategia,
-        },
-        consultas,
-      };
-    }
-  }
-
-  return semProposta(
-    `nenhum candidato bateu nos criterios apos ${consultas.length} buscas`
-  );
+  return viaBusca(ctx, verificacao, consultas, deps);
 }

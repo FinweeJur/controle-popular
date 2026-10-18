@@ -165,6 +165,25 @@ def nome_para_fonte_externa(nome: str) -> str:
 # na migration `0057_ref_municipios_mg.sql`.
 LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
 
+# Grafi as de município que JÁ EXISTIRAM e mudaram de nome, ou que as fontes
+# publicam com a escrita antiga. Vira-e-vira de `ref_municipios_mg`: o
+# catálogo guarda o nome OFICIAL do IBGE, e a fonte publica o que o órgão
+# digita — as duas coisas nem sempre são a mesma palavra.
+#
+# Medido em 18/10/2026 na coleta do licenciamento (IDE-Sisema): "Brasópolis"
+# perdeu 9 licenças porque a similaridade deu 0.5714 contra "Brazópolis"
+# (IBGE 3108909), abaixo do limiar de 0.6 — e abaixo do limiar o resolvedor
+# NÃO adivinha de propósito. A escrita antiga não é erro de digitação, é
+# nome antigo: por isso ela vira entrada explícita aqui, auditable, e não
+# um limiar mais baixo que abriria a porta para match errado em toda a base.
+#
+# A chave é o nome JÁ NORMALIZADO (sem acento, maiúsculo), e o valor também:
+# os dois lados passam por `_normalizar_nome_municipio_mg` antes de virar
+# lookup no catálogo. Grafi as novas entram na migration 0057, não aqui.
+ALIAS_MUNICIPIO_MG: dict[str, str] = {
+    "BRASOPOLIS": "BRAZOPOLIS",
+}
+
 _cache_catalogo_municipios_mg: dict[str, dict] | None = None
 
 
@@ -212,8 +231,10 @@ def resolver_municipio_mg(
     casamento é por NOME, contra o catálogo estadual, então cobre qualquer
     uma das ~853 cidades de MG sem depender de `municipios`.
 
-    Dois passos, nesta ordem:
+    Três passos, nesta ordem:
 
+      0. Alias de nome antigo (`ALIAS_MUNICIPIO_MG`) — "Brasópolis" é hoje
+         "Brazópolis", e a similaridade sozinha perde (0.5714 < 0.6).
       1. Igualdade normalizada (sem acento, maiúsculo, sem sufixo " - MG") —
          cobre a maioria: "BELO HORIZONTE - MG" == "Belo Horizonte".
       2. Se não bateu, similaridade via `pg_trgm` (`similarity()`) contra
@@ -234,6 +255,12 @@ def resolver_municipio_mg(
         return None
 
     alvo = _normalizar_nome_municipio_mg(nome_fonte)
+    # Passo 0 — nome antigo (ver `ALIAS_MUNICIPIO_MG`): a grafia mudou na
+    # fonte, não no catálogo, e a similaridade perde por 0.03 (medido em
+    # 18/10/2026: "Brasópolis" -> "Brazópolis" = 0.5714 < 0.6). Renomear aqui
+    # em vez de abrir um `if` extra: o lookup do passo 1 é o mesmo, e a
+    # complexidade ciclomática da função fica onde estava.
+    alvo = ALIAS_MUNICIPIO_MG.get(alvo, alvo)
     catalogo = _catalogo_municipios_mg(client)
     exato = catalogo.get(alvo)
     if exato:

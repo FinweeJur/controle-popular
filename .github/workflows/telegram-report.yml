@@ -1,0 +1,37 @@
+name: Telegram report
+
+# Mensagem avulsa pro canal do bot (mesmos secrets do canário). Serve pra
+# qualquer rotina local mandar report sem precisar do token na máquina:
+#   gh workflow run telegram-report.yml -R FinweeJur/controle-popular \
+#     -f mensagem="..." -f titulo="Harvest TJMG"
+#
+# O token nunca sai dos secrets; este workflow só repassa o texto.
+
+on:
+  workflow_dispatch:
+    inputs:
+      titulo:
+        description: "Primeira linha da mensagem (opcional)"
+        required: false
+        default: ""
+      mensagem:
+        description: "Corpo da mensagem"
+        required: true
+        default: ""
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar no Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TITULO: ${{ github.event.inputs.titulo }}
+          MENSAGEM: ${{ github.event.inputs.mensagem }}
+        run: |
+          TEXTO="${TITULO:+$TITULO
+          }$MENSAGEM"
+          curl -sf -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            -d text="$TEXTO" > /dev/null

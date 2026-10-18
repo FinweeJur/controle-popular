@@ -1,6 +1,13 @@
 import { describe, expect, test } from "vitest";
 
-import { sondar, classificarVerificacao, verificarLink } from "./verificar";
+import {
+  sondar,
+  classificarVerificacao,
+  verificarLink,
+  vereditoDoPortao,
+  erroDeDns,
+  type Sondagem,
+} from "./verificar";
 
 /**
  * Verificação HTTP + conteúdo com fetch mockado — o coração da regra
@@ -120,5 +127,55 @@ describe("verificarLink ponta a ponta com fetch mockado", () => {
     }) as unknown as typeof fetch;
     const v = await verificarLink("https://x.gov.br/doc.pdf", fetchFalso);
     expect(v.classe).toBe("OK");
+  });
+});
+
+/** Regra do portão (revisor de PR): o que reprova e o que só avisa. */
+describe("vereditoDoPortao", () => {
+  function sonda(parcial: Partial<Sondagem>): Sondagem {
+    return {
+      statusHttp: 200, contentType: "text/html", finalUrl: null,
+      corpoInicial: null, metodo: "HEAD", ...parcial,
+    };
+  }
+
+  test("403 (bloqueia robo) e vivo, nao morto", () => {
+    const s = sonda({ statusHttp: 403 });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("vivo");
+  });
+
+  test("404 e morto", () => {
+    const s = sonda({ statusHttp: 404 });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("morto");
+  });
+
+  test("soft 404 (200 com corpo de erro) e morto", () => {
+    const s = sonda({ statusHttp: 200, corpoInicial: "<title>página não encontrada</title>" });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("morto");
+  });
+
+  test("falha de DNS e morta", () => {
+    const s = sonda({ statusHttp: null, erro: "getaddrinfo ENOTFOUND site.gov.br" });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("morto");
+  });
+
+  test("timeout sem DNS e inconclusivo, nao morto", () => {
+    const s = sonda({ statusHttp: null, erro: "The operation was aborted" });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("inconclusivo");
+  });
+
+  test("500 transitorio e inconclusivo", () => {
+    const s = sonda({ statusHttp: 503 });
+    expect(vereditoDoPortao(classificarVerificacao("https://x.gov.br/a", s).classe, s)).toBe("inconclusivo");
+  });
+});
+
+describe("erroDeDns", () => {
+  test("reconhece as mensagens de DNS dos dois runtimes", () => {
+    expect(erroDeDns("getaddrinfo ENOTFOUND x.gov.br")).toBe(true);
+    expect(erroDeDns("EAI_AGAIN")).toBe(true);
+    expect(erroDeDns("Name or service not known")).toBe(true);
+    expect(erroDeDns("The operation was aborted")).toBe(false);
+    expect(erroDeDns(null)).toBe(false);
   });
 });

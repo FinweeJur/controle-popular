@@ -1,5 +1,18 @@
 # Hermes Agent × WhatsApp Integration
 
+> **Tipo:** OPERACAO
+> **Domínio:** global
+> **Última medição:** 2026-10-18
+> **Leitura estimada:** curta (< 5 min)
+> **Relacionados:** [PLANO-ORQUESTRACAO-AGENTES-V2.md](planos/PLANO-ORQUESTRACAO-AGENTES-V2.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** hermes, whatsapp, gateway, processor, ollama, sabia, ponte, integracao
+
+## Sumário
+
+- [Como ativar o Hermes via WhatsApp](#como-ativar-o-hermes-via-whatsapp)
+- [Arquitetura](#arquitetura)
+- [Processor — Estrategia em cascata](#processor--estrategia-em-cascata)
+
 ## Como ativar o Hermes via WhatsApp
 
 O Hermes Agent oferece integração nativa com WhatsApp via **gateway**. Para ativar:
