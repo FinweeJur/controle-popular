@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-10-18T16:21:33.012Z",
+ "geradoEm": "2026-10-18T19:15:48.676Z",
  "regra": {
   "tempo-real": 2,
   "diaria": 3,
@@ -136,7 +136,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-26T17:39:14.994Z",
-   "lagDias": 52,
+   "lagDias": 53,
    "veredito": "atrasada"
   },
   {
@@ -145,9 +145,9 @@
    "arquivo": "apps/web/data/barragens-sigbm.json",
    "frequencia": "diaria",
    "tetoDias": 3,
-   "carimbo": "2026-09-07",
-   "lagDias": 41,
-   "veredito": "atrasada"
+   "carimbo": "2026-10-18",
+   "lagDias": 0,
+   "veredito": "ok"
   },
   {
    "fonte": "ibama-licencas-sancoes",
@@ -195,9 +195,9 @@
    "arquivo": "apps/web/data/noticias-desastres.json",
    "frequencia": "diaria",
    "tetoDias": 3,
-   "carimbo": "2026-09-01T10:56:39.570632+00:00",
-   "lagDias": 47,
-   "veredito": "atrasada"
+   "carimbo": "2026-10-18T19:15:22.443437+00:00",
+   "lagDias": 0,
+   "veredito": "ok"
   },
   {
    "fonte": "vale-b3-cvm",
@@ -223,21 +223,21 @@
    "fonte": "mpmg-coerdoce",
    "nome": "MPMG — Procuradoria de Justiça de Meio Ambiente (Coerdoce)",
    "arquivo": "apps/web/data/mpmg-coerdoce.json",
-   "frequencia": "mensal",
-   "tetoDias": 40,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.238458+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "mpmg-nucard",
    "nome": "MPMG — Núcleo de Acompanhamento de Reparações por Desastres (NUCARD)",
    "arquivo": "apps/web/data/mpmg-nucard.json",
-   "frequencia": "mensal",
-   "tetoDias": 40,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T14:23:57.413749+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "mpf-grandes-casos",
@@ -263,31 +263,31 @@
    "fonte": "dpmg-notas",
    "nome": "DPMG — Defensoria Pública de Minas Gerais",
    "arquivo": "apps/web/data/biblioteca-desastres-unificada.json",
-   "frequencia": "mensal",
-   "tetoDias": 40,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-07T04:12:19.758753Z",
    "lagDias": 41,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "vale-sigma-lithium",
    "nome": "Vale S.A. e Sigma Lithium — Documentos e Ações",
    "arquivo": "apps/web/data/vale-sigma-lithium.json",
-   "frequencia": "mensal",
-   "tetoDias": 40,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T16:00:48.074119+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "sinesp-vde",
    "nome": "SINESP VDE — Vítimas de Eventos Delituosos",
    "arquivo": "apps/web/data/sinesp-vde-2026.json",
-   "frequencia": "mensal",
-   "tetoDias": 40,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T15:01:13.024220+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   }
  ]
 }
