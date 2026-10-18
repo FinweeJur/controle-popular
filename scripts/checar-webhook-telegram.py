@@ -81,6 +81,10 @@ ARQUIVOS_DO_INCIDENTE = {
     "scripts/telegram-set-webhook.mts",
     "scripts/vigia-telegram-opencode.mts",
     "AGENTS.md",
+    # A reorganização de 18/10/2026 moveu as regras duras do AGENTS.md para
+    # este arquivo; o registro do incidente foi junto e a lista precisa
+    # acompanhar, senão a régua reprova o próprio registro.
+    "docs/03-desenvolvimento/REGRAS-DURAS.md",
 }
 
 # Arquivos que o varredor NÃO varre. É UM: ele mesmo.
