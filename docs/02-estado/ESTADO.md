@@ -315,10 +315,13 @@ Runbooks: [`planos/`](../planos/).
   de MG + **São Paulo/SP `3550308`**, *grandfather* da migration `0057`
   (FK das 28 barragens SNISB de SP, `on delete cascade`). A UI corta com
   `like '31%'`. **Não remover.**
-- **Achado — EIA-RIMA:** a página lê `etl/betim/dados/ambiental-estudos.json`
-  (1.004 audiências, 2.415 linhas, **358 municípios**); a tabela
-  `ambiental_audiencias` no Heroku está **vazia**. JSON gerado em 20/08/2026,
-  com **205 links mortos (404)** de 942.
+- **EIA-RIMA regenerado (18/10):** 1.016 audiências, 2.439 linhas,
+  **359 municípios**; status dos links medido — 740 abrem, **205 quebrados
+  (404)**, resto instável/bloqueado/DNS. O gerador bruto→dataset foi
+  reescrito e versionado (`etl/betim/scripts/gerar-ambiental-estudos.py`,
+  com round-trip de 0 divergência). O Google Drive passou a responder 500
+  ao HEAD no `uc?export=download`; a sonda correta é `file/d/<id>/view`.
+  **Site só publica após deploy** (não disparado sem ordem do dono).
 - **Outorgas IGAM:** limitação da fonte — a grade pública não expõe município,
   só regional (URGA); a UI declara isso.
 - Detalhe e pendências: [PENDENCIAS-AMBIENTAL-18-10.md](../planos/PENDENCIAS-AMBIENTAL-18-10.md).

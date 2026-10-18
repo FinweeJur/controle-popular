@@ -71,20 +71,29 @@ propósito.
    desenho.** O coletor declara na linha 126 de
    `etl/apis/ambiental_audiencias.py` que **não grava no Postgres** — só em
    JSON com `--saida`. A página `/ambiental/estudos` lê
-   `etl/betim/dados/ambiental-estudos.json` — 1.004 audiências, 2.415
-   linhas, **358 municípios**, Araçuaí incluída. As tabelas
-   `ambiental_audiencias` e `ambiental_estudo_documentos` (migration `0078`)
-   não são lidas por nenhum código de `apps/`.
-4. **EIA-RIMA com data velha e link morto.** JSON gerado em **20/08/2026**
-   (dois meses antes da medição), fonte
-   `sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-audiencia`.
-   Dos 942 links por estado, **205 devolvem 404** (21,8%).
-5. **TAC não é censo por cidade.** `/ambiental/tac` lê módulos curados
+   `etl/betim/dados/ambiental-estudos.json` — **1.016 audiências, 2.439
+   linhas, 359 municípios** (regenerado em 18/10/2026), Araçuaí incluída.
+   As tabelas `ambiental_audiencias` e `ambiental_estudo_documentos`
+   (migration `0078`) não são lidas por nenhum código de `apps/`.
+4. **A geração do dataset agora é reproduzível.** A transformação
+   bruto→`linhas`+`resumo` morava fora do repositório e se perdeu; foi
+   reescrita em `etl/betim/scripts/gerar-ambiental-estudos.py`, provada por
+   round-trip (1.004 audiências antigas → 2.415 linhas, **0 divergência**).
+   O script tem portão de validação: se o método de checagem não reproduzir
+   os estados estáveis antigos, ele aborta em vez de degradar o dado.
+5. **Links EIA/RIMA: 205 quebrados de 1.016 fichas.** Medido em 18/10:
+   `ok` 740, `morto_404` 205, `morto_dns` 22, `bloqueado` 20, `instavel` 17,
+   `nao_checado` 8, `sem_resposta` 4. O Google Drive passou a responder
+   **500** ao HEAD e **416** ao `GET` com `Range` no `uc?export=download`
+   (anti-abuso) — falseava centenas de links bons. A sonda certa é
+   `file/d/<id>/view`, que devolve 200/404 honestos. A UI já mostra o selo
+   "link quebrado" e o filtro "somente link quebrado".
+6. **TAC não é censo por cidade.** `/ambiental/tac` lê módulos curados
    (`lib/ambiental/tac-projetos-dados`, `tac-gtac`) — grandes acordos, cada
    um com os municípios que afeta. Zero em Araçuaí é esperado, não falha.
    A tabela `documentos_ambientais` tem 11 linhas (evidências: ALMG, CEMIG,
    IEF).
-6. **Outorgas IGAM: limite estrutural.** A grade pública não expõe o
+7. **Outorgas IGAM: limite estrutural.** A grade pública não expõe o
    município, só a regional (URGA). Já declarado na UI
    (`TabelaLicencas.tsx`); não é bug. Alternativa por cidade exigiria
    export xlsx com CSRF ou detalhe por portaria — não implementado.
@@ -94,7 +103,7 @@ propósito.
 | # | Pendência | Esforço | Nota |
 |---|---|---|---|
 | P1 | ~~Remover São Paulo/SP de `ref_municipios_mg`~~ | encerrada | **não era bug**: grandfather documentado na migration `0057`; remover apagaria 28 barragens por cascata |
-| P2 | Regerar `ambiental-estudos.json` (hoje 20/08) e tratar 205 links mortos | médio | exige rodar o coletor de audiências |
+| P2 | ~~Regerar `ambiental-estudos.json` e tratar links mortos~~ | encerrada | regenerado em 18/10: **1.016 audiências / 2.439 linhas / 359 municípios**; gerador versionado e provado por round-trip; Drive exige sondar `file/view` |
 | P3 | ~~Decidir o caminho de banco de audiências~~ | encerrada | diagnóstico: coletor **não grava no Postgres** por desenho (linha 126); tabelas `0078` são mortas. Resta só decidir drop com o dono |
 | P4 | ~~Investigar as 22 cidades sem licença~~ | encerrada | **22/22 conferidas no WFS da Semad em 18/10: zero na fonte**. Lacuna real, não filtro nosso |
 | P5 | Outorgas por município: mover para escopo regional (URGA) ou buscar rota alternativa | grande | depende de decisão do dono |
@@ -112,3 +121,6 @@ propósito.
   `IDE:ide_2101_mg_empreendimentos_licenciados_pto`, `request=GetFeature` +
   `resulttype=hits` + `CQL_FILTER=mun_solic='<nome>'` → Araçuaí 32,
   Bandeira 0.
+- EIA/RIMA: `python scripts/gerar-ambiental-estudos.py --comparar` prova o
+  transformador; sem `--comparar`, coleta audiencias novas e recheca links.
+  O site só publica o novo dado **após deploy** (não disparado sem ordem).

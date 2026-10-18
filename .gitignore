@@ -275,3 +275,9 @@ relatorios/
 scripts/oficina/*.py
 scripts/oficina/__pycache__/
 
+
+
+# Intermediario do gerador de EIA/RIMA: o coletor grava aqui e o
+# scripts/gerar-ambiental-estudos.py transforma em ambiental-estudos.json
+# (esse sim versionado). Regeneravel; nao duplicar 1,8 MB no repo.
+etl/betim/dados/ambiental-audiencias.json
