@@ -141,6 +141,7 @@ Sintoma: `EPERM: operation not permitted, rename ... -> bots.json` ou
 
 Texto para colar em sessão nova, bot ou Telegram:
 [PROMPT-SESSAO-NOVA.md](PROMPT-SESSAO-NOVA.md).
+Versão curta para soul de bot: [SOUL-BOT-DEV.md](SOUL-BOT-DEV.md).
 
 ## O que não é código
 

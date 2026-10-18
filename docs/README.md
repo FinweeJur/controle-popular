@@ -44,6 +44,7 @@ automáticamente pelos agentes de código.
 | Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
 | Checkout canônico, worktree e arquivamento | **CHECKOUT-CANONICO** | [`03-desenvolvimento/CHECKOUT-CANONICO.md`](03-desenvolvimento/CHECKOUT-CANONICO.md) |
 | Prompt para sessão nova | **PROMPT-SESSAO-NOVA** | [`03-desenvolvimento/PROMPT-SESSAO-NOVA.md`](03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
+| Soul curto de bot de código | **SOUL-BOT-DEV** | [`03-desenvolvimento/SOUL-BOT-DEV.md`](03-desenvolvimento/SOUL-BOT-DEV.md) |
 | Coletar ou pesquisar na internet | **COLETA-ETICA** | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 | Regras duras do repo (lido por agentes) | AGENTS | [`/AGENTS.md`](/AGENTS.md) |
 

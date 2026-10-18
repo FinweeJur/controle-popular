@@ -89,6 +89,7 @@ Fluxo de trabalho: [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.
   `X:\DevCoder\OpenMausBotData` via `OMB_DATA_DIR`.
 - Detalhe e comandos: [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md).
 - Prompt pronto para sessão nova: [PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md).
+- Soul curto de bot: [SOUL-BOT-DEV.md](docs/03-desenvolvimento/SOUL-BOT-DEV.md).
 
 ## Regras que não se negociam
 
