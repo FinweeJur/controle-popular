@@ -74,6 +74,14 @@
       ]
     },
     {
+      "matching_content_path": "**/linkmender/**",
+      "matching_content_path_doc": "Modulos de URL/texto do LinkMender (busca, criterios, verificar, correcoes, escada). Os argumentos sao URLs, titulos e nomes de arquivo por natureza; 'String Heavy Function Arguments' e 'Primitive Obsession' viram falso positivo num modulo cuja funcao E manipular string. Regra do dono, 18/10/2026. Os demais cheiros (Complex Method, duplicacao, aninhamento) seguem valendo.",
+      "rules": [
+        { "name": "String Heavy Function Arguments", "weight": 0.0 },
+        { "name": "Primitive Obsession", "weight": 0.0 }
+      ]
+    },
+    {
       "matching_content_path": "**/*",
       "matching_content_path_doc": "Catch-all: codigo de aplicacao usa os padroes do CodeScene. Precisa ser o ULTIMO (o primeiro que casa vence).",
       "rules": []

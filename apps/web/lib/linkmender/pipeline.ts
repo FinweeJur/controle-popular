@@ -10,8 +10,9 @@ import {
   hostAceitavel,
   tipoConteudoDeUrl,
   tipoDeContentType,
+  tituloDaHtml,
 } from "./criterios";
-import type { CandidatoEntrada } from "./criterios";
+import type { CandidatoEntrada, ResultadoAvaliacao } from "./criterios";
 import { montarConsultasBusca, buscarNoDuckDuckGo } from "./busca";
 import type { FetchFn } from "./busca";
 import { sondar, classificarVerificacao } from "./verificar";
@@ -33,8 +34,10 @@ export interface PropostaCorrecao {
 
 export interface ResultadoProcessamento {
   verificacao: Verificacao;
-  /** Proposta aceita pelos critérios — ou null. */
+  /** Proposta aceita pelos critérios (só confiança "alta") — ou null. */
   proposta: PropostaCorrecao | null;
+  /** Candidato de confiança "media" (vai para revisão humana) — ou null. */
+  candidatoMedia: { url: string; motivo: string } | null;
   /** Consultas efetivamente disparadas (trilha; útil no relatório). */
   consultas: { estrategia: string; query: string }[];
   /** Por que não houve proposta, quando não houve. */
@@ -69,6 +72,7 @@ export async function processarLink(
   const semProposta = (motivo: string): ResultadoProcessamento => ({
     verificacao,
     proposta: null,
+    candidatoMedia: null,
     consultas,
     semPropostaMotivo: motivo,
   });
@@ -109,16 +113,19 @@ export async function processarLink(
         ],
         estrategia: "redirect",
       },
+      candidatoMedia: null,
       consultas,
     };
   }
 
-  // QUEBRADO / MENTIROSO: 3 buscas com palavras-chave diferentes.
+  // QUEBRADO / MENTIROSO: buscas (chave única + 3 com palavras diferentes).
   const consultasPlanejadas = montarConsultasBusca({
     url: ctx.url,
     titulo: ctx.titulo ?? null,
     orgao: ctx.orgao ?? null,
   });
+
+  let candidatoMedia: { url: string; motivo: string } | null = null;
 
   for (const consulta of consultasPlanejadas) {
     consultas.push({ estrategia: consulta.estrategia, query: consulta.query });
@@ -138,10 +145,15 @@ export async function processarLink(
         contentType: sonda.contentType,
         corpoInicial: sondaBrutaCand.corpoInicial,
         tituloItem: ctx.titulo ?? null,
-        tituloCandidato: null,
+        tituloCandidato: tituloDaHtml(sondaBrutaCand.corpoInicial),
       };
-      const avaliacao = avaliarCandidato(entrada);
-      if (!avaliacao.aceito) continue;
+      const avaliacao: ResultadoAvaliacao = avaliarCandidato(entrada);
+      if (!avaliacao.aceito) {
+        if (avaliacao.confianca === "media" && !candidatoMedia) {
+          candidatoMedia = { url: candidata, motivo: avaliacao.motivos.join("; ") };
+        }
+        continue;
+      }
 
       // O tipo do candidato precisa igualar o do ORIGINAL (criterios.ts já
       // valida; aqui só rotula o critério com o tipo concreto).
@@ -162,12 +174,17 @@ export async function processarLink(
           criterios,
           estrategia: consulta.estrategia,
         },
+        candidatoMedia: null,
         consultas,
       };
     }
   }
 
-  return semProposta(
-    `nenhum candidato bateu nos criterios apos ${consultas.length} buscas`
-  );
+  const base = `nenhum candidato bateu nos criterios apos ${consultas.length} buscas`;
+  return {
+    ...semProposta(
+      candidatoMedia ? `${base}; candidato de revisao humana: ${candidatoMedia.url}` : base
+    ),
+    candidatoMedia,
+  };
 }

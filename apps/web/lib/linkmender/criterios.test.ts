@@ -2,13 +2,16 @@ import { describe, expect, test } from "vitest";
 
 import {
   avaliarCandidato,
+  caminhoEspecifico,
   corpoConfere,
   hostAceitavel,
   hostGovernamental,
   hostProprioOuR2,
+  profundidadeCaminho,
   similaridadeTitulo,
   tipoConteudoDeUrl,
   tipoDeContentType,
+  tituloDaHtml,
 } from "./criterios";
 
 /**
@@ -112,11 +115,13 @@ describe("avaliarCandidato", () => {
   test("candidato que bate em tudo e aceito, com os criterios gravados", () => {
     const r = avaliarCandidato(base);
     expect(r.aceito).toBe(true);
+    expect(r.confianca).toBe("alta");
     expect(r.criterios).toContain("vivo-2xx");
     expect(r.criterios).toContain("dominio-oficial");
     expect(r.criterios).toContain("tipo-igual-pdf");
     expect(r.criterios).toContain("corpo-confere");
     expect(r.criterios).toContain("titulo-similar");
+    expect(r.criterios).toContain("caminho-especifico");
   });
 
   test("status 403 NAO e vivo para candidato (protegido nao substitui publico)", () => {
@@ -154,10 +159,18 @@ describe("avaliarCandidato", () => {
     expect(r.criterios).toContain("dominio-r2-ou-proprio");
   });
 
-  test("sem titulo conhecido: critico registrado, outros criterios decidem", () => {
+  test("sem titulo conhecido: NAO e automatico, vira confianca media (fila humana)", () => {
     const r = avaliarCandidato({ ...base, tituloItem: null, tituloCandidato: null });
-    expect(r.aceito).toBe(true);
+    expect(r.aceito).toBe(false);
+    expect(r.confianca).toBe("media");
     expect(r.criterios).toContain("titulo-nao-avaliado");
+  });
+
+  test("candidato generico (raiz) para link fundo nao e automatico", () => {
+    const r = avaliarCandidato({ ...base, urlCandidata: "https://www.gov.br/" });
+    expect(r.aceito).toBe(false);
+    expect(r.confianca).toBe("media");
+    expect(r.motivos.some((m) => m.startsWith("caminho:"))).toBe(true);
   });
 
   test("com titulo, candidato sobre outro assunto reprova por similaridade", () => {
@@ -167,5 +180,35 @@ describe("avaliarCandidato", () => {
     });
     expect(r.aceito).toBe(false);
     expect(r.motivos.some((m) => m.startsWith("titulo:"))).toBe(true);
+  });
+});
+
+describe("caminho especifico (anti-atalho generico)", () => {
+  test("profundidade do caminho", () => {
+    expect(profundidadeCaminho("https://x.gov.br/")).toBe(0);
+    expect(profundidadeCaminho("https://x.gov.br/a")).toBe(1);
+    expect(profundidadeCaminho("https://x.gov.br/a/b/c")).toBe(3);
+  });
+
+  test("original fundo nao aceita a raiz como substituta", () => {
+    expect(caminhoEspecifico("https://x.gov.br/processos/123", "https://x.gov.br/")).toBe(false);
+    expect(caminhoEspecifico("https://x.gov.br/processos/123", "https://x.gov.br/processos")).toBe(true);
+  });
+
+  test("original raso nao exige nada", () => {
+    expect(caminhoEspecifico("https://x.gov.br/", "https://y.gov.br/")).toBe(true);
+  });
+});
+
+describe("tituloDaHtml", () => {
+  test("extrai o <title> da pagina candidata", () => {
+    expect(tituloDaHtml("<html><head><title>Relatório TAC 2024</title></head></html>")).toBe(
+      "Relatório TAC 2024"
+    );
+  });
+
+  test("sem title devolve null", () => {
+    expect(tituloDaHtml("<html><body>oi</body></html>")).toBeNull();
+    expect(tituloDaHtml(null)).toBeNull();
   });
 });

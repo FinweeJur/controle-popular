@@ -177,3 +177,32 @@ export async function verificarLink(
   const s = await sondar(url, fetchFn);
   return classificarVerificacao(url, s);
 }
+
+/** Veredito do PORTÃO (revisor de PR): vivo, inconclusivo ou morto. */
+export type VereditoPortao = "vivo" | "inconclusivo" | "morto";
+
+/** Mensagem de erro representa falha de DNS (domínio sumiu)? */
+export function erroDeDns(mensagem: string | undefined | null): boolean {
+  if (!mensagem) return false;
+  return /ENOTFOUND|EAI_AGAIN|getaddrinfo|Name or service not known|nodename nor servname/i.test(
+    mensagem
+  );
+}
+
+/**
+ * Traduz a classe da verificação no veredito do portão de merge.
+ *
+ * Por que existe: o portão antigo só aceitava 200–399 e reprovava 403
+ * (site que bloqueia robô) e timeout. O plano (docs/planos/
+ * PLANO-LINKMENDER-E-ESCADA-18-10.md) separa três casos:
+ *  - MORTO: 404/410, "200 que mente" (soft 404) e DNS — não entra.
+ *  - VIVO: 2xx/3xx e 401/403/429 — o servidor respondeu; bloqueia robô,
+ *    mas o link existe para o leitor.
+ *  - INCONCLUSIVO: timeout/5xx transitório — não reprova, só avisa.
+ */
+export function vereditoDoPortao(classe: ClasseLink, s: Sondagem): VereditoPortao {
+  if (classe === "QUEBRADO" || classe === "MENTIROSO") return "morto";
+  if (classe === "OK" || classe === "REDIRECT") return "vivo";
+  if (s.statusHttp === null && erroDeDns(s.erro)) return "morto";
+  return "inconclusivo";
+}

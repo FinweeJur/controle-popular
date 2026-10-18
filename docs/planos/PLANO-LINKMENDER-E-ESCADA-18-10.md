@@ -144,6 +144,34 @@ arquivo. Quanto mais roda, mais barato fica.
 continua sendo o portão determinístico (vivo + domínio + tipo + nome/caminho).
 Toda proposta carrega o motivo e o degrau de origem.
 
+## Estado da execução (18/10/2026)
+
+Entregue nesta rodada (85 testes verdes, `tsc` limpo, CodeScene no commit):
+
+1. **Fase 1.1 — portão tolerante.** `vereditoDoPortao` e `erroDeDns` em
+   `apps/web/lib/linkmender/verificar.ts`; o prober passou a usá-los.
+   403→vivo, 500/timeout→inconclusivo, 404/"200 que mente"/DNS→morto. Mais
+   tolerância de mortos (`excedeTolerancia`): reprova só acima de
+   `max(5, 10%)` — sem isso, um 404 travaria PR de 2.459 links.
+2. **Fase 1.3 — velocidade.** Sondagem concorrente (8) com pausa de 1,2 s por
+   host; o que levava 2h+ roda em minutos.
+3. **Fase 1.2 — camada aplicada.** `corrigirDado` (com cache) ligada em
+   `lib/server-only/json-etl.ts` (ponto único de 18 loaders, inclui o
+   registry de fontes) e em `lib/ambiental/estudos-dados.ts`. Server-side:
+   não infla o bundle do cliente.
+4. **Fase 2 — detetive afinado.** Título obrigatório (sem título → fila
+   humana), critério `caminho-especifico` (anti-atalho genérico),
+   `chavesDeUrl` (busca por processo/CNPJ/arquivo), `orgaoDeUrl` e nota de
+   confiança alta/média/baixa no `avaliarCandidato`.
+5. **Fase 3 — núcleo da escada.** `lib/linkmender/escada.ts`: ordem D0–D5,
+   `variacoesUrl` (D1), `urlWayback`, memória de reparos (D0), reparos por
+   degrau e tetos de LLM — ollama 20, maritaca 10, ling 10, visão 5.
+   Adaptadores de rede (Playwright no D3, visão no D4) ficam para a rodada
+   seguinte; a peça que decide e memoriza está pronta e testada.
+
+**Decisões tomadas (ordem do dono, 18/10):** camada no render/build; Fases
+1–3 na mesma rodada; teto pequeno por LLM; re-disparo dos 6 PRs autorizado.
+
 ## Orçamento, privacidade e travas
 
 1. **Gatilho por falha:** LLM e visão só acendem quando D0–D3 falham.

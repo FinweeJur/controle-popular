@@ -29,7 +29,7 @@ import {
   juntarCorrecoes,
 } from "../../apps/web/lib/linkmender/correcoes.js";
 import type { CorrecaoLink } from "../../apps/web/lib/linkmender/correcoes.js";
-import { USER_AGENT_LINKMENDER } from "../../apps/web/lib/linkmender/busca.js";
+import { USER_AGENT_LINKMENDER, orgaoDeUrl } from "../../apps/web/lib/linkmender/busca.js";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const APPS_WEB = path.join(RAIZ, "apps", "web");
@@ -351,7 +351,7 @@ export async function executarLinkMenderV2(apenasEmpresas = false): Promise<void
     }
 
     const r = await processarLink(
-      { url: c.url, titulo: c.titulo, orgao: null },
+      { url: c.url, titulo: c.titulo, orgao: orgaoDeUrl(c.url) },
       { sleepFn, pausaMs }
     );
 

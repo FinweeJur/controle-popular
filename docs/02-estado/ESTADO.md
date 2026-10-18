@@ -295,6 +295,24 @@ Runbooks: [`planos/`](../planos/).
 
 ## Entregas recentes
 
+**18/10/2026 — LinkMender destravado: portão, camada aplicada e escada:**
+
+- **Diagnóstico:** 6 PRs do LinkMender abertos (o maior com 2.467 correções)
+  travados porque o revisor reprovava 403 e timeout como link morto. Detalhe
+  e evidências em [PLANO-LINKMENDER-E-ESCADA-18-10.md](../planos/PLANO-LINKMENDER-E-ESCADA-18-10.md).
+- **Portão tolerante:** 403→vivo, 500/timeout→inconclusivo, 404/"200 que
+  mente"/DNS→morto, com tolerância de mortos `max(5, 10%)`; sondagem
+  concorrente (8), ~15 min em vez de 2h+.
+- **Camada aplicada:** `corrigirDado` ligada em `lib/server-only/json-etl.ts`
+  (18 loaders, inclui o registry) e `lib/ambiental/estudos-dados.ts` — sem
+  isso, mesclar o PR não mudava link nenhum.
+- **Detetive afinado:** título obrigatório (sem título → fila humana),
+  anti-atalho genérico, busca por chave única (processo/CNPJ/arquivo),
+  órgão por domínio e nota de confiança.
+- **Escada D0–D5:** núcleo em `lib/linkmender/escada.ts` (memória de reparos,
+  variações de URL, tetos de LLM: ollama 20, maritaca 10, ling 10, visão 5).
+  Adaptadores de rede (Playwright/visão) na próxima rodada. 85 testes verdes.
+
 **18/10/2026 — licenciamento completo: 853 municípios medidos, bug do zero fechado:**
 
 - **Banco (Heroku):** `ambiental_licenciamento` passou de 8.612 para **19.713

@@ -131,14 +131,32 @@ export function aplicarCorrecoesEmDado<T>(dado: T, correcoes: CorrecaoLink[]): T
  * servidor: `urlCorrigida(fonte.url)`.
  */
 export function urlCorrigida(url: string): string {
-  const lista = validarCorrecoes(dadosCorrecoes);
-  for (const c of lista) {
-    if (url === c.urlVelha) return c.urlNova;
-  }
-  return url;
+  return mapaCorrecoes().get(url) ?? url;
 }
 
-/** A camada inteira, validada. Lança se o JSON commitado estiver malformado. */
+let _lista: CorrecaoLink[] | null = null;
+let _mapa: Map<string, string> | null = null;
+
+/** A camada inteira, validada e cacheada. Lança se o JSON estiver malformado. */
 export function carregarCorrecoes(): CorrecaoLink[] {
-  return validarCorrecoes(dadosCorrecoes);
+  if (_lista === null) _lista = validarCorrecoes(dadosCorrecoes);
+  return _lista;
+}
+
+function mapaCorrecoes(): Map<string, string> {
+  if (_mapa === null) {
+    _mapa = new Map(carregarCorrecoes().map((c) => [c.urlVelha, c.urlNova]));
+  }
+  return _mapa;
+}
+
+/**
+ * Aplica a camada commitada a um dado arbitrário — atalho de build/render.
+ * É o ponto único que faz as correções chegarem à tela: os loaders de dados
+ * (ex.: `lib/server-only/json-etl.ts`, `lib/ambiental/estudos-dados.ts`)
+ * chamam isto ANTES de entregar o dado à página. Sem isso, mesclar o PR do
+ * LinkMender não muda link nenhum (o furo medido em 18/10).
+ */
+export function corrigirDado<T>(dado: T): T {
+  return aplicarCorrecoesEmDado(dado, carregarCorrecoes());
 }

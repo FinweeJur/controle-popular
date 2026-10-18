@@ -68,6 +68,8 @@ export interface CandidatoEntrada {
 
 export interface ResultadoAvaliacao {
   aceito: boolean;
+  /** Nota da proposta: "alta" mescla sozinho; "media" vai para revisão humana. */
+  confianca: "alta" | "media" | "baixa";
   /** Códigos dos critérios que BATERAM (entram no JSON de correções). */
   criterios: string[];
   /** Por que cada critério que não bateu, foi reprovado. */
@@ -107,6 +109,32 @@ export function tipoDeContentType(contentType: string | null): TipoConteudo {
   if (ct.includes("application/pdf")) return "pdf";
   if (ct.startsWith("text/html")) return "html";
   return "desconhecido";
+}
+
+/** Profundidade do caminho: `/` = 0, `/a` = 1, `/a/b` = 2... */
+export function profundidadeCaminho(url: string): number {
+  try {
+    return new URL(url).pathname.split("/").filter(Boolean).length;
+  } catch {
+    return 0;
+  }
+}
+
+/**
+ * Candidato não pode ser a "porta de entrada" do site quando o original era
+ * fundo. Regra do plano (Fase 2): link antigo `/processos/123` não pode virar
+ * a home do órgão — troca de link específico por link genérico não conserta.
+ */
+export function caminhoEspecifico(urlVelha: string, urlCandidata: string): boolean {
+  if (profundidadeCaminho(urlVelha) < 2) return true;
+  return profundidadeCaminho(urlCandidata) >= 1;
+}
+
+/** Título declarado pela página candidata (`<title>`), quando presente. */
+export function tituloDaHtml(corpo: string | null): string | null {
+  if (!corpo) return null;
+  const m = /<title[^>]*>\s*([^<]{3,200}?)\s*<\/title>/i.exec(corpo);
+  return m ? m[1].replace(/\s+/g, " ").trim() : null;
 }
 
 /** Remove acentos, caixa e pontuação; devolve tokens significativos. */
@@ -173,82 +201,105 @@ export function corpoConfere(url: string, corpoInicial: string | null): {
   return { confere: true, motivo: "sem marcador de erro no corpo" };
 }
 
-export function avaliarCandidato(entrada: CandidatoEntrada): ResultadoAvaliacao {
-  const criterios: string[] = [];
-  const motivos: string[] = [];
+/** Contexto mutável da avaliação: os helper empilham critérios e motivos. */
+interface ContextoAvaliacao {
+  entrada: CandidatoEntrada;
+  criterios: string[];
+  motivos: string[];
+}
 
-  // 1. VIVO
-  if (entrada.statusHttp >= 200 && entrada.statusHttp < 300) {
-    criterios.push("vivo-2xx");
+function avaliarVivo(ctx: ContextoAvaliacao): void {
+  const { statusHttp } = ctx.entrada;
+  if (statusHttp >= 200 && statusHttp < 300) {
+    ctx.criterios.push("vivo-2xx");
   } else {
-    motivos.push(`vivo: candidata respondeu HTTP ${entrada.statusHttp} (exige 2xx)`);
+    ctx.motivos.push(`vivo: candidata respondeu HTTP ${statusHttp} (exige 2xx)`);
   }
+}
 
-  // 2. DOMÍNIO
+function avaliarDominio(ctx: ContextoAvaliacao): void {
   try {
-    const host = new URL(entrada.urlCandidata).hostname;
+    const host = new URL(ctx.entrada.urlCandidata).hostname;
     if (hostGovernamental(host)) {
-      criterios.push("dominio-oficial");
+      ctx.criterios.push("dominio-oficial");
     } else if (hostProprioOuR2(host)) {
-      criterios.push("dominio-r2-ou-proprio");
+      ctx.criterios.push("dominio-r2-ou-proprio");
     } else {
-      motivos.push(`dominio: ${host} nao e orgao publico nem R2 de fontes`);
+      ctx.motivos.push(`dominio: ${host} nao e orgao publico nem R2 de fontes`);
     }
   } catch {
-    motivos.push("dominio: candidata nao parseia como URL");
+    ctx.motivos.push("dominio: candidata nao parseia como URL");
   }
+}
 
-  // 3. TIPO IGUAL (PDF→PDF, HTML→HTML); indeterminável = reprova
-  const tipoVelho = tipoConteudoDeUrl(entrada.urlVelha);
-  const tipoCt = tipoDeContentType(entrada.contentType);
+function avaliarTipo(ctx: ContextoAvaliacao): void {
+  const tipoVelho = tipoConteudoDeUrl(ctx.entrada.urlVelha);
+  const tipoCt = tipoDeContentType(ctx.entrada.contentType);
   const tipoCandidato = tipoVelho === "desconhecido" ? tipoCt : tipoVelho;
   if (tipoCandidato === "desconhecido") {
-    motivos.push("tipo: tipo do original indeterminavel");
+    ctx.motivos.push("tipo: tipo do original indeterminavel");
   } else if (tipoCt === "desconhecido") {
-    motivos.push("tipo: Content-Type da candidata indeterminavel");
+    ctx.motivos.push("tipo: Content-Type da candidata indeterminavel");
   } else if (tipoCt === tipoCandidato) {
-    criterios.push(`tipo-igual-${tipoCt}`);
+    ctx.criterios.push(`tipo-igual-${tipoCt}`);
   } else {
-    motivos.push(`tipo: original ${tipoCandidato} mas candidata ${tipoCt}`);
+    ctx.motivos.push(`tipo: original ${tipoCandidato} mas candidata ${tipoCt}`);
   }
+}
 
-  // O corpo, quando amostrado, precisa conferir (200 e mente → reprova)
-  const corpo = corpoConfere(entrada.urlCandidata, entrada.corpoInicial);
-  if (corpo.confere) {
-    if (entrada.corpoInicial !== null) criterios.push("corpo-confere");
+function avaliarCorpo(ctx: ContextoAvaliacao): void {
+  const corpo = corpoConfere(ctx.entrada.urlCandidata, ctx.entrada.corpoInicial);
+  if (!corpo.confere) {
+    ctx.motivos.push(`corpo: ${corpo.motivo}`);
+  } else if (ctx.entrada.corpoInicial !== null) {
+    ctx.criterios.push("corpo-confere");
+  }
+}
+
+function avaliarCaminho(ctx: ContextoAvaliacao): void {
+  if (caminhoEspecifico(ctx.entrada.urlVelha, ctx.entrada.urlCandidata)) {
+    ctx.criterios.push("caminho-especifico");
   } else {
-    motivos.push(`corpo: ${corpo.motivo}`);
+    ctx.motivos.push("caminho: candidata generica (raiz) para um link fundo");
   }
+}
 
-  // 4. TÍTULO
-  if (entrada.tituloItem) {
-    const alvo =
-      entrada.tituloCandidato ??
-      entrada.urlCandidata.replace(/^https?:\/\//i, "").replace(/[^a-z0-9]+/gi, " ");
-    const sim = similaridadeTitulo(entrada.tituloItem, alvo);
-    if (sim >= LIMIAR_SIMILARIDADE_TITULO) {
-      criterios.push("titulo-similar");
-    } else {
-      motivos.push(
-        `titulo: similaridade ${sim.toFixed(2)} < ${LIMIAR_SIMILARIDADE_TITULO}`
-      );
-    }
+function avaliarTitulo(ctx: ContextoAvaliacao): void {
+  const { tituloItem, tituloCandidato, urlCandidata } = ctx.entrada;
+  if (!tituloItem) {
+    ctx.criterios.push("titulo-nao-avaliado");
+    ctx.motivos.push("titulo: item sem titulo conhecido — candidato vai para revisao humana");
+    return;
+  }
+  const alvo = tituloCandidato ?? urlCandidata.replace(/^https?:\/\//i, "").replace(/[^a-z0-9]+/gi, " ");
+  const sim = similaridadeTitulo(tituloItem, alvo);
+  if (sim >= LIMIAR_SIMILARIDADE_TITULO) {
+    ctx.criterios.push("titulo-similar");
   } else {
-    criterios.push("titulo-nao-avaliado");
+    ctx.motivos.push(`titulo: similaridade ${sim.toFixed(2)} < ${LIMIAR_SIMILARIDADE_TITULO}`);
   }
+}
 
-  // Os critérios OBRIGATÓRIOS: vivo + domínio + tipo + corpo. Quando o item
-  // TEM título, similaridade também é obrigatória; sem título, registrado
-  // como "titulo-nao-avaliado" e não veta.
-  const tituloOk = entrada.tituloItem
-    ? criterios.includes("titulo-similar")
-    : criterios.includes("titulo-nao-avaliado");
-  const obrigatoriosOk =
-    criterios.includes("vivo-2xx") &&
-    (criterios.includes("dominio-oficial") || criterios.includes("dominio-r2-ou-proprio")) &&
-    criterios.some((c) => c.startsWith("tipo-igual-")) &&
-    (criterios.includes("corpo-confere") || entrada.corpoInicial === null) &&
-    tituloOk;
+/** Nota da proposta a partir dos critérios: alta mescla, media vai pro humano. */
+function calcularConfianca(ctx: ContextoAvaliacao): ResultadoAvaliacao["confianca"] {
+  const c = ctx.criterios;
+  const essenciaisOk =
+    c.includes("vivo-2xx") &&
+    (c.includes("dominio-oficial") || c.includes("dominio-r2-ou-proprio")) &&
+    c.some((x) => x.startsWith("tipo-igual-")) &&
+    (c.includes("corpo-confere") || ctx.entrada.corpoInicial === null);
+  if (!essenciaisOk) return "baixa";
+  return c.includes("titulo-similar") && c.includes("caminho-especifico") ? "alta" : "media";
+}
 
-  return { aceito: obrigatoriosOk, criterios, motivos };
+export function avaliarCandidato(entrada: CandidatoEntrada): ResultadoAvaliacao {
+  const ctx: ContextoAvaliacao = { entrada, criterios: [], motivos: [] };
+  avaliarVivo(ctx);
+  avaliarDominio(ctx);
+  avaliarTipo(ctx);
+  avaliarCorpo(ctx);
+  avaliarCaminho(ctx);
+  avaliarTitulo(ctx);
+  const confianca = calcularConfianca(ctx);
+  return { aceito: confianca === "alta", confianca, criterios: ctx.criterios, motivos: ctx.motivos };
 }

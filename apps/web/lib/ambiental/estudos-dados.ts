@@ -12,6 +12,7 @@
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { corrigirDado } from "../linkmender/correcoes";
 import type { AudienciaEstudo, EstudoLinha, ResumoEstudos } from "./estudos";
 
 interface DadosEstudosBrutos {
@@ -36,7 +37,9 @@ function carregarDadosEstudos(): DadosEstudosBrutos {
     "ambiental-estudos.json"
   );
   try {
-    cacheDadosEstudos = JSON.parse(readFileSync(caminho, "utf-8")) as DadosEstudosBrutos;
+    cacheDadosEstudos = corrigirDado(
+      JSON.parse(readFileSync(caminho, "utf-8"))
+    ) as DadosEstudosBrutos;
   } catch (erro) {
     const causa = erro instanceof Error ? erro.message : String(erro);
     throw new Error(
