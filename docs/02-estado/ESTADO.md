@@ -308,11 +308,13 @@ Runbooks: [`planos/`](../planos/).
 - **Verificação ao vivo (18/10):** Araçuaí 32, Uberlândia 646, Paracatu 308,
   Divinópolis 205, Minas Novas 39, Brazópolis 17 — páginas por município
   servindo dado. As **22 cidades sem dado** (Bandeira, Bugre, Campo Azul,
-  Catuti...) devolvem 404 de propósito: a Semad não publica licença para elas,
-  e o índice marca "sem registro na fonte".
-- **Achado — tabela de referência poluída:** `ref_municipios_mg` tem **854
-  linhas** (853 de MG + **São Paulo/SP `3550308`**). A UI corta com
-  `like '31%'`, então a tela está certa; a tabela precisa de faxina.
+  Catuti...) devolvem 404 de propósito: a Semad não publica licença para elas
+  (conferido na fonte em 18/10 — 22/22 dão zero no próprio WFS), e o índice
+  marca "sem registro na fonte".
+- **Conferência — `ref_municipios_mg` com 854 linhas é intencional:** são 853
+  de MG + **São Paulo/SP `3550308`**, *grandfather* da migration `0057`
+  (FK das 28 barragens SNISB de SP, `on delete cascade`). A UI corta com
+  `like '31%'`. **Não remover.**
 - **Achado — EIA-RIMA:** a página lê `etl/betim/dados/ambiental-estudos.json`
   (1.004 audiências, 2.415 linhas, **358 municípios**); a tabela
   `ambiental_audiencias` no Heroku está **vazia**. JSON gerado em 20/08/2026,

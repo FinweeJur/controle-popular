@@ -51,15 +51,22 @@ propósito.
 
 ## Achados medidos
 
-1. **22 municípios sem licença na fonte** (831/853). É lacuna da Semad, não
-   página quebrada: Bandeira, Barão do Monte Alto, Bugre, Campo Azul,
-   Catuti, Consolação, Córrego Novo, Entre Folhas, Imbé de Minas, Japonvar,
-   Joanésia, Naque, Patis, Pingo-d'Água, Santa Efigênia de Minas, Santa
-   Helena de Minas, São Geraldo da Piedade, São João do Oriente, São João do
-   Pacuí, São Sebastião do Rio Preto, Senhora do Porto, Serra da Saudade.
-2. **`ref_municipios_mg` tem 854 linhas** — 853 de MG mais **São Paulo/SP
-   (`3550308`)**. A UI corta com `like '31%'` e mostra o número certo (853),
-   mas a tabela está poluída. Origem provável: seed do IBGE sem filtro de UF.
+1. **22 municípios sem licença na fonte** (831/853) — **conferido na fonte
+   em 18/10: 22/22 dão zero no próprio WFS da Semad**
+   (`IDE:ide_2101_mg_empreendimentos_licenciados_pto`, filtro
+   `mun_solic='<nome>'`; Araçuaí devolve 32 pelo mesmo método). É lacuna da
+   Semad, não da nossa coleta: Bandeira, Barão do Monte Alto, Bugre, Campo
+   Azul, Catuti, Consolação, Córrego Novo, Entre Folhas, Imbé de Minas,
+   Japonvar, Joanésia, Naque, Patis, Pingo-d'Água, Santa Efigênia de Minas,
+   Santa Helena de Minas, São Geraldo da Piedade, São João do Oriente, São
+   João do Pacuí, São Sebastião do Rio Preto, Senhora do Porto, Serra da
+   Saudade.
+2. **`ref_municipios_mg` tem 854 linhas — e está certo.** São as 853 de MG
+   mais **São Paulo/SP (`3550308`)**, inserida de propósito pela migration
+   `0057` (linhas 915-928) como *grandfather*: as 28 barragens SNISB da
+   cidade de São Paulo apontam para esta tabela por FK com `on delete
+   cascade`. Apagar a linha apagaria barragens reais. A UI corta com
+   `like '31%'` e mostra 853. **Não remover.**
 3. **`ambiental_audiencias` está vazia no Heroku (0 linhas).** A página
    `/ambiental/estudos` não lê do banco: lê
    `etl/betim/dados/ambiental-estudos.json` — 1.004 audiências, 2.415
@@ -84,18 +91,22 @@ propósito.
 
 | # | Pendência | Esforço | Nota |
 |---|---|---|---|
-| P1 | Remover São Paulo/SP de `ref_municipios_mg` e conferir o seed | pequeno | a UI mascara, o dado não |
+| P1 | ~~Remover São Paulo/SP de `ref_municipios_mg`~~ | encerrada | **não era bug**: grandfather documentado na migration `0057`; remover apagaria 28 barragens por cascata |
 | P2 | Regerar `ambiental-estudos.json` (hoje 20/08) e tratar 205 links mortos | médio | exige rodar o coletor de audiências |
 | P3 | Decidir o caminho de banco de audiências: ingerir no Heroku ou remover a tabela morta | médio | hoje a página vive de JSON |
-| P4 | Investigar as 22 cidades sem licença (confirmar lacuna na Semad, não filtro nosso) | pequeno | consulta manual na fonte |
+| P4 | ~~Investigar as 22 cidades sem licença~~ | encerrada | **22/22 conferidas no WFS da Semad em 18/10: zero na fonte**. Lacuna real, não filtro nosso |
 | P5 | Outorgas por município: mover para escopo regional (URGA) ou buscar rota alternativa | grande | depende de decisão do dono |
 
 ## Como verificar de novo
 
 - Licenciamento no banco: `select count(*), count(distinct id_municipio)
   from ambiental_licenciamento;` → 19.713 / 831.
-- Referência: `select count(*) from ref_municipios_mg;` → 854 (deve virar
-  853 depois de P1).
+- Referência: `select count(*) from ref_municipios_mg;` → 854, sendo 853 com
+  `id_ibge like '31%'` (o 854º é São Paulo/SP, grandfather proposital).
 - Audiências no banco: `select count(*) from ambiental_audiencias;` → 0.
 - Site: abrir `/ambiental/licenciamento/municipio/3103405` (Araçuaí) e
   conferir 32 licenças.
+- Fonte: WFS `https://geoserver.meioambiente.mg.gov.br/IDE/ows`, camada
+  `IDE:ide_2101_mg_empreendimentos_licenciados_pto`, `request=GetFeature` +
+  `resulttype=hits` + `CQL_FILTER=mun_solic='<nome>'` → Araçuaí 32,
+  Bandeira 0.
