@@ -114,6 +114,11 @@ prompt e seus cards de aprovação.
 **Proibido por enquanto:** GPT, Grok, Llama, Mistral (e não usar engines
 Claude/Codex/Grok do OpenMausBot).
 
+**Regra operacional de escolha (dificuldade × custo), 18/10/2026:**
+[AGENTS.md §5.15](/AGENTS.md) — barato primeiro no OpenCode Go, reasoning
+desligado em tarefa simples, Gemini avançado no Antigravity, e **nunca
+ChatGPT** (Claude só exceção temporária se a cota do Gemini acabar).
+
 ## Workflow — 7 fases (herdadas da v1)
 
 Fluxo idêntico ao `scripts/orquestrador-ia.py` (o script é subprocess puro —
