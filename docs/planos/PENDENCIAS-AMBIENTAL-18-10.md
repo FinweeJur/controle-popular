@@ -67,12 +67,14 @@ propósito.
    cidade de São Paulo apontam para esta tabela por FK com `on delete
    cascade`. Apagar a linha apagaria barragens reais. A UI corta com
    `like '31%'` e mostra 853. **Não remover.**
-3. **`ambiental_audiencias` está vazia no Heroku (0 linhas).** A página
-   `/ambiental/estudos` não lê do banco: lê
+3. **`ambiental_audiencias` está vazia no Heroku (0 linhas) e é sobra de
+   desenho.** O coletor declara na linha 126 de
+   `etl/apis/ambiental_audiencias.py` que **não grava no Postgres** — só em
+   JSON com `--saida`. A página `/ambiental/estudos` lê
    `etl/betim/dados/ambiental-estudos.json` — 1.004 audiências, 2.415
-   linhas, **358 municípios**, Araçuaí incluída. O caminho de banco existe
-   (`ambiental_audiencias` + `ambiental_estudo_documentos`), mas nada foi
-   ingerido nele.
+   linhas, **358 municípios**, Araçuaí incluída. As tabelas
+   `ambiental_audiencias` e `ambiental_estudo_documentos` (migration `0078`)
+   não são lidas por nenhum código de `apps/`.
 4. **EIA-RIMA com data velha e link morto.** JSON gerado em **20/08/2026**
    (dois meses antes da medição), fonte
    `sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-audiencia`.
@@ -93,7 +95,7 @@ propósito.
 |---|---|---|---|
 | P1 | ~~Remover São Paulo/SP de `ref_municipios_mg`~~ | encerrada | **não era bug**: grandfather documentado na migration `0057`; remover apagaria 28 barragens por cascata |
 | P2 | Regerar `ambiental-estudos.json` (hoje 20/08) e tratar 205 links mortos | médio | exige rodar o coletor de audiências |
-| P3 | Decidir o caminho de banco de audiências: ingerir no Heroku ou remover a tabela morta | médio | hoje a página vive de JSON |
+| P3 | ~~Decidir o caminho de banco de audiências~~ | encerrada | diagnóstico: coletor **não grava no Postgres** por desenho (linha 126); tabelas `0078` são mortas. Resta só decidir drop com o dono |
 | P4 | ~~Investigar as 22 cidades sem licença~~ | encerrada | **22/22 conferidas no WFS da Semad em 18/10: zero na fonte**. Lacuna real, não filtro nosso |
 | P5 | Outorgas por município: mover para escopo regional (URGA) ou buscar rota alternativa | grande | depende de decisão do dono |
 
