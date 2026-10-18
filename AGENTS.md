@@ -448,8 +448,21 @@ coluna não é legível no celular. A régua móvel vem antes.
 - **Barato primeiro, sempre:** comece pelos **modelos mais baratos do
   OpenCode Go** (`opencode-go/*` — DeepSeek V4.1 Flash, GLM-5.3-Flash, MiMo
   Flash). Só subir de tier se o barato falhar de verdade, e registre por quê.
-- **Antigravity/Gemini = cérebro difícil:** usar lá os **modelos mais
-  avançados** disponíveis. É a exceção declarada de modelo não-open (matriz do
+- **Soberania de dados decide o motor, não só o custo** (regra do dono,
+  18/10/2026). Três degraus, do mais fechado ao mais exposto:
+  1. **Ollama local** (bot *Engenho*): recebe **tudo**, inclusive CPF e
+     denúncia — nada sai da máquina (§5.8, §5.12);
+  2. **Cérebro CN/BR** (`opencode-go/*` — DeepSeek, GLM, Qwen; Sabiá para
+     PT-BR): trabalho do dia, dados do projeto, estratégia e orquestração.
+     **A cabeça do time mora aqui** (bot *Farol*);
+  3. **Antigravity/Gemini** (bot *Trator*): só **material já público** e
+     tarefa operacional volumosa — varrer diário oficial, OCR, normalizar
+     texto público, classificar em lote, traduzir material aberto. Os
+     créditos são grandes; a confiança, não.
+- **Google nunca recebe:** CPF, denúncia, caso jurídico identificável, nome
+  de pessoa, dado de campanha eleitoral, código privado ou estratégia.
+  Na dúvida, sobe um degrau — local ou CN.
+- **Antigravity/Gemini** é a exceção declarada de modelo não-open (matriz do
   [PLANO-ORQUESTRACAO-AGENTES-V2](docs/planos/PLANO-ORQUESTRACAO-AGENTES-V2.md)).
 - **Nunca ChatGPT/OpenAI.** Exceção única, temporária e avisada: se **esgotar
   a cota do Gemini**, pode-se usar **Claude** no lugar até a cota voltar —
