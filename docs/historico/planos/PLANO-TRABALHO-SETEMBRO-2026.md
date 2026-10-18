@@ -185,7 +185,7 @@ Expansão do portal **Controle Popular** com foco em **verificação de dados** 
 - **Plano Detalhado:** `docs/historico/planos/PLANO-ANALISE-CONSELHOS-OUTORGAS.md`
 - **Plano de Expansão:** `docs/historico/planos/PLANO-EXPANSAO-AMBIENTAL-OUTORGAS-TELIC.md`
 - **Plano de Trabalho:** `docs/historico/planos/PLANO-TRABALHO-SETEMBRO-2026.md`
-- **Resumo de Planos:** `docs/planos/RESUMO-PLANOS.md`
+- **Resumo de Planos:** `docs/historico/entregas/RESUMO-PLANOS.md`
 - **Bot Verificação:** `bots/verifica-dados.mts`
 - **Bot Notificação:** `bots/notifica-telegram.mts`
 - **Bot Crosscheck:** `bots/crosscheck-pdf-api.mts`

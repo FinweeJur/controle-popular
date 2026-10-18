@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-23
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [PLANO-FILA-PROXIMA-SESSAO.md](PLANO-FILA-PROXIMA-SESSAO.md), [AGENTS.md](/AGENTS.md), [ROTEIRO-PGVECTOR-CHATBOT.md](../../planos/ROTEIRO-PGVECTOR-CHATBOT.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [PLANO-FILA-PROXIMA-SESSAO.md](/docs/historico/planos/PLANO-FILA-PROXIMA-SESSAO.md), [AGENTS.md](/AGENTS.md), [ROTEIRO-PGVECTOR-CHATBOT.md](/docs/historico/planos/ROTEIRO-PGVECTOR-CHATBOT.md)
 > **Palavras-chave:** plano, linkmender, pr, bot, revisor, laboratorio, powerbi, dither, marquee, chatbot, seu nono, embeddings, siliconflow, ollama, guara
 
 ## Sumário
@@ -89,7 +89,7 @@ Correção:
 3. **Embeddings via API — SiliconFlow `BAAI/bge-m3`:**
    - novo provedor em `lib/assistente/embeddings/` (OpenAI-compatible,
      1024 dims, free tier sem cartão — já documentado em
-     `PLANO-SEU-NONO-NOTEBOOKLM.md` e `PLANO-CHATBOT-IA.md`);
+     `historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md` e `PLANO-CHATBOT-IA.md`);
    - envs `EMBED_API_KEY` / `EMBED_BASE_URL` / `EMBED_MODEL`;
    - gate `rag.ts:212`: chave de embeddings remota **ou** Ollama local
      (dev no `home-pc` continua de graça);

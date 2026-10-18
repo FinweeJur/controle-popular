@@ -63,7 +63,7 @@ Rodaram **só no banco local** desta máquina:
 A Neon segue em HTTP 402 até 2026-09-01, e os 6 ETLs do GitHub apontam para
 lá. Enquanto isso não rodar, aquele banco volta a duplicar convênio.
 
-> ✅ **roteiro pronto em 17/08:** `docs/planos/ROTEIRO-NEON-01-09.md` —
+> ✅ **roteiro pronto em 17/08:** `docs/historico/entregas/ROTEIRO-NEON-01-09.md` —
 > passo a passo do 01/09 (migrations 0071–0077 em ordem, backfill de temas,
 > as TRÊS URLs TJMG corrigidas via UPDATE reproduzível — o seed
 > `dados-seed/direito-critico-popular.html` foi corrigido na raiz em 17/08,
@@ -85,7 +85,7 @@ confirmada, ~8,5 a 10,4 mil normas federais).
 > (8.570 normas) re-coletado e **idêntico** ao já versionado (o CSV da fonte
 > não mudou desde 2025-09-23 — a re-coleta confirmou que o congelado segue
 > atual). O `legislacao-cndh.json` já existia. **Falta só a carga** — está no
-> `ROTEIRO-NEON-01-09.md` (passo 4), junto com a reclassificação de temas.
+> `historico/entregas/ROTEIRO-NEON-01-09.md` (passo 4), junto com a reclassificação de temas.
 > A lacuna fecha quando o banco voltar: `ambiental_legislacao` passa a ter
 > as 8.570 normas federais, inclusive as Resoluções CONAMA.
 
@@ -199,7 +199,7 @@ verificado** (existe e ninguém confirmou).
 > Direitos Humanos ainda não localizada na listagem, que pagina via JS).
 > **Rodada 3 (17/08):** classificação completa das páginas — 67 buracos
 > (44 AUSENTE, 18 NAO_VERIFICADO, 5 DESATUALIZADO), ver
-> `docs/planos/CLASSIFICACAO-COMPLETUDE.md`. 4 críticos de código (WhatsApp
+> `docs/historico/planos/CLASSIFICACAO-COMPLETUDE.md`. 4 críticos de código (WhatsApp
 > placeholder do `/anuncie`, Diário Oficial hardcoded de Betim em todas as
 > cidades, plantão de farmácias sem telefone/endereço, zap sem link).
 > **Rodada 4 (17/08):** críticos 1, 2, 3 e 4 corrigidos — WhatsApp
@@ -215,7 +215,7 @@ verificado** (existe e ninguém confirmou).
 
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
 
-Ver `docs/planos/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
+Ver `docs/historico/planos/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
 tinham sido corrigidas antes desta rodada (a última, "não achou uma
 frente", só em 14/08 — era cabeçalho de zona cravado à mão, corrigido na
 raiz). A revisão dedicada achou mais: `<main>` faltando em 7 páginas
@@ -246,7 +246,7 @@ caber nisso — e `prefers-reduced-motion` não é opcional.
 
 ### 8. Design system — o que aproveitar de Kokonut UI, Motion.dev, Bklit UI — ✅ feito em 14/08
 
-Ver a seção "Design system" de `docs/planos/REVISAO-UX-E-ONBOARDING.md`.
+Ver a seção "Design system" de `docs/historico/planos/REVISAO-UX-E-ONBOARDING.md`.
 Veredito curto: nenhum dos três entra como dependência — os três trazem
 Motion (ex-Framer Motion) por baixo, custo real de bundle contra um
 sistema de microanimação que hoje é 100% CSS e custa zero. O que vale
@@ -293,7 +293,7 @@ prestador/fornecedor, tema, data, tipo de alerta, emendas parlamentares.
   é o ponto de partida para filtro + ordenação com o mesmo visual.
 - **a11y desde o dia 1:** filtro e ordenação são controles interativos —
   teclado, focus visível e `prefers-reduced-motion` valem aqui (ver
-  `docs/planos/REVISAO-UX-E-ONBOARDING.md`). Não usar cor como único sinal de "ativo".
+  `docs/historico/planos/REVISAO-UX-E-ONBOARDING.md`). Não usar cor como único sinal de "ativo".
 - **Teste primeiro:** o mecanismo de ordenar (comparador) e filtrar (predicado)
   é lógica pura — cabe num módulo testável no molde de `lib/assistente/compor.ts`,
   antes de ser colado no componente.
@@ -327,7 +327,7 @@ método do diário oficial: confirmar o mecanismo da fonte antes de construir):
 
 ### 12. Plano de geocodificação dos dados da Vale
 
-> ✅ **plano escrito em 17/08** — `docs/planos/PLANO-GEOCODIFICACAO.md`
+> ✅ **plano escrito em 17/08** — `docs/historico/entregas/PLANO-GEOCODIFICACAO.md`
 > (método por camada, fontes de geometria já publicadas, regras de
 > procedência e conferência manual). Execução começa quando o item 11 tiver
 > dado coletado.
@@ -350,7 +350,7 @@ Pedido literal (16/08): o dev trouxe o "Plano Final Contextualizado — Chatbot
 IA pra Leilões.app" e pediu para **adaptar criticamente** pro Controle Popular
 e registrar no plano.
 
-O plano adaptado está em `docs/planos/PLANO-CHATBOT-IA.md`. Três pontos para
+O plano adaptado está em `docs/historico/planos/PLANO-CHATBOT-IA.md`. Três pontos para
 não se perder:
 
 - **Não substitui o assistente determinístico** (degraus 0–2,
@@ -420,11 +420,11 @@ texto do produto) e ela entra na grade.
 | Integração Brumadinho (8 camadas + acervo) | `docs/_historico/PLANO-INTEGRACAO-BRUMADINHO.md` |
 | Ingestão do painel Paraopeba e do acervo UFMG | `docs/_historico/PLANO-INGESTAO-PARAOPEBA.md` |
 | CNJ/DataJud, JUMA, MMA/CONAMA, CNDH | `docs/_historico/FONTES-CNJ-JUMA.md` |
-| Bases de clima e risco | `docs/planos/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/_historico/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
+| Bases de clima e risco | `docs/historico/entregas/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/_historico/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
 | Direitos em Movimento | `docs/_historico/PLANO-DIREITOS-EM-MOVIMENTO.md` |
 | Facilitador de ação cidadã | `docs/_historico/PLANO-ACAO-CIDADA.md` |
 | Biblioteca das ATIs do Paraopeba | `docs/_historico/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
-| Chatbot IA sobre o acervo | `docs/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dev em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
+| Chatbot IA sobre o acervo | `docs/historico/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dev em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
 
 ---
 

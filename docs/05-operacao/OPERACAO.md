@@ -271,7 +271,7 @@ Mitigação genérica primeiro, causa depois (SRE Workbook cap. 9). Ordem:
    concreta** — que vira item da fila.
 
 Referências: [postmortem 08/09](../incidentes/2026-09-08-next-start-morto.md),
-[plano de resiliência](../planos/PLANO-RESILIENCIA-BOTS.md). O vigia também
+[plano de resiliência](/docs/historico/planos/PLANO-RESILIENCIA-BOTS.md). O vigia também
 denuncia o gatilho remoto morto (heartbeat `scripts/.heartbeat-gatilho`,
 stale > 20 min).
 
@@ -382,4 +382,4 @@ Este arquivo absorveu, em 16/08/2026:
 - `docs/_historico/build-em-outro-pc.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Build em outro PC".
 - `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Payload de legislação".
 - `docs/_historico/RADAR-NOTICIAS-PARAOPEBA.md` — **ENTREGUE** (→ `docs/_historico/`): só o procedimento de coleta; a parte de fontes pertence ao doc de fontes.
-- `docs/planos/deploy-github-pages.md` — **ATIVO** (→ `docs/planos/`): alvo alternativo com decisões em aberto; não é procedimento diário.
+- `docs/historico/planos/deploy-github-pages.md` — **ATIVO** (→ `docs/planos/`): alvo alternativo com decisões em aberto; não é procedimento diário.

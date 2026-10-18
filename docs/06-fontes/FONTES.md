@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-10-04 (DOU federal: busca sem chave em `/consulta/` e coletor `scripts/coletar-dou.py`). Base anterior — 2026-09-30, Fase B do mapeamento de mineração: IBAMA, ICMBio, FEAM, IDE-MG, ANM/DOU, FUNAI e INCRA
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
+> **Relacionados:** [COLETA-ETICA.md](COLETA-ETICA.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Rouanet, SIGMINE, GTAC, SIRENEJud, R2, geneexus, dados-abertos-betim, mapbiomas, monitor-mineracao, wfs, cbers, sentinel-2, planetary-computer, esri, cavas, mineração
 
 ## Sumário
@@ -32,6 +32,9 @@ o que mente e como coletar sem mentir.
   ver [`FONTES-*.md`](#documentos-por-frente) abaixo.
 - Corredor rápido para agentes: [regras gerais](#regras-gerais-de-coleta)
   primeiro; depois a seção da sua fonte.
+- Antes de acessar um host novo, leia o checklist de
+  [COLETA-ETICA.md](COLETA-ETICA.md) — UA honesto, termos de uso,
+  `robots.txt` e `/docs`.
 
 ## Regras gerais de coleta
 
@@ -691,7 +694,7 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 
 ## Condicionantes — piloto Irapé e Setúbal (descoberta 23/09 + downloads)
 
-Sondado e **baixado** em 2026-09-23 para o [PLANO-CONDICIONANTES-AMBIENTAIS.md](../planos/PLANO-CONDICIONANTES-AMBIENTAIS.md).
+Sondado e **baixado** em 2026-09-23 para o [PLANO-CONDICIONANTES-AMBIENTAIS.md](/docs/historico/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md).
 Lote em disco temporário (`_lote-ambiental/condicionantes-piloto/`), fora do repo até a varredura de CPF no commit.
 UA honesto, pausa 1,5 s/host, checkpoint. **CPF válido no lote: 0** (mod-11, medido 23/09).
 
@@ -799,7 +802,7 @@ Leitura para o status: sem LO, a página pode dizer `nao_informado`/`em_analise`
 ## Cavas de mineração — Monitor MapBiomas, SIGMINE e imagens de satélite (Fase 1, 25/09)
 
 Medido em 2026-09-25 para a **Fase 1** (terreno de calibração) do
-[PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md).
+[PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md).
 Coletor de referência: `scripts/coletar-cavas-calibracao.py` (offline,
 checkpoint retomável, cache fora do git). Esta seção guarda **endereço,
 acesso medido e armadilha**; o pipeline está no plano.
@@ -940,7 +943,7 @@ de sessão.
   BBOX de MG (WFS do Monitor) **e** fora das **3.869** feições de
   `mining_age` com `dentro_sigmine=false` em MG (82.825 estão dentro).
 - O manifesto de calibração guarda **bbox, cena, data e hash** — sem titular,
-  sem CPF ([PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)).
+  sem CPF ([PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)).
 
 ### Cenas de Goiás (2ª UF) — medido 28/09/2026
 
@@ -967,7 +970,7 @@ de sessão.
 ### Sentinel-2 — download de pixels bloqueado nesta máquina — medido 28/09/2026
 
 - **O que se tentou:** recortes de 512 × 512 px do Sentinel-2 L2A para a
-  Fase 3 do [plano de cavas](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
+  Fase 3 do [plano de cavas](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
   (método A: Δ de área de 10 m por cava).
 - **Medido:** **~5 KB/s sustentados** no `home-pc`. O plano de GO/MG
   (≈ 4.000 GO, ≈ 2,8 MiB por cena) não fecha nem a longo prazo.
@@ -990,7 +993,7 @@ de sessão.
 ## Embargos do IBAMA (georreferenciados), FEAM e IDE-MG — Fase B (30/09)
 
 Medido em 2026-09-30 para a **Fase B** do
-[PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md](../planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md).
+[PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md](/docs/historico/planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md).
 Todas as consultas com UA honesta `ControlePopular/1.0 (+controlepopular.com.br;
 transparencia)` e pausa ≥ 2 s; contagens via `returnCountOnly=true`
 (só número, sem baixar dado).
@@ -1223,7 +1226,7 @@ polígonos (mistura da ingestão antiga, pendência Pimentel) e a licença
 
 ### Capitanias hereditárias — OpenHistoricalMap e mapa do IBGE (Fase B, 30/09)
 
-Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
+Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](/docs/historico/planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
 
 - **OpenHistoricalMap** — mapa histórico colaborativo, dados em **CC0** (domínio público).
   Endpoint Overpass: `https://overpass-api.openhistoricalmap.org/api/interpreter`. Tem as
@@ -1243,7 +1246,7 @@ Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLO
 
 ### Terras e sesmarias de MG — Arquivo Público Mineiro (Fase D, 30/09)
 
-Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
+Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](/docs/historico/planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md).
 
 - **SIAAPM** (`siaapm.cultura.mg.gov.br`, Secretaria de Estado de Cultura e Turismo de MG),
   busca `modules/brtacervo/search.php` — `robots.txt` do host: **404** (sem declaração) →
@@ -1261,7 +1264,7 @@ Para o [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLO
 
 ### Patrimônio tombado e camadas rurais históricas (30/09)
 
-Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](../planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md)
+Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](/docs/historico/planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md)
 (pedido do dev: mineração escravizada, fazendas e engenhos).
 
 - **IEPHA-MG** — acervo já ingerido pelo portal em

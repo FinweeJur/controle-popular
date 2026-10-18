@@ -2,7 +2,7 @@
 /**
  * Runner da FILA DISTRIBUÍDA — pega a próxima tarefa, reivindica, roda, conclui.
  *
- * Plano: `docs/planos/PLANO-ORQUESTRACAO-DISTRIBUIDA.md` (F3). A lógica pura do
+ * Plano: `docs/historico/planos/PLANO-ORQUESTRACAO-DISTRIBUIDA.md` (F3). A lógica pura do
  * "quem pega o quê" mora em `apps/web/lib/fila/fila.ts`; aqui só há disco, git
  * e execução de processo — a mesma separação do resto do repositório.
  *

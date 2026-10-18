@@ -4,7 +4,7 @@
 
 Alvo: BH (3106200) — Prefeitura E Câmara publicam na MESMA edição estadual do
 DOM (uma edição numerada por dia útil). Fase D3 do plano
-(`docs/planos/diario-oficial-plano.md`).
+(`docs/historico/planos/diario-oficial-plano.md`).
 
 POR QUE ESTE MÓDULO EXISTE FORA DE `sigpub.py`: o DOM-PBH é a plataforma da
 própria PBH, não o SIGPub da AMM-MG — outro fornecedor, outra API, outro

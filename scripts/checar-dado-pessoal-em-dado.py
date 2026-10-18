@@ -12,7 +12,7 @@ publicados no `origin/main`) voltou a morar no DADO: `docs/FONTES-ROUANET-
 SALIC.md` registra um CPF que só foi pego porque alguém abriu o arquivo à mão —
 "dado pessoal não estava no campo de dado pessoal, estava no texto ao lado".
 
-`docs/planos/TODO-PROXIMAS-RODADAS.md` (§1) registra a dívida: a trava não
+`docs/historico/planos/TODO-PROXIMAS-RODADAS.md` (§1) registra a dívida: a trava não
 cobre acervo ingerido. Este arquivo é essa trava: o mesmo regex de CPF mod-11,
 rodando sobre JSON estruturado em vez de `git grep` sobre código. É uma REDE DE
 SEGURANÇA automática — não substitui a triagem semântica por acervo

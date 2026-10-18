@@ -36,8 +36,8 @@ def carregar_env():
 def criar_zip_kit(caminho_zip):
     print(f"📦 Criando pacote ZIP em {caminho_zip}...")
     arquivos = [
-        ("docs/planos/RELEASE-DIVULGACAO-2026-09.md", "RELEASE-DIVULGACAO-2026-09.md"),
-        ("docs/planos/PLANO-DIVULGACAO-ZERO-CUSTO.md", "PLANO-DIVULGACAO-ZERO-CUSTO.md"),
+        ("docs/historico/planos/RELEASE-DIVULGACAO-2026-09.md", "RELEASE-DIVULGACAO-2026-09.md"),
+        ("docs/historico/planos/PLANO-DIVULGACAO-ZERO-CUSTO.md", "PLANO-DIVULGACAO-ZERO-CUSTO.md"),
         ("apps/web/public/capas/home-page.webp", "capas/home-page.webp"),
         ("apps/web/public/capas/mariana.webp", "capas/mariana.webp"),
         ("apps/web/public/capas/paraopeba.webp", "capas/paraopeba.webp"),
@@ -204,7 +204,7 @@ contato@controlepopular.com.br
             print(f"  + Anexado ao e-mail: {os.path.basename(caminho_zip)}")
 
     # Anexo 2: Release MD
-    rel_path = os.path.join(RAIZ, "docs/planos/RELEASE-DIVULGACAO-2026-09.md")
+    rel_path = os.path.join(RAIZ, "docs/historico/planos/RELEASE-DIVULGACAO-2026-09.md")
     if os.path.exists(rel_path):
         with open(rel_path, "rb") as f:
             part = MIMEBase("text", "markdown")

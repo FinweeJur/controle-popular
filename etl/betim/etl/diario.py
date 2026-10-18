@@ -8,7 +8,7 @@ MESMA lógica, MESMA ordem de regras, MESMA calibração.
 A classificação é sobre o TEXTO do título, não sobre a plataforma que o
 publicou — o mesmo raciocínio de `etl/temas.py` (compartilhado por
 `camaras/sapl.py`, `camaras/syssolution.py`, `pbh/legislacao.py`,
-`psp/legislacao.py`). O plano (`docs/planos/diario-oficial-plano.md`) prevê
+`psp/legislacao.py`). O plano (`docs/historico/planos/diario-oficial-plano.md`) prevê
 D2 (Betim), D3 (BH) e D4 (SP) depois do SIGPub — coletores de OUTRAS
 plataformas, mesma classificação. Duplicar a regex dentro de `sigpub.py`
 funcionaria hoje e divergiria da versão TS na primeira mudança que alguém

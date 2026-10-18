@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-10-18
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
+> **Relacionados:** [RADAR-HOTSPOTS.md](RADAR-HOTSPOTS.md), [RELATORIOS-AGENTES.md](RELATORIOS-AGENTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, heroku, codescene, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
 
 ## Sumário
@@ -22,6 +22,9 @@
 ## Propósito
 
 Estado medido do portal. A porta de entrada é o [PRODUTO.md](../01-produto/PRODUTO.md).
+Para escolher a próxima tarefa por intenção, use o
+[RADAR-HOTSPOTS.md](RADAR-HOTSPOTS.md). O que cada agente entregou está em
+[RELATORIOS-AGENTES.md](RELATORIOS-AGENTES.md).
 Detalhe e medição antiga ficam em [`historico/`](../historico/).
 Aqui vai ponteiro, não cópia. Mudou algo? Atualize aqui no mesmo commit.
 
@@ -79,7 +82,7 @@ A coleta de 22/09 abaixo parou no município 145 — era essa a causa do bug
 **Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
 `convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
 `ambiental_licenciamento`=8.612, `atos_oficiais`=10.344. Contagem e
-retomada em [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md).
+retomada em [HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md).
 
 **Alerta:** página que lê do banco no build congela HTML sem a variável de
 build. Restart não resolve; resolve `guara deploy` de imagem nova.
@@ -141,7 +144,7 @@ Organizada por custo e benefício. Esforço pequeno primeiro.
 | pgvector / PostGIS | ⚠️ **não medido no Heroku**. O "catálogo sem pgvector" era do **Guara** (medido 30/09) e não vale mais como resposta | pendente |
 
 O RAG do assistente roda em memória (397 pedaços) e **não depende de
-pgvector** — ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+pgvector** — ver [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md).
 O que sobra da Fase 4 é **desligar a conta Neon** (ação do dono).
 
 ⚠️ **`scripts/rotina-local.mts` recusa host que não seja `127.0.0.1`**
@@ -156,13 +159,13 @@ exige decisão explícita do dono.
 | B1 | Voz própria do TTS: CosyVoice 3 (Alibaba, Apache 2.0) no servidor | ⛔ | protótipo barato hoje: Edge TTS; spike: Piper/Vozz no browser |
 | B2 | Cidades novas do `CIDADES_DO_BUILD`: revisar testes do assistente junto | ✅ | feitos no 19/09; repetir o ritto a cada adição |
 | B3 | Confirmar deploy pós `-b` renderizou as páginas com dado | 🚧 | depende de A1 |
-| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Gate v7 PASSOU (11/10, primeiro com os 31 flips na pasta certa); v6 (05/10, recortes 2 m) passou mas não superou o v5 — seguir no 8 m, ver **Nota B4**. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](../planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
+| B4 | Globo 3D: rastreamento de cavas de mineração (detectar atividade sem cadastro ANM) | 🚧 | Fases 0, 1, 3 e 5 publicadas em 29/09: duas camadas no globo, página `/mineracao/cavas`, deep-link `?camada=` e contexto no chatbot. Gate v7 PASSOU (11/10, primeiro com os 31 flips na pasta certa); v6 (05/10, recortes 2 m) passou mas não superou o v5 — seguir no 8 m, ver **Nota B4**. Sentinel ainda ⛔ (ver FONTES.md); Fases 2 e 4 na fila: [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md) |
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
-| B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
+| B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](/docs/historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 | B7 | **Turbopack no build (decisão do dono 05/10: manter se melhor)** | ✅ | Home PC ✅ medido 05/10: 338s vs 369–398s webpack, pico 3.886 MB vs 5.392 MB, `.next` 754 MB vs 1.501 MB, 621 rotas iguais, Drizzle 73 KB gzip vs 60 KB, server 32,0 vs 32,2 MB gzip, type-check roda no turbo (Next 16.3.5). Guara-proxy ✅ verde: imagem podman `cp-turbo-test` (Linux/standalone, 1,12 GB, build frio ~46 min) construída e servidor servindo páginas reais (delta 543 vs 621 rotas = ausência de `DATABASE_URL` no container, não do bundler). **Adotado:** `apps/web/package.json` `build` → `--turbopack`. Deploy real na próxima janela de cota (~08/10); `cf:build` herda a flag — fumaça antes de usar o fallback Cloudflare. Azure pulado (ordem do dono 05/10). Worktree `med-turbo` guarda as medições — não apagar |
 | B8 | **Expansão ambiental para 853 cidades** | 🚧 | **licenciamento ✅** (18/10): `listarMunicipiosComLicenciamento` virou LEFT JOIN a partir de `ref_municipios_mg` com corte `like '31%'` — busca lista os 853, os **22 sem dado** aparecem "sem registro na fonte" sem link; cartões contam os **831 com dado** (medido no Heroku em 18/10: 19.713 licenças, rodada completa `95007a2c` — antes 145 cidades/8.612, coleta de 22/09 interrompida no município 145); `generateStaticParams` filtra `total > 0`. **link do buscador ✅** (não era bug: o `Link` de `@/lib/ambiental/link` prefixa `/ambiental` sozinho — documentado). **CAR 🚧**: texto de amostra (56 imóveis/45 cidades) na tela; cobertura municipal completa exige coleta da base de 1,16 mi em ETL + agregado server-side (§5.1). **outorga IGAM ⏳**: grade não expõe Município; UI diz "não exposto pela fonte"; rotas possíveis (export xlsx com CSRF, detalhe por portaria) não implementadas |
-| B9 | **Plataforma Rio Doce — hub `/riodoce` (modelo do Projeto Brumadinho)** | 🚧 | Plano de 12/10: [PLANO-PLATAFORMA-RIO-DOCE.md](../planos/PLANO-PLATAFORMA-RIO-DOCE.md). Decisões do dono (12/10): zona nova `/riodoce` e Fase 1 = busca + processos. **Fase 0 concluída em 12/10** ([FONTES-RIO-DOCE.md](../06-fontes/FONTES-RIO-DOCE.md)): 8 processos CNJ confirmados no DataJud (TTAC/STF fora do índice público), 38 camadas SEMAD medidas (mancha do Fundão **1.243 feições**, 132,7 MB), ArcGIS REST da Renova com 87 tables públicas, CKAN MG sem dataset novo de Repactuação. **Esqueleto `/riodoce` no ar no mesmo dia** (hub + `/riodoce/processos` com lacuna declarada). Próximo: Fase 1b — lista dos 8 CNJ na tela + consulta ao vivo via `/api/datajud` |
-| B10 | **CNDH: PDFs específicos dos relatórios (2023 bacias Doce/Paraopeba e 2024 semiário)** | ⛔ | O `linkOficial` de cada entrada aponta para a página de relatórios do MDH (`gov.br/mdh/.../cndh/relatorios`); o PDF específico não foi achado publicamente — provável publicação interna ou bloqueio do defeso eleitoral. Ação: buscar o PDF direto **após o defeso** e atualizar `apps/web/data/relatorios-direitos-humanos.json`. Registrado em 15/10/2026 no [PLANO-CI-RAG-INGESTAO-UNIDADES.md, Pendencias](../planos/PLANO-CI-RAG-INGESTAO-UNIDADES.md#pendencias-registradas) (linhas do commit `6c0d1efc` já corrigiram a página; falta o PDF) |
+| B9 | **Plataforma Rio Doce — hub `/riodoce` (modelo do Projeto Brumadinho)** | 🚧 | Plano de 12/10: [PLANO-PLATAFORMA-RIO-DOCE.md](/docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md). Decisões do dono (12/10): zona nova `/riodoce` e Fase 1 = busca + processos. **Fase 0 concluída em 12/10** ([FONTES-RIO-DOCE.md](../06-fontes/FONTES-RIO-DOCE.md)): 8 processos CNJ confirmados no DataJud (TTAC/STF fora do índice público), 38 camadas SEMAD medidas (mancha do Fundão **1.243 feições**, 132,7 MB), ArcGIS REST da Renova com 87 tables públicas, CKAN MG sem dataset novo de Repactuação. **Esqueleto `/riodoce` no ar no mesmo dia** (hub + `/riodoce/processos` com lacuna declarada). Próximo: Fase 1b — lista dos 8 CNJ na tela + consulta ao vivo via `/api/datajud` |
+| B10 | **CNDH: PDFs específicos dos relatórios (2023 bacias Doce/Paraopeba e 2024 semiário)** | ⛔ | O `linkOficial` de cada entrada aponta para a página de relatórios do MDH (`gov.br/mdh/.../cndh/relatorios`); o PDF específico não foi achado publicamente — provável publicação interna ou bloqueio do defeso eleitoral. Ação: buscar o PDF direto **após o defeso** e atualizar `apps/web/data/relatorios-direitos-humanos.json`. Registrado em 15/10/2026 no [PLANO-CI-RAG-INGESTAO-UNIDADES.md, Pendencias](/docs/historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md#pendencias-registradas) (linhas do commit `6c0d1efc` já corrigiram a página; falta o PDF) |
 
 **Nota B4 — geração de imagem vai para a VM; a rede local é o teto (04/10).**
 O lote v6 (recortes 2 m) roda no `home-pc`, mas é **limitado pela rede**, não
@@ -198,7 +201,7 @@ novo de log por Blob **funcionou** nos dois casos. Os três defeitos
 ganharam correção no mesmo dia (rasterio no apt, limpeza de lock, cache
 vazio de positivos). Medição completa (runs, ids, horários e a
 documentação da Azure) em
-[MEDICOES-CAVAS-MINERACAO.md](../planos/MEDICOES-CAVAS-MINERACAO.md).
+[MEDICOES-CAVAS-MINERACAO.md](/docs/historico/planos/MEDICOES-CAVAS-MINERACAO.md).
 **Segunda leitura em 13/10 — os runs 6 e 7 de 12/10 também não fecharam:**
 ambos morreram em 10–18 s com `dpkg was interrupted` (rc100), o apt morto no
 meio do reboot de limpeza deixou o dpkg com pacote pendente; e o `vigiar` lia
@@ -222,14 +225,14 @@ Próxima rodada segue a validação que o dono aprovou em 12/10 (limite=10,
 | C3 | Informar `AJRI_COOKIE` (fases 2 e 3 do PDFs da AJRI) | valor expira |
 | C4 | ~~Abrir conta no Gitee e espelhar o código~~ | ✅ feito no GitLab (29/09), `OPERACAO.md` § 2 |
 | C5 | Aceitar convite do GitBook | espelho de docs |
-| C6 | Criar conta New Relic e definir `NEW_RELIC_LICENSE_KEY` no Guara (runtime, **sem** `-b`) | habilita o APM; sem a chave o portal sobe normal e sem rastreio — ver [PLANO-STUDENT-PACK](../planos/PLANO-STUDENT-PACK-2026-10.md) |
+| C6 | Criar conta New Relic e definir `NEW_RELIC_LICENSE_KEY` no Guara (runtime, **sem** `-b`) | habilita o APM; sem a chave o portal sobe normal e sem rastreio — ver [PLANO-STUDENT-PACK](/docs/historico/planos/PLANO-STUDENT-PACK-2026-10.md) |
 
 ### Bloco D — destrava com a Fase 4
 
 - Fase 5 do chatbot (persistência do índice): ⛔ cancelada (decisão do dev,
   30/09) — o Guara não tem pgvector e o Qdrant não cabe no plano. O RAG roda
   em memória (397 pedaços) e basta — ver
-  [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+  [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md).
 - Coleta nova volta ao Postger (hoje vai para D1 por causa do storage).
 - Índice de busca pode voltar a crescer sem estourar o teto da Neon.
 
@@ -251,7 +254,10 @@ checkpoint treinado v5 sobe por Stash/Blob. Com 24 GB de VRAM o treino fino cabe
 folgado — medir se vale migrar do `home-pc`. Passo 1: lote de 100 (recortes +
 embeddings) e medir tempo e banda.
 
-Runbooks: [`planos/`](../planos/).
+Planos ativos (3): [ambiental e dados](../planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
+[produto e interface](../planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md) e
+[operação e agentes](../planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md).
+O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Bloqueios
 
@@ -261,7 +267,7 @@ Runbooks: [`planos/`](../planos/).
 | **⛔ `Home-PC` OFFLINE** (medido 09/10: visto por último 08/10 23:38 UTC) — `tailscale file cp` não entrega | ligar a máquina; confira antes com `tailscale status` |
 | **⛔ Integração de PR do CodeScene não ligada** — os arquivos estão no repo, o painel é que não está ligado | clique do dono em codescene.io → projeto 85760 |
 | **Checkout principal com trabalho não commitado** (medido 09/10: 9 arquivos modificados + `main` atrás de `origin/main`) | dono/sessão responsável commitar com pathspec explícito (§ 5.5) |
-| Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
+| Deploy falhando por contexto de build (442 MB > teto 256) | ✅ derrubado a 223,5 MB (01/10) — ver [PLANO-REDUCAO-BUILD.md](/docs/historico/planos/PLANO-REDUCAO-BUILD.md); falta o deploy provar |
 | Neon em 94% storage | ⏳ app já no Heroku (08/10) — sobra **cancelar a conta Neon**, ação do dono |
 | HTML pré-renderizado sem dado no build | deploy novo com env de build (A1) |
 | Raiz do domínio com 403 | ✅ redirect 301 medido no ar (04/10) |
@@ -278,7 +284,7 @@ Runbooks: [`planos/`](../planos/).
 - **`apps/web/public/` pesa 52,3 MB.** Nada acima do aviso de 20 MiB;
   o maior é `sigmine-interesse.geojson.gz` (6,06 MB).
 - **Auditoria dos 25.729 links** pendente
-  ([CLASSIFICACAO-COMPLETUDE.md](../planos/CLASSIFICACAO-COMPLETUDE.md)).
+  ([CLASSIFICACAO-COMPLETUDE.md](/docs/historico/planos/CLASSIFICACAO-COMPLETUDE.md)).
 - **Soft-404: rota inexistente devolve HTTP 200.** Medido 05/10: corpo
   ~106,7 KB, título genérico "Portal Independente de Fiscalização Cidadã".
   Status sozinho NÃO detecta 404; a string "Página não encontrada" aparece
@@ -299,7 +305,7 @@ Runbooks: [`planos/`](../planos/).
 
 - **Diagnóstico:** 6 PRs do LinkMender abertos (o maior com 2.467 correções)
   travados porque o revisor reprovava 403 e timeout como link morto. Detalhe
-  e evidências em [PLANO-LINKMENDER-E-ESCADA-18-10.md](../planos/PLANO-LINKMENDER-E-ESCADA-18-10.md).
+  e evidências em [PLANO-LINKMENDER-E-ESCADA-18-10.md](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md).
 - **Portão tolerante:** 403→vivo, 500/timeout→inconclusivo, 404/"200 que
   mente"/DNS→morto, com tolerância de mortos `max(5, 10%)`; sondagem
   concorrente (8), ~15 min em vez de 2h+.
@@ -342,7 +348,7 @@ Runbooks: [`planos/`](../planos/).
   **Site só publica após deploy** (não disparado sem ordem do dono).
 - **Outorgas IGAM:** limitação da fonte — a grade pública não expõe município,
   só regional (URGA); a UI declara isso.
-- Detalhe e pendências: [PENDENCIAS-AMBIENTAL-18-10.md](../planos/PENDENCIAS-AMBIENTAL-18-10.md).
+- Detalhe e pendências: [PENDENCIAS-AMBIENTAL-18-10.md](/docs/historico/planos/PENDENCIAS-AMBIENTAL-18-10.md).
 
 **05/10/2026 — servidor 2 publicado, piso consertado, links do bot e medição Turbopack:**
 
@@ -426,7 +432,7 @@ Runbooks: [`planos/`](../planos/).
   de TEMPO (não de contexto): `dynamicParams` não-literal, agregações do copam
   sem `comBancoReserva` e `getCloudflareContext({ async: true })` subindo
   wrangler/workerd no SSG (teto de 60s por página). Detalhe em
-  [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md) e
+  [PLANO-REDUCAO-BUILD.md](/docs/historico/planos/PLANO-REDUCAO-BUILD.md) e
   [OPERACAO.md](../05-operacao/OPERACAO.md).
 - **Cursor segue a cor primária do tema:** `CursorTema.tsx` recoloriza o
   preenchimento dos `.cur` em runtime (canvas → data URI em variável CSS);
@@ -447,7 +453,7 @@ Runbooks: [`planos/`](../planos/).
   (teto Guara 256 MB) — F1 (`.dockerignore`: docs, PDFs, etl fora de
   `dados/`) + F2 (JSON de licença sai do contexto; build lê amostras
   versionadas com total real preservado). F3 (compactação) dispensada.
-  Detalhe e verificação: [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md).
+  Detalhe e verificação: [PLANO-REDUCAO-BUILD.md](/docs/historico/planos/PLANO-REDUCAO-BUILD.md).
 - **Tailscale:** já ativo no `home-pc` (100.91.10.1, online, tailnet
   `finweejur.github`) com `sshd` do Windows de pé — o desktop alcança este PC
   por SSH no IP do tailnet. O Guara tem serviço de catálogo Tailscale
@@ -502,7 +508,7 @@ Runbooks: [`planos/`](../planos/).
   `deBasesPortal()`.
 - Correção de rota: o RAG é **em memória**, no alvo **Guara**; **não** usa
   pgvector/Neon. Plano corrigido em
-  [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md).
+  [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md).
 - **R4:** golden set em `lib/assistente/golden-set.ts` (22 casos) e correção
   da abstenção no modo lexical (peso IDF + palavras de pergunta nas
   stopwords + piso 0,45). Sem isso, "receita de bolo" casava orçamento.
@@ -612,7 +618,7 @@ Runbooks: [`planos/`](../planos/).
   HANDOFF-22-09, HANDOFF-ONDA2).
 
 **22/09/2026** — coleta no Postgres do Guara (detalhe:
-[HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)):
+[HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)):
 
 - `convenios_federais` 167 linhas (R$ 298,6 mi, Betim); licenciamento
   8.612; `DATABASE_URL` Build=Yes confirmada no CLI.

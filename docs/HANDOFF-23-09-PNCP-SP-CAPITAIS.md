@@ -4,7 +4,7 @@
 > **Domínio:** cidades
 > **Última medição:** 2026-09-23 ~15:30
 > **Leitura estimada:** média (5-15 min)
-> **Relacionados:** [PLANO-EXPANSAO-PNCP-199-CIDADES.md](planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md), [HANDOFF-22-09-COLETA-GUARA.md](historico/entregas/HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](02-estado/ESTADO.md), [FONTES.md](06-fontes/FONTES.md)
+> **Relacionados:** [PLANO-EXPANSAO-PNCP-199-CIDADES.md](/docs/historico/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md), [HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md), [AGENTS.md](/AGENTS.md), [ESTADO.md](02-estado/ESTADO.md), [FONTES.md](06-fontes/FONTES.md)
 > **Palavras-chave:** handoff, pncp, sao-paulo, capitais, contratos, licitacoes, checkpoint, orgaos, fila, 199, 203, guara
 
 ## Sumário
@@ -144,7 +144,7 @@ Retry 8× / ~18 min é **normal**. `RetryError` sem checkpoint = relança.
 
 ### 3. Fase B (código, pode correr em paralelo se A/B não estiverem coletando)
 
-Do plano `PLANO-EXPANSAO-PNCP-199-CIDADES.md` § Fase B:
+Do plano `historico/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md` § Fase B:
 
 1. Fila: ler JSON → excluir 6 principais → id 7 dítos → `cnpj_prefeitura` null = **bloqueada CNPJ**.
 2. Checkpoint já namespaced `{ibge}:…` — **não reverter**.

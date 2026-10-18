@@ -1,7 +1,7 @@
 """coletar-cavas-calibracao.py — Fase 1 do plano de cavas: terreno de calibração.
 
 Monta o dataset de treino/calibração do rastreamento de cavas (ver
-docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md, Fase 1):
+docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md, Fase 1):
 
 - POSITIVOS: poligonais MG do Monitor da Mineração (MapBiomas) nas fases que
   autorizam extrair (Concessão de Lavra, Lavra Garimpeira, Permissão de Lavra
@@ -563,7 +563,7 @@ def exportar_manifesto(itens: list[dict]) -> None:
         it.setdefault("uf", "MG")
     doc = {
         "gerado_em": agora,
-        "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
+        "plano": "docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
         "fontes": [
             "MapBiomas Monitor da Mineracao (WFS pto:processos_minerarios; base ANM/SIGMINE)",
             "MapBiomas mining_age (classe mineracao; dentro_sigmine=false na exclusao)",

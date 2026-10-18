@@ -47,7 +47,7 @@ Publica-se com `npm run cf:deploy` (`opennextjs-cloudflare build && populateCach
 remote && deploy`). O `output: 'export'` existe, mas só liga quando `PAGES_BASE_PATH`
 está definido (`apps/web/next.config.ts:41-42,190`), que é o **alvo alternativo** do
 GitHub Pages — hoje inviável por não caber no teto de 20 mil arquivos (ver
-[`planos/deploy-github-pages.md`](../planos/deploy-github-pages.md)). Confundir os dois faz decidir payload pela
+[`planos/deploy-github-pages.md`](/docs/historico/planos/deploy-github-pages.md)). Confundir os dois faz decidir payload pela
 restrição errada.
 
 - `apps/web/app/` — rotas (App Router). Hoje há 16 rotas `*.din.ts` (chat, busca, contratos, zap, classificados, coleta, moderação, anúncios, pageview), ignoradas pelo export estático.
@@ -201,7 +201,7 @@ Fonte: `lib/db/schema.ts` (123 KB, introspectado do Neon via drizzle-kit) + `lib
 
 **O que já existe de bom:**
 - Full-text em português com unaccent: 4 índices GIN tsvector.
-- pgvector: `public.embeddings` e `congresso.embeddings` (vector 384) com HNSW `vector_cosine_ops` — **tabelas legadas, sem uso**: o RAG do assistente roda em memória (`lib/assistente/embeddings/rag.ts`), e a extensão `vector` não existe no Postgres do Guara (medido 30/09/2026; ver [PLANO-RAG-COMPLETO.md](../planos/PLANO-RAG-COMPLETO.md)).
+- pgvector: `public.embeddings` e `congresso.embeddings` (vector 384) com HNSW `vector_cosine_ops` — **tabelas legadas, sem uso**: o RAG do assistente roda em memória (`lib/assistente/embeddings/rag.ts`), e a extensão `vector` não existe no Postgres do Guara (medido 30/09/2026; ver [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md)).
 - Trigram: `congresso.parlamentares.nome` com GIN `gin_trgm_ops`.
 - Índices compostos bem pensados por município.
 - Sem soft-delete: padrão é flag `ativo`/`aprovado` — coerente, manter.
@@ -288,4 +288,4 @@ Documentos absorvidos por esta página:
 
 - `04-arquitetura/MAPA-APLICACAO.md` — **FUNDIDO** (conteúdo técnico detalhado absorvido).
 - `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` — absorvido (lição crítica do payload).
-- `docs/planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`.
+- `docs/historico/planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`.

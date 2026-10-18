@@ -2,7 +2,7 @@
 
 > **Tipo:** GUIA
 > **Domínio:** global
-> **Última medição:** 2026-09-30
+> **Última medição:** 2026-10-18
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [README.md](README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** documentação, template, sumário, metadados, links internos, nomenclatura, validação, manutenção
@@ -164,6 +164,12 @@ A cada 30 dias, rodar `scripts/validar-documentacao.py`:
   `carregarJsonEtl`) ou vira módulo TS gerado, o campo de camada/caminho no
   catálogo muda junto. O número na tela não muda; a procedência, sim.
 - **Arquivo gerado abre com "GERADO — NÃO EDITE"** — vale para
-  `cidades-do-build.ts`, `convenios-federais-mg.ts` e para a saída do
-  `drizzle-kit introspect` em `lib/db`. Quem edita à mão perde a edição no
-  próximo gerador (dívida registrada na revisão).
+  `cidades-do-build.ts`, `convenios-federais-mg.ts`, a saída do
+  `drizzle-kit introspect` em `lib/db` e o inventário
+  [`02-estado/RELATORIOS-AGENTES.md`](02-estado/RELATORIOS-AGENTES.md).
+  Quem edita à mão perde a edição no próximo gerador (dívida registrada na
+  revisão). O inventário é regenerado por `npm run radar`.
+- **Índice por intenção não duplica a fila** — o
+  [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md) responde
+  "onde mexer agora" e aponta para o `ESTADO.md`; a fila continua sendo a
+  fonte de verdade. Cada linha do radar exige número, data e link.

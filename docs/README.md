@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-09-30
+> **Última medição:** 2026-10-18
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -34,10 +34,15 @@ automáticamente pelos agentes de código.
 
 | Quando ler | Documento | Caminho |
 |---|---|---|
+| Procurar onde corrigir, atualizar, editar ou ampliar | **RADAR-HOTSPOTS** | [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md) |
+| Ver o que cada agente entregou e o que ficou aberto | **RELATORIOS-AGENTES** | [`02-estado/RELATORIOS-AGENTES.md`](02-estado/RELATORIOS-AGENTES.md) |
 | Sempre — o que é o portal, frentes e regras editoriais | **PRODUTO** | [`01-produto/PRODUTO.md`](01-produto/PRODUTO.md) |
 | Decidir o que fazer agora — fila, bloqueios, dívida | **ESTADO** | [`02-estado/ESTADO.md`](02-estado/ESTADO.md) |
 | Antes do primeiro commit — worktree, commit, push | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Texto completo de cada regra dura | **REGRAS-DURAS** | [`03-desenvolvimento/REGRAS-DURAS.md`](03-desenvolvimento/REGRAS-DURAS.md) |
 | Criar página nova ou revisar o padrão wiki | **PADRAO-PAGINA-WIKI** | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
+| Coletar ou pesquisar na internet | **COLETA-ETICA** | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 | Regras duras do repo (lido por agentes) | AGENTS | [`/AGENTS.md`](/AGENTS.md) |
 
 ## Documentos por área
@@ -46,9 +51,15 @@ automáticamente pelos agentes de código.
 |---|---|---|
 | Arquitetura e payload | ARQUITETURA | [`04-arquitetura/ARQUITETURA.md`](04-arquitetura/ARQUITETURA.md) |
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
+| Oito qualidades da informação | QUALIDADES | [`04-arquitetura/QUALIDADES-DA-INFORMACAO.md`](04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
+| Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
+| Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
+| Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
+| Verificação em camadas | VERIFICACAO-E-ENTREGA | [`03-desenvolvimento/VERIFICACAO-E-ENTREGA.md`](03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
+| Comunicação com o dono | COMUNICACAO-COM-O-DONO | [`03-desenvolvimento/COMUNICACAO-COM-O-DONO.md`](03-desenvolvimento/COMUNICACAO-COM-O-DONO.md) |
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
@@ -61,9 +72,17 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
 
 ## Planos e histórico
 
-- **Planos ativos:** [`planos/`](planos/) — o estado de cada um está na
-  [fila do ESTADO.md](02-estado/ESTADO.md#fila-viva).
-- **Histórico:** [`historico/`](historico/) — entregue ou superado.
+- **Inventário de agentes:** [`02-estado/RELATORIOS-AGENTES.md`](02-estado/RELATORIOS-AGENTES.md)
+  — resumos finais, handoffs, planos abertos e worktrees.
+- **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
+  — onde corrigir, atualizar, editar e ampliar.
+- **Planos ativos (3):**
+  [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
+  [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md) e
+  [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md).
+- **Histórico:** [`historico/`](historico/) — os outros planos foram
+  arquivados em 18/10/2026 em [`historico/planos/`](historico/planos/) e
+  [`historico/entregas/`](historico/entregas/), com nota de arquivamento.
   Números lá são medições do passado; se decidir com eles, remeça.
 
 ## Decisões registradas
@@ -73,9 +92,10 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   apontando para arquivo inexistente (o dado migrara para bundles ETL em
   `etl/betim/dados/` ou fora consolidado). `lib/fontes/registry.test.ts` agora
   recusa caminho que não existe. Detalhe: [REVISAO-CODIGO.md, Parte 18](04-arquitetura/REVISAO-CODIGO.md).
-- **Deploy principal = Guara Cloud** (19/09/2026): `www.controlepopular.com.br`
-  ativa; a raiz vive de redirect no Cloudflare. Túnel e Worker seguem como
-  servidor 2 e fallback. Detalhes: [ESTADO.md § No ar agora](02-estado/ESTADO.md#no-ar-agora).
+- **Deploy principal = Azure Container Apps** (06/10/2026): `www.controlepopular.com.br`
+  no Azure; a raiz vive de redirect no Cloudflare. Guara está parado por cota;
+  túnel do `home-pc` é o servidor 2 e o Worker é fallback. Detalhes:
+  [ESTADO.md § No ar agora](02-estado/ESTADO.md#no-ar-agora).
 - **Expansão Multilateral & Internacional** (29/09/2026): Hubs `/internacional`,
   `/eua` e `/canada`, modo trilíngue PT/EN/ES com voz nativa e bot coletor com R2.
 - **Espelhos de Resiliência** (29/09/2026): Replicação automática do código no

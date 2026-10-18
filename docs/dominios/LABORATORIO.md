@@ -83,7 +83,7 @@ com teste (`dither-engine.test.ts`).
 Limitação honesta (F5 parcial por design): o Seu Nonô ainda **não**
 interpreta texto livre nem conversa na tela; ele controla filtros e
 gráficos por botões. A conversa com citação clicável segue as regras do
-[PLANO-SEU-NONO-NOTEBOOKLM.md](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md)
+[PLANO-SEU-NONO-NOTEBOOKLM.md](/docs/historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md)
 para uma fase futura.
 
 ## Sessão na URL

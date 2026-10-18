@@ -1,7 +1,7 @@
 # Armadilhas do Controle Popular
 
 > Tabela viva, **única, sem duplicata**. Cada linha já custou tempo real.
-> Referenciada por [AGENTS.md § 6](AGENTS.md#6-armadilhas); o AGENTS aponta
+> Referenciada por [AGENTS.md § 6](AGENTS.md#armadilhas); o AGENTS aponta
 > para cá justamente para ficar curto. **Consulte antes de repetir um
 > caminho que já falhou.**
 

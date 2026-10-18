@@ -214,7 +214,7 @@ LOG = "[etl.camaras.sigpub]"
 COLETOR = "sigpub"
 
 # Único host confirmado ao vivo até agora (Minas Gerais/AMM-MG). O plano
-# (`docs/planos/diario-oficial-plano.md`) especula que o SIGPub atende outros
+# (`docs/historico/planos/diario-oficial-plano.md`) especula que o SIGPub atende outros
 # estados também, mas isto NUNCA foi medido — não generalizo um padrão de
 # hostname que não vi. Quando um segundo estado for confirmado, esta lista
 # ganha uma linha (não um regex adivinhado).

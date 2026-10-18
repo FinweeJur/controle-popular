@@ -497,7 +497,7 @@ Formato CSV ou JSON:
 - `docs/02-estado/ESTADO.md` — arquitetura e modelos de dados
 - `scripts/colibri-bridge.mts` — padrão de orquestração
 - `scripts/agregar-sisema-fiscalizacao.mts` — padrão de agregação
-- `docs/planos/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md` — estratégia de expansão
+- `docs/historico/entregas/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md` — estratégia de expansão
 
 ---
 

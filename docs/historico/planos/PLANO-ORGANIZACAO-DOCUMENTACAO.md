@@ -67,14 +67,14 @@ Candidatos medidos em 01/09:
 | `planos/PLANO-FILA-PROXIMA-SESSAO.md` | fila da sessão 19/09; itens pendentes (remuneração) migrados para o ESTADO | ✅ movido → `historico/planos/` (24/09) |
 | `planos/PLANO-SESSAO-23-09-BOTS-LAB-CHATBOT.md` | sessão 23/09 executada por inteiro (6 fases verificadas no código) | ✅ movido → `historico/planos/` (24/09) |
 | `HANDOFF-22-09-COLETA-GUARA.md` (raiz docs) | coletas fechadas 22/09 21:30; raiz só indexa | ✅ movido → `historico/entregas/` (24/09) |
-| `HANDOFF-ONDA2-AMBIENTAL.md` (raiz docs) | conteúdo duplicado no `PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md` | ✅ movido → `historico/entregas/` (24/09) |
+| `HANDOFF-ONDA2-AMBIENTAL.md` (raiz docs) | conteúdo duplicado no `historico/planos/PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md` | ✅ movido → `historico/entregas/` (24/09) |
 
 Demais `planos/` ativos (bases clima/risco, geocodificação, transparência justiça, espelho PDF AJRI, expansão nacional, revisão dados, SEO, UX/onboarding, diagnóstico UX, Handoff M9/M10 Podman, canário/chatbot consolidado) ficam em `planos/`, mas com estado e data de medição atualizados.
 
 ## Fase 1b — consolidar duplicados ✅ (01/09)
 
-- **Chatbot/assistente:** `PLANO-CHATBOT-IA.md` (supersedido) e `PLANO-CANARIO-TELEGRAM.md` (entregue) arquivados em `historico/`; `PLANO-SEU-NONO-NOTEBOOKLM.md` vira o **único plano ativo** do assistente; `ROTEIRO-PGVECTOR-CHATBOT.md` segue como runbook da Fase 5. Links corrigidos no ESTADO e nos planos que referenciam os arquivados.
-- **Completude:** `CLASSIFICACAO-COMPLETUDE.md` (planos, rodada 3) e `REVISAO-COMPLETUDE.md` (historico, rodada de 14/08) agora se apontam mutuamente — uma autoridade só.
+- **Chatbot/assistente:** `PLANO-CHATBOT-IA.md` (supersedido) e `PLANO-CANARIO-TELEGRAM.md` (entregue) arquivados em `historico/`; `historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md` vira o **único plano ativo** do assistente; `historico/planos/ROTEIRO-PGVECTOR-CHATBOT.md` segue como runbook da Fase 5. Links corrigidos no ESTADO e nos planos que referenciam os arquivados.
+- **Completude:** `historico/planos/CLASSIFICACAO-COMPLETUDE.md` (planos, rodada 3) e `REVISAO-COMPLETUDE.md` (historico, rodada de 14/08) agora se apontam mutuamente — uma autoridade só.
 - **Fila:** `TODO-PROXIMAS-RODADAS.md` e `ROTEIRO-EXECUCAO-PENDENCIAS.md` arquivados em `historico/planos/` com redirect; a fila viva mora no ESTADO.
 
 ## Fase 2 — o que está desatualizado (parcial ✅)

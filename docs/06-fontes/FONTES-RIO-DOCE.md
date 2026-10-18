@@ -4,7 +4,7 @@
 > **Domínio:** Rio Doce
 > **Última medição:** 2026-10-12
 > **Leitura estimada:** 10 min
-> **Relacionados:** [FONTES.md](FONTES.md), [PLANO-PLATAFORMA-RIO-DOCE.md](../planos/PLANO-PLATAFORMA-RIO-DOCE.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Relacionados:** [FONTES.md](FONTES.md), [PLANO-PLATAFORMA-RIO-DOCE.md](/docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md), [ESTADO.md](../02-estado/ESTADO.md)
 > **Palavras-chave:** riodoce, mariana, fundao, samarco, datajud, semad, wfs, renovacao, ckan-mg, portal_mariana, arcgis, repactuacao
 
 ## Sumário

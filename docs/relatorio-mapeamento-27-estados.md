@@ -4,7 +4,7 @@
 > **Domínio:** ambiental
 > **Última medição:** 2026-09-17
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [F0-discovery.md](dominios/ambiental/F0-discovery.md), [PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md](planos/PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [F0-discovery.md](dominios/ambiental/F0-discovery.md), [PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md](/docs/historico/planos/PLANO-EXPANSAO-AMBIENTAL-ONDA-2.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** mapeamento, 27 estados, licenciamento, outorgas, infracoes, orgaos estaduais, geoserver, wfs, transparencia, onda 2
 
 ## Sumário

@@ -8,7 +8,7 @@
  *
  * Fontes e integrações:
  *   - Telegram Bot API (chat_id oficial do Artur)
- *   - docs/planos/FILA-AGENTES.md (fila canônica assíncrona entre agentes)
+ *   - docs/historico/entregas/FILA-AGENTES.md (fila canônica assíncrona entre agentes)
  *   - .opencode/canario/comandos.json (fila de comandos ponte do OpenCode)
  *   - logs/telegram-inbox.jsonl (histórico persistente de mensagens do inbox)
  *

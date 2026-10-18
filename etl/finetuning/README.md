@@ -3,7 +3,7 @@
 > **Tipo:** GUIA / RUNBOOK  
 > **Domínio:** etl / finetuning  
 > **Última medição:** 2026-09-07  
-> **Relacionados:** `docs/planos/PLANO-DISTILACAO-SABIA-7B-SEU-NONO.md`, `models/seu-nono/Modelfile`
+> **Relacionados:** `docs/historico/planos/PLANO-DISTILACAO-SABIA-7B-SEU-NONO.md`, `models/seu-nono/Modelfile`
 
 ## Sumário
 

@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-10-01
 > **Leitura estimada:** média (5-15 min)
-> **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-FALLBACK-BANCO.md](../planos/PLANO-FALLBACK-BANCO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [ESTADO.md](../02-estado/ESTADO.md), [PLANO-FALLBACK-BANCO.md](/docs/historico/planos/PLANO-FALLBACK-BANCO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** revisao, onboarding, codigo, camadas, banco, drizzle, comBancoReserva, sanitizacao, seguranca, divida, indice
 
 ## Sumário
@@ -55,7 +55,7 @@ frágil aqui?”. As regras duras (commit, dado pessoal, deploy) continuam no
 
 ## Método
 
-Economia é regra, não preguiça ([ESTRATEGIA-ECONOMIA-TOKENS](../planos/ESTRATEGIA-ECONOMIA-TOKENS.md)):
+Economia é regra, não preguiça ([ESTRATEGIA-ECONOMIA-TOKENS](/docs/historico/planos/ESTRATEGIA-ECONOMIA-TOKENS.md)):
 
 - **Uma camada por rodada.** Lê-se o módulo, não o repositório.
 - **Foco na consequência**, não na categoria: o que pode publicar número
@@ -93,7 +93,7 @@ schema e consultas.
 Postgres do Guara **conecta, mas está vazio** quando o ETL não rodou contra
 ele. `getDb()` só troca de banco quando a *conexão* falha, então o sintoma era
 “ainda não rodou contra este banco” com o dado existindo no Neon. A troca por
-consulta resolve o caso real. Ver [PLANO-FALLBACK-BANCO.md](../planos/PLANO-FALLBACK-BANCO.md).
+consulta resolve o caso real. Ver [PLANO-FALLBACK-BANCO.md](/docs/historico/planos/PLANO-FALLBACK-BANCO.md).
 
 ### Schema e ORM
 

@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-30
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-CHATBOT-IA.md](PLANO-CHATBOT-IA.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md), [2026-08-30-ENTREGA-sirenejud-api-publica.md](../entregas/2026-08-30-ENTREGA-sirenejud-api-publica.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-CHATBOT-IA.md](/docs/historico/planos/PLANO-CHATBOT-IA.md), [TODO-PROXIMAS-RODADAS.md](/docs/historico/planos/TODO-PROXIMAS-RODADAS.md), [2026-08-30-ENTREGA-sirenejud-api-publica.md](/docs/historico/entregas/2026-08-30-ENTREGA-sirenejud-api-publica.md)
 > **Palavras-chave:** roteiro, pendências, vale, monitoramento, chatbot, IA, sirenejud, fila, execução
 
 > 🔒 **ARQUIVADO em 01/09/2026** — a fila viva e o estado de cada item estão no [ESTADO.md](../../02-estado/ESTADO.md); este arquivo fica como medição histórica de escopo.
@@ -154,7 +154,7 @@ Da entrega de 30/08 (`2026-08-30-ENTREGA-sirenejud-api-publica.md`):
 
 ## 5. 01/09 — Neon volta
 
-`ROTEIRO-NEON-01-09.md` (runbook pronto): migrations 0071–0077 → backfill de
+`historico/entregas/ROTEIRO-NEON-01-09.md` (runbook pronto): migrations 0071–0077 → backfill de
 temas → URLs do TJMG → carga das 8.570 normas federais → auditoria dos 25.729
 links. Destrava também: Rouanet junção (ESTADO #10), pgvector do chatbot,
 medição de payloads. ⚠️ O cabeçalho do runbook está no passado ("a Neon

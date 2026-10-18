@@ -5,7 +5,7 @@
 > **Última medição:** 2026-09-04
 > **Palavras-chave:** pequi, tema, rebrand, hero, marquee, sanfona, epigrafe, citacoes, contraste, oklch
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [PLANO-COPY-VOZ.md](../../planos/PLANO-COPY-VOZ.md) · [PLANO-REBRAND-FOTOS-E-POEMAS.md](../../planos/PLANO-REBRAND-FOTOS-E-POEMAS.md)
+> **Relacionados:** [PLANO-COPY-VOZ.md](/docs/historico/planos/PLANO-COPY-VOZ.md) · [PLANO-REBRAND-FOTOS-E-POEMAS.md](/docs/historico/planos/PLANO-REBRAND-FOTOS-E-POEMAS.md)
 
 ## Sumário
 
@@ -91,7 +91,7 @@ self-hosted (`app/fonts.ts`, woff2 locais). Nada de CDN novo.
   existindo e vence tudo; Pequi é padrão, não camisa de força.
 - **Citação é ato editorial.** Toda epígrafe entra com autor, obra e ano
   conferidos na fonte (não no LLM). Poema do acervo só com autorização
-  registrada — o arquivo `CITACOES-AUTORIZADAS.md` ainda NÃO está no repo
+  registrada — o arquivo `historico/planos/CITACOES-AUTORIZADAS.md` ainda NÃO está no repo
   (medição 04/09: zero hits em `git ls-files`); criar como parte da etapa 4.
 - **Números da prévia são placeholder** (`[13.177]`, `R$ [5,48 bi]`).
   Só entra número que a tela puxa de constante medida com data.
@@ -111,7 +111,7 @@ em rota → print no Telegram → commit → push.
 3. **Casca da home.** Grão, marquee, tipografia dos capítulos na home
    atual, SEM mudar o conteúdo ainda. Epígrafe 1 (Carolina, hero).
 4. **Sanfona das frentes + selos SVG** (sem o ttf ainda). Citações dos
-   selos: 1 por capítulo por vez. Criar `CITACOES-AUTORIZADAS.md`.
+   selos: 1 por capítulo por vez. Criar `historico/planos/CITACOES-AUTORIZADAS.md`.
 5. **Capítulos 01-03** (Cidades, Congresso, Judiciário) com numcard lido
    das constantes reais + epígrafes.
 6. **Capítulos 04-07 + por-que + manifesto**, registro sóbrio do Paraopeba,

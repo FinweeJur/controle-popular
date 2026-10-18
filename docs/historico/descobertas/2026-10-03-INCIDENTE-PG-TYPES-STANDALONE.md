@@ -70,7 +70,7 @@ programado a fazer: o principal falhou, a reserva (Neon) também veio vazia, e
 "ainda não rodou contra este banco". HTTP 200, HTML válido, sem dado nenhum.
 O site parecia saudável enquanto o banco oficial estava morto. É a mesma
 lição do incidente registrado em
-[PLANO-FALLBACK-BANCO](../../planos/PLANO-FALLBACK-BANCO.md): fallback
+[PLANO-FALLBACK-BANCO](/docs/historico/planos/PLANO-FALLBACK-BANCO.md): fallback
 silencioso esconde o principal caído.
 
 ## Conserto aplicado (Fase 0, 03/10/2026)

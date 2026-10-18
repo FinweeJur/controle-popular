@@ -7,7 +7,7 @@
 > **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** historico, documentacao
 
-> 🔒 Rodada de 14/08; a rodada atual (3) vive em [planos/CLASSIFICACAO-COMPLETUDE.md](../../planos/CLASSIFICACAO-COMPLETUDE.md).
+> 🔒 Rodada de 14/08; a rodada atual (3) vive em [planos/CLASSIFICACAO-COMPLETUDE.md](/docs/historico/planos/CLASSIFICACAO-COMPLETUDE.md).
 
 ## Sumário
 

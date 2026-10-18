@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-10-18
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [README.md](README.md), [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico
@@ -29,9 +29,14 @@ Orientar qualquer pessoa que chegue em `docs/` a encontrar o documento certo em 
 
 | Quando ler | Documento | Caminho |
 |---|---|---|
+| Procurar onde corrigir, atualizar, editar ou ampliar | **RADAR** | [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md) |
+| Ver o que cada agente entregou | **RELATORIOS** | [`02-estado/RELATORIOS-AGENTES.md`](02-estado/RELATORIOS-AGENTES.md) |
 | Sempre — o que é o portal, frentes e regras editoriais | **PRODUTO** | [`01-produto/PRODUTO.md`](01-produto/PRODUTO.md) |
 | Decidir o que fazer agora — fila, bloqueios, dívida | **ESTADO** | [`02-estado/ESTADO.md`](02-estado/ESTADO.md) |
 | Antes do primeiro commit | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Texto completo de cada regra dura | **REGRAS-DURAS** | [`03-desenvolvimento/REGRAS-DURAS.md`](03-desenvolvimento/REGRAS-DURAS.md) |
+| Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
+| Pesquisar ou coletar na internet | **COLETA-ETICA** | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 
 ## Documentos por área
 

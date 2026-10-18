@@ -4,7 +4,7 @@
 > **Domínio:** global (build, deploy, banco de dados, ETL)
 > **Última medição:** 2026-10-03
 > **Leitura estimada:** media
-> **Relacionados:** [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [FONTES.md](../06-fontes/FONTES.md)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-REDUCAO-BUILD.md](/docs/historico/planos/PLANO-REDUCAO-BUILD.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [FONTES.md](../06-fontes/FONTES.md)
 > **Palavras-chave:** build, deploy, guara, docker, contexto, quota, postgres, etl, neon, reserva, ssl, pg_dump, cpf
 
 ## Sumário
@@ -37,7 +37,7 @@ em [OPERACAO.md](../05-operacao/OPERACAO.md); as armadilhas duráveis, na tabela
   Folga real, porém, só com o Pro (512 MB).
 - **O contexto de build tem teto de 256 MB.** `docs/`, PDFs, dados brutos e
   `node_modules` saem pelo `.dockerignore`; JSON grande vira **amostra
-  versionada** (F2 do [PLANO-REDUCAO-BUILD.md](../planos/PLANO-REDUCAO-BUILD.md)).
+  versionada** (F2 do [PLANO-REDUCAO-BUILD.md](/docs/historico/planos/PLANO-REDUCAO-BUILD.md)).
 - **BuildKit 12 Gi:** o cache do Webpack em disco estoura o pod. `config.cache
   = false` no `next.config.ts` (standalone) compila em RAM.
 - **Variável de build chega como Docker `ARG`.** Marcar `--build` no Guara

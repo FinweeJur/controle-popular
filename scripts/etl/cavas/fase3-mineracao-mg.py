@@ -312,7 +312,7 @@ def exportar_serie() -> int:
     hoje = datetime.now(timezone.utc)
     doc = {
         "gerado_em": hoje.isoformat(timespec="seconds"),
-        "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, método A)",
+        "plano": "docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, método A)",
         "uf": "MG",
         "fonte": ("MapBiomas - Monitor da Mineração, acessado em "
                   + hoje.date().isoformat()),
@@ -465,7 +465,7 @@ def estados(amostra: int, semente: int = 42) -> int:
     hoje = datetime.now(timezone.utc)
     doc = {
         "gerado_em": hoje.isoformat(timespec="seconds"),
-        "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, cruzamento ANM)",
+        "plano": "docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 3, cruzamento ANM)",
         "uf": "MG",
         "amostra": len(itens),
         "semente": semente,

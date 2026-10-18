@@ -4,7 +4,7 @@
 > **Domínio:** ux/dados/paraopeba
 > **Última medição:** 2026-09-07
 > **Leitura estimada:** média (5-15 min)
-> **Relacionados:** [PRODUTO.md](../../01-produto/PRODUTO.md), [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](../../planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md)
+> **Relacionados:** [PRODUTO.md](../../01-produto/PRODUTO.md), [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](/docs/historico/planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md)
 > **Palavras-chave:** temas, popup, densidade, contratos, mariana, paraopeba, aecom, fgv, biblioteca, crimes socioambientais, hiperlinks, seu nono, sabia 7b
 
 ## Sumário
@@ -64,7 +64,7 @@ Locais de aplicação:
 
 ## 3. Execução da Biblioteca Unificada Socioambiental
 
-Conforme planejado em `docs/planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md`:
+Conforme planejado em `docs/historico/planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md`:
 - Agregação de documentos das ATIs (Brumadinho), do Rio Doce (Mariana / CBH-Doce / Fundo Brasil).
 - Expansão para casos nacionais e regionais (Quadrilátero Ferrífero, Serra do Gandarela, Vale do Aço, Alto São Francisco, Rio das Velhas, Garimpo Ilegal no Norte e Sul de MG, e Ações Coletivas do MPF, MPMG e DPU).
 - Execução dos scripts de unificação gerando acervo de mais de 950 documentos oficiais indexados com links e metadados.

@@ -157,7 +157,7 @@ Snapshot 22/08/2026: 799 módulos, 3.684 arquivos, 8.412 funções;
 `lib/db/queries/municipios.ts` mais central (111 imports).
 ## Padrão das Qualidades da Informação Cívica
 
-Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, listas, contratos, compras, licenças, territórios) segue rigorosamente a **Regra das Qualidades da Informação** (consolidada no [AGENTS.md § 8](/AGENTS.md#8-padrão-de-dados-a-regra-das-qualidades-da-informação) e exemplificada em `apps/web/app/[municipio]/components/TabelaEstatica.tsx`):
+Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, listas, contratos, compras, licenças, territórios) segue rigorosamente a **Regra das Qualidades da Informação** (consolidada em [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md) e exemplificada em `apps/web/app/[municipio]/components/TabelaEstatica.tsx`):
 
 1. **Dados Sempre Linkáveis e Verificados:** Todo registro visível ao usuário (contrato, convênio, lei, processo, órgão, edital, parlamentar, fornecedor) deve possuir hiperlink direto e específico para a fonte oficial pública (aberto e testado pelo agente no momento da coleta). É expressamente vedado link genérico para a página inicial de um ministério ou portal quando o ato possui URL canônica própria ou protocolo oficial de busca.
 2. **Buscável e Filtrável com Tags Reais:** Busca textual em tempo real no cliente (tolerante a acentos) e filtros por facetas reais (status, UF, ano, categoria, tags). Filtro vazio é expressamente proibido.
@@ -173,7 +173,7 @@ Toda página ou componente que apresenta acervos ou volumes de dados (tabelas, l
    - **390 px, 768 px e desktop**: a mesma página se abre legível nos três, sem rolagem lateral falsa e sem coluna cortada.
    - **Conteúdo largo rola, não estoura**: tabela, gráfico e mapa ficam em `overflow-x-auto`; gráfico SVG com `h-auto` e faixa de `viewBox` reservada para o rótulo.
    - **Conferência**: em viewport de 390 px, `document.documentElement.scrollWidth === window.innerWidth`.
-   - Detalhe de implementação e o defeito medido em 10/10/2026: [AGENTS.md § 5.14](/AGENTS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado).
+   - Detalhe de implementação e o defeito medido em 10/10/2026: [REGRAS-DURAS.md § 5.14](REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado).
 
 ## Acessibilidade tipográfica das descrições
 
@@ -189,7 +189,7 @@ chips ou legendas de tabela.
   (controle "Ver + Texto"): recolhida por padrão, abre no clique.
 - Ao aumentar a fonte, preservar o contraste AA ≥ 4,5:1; texto sobre foto usa
   contorno e sombra (`apps/web/app/components/CapaFrente.tsx`).
-- A regra vive também no [AGENTS.md § 5.10](/AGENTS.md#510-fonte-mínima-da-descrição-da-página).
+- A regra vive também no [REGRAS-DURAS.md § 5.10](REGRAS-DURAS.md#510-fonte-mínima-da-descrição-da-página).
 
 ## Padrão de Código e Comentários Explicativos
 

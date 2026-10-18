@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-10-18
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [PLANO-ORQUESTRACAO-AGENTES-V2.md](planos/PLANO-ORQUESTRACAO-AGENTES-V2.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PLANO-ORQUESTRACAO-AGENTES-V2.md](/docs/historico/planos/PLANO-ORQUESTRACAO-AGENTES-V2.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** hermes, whatsapp, gateway, processor, ollama, sabia, ponte, integracao
 
 ## Sumário

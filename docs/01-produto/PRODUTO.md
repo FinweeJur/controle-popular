@@ -39,7 +39,7 @@ Três consequências de qualidade, nesta ordem:
 4. **Descrição legível.** A descrição que fica abaixo do título da página
    nunca é menor que `text-sm` (14px). Resumo longo abre no controle
    "Ver + Texto" em vez de espremer o leitor. Regra do dev, 29/09/2026 —
-   detalhe em [AGENTS.md § 5.10](/AGENTS.md#510-fonte-mínima-da-descrição-da-página).
+   detalhe em [REGRAS-DURAS.md § 5.10](../03-desenvolvimento/REGRAS-DURAS.md#510-fonte-mínima-da-descrição-da-página).
 
 ## Os Quatro Grandes Eixos e Subfrentes
 
@@ -108,7 +108,7 @@ O portal organiza sua fiscalização e acervo em **quatro grandes eixos temátic
    - **Tecnologia & IA Livre:** Ferramentas abertas e modelos locais sem big techs (`/tecnologia`);
    - **Assistente Cívico Seu Nonô:** IA acolhedora e escada determinística com voz (`/assistente`);
    - **Documentação e API Aberta:** Catálogo técnico e endpoints públicos (`/documentacao`, `/api`);
-   - **Sobre o ONSA & Método:** Princípios cívicos e Regra das Seis Qualidades (`/sobre`);
+   - **Sobre o ONSA & Método:** Princípios cívicos e Regra das Oito Qualidades (`/sobre`);
    - **Sala de Imprensa:** Dados abertos para comunicadores e jornalistas (`/imprensa`);
    - **Termos de Uso e LGPD:** Blindagem contra vazamento de CPFs e privacidade (`/termos`).
 
@@ -117,10 +117,10 @@ O portal organiza sua fiscalização e acervo em **quatro grandes eixos temátic
 | Feature | Onde | Nota |
 |---|---|---|
 | Painéis por município | 203 cidades estratégicas e 853 de MG | Dados com fonte e lacunas declaradas |
-| Tabelas Estáticas | listas grandes | > 2 mil linhas: índice fatiado ou paginação no servidor — regra completa em [AGENTS.md § 5.1](/AGENTS.md#5.1-coleção-nunca-como-props-de-componente-de-cliente) |
+| Tabelas Estáticas | listas grandes | > 2 mil linhas: índice fatiado ou paginação no servidor — regra completa em [REGRAS-DURAS.md § 5.1](../03-desenvolvimento/REGRAS-DURAS.md#51-coleção-nunca-como-props-de-componente-de-cliente) |
 | Alertas de contrato | contratos de Cidades | Duas categorias: violação legal (dispositivo citado) e heurística (com ressalva) |
 | Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; navegação determinística, sem modelo |
-| Seu Nonô (IA) | widget flutuante | RAG (busca sobre acervo + geração) com citação clicável, ressalva sempre visível — plano: [`planos/PLANO-SEU-NONO-NOTEBOOKLM.md`](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md) |
+| Seu Nonô (IA) | widget flutuante | RAG (busca sobre acervo + geração) com citação clicável, ressalva sempre visível — plano: [`planos/PLANO-SEU-NONO-NOTEBOOKLM.md`](/docs/historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md) |
 | "Ouvir esta página" (TTS) | botão na navbar, leitura flutuante | Lê **primeiro o microresumo** do top-100 (`apps/web/lib/resumos-top100.ts`), depois o conteúdo — a pessoa sabe onde está já na primeira frase |
 | Globo 3D | `/funcaosocialterra/mapa` | Camadas geográficas; 8 camadas do rompimento de Brumadinho |
 | API pública v1 | `/api`(, `/api/v1/`) | Agregados em JSON aberto, sem chave, Swagger UI |
@@ -169,4 +169,4 @@ Como remedir cada um: script por script citados nos arquivos de origem
 Absorve (e substitui) os arquivos: `README.md` antigo, `APRESENTACAO.md` e
 `PLANO-INTEGRACAO-BRUMADINHO.md` (em [`historico/`](../historico/)).
 `docs/LEIA-PRIMEIRO.md` lido como contexto.
-Revisão continua **ATIVA** em [`planos/REVISAO-UX-E-ONBOARDING.md`](../planos/REVISAO-UX-E-ONBOARDING.md).
+Revisão continua **ATIVA** em [`planos/REVISAO-UX-E-ONBOARDING.md`](/docs/historico/planos/REVISAO-UX-E-ONBOARDING.md).

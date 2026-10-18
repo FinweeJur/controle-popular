@@ -3,7 +3,7 @@
 > **Tipo:** ENTREGA
 > **Domínio:** global (infra, operação)
 > **Última medição:** 2026-10-04
-> **Relacionados:** [PLANO-STUDENT-PACK-2026-10.md](../../planos/PLANO-STUDENT-PACK-2026-10.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../../planos/PLANO-GLOBO-CAVAS-MINERACAO.md), [OPERACAO.md](../../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PLANO-STUDENT-PACK-2026-10.md](/docs/historico/planos/PLANO-STUDENT-PACK-2026-10.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md), [OPERACAO.md](../../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** azure, container apps, vm, blob, ghcr, acr, new relic, termius, ssh, tailscale, cavas, preparador
 
 ## Sumário

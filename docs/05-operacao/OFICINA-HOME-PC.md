@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-30
 > **Leitura estimada:** curta (≤ 5 min)
-> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-AUTOMACAO-LOCAL.md](PLANO-AUTOMACAO-LOCAL.md), [ESTADO.md](../02-estado/ESTADO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [FONTES.md](../06-fontes/FONTES.md), [PLANO-ECOSSISTEMA-CIVICO.md](../planos/PLANO-ECOSSISTEMA-CIVICO.md)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-AUTOMACAO-LOCAL.md](PLANO-AUTOMACAO-LOCAL.md), [ESTADO.md](../02-estado/ESTADO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [FONTES.md](../06-fontes/FONTES.md), [PLANO-ECOSSISTEMA-CIVICO.md](/docs/historico/planos/PLANO-ECOSSISTEMA-CIVICO.md)
 > **Palavras-chave:** oficina, home-pc, ollama, picoclaw, colibri, automacao, perfil, hardware, modelos locais, privacidade
 
 ## Sumário
@@ -101,4 +101,4 @@ Escrito em 30/09/2026 para atender ao pedido do dono: preparar a oficina na
 máquina de build, testar, e rodá-la depois no `home-pc` — que é mais fraco, e
 por isso pede simplificação. Dialoga com
 [PLANO-AUTOMACAO-LOCAL.md](PLANO-AUTOMACAO-LOCAL.md) e com a "oficina de
-bastidores" do [PLANO-ECOSSISTEMA-CIVICO.md](../planos/PLANO-ECOSSISTEMA-CIVICO.md).
+bastidores" do [PLANO-ECOSSISTEMA-CIVICO.md](/docs/historico/planos/PLANO-ECOSSISTEMA-CIVICO.md).

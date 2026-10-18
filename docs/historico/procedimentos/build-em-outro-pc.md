@@ -18,10 +18,10 @@
 
 ## Propósito
 
-> Escrito em 2026-08-09. O objetivo é a **arquitetura C** de > `deploy-github-pages.md` §7: o banco e o build ficam na sua máquina, o > Cloudflare só serve o resultado. O PC **não precisa ficar ligado** para o > site funcionar — só na hora de atualizar o dado. ---
+> Escrito em 2026-08-09. O objetivo é a **arquitetura C** de > `historico/planos/deploy-github-pages.md` §7: o banco e o build ficam na sua máquina, o > Cloudflare só serve o resultado. O PC **não precisa ficar ligado** para o > site funcionar — só na hora de atualizar o dado. ---
 
 > Escrito em 2026-08-09. O objetivo é a **arquitetura C** de
-> `deploy-github-pages.md` §7: o banco e o build ficam na sua máquina, o
+> `historico/planos/deploy-github-pages.md` §7: o banco e o build ficam na sua máquina, o
 > Cloudflare só serve o resultado. O PC **não precisa ficar ligado** para o
 > site funcionar — só na hora de atualizar o dado.
 
@@ -245,4 +245,4 @@ O que **não** funciona nesta arquitetura, e é preciso saber: as 15 rotas
 alvo for Cloudflare Workers, elas continuam funcionando normalmente — este
 documento só muda **onde o build roda**, não o que o site é. A migração para
 HTML puro (`output: export`) é outro assunto, e está em
-`deploy-github-pages.md` §8, ainda em aberto.
+`historico/planos/deploy-github-pages.md` §8, ainda em aberto.

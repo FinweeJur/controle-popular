@@ -279,7 +279,7 @@ linhas.push(`> **Tipo:** RELATORIO`);
 linhas.push(`> **Domínio:** global`);
 linhas.push(`> **Última medição:** ${HOJE}`);
 linhas.push(`> **Leitura estimada:** longa (> 15 min)`);
-linhas.push(`> **Relacionados:** [PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON](../planos/PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON.md), [PRODUTO](../01-produto/PRODUTO.md), [linkmender-propostas](linkmender-propostas.md), [AGENTS.md](/AGENTS.md)`);
+linhas.push(`> **Relacionados:** [PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON](/docs/historico/planos/PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON.md), [PRODUTO](../01-produto/PRODUTO.md), [linkmender-propostas](linkmender-propostas.md), [AGENTS.md](/AGENTS.md)`);
 linhas.push(`> **Palavras-chave:** relatorio tecnico, rotas, frentes, fontes, app router, dado versionado, cobertura, geracao automatica`);
 linhas.push("");
 linhas.push(`Documento gerado por \`scripts/gerar-relatorio-tecnico.mts\` em ${HOJE}.`);

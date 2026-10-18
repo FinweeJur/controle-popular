@@ -4,11 +4,11 @@
 > **Domínio:** global (Controle Popular + Floresta de Apps)
 > **Última medição:** 2026-09-01 (arquivo criado; nenhuma ação registrada ainda)
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [PLANO-DIVULGACAO-ZERO-CUSTO.md](../planos/PLANO-DIVULGACAO-ZERO-CUSTO.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Relacionados:** [PLANO-DIVULGACAO-ZERO-CUSTO.md](/docs/historico/planos/PLANO-DIVULGACAO-ZERO-CUSTO.md), [ESTADO.md](../02-estado/ESTADO.md)
 > **Palavras-chave:** divulgacao, log, imprensa, email, whatsapp, instagram, metricas
 
 Este arquivo é o registro de **uma linha por ação** de divulgação — o contraponto
-de execução do [plano de divulgação](../planos/PLANO-DIVULGACAO-ZERO-CUSTO.md).
+de execução do [plano de divulgação](/docs/historico/planos/PLANO-DIVULGACAO-ZERO-CUSTO.md).
 Ele existe para três coisas:
 
 1. **Não repetir o mesmo alvo** (nada de 3 e-mails para o mesmo veículo sem

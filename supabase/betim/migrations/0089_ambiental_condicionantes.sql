@@ -1,5 +1,5 @@
 -- Condicionantes ambientais de barragens/empreendimentos — piloto Irapé +
--- Setúbal. Plano: docs/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md.
+-- Setúbal. Plano: docs/historico/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md.
 -- Descoberta e downloads medidos: docs/06-fontes/FONTES.md § Condicionantes.
 --
 -- ═══ TRÊS TABELAS E A REGRA DO STATUS (decisão 1 do dono, 23/09) ═══

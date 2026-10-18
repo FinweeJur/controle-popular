@@ -7,7 +7,7 @@
 > **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** plano, ativo, tarefa
 
-> 🔒 **ARQUIVADO em 01/09/2026** — supersedido por [PLANO-SEU-NONO-NOTEBOOKLM.md](../../planos/PLANO-SEU-NONO-NOTEBOOKLM.md) (detalhamento e execução em fases).
+> 🔒 **ARQUIVADO em 01/09/2026** — supersedido por [PLANO-SEU-NONO-NOTEBOOKLM.md](/docs/historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md) (detalhamento e execução em fases).
 
 ## Sumário
 
@@ -104,13 +104,13 @@ confira a fonte"). Os dois convivem.
 6. **Publicar e testar com usuario real** — após build no home-pc.
 
 > **31/08/2026 — este plano foi DETALHADO e executado em fases por
-> [PLANO-SEU-NONO-NOTEBOOKLM.md](../../planos/PLANO-SEU-NONO-NOTEBOOKLM.md):** Fases 0–4
+> [PLANO-SEU-NONO-NOTEBOOKLM.md](/docs/historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md):** Fases 0–4
 > implementadas (acervo real; contrato v2 com `url`/`rota` na fonte;
 > verificador determinístico de citação com abstenção e re-tentativa;
 > ressalva de IA sempre visível com data/modelo; tela cheia estilo
 > NotebookLM com histórico e painel de fontes; dataset de finetuning em
 > `etl/finetuning/dados-seu-nono.jsonl`). A Fase 5 (pgvector na Neon) tem
-> runbook próprio: [ROTEIRO-PGVECTOR-CHATBOT.md](../../planos/ROTEIRO-PGVECTOR-CHATBOT.md).
+> runbook próprio: [ROTEIRO-PGVECTOR-CHATBOT.md](/docs/historico/planos/ROTEIRO-PGVECTOR-CHATBOT.md).
 
 ## Vitória esperada
 

@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-08
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON](../planos/PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON.md), [PRODUTO](../01-produto/PRODUTO.md), [linkmender-propostas](linkmender-propostas.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON](/docs/historico/planos/PLANO-ESTUDOS-RURAIS-RELATORIO-AUTOMACAO-NEON.md), [PRODUTO](../01-produto/PRODUTO.md), [linkmender-propostas](linkmender-propostas.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** relatorio tecnico, rotas, frentes, fontes, app router, dado versionado, cobertura, geracao automatica
 
 Documento gerado por `scripts/gerar-relatorio-tecnico.mts` em 2026-09-08.

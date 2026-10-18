@@ -333,4 +333,4 @@ const COLETORES = {
 - `docs/06-fontes/FONTES.md` — fontes principais
 - `docs/02-estado/ESTADO.md` — arquitetura
 - `scripts/agregar-sisema-fiscalizacao.mts` — padrão de agregação
-- `docs/planos/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md` — estratégia de expansão
+- `docs/historico/entregas/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md` — estratégia de expansão

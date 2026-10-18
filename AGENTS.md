@@ -1,756 +1,179 @@
-# AGENTS.md — o que todo agente precisa saber antes de tocar neste repositório
+# AGENTS.md — mapa de regras para quem trabalha neste repositório
 
 > Lido automaticamente por opencode e por outros agentes de terminal.
-> Reescrito em 19/09/2026 com o estado medido do mesmo dia.
-> **Cada regra tem uma medição ou um estrago atrás. Nada aqui é preferência
-> de estilo.** Histórico dos incidentes: [docs/historico/](docs/historico/).
+> **A regra mora no documento linkado; aqui fica o resumo e o caminho.**
+> Os links são caminhos do repositório no GitHub.
+> Última medição: 18/10/2026.
 
-**Palavras-chave:** agente, worktree, commit, pathspec, dado pessoal, CPF,
-guara, neon, cloudflare, tunnel, deploy, loader, testes, idioma, ollama, tokens.
+**Palavras-chave:** agente, mapa, regras, commit, worktree, CPF, deploy,
+robots, user-agent, pesquisa, qualidades, SEO, acessibilidade, Ollama.
 
 ## Sumário
 
-- [1. O que é o projeto](#1-o-que-é-o-projeto)
-- [2. Como ler a documentação](#2-como-ler-a-documentação)
-- [3. Estado vivo, em poucas linhas](#3-estado-vivo)
-- [4. Onde as coisas moram](#4-onde-as-coisas-moram)
-- [5. Regras que não se negociam](#5-regras-que-não-se-negociam)
-- [6. Armadilhas que já custaram tempo](#6-armadilhas)
-- [7. Regra editorial](#7-regra-editorial)
-- [8. Padrão de dados: a regra das qualidades da informação](#8-padrão-de-dados-a-regra-das-qualidades-da-informação)
-- [9. Como verificar](#9-como-verificar)
-- [10. Ferramentas de CLI desta máquina](#10-ferramentas)
-- [11. Coleta de dado de fonte pública](#11-coleta-de-dado)
-- [12. Como falar com o dono](#12-como-falar-com-o-dono)
+- [Comece por aqui](#comece-por-aqui)
+- [O que é o projeto](#o-que-é-o-projeto)
+- [Estado vivo](#estado-vivo)
+- [Onde as coisas moram](#onde-as-coisas-moram)
+- [Regras que não se negociam](#regras-que-não-se-negociam)
+- [Verificação mínima](#verificação-mínima)
+- [Pesquisa na internet](#pesquisa-na-internet)
+- [Armadilhas](#armadilhas)
+- [Como falar com o dono](#como-falar-com-o-dono)
+- [Mapa de documentos](#mapa-de-documentos)
 
-## 1. O que é o projeto
+## Comece por aqui
 
-Portal cívico de transparência **controlepopular.com.br**.
-Monorepo Next.js 16. Três modos de publicar:
-
-| Alvo | O que é | Papel hoje (19/09) |
-|---|---|---|
-| **Guara Cloud** | PaaS brasileira — plataforma que hospeda código, cobrança em Reais, datacenter em São Paulo | **principal** — `www` ativa |
-| Cloudflare Workers (OpenNext) | servidor "sem servidor" na borda da Cloudflare | fallback técnico |
-| Cloudflare Tunnel do `home-pc` | túnel que expõe este PC à internet | servidor 2 / emergência |
-
-Quatro Grandes Eixos Temáticos e mais de 36 subfrentes:
-1. **Terra e Território** (Cidades estratégicas, bacias hidrográficas, barragens, mineração, CAR, clima e Globo 3D);
-2. **Direitos em Movimento** (Saúde/SUS, Educação/IDEB, Trabalho/CAGED, Conselhos, LAI e assistência jurídica);
-3. **Estado e Economia** (Orçamento, compras públicas, Congresso, 27 Assembleias, Judiciário, empresas e transparência internacional EUA/Canadá/Europa);
-4. **Central ONSA e Ferramentas** (Editais diários, biblioteca digital, laboratório de dados, rádios cívicas e assistente Seu Nonô).
-Ver detalhamento completo em [PRODUTO.md](docs/01-produto/PRODUTO.md).
-
-**"Busca com potencial de interesse social"** governa toda coleta:
-social (direitos, desigualdade), ambiental (água, licença, esgoto),
-econômico (concentração, PPP, poder de mercado), educação (microresumos,
-tendência, porcentagem). Antes de coletar: pense no impacto social do dado.
-**Dupla verificação sempre:** 2× método, cálculo e raciocínio. Link sempre
-à fonte oficial (formato ABNT: Autor, Data) com hiperlink e botão "Fonte".
-
-**Não é um site comum.** O leitor está sob estresse — denúncia, remoção,
-barragem. Isso muda o padrão em três pontos concretos:
-acessibilidade não é opcional, **número errado é dano**, e **insinuação é
-dano mesmo quando cada dado isolado está certo**.
-
-## 2. Como ler a documentação
-
-Ninguém lê tudo. Nunca. A entrada é [`docs/README.md`](docs/README.md).
-Guia de escrita e template: [`docs/GUIA-DE-DOCUMENTACAO.md`](docs/GUIA-DE-DOCUMENTACAO.md).
-
-| Situação | Leia |
+| Você quer… | Leia |
 |---|---|
-| Sempre, antes de qualquer tarefa | [`01-produto/PRODUTO.md`](docs/01-produto/PRODUTO.md) |
-| Saber o que fazer agora: fila, fila bloqueada, dívida | [`02-estado/ESTADO.md`](docs/02-estado/ESTADO.md) |
-| Antes do primeiro commit | [`03-desenvolvimento/DESENVOLVIMENTO.md`](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
-| Criar página nova ou revisar padrão | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
-| Mexer em rota, payload ou banco | [`04-arquitetura/ARQUITETURA.md`](docs/04-arquitetura/ARQUITETURA.md) |
-| Publicar, coletar, buildar | [`05-operacao/OPERACAO.md`](docs/05-operacao/OPERACAO.md) |
-| Mexer em fonte ou dado coletado | [`06-fontes/FONTES.md`](docs/06-fontes/FONTES.md) |
-| Editar conteúdo sem código | [`07-edicao/EDICAO.md`](docs/07-edicao/EDICAO.md) |
+| saber o que fazer agora | [ESTADO.md](docs/02-estado/ESTADO.md) e [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |
+| entender o portal e as frentes | [PRODUTO.md](docs/01-produto/PRODUTO.md) |
+| commitar, worktree, sessão nova | [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
+| o texto completo de cada regra dura | [REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md) |
+| verificar antes de entregar | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
+| coletar ou pesquisar na internet | [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md) |
+| criar ou revisar página | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| publicar, buildar, operar | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
+| consultar uma fonte ou coletor | [FONTES.md](docs/06-fontes/FONTES.md) |
+| fugir de um erro que já custou tempo | [ARMADILHAS.md](ARMADILHAS.md) |
+| escolher ferramenta ou modelo | [FERRAMENTAS-E-MCP.md](docs/05-operacao/FERRAMENTAS-E-MCP.md) |
+| falar com o dono | [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-DONO.md) |
 
-Valide qualquer edição com `python scripts/validar-documentacao.py`.
-A CI roda o mesmo script (`.github/workflows/docs.yml`).
+## O que é o projeto
 
-## 3. Estado vivo
+Portal cívico de transparência: **controlepopular.com.br**.
+Junta dado oficial espalhado e publica por cidade e por tema.
+O leitor está sob estresse: número errado é dano, insinuação também.
+Quatro eixos e mais de 36 subfrentes. Detalhe em
+[PRODUTO.md](docs/01-produto/PRODUTO.md).
 
-1. **Banco: Heroku Postgres (medido 09/10, troca de 08/10).** O
-   `DATABASE_URL` do `apps/web/.env.local` resolve para
-   `cdltk6ok0evgo7.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com` — o
-   add-on `postgresql-rectangular-44619` da app `controle-popular` (plano
-   `heroku-postgresql:essential-0`), e o secret `DATABASE_URL` do GitHub foi
-   atualizado em 08/10 15:16 UTC. O Postgres do Guara (`cp-postgres-597bd0`)
-   **não é mais o que o app lê**; a Neon antiga continua em 94% (470/500 MB)
-   e **sem uso**. ⚠️ RDS em `us-east-1` — dado hospedado fora do Brasil,
-   decisão do dono. Ver
-   [ESTADO.md, fila](docs/02-estado/ESTADO.md#fila-viva).
-2. **Publicação em duas casas (troca de 06/10/2026).**
-   - **Azure Container Apps — principal:** `www.controlepopular.com.br`.
-     Publica por `gh workflow run azure-mirror.yml --ref main` (~6 min: build
-     da imagem no CI → GHCR → Container App). Só o certificado do domínio:
-     `azure-certificado.yml` (~1 min, sem build). Trocar os CNAMEs:
-     `trocar-dominios.yml -f confirmar=TROCAR`.
-   - **Guara Cloud — secundário:** `www.controlepopular.tech`. O serviço está
-     `stopped` (ciclo/cota) e volta com `guara deploy` quando o dono puder.
-   - Push na `main` → CI roda testes. **Deploy é manual nos dois** (§5.7.1).
-3. **Troca de casas CONCLUÍDA em 07/10/2026:** `www.controlepopular.com.br`
-   serve do **Azure** (CNAME com proxy + certificado gerenciado gerenciado pelo
-   próprio Container App) e `www.controlepopular.tech` aponta para o **Guara**,
-   que segue `stopped` com health `crash_loop` até o dono conseguir o redeploy
-   (o CLI do Guara não tem comando de start). Os dois apex vivem de redirect
-   301 no Cloudflare.
-4. **Raiz do domínio:** os dois apex vivem de redirect 301 no Cloudflare (o
-   Guara não aceita "apex"; no Azure apex exigiria `A` + `TXT asuid`).
-5. **Quem publica é este PC (`home-pc`)**: builda, testa, pusha. O túnel do
-   `home-pc` segue de pé como servidor de teste.
+## Estado vivo
 
-Tato é melhor que suposição: além de estimar tamanho ou estado, **remeça**.
+- **Banco:** Heroku Postgres desde 08/10/2026. A Neon antiga está sem uso.
+  ⚠️ O RDS fica em `us-east-1`, fora do Brasil — decisão do dono.
+- **Publicação principal:** Azure Container Apps, `www.controlepopular.com.br`.
+  Guara Cloud está parado por cota; o túnel do `home-pc` é o servidor 2.
+- **Deploy é manual.** Push não publica. Publicar só com ordem do dono.
+- **Fila viva, bloqueios e dívida:** [ESTADO.md](docs/02-estado/ESTADO.md).
+- **Onde corrigir, atualizar, editar e ampliar:** [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md).
+- **O que cada agente entregou:** [RELATORIOS-AGENTES.md](docs/02-estado/RELATORIOS-AGENTES.md).
 
-## 4. Onde as coisas moram
+Tato é melhor que suposição: **remeça** antes de decidir com número antigo.
+
+## Onde as coisas moram
 
 ```
 apps/web/app/         rotas (App Router). *.din.ts só existe no alvo Cloudflare
-apps/web/lib/         lógica pura + testes ao lado (padrão: <mod>.ts + <mod>.test.ts)
-apps/web/lib/db/      Drizzle (ORM = tradutor de código para SQL): schema e queries
+apps/web/lib/         lógica pura + testes ao lado (<mod>.ts + <mod>.test.ts)
+apps/web/lib/db/      Drizzle: schema e queries
 apps/web/data/        dado versionado, lido no build — compacte antes de commitar
 apps/web/scripts/     geradores (cidades-do-build, índice de busca)
 scripts/              coletores, agentes e rotinas (rotina-local.mts publica)
 docs/                 índice: docs/README.md
+etl/                  ETL em Python
 ```
 
-**Compactação de dado:** `apps/web/lib/comunicabr/arquivo.ts` e
-`apps/web/lib/estatico/compactar.ts` (esqueleto + rótulos internados).
-Fez 853 municípios caberem em 2,16 MB e 7,9 MB da Rouanet virarem 2,4 MB
-(−69%). ⚠️ São **duas** implementações deliberadamente diferentes (decisão
-de 16/08, [ESTADO.md § dívida](docs/02-estado/ESTADO.md#dívida-técnica-registrada)):
-não unificar sem remedir — aplainar o codec perde o ganho de ordem de grandeza.
+Arquitetura, payload e banco: [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md).
+Fluxo de trabalho: [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md).
 
-**Código IBGE, fonte única:** `scripts/etl/municipios/seed-municipios-mg.mts`
-baixa os 853 municípios de MG da API do IBGE → `apps/web/data/municipios-mg.json`.
+## Regras que não se negociam
 
-## 5. Regras que não se negociam
+Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
+[REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md).
 
-### 5.1. Coleção nunca como props de componente de cliente
-
-Foi assim que `/ambiental/legislacao` chegou a **35,5 MiB** contra o teto de
-25. O payload serializa 3× (HTML, RSC flight, `segmentData`) e cada linha
-repete o nome de todos os campos: **inflação de 7,5×**.
-Acima de ~2 mil linhas: índice fatiado ou paginação no servidor.
-**Onze listas já usam `apps/web/app/[municipio]/components/TabelaEstatica.tsx`**
-(medido 16/08 — remeça antes de decidir com ele). Siga uma delas.
-
-### 5.2. Dado pessoal: varrer o DADO, não só o código
-
-Em 15/08 este repositório público publicou **CPF real** duas vezes, por dois
-caminhos:
-
-- dentro da **ementa oficial** de um TAC do IBAMA (o ato público traz o dado);
-- **215 CPFs colados ao NOME** no acervo Rouanet (a fonte mascarava o campo).
-
-Lições, todas com código no repo:
-
-- `apps/web/lib/sem-cpf-no-repo.test.ts` valida CPF **por mod-11** (o dígito
-  verificador do próprio CPF) no código versionado.
-- `scripts/checar-dado-pessoal-em-dado.py` varre o **dado ingerido** — os JSON
-  dos diretórios listados em `DIRETORIOS_DADO` (topo do script). Roda na
-  suíte e na CI, e no pre-push **quando o hook está ligado**.
-- **O pre-push é ligado SOZINHO no `npm install`** (o `postinstall` roda
-  `scripts/configurar-hooks.mjs`, criado em 09/10/2026). Antes o comando era
-  manual — `git config core.hooksPath .githooks` — e já foi medido vazio nesta
-  máquina em 01/10/2026: o hook morava no repo e não executava. Sem ele o dado
-  só é barrado pela CI, **depois** do push. Confira com
-  `git config --get core.hooksPath` (deve dizer `.githooks`); se estiver vazio,
-  `npm run setup` re-liga à mão.
-- A régua de dado tem **duas etapas**: mod-11 (sempre roda) e `validate-docbr`
-  (confirma o CPF e derruba falso positivo). Sem a biblioteca instalada a
-  segunda vira aviso no stderr — o CI instala, o clone nem sempre.
-- Coletor novo que grava JSON a cada rodada **entra em `DIRETORIOS_DADO`** —
-  o flag `--extra` cobre um dump só, não o pre-push.
-- Rode a suíte **antes** de commitar dado coletado. Sempre.
-
-### 5.3. `--force` nunca
-
-É a única operação capaz de apagar trabalho de outra sessão sem volta.
-Consequência: mensagem de commit torta publicada não tem conserto (ver §5.6).
-
-### 5.4. Worktree quando há briga, sessão nova quando o contexto fica sujo
-
-**Anexar no dev server de outro checkout responde 200 com o código errado,
-sem avisar** — a pior forma de errar numa verificação. A regra é
-condicional:
-
-| Situação | Regra |
+| # | Regra em uma linha |
 |---|---|
-| 1 sessão só no PC | commit direto na `main`, pathspec explícito |
-| 2+ sessões ao mesmo tempo | worktree + branch próprio, porta própria, rebase e push rápido |
-
-O ganho do worktree nunca foi o branch (branch é grátis) — é o disco
-separado: dois `next build` brigando no mesmo `.next`, dois dev servers,
-staging misturado (aconteceu 2× em 15/08). Sem briga, é imposto sem
-retorno.
-
-**Quando abrir sessão nova** — pelo SINTOMA, não pelo tamanho:
-
-- **contexto sujo, não "longo":** a sessão repete decisão já resolvida,
-  carrega thread abandonada ou divergiu do combinado. Modelo de 1M de
-  contexto pode seguir, se o fio estiver coerente; o `/cp` carrega o
-  estado durável entre sessões. **Tamanho de janela não é o gatilho** — e a
-  regra não se amarra a modelo (256k, 1M, o que vier);
-- para acelerar — tarefas independentes correm lado a lado (global
-  AGENTS: agentes paralelos, uma sessão por tarefa, divisão por arquivo);
-- qualquer ferramenta serve (OpenCode, Hermes, Picoclaw, Cutiazinho):
-  uma tarefa por agente, arquivos de saída distintos, e o humano
-  integra ao final. Alternar ferramenta conta como "sessão nova".
-
-O fluxo completo (junção de `node_modules`, portas em `.claude/launch.json`,
-órfãos) está em [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md).
-
-### 5.5. Commit por pathspec explícito
-
-```bash
-git diff --cached --name-only   # tem que estar vazio ANTES
-git commit --only <caminho> -F <arquivo-de-mensagem>
-```
-
-`git commit` sem caminho leva tudo em staging — **inclusive o que outra
-sessão deixou lá**. Aconteceu duas vezes em 15/08 e as duas foram pushadas.
-Arquivo novo precisa de `git add` antes.
-
-### 5.6. Mensagem de commit por ARQUIVO, nunca `-m`
-
-- Crase dentro de aspas duplas no Bash vira substituição de comando e come
-  o texto — com `git commit` retornando sucesso.
-- Here-string de PowerShell (`@'...'@`) no Bash deixa `@` sozinho no título.
-
-As duas falhas aconteceram em 15/08; as duas foram pushadas antes de alguém
-ver. Escreva a mensagem num arquivo e use `git commit -F`. Português, sem
-acento, terminando com o trailer de coautoria.
-
-**Regra do dono (30/09/2026): o trailer traz SEMPRE o MODELO e a PLATAFORMA,
-um por linha.** Hoje:
-
-    Co-Authored-By: DeepSeek V4.1 Flash <noreply@deepseek.com>
-    Co-Authored-By: opencode <noreply@opencode.ai>
-
-Trocar de modelo ou de plataforma = trocar as duas linhas; nunca deixar só
-uma. Modelo e plataforma são a procedência do commit — quem audita precisa
-saber os dois.
-
-### 5.7. Commit e push: sempre, na hora
-
-**Regra do dono, 11/10/2026: todo trabalho terminado vira commit e vai
-para o GitHub na hora.** Trabalho que existe só no PC não existe — some
-em travamento, em disco cheio, em sessão fechada por engano. Ninguém
-integra o trabalho de ninguém, e ninguém tem obrigação de adivinhar o
-que você deixou no meio.
-
-```bash
-git fetch origin && git rebase origin/main && git push origin HEAD:main
-```
-
-**O push não publica.** O auto-deploy está desligado (§5.7.1), então
-empurrar é livre e não entrega página a ninguém. O que exige permissão
-é o build — e só ele.
-
-Única espera: enquanto um build ou deploy roda **nesta máquina**, segure
-o push até ele terminar. Dois `next build` brigando no mesmo `.next`
-já custaram uma verificação errada (ver [ARMADILHAS.md](ARMADILHAS.md)).
-
-### 5.7.1. Push = deploy manual (cota de build do Guara)
-
-Auto-deploy desligado no Guara (19/09). Um build gasta ~17 min e o
-plano Starter tem teto de 250 min/ciclo.
-
-**Regra do dono, 11/10/2026: NÃO dispare deploy sem pedir antes.**
-Commit e push seguem livres — o auto-deploy está desligado, então o push
-não publica sozinho. Publicar (Azure ou Guara) só depois de o dono dizer
-que pode. Na dúvida, pergunta: o build roda ~6 min e entrega a página
-para todo mundo na hora, e o dono quer conferir antes.
-
-- **Deploy no Guara só a cada ~5 dias** (política do dono) — detalhe e
-  ritual em [OPERACAO.md § 0](docs/05-operacao/OPERACAO.md#0-cadência-de-deploy-política-do-dono-19092026).
-- **Publicar no Azure é o caminho principal desde 06/10/2026** e não gasta
-  cota do Guara: `gh workflow run azure-mirror.yml --ref main` (build da
-  imagem no CI, ~6 min, → GHCR → Container App). Só o certificado do domínio:
-  `gh workflow run azure-certificado.yml` (~1 min). Trocar os CNAMEs entre as
-  duas casas: `gh workflow run trocar-dominios.yml -f confirmar=TROCAR`.
-- Commit muitas vezes, deploy uma (o último commit).
-- Teste diário no **servidor 2** (túnel do `home-pc`) e localhost —
-  não gasta cota.
-- Deploy só se a mudança afecta a imagem. Suíte + `tsc` verdes antes.
-
-### 5.8. Privacidade contra agentes de IA
-
-- [`.gitignore`](.gitignore) não protege contra leitura por IAs: agentes
-  varrem o disco e enviam trechos ao provedor do modelo.
-- Nunca leia nem exiba segredos (`.env*`, `.dev.vars*`, `*service-account*.json`,
-  `gcp*.json`, `.pem`, `.key`). Deny rules ativas em `.claude/settings.json`
-  e `.cursorignore`.
-- Nunca envie dado pessoal bruto (CPF) para prompts de IA — sanitize antes.
-- Sessões que exigem anonimato: Git com o e-mail `noreply` do provedor.
-
-### 5.9. Código tem SIM comentários explicativos e função clara
-
-**Regra do dono, 25/09/2026.** O Controle Popular é software cívico público
-e auditável. Código sem comentário é código opaco que prejudica a
-transparência e a continuidade do projeto:
-
-- **Cabeçalho de arquivo obrigatório:** todo `.ts`, `.tsx`, `.py`, `.mjs`
-  deve abrir com bloco de comentário (JSDoc ou docstring) explicando:
-  1. O que é o módulo e qual seu papel no portal;
-  2. A fonte oficial dos dados ou regras de negócio relacionadas;
-  3. Decisões técnicas ou restrições não triviais adotadas.
-- **Funções, queries e rotinas:** toda função pública, query do banco,
-  hook ou rota de API deve documentar o que faz, parâmetros e retorno.
-- **Explique o "porquê", não apenas o "o que":** o código diz como é feito;
-  o comentário explica *por que* foi feito assim (ex.: por que o DV do IBGE usa
-  módulo 10 com pesos 1 e 2, por que filtramos certas esferas, por que o
-  timeout de determinada API pública precisa ser mais longo).
-- **Linguagem:** português claro, direto, acessível tanto para desenvolvedores
-  quanto para cidadãos e pesquisadores que queiram auditar o código.
-
-### 5.10. Fonte mínima da descrição da página
-
-**Regra do dono, 29/09/2026.** O portal atende gente sob estresse — denúncia,
-remoção, barragem. Letra miúda na descrição é barreira de leitura. A descrição
-que fica **abaixo do título** de cada página (o parágrafo de resumo logo depois
-do `<h1>`) tem piso e teto de comportamento:
-
-- **Nunca menor que `text-sm`** (14px). Vale para a descrição da PÁGINA sob o
-  título — não é regra para cards de listagem, chips ou legendas de tabela.
-- Descrição longa (mais de ~2 linhas) ganha o controle **"Ver + Texto"**:
-  aparece recolhida e abre no clique, para não empurrar o conteúdo.
-- O componente de referência é `ResumoExpandivel`; reutilize, não recrie.
-- Quem aumentar a fonte de uma página mantém o contraste: o texto sobre foto
-  usa contorno e sombra (`CapaFrente.tsx`), e o alvo continua AA ≥ 4,5:1.
-
-### 5.11. O webhook do bot do Telegram aponta para o portal, só
-
-**Regra do dono, 01/10/2026.** O bot público entrega mensagem de cidadão. O
-destino dela tem de ser o site oficial — e nada mais. O dono fala com o bot
-pelo celular dele, através da API do Telegram; não existe "relay", "proxy de
-webhook" nem endereço de terceiro no meio.
-
-O que aconteceu, medido: em 25/09/2026 uma sessão de agente (commit `6d224a45`,
-`Co-Authored-By: Antigravity`) gravou `tele.goldenherd.com` numa constante
-`WEBHOOK_URL` e a **restaurava** a cada ciclo de um vigia. O dono nunca
-configurou esse endereço. Efeito em 01/10/2026: toda mensagem de usuário ia
-para lá, e o `/menu` do portal não recebia nada — o conserto de 30/09 era
-desfeito pelo ciclo. A avaliação do dono é injeção de prompt ou alucinação.
-
-Vale para todo agente, e não depende de boa vontade:
-
-- webhook do bot público só em `https://www.controlepopular.com.br/api/telegram`
-  (o apex é o mesmo dono, mas dá 301 — o Telegram não segue redirect);
-- bot de trabalho (dev de código) é **long-poll**, nunca webhook — os dois
-  caminhos são exclusivos no Telegram;
-- novo endereço de webhook exige decisão explícita do dono, registrada aqui;
-- a régua automática é `scripts/checar-webhook-telegram.py`, no pre-push e na
-  action `dado-pessoal.yml`; `scripts/telegram-set-webhook.mts --verificar`
-  confere o endereço vivo na API do Telegram.
-
-### 5.12. Ollama local: confira hardware e modelos, delegue o repetitivo, poupe token
-
-**Regra do dono, 03/10/2026.** Antes de delegar trabalho, **verifique o
-hardware e quais modelos do Ollama estão de fato rodando no PC**. Avalie quais
-tarefas dá para entregar/automatizar pelo Ollama de forma rápida, sem atrasar a
-sessão, e com isso poupar tokens — criando e melhorando rotinas nativas.
-
-O que aconteceu, medido em 03/10/2026: subagentes de nuvem morreram por
-**esgotamento de tokens** no meio de tarefas e o trabalho só não se perdeu
-porque tinha ficado no disco. Tarefa mecânica e volumosa (triagem, resumo,
-classificação, revisão de milhares de linhas) não precisa queimar token de
-nuvem: o Ollama local roda sem custo e **sem mandar dado para fora da máquina**
-— o que casa com a §5.8.
-
-Vale para todo agente:
-
-- **confira o hardware e o modelo ANTES de usar**: `ollama list` mostra o que
-  existe e `curl -s http://127.0.0.1:11434/api/tags` confirma no servidor.
-  Lista não é prova: em 03/10/2026 o `qwen2.5:7b-instruct-q4_K_M` aparecia na
-  lista e o servidor respondia **404 `model not found`** na geração. Teste com
-  uma geração real (`/api/chat`) antes de confiar;
-- **delegue o repetitivo, não o julgamento**: vai para o Ollama o que é
-  volume + regra clara (triagem, resumo, casar texto, revisar consistência).
-  Fica com o agente o que exige decisão, commit, deploy ou auditoria (§5.5,
-  §5.7.1) — e NADA de segredo sai do disco, nem para o Ollama (§5.8);
-- **peça JSON** (`format: "json"`, `temperature: 0`) e valide o que volta;
-  modelo pequeno solta texto livre e inventa. Sugestão de texto **não substitui
-  o dado** — revisão assistida só propõe, o humano/agente aprova o diff
-  (regra do resumo nunca reescrito por máquina, `lib/memoria/calendario.ts`);
-- **rotinas nativas já prontas para reusar**: `scripts/analisar-dados-ollama.mts`,
-  `scripts/automacao/triagem-diarios-ollama.mts`,
-  `scripts/oficina/oficina.mts` (baixa modelo do perfil) e
-  `scripts/revisar-textos-memoria.mts` (revisão da memória, criada 03/10/2026).
-
-### 5.13. Casca persistente: link interno navega no cliente, nunca recarrega
-
-**Regra do dono, 03/10/2026.** A barra superior, a faixa de desenvolvimento,
-o rodapé, o assistente Seu Nonô, o companheiro (pet) e o player de rádio
-moram no layout raiz e NÃO podem desmontar na navegação. O `<audio>` do
-rádio e o estado do pet só sobrevivem se a troca de página for client-side.
-
-- Todo link para PÁGINA interna usa `next/link` — inclusive os de `href`
-  dinâmico (navbar, rodapé, cartões), que a regra `no-html-link-for-pages`
-  do ESLint não enxerga;
-- `<a href>` cru fica só para externo, `mailto:`/`tel:`, âncora pura (`#`),
-  arquivo (`.pdf`, `.json`, imagens…) e `/api/...`;
-- A rede de segurança é o `InterceptadorLinks` (`app/components/`), montado
-  no layout raiz: captura o clique em qualquer `<a>` interno de página e o
-  entrega ao router;
-- Verificação: `scripts/verificar-radio-navegacao.py` (Playwright) percorre
-  eixos, subfrentes e o top-100 clicando e confere se o áudio segue vivo.
-
-### 5.14. O celular é a régua: responsividade e legibilidade são qualidade do dado
-
-**Regra do dono, 10/10/2026.** O portal é lido no celular — muitas vezes sob
-estresse, na rua. Dado que não cabe na tela, rótulo cortado ou tabela que só
-existe no desktop é dado **não publicado**: ilegível é inacessível, e num
-portal cívico inacessível é o mesmo que inexistente. Liga com a §1: se "número
-errado é dano", **número ilegível também é**.
-
-O que aconteceu, medido em 10/10/2026 em `/eleicoes/2026/gastos-campanha`: o
-`<body>` do portal é `flex flex-col` e a `<main>` tinha `mx-auto` **sem
-`w-full`**. Com margem automática o flex item deixa de esticar e passa a medir
-o PRÓPRIO CONTEÚDO — a página media **1126 px numa tela de 390** (1.049
-elementos fora da viewport), com rolagem lateral falsa e rótulo de gráfico
-cortado na base.
-
-Vale para toda página nova:
-
-- **`<main>` de página carrega `w-full`** quando o `body` é `flex-col` — sem
-  isso ela dimensiona pelo conteúdo e estoura a tela (a [ARMADILHAS.md](ARMADILHAS.md)
-  já guarda a armadilha irmã, `min-w-max` sem `min-w-0` no ancestral);
-- **conteúdo largo rola, não estoura**: tabela e gráfico em `overflow-x-auto`;
-  gráfico em SVG com `h-auto` e faixa do `viewBox` reservada para o rótulo;
-- **a descrição sob o título nunca é menor que `text-sm`** (§5.10) e o
-  contraste AA se mantém no tamanho de celular;
-- **tablet conta:** 768 px abre na faixa média; o mesmo `overflow-x-auto` e a
-  mesma faixa de `viewBox` valem, porque rótulo cortado também é dado ilegível;
-- **verificação de camada**: abrir a página em viewport de **390 px** e
-  conferir `document.documentElement.scrollWidth === window.innerWidth` —
-  rolagem lateral falsa é a assinatura do defeito. Playwright com o Edge do
-  sistema (`channel="msedge"`) basta, no molde de `scripts/verificar-*.py`.
-
-Amarração com a §8: responsividade virou a **sétima qualidade** da informação
-(10/10/2026) — as outras seis (ordenar, filtrar, exportar…) **não valem** se a
-coluna não é legível no celular. A régua móvel vem antes.
-
-### 5.15. Modelo de IA escolhido pela dificuldade da tarefa, barato primeiro
-
-**Regra do dono, 18/10/2026.** O modelo acompanha a dificuldade — não o hábito:
-
-- **Tarefa simples** (renomear, formatar, buscar, corrigir lint, resumo curto):
-  modelo simples ou **reasoning desligado**; e **Ollama local** quando der
-  (§5.12) — custo zero e nada sai da máquina (§5.8).
-- **Tarefa difícil** (arquitetura, refatoração grande, raciocínio multi-passo):
-  modelo avançado. Não gaste modelo grande em tarefa pequena, nem o contrário.
-- **Barato primeiro, sempre:** comece pelos **modelos mais baratos do
-  OpenCode Go** (`opencode-go/*` — DeepSeek V4.1 Flash, GLM-5.3-Flash, MiMo
-  Flash). Só subir de tier se o barato falhar de verdade, e registre por quê.
-- **Soberania de dados decide o motor, não só o custo** (regra do dono,
-  18/10/2026). Três degraus, do mais fechado ao mais exposto:
-  1. **Ollama local** (bot *Engenho*): recebe **tudo**, inclusive CPF e
-     denúncia — nada sai da máquina (§5.8, §5.12);
-  2. **Cérebro CN/BR** (`opencode-go/*` — DeepSeek, GLM, Qwen; Sabiá para
-     PT-BR): trabalho do dia, dados do projeto, estratégia e orquestração.
-     **A cabeça do time mora aqui** (bot *Farol*);
-  3. **Antigravity/Gemini** (bot *Trator*): só **material já público** e
-     tarefa operacional volumosa — varrer diário oficial, OCR, normalizar
-     texto público, classificar em lote, traduzir material aberto. Os
-     créditos são grandes; a confiança, não.
-- **Google nunca recebe:** CPF, denúncia, caso jurídico identificável, nome
-  de pessoa, dado de campanha eleitoral, código privado ou estratégia.
-  Na dúvida, sobe um degrau — local ou CN.
-- **Antigravity/Gemini** é a exceção declarada de modelo não-open (matriz do
-  [PLANO-ORQUESTRACAO-AGENTES-V2](docs/planos/PLANO-ORQUESTRACAO-AGENTES-V2.md)).
-- **Nunca ChatGPT/OpenAI.** Exceção única, temporária e avisada: se **esgotar
-  a cota do Gemini**, pode-se usar **Claude** no lugar até a cota voltar —
-  avisando o dono antes (§12). Voltou a cota, volta o Gemini.
-- **Cérebro principal do OpenMausBot = OpenCode Go** (`opencode-go/*`), não
-  Kimi nem outra engine isolada (decisão do dono, 18/10/2026).
-
-## 6. Armadilhas
-
-Cada linha já custou tempo real e a tabela é **única, sem duplicata**. Ela
-mora em **[ARMADILHAS.md](ARMADILHAS.md)** — este arquivo só aponta para lá,
-para ficar curto. Consulte antes de repetir um caminho que já falhou.
-
-## 7. Regra editorial
-
-O portal republica ato oficial e dado público. **A tentação é pôr dois dados
-verdadeiros lado a lado** e deixar o leitor concluir um terceiro, falso.
-Casos reais do repo:
-
-- **Repasse do Acordo:** 827 das 853 cidades não têm relação com a bacia.
-  A tela diz com letras que receber não significa ter sido atingida, e mostra
-  população ao lado do valor.
-- **Incentivador × fornecedor:** aparecer nos dois acervos não é troca de
-  favor. Junção é ponto de partida para investigar, não achado.
-- **`total_doado` da Rouanet é do Brasil inteiro.** A ressalva via colada ao
-  número, ou o número não vai.
-- **Resumo de modelo é o portal afirmando.** Rotule: gerado por máquina, com
-  data e modelo. Nunca como conclusão do autor do documento.
-- **Lacuna é informação.** Diga quantos itens vieram vazios.
-
-Resumo: **o número vem do dado; o modelo, se houver, só embrulha.**
-Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
-
-## 8. Padrão de dados: a regra das qualidades da informação
-
-**Regra do dono, 21/08/2026 (consolidada e expandida em 25/09/2026;
-sétima qualidade acrescentada em 10/10/2026; oitava em 15/10/2026 —
-rastreabilidade temporal, PLANO-DATA-DO-DADO).**
-Vale para toda página que publica acervo ou lista de dados — licenciamento,
-TACs, convênios, decisões, barragens, estudos, contratos, compras e territórios:
-
-1. **Linkável e Verificado à Fonte Oficial Direta:** Todo registro publicado
-   (contrato, convênio, lei, processo, ato oficial, órgão, edital, parlamentar,
-   fornecedor) deve ter hiperlink direto e específico para a fonte pública
-   (aberto e verificado pelo agente na hora da coleta). É expressamente proibido
-   link solto para home page genérica quando o ato tem URL canônica própria ou protocolo.
-2. **Buscável e Filtrável:** Busca textual em tempo real tolerante a acentos e
-   filtros por facetas reais (status, UF, ano, categoria, tags). Filtro que
-   devolve vazio sempre é pior que filtro nenhum.
-3. **Classificável e Ordenável por Coluna:** Ordenação crescente/decrescente em
-   todas as colunas relevantes, contemplando tipos nominais (classes/categorias),
-   valores monetários e datas, nunca restrito apenas à data.
-4. **Resumo / Microresumo e Cartões de Topo:** Resumo claro em português direto
-   e cartões de topo com agregados que respondem de imediato ao leitor "quanto é isso no total?"
-   com números medidos e datados (nunca digitados à mão).
-5. **Chatbot com Contexto Cívico (Seu Nonô / Alceu Dispor):** Toda base ou
-   entidade alimenta o assistente cívico (RAG) com tags contextuais, metadados
-   e respostas acolhedoras em orações diretas com frases curtas de até 13 palavras,
-   apontando sempre links oficiais.
-6. **Exportável Multi-formato (CSV com BOM e Impressão Nativa):** Download de
-   planilha CSV estritamente do que está filtrado na tela, com separador `;` e
-   BOM UTF-8 (`\uFEFF`) para compatibilidade perfeita com o Excel brasileiro, além
-   de gráfico SVG nativo acessível (sem bibliotecas externas pesadas) e layout de
-   impressão vetorial via CSS `@media print`.
-7. **Responsiva — celular, tablet e desktop:** a mesma página se abre legível
-   em 390 px (celular), 768 px (tablet) e desktop, sem rolagem lateral falsa,
-   sem coluna cortada e sem rótulo escondido. Conteúdo largo (tabela, gráfico,
-   mapa) **rola dentro do quadro**, nunca estoura a tela. Conferência em 390 px:
-   `document.documentElement.scrollWidth === window.innerWidth`. Detalhe de
-    implementação e o defeito medido em 10/10/2026 na §5.14.
- 8. **Rastreável no tempo (15/10/2026 — PLANO-DATA-DO-DADO):** página de dado
-    e post com número mostram a data da coleta da fonte, visível e derivada do
-    dado (`<DataColeta>`, `<time>`, carimbo `geradoEm` do arquivo, nascido na
-    escrita bem-sucedida do coletor), com a competência por programa quando os
-    cortes diferem. Data digitada na mão é tão dano quanto número digitado na
-    mão — ela apodrece sozinha e o leitor não tem como saber. Fiscalização:
-    `scripts/checar-data-coleta.py` (porteiro D1, catraca) e
-    `scripts/vigia-coletores.mts` (frescor das 34 fontes do registry, vermelho
-    só para regressão de coletor). A checagem no browser (D2, Playwright) é a
-    fase seguinte do plano.
-
-Essa regra não dispensa:
-
-- a página de servidor importa o **agregado** (`COBERTURA_*`), nunca o array
-  inteiro — já houve `.ts` de 14,6 MB no repo por ignorar isso
-  (`TS2590: union type too complex` foi o aviso do TypeScript);
-- gráfico com alternativa em texto ou tabela; cor nunca é o único canal;
-- número na tela vem de constante medida com data — não digite total à mão;
-- **página que lê do banco só mostra as oito qualidades quando o banco responde.**
-  Conferir `/ambiental/licenciamento` e `/ambiental/copam` exige HTML
-  pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
-- **a régua do celular precede as demais (§5.14):** nenhuma das oito qualidades
-  vale se a coluna não é legível e a página não cabe numa tela de 390 px.
-
-## 9. Como verificar
-
-**Regra do dono, 30/09/2026: a verificação é em CAMADAS.** O commit não
-espera a suíte inteira. Medido naquele dia: 2.134 testes, ~2–3 min, e a
-suíte cresce a cada sessão. Rodar tudo a cada commit bloqueia por trabalho de
-**outra sessão** (o repo muda sob você) e não protege mais que o escopo do
-diff. O que protege de verdade continua em todo commit.
-
-**Todo commit (segundos):**
+| [5.1](docs/03-desenvolvimento/REGRAS-DURAS.md#51-coleção-nunca-como-props-de-componente-de-cliente) | Coleção acima de ~2 mil linhas não vai como props de componente de cliente; use índice fatiado ou paginação no servidor. |
+| [5.2](docs/03-desenvolvimento/REGRAS-DURAS.md#52-dado-pessoal-varrer-o-dado-não-só-o-código) | Varra o **dado**, não só o código: CPF por mod-11, `DIRETORIOS_DADO` e suíte antes de commitar dado coletado. |
+| [5.3](docs/03-desenvolvimento/REGRAS-DURAS.md#53---force-nunca) | `--force` nunca. É a única operação que apaga trabalho de outra sessão sem volta. |
+| [5.4](docs/03-desenvolvimento/REGRAS-DURAS.md#54-worktree-quando-há-briga-sessão-nova-quando-o-contexto-fica-sujo) | 1 sessão: commit na `main`. 2+ sessões: worktree, branch e porta próprios. Contexto sujo: sessão nova. |
+| [5.5](docs/03-desenvolvimento/REGRAS-DURAS.md#55-commit-por-pathspec-explícito) | Commit por `git commit --only <caminho>`; `git diff --cached --name-only` tem de estar vazio antes. |
+| [5.6](docs/03-desenvolvimento/REGRAS-DURAS.md#56-mensagem-de-commit-por-arquivo-nunca--m) | Mensagem em arquivo, `git commit -F`. Nunca `-m`. Trailer com modelo e plataforma. |
+| [5.7](docs/03-desenvolvimento/REGRAS-DURAS.md#57-commit-e-push-sempre-na-hora) | Trabalho terminado vira commit e push na hora. O push não publica. |
+| [5.7.1](docs/03-desenvolvimento/REGRAS-DURAS.md#571-push-deploy-manual-cota-de-build-do-guara) | Deploy só com ordem do dono. Azure é o caminho principal; Guara gasta cota. |
+| [5.8](docs/03-desenvolvimento/REGRAS-DURAS.md#58-privacidade-contra-agentes-de-ia) | Nunca leia nem exiba segredo; nunca mande CPF bruto para prompt de IA. |
+| [5.9](docs/03-desenvolvimento/REGRAS-DURAS.md#59-código-tem-sim-comentários-explicativos-e-função-clara) | Todo módulo abre com comentário: o que é, fonte oficial e por que foi feito assim. |
+| [5.10](docs/03-desenvolvimento/REGRAS-DURAS.md#510-fonte-mínima-da-descrição-da-página) | Descrição sob o `<h1>` nunca menor que `text-sm`; longa usa “Ver + Texto”. |
+| [5.11](docs/03-desenvolvimento/REGRAS-DURAS.md#511-o-webhook-do-bot-do-telegram-aponta-para-o-portal-só) | Webhook do bot público só em `https://www.controlepopular.com.br/api/telegram`. |
+| [5.12](docs/03-desenvolvimento/REGRAS-DURAS.md#512-ollama-local-confira-hardware-e-modelos-delegue-o-repetitivo-poupe-token) | Confira hardware e modelo antes de usar Ollama; delegue o repetitivo, não o julgamento. |
+| [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link`; a casca e o rádio não podem desmontar. |
+| [5.14](docs/03-desenvolvimento/REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado) | O celular é a régua: 390 px, sem rolagem lateral falsa, `<main>` com `w-full`. |
+| [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
+
+## Verificação mínima
+
+Todo commit, em segundos:
 
 ```bash
 npx tsc --noEmit                              # em apps/web
-npx vitest run lib/sem-cpf-no-repo.test.ts    # guarda de CPF: o dado não pode vazar
+npx vitest run lib/sem-cpf-no-repo.test.ts    # CPF não pode vazar
 npx eslint <arquivos do diff>                 # só o que mudou
 python scripts/validar-documentacao.py        # se mexeu em docs/
 ```
 
-**CodeScene no pré-commit (automático, 08/10/2026).** O hook
-`.githooks/pre-commit` roda sozinho a cada `git commit`. Ele mede a "saúde
-do código" (nota de 0 a 10; menor = mais caro de mexer) **só no que está no
-commit** — código antigo que você nem tocou não conta.
+Antes do push e do deploy: `npm test`.
+CodeScene, escopo do diff e suíte completa:
+[VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md).
 
-```bash
-cs delta --git-hook --staged
-```
+## Pesquisa na internet
 
-- **Barra o commit** (código 1) quando a mudança introduz problema novo, e
-  mostra a lista. Para ignorar de propósito (raro): `git commit --no-verify`.
-- **Pula sozinho** se o `cs` não estiver instalado, ou se faltar
-  `CS_ACCESS_TOKEN` — não trava clone sem a ferramenta (§5.8: o token sai de
-  `scripts/.env`, nunca é impresso).
-- **Regras próprias** em [.codescene/code-health-rules.json](.codescene/code-health-rules.json):
-  as regras estruturais (Complex Method, aninhamento, nº de argumentos,
-  duplicação, Large Method) ficam **desligadas em arquivo de teste** — teste
-  repete setup de propósito. Aplicação usa o padrão do CodeScene.
-- **Revisar um arquivo à mão:** `cs review <arquivo>` (aceita
-  `--output-format json`); `cs check <arquivo>` é o apelido do mesmo exame.
-  O `cs` exige `CS_ACCESS_TOKEN` no ambiente.
-- Ativa junto com o pre-push — mesma chave `core.hooksPath .githooks` (§5.2).
-- **O mesmo exame roda também na nuvem** (ligado em 09/10/2026): a action
-  [.github/workflows/codescene-saude.yml](.github/workflows/codescene-saude.yml)
-  instala o CLI e compara `cs delta <base> <head> --error-on-warnings`
-  no push da `main` e em cada PR. Falha a ação em vez do commit — cobre clone
-  sem hook, do mesmo jeito que `dado-pessoal.yml` cobre o pre-push de CPF.
-  Precisa do secret **`CS_ACCESS_TOKEN`**. **Não dispara deploy** (§5.7.1).
-- **O PR também tem portão no lado do CodeScene:**
-  [.codescene/custom-quality-gates.json](.codescene/custom-quality-gates.json)
-  (`new_code_health`, `hotspot_decline`, regras críticas; aviso só de
-  `advisory_health_rules`). Esse só passa a valer quando a integração de PR
-  estiver ligada **no painel codescene.io** — nem CLI nem MCP expõem essa
-  chave, é clique do dono.
-- **Meta de saúde: 10,00.** O CodeScene trata 10 como o padrão de código
-  legível por máquina — "9 e pouco" não é suficiente. Se a saúde regredir,
-  **refatore, não declare pronto**.
-- **Salvaguarda pelo MCP (fluxo recomendado):** `pre_commit_code_health_safeguard`
-  no que está na mão **antes** de cada commit, e `analyze_change_set`
-  (branch contra a base) **antes** de abrir PR. Deram regressão?
-  `code_health_review` diz o quê, e refatora em passos de 3 a 5.
+Vale para este repositório **e para qualquer repositório do dono**.
 
-**Se o diff toca `lib/`:** rode o escopo do diff. O vitest usa o grafo de
-módulos e roda só os testes ligados ao que mudou:
+1. **User-Agent honesto, sempre:** `FinweeJur/Github Artur colito`.
+   Nunca UA de navegador falso, nunca UA vazio.
+2. **Antes de acessar, leia:** termos de uso, `robots.txt`, `/docs`/`/api`
+   e a licença.
+3. **Respeite:** `Disallow`, `Crawl-delay`, limite de requisições e área
+   autenticada. Termo que proíbe coleta encerra a tarefa.
+4. **Uso ético:** só dado público, finalidade cívica, sem burlar login,
+   CAPTCHA, paywall ou rate limit.
+5. **Ritmo:** 1–2 s por host; checkpoint; coleta fora da CI.
+6. **Registre a decisão** no cabeçalho do coletor quando houver exceção.
 
-```bash
-npm run test:lib -- --changed HEAD   # de apps/web; o wrapper repassa a flag
-```
+Detalhe e checklist: [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md).
 
-`--changed` é mais seguro que escolher teste à mão: mexeu em `lib/x.ts`, ele
-roda quem importa `x`. Se você sabe de um teste sensível que ele não pegou,
-rode esse teste à mão.
+## Armadilhas
 
-**UI pura (`.tsx`, sem `lib/`):** `tsc` + `eslint` bastam — nenhum teste
-importa componente.
+A tabela única, sem duplicata, mora em [ARMADILHAS.md](ARMADILHAS.md).
+Consulte antes de repetir um caminho que já falhou.
 
-**Antes do push e do deploy:** aí sim a suíte completa e o globo.
+## Como falar com o dono
 
-```bash
-npm test                 # raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
-```
+Frases de até 13 palavras. Oração direta. Termo técnico explicado.
+Emojis para guiar o olho: ✅ 🚧 ⛔ ⚠️. Quebre linha.
+Em etapa longa, avise no Telegram em 2–3 linhas.
+Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-DONO.md).
 
-Baseline em 30/09/2026: **2.134 testes no vitest** (globo à parte).
-A guarda de CPF e o validador de docs entram em TODO commit — o que muda é
-só o volume de lógica não tocada.
+## Mapa de documentos
 
-Armadilha que virou teste, não comentário: em 15/08 um comentário errado
-sobre código IBGE sobreviveu meses e copiou-se para uma tarefa. Quem pegou
-foi um teste que compara código com nome. Comentário errado continua
-convincente — teste não.
+| Tema | Documento |
+|---|---|
+| Produto, frentes e público | [PRODUTO.md](docs/01-produto/PRODUTO.md) |
+| Regra editorial | [REGRA-EDITORIAL.md](docs/01-produto/REGRA-EDITORIAL.md) |
+| Estado, fila, bloqueios e dívida | [ESTADO.md](docs/02-estado/ESTADO.md) |
+| Radar de correção, atualização, edição e ampliação | [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |
+| Relatórios finais de agentes | [RELATORIOS-AGENTES.md](docs/02-estado/RELATORIOS-AGENTES.md) |
+| Fluxo de trabalho e worktrees | [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Regras duras completas | [REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md) |
+| Verificação e entrega | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
+| Padrão de página wiki | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| Glossário | [GLOSSARIO-DEV.md](docs/03-desenvolvimento/GLOSSARIO-DEV.md) |
+| Arquitetura e payload | [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md) |
+| Oito qualidades da informação | [QUALIDADES-DA-INFORMACAO.md](docs/04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
+| Revisão de código | [REVISAO-CODIGO.md](docs/04-arquitetura/REVISAO-CODIGO.md) |
+| Operação, build e deploy | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
+| Ferramentas de CLI e MCP | [FERRAMENTAS-E-MCP.md](docs/05-operacao/FERRAMENTAS-E-MCP.md) |
+| Fontes e coleta | [FONTES.md](docs/06-fontes/FONTES.md) |
+| Coleta ética e pesquisa na internet | [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md) |
+| Edição sem código | [EDICAO.md](docs/07-edicao/EDICAO.md) |
+| Planos ativos | [docs/planos/](docs/planos/) |
+| Histórico e entregas | [docs/historico/](docs/historico/) |
+| Índice geral da documentação | [docs/README.md](docs/README.md) |
 
-## 10. Ferramentas
+## Origem / Histórico
 
-CLI desta máquina, medido em 19/09:
-
-| Ferramenta | O que faz | Exemplo |
-|---|---|---|
-| `guara` 0.3.0 | CLI do Guara Cloud: deploy, env, domains, logs | `guara env set -b KEY=valor` |
-| `neonctl` 5.0.0 | CLI da Neon: connection string, branches | `neonctl cs` |
-| `gh` 2.96 | CLI do GitHub: secrets, workflows | `gh secret set KEY --body "..."` |
-| `cs` 1.0.49 | CLI do CodeScene: análise de dívida local | `cs version` |
-
-**`cs docs <tópico>` — a ajuda embutida do CodeScene** (medido 09/10/2026;
-não exige rede):
-
-```bash
-cs docs git-hooks                        # o hook de pré-commit, com exemplo
-cs docs interactive                      # hook que pergunta antes de bloquear
-cs docs pre-commit-hook-example          # imprime o hook pronto pra copiar
-cs docs code-health-rules                # como ajustar as regras de saúde
-cs docs code-health-rules-template       # imprime o .codescene a completar
-cs docs custom-quality-gates-template    # imprime os portões de PR
-cs docs file-name                        # linguagens que o `cs` entende
-cs docs license                          # onde o token vive
-```
-
-Tópicos com `cs docs <t> --help` não existem — `--help` é só nos comandos.
-
-Anotações:
-
-- `guara security findings` está quebrado (pacote faltando no CLI). O scan
-  válido é `guara services vulnerabilities` (Trivy — scanner de imagem).
-- Secrets do repo: `GITHUB` via `gh secret list`. **`GUARA_API_KEY` já
-  secretada** (19/09).
-- `DATABASE_URL` vive no painel do Guara (runtime **e** build, flag `-b`).
-  A string da Neon se recupera com `neonctl connection-string`.
-- Segredos nunca vão para o repositório nem para prints. Deny rules ativas.
-
-### CodeScene MCP (medido em 09/10/2026)
-
-- **O que é:** o servidor MCP `@codescene/codehealth-mcp` entrega a análise
-  de saúde do código do CodeScene (offer do GitHub Student Pack): pontos
-  quentes (hotspots), saúde por arquivo e guarda antes de commit. Sobe com
-  `npx -y @codescene/codehealth-mcp`; **a primeira chamada baixa um binário
-  de ~83 MB** e por isso pode demorar ou falhar uma vez (`spawn UNKNOWN`) —
-  a segunda já sai na hora.
-- **Como chamar:** o opencode registra o MCP `codescene`, que roda
-  `scripts/mcp-codescene.ps1`. O wrapper lê `CS_ACCESS_TOKEN` de
-  `scripts/.env` (gitignorado) e **nunca imprime o valor** (§5.8). A config
-  mora em `C:\Users\teste\.config\opencode\opencode.json` e **só recarrega
-  com restart do opencode**.
-- **Ferramentas que a sessão deve usar antes de refatorar:**
-  `verify_installation` (passe **sempre** `git_repository_path`, senão ele
-  responde `missing field git_repository_path`),
-  `list_technical_debt_hotspots_for_project` (projeto **85760**),
-  `code_health_score`, `code_health_review`, `code_ownership_for_path`
-  (dono/bus factor), `analyze_change_set` (saúde do diff da branch),
-  `pre_commit_code_health_safeguard` (guarda antes do commit),
-  `list_technical_debt_goals_for_project`.
-  Economia de token (§5.12): `CS_DEFAULT_PROJECT_ID=85760` e
-  `CS_ENABLED_TOOLS` na config abrem só o que a sessão usa.
-- **Projeto:** `controle-popular`, id **85760**. Sessão autenticada por PAT
-  (`CS_ACCESS_TOKEN`, na lista de `env_var` do `get_config`).
-- **Refatorar por dado, não por intuição:** leia os hotspots e a saúde do
-  arquivo antes de escolher o que mexer, e registre a leitura em um doc.
-  Duas leituras já registradas:
-  [PENDENCIAS-07-10.md](docs/planos/PENDENCIAS-07-10.md) e
-  [HOTSPOTSCODESCENE-08-10.md](docs/planos/HOTSPOTSCODESCENE-08-10.md).
-
-## 11. Coleta
-
-- Pausa entre requisições: 1–2 s por host (tabela completa em
-  [FONTES.md, regras gerais](docs/06-fontes/FONTES.md)).
-- **User-Agent honesto** (é a "identificação" que o navegador envia ao
-  servidor): o nome do projeto, nunca UA de navegador falso.
-- Retomada por checkpoint; coleta fora da CI.
-- Leia o `robots.txt` (o "aviso de cortesia" que cada site publica) e
-  registre a decisão no cabeçalho do coletor se seguir mesmo assim — há um
-  caso no repo (`www18.fgv.br` responde `Disallow: /`), a pedido do dono,
-  com escopo reduzido e o raciocínio escrito.
-- Varrer dado pessoal antes de commitar. Sempre.
-
-## 12. Como falar com o dono
-
-**Regra do dono, 01/09/2026.** Vale para respostas, relatórios e commits.
-
-- **Frases até 13 palavras.** Uma ideia por linha.
-- **Oração direta:** sujeito, verbo, objeto.
-- **Termo técnico com explicação na frente.** Exemplo: "o wrangler é o
-  carteiro do deploy — é ele quem entrega o site pronto para a Cloudflare".
-- **Emojis para guiar o olho:** ✅ feito, 🚧 em andamento, ⛔ bloqueado,
-  ⚠️ atenção.
-- **Quebre linhas com frequência.** Quem lê é leigo, e leigo lê devagar.
-- **Ensine com analogia.** Compare o novo com algo do dia a dia.
-- **Nunca presuma que o leitor sabe.** Sigla? Explique. Número? Diga de onde
-  veio.
-
-**Regra do dono, 29/09/2026 — avisos periódicos no Telegram.**
-Enquanto uma etapa longa roda (coleta, treino, retri, fechamento, deploy),
-mande aviso no Telegram, no chat, de **2 a 3 linhas**:
-
-- **Linha 1 — etapa atual:** o que acabou de terminar, com número medido.
-- **Linha 2 — etapa futura:** o que começa em seguida.
-- **Linha 3 (se houver) — risco ou espera:** quanto tempo falta, o que trava.
-
-Cadência: **ao concluir cada etapa e antes de começar a próxima.** O dono
-acompanha pelo celular, longe do terminal; silêncio de horas parece travamento.
-Remetente: script temporário que lê `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`
-do `scripts/.env` sem nunca imprimir o segredo (padrão `envia-telegram.py`,
-`Temp\opencode`, usado em 28–29/09/2026).
+- **18/10/2026 — AGENTS.md vira mapa.** O texto completo das regras foi movido
+  para documentos temáticos, com link em cada linha. Nada foi apagado.
+- **18/10/2026 — pesquisa na internet ganha regra própria:** UA honesto
+  `FinweeJur/Github Artur colito`, leitura de termos, `robots.txt`, `/docs`,
+  respeito aos limites e uso ético.
+- Histórico de incidentes: [docs/historico/](docs/historico/).

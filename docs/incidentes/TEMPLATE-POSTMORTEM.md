@@ -4,7 +4,7 @@
 > **Domínio:** operação do projeto
 > **Última medição:** 2026-09-09
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [PLANO-RESILIENCIA-BOTS](../planos/PLANO-RESILIENCIA-BOTS.md), [OPERACAO](../05-operacao/OPERACAO.md)
+> **Relacionados:** [PLANO-RESILIENCIA-BOTS](/docs/historico/planos/PLANO-RESILIENCIA-BOTS.md), [OPERACAO](../05-operacao/OPERACAO.md)
 > **Palavras-chave:** incidente, postmortem, mitigação, causa, ação
 
 ## Sumário

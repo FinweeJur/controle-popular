@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-10-04
 > **Leitura estimada:** curta (< 5 min)
-> **Relacionados:** [PLANO-seo-visibilidade-buscadores.md](../planos/PLANO-seo-visibilidade-buscadores.md), [AUDITORIA-LINKS-EIXOS-TOP100.md](AUDITORIA-LINKS-EIXOS-TOP100.md)
+> **Relacionados:** [PLANO-seo-visibilidade-buscadores.md](/docs/historico/planos/PLANO-seo-visibilidade-buscadores.md), [AUDITORIA-LINKS-EIXOS-TOP100.md](AUDITORIA-LINKS-EIXOS-TOP100.md)
 > **Palavras-chave:** SEO, canonical, meta description, structured data, auditoria, top 100
 
 ## Sumário

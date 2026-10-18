@@ -4,7 +4,7 @@
 > **Domínio:** ambiental
 > **Última medição:** 2026-10-13
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [README.md](../README.md), [AGENTS.md](/AGENTS.md), [FONTES.md](../06-fontes/FONTES.md), [PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md](../planos/PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md)
+> **Relacionados:** [README.md](../README.md), [AGENTS.md](/AGENTS.md), [FONTES.md](../06-fontes/FONTES.md), [PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md](/docs/historico/planos/PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md)
 > **Palavras-chave:** pesquisa, geologia, mineracao, MG, litologia, geoquimica, SIGMINE, IBAMA, MDE
 
 ## Sumário
@@ -270,7 +270,7 @@ busca; não classificamos a terra".
 ## Origem
 
 Pedido do usuário em 13/10/2026, na sequência do
-[PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md](../planos/PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md).
+[PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md](/docs/historico/planos/PLANO-IBAMA-COORDENADAS-E-PRIOR-GEOLOGICO.md).
 Todas as medições deste documento foram feitas no dia 13/10/2026 com
 User-Agent honesto e pausa de 2 s por requisição. Nenhum dado pessoal entrou
 no repositório.

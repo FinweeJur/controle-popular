@@ -10,7 +10,7 @@
  *
  * Regra antiga (reprovava 403 e timeout) travava todos os PRs do LinkMender:
  * em 18/10 reprovou 1.762 de 2.459 links e o merge nunca rodou. Ver
- * docs/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md, Fase 1.
+ * docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md, Fase 1.
  *
  * Não faz busca de substituto — o LinkMender PR já fez isso na abertura.
  *

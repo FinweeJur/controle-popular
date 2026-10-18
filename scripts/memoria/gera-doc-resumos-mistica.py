@@ -9,7 +9,7 @@ Entradas:
                              seleção) — mesmo módulo metricas_resumo.py
 
 Saída:
-  docs/planos/REVISAO-RESUMOS-MISTICA.md
+  docs/historico/planos/REVISAO-RESUMOS-MISTICA.md
 
 Por que: o dev revisa o texto ANTES de o calendario.ts ser trocado
 (regra do fluxo de 30/09/2026). O doc mostra, por dia, o titulo e o
@@ -34,7 +34,7 @@ REPO = Path(r"X:\DevCoder\OpenCode\controle-popular")
 ANTES = TEMP / "calendario.antes.ts"
 NOVO = TEMP / "calendario.novo.json"
 STATS = TEMP / "estatisticas-resumos.json"
-DESTINO = REPO / "docs/planos/REVISAO-RESUMOS-MISTICA.md"
+DESTINO = REPO / "docs/historico/planos/REVISAO-RESUMOS-MISTICA.md"
 
 CAMPO = re.compile(r'(\w+):\s*"((?:[^"\\]|\\.)*)"')
 BLOCOS = re.compile(r"\n  \{([^}]+)\}", re.S)
@@ -203,7 +203,7 @@ def main() -> int:
         "> **Domínio:** global (home — Mística do Dia)",
         "> **Última medição:** 2026-09-30",
         "> **Leitura estimada:** longa (> 15 min)",
-        "> **Relacionados:** [PLANO-MEMORIA-RESISTENCIAS.md](PLANO-MEMORIA-RESISTENCIAS.md), "
+        "> **Relacionados:** [PLANO-MEMORIA-RESISTENCIAS.md](/docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md), "
         "[PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md)",
         "> **Palavras-chave:** mistica do dia, resumo, calendario, lutas populares, "
         "memoria, fonte curta, revisao de conteudo, seferian, benitez, mst",
