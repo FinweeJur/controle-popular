@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-09
+> **Última medição:** 2026-10-18
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](../historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, heroku, codescene, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
@@ -69,6 +69,12 @@ etapas, para ninguém decidir com número velho:
    `DATABASE_URL` foi atualizado em 08/10 15:16 UTC, e o host gravado em
    `apps/web/.env.local` é **idêntico** ao do app Heroku (mesmo banco).
    O Guara estourou a cota do Starter em 09/10 e saiu de cena.
+
+**Coleta 18/10 (Heroku) — licenciamento completo:** `ambiental_licenciamento`
+=**19.713 linhas em 831 municípios** (rodada completa, commit `95007a2c`).
+A coleta de 22/09 abaixo parou no município 145 — era essa a causa do bug
+"zero licença" na maioria das cidades. Medido direto no Heroku em 18/10:
+`cnpj_raiz` preenchido em 14.831 linhas (75,2%), 10.941 raízes.
 
 **Coleta 22/09 (Guara) — fechada 22/09 21:30:** `copam_reunioes`=479,
 `convenios_federais`=167, `contratos`=11.471, `licitacoes`=4.869,
@@ -154,7 +160,7 @@ exige decisão explícita do dono.
 | B5 | Expansão PNCP: coleta da fila (89 cidades) e delegação das 30 grandes ao Gemini | 🚧 | medido 25/09 11:26 — 47 completas; ver [HANDOFF-24-09](../HANDOFF-24-09-FECHAMENTO-PNCP.md) |
 | B6 | Remuneração de servidores + QSA de empresas (novas APIs, 1–2 semanas) | ⛔ | aguarda ordem; fontes no [PLANO-FILA arquivado §8](../historico/planos/PLANO-FILA-PROXIMA-SESSAO.md) |
 | B7 | **Turbopack no build (decisão do dono 05/10: manter se melhor)** | ✅ | Home PC ✅ medido 05/10: 338s vs 369–398s webpack, pico 3.886 MB vs 5.392 MB, `.next` 754 MB vs 1.501 MB, 621 rotas iguais, Drizzle 73 KB gzip vs 60 KB, server 32,0 vs 32,2 MB gzip, type-check roda no turbo (Next 16.3.5). Guara-proxy ✅ verde: imagem podman `cp-turbo-test` (Linux/standalone, 1,12 GB, build frio ~46 min) construída e servidor servindo páginas reais (delta 543 vs 621 rotas = ausência de `DATABASE_URL` no container, não do bundler). **Adotado:** `apps/web/package.json` `build` → `--turbopack`. Deploy real na próxima janela de cota (~08/10); `cf:build` herda a flag — fumaça antes de usar o fallback Cloudflare. Azure pulado (ordem do dono 05/10). Worktree `med-turbo` guarda as medições — não apagar |
-| B8 | **Expansão ambiental para 853 cidades** | 🚧 | **licenciamento ✅** (10/10): `listarMunicipiosComLicenciamento` virou LEFT JOIN a partir de `ref_municipios_mg` com corte `like '31%'` — busca lista os 853, os **708 sem dado** aparecem "sem registro na fonte" sem link; cartões contam só os **145 com dado** (medido no banco de produção: 8.612 licenças); `generateStaticParams` filtra `total > 0`. **link do buscador ✅** (não era bug: o `Link` de `@/lib/ambiental/link` prefixa `/ambiental` sozinho — documentado). **CAR 🚧**: texto de amostra (56 imóveis/45 cidades) na tela; cobertura municipal completa exige coleta da base de 1,16 mi em ETL + agregado server-side (§5.1). **outorga IGAM ⏳**: grade não expõe Município; UI diz "não exposto pela fonte"; rotas possíveis (export xlsx com CSRF, detalhe por portaria) não implementadas |
+| B8 | **Expansão ambiental para 853 cidades** | 🚧 | **licenciamento ✅** (18/10): `listarMunicipiosComLicenciamento` virou LEFT JOIN a partir de `ref_municipios_mg` com corte `like '31%'` — busca lista os 853, os **22 sem dado** aparecem "sem registro na fonte" sem link; cartões contam os **831 com dado** (medido no Heroku em 18/10: 19.713 licenças, rodada completa `95007a2c` — antes 145 cidades/8.612, coleta de 22/09 interrompida no município 145); `generateStaticParams` filtra `total > 0`. **link do buscador ✅** (não era bug: o `Link` de `@/lib/ambiental/link` prefixa `/ambiental` sozinho — documentado). **CAR 🚧**: texto de amostra (56 imóveis/45 cidades) na tela; cobertura municipal completa exige coleta da base de 1,16 mi em ETL + agregado server-side (§5.1). **outorga IGAM ⏳**: grade não expõe Município; UI diz "não exposto pela fonte"; rotas possíveis (export xlsx com CSRF, detalhe por portaria) não implementadas |
 | B9 | **Plataforma Rio Doce — hub `/riodoce` (modelo do Projeto Brumadinho)** | 🚧 | Plano de 12/10: [PLANO-PLATAFORMA-RIO-DOCE.md](../planos/PLANO-PLATAFORMA-RIO-DOCE.md). Decisões do dono (12/10): zona nova `/riodoce` e Fase 1 = busca + processos. **Fase 0 concluída em 12/10** ([FONTES-RIO-DOCE.md](../06-fontes/FONTES-RIO-DOCE.md)): 8 processos CNJ confirmados no DataJud (TTAC/STF fora do índice público), 38 camadas SEMAD medidas (mancha do Fundão **1.243 feições**, 132,7 MB), ArcGIS REST da Renova com 87 tables públicas, CKAN MG sem dataset novo de Repactuação. **Esqueleto `/riodoce` no ar no mesmo dia** (hub + `/riodoce/processos` com lacuna declarada). Próximo: Fase 1b — lista dos 8 CNJ na tela + consulta ao vivo via `/api/datajud` |
 | B10 | **CNDH: PDFs específicos dos relatórios (2023 bacias Doce/Paraopeba e 2024 semiário)** | ⛔ | O `linkOficial` de cada entrada aponta para a página de relatórios do MDH (`gov.br/mdh/.../cndh/relatorios`); o PDF específico não foi achado publicamente — provável publicação interna ou bloqueio do defeso eleitoral. Ação: buscar o PDF direto **após o defeso** e atualizar `apps/web/data/relatorios-direitos-humanos.json`. Registrado em 15/10/2026 no [PLANO-CI-RAG-INGESTAO-UNIDADES.md, Pendencias](../planos/PLANO-CI-RAG-INGESTAO-UNIDADES.md#pendencias-registradas) (linhas do commit `6c0d1efc` já corrigiram a página; falta o PDF) |
 
@@ -288,6 +294,32 @@ Runbooks: [`planos/`](../planos/).
   contra os 3 MiB antes de depender do fallback Cloudflare.
 
 ## Entregas recentes
+
+**18/10/2026 — licenciamento completo: 853 municípios medidos, bug do zero fechado:**
+
+- **Banco (Heroku):** `ambiental_licenciamento` passou de 8.612 para **19.713
+  linhas**, de 145 para **831 municípios** com licença (rodada completa,
+  `95007a2c`). A coleta de 22/09 tinha parado no município 145 — era isso que
+  zerava a maioria das cidades.
+- **Alias de grafia:** a fonte publica "Brasópolis"; o catálogo do IBGE traz
+  "Brazópolis" (`3108909`). O resolvedor não adivinha por desenho (similaridade
+  0,5714 < 0,6); alias explícito em `etl/betim/etl/common.py` recuperou as
+  9 licenças.
+- **Verificação ao vivo (18/10):** Araçuaí 32, Uberlândia 646, Paracatu 308,
+  Divinópolis 205, Minas Novas 39, Brazópolis 17 — páginas por município
+  servindo dado. As **22 cidades sem dado** (Bandeira, Bugre, Campo Azul,
+  Catuti...) devolvem 404 de propósito: a Semad não publica licença para elas,
+  e o índice marca "sem registro na fonte".
+- **Achado — tabela de referência poluída:** `ref_municipios_mg` tem **854
+  linhas** (853 de MG + **São Paulo/SP `3550308`**). A UI corta com
+  `like '31%'`, então a tela está certa; a tabela precisa de faxina.
+- **Achado — EIA-RIMA:** a página lê `etl/betim/dados/ambiental-estudos.json`
+  (1.004 audiências, 2.415 linhas, **358 municípios**); a tabela
+  `ambiental_audiencias` no Heroku está **vazia**. JSON gerado em 20/08/2026,
+  com **205 links mortos (404)** de 942.
+- **Outorgas IGAM:** limitação da fonte — a grade pública não expõe município,
+  só regional (URGA); a UI declara isso.
+- Detalhe e pendências: [PENDENCIAS-AMBIENTAL-18-10.md](../planos/PENDENCIAS-AMBIENTAL-18-10.md).
 
 **05/10/2026 — servidor 2 publicado, piso consertado, links do bot e medição Turbopack:**
 

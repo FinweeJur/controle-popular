@@ -198,7 +198,7 @@ ETLs: `etl/apis/betim_dados_abertos.py`, `etl/apis/betim_geneexus.py`
 
 ## Fluxo financeiro — dinheiro ligado ao mapa
 
-`ambiental_licenciamento`: 19.704 linhas, 75,2% com `cnpj_raiz` (100% das PJ), 10.934 raízes, 825/854 municípios. Raiz de 8 dígitos é decisão de privacidade — não distingue matriz/filial.
+`ambiental_licenciamento`: 19.713 linhas (medido 18/10/2026 no Heroku, rodada completa `95007a2c`), 75,2% com `cnpj_raiz` (14.831 linhas), 10.941 raízes, 831/853 municípios. Raiz de 8 dígitos é decisão de privacidade — não distingue matriz/filial. ⚠️ `ref_municipios_mg` tem 854 linhas: as 853 de MG mais São Paulo/SP (`3550308`), que não é do estado — a UI corta com `like '31%'`, mas a tabela precisa de faxina.
 
 | Fonte | Estado |
 |---|---|
