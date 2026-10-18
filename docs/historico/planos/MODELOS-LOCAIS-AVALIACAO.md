@@ -97,6 +97,27 @@ O caminho para rodar Sabiá localmente é GGUF (llama.cpp/Ollama):
 
 Enquanto isso, `sabiazinho-4-br-sp` (API) cobre o fallback com qualidade BR.
 
+## Medição de 18/10/2026 (RTX 3050 4 GB, 15,7 GB RAM)
+
+| Modelo | Pontos | tok/s | s/requisição | Veredito |
+|---|---|---|---|---|
+| `qwen3:8b` | 1/5 | **0,8** | 236,6 | **reprovado** — não cabe na VRAM, roda em CPU |
+| `qwen3-vl:4b-instruct` | **5/5** | 2,3 | 47,1 | melhor qualidade; lento para uso interativo |
+| `qwen2.5:3b-instruct` | 4/5 | **35,3** | **15,0** | **melhor equilíbrio** (padrão local) |
+| `gemma2:2b` | 4/5 | 32,5 | 18,4 | aceitável para triagem |
+
+Leitura: o 8B é **44× mais lento** que o 3B e ainda erra 4 de 5 provas — a
+VRAM de 4 GB não o comporta e ele cai para a CPU. O 4B acerta tudo, mas
+custa ~47 s por resposta. O 3B é o único que junta qualidade suficiente
+(4/5) com velocidade de conversa (15 s).
+
+Regra prática tirada da medição:
+
+- **uso interativo da Secretária:** `qwen2.5:3b-instruct`;
+- **relatório diário em lote (pode esperar):** `qwen3-vl:4b-instruct`;
+- **fallback quando o local não dá conta:** `sabiazinho-4-br-sp` (API BR);
+- **nunca** `qwen3:8b` neste hardware.
+
 ## Como decidir
 
 1. **Rode a bateria** nos candidatos que couberem no hardware.

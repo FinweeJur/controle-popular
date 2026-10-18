@@ -97,7 +97,7 @@ PROVAS = [
 ]
 
 
-def _post(caminho: str, corpo: dict, timeout: int = 300) -> dict:
+def _post(caminho: str, corpo: dict, timeout: int = 900) -> dict:
     dados = json.dumps(corpo).encode("utf-8")
     req = urllib.request.Request(
         OLLAMA + caminho, data=dados, headers={"Content-Type": "application/json"}
@@ -115,13 +115,27 @@ def modelos_instalados() -> list[str]:
 
 def avaliar_modelo(modelo: str) -> dict:
     resultado = {"modelo": modelo, "provas": {}, "pontos": 0, "tok_s": 0.0}
+    # Aquecimento: a primeira chamada carrega o modelo na VRAM/RAM e nao
+    # entra na nota (medido em 18/10: o 8B levou mais de 5 min no cold load).
+    try:
+        _post(
+            "/api/chat",
+            {
+                "model": modelo,
+                "messages": [{"role": "user", "content": "ok"}],
+                "stream": False,
+                "options": {"temperature": 0, "num_predict": 4},
+            },
+        )
+    except (urllib.error.URLError, TimeoutError):
+        pass
     tempos = []
     for prova in PROVAS:
         corpo = {
             "model": modelo,
             "messages": [{"role": "user", "content": prova["prompt"]}],
             "stream": False,
-            "options": {"temperature": 0, "num_predict": 256},
+            "options": {"temperature": 0, "num_predict": 160},
         }
         if prova["formato"]:
             corpo["format"] = prova["formato"]
