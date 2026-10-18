@@ -29,7 +29,7 @@ Regra: **publicar só com ordem do dono** (§5.7.1). Commit e push seguem livres
 | Hotspot | Medido em | Comece por | Detalhe |
 |---|---|---|---|
 | **Cota do Guara estourada** — serviço `stopped`, deploy recusado | 09/10 | Azure: `gh workflow run azure-mirror.yml --ref main` | [ESTADO, Bloco A](../02-estado/ESTADO.md#bloco-a--fazer-agora) |
-| **6 PRs do LinkMender abertos**; #15 com 2.467 correções | 18/10 | `scripts/agent-tools/sondar-pr-links.mts` | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) |
+| ~~6 PRs do LinkMender abertos~~ | ✅ 18/10: PR #15 mesclado pelo bot (2.517 correções); os outros fechados | — | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) |
 | **3 amarelos do CodeScene** (`CompanheiroFlutuante` 7,03; `betim.ts` 7,30; `indice/page.tsx` 7,96) | 09/10 | `cs review <arquivo>` | [HOTSPOTSCODESCENE](/docs/historico/planos/HOTSPOTSCODESCENE-08-10.md) |
 | **Integração de PR do CodeScene desligada** e job da nuvem parado | 09/10 | codescene.io, projeto 85760 | [ESTADO, A8](../02-estado/ESTADO.md#bloco-a--fazer-agora) |
 | **`cp-bots-lab` 7 commits à frente**; 8 worktrees paradas | 18/10 | `git worktree list` | [RELATORIOS-AGENTES](../02-estado/RELATORIOS-AGENTES.md) |
@@ -54,7 +54,7 @@ Regra: **publicar só com ordem do dono** (§5.7.1). Commit e push seguem livres
 
 | # | Pendência | Detalhe | Próxima ação |
 |---|---|---|---|
-| O9 | Mesclar os 6 PRs do LinkMender | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) | portão tolerante + mesclar em sequência |
+| O9 | ~~Mesclar os 6 PRs do LinkMender~~ | ✅ 18/10: PR #15 mesclado pelo bot; #5–#8 e #14 fechados como superseded ([PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md)) | — |
 | O10 | Refatorar os 3 amarelos do CodeScene | [HOTSPOTSCODESCENE](/docs/historico/planos/HOTSPOTSCODESCENE-08-10.md) | `cs review` antes e depois |
 | O11 | Ligar a integração de PR do CodeScene | [ESTADO, A8](../02-estado/ESTADO.md#bloco-a--fazer-agora) | clique do dono no painel |
 | O12 | Registrar metas de dívida no CodeScene | [HOTSPOTSCODESCENE](/docs/historico/planos/HOTSPOTSCODESCENE-08-10.md) | nenhum hotspot abaixo de 7,00 |

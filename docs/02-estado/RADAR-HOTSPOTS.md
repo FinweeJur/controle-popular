@@ -60,7 +60,8 @@ Depois de executar, atualize a fonte — não este radar sozinho.
    (`sigbm-barragens` e `noticias-desastres`).
 3. **97 das 100 páginas do topo ainda são parciais** na régua das oito
    qualidades.
-4. **Seis PRs do LinkMender abertos.** O maior carrega 2.467 correções.
+4. ~~Seis PRs do LinkMender abertos.~~ ✅ resolvido: PR #15 mesclado pelo bot
+   (2.517 correções); #5–#8 e #14 fechados como superseded.
 5. **Guara bloqueado por cota.** Publicar é pelo Azure, e só com ordem do dono.
 
 ## Corrigir agora
@@ -69,7 +70,7 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 |---|---|---|---|---|
 | ~~5 coletores vermelhos fora da catraca~~ | ✅ resolvido em 18/10: os 5 eram acervo curado (`mpmg-coerdoce`, `mpmg-nucard`, `dpmg-notas`, `vale-sigma-lithium`, `sinesp-vde`) e viraram `estatica` no registry | `apps/web/lib/fontes/registry.ts` | [status](../relatorios-automacao/vigia-coletores-status.json) | — |
 | **Cota do Guara estourada** | 09/10: serviço `stopped`, `crash_loop`, deploy recusado | plano Azure: `gh workflow run azure-mirror.yml --ref main` | [ESTADO, Bloco A](ESTADO.md#bloco-a--fazer-agora), [AGENTS §5.7.1](/AGENTS.md) | não tentar `guara deploy`; publicar só com ordem |
-| **LinkMender com 6 PRs parados** | 18/10: #15 tem 2.467 correções; 1.762 de 2.459 links reprovados por 403/timeout | `scripts/agent-tools/sondar-pr-links.mts`, `linkmender-v2.mts` | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) | conferir portão tolerante e mesclar em sequência |
+| ~~LinkMender com 6 PRs parados~~ | ✅ 18/10: PR #15 mesclado pelo bot (2.517 correções); #5–#8 e #14 fechados como superseded | — | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) | rotina noturna deve partir da main atual |
 | **Rota `/ambiental/contratos` não existe** | 14/10: auditada como “página inexistente” no top 100 | `apps/web/app/ambiental/` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | criar a rota ou remover o link do índice |
 | **`/funcaosocialterra/mapa` fora da régua** | 14/10: faltam 5 itens (seções, índice, relacionados, gráfico, fonte) | `apps/web/app/funcaosocialterra/mapa/page.tsx` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | aplicar o checklist do [PADRAO-PAGINA-WIKI](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | **`/canada` fora da régua** | 14/10: faltam 5 itens; é hub internacional com dado | `apps/web/app/canada/page.tsx` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | fechar seções, índice, relacionados, gráfico e fonte |
