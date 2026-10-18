@@ -205,3 +205,28 @@ escolher o componente certo para não quebrar links internos.
 2. Fazer a Fase 2 junto da Fase 1, ou só depois de destravar o aceite?
 3. Ligar **quais** LLMs (Ollama / Maritaca / Ling) e com qual teto por noite?
 4. Autorizar o **re-disparo** dos 6 PRs após a Fase 1.
+
+## Fechamento (18/10/2026)
+
+O bot voltou a aceitar sozinho. Resultado:
+
+1. **PR #15 consolidado e MESCLADO** pelo merge automático (run
+   `39151492134`: testes ✓ 2m41s, sondagem ✓ 53m53s, merge ✓ 53s). A camada
+   na `main` ficou com **2.517 correções**.
+2. A sondagem de ~2.500 links passou — antes reprovava 1.762 por tratar 403 e
+   timeout como link morto.
+3. PRs #5–#8 e #14 fechados como *superseded* (base antiga, não-mescláveis,
+   71 urlVelha divergentes; resolvido pela URL mais específica).
+4. CodeScene da nuvem **verde** no commit da refatoração do pipeline.
+
+### Achado corrigido e pendência resolvida
+
+- **Achado (PR em base antiga):** `linkmender-pr.mts` agora nasce de
+  `origin/main` E faz `git merge origin/main` no branch se a base andou antes
+  do commit (sem `--force`), para o PR não virar não-mesclável.
+- **Pendência (D3/D4):** braço do navegador em
+  `scripts/agent-tools/escada-pagina.py` (Playwright: D3 usa a busca do site,
+  D4 grava o print) e ligação em
+  `apps/web/lib/linkmender/escada-adaptadores.ts` (monta comando, lê a saída,
+  checa a cota de visão). Núcleo + adaptadores com 93 testes verdes.
+

@@ -179,6 +179,17 @@ export async function abrirPrLinkMender(): Promise<void> {
   git(["fetch", "origin", "main"], RAIZ);
   git(["checkout", "-B", branch, "origin/main"], RAIZ);
 
+  // Guarda do achado de 18/10: PR aberto sobre base antiga fica nao-mesclavel
+  // e o run passa a usar o workflow daquele commit velho. O branch nasce de
+  // `origin/main`; se a base andou no meio (outra sessao pushou), faz o merge
+  // aqui — sem `--force` (AGENTS §5.3) — para o PR continuar mesclavel.
+  const baseDoBranch = git(["merge-base", "origin/main", "HEAD"], RAIZ).trim();
+  const mainAgora = git(["rev-parse", "origin/main"], RAIZ).trim();
+  if (baseDoBranch !== mainAgora) {
+    console.log("↻ [LinkMender PR] Base andou — merge origin/main no branch antes do commit.");
+    git(["merge", "--no-edit", "origin/main"], RAIZ);
+  }
+
   // pathspec explícito: SÓ os arquivos do LinkMender
   git(["add", "--", "apps/web/data/link-correcoes.json"], RAIZ);
   if (existsSync(RELATORIO)) {
