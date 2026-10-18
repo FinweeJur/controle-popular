@@ -1,8 +1,28 @@
 # Plano de Orquestração Multi-Agente
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-10-18
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [PLANO-ORQUESTRACAO-AGENTES-V2.md](PLANO-ORQUESTRACAO-AGENTES-V2.md), [FILA-AGENTES.md](FILA-AGENTES.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** orquestracao, agentes, hermes, opencode, antigravity, agy, ollama, needle, fases, smoke-tests
+
 > **Escopo:** Hermes · OpenCode (Go) · Antigravity (Gemini) · Ollama (incl. Needle)
 > **Projetos:** controle-popular · cutiazinha · foz-juris · sementeira
 > **Fonte:** [sementeiraprojetos.com.br](https://sementeiraprojetos.com.br) · [github finweejur](https://github.com/FinweeJur)
+
+> ⚠️ **Superado por [PLANO-ORQUESTRACAO-AGENTES-V2.md](PLANO-ORQUESTRACAO-AGENTES-V2.md) em 2026-10-18** — Hermes deixa de ser o orquestrador (instabilidade medida), OpenMausBot assume como hub, matriz de modelos fecha em CN/BR/open + Gemini. Mantido aqui como referência das fases e smoke tests até a migração validar; depois vai para `docs/historico/planos/`.
+
+## Sumário
+
+- [Objetivo](#objetivo)
+- [1. Agentes e Configuração](#1-agentes-e-configuração)
+- [2. Arquitetura de Orquestração](#2-arquitetura-de-orquestração)
+- [3. Workflow - 7 Fases](#3-workflow---7-fases)
+- [4. Projetos - Focus Inicial](#4-projetos---focus-inicial)
+- [5. Script de Orquestração](#5-script-de-orquestração)
+- [6. Regras de Ouro (do AGENTS.md - aplicadas a todos)](#6-regras-de-ouro-do-agentsmd---aplicadas-a-todos)
+- [7. Pendências](#7-pendências)
 
 ## Objetivo
 
