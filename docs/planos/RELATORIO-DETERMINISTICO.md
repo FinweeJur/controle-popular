@@ -11,6 +11,7 @@
 
 - [Por que determinístico](#por-que-determinístico)
 - [Arquitetura](#arquitetura)
+- [Campos de cada linha](#campos-de-cada-linha-especificação-do-dono-18102026)
 - [Os quatro blocos, bloco a bloco](#os-quatro-blocos-bloco-a-bloco)
 - [Onde estão os prazos](#onde-estão-os-prazos)
 - [Entrega e agendamento](#entrega-e-agendamento)
@@ -47,6 +48,43 @@ envia-telegram.py   -> mensagem no celular     [existe]
 - **Sem LLM em nenhum ponto.** Nada de nuvem, nada de token.
 - O bot Secretária continua existindo para **perguntas**, não para o
   relatório: o relatório vira script agendado.
+
+## Campos de cada linha (especificação do dono, 18/10/2026)
+
+**Contato (WhatsApp ou e-mail) — uma linha por contato:**
+
+| Campo | Regra |
+|---|---|
+| **Nome** | nome do chat (WhatsApp) ou nome de exibição do remetente (Gmail) |
+| **Número ou e-mail** | telefone no formato `+55…` (WhatsApp) ou endereço (Gmail) |
+| **Data e hora da mensagem** | no fuso `America/Sao_Paulo`; ISO curto (`18/10 20:31`) |
+| **Resumo da mensagem** | primeira frase útil, até 120 caracteres; sem opinião |
+| **Canal** | `WhatsApp`, `Gmail` ou `WhatsApp+Gmail` quando a mesma pessoa aparece nos dois |
+| **Proposta de resposta** | rascunho pronto, por regra fixa (abaixo) — o dono copia ou aprova |
+
+**Evento (Agenda) — uma linha por evento:**
+
+| Campo | Regra |
+|---|---|
+| **Título** | `summary` do evento |
+| **Data e hora** | início (e fim, quando houver), no fuso local |
+| **Endereço** | `location`; se vazio, escreve `sem endereço` |
+| **Link** | `hangoutLink` ou o primeiro link do campo de descrição, se houver |
+| **Dias faltando** | `hoje`, `amanhã` ou `em N dias` |
+
+**Proposta de resposta — regras fixas, sem modelo:**
+
+| Gatilho no texto | Rascunho proposto |
+|---|---|
+| Termina com `?` ou tem `quando`, `como`, `qual`, `quanto` | "Oi <nome>, recebi sua mensagem sobre <resumo>. Verifico e te respondo hoje." |
+| Tem `pagamento`, `vencimento`, `fatura`, `boleto`, `pix` | "Oi <nome>, recebi. Confirmo o <tipo> e te aviso assim que estiver pago." |
+| Tem `reunião`, `convite`, `agenda`, `call`, `link` | "Oi <nome>, recebi o convite. Confirmo presença e me organizo para <data/hora>." |
+| Tem `urgente`, `hoje`, `agora`, `prazo` | "Oi <nome>, vi sua mensagem e já estou olhando isso." |
+| Nenhum dos acima | "Oi <nome>, recebi sua mensagem. Respondo em breve." |
+
+Regra de honestidade: a proposta **não promete o que o dono não disse** — nada
+de "está pago", "está resolvido". Ela apenas acusa recebimento e diz o próximo
+passo do próprio dono.
 
 ## Os quatro blocos, bloco a bloco
 
