@@ -1,0 +1,128 @@
+# Relatório diário determinístico da Secretária
+
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-10-18
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [SECRETARIA-PESSOAL.md](SECRETARIA-PESSOAL.md), [ACESSO-REMOTO-E-HOME-PC.md](ACESSO-REMOTO-E-HOME-PC.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md)
+> **Palavras-chave:** relatorio, determinismo, sem-llm, gmail, agenda, whatsapp, prazos, telegram, task-scheduler, soberania, secretaria
+
+## Sumário
+
+- [Por que determinístico](#por-que-determinístico)
+- [Arquitetura](#arquitetura)
+- [Os quatro blocos, bloco a bloco](#os-quatro-blocos-bloco-a-bloco)
+- [Onde estão os prazos](#onde-estão-os-prazos)
+- [Entrega e agendamento](#entrega-e-agendamento)
+- [Regras que não se negociam](#regras-que-não-se-negociam)
+- [Critérios de aceite](#critérios-de-aceite)
+- [Etapas](#etapas)
+- [Riscos medidos e mitigação](#riscos-medidos-e-mitigação)
+
+## Por que determinístico
+
+Medido em 18/10/2026: o modelo local **não segura o protocolo do agente** —
+OpenCode com provider Ollama devolveu `404`; o engine OpenAI-compatible
+devolveu `empty response` (3B) e `HTTP 500` (4B). E o modelo na nuvem obriga
+a mandar caixa de entrada para terceiro, contra a regra de soberania.
+
+O relatório não precisa de modelo: são **quatro listas com regra clara**. Se
+o dado está no Gmail, na Agenda e no WhatsApp, um script monta o relatório
+inteiro, local, em segundos, sem custo e sem nuvem.
+
+## Arquitetura
+
+```
+coletar-google.py   -> agenda + Gmail (JSON)   [existe]
+servico WhatsApp    -> conversas 24h (JSON)    [existe, 127.0.0.1:8899]
+prazos.json         -> tarefas/pagamentos      [novo, arquivo local]
+        |
+        v
+relatorio-diario.py -> 4 blocos em texto/JSON  [novo]
+        |
+        v
+envia-telegram.py   -> mensagem no celular     [existe]
+```
+
+- **Sem LLM em nenhum ponto.** Nada de nuvem, nada de token.
+- O bot Secretária continua existindo para **perguntas**, não para o
+  relatório: o relatório vira script agendado.
+
+## Os quatro blocos, bloco a bloco
+
+1. **AGENDA** — eventos de hoje e dos próximos 7 dias, agrupados por dia,
+   ordenados por hora, com link quando houver. Fonte: Calendar (por conta).
+2. **CONTATOS** — quem procurou o dono: no Gmail (remetente, assunto, se está
+   não lido) e no WhatsApp (conversas individuais, recebidas em 24 h, não
+   lidas). Uma linha por pessoa; a mesma pessoa em dois canais aparece uma vez
+   só, com a marca dos dois.
+3. **PRAZOS** — o que vence em até 7 dias, em ordem de data.
+4. **SUGESTÕES** — regras fixas, sem julgamento: e-mail não lido de pessoa
+   física sugere resposta; conversa de WhatsApp que termina em pergunta sugere
+   resposta; pagamento em até 3 dias sugere lembrete; evento de amanhã sem
+   link sugere confirmar local.
+
+## Onde estão os prazos
+
+Não há fonte pronta hoje. Três degraus, do mais simples ao mais completo:
+
+1. **`prazos.json` local** (começar aqui): lista de `{titulo, data, valor?,
+   tipo}` que o dono edita ou que a Secretária escreve quando ele manda.
+2. **Heurística na Agenda**: evento cujo título tem `pagamento`, `vencimento`,
+   `fatura`, `imposto` ou `prazo` entra no bloco 3 com o valor no título, se
+   houver.
+3. **Google Tasks** (evolução): escopo `tasks.readonly` e a lista real de
+   tarefas do dono. Fica para a segunda fase.
+
+## Entrega e agendamento
+
+- O script imprime texto pronto (e `--json` para máquina).
+- A entrega é no **Telegram**, pelo script que já existe no ecossistema, lendo
+  o token do arquivo local — nunca impresso.
+- Agendamento por **Task Scheduler**, não pela rotina do MausBot: assim não
+  depende de card de aprovação nem do app aberto. No home-pc é o lugar certo
+  (24×7). Horário: **19:45**, o mesmo já combinado.
+- Se o dono quiser, o mesmo script roda sob demanda: `python
+  scripts/secretaria/relatorio-diario.py`.
+
+## Regras que não se negociam
+
+- **Sem LLM**: nenhuma chamada de modelo em nenhum bloco.
+- **Nada sai da máquina**, exceto a mensagem final no Telegram (que é do
+  próprio dono).
+- **Falha declarada**: sem dado, escreve `sem dado` com a data da leitura —
+  nunca inventa compromisso.
+- **Fonte visível**: cada bloco diz de onde veio e a hora da leitura.
+- **Nada de julgamento**: o script ordena, agrupa e conta; quem decide é o dono.
+- **Segredo nunca em log** (AGENTS.md §5.8).
+
+## Critérios de aceite
+
+1. Roda em **menos de 10 segundos** com rede normal.
+2. Sai **até 20 linhas**, sempre com os 4 blocos, mesmo vazios.
+3. Bloco vazio diz `sem dado` com a data.
+4. Funciona com **1 ou 2 contas** Google.
+5. WhatsApp fora do ar não derruba o relatório: bloco 2 avisa que o serviço
+   caiu e segue.
+6. Testável com fixtures: nenhum teste toca a rede.
+
+## Etapas
+
+1. `scripts/secretaria/prazos.json` + leitura no bloco 3 (heurística da Agenda
+   incluída).
+2. `scripts/secretaria/relatorio-diario.py` — monta os 4 blocos a partir do
+   coletor Google e do serviço de WhatsApp.
+3. `--json` e testes com fixtures (sem rede).
+4. Ligação com o `envia-telegram.py` e teste de ponta a ponta no celular.
+5. Tarefa no **Task Scheduler** às 19:45, com log local.
+6. Doc atualizado com a primeira medição real.
+
+## Riscos medidos e mitigação
+
+| Risco | Medido em | Mitigação |
+|---|---|---|
+| Refresh token do Google expira em 7 dias | 18/10/2026 | o script avisa em vermelho no bloco 1 e o dono reautentica |
+| WhatsApp 503 quando a sessão cai | 18/10/2026 | bloco 2 degrada com aviso, não derruba |
+| Fuso horário | — | converter tudo para `America/Sao_Paulo` na saída |
+| Mesma pessoa em Gmail e WhatsApp | — | agrupar por nome/telefone normalizado |
+| Script silencioso quebrado | — | log local por execução + aviso no Telegram quando falhar |
