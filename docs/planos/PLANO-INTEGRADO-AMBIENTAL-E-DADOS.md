@@ -29,8 +29,8 @@ Fonte que parou de atualizar dói mais que fonte que só está velha.
 
 | Hotspot | Medido em | Comece por | Detalhe |
 |---|---|---|---|
-| **5 coletores vermelhos fora da catraca** — `mpmg-coerdoce` 42d, `mpmg-nucard` 42d, `dpmg-notas` 41d, `vale-sigma-lithium` 42d, `sinesp-vde` 42d | 18/10 16:21 | `npx tsx scripts/vigia-coletores.mts` | [status](../relatorios-automacao/vigia-coletores-status.json) |
-| **18 fontes atrasadas**; 3 são diárias (`sigbm-barragens` 41d, `noticias-desastres` 47d, `vale-b3-cvm` 49d) | 18/10 | coletores em `scripts/` e `etl/` | [status](../relatorios-automacao/vigia-coletores-status.json) |
+| ~~5 coletores vermelhos fora da catraca~~ | ✅ 18/10: eram acervo curado; viraram `estatica` no registry | `apps/web/lib/fontes/registry.ts` | [status](../relatorios-automacao/vigia-coletores-status.json) |
+| **Fontes atrasadas: 18 → 9** | 18/10 após rodada; `sigbm-barragens` e `noticias-desastres` atualizados; falta `vale-b3-cvm` | coletores em `scripts/` e `etl/` | [status](../relatorios-automacao/vigia-coletores-status.json) |
 | **`sigmine-anm` sem carimbo e diária** | 18/10 | `apps/web/public/terras/globo/dados/camadas/sigmine-operacao.geojson` | [PLANO-DATA-DO-DADO](/docs/historico/planos/PLANO-DATA-DO-DADO.md) |
 | **205 links EIA/RIMA 404** de 1.016 fichas (22 DNS, 20 bloqueados, 17 instáveis) | 18/10 | `etl/betim/scripts/gerar-ambiental-estudos.py --comparar` | [PENDENCIAS-AMBIENTAL-18-10](/docs/historico/planos/PENDENCIAS-AMBIENTAL-18-10.md) |
 | **PNCP: 89 cidades na fila** (47 completas, 203 no manifesto) | 25/09 | `etl/betim/etl/pncp/checkpoint.py` | [PLANO-EXPANSAO-PNCP-199-CIDADES](/docs/historico/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md) |
@@ -44,7 +44,7 @@ Fonte que parou de atualizar dói mais que fonte que só está velha.
 
 | # | Pendência | Evidência | Detalhe | Próxima ação |
 |---|---|---|---|---|
-| D1 | Rodar os 5 coletores vermelhos e remedir | 18/10, fora da catraca | [status](../relatorios-automacao/vigia-coletores-status.json) | executar, regravar carimbo e atualizar catraca |
+| D1 | ~~Rodar os 5 coletores vermelhos~~ | ✅ 18/10: os 5 eram acervo curado e viraram `estatica` no registry; vigia caiu de 18 para 9 vermelhas | [status](../relatorios-automacao/vigia-coletores-status.json) | — |
 | D2 | Priorizar as 3 diárias atrasadas | 41–49 dias | [PLANO-DATA-DO-DADO](/docs/historico/planos/PLANO-DATA-DO-DADO.md) | rodar por frequência, não por ordem |
 | D3 | Instrumentar `sigmine-anm` | diária sem carimbo | `sigmine-operacao.geojson` | gravar `geradoEm` ou declarar estática |
 | D4 | Fechar D2 do plano de data (checagem no browser) | 15/10 | [PLANO-DATA-DO-DADO](/docs/historico/planos/PLANO-DATA-DO-DADO.md) | Playwright em 390 px |

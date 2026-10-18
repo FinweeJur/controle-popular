@@ -57,7 +57,7 @@ subagente em arquivo + as sessões do opencode no extrato
 de agente aparece nos handoffs, planos e worktrees. O extrato é lido do banco
 local; não roda na CI.
 
-Gerado em: 2026-10-18T19:11:28.714Z
+Gerado em: 2026-10-18T19:18:33.576Z
 
 ## Subagentes com resumo final
 
@@ -256,15 +256,15 @@ Leitura somente-leitura, CPF e segredo redigidos, sem custo de modelo.
 
 | Branch | Último commit | Data | Assunto | Distância de origin/main | Caminho |
 |---|---|---|---|---|---|
-| `pend-0710` | `4a2dba4b` | 2026-10-09 | infra: tira o dominio do Worker (landmine) e detalha o alerta do canario | atrás 154 · à frente 0 | `.claude/worktrees/cp-pend-0710` |
-| `cp-hero-vivo` | `5d8fb85e` | 2026-10-07 | Seu Nono por cima da pata e acessibilidade dentro do chat | atrás 234 · à frente 0 | `.claude/worktrees/cp-hero-vivo` |
-| `cp-scroll` | `17d85eda` | 2026-10-06 | Status (Pages): timeout de 20s — cold start do espelho nao e "Fora do ar" | atrás 278 · à frente 0 | `.claude/worktrees/cp-scroll` |
-| `cp-radio` | `1dc4a6a1` | 2026-10-04 | Docs: incidente do drizzle-orm no standalone, migration 0011 e o servidor 2 | atrás 335 · à frente 0 | `.claude/worktrees/cp-radio` |
-| `cp-seo` | `cd202617` | 2026-10-04 | blog: titulos em caixa de frase, fim do Title Case | atrás 334 · à frente 0 | `.claude/worktrees/cp-seo` |
-| `companheiro` | `5f8cb0cf` | 2026-10-01 | chore(companheiro): arte cartoon do bichinho no site e espelho sincronizado | atrás 422 · à frente 0 | `.claude/worktrees/companheiro` |
-| `companheiro-i3` | `84066cf7` | 2026-09-30 | docs(companheiro): marca a sessao pareada (portal + app) como pronta | atrás 527 · à frente 0 | `.claude/worktrees/companheiro-i3` |
-| `cp-ecossistema` | `0ef51498` | 2026-09-30 | feat(globo): salva as camadas ligadas e gera link compartilhavel | atrás 514 · à frente 0 | `.claude/worktrees/cp-ecossistema` |
-| `cp-bots-lab` | `a0aa7117` | 2026-09-24 | build: regenera cidades-do-build e proveniencia do globo | atrás 745 · à frente 7 | `.claude/worktrees/cp-bots-lab` |
+| `pend-0710` | `4a2dba4b` | 2026-10-09 | infra: tira o dominio do Worker (landmine) e detalha o alerta do canario | atrás 156 · à frente 0 | `.claude/worktrees/cp-pend-0710` |
+| `cp-hero-vivo` | `5d8fb85e` | 2026-10-07 | Seu Nono por cima da pata e acessibilidade dentro do chat | atrás 236 · à frente 0 | `.claude/worktrees/cp-hero-vivo` |
+| `cp-scroll` | `17d85eda` | 2026-10-06 | Status (Pages): timeout de 20s — cold start do espelho nao e "Fora do ar" | atrás 280 · à frente 0 | `.claude/worktrees/cp-scroll` |
+| `cp-radio` | `1dc4a6a1` | 2026-10-04 | Docs: incidente do drizzle-orm no standalone, migration 0011 e o servidor 2 | atrás 337 · à frente 0 | `.claude/worktrees/cp-radio` |
+| `cp-seo` | `cd202617` | 2026-10-04 | blog: titulos em caixa de frase, fim do Title Case | atrás 336 · à frente 0 | `.claude/worktrees/cp-seo` |
+| `companheiro` | `5f8cb0cf` | 2026-10-01 | chore(companheiro): arte cartoon do bichinho no site e espelho sincronizado | atrás 424 · à frente 0 | `.claude/worktrees/companheiro` |
+| `companheiro-i3` | `84066cf7` | 2026-09-30 | docs(companheiro): marca a sessao pareada (portal + app) como pronta | atrás 529 · à frente 0 | `.claude/worktrees/companheiro-i3` |
+| `cp-ecossistema` | `0ef51498` | 2026-09-30 | feat(globo): salva as camadas ligadas e gera link compartilhavel | atrás 516 · à frente 0 | `.claude/worktrees/cp-ecossistema` |
+| `cp-bots-lab` | `a0aa7117` | 2026-09-24 | build: regenera cidades-do-build e proveniencia do globo | atrás 747 · à frente 7 | `.claude/worktrees/cp-bots-lab` |
 
 ## Relatórios automáticos
 

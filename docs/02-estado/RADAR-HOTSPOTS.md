@@ -53,9 +53,11 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 
 ## Cinco urgências de hoje
 
-1. **Cinco coletores vermelhos fora da catraca.** O vigia mediu 18 fontes
-   atrasadas; 5 não estavam na régua de dívida conhecida.
-2. **Dezoito fontes atrasadas.** Três delas são de frequência diária.
+1. **Cinco fontes vermelhas eram acervo curado.** `mpmg-coerdoce`,
+   `mpmg-nucard`, `dpmg-notas`, `vale-sigma-lithium` e `sinesp-vde` viraram
+   `estatica` no registry; não são coletor agendado.
+2. **Restam 9 fontes atrasadas.** Duas diárias foram atualizadas em 18/10
+   (`sigbm-barragens` e `noticias-desastres`).
 3. **97 das 100 páginas do topo ainda são parciais** na régua das oito
    qualidades.
 4. **Seis PRs do LinkMender abertos.** O maior carrega 2.467 correções.
@@ -65,7 +67,7 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 
 | Hotspot | Por que agora (medido) | Comece por | Origem | Próxima ação |
 |---|---|---|---|---|
-| **5 coletores vermelhos fora da catraca** | 18/10 16:21: 18 atrasadas, 13 na catraca. Novas: `mpmg-coerdoce` 42d, `mpmg-nucard` 42d, `dpmg-notas` 41d, `vale-sigma-lithium` 42d, `sinesp-vde` 42d | `npx tsx scripts/vigia-coletores.mts` | [status](../relatorios-automacao/vigia-coletores-status.json), [catraca](../relatorios-automacao/vigia-coletores-catraca.json) | rodar os 5 coletores ou registrar a dívida com o dono |
+| ~~5 coletores vermelhos fora da catraca~~ | ✅ resolvido em 18/10: os 5 eram acervo curado (`mpmg-coerdoce`, `mpmg-nucard`, `dpmg-notas`, `vale-sigma-lithium`, `sinesp-vde`) e viraram `estatica` no registry | `apps/web/lib/fontes/registry.ts` | [status](../relatorios-automacao/vigia-coletores-status.json) | — |
 | **Cota do Guara estourada** | 09/10: serviço `stopped`, `crash_loop`, deploy recusado | plano Azure: `gh workflow run azure-mirror.yml --ref main` | [ESTADO, Bloco A](ESTADO.md#bloco-a--fazer-agora), [AGENTS §5.7.1](/AGENTS.md) | não tentar `guara deploy`; publicar só com ordem |
 | **LinkMender com 6 PRs parados** | 18/10: #15 tem 2.467 correções; 1.762 de 2.459 links reprovados por 403/timeout | `scripts/agent-tools/sondar-pr-links.mts`, `linkmender-v2.mts` | [PLANO-LINKMENDER](/docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md) | conferir portão tolerante e mesclar em sequência |
 | **Rota `/ambiental/contratos` não existe** | 14/10: auditada como “página inexistente” no top 100 | `apps/web/app/ambiental/` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | criar a rota ou remover o link do índice |
@@ -76,9 +78,9 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 
 | Hotspot | Por que agora (medido) | Comece por | Origem | Próxima ação |
 |---|---|---|---|---|
-| **3 fontes diárias atrasadas** | 18/10: `sigbm-barragens` 41d, `noticias-desastres` 47d, `vale-b3-cvm` 49d | `scripts/etl/` e `scripts/` dos coletores | [status](../relatorios-automacao/vigia-coletores-status.json) | priorizar as diárias e regravar o carimbo |
+| ~~3 fontes diárias atrasadas~~ | ✅ 2 atualizadas em 18/10: `sigbm-barragens` (318 em MG) e `noticias-desastres` (4 itens/30d). Falta `vale-b3-cvm` (49d) | `apps/web/scripts/coletar-vale3-cotacoes.mts` | [status](../relatorios-automacao/vigia-coletores-status.json) | rodar VALE3 quando houver banda |
 | **`sigmine-anm` sem carimbo e diária** | 18/10: fonte diária, `carimbo: null` | `apps/web/public/terras/globo/dados/camadas/sigmine-operacao.geojson` | [status](../relatorios-automacao/vigia-coletores-status.json) | instrumentar `geradoEm` ou declarar a fonte como estática |
-| **18 fontes atrasadas no total** | 18/10: 13 conhecidas + 5 novas; teto por frequência | `npx tsx scripts/vigia-coletores.mts` | [PLANO-DATA-DO-DADO](/docs/historico/planos/PLANO-DATA-DO-DADO.md) | escolher por frequência, não por ordem alfabética |
+| **9 fontes atrasadas no total** | 18/10 após a rodada: 18 → 9 (5 viraram estáticas, 2 diárias atualizadas, 2 estáticas) | `npx tsx scripts/vigia-coletores.mts` | [PLANO-DATA-DO-DADO](/docs/historico/planos/PLANO-DATA-DO-DADO.md) | escolher por frequência, não por ordem alfabética |
 | **205 links EIA/RIMA mortos** | 18/10: 740 ok, 205 `404`, 22 DNS, 20 bloqueados, 17 instáveis, 12 sem checagem | `etl/betim/scripts/gerar-ambiental-estudos.py --comparar` | [PENDENCIAS-AMBIENTAL](/docs/historico/planos/PENDENCIAS-AMBIENTAL-18-10.md) | sondar `file/d/<id>/view`; atualizar selo e link |
 | **Outorgas sem município** | 18/10: a grade pública só expõe a regional (URGA) | `scripts/etl/outorgas/coletar-outorgas-mg.mts` | [PENDENCIAS-AMBIENTAL](/docs/historico/planos/PENDENCIAS-AMBIENTAL-18-10.md) | decidir: escopo regional ou export com CSRF |
 | **PDFs da CNDH bloqueados** | 15/10: link aponta para a página do MDH, não para o PDF | `apps/web/data/relatorios-direitos-humanos.json` | [ESTADO, B10](ESTADO.md#bloco-b--destravadas-aguardando-ordem) | buscar o PDF depois do defeso eleitoral |

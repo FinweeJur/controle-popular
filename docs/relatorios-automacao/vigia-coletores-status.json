@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-10-18T19:15:48.676Z",
+ "geradoEm": "2026-10-18T19:17:28.967Z",
  "regra": {
   "tempo-real": 2,
   "diaria": 3,
@@ -243,21 +243,21 @@
    "fonte": "mpf-grandes-casos",
    "nome": "MPF — Procuradoria-Geral da República (Grandes Casos)",
    "arquivo": "apps/web/data/mpf-grandes-casos.json",
-   "frequencia": "semanal",
-   "tetoDias": 10,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.242456+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "dpu-comite-tematico",
    "nome": "DPU — Comitê Temático Rio Doce/Brumadinho",
    "arquivo": "apps/web/data/dpu-comite-tematico.json",
-   "frequencia": "semanal",
-   "tetoDias": 10,
+   "frequencia": "estatica",
+   "tetoDias": null,
    "carimbo": "2026-09-06T03:01:25.201481+00:00",
    "lagDias": 42,
-   "veredito": "atrasada"
+   "veredito": "isenta"
   },
   {
    "fonte": "dpmg-notas",
