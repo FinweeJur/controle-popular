@@ -97,13 +97,19 @@ presume máquina. Confira com `tailscale status --json` → `.Self.HostName`.
 > `tailscale file cp <arquivo> Home-PC` falha enquanto o par estiver de pé.
 > Confira antes de prometer envio: `tailscale status`.
 
+**Checkout canônico:** código só em `X:\DevCoder`, no checkout
+`X:\DevCoder\controle-popular`. Nunca clone ou trabalhe em `C:\Users\...`.
+Worktree só dentro do canônico (`.claude\worktrees\<nome>`). Detalhe:
+[docs/03-desenvolvimento/CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md).
+
 Há **outras sessões ativas**. Worktree próprio, porta própria — **nunca
 anexe no dev de outra sessão** (responde 200 com código errado, sem avisar).
 Confira com `git worktree list`.
 
-Worktrees medidos em 09/10: `companheiro`, `companheiro-i3`, `cp-bots-lab`,
-`cp-ecossistema`, `cp-hero-vivo`, `cp-radio`, `cp-scroll`, `cp-seo`,
-`cp-pend-0710` (mais a branch `cp-salvo-ecossistema`).
+**Worktrees concluídas em 18/10/2026:** as 9 antigas foram arquivadas em
+`origin/archive/2026-10-18/<branch>` e removidas. Nova worktree só para
+trabalho novo; ao terminar, push da branch para `archive/<data>/<branch>`,
+`git worktree remove` e `git branch -D`.
 
 > ⚠️ **O checkout principal (`main`) pode estar ATRÁS de `origin/main` e com
 > alterações não commitadas.** Medido 09/10: `main` em `a1379d9c` (8 de 18

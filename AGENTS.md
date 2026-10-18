@@ -75,6 +75,17 @@ etl/                  ETL em Python
 Arquitetura, payload e banco: [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md).
 Fluxo de trabalho: [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md).
 
+### Checkout canônico
+
+- **Código só em `X:\DevCoder`.** O checkout canônico é
+  `X:\DevCoder\controle-popular`.
+- Nunca clone em `C:\Users\...` nem em `C:\DevCoder\...`.
+- Worktree só dentro do canônico: `.claude\worktrees\<nome>`.
+- Worktree concluída: push para `origin/archive/<data>/<branch>`, depois
+  `git worktree remove` e `git branch -D`.
+- Clone antigo só sai depois de `git bundle` em `X:\DevCoder\_backup-git\`.
+- Detalhe e comandos: [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md).
+
 ## Regras que não se negociam
 
 Cada linha tem o resumo. O texto completo, a medição e o motivo estão em

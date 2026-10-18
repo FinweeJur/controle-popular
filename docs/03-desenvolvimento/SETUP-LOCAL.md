@@ -32,7 +32,12 @@ O detalhe de deploy e operação fica em [OPERACAO.md](../05-operacao/OPERACAO.m
 
 ## Clonar e instalar
 
-```bash
+**Clone só em `X:\DevCoder`.** O caminho canônico é
+`X:\DevCoder\controle-popular`; nada de `C:\Users\...`. Regra completa em
+[CHECKOUT-CANONICO.md](CHECKOUT-CANONICO.md).
+
+```powershell
+cd X:\DevCoder
 git clone https://github.com/FinweeJur/controle-popular.git
 cd controle-popular && npm install
 ```
