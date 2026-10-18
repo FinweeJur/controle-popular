@@ -36,6 +36,7 @@ Orientar qualquer pessoa que chegue em `docs/` a encontrar o documento certo em 
 | Antes do primeiro commit | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
 | Texto completo de cada regra dura | **REGRAS-DURAS** | [`03-desenvolvimento/REGRAS-DURAS.md`](03-desenvolvimento/REGRAS-DURAS.md) |
 | Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
+| Começar sessão nova e achar o caminho | **PROMPT-SESSAO-NOVA** | [`03-desenvolvimento/PROMPT-SESSAO-NOVA.md`](03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
 | Pesquisar ou coletar na internet | **COLETA-ETICA** | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 
 ## Documentos por área

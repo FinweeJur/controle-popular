@@ -25,6 +25,7 @@ robots, user-agent, pesquisa, qualidades, SEO, acessibilidade, Ollama.
 
 | Você quer… | Leia |
 |---|---|
+| começar sessão nova e achar o caminho | [PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
 | saber o que fazer agora | [ESTADO.md](docs/02-estado/ESTADO.md) e [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |
 | entender o portal e as frentes | [PRODUTO.md](docs/01-produto/PRODUTO.md) |
 | commitar, worktree, sessão nova | [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
@@ -84,7 +85,10 @@ Fluxo de trabalho: [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.
 - Worktree concluída: push para `origin/archive/<data>/<branch>`, depois
   `git worktree remove` e `git branch -D`.
 - Clone antigo só sai depois de `git bundle` em `X:\DevCoder\_backup-git\`.
+- **MausBot** roda em `X:\DevCoder\OpenMausBot`; dados em
+  `X:\DevCoder\OpenMausBotData` via `OMB_DATA_DIR`.
 - Detalhe e comandos: [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md).
+- Prompt pronto para sessão nova: [PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md).
 
 ## Regras que não se negociam
 
@@ -164,6 +168,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Radar de correção, atualização, edição e ampliação | [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |
 | Relatórios finais de agentes | [RELATORIOS-AGENTES.md](docs/02-estado/RELATORIOS-AGENTES.md) |
 | Fluxo de trabalho e worktrees | [DESENVOLVIMENTO.md](docs/03-desenvolvimento/DESENVOLVIMENTO.md) |
+| Checkout canônico e prompt de sessão nova | [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md) e [PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
 | Regras duras completas | [REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md) |
 | Verificação e entrega | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Padrão de página wiki | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |

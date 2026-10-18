@@ -16,6 +16,8 @@
 - [Worktree nova](#worktree-nova)
 - [Worktree concluída](#worktree-concluída)
 - [Arquivar um clone antigo](#arquivar-um-clone-antigo)
+- [Agentes, MausBot e Telegram](#agentes-mausbot-e-telegram)
+- [Prompt pronto](#prompt-pronto)
 - [O que não é código](#o-que-não-é-código)
 - [Estado em 18/10/2026](#estado-em-18102026)
 
@@ -112,12 +114,33 @@ tudo que importa.
 
 - **opencode:** abrir a sessão em `X:\DevCoder\controle-popular`.
 - **Skill `/cp`:** aponta o canônico e manda remeçar com `git fetch`.
-- **MausBot:** cada bot que mexe em código usa `cwd` canônico. No
-  `C:\Users\teste\.openmausbot\bots.json`, o campo `cwd` do **Dev** e do
-  **EstrelaQueBrilha** deve ser `X:\DevCoder\controle-popular` (o arquivo
-  fica travado com o app aberto: feche o MausBot, ajuste e reabra).
+- **MausBot:** o app vive em `X:\DevCoder\OpenMausBot`. Os dados ficam em
+  `X:\DevCoder\OpenMausBotData`, escolhidos pela variável `OMB_DATA_DIR`
+  (persistente com `setx OMB_DATA_DIR "X:\DevCoder\OpenMausBotData"`).
+  Cada bot que mexe em código usa `cwd` canônico.
+- **Estado antigo do MausBot:** `C:\Users\teste\.openmausbot` ficou travado
+  pelo Bitdefender (erro `EPERM` ao renomear `bots.json`). Só leia, copie ou
+  remova depois de abrir exceção no antivírus.
 - **Telegram / home-pc:** o canônico lá é `C:\DevCoder\controle-popular`
   (máquina sem `X:`). O gatilho remoto e o túnel usam esse caminho.
+
+## Arquivos travados por antivírus
+
+Sintoma: `EPERM: operation not permitted, rename ... -> bots.json` ou
+`window-state.json`, mesmo com o app fechado.
+
+- Não é permissão: as ACLs estão certas.
+- É um lock externo (Bitdefender). O serviço `VSSERV` é protegido e não para
+  pelo terminal.
+- Saída imediata: apontar o app para outro data dir com `OMB_DATA_DIR`.
+- Correção durável: exceção no Bitdefender para
+  `C:\Users\teste\.openmausbot` e `C:\Users\teste\AppData\Roaming\openmausbot`,
+  depois reiniciar o app.
+
+## Prompt pronto
+
+Texto para colar em sessão nova, bot ou Telegram:
+[PROMPT-SESSAO-NOVA.md](PROMPT-SESSAO-NOVA.md).
 
 ## O que não é código
 

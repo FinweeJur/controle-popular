@@ -30,8 +30,11 @@ Se a tarefa tocar nisso, leia um por área:
 | publicar, buildar, deployar | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
 | fonte nova ou coleta | [FONTES.md](docs/06-fontes/FONTES.md) |
 | editar conteúdo publicável | [EDICAO.md](docs/07-edicao/EDICAO.md) |
-| companheiro Seu Nonô (bichinho) | [PLANO-COMPANHEIRO-SEU-NONO.md](docs/planos/PLANO-COMPANHEIRO-SEU-NONO.md) |
-| RAG do assistente | [PLANO-RAG-COMPLETO.md](docs/planos/PLANO-RAG-COMPLETO.md) |
+| companheiro Seu Nonô (bichinho) | [PLANO-COMPANHEIRO-SEU-NONO.md](/docs/historico/planos/PLANO-COMPANHEIRO-SEU-NONO.md) |
+| RAG do assistente | [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md) |
+| onde corrigir, atualizar, editar e ampliar | [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |
+| o que cada agente entregou | [RELATORIOS-AGENTES.md](docs/02-estado/RELATORIOS-AGENTES.md) |
+| caminho canônico e prompt de sessão nova | [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md), [PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
 
 ## Estágio atual do repo (medido 09/10/2026)
 
@@ -77,7 +80,7 @@ Se a tarefa tocar nisso, leia um por área:
   `companion/` no monorepo é espelho do fork. **Não edite à mão** — rode
   `scripts/sync-companion.mts`. Rota `/api/companheiro` no ar (I0).
 - **Curadas do Seu Nonô:** 91 respostas regeradas pelo RAG, em revisão no
-  [REVISAO-CURADAS-2026-09-30.md](docs/planos/REVISAO-CURADAS-2026-09-30.md).
+  [REVISAO-CURADAS-2026-09-30.md](/docs/historico/planos/REVISAO-CURADAS-2026-09-30.md).
   **Não aplicar no `SeuNonoData.ts` antes do dono revisar** — número errado é dano.
 - **Páginas de protótipo não commitadas** (decisão pendente do dono):
   `app/prototipo-home/` (ShapeBlur anel + OndaCursor) e `app/prototipo-scroll/`.
@@ -97,10 +100,27 @@ presume máquina. Confira com `tailscale status --json` → `.Self.HostName`.
 > `tailscale file cp <arquivo> Home-PC` falha enquanto o par estiver de pé.
 > Confira antes de prometer envio: `tailscale status`.
 
-**Checkout canônico:** código só em `X:\DevCoder`, no checkout
-`X:\DevCoder\controle-popular`. Nunca clone ou trabalhe em `C:\Users\...`.
-Worktree só dentro do canônico (`.claude\worktrees\<nome>`). Detalhe:
-[docs/03-desenvolvimento/CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md).
+**Checkout canônico (18/10/2026):** código só em `X:\DevCoder`, no checkout
+`X:\DevCoder\controle-popular`. Nunca clone ou trabalhe em `C:\Users\...` —
+os clones de lá foram removidos. Worktree só dentro do canônico
+(`.claude\worktrees\<nome>`). No **home-pc** o canônico é
+`C:\DevCoder\controle-popular` (máquina sem `X:`). Detalhe e prompt:
+[CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md) e
+[PROMPT-SESSAO-NOVA.md](docs/03-desenvolvimento/PROMPT-SESSAO-NOVA.md).
+
+Toda sessão nova começa assim:
+
+```powershell
+cd X:\DevCoder\controle-popular
+git fetch
+git status -sb
+git worktree list
+```
+
+**MausBot (18/10/2026):** app em `X:\DevCoder\OpenMausBot`; dados em
+`X:\DevCoder\OpenMausBotData`, pela variável `OMB_DATA_DIR`. O estado antigo
+em `C:\Users\teste\.openmausbot` está travado pelo Bitdefender (`EPERM` ao
+renomear `bots.json`); só mexa depois de exceção no antivírus.
 
 Há **outras sessões ativas**. Worktree próprio, porta própria — **nunca
 anexe no dev de outra sessão** (responde 200 com código errado, sem avisar).
@@ -111,10 +131,8 @@ Confira com `git worktree list`.
 trabalho novo; ao terminar, push da branch para `archive/<data>/<branch>`,
 `git worktree remove` e `git branch -D`.
 
-> ⚠️ **O checkout principal (`main`) pode estar ATRÁS de `origin/main` e com
-> alterações não commitadas.** Medido 09/10: `main` em `a1379d9c` (8 de 18
-> hotspots) contra `origin/main` em `0d862fdb` (12 de 18), e a skill neste
-> arquivo estava **50 linhas adiantadas sem commit**. Remeça com
+> ⚠️ **O checkout principal pode estar ATRÁS de `origin/main` e com
+> alterações não commitadas** (havia outra sessão ativa em 18/10). Remeça com
 > `git fetch` antes de decidir; não publique trabalho alheio por engano.
 
 ```bash
@@ -176,8 +194,13 @@ Conferir secrets do repositório: `gh secret list --repo FinweeJur/controle-popu
 
 ## Passo 4 — fila viva (os primeiros)
 
-Abra a [fila do ESTADO.md](docs/02-estado/ESTADO.md#fila-viva). Os itens de
-hoje devem estar lá; caso tenha mudado, acate o documento, não este.
+Abra a [fila do ESTADO.md](docs/02-estado/ESTADO.md#fila-viva) e, para
+escolher por intenção, o [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md).
+As pendências estão reunidas nos 3 planos integrados:
+[ambiental e dados](docs/planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
+[produto e interface](docs/planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md) e
+[operação e agentes](docs/planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md).
+O histórico de planos está em [`docs/historico/planos/`](/docs/historico/planos/).
 
 Resumo medido em 09/10/2026 (a fonte é o ESTADO, não este resumo):
 
@@ -251,6 +274,10 @@ O destinatário retira com `tailscale file get <pasta>`.
 
 ## Regras que você não pode esquecer
 
+- **Código só em `X:\DevCoder`**, no canônico `X:\DevCoder\controle-popular`.
+  Nunca `C:\Users\...`. Home-pc é a exceção: `C:\DevCoder\controle-popular`.
+- **MausBot** em `X:\DevCoder\OpenMausBot`; dados em
+  `X:\DevCoder\OpenMausBotData` (`OMB_DATA_DIR`).
 - **Commit** com `--only <arquivo> -F <arquivo-de-mensagem>`; sem acento.
   Nunca `-m` com texto longo. Confira `git diff --cached --name-only` vazio antes.
 - **Trailer sempre com MODELO e PLATAFORMA**, um por linha:
@@ -286,6 +313,9 @@ O destinatário retira com `tailscale file get <pasta>`.
 | Erro 1014 no site | proxy do Cloudflare no `www` (ver fila) |
 | `guara security findings` quebra | use `guara services vulnerabilities` |
 | Espelho do companheiro desatualizado | rode `scripts/sync-companion.mts` |
+| `EPERM` renomeando `bots.json`/`window-state.json` | lock do Bitdefender; aponte `OMB_DATA_DIR` para fora do caminho travado; peça exceção no antivírus |
+| MausBot "Couldn't start the bot server" | veja `%APPDATA%\openmausbot\logs\server.log`; quase sempre é o `EPERM` acima |
+| Clone/estado do MausBot preso em `C:\Users` | veja [CHECKOUT-CANONICO.md](docs/03-desenvolvimento/CHECKOUT-CANONICO.md) § Arquivos travados |
 
 ---
 
