@@ -13,6 +13,12 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import SecaoPaginasRelacionadas, {
   type ItemPaginaRelacionada,
 } from "@/app/components/SecaoPaginasRelacionadas";
+import {
+  IndiceWiki,
+  LinksRelacionados,
+  SecaoWiki,
+  type LinkRelacionado,
+} from "@/app/components/wiki";
 
 export const metadata: Metadata = {
   title: "Canadá: Transparência Pública, Mineradoras TSX & Conexões com o Brasil | Controle Popular",
@@ -64,6 +70,16 @@ export default function PaginaHubCanada() {
   const contratos = obterContratosCanada();
   const institucional = obterInstitucionalCanada();
 
+  const secoesCanada = [
+    { id: "grafico-frentes", titulo: "As frentes do dossiê em números" },
+    { id: "painel-interativo", titulo: "Painel interativo do dossiê" },
+  ];
+
+  const lsLinksReduzidos: LinkRelacionado[] = PAGINAS_RELACIONADAS_CANADA.map(
+    (p) => ({ href: p.href, titulo: p.titulo, descricao: p.descricao }),
+  );
+  const lsLinksPaginaRelacionada = lsLinksReduzidos.slice(0, 4);
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       {/* NAVEGAÇÃO BREADCRUMB */}
@@ -113,8 +129,11 @@ export default function PaginaHubCanada() {
         </p>
       </header>
 
-      {/* CARTÕES DE TOPO COM AGREGADOS (COBERTURA_CANADA) */}
-      <section className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4" aria-label="Métricas do acervo">
+      <IndiceWiki itens={secoesCanada} />
+
+      {/* FRENTES DO DOSSIÊ EM NÚMEROS */}
+      <SecaoWiki id="grafico-frentes" titulo="As frentes do dossiê em números">
+        <section className="grid grid-cols-2 gap-4 sm:grid-cols-4" aria-label="Métricas do acervo">
         <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
           <div className="text-xs text-muted">Mineradoras TSX no Brasil</div>
           <div className="mt-1 font-mono text-2xl font-bold text-foreground sm:text-3xl">
@@ -149,19 +168,22 @@ export default function PaginaHubCanada() {
           <div className="mt-1 text-xs text-muted">Sudbury, Toronto, Vancouver</div>
         </div>
       </section>
+      </SecaoWiki>
 
       {/* NAVEGAÇÃO DE SUB-ROTAS TEMÁTICAS */}
       <NavegacaoAbasCanada abaAtiva="hub" />
 
       {/* PAINEL INTERATIVO COM 6 QUALIDADES */}
-      <main>
-        <PainelCanada
-          mineradoras={mineradoras}
-          ambiental={ambiental}
-          contratos={contratos}
-          institucional={institucional}
-        />
-      </main>
+      <SecaoWiki id="painel-interativo" titulo="Painel interativo do dossiê">
+        <main>
+          <PainelCanada
+            mineradoras={mineradoras}
+            ambiental={ambiental}
+            contratos={contratos}
+            institucional={institucional}
+          />
+        </main>
+      </SecaoWiki>
 
       {/* SEÇÃO DE PÁGINAS RELACIONADAS */}
       <SecaoPaginasRelacionadas
@@ -170,6 +192,8 @@ export default function PaginaHubCanada() {
         paginas={PAGINAS_RELACIONADAS_CANADA}
         className="mt-12 mb-8"
       />
+
+      <LinksRelacionados links={lsLinksPaginaRelacionada} />
 
       <FooterGlobal />
     </div>
