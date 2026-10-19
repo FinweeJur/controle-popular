@@ -155,14 +155,24 @@ def coletar_google(dias: int, limite: int) -> list[dict]:
         return [{"conta": "?", "erro": f"coletor falhou: {erro}"}]
 
 
-def coletar_whatsapp(horas: int = 24) -> tuple[list[dict], str]:
-    """Le o servico local. Devolve (conversas, aviso)."""
+def coletar_whatsapp(horas: int = 48) -> tuple[list[dict], list[dict], list[dict], str]:
+    """Le o servico local. Devolve (conversas, mencoes, audios, aviso)."""
     try:
         with urllib.request.urlopen(f"{WHATSAPP}/conversas?horas={horas}", timeout=60) as r:
             dados = json.loads(r.read().decode("utf-8"))
-        return dados.get("conversas", []), dados.get("aviso", "")
+        conversas = dados.get("conversas", [])
+        aviso = dados.get("aviso", "")
     except (urllib.error.URLError, ValueError) as erro:
-        return [], f"servico fora do ar ({erro})"
+        return [], [], [], f"servico fora do ar ({erro})"
+
+    def pegar(caminho: str) -> list[dict]:
+        try:
+            with urllib.request.urlopen(f"{WHATSAPP}/{caminho}?horas={horas}", timeout=60) as r:
+                return json.loads(r.read().decode("utf-8")).get(caminho, [])
+        except (urllib.error.URLError, ValueError):
+            return []
+
+    return conversas, pegar("mencoes"), pegar("audios"), aviso
 
 
 def ler_prazos() -> list[dict]:
@@ -201,17 +211,30 @@ def bloco_agenda(contas: list[dict]) -> list[str]:
     return linhas
 
 
-def bloco_contatos(contas: list[dict], conversas: list[dict], aviso: str) -> list[str]:
+def bloco_contatos(
+    contas: list[dict],
+    conversas: list[dict],
+    mencoes: list[dict],
+    audios: list[dict],
+    aviso: str,
+) -> list[str]:
     linhas = ["📩 CONTATOS — quem procurou voce"]
     achou = False
+    # Transcricao de audio por numero, quando o serviço ja transcreveu.
+    transcricoes = {a.get("numero"): a.get("transcricao", "") for a in audios}
     for conversa in conversas:
         achou = True
         nome = conversa.get("nome", "sem nome")
         numero = conversa.get("numero", "")
         hora = quando(conversa.get("ultima_hora", ""))
         texto = conversa.get("ultimo_trecho", "")
-        linhas.append(f"• {nome} · 💬 {numero} · {hora} · {resumo(texto)}")
-        linhas.append(f"  💡 {proposta(texto, nome)}")
+        fala = transcricoes.get(numero) or ""
+        if fala and fala != "[audio sem transcricao]":
+            linhas.append(f"• {nome} · 💬 {numero} · {hora} · 🎙️ {resumo(fala)}")
+            linhas.append(f"  💡 {proposta(fala, nome)}")
+        else:
+            linhas.append(f"• {nome} · 💬 {numero} · {hora} · {resumo(texto)}")
+            linhas.append(f"  💡 {proposta(texto, nome)}")
     for conta in contas:
         if conta.get("erro"):
             continue
@@ -233,10 +256,20 @@ def bloco_contatos(contas: list[dict], conversas: list[dict], aviso: str) -> lis
                 f"{resumo(assunto)}{marca}"
             )
             linhas.append(f"  💡 {proposta(assunto, nome)}")
+    # Mencoes diretas em grupo (o @all fica fora, por decisao do dono).
+    for mencao in mencoes:
+        achou = True
+        grupo = mencao.get("grupo", "grupo")
+        autor = mencao.get("autor", "alguem")
+        hora = quando(mencao.get("quando", ""))
+        texto = mencao.get("texto", "")
+        marca = " · 🎙️ audio" if mencao.get("audio") else ""
+        linhas.append(f"• 🔔 {grupo} · {autor} · {hora} · {resumo(texto)}{marca}")
+        linhas.append(f"  💡 {proposta(texto, autor)}")
     if aviso:
         linhas.append(f"⚠️ WhatsApp indisponivel: {aviso}")
     if not achou:
-        linhas.append("• sem dado · ninguem novo nas ultimas 24h")
+        linhas.append("• sem dado · ninguem novo nas ultimas 48h")
     return linhas
 
 
@@ -349,12 +382,12 @@ def revisar(texto: str) -> tuple[str, str]:
 
 def montar(dias: int, limite_email: int) -> dict:
     contas = coletar_google(dias, limite_email)
-    conversas, aviso = coletar_whatsapp()
+    conversas, mencoes, audios, aviso = coletar_whatsapp()
     prazos = ler_prazos()
     linhas: list[str] = []
     linhas += bloco_agenda(contas)
     linhas.append("")
-    linhas += bloco_contatos(contas, conversas, aviso)
+    linhas += bloco_contatos(contas, conversas, mencoes, audios, aviso)
     linhas.append("")
     linhas += bloco_prazos(prazos)
     linhas.append("")
@@ -366,6 +399,8 @@ def montar(dias: int, limite_email: int) -> dict:
         "texto": "\n".join(linhas),
         "contas": len([c for c in contas if not c.get("erro")]),
         "conversas": len(conversas),
+        "mencoes": len(mencoes),
+        "audios": len(audios),
         "prazos": len(prazos),
         "aviso_whatsapp": aviso,
     }

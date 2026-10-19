@@ -88,6 +88,41 @@ Regra de honestidade: a proposta **não promete o que o dono não disse** — na
 de "está pago", "está resolvido". Ela apenas acusa recebimento e diz o próximo
 passo do próprio dono.
 
+**Menção direta em grupo — uma linha por menção (pedido do dono, 18/10/2026):**
+
+| Campo | Regra |
+|---|---|
+| **Grupo** | nome do grupo |
+| **Autor** | quem mencionou |
+| **Data e hora** | fuso local |
+| **Resumo** | texto da mensagem, ≤120 caracteres |
+| **Áudio** | marca `🎙️ audio` quando a menção veio em áudio |
+| **Proposta de resposta** | mesma regra fixa dos contatos |
+
+`@all` fica **fora**: só entra menção direta ao número/contato do dono. O
+critério é técnico — a menção precisa citar o JID do dono e ter no máximo
+cinco citados; menção em massa (todos os participantes, ou o marcador
+`0@s.whatsapp.net`) é descartada.
+
+**Áudio recebido — transcrição offline (pedido do dono, 18/10/2026):**
+
+| Etapa | Como |
+|---|---|
+| Captura | Baileys baixa o áudio da conversa individual e salva em `audios/` |
+| Transcrição | `transcrever-audio.py` com **faster-whisper** na CPU (int8), modelo `small`, idioma `pt` |
+| Onde roda | **local** — áudio de pessoa é dado pessoal (AGENTS.md §5.15) |
+| No relatório | a transcrição substitui o resumo da mensagem e vem marcada com 🎙️ |
+| Sem transcrição | o relatório escreve `[audio sem transcricao]` e segue |
+
+Medido em 18/10/2026: áudio de teste gerado com a voz pt-BR do Windows
+transcrito como *"Olá Arthur, tudo bem? Preciso confirmar a reunião de
+amanhã às 10 horas."* — **exato**. Custo: zero, e nada saiu da máquina.
+
+Por que faster-whisper e não o Ollama: o Ollama não faz reconhecimento de
+fala. Sabiá e DeepSeek são modelos de texto e não aceitam áudio. A alternativa
+na nuvem (GLM-ASR, da Z.AI) é barata, mas mandaria voz de terceiro para fora —
+o que a regra de soberania proíbe. A transcrição fica local.
+
 ## Estilo da saída (regra do dono, 18/10/2026)
 
 O relatório é lido no celular, muitas vezes sob pressão. O texto obedece à
