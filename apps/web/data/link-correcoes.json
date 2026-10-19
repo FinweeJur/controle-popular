@@ -359,6 +359,34 @@
     "data": "2026-10-03T06:58:23.074Z"
   },
   {
+    "urlVelha": "https://balcaovirtual.tjba.jus.br/atendimento",
+    "urlNova": "https://www.tjba.jus.br/contatos/contato/1a-vara-criminal-de-alagoinhas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:09:58.520Z"
+  },
+  {
+    "urlVelha": "https://balcaovirtual.tjba.jus.br/comarca/salvador",
+    "urlNova": "https://www.tjba.jus.br/contatos/contato/1a-vara-criminal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:10:07.944Z"
+  },
+  {
     "urlVelha": "https://balcaovirtual.trf2.jus.br/vara/rio-de-janeiro/1",
     "urlNova": "https://balcaojus.trf2.jus.br/balcaojus/",
     "criterios": [
@@ -401,6 +429,48 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-15T12:32:53.267Z"
+  },
+  {
+    "urlVelha": "https://boavista.rr.gov.br//diario-oficial",
+    "urlNova": "https://boavista.rr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:33:07.089Z"
+  },
+  {
+    "urlVelha": "https://boavista.rr.gov.br//transparencia/conselhos",
+    "urlNova": "https://boavista.rr.gov.br/noticias/2024/6/saude-conselho-municipal-promove-1a-conferencia-de-gestao-do-trabalho-e-educacao-em-saude-de-boa-vista",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:00:51.218Z"
+  },
+  {
+    "urlVelha": "https://boavista.rr.gov.br/transparencia",
+    "urlNova": "https://boavista.rr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:04:34.198Z"
   },
   {
     "urlVelha": "https://campogrande.ms.gov.br/",
@@ -623,6 +693,20 @@
     "data": "2026-10-03T15:37:45.751Z"
   },
   {
+    "urlVelha": "https://compras.dados.gov.br",
+    "urlNova": "http://comprasnet.gov.br/acesso.asp?url",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:12:35.692Z"
+  },
+  {
     "urlVelha": "https://compras.ma.gov.br",
     "urlNova": "https://www.compras.ma.gov.br/portal/",
     "criterios": [
@@ -755,6 +839,20 @@
       "estrategia:site-dominio"
     ],
     "data": "2026-10-04T13:48:22.485Z"
+  },
+  {
+    "urlVelha": "https://cuiaba.mt.gov.br/transparencia",
+    "urlNova": "https://www.cuiaba.mt.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:15:39.210Z"
   },
   {
     "urlVelha": "https://dados.pr.gov.br",
@@ -973,6 +1071,20 @@
     "data": "2026-10-04T12:51:13.471Z"
   },
   {
+    "urlVelha": "https://fortaleza.ce.gov.br/transparencia",
+    "urlNova": "https://www.fortaleza.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:26.540Z"
+  },
+  {
     "urlVelha": "https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md",
     "urlNova": "https://www.betim.mg.gov.br/portal/secretarias/98/procuradoria-adjunta-de-licitacoes-e-contratos",
     "criterios": [
@@ -1033,6 +1145,20 @@
       "estrategia:site-dominio"
     ],
     "data": "2026-10-15T15:33:40.335Z"
+  },
+  {
+    "urlVelha": "https://goiania.go.gov.br/transparencia",
+    "urlNova": "https://www.goiania.go.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:15:53.994Z"
   },
   {
     "urlVelha": "https://guara.sema.ma.gov.br",
@@ -1147,6 +1273,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:18:55.112Z"
+  },
+  {
+    "urlVelha": "https://joaopessoa.pb.gov.br//diario-oficial",
+    "urlNova": "https://www.joaopessoa.pb.gov.br/servico/portal-do-contribuinte/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:52:33.076Z"
   },
   {
     "urlVelha": "https://joaopessoa.pb.gov.br//transparencia/conselhos",
@@ -1293,6 +1433,20 @@
     "data": "2026-10-03T13:45:38.498Z"
   },
   {
+    "urlVelha": "https://macapa.ap.gov.br//conselhos/codema",
+    "urlNova": "https://macapa.ap.gov.br/secretario-da-semam-assume-presidencia-da-comissao-de-defesa-do-meio-ambiente/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:07:19.660Z"
+  },
+  {
     "urlVelha": "https://macapa.ap.gov.br//diario-oficial",
     "urlNova": "https://macapa.ap.gov.br/portal/wp-content/uploads/2020/06/diario-oficial-1.png",
     "criterios": [
@@ -1339,6 +1493,34 @@
     "data": "2026-10-03T14:27:45.826Z"
   },
   {
+    "urlVelha": "https://maceio.al.gov.br//conselhos/codema",
+    "urlNova": "https://maceio.al.gov.br/noticias/alurb/conselho-municipal-de-protecao-ao-meio-ambiente-define-agenda-prioritaria-para-2024",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T15:32:29.971Z"
+  },
+  {
+    "urlVelha": "https://maceio.al.gov.br//diario-oficial",
+    "urlNova": "https://digital.maceio.al.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:57:23.520Z"
+  },
+  {
     "urlVelha": "https://maceio.al.gov.br//transparencia/conselhos",
     "urlNova": "https://maceio.al.gov.br/p/semdes/conselho-municipal-de-assistencia-social",
     "criterios": [
@@ -1349,6 +1531,20 @@
       "estrategia:site-dominio"
     ],
     "data": "2026-10-03T14:27:17.988Z"
+  },
+  {
+    "urlVelha": "https://maceio.al.gov.br/transparencia",
+    "urlNova": "https://siat.maceio.al.gov.br/dsf_mcz_portal/inicial.do?evento=montaMenu&acronym=CADECO",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:09:18.297Z"
   },
   {
     "urlVelha": "https://manaus.am.gov.br/",
@@ -1472,6 +1668,20 @@
     "data": "2026-10-03T14:17:42.820Z"
   },
   {
+    "urlVelha": "https://natal.rn.gov.br//conselhos/codema",
+    "urlNova": "https://natal.rn.gov.br/semurb/conplam",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:23:51.531Z"
+  },
+  {
     "urlVelha": "https://natal.rn.gov.br//diario-oficial",
     "urlNova": "https://natal.rn.gov.br/",
     "criterios": [
@@ -1494,6 +1704,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-15T14:38:33.752Z"
+  },
+  {
+    "urlVelha": "https://natal.rn.gov.br/transparencia",
+    "urlNova": "https://www.natal.rn.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:07:52.429Z"
   },
   {
     "urlVelha": "https://ouvidoria.ba.gov.br",
@@ -1588,6 +1812,20 @@
     "data": "2026-10-03T13:49:01.257Z"
   },
   {
+    "urlVelha": "https://palmas.to.gov.br//diario-oficial",
+    "urlNova": "https://www.palmas.to.gov.br/core/noticias/prefeitura-de-palmas-adere-a-projeto-do-governo-federal-que-prepara-municipios-para-mudancas-climaticas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:38:32.680Z"
+  },
+  {
     "urlVelha": "https://palmas.to.gov.br//transparencia/conselhos",
     "urlNova": "https://portal2013.palmas.to.gov.br/servicos/conselho-municipal-de-saude/202/",
     "criterios": [
@@ -1612,6 +1850,34 @@
     "data": "2026-10-04T17:24:53.653Z"
   },
   {
+    "urlVelha": "https://palmas.to.gov.br/transparencia",
+    "urlNova": "https://www.palmas.to.gov.br/site/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:45.115Z"
+  },
+  {
+    "urlVelha": "https://pmf.sc.gov.br//diario-oficial",
+    "urlNova": "https://www.pmf.sc.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:24:43.265Z"
+  },
+  {
     "urlVelha": "https://pncp.gov.br",
     "urlNova": "https://www.gov.br/pncp/pt-br",
     "criterios": [
@@ -1632,6 +1898,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-09-09T17:46:47.068Z"
+  },
+  {
+    "urlVelha": "https://portal.al.go.leg.br/deputados/bruno-peixoto",
+    "urlNova": "https://portal.al.go.leg.br/deputados/perfil/51",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:20:27.649Z"
   },
   {
     "urlVelha": "https://portal.al.go.leg.br/ouvidoria",
@@ -1738,6 +2018,28 @@
     "data": "2026-10-03T09:12:57.166Z"
   },
   {
+    "urlVelha": "https://portal.stf.jus.br/textos/verTexto.asp?servico=legislacaoRegimentoInterno",
+    "urlNova": "https://portal.stf.jus.br/erro-404/",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T17:24:05.578Z"
+  },
+  {
+    "urlVelha": "https://portal.stf.jus.br/textos/verTexto.asp?servico=sobreStfComposicaoComposicao",
+    "urlNova": "https://portal.stf.jus.br/erro-404/",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T18:40:41.080Z"
+  },
+  {
     "urlVelha": "https://portal.trf6.jus.br/balcao-virtual/",
     "urlNova": "https://portal.trf6.jus.br/wp-content/uploads/2022/05/balcao-virtual.png",
     "criterios": [
@@ -1747,6 +2049,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T19:09:59.453Z"
+  },
+  {
+    "urlVelha": "https://portal.trf6.jus.br/institucional/composicao-da-corte/",
+    "urlNova": "https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-regional-federal-da-6a-regiao-trf6/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T19:03:47.433Z"
   },
   {
     "urlVelha": "https://portal.trf6.jus.br/institucional/corregedoria-regional/",
@@ -1782,6 +2098,20 @@
     "data": "2026-10-03T19:10:01.589Z"
   },
   {
+    "urlVelha": "https://portal.trf6.jus.br/servicos-judiciais/jurisdicao-e-competencia/",
+    "urlNova": "https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-regional-federal-da-6a-regiao-trf6/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T19:04:00.632Z"
+  },
+  {
     "urlVelha": "https://portal.trt3.jus.br",
     "urlNova": "https://portal.trt3.jus.br/internet",
     "criterios": [
@@ -1791,6 +2121,146 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T06:52:44.347Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/conheca-o-trt/jurisdicao-e-enderecos",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:31.757Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/institucional/administracao",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:14.871Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:21.319Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria/atendimento",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:54.252Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/institucional/administracao/presidencia",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:08.664Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/institucional/composicao/turmas",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:27.224Z"
+  },
+  {
+    "urlVelha": "https://portal.trt3.jus.br/internet/servicos/balcao-virtual",
+    "urlNova": "https://www.trt3.jus.br/images/default_tvtrt.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:04:36.442Z"
+  },
+  {
+    "urlVelha": "https://portoalegre.rs.gov.br//conselhos/codema",
+    "urlNova": "https://www.camarapoa.rs.gov.br/noticias/aprovada-alteracao-na-composicao-do-conselho-municipal-do-meio-ambiente",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T16:00:26.297Z"
+  },
+  {
+    "urlVelha": "https://portoalegre.rs.gov.br//diario-oficial",
+    "urlNova": "https://www2.portoalegre.rs.gov.br/portal_pmpa_sitespmpa/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:28:43.814Z"
+  },
+  {
+    "urlVelha": "https://portoalegre.rs.gov.br//transparencia/conselhos",
+    "urlNova": "https://ces.rs.gov.br/nota-publica-do-conselho-municipal-de-saude-de-porto-alegre",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:59:59.454Z"
   },
   {
     "urlVelha": "https://portoalegre.rs.gov.br/transparencia",
@@ -1854,6 +2324,20 @@
     "data": "2026-10-03T13:31:55.569Z"
   },
   {
+    "urlVelha": "https://rio.rj.gov.br//diario-oficial",
+    "urlNova": "http://www0.rio.rj.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:09:55.860Z"
+  },
+  {
     "urlVelha": "https://salvador.ba.gov.br//cmdca",
     "urlNova": "https://salvador.ba.gov.br/cmdca-da-posse-a-nova-presidente-para-bienio-2024-2026/",
     "criterios": [
@@ -1900,6 +2384,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:32:50.799Z"
+  },
+  {
+    "urlVelha": "https://salvador.ba.gov.br/transparencia",
+    "urlNova": "https://salvador.ba.gov.br/a-prefeitura/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:09:52.988Z"
   },
   {
     "urlVelha": "https://sapl.al.ac.leg.br/proposicao/",
@@ -2369,6 +2867,104 @@
     "data": "2026-10-03T09:18:57.788Z"
   },
   {
+    "urlVelha": "https://sapl.boavista.rr.leg.br/transparencia",
+    "urlNova": "https://sapl.boavista.rr.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:36.988Z"
+  },
+  {
+    "urlVelha": "https://sapl.cmm.am.gov.br/transparencia",
+    "urlNova": "https://www.cmm.am.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:31.524Z"
+  },
+  {
+    "urlVelha": "https://sapl.joaopessoa.pb.leg.br/transparencia",
+    "urlNova": "https://sapl.joaopessoa.pb.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:18:21.263Z"
+  },
+  {
+    "urlVelha": "https://sapl.natal.rn.leg.br/transparencia",
+    "urlNova": "https://sapl.natal.rn.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:18:14.105Z"
+  },
+  {
+    "urlVelha": "https://sapl.palmas.to.leg.br/transparencia",
+    "urlNova": "https://sapl.palmas.to.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:17:01.011Z"
+  },
+  {
+    "urlVelha": "https://sapl.portovelho.ro.leg.br/transparencia",
+    "urlNova": "https://sapl.portovelho.ro.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:15.860Z"
+  },
+  {
+    "urlVelha": "https://sapl.riobranco.ac.leg.br/transparencia",
+    "urlNova": "https://sapl.riobranco.ac.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:20.801Z"
+  },
+  {
     "urlVelha": "https://saude.mg.gov.br",
     "urlNova": "https://www.saude.mg.gov.br/",
     "criterios": [
@@ -2504,6 +3100,34 @@
     "data": "2026-10-03T13:54:14.400Z"
   },
   {
+    "urlVelha": "https://teresina.pi.gov.br//conselhos/codema",
+    "urlNova": "https://antigo.pmt.pi.gov.br/teresinensedigital/meio-ambiente-e-recursos-hidricos/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:11:59.745Z"
+  },
+  {
+    "urlVelha": "https://teresina.pi.gov.br//diario-oficial",
+    "urlNova": "https://ami.teresina.pi.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:41:23.779Z"
+  },
+  {
     "urlVelha": "https://teresina.pi.gov.br//transparencia/conselhos",
     "urlNova": "https://www.teresina.pi.gov.br/semcaspi/conselho-municipal-de-assistencia-social-de-teresina-cmas/",
     "criterios": [
@@ -2515,6 +3139,20 @@
       "estrategia:site-dominio"
     ],
     "data": "2026-10-04T12:48:33.390Z"
+  },
+  {
+    "urlVelha": "https://teresina.pi.gov.br/transparencia",
+    "urlNova": "https://www.teresina.pi.gov.br/teresina/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:07.665Z"
   },
   {
     "urlVelha": "https://transparencia.al.pi.leg.br",
@@ -2688,6 +3326,20 @@
     "data": "2026-10-03T14:38:47.246Z"
   },
   {
+    "urlVelha": "https://vitoria.es.gov.br//diario-oficial",
+    "urlNova": "https://www.vitoria.es.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:06:11.284Z"
+  },
+  {
     "urlVelha": "https://vitoria.es.gov.br//transparencia/conselhos",
     "urlNova": "https://m.vitoria.es.gov.br/semus/conselho-municipal-de-saude",
     "criterios": [
@@ -2701,6 +3353,20 @@
     "data": "2026-10-04T13:23:43.860Z"
   },
   {
+    "urlVelha": "https://vitoria.es.gov.br/transparencia",
+    "urlNova": "https://www.vitoria.es.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:10:56.503Z"
+  },
+  {
     "urlVelha": "https://www.abaetetuba.pa.gov.br",
     "urlNova": "https://abaetetuba.pa.gov.br/",
     "criterios": [
@@ -2712,6 +3378,20 @@
     "data": "2026-10-03T11:56:42.042Z"
   },
   {
+    "urlVelha": "https://www.abaetetuba.pa.gov.br/transparencia",
+    "urlNova": "https://abaetetuba.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:04:41.726Z"
+  },
+  {
     "urlVelha": "https://www.agenersa.rj.gov.br/",
     "urlNova": "https://www.rj.gov.br/agenersa/",
     "criterios": [
@@ -2721,6 +3401,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T16:06:56.863Z"
+  },
+  {
+    "urlVelha": "https://www.aguasformosas.mg.gov.br/transparencia",
+    "urlNova": "https://portal.trf6.jus.br/uaa-pid/plat-ujud/ujud-governanca/perfil-estrutural/uaa-teofilo-otoni/uaa-aguas-formosas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T22:15:01.004Z"
+  },
+  {
+    "urlVelha": "https://www.al.al.leg.br/deputado/marcelo-victor",
+    "urlNova": "https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar/2026/marcelo-victor",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:18:28.562Z"
   },
   {
     "urlVelha": "https://www.al.al.leg.br/tv-assembleia",
@@ -3128,6 +3836,20 @@
     "data": "2026-10-03T09:14:02.991Z"
   },
   {
+    "urlVelha": "https://www.al.mt.gov.br/deputados/eduardo-botelho",
+    "urlNova": "https://www.al.mt.gov.br/midia/album/deputado-eduardo-botelho-16/visualizar",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T19:21:17.525Z"
+  },
+  {
     "urlVelha": "https://www.al.mt.gov.br/ouvidoria",
     "urlNova": "https://www.al.mt.gov.br/institucional/ouvidoria-geral",
     "criterios": [
@@ -3270,6 +3992,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T15:54:51.859Z"
+  },
+  {
+    "urlVelha": "https://www.al.sp.gov.br/deputado/todos",
+    "urlNova": "https://www.al.sp.gov.br/deputado/?matricula=300678",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:17:43.951Z"
   },
   {
     "urlVelha": "https://www.al.sp.gov.br/ouvidoria/",
@@ -3827,6 +4563,20 @@
     "data": "2026-10-03T16:28:40.208Z"
   },
   {
+    "urlVelha": "https://www.almg.gov.br/conheca/regimento-interno/",
+    "urlNova": "https://www.almg.gov.br/servicos/biblioteca/livraria-do-legislativo/obra/Regimento-Interno-da-ALMG-18-Edicao/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:16.172Z"
+  },
+  {
     "urlVelha": "https://www.almg.gov.br/fale-conosco/",
     "urlNova": "https://www.almg.gov.br/apps/fale-com",
     "criterios": [
@@ -4072,6 +4822,62 @@
     "data": "2026-10-03T14:51:42.342Z"
   },
   {
+    "urlVelha": "https://www.apucarana.pr.gov.br/conselhos/codema",
+    "urlNova": "https://www.apucarana.pr.gov.br/site/orgaos-da-administracao/meio-ambiente/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:46:18.333Z"
+  },
+  {
+    "urlVelha": "https://www.apucarana.pr.gov.br/transparencia",
+    "urlNova": "https://www.apucarana.pr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:13:36.811Z"
+  },
+  {
+    "urlVelha": "https://www.apucarana.pr.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.apucarana.pr.gov.br/site/orgaos-da-administracao/assistencia-social/conselho-tutelar/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T15:46:14.467Z"
+  },
+  {
+    "urlVelha": "https://www.araguaina.to.gov.br/cmdca",
+    "urlNova": "https://antigo.araguaina.to.gov.br/Conteudo/CMDCA.aspx",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:07:58.438Z"
+  },
+  {
     "urlVelha": "https://www.araguaina.to.gov.br/conselhos/codema",
     "urlNova": "https://araguaina.to.gov.br/noticias/2018/conselho-municipal-de-defesa-do-meio-ambiente-elege-diretoria",
     "criterios": [
@@ -4083,6 +4889,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-07T12:44:22.458Z"
+  },
+  {
+    "urlVelha": "https://www.araguaina.to.gov.br/diario-oficial",
+    "urlNova": "https://www.araguaina.to.gov.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:37:51.362Z"
+  },
+  {
+    "urlVelha": "https://www.araguaina.to.gov.br/transparencia",
+    "urlNova": "https://araguaina.to.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:26.428Z"
   },
   {
     "urlVelha": "https://www.arapiraca.al.gov.br",
@@ -4122,6 +4956,20 @@
     "data": "2026-10-03T14:26:31.403Z"
   },
   {
+    "urlVelha": "https://www.arapiraca.al.gov.br/transparencia",
+    "urlNova": "https://web.arapiraca.al.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:49.021Z"
+  },
+  {
     "urlVelha": "https://www.arapiraca.al.gov.br/transparencia/conselhos",
     "urlNova": "https://web.arapiraca.al.gov.br/conselho-municipal-de-saude/",
     "criterios": [
@@ -4159,6 +5007,48 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:41:33.305Z"
+  },
+  {
+    "urlVelha": "https://www.araraquara.sp.gov.br/diario-oficial",
+    "urlNova": "https://www.araraquara.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:10:21.675Z"
+  },
+  {
+    "urlVelha": "https://www.araripina.pe.gov.br/cmdca",
+    "urlNova": "http://www.cedca.pe.gov.br/conselhos-tutelares-lista/41-conselhos/conselhos-tutelares/1533-araripina",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:29:12.842Z"
+  },
+  {
+    "urlVelha": "https://www.araripina.pe.gov.br/transparencia",
+    "urlNova": "https://araripina.pe.gov.br/noticias",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:22.980Z"
   },
   {
     "urlVelha": "https://www.araxa.mg.gov.br",
@@ -4225,6 +5115,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T14:33:25.252Z"
+  },
+  {
+    "urlVelha": "https://www.assembleia.pr.leg.br/deputados/alexandre-curi",
+    "urlNova": "https://www.assembleia.pr.leg.br/deputados/perfil/alexandre-curi",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:22:24.093Z"
   },
   {
     "urlVelha": "https://www.assembleia.pr.leg.br/ouvidoria",
@@ -4346,6 +5250,34 @@
     "data": "2026-10-03T12:35:57.658Z"
   },
   {
+    "urlVelha": "https://www.bauru.sp.gov.br/cmdca",
+    "urlNova": "https://www2.bauru.sp.gov.br/materia.aspx?n=45635",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:42:55.594Z"
+  },
+  {
+    "urlVelha": "https://www.bauru.sp.gov.br/transparencia",
+    "urlNova": "https://www.bauru.sp.gov.br/default.aspx",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:11:19.532Z"
+  },
+  {
     "urlVelha": "https://www.belem.pa.gov.br/",
     "urlNova": "https://prefeitura.belem.pa.gov.br/",
     "criterios": [
@@ -4370,6 +5302,20 @@
     "data": "2026-10-03T14:57:34.380Z"
   },
   {
+    "urlVelha": "https://www.blumenau.sc.gov.br/diario-oficial",
+    "urlNova": "https://www.blumenau.sc.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:23:19.031Z"
+  },
+  {
     "urlVelha": "https://www.blumenau.sc.gov.br/secretarias/fundacao-do-meio-ambiente/pagina/conselho-municipal-meio-ambiente",
     "urlNova": "https://www.blumenau.sc.gov.br/secao/conselho-municipal-meio-ambiente",
     "criterios": [
@@ -4379,6 +5325,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-04T17:29:00.362Z"
+  },
+  {
+    "urlVelha": "https://www.blumenau.sc.gov.br/transparencia",
+    "urlNova": "https://www.blumenau.sc.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:14:26.376Z"
   },
   {
     "urlVelha": "https://www.bndes.gov.br",
@@ -4417,6 +5377,20 @@
     "data": "2026-10-03T14:58:33.082Z"
   },
   {
+    "urlVelha": "https://www.brusque.sc.gov.br/diario-oficial",
+    "urlNova": "https://www.brusque.sc.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:24:06.715Z"
+  },
+  {
     "urlVelha": "https://www.cacoal.ro.gov.br",
     "urlNova": "https://oficial.cacoal.ro.gov.br/",
     "criterios": [
@@ -4439,6 +5413,34 @@
     "data": "2026-10-03T13:31:10.692Z"
   },
   {
+    "urlVelha": "https://www.cacoal.ro.gov.br/transparencia",
+    "urlNova": "https://cacoal.ro.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:03:35.408Z"
+  },
+  {
+    "urlVelha": "https://www.cacoal.ro.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.cacoal.ro.gov.br/index.php?pagina=gestao",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:57:01.512Z"
+  },
+  {
     "urlVelha": "https://www.caico.rn.gov.br/cmdca",
     "urlNova": "https://caico.rn.gov.br/informa/1259/novos-membros-do-conselho-municipal-dos-direitos-d",
     "criterios": [
@@ -4452,6 +5454,20 @@
     "data": "2026-10-03T14:15:31.480Z"
   },
   {
+    "urlVelha": "https://www.caico.rn.gov.br/diario-oficial",
+    "urlNova": "https://www.caico.rn.gov.br/?a",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:50:25.691Z"
+  },
+  {
     "urlVelha": "https://www.cajazeiras.pb.gov.br/conselhos/codema",
     "urlNova": "https://www.cajazeiras.pb.gov.br/informa/3358/conselho-do-meio-ambiente-de-cajazeiras-empossa-no",
     "criterios": [
@@ -4463,6 +5479,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:18:04.780Z"
+  },
+  {
+    "urlVelha": "https://www.cajazeiras.pb.gov.br/transparencia",
+    "urlNova": "https://www.cajazeiras.pb.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:07:57.302Z"
   },
   {
     "urlVelha": "https://www.camacari.ba.gov.br/cmdca",
@@ -4633,6 +5663,48 @@
     "data": "2026-10-03T11:37:06.027Z"
   },
   {
+    "urlVelha": "https://www.camaracatalao.go.gov.br/transparencia",
+    "urlNova": "https://camaracatalao.go.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:24:00.019Z"
+  },
+  {
+    "urlVelha": "https://www.camaracorumba.ms.gov.br/transparencia",
+    "urlNova": "https://corumbadegoias.go.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:23:02.838Z"
+  },
+  {
+    "urlVelha": "https://www.camaracrateus.ce.gov.br/transparencia",
+    "urlNova": "https://www.camaracrateus.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:17:23.363Z"
+  },
+  {
     "urlVelha": "https://www.camaracrato.ce.gov.br",
     "urlNova": "https://www.camaracrato.ce.gov.br/home/",
     "criterios": [
@@ -4642,6 +5714,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T12:08:25.764Z"
+  },
+  {
+    "urlVelha": "https://www.camaracriciuma.sc.gov.br/transparencia",
+    "urlNova": "https://www.camaracriciuma.sc.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:22:18.979Z"
+  },
+  {
+    "urlVelha": "https://www.camaradourados.ms.gov.br/transparencia",
+    "urlNova": "https://www.camaradourados.ms.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:23:06.946Z"
   },
   {
     "urlVelha": "https://www.camaraerechim.rs.gov.br",
@@ -4666,6 +5766,20 @@
     "data": "2026-10-03T11:43:37.259Z"
   },
   {
+    "urlVelha": "https://www.camaraformosa.go.gov.br/transparencia",
+    "urlNova": "https://www.formosa.go.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:24:06.212Z"
+  },
+  {
     "urlVelha": "https://www.camaraiguatu.ce.gov.br",
     "urlNova": "https://camaraiguatu.ce.gov.br/",
     "criterios": [
@@ -4688,6 +5802,34 @@
     "data": "2026-10-03T11:33:12.153Z"
   },
   {
+    "urlVelha": "https://www.camaralimeira.sp.gov.br/transparencia",
+    "urlNova": "https://limeira.sp.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:21:14.239Z"
+  },
+  {
+    "urlVelha": "https://www.camaraniteroi.rj.gov.br/transparencia",
+    "urlNova": "https://camaraniteroi.rj.gov.br/site/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:20:22.055Z"
+  },
+  {
     "urlVelha": "https://www.camaraparagominas.pa.gov.br",
     "urlNova": "https://camaraparagominas.pa.gov.br/",
     "criterios": [
@@ -4697,6 +5839,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T11:59:49.107Z"
+  },
+  {
+    "urlVelha": "https://www.camaraparagominas.pa.gov.br/transparencia",
+    "urlNova": "https://camaraparagominas.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:48.298Z"
+  },
+  {
+    "urlVelha": "https://www.camarapassos.mg.gov.br/transparencia",
+    "urlNova": "https://www.camarapassos.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:19:41.669Z"
   },
   {
     "urlVelha": "https://www.camarapatos.pb.gov.br",
@@ -4719,6 +5889,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T11:35:23.779Z"
+  },
+  {
+    "urlVelha": "https://www.camarapiracicaba.sp.gov.br/transparencia",
+    "urlNova": "https://www.camarapiracicaba.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:21:22.127Z"
   },
   {
     "urlVelha": "https://www.camaraquixada.ce.gov.br",
@@ -4754,6 +5938,48 @@
     "data": "2026-10-03T12:41:19.636Z"
   },
   {
+    "urlVelha": "https://www.camarasobral.ce.gov.br/transparencia",
+    "urlNova": "https://camarasobral.ce.gov.br/acamara",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:17:48.672Z"
+  },
+  {
+    "urlVelha": "https://www.camarasousa.pb.gov.br/transparencia",
+    "urlNova": "https://camarasousa.pb.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:18:41.801Z"
+  },
+  {
+    "urlVelha": "https://www.camarataubate.sp.gov.br/transparencia",
+    "urlNova": "https://www.camarataubate.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:21:38.349Z"
+  },
+  {
     "urlVelha": "https://www.camaratucurui.pa.gov.br",
     "urlNova": "https://www.camaratucurui.pa.gov.br/site/index.php",
     "criterios": [
@@ -4765,6 +5991,20 @@
     "data": "2026-10-03T12:01:11.732Z"
   },
   {
+    "urlVelha": "https://www.camaratucurui.pa.gov.br/transparencia",
+    "urlNova": "https://camaratucurui.pa.gov.br/site/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:16:55.080Z"
+  },
+  {
     "urlVelha": "https://www.camarauberaba.mg.gov.br",
     "urlNova": "https://portal.camarauberaba.mg.gov.br/",
     "criterios": [
@@ -4774,6 +6014,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T12:31:39.596Z"
+  },
+  {
+    "urlVelha": "https://www.camarauberaba.mg.gov.br/transparencia",
+    "urlNova": "https://portal.camarauberaba.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:19:54.071Z"
   },
   {
     "urlVelha": "https://www.camaravarginha.mg.gov.br",
@@ -4871,6 +6125,48 @@
     "data": "2026-10-07T13:23:57.535Z"
   },
   {
+    "urlVelha": "https://www.carapicuiba.sp.gov.br/transparencia",
+    "urlNova": "https://www.carapicuiba.sp.gov.br/portal",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:11:29.791Z"
+  },
+  {
+    "urlVelha": "https://www.carapicuiba.sp.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.carapicuiba.sp.gov.br/portal/secretarias/46/conselho-municipal-de-saude---cms/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:43:01.533Z"
+  },
+  {
+    "urlVelha": "https://www.carbonita.mg.gov.br/transparencia",
+    "urlNova": "https://www.cisaje.mg.gov.br/institucional/servicos/entes-consorciados/71-carbonita",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T22:02:53.855Z"
+  },
+  {
     "urlVelha": "https://www.caruaru.pe.gov.br",
     "urlNova": "https://caruaru.pe.gov.br/",
     "criterios": [
@@ -4965,6 +6261,20 @@
     "data": "2026-10-03T14:52:21.036Z"
   },
   {
+    "urlVelha": "https://www.cascavel.pr.gov.br/transparencia",
+    "urlNova": "https://prefa.cascavel.pr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:13:46.290Z"
+  },
+  {
     "urlVelha": "https://www.cascavel.pr.gov.br/transparencia/conselhos",
     "urlNova": "https://prefa.cascavel.pr.gov.br/transparencia/item/conselho-municipal-de-saude",
     "criterios": [
@@ -5000,6 +6310,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T13:40:44.147Z"
+  },
+  {
+    "urlVelha": "https://www.castanhal.pa.gov.br/diario-oficial",
+    "urlNova": "https://castanhal.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:34:31.620Z"
+  },
+  {
+    "urlVelha": "https://www.castanhal.pa.gov.br/transparencia",
+    "urlNova": "https://castanhal.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:04:52.028Z"
   },
   {
     "urlVelha": "https://www.catalao.go.gov.br/conselhos/codema",
@@ -5094,6 +6432,34 @@
     "data": "2026-10-03T13:01:35.485Z"
   },
   {
+    "urlVelha": "https://www.cl.df.gov.br/deputados/chico-vigilante",
+    "urlNova": "https://www.cl.df.gov.br/chico-vigilante",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T19:20:20.840Z"
+  },
+  {
+    "urlVelha": "https://www.cl.df.gov.br/deputados/wellington-luiz",
+    "urlNova": "https://www.cl.df.gov.br/wellington-luiz",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:19:25.787Z"
+  },
+  {
     "urlVelha": "https://www.cl.df.gov.br/transparencia",
     "urlNova": "https://www.cl.df.gov.br/web/portal-transparencia/",
     "criterios": [
@@ -5114,6 +6480,76 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T09:14:26.083Z"
+  },
+  {
+    "urlVelha": "https://www.cmbh.mg.gov.br/comissao-de-legislacao-e",
+    "urlNova": "https://www.cmbh.mg.gov.br/tópicos/câmara-municipal-de-belo-horizonte",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:54.523Z"
+  },
+  {
+    "urlVelha": "https://www.cmbh.mg.gov.br/comissao-de-orcamento-e-f",
+    "urlNova": "https://www.cmbh.mg.gov.br/tópicos/câmara-municipal-de-belo-horizonte",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:23:17.427Z"
+  },
+  {
+    "urlVelha": "https://www.cmbh.mg.gov.br/cpis-municipais",
+    "urlNova": "https://www.cmbh.mg.gov.br/tópicos/câmara-municipal-de-belo-horizonte",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:23:34.719Z"
+  },
+  {
+    "urlVelha": "https://www.cmbh.mg.gov.br/legislacao/regimento-interno",
+    "urlNova": "https://www.cmbh.mg.gov.br/perguntas-frequentes/funcionamento-mesa-diretora-comissões-plenário-serviços/o-que-é-o-regimento",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:23:52.456Z"
+  },
+  {
+    "urlVelha": "https://www.cmbh.mg.gov.br/plenario-amynthas-de-barr",
+    "urlNova": "https://www.cmbh.mg.gov.br/tópicos/câmara-municipal-de-belo-horizonte",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:30.725Z"
   },
   {
     "urlVelha": "https://www.cmbh.mg.gov.br/transparencia",
@@ -5151,6 +6587,20 @@
     "data": "2026-10-03T09:50:34.808Z"
   },
   {
+    "urlVelha": "https://www.cnj.jus.br/sessoes-do-plenario/",
+    "urlNova": "https://justicaaberta.cnj.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T17:28:02.260Z"
+  },
+  {
     "urlVelha": "https://www.cnj.jus.br/transparencia",
     "urlNova": "https://www.cnj.jus.br/transparencia-cnj/",
     "criterios": [
@@ -5173,6 +6623,20 @@
     "data": "2026-10-03T06:52:31.590Z"
   },
   {
+    "urlVelha": "https://www.cnmp.mp.br/plenario-turmas",
+    "urlNova": "https://www.cnmp.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:29:48.323Z"
+  },
+  {
     "urlVelha": "https://www.cnmp.mp.br/portal/corregedoria",
     "urlNova": "https://cnmp.mp.br/portal/institucional/84-institucional/corregedoria",
     "criterios": [
@@ -5184,6 +6648,62 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T16:39:09.586Z"
+  },
+  {
+    "urlVelha": "https://www.cnmp.mp.br/portal/institucional/corregedoria-nacional",
+    "urlNova": "https://www.cnmp.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:30:07.232Z"
+  },
+  {
+    "urlVelha": "https://www.cnmp.mp.br/portal/relatorios-inspecoes",
+    "urlNova": "https://site.mppr.mp.br/crianca/Pagina/Publicacoes-CNMP-Conselho-Nacional-do-Ministerio-Publico",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:10:44.907Z"
+  },
+  {
+    "urlVelha": "https://www.cnmp.mp.br/presidencia-direcao-geral",
+    "urlNova": "https://www.cnmp.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:29:45.324Z"
+  },
+  {
+    "urlVelha": "https://www.cnmp.mp.br/secretaria-geral",
+    "urlNova": "https://www.cnmp.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:29:51.410Z"
   },
   {
     "urlVelha": "https://www.compesa.com.br/ouvidoria",
@@ -5260,6 +6780,20 @@
     "data": "2026-10-03T14:26:47.694Z"
   },
   {
+    "urlVelha": "https://www.coruripe.al.gov.br/transparencia",
+    "urlNova": "https://transparencia.coruripe.al.gov.br/orgaos/secretaria-municipal-de-governo",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:59.334Z"
+  },
+  {
     "urlVelha": "https://www.coruripe.al.gov.br/transparencia/conselhos",
     "urlNova": "https://transparencia.coruripe.al.gov.br/controle-social/conselho-municipal-de-saude",
     "criterios": [
@@ -5271,6 +6805,104 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:26:43.776Z"
+  },
+  {
+    "urlVelha": "https://www.crateus.ce.gov.br/diario-oficial",
+    "urlNova": "https://www.crateus.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:41:46.686Z"
+  },
+  {
+    "urlVelha": "https://www.crateus.ce.gov.br/transparencia",
+    "urlNova": "https://www.crateus.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:13.714Z"
+  },
+  {
+    "urlVelha": "https://www.crato.ce.gov.br/conselhos/codema",
+    "urlNova": "https://www.crato.ce.gov.br/informa.php?id=2071",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T15:14:14.378Z"
+  },
+  {
+    "urlVelha": "https://www.crato.ce.gov.br/diario-oficial",
+    "urlNova": "https://www.crato.ce.gov.br/index.php/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:42:37.803Z"
+  },
+  {
+    "urlVelha": "https://www.crato.ce.gov.br/transparencia",
+    "urlNova": "https://crato.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:18.987Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.ce.def.br/balcao-cidadao",
+    "urlNova": "https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:37:22.007Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.ce.def.br/nucleo-de-execucao-penal",
+    "urlNova": "https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara?menu=161",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:36:33.999Z"
   },
   {
     "urlVelha": "https://www.defensoria.go.def.br/balcao-cidadao",
@@ -5362,6 +6994,174 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T16:53:45.650Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.go.def.br/relatorios-prisionais",
+    "urlNova": "https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2019/2 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE GOIAS.pdf/view",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T11:59:28.782Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.pa.def.br/balcao-cidadao",
+    "urlNova": "https://www.pa.gov.br/orgao?id_orgao=53",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:43:47.076Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.pa.def.br/defensoria-geral",
+    "urlNova": "https://www.pa.gov.br/orgao?id_orgao=53",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:43:14.514Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.pa.def.br/nucleo-de-direitos-humano",
+    "urlNova": "https://www.pa.gov.br/orgao?id_orgao=53",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:43:23.126Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.pa.def.br/nucleo-de-execucao-penal",
+    "urlNova": "https://www.pa.gov.br/orgao?id_orgao=53",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:43:31.590Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.pa.def.br/ouvidoria-geral-externa",
+    "urlNova": "https://www.pa.gov.br/orgao?id_orgao=53",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:43:38.964Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.rs.def.br/relatorios-prisionais",
+    "urlNova": "https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2009/3 - RELATORIO DE INSPECAO EM ESTABELECIMENTO PENAL DO RIO GRANDE DO SUL-RS.pdf/view",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:06:15.544Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.se.def.br/relatorios-prisionais",
+    "urlNova": "https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2015/6 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE SERGIPE.pdf/view",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:07:41.707Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.sp.def.br/corregedoria",
+    "urlNova": "https://servicos.sp.gov.br/fcarta/81A19868-7DB6-439B-8E76-FEC7E2A3E670",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:16:15.074Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.sp.def.br/defensoria-geral",
+    "urlNova": "https://servicos.sp.gov.br/fcarta/81A19868-7DB6-439B-8E76-FEC7E2A3E670",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:13:50.727Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.sp.def.br/nucleo-de-direitos-humano",
+    "urlNova": "https://servicos.sp.gov.br/fcarta/81A19868-7DB6-439B-8E76-FEC7E2A3E670",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:14:03.273Z"
+  },
+  {
+    "urlVelha": "https://www.defensoria.sp.def.br/ouvidoria-geral-externa",
+    "urlNova": "https://servicos.sp.gov.br/fcarta/81A19868-7DB6-439B-8E76-FEC7E2A3E670",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:15:03.437Z"
   },
   {
     "urlVelha": "https://www.diadema.sp.gov.br",
@@ -23076,6 +24876,17 @@
     "data": "2026-10-03T07:04:53.294Z"
   },
   {
+    "urlVelha": "https://www.direitoshumanos.ce.gov.br",
+    "urlNova": "https://www.ce.gov.br/direitoshumanos/",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T14:45:48.008Z"
+  },
+  {
     "urlVelha": "https://www.divinopolis.mg.gov.br/cmdca",
     "urlNova": "https://www.divinopolis.mg.gov.br/portal/noticias/0/3/3006/conselho-municipal-dos-direitos--da-crianca-e-do-adolescente-ganha-site",
     "criterios": [
@@ -23089,6 +24900,104 @@
     "data": "2026-10-03T14:35:27.476Z"
   },
   {
+    "urlVelha": "https://www.divinopolis.mg.gov.br/diario-oficial",
+    "urlNova": "https://www.divinopolis.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:02:45.164Z"
+  },
+  {
+    "urlVelha": "https://www.divinopolis.mg.gov.br/transparencia",
+    "urlNova": "https://www.divinopolis.mg.gov.br/index.php",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:10:19.082Z"
+  },
+  {
+    "urlVelha": "https://www.dourados.ms.gov.br/transparencia",
+    "urlNova": "https://do.dourados.ms.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:15:28.986Z"
+  },
+  {
+    "urlVelha": "https://www.dpu.def.br/atendimento",
+    "urlNova": "http://www.dpu.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:18:42.232Z"
+  },
+  {
+    "urlVelha": "https://www.dpu.def.br/atuacao",
+    "urlNova": "http://www.dpu.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:18:36.260Z"
+  },
+  {
+    "urlVelha": "https://www.dpu.def.br/corregedoria-geral",
+    "urlNova": "http://www.dpu.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:18:47.953Z"
+  },
+  {
+    "urlVelha": "https://www.dpu.def.br/ouvidoria",
+    "urlNova": "http://www.dpu.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:25:09.044Z"
+  },
+  {
     "urlVelha": "https://www.educacao.ba.gov.br/",
     "urlNova": "https://www.ba.gov.br/educacao/",
     "criterios": [
@@ -23098,6 +25007,17 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T16:05:12.899Z"
+  },
+  {
+    "urlVelha": "https://www.educacao.pr.gov.br/",
+    "urlNova": "https://www.educacao.pr.gov.br/desvio.php",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T17:11:50.286Z"
   },
   {
     "urlVelha": "https://www.embasa.ba.gov.br/ouvidoria",
@@ -23120,6 +25040,90 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T19:40:02.481Z"
+  },
+  {
+    "urlVelha": "https://www.erechim.rs.gov.br/conselhos/codema",
+    "urlNova": "https://www.pmerechim.rs.gov.br/secretaria/15/secretaria-municipal-de-meio-ambiente",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:58:46.741Z"
+  },
+  {
+    "urlVelha": "https://www.erechim.rs.gov.br/transparencia",
+    "urlNova": "https://www.pmerechim.rs.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:15:03.642Z"
+  },
+  {
+    "urlVelha": "https://www.fazenda.mg.gov.br/conselho-de-contribuintes",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:13:57.901Z"
+  },
+  {
+    "urlVelha": "https://www.fazenda.mg.gov.br/gabinete-do-secretario",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:13:33.495Z"
+  },
+  {
+    "urlVelha": "https://www.fazenda.mg.gov.br/subsecretaria-da-receita",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:13:41.887Z"
+  },
+  {
+    "urlVelha": "https://www.fazenda.mg.gov.br/subsecretaria-do-tesouro",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:13:49.725Z"
   },
   {
     "urlVelha": "https://www.fepam.rs.gov.br",
@@ -23203,6 +25207,76 @@
     "data": "2026-10-03T14:44:27.216Z"
   },
   {
+    "urlVelha": "https://www.franca.sp.gov.br/diario-oficial",
+    "urlNova": "https://www.franca.sp.gov.br/pmf-cartaservicos-portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:12:50.651Z"
+  },
+  {
+    "urlVelha": "https://www.franca.sp.gov.br/transparencia",
+    "urlNova": "https://franca.sp.gov.br/pmf-raat/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:11:43.068Z"
+  },
+  {
+    "urlVelha": "https://www.franca.sp.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.franca.sp.gov.br/index.php?option=com_phocadownload&view=category&id=197:ps0012015&Itemid=1095",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T15:43:19.735Z"
+  },
+  {
+    "urlVelha": "https://www.franciscopolis.mg.gov.br/transparencia",
+    "urlNova": "https://www.franciscopolis.mg.gov.br/?m",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T22:16:40.980Z"
+  },
+  {
+    "urlVelha": "https://www.freigaspar.mg.gov.br/transparencia",
+    "urlNova": "https://freigaspar.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T22:16:50.000Z"
+  },
+  {
     "urlVelha": "https://www.garanhuns.pe.gov.br",
     "urlNova": "https://garanhuns.pe.gov.br/",
     "criterios": [
@@ -23249,6 +25323,48 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T14:23:40.113Z"
+  },
+  {
+    "urlVelha": "https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao",
+    "urlNova": "https://dadosabertos.aneel.gov.br/dataset/resultado-de-leiloes",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:12:23.400Z"
+  },
+  {
+    "urlVelha": "https://www.gov.br/aneel/pt-br/composicao/sfg",
+    "urlNova": "https://www.gov.br/anatel/pt-br/composicao/superintendencias/superintendencia-de-fiscalizacao",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T21:30:58.847Z"
+  },
+  {
+    "urlVelha": "https://www.gov.br/aneel/pt-br/composicao/srt",
+    "urlNova": "https://www.gov.br/aneel/pt-br/composicao/regulacao-setor-eletrico/superintendencia-de-regulacao-dos-servicos-de-transmissao-e-distribuicao-de-energia-eletrica-sdt",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:31:05.352Z"
   },
   {
     "urlVelha": "https://www.gov.br/fnde",
@@ -23321,6 +25437,20 @@
     "data": "2026-10-03T19:48:21.507Z"
   },
   {
+    "urlVelha": "https://www.gov.br/iphan/pt-br/composicao/cna",
+    "urlNova": "https://www.gov.br/iphan/pt-br/acesso-a-informacao/institucional/estrutura/centro-nacional-de-arqueologia-cna",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:29:05.886Z"
+  },
+  {
     "urlVelha": "https://www.gov.br/iphan/pt-br/composicao/depam",
     "urlNova": "https://www.gov.br/iphan/pt-br/composicao/departamento-de-patrimonio-material-e-fiscalizacao-depam",
     "criterios": [
@@ -23332,6 +25462,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-04T18:11:22.367Z"
+  },
+  {
+    "urlVelha": "https://www.gov.br/iphan/pt-br/composicao/dpi",
+    "urlNova": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-imaterial/departamento-de-patrimonio-imaterial-dpi-1",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:29:14.841Z"
   },
   {
     "urlVelha": "https://www.gov.br/mulheres/pt-br/acesso-a-informacao/participacao-social/conselhos/cndm",
@@ -23441,6 +25585,20 @@
     "data": "2026-10-07T13:28:58.333Z"
   },
   {
+    "urlVelha": "https://www.guarapuava.pr.gov.br/diario-oficial",
+    "urlNova": "https://www.guarapuava.pr.gov.br/?s=estagios",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:19:44.486Z"
+  },
+  {
     "urlVelha": "https://www.guarapuava.pr.gov.br/transparencia",
     "urlNova": "https://guarapuava.pr.gov.br/prefeitura-municipal-de-guarapuava/",
     "criterios": [
@@ -23526,6 +25684,34 @@
     "data": "2026-10-03T13:48:36.308Z"
   },
   {
+    "urlVelha": "https://www.gurupi.to.gov.br/diario-oficial",
+    "urlNova": "https://gurupi.to.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:38:23.001Z"
+  },
+  {
+    "urlVelha": "https://www.gurupi.to.gov.br/transparencia",
+    "urlNova": "https://gurupi.to.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:37.069Z"
+  },
+  {
     "urlVelha": "https://www.gurupi.to.gov.br/transparencia/conselhos",
     "urlNova": "https://gurupi.to.gov.br/2013/04/conselhos-de-assistencia-social-e-de-seguranca-alimentar-de-gurupi-realizam-reuniao-nesta-terca/",
     "criterios": [
@@ -23559,6 +25745,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-15T20:31:48.792Z"
+  },
+  {
+    "urlVelha": "https://www.ief.mg.gov.br/institucional/diretoria-de-conservacao-e-recuperacao-de-ecossistemas",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/diretoria-de-conservacao-e-recuperacao-de-ecossistema-dcre",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:26:21.024Z"
   },
   {
     "urlVelha": "https://www.ief.mg.gov.br/institucional/diretoria-de-unidades-de-conservacao",
@@ -23744,6 +25944,34 @@
     "data": "2026-10-07T12:45:19.317Z"
   },
   {
+    "urlVelha": "https://www.imperatriz.ma.gov.br/transparencia",
+    "urlNova": "https://imperatriz.ma.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:50.542Z"
+  },
+  {
+    "urlVelha": "https://www.imperatriz.ma.gov.br/transparencia/conselhos",
+    "urlNova": "https://imperatriz.ma.gov.br/pmi/cmsi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:08:06.368Z"
+  },
+  {
     "urlVelha": "https://www.in.gov.br/",
     "urlNova": "https://www.gov.br/imprensanacional/pt-br",
     "criterios": [
@@ -23803,6 +26031,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T20:00:04.856Z"
+  },
+  {
+    "urlVelha": "https://www.inema.ba.gov.br/institucional/diretoria-de-regulacao",
+    "urlNova": "https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T21:41:27.682Z"
   },
   {
     "urlVelha": "https://www.inema.ba.gov.br/institucional/organograma",
@@ -23888,6 +26130,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T10:43:05.244Z"
+  },
+  {
+    "urlVelha": "https://www.itabaiana.se.gov.br/transparencia",
+    "urlNova": "https://portal.itabaiana.pb.gov.br/prefeitura/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:09:29.013Z"
   },
   {
     "urlVelha": "https://www.itabuna.ba.gov.br",
@@ -24017,6 +26273,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T13:41:33.957Z"
+  },
+  {
+    "urlVelha": "https://www.itaituba.pa.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.itaituba.pa.gov.br/comissao",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:05:04.821Z"
   },
   {
     "urlVelha": "https://www.itajai.sc.gov.br",
@@ -24199,6 +26469,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:31:36.457Z"
+  },
+  {
+    "urlVelha": "https://www.jequie.ba.gov.br/transparencia",
+    "urlNova": "https://www.jequie.ba.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:09:47.231Z"
+  },
+  {
+    "urlVelha": "https://www.jequie.ba.gov.br/transparencia/conselhos",
+    "urlNova": "http://www2.saude.ba.gov.br/cib/conselho_municipal.asp?CodCMS=636",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:35:06.165Z"
   },
   {
     "urlVelha": "https://www.ji-parana.ro.gov.br",
@@ -24402,6 +26700,20 @@
     "data": "2026-10-15T15:09:19.772Z"
   },
   {
+    "urlVelha": "https://www.jundiai.sp.gov.br/transparencia",
+    "urlNova": "https://jundiai.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:11:53.437Z"
+  },
+  {
     "urlVelha": "https://www.jundiai.sp.gov.br/transparencia/conselhos",
     "urlNova": "https://jundiai.sp.gov.br/saude/conselho/",
     "criterios": [
@@ -24496,6 +26808,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:53:17.103Z"
+  },
+  {
+    "urlVelha": "https://www.londrina.pr.gov.br/transparencia",
+    "urlNova": "https://www.londrina.pr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:13:53.310Z"
+  },
+  {
+    "urlVelha": "https://www.londrina.pr.gov.br/transparencia/conselhos",
+    "urlNova": "https://saude.londrina.pr.gov.br/index.php/legislacao-cms/90-transparencia/conselho-municipal-de-saude.html",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:46:33.023Z"
   },
   {
     "urlVelha": "https://www.luziania.go.gov.br/cmdca",
@@ -24605,6 +26945,20 @@
     "data": "2026-10-03T12:15:54.200Z"
   },
   {
+    "urlVelha": "https://www.macaiba.rn.gov.br/transparencia",
+    "urlNova": "https://macaiba.rn.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:07:42.188Z"
+  },
+  {
     "urlVelha": "https://www.macapa.ap.gov.br/",
     "urlNova": "https://macapa.ap.gov.br/",
     "criterios": [
@@ -24651,6 +27005,20 @@
     "data": "2026-10-07T12:40:54.068Z"
   },
   {
+    "urlVelha": "https://www.maraba.pa.gov.br/transparencia",
+    "urlNova": "https://maraba.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:02.699Z"
+  },
+  {
     "urlVelha": "https://www.marilia.sp.gov.br/cmdca",
     "urlNova": "https://www.marilia.sp.gov.br/portal/noticias/0/3/10197/empossado-o-novo-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/",
     "criterios": [
@@ -24662,6 +27030,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:45:55.929Z"
+  },
+  {
+    "urlVelha": "https://www.marilia.sp.gov.br/conselhos/codema",
+    "urlNova": "https://www.marilia.sp.gov.br/portal/noticias/0/3/14913/conselho-municipal-de-meio-ambiente-realiza-primeira-reuniao-de-2025-e-define-novas-diretrizes",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:44:24.835Z"
+  },
+  {
+    "urlVelha": "https://www.marilia.sp.gov.br/transparencia",
+    "urlNova": "https://www.marilia.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:12:03.451Z"
   },
   {
     "urlVelha": "https://www.marilia.sp.gov.br/transparencia/conselhos",
@@ -24730,6 +27126,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T14:53:37.924Z"
+  },
+  {
+    "urlVelha": "https://www.maua.sp.gov.br/diario-oficial",
+    "urlNova": "https://www.maua.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:15:14.014Z"
   },
   {
     "urlVelha": "https://www.meioambiente.ba.gov.br",
@@ -24921,6 +27331,62 @@
     "data": "2026-10-03T17:32:54.245Z"
   },
   {
+    "urlVelha": "https://www.mpal.mp.br/atendimento",
+    "urlNova": "https://www.mpal.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:19:15.135Z"
+  },
+  {
+    "urlVelha": "https://www.mpal.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mpal.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:19:01.387Z"
+  },
+  {
+    "urlVelha": "https://www.mpal.mp.br/corregedoria",
+    "urlNova": "https://www.mpal.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:19:21.466Z"
+  },
+  {
+    "urlVelha": "https://www.mpal.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mpal.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:18:54.225Z"
+  },
+  {
     "urlVelha": "https://www.mpal.mp.br/gaeco",
     "urlNova": "https://www.mpal.mp.br/?page_id=2517",
     "criterios": [
@@ -24941,6 +27407,188 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-04T15:51:08.884Z"
+  },
+  {
+    "urlVelha": "https://www.mpal.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mpal.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:19:08.302Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/atendimento",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:21:20.317Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:20:05.942Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/corregedoria",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:21:35.564Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:19:58.749Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/gaeco",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:20:14.652Z"
+  },
+  {
+    "urlVelha": "https://www.mpam.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://diario.mpam.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:20:27.263Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/atendimento",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:22:50.828Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:22:20.321Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/corregedoria",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:23:05.881Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:22:14.281Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/gaeco",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:22:28.285Z"
+  },
+  {
+    "urlVelha": "https://www.mpba.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mpba.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:22:37.128Z"
   },
   {
     "urlVelha": "https://www.mpce.mp.br",
@@ -25031,6 +27679,20 @@
     "data": "2026-10-04T16:01:49.630Z"
   },
   {
+    "urlVelha": "https://www.mpce.mp.br/tacs-ambientais",
+    "urlNova": "https://mpce.mp.br/tag/termo-de-ajustamento-de-conduta-tac/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:14:14.501Z"
+  },
+  {
     "urlVelha": "https://www.mpdft.mp.br",
     "urlNova": "https://www.mpdft.mp.br/portal/",
     "criterios": [
@@ -25051,6 +27713,87 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T17:53:12.878Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/atuacao-tematica",
+    "urlNova": "https://www.mpf.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:24:23.711Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/pgr",
+    "urlNova": "https://www.mpf.mp.br/o-mpf/unidades/procuradoria-geral-da-republica-pgr",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T18:24:20.460Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/pgr/institucional/organograma",
+    "urlNova": "https://www.mpf.mp.br/servicos/mpf-servicos",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:24:26.412Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/pgr/orgaos-vinculados/corregedoria-do-mpf",
+    "urlNova": "https://www.mpf.mp.br/servicos/mpf-servicos",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:24:31.957Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/servicos/ouvidoria",
+    "urlNova": "https://www.mpf.mp.br/servicos/mpf-servicos",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:24:29.146Z"
+  },
+  {
+    "urlVelha": "https://www.mpf.mp.br/servicos/sac",
+    "urlNova": "https://www.mpf.mp.br/servicos/mpf-servicos",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:25:01.633Z"
   },
   {
     "urlVelha": "https://www.mpgo.mp.br",
@@ -25190,6 +27933,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T17:56:57.969Z"
+  },
+  {
+    "urlVelha": "https://www.mpma.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mpma.mp.br/diario-eletronico-do-mpma/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:25:07.558Z"
   },
   {
     "urlVelha": "https://www.mpma.mp.br/corregedoria-geral-do-mp",
@@ -25338,6 +28095,20 @@
     "data": "2026-10-03T17:57:51.249Z"
   },
   {
+    "urlVelha": "https://www.mpmg.mp.br/portal/menu/institucional/legislacao/lei-organica.shtml",
+    "urlNova": "https://www.almg.gov.br/legislacao-mineira/LCP/34/1994/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:25:12.849Z"
+  },
+  {
     "urlVelha": "https://www.mpmg.mp.br/portal/menu/institucional/promotorias-de-justica/",
     "urlNova": "https://www.mg.gov.br/instituicao_unidade/ministerio-publico-do-estado-de-minas-gerais-mpmg",
     "criterios": [
@@ -25403,6 +28174,62 @@
     "data": "2026-10-03T16:36:11.740Z"
   },
   {
+    "urlVelha": "https://www.mpms.mp.br/atendimento",
+    "urlNova": "https://www.mpms.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:26:43.174Z"
+  },
+  {
+    "urlVelha": "https://www.mpms.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mpms.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:26:29.056Z"
+  },
+  {
+    "urlVelha": "https://www.mpms.mp.br/corregedoria",
+    "urlNova": "https://www.mpms.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:26:49.502Z"
+  },
+  {
+    "urlVelha": "https://www.mpms.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mpms.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:26:22.297Z"
+  },
+  {
     "urlVelha": "https://www.mpms.mp.br/ouvidoria",
     "urlNova": "https://ouvidoria.mpms.mp.br/",
     "criterios": [
@@ -25412,6 +28239,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T18:00:57.000Z"
+  },
+  {
+    "urlVelha": "https://www.mpms.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mpms.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:26:36.746Z"
   },
   {
     "urlVelha": "https://www.mpmt.mp.br/atendimento",
@@ -25440,6 +28281,48 @@
     "data": "2026-10-16T18:28:01.708Z"
   },
   {
+    "urlVelha": "https://www.mpmt.mp.br/corregedoria",
+    "urlNova": "https://mpmt.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:27:55.360Z"
+  },
+  {
+    "urlVelha": "https://www.mpmt.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://mpmt.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:27:23.651Z"
+  },
+  {
+    "urlVelha": "https://www.mpmt.mp.br/gaeco",
+    "urlNova": "https://mpmt.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:27:36.633Z"
+  },
+  {
     "urlVelha": "https://www.mpmt.mp.br/ouvidoria",
     "urlNova": "https://www.mpmt.mp.br/ouvidoria/ouvidoria-client/index.php",
     "criterios": [
@@ -25451,6 +28334,48 @@
     "data": "2026-10-03T18:06:12.603Z"
   },
   {
+    "urlVelha": "https://www.mpmt.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://mpmt.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:27:46.175Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/atendimento",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:12.362Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:28:51.818Z"
+  },
+  {
     "urlVelha": "https://www.mppa.mp.br/corregedoria",
     "urlNova": "https://www.mppa.mp.br/areas/institucional/corregedoria/corregedoria-geral.htm",
     "criterios": [
@@ -25460,6 +28385,62 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-04T16:15:44.543Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:28:43.999Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/gaeco",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:28:58.417Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/ouvidoria",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:24.057Z"
+  },
+  {
+    "urlVelha": "https://www.mppa.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www2.mppa.mp.br/sistemas/portaldeconsultas/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:03.792Z"
   },
   {
     "urlVelha": "https://www.mppb.mp.br",
@@ -25605,6 +28586,76 @@
     "data": "2026-10-03T15:49:13.311Z"
   },
   {
+    "urlVelha": "https://www.mppe.mp.br/atendimento",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:06.329Z"
+  },
+  {
+    "urlVelha": "https://www.mppe.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:51.339Z"
+  },
+  {
+    "urlVelha": "https://www.mppe.mp.br/corregedoria",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:13.055Z"
+  },
+  {
+    "urlVelha": "https://www.mppe.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:46.883Z"
+  },
+  {
+    "urlVelha": "https://www.mppe.mp.br/gaeco",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:29:59.345Z"
+  },
+  {
     "urlVelha": "https://www.mppe.mp.br/noticias",
     "urlNova": "https://portal.mppe.mp.br/noticias",
     "criterios": [
@@ -25627,6 +28678,20 @@
     "data": "2026-10-03T18:12:27.821Z"
   },
   {
+    "urlVelha": "https://www.mppe.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://portal.mppe.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:02.495Z"
+  },
+  {
     "urlVelha": "https://www.mppi.mp.br",
     "urlNova": "https://www.mppi.mp.br/internet/",
     "criterios": [
@@ -25636,6 +28701,104 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T15:49:43.727Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/atendimento",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:42.711Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:33.597Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/corregedoria",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:50.014Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:30.229Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/gaeco",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:36.299Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/ouvidoria",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:46.024Z"
+  },
+  {
+    "urlVelha": "https://www.mppi.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mppi.mp.br/internet/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:30:39.139Z"
   },
   {
     "urlVelha": "https://www.mppr.mp.br",
@@ -25649,6 +28812,34 @@
     "data": "2026-10-16T16:18:54.745Z"
   },
   {
+    "urlVelha": "https://www.mppr.mp.br/atendimento",
+    "urlNova": "https://mppr.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:30.631Z"
+  },
+  {
+    "urlVelha": "https://www.mppr.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://mppr.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:18.292Z"
+  },
+  {
     "urlVelha": "https://www.mppr.mp.br/corregedoria",
     "urlNova": "https://mppr.mp.br/corregedoria",
     "criterios": [
@@ -25658,6 +28849,45 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T18:16:14.426Z"
+  },
+  {
+    "urlVelha": "https://www.mppr.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://mppr.mp.br/Categoria-de-Pagina/MPPR",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:13.801Z"
+  },
+  {
+    "urlVelha": "https://www.mppr.mp.br/gaeco",
+    "urlNova": "https://mppr.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:23.220Z"
+  },
+  {
+    "urlVelha": "https://www.mppr.mp.br/noticias/operacao-gaeco-transporte",
+    "urlNova": "https://mppr.mp.br/Noticias/operacao-gaeco-transporte",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T12:21:46.749Z"
   },
   {
     "urlVelha": "https://www.mppr.mp.br/ouvidoria",
@@ -25671,6 +28901,76 @@
     "data": "2026-10-16T18:39:05.242Z"
   },
   {
+    "urlVelha": "https://www.mppr.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://mppr.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:27.245Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:51.640Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/corregedoria",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:32:38.441Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:45.927Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/gaeco",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:31:55.961Z"
+  },
+  {
     "urlVelha": "https://www.mprj.mp.br/noticias",
     "urlNova": "https://www.mprj.mp.br/busca?p_p_id=br_mp_mprj_internet_busca_web_BuscaPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_br_mp_mprj_internet_busca_web_BuscaPortlet_jspPage=%2Fhtml%2Fview.jsp&_br_mp_mprj_internet_busca_web_BuscaPortlet_filtro_param=noticias",
     "criterios": [
@@ -25680,6 +28980,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T10:15:02.420Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/ouvidoria",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:32:09.439Z"
+  },
+  {
+    "urlVelha": "https://www.mprj.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www5.mprj.mp.br/consultaPublica/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:32:00.992Z"
   },
   {
     "urlVelha": "https://www.mprn.mp.br/atendimento",
@@ -25837,6 +29165,48 @@
     "data": "2026-10-03T18:22:55.347Z"
   },
   {
+    "urlVelha": "https://www.mprs.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mprs.mp.br/contato/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:36:46.029Z"
+  },
+  {
+    "urlVelha": "https://www.mprs.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mprs.mp.br/contato/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:36:21.567Z"
+  },
+  {
+    "urlVelha": "https://www.mprs.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mprs.mp.br/contato/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:37:18.729Z"
+  },
+  {
     "urlVelha": "https://www.mpsc.mp.br/atendimento",
     "urlNova": "https://www.mpsc.mp.br/atendimento-ao-cidadao",
     "criterios": [
@@ -25861,6 +29231,20 @@
     "data": "2026-10-04T16:25:45.798Z"
   },
   {
+    "urlVelha": "https://www.mpsc.mp.br/corregedoria",
+    "urlNova": "https://www.mpsc.mp.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:38:26.420Z"
+  },
+  {
     "urlVelha": "https://www.mpsc.mp.br/corregedoria-geral-do-mp",
     "urlNova": "https://www.mpsc.mp.br/documents/d/guest/guia-do-ministerio-publico-de-santa-catarina",
     "criterios": [
@@ -25872,6 +29256,20 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-04T16:25:35.669Z"
+  },
+  {
+    "urlVelha": "https://www.mpsc.mp.br/noticias/operacao-gaeco-transporte",
+    "urlNova": "https://www.mpsc.mp.br/w/gaeco-deflagra-operação-vértice-e-apura-fraude-em-licitações-do-transporte-escolar-no-oeste-catarinense",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:26:24.915Z"
   },
   {
     "urlVelha": "https://www.mpsc.mp.br/ouvidoria-do-mp",
@@ -25898,6 +29296,48 @@
     "data": "2026-10-03T15:56:04.577Z"
   },
   {
+    "urlVelha": "https://www.mpto.mp.br/atendimento",
+    "urlNova": "https://www.mpto.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:39:23.999Z"
+  },
+  {
+    "urlVelha": "https://www.mpto.mp.br/centros-de-apoio-operacio",
+    "urlNova": "https://www.mpto.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:39:08.572Z"
+  },
+  {
+    "urlVelha": "https://www.mpto.mp.br/corregedoria-geral-do-mp",
+    "urlNova": "https://www.mpto.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:39:05.957Z"
+  },
+  {
     "urlVelha": "https://www.mpto.mp.br/noticias/posse-luciano-cesar-casaroti",
     "urlNova": "https://www.mpto.mp.br/subprocuradoria-geral-de-justica/perfil/luciano-cesar-casaroti/",
     "criterios": [
@@ -25909,6 +29349,20 @@
       "estrategia:site-dominio"
     ],
     "data": "2026-10-04T09:51:51.445Z"
+  },
+  {
+    "urlVelha": "https://www.mpto.mp.br/ouvidoria-do-mp",
+    "urlNova": "https://www.mpto.mp.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:39:21.187Z"
   },
   {
     "urlVelha": "https://www.mt.gov.br",
@@ -26026,6 +29480,20 @@
     "data": "2026-10-03T14:39:30.601Z"
   },
   {
+    "urlVelha": "https://www.novocruzeiro.mg.gov.br/transparencia",
+    "urlNova": "https://www.novocruzeiro.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T22:19:44.065Z"
+  },
+  {
     "urlVelha": "https://www.osasco.sp.gov.br",
     "urlNova": "https://osasco.sp.gov.br/",
     "criterios": [
@@ -26061,6 +29529,20 @@
     "data": "2026-10-03T14:48:15.463Z"
   },
   {
+    "urlVelha": "https://www.osasco.sp.gov.br/transparencia",
+    "urlNova": "https://osasco.sp.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:12:20.562Z"
+  },
+  {
     "urlVelha": "https://www.osasco.sp.gov.br/transparencia/conselhos",
     "urlNova": "https://osasco.sp.gov.br/conselhos-tutelares-e-cmdca/",
     "criterios": [
@@ -26070,6 +29552,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T14:48:08.048Z"
+  },
+  {
+    "urlVelha": "https://www.ouricuri.pe.gov.br/transparencia",
+    "urlNova": "https://ouricuri.pe.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:41.799Z"
+  },
+  {
+    "urlVelha": "https://www.ouroverdedeminas.mg.gov.br/transparencia",
+    "urlNova": "https://ouroverdedeminas.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T22:19:53.585Z"
   },
   {
     "urlVelha": "https://www.ouvidoria.ba.gov.br",
@@ -26118,6 +29628,34 @@
     "data": "2026-10-15T14:17:38.364Z"
   },
   {
+    "urlVelha": "https://www.paragominas.pa.gov.br/conselhos/codema",
+    "urlNova": "https://camaraparagominas.pa.gov.br/lei-no-257-2000-de-26-de-junho-de-2000/lei-no-257-00-dispoe-sobre-a-criacao-e-regulamentacao-do-conselho-municipal-de-defesa-do-meio-ambiente-condema/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:06:01.749Z"
+  },
+  {
+    "urlVelha": "https://www.paragominas.pa.gov.br/transparencia",
+    "urlNova": "https://paragominas.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:11.144Z"
+  },
+  {
     "urlVelha": "https://www.paragominas.pa.gov.br/transparencia/conselhos",
     "urlNova": "https://paragominas.pa.gov.br/mapa-do-site/conselhos-municipais/",
     "criterios": [
@@ -26153,6 +29691,48 @@
     "data": "2026-10-03T14:36:57.539Z"
   },
   {
+    "urlVelha": "https://www.passos.mg.gov.br/conselhos/codema",
+    "urlNova": "https://www.passos.mg.gov.br/portal/secretarias/16/meio-ambiente-agropecuaria-e-abastecimento",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:39:01.435Z"
+  },
+  {
+    "urlVelha": "https://www.passos.mg.gov.br/transparencia",
+    "urlNova": "https://www.passos.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:10:31.191Z"
+  },
+  {
+    "urlVelha": "https://www.passos.mg.gov.br/transparencia/conselhos",
+    "urlNova": "https://www.passos.mg.gov.br/cmas-o-conselho",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:38:56.423Z"
+  },
+  {
     "urlVelha": "https://www.patos.pb.gov.br/diario-oficial",
     "urlNova": "https://patos.pb.gov.br/servicos/diario-oficial/p16_sectionid/336",
     "criterios": [
@@ -26162,6 +29742,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T12:17:43.776Z"
+  },
+  {
+    "urlVelha": "https://www.patos.pb.gov.br/transparencia",
+    "urlNova": "http://patos.pb.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:09.971Z"
   },
   {
     "urlVelha": "https://www.patos.pb.gov.br/transparencia/conselhos",
@@ -26350,6 +29944,34 @@
     "data": "2026-10-03T13:53:03.837Z"
   },
   {
+    "urlVelha": "https://www.picos.pi.gov.br/diario-oficial",
+    "urlNova": "https://www.picos.pi.gov.br/secretaria-municipal-de-educacao-seme/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:40:51.694Z"
+  },
+  {
+    "urlVelha": "https://www.picos.pi.gov.br/transparencia",
+    "urlNova": "https://www2.picos.pi.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:02.509Z"
+  },
+  {
     "urlVelha": "https://www.piracicaba.sp.gov.br",
     "urlNova": "https://piracicaba.sp.gov.br/",
     "criterios": [
@@ -26429,6 +30051,34 @@
     "data": "2026-10-03T16:04:56.262Z"
   },
   {
+    "urlVelha": "https://www.quixada.ce.gov.br/diario-oficial",
+    "urlNova": "http://www.quixada.ce.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T13:48:42.029Z"
+  },
+  {
+    "urlVelha": "https://www.quixada.ce.gov.br/transparencia",
+    "urlNova": "https://www.quixada.ce.gov.br/index.php",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:06:48.444Z"
+  },
+  {
     "urlVelha": "https://www.redencao.pa.gov.br",
     "urlNova": "https://redencao.pa.gov.br/",
     "criterios": [
@@ -26438,6 +30088,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T12:00:31.424Z"
+  },
+  {
+    "urlVelha": "https://www.redencao.pa.gov.br/transparencia",
+    "urlNova": "https://redencao.pa.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:05:20.432Z"
   },
   {
     "urlVelha": "https://www.redencao.pa.gov.br/transparencia/conselhos",
@@ -26477,6 +30141,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T15:10:04.409Z"
+  },
+  {
+    "urlVelha": "https://www.rondonopolis.mt.gov.br/diario-oficial",
+    "urlNova": "https://www.rondonopolis.mt.gov.br/servicos/nfse/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T14:31:57.415Z"
   },
   {
     "urlVelha": "https://www.rondonopolis.mt.gov.br/transparencia",
@@ -26536,6 +30214,20 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T11:49:37.424Z"
+  },
+  {
+    "urlVelha": "https://www.santahelenademinas.mg.gov.br/transparencia",
+    "urlNova": "https://santahelenademinas.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T22:21:33.350Z"
   },
   {
     "urlVelha": "https://www.santana.ap.gov.br",
@@ -26663,6 +30355,20 @@
     "data": "2026-10-03T14:48:57.768Z"
   },
   {
+    "urlVelha": "https://www.saojosedodivino.mg.gov.br/transparencia",
+    "urlNova": "https://saojosedodivino.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T22:21:41.178Z"
+  },
+  {
     "urlVelha": "https://www.saopaulo.sp.gov.br",
     "urlNova": "https://www.sp.gov.br/sp",
     "criterios": [
@@ -26683,6 +30389,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T16:08:08.684Z"
+  },
+  {
+    "urlVelha": "https://www.saude.al.gov.br/atas",
+    "urlNova": "https://www.saude.al.gov.br/conselho-estadual-de-saude/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:42:36.314Z"
+  },
+  {
+    "urlVelha": "https://www.saude.al.gov.br/ces",
+    "urlNova": "https://www.saude.al.gov.br/conselho-estadual-de-saude/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:42:30.256Z"
   },
   {
     "urlVelha": "https://www.saude.ba.gov.br/?s=Conselho+Estadual+de+Saúde",
@@ -26757,6 +30491,20 @@
     "data": "2026-10-04T12:18:17.905Z"
   },
   {
+    "urlVelha": "https://www.saude.es.gov.br/atas",
+    "urlNova": "http://www.saude.es.gov.br/contato_ces",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:47:00.962Z"
+  },
+  {
     "urlVelha": "https://www.saude.es.gov.br/ces",
     "urlNova": "https://saude.es.gov.br/ces",
     "criterios": [
@@ -26814,6 +30562,20 @@
     "data": "2026-10-03T13:20:27.878Z"
   },
   {
+    "urlVelha": "https://www.saude.mg.gov.br/subsecretaria-de-acesso-a",
+    "urlNova": "https://www.saude.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:14:08.211Z"
+  },
+  {
     "urlVelha": "https://www.saude.mg.gov.br/subsecretaria-de-redes-de",
     "urlNova": "http://vigilancia.saude.mg.gov.br/index.php/boletim-epidemiologico-da-secretaria-de-estado-de-saude-de-minas-gerais/",
     "criterios": [
@@ -26825,6 +30587,34 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T16:15:46.921Z"
+  },
+  {
+    "urlVelha": "https://www.saude.mg.gov.br/subsecretaria-de-vigilanc",
+    "urlNova": "https://www.saude.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:14:14.941Z"
+  },
+  {
+    "urlVelha": "https://www.saude.ms.gov.br/atas",
+    "urlNova": "https://ces.saude.ms.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:49:13.422Z"
   },
   {
     "urlVelha": "https://www.saude.pi.gov.br/atas",
@@ -26858,6 +30648,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T13:27:45.619Z"
+  },
+  {
+    "urlVelha": "https://www.saude.rs.gov.br/atas",
+    "urlNova": "http://ces.rs.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:53:53.352Z"
+  },
+  {
+    "urlVelha": "https://www.saude.rs.gov.br/ces",
+    "urlNova": "http://ces.rs.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T14:53:46.603Z"
   },
   {
     "urlVelha": "https://www.saude.sc.gov.br/",
@@ -27039,6 +30857,20 @@
     "data": "2026-10-15T20:53:13.260Z"
   },
   {
+    "urlVelha": "https://www.semas.pa.gov.br/institucional/dla",
+    "urlNova": "https://servicos.ibama.gov.br/licenciamento/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T21:39:52.492Z"
+  },
+  {
     "urlVelha": "https://www.semas.pa.gov.br/institucional/organograma",
     "urlNova": "https://semas.pa.gov.br/Home/Page/EstruturaOrganizacional/",
     "criterios": [
@@ -27102,6 +30934,62 @@
     "data": "2026-10-03T16:28:13.309Z"
   },
   {
+    "urlVelha": "https://www.senado.leg.br/advocacia-do-senado-e-con",
+    "urlNova": "https://www.senado.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:09.526Z"
+  },
+  {
+    "urlVelha": "https://www.senado.leg.br/comissao-de-assuntos-econ",
+    "urlNova": "https://www25.senado.leg.br/web/atividade",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:00.587Z"
+  },
+  {
+    "urlVelha": "https://www.senado.leg.br/plenario-do-senado",
+    "urlNova": "https://www25.senado.leg.br/web/atividade",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:21:57.698Z"
+  },
+  {
+    "urlVelha": "https://www.senado.leg.br/sabatina-de-autoridades",
+    "urlNova": "https://www.senado.leg.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T17:22:05.274Z"
+  },
+  {
     "urlVelha": "https://www.serra.es.gov.br/cmdca",
     "urlNova": "https://www.serra.es.gov.br/",
     "criterios": [
@@ -27157,6 +31045,48 @@
     "data": "2026-10-03T14:38:35.082Z"
   },
   {
+    "urlVelha": "https://www.sinop.mt.gov.br/cmdca",
+    "urlNova": "https://www.sinop.mt.gov.br/casa-dos-conselhos---direitos-da-crianca-e-do-adolescente---cmdca",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T16:03:31.852Z"
+  },
+  {
+    "urlVelha": "https://www.sinop.mt.gov.br/conselhos/codema",
+    "urlNova": "https://www.sinop.mt.gov.br/portal/secretarias/6/secretaria-de-meio-ambiente-e-desenvolvimento-sustentavel",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T16:03:29.211Z"
+  },
+  {
+    "urlVelha": "https://www.sinop.mt.gov.br/transparencia",
+    "urlNova": "https://www.sinop.mt.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:15:45.982Z"
+  },
+  {
     "urlVelha": "https://www.sinop.mt.gov.br/transparencia/conselhos",
     "urlNova": "https://www.sinop.mt.gov.br/conselho-tutelar-de-sinop",
     "criterios": [
@@ -27192,6 +31122,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T14:13:04.541Z"
+  },
+  {
+    "urlVelha": "https://www.sobral.ce.gov.br/diario-oficial",
+    "urlNova": "https://www.sobral.ce.gov.br/diario/pesquisa/index",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:49:56.283Z"
+  },
+  {
+    "urlVelha": "https://www.sorocaba.sp.gov.br/cmdca",
+    "urlNova": "https://cidadania.sorocaba.sp.gov.br/cmdca/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:45:46.606Z"
   },
   {
     "urlVelha": "https://www.sorocaba.sp.gov.br/conselhos/codema",
@@ -27257,6 +31215,34 @@
     "data": "2026-10-16T14:42:11.759Z"
   },
   {
+    "urlVelha": "https://www.sousa.pb.gov.br/diario-oficial",
+    "urlNova": "https://www.sousa.pb.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T13:53:24.537Z"
+  },
+  {
+    "urlVelha": "https://www.sousa.pb.gov.br/transparencia",
+    "urlNova": "http://sousa.pb.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:08:15.430Z"
+  },
+  {
     "urlVelha": "https://www.sousa.pb.gov.br/transparencia/conselhos",
     "urlNova": "https://sousa.pb.gov.br/transparencia/conselho-municipal",
     "criterios": [
@@ -27279,6 +31265,59 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T15:53:22.123Z"
+  },
+  {
+    "urlVelha": "https://www.stf.jus.br/transparencia",
+    "urlNova": "https://portal.stf.jus.br/transparencia/",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-10-19T12:27:52.372Z"
+  },
+  {
+    "urlVelha": "https://www.stj.jus.br/estrategia",
+    "urlNova": "https://transparencia.stj.jus.br/gestao/objetivos-estrategicos/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:41:08.796Z"
+  },
+  {
+    "urlVelha": "https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional",
+    "urlNova": "https://www.stj.jus.br/sites/portalp/Inicio",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:41:03.640Z"
+  },
+  {
+    "urlVelha": "https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional/Presidencia",
+    "urlNova": "https://www.stj.jus.br/sites/portalp/Inicio",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:40:57.015Z"
   },
   {
     "urlVelha": "https://www.stj.jus.br/sites/portalp/Transparencia",
@@ -27388,6 +31427,20 @@
     "data": "2026-10-03T11:55:49.980Z"
   },
   {
+    "urlVelha": "https://www.tefe.am.gov.br/cmdca",
+    "urlNova": "https://tefe.am.gov.br/diario-oficial/materia/67053E32",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:00:46.699Z"
+  },
+  {
     "urlVelha": "https://www.tefe.am.gov.br/diario-oficial",
     "urlNova": "https://tefe.am.gov.br/diario-oficial",
     "criterios": [
@@ -27421,6 +31474,146 @@
     "data": "2026-10-03T18:30:55.187Z"
   },
   {
+    "urlVelha": "https://www.tjam.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:26.399Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:35.934Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/corregedoria",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:42.386Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:29.687Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/noticias/metas-nacionais-2026",
+    "urlNova": "https://www.tjam.jus.br/index.php/iniciativas/metas-apresentacao",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:31:43.463Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/noticias/posse-jomar-ricardo-saunders-fe",
+    "urlNova": "https://www.tjam.jus.br/index.php/menu/sala-de-imprensa/13266-desembargador-jomar-fernandes-toma-posse-como-presidente-do-tjam-para-bienio-2025-2026-em-sessao-solene-no-teatro-amazonas",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:30:40.931Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/ouvidoria",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:38.957Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:32.646Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/presidencia",
+    "urlNova": "https://www.tjam.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:43:11.756Z"
+  },
+  {
+    "urlVelha": "https://www.tjam.jus.br/transparencia/gestao-fiscal",
+    "urlNova": "https://www.tjam.jus.br/index.php/publicacoes-documentos/resolucoes-publicacoes-doc/transparencia/relatorio-de-gestao-fiscal",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:30:55.687Z"
+  },
+  {
     "urlVelha": "https://www.tjap.jus.br",
     "urlNova": "https://www.tjap.jus.br/portal/",
     "criterios": [
@@ -27443,6 +31636,34 @@
     "data": "2026-10-03T15:42:06.979Z"
   },
   {
+    "urlVelha": "https://www.tjba.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjba.jus.br/portal/1a-vice-presidencia-2/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T18:44:15.942Z"
+  },
+  {
+    "urlVelha": "https://www.tjba.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjba.jus.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:44:24.264Z"
+  },
+  {
     "urlVelha": "https://www.tjba.jus.br/ouvidoria",
     "urlNova": "https://ouvidoria.tjba.jus.br/",
     "criterios": [
@@ -27454,6 +31675,34 @@
     "data": "2026-10-03T18:36:44.696Z"
   },
   {
+    "urlVelha": "https://www.tjba.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjba.jus.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:44:29.936Z"
+  },
+  {
+    "urlVelha": "https://www.tjba.jus.br/presidencia",
+    "urlNova": "https://www.tjba.jus.br/portal/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:44:04.133Z"
+  },
+  {
     "urlVelha": "https://www.tjba.jus.br/transparencia/gestao-fiscal",
     "urlNova": "https://www.tjba.jus.br/transparencia/orcamentaria/gestao-fiscal/",
     "criterios": [
@@ -27463,6 +31712,34 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T10:24:33.700Z"
+  },
+  {
+    "urlVelha": "https://www.tjce.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjce.jus.br/central-conhecimento/vice-presidencia/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T18:44:47.951Z"
+  },
+  {
+    "urlVelha": "https://www.tjce.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjce.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:44:57.689Z"
   },
   {
     "urlVelha": "https://www.tjce.jus.br/custas-processuais",
@@ -27590,6 +31867,20 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T16:34:41.220Z"
+  },
+  {
+    "urlVelha": "https://www.tjmg.jus.br/noticias/metas-nacionais-2026",
+    "urlNova": "https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/metas-nacionais.htm",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:37:16.024Z"
   },
   {
     "urlVelha": "https://www.tjmg.jus.br/portal-tjmg/corregedoria/",
@@ -27780,6 +32071,20 @@
     "data": "2026-10-03T15:47:30.300Z"
   },
   {
+    "urlVelha": "https://www.tjpe.jus.br/1a-vice-presidencia",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:06.229Z"
+  },
+  {
     "urlVelha": "https://www.tjpe.jus.br/balcaovirtual",
     "urlNova": "https://www.tjpe.jus.br/tjpeatende/",
     "criterios": [
@@ -27791,6 +32096,174 @@
     "data": "2026-10-03T18:46:50.254Z"
   },
   {
+    "urlVelha": "https://www.tjpe.jus.br/corregedoria",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:39.291Z"
+  },
+  {
+    "urlVelha": "https://www.tjpe.jus.br/escola-da-magistratura",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:12.953Z"
+  },
+  {
+    "urlVelha": "https://www.tjpe.jus.br/ouvidoria",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:31.238Z"
+  },
+  {
+    "urlVelha": "https://www.tjpe.jus.br/ouvidoria-geral",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:24.519Z"
+  },
+  {
+    "urlVelha": "https://www.tjpe.jus.br/presidencia",
+    "urlNova": "https://portal.tjpe.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:54:46.746Z"
+  },
+  {
+    "urlVelha": "https://www.tjpe.jus.br/transparencia/gestao-fiscal",
+    "urlNova": "https://portal.tjpe.jus.br/web/transparencia/gestao-orcamentaria-e-financeira/relatorio-de-gestao-fiscal",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:39:32.405Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T18:55:49.125Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:56:08.383Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:53.240Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/ouvidoria",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:56:12.155Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:56:02.987Z"
+  },
+  {
+    "urlVelha": "https://www.tjpi.jus.br/presidencia",
+    "urlNova": "https://www.tjpi.jus.br/portaltjpi/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:55:45.263Z"
+  },
+  {
     "urlVelha": "https://www.tjpr.jus.br/corregedoria",
     "urlNova": "https://www.tjpr.jus.br/corregedoria-geral",
     "criterios": [
@@ -27800,6 +32273,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T18:51:44.854Z"
+  },
+  {
+    "urlVelha": "https://www.tjpr.jus.br/noticias/metas-nacionais-2026",
+    "urlNova": "https://www.tjpr.jus.br/estatistica/-/asset_publisher/P9zPBWoB8TPZ/content/metas-nacionais/31704",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:42:14.905Z"
   },
   {
     "urlVelha": "https://www.tjpr.jus.br/ouvidoria",
@@ -27850,6 +32337,20 @@
     "data": "2026-10-04T16:48:30.067Z"
   },
   {
+    "urlVelha": "https://www.tjrn.jus.br/balcaovirtual",
+    "urlNova": "https://tjrn.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:32.258Z"
+  },
+  {
     "urlVelha": "https://www.tjrn.jus.br/corregedoria",
     "urlNova": "https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-do-rio-grande-do-norte-tjrn/",
     "criterios": [
@@ -27861,6 +32362,34 @@
       "estrategia:titulo-orgao-filetype"
     ],
     "data": "2026-10-03T18:53:17.998Z"
+  },
+  {
+    "urlVelha": "https://www.tjrn.jus.br/escola-da-magistratura",
+    "urlNova": "https://tjrn.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:22.400Z"
+  },
+  {
+    "urlVelha": "https://www.tjrn.jus.br/ouvidoria-geral",
+    "urlNova": "https://tjrn.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:27.229Z"
   },
   {
     "urlVelha": "https://www.tjrn.jus.br/presidencia",
@@ -27876,6 +32405,62 @@
     "data": "2026-10-07T16:38:09.192Z"
   },
   {
+    "urlVelha": "https://www.tjrn.jus.br/transparencia/gestao-fiscal",
+    "urlNova": "https://tjrn.jus.br/vice-presidencia/relatorio-de-gestao/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:42:29.640Z"
+  },
+  {
+    "urlVelha": "https://www.tjro.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjro.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:47.479Z"
+  },
+  {
+    "urlVelha": "https://www.tjro.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjro.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:59.017Z"
+  },
+  {
+    "urlVelha": "https://www.tjro.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjro.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:51.717Z"
+  },
+  {
     "urlVelha": "https://www.tjro.jus.br/ouvidoria",
     "urlNova": "https://www.tjro.jus.br/ouvir/",
     "criterios": [
@@ -27885,6 +32470,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T18:55:21.982Z"
+  },
+  {
+    "urlVelha": "https://www.tjro.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjro.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:58:55.175Z"
   },
   {
     "urlVelha": "https://www.tjro.jus.br/transparencia/gestao-fiscal",
@@ -27898,6 +32497,90 @@
     "data": "2026-10-03T10:34:01.697Z"
   },
   {
+    "urlVelha": "https://www.tjrr.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:59:40.598Z"
+  },
+  {
+    "urlVelha": "https://www.tjrr.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:00:52.194Z"
+  },
+  {
+    "urlVelha": "https://www.tjrr.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:59:55.895Z"
+  },
+  {
+    "urlVelha": "https://www.tjrr.jus.br/ouvidoria",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:01:04.375Z"
+  },
+  {
+    "urlVelha": "https://www.tjrr.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:00:39.345Z"
+  },
+  {
+    "urlVelha": "https://www.tjrr.jus.br/presidencia",
+    "urlNova": "https://www.tjrr.jus.br/index.php/component/content/?Itemid=437",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T18:59:10.821Z"
+  },
+  {
     "urlVelha": "https://www.tjrs.jus.br",
     "urlNova": "https://www.tjrs.jus.br/novo/",
     "criterios": [
@@ -27907,6 +32590,132 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T15:51:34.527Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjrs.jus.br/novo/institucional/administracao/secretaria-da-1a-vice-presidencia/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T19:01:30.890Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:01:56.273Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/corregedoria",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:10.766Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:01:38.302Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/ouvidoria",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:03.751Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:01:46.838Z"
+  },
+  {
+    "urlVelha": "https://www.tjrs.jus.br/presidencia",
+    "urlNova": "https://www.tjrs.jus.br/novo/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:01:20.218Z"
+  },
+  {
+    "urlVelha": "https://www.tjsc.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjsc.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T19:02:18.786Z"
+  },
+  {
+    "urlVelha": "https://www.tjsc.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjsc.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:35.110Z"
   },
   {
     "urlVelha": "https://www.tjsc.jus.br/corregedoria",
@@ -27920,6 +32729,20 @@
     "data": "2026-10-03T19:04:51.369Z"
   },
   {
+    "urlVelha": "https://www.tjsc.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjsc.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:22.881Z"
+  },
+  {
     "urlVelha": "https://www.tjsc.jus.br/ouvidoria",
     "urlNova": "https://www.tjsc.jus.br/web/ouvidoria",
     "criterios": [
@@ -27929,6 +32752,20 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T19:04:47.250Z"
+  },
+  {
+    "urlVelha": "https://www.tjsc.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjsc.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:27.324Z"
   },
   {
     "urlVelha": "https://www.tjse.jus.br/1a-vice-presidencia",
@@ -27955,6 +32792,20 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T19:05:59.726Z"
+  },
+  {
+    "urlVelha": "https://www.tjse.jus.br/custas-processuais",
+    "urlNova": "https://www.tjse.jus.br/portal/servicos/judiciais/guias/recolhimento-judicial/itemlist/category/43-tabela-de-custas-e-emolumentos",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T12:52:00.168Z"
   },
   {
     "urlVelha": "https://www.tjse.jus.br/escola-da-magistratura",
@@ -28062,6 +32913,118 @@
     "data": "2026-10-03T19:06:12.179Z"
   },
   {
+    "urlVelha": "https://www.tjto.jus.br/1a-vice-presidencia",
+    "urlNova": "https://www.tjto.jus.br/?rel=outbound",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:chave-unica"
+    ],
+    "data": "2026-10-19T19:02:59.598Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/balcaovirtual",
+    "urlNova": "https://www.tjto.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:03:20.356Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/corregedoria",
+    "urlNova": "https://www.tjto.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:03:30.018Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/escola-da-magistratura",
+    "urlNova": "https://www.tjto.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:03:05.722Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/noticias/metas-nacionais-2026",
+    "urlNova": "https://www.tjto.jus.br/comunicacao/noticias/tjto-apresenta-resultados-positivos-no-cumprimento-das-metas-nacionais",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T12:53:33.857Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/ouvidoria-geral",
+    "urlNova": "https://www.tjto.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:03:13.207Z"
+  },
+  {
+    "urlVelha": "https://www.tjto.jus.br/presidencia",
+    "urlNova": "https://www.tjto.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:02:50.755Z"
+  },
+  {
+    "urlVelha": "https://www.toledo.pr.gov.br/cmdca",
+    "urlNova": "https://www.toledo.pr.gov.br/municipio/conselhos_municipais/direitos_crianca_adolescente",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T15:49:05.661Z"
+  },
+  {
     "urlVelha": "https://www.toledo.pr.gov.br/conselhos/codema",
     "urlNova": "https://www.toledo.pr.gov.br/municipio/conselhos_municipais/meio_ambiente/sobre-conselho",
     "criterios": [
@@ -28095,6 +33058,48 @@
       "estrategia:redirect"
     ],
     "data": "2026-10-03T19:12:57.957Z"
+  },
+  {
+    "urlVelha": "https://www.tst.jus.br/plenario-turmas",
+    "urlNova": "https://www.tst.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:05:39.909Z"
+  },
+  {
+    "urlVelha": "https://www.tst.jus.br/presidencia-direcao-geral",
+    "urlNova": "https://www.tst.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:05:35.743Z"
+  },
+  {
+    "urlVelha": "https://www.tst.jus.br/secretaria-geral",
+    "urlNova": "https://www.tst.jus.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T19:05:47.214Z"
   },
   {
     "urlVelha": "https://www.tucurui.pa.gov.br",
@@ -28196,6 +33201,76 @@
     "data": "2026-10-07T13:18:51.370Z"
   },
   {
+    "urlVelha": "https://www.umuarama.pr.gov.br/diario-oficial",
+    "urlNova": "https://www.umuarama.pr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T14:22:45.492Z"
+  },
+  {
+    "urlVelha": "https://www.umuarama.pr.gov.br/transparencia",
+    "urlNova": "https://www.umuarama.pr.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:14:18.368Z"
+  },
+  {
+    "urlVelha": "https://www.varginha.mg.gov.br/conselhos/codema",
+    "urlNova": "https://www.varginha.mg.gov.br/portal/secretarias/14/secretaria-municipal-de-meio-ambiente---semea",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:site-dominio"
+    ],
+    "data": "2026-10-19T15:39:47.620Z"
+  },
+  {
+    "urlVelha": "https://www.varginha.mg.gov.br/transparencia",
+    "urlNova": "https://www.varginha.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-orgao-filetype"
+    ],
+    "data": "2026-10-19T13:10:41.736Z"
+  },
+  {
+    "urlVelha": "https://www.veredinha.mg.gov.br/transparencia",
+    "urlNova": "https://www.camaraveredinha.mg.gov.br/",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "caminho-especifico",
+      "titulo-similar",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-19T22:03:54.093Z"
+  },
+  {
     "urlVelha": "https://www.vilhena.ro.gov.br",
     "urlNova": "https://vilhena.ro.gov.br/",
     "criterios": [
@@ -28240,19 +33315,6 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T09:02:20.587Z"
-  },
-  {
-    "urlVelha": "https://www.youtube.com/@TVAssembleiaRJ",
-    "urlNova": "https://www.al.es.gov.br/Comunicacao/TvAssembleia",
-    "criterios": [
-      "vivo-2xx",
-      "dominio-oficial",
-      "corpo-confere",
-      "titulo-nao-avaliado",
-      "tipo-igual-html",
-      "estrategia:titulo-exato"
-    ],
-    "data": "2026-10-05T09:06:54.634Z"
   },
   {
     "urlVelha": "https://www.youtube.com/@tvaleam",
@@ -28318,6 +33380,19 @@
       "estrategia:titulo-exato"
     ],
     "data": "2026-10-03T09:13:59.456Z"
+  },
+  {
+    "urlVelha": "https://www.youtube.com/@TVAssembleiaRJ",
+    "urlNova": "https://www.al.es.gov.br/Comunicacao/TvAssembleia",
+    "criterios": [
+      "vivo-2xx",
+      "dominio-oficial",
+      "corpo-confere",
+      "titulo-nao-avaliado",
+      "tipo-igual-html",
+      "estrategia:titulo-exato"
+    ],
+    "data": "2026-10-05T09:06:54.634Z"
   },
   {
     "urlVelha": "https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia",
