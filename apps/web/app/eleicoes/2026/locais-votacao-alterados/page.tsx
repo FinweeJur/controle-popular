@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import type { ReactElement } from "react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
@@ -56,6 +57,7 @@ const URL_FONTE_SIG = "https://sig.tse.jus.br/ords/dwapr/r/seai/sig-eleicao/home
 const URL_FONTE_ABERTO = "https://dadosabertos.tse.jus.br/dataset/eleitorado-2026";
 
 export default function LocaisVotacaoAlterados(): ReactElement {
+  notFound();
   const resumo = resumirPorUf(linhasAlteradas);
   const ufs = resumo.map((u) => u.uf);
   const contagemTipo = {
