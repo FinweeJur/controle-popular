@@ -18,6 +18,13 @@ $casa = 'C:\Users\teste\.config\mausbot'
 $log = Join-Path $casa 'relatorio-diario.log'
 $saida = Join-Path $casa 'ultimo-relatorio.txt'
 
+# O PowerShell 5.1 le a saida de processo nativo na codificacao do console
+# (CP850 nesta maquina). Sem isto, acento e emoji do relatorio chegam ao
+# Telegram como mojibake: "­ƒôà" no lugar do calendario (medido em 19/10/2026).
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+[Console]::OutputEncoding = $utf8
+$OutputEncoding = $utf8
+
 if (-not (Test-Path $casa)) { New-Item -ItemType Directory -Path $casa -Force | Out-Null }
 "$(Get-Date -Format o) inicio" | Add-Content $log
 
@@ -26,7 +33,9 @@ if (-not $texto.Trim()) {
     "$(Get-Date -Format o) relatorio vazio: nada enviado" | Add-Content $log
     exit 1
 }
-$texto | Set-Content $saida -Encoding utf8
+# Grava sem BOM: o caminho do Hermes envia o ARQUIVO, e BOM viraria um
+# caractere estranho no inicio da mensagem no Telegram.
+[IO.File]::WriteAllText($saida, $texto, $utf8)
 "$(Get-Date -Format o) relatorio gerado ($($texto.Length) caracteres)" | Add-Content $log
 
 $enviado = $false
