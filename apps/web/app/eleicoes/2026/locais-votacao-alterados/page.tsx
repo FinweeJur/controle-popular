@@ -87,7 +87,7 @@ const UFS: Uf[] = [
 
 function urlTre(uf: Uf): string {
   const sigla = uf.uf.toLowerCase();
-  return `https://www.tre-${sigla}.tse.jus.br/eleicoes/eleicoes-2026`;
+  return `https://www.tre-${sigla}.jus.br/eleicoes`;
 }
 
 export default function LocaisVotacaoAlterados(): ReactElement {
@@ -167,7 +167,7 @@ export default function LocaisVotacaoAlterados(): ReactElement {
                 </a>
               </BotaoBrilho>
               <p className="mt-2 break-all text-[11px] opacity-50">
-                tre-{uf.uf.toLowerCase()}.tse.jus.br
+                tre-{uf.uf.toLowerCase()}.jus.br
               </p>
             </div>
           ))}

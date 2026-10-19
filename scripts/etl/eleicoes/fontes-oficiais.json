@@ -1,0 +1,23 @@
+{
+  "_comentario": "Registro das fontes oficiais da pagina /eleicoes/2026/locais-votacao-alterados. Os 27 links de TRE (tre-<uf>.tse.jus.br/eleicoes/eleicoes-2026) sao derivados no script verificar-fontes.py e nao ficam aqui. bloqueia_robot=true significa que o host responde 403 a robot: o portal so APONTA o link, nunca coleta.",
+  "fontes": [
+    {
+      "id": "tse-sig-eleicao",
+      "url": "https://sig.tse.jus.br/ords/dwapr/r/seai/sig-eleicao/home",
+      "tipo": "TSE",
+      "bloqueia_robot": true
+    },
+    {
+      "id": "tse-dados-abertos",
+      "url": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2026",
+      "tipo": "TSE",
+      "bloqueia_robot": false
+    },
+    {
+      "id": "tse-eleicoes-2026",
+      "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026",
+      "tipo": "TSE",
+      "bloqueia_robot": true
+    }
+  ]
+}
