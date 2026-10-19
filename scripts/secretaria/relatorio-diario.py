@@ -176,17 +176,95 @@ def coletar_whatsapp(horas: int = 48) -> tuple[list[dict], list[dict], list[dict
 
 
 def ler_prazos() -> list[dict]:
-    """Prazos do arquivo local, ordenados por data."""
-    arquivo = DIR / "prazos.json"
-    if not arquivo.exists():
-        return []
-    try:
-        dados = json.loads(arquivo.read_text(encoding="utf-8"))
-    except ValueError:
-        return []
-    prazos = [p for p in dados.get("prazos", []) if p.get("data")]
+    """Prazos de TODAS as fontes: caderno local, arquivo antigo e Google Tasks.
+
+    As tarefas nao vem so do Google: chegam por WhatsApp, Telegram e e-mail e
+    ficam no caderno local (tarefas.json). A decisao do dono e registrar local
+    e nativo primeiro (19/10/2026).
+    """
+    prazos: list[dict] = []
+    # Caderno local novo.
+    arquivo = Path(os.environ.get("USERPROFILE", ".")) / ".config" / "mausbot" / "tarefas.json"
+    if arquivo.exists():
+        try:
+            dados = json.loads(arquivo.read_text(encoding="utf-8"))
+            for t in dados.get("tarefas", []):
+                if t.get("status") != "aberta" or not t.get("data"):
+                    continue
+                prazos.append(
+                    {
+                        "titulo": t.get("titulo", ""),
+                        "data": t.get("data", ""),
+                        "valor": t.get("valor") or "",
+                        "fonte": t.get("fonte", "local"),
+                    }
+                )
+        except ValueError:
+            pass
+    # Arquivo antigo, mantido para nao perder o que ja existia.
+    antigo = DIR / "prazos.json"
+    if antigo.exists():
+        try:
+            dados = json.loads(antigo.read_text(encoding="utf-8"))
+            for p in dados.get("prazos", []):
+                if p.get("data"):
+                    prazos.append(
+                        {
+                            "titulo": p.get("titulo", ""),
+                            "data": p["data"],
+                            "valor": p.get("valor", ""),
+                            "fonte": "prazos.json",
+                        }
+                    )
+        except ValueError:
+            pass
+    # Google Tasks: uma fonte entre varias, com falha silenciosa.
+    prazos.extend(ler_google_tasks())
     prazos.sort(key=lambda p: p.get("data", ""))
     return prazos
+
+
+def ler_google_tasks() -> list[dict]:
+    """Tarefas com vencimento no Google Tasks. Falha vira lista vazia."""
+    try:
+        from google.oauth2.credentials import Credentials
+        from googleapiclient.discovery import build
+    except ImportError:
+        return []
+    pasta = Path(os.environ.get("USERPROFILE", ".")) / ".config" / "mausbot" / "google"
+    if not pasta.exists():
+        return []
+    achados: list[dict] = []
+    for token in sorted(pasta.glob("token-*.json")):
+        try:
+            cred = Credentials.from_authorized_user_file(str(token))
+            servico = build("tasks", "v1", credentials=cred)
+            for lista in servico.tasklists().list(maxResults=10).execute().get("items", []):
+                tarefas = (
+                    servico.tasks()
+                    .list(
+                        tasklist=lista["id"],
+                        showCompleted=False,
+                        maxResults=50,
+                    )
+                    .execute()
+                    .get("items", [])
+                )
+                for t in tarefas:
+                    venc = (t.get("due") or "")[:10]
+                    if not venc:
+                        continue
+                    achados.append(
+                        {
+                            "titulo": t.get("title", ""),
+                            "data": venc,
+                            "valor": "",
+                            "fonte": "google-tasks",
+                        }
+                    )
+        except Exception:  # noqa: BLE001 - fonte extra nao derruba o relatorio
+            continue
+    return achados
 
 
 # ------------------------------------------------------------------ montagem
