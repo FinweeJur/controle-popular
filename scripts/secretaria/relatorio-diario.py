@@ -155,24 +155,32 @@ def coletar_google(dias: int, limite: int) -> list[dict]:
         return [{"conta": "?", "erro": f"coletor falhou: {erro}"}]
 
 
-def coletar_whatsapp(horas: int = 48) -> tuple[list[dict], list[dict], list[dict], str]:
-    """Le o servico local. Devolve (conversas, mencoes, audios, aviso)."""
+def coletar_whatsapp(horas: int = 48) -> tuple[list[dict], list[dict], list[dict], str, list[dict]]:
+    """Le o servico local. Devolve (conversas, mencoes, audios, aviso, grupos)."""
     try:
         with urllib.request.urlopen(f"{WHATSAPP}/conversas?horas={horas}", timeout=60) as r:
             dados = json.loads(r.read().decode("utf-8"))
         conversas = dados.get("conversas", [])
         aviso = dados.get("aviso", "")
     except (urllib.error.URLError, ValueError) as erro:
-        return [], [], [], f"servico fora do ar ({erro})"
+        return [], [], [], f"servico fora do ar ({erro})", []
 
-    def pegar(caminho: str) -> list[dict]:
+    def pegar(caminho: str, chave: str) -> list[dict]:
         try:
             with urllib.request.urlopen(f"{WHATSAPP}/{caminho}?horas={horas}", timeout=60) as r:
-                return json.loads(r.read().decode("utf-8")).get(caminho, [])
+                return json.loads(r.read().decode("utf-8")).get(chave, [])
         except (urllib.error.URLError, ValueError):
             return []
 
-    return conversas, pegar("mencoes"), pegar("audios"), aviso
+    # Grupos olham uma janela maior (7 dias): tema nao tem novidade todo dia.
+    grupos = pegar("grupos", "grupos") or []
+    if not grupos:
+        try:
+            with urllib.request.urlopen(f"{WHATSAPP}/grupos?horas=168", timeout=60) as r:
+                grupos = json.loads(r.read().decode("utf-8")).get("grupos", [])
+        except (urllib.error.URLError, ValueError):
+            grupos = []
+    return conversas, pegar("mencoes", "mencoes"), pegar("audios", "audios"), aviso, grupos
 
 
 def ler_prazos() -> list[dict]:
@@ -458,15 +466,100 @@ def revisar(texto: str) -> tuple[str, str]:
     return revisado, f"revisado por {MODELO_LOCAL}"
 
 
+def ler_temas() -> list[dict]:
+    """Temas acompanhados (temas.json): nome + palavras-chave."""
+    arquivo = DIR / "temas.json"
+    if not arquivo.exists():
+        return []
+    try:
+        dados = json.loads(arquivo.read_text(encoding="utf-8"))
+    except ValueError:
+        return []
+    return dados.get("temas", [])
+
+
+# Palavras que marcam "novidade importante" dentro de um grupo. A escolha e
+# do dono (19/10/2026): reuniao, deliberacao, encaminhamento, atividade
+# divulgada, acao necessaria, evento. Nao ha modelo aqui: e casamento de texto.
+GATILHOS = (
+    "reunião", "reuniao", "delibera", "encaminhamento", "atividade", "ação",
+    "acao necessaria", "ação necessária", "evento", "prazo", "urgente",
+    "assembleia", "pauta", "ata ", "convocação", "convocacao", "inscri",
+    "votação", "votacao", "aprovad", "decisão", "decisao", "mobiliza",
+)
+
+
+def bloco_temas(temas: list[dict], grupos_whats: list[dict], contas: list[dict]) -> list[str]:
+    """Acompanha cada tema: grupos casados, novidade importante e volume."""
+    if not temas:
+        return []
+    linhas = ["🎯 TEMAS EM ACOMPANHAMENTO"]
+    achou_algum = False
+    for tema in temas:
+        palavras = [p.lower() for p in tema.get("palavras", [])]
+        nome_tema = tema.get("nome", "tema")
+        achados: list[str] = []
+
+        # 1) Grupos do WhatsApp cujo nome casa com alguma palavra-chave.
+        for grupo in grupos_whats:
+            nome = (grupo.get("nome") or "").lower()
+            texto = (grupo.get("ultimo_trecho") or "").lower()
+            if not any(p in nome or p in texto for p in palavras):
+                continue
+            gatilho = next((g for g in GATILHOS if g in texto), "")
+            volume = grupo.get("nao_lidas", 0)
+            marca = ""
+            if gatilho:
+                marca = f" ⚠️ {gatilho.strip()}"
+            elif volume >= 20:
+                marca = " 💬 muita discussão"
+            achados.append(
+                f"   • {grupo.get('nome', 'grupo')} · {quando(grupo.get('quando', ''))}"
+                f" · {resumo(grupo.get('ultimo_trecho', ''), 80)}{marca}"
+            )
+
+        # 2) E-mails cujo remetente ou assunto casa com o tema.
+        for conta in contas:
+            if conta.get("erro"):
+                continue
+            for mail in conta.get("emails", []):
+                # Alerta automatico do proprio provedor nao e novidade de tema.
+                if not eh_pessoa(mail.get("de", "")):
+                    continue
+                alvo = f"{mail.get('de', '')} {mail.get('assunto', '')}".lower()
+                if not any(p in alvo for p in palavras):
+                    continue
+                gatilho = next((g for g in GATILHOS if g in alvo), "")
+                marca = f" ⚠️ {gatilho.strip()}" if gatilho else ""
+                achados.append(
+                    f"   • ✉️ {resumo(mail.get('assunto', ''), 70)} · {quando(mail.get('data', ''))}{marca}"
+                )
+
+        if achados:
+            achou_algum = True
+            linhas.append(f"• {nome_tema}: {len(achados)} novidade(s)")
+            linhas.extend(achados[:4])
+        else:
+            linhas.append(f"• {nome_tema}: sem novidade")
+    if not achou_algum:
+        linhas.append("• sem dado · nenhuma novidade nos temas hoje")
+    return linhas
+
+
 def montar(dias: int, limite_email: int) -> dict:
     contas = coletar_google(dias, limite_email)
-    conversas, mencoes, audios, aviso = coletar_whatsapp()
+    conversas, mencoes, audios, aviso, grupos_whats = coletar_whatsapp()
     prazos = ler_prazos()
+    temas = ler_temas()
     linhas: list[str] = []
     linhas += bloco_agenda(contas)
     linhas.append("")
     linhas += bloco_contatos(contas, conversas, mencoes, audios, aviso)
     linhas.append("")
+    temas_linhas = bloco_temas(temas, grupos_whats, contas)
+    if temas_linhas:
+        linhas += temas_linhas
+        linhas.append("")
     linhas += bloco_prazos(prazos)
     linhas.append("")
     linhas += bloco_sugestoes(contas, conversas, prazos)
@@ -480,6 +573,8 @@ def montar(dias: int, limite_email: int) -> dict:
         "mencoes": len(mencoes),
         "audios": len(audios),
         "prazos": len(prazos),
+        "temas": len(temas),
+        "grupos": len(grupos_whats),
         "aviso_whatsapp": aviso,
     }
 
