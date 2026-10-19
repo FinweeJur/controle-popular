@@ -12,6 +12,8 @@
 - [Por que determinístico](#por-que-determinístico)
 - [Arquitetura](#arquitetura)
 - [Campos de cada linha](#campos-de-cada-linha-especificação-do-dono-18102026)
+- [Estilo da saída](#estilo-da-saída-regra-do-dono-18102026)
+- [Revisão por LLM](#revisão-por-llm-opcional-nunca-obrigatória)
 - [Os quatro blocos, bloco a bloco](#os-quatro-blocos-bloco-a-bloco)
 - [Onde estão os prazos](#onde-estão-os-prazos)
 - [Entrega e agendamento](#entrega-e-agendamento)
@@ -86,6 +88,50 @@ Regra de honestidade: a proposta **não promete o que o dono não disse** — na
 de "está pago", "está resolvido". Ela apenas acusa recebimento e diz o próximo
 passo do próprio dono.
 
+## Estilo da saída (regra do dono, 18/10/2026)
+
+O relatório é lido no celular, muitas vezes sob pressão. O texto obedece à
+regra de fala do AGENTS.md §12 e a três exigências extras:
+
+- **Quebra de linha sempre:** um campo por linha; nunca um parágrafo compacto.
+- **Frase curta e oração direta:** no máximo 13 palavras; ordem
+  sujeito → verbo → objeto ("Maria escreveu hoje às 20h31").
+- **Emoji ligado ao tema**, nunca decorativo:
+
+| Emoji | Onde |
+|---|---|
+| 📅 | bloco AGENDA |
+| 📩 | bloco CONTATOS |
+| ⏰ | bloco PRAZOS |
+| 💡 | bloco SUGESTÕES |
+| 💬 / ✉️ | canal WhatsApp / canal Gmail |
+| 📍 | endereço do evento |
+| 🔗 | link do evento |
+| 💰 | pagamento, fatura, boleto |
+| 🔥 | urgente ou vence hoje |
+| ✅ / ⚠️ / ❌ | ok, atenção, falha na coleta |
+
+- **Português correto:** concordância verbal e nominal, acentuação e crase
+  conforme a norma. O gerador escreve certo por construção; o revisor confere.
+
+## Revisão por LLM (opcional, nunca obrigatória)
+
+O relatório **nasce pronto e correto** sem modelo. A revisão por IA é uma
+segunda passada, ligada por `--revisar`, para melhorar ritmo, emoji e
+clareza — jamais para criar fato.
+
+| Regra | Detalhe |
+|---|---|
+| Quando liga | só com `--revisar`; desligada por padrão |
+| Onde roda | **modelo local (Ollama)** — o relatório tem dado pessoal |
+| O que pode | reescrever frase, quebrar linha, trocar emoji, corrigir gramática |
+| O que não pode | mudar número, nome, data, hora, endereço ou valor; inventar fato; opinar |
+| Trava | antes/depois passam por um **diferenças de fatos**: todo número, nome, data e endereço do original precisa reaparecer no texto revisado; faltando um, a revisão é descartada e vale o original |
+| Registro | a saída diz se foi revisada, por qual modelo e a hora |
+
+Assim o dado nunca depende do humor do modelo: se a revisão falhar, o dono
+recebe o relatório determinístico, que é a fonte da verdade.
+
 ## Os quatro blocos, bloco a bloco
 
 1. **AGENDA** — eventos de hoje e dos próximos 7 dias, agrupados por dia,
@@ -143,6 +189,9 @@ Não há fonte pronta hoje. Três degraus, do mais simples ao mais completo:
 5. WhatsApp fora do ar não derruba o relatório: bloco 2 avisa que o serviço
    caiu e segue.
 6. Testável com fixtures: nenhum teste toca a rede.
+7. Estilo conferido: uma ideia por linha, frase ≤13 palavras, emoji do tema.
+8. Com `--revisar`, a trava de fatos barra qualquer revisão que perca um
+   número, nome, data ou endereço.
 
 ## Etapas
 
@@ -151,9 +200,11 @@ Não há fonte pronta hoje. Três degraus, do mais simples ao mais completo:
 2. `scripts/secretaria/relatorio-diario.py` — monta os 4 blocos a partir do
    coletor Google e do serviço de WhatsApp.
 3. `--json` e testes com fixtures (sem rede).
-4. Ligação com o `envia-telegram.py` e teste de ponta a ponta no celular.
-5. Tarefa no **Task Scheduler** às 19:45, com log local.
-6. Doc atualizado com a primeira medição real.
+4. Estilo: quebra de linha, frase curta, SVO, emoji por tema (tabela acima).
+5. `--revisar` com modelo local + trava de fatos (diferenças antes/depois).
+6. Ligação com o `envia-telegram.py` e teste de ponta a ponta no celular.
+7. Tarefa no **Task Scheduler** às 19:45, com log local.
+8. Doc atualizado com a primeira medição real.
 
 ## Riscos medidos e mitigação
 
