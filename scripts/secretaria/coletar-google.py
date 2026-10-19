@@ -28,6 +28,13 @@ import json
 import sys
 from pathlib import Path
 
+# O console do Windows nasce em cp1252; acento e emoji no JSON derrubavam o
+# script com UnicodeEncodeError (medido em 18/10/2026, na rotina da
+# Secretaria). Forcar UTF-8 na saida resolve sem depender de variavel de
+# ambiente de quem chama.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 DIR_PADRAO = Path.home() / ".config" / "mausbot" / "google"
 
 
