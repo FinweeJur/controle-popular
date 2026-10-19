@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Tipos e helpers puros das seções em locais de votação alterados
  * (Eleições 2026, TSE — dado coletado por
  * `scripts/etl/eleicoes/coletar-locais-votacao-2026.py`).
  *
  * Por que existe: a página `/eleicoes/2026/locais-votacao-alterados` e
  * seu route handler (`dados/[arquivo]/route.ts`) precisam das MESMAS
- * interfaces e da MESMA fórmula de resumo; centralizar aqui evita que o
+ * interfaces e da MESMA fórmula de resumo (deduplicada por UF, zona e seção, valendo o registro do 2º turno); centralizar aqui evita que o
  * ETL mude a forma sem o `tsc` reclamar, e os testes ao lado
  * (`locais-votacao-2026.test.ts`) travam a fórmula.
  *
@@ -87,3 +87,4 @@ export function resumirPorUf(linhas: SecaoAlterada[]): ResumoUf[] {
 export function resumoMunicipio(linha: SecaoAlterada): string {
   return `${linha.m}/${linha.u}`;
 }
+

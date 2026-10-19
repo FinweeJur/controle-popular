@@ -1,4 +1,4 @@
-"""
+﻿"""
 ETL de locais de votacao alterados — Eleicoes 2026 (TSE).
 
 O que faz: baixa o arquivo oficial `eleitorado_local_votacao_2026.zip`
@@ -103,9 +103,19 @@ def classificar(linha: dict[str, str]) -> str:
 
 
 def processar(caminho_zip: Path) -> dict[str, Any]:
-    """Le o zip oficial e devolve a colecao compacta de secoes alteradas."""
-    linhas: list[dict[str, Any]] = []
-    total = 0
+    """Le o zip oficial e devolve a colecao compacta de secoes alteradas.
+
+    Cada secao aparece DUas vezes no CSV oficial (uma por turno: "1o
+    Turno" e "2o Turno" — medido em 18/10/2026: 1.034.358 linhas =
+    517.179 secoes x 2, conferido contra a proporcao oficial do TSE de
+    0,87% para 4.352 secoes alteradas no 2o turno, Uol 18/10/2026).
+    Fica UM registro por secao (UF, zona, secao); quando os dois turnos
+    existem, vale o registro do 2o turno (o util para o eleitor em
+    25/10/2026). Linhas sem turno marcam no campo `g`.
+    """
+    por_chave: dict[tuple, Any] = {}
+    vistas: set[tuple] = set()
+    total_secoes = 0
     zip_data = zipfile.ZipFile(caminho_zip)
     nomes_csv = [n for n in zip_data.namelist() if n.endswith(".csv")]
     gerado = ""
@@ -118,27 +128,40 @@ def processar(caminho_zip: Path) -> dict[str, Any]:
             texto = io.TextIOWrapper(bruto, encoding="latin-1", newline="")
             leitor = csv.DictReader(texto, delimiter=";")
             for registro in leitor:
-                total += 1
                 if not gerado:
                     gerado = (registro.get("DT_GERACAO") or "").strip()
                     hora = (registro.get("HH_GERACAO") or "").strip()
+                chave = (
+                    uf,
+                    (registro.get("NM_MUNICIPIO") or "").strip(),
+                    int((registro.get("NR_ZONA") or "0") or 0),
+                    int((registro.get("NR_SECAO") or "0") or 0),
+                )
+                if chave not in vistas:
+                    vistas.add(chave)
+                    total_secoes += 1
                 if not eh_alterada(registro):
                     continue
-                linhas.append(
-                    {
-                        "u": uf,
-                        "m": (registro.get("NM_MUNICIPIO") or "").strip(),
-                        "z": int((registro.get("NR_ZONA") or "0") or 0),
-                        "s": int((registro.get("NR_SECAO") or "0") or 0),
-                        "e": int((registro.get("QT_ELEITOR_SECAO") or "0") or 0),
-                        "l": (registro.get("NM_LOCAL_VOTACAO") or "").strip(),
-                        "d": (registro.get("DS_ENDERECO") or "").strip(),
-                        "lo": (registro.get("NM_LOCAL_VOTACAO_ORIGINAL") or "").strip(),
-                        "do": (registro.get("DS_ENDERECO_LOCVT_ORIGINAL") or "").strip(),
-                        "t": classificar(registro),
-                    }
-                )
-    linhas.sort(key=lambda r: (r["u"], r["m"], r["z"], r["s"]))
+                turno = (registro.get("DS_ELEICAO") or "").strip()
+                item = {
+                    "u": uf,
+                    "m": (registro.get("NM_MUNICIPIO") or "").strip(),
+                    "z": int((registro.get("NR_ZONA") or "0") or 0),
+                    "s": int((registro.get("NR_SECAO") or "0") or 0),
+                    "e": int((registro.get("QT_ELEITOR_SECAO") or "0") or 0),
+                    "l": (registro.get("NM_LOCAL_VOTACAO") or "").strip(),
+                    "d": (registro.get("DS_ENDERECO") or "").strip(),
+                    "lo": (registro.get("NM_LOCAL_VOTACAO_ORIGINAL") or "").strip(),
+                    "do": (registro.get("DS_ENDERECO_LOCVT_ORIGINAL") or "").strip(),
+                    "t": classificar(registro),
+                    "g": 2 if "2" in turno else 1,
+                }
+                anterior = por_chave.get((item["u"], item["m"], item["z"], item["s"]))
+                if anterior is None or (item["g"] == 2 and anterior["g"] != 2):
+                    por_chave[(item["u"], item["m"], item["z"], item["s"])] = item
+    linhas = sorted(
+        por_chave.values(), key=lambda r: (r["u"], r["m"], r["z"], r["s"])
+    )
     return {
         "fonte": {
             "orgao": "Tribunal Superior Eleitoral (TSE)",
@@ -147,7 +170,7 @@ def processar(caminho_zip: Path) -> dict[str, Any]:
             "dataset": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2026",
         },
         "geradoEm": f"{gerado} {hora}".strip(),
-        "totalSecoes": total,
+        "totalSecoes": total_secoes,
         "secoesAlteradas": len(linhas),
         "linhas": linhas,
     }
@@ -171,3 +194,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

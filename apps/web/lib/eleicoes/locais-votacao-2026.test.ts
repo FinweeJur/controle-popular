@@ -10,9 +10,12 @@ import { colecao, linhasAlteradas, resumirPorUf } from "./locais-votacao-2026";
 describe("locais-votacao-2026", () => {
   it("a coleção tem carimbo de geração e contagem coerente", () => {
     expect(colecao.geradoEm).toMatch(/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$/);
-    expect(colecao.totalSecoes).toBeGreaterThan(1_000_000);
+    // 517.179 seções únicas (deduplicadas por turno) — conferido contra a
+    // proporção oficial do TSE: 4.352 seções alteradas = 0,87% (Uol, 18/10/2026).
+    expect(colecao.totalSecoes).toBeGreaterThan(500_000);
+    expect(colecao.totalSecoes).toBeLessThan(600_000);
     expect(colecao.secoesAlteradas).toBe(linhasAlteradas.length);
-    expect(colecao.linhas.length).toBeGreaterThan(10_000);
+    expect(colecao.linhas.length).toBeGreaterThan(5_000);
   });
 
   it("toda linha alterada de verdade: difere do original em algo", () => {

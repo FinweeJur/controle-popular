@@ -28,7 +28,8 @@ import { formatarNumeroBR } from "@/lib/utilitarios/calculos";
  * colunas `*_ORIGINAL` que registram o local de origem.
  *
  * Arquitetura (mesma de `gastos-campanha`): a tabela grande
- * (12.625 linhas) NÃO entra como props de cliente (AGENTS.md § 5.1) —
+  * (6.791 seções únicas) NÃO entra como props de cliente (AGENTS.md § 5.1)
+ —
  * é fatiada em `dados/[arquivo]/route.ts` e baixada pelo navegador via
  * `TabelaEstatica`. Aspas curvas em texto JSX: `react/no-unescaped-entities`
  * rejeita a aspa reta em texto corrente.
@@ -193,6 +194,17 @@ export default function LocaisVotacaoAlterados(): ReactElement {
             endereço.
           </li>
           <li>Espaços residuais não contam como mudança — só alteração real entra.</li>
+          <li>
+            Cada seção aparece duas vezes no CSV oficial (uma por turno); fica o
+            registro do 2º turno (o que vale para 25/10/2026) — coleção deduplicada
+            por UF + zona + seção.
+          </li>
+          <li>
+            O TSE anunciou 4.352 seções com endereço mudado ENTRE os dois turnos
+            (0,87% — Uol, 18/10/2026); aqui são 6.791 seções a mais em contexto:
+            a janela é desde o registro ORIGINAL do arquivo oficial, que cobre
+            também alterações feitas antes do 1º turno e trocas de nome.
+          </li>
           <li>
             Rastreado no tempo: o carimbo de geração do arquivo TSE é a data exibida
             no topo; a coleta roda a cada 12 horas.
