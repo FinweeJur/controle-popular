@@ -1,0 +1,3 @@
+﻿chore(monitoramento): remove arquivo de mensagem temporario
+
+Co-Authored-By: opencode <noreply@opencode.ai>
