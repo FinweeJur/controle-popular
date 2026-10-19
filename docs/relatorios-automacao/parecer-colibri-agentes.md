@@ -1,6 +1,6 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
-**Data da Execução:** 16/10/2026, 05:32:27  
+**Data da Execução:** 19/10/2026, 05:32:55  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Ollama Local (http://localhost:11434)
 
@@ -8,7 +8,7 @@
 
 ## 1. Síntese Executiva
 
-- **Disponibilidade das Fontes Públicas (PicoClaw):** 97.6% (41 de 42 fontes operacionais).
+- **Disponibilidade das Fontes Públicas (PicoClaw):** 92.9% (39 de 42 fontes operacionais).
 - **Postura de Segurança & Conformidade (Hermes Agent):** 14 itens aprovados, 0 alertas, 0 falhas críticas.
 - **Proteção de Dados Pessoais (LGPD / Mod-11):** 100% de conformidade, zero CPFs identificados nos acervos publicados.
 - **Limites de Infraestrutura (Cloudflare Workers):** Nenhum arquivo excede o teto de 25 MiB.

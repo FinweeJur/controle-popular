@@ -1,24 +1,23 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-16T06:51:11.881Z
-- Duracao total: 11.6 min
+- Gerado em: 2026-10-19T07:36:30.730Z
+- Duracao total: 14.7 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
-- Total de URLs unicas testadas: 470
-- OK: 381
-- QUEBRADOS: 8
-- REDIRECTS: 30
-- INCONSISTENTES: 51
-- Propostas geradas: 12
-- Links sem proposta: 26
+- Total de URLs unicas testadas: 473
+- OK: 388
+- QUEBRADOS: 9
+- REDIRECTS: 26
+- INCONSISTENTES: 50
+- Propostas geradas: 11
+- Links sem proposta: 24
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
-| https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
 | https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
@@ -37,12 +36,10 @@
 | https://pt.wikipedia.org/ | REDIRECT | 200 | https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal |
 | https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena | QUEBRADO | 404 | https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena |
 | https://pt.wikipedia.org/wiki/Jacinto_Canek | QUEBRADO | 404 | https://pt.wikipedia.org/wiki/Jacinto_Canek |
-| https://sistemas.anatel.gov.br | REDIRECT | 200 | https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp |
+| https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
 | https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ | REDIRECT | 200 | https://site.ucdb.br/ |
 | https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
 | https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
-| https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
 | https://www.controlepopular.tech/ | QUEBRADO | 404 | https://www.controlepopular.tech/ |
 | https://www.controlepopular.tech/api/saude | QUEBRADO | 404 | https://www.controlepopular.tech/api/saude |
@@ -70,29 +67,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/congresso/almg/page.tsx
 
-### 2. https://api.salic.cultura.gov.br
-
-```diff
-- href="https://api.salic.cultura.gov.br"
-+ href="https://api.salic.cultura.gov.br/docs"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
-
-### 3. https://sistemas.anatel.gov.br
-
-```diff
-- href="https://sistemas.anatel.gov.br"
-+ href="https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
-
-### 4. https://falabr.cgu.gov.br
+### 2. https://falabr.cgu.gov.br
 
 ```diff
 - href="https://falabr.cgu.gov.br"
@@ -103,7 +78,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 5. https://www.cnmp.mp.br
+### 3. https://www.cnmp.mp.br
 
 ```diff
 - href="https://www.cnmp.mp.br"
@@ -114,7 +89,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 6. https://www.tjmg.jus.br
+### 4. https://www.tjmg.jus.br
 
 ```diff
 - href="https://www.tjmg.jus.br"
@@ -125,7 +100,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 7. https://www.mpmg.mp.br
+### 5. https://www.mpmg.mp.br
 
 ```diff
 - href="https://www.mpmg.mp.br"
@@ -136,7 +111,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 8. https://portal.trt3.jus.br
+### 6. https://portal.trt3.jus.br
 
 ```diff
 - href="https://portal.trt3.jus.br"
@@ -147,7 +122,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 9. https://www.trf6.jus.br
+### 7. https://www.trf6.jus.br
 
 ```diff
 - href="https://www.trf6.jus.br"
@@ -158,7 +133,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 10. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 8. https://revendedoresapi.anp.gov.br/swagger/index.html
+
+```diff
+- href="https://revendedoresapi.anp.gov.br/swagger/index.html"
++ href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf"
+```
+
+Confianca: media
+Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
+Origem: apps/web/lib/linkmender/busca.test.ts
+
+### 9. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -169,7 +155,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 11. https://museudainconfidencia.museus.gov.br/
+### 10. https://museudainconfidencia.museus.gov.br/
 
 ```diff
 - href="https://museudainconfidencia.museus.gov.br/"
@@ -180,7 +166,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 12. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+### 11. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
 
 ```diff
 - href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
@@ -197,7 +183,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
@@ -216,22 +201,23 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://pt.wikipedia.org/ (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
-- https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br/ambiental/crimes-socioambientais (200) — dominio nao governamental — correcao manual
 - https://news.google.com/ (200) — dominio nao governamental — correcao manual
 
 ## Inconsistentes (nao verificados, sem proposta)
 
+- https://aedasmg.org/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-0425/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-0524/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-1225/ (rede) — erro de rede: fetch failed
+- https://api.salic.cultura.gov.br (rede) — erro de rede: This operation was aborted
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
-- https://backup.controlepopular.com.br/ (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
-- https://backup.controlepopular.com.br/api/saude (502) — status HTTP 502 (nem ok, nem quebrado, nem redirect)
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
-- https://feam.br/documents/d/feam/lista-de-barragens-2024-xlsx (rede) — erro de rede: This operation was aborted
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
@@ -239,18 +225,13 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
-- https://revendedoresapi.anp.gov.br/swagger/index.html (rede) — erro de rede: This operation was aborted
-- https://servicodados.ibge.gov.br/api/docs/localidades (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/29/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/43/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v1/localidades/estados/MG/municipios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (rede) — erro de rede: fetch failed
+- https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
+- https://sistemas.anatel.gov.br (rede) — erro de rede: fetch failed
 - https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
-- https://www.brasildefato.com.br/2016/04/18/ato-em-governador-valadares-mg-denuncia-descaso-da-samarco-com-atingidos/ (rede) — erro de rede: This operation was aborted
+- https://www.aedasmg.org (rede) — erro de rede: fetch failed
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (rede) — erro de rede: This operation was aborted
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
@@ -272,6 +253,8 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
 - https://x (rede) — erro de rede: fetch failed
+- https://x.gov.br (rede) — erro de rede: fetch failed
+- https://x.gov.br/transparencia (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
 ---
