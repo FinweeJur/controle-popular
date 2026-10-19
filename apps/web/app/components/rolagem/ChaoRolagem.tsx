@@ -31,20 +31,23 @@ import { usePathname } from "next/navigation";
 /** Folga entre a barra e o título aterrissado — respiro, não medição. */
 const GAPO_PX = 12;
 
+/** Uma barra colada no topo? Sticky/fixed em `top: 0`, com texto e altura
+ *  de barra. O corte 20–360 px recorta os spans vazios do rastro de cursor
+ *  (sem texto) e caixas do tamanho da página. */
+function ehBarraDeTopo(el: HTMLElement): boolean {
+  const cs = getComputedStyle(el);
+  if (cs.position !== "sticky" && cs.position !== "fixed") return false;
+  if (cs.top !== "0px") return false;
+  const h = el.offsetHeight;
+  if (h < 20 || h > 360) return false;
+  return !!el.textContent?.trim();
+}
+
 /** Teto: a maior barra sticky/fixed colada no topo (`top: 0`). */
 function medirChao(): number {
   let chao = 0;
   for (const el of document.querySelectorAll<HTMLElement>("body *")) {
-    const cs = getComputedStyle(el);
-    if (cs.position !== "sticky" && cs.position !== "fixed") continue;
-    if (cs.top !== "0px") continue;
-    const h = el.offsetHeight;
-    // 20–360 px: recorta os spans vazios do rastro de cursor (sem texto)
-    // e caixas do tamanho da página. Só barra de topo tem texto e altura
-    // de barra.
-    if (h < 20 || h > 360) continue;
-    if (!el.textContent?.trim()) continue;
-    if (h > chao) chao = h;
+    if (ehBarraDeTopo(el) && el.offsetHeight > chao) chao = el.offsetHeight;
   }
   return chao;
 }
@@ -62,7 +65,7 @@ export function ChaoRolagem() {
     let raf = 0;
     const reagendar = () => {
       cancelAnimationFrame(raf);
-      // 2 frames: o primeiro pin-ta o layout novo; o segundo pega a altura final.
+      // 2 frames: o primeiro pinta o layout novo; o segundo pega a altura final.
       raf = requestAnimationFrame(() => requestAnimationFrame(gravar));
     };
     reagendar();

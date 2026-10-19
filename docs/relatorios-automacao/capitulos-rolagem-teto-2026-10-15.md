@@ -4,7 +4,7 @@
 > **Domínio:** navegação (âncoras, sumário, capítulos, sticky)
 > **Última medição:** 2026-10-15
 > **Leitura estimada:** curta (5-10 min)
-> **Relacionados:** [PLANO-CI-RAG-INGESTAO-UNIDADES.md](../planos/PLANO-CI-RAG-INGESTAO-UNIDADES.md), [PADRAO-PAGINA-WIKI.md](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Relacionados:** [PLANO-CI-RAG-INGESTAO-UNIDADES.md](../historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md), [PADRAO-PAGINA-WIKI.md](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md), [ESTADO.md](../02-estado/ESTADO.md)
 > **Palavras-chave:** âncora, scroll-margin, navbar, sticky, subnav, capítulos, sumário, celular, overshoot, lenis
 
 ## Sumário
