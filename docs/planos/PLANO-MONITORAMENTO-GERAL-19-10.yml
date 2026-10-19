@@ -1,0 +1,65 @@
+# Plano: Monitoramento geral do portal (fase 7 ampliada)
+
+id: monitoramento-geral-portal
+data: 2026-10-19
+dono: Dev CP
+solicitante: EstrelaQueBrilha (fase 7 ampliada para todo o site)
+origem: >
+  Dono pediu revisao programada nao so de fontes/links, mas de todo o site:
+  paginas, dados, componentes e rotinas diarias, com criterios objetivos
+  das regras de informacao do projeto.
+
+objetivo: >
+  Verificar todo dia a saude do portal inteiro: rotas no ar, integridade
+  dos dados versionados, basico de SEO e elementos de pagina. Registrar
+  auditoria e bloquear merge de PR que quebre qualquer verificacao.
+
+escopo:
+  arquivos:
+    - scripts/monitoramento/verificar-geral.py     # rotina unica de conferencia
+    - .github/workflows/monitoramento-geral.yml    # rotina diaria + gate de PR
+    - docs/02-estado/AUDITORIA-GERAL.md            # log de mudancas
+  herda: PLANO-MONITORAMENTO-FONTES-19-10.yml (fontes TSE/TRE continua valendo)
+
+verificacoes:
+  rotas:
+    - "GET nas rotas-chave do portal em producao (www.controlepopular.com.br):"
+    - "home, /cidades, /ambiental, /paraopeba, /judiciario, /congresso,"
+    - "/editais, /estudos-rurais, /funcaosocialterra, /busca, /imprensa,"
+    - "/noticias, /documentacao, /termos, /status e"
+    - "/eleicoes/2026/locais-votacao-alterados"
+    - "OK: HTTP 200. CRITICO: qualquer 4xx/5xx ou falha de rede."
+  dados:
+    - "Todo apps/web/data/*.json precisa parsear com json.load."
+    - "OK: parse correto. CRITICO: arquivo corrompido ou ilegivel."
+    - "Avisos: arquivo vazio (0 bytes) e AVISO, nao critico."
+  seo:
+    - "robots.txt em producao responde 200 e declara linha Sitemap:."
+    - "sitemap.xml em producao responde 200 e comeca com xml."
+  componentes:
+    - "Pagina-chave retorna HTML com <title> nao vazio e"
+    - "<meta name=\"description\"/> presente."
+    - "OK: tem os dois. AVISO: falta description. CRITICO: falta title ou HTML vazio."
+
+criterios_objetivos:
+  - "OK: verificacao passou."
+  - "AVISO: degradacao que nao quebra o cidadao (403 em host robot-block, falta description). Nao bloqueia."
+  - "CRITICO: rota fora do ar, dado corrompido, SEO quebrado (robots/sitemap), pagina sem title. Bloqueia merge."
+  - "Ritmo: 1,5 s entre requisicoes por host; timeout de 15 s; User-Agent honesto FinweeJur/Github Artur colito; so leitura publica."
+
+rotina_diaria:
+  quando: cron 10:00 UTC (07:00 BRT), todo dia, 30 minutos depois da rotina de fontes
+  passos:
+    - "Executar python scripts/monitoramento/verificar-geral.py --atualizar-log"
+    - "Se aparecer CRITICO: commitar o log e avisar EstrelaQueBrilha e o dono"
+    - "Se tudo OK/AVISO: commitar o log apenas quando o resumo mudar"
+
+gate_de_merge:
+  quando: pull_request que altere app/, apps/web/app/, apps/web/data/ ou o proprio script
+  condicao_de_bloqueio: "qualquer verificacao em status CRITICO"
+  acao: "PR fica bloqueado ate a causa ser corrigida"
+
+verificacao:
+  - "python scripts/monitoramento/verificar-geral.py roda e sai com codigo 0"
+  - "log em docs/02-estado/AUDITORIA-GERAL.md cresce com data nova"
+  - "CI verde no PR"

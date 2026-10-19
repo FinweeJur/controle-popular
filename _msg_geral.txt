@@ -1,0 +1,13 @@
+﻿feat(monitoramento): ampliacao da fase 7 para todo o portal
+
+Plano geral cobre rotas em producao, integridade dos dados
+versionados, SEO (robots/sitemap) e componentes (title/description).
+
+- docs/planos/PLANO-MONITORAMENTO-GERAL-19-10.yml
+- scripts/monitoramento/verificar-geral.py
+- .github/workflows/monitoramento-geral.yml
+- docs/02-estado/AUDITORIA-GERAL.md
+
+Rodada inicial local: 16 rotas 200, 177 JSON parseados, 0 criticos.
+
+Co-Authored-By: opencode <noreply@opencode.ai>
