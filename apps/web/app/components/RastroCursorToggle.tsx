@@ -16,7 +16,9 @@
  * muda pelo TEXTO no chat do Seu Nonô, e o `RastroCursor` (layout raiz)
  * monta ou desmonta a corrente na mesma hora.
  *
- * Preferência compartilhada: `cp_rastro_cursor` (padrão ligado) com as
+ * Preferência compartilhada: `cp_rastro_cursor` (padrão DESLIGADO — opt-in
+ * pedido pelo dono em 19/10/2026, com o botão mágico flutuante
+ * `RastroCursorBotao.tsx`) com as
  * funções exportadas pelo próprio `RastroCursor.tsx` — mesma chave, mesmo
  * evento, nunca reescritos aqui.
  */
@@ -39,11 +41,11 @@ function inscrever(cb: () => void) {
   return () => window.removeEventListener(EVENTO_RASTRO_CURSOR, cb);
 }
 
-/** Snapshot do servidor: trilha ligada (é o padrão) — o cliente corrige
- *  depois da hidratação se a pessoa tiver desligado, sem erro de
- *  hidratação (é o contrato do próprio `useSyncExternalStore`). */
+/** Snapshot do servidor: trilha desligada (é o padrão desde 19/10/2026,
+ *  quando virou opt-in pelo botão mágico) — o cliente corrige depois da
+ *  hidratação se a pessoa tiver ligado, sem erro de hidratação. */
 function snapshotServidor(): boolean {
-  return true;
+  return false;
 }
 
 export default function RastroCursorToggle() {

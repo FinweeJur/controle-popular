@@ -14,7 +14,8 @@ import FaixaDesenvolvimento from "@/app/components/FaixaDesenvolvimento";
 import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
-import { CompanheiroFlutuante } from "@/app/components/CompanheiroFlutuante";
+import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
+import RastroCursorBotao from "@/app/components/RastroCursorBotao";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
 import CursorTema from "@/app/components/CursorTema";
@@ -366,10 +367,14 @@ export default function RootLayout({
               age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
               no-op. Ver `PonteCompanheiro.tsx`. */}
           <PonteCompanheiro />
-          {/* Companheiro Seu Nonô — galinha flutuante e arrastável no canto
-              inferior esquerdo, acima do widget do Seu Nonô. Roda sozinha:
-              clicar abre o assistente; sem código nem pareamento com app. */}
-          <CompanheiroFlutuante />
+          {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (pedido do
+              dono, 19/10/2026): não nasce sozinho; entra só quando a pessoa
+              clicar no botão dele. Ver `CompanheiroOpcional.tsx`. */}
+          <CompanheiroOpcional />
+          {/* Interruptor flutuante do rastro do mouse: botão mágico que
+              pulsa devagar enquanto a trilha está desligada. A trilha em si
+              é opt-in. Ver `RastroCursorBotao.tsx`. */}
+          <RastroCursorBotao />
         </ThemeProvider>
       </body>
     </html>

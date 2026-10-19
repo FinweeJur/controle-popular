@@ -55,13 +55,14 @@
  *   ganho de leitura é só CSS barato (tamanho fixo por elo, calculado uma
  *   vez a partir de `--i`, e transition de opacidade que roda no
  *   compositor) — nenhum trabalho novo de JS por quadro;
- * - a trilha pode ser DESATIVADA pelo visitante (pedido do dono,
- *   10/10/2026): preferência `cp_rastro_cursor` no `localStorage`
- *   (padrão ligado), trocada pelo botão do cartão "Acessibilidade" do
- *   Seu Nonô ou por pedido em texto ("desativar trilha do cursor"). A
- *   troca viaja pelo evento `cp:rastro-cursor` e monta/desmonta a
- *   corrente na hora, sem recarregar a página — desligada, não existe
- *   elo nem quadro nenhum rodando;
+ * - a trilha agora é OPT-IN (pedido do dono, 19/10/2026): preferência
+ *   `cp_rastro_cursor` no `localStorage` (padrão DESLIGADO; só `on` liga),
+ *   trocada pelo botão mágico flutuante (`RastroCursorBotao.tsx`), pelo
+ *   cartão "Acessibilidade" do Seu Nonô ou por pedido em texto
+ *   ("desativar trilha do cursor"). A troca viaja pelo evento
+ *   `cp:rastro-cursor` e monta/desmonta a corrente na hora, sem
+ *   recarregar a página — desligada, não existe elo nem quadro nenhum
+ *   rodando;
  * - é decorativo: `aria-hidden`, `pointer-events: none`, sem captura de
  *   clique; respeita `prefers-reduced-motion` e não liga em tela de toque.
  *
@@ -72,10 +73,10 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Preferência da trilha — pedido do dono (10/10/2026): o visitante precisa
- * poder DESATIVAR o efeito, pelo cartão "Acessibilidade" do Seu Nonô ou
- * pedindo por texto ("desativar trilha do cursor"). Padrão da rolagem suave
- * (`cp_rolagem_suave`): ligada por padrão, só o valor `off` desliga.
+ * Preferência da trilha — pedido do dono (19/10/2026): a trilha é OPT-IN,
+ * ligada pelo botão mágico flutuante (`RastroCursorBotao.tsx`). Antes
+ * (10/10/2026) era "ligada por padrão, o visitante podia desativar". Padrão
+ * trocado: só o valor `on` liga.
  *
  * O aviso de troca viaja pela janela (evento `cp:rastro-cursor`) porque os
  * dois consumidores são irmãos no DOM: o componente mora no layout raiz e o
@@ -90,13 +91,15 @@ export const EVENTO_RASTRO_CURSOR = "cp:rastro-cursor";
  * valor aqui nunca vaza para o HTML.
  */
 export function lerRastroCursor(): boolean {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   try {
-    return localStorage.getItem(CHAVE_RASTRO_CURSOR) !== "off";
+    // Padrão DESLIGADO (pedido do dono, 19/10/2026): a trilha só existe se
+    // a pessoa ligar pelo botão mágico. Só o valor `on` liga.
+    return localStorage.getItem(CHAVE_RASTRO_CURSOR) === "on";
   } catch {
     // localStorage indisponível (modo privado, desabilitado): mantém o
-    // padrão ligado — mesma degradação inofensiva de CvdToggle.
-    return true;
+    // padrão desligado — ninguém ganha um efeito que não pediu.
+    return false;
   }
 }
 
