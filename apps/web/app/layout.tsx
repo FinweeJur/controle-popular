@@ -18,6 +18,7 @@ import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
 import RastroCursorBotao from "@/app/components/RastroCursorBotao";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
+import CliqueNegado from "@/app/components/CliqueNegado";
 import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import { InterceptadorLinks } from "@/app/components/InterceptadorLinks";
@@ -375,6 +376,10 @@ export default function RootLayout({
               pulsa devagar enquanto a trilha está desligada. A trilha em si
               é opt-in. Ver `RastroCursorBotao.tsx`. */}
           <RastroCursorBotao />
+          {/* X de negação no clique fora de botões (pedido do dono,
+              19/10/2026): recado visual de que o alvo é só um card, sem
+              ação. Ver `CliqueNegado.tsx`. */}
+          <CliqueNegado />
         </ThemeProvider>
       </body>
     </html>
