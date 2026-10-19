@@ -1,0 +1,5 @@
+{
+  "_comentario": "Prazos e pagamentos do dono. A Secretaria le este arquivo no bloco PRAZOS. Edite a mao ou peca a ela para anotar.",
+  "_formato": "{ titulo, data (AAAA-MM-DD), valor (opcional), tipo (pagamento|tarefa|evento) }",
+  "prazos": []
+}
