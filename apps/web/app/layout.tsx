@@ -28,6 +28,7 @@ import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
 import RolagemSuave from "@/app/components/rolagem/RolagemSuave";
+import { ChaoRolagem } from "@/app/components/rolagem/ChaoRolagem";
 import FundoOnda from "@/app/components/react-bits/FundoOnda";
 import "./globals.css";
 
@@ -343,6 +344,10 @@ export default function RootLayout({
               cada clique. Ver `PlayerRadio.tsx`. */}
           <PlayerRadio />
         <IndicePagina />
+        {/* Teto real (header + subnav do hub) publicado em `--cp-chao`, lido
+            pelo scroll-margin-top das âncoras. Sem isso, título para sob a
+            barra em hub/colapso de menu (medido 15/10/2026). */}
+        <ChaoRolagem />
         {/* Capítulos da página (wiki lateral / scroll-spy): montado aqui
             para valer nas 100 rotas do catálogo sem editar página a página.
             Coleta os h2 do `main`; página com menos de 2 headings não ganha
