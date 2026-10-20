@@ -87,18 +87,20 @@ desta rodada e está identificado como tal.
 | Modelo 2 m, ponto conservador (época 2) | P **0,857** · R **0,429** · F1 **0,571** | [MEDICOES:902–904](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Limiar 2 m para P ≥ 0,90 | limiar **0,81** · P **1,000** · R **0,077** (3/39) | [MEDICOES: calibração 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Modelo 2 m 20/10 (246 limpos, GPU) | F1 **0,619** · P **0,812** · R **0,500** no limiar 0,54; **P ≥ 0,90 inalcançável** | [MEDICOES: segundo treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
+| Modelo 2 m 20/10 **com 16 hard negatives** | F1 **0,625** · P **0,645** · R **0,606**; **P ≥ 0,90** em 0,64 com **R 0,333** (11/1/22/90) | [MEDICOES: terceiro treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
+| Modelo 2 m 20/10 com 26 hard negatives | F1 **0,476** · P **0,556** · R **0,417**; não superou o de 16 | [MEDICOES: quarto treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Base 2 m limpa | 844 recortes: 207 positivos, 637 negativos, 163 cenas | [MEDICOES:884–887](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos 2 m | 536 `ok`; **209 limpos** em 19/10 | [MEDICOES:941](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
-| Positivos limpos ao fim da coleta | **251** (209 → 251; lote de 100 ainda rodando em 20/10) | medição local desta rodada; manifesto fora do repo |
+| Positivos limpos ao fim da coleta | **262** (209 → 262; lote de 100 concluído em 20/10) | medição local desta rodada; manifesto fora do repo |
 | Positivos 2 m pendentes | **~1.400** (1.503 sem corte em 19/10, menos o avanço de 20/10) | [MEDICOES:909](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Auditoria humana dos 30 mais fortes | **0/30** eram cava sem autorização; rio, lago, ilha, cidade, irrigação, pasto, desmate e nuvem | [ESTEIRA:40–48](../historico/planos/ESTEIRA-CAVAS.md) |
 | Falsos positivos do modelo | 1.109 de 3.137 negativos pontuados como cava em score ≥ 0,65 | [ESTEIRA:40–48](../historico/planos/ESTEIRA-CAVAS.md) |
 | Assinatura de "chão pelado" | mediana de solo nu **0,97** tanto em cava real quanto em falso positivo | [ESTEIRA:50–54](../historico/planos/ESTEIRA-CAVAS.md) |
 | Automação | 2 tarefas de 4 h: uma coleta negativo 8 m; outra aponta para `.cmd` inexistente; vigia de treino não está rodando (Startup existe, tarefa do Agendador ausente) | Agendador em 20/10; intenção em [`coleta.cmd:2`](../../scripts/oficina-cavas/coleta.cmd) e [`setup-vigia-treino-2m.py:34`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py) |
 
-**Status da execução em 20/10:** lote de 100 positivos 2 m rodando com 1 worker
-(251 limpos até aqui); na sequência entram 100 negativos difíceis da fonte
-`hard` (os falsos positivos do v7), porque só mais cava não melhorou a
+**Status da execução em 20/10:** lote de 100 positivos 2 m concluído
+(100/100, **262 limpos** com 1 worker); entram agora 100 negativos difíceis da
+fonte `hard` (os falsos positivos do v7), porque só mais cava não melhorou a
 precisão alta. Depois o manifesto é publicado, o vigia treina em GPU (CUDA do
 Hermes) e o limiar é calibrado por precisão. Nada disso muda o gate: o MVP só
 fecha com o funil completo.
@@ -117,8 +119,13 @@ Três leituras que mudam o plano:
   descoberta, o 2 m ainda é confirmação; a triagem continua no 8 m.
 - **Mais positivo sem negativo difícil não resolve.** O segundo treino 2 m
   (246 limpos, GPU) subiu o F1 para 0,619, mas **perdeu o ponto de P ≥ 0,90**.
-  O próximo treino tem de incluir os 1.109 falsos positivos do v7 como
-  negativos difíceis (lavoura, desmate, cidade, água), não só mais cavas.
+  O terceiro treino incluiu os primeiros falsos positivos do v7 como
+  negativos difíceis e **trouxe o ponto de volta**: P **0,917** com R
+  **0,333** no limiar 0,64 (12 candidatos, **1 falso positivo** no holdout).
+  O quarto treino, com 26 hard, caiu para F1 0,476 porque o split mudou e o
+  holdout é pequeno. **Decisão:** manter o modelo de 16 hard; antes de novo
+  treino, congelar o split e aumentar o holdout, não trocar o conjunto a cada
+  lote.
 - **O topo da fila atual é falso positivo.** 0/30 na auditoria humana é o
   dado mais importante da frente: o modelo aprendeu "chão pelado com borda"
   e confunde cava com lavoura, desmate e cidade. O MVP só fecha com 2 m,
@@ -131,7 +138,7 @@ o MVP; gate reprovado não se contorna com número.
 
 | Etapa | O que faz | Gate | Números e estimativa | Prazo |
 |---|---|---|---|---|
-| **1. Dados** | Congela o conjunto 2 m rotulado; corta só o que falta para o gate | **G1:** ≥ 300 positivos limpos e ≥ 300 negativos limpos, por cena | 222 positivos e 637 negativos limpos hoje; faltam ~78 positivos limpos, ~200 cortes, ~5 h de máquina | 1–2 semanas |
+| **1. Dados** | Congela o conjunto 2 m rotulado; corta só o que falta para o gate | **G1:** ≥ 300 positivos limpos e ≥ 300 negativos limpos, por cena | **262 positivos** e 637 negativos limpos em 20/10; faltam ~38 positivos, ~95 cortes, ~2 h de máquina | 1–2 semanas |
 | **2. Modelo** | Treina 2 m no recorte 224; calibra limiar por precisão | **G2:** P ≥ 0,80 no holdout por cena, com R reportado; se não passar, 8 m v12 fica como triagem e 2 m como confirmação | Base de 844 recortes; treino já roda em CPU; 6 épocas é o ponto de partida | 3–5 dias |
 | **3. Varredura** | 8 m v12 pontua as janelas de MG fora do SIGMINE; 2 m reconfere o topo | **G3:** 3.869 janelas pontuadas; top 200 reconferidas em 2 m; top 40 na fila humana | 3.869 janelas (`mining_age` com `dentro_sigmine=false`, [FONTES:845](../06-fontes/FONTES.md)); 200 cortes 2 m ≈ 4,7 h a 84 s cada | 1–2 semanas |
 | **4. Confirmação** | 2 de 3 métodos + revisão humana + checagem ANM/SEMAD/IBAMA | **G4:** 40 revisadas; 10–15 na lista curta; cada uma com método e consulta oficial registrados | 40 × ~20 min ≈ 13 h de revisão; documentação oficial consome mais que a imagem | 1–2 semanas |
@@ -282,14 +289,16 @@ máximo 2 casos por município.
 
 ### Desenho
 
-1. **Coleta 2 m no logon.** Uma tarefa `ControlePopular_Coleta2m`, gatilho
-   `ONLOGON`, python absoluto (o Agendador não herda o PATH do venv), um
-   worker, limite pequeno e retomável. Chama o gerador 2 m
+1. **Coleta 2 m no logon.** Uma entrada na pasta Startup
+   (`ControlePopular_Coleta2m.cmd`, porque o Agendador deste PC nega sem
+   admin), que chama `coleta-2m.cmd` e o supervisor. Python absoluto, um
+   worker, lote de 24 e retomada pelo checkpoint. Chama o gerador 2 m
    (`scripts/oficina-cavas/gerar-recortes-2m-rotulados.py`), não o coletor
    8 m.
-2. **Treino no logon.** Uma tarefa `ControlePopular_VigiaTreino2m`, também
-   `ONLOGON`, rodando o vigia em loop de 30 min com `--min 250`
-   ([`setup-vigia-treino-2m.py:34–36`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py)).
+2. **Treino no logon.** Um `.bat` na pasta Startup
+   (`ControlePopular_VigiaTreino2m.bat`), com `cd`, janela minimizada e log,
+   rodando o vigia em loop de 30 min com `--min 250`
+   ([`setup-vigia-treino-2m.py:60–80`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py)).
    O vigia já adia sozinho quando falta dado limpo; disparar cedo não treina
    torto.
 3. **Locks contra duplicidade.** Lock próprio em
@@ -313,12 +322,12 @@ máximo 2 casos por município.
 
 ### Ordem de conserto
 
-1. Consultar o Agendador e listar as tarefas de cavas.
-2. Apagar a tarefa com `.cmd` inexistente.
-3. Registrar a coleta 2 m com python absoluto.
-4. Registrar o vigia de treino.
-5. Rodar um ciclo `--once --dry-run` do vigia.
-6. Só então ligar o loop.
+1. Corrigir o `.bat` do vigia para gravar log e não usar `start` solto.
+2. Criar `coleta-2m.cmd` e a entrada de Startup da coleta.
+3. Testar o supervisor com `--meta` já atingido (sai sem coletar).
+4. Rodar um ciclo `--once --dry-run` do vigia.
+5. Conferir os locks (`coleta.lock`, `supervisor.lock`, `vigia.lock`).
+6. Só então deixar o loop ligado no logon.
 
 ## Riscos e regra editorial
 
