@@ -879,6 +879,42 @@ Três medições do mesmo dia, todas no `home-pc` e na VM `cp-vm`:
 - rodada de verificação com o conserto: 100 candidatos sorteados,
   em andamento no fecho desta sessão.
 
+## Treino 2 m com os negativos novos (19/10/2026)
+
+Primeira rodada do `treinar-cavas-2m.py` depois que o cache local passou a ter
+negativos limpos. Dado medido no disco: **844 recortes limpos** (nuvem ≤ 0,30),
+sendo **207 positivos** e **637 negativos**, em **163 cenas**. Split por cena:
+683 no treino (179 pos / 504 neg) e **161 na validação** (28 pos).
+
+Configuração: 6 épocas, `lr` 1e-3, `batch` 8, backbone Chinese-CLIP congelado
+(CPU, `torch 2.12.1+cpu`), mesma semente e mesmo split. Três entradas
+comparadas: o PNG inteiro (700 px → 224, **6,25 m/px**), recorte central de
+448 px (896 m → 224, **4 m/px**) e recorte central de 224 px (448 m → 224,
+**2 m/px nativo**). Saída em `%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\`.
+
+| entrada | melhor época | precisão | recall | F1 | tp/fp/fn/tn |
+|---|---|---|---|---|---|
+| PNG inteiro (6,25 m/px) | 1 | 0,769 | 0,357 | 0,488 | 10/3/18/130 |
+| recorte 448 px (4 m/px) | 5 | 0,600 | 0,536 | 0,566 | 15/10/13/123 |
+| **recorte 224 px (2 m/px)** | **5** | **0,548** | **0,607** | **0,576** | 17/14/11/119 |
+
+O pixel nativo confirma a hipótese do plano: F1 sobe de 0,488 para **0,576** e
+o recall de 0,357 para **0,607**. A precisão cai no ponto de melhor F1, mas a
+época 2 do recorte 224 teve **P 0,857 / R 0,429 / F1 0,571** — um ponto
+conservador que o seletor por F1 não guarda.
+
+Leitura: ainda **não comparável ao v12 de 8 m** (F1 0,804, outro holdout) e
+**não passa o gate** de precisão ≥ 0,80 no ponto de melhor F1. O gargalo
+principal segue sendo dado: dos 2.035 positivos do checkpoint de calibração,
+só **532** têm recorte 2 m `ok` (**1.503 ainda sem corte**), e apenas **207**
+passam o teto de nuvem. Próximos passos, nesta ordem: cortar mais positivos,
+calibrar o limiar com corte de precisão (≥ 0,80) e repetir com
+`--recorte 224`.
+
+Consertos no caminho: `modelo.eval()` no backbone congelado (features
+determinísticas, sem dropout), `loss.detach().item()` no lugar de
+`float(loss)` e a opção `--recorte` no treino.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)

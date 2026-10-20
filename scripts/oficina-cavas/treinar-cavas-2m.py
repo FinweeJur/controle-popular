@@ -23,6 +23,7 @@ um resumo versionado.
 
 Uso:
   python scripts/oficina-cavas/treinar-cavas-2m.py --epocas 6 --min 400
+  python scripts/oficina-cavas/treinar-cavas-2m.py --recorte 224  # 2 m/px
 """
 from __future__ import annotations
 
@@ -39,6 +40,8 @@ from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
 Ctx = namedtuple("Ctx", ["modelo", "cabeca", "disp", "otim"])
+Treino = namedtuple("Treino",
+                    ["epocas", "batch", "lr", "min_entradas", "recorte"])
 
 _RC = Path(__file__).resolve().parents[2]
 _DADOS = _RC / "scripts" / ".cache" / "cavas-2m"
@@ -106,11 +109,17 @@ def split_por_cena(itens: list[dict], frac_val: float, seed: int = 42):
 
 
 class Dataset2m(Dataset):
-    """Carga de PNG cinza 2 m -> tensor 3-canais (repetido) normalizado."""
+    """Carga de PNG cinza 2 m -> tensor 3-canais (repetido) normalizado.
 
-    def __init__(self, itens: list[dict], treino: bool):
+    `recorte` > 0 usa o pixel NATIVO de 2 m: corta o quadrado central antes de
+    redimensionar. Sem ele, 700 px (1.400 m) viram 224 px e o modelo enxerga
+    ~6,25 m/px — quase o mesmo que o tronco de 8 m.
+    """
+
+    def __init__(self, itens: list[dict], treino: bool, recorte: int = 0):
         self.itens = itens
         self.treino = treino
+        self.recorte = recorte
 
     def __len__(self):
         return len(self.itens)
@@ -118,6 +127,8 @@ class Dataset2m(Dataset):
     def __getitem__(self, idx: int):
         item = self.itens[idx]
         img = Image.open(item["caminho"]).convert("L")
+        if self.recorte > 0:
+            img = _centro(img, self.recorte)
         if self.treino:
             img = _aumentar(img)
         img = img.resize((TAM, TAM))
@@ -135,6 +146,14 @@ def _aumentar(img: Image.Image) -> Image.Image:
     return img
 
 
+def _centro(img: Image.Image, lado: int) -> Image.Image:
+    """Quadrado central `lado` px, sem reamostrar (mantém o pixel de 2 m)."""
+    l, a = img.size
+    lado = min(lado, l, a)
+    x, y = (l - lado) // 2, (a - lado) // 2
+    return img.crop((x, y, x + lado, y + lado))
+
+
 def montar_modelo(dispositivo):
     """Chinese-CLIP (base) + cabeça Linear(512,1). Backbone congelado no 1º passe."""
     from transformers import ChineseCLIPModel
@@ -146,6 +165,7 @@ def montar_modelo(dispositivo):
         p.requires_grad_(False)
     cabeca = torch.nn.Linear(emb_dim, 1)
     modelo.to(dispositivo)
+    modelo.eval()  # features determinísticas: backbone congelado, sem dropout
     cabeca.to(dispositivo)
     return modelo, cabeca
 
@@ -168,7 +188,7 @@ def epoca(ctx, loader) -> float:
             ctx.cabeca(emb.float()), y)
         loss.backward()
         ctx.otim.step()
-        total += float(loss) * x.size(0)
+        total += loss.detach().item() * x.size(0)
         n += x.size(0)
     return total / max(n, 1)
 
@@ -218,7 +238,8 @@ def _rodar_epocas(ctx, dl_treino, dl_val, epocas: int) -> dict:
     return melhor
 
 
-def treinar(epocas: int, batch: int, lr: float, min_entradas: int) -> dict:
+def treinar(cfg: Treino) -> dict:
+    epocas, batch, lr, min_entradas, recorte = cfg
     itens = carregar_entradas()
     pos, neg = _conta(itens)
     # Sem negativo não há o que separar: o modelo só reaprenderia "tudo é cava"
@@ -236,8 +257,9 @@ def treinar(epocas: int, batch: int, lr: float, min_entradas: int) -> dict:
     modelo, cabeca = montar_modelo(disp)
     otim = torch.optim.AdamW(cabeca.parameters(), lr=lr)
     ctx = Ctx(modelo, cabeca, disp, otim)
-    dl_treino = DataLoader(Dataset2m(treino, True), batch_size=batch, shuffle=True)
-    dl_val = DataLoader(Dataset2m(val, False), batch_size=batch)
+    dl_treino = DataLoader(Dataset2m(treino, True, recorte),
+                           batch_size=batch, shuffle=True)
+    dl_val = DataLoader(Dataset2m(val, False, recorte), batch_size=batch)
     melhor = _rodar_epocas(ctx, dl_treino, dl_val, epocas)
     melhor["entradas_treino"] = len(treino)
     melhor["n_cenas"] = n_cenas
@@ -251,9 +273,15 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--min", type=int, default=400,
                     help="mínimo de entradas limpas p/ treinar (senão adia)")
+    ap.add_argument("--recorte", type=int, default=0,
+                    help="px do quadrado central p/ usar o pixel nativo (0=full)")
     args = ap.parse_args()
     _SAIDA.mkdir(parents=True, exist_ok=True)
-    res = treinar(args.epocas, args.batch, args.lr, args.min)
+    cfg = Treino(args.epocas, args.batch, args.lr, args.min, args.recorte)
+    res = treinar(cfg)
+    res["recorte"] = args.recorte
+    res["lr"] = args.lr
+    res["epocas"] = args.epocas
     res["gerado_em"] = str(Path(__file__).name)
     (_SAIDA / "metricas-2m.json").write_text(
         json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
