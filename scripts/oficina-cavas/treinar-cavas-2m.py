@@ -81,16 +81,31 @@ def _parse_linha(linha: str, nuvem_max: float):
     return _com_caminho(o)
 
 
+def _mais_limpo(novo: dict, atual: dict | None) -> bool:
+    """True se o recorte novo tem menos nuvem que o atual (ou é o primeiro)."""
+    if atual is None:
+        return True
+    return (novo.get("nuvem") or 1) < (atual.get("nuvem") or 1)
+
+
 def carregar_entradas(nuvem_max: float = NUVEM_TREINO) -> list[dict]:
-    """Recortes 2 m limpos (status ok, nuvem <= teto), com label e cena."""
+    """Recortes 2 m limpos (status ok, nuvem <= teto), com label e cena.
+
+    Dedupe por hash: duas máquinas ou duas execuções podem gravar o mesmo
+    recorte. Fica o de menor nuvem; sem isso o mesmo pixel pode cair no treino
+    e na validação, vazando o holdout.
+    """
     if not _CKPT.exists():
         return []
-    out = []
+    por_hash: dict[str, dict] = {}
     for linha in _CKPT.read_text(encoding="utf-8").splitlines():
         anot = _parse_linha(linha, nuvem_max)
-        if anot:
-            out.append(anot)
-    return out
+        if not anot:
+            continue
+        h = anot["hash"]
+        if _mais_limpo(anot, por_hash.get(h)):
+            por_hash[h] = anot
+    return list(por_hash.values())
 
 
 def split_por_cena(itens: list[dict], frac_val: float, seed: int = 42):

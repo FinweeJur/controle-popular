@@ -14,7 +14,9 @@ ao LIGAR e em ciclos, o vigia:
 
 O corte PAN é determinístico (mesmo centroide -> mesma cena -> mesmo pixel),
 então o desktop REGERA os PNGs que o home-pc marcou como ok, sem transferir
-imagem. --regenerar faz isso antes de treinar.
+imagem. --regenerar faz isso antes de treinar, só para o manifesto publicado
+(teto de 40 por ciclo, 1 worker). A coleta local de positivos é do
+`supervisor-coleta-2m.py`; o vigia não varre o backlog de calibração.
 
 Retomável: guarda o último SHA visto em cavas-2m/vigia-state.json.
 
@@ -26,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -34,6 +37,7 @@ from pathlib import Path
 
 _RC = Path(__file__).resolve().parents[2]
 _ESTADO = _RC / "scripts" / ".cache" / "cavas-2m" / "vigia-state.json"
+_LOCK = _RC / "scripts" / ".cache" / "cavas-2m" / "vigia.lock"
 _TREINO = _RC / "scripts" / "oficina-cavas" / "treinar-cavas-2m.py"
 _REGEN = _RC / "scripts" / "oficina-cavas" / "gerar-recortes-2m-rotulados.py"
 _MANIFESTO_LOCAL = _RC / "scripts" / "dados" / "cavas-2m" / "checkpoint-2m.jsonl"
@@ -44,6 +48,46 @@ _GIT = ["git", "-C", str(_RC)]
 # lição do teste pequeno (15/10): regra ampla demais esquentava a GPU à toa.
 _MANIFESTO = "scripts/dados/cavas-2m/checkpoint-2m.jsonl"
 _PADRAO_CAMINHO = re.compile(re.escape(_MANIFESTO))
+
+
+def _pid_vivo(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    try:
+        import psutil
+        return psutil.pid_exists(pid) and psutil.Process(pid).is_running()
+    except Exception:
+        return True
+
+
+def _trava_estrangeira(pid: int) -> bool:
+    """True se o PID do lock é de outro processo vivo."""
+    return bool(pid) and pid != os.getpid() and _pid_vivo(pid)
+
+
+def _adquirir() -> bool:
+    """Um vigia por máquina; evita dois loops treinando ao mesmo tempo."""
+    if _LOCK.exists():
+        try:
+            pid = int(json.loads(_LOCK.read_text(encoding="utf-8")).get("pid", 0))
+        except (OSError, ValueError, json.JSONDecodeError):
+            pid = 0
+        if _trava_estrangeira(pid):
+            return False
+    _LOCK.parent.mkdir(parents=True, exist_ok=True)
+    _LOCK.write_text(json.dumps({"pid": os.getpid(), "ts": time.time()}),
+                     encoding="utf-8")
+    return True
+
+
+def _liberar() -> None:
+    try:
+        if _LOCK.exists():
+            dados = json.loads(_LOCK.read_text(encoding="utf-8"))
+            if int(dados.get("pid", -1)) == os.getpid():
+                _LOCK.unlink()
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
 
 
 def _git(args: list[str]) -> str:
@@ -79,29 +123,42 @@ def _eh_relevante(sha: str) -> bool:
 
 
 def _trazer_manifesto() -> None:
-    """Traz só o arquivo do manifesto de origin/main p/ o disco (sem mesclar o resto)."""
-    _git(["checkout", "origin/main", "--", _MANIFESTO])
+    """Copia o manifesto de origin/main para o disco sem mexer no índice.
+
+    `git checkout origin/main -- arquivo` mexia no staging e podia desfazer
+    publicação local não commitada. `git show` só lê o objeto do remoto.
+    """
+    texto = _git(["show", f"origin/main:{_MANIFESTO}"])
+    if not texto:
+        return
+    destino = _RC / _MANIFESTO
+    novo = texto if texto.endswith("\n") else texto + "\n"
+    atual = destino.read_text(encoding="utf-8") if destino.exists() else ""
+    if atual != novo:
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        destino.write_text(novo, encoding="utf-8")
 
 
 def _regenerar() -> None:
-    """Regera os 2m de QUEM quer que tenha publicado (lista->pixel determinístico).
+    """Regera só o manifesto publicado (lista -> pixel determinístico).
 
-    Dois passes: `manifesto` corta o que a OUTRA máquina publicou e eu ainda
-    não tenho; `calib` cobre os meus próprios negativos/positivos locais. Ambos
-    só processam hash não-feito, então não há corte repetido.
+    O passe `calib` ficava sem limite e reprocessava o backlog inteiro
+    (~1.450 positivos) a cada commit. A coleta local agora é do supervisor
+    (`supervisor-coleta-2m.py`); aqui só se regenera o que a OUTRA máquina
+    publicou, com teto de 40 por ciclo e 1 worker (o ritmo do INPE).
     """
     _trazer_manifesto()
-    for fonte in ("manifesto", "calib"):
-        print(f"  regera 2m (fonte {fonte})...", flush=True)
-        subprocess.run(
-            [sys.executable, str(_REGEN), "--fonte", fonte, "--workers", "2"],
-            cwd=_RC)
+    print("  regera 2m (manifesto publicado, limite 40)...", flush=True)
+    subprocess.run(
+        [sys.executable, str(_REGEN), "--fonte", "manifesto",
+         "--limite", "40", "--workers", "1"],
+        cwd=_RC)
 
 
 def _treinar(min_entradas: int) -> None:
-    print(f"  roda treino 2m (min={min_entradas})...", flush=True)
-    subprocess.run([sys.executable, str(_TREINO), "--min", str(min_entradas)],
-                   cwd=_RC)
+    print(f"  roda treino 2m (min={min_entradas}, recorte 224)...", flush=True)
+    subprocess.run([sys.executable, str(_TREINO), "--min", str(min_entradas),
+                    "--recorte", "224"], cwd=_RC)
 
 
 def _commits_desde(atual: str, n: int) -> list[str]:
@@ -170,16 +227,23 @@ def main() -> int:
     if args.historico:
         return historico(args.historico)
 
-    regenerar = not args.sem_regenerar
-    if args.once:
-        um_ciclo(regenerar, args.min, dry=args.dry_run)
+    if not _adquirir():
+        print("outro vigia 2m está rodando; saindo", flush=True)
         return 0
-    while True:
-        try:
+    try:
+        regenerar = not args.sem_regenerar
+        if args.once:
             um_ciclo(regenerar, args.min, dry=args.dry_run)
-        except Exception as e:
-            print(f"  ciclo falhou (sigo vivo): {type(e).__name__}: {e}", flush=True)
-        time.sleep(args.intervalo)
+            return 0
+        while True:
+            try:
+                um_ciclo(regenerar, args.min, dry=args.dry_run)
+            except Exception as e:
+                print(f"  ciclo falhou (sigo vivo): {type(e).__name__}: {e}",
+                      flush=True)
+            time.sleep(args.intervalo)
+    finally:
+        _liberar()
 
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@ import argparse
 import importlib.util
 import json
 import math
+import os
 import sys
 import threading
 import time
@@ -43,6 +44,7 @@ _CALIB = _RAIZ / "scripts" / ".cache" / "cavas-calibracao"
 _BASE_PATH = _RAIZ / "scripts" / "oficina-cavas" / "baixar-banco-cbers.py"
 _SAIDA = _RAIZ / "scripts" / ".cache" / "cavas-2m"
 _CHECKPOINT = _SAIDA / "checkpoint-2m.jsonl"
+_LOCK = _SAIDA / "coleta.lock"
 
 SIDE_M = 1400
 OUT_PX = 700
@@ -171,6 +173,52 @@ def _gravar(rec: dict, ok: bool) -> None:
         _stats["ok"] += 1
     else:
         _stats[rec["status"]] += 1
+
+
+def _pid_vivo(pid: int) -> bool:
+    """True se o PID existe e é de outro processo vivo."""
+    if pid <= 0:
+        return False
+    try:
+        import psutil
+        return psutil.pid_exists(pid) and psutil.Process(pid).is_running()
+    except Exception:
+        return True
+
+
+def _trava_estrangeira(pid: int) -> bool:
+    """True se o PID do lock é de outro processo vivo."""
+    return bool(pid) and pid != os.getpid() and _pid_vivo(pid)
+
+
+def _adquirir_trava() -> bool:
+    """Um gerador por cache: evita PNG truncado e linha duplicada.
+
+    Medido 20/10: o supervisor e a execução manual podem rodar juntos; sem
+    trava, os dois leem o mesmo `_ler_feitos` antes das appends e recortam o
+    mesmo hash. Trava órfã (PID morto) é reciclada.
+    """
+    if _LOCK.exists():
+        try:
+            pid = int(json.loads(_LOCK.read_text(encoding="utf-8")).get("pid", 0))
+        except (OSError, ValueError, json.JSONDecodeError):
+            pid = 0
+        if _trava_estrangeira(pid):
+            return False
+    _LOCK.parent.mkdir(parents=True, exist_ok=True)
+    _LOCK.write_text(json.dumps({"pid": os.getpid(), "ts": time.time()}),
+                     encoding="utf-8")
+    return True
+
+
+def _liberar_trava() -> None:
+    try:
+        if _LOCK.exists():
+            dados = json.loads(_LOCK.read_text(encoding="utf-8"))
+            if int(dados.get("pid", -1)) == os.getpid():
+                _LOCK.unlink()
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
 
 
 def _ler_feitos(apenas_ok: bool = False) -> set:
@@ -320,14 +368,21 @@ def main() -> int:
                     help="só corta desse tipo (negativo=destrava o treino honesto)")
     args = ap.parse_args()
 
-    base = _carregar_base()
-    alvos = _seleciona(args, _ler_feitos(apenas_ok=args.retentar_sem_cena))
-    print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
-          f"| workers={args.workers}", flush=True)
-    _executar(alvos, args.workers)
-    print(f"\nFim: ok={_stats['ok']} sem-cena={_stats['sem-cena']} "
-          f"falhou={_stats['falhou']}", flush=True)
-    return 0
+    if not _adquirir_trava():
+        print("outra coleta 2m está rodando; saindo sem tocar no cache",
+              flush=True)
+        return 0
+    try:
+        base = _carregar_base()
+        alvos = _seleciona(args, _ler_feitos(apenas_ok=args.retentar_sem_cena))
+        print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
+              f"| workers={args.workers}", flush=True)
+        _executar(alvos, args.workers)
+        print(f"\nFim: ok={_stats['ok']} sem-cena={_stats['sem-cena']} "
+              f"falhou={_stats['falhou']}", flush=True)
+        return 0
+    finally:
+        _liberar_trava()
 
 
 if __name__ == "__main__":

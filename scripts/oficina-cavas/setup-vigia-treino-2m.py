@@ -57,15 +57,29 @@ def _comando() -> str:
 _INICIO = (Path.home() / "AppData" / "Roaming" / "Microsoft"
            / "Windows" / "Start Menu" / "Programs" / "Startup")
 _BAT = _INICIO / "ControlePopular_VigiaTreino2m.bat"
+_LOG = _RAIZ / "docs" / "relatorios-automacao" / "logs" / "vigia-2m.log"
 
 
 def _instalar_startup() -> int:
+    """Grava .bat de logon com cd, janela minimizada e log (não `start` solto).
+
+    O `start` sem log tornava a falha invisível: em 20/10 o .bat existia,
+    nenhum processo rodava e não havia uma linha para ler.
+    """
     _INICIO.mkdir(parents=True, exist_ok=True)
-    conteudo = (f'@echo off\r\nstart "" {_comando()}\r\n')
+    _LOG.parent.mkdir(parents=True, exist_ok=True)
+    python = sys.executable
+    conteudo = (
+        "@echo off\r\n"
+        f'cd /d "{_RAIZ}"\r\n'
+        f'start "" /min "{python}" "{_VIGIA}" '
+        f"--intervalo {_INTERVALO_MIN * 60} --min {_MIN_ENTRADAS} "
+        f'>> "{_LOG}" 2>&1\r\n'
+    )
     _BAT.write_text(conteudo, encoding="utf-8")
     print(f"OK: instalado em inicialização do usuário: {_BAT}")
     print(f"    checa origin a cada {_INTERVALO_MIN} min; treino --min "
-          f"{_MIN_ENTRADAS}. Remove com --remover.")
+          f"{_MIN_ENTRADAS}; log em {_LOG}.")
     return 0
 
 
