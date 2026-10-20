@@ -173,16 +173,23 @@ def _gravar(rec: dict, ok: bool) -> None:
         _stats[rec["status"]] += 1
 
 
-def _ler_cheios() -> set:
+def _ler_feitos(apenas_ok: bool = False) -> set:
+    """Hashes já tentados, para não repetir a mesma fila.
+
+    Por padrão inclui `sem-cena`: sem isso os 48 pontos sem cena do começo da
+    lista eram retentados em todo run e a fila nunca avançava (medido 19/10).
+    `apenas_ok=True` volta a tentar os sem-cena (cena nova pode ter aparecido).
+    """
     if not _CHECKPOINT.exists():
         return set()
+    alvos = {"ok"} if apenas_ok else {"ok", "sem-cena"}
     feito = set()
     for linha in _CHECKPOINT.read_text(encoding="utf-8").splitlines():
         if not linha.strip():
             continue
         try:
             o = json.loads(linha)
-            if o.get("status") == "ok":
+            if o.get("status") in alvos:
                 feito.add(o["hash"])
         except json.JSONDecodeError:
             continue
@@ -300,7 +307,10 @@ def main() -> int:
     global base
     ap = argparse.ArgumentParser(description="Recortes 2m PAN rotulados")
     ap.add_argument("--limite", type=int, default=0)
-    ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--workers", type=int, default=2,
+                    help="1 respeita o ritmo de 1-2 s por host; 2 só se a rede ajudar")
+    ap.add_argument("--retentar-sem-cena", action="store_true",
+                    help="volta a tentar hashes que já deram sem-cena")
     ap.add_argument("--fonte", choices=("calib", "manifesto"), default="calib",
                     help="calib=meu dataset; manifesto=regerar lista da outra máquina")
     ap.add_argument("--manifesto", type=Path, default=None,
@@ -311,7 +321,7 @@ def main() -> int:
     args = ap.parse_args()
 
     base = _carregar_base()
-    alvos = _seleciona(args, _ler_cheios())
+    alvos = _seleciona(args, _ler_feitos(apenas_ok=args.retentar_sem_cena))
     print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
           f"| workers={args.workers}", flush=True)
     _executar(alvos, args.workers)

@@ -915,6 +915,32 @@ Consertos no caminho: `modelo.eval()` no backbone congelado (features
 determinísticas, sem dropout), `loss.detach().item()` no lugar de
 `float(loss)` e a opção `--recorte` no treino.
 
+## Coleta 2 m: fila travada e rasterio (19/10/2026)
+
+Ao começar a cortar mais positivos, dois bloqueios apareceram:
+
+1. **`rasterio` ausente** no Python 3.12 da máquina — o gerador morria em
+   todos os 10 alvos. Instalado `rasterio 1.5.2` (o `requirements.txt` já
+   pedia) e a leitura voltou.
+2. **A fila não andava**: `_ler_cheios` só pulava hash com status `ok`. Os
+   **48 hashes `sem-cena`** do começo da lista eram retentados em todo run,
+   então os ~1.450 positivos seguintes nunca eram alcançados.
+
+Conserto: `_ler_feitos` agora pula `ok` **e** `sem-cena` por padrão;
+`--retentar-sem-cena` volta a tentar (caso uma cena nova apareça). Medido no
+mesmo dia, com **1 worker**:
+
+| alvo | resultado | nuvem |
+|---|---|---|
+| 1º ponto novo | `ok` em **84 s** | **1,000** (inútil) |
+| 3 pontos seguintes | `ok` | 0,064 · 0,490 · 0,174 |
+
+Leitura: **1 worker funciona** e respeita o ritmo de 1–2 s por host; o run com
+2 workers devolveu 10 `sem-cena` em segundos, sem ler cena (suspeita de limite
+do INPE). Custo medido: **~84 s por recorte**, então 100 recortes ≈ 2,3 h.
+O corte passou de 532 para **536 positivos `ok`** e de 207 para **209
+positivos limpos** (nuvem ≤ 0,30). A fila agora avança.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
