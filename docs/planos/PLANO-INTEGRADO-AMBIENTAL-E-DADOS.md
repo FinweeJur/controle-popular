@@ -36,7 +36,7 @@ Fonte que parou de atualizar dói mais que fonte que só está velha.
 | **PNCP: 89 cidades na fila** (47 completas, 203 no manifesto) | 25/09 | `etl/betim/etl/pncp/checkpoint.py` | [PLANO-EXPANSAO-PNCP-199-CIDADES](/docs/historico/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md) |
 | **CAR só com amostra** (56 imóveis/45 cidades; base completa 1,16 mi) | 18/10 | `apps/web/app/ambiental/car/` | [ESTADO, B8](../02-estado/ESTADO.md#bloco-b--destravadas-aguardando-ordem) |
 | **Rio Doce na Fase 1b** (8 processos CNJ confirmados) | 12/10 | `/riodoce/processos`, `/api/datajud` | [PLANO-PLATAFORMA-RIO-DOCE](/docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md) |
-| **Cavas: Fases 2 e 4**, Sentinel bloqueado, gate v7 passou | 18/10 | [PLANO-GLOBO-CAVAS-MINERACAO](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md) | [ESTADO, B4](../02-estado/ESTADO.md#bloco-b--destravadas-aguardando-ordem) |
+| **Cavas: MVP de 5–10 dossiês**, coleta 2 m e automação no logon | 20/10 | [PLANO-CAVAS-MVP](PLANO-CAVAS-MVP.md) | [MEDICOES](/docs/historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 
 ## Pendências por frente
 
@@ -64,7 +64,7 @@ Fonte que parou de atualizar dói mais que fonte que só está velha.
 |---|---|---|---|---|
 | D9 | Retomar PNCP (89 cidades) | 25/09 | [PLANO-EXPANSAO-PNCP-199-CIDADES](/docs/historico/planos/PLANO-EXPANSAO-PNCP-199-CIDADES.md) | retomar do checkpoint e remedir |
 | D10 | Rio Doce Fase 1b | 12/10 | [PLANO-PLATAFORMA-RIO-DOCE](/docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md) | publicar os 8 CNJ e ligar DataJud |
-| D11 | Cavas Fases 2 e 4 | 18/10 | [PLANO-GLOBO-CAVAS-MINERACAO](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md) | escolher fase e medir a banda |
+| D11 | Cavas: MVP 5–10 dossiês | 20/10 | [PLANO-CAVAS-MVP](PLANO-CAVAS-MVP.md) | fechar G1 (300/300), treinar 2 m e calibrar P ≥ 0,90 |
 | D12 | Remuneração de servidores e QSA | fila B6 | [ESTADO, B6](../02-estado/ESTADO.md#bloco-b--destravadas-aguardando-ordem) | pedir ordem antes de começar |
 | D13 | Condicionantes ambientais (piloto Irapé/Setúbal) | 3 itens abertos | [PLANO-CONDICIONANTES-AMBIENTAIS](/docs/historico/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md) | concluir o piloto e medir |
 
@@ -73,7 +73,8 @@ Fonte que parou de atualizar dói mais que fonte que só está velha.
 1. Publicar é manual; nenhuma coleta publica sozinha.
 2. Outorga por município: aceitar limite estrutural ou autorizar rota com CSRF.
 3. Remuneração/QSA (B6): liberar ou manter na fila.
-4. Cavas: autorizar a próxima rodada de VM (liga a máquina).
+4. Cavas: aprovado o MVP de 5–10 dossiês (20/10); coleta local, treino no
+   logon e relatório por etapa no Telegram.
 
 ## Critérios de pronto
 

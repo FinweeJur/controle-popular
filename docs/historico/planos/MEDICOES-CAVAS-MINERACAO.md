@@ -941,6 +941,43 @@ do INPE). Custo medido: **~84 s por recorte**, então 100 recortes ≈ 2,3 h.
 O corte passou de 532 para **536 positivos `ok`** e de 207 para **209
 positivos limpos** (nuvem ≤ 0,30). A fila agora avança.
 
+## Calibração de limiar do 2 m (20/10/2026)
+
+O treino escolhia a época por F1 e guardava P 0,548; para descoberta o limiar
+útil é o de maior recall com precisão mínima. `scripts/oficina-cavas/calibrar-2m.py`
+relê os pesos salvos e varre o limiar no mesmo split por cena (seed 42).
+Limitação: o checkpoint cresceu durante a coleta, então a validação ficou com
+**172 recortes (39 positivos)** em vez dos 161 do treino — as cenas novas não
+foram vistas pelo modelo, mas o número não é o mesmo holdout.
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,38 | 0,490 | 0,641 | 25/26/14/107 |
+| ≥ 0,70 | 0,56 | 0,737 | 0,359 | 14/5/25/128 |
+| ≥ 0,80 | 0,58 | 0,800 | 0,308 | 12/3/27/130 |
+| ≥ 0,85 | 0,68 | 0,857 | 0,154 | 6/1/33/132 |
+| ≥ 0,90 | 0,81 | 1,000 | 0,077 | 3/0/36/133 |
+
+Leitura: **P ≥ 0,90 só existe com 7,7% de recall** (3 de 39 positivos). O
+G2 do plano (P ≥ 0,80) é alcançável com R ≈ 0,31; para descoberta de 5–10
+casos, isso ainda é pouco. O 2 m precisa de mais positivos limpos e negativos
+difíceis antes de substituir o 8 m como triagem. JSON:
+`%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\calibracao-2m.json`.
+
+### Segundo treino 2 m em GPU (20/10/2026)
+
+Com ~246 positivos limpos (o lote de 100 ainda estava em andamento), o treino
+rodou no Python do Hermes com **CUDA ativa** (RTX 3050), 6 épocas, recorte 224.
+Snapshot: treino 768 (221 pos / 547 neg), validação 114 (25 pos). Melhor época
+(6): P 0,667 / R 0,480 / F1 0,558 no limiar 0,5.
+
+A calibração por limiar achou P 0,8125 / R 0,500 / F1 0,619 no limiar 0,54;
+**nenhum limiar atingiu P ≥ 0,90**. Leitura: acrescentar ~40 positivos sem
+negativos difíceis não melhorou a precisão alta — o ponto de 90% que existia
+no modelo de 19/10 desapareceu. O gargalo é **negativo difícil e rótulo**, não
+volume bruto de positivo. O modelo de 19/10 foi preservado em
+`melhor-20261019-rec224.pt`; o de 20/10 está em `melhor.pt`.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)

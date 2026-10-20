@@ -2,6 +2,7 @@
 
 > **Arquivado em 18/10/2026** na consolidação de planos. O que restava
 > de pendência foi absorvido pelos planos integrados em `docs/planos/`.
+> **Plano ativo da frente:** [PLANO-CAVAS-MVP.md](../../planos/PLANO-CAVAS-MVP.md).
 
 
 > **Tipo:** PLANO
