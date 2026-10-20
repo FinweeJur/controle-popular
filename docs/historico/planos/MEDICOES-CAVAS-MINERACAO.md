@@ -994,21 +994,22 @@ A calibração por limiar:
 | ≥ 0,80 | 0,58 | 0,800 | 0,485 | 16/4/17/87 |
 | ≥ 0,90 | **0,64** | **0,917** | **0,333** | **11/1/22/90** |
 
-Leitura: os hard negatives **restauraram o ponto de P ≥ 0,90** e triplicaram
-o recall contra o modelo de 19/10 (0,077 → 0,333). No holdout, o limiar 0,64
-entrega 12 candidatos com **1 falso positivo**. Ainda é recall de 1/3 — o
-funil precisa dos 2 de 3 métodos e da revisão humana —, mas é o filtro de
-alta precisão que faltava para a fila de descoberta. Continuar o lote hard
-até 100 e recalibrar.
+Leitura: **este snapshot** entrega P 0,917 / R 0,333 no limiar 0,64 — 12
+candidatos, 1 falso positivo. Mas a comparação com o modelo de 19/10 está
+confundida: o holdout mudou (124 vs 172) e só **~5** dos hard passaram o
+filtro de nuvem (negativos limpos 637→642). Não atribuir o ganho só aos hard;
+é um ponto de uma rodada, não uma curva. O próximo passo é **congelar o
+split** antes de comparar modelos.
 
 ### Quarto treino: 26 hard negatives não superaram (20/10/2026)
 
 Com 26 hard negatives, o split por cena mudou (val 117, 24 positivos) e o
-melhor F1 caiu para **0,476** (P 0,556 / R 0,417). Não é comparação direta —
-o holdout é outro —, mas a leitura é clara: com ~120 recortes de validação, a
-seleção de época é instável e o empate entre 16 e 26 hard não se resolve por
-volume. **Decisão:** manter o modelo de **16 hard** (calibrado P 0,917 /
-R 0,333) e não promover o de 26. Antes do próximo treino, congelar o split e
+melhor F1 caiu para **0,476** (P 0,556 / R 0,417); só ~9 hard passaram o
+filtro de nuvem. Não é comparação direta — o holdout é outro —, mas a leitura
+é clara: com ~120 recortes de validação, a seleção de época é instável e o
+empate entre o primeiro lote e 26 hard não se resolve por volume. **Decisão:**
+manter o modelo do **primeiro lote hard** (calibrado P 0,917 / R 0,333) e não
+promover o de 26. Antes do próximo treino, congelar o split e
 aumentar o holdout (mais cenas), em vez de trocar o conjunto a cada lote.
 
 ## Origem

@@ -87,8 +87,8 @@ desta rodada e está identificado como tal.
 | Modelo 2 m, ponto conservador (época 2) | P **0,857** · R **0,429** · F1 **0,571** | [MEDICOES:902–904](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Limiar 2 m para P ≥ 0,90 | limiar **0,81** · P **1,000** · R **0,077** (3/39) | [MEDICOES: calibração 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Modelo 2 m 20/10 (246 limpos, GPU) | F1 **0,619** · P **0,812** · R **0,500** no limiar 0,54; **P ≥ 0,90 inalcançável** | [MEDICOES: segundo treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
-| Modelo 2 m 20/10 **com 16 hard negatives** | F1 **0,625** · P **0,645** · R **0,606**; **P ≥ 0,90** em 0,64 com **R 0,333** (11/1/22/90) | [MEDICOES: terceiro treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
-| Modelo 2 m 20/10 com 26 hard negatives | F1 **0,476** · P **0,556** · R **0,417**; não superou o de 16 | [MEDICOES: quarto treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
+| Modelo 2 m 20/10 **com o primeiro lote hard** (split novo) | F1 **0,625** · P **0,645** · R **0,606**; **P ≥ 0,90** em 0,64 com **R 0,333** (11/1/22/90) | [MEDICOES: terceiro treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
+| Modelo 2 m 20/10 com 26 hard (só ~9 limpos) | F1 **0,476** · P **0,556** · R **0,417**; não superou o primeiro lote | [MEDICOES: quarto treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Base 2 m limpa | 844 recortes: 207 positivos, 637 negativos, 163 cenas | [MEDICOES:884–887](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos 2 m | 536 `ok`; **209 limpos** em 19/10 | [MEDICOES:941](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos limpos ao fim da coleta | **262** (209 → 262; lote de 100 concluído em 20/10) | medição local desta rodada; manifesto fora do repo |
@@ -119,13 +119,12 @@ Três leituras que mudam o plano:
   descoberta, o 2 m ainda é confirmação; a triagem continua no 8 m.
 - **Mais positivo sem negativo difícil não resolve.** O segundo treino 2 m
   (246 limpos, GPU) subiu o F1 para 0,619, mas **perdeu o ponto de P ≥ 0,90**.
-  O terceiro treino incluiu os primeiros falsos positivos do v7 como
-  negativos difíceis e **trouxe o ponto de volta**: P **0,917** com R
-  **0,333** no limiar 0,64 (12 candidatos, **1 falso positivo** no holdout).
-  O quarto treino, com 26 hard, caiu para F1 0,476 porque o split mudou e o
-  holdout é pequeno. **Decisão:** manter o modelo de 16 hard; antes de novo
-  treino, congelar o split e aumentar o holdout, não trocar o conjunto a cada
-  lote.
+  O terceiro treino **coincidiu** com o ponto de volta: P **0,917** com R
+  **0,333** no limiar 0,64 (12 candidatos, **1 falso positivo**). Mas o split
+  mudou e só ~5 hard passaram o filtro de nuvem; o ganho **não é causalidade
+  isolada**. O quarto treino, com 26 hard (~9 limpos), caiu para F1 0,476.
+  **Decisão:** manter o primeiro lote hard; antes de novo treino, congelar o
+  split e aumentar o holdout, não trocar o conjunto a cada lote.
 - **O topo da fila atual é falso positivo.** 0/30 na auditoria humana é o
   dado mais importante da frente: o modelo aprendeu "chão pelado com borda"
   e confunde cava com lavoura, desmate e cidade. O MVP só fecha com 2 m,
