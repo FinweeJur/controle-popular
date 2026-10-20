@@ -41,6 +41,8 @@ import numpy as np
 
 _RAIZ = Path(__file__).resolve().parents[2]
 _CALIB = _RAIZ / "scripts" / ".cache" / "cavas-calibracao"
+_HARD = _CALIB / "hard-negativos.txt"
+_ANALISADOS = _CALIB / "analisados.jsonl"
 _BASE_PATH = _RAIZ / "scripts" / "oficina-cavas" / "baixar-banco-cbers.py"
 _SAIDA = _RAIZ / "scripts" / ".cache" / "cavas-2m"
 _CHECKPOINT = _SAIDA / "checkpoint-2m.jsonl"
@@ -286,6 +288,62 @@ def _carrega_calib(limite: int):
     return out[:limite] if limite else out
 
 
+def _hard_hashes() -> set:
+    if not _HARD.exists():
+        return set()
+    return {l.strip() for l in _HARD.read_text(encoding="utf-8").splitlines()
+            if l.strip()}
+
+
+def _hard_scores(hashes: set) -> dict:
+    score = {}
+    if not _ANALISADOS.exists():
+        return score
+    for linha in _ANALISADOS.read_text(encoding="utf-8").splitlines():
+        try:
+            o = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if o.get("hash") in hashes:
+            score[o["hash"]] = o.get("score_cava") or 0.0
+    return score
+
+
+def _calib_itens(hashes: set) -> list[dict]:
+    ck = _CALIB / "checkpoint.jsonl"
+    out = []
+    if not ck.exists():
+        return out
+    for linha in ck.read_text(encoding="utf-8").splitlines():
+        try:
+            o = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if o.get("hash") in hashes and o.get("bbox"):
+            o["tipo"] = "negativo"
+            out.append(o)
+    return out
+
+
+def _carrega_hard(limite: int):
+    """Negativos difíceis do v7 (1.109 falsos positivos) em 2 m.
+
+    O modelo de 8 m chamava lavoura, desmate, cidade e água de cava. O treino
+    de 2 m sem esses pares só aprende "chão pelado". Aqui eles entram com
+    label 0, ordenados pelo score do v7 (o mais confuso primeiro). A bbox vem
+    do checkpoint de calibração; o score, de `analisados.jsonl`.
+    """
+    hashes = _hard_hashes()
+    if not hashes:
+        return []
+    score = _hard_scores(hashes)
+    out = _calib_itens(hashes)
+    for o in out:
+        o["score_v7"] = score.get(o["hash"], 0.0)
+    out.sort(key=lambda o: o["score_v7"], reverse=True)
+    return out[:limite] if limite else out
+
+
 def _from_manifesto(o: dict):
     """Linha do manifesto publicado (lon/lat/tipo) -> item de corte."""
     if not o.get("hash"):
@@ -322,6 +380,8 @@ def _carrega_manifesto(limite: int, caminho: Path | None = None):
 def _fonte_de(args):
     if args.fonte == "manifesto":
         return lambda n: _carrega_manifesto(n, args.manifesto)
+    if args.fonte == "hard":
+        return _carrega_hard
     return _carrega_calib
 
 
@@ -359,8 +419,10 @@ def main() -> int:
                     help="1 respeita o ritmo de 1-2 s por host; 2 só se a rede ajudar")
     ap.add_argument("--retentar-sem-cena", action="store_true",
                     help="volta a tentar hashes que já deram sem-cena")
-    ap.add_argument("--fonte", choices=("calib", "manifesto"), default="calib",
-                    help="calib=meu dataset; manifesto=regerar lista da outra máquina")
+    ap.add_argument("--fonte", choices=("calib", "manifesto", "hard"),
+                    default="calib",
+                    help="calib=meu dataset; manifesto=regerar lista da outra "
+                         "máquina; hard=1.109 falsos positivos do v7")
     ap.add_argument("--manifesto", type=Path, default=None,
                     help="caminho do manifesto p/ --fonte manifesto (default: versionado)")
     ap.add_argument("--tipo", choices=("ambos", "positivo", "negativo"),
