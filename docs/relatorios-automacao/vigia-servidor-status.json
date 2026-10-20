@@ -1,12 +1,12 @@
 {
-  "atualizadoEm": "2026-10-19T22:20:07.693Z",
+  "atualizadoEm": "2026-10-20T18:40:07.443Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 270,
+  "latenciaMs": 206,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-19T22:20:07.688Z",
+    "atualizadoEm": "2026-10-20T18:40:07.438Z",
     "totalBasesVerificadas": 785,
     "basesVazias": [],
     "basesCorrompidas": [],
@@ -25,25 +25,12 @@
   "paginas": {
     "base": "https://www.controlepopular.com.br",
     "total": 100,
-    "ok": 97,
-    "falhas": [
-      {
-        "rota": "/",
-        "status": 0
-      },
-      {
-        "rota": "/terra-e-territorios",
-        "status": 0
-      },
-      {
-        "rota": "/direitos-em-movimento",
-        "status": 0
-      }
-    ],
+    "ok": 100,
+    "falhas": [],
     "siteInteiroFora": false,
-    "inicioEm": "2026-10-19T22:05:14.538Z",
-    "terminoEm": "2026-10-19T22:08:22.370Z",
-    "duracaoMs": 187832
+    "inicioEm": "2026-10-20T18:25:07.725Z",
+    "terminoEm": "2026-10-20T18:27:57.301Z",
+    "duracaoMs": 169576
   },
   "erro": null
 }
