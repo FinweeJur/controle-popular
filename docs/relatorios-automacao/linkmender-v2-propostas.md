@@ -1,18 +1,18 @@
 # LinkMender v2 — Auditoria de Links e Validação de Conteúdo
 
-- Data da auditoria: 2026-10-20T18:40:06.329Z
-- Duração da rodada: 42619.5 s
+- Data da auditoria: 2026-10-21T17:19:59.957Z
+- Duração da rodada: 37689.6 s
 - Pausa configurada entre requisições: 300ms
 
 ## Resumo Consolidado
 
-- Total de URLs verificadas (HTTP + validação de conteúdo): 13097
-- ✅ Links Íntegros (OK): 8377
-- ↪️ Redirecionamentos Válidos (REDIRECT): 265
-- ❌ Links Quebrados (QUEBRADO): 1314
+- Total de URLs verificadas (HTTP + validação de conteúdo): 12941
+- ✅ Links Íntegros (OK): 8569
+- ↪️ Redirecionamentos Válidos (REDIRECT): 261
+- ❌ Links Quebrados (QUEBRADO): 993
 - ⚠️ Respostas Falsas (MENTIROSO / 200 que mente): 5
-- ❓ Inconsistências de Rede (INCONSISTENTE): 3136
-- 📝 Propostas automáticas de correção aceitas: 346
+- ❓ Inconsistências de Rede (INCONSISTENTE): 3113
+- 📝 Propostas automáticas de correção aceitas: 36
 
 ## Detalhamento das Verificações por URL
 
@@ -20,7 +20,7 @@
 |---|---|---|---|
 | ✅ OK | `https://t.me/ControlePopularBOT` | Geral | OK |
 | ✅ OK | `https://barragens.mpmg.mp.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://csr.ufmg.br/car20_mg/` | Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG | INCONSISTENTE |
+| ✅ OK | `https://csr.ufmg.br/car20_mg/` | Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG | OK |
 | ✅ OK | `https://consulta.car.gov.br/` | Portal oficial da Consulta Pública do SICAR Nacional | OK |
 | ✅ OK | `https://dados.mg.gov.br/dataset/convenios-saida` | Geral | OK |
 | ✅ OK | `https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca` | Geral | OK |
@@ -49,7 +49,7 @@
 | ↪️ REDIRECT | `https://controlepopular.com.br` | Cloudflare R2 — Arquivamento Perene | REDIRECT |
 | ✅ OK | `https://www.controlepopular.com.br/empresas/fortunas` | 1.000 Maiores Fortunas Mundiais — Controle Popular | OK |
 | ✅ OK | `https://www.gov.br/mre/pt-br` | Geral | OK |
-| ❓ INCONSISTENTE | `https://prd.s3.cnj.jus.br/sirenejud/vw_sirenejud.parquet` | Geral | INCONSISTENTE |
+| ✅ OK | `https://prd.s3.cnj.jus.br/sirenejud/vw_sirenejud.parquet` | Geral | OK |
 | ✅ OK | `https://aosquevirao.home.blog/category/calendario-insurgente/` | Geral | OK |
 | ✅ OK | `https://apiboficial.org/historicoatl/` | Geral | OK |
 | ✅ OK | `https://linktr.ee/arturcolito` | Geral | OK |
@@ -101,20 +101,20 @@
 | ✅ OK | `https://siconfi.tesouro.gov.br/` | SICONFI/Tesouro Nacional | OK |
 | ✅ OK | `https://cnes.datasus.gov.br/` | Rede de saúde cadastrada | OK |
 | ✅ OK | `https://info.dengue.mat.br/` | Arboviroses (semana mais recente) | OK |
-| ❓ INCONSISTENTE | `https://www.ssp.sp.gov.br/estatistica/dados-mensais` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.ssp.sp.gov.br/estatistica/dados-mensais` | Geral | OK |
 | ✅ OK | `https://dados.mg.gov.br/dataset/crimes-violentos` | Geral | OK |
 | ❓ INCONSISTENTE | `https://portaldatransparencia.gov.br/beneficios` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.openstreetmap.org/` | Geral | OK |
 | ✅ OK | `https://www.tse.jus.br/` | Doações de campanha (2024) — quem financiou | OK |
 | ❌ QUEBRADO | `https://drive.google.com/exemplo` | Geral | QUEBRADO |
 | ✅ OK | `http://www.ecsb2007.ufba.br/layout/padrao/azul/ecsb2007/arquivos_anteriores/st1_04.pdf` | De Usina Irapé à Usina Presidente Juscelino Kubitschek: implicações da lógica desenvolvimentista nas práticas do licenciamento ambiental | OK |
-| ❓ INCONSISTENTE | `https://conflitosambientaismg.lcc.ufmg.br/producao-academica/606-2` | Estratégias de viabilização política da Usina de Irapé: o (des)cumprimento de normas e o ocultamento de conflitos no licenciamento ambiental de hidrelétricas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.teses.usp.br/teses/disponiveis/86/86131/tde-04112010-135107/` | A inserção dos custos sociais nos empreendimentos hidrelétricos: estudo de caso da UHE Irapé (MG) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2006.pdf` | Relatório técnico sobre a qualidade da água do rio Jequitinhonha em trechos a jusante da Usina de Irapé | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2011.pdf` | Relatório técnico: impactos da UHE Irapé para comunidades a jusante da barragem | INCONSISTENTE |
+| ✅ OK | `https://conflitosambientaismg.lcc.ufmg.br/producao-academica/606-2` | Estratégias de viabilização política da Usina de Irapé: o (des)cumprimento de normas e o ocultamento de conflitos no licenciamento ambiental de hidrelétricas | OK |
+| ↪️ REDIRECT | `http://www.teses.usp.br/teses/disponiveis/86/86131/tde-04112010-135107/` | A inserção dos custos sociais nos empreendimentos hidrelétricos: estudo de caso da UHE Irapé (MG) | REDIRECT |
+| ✅ OK | `https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2006.pdf` | Relatório técnico sobre a qualidade da água do rio Jequitinhonha em trechos a jusante da Usina de Irapé | OK |
+| ✅ OK | `https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2011.pdf` | Relatório técnico: impactos da UHE Irapé para comunidades a jusante da barragem | OK |
 | ✅ OK | `https://www.cgti.org.br/publicacoes/wp-content/uploads/2016/04/FERRAMENTAS-DE-GESTA%CC%83O-DE-PROJETOS-APLICADAS-AO-GERENCIAMENTO-DE-RISCOS-SO%CC%81CIO-AMBIENTAIS-NA-IMPLANTAC%CC%A7A%CC%83O-DE-PROJETOS-DE-GERAC%CC%A7A%CC%83O-HIDRA%CC%81ULICA-A-EXPERIE%CC%82NCIA-DA-CEMIG.pdf` | Ferramentas de gestão de projetos aplicadas ao gerenciamento de riscos sócio-ambientais — a experiência da CEMIG | OK |
-| ❓ INCONSISTENTE | `https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html` | Condicionantes da Licença Prévia da Barragem de Setúbal (36 itens) e deliberação do COPAM | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.almg.gov.br/comunicacao/noticias/arquivos/Impactos-socioambientais-da-Barragem-de-Setubal-pautam-audiencia-publica/` | Impactos socioambientais da Barragem de Setúbal pautam audiência pública | INCONSISTENTE |
+| ✅ OK | `https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html` | Condicionantes da Licença Prévia da Barragem de Setúbal (36 itens) e deliberação do COPAM | OK |
+| ✅ OK | `https://www.almg.gov.br/comunicacao/noticias/arquivos/Impactos-socioambientais-da-Barragem-de-Setubal-pautam-audiencia-publica/` | Impactos socioambientais da Barragem de Setúbal pautam audiência pública | OK |
 | ❓ INCONSISTENTE | `https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm` | Lei nº 12.527/2011 | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14133.htm` | Lei nº 14.133/2021 | INCONSISTENTE |
 | ✅ OK | `https://www.gov.br/pncp/pt-br` | PNCP — Portal Nacional de Contratações Públicas | OK |
@@ -136,7 +136,7 @@
 | ✅ OK | `https://www.betim.mg.gov.br/publicos/leiorganicadebetim_21084838.pdf` | Geral | OK |
 | ✅ OK | `https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/controladoria/2018/documentos/Legisla%C3%A7%C3%A3o/Lei_Organica_do_Municipio.pdf` | Geral | OK |
 | ✅ OK | `https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/meio-ambiente/lei11181-atual.pdf` | Geral | OK |
-| ✅ OK | `https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.aracuai.mg.gov.br/transparencia/legislacao?category=60` | Geral | OK |
 | ✅ OK | `https://www.aracuai.mg.gov.br/transparencia/legislacao?category=65` | Geral | OK |
 | ✅ OK | `https://www.diamantina.mg.gov.br/arquivos/lei-org--nica-do-munic--pio-de-diamantina_20020813.pdf` | Geral | OK |
@@ -359,7 +359,7 @@
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Mura` | Mura — Povos Indígenas no Brasil | OK |
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Waj%C3%A3pi` | Wajãpi — Povos Indígenas no Brasil | OK |
 | ↪️ REDIRECT | `https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217` | A Revolta dos Malês na Bahia | REDIRECT |
-| ❓ INCONSISTENTE | `https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19` | Insurreição de Queimado completa 176 anos | INCONSISTENTE |
+| ✅ OK | `https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19` | Insurreição de Queimado completa 176 anos | OK |
 | ↪️ REDIRECT | `https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada` | Revoltas no Norte: a Cabanagem, a Balaiada e a Sabinada | REDIRECT |
 | ✅ OK | `https://museudainconfidencia.museus.gov.br/` | Museu da Inconfidência — acervo e história | OK |
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1` | Guarani Kaiowá — Povos Indígenas no Brasil | OK |
@@ -372,7 +372,7 @@
 | ↪️ REDIRECT | `https://www.revistas.usp.br/revhistoria/article/view/89008` | As populações indígenas na Guerra dos Farrapos (1835-1845) | REDIRECT |
 | ✅ OK | `https://www12.senado.leg.br/noticias/materias/2016/07/01/ha-100-anos-o-fim-da-sangrenta-guerra-do-contestado` | Há 100 anos, o fim da sangrenta Guerra do Contestado | OK |
 | ✅ OK | `https://memorialdaresistenciasp.org.br/` | Memorial da Resistência — memória da ditadura | OK |
-| ✅ OK | `http://www.scielo.br/j/his/a/jtQFPnNpKRmmzcyPqBQddmP/?lang=pt` | Autenticidade, consumo e reconhecimento quilombola | OK |
+| ❓ INCONSISTENTE | `http://www.scielo.br/j/his/a/jtQFPnNpKRmmzcyPqBQddmP/?lang=pt` | Autenticidade, consumo e reconhecimento quilombola | INCONSISTENTE |
 | ✅ OK | `https://apiboficial.org/atl-2025/` | Acampamento Terra Livre 2024 — Nosso Marco é Ancestral | OK |
 | ✅ OK | `https://apiboficial.org/atl2024/` | Acampamento Terra Livre 2023 — O Futuro Indígena é Hoje | OK |
 | ✅ OK | `https://apiboficial.org/atl2023/` | Acampamento Terra Livre 2022 — Retomando o Brasil: demarcar territórios e aldear a política | OK |
@@ -461,7 +461,7 @@
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_federais_superficial/MapServer/4` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_estaduais_superficial/MapServer/0` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/server/rest/services/Hosted/outorgas_estaduais_subterraneas/FeatureServer/0` | Geral | OK |
-| ✅ OK | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | OK |
+| ❓ INCONSISTENTE | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | INCONSISTENTE |
 | ✅ OK | `https://fepam.rs.gov.br/upload/arquivos/202602/23110518-autos-de-infracao-2026-02-23.xlsx` | Geral | OK |
 | ✅ OK | `https://geopr.iat.pr.gov.br/server/rest/services/00_PUBLICACOES/licenciamento_ambiental_pr/FeatureServer/0` | Geral | OK |
 | ✅ OK | `https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama` | Geral | OK |
@@ -974,8 +974,8 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=53` | MAPAS DE POPULAÇÃO | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=4955` | ORDENS, OFÍCIOS E MAIS PAPÉIS SOBRE POPULAÇÃO E TERRENOS DIAMANTINOS | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=286` | MAPAS DE POPULAÇÃO | OK |
-| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=413` | MAPAS DE POPULAÇÃO | OK |
-| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=152` | MAPAS DE POPULAÇÃO | OK |
+| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=413` | MAPAS DE POPULAÇÃO | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=152` | MAPAS DE POPULAÇÃO | INCONSISTENTE |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=449` | MAPAS DE POPULAÇÃO | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=538` | MAPAS DE POPULAÇÃO | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=1149` | MAPAS DE POPULAÇÃO | OK |
@@ -2455,7 +2455,7 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4463` | SG-Cx.51-Doc.68 REQUERIMENTO DE BÁRBARA DE SOUSA BULHÕES REFERENTE A CARTA DE SESMARIA DAS TERRAS NA FREGUESIA DA COCHOEIRA DO CAMPO, TERMO DE VILA RICA | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4467` | SG-Cx.52-Doc.01 REQUERIMENTO DE TENENTE ANTÔNIO FERNANDEZ DE AZEVEDO REFERENTE A CARTA DE SESMARIA DAS TERRAS NA PARAGEM DA CAHOEIRA, FREGUESIA DE INFICIONADO, TERMO DE MARIANA | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4470` | SG-Cx.52-Doc.03 REQUERIMENTO DE MANUEL GONÇAVES DA ROCHA REFERENTE A CARTA DE SESMARIA DAS TERRAS NA PARAGEM BOM JARDIM, RIBEIRÃO DE SANTA RITA ABAIXO | OK |
-| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4472` | SG-Cx.52-Doc.04 REQUERIMENTO DE TENENTE RODRIGO PEREIRA SOARES DE ALBERGARIA REFERENTE CARTA DE SESMARIA DAS TERRAS NA MATA DO TIGRE, FREGUESIA DO BAMBUÍ, TERMO E VILA DE SÃO BENTO DO TAMANDUÁ | OK |
+| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4472` | SG-Cx.52-Doc.04 REQUERIMENTO DE TENENTE RODRIGO PEREIRA SOARES DE ALBERGARIA REFERENTE CARTA DE SESMARIA DAS TERRAS NA MATA DO TIGRE, FREGUESIA DO BAMBUÍ, TERMO E VILA DE SÃO BENTO DO TAMANDUÁ | INCONSISTENTE |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4474` | SG-Cx.52-Doc.06 REQUERIMENTO DE TENENTE JOAQUIM JOSÉ DA SILVA REFERENTE A CARTA DE SESMARIA DAS TERRAS SITUADAS NO SUMIDOURO, FREGUESIA DE SANTA BÁRBARA, TERMO DA VILA NOVA DA RAINHA DO CAETÉ | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4475` | SG-Cx.52-Doc.07 REQUERIMENTO DE MATIAS PIRES REFERENTE A CARTA DE SESMARIA DAS TERRAS SITUADAS NO RIBEIRÃO DO PAU GROSSO | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4477` | SG-Cx.52-Doc.08 INFORMAÇÃO DE SERVIÇO DE OFICIAIS DA CÂMARA AO GOVERNADOR SOBRE O RECEBIMENTO DA ORDEM A RESPEITO DAS SESMARIAS, FICANDO OS MESMOS ADVERTIDOS PARA CUMPRIREM | OK |
@@ -3065,7 +3065,7 @@
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_rios` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ouvidoria` | Geral | OK |
-| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://transparencia.al.al.leg.br/` | Geral | OK |
 | ❓ INCONSISTENTE | `https://dados.al.al.leg.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://sapl.al.al.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleal_aud_braskem` | Geral | OK |
@@ -3210,7 +3210,7 @@
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_jalapao` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_rios` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais?uf=MG` | Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP? | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/editais?uf=MG` | Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP? | OK |
 | ✅ OK | `https://www.gov.br/anm/pt-br/assuntos/arrecadacao/distribuicao-da-cfem` | Quais municípios fazem parte do polo do lítio no Jequitinhonha e como fiscalizar? | OK |
 | ✅ OK | `https://www.gov.br/funai/pt-br/atuacao/terras-indigenas` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Te%C3%B3filo%20Otoni&uf=MG` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | INCONSISTENTE |
@@ -3251,7 +3251,7 @@
 | ✅ OK | `https://agenciadenoticias.ibge.gov.br/media/com_mediaibge/arquivos/6d4743b1a7387a2f8ede699273970d77.pdf` | BATER — População em Áreas de Risco no Brasil | OK |
 | ✅ OK | `https://www.cemaden.gov.br/pluviometros-tempo-real/` | Rede de Pluviômetros Automáticos | OK |
 | ❌ QUEBRADO | `https://apitempo.inmet.gov.br/avisos/ativos` | Avisos de Risco Meteorológico | QUEBRADO |
-| ❌ QUEBRADO | `https://queimadas.dgi.inpe.br/queimadas/bdqueimadas` | Programa Queimadas — Focos de Calor e Risco de Fogo | QUEBRADO |
+| ↪️ REDIRECT | `https://queimadas.dgi.inpe.br/queimadas/bdqueimadas` | Programa Queimadas — Focos de Calor e Risco de Fogo | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.snis.gov.br/ e https://metadados.ana.gov.br/` | SNIS e Atlas Esgotos — Saneamento Básico e Poluição Hídrica | INCONSISTENTE |
 | ✅ OK | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | OK |
 | ✅ OK | `https://aedasmg.org/documento/encontro-o-povo-ainda-luta-despedida-da-aedas-paraopeba/` | FOTOS – Encontro “O Povo Ainda Luta” – Despedida da Aedas Paraopeba | OK |
@@ -3956,7 +3956,7 @@
 | ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-18-o-direito-a-assessoria-tecnica-na-bacia-do-medio-rio-doce/` | Estação Rio Doce – Edição 18 | O Direito à Assessoria Técnica na Bacia do Médio Rio Doce. | OK |
 | ✅ OK | `https://aedasmg.org/documento/03-edicao-jornal-territorios-programa-de-transferencia-de-renda-sera-implementado-em-territorios-atingidos-nas-modalidades-ptr-rural-e-ptr-pesca/` | #03 Edição Jornal Territórios: Programa de Transferência de Renda será implementado em territórios atingidos nas modalidades PTR-Rural e PTR-Pesca | OK |
 | ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-04-como-ficam-as-indenizacoes/` | Médio Rio Doce | Tira-Dúvidas 04: Como ficam as indenizações? | OK |
-| ❓ INCONSISTENTE | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-03-questoes-sobre-cadastros-da-reparacao/` | Médio Rio Doce | Tira-Dúvidas 03: Questões sobre cadastros da Reparação | INCONSISTENTE |
+| ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-03-questoes-sobre-cadastros-da-reparacao/` | Médio Rio Doce | Tira-Dúvidas 03: Questões sobre cadastros da Reparação | OK |
 | ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-02-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 02: Cadastro Nacional de Agricultura Familiar | OK |
 | ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-01-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 01: Cadastro Nacional de Agricultura Familiar | OK |
 | ✅ OK | `https://aedasmg.org/documento/informacao-e-direito-ptr-rural-e-pesca-previstos-no-acordo-de-reparacao-da-bacia-do-rio-doce/` | INFORMAÇÃO É DIREITO | PTR Rural e Pesca previstos no acordo de reparação da Bacia do Rio Doce | OK |
@@ -4223,7 +4223,7 @@
 | ✅ OK | `https://investors.fcx.com/` | Freeport-McMoRan — Annual Report on Sustainability & Tailings | OK |
 | ✅ OK | `https://www.newmont.com/investors/` | Newmont Corporation — Sustainability and Human Rights Benchmark Report | OK |
 | ✅ OK | `https://investors.alcoa.com/` | Alcoa Corporation — Sustainability Report and Biodiversity Stewardship | OK |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/noticias/posse` | Posse Solene: Paulo Gonet Branco assume como Presidente do CNMP e PGR (2023–2025) | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.cnmp.mp.br/noticias/posse` | Posse Solene: Paulo Gonet Branco assume como Presidente do CNMP e PGR (2023–2025) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ac.def.br/noticias/posse-simone-jaques-de-azambuja` | Sessão Solene: Simone Jaques de Azambuja Santiago assume como Defensor(a) Público(a)-Geral do DPAC (2023–2025) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ac.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Acre (NUDEP/DPAC) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ac.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | INCONSISTENTE |
@@ -4251,11 +4251,10 @@
 | ❓ INCONSISTENTE | `https://www.defensoria.es.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Espírito Santo (NUDEP/DPES) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.es.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Espírito Santo | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/noticias` | Sessão Solene: Tiago Gregório Fernandes assume como Defensor(a) Público(a)-Geral do DPGO (2022–2024) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.go.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Goiás (NUDEP/DPGO) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Goiás | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | INCONSISTENTE |
 | ✅ OK | `https://defensoria.mg.def.br/noticias/` | Sessão Solene: Raquel Gomes de Sousa da Costa Dias assume como Defensora Pública-Geral do DPMG (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.defensoria.mg.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Minas Gerais (NUDEP/DPMG) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.mg.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Minas Gerais | QUEBRADO |
@@ -4311,7 +4310,6 @@
 | ❓ INCONSISTENTE | `https://www.dpu.jus.br/transparencia` | Relatório de Gestão e Atividades Institucionais (DPU 2025/2026) | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.mpac.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Acre | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpac.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/portal/relatorios-inspecoes` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPAC | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpac.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPAC combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpal.mp.br/noticias` | Sessão Solene: Lean Antônio Ferreira de Araújo assume como Procurador-Geral de Justiça do MPAL (2024–2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpal.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Alagoas | QUEBRADO |
@@ -4347,9 +4345,9 @@
 | ❌ QUEBRADO | `https://www.mpmt.mp.br/noticias/posse-deosdete-cruz-junior` | Sessão Solene: Deosdete Cruz Junior assume como Procurador-Geral de Justiça do MPMT (2023–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpmt.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpmt.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPMT combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ✅ OK | `https://www.mppa.mp.br/noticias` | Sessão Solene: César Mattar Jr. assume como Procurador-Geral de Justiça do MPPA (2023–2025) | OK |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPA combate desvios em licitações de transporte público escolar | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.mppa.mp.br/noticias` | Sessão Solene: César Mattar Jr. assume como Procurador-Geral de Justiça do MPPA (2023–2025) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.mppa.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pará | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.mppa.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPA combate desvios em licitações de transporte público escolar | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.mppe.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppe.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPE combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppi.mp.br/noticias/posse-cleandro-alves-de-moura` | Sessão Solene: Cleandro Alves de Moura assume como Procurador-Geral de Justiça do MPPI (2023–2025) | QUEBRADO |
@@ -4357,7 +4355,6 @@
 | ❌ QUEBRADO | `https://www.mppi.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPI combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mppr.mp.br/noticias/posse-francisco-zanicotti` | Sessão Solene: Francisco Zanicotti assume como Procurador-Geral de Justiça do MPPR (2024–2026) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mppr.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www.mppr.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPR combate desvios em licitações de transporte público escolar | REDIRECT |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio de Janeiro | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPRJ combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprn.mp.br/noticias/posse-elaine-cardoso-de-matos-n` | Sessão Solene: Elaine Cardoso de Matos Novais Teixeira assume como Procurador-Geral de Justiça do MPRN (2023–2025) | QUEBRADO |
@@ -4374,7 +4371,6 @@
 | ❌ QUEBRADO | `https://www.mprs.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPRS combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ✅ OK | `https://www.mpsc.mp.br/noticias` | Sessão Solene: Fábio de Souza Trajano assume como Procurador-Geral de Justiça do MPSC (2023–2025) | OK |
 | ❌ QUEBRADO | `https://www.mpsc.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Santa Catarina | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpsc.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPSC combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mpse.mp.br/noticias/posse-manoel-cabral-machado-net` | Sessão Solene: Manoel Cabral Machado Neto assume como Procurador-Geral de Justiça do MPSE (2022–2024) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mpse.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Sergipe | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mpse.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPSE combate desvios em licitações de transporte público escolar | INCONSISTENTE |
@@ -4383,8 +4379,7 @@
 | ✅ OK | `https://www.mpsp.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPSP combate desvios em licitações de transporte público escolar | OK |
 | ❌ QUEBRADO | `https://www.mpto.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Tocantins | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpto.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPTO combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ✅ OK | `https://www.stf.jus.br/noticias/posse` | Posse Solene: Luís Roberto Barroso assume como Presidente do STF e do CNJ (2023–2025) | OK |
-| ↪️ REDIRECT | `https://www.stf.jus.br/transparencia` | Relatório de Gestão e Atividades Institucionais (STF 2025/2026) | REDIRECT |
+| ❌ QUEBRADO | `https://www.stf.jus.br/noticias/posse` | Posse Solene: Luís Roberto Barroso assume como Presidente do STF e do CNJ (2023–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.stj.jus.br/noticias/posse` | Posse Solene: Herman Benjamin assume como Presidente do Superior Tribunal de Justiça (2024–2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.stj.jus.br/transparencia` | Relatório de Gestão e Atividades Institucionais (STJ 2025/2026) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tcemg.jus.br/noticias/posse` | Posse Solene: Durval Ângelo assume como Presidente do TCE-MG (2025–2026) | INCONSISTENTE |
@@ -4398,8 +4393,6 @@
 | ✅ OK | `https://www.tjal.jus.br/noticias/metas-nacionais-2026` | TJAL atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
 | ✅ OK | `https://www.tjal.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Alagoas | OK |
 | ❌ QUEBRADO | `https://www.tjam.jus.br/noticias/posse-jomar-ricardo-saunders-fe` | Sessão Solene: Jomar Ricardo Saunders Fernandes assume como Presidente do Tribunal de Justiça do TJAM (2025–2027) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAM 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/noticias/metas-nacionais-2026` | TJAM atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjam.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Amazonas | QUEBRADO |
 | ↪️ REDIRECT | `https://www.tjap.jus.br/noticias/posse-jayme-henrique-ferreira` | Sessão Solene: Jayme Henrique Ferreira assume como Presidente do Tribunal de Justiça do TJAP (2025–2027) | REDIRECT |
 | ↪️ REDIRECT | `https://www.tjap.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAP 2025/2026) | REDIRECT |
@@ -4428,7 +4421,6 @@
 | ✅ OK | `https://www.tjma.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Maranhão | OK |
 | ✅ OK | `https://www.gov.br/noticias/posse-desembargador-luiz-carlos` | Sessão Solene: Desembargador Luiz Carlos de Azevedo Corrêa Junior assume como Presidente do TJMG (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.tjmg.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJMG 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjmg.jus.br/noticias/metas-nacionais-2026` | TJMG atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjmg.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Minas Gerais | QUEBRADO |
 | ✅ OK | `https://www.tjms.jus.br/noticias/posse-sideni-soncini-pimentel` | Sessão Solene: Sideni Soncini Pimentel assume como Presidente do Tribunal de Justiça do TJMS (2025–2026) | OK |
 | ❌ QUEBRADO | `https://www.tjms.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJMS 2025/2026) | QUEBRADO |
@@ -4445,29 +4437,24 @@
 | ✅ OK | `https://www.tjpb.jus.br/noticias/metas-nacionais-2026` | TJPB atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
 | ✅ OK | `https://www.tjpb.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Paraíba | OK |
 | ❌ QUEBRADO | `https://www.tjpe.jus.br/noticias` | Sessão Solene: Ricardo de Oliveira Paes Barreto assume como Presidente do Tribunal de Justiça do TJPE (2024–2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPE 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/noticias/metas-nacionais-2026` | TJPE atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpe.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/noticias/posse-aderson-nogueira` | Sessão Solene: Aderson Nogueira assume como Presidente do Tribunal de Justiça do TJPI (2025–2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPI 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/noticias/metas-nacionais-2026` | TJPI atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpr.jus.br/noticias/posse-luiz-fernando-tomasi-kepp` | Sessão Solene: Luiz Fernando Tomasi Keppen assume como Presidente do Tribunal de Justiça do TJPR (2023–2025) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpr.jus.br/noticias/metas-nacionais-2026` | TJPR atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.tjpr.jus.br/noticias/posse-luiz-fernando-tomasi-kepp` | Sessão Solene: Luiz Fernando Tomasi Keppen assume como Presidente do Tribunal de Justiça do TJPR (2023–2025) | INCONSISTENTE |
 | ✅ OK | `https://www.tjpr.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Paraná | OK |
 | ❓ INCONSISTENTE | `https://www.tjrj.jus.br/noticias/posse-ricardo-rodrigues-cardozo` | Sessão Solene: Ricardo Rodrigues Cardozo assume como Presidente do Tribunal de Justiça do TJRJ (2023–2025) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tjrj.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRJ 2025/2026) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tjrj.jus.br/noticias/metas-nacionais-2026` | TJRJ atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tjrj.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio de Janeiro | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tjrn.jus.br/noticias/posse-ibanez-monteiro` | Sessão Solene: Ibanez Monteiro assume como Presidente do Tribunal de Justiça do TJRN (2025–2026) | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.tjrn.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRN 2025/2026) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tjrn.jus.br/noticias/metas-nacionais-2026` | TJRN atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.tjrn.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio Grande do Norte | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjro.jus.br/noticias/posse-alexandre-miguel` | Sessão Solene: Alexandre Miguel assume como Presidente do Tribunal de Justiça do TJRO (2026–2027) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjro.jus.br/noticias/metas-nacionais-2026` | TJRO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjro.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rondônia | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/noticias/posse-leonardo-cupello` | Sessão Solene: Leonardo Cupello assume como Presidente do Tribunal de Justiça do TJRR (2025–2027) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRR 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/noticias/metas-nacionais-2026` | TJRR atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Roraima | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrs.jus.br/noticias/posse-alberto-delgado-neto` | Sessão Solene: Alberto Delgado Neto assume como Presidente do Tribunal de Justiça do TJRS (2024–2026) | QUEBRADO |
@@ -4481,21 +4468,19 @@
 | ❌ QUEBRADO | `https://www.tjse.jus.br/noticias` | Sessão Solene: Iolanda Santos Guimarães assume como Presidente do Tribunal de Justiça do TJSE (2025–2027) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjse.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJSE 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjse.jus.br/noticias/metas-nacionais-2026` | TJSE atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjse.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Sergipe | QUEBRADO |
 | ✅ OK | `https://www.tjsp.jus.br/noticias/posse-fernando-antonio-torres-g` | Sessão Solene: Fernando Antonio Torres Garcia assume como Presidente do Tribunal de Justiça do TJSP (2024–2026) | OK |
 | ✅ OK | `https://www.tjsp.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJSP 2025/2026) | OK |
 | ✅ OK | `https://www.tjsp.jus.br/noticias/metas-nacionais-2026` | TJSP atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/noticias/posse-maysa-vendramini-rosal` | Sessão Solene: Maysa Vendramini Rosal assume como Presidente do Tribunal de Justiça do TJTO (2025–2027) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJTO 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/noticias/metas-nacionais-2026` | TJTO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Tocantins | QUEBRADO |
+| ✅ OK | `https://www.tjto.jus.br/noticias/posse-maysa-vendramini-rosal` | Sessão Solene: Maysa Vendramini Rosal assume como Presidente do Tribunal de Justiça do TJTO (2025–2027) | OK |
+| ✅ OK | `https://www.tjto.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJTO 2025/2026) | OK |
+| ✅ OK | `https://www.tjto.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Tocantins | OK |
 | ✅ OK | `https://portal.trf6.jus.br/noticias/` | Posse Solene: Vallisney de Souza Oliveira assume como Presidente do TRF da 6ª Região (2024–2026) | OK |
 | ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/conheca-o-trt/comunicacao/noticias` | Posse Solene: Denise Alves Horta assume como Presidente do TRT da 3ª Região (2024–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tst.jus.br/noticias/posse` | Posse Solene: Aloysio Corrêa da Veiga assume como Presidente do Tribunal Superior do Trabalho (2024–2026) | QUEBRADO |
 | ✅ OK | `https://www.tst.jus.br/transparencia` | Relatório de Gestão e Atividades Institucionais (TST 2025/2026) | OK |
 | ❌ QUEBRADO | `https://www.scielo.br/j/csp/a/BrumadinhoSaude` | Avaliação dos Impactos na Saúde Coletiva e Exposição a Metais Pesados Pós-Rompimento da Barragem B1 da Vale em Brumadinho | QUEBRADO |
 | ✅ OK | `https://repositorio.ufmg.br/handle/1843/DIR-ACORDO-BRUMADINHO` | A Arquitetura Jurídico-Econômica do Acordo Judicial de Brumadinho: Assimetria de Informação e Limites da Reparação Integral | OK |
-| ❌ QUEBRADO | `https://repositorio.ufop.br/handle/123456789/descaracterizacao-barragens-2024` | Análise Crítica da Descaracterização de Barragens a Montante em Minas Gerais: Prazos, Riscos de Liquefação e a Lei Estadual 23.291/2019 | QUEBRADO |
+| ↪️ REDIRECT | `https://repositorio.ufop.br/handle/123456789/descaracterizacao-barragens-2024` | Análise Crítica da Descaracterização de Barragens a Montante em Minas Gerais: Prazos, Riscos de Liquefação e a Lei Estadual 23.291/2019 | REDIRECT |
 | ❌ QUEBRADO | `https://revista.fct.unesp.br/index.php/pegada/article/view/litio-jequitinhonha` | A Corrida Global pelo Lítio e a Pressão Hídrica no Médio Jequitinhonha: O Caso das Cavas Xuxa e Barreiro da Sigma Lithium | QUEBRADO |
 | ❌ QUEBRADO | `https://www.inesc.org.br/publicacoes/transicao-litio-jequitinhonha` | Para Quem É a Transição? Mineração de Lítio, Subsídios Fiscais e Conflitos Socioambientais no Vale do Jequitinhonha | QUEBRADO |
 | ✅ OK | `https://locus.ufv.br/handle/123456789/conflitos-aguas-jequitinhonha` | Conflitos pelo Uso da Água e Vulnerabilidade Climática no Semiárido Mineiro: Análise Histórica e Contemporânea | OK |
@@ -4507,13 +4492,13 @@
 | ❌ QUEBRADO | `https://www.transparencia.org.br/publicacoes/relatorio-emendas-pix-2025` | O Rastreamento das 'Transferências Especiais' (Emendas Pix): Desafios de Prestação de Contas nos Municípios Brasileiros | QUEBRADO |
 | ❌ QUEBRADO | `https://www.anadep.org.br/diagnostico-defensoria-publica-2024` | V Diagnóstico da Defensoria Pública no Brasil: Mapa das Assimetrias Orçamentárias frente aos TJs e Ministérios Públicos | QUEBRADO |
 | ✅ OK | `https://www.cnj.jus.br/pesquisas-judiciarias/justica-em-numeros` | Custos da Justiça, Despesa com Pessoal e Produtividade nos 27 Tribunais Estaduais: Uma Leitura Cívica do Justiça em Números | OK |
-| ❓ INCONSISTENTE | `https://www.scielo.br/j/rda/a/AtuacaoMPTermosConduta` | A Atuação Extrajudicial do Ministério Público em Conflitos Ambientais: Efetividade dos TACs e Limites da Tutela Coletiva | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.scielo.br/j/rda/a/AtuacaoMPTermosConduta` | A Atuação Extrajudicial do Ministério Público em Conflitos Ambientais: Efetividade dos TACs e Limites da Tutela Coletiva | QUEBRADO |
 | ✅ OK | `https://repositorio.ufmg.br/handle/1843/IGC-SEGREGACO-URBANA-RMBH` | Segregação Socioespacial, Enchentes e Orçamento Municipal na Região Metropolitana de Belo Horizonte | OK |
 | ✅ OK | `https://discovery.nationalarchives.gov.uk/details/r/C11234980` | MI5 / Security Service: Dossiê de Contraespionagem sobre a Fuga de Kim Philby e os Cinco de Cambridge | OK |
 | ❓ INCONSISTENTE | `https://discovery.nationalarchives.gov.uk/download/KV-2-3498.pdf` | MI5 / Security Service: Dossiê de Contraespionagem sobre a Fuga de Kim Philby e os Cinco de Cambridge | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.stasi-unterlagen-archiv.de/archiv/themen/beitrag/mauerbau-1961/` | Stasi / HA II: Dossiê Operacional sobre a Construção e Fechamento do Muro de Berlim | REDIRECT |
 | ↪️ REDIRECT | `https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-berliner-mauer-1961.pdf` | Stasi / HA II: Dossiê Operacional sobre a Construção e Fechamento do Muro de Berlim | REDIRECT |
-| ✅ OK | `https://www.servicehistorique.sga.defense.gouv.fr/` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | OK |
+| ❓ INCONSISTENTE | `https://www.servicehistorique.sga.defense.gouv.fr/` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | INCONSISTENTE |
 | ⚠️ MENTIROSO | `https://francearchives.gouv.fr/pdf/shd-sdece-algerie-1957.pdf` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | MENTIROSO |
 | ❌ QUEBRADO | `http://dati.acs.beniculturali.it/comitatodirettiva/` | Direttiva Declassifica: Dossiê SISMI sobre o Atentado Terrorista na Estação de Bolonha | QUEBRADO |
 | ❌ QUEBRADO | `http://dati.acs.beniculturali.it/declassificati/strage-bologna-fasc-22.pdf` | Direttiva Declassifica: Dossiê SISMI sobre o Atentado Terrorista na Estação de Bolonha | QUEBRADO |
@@ -4525,10 +4510,10 @@
 | ❓ INCONSISTENTE | `https://digitalarchive.wilsoncenter.org/document/mao-nixon-meeting-beijing-transcript-1972.pdf` | FMA: Minutas Diplomáticas Desclassificadas das Conversações entre Mao Tsé-Tung e Richard Nixon | INCONSISTENTE |
 | ✅ OK | `https://www.mofa.go.jp/about/history/archive/` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
 | ✅ OK | `https://www.mofa.go.jp/mofaj/files/000182741.pdf` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
-| ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
+| ✅ OK | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | OK |
+| ❌ QUEBRADO | `https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.nationalarchives.gov.za/` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | INCONSISTENTE |
 | ✅ OK | `https://discovery.nationalarchives.gov.uk/details/r/C11284560` | MoFA / OPEP: Atas Secretas da Decisão do Embargo Petrolífero da OPEP na Guerra do Yom Kippur | OK |
 | ❓ INCONSISTENTE | `https://discovery.nationalarchives.gov.uk/download/FCO-67-941-OPEC-OIL-EMBARGO-1973.pdf` | MoFA / OPEP: Atas Secretas da Decisão do Embargo Petrolífero da OPEP na Guerra do Yom Kippur | INCONSISTENTE |
 | ✅ OK | `https://www.argentina.gob.ar/derechoshumanos/anm` | MinDef / Estado-Maior: O Relatório da Comissão Rattenbach sobre a Guerra das Malvinas | OK |
@@ -4539,8 +4524,8 @@
 | ❌ QUEBRADO | `https://www.archives.go.kr/open_content/pdf/nak-kcia-blue-house-pueblo-1968.pdf` | KCIA / NAK: Relatório de Inteligência sobre a Infiltração na Blue House e Captura do USS Pueblo | QUEBRADO |
 | ↪️ REDIRECT | `https://www.cultura.gob.es/cultura/archivos/portada/aga.html` | CESID / AGA: Informação de Inteligência sobre a Tentativa de Golpe de Estado de 23 de Fevereiro de 1981 | REDIRECT |
 | ❌ QUEBRADO | `https://www.defensa.gob.es/cni/archivo/cesid-informe-23f-1981.pdf` | CESID / AGA: Informação de Inteligência sobre a Tentativa de Golpe de Estado de 23 de Fevereiro de 1981 | QUEBRADO |
-| ✅ OK | `https://www.nationaalarchief.nl/` | BVD / MinBuZa: Relatório Secreto sobre a Operação Produk e as Ações Policiais em Java e Sumatra | OK |
-| ❌ QUEBRADO | `https://www.nationaalarchief.nl/pdf/bvd-indonesie-politionele-acties-1947.pdf` | BVD / MinBuZa: Relatório Secreto sobre a Operação Produk e as Ações Policiais em Java e Sumatra | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.nationaalarchief.nl/` | BVD / MinBuZa: Relatório Secreto sobre a Operação Produk e as Ações Policiais em Java e Sumatra | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.nationaalarchief.nl/pdf/bvd-indonesie-politionele-acties-1947.pdf` | BVD / MinBuZa: Relatório Secreto sobre a Operação Produk e as Ações Policiais em Java e Sumatra | INCONSISTENTE |
 | ✅ OK | `https://anri.go.id/` | BAKIN / ANRI: Dossiê de Segurança Interna sobre a Operação de Repressão aos Acontecimentos de 1965 | OK |
 | ↪️ REDIRECT | `https://nsarchive2.gwu.edu/NSAEBB/NSAEBB607/indonesia-1965-cables-bakin.pdf` | BAKIN / ANRI: Dossiê de Segurança Interna sobre a Operação de Repressão aos Acontecimentos de 1965 | REDIRECT |
 | ✅ OK | `https://www.gob.mx/agn` | DFS / AGN: Ficha e Registro Policial sobre a Operação Galeana no Massacre de Tlatelolco (1968) | OK |
@@ -4578,7 +4563,7 @@
 | ↪️ REDIRECT | `https://www.aperam.com/investors/` | França: Aperam S.A. — Registre de Commerce Luxembourg / IEF-MG / FEAM | REDIRECT |
 | ✅ OK | `https://uitspraken.rechtspraak.nl/#!/details?id=ECLI:NL:RBROT:2024:6281` | Holanda: Braskem Netherlands Finance B.V. / Braskem Holland B.V. — Rechtbank Rotterdam (Tribunal de Roterdã) | OK |
 | ✅ OK | `https://uitspraken.rechtspraak.nl/` | Holanda: Samarco Iron Ore Europe B.V. — Rechtbank Rotterdam | OK |
-| ↪️ REDIRECT | `https://www.portofrotterdam.com/` | Holanda: Europees Massagoed Overslagbedrijf (EMO) B.V. — Port of Rotterdam Authority / EMO Terminal Maasvlakte | REDIRECT |
+| ✅ OK | `https://www.portofrotterdam.com/` | Holanda: Europees Massagoed Overslagbedrijf (EMO) B.V. — Port of Rotterdam Authority / EMO Terminal Maasvlakte | OK |
 | ❌ QUEBRADO | `https://www.nvwa.nl/onderwerpen/eudr` | Holanda: Viterra B.V. / Bunge Netherlands B.V. — NVWA (Autoridade Holandesa de Segurança Alimentar) / EUDR | QUEBRADO |
 | ✅ OK | `https://www.aneel.gov.br/` | Itália: Enel S.p.A. (Roma) — ANEEL / ALESP / Ministério da Economia e Finanças da Itália (MEF) | OK |
 | ✅ OK | `https://www.enelgreenpower.com/pt/paises/america-do-sul/brasil` | Itália: Enel Green Power S.p.A. — ANEEL / SEMARH-PI / INEMA-BA | OK |
@@ -4598,110 +4583,70 @@
 | ❓ INCONSISTENTE | `https://www.lbr.lu/` | Luxemburgo: ArcelorMittal S.A. (Luxemburgo) — RCS Luxembourg B42180 / ANM SIGBM / MPMG | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.hydro.com/pt-BR/` | Noruega: Norsk Hydro ASA (Oslo) — Brønnøysundregistrene / MPF-PA / SEMAS-PA | QUEBRADO |
 | ✅ OK | `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/` | Geral | OK |
-| ❌ QUEBRADO | `https://www.cacoal.ro.gov.br/transparencia` | Prefeitura Municipal de Cacoal | QUEBRADO |
-| ❌ QUEBRADO | `https://portovelho.ro.gov.br/transparencia` | Prefeitura Municipal de Porto Velho | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.cruzeiro-do-sul.ac.gov.br/transparencia` | Prefeitura Municipal de Cruzeiro do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://riobranco.ac.gov.br/transparencia` | Prefeitura Municipal de Rio Branco | INCONSISTENTE |
 | ✅ OK | `https://www.manacapuru.am.gov.br/transparencia` | Prefeitura Municipal de Manacapuru | OK |
 | ✅ OK | `https://www.parintins.am.gov.br/transparencia` | Prefeitura Municipal de Parintins | OK |
 | ↪️ REDIRECT | `https://www.tefe.am.gov.br/transparencia` | Prefeitura Municipal de Tefé | REDIRECT |
-| ❌ QUEBRADO | `https://boavista.rr.gov.br/transparencia` | Prefeitura Municipal de Boa Vista | QUEBRADO |
-| ❌ QUEBRADO | `https://www.abaetetuba.pa.gov.br/transparencia` | Prefeitura Municipal de Abaetetuba | QUEBRADO |
 | ✅ OK | `https://www.ananindeua.pa.gov.br/transparencia` | Prefeitura Municipal de Ananindeua | OK |
 | ❓ INCONSISTENTE | `https://belem.pa.gov.br/transparencia` | Prefeitura Municipal de Belém | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/transparencia` | Prefeitura Municipal de Cametá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/transparencia` | Prefeitura Municipal de Castanhal | QUEBRADO |
 | ✅ OK | `https://www.itaituba.pa.gov.br/transparencia` | Prefeitura Municipal de Itaituba | OK |
-| ❌ QUEBRADO | `https://www.maraba.pa.gov.br/transparencia` | Prefeitura Municipal de Marabá | QUEBRADO |
-| ❌ QUEBRADO | `https://www.paragominas.pa.gov.br/transparencia` | Prefeitura Municipal de Paragominas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.redencao.pa.gov.br/transparencia` | Prefeitura Municipal de Redenção | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br/transparencia` | Prefeitura Municipal de Santarém | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.araguaina.to.gov.br/transparencia` | Prefeitura Municipal de Araguaína | QUEBRADO |
-| ❌ QUEBRADO | `https://www.gurupi.to.gov.br/transparencia` | Prefeitura Municipal de Gurupi | QUEBRADO |
-| ❌ QUEBRADO | `https://palmas.to.gov.br/transparencia` | Prefeitura Municipal de Palmas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.imperatriz.ma.gov.br/transparencia` | Prefeitura Municipal de Imperatriz | QUEBRADO |
 | ✅ OK | `https://saoluis.ma.gov.br/transparencia` | Prefeitura Municipal de São Luís | OK |
 | ✅ OK | `https://www.floriano.pi.gov.br/transparencia` | Prefeitura Municipal de Floriano | OK |
 | ✅ OK | `https://www.parnaiba.pi.gov.br/transparencia` | Prefeitura Municipal de Parnaíba | OK |
-| ❌ QUEBRADO | `https://www.picos.pi.gov.br/transparencia` | Prefeitura Municipal de Picos | QUEBRADO |
-| ❌ QUEBRADO | `https://teresina.pi.gov.br/transparencia` | Prefeitura Municipal de Teresina | QUEBRADO |
-| ❌ QUEBRADO | `https://www.crateus.ce.gov.br/transparencia` | Prefeitura Municipal de Crateús | QUEBRADO |
-| ❌ QUEBRADO | `https://www.crato.ce.gov.br/transparencia` | Prefeitura Municipal de Crato | QUEBRADO |
-| ❌ QUEBRADO | `https://fortaleza.ce.gov.br/transparencia` | Prefeitura Municipal de Fortaleza | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/transparencia` | Prefeitura Municipal de Iguatu | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/transparencia` | Prefeitura Municipal de Juazeiro do Norte | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.quixada.ce.gov.br/transparencia` | Prefeitura Municipal de Quixadá | QUEBRADO |
 | ✅ OK | `https://www.sobral.ce.gov.br/transparencia` | Prefeitura Municipal de Sobral | OK |
 | ❌ QUEBRADO | `https://www.caico.rn.gov.br/transparencia` | Prefeitura Municipal de Caicó | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.ceara-mirim.rn.gov.br/transparencia` | Prefeitura Municipal de Ceará-Mirim | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.currais-novos.rn.gov.br/transparencia` | Prefeitura Municipal de Currais Novos | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.macaiba.rn.gov.br/transparencia` | Prefeitura Municipal de Macaíba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br/transparencia` | Prefeitura Municipal de Mossoró | INCONSISTENTE |
-| ❌ QUEBRADO | `https://natal.rn.gov.br/transparencia` | Prefeitura Municipal de Natal | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.pau-dos-ferros.rn.gov.br/transparencia` | Prefeitura Municipal de Pau dos Ferros | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.cajazeiras.pb.gov.br/transparencia` | Prefeitura Municipal de Cajazeiras | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.campina-grande.pb.gov.br/transparencia` | Prefeitura Municipal de Campina Grande | INCONSISTENTE |
 | ✅ OK | `https://www.guarabira.pb.gov.br/transparencia` | Prefeitura Municipal de Guarabira | OK |
-| ❌ QUEBRADO | `https://www.patos.pb.gov.br/transparencia` | Prefeitura Municipal de Patos | QUEBRADO |
-| ❌ QUEBRADO | `https://www.sousa.pb.gov.br/transparencia` | Prefeitura Municipal de Sousa | QUEBRADO |
-| ❌ QUEBRADO | `https://www.araripina.pe.gov.br/transparencia` | Prefeitura Municipal de Araripina | QUEBRADO |
 | ↪️ REDIRECT | `https://www.garanhuns.pe.gov.br/transparencia` | Prefeitura Municipal de Garanhuns | REDIRECT |
-| ❌ QUEBRADO | `https://www.ouricuri.pe.gov.br/transparencia` | Prefeitura Municipal de Ouricuri | QUEBRADO |
 | ❓ INCONSISTENTE | `https://recife.pe.gov.br/transparencia` | Prefeitura Municipal de Recife | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.serra-talhada.pe.gov.br/transparencia` | Prefeitura Municipal de Serra Talhada | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.vitoria-de-santo-antao.pe.gov.br/transparencia` | Prefeitura Municipal de Vitória de Santo Antão | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.arapiraca.al.gov.br/transparencia` | Prefeitura Municipal de Arapiraca | QUEBRADO |
-| ❌ QUEBRADO | `https://www.coruripe.al.gov.br/transparencia` | Prefeitura Municipal de Coruripe | QUEBRADO |
-| ❌ QUEBRADO | `https://maceio.al.gov.br/transparencia` | Prefeitura Municipal de Maceió | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.palmeira-dos-indios.al.gov.br/transparencia` | Prefeitura Municipal de Palmeira dos Índios | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.uniao-dos-palmares.al.gov.br/transparencia` | Prefeitura Municipal de União dos Palmares | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.itabaiana.se.gov.br/transparencia` | Prefeitura Municipal de Itabaiana | QUEBRADO |
 | ✅ OK | `https://www.alagoinhas.ba.gov.br/transparencia` | Prefeitura Municipal de Alagoinhas | OK |
 | ❓ INCONSISTENTE | `https://www.barreiras.ba.gov.br/transparencia` | Prefeitura Municipal de Barreiras | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.feira-de-santana.ba.gov.br/transparencia` | Prefeitura Municipal de Feira de Santana | INCONSISTENTE |
 | ✅ OK | `https://www.ilheus.ba.gov.br/transparencia` | Prefeitura Municipal de Ilhéus | OK |
 | ✅ OK | `https://www.itabuna.ba.gov.br/transparencia` | Prefeitura Municipal de Itabuna | OK |
-| ❌ QUEBRADO | `https://www.jequie.ba.gov.br/transparencia` | Prefeitura Municipal de Jequié | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.lauro-de-freitas.ba.gov.br/transparencia` | Prefeitura Municipal de Lauro de Freitas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.paulo-afonso.ba.gov.br/transparencia` | Prefeitura Municipal de Paulo Afonso | INCONSISTENTE |
-| ❌ QUEBRADO | `https://salvador.ba.gov.br/transparencia` | Prefeitura Municipal de Salvador | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.vitoria-da-conquista.ba.gov.br/transparencia` | Prefeitura Municipal de Vitória da Conquista | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.belo-horizonte.mg.gov.br/transparencia` | Prefeitura Municipal de Belo Horizonte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.contagem.mg.gov.br/transparencia` | Prefeitura Municipal de Contagem | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.divinopolis.mg.gov.br/transparencia` | Prefeitura Municipal de Divinópolis | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.governador-valadares.mg.gov.br/transparencia` | Prefeitura Municipal de Governador Valadares | INCONSISTENTE |
 | ✅ OK | `https://www.ipatinga.mg.gov.br/transparencia` | Prefeitura Municipal de Ipatinga | OK |
 | ❓ INCONSISTENTE | `https://www.juiz-de-fora.mg.gov.br/transparencia` | Prefeitura Municipal de Juiz de Fora | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.montes-claros.mg.gov.br/transparencia` | Prefeitura Municipal de Montes Claros | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.passos.mg.gov.br/transparencia` | Prefeitura Municipal de Passos | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.patos-de-minas.mg.gov.br/transparencia` | Prefeitura Municipal de Patos de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pocos-de-caldas.mg.gov.br/transparencia` | Prefeitura Municipal de Poços de Caldas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pouso-alegre.mg.gov.br/transparencia` | Prefeitura Municipal de Pouso Alegre | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sete-lagoas.mg.gov.br/transparencia` | Prefeitura Municipal de Sete Lagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.teofilo-otoni.mg.gov.br/transparencia` | Prefeitura Municipal de Teófilo Otoni | INCONSISTENTE |
 | ✅ OK | `https://www.uberlandia.mg.gov.br/transparencia` | Prefeitura Municipal de Uberlândia | OK |
-| ❌ QUEBRADO | `https://www.varginha.mg.gov.br/transparencia` | Prefeitura Municipal de Varginha | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/transparencia` | Prefeitura Municipal de Linhares | INCONSISTENTE |
-| ❌ QUEBRADO | `https://vitoria.es.gov.br/transparencia` | Prefeitura Municipal de Vitória | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/transparencia` | Prefeitura Municipal de Campos dos Goytacazes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.duque-de-caxias.rj.gov.br/transparencia` | Prefeitura Municipal de Duque de Caxias | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.macae.rj.gov.br/transparencia` | Prefeitura Municipal de Macaé | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.nova-friburgo.rj.gov.br/transparencia` | Prefeitura Municipal de Nova Friburgo | INCONSISTENTE |
 | ✅ OK | `https://www.petropolis.rj.gov.br/transparencia` | Prefeitura Municipal de Petrópolis | OK |
-| ❓ INCONSISTENTE | `https://rio.rj.gov.br/transparencia` | Prefeitura Municipal de Rio de Janeiro | INCONSISTENTE |
+| ✅ OK | `https://rio.rj.gov.br/transparencia` | Prefeitura Municipal de Rio de Janeiro | OK |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo.rj.gov.br/transparencia` | Prefeitura Municipal de São Gonçalo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.volta-redonda.rj.gov.br/transparencia` | Prefeitura Municipal de Volta Redonda | INCONSISTENTE |
 | ✅ OK | `https://www.araraquara.sp.gov.br/transparencia` | Prefeitura Municipal de Araraquara | OK |
-| ❌ QUEBRADO | `https://www.bauru.sp.gov.br/transparencia` | Prefeitura Municipal de Bauru | QUEBRADO |
 | ✅ OK | `https://www.campinas.sp.gov.br/transparencia` | Prefeitura Municipal de Campinas | OK |
-| ❌ QUEBRADO | `https://www.carapicuiba.sp.gov.br/transparencia` | Prefeitura Municipal de Carapicuíba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.franca.sp.gov.br/transparencia` | Prefeitura Municipal de Franca | INCONSISTENTE |
 | ✅ OK | `https://www.guarulhos.sp.gov.br/transparencia` | Prefeitura Municipal de Guarulhos | OK |
-| ❌ QUEBRADO | `https://www.jundiai.sp.gov.br/transparencia` | Prefeitura Municipal de Jundiaí | QUEBRADO |
 | ✅ OK | `https://www.limeira.sp.gov.br/transparencia` | Prefeitura Municipal de Limeira | OK |
-| ❌ QUEBRADO | `https://www.marilia.sp.gov.br/transparencia` | Prefeitura Municipal de Marília | QUEBRADO |
 | ✅ OK | `https://www.maua.sp.gov.br/transparencia` | Prefeitura Municipal de Mauá | OK |
-| ❌ QUEBRADO | `https://www.osasco.sp.gov.br/transparencia` | Prefeitura Municipal de Osasco | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.presidente-prudente.sp.gov.br/transparencia` | Prefeitura Municipal de Presidente Prudente | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.ribeirao-preto.sp.gov.br/transparencia` | Prefeitura Municipal de Ribeirão Preto | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.santo-andre.sp.gov.br/transparencia` | Prefeitura Municipal de Santo André | INCONSISTENTE |
@@ -4711,20 +4656,15 @@
 | ❓ INCONSISTENTE | `https://www.sao-jose-dos-campos.sp.gov.br/transparencia` | Prefeitura Municipal de São José dos Campos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-paulo.sp.gov.br/transparencia` | Prefeitura Municipal de São Paulo | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.taubate.sp.gov.br/transparencia` | Prefeitura Municipal de Taubaté | QUEBRADO |
-| ❌ QUEBRADO | `https://www.apucarana.pr.gov.br/transparencia` | Prefeitura Municipal de Apucarana | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.araucaria.pr.gov.br/transparencia` | Prefeitura Municipal de Araucária | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campo-mourao.pr.gov.br/transparencia` | Prefeitura Municipal de Campo Mourão | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.cascavel.pr.gov.br/transparencia` | Prefeitura Municipal de Cascavel | QUEBRADO |
 | ✅ OK | `https://curitiba.pr.gov.br/transparencia` | Prefeitura Municipal de Curitiba | OK |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/transparencia` | Prefeitura Municipal de Foz do Iguaçu | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.londrina.pr.gov.br/transparencia` | Prefeitura Municipal de Londrina | QUEBRADO |
 | ✅ OK | `https://www.paranavai.pr.gov.br/transparencia` | Prefeitura Municipal de Paranavaí | OK |
 | ❓ INCONSISTENTE | `https://www.ponta-grossa.pr.gov.br/transparencia` | Prefeitura Municipal de Ponta Grossa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-jose-dos-pinhais.pr.gov.br/transparencia` | Prefeitura Municipal de São José dos Pinhais | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.toledo.pr.gov.br/transparencia` | Prefeitura Municipal de Toledo | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.umuarama.pr.gov.br/transparencia` | Prefeitura Municipal de Umuarama | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.balneario-camboriu.sc.gov.br/transparencia` | Prefeitura Municipal de Balneário Camboriú | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.blumenau.sc.gov.br/transparencia` | Prefeitura Municipal de Blumenau | QUEBRADO |
 | ✅ OK | `https://www.brusque.sc.gov.br/transparencia` | Prefeitura Municipal de Brusque | OK |
 | ✅ OK | `https://www.chapeco.sc.gov.br/transparencia` | Prefeitura Municipal de Chapecó | OK |
 | ❓ INCONSISTENTE | `https://www.criciuma.sc.gov.br/transparencia` | Prefeitura Municipal de Criciúma | INCONSISTENTE |
@@ -4735,7 +4675,6 @@
 | ❓ INCONSISTENTE | `https://www.sao-jose.sc.gov.br/transparencia` | Prefeitura Municipal de São José | INCONSISTENTE |
 | ✅ OK | `https://www.tubarao.sc.gov.br/transparencia` | Prefeitura Municipal de Tubarão | OK |
 | ❓ INCONSISTENTE | `https://www.caxias-do-sul.rs.gov.br/transparencia` | Prefeitura Municipal de Caxias do Sul | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.erechim.rs.gov.br/transparencia` | Prefeitura Municipal de Erechim | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.novo-hamburgo.rs.gov.br/transparencia` | Prefeitura Municipal de Novo Hamburgo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.passo-fundo.rs.gov.br/transparencia` | Prefeitura Municipal de Passo Fundo | INCONSISTENTE |
 | ✅ OK | `https://www.pelotas.rs.gov.br/transparencia` | Prefeitura Municipal de Pelotas | OK |
@@ -4744,34 +4683,26 @@
 | ❓ INCONSISTENTE | `https://www.santa-maria.rs.gov.br/transparencia` | Prefeitura Municipal de Santa Maria | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-leopoldo.rs.gov.br/transparencia` | Prefeitura Municipal de São Leopoldo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.corumba.ms.gov.br/transparencia` | Prefeitura Municipal de Corumbá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.dourados.ms.gov.br/transparencia` | Prefeitura Municipal de Dourados | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tres-lagoas.ms.gov.br/transparencia` | Prefeitura Municipal de Três Lagoas | INCONSISTENTE |
 | ✅ OK | `https://www.caceres.mt.gov.br/transparencia` | Prefeitura Municipal de Cáceres | OK |
-| ❌ QUEBRADO | `https://cuiaba.mt.gov.br/transparencia` | Prefeitura Municipal de Cuiabá | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/transparencia` | Prefeitura Municipal de Lucas do Rio Verde | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.sinop.mt.gov.br/transparencia` | Prefeitura Municipal de Sinop | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tangara-da-serra.mt.gov.br/transparencia` | Prefeitura Municipal de Tangará da Serra | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.varzea-grande.mt.gov.br/transparencia` | Prefeitura Municipal de Várzea Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.aguas-lindas-de-goias.go.gov.br/transparencia` | Prefeitura Municipal de Águas Lindas de Goiás | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.aparecida-de-goiania.go.gov.br/transparencia` | Prefeitura Municipal de Aparecida de Goiânia | INCONSISTENTE |
 | ✅ OK | `https://www.catalao.go.gov.br/transparencia` | Prefeitura Municipal de Catalão | OK |
-| ❌ QUEBRADO | `https://goiania.go.gov.br/transparencia` | Prefeitura Municipal de Goiânia | QUEBRADO |
 | ↪️ REDIRECT | `https://www.jatai.go.gov.br/transparencia` | Prefeitura Municipal de Jataí | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.rio-verde.go.gov.br/transparencia` | Prefeitura Municipal de Rio Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.valparaiso-de-goias.go.gov.br/transparencia` | Prefeitura Municipal de Valparaíso de Goiás | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://df.gov.br/transparencia` | Prefeitura Municipal de Brasília | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracacoal.ro.gov.br/transparencia` | Câmara Municipal de Cacoal | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraji-parana.ro.gov.br/transparencia` | Câmara Municipal de Ji-Paraná | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.portovelho.ro.leg.br/transparencia` | Câmara Municipal de Porto Velho | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaravilhena.ro.gov.br/transparencia` | Câmara Municipal de Vilhena | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracruzeiro-do-sul.ac.gov.br/transparencia` | Câmara Municipal de Cruzeiro do Sul | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.riobranco.ac.leg.br/transparencia` | Câmara Municipal de Rio Branco | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraitacoatiara.am.gov.br/transparencia` | Câmara Municipal de Itacoatiara | INCONSISTENTE |
 | ✅ OK | `https://www.camaramanacapuru.am.gov.br/transparencia` | Câmara Municipal de Manacapuru | OK |
-| ❌ QUEBRADO | `https://sapl.cmm.am.gov.br/transparencia` | Câmara Municipal de Manaus | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraparintins.am.gov.br/transparencia` | Câmara Municipal de Parintins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaratefe.am.gov.br/transparencia` | Câmara Municipal de Tefé | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.boavista.rr.leg.br/transparencia` | Câmara Municipal de Boa Vista | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraabaetetuba.pa.gov.br/transparencia` | Câmara Municipal de Abaetetuba | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraaltamira.pa.gov.br/transparencia` | Câmara Municipal de Altamira | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraananindeua.pa.gov.br/transparencia` | Câmara Municipal de Ananindeua | INCONSISTENTE |
@@ -4780,38 +4711,30 @@
 | ❓ INCONSISTENTE | `https://www.camaracastanhal.pa.gov.br/transparencia` | Câmara Municipal de Castanhal | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraitaituba.pa.gov.br/transparencia` | Câmara Municipal de Itaituba | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramaraba.pa.gov.br/transparencia` | Câmara Municipal de Marabá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaraparagominas.pa.gov.br/transparencia` | Câmara Municipal de Paragominas | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camararedencao.pa.gov.br/transparencia` | Câmara Municipal de Redenção | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasantarem.pa.gov.br/transparencia` | Câmara Municipal de Santarém | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaratucurui.pa.gov.br/transparencia` | Câmara Municipal de Tucuruí | QUEBRADO |
 | ❓ INCONSISTENTE | `https://sapl.macapa.ap.leg.br/transparencia` | Câmara Municipal de Macapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasantana.ap.gov.br/transparencia` | Câmara Municipal de Santana | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraaraguaina.to.gov.br/transparencia` | Câmara Municipal de Araguaína | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaragurupi.to.gov.br/transparencia` | Câmara Municipal de Gurupi | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.palmas.to.leg.br/transparencia` | Câmara Municipal de Palmas | QUEBRADO |
 | ✅ OK | `https://www.camaraimperatriz.ma.gov.br/transparencia` | Câmara Municipal de Imperatriz | OK |
 | ❓ INCONSISTENTE | `https://sapl.saoluis.ma.leg.br/transparencia` | Câmara Municipal de São Luís | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarafloriano.pi.gov.br/transparencia` | Câmara Municipal de Floriano | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraparnaiba.pi.gov.br/transparencia` | Câmara Municipal de Parnaíba | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapicos.pi.gov.br/transparencia` | Câmara Municipal de Picos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sapl.teresina.pi.leg.br/transparencia` | Câmara Municipal de Teresina | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaracrateus.ce.gov.br/transparencia` | Câmara Municipal de Crateús | QUEBRADO |
 | ✅ OK | `https://www.camaracrato.ce.gov.br/transparencia` | Câmara Municipal de Crato | OK |
 | ❓ INCONSISTENTE | `https://sapl.cmfor.ce.gov.br/transparencia` | Câmara Municipal de Fortaleza | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro-do-norte.ce.gov.br/transparencia` | Câmara Municipal de Juazeiro do Norte | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camarasobral.ce.gov.br/transparencia` | Câmara Municipal de Sobral | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaracaico.rn.gov.br/transparencia` | Câmara Municipal de Caicó | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraceara-mirim.rn.gov.br/transparencia` | Câmara Municipal de Ceará-Mirim | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracurrais-novos.rn.gov.br/transparencia` | Câmara Municipal de Currais Novos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramacaiba.rn.gov.br/transparencia` | Câmara Municipal de Macaíba | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramossoro.rn.gov.br/transparencia` | Câmara Municipal de Mossoró | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.natal.rn.leg.br/transparencia` | Câmara Municipal de Natal | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camarapau-dos-ferros.rn.gov.br/transparencia` | Câmara Municipal de Pau dos Ferros | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracajazeiras.pb.gov.br/transparencia` | Câmara Municipal de Cajazeiras | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracampina-grande.pb.gov.br/transparencia` | Câmara Municipal de Campina Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraguarabira.pb.gov.br/transparencia` | Câmara Municipal de Guarabira | INCONSISTENTE |
-| ❌ QUEBRADO | `https://sapl.joaopessoa.pb.leg.br/transparencia` | Câmara Municipal de João Pessoa | QUEBRADO |
-| ❌ QUEBRADO | `https://www.camarasousa.pb.gov.br/transparencia` | Câmara Municipal de Sousa | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraararipina.pe.gov.br/transparencia` | Câmara Municipal de Araripina | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracaruaru.pe.gov.br/transparencia` | Câmara Municipal de Caruaru | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaragaranhuns.pe.gov.br/transparencia` | Câmara Municipal de Garanhuns | INCONSISTENTE |
@@ -4847,13 +4770,11 @@
 | ❓ INCONSISTENTE | `https://www.camaraipatinga.mg.gov.br/transparencia` | Câmara Municipal de Ipatinga | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajuiz-de-fora.mg.gov.br/transparencia` | Câmara Municipal de Juiz de Fora | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramontes-claros.mg.gov.br/transparencia` | Câmara Municipal de Montes Claros | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camarapassos.mg.gov.br/transparencia` | Câmara Municipal de Passos | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camarapatos-de-minas.mg.gov.br/transparencia` | Câmara Municipal de Patos de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapocos-de-caldas.mg.gov.br/transparencia` | Câmara Municipal de Poços de Caldas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapouso-alegre.mg.gov.br/transparencia` | Câmara Municipal de Pouso Alegre | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasete-lagoas.mg.gov.br/transparencia` | Câmara Municipal de Sete Lagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarateofilo-otoni.mg.gov.br/transparencia` | Câmara Municipal de Teófilo Otoni | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camarauberaba.mg.gov.br/transparencia` | Câmara Municipal de Uberaba | QUEBRADO |
 | ✅ OK | `https://www.camarauberlandia.mg.gov.br/transparencia` | Câmara Municipal de Uberlândia | OK |
 | ✅ OK | `https://www.camaravarginha.mg.gov.br/transparencia` | Câmara Municipal de Varginha | OK |
 | ✅ OK | `https://www.camaralinhares.es.gov.br/transparencia` | Câmara Municipal de Linhares | OK |
@@ -4862,7 +4783,7 @@
 | ❓ INCONSISTENTE | `https://www.camaracampos-dos-goytacazes.rj.gov.br/transparencia` | Câmara Municipal de Campos dos Goytacazes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraduque-de-caxias.rj.gov.br/transparencia` | Câmara Municipal de Duque de Caxias | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramacae.rj.gov.br/transparencia` | Câmara Municipal de Macaé | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.camaraniteroi.rj.gov.br/transparencia` | Câmara Municipal de Niterói | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.camaraniteroi.rj.gov.br/transparencia` | Câmara Municipal de Niterói | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaranova-friburgo.rj.gov.br/transparencia` | Câmara Municipal de Nova Friburgo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapetropolis.rj.gov.br/transparencia` | Câmara Municipal de Petrópolis | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camara.rio/transparencia` | Câmara Municipal de Rio de Janeiro | INCONSISTENTE |
@@ -4876,11 +4797,9 @@
 | ❓ INCONSISTENTE | `https://www.camarafranca.sp.gov.br/transparencia` | Câmara Municipal de Franca | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraguarulhos.sp.gov.br/transparencia` | Câmara Municipal de Guarulhos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajundiai.sp.gov.br/transparencia` | Câmara Municipal de Jundiaí | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaralimeira.sp.gov.br/transparencia` | Câmara Municipal de Limeira | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaramarilia.sp.gov.br/transparencia` | Câmara Municipal de Marília | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramaua.sp.gov.br/transparencia` | Câmara Municipal de Mauá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraosasco.sp.gov.br/transparencia` | Câmara Municipal de Osasco | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camarapiracicaba.sp.gov.br/transparencia` | Câmara Municipal de Piracicaba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camarapresidente-prudente.sp.gov.br/transparencia` | Câmara Municipal de Presidente Prudente | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camararibeirao-preto.sp.gov.br/transparencia` | Câmara Municipal de Ribeirão Preto | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasanto-andre.sp.gov.br/transparencia` | Câmara Municipal de Santo André | INCONSISTENTE |
@@ -4891,7 +4810,6 @@
 | ❓ INCONSISTENTE | `https://www.camarasao-jose-dos-campos.sp.gov.br/transparencia` | Câmara Municipal de São José dos Campos | INCONSISTENTE |
 | ✅ OK | `https://www.saopaulo.sp.leg.br/transparencia` | Câmara Municipal de São Paulo | OK |
 | ✅ OK | `https://www.camarasorocaba.sp.gov.br/transparencia` | Câmara Municipal de Sorocaba | OK |
-| ❌ QUEBRADO | `https://www.camarataubate.sp.gov.br/transparencia` | Câmara Municipal de Taubaté | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraapucarana.pr.gov.br/transparencia` | Câmara Municipal de Apucarana | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraaraucaria.pr.gov.br/transparencia` | Câmara Municipal de Araucária | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracampo-mourao.pr.gov.br/transparencia` | Câmara Municipal de Campo Mourão | INCONSISTENTE |
@@ -4910,7 +4828,6 @@
 | ❓ INCONSISTENTE | `https://www.camarablumenau.sc.gov.br/transparencia` | Câmara Municipal de Blumenau | INCONSISTENTE |
 | ✅ OK | `https://www.camarabrusque.sc.gov.br/transparencia` | Câmara Municipal de Brusque | OK |
 | ❓ INCONSISTENTE | `https://www.camarachapeco.sc.gov.br/transparencia` | Câmara Municipal de Chapecó | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaracriciuma.sc.gov.br/transparencia` | Câmara Municipal de Criciúma | QUEBRADO |
 | ❓ INCONSISTENTE | `https://sapl.florianopolis.sc.leg.br/transparencia` | Câmara Municipal de Florianópolis | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraitajai.sc.gov.br/transparencia` | Câmara Municipal de Itajaí | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajaragua-do-sul.sc.gov.br/transparencia` | Câmara Municipal de Jaraguá do Sul | INCONSISTENTE |
@@ -4930,8 +4847,6 @@
 | ❓ INCONSISTENTE | `https://www.camarasanta-maria.rs.gov.br/transparencia` | Câmara Municipal de Santa Maria | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasao-leopoldo.rs.gov.br/transparencia` | Câmara Municipal de São Leopoldo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sapl.campogrande.ms.leg.br/transparencia` | Câmara Municipal de Campo Grande | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaracorumba.ms.gov.br/transparencia` | Câmara Municipal de Corumbá | QUEBRADO |
-| ❌ QUEBRADO | `https://www.camaradourados.ms.gov.br/transparencia` | Câmara Municipal de Dourados | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaratres-lagoas.ms.gov.br/transparencia` | Câmara Municipal de Três Lagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracaceres.mt.gov.br/transparencia` | Câmara Municipal de Cáceres | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sapl.cuiaba.mt.leg.br/transparencia` | Câmara Municipal de Cuiabá | INCONSISTENTE |
@@ -4943,8 +4858,6 @@
 | ❓ INCONSISTENTE | `https://www.camaraaguas-lindas-de-goias.go.gov.br/transparencia` | Câmara Municipal de Águas Lindas de Goiás | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraanapolis.go.gov.br/transparencia` | Câmara Municipal de Anápolis | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraaparecida-de-goiania.go.gov.br/transparencia` | Câmara Municipal de Aparecida de Goiânia | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.camaracatalao.go.gov.br/transparencia` | Câmara Municipal de Catalão | QUEBRADO |
-| ❌ QUEBRADO | `https://www.camaraformosa.go.gov.br/transparencia` | Câmara Municipal de Formosa | QUEBRADO |
 | ❓ INCONSISTENTE | `https://sapl.goiania.go.leg.br/transparencia` | Câmara Municipal de Goiânia | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraitumbiara.go.gov.br/transparencia` | Câmara Municipal de Itumbiara | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajatai.go.gov.br/transparencia` | Câmara Municipal de Jataí | INCONSISTENTE |
@@ -4966,8 +4879,6 @@
 | ✅ OK | `https://www.gov.br/mme/pt-br/canais_atendimento/ouvidoria` | Ministério de Minas e Energia (MME) | OK |
 | ✅ OK | `https://www.gov.br/mj/pt-br/canais_atendimento/ouvidoria` | Ministério da Justiça e Segurança Pública (MJSP) | OK |
 | ✅ OK | `https://www.gov.br/cidades/pt-br/canais_atendimento/ouvidoria` | Ministério das Cidades (MCID) | OK |
-| ❌ QUEBRADO | `https://www.mpf.mp.br/servicos/sac` | Ministério Público Federal (MPF) — Sala de Atendimento ao Cidadão | QUEBRADO |
-| ❌ QUEBRADO | `https://www.dpu.def.br/ouvidoria` | Defensoria Pública da União (DPU) | QUEBRADO |
 | ✅ OK | `https://www.copasa.com.br/wps/portal/internet/acesso-a-informacao/ouvidoria` | Companhia de Saneamento de Minas Gerais (COPASA MG) | OK |
 | ✅ OK | `https://www.copasa.com.br/wps/portal/internet/copanor` | Copasa Serviços de Saneamento Integrado do Norte e Nordeste de Minas Gerais (COPANOR) | OK |
 | ✅ OK | `https://www.sabesp.com.br/ouvidoria` | Companhia de Saneamento Básico do Estado de São Paulo (Sabesp) | OK |
@@ -4988,7 +4899,6 @@
 | ❌ QUEBRADO | `https://www.neoenergia.com/web/bahia/ouvidoria` | Neoenergia Coelba (Companhia de Eletricidade do Estado da Bahia) | QUEBRADO |
 | ✅ OK | `https://www.equatorialenergia.com.br/ouvidoria` | Equatorial Energia (Maranhão / Pará / Piauí / Alagoas / Goiás) | OK |
 | ✅ OK | `https://www.energisa.com.br/canais-de-atendimento/ouvidoria` | Energisa Minas Rio (antiga Cataguazes-Leopoldina) | OK |
-| ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/canais_atendimento/ouvidoria` | Agência Nacional de Energia Elétrica (ANEEL) | QUEBRADO |
 | ✅ OK | `https://apps.anatel.gov.br/anatelconsumidor/` | Agência Nacional de Telecomunicações (ANATEL) | OK |
 | ✅ OK | `https://www.vivo.com.br/para-voce/ajuda/ouvidoria` | Telefônica Brasil S.A. (Vivo) | OK |
 | ✅ OK | `https://www.claro.com.br/atendimento/ouvidoria` | Claro Brasil (Claro / Embratel) | OK |
@@ -5014,14 +4924,13 @@
 | ✅ OK | `https://www.manacapuru.am.gov.br` | Manacapuru | OK |
 | ✅ OK | `https://www.camaramanacapuru.am.gov.br` | Manacapuru | OK |
 | ✅ OK | `https://www.manacapuru.am.gov.br/diario-oficial` | Manacapuru | OK |
-| ❓ INCONSISTENTE | `https://sapl.cmm.am.gov.br/` | Manaus | INCONSISTENTE |
+| ✅ OK | `https://sapl.cmm.am.gov.br/` | Manaus | OK |
 | ✅ OK | `https://www.parintins.am.gov.br` | Parintins | OK |
 | ❓ INCONSISTENTE | `https://www.camaraparintins.am.gov.br` | Parintins | INCONSISTENTE |
 | ✅ OK | `https://www.parintins.am.gov.br/diario-oficial` | Parintins | OK |
 | ❓ INCONSISTENTE | `https://www.camaratefe.am.gov.br` | Tefé | INCONSISTENTE |
 | ✅ OK | `https://boavista.rr.gov.br/` | Boa Vista | OK |
 | ✅ OK | `https://sapl.boavista.rr.leg.br/` | Boa Vista | OK |
-| ❌ QUEBRADO | `https://boavista.rr.gov.br//diario-oficial` | Boa Vista | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraabaetetuba.pa.gov.br` | Abaetetuba | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.abaetetuba.pa.gov.br/diario-oficial` | Abaetetuba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraaltamira.pa.gov.br` | Altamira | INCONSISTENTE |
@@ -5034,7 +4943,6 @@
 | ❓ INCONSISTENTE | `https://www.camaracameta.pa.gov.br` | Cametá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/diario-oficial` | Cametá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracastanhal.pa.gov.br` | Castanhal | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/diario-oficial` | Castanhal | QUEBRADO |
 | ✅ OK | `https://www.itaituba.pa.gov.br` | Itaituba | OK |
 | ❓ INCONSISTENTE | `https://www.camaraitaituba.pa.gov.br` | Itaituba | INCONSISTENTE |
 | ✅ OK | `https://www.itaituba.pa.gov.br/diario-oficial` | Itaituba | OK |
@@ -5052,12 +4960,9 @@
 | ❓ INCONSISTENTE | `https://www.camarasantana.ap.gov.br` | Santana | INCONSISTENTE |
 | ✅ OK | `https://www.araguaina.to.gov.br` | Araguaína | OK |
 | ❓ INCONSISTENTE | `https://www.camaraaraguaina.to.gov.br` | Araguaína | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.araguaina.to.gov.br/diario-oficial` | Araguaína | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaragurupi.to.gov.br` | Gurupi | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.gurupi.to.gov.br/diario-oficial` | Gurupi | QUEBRADO |
 | ✅ OK | `https://palmas.to.gov.br/` | Palmas | OK |
 | ✅ OK | `https://sapl.palmas.to.leg.br/` | Palmas | OK |
-| ❌ QUEBRADO | `https://palmas.to.gov.br//diario-oficial` | Palmas | QUEBRADO |
 | ✅ OK | `https://www.camaraimperatriz.ma.gov.br` | Imperatriz | OK |
 | ❌ QUEBRADO | `https://www.imperatriz.ma.gov.br/diario-oficial` | Imperatriz | QUEBRADO |
 | ✅ OK | `https://saoluis.ma.gov.br/` | São Luís | OK |
@@ -5071,30 +4976,23 @@
 | ❌ QUEBRADO | `https://www.parnaiba.pi.gov.br/diario-oficial` | Parnaíba | QUEBRADO |
 | ✅ OK | `https://www.picos.pi.gov.br` | Picos | OK |
 | ❓ INCONSISTENTE | `https://www.camarapicos.pi.gov.br` | Picos | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.picos.pi.gov.br/diario-oficial` | Picos | QUEBRADO |
 | ❓ INCONSISTENTE | `https://sapl.teresina.pi.leg.br/` | Teresina | INCONSISTENTE |
-| ❌ QUEBRADO | `https://teresina.pi.gov.br//diario-oficial` | Teresina | QUEBRADO |
 | ✅ OK | `https://www.crateus.ce.gov.br` | Crateús | OK |
 | ✅ OK | `https://www.camaracrateus.ce.gov.br` | Crateús | OK |
-| ❌ QUEBRADO | `https://www.crateus.ce.gov.br/diario-oficial` | Crateús | QUEBRADO |
 | ✅ OK | `https://www.crato.ce.gov.br` | Crato | OK |
-| ❌ QUEBRADO | `https://www.crato.ce.gov.br/diario-oficial` | Crato | QUEBRADO |
 | ✅ OK | `https://fortaleza.ce.gov.br/` | Fortaleza | OK |
 | ❓ INCONSISTENTE | `https://sapl.cmfor.ce.gov.br/` | Fortaleza | INCONSISTENTE |
 | ❌ QUEBRADO | `https://fortaleza.ce.gov.br//diario-oficial` | Fortaleza | QUEBRADO |
-| ✅ OK | `https://www.iguatu.ce.gov.br` | Iguatu | OK |
-| ❌ QUEBRADO | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br` | Iguatu | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/diario-oficial` | Juazeiro do Norte | INCONSISTENTE |
 | ✅ OK | `https://www.quixada.ce.gov.br` | Quixadá | OK |
-| ❌ QUEBRADO | `https://www.quixada.ce.gov.br/diario-oficial` | Quixadá | QUEBRADO |
-| ✅ OK | `https://www.sobral.ce.gov.br` | Sobral | OK |
+| ❓ INCONSISTENTE | `https://www.sobral.ce.gov.br` | Sobral | INCONSISTENTE |
 | ✅ OK | `https://www.camarasobral.ce.gov.br` | Sobral | OK |
-| ❌ QUEBRADO | `https://www.sobral.ce.gov.br/diario-oficial` | Sobral | QUEBRADO |
 | ✅ OK | `https://www.caico.rn.gov.br` | Caicó | OK |
 | ❓ INCONSISTENTE | `https://www.camaracaico.rn.gov.br` | Caicó | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.caico.rn.gov.br/diario-oficial` | Caicó | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.ceara-mirim.rn.gov.br` | Ceará-Mirim | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraceara-mirim.rn.gov.br` | Ceará-Mirim | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.ceara-mirim.rn.gov.br/diario-oficial` | Ceará-Mirim | INCONSISTENTE |
@@ -5105,7 +5003,7 @@
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br` | Mossoró | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaramossoro.rn.gov.br` | Mossoró | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br/diario-oficial` | Mossoró | INCONSISTENTE |
-| ✅ OK | `https://natal.rn.gov.br/` | Natal | OK |
+| ❓ INCONSISTENTE | `https://natal.rn.gov.br/` | Natal | INCONSISTENTE |
 | ✅ OK | `https://sapl.natal.rn.leg.br/` | Natal | OK |
 | ❓ INCONSISTENTE | `https://www.pau-dos-ferros.rn.gov.br` | Pau dos Ferros | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapau-dos-ferros.rn.gov.br` | Pau dos Ferros | INCONSISTENTE |
@@ -5120,11 +5018,9 @@
 | ❓ INCONSISTENTE | `https://www.camaraguarabira.pb.gov.br` | Guarabira | INCONSISTENTE |
 | ✅ OK | `https://www.guarabira.pb.gov.br/diario-oficial` | Guarabira | OK |
 | ✅ OK | `https://sapl.joaopessoa.pb.leg.br/` | João Pessoa | OK |
-| ❌ QUEBRADO | `https://joaopessoa.pb.gov.br//diario-oficial` | João Pessoa | QUEBRADO |
 | ✅ OK | `https://www.patos.pb.gov.br` | Patos | OK |
 | ✅ OK | `https://www.sousa.pb.gov.br` | Sousa | OK |
 | ✅ OK | `https://www.camarasousa.pb.gov.br` | Sousa | OK |
-| ❌ QUEBRADO | `https://www.sousa.pb.gov.br/diario-oficial` | Sousa | QUEBRADO |
 | ✅ OK | `https://www.araripina.pe.gov.br` | Araripina | OK |
 | ❓ INCONSISTENTE | `https://www.camaraararipina.pe.gov.br` | Araripina | INCONSISTENTE |
 | ✅ OK | `https://www.araripina.pe.gov.br/diario-oficial` | Araripina | OK |
@@ -5205,7 +5101,6 @@
 | ❓ INCONSISTENTE | `https://www.contagem.mg.gov.br/diario-oficial` | Contagem | INCONSISTENTE |
 | ✅ OK | `https://www.divinopolis.mg.gov.br` | Divinópolis | OK |
 | ❓ INCONSISTENTE | `https://www.camaradivinopolis.mg.gov.br` | Divinópolis | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.divinopolis.mg.gov.br/diario-oficial` | Divinópolis | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.governador-valadares.mg.gov.br` | Governador Valadares | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaragovernador-valadares.mg.gov.br` | Governador Valadares | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governador-valadares.mg.gov.br/diario-oficial` | Governador Valadares | INCONSISTENTE |
@@ -5248,7 +5143,6 @@
 | ✅ OK | `https://www.camaraserra.es.gov.br` | Serra | OK |
 | ✅ OK | `https://vitoria.es.gov.br/` | Vitória | OK |
 | ❓ INCONSISTENTE | `https://sapl.vitoria.es.leg.br/` | Vitória | INCONSISTENTE |
-| ❌ QUEBRADO | `https://vitoria.es.gov.br//diario-oficial` | Vitória | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br` | Campos dos Goytacazes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracampos-dos-goytacazes.rj.gov.br` | Campos dos Goytacazes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/diario-oficial` | Campos dos Goytacazes | INCONSISTENTE |
@@ -5258,7 +5152,7 @@
 | ✅ OK | `https://www.macae.rj.gov.br` | Macaé | OK |
 | ❓ INCONSISTENTE | `https://www.camaramacae.rj.gov.br` | Macaé | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.macae.rj.gov.br/diario-oficial` | Macaé | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.camaraniteroi.rj.gov.br` | Niterói | INCONSISTENTE |
+| ✅ OK | `https://www.camaraniteroi.rj.gov.br` | Niterói | OK |
 | ❌ QUEBRADO | `https://www.niteroi.rj.gov.br/diario-oficial` | Niterói | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.nova-friburgo.rj.gov.br` | Nova Friburgo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaranova-friburgo.rj.gov.br` | Nova Friburgo | INCONSISTENTE |
@@ -5268,7 +5162,7 @@
 | ❌ QUEBRADO | `https://www.petropolis.rj.gov.br/diario-oficial` | Petrópolis | QUEBRADO |
 | ✅ OK | `https://rio.rj.gov.br/` | Rio de Janeiro | OK |
 | ❓ INCONSISTENTE | `https://www.camara.rio/` | Rio de Janeiro | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://rio.rj.gov.br//diario-oficial` | Rio de Janeiro | INCONSISTENTE |
+| ❌ QUEBRADO | `https://rio.rj.gov.br//diario-oficial` | Rio de Janeiro | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo.rj.gov.br` | São Gonçalo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarasao-goncalo.rj.gov.br` | São Gonçalo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo.rj.gov.br/diario-oficial` | São Gonçalo | INCONSISTENTE |
@@ -5277,7 +5171,6 @@
 | ❓ INCONSISTENTE | `https://www.volta-redonda.rj.gov.br/diario-oficial` | Volta Redonda | INCONSISTENTE |
 | ✅ OK | `https://www.araraquara.sp.gov.br` | Araraquara | OK |
 | ❓ INCONSISTENTE | `https://www.camaraararaquara.sp.gov.br` | Araraquara | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.araraquara.sp.gov.br/diario-oficial` | Araraquara | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camarabauru.sp.gov.br` | Bauru | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.bauru.sp.gov.br/diario-oficial` | Bauru | QUEBRADO |
 | ✅ OK | `https://www.campinas.sp.gov.br` | Campinas | OK |
@@ -5285,7 +5178,6 @@
 | ✅ OK | `https://www.campinas.sp.gov.br/diario-oficial` | Campinas | OK |
 | ✅ OK | `https://www.carapicuiba.sp.gov.br` | Carapicuíba | OK |
 | ✅ OK | `https://www.camaracarapicuiba.sp.gov.br` | Carapicuíba | OK |
-| ❌ QUEBRADO | `https://www.carapicuiba.sp.gov.br/diario-oficial` | Carapicuíba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaradiadema.sp.gov.br` | Diadema | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.franca.sp.gov.br` | Franca | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarafranca.sp.gov.br` | Franca | INCONSISTENTE |
@@ -5296,13 +5188,12 @@
 | ❓ INCONSISTENTE | `https://www.camarajundiai.sp.gov.br` | Jundiaí | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.jundiai.sp.gov.br/diario-oficial` | Jundiaí | QUEBRADO |
 | ✅ OK | `https://www.limeira.sp.gov.br` | Limeira | OK |
-| ✅ OK | `https://www.camaralimeira.sp.gov.br` | Limeira | OK |
+| ❓ INCONSISTENTE | `https://www.camaralimeira.sp.gov.br` | Limeira | INCONSISTENTE |
 | ✅ OK | `https://www.marilia.sp.gov.br` | Marília | OK |
 | ❓ INCONSISTENTE | `https://www.camaramarilia.sp.gov.br` | Marília | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.marilia.sp.gov.br/diario-oficial` | Marília | QUEBRADO |
 | ✅ OK | `https://www.maua.sp.gov.br` | Mauá | OK |
 | ✅ OK | `https://www.camaramaua.sp.gov.br` | Mauá | OK |
-| ❌ QUEBRADO | `https://www.maua.sp.gov.br/diario-oficial` | Mauá | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraosasco.sp.gov.br` | Osasco | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.osasco.sp.gov.br/diario-oficial` | Osasco | QUEBRADO |
 | ✅ OK | `https://www.camarapiracicaba.sp.gov.br` | Piracicaba | OK |
@@ -5353,7 +5244,6 @@
 | ❓ INCONSISTENTE | `https://www.camarafoz-do-iguacu.pr.gov.br` | Foz do Iguaçu | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/diario-oficial` | Foz do Iguaçu | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraguarapuava.pr.gov.br` | Guarapuava | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.guarapuava.pr.gov.br/diario-oficial` | Guarapuava | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaralondrina.pr.gov.br` | Londrina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.londrina.pr.gov.br/diario-oficial` | Londrina | QUEBRADO |
 | ✅ OK | `https://www.maringa.pr.gov.br` | Maringá | OK |
@@ -5372,16 +5262,13 @@
 | ❌ QUEBRADO | `https://www.toledo.pr.gov.br/diario-oficial` | Toledo | QUEBRADO |
 | ✅ OK | `https://www.umuarama.pr.gov.br` | Umuarama | OK |
 | ❓ INCONSISTENTE | `https://www.camaraumuarama.pr.gov.br` | Umuarama | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.umuarama.pr.gov.br/diario-oficial` | Umuarama | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.balneario-camboriu.sc.gov.br` | Balneário Camboriú | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarabalneario-camboriu.sc.gov.br` | Balneário Camboriú | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.balneario-camboriu.sc.gov.br/diario-oficial` | Balneário Camboriú | INCONSISTENTE |
 | ✅ OK | `https://www.blumenau.sc.gov.br` | Blumenau | OK |
 | ❓ INCONSISTENTE | `https://www.camarablumenau.sc.gov.br` | Blumenau | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.blumenau.sc.gov.br/diario-oficial` | Blumenau | QUEBRADO |
 | ✅ OK | `https://www.brusque.sc.gov.br` | Brusque | OK |
 | ✅ OK | `https://www.camarabrusque.sc.gov.br` | Brusque | OK |
-| ❌ QUEBRADO | `https://www.brusque.sc.gov.br/diario-oficial` | Brusque | QUEBRADO |
 | ✅ OK | `https://www.chapeco.sc.gov.br` | Chapecó | OK |
 | ❓ INCONSISTENTE | `https://www.camarachapeco.sc.gov.br` | Chapecó | INCONSISTENTE |
 | ✅ OK | `https://www.chapeco.sc.gov.br/diario-oficial` | Chapecó | OK |
@@ -5390,14 +5277,12 @@
 | ❓ INCONSISTENTE | `https://www.criciuma.sc.gov.br/diario-oficial` | Criciúma | INCONSISTENTE |
 | ✅ OK | `https://pmf.sc.gov.br/` | Florianópolis | OK |
 | ❓ INCONSISTENTE | `https://sapl.florianopolis.sc.leg.br/` | Florianópolis | INCONSISTENTE |
-| ❌ QUEBRADO | `https://pmf.sc.gov.br//diario-oficial` | Florianópolis | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camaraitajai.sc.gov.br` | Itajaí | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jaragua-do-sul.sc.gov.br` | Jaraguá do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajaragua-do-sul.sc.gov.br` | Jaraguá do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jaragua-do-sul.sc.gov.br/diario-oficial` | Jaraguá do Sul | INCONSISTENTE |
 | ✅ OK | `https://www.joinville.sc.gov.br` | Joinville | OK |
 | ❓ INCONSISTENTE | `https://www.camarajoinville.sc.gov.br` | Joinville | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.joinville.sc.gov.br/diario-oficial` | Joinville | QUEBRADO |
 | ✅ OK | `https://www.lages.sc.gov.br` | Lages | OK |
 | ✅ OK | `https://www.camaralages.sc.gov.br` | Lages | OK |
 | ❌ QUEBRADO | `https://www.lages.sc.gov.br/diario-oficial` | Lages | QUEBRADO |
@@ -5428,7 +5313,6 @@
 | ❓ INCONSISTENTE | `https://www.camarapelotas.rs.gov.br` | Pelotas | INCONSISTENTE |
 | ✅ OK | `https://portoalegre.rs.gov.br/` | Porto Alegre | OK |
 | ❓ INCONSISTENTE | `https://sapl.portoalegre.rs.leg.br/` | Porto Alegre | INCONSISTENTE |
-| ❌ QUEBRADO | `https://portoalegre.rs.gov.br//diario-oficial` | Porto Alegre | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.rio-grande.rs.gov.br` | Rio Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarario-grande.rs.gov.br` | Rio Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.rio-grande.rs.gov.br/diario-oficial` | Rio Grande | INCONSISTENTE |
@@ -5457,7 +5341,6 @@
 | ✅ OK | `https://www.caceres.mt.gov.br/diario-oficial` | Cáceres | OK |
 | ✅ OK | `https://cuiaba.mt.gov.br/` | Cuiabá | OK |
 | ❓ INCONSISTENTE | `https://sapl.cuiaba.mt.leg.br/` | Cuiabá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://cuiaba.mt.gov.br//diario-oficial` | Cuiabá | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br` | Lucas do Rio Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaralucas-do-rio-verde.mt.gov.br` | Lucas do Rio Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/diario-oficial` | Lucas do Rio Verde | INCONSISTENTE |
@@ -5595,8 +5478,8 @@
 | ❓ INCONSISTENTE | `https://www.governo.ac.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Acre | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.ac.gov.br` | Conselho Estadual do Meio Ambiente de Acre | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.mg.gov.br/copam/atas` | Conselho Estadual do Meio Ambiente de Acre | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.saude.al.gov.br/ces` | Conselho Estadual de Sa?de de Alagoas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.saude.al.gov.br/atas` | Conselho Estadual de Sa?de de Alagoas | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.saude.al.gov.br/ces` | Conselho Estadual de Sa?de de Alagoas | QUEBRADO |
+| ❌ QUEBRADO | `https://www.saude.al.gov.br/atas` | Conselho Estadual de Sa?de de Alagoas | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.al.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Alagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.al.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Alagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.al.gov.br` | Conselho Estadual dos Direitos da Mulher de Alagoas | INCONSISTENTE |
@@ -5622,7 +5505,6 @@
 | ❓ INCONSISTENTE | `https://www.governo.ba.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Bahia | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.saude.ce.gov.br/ces` | Conselho Estadual de Sa?de de Cear? | QUEBRADO |
 | ❌ QUEBRADO | `https://www.saude.ce.gov.br/atas` | Conselho Estadual de Sa?de de Cear? | QUEBRADO |
-| ↪️ REDIRECT | `https://www.direitoshumanos.ce.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Cear? | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.governo.ce.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Cear? | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.ce.gov.br` | Conselho Estadual dos Direitos da Mulher de Cear? | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.ce.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Cear? | INCONSISTENTE |
@@ -5632,7 +5514,6 @@
 | ❓ INCONSISTENTE | `https://www.mulher.df.gov.br` | Conselho Estadual dos Direitos da Mulher de Distrito Federal | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.df.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Distrito Federal | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.df.gov.br` | Conselho Estadual do Meio Ambiente de Distrito Federal | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.saude.es.gov.br/atas` | Conselho Estadual de Sa?de de Esp?rito Santo | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.es.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Esp?rito Santo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.es.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Esp?rito Santo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.es.gov.br` | Conselho Estadual dos Direitos da Mulher de Esp?rito Santo | INCONSISTENTE |
@@ -5655,7 +5536,6 @@
 | ❓ INCONSISTENTE | `https://www.governo.mt.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Mato Grosso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.mt.gov.br` | Conselho Estadual do Meio Ambiente de Mato Grosso | INCONSISTENTE |
 | ✅ OK | `https://www.saude.ms.gov.br/ces` | Conselho Estadual de Sa?de de Mato Grosso do Sul | OK |
-| ❌ QUEBRADO | `https://www.saude.ms.gov.br/atas` | Conselho Estadual de Sa?de de Mato Grosso do Sul | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.ms.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Mato Grosso do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.ms.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Mato Grosso do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.ms.gov.br` | Conselho Estadual dos Direitos da Mulher de Mato Grosso do Sul | INCONSISTENTE |
@@ -5688,8 +5568,6 @@
 | ❓ INCONSISTENTE | `https://www.mulher.pr.gov.br` | Conselho Estadual dos Direitos da Mulher de Paran? | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.pr.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Paran? | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.pr.gov.br` | Conselho Estadual do Meio Ambiente de Paran? | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.saude.pe.gov.br/ces` | Conselho Estadual de Sa?de de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.saude.pe.gov.br/atas` | Conselho Estadual de Sa?de de Pernambuco | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.pe.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.pe.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.pe.gov.br` | Conselho Estadual dos Direitos da Mulher de Pernambuco | INCONSISTENTE |
@@ -5714,8 +5592,7 @@
 | ❓ INCONSISTENTE | `https://www.mulher.rn.gov.br` | Conselho Estadual dos Direitos da Mulher de Rio Grande do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.rn.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Rio Grande do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.rn.gov.br` | Conselho Estadual do Meio Ambiente de Rio Grande do Norte | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.saude.rs.gov.br/ces` | Conselho Estadual de Sa?de de Rio Grande do Sul | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.saude.rs.gov.br/atas` | Conselho Estadual de Sa?de de Rio Grande do Sul | QUEBRADO |
+| ❌ QUEBRADO | `https://www.saude.rs.gov.br/ces` | Conselho Estadual de Sa?de de Rio Grande do Sul | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.rs.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Rio Grande do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.rs.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Rio Grande do Sul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.rs.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Rio Grande do Sul | INCONSISTENTE |
@@ -5756,7 +5633,6 @@
 | ❓ INCONSISTENTE | `https://www.mulher.to.gov.br` | Conselho Estadual dos Direitos da Mulher de Tocantins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.to.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Tocantins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.to.gov.br` | Conselho Estadual do Meio Ambiente de Tocantins | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.cacoal.ro.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Cacoal - RO | QUEBRADO |
 | ❌ QUEBRADO | `https://www.cacoal.ro.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Cacoal - RO | QUEBRADO |
 | ❌ QUEBRADO | `https://www.vilhena.ro.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Vilhena - RO | QUEBRADO |
 | ❌ QUEBRADO | `https://www.vilhena.ro.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Vilhena - RO | QUEBRADO |
@@ -5775,8 +5651,6 @@
 | ✅ OK | `https://www.parintins.am.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Parintins - AM | OK |
 | ❌ QUEBRADO | `https://www.tefe.am.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Tefé - AM | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tefe.am.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Tefé - AM | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tefe.am.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Tefé - AM | QUEBRADO |
-| ❌ QUEBRADO | `https://boavista.rr.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de Boa Vista - RR | QUEBRADO |
 | ❌ QUEBRADO | `https://boavista.rr.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Boa Vista - RR | QUEBRADO |
 | ❌ QUEBRADO | `https://boavista.rr.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Boa Vista - RR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.abaetetuba.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Abaetetuba - PA | QUEBRADO |
@@ -5793,11 +5667,9 @@
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Cametá - PA | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Castanhal - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Castanhal - PA | QUEBRADO |
-| ❌ QUEBRADO | `https://www.itaituba.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Itaituba - PA | QUEBRADO |
 | ✅ OK | `https://www.itaituba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Itaituba - PA | OK |
 | ❌ QUEBRADO | `https://www.maraba.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Marabá - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.maraba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Marabá - PA | QUEBRADO |
-| ❌ QUEBRADO | `https://www.paragominas.pa.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Paragominas - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.redencao.pa.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Redenção - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.redencao.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Redenção - PA | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Santarém - PA | INCONSISTENTE |
@@ -5805,11 +5677,7 @@
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Santarém - PA | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.tucurui.pa.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Tucuruí - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tucurui.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Tucuruí - PA | QUEBRADO |
-| ❌ QUEBRADO | `https://macapa.ap.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Macapá - AP | QUEBRADO |
 | ❌ QUEBRADO | `https://www.araguaina.to.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Araguaína - TO | QUEBRADO |
-| ❌ QUEBRADO | `https://www.araguaina.to.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Araguaína - TO | QUEBRADO |
-| ❌ QUEBRADO | `https://www.imperatriz.ma.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Imperatriz - MA | QUEBRADO |
-| ❌ QUEBRADO | `https://www.imperatriz.ma.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Imperatriz - MA | QUEBRADO |
 | ✅ OK | `https://saoluis.ma.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de São Luís - MA | OK |
 | ✅ OK | `https://saoluis.ma.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de São Luís - MA | OK |
 | ✅ OK | `https://saoluis.ma.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de São Luís - MA | OK |
@@ -5821,12 +5689,10 @@
 | ❌ QUEBRADO | `https://www.parnaiba.pi.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Parnaíba - PI | QUEBRADO |
 | ❌ QUEBRADO | `https://www.picos.pi.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Picos - PI | QUEBRADO |
 | ❌ QUEBRADO | `https://www.picos.pi.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Picos - PI | QUEBRADO |
-| ❌ QUEBRADO | `https://teresina.pi.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Teresina - PI | QUEBRADO |
 | ❌ QUEBRADO | `https://www.crateus.ce.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Crateús - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.crateus.ce.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Crateús - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.crateus.ce.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Crateús - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.crato.ce.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Crato - CE | QUEBRADO |
-| ❌ QUEBRADO | `https://www.crato.ce.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Crato - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.crato.ce.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Crato - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://fortaleza.ce.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Fortaleza - CE | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Iguatu - CE | INCONSISTENTE |
@@ -5839,7 +5705,6 @@
 | ❌ QUEBRADO | `https://www.quixada.ce.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Quixadá - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.quixada.ce.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Quixadá - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.sobral.ce.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Sobral - CE | QUEBRADO |
-| ❌ QUEBRADO | `https://www.sobral.ce.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Sobral - CE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.caico.rn.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Caicó - RN | QUEBRADO |
 | ❌ QUEBRADO | `https://www.caico.rn.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Caicó - RN | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.ceara-mirim.rn.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Ceará-Mirim - RN | INCONSISTENTE |
@@ -5853,7 +5718,6 @@
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Mossoró - RN | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Mossoró - RN | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mossoro.rn.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Mossoró - RN | INCONSISTENTE |
-| ❌ QUEBRADO | `https://natal.rn.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Natal - RN | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.pau-dos-ferros.rn.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Pau dos Ferros - RN | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pau-dos-ferros.rn.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Pau dos Ferros - RN | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pau-dos-ferros.rn.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Pau dos Ferros - RN | INCONSISTENTE |
@@ -5869,7 +5733,6 @@
 | ❌ QUEBRADO | `https://www.patos.pb.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Patos - PB | QUEBRADO |
 | ❌ QUEBRADO | `https://www.araripina.pe.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Araripina - PE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.araripina.pe.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Araripina - PE | QUEBRADO |
-| ❌ QUEBRADO | `https://www.araripina.pe.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Araripina - PE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.caruaru.pe.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Caruaru - PE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.ouricuri.pe.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Ouricuri - PE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.ouricuri.pe.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Ouricuri - PE | QUEBRADO |
@@ -5908,7 +5771,6 @@
 | ✅ OK | `https://www.ilheus.ba.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Ilhéus - BA | OK |
 | ✅ OK | `https://www.ilheus.ba.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Ilhéus - BA | OK |
 | ❌ QUEBRADO | `https://www.itabuna.ba.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Itabuna - BA | QUEBRADO |
-| ❌ QUEBRADO | `https://www.jequie.ba.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Jequié - BA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.jequie.ba.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Jequié - BA | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.lauro-de-freitas.ba.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Lauro de Freitas - BA | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lauro-de-freitas.ba.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Lauro de Freitas - BA | INCONSISTENTE |
@@ -5939,8 +5801,6 @@
 | ❓ INCONSISTENTE | `https://www.montes-claros.mg.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Montes Claros - MG | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.montes-claros.mg.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Montes Claros - MG | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.montes-claros.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Montes Claros - MG | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.passos.mg.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Passos - MG | QUEBRADO |
-| ❌ QUEBRADO | `https://www.passos.mg.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Passos - MG | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.patos-de-minas.mg.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Patos de Minas - MG | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.patos-de-minas.mg.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Patos de Minas - MG | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.patos-de-minas.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Patos de Minas - MG | INCONSISTENTE |
@@ -5960,7 +5820,6 @@
 | ✅ OK | `https://www.uberlandia.mg.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Uberlândia - MG | OK |
 | ✅ OK | `https://www.uberlandia.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Uberlândia - MG | OK |
 | ❌ QUEBRADO | `https://www.varginha.mg.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Varginha - MG | QUEBRADO |
-| ❌ QUEBRADO | `https://www.varginha.mg.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Varginha - MG | QUEBRADO |
 | ❌ QUEBRADO | `https://www.varginha.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Varginha - MG | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Linhares - ES | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Linhares - ES | INCONSISTENTE |
@@ -5989,17 +5848,13 @@
 | ❓ INCONSISTENTE | `https://www.volta-redonda.rj.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Volta Redonda - RJ | INCONSISTENTE |
 | ✅ OK | `https://www.araraquara.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Araraquara - SP | OK |
 | ❌ QUEBRADO | `https://www.bauru.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Bauru - SP | QUEBRADO |
-| ❌ QUEBRADO | `https://www.bauru.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Bauru - SP | QUEBRADO |
-| ❌ QUEBRADO | `https://www.bauru.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Bauru - SP | QUEBRADO |
 | ✅ OK | `https://www.campinas.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Campinas - SP | OK |
 | ✅ OK | `https://www.campinas.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Campinas - SP | OK |
 | ✅ OK | `https://www.campinas.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Campinas - SP | OK |
-| ❌ QUEBRADO | `https://www.carapicuiba.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Carapicuíba - SP | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.franca.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Franca - SP | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.franca.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Franca - SP | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.guarulhos.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Guarulhos - SP | QUEBRADO |
 | ✅ OK | `https://www.limeira.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Limeira - SP | OK |
-| ❌ QUEBRADO | `https://www.marilia.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Marília - SP | QUEBRADO |
 | ❌ QUEBRADO | `https://www.maua.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Mauá - SP | QUEBRADO |
 | ❌ QUEBRADO | `https://www.maua.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Mauá - SP | QUEBRADO |
 | ❌ QUEBRADO | `https://www.maua.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Mauá - SP | QUEBRADO |
@@ -6027,9 +5882,6 @@
 | ❓ INCONSISTENTE | `https://www.sao-paulo.sp.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de São Paulo - SP | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-paulo.sp.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de São Paulo - SP | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-paulo.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de São Paulo - SP | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.sorocaba.sp.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Sorocaba - SP | QUEBRADO |
-| ❌ QUEBRADO | `https://www.apucarana.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Apucarana - PR | QUEBRADO |
-| ❌ QUEBRADO | `https://www.apucarana.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Apucarana - PR | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.araucaria.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Araucária - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.araucaria.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Araucária - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.araucaria.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Araucária - PR | INCONSISTENTE |
@@ -6042,7 +5894,6 @@
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Foz do Iguaçu - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Foz do Iguaçu - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Foz do Iguaçu - PR | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.londrina.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Londrina - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Paranavaí - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Paranavaí - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Paranavaí - PR | QUEBRADO |
@@ -6053,7 +5904,6 @@
 | ❓ INCONSISTENTE | `https://www.sao-jose-dos-pinhais.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de São José dos Pinhais - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-jose-dos-pinhais.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de São José dos Pinhais - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.toledo.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Toledo - PR | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.toledo.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Toledo - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.umuarama.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Umuarama - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.umuarama.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Umuarama - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.umuarama.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Umuarama - PR | QUEBRADO |
@@ -6072,7 +5922,7 @@
 | ❓ INCONSISTENTE | `https://www.criciuma.sc.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Criciúma - SC | INCONSISTENTE |
 | ❌ QUEBRADO | `https://pmf.sc.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de Florianópolis - SC | QUEBRADO |
 | ❌ QUEBRADO | `https://pmf.sc.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Florianópolis - SC | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pmf.sc.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Florianópolis - SC | INCONSISTENTE |
+| ❌ QUEBRADO | `https://pmf.sc.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Florianópolis - SC | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.jaragua-do-sul.sc.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Jaraguá do Sul - SC | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jaragua-do-sul.sc.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Jaraguá do Sul - SC | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jaragua-do-sul.sc.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Jaraguá do Sul - SC | INCONSISTENTE |
@@ -6090,8 +5940,6 @@
 | ❓ INCONSISTENTE | `https://www.caxias-do-sul.rs.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Caxias do Sul - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.caxias-do-sul.rs.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Caxias do Sul - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.caxias-do-sul.rs.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Caxias do Sul - RS | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.erechim.rs.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Erechim - RS | QUEBRADO |
-| ❌ QUEBRADO | `https://www.erechim.rs.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Erechim - RS | QUEBRADO |
 | ❌ QUEBRADO | `https://www.erechim.rs.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Erechim - RS | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.novo-hamburgo.rs.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Novo Hamburgo - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.novo-hamburgo.rs.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Novo Hamburgo - RS | INCONSISTENTE |
@@ -6099,8 +5947,6 @@
 | ❓ INCONSISTENTE | `https://www.passo-fundo.rs.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Passo Fundo - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.passo-fundo.rs.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Passo Fundo - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.passo-fundo.rs.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Passo Fundo - RS | INCONSISTENTE |
-| ❌ QUEBRADO | `https://portoalegre.rs.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de Porto Alegre - RS | QUEBRADO |
-| ❌ QUEBRADO | `https://portoalegre.rs.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Porto Alegre - RS | QUEBRADO |
 | ❌ QUEBRADO | `https://portoalegre.rs.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Porto Alegre - RS | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.rio-grande.rs.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Rio Grande - RS | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.rio-grande.rs.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Rio Grande - RS | INCONSISTENTE |
@@ -6132,8 +5978,6 @@
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Lucas do Rio Verde - MT | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Lucas do Rio Verde - MT | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Lucas do Rio Verde - MT | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.sinop.mt.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Sinop - MT | QUEBRADO |
-| ❌ QUEBRADO | `https://www.sinop.mt.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Sinop - MT | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tangara-da-serra.mt.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Tangará da Serra - MT | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tangara-da-serra.mt.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Tangará da Serra - MT | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tangara-da-serra.mt.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Tangará da Serra - MT | INCONSISTENTE |
@@ -6159,22 +6003,22 @@
 | ❓ INCONSISTENTE | `https://df.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Brasília - DF | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/83551549000100-2-000139/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/83551549000100-2-000140/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000133/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000133/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004603/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004603/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004604/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004610/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004610/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004611/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/` | Geral | OK |
@@ -6271,7 +6115,7 @@
 | ✅ OK | `https://www.diariomunicipal.com.br/amm-mg/` | EXTRATO: ATA DE REGISTRO DE PREÇOS Nº 043/2026 | OK |
 | ✅ OK | `https://www.betim.mg.gov.br/portal/diario-oficial/` | AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 055/2026 | OK |
 | ❌ QUEBRADO | `https://aracuai.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 041/2026 | QUEBRADO |
-| ❓ INCONSISTENTE | `https://itinga.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 019/2026 | INCONSISTENTE |
+| ❌ QUEBRADO | `https://itinga.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 019/2026 | QUEBRADO |
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/892dbb9d5a437837.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/5254899d54b8bd6e.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/8ac36f07dd8227c4.pdf` | Geral | INCONSISTENTE |
@@ -6924,13 +6768,12 @@
 | ✅ OK | `https://direitoshumanos.dpu.def.br/dpu-destaca-importancia-do-sistema-interamericano-no-enfrentamento-a-tortura-durante-seminario-do-mdhc/` | DPU destaca importância do Sistema Interamericano no enfrentamento à tortura durante seminário do MDHC | OK |
 | ✅ OK | `https://direitoshumanos.dpu.def.br/stf-adia-julgamento-sobre-trabalho-por-aplicativos-apos-pedido-da-dpu/` | STF adia julgamento sobre trabalho por aplicativos após pedido da DPU | OK |
 | ✅ OK | `https://direitoshumanos.dpu.def.br/em-viena-dpu-fortalece-dialogo-com-a-onu-para-cooperacao-no-enfrentamento-ao-trafico-de-pessoas/` | Em Viena, DPU fortalece diálogo com a ONU para cooperação no enfrentamento ao tráfico de pessoas | OK |
-| ❓ INCONSISTENTE | `https://imac.ac.gov.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://imac.ac.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.ac.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://ouvidoria.al.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://ouvidoria.am.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sema.ap.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://ouvidoria.ap.gov.br` | Geral | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www.semace.ce.gov.br` | Geral | REDIRECT |
 | ❓ INCONSISTENTE | `https://ouvidoria.ce.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.ibram.df.gov.br` | Geral | OK |
 | ✅ OK | `https://participa.df.gov.br` | Geral | OK |
@@ -6945,7 +6788,7 @@
 | ❓ INCONSISTENTE | `https://www.igam.mg.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.imasul.ms.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.ms.gov.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.sema.mt.gov.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.sema.mt.gov.br` | Geral | OK |
 | ✅ OK | `https://www.semas.pa.gov.br` | Geral | OK |
 | ✅ OK | `https://ouvidoria.pa.gov.br` | Geral | OK |
 | ✅ OK | `https://sudema.pb.gov.br` | Geral | OK |
@@ -6976,7 +6819,6 @@
 | ✅ OK | `https://www.gov.br/ibama` | Geral | OK |
 | ✅ OK | `https://www.gov.br/icmbio` | Geral | OK |
 | ✅ OK | `https://www.gov.br/ana` | Geral | OK |
-| ↪️ REDIRECT | `https://www.gov.br/aneel` | Geral | REDIRECT |
 | ✅ OK | `https://www.gov.br/anm` | Geral | OK |
 | ✅ OK | `https://www.gov.br/anp` | Geral | OK |
 | ✅ OK | `https://www.sgb.gov.br` | Geral | OK |
@@ -6998,9 +6840,9 @@
 | ✅ OK | `https://www.corsan.com.br` | Geral | OK |
 | ✅ OK | `https://www.embasa.ba.gov.br` | Geral | OK |
 | ↪️ REDIRECT | `https://www.compesa.com.br` | Geral | REDIRECT |
-| ❓ INCONSISTENTE | `https://www.casan.com.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.casan.com.br/ouvidoria` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.cagece.com.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.casan.com.br` | Geral | OK |
+| ↪️ REDIRECT | `https://www.casan.com.br/ouvidoria` | Geral | REDIRECT |
+| ✅ OK | `https://www.cagece.com.br` | Geral | OK |
 | ✅ OK | `https://www.cagece.com.br/ouvidoria` | Geral | OK |
 | ↪️ REDIRECT | `https://www.saneago.com.br` | Geral | REDIRECT |
 | ✅ OK | `https://www.cedae.com.br` | Geral | OK |
@@ -7537,7 +7379,7 @@
 | ❓ INCONSISTENTE | `https://compras.al.gov.br` | Alagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://meioambiente.al.gov.br` | Alagoas | INCONSISTENTE |
 | ✅ OK | `https://www.al.al.leg.br` | Alagoas | OK |
-| ✅ OK | `https://transparencia.al.al.leg.br` | Alagoas | OK |
+| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br` | Alagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.al.leg.br/api` | Alagoas | INCONSISTENTE |
 | ✅ OK | `https://www.tjal.jus.br` | Alagoas | OK |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjal/_search` | Alagoas | OK |
@@ -7560,7 +7402,7 @@
 | ❓ INCONSISTENTE | `https://www.defensoria.ap.def.br` | Amapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tce-ap.tc.br` | Amapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/ap` | Amapá | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.oabap.org.br` | Amapá | INCONSISTENTE |
+| ✅ OK | `https://www.oabap.org.br` | Amapá | OK |
 | ❓ INCONSISTENTE | `https://www.am.gov.br` | Amazonas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.am.gov.br` | Amazonas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://diariooficial.am.gov.br` | Amazonas | INCONSISTENTE |
@@ -7691,7 +7533,6 @@
 | ✅ OK | `https://compras.mg.gov.br` | Minas Gerais | OK |
 | ✅ OK | `https://meioambiente.mg.gov.br` | Minas Gerais | OK |
 | ✅ OK | `https://www.almg.gov.br` | Minas Gerais | OK |
-| ❌ QUEBRADO | `https://dadosabertos.almg.gov.br/api/v1` | Minas Gerais | QUEBRADO |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search` | Minas Gerais | OK |
 | ↪️ REDIRECT | `https://www.defensoria.mg.def.br` | Minas Gerais | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.tce-mg.tc.br` | Minas Gerais | INCONSISTENTE |
@@ -7707,7 +7548,7 @@
 | ❓ INCONSISTENTE | `https://transparencia.al.pa.leg.br` | Pará | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.pa.leg.br/api` | Pará | INCONSISTENTE |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjpa/_search` | Pará | OK |
-| ✅ OK | `https://www.mppa.mp.br` | Pará | OK |
+| ❓ INCONSISTENTE | `https://www.mppa.mp.br` | Pará | INCONSISTENTE |
 | ✅ OK | `https://www.defensoria.pa.def.br` | Pará | OK |
 | ❓ INCONSISTENTE | `https://www.tce-pa.tc.br` | Pará | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/pa` | Pará | INCONSISTENTE |
@@ -7796,7 +7637,7 @@
 | ❓ INCONSISTENTE | `https://www.tce-rn.tc.br` | Rio Grande do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/rn` | Rio Grande do Norte | INCONSISTENTE |
 | ✅ OK | `https://www.oabrn.org.br` | Rio Grande do Norte | OK |
-| ✅ OK | `https://dados.rs.gov.br` | Rio Grande do Sul | OK |
+| ❓ INCONSISTENTE | `https://dados.rs.gov.br` | Rio Grande do Sul | INCONSISTENTE |
 | ✅ OK | `https://diariooficial.rs.gov.br` | Rio Grande do Sul | OK |
 | ❓ INCONSISTENTE | `https://meioambiente.rs.gov.br` | Rio Grande do Sul | INCONSISTENTE |
 | ✅ OK | `https://ww4.al.rs.gov.br` | Rio Grande do Sul | OK |
@@ -7871,7 +7712,7 @@
 | ❓ INCONSISTENTE | `https://www.tce-sp.tc.br` | São Paulo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/sp` | São Paulo | INCONSISTENTE |
 | ✅ OK | `https://www.oabsp.org.br` | São Paulo | OK |
-| ✅ OK | `https://www.se.gov.br` | Sergipe | OK |
+| ❓ INCONSISTENTE | `https://www.se.gov.br` | Sergipe | INCONSISTENTE |
 | ✅ OK | `https://transparencia.se.gov.br` | Sergipe | OK |
 | ❓ INCONSISTENTE | `https://dados.se.gov.br` | Sergipe | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://diariooficial.se.gov.br` | Sergipe | INCONSISTENTE |
@@ -7992,7 +7833,7 @@
 | ✅ OK | `https://www.cuiaba.mt.gov.br/` | Ato oficial de entrega da meta no município de Cuiabá | OK |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/cuiaba-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2408102_2020` | Geral | OK |
-| ✅ OK | `https://www.natal.rn.gov.br/` | Contrato administrativo de execução de obras em Natal | OK |
+| ❓ INCONSISTENTE | `https://www.natal.rn.gov.br/` | Contrato administrativo de execução de obras em Natal | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/natal-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2507507_2020` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.joao-pessoa.pb.gov.br/` | Ato oficial de entrega da meta no município de João Pessoa | INCONSISTENTE |
@@ -8006,7 +7847,7 @@
 | ❓ INCONSISTENTE | `https://www.sao-luis.ma.gov.br/` | Ato oficial de entrega da meta no município de São Luís | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/sao-luis-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2800308_2020` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br/` | Ato oficial de entrega da meta no município de Aracaju | OK |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br/` | Ato oficial de entrega da meta no município de Aracaju | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/aracaju-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100205_2020` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.porto-velho.ro.gov.br/` | Ato oficial de entrega da meta no município de Porto Velho | INCONSISTENTE |
@@ -8416,8 +8257,7 @@
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/pe-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/pi-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001609988` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.der.pr.gov.br/` | Execução das obras da Ponte de Guaratuba e acessos viários (DER-PR) | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www.educacao.pr.gov.br/` | Resolução Seed nº 1.050/2023 - Homologação de 312 unidades no programa Cívico-Militar | REDIRECT |
+| ✅ OK | `https://www.der.pr.gov.br/` | Execução das obras da Ponte de Guaratuba e acessos viários (DER-PR) | OK |
 | ✅ OK | `https://www.infraestrutura.pr.gov.br/` | Novo Anel de Concessões Rodoviárias dos Lotes 1 e 2 (Pedágio com desconto em leilão) | OK |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/pr-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001601245` | Geral | OK |
@@ -8505,10 +8345,7 @@
 | ✅ OK | `https://www.gov.br/mma/instituto-chico-mendes-de` | Ministério do Meio Ambiente e Mudança do Clima | OK |
 | ✅ OK | `https://www.gov.br/mma/pt-br/assuntos/prevencao-e-controle-do-desmatamento` | Plano de Ação para Prevenção e Controle do Desmatamento (PPCDAm) | OK |
 | ✅ OK | `https://www.gov.br/mma/noticias` | MMA e IBAMA intensificam fiscalização preventiva contra incêndios no Pantanal e Cerrado | OK |
-| ❌ QUEBRADO | `https://www.gov.br/transportes/secretaria-nacional-de-tr` | Ministério dos Transportes | QUEBRADO |
-| ❌ QUEBRADO | `https://www.gov.br/transportes/departamento-nacional-de` | Ministério dos Transportes | QUEBRADO |
 | ❌ QUEBRADO | `https://www.gov.br/transportes/agencia-nacional-de-trans` | Ministério dos Transportes | QUEBRADO |
-| ↪️ REDIRECT | `https://www.gov.br/transportes` | Ministério dos Transportes | REDIRECT |
 | ✅ OK | `https://www.gov.br/transportes/pt-br/assuntos/transporte-terrestre/pnl` | Plano Nacional de Logística (PNL 2035) | OK |
 | ❌ QUEBRADO | `https://www.gov.br/transportes/noticias` | Ministério dos Transportes entrega novos trechos duplicados e avança leilões rodoviários | QUEBRADO |
 | ✅ OK | `https://www.gov.br/cidades/secretaria-nacional-de-ha` | Ministério das Cidades | OK |
@@ -8519,16 +8356,10 @@
 | ✅ OK | `https://www.gov.br/cidades/pt-br/assuntos/saneamento-ambiental` | Plano Nacional de Saneamento Básico (PLANSAB) | OK |
 | ✅ OK | `https://www.gov.br/cidades/pt-br/assuntos/habitacao` | Manual do Programa Minha Casa, Minha Vida (Portaria MCid 725/2023) | OK |
 | ✅ OK | `https://www.gov.br/cidades/noticias` | Ministério das Cidades autoriza contratação de novas moradias e obras de prevenção a encostas | OK |
-| ❌ QUEBRADO | `https://www.fazenda.mg.gov.br/gabinete-do-secretario` | Secretaria de Estado de Fazenda de Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.fazenda.mg.gov.br/subsecretaria-da-receita` | Secretaria de Estado de Fazenda de Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.fazenda.mg.gov.br/subsecretaria-do-tesouro` | Secretaria de Estado de Fazenda de Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.fazenda.mg.gov.br/conselho-de-contribuintes` | Secretaria de Estado de Fazenda de Minas Gerais | QUEBRADO |
 | ✅ OK | `https://www.fazenda.mg.gov.br` | Secretaria de Estado de Fazenda de Minas Gerais | OK |
 | ✅ OK | `https://www.transparencia.mg.gov.br/` | Secretaria de Estado de Fazenda de Minas Gerais | OK |
 | ❓ INCONSISTENTE | `https://fazenda.mg.gov.br/transparencia/gestao-fiscal/` | Relatório de Gestão Fiscal de Minas Gerais (RGF/SEF-MG) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://fazenda.mg.gov.br/municipios/repasses/` | Demonstrativo Mensal de Repasses Constitucionais aos Municípios | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.saude.mg.gov.br/subsecretaria-de-acesso-a` | Secretaria de Estado de Saúde de Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.saude.mg.gov.br/subsecretaria-de-vigilanc` | Secretaria de Estado de Saúde de Minas Gerais | QUEBRADO |
 | ✅ OK | `https://www.saude.mg.gov.br` | Secretaria de Estado de Saúde de Minas Gerais | OK |
 | ❌ QUEBRADO | `https://saude.mg.gov.br/legislacao` | Resolução SES/MG nº 8.950/2024 (Cofinanciamento da Rede Regional) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.meioambiente.mg.gov.br/fundacao-estadual-do-meio` | Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de MG | INCONSISTENTE |
@@ -8552,14 +8383,9 @@
 | ✅ OK | `https://www.camara.leg.br/transparencia/` | Câmara dos Deputados | OK |
 | ✅ OK | `https://www.camara.leg.br/transparencia` | Portal da Transparência: Cota Parlamentar (CEAP) | OK |
 | ✅ OK | `https://www.camara.leg.br/noticias` | Câmara aprova regime de urgência para matérias orçamentárias e de segurança pública | OK |
-| ❌ QUEBRADO | `https://www.senado.leg.br/plenario-do-senado` | Senado Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.senado.leg.br/comissao-de-assuntos-econ` | Senado Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.senado.leg.br/sabatina-de-autoridades` | Senado Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.senado.leg.br/advocacia-do-senado-e-con` | Senado Federal | QUEBRADO |
 | ✅ OK | `https://www12.senado.leg.br/transparencia` | Senado Federal | OK |
 | ✅ OK | `https://legis.senado.leg.br/legislacao/ListaTextoIntegral.action?id=214041` | Regimento Interno do Senado Federal (RISF) | OK |
 | ✅ OK | `https://www12.senado.leg.br/noticias` | Senado debate proposta de renegociação das dívidas dos estados e pacto federativo | OK |
-| ❌ QUEBRADO | `https://www.almg.gov.br/conheca/regimento-interno/` | Regimento Interno da Assembleia Legislativa de Minas Gerais | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.cmbh.mg.gov.br/plenario-amynthas-de-barr` | Câmara Municipal de Belo Horizonte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cmbh.mg.gov.br/comissao-de-legislacao-e` | Câmara Municipal de Belo Horizonte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cmbh.mg.gov.br/comissao-de-orcamento-e-f` | Câmara Municipal de Belo Horizonte | INCONSISTENTE |
@@ -8573,12 +8399,9 @@
 | ✅ OK | `https://portal.stf.jus.br/secretaria-geral-da-presi` | Supremo Tribunal Federal | OK |
 | ✅ OK | `https://portal.stf.jus.br` | Supremo Tribunal Federal | OK |
 | ✅ OK | `https://portal.stf.jus.br/transparencia/` | Supremo Tribunal Federal | OK |
-| ↪️ REDIRECT | `https://portal.stf.jus.br/textos/verTexto.asp?servico=legislacaoRegimentoInterno` | Regimento Interno do Supremo Tribunal Federal (RISTF) | REDIRECT |
 | ✅ OK | `https://portal.stf.jus.br/transparencia` | Relatório Anual de Atividades Jurisdicionais do STF | OK |
 | ✅ OK | `https://portal.stf.jus.br/noticias` | STF julga temas de repercussão geral com impacto no pacto federativo e direitos fundamentais | OK |
-| ❌ QUEBRADO | `https://www.tjmg.jus.br/portal-tjmg/institucional/regimento-interno.htm` | Regimento Interno do Tribunal de Justiça de Minas Gerais | QUEBRADO |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/noticias` | TJMG instala novos centros de conciliação e avança na digitalização processual em 298 comarcas | OK |
-| ❌ QUEBRADO | `https://www.mpmg.mp.br/portal/menu/institucional/legislacao/lei-organica.shtml` | Lei Orgânica do Ministério Público de Minas Gerais (Lei Complementar nº 34/1994) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpmg.mp.br/transparencia` | Relatório de Gestão da Tutela Coletiva e Acordos Ambientais do MPMG | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpmg.mp.br/comunicacao/noticias` | MPMG atua em forças-tarefas de combate à improbidade e fiscalização de recursos públicos | QUEBRADO |
 | ↪️ REDIRECT | `https://defensoria.mg.def.br/defensoria-especializada` | Defensoria Pública do Estado de Minas Gerais | REDIRECT |
@@ -8594,18 +8417,13 @@
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14` | Geral | OK |
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-15` | Geral | OK |
 | ❌ QUEBRADO | `https://www.cnj.jus.br/sobre-o-cnj/composicao-do-cnj/` | Conselho Nacional de Justiça | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cnj.jus.br/sessoes-do-plenario/` | Conselho Nacional de Justiça | QUEBRADO |
 | ✅ OK | `https://www.cnj.jus.br/sobre-o-cnj/secretaria-geral/` | Conselho Nacional de Justiça | OK |
 | ✅ OK | `https://www.cnj.jus.br/ouvidoria-cnj/` | Conselho Nacional de Justiça | OK |
 | ❌ QUEBRADO | `https://www.cnj.jus.br/corregedoriacnj/fale-com-a-corregedoria/` | Conselho Nacional de Justiça | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/cnj/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (CNJ 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.cnj.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (CNJ) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/cnj/planejamento-2026.pdf` | Plano Estratégico e Diretrizes de Transparência Cidadã (CNJ) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/presidencia-direcao-geral` | Conselho Nacional do Ministério Público | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/plenario-turmas` | Conselho Nacional do Ministério Público | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/secretaria-geral` | Conselho Nacional do Ministério Público | QUEBRADO |
 | ❓ INCONSISTENTE | `https://ouvidoria.cnmp.mp.br/` | Conselho Nacional do Ministério Público | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.cnmp.mp.br/portal/institucional/corregedoria-nacional` | Conselho Nacional do Ministério Público | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/cnmp/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (CNMP 2025/2026) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.cnmp.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (CNMP) | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/cnmp/planejamento-2026.pdf` | Plano Estratégico e Diretrizes de Transparência Cidadã (CNMP) | QUEBRADO |
@@ -8672,11 +8490,8 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpba/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Bahia | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ba.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpba/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ce.def.br/defensoria-geral` | Defensoria Pública do Estado de Ceará | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ce.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Ceará | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ce.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Ceará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ce.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Ceará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ce.def.br/balcao-cidadao` | Defensoria Pública do Estado de Ceará | QUEBRADO |
 | ✅ OK | `https://www.defensoria.ce.def.br/ouvidoria` | Defensoria Pública do Estado de Ceará | OK |
 | ↪️ REDIRECT | `https://www.defensoria.ce.def.br/corregedoria` | Defensoria Pública do Estado de Ceará | REDIRECT |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpce/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Ceará (NUDEP/DPCE) | QUEBRADO |
@@ -8766,11 +8581,6 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpmt/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Mato Grosso | QUEBRADO |
 | ✅ OK | `https://www.defensoria.mt.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpmt/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.pa.def.br/defensoria-geral` | Defensoria Pública do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.pa.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.pa.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.pa.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.pa.def.br/balcao-cidadao` | Defensoria Pública do Estado de Pará | QUEBRADO |
 | ✅ OK | `https://www.defensoria.pa.def.br/ouvidoria` | Defensoria Pública do Estado de Pará | OK |
 | ✅ OK | `https://www.defensoria.pa.def.br/corregedoria` | Defensoria Pública do Estado de Pará | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dppa/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Pará (NUDEP/DPPA) | QUEBRADO |
@@ -8949,31 +8759,20 @@
 | ✅ OK | `https://www.defensoria.to.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpto/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://www.dpu.def.br/unidades/minas-gerais` | Defensoria Pública da União em Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.dpu.def.br/atuacao` | Defensoria Pública da União em Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.dpu.def.br/atendimento` | Defensoria Pública da União em Minas Gerais | QUEBRADO |
-| ❌ QUEBRADO | `https://www.dpu.def.br/corregedoria-geral` | Defensoria Pública da União em Minas Gerais | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpu/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (DPU 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpac/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Acre | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpac/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpac/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPAC | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpac/noticia-gaeco-2026.html` | Operação do GAECO do MPAC combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpal.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Alagoas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpal.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Alagoas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpal.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Alagoas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpal.mp.br/atendimento` | Ministério Público do Estado de Alagoas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpal.mp.br/corregedoria` | Ministério Público do Estado de Alagoas | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpal/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Alagoas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpal.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpal/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpal/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPAL | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpal/noticia-gaeco-2026.html` | Operação do GAECO do MPAL combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpam.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpam.mp.br/gaeco` | Ministério Público do Estado de Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/atendimento` | Ministério Público do Estado de Amazonas | QUEBRADO |
 | ✅ OK | `https://www.mpam.mp.br/ouvidoria` | Ministério Público do Estado de Amazonas | OK |
-| ❌ QUEBRADO | `https://www.mpam.mp.br/corregedoria` | Ministério Público do Estado de Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpam/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpam/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -8991,13 +8790,7 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpap/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpap/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPAP | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpap/noticia-gaeco-2026.html` | Operação do GAECO do MPAP combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/gaeco` | Ministério Público do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/atendimento` | Ministério Público do Estado de Bahia | QUEBRADO |
 | ✅ OK | `https://www.mpba.mp.br/ouvidoria` | Ministério Público do Estado de Bahia | OK |
-| ❌ QUEBRADO | `https://www.mpba.mp.br/corregedoria` | Ministério Público do Estado de Bahia | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpba/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Bahia | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpba.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpba/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -9031,11 +8824,6 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpes/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpes/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPES | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpes/noticia-gaeco-2026.html` | Operação do GAECO do MPES combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ↪️ REDIRECT | `https://www.mpf.mp.br/pgr` | Ministério Público Federal | REDIRECT |
-| ❌ QUEBRADO | `https://www.mpf.mp.br/atuacao-tematica` | Ministério Público Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpf.mp.br/pgr/institucional/organograma` | Ministério Público Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpf.mp.br/servicos/ouvidoria` | Ministério Público Federal | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpf.mp.br/pgr/orgaos-vinculados/corregedoria-do-mpf` | Ministério Público Federal | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpf/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (MPF 2025/2026) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mpf.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (MPF) | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpf/planejamento-2026.pdf` | Plano Estratégico e Diretrizes de Transparência Cidadã (MPF) | QUEBRADO |
@@ -9044,12 +8832,12 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpgo/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpgo/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPGO | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpgo/noticia-gaeco-2026.html` | Operação do GAECO do MPGO combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mpma.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpma.mp.br/gaeco` | Ministério Público do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpma.mp.br/ouvidoria` | Ministério Público do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpma.mp.br/corregedoria` | Ministério Público do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.mpma.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Maranhão | QUEBRADO |
+| ✅ OK | `https://www.mpma.mp.br/gaeco` | Ministério Público do Estado de Maranhão | OK |
+| ✅ OK | `https://www.mpma.mp.br/ouvidoria` | Ministério Público do Estado de Maranhão | OK |
+| ✅ OK | `https://www.mpma.mp.br/corregedoria` | Ministério Público do Estado de Maranhão | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpma/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Maranhão | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mpma.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.mpma.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpma/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpma/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMA | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpma/noticia-gaeco-2026.html` | Operação do GAECO do MPMA combate desvios em licitações de transporte público escolar | QUEBRADO |
@@ -9058,34 +8846,19 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmg/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmg/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMG | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmg/noticia-gaeco-2026.html` | Operação do GAECO do MPMG combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpms.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Mato Grosso do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpms.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Mato Grosso do Sul | QUEBRADO |
 | ✅ OK | `https://www.mpms.mp.br/gaeco` | Ministério Público do Estado de Mato Grosso do Sul | OK |
-| ❌ QUEBRADO | `https://www.mpms.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Mato Grosso do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpms.mp.br/atendimento` | Ministério Público do Estado de Mato Grosso do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpms.mp.br/corregedoria` | Ministério Público do Estado de Mato Grosso do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpms.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/noticia-gaeco-2026.html` | Operação do GAECO do MPMS combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpmt.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Mato Grosso | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpmt.mp.br/gaeco` | Ministério Público do Estado de Mato Grosso | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpmt.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Mato Grosso | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpmt.mp.br/corregedoria` | Ministério Público do Estado de Mato Grosso | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpmt.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMT | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/noticia-gaeco-2026.html` | Operação do GAECO do MPMT combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/gaeco` | Ministério Público do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/atendimento` | Ministério Público do Estado de Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/ouvidoria` | Ministério Público do Estado de Pará | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppa/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppa.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.mppa.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppa/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppa/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPA | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppa/noticia-gaeco-2026.html` | Operação do GAECO do MPPA combate desvios em licitações de transporte público escolar | QUEBRADO |
@@ -9093,46 +8866,25 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppb/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppb/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPB | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppb/noticia-gaeco-2026.html` | Operação do GAECO do MPPB combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/gaeco` | Ministério Público do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/atendimento` | Ministério Público do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppe.mp.br/corregedoria` | Ministério Público do Estado de Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppe/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppe.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppe/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppe/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPE | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppe/noticia-gaeco-2026.html` | Operação do GAECO do MPPE combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/gaeco` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/atendimento` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/ouvidoria` | Ministério Público do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppi.mp.br/corregedoria` | Ministério Público do Estado de Piauí | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Piauí | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppi.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPI | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/noticia-gaeco-2026.html` | Operação do GAECO do MPPI combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mppr.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Paraná | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.mppr.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Paraná | QUEBRADO |
+| ❌ QUEBRADO | `https://www.mppr.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Paraná | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mppr.mp.br/gaeco` | Ministério Público do Estado de Paraná | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.mppr.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Paraná | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mppr.mp.br/atendimento` | Ministério Público do Estado de Paraná | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppr.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPR | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/noticia-gaeco-2026.html` | Operação do GAECO do MPPR combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/gaeco` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/ouvidoria-do-mp` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
 | ✅ OK | `https://www.mprj.mp.br/atendimento` | Ministério Público do Estado do Rio de Janeiro | OK |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/ouvidoria` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprj.mp.br/corregedoria` | Ministério Público do Estado do Rio de Janeiro | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprj/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio de Janeiro | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprj/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -9161,10 +8913,7 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPRR | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/noticia-gaeco-2026.html` | Operação do GAECO do MPRR combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprs.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mprs.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Rio Grande do Sul | QUEBRADO |
 | ✅ OK | `https://www.mprs.mp.br/gaeco` | Ministério Público do Estado de Rio Grande do Sul | OK |
-| ❌ QUEBRADO | `https://www.mprs.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Rio Grande do Sul | QUEBRADO |
 | ✅ OK | `https://www.mprs.mp.br/atendimento` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ✅ OK | `https://www.mprs.mp.br/ouvidoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ✅ OK | `https://www.mprs.mp.br/corregedoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
@@ -9175,7 +8924,6 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprs/noticia-gaeco-2026.html` | Operação do GAECO do MPRS combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ✅ OK | `https://www.mpsc.mp.br/gaeco` | Ministério Público do Estado de Santa Catarina | OK |
 | ✅ OK | `https://www.mpsc.mp.br/ouvidoria` | Ministério Público do Estado de Santa Catarina | OK |
-| ❌ QUEBRADO | `https://www.mpsc.mp.br/corregedoria` | Ministério Público do Estado de Santa Catarina | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpsc/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Santa Catarina | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpsc.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpsc/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -9205,11 +8953,7 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpsp/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpsp/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPSP | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpsp/noticia-gaeco-2026.html` | Operação do GAECO do MPSP combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpto.mp.br/corregedoria-geral-do-mp` | Ministério Público do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpto.mp.br/centros-de-apoio-operacio` | Ministério Público do Estado de Tocantins | QUEBRADO |
 | ✅ OK | `https://www.mpto.mp.br/gaeco` | Ministério Público do Estado de Tocantins | OK |
-| ❌ QUEBRADO | `https://www.mpto.mp.br/ouvidoria-do-mp` | Ministério Público do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mpto.mp.br/atendimento` | Ministério Público do Estado de Tocantins | QUEBRADO |
 | ✅ OK | `https://www.mpto.mp.br/ouvidoria` | Ministério Público do Estado de Tocantins | OK |
 | ✅ OK | `https://www.mpto.mp.br/corregedoria` | Ministério Público do Estado de Tocantins | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpto/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Tocantins | QUEBRADO |
@@ -9217,18 +8961,14 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpto/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpto/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPTO | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpto/noticia-gaeco-2026.html` | Operação do GAECO do MPTO combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ↪️ REDIRECT | `https://portal.stf.jus.br/textos/verTexto.asp?servico=sobreStfComposicaoComposicao` | Supremo Tribunal Federal | REDIRECT |
 | ✅ OK | `https://portal.stf.jus.br/sessoes/` | Supremo Tribunal Federal | OK |
 | ✅ OK | `https://portal.stf.jus.br/` | Supremo Tribunal Federal | OK |
 | ✅ OK | `https://portal.stf.jus.br/ouvidoria/` | Supremo Tribunal Federal | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/stf/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (STF 2025/2026) | QUEBRADO |
-| ✅ OK | `https://www.stf.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (STF) | OK |
+| ❌ QUEBRADO | `https://www.stf.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (STF) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/stf/planejamento-2026.pdf` | Plano Estratégico e Diretrizes de Transparência Cidadã (STF) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional/Presidencia` | Superior Tribunal de Justiça | QUEBRADO |
 | ✅ OK | `https://www.stj.jus.br/sites/portalp/Institucional/Composicao` | Superior Tribunal de Justiça | OK |
-| ❌ QUEBRADO | `https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional` | Superior Tribunal de Justiça | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/stj/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (STJ 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.stj.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (STJ) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/stj/planejamento-2026.pdf` | Plano Estratégico e Diretrizes de Transparência Cidadã (STJ) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://mpc.tce.mg.gov.br/` | Tribunal de Contas do Estado de Minas Gerais | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sicom.tce.mg.gov.br/` | Tribunal de Contas do Estado de Minas Gerais | INCONSISTENTE |
@@ -9245,52 +8985,39 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjac/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJAC | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjac/noticia-metas-2026.html` | TJAC atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjac/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Acre | QUEBRADO |
-| ✅ OK | `https://www.tjal.jus.br/presidencia` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Alagoas | OK |
-| ✅ OK | `https://www.tjal.jus.br/corregedoria` | Tribunal de Justiça do Estado de Alagoas | OK |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/presidencia` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjal.jus.br/corregedoria` | Tribunal de Justiça do Estado de Alagoas | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjal/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAL 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjal/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJAL | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjal/noticia-metas-2026.html` | TJAL atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjal/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Alagoas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/presidencia` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/corregedoria` | Tribunal de Justiça do Estado de Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjam/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAM 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjam/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJAM | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjam/noticia-metas-2026.html` | TJAM atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjam/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Amazonas | QUEBRADO |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/presidencia` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
-| ↪️ REDIRECT | `https://www.tjap.jus.br/corregedoria` | Tribunal de Justiça do Estado de Amapá | REDIRECT |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/presidencia` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjap.jus.br/corregedoria` | Tribunal de Justiça do Estado de Amapá | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjap/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAP 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjap/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJAP | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjap/noticia-metas-2026.html` | TJAP atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjap/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Amapá | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjba.jus.br/presidencia` | Tribunal de Justiça do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjba.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjba.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Bahia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjba.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Bahia | QUEBRADO |
-| ✅ OK | `https://www.tjba.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Bahia | OK |
-| ✅ OK | `https://www.tjba.jus.br/corregedoria` | Tribunal de Justiça do Estado de Bahia | OK |
+| ↪️ REDIRECT | `https://www.tjba.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Bahia | REDIRECT |
+| ↪️ REDIRECT | `https://www.tjba.jus.br/corregedoria` | Tribunal de Justiça do Estado de Bahia | REDIRECT |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjba/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJBA 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjba/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJBA | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjba/noticia-metas-2026.html` | TJBA atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjba/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Bahia | QUEBRADO |
 | ✅ OK | `https://www.tjce.jus.br/presidencia` | Tribunal de Justiça do Estado de Ceará | OK |
-| ❌ QUEBRADO | `https://www.tjce.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Ceará | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjce.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Ceará | QUEBRADO |
 | ✅ OK | `https://www.tjce.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Ceará | OK |
 | ✅ OK | `https://www.tjce.jus.br/corregedoria` | Tribunal de Justiça do Estado de Ceará | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjce/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJCE 2025/2026) | QUEBRADO |
@@ -9385,22 +9112,10 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpb/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJPB | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpb/noticia-metas-2026.html` | TJPB atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpb/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Paraíba | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/presidencia` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpe.jus.br/corregedoria` | Tribunal de Justiça do Estado de Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpe/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPE 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpe/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJPE | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpe/noticia-metas-2026.html` | TJPE atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpe/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Pernambuco | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/presidencia` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjpi.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Piauí | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.tjpi.jus.br/corregedoria` | Tribunal de Justiça do Estado de Piauí | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpi/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPI 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjpi/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJPI | QUEBRADO |
@@ -9425,51 +9140,29 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrj/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJRJ | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrj/noticia-metas-2026.html` | TJRJ atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrj/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio de Janeiro | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrn.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Rio Grande do Norte | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrn.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Rio Grande do Norte | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrn.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Rio Grande do Norte | QUEBRADO |
 | ✅ OK | `https://www.tjrn.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Rio Grande do Norte | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrn/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRN 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrn/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJRN | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrn/noticia-metas-2026.html` | TJRN atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrn/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio Grande do Norte | QUEBRADO |
-| ✅ OK | `https://www.tjro.jus.br/presidencia` | Tribunal de Justiça do Estado de Rondônia | OK |
-| ❓ INCONSISTENTE | `https://www.tjro.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Rondônia | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.tjro.jus.br/presidencia` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
+| ❌ QUEBRADO | `https://www.tjro.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjro.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjro.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjro.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
-| ✅ OK | `https://www.tjro.jus.br/corregedoria` | Tribunal de Justiça do Estado de Rondônia | OK |
+| ❌ QUEBRADO | `https://www.tjro.jus.br/corregedoria` | Tribunal de Justiça do Estado de Rondônia | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjro/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRO 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjro/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJRO | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjro/noticia-metas-2026.html` | TJRO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjro/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rondônia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/presidencia` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrr.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Roraima | QUEBRADO |
 | ✅ OK | `https://www.tjrr.jus.br/corregedoria` | Tribunal de Justiça do Estado de Roraima | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrr/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRR 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrr/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJRR | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrr/noticia-metas-2026.html` | TJRR atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrr/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Roraima | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/presidencia` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjrs.jus.br/corregedoria` | Tribunal de Justiça do Estado de Rio Grande do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrs/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJRS 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrs/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJRS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrs/noticia-metas-2026.html` | TJRS atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjrs/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio Grande do Sul | QUEBRADO |
 | ✅ OK | `https://www.tjsc.jus.br/presidencia` | Tribunal de Justiça do Estado de Santa Catarina | OK |
-| ❌ QUEBRADO | `https://www.tjsc.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Santa Catarina | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjsc.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Santa Catarina | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjsc.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Santa Catarina | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjsc.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Santa Catarina | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsc/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJSC 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsc/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJSC | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsc/noticia-metas-2026.html` | TJSC atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
@@ -9486,34 +9179,16 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsp/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJSP | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsp/noticia-metas-2026.html` | TJSP atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjsp/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de São Paulo | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/presidencia` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/1a-vice-presidencia` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/escola-da-magistratura` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/ouvidoria-geral` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/balcaovirtual` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
 | ✅ OK | `https://www.tjto.jus.br/ouvidoria` | Tribunal de Justiça do Estado de Tocantins | OK |
-| ❌ QUEBRADO | `https://www.tjto.jus.br/corregedoria` | Tribunal de Justiça do Estado de Tocantins | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjto/rgf-2025.pdf` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJTO 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjto/inspecao-cnj-2025.pdf` | Relatório de Inspeção da Corregedoria Nacional de Justiça no TJTO | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjto/noticia-metas-2026.html` | TJTO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjto/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Tocantins | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trf6.jus.br/institucional/composicao-da-corte/` | Tribunal Regional Federal da 6ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trf6.jus.br/servicos-judiciais/jurisdicao-e-competencia/` | Tribunal Regional Federal da 6ª Região | QUEBRADO |
 | ✅ OK | `https://portal.trf6.jus.br/` | Relatório de Gestão da Justiça Federal em MG | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/trf6/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (TRF6 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/institucional/administracao/presidencia` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/institucional/administracao` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/institucional/composicao/turmas` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/conheca-o-trt/jurisdicao-e-enderecos` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/servicos/balcao-virtual` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
 | ✅ OK | `https://portal.trt3.jus.br/internet/ouvidoria` | Tribunal Regional do Trabalho da 3ª Região | OK |
-| ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria/atendimento` | Tribunal Regional do Trabalho da 3ª Região | QUEBRADO |
 | ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/conheca-o-trt/estatistica` | Anuário Estatístico da Justiça do Trabalho em MG | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/trt3/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (TRT3 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tst.jus.br/presidencia-direcao-geral` | Tribunal Superior do Trabalho | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tst.jus.br/plenario-turmas` | Tribunal Superior do Trabalho | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tst.jus.br/secretaria-geral` | Tribunal Superior do Trabalho | QUEBRADO |
 | ✅ OK | `https://www.tst.jus.br/ouvidoria` | Tribunal Superior do Trabalho | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tst/relatorio-anual-2025.pdf` | Relatório de Gestão e Atividades Institucionais (TST 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tst.jus.br/estrategia` | Plano Estratégico e Diretrizes de Transparência Cidadã (TST) | QUEBRADO |
@@ -10014,9 +9689,7 @@
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt11.jus.br/atendimento` | Vara do Trabalho de Manaus | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.tjap.jus.br/atendimento` | 1ª Vara Cível e Criminal da Comarca de Macapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt8.jus.br/atendimento` | Vara do Trabalho de Macapá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://balcaovirtual.tjba.jus.br/atendimento` | 1ª Vara Cível e Criminal da Comarca de Alagoinhas | QUEBRADO |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt5.jus.br/atendimento` | Vara do Trabalho de Alagoinhas | INCONSISTENTE |
-| ❌ QUEBRADO | `https://balcaovirtual.tjba.jus.br/comarca/salvador` | 1ª Vara Criminal de Salvador | QUEBRADO |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trf1.jus.br/vara/salvador/1` | 1ª Vara Federal de Salvador | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt5.jus.br/vara/salvador/1` | 1ª Vara do Trabalho de Salvador | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trf1.jus.br/vara/salvador/2` | 2ª Vara Federal de Salvador | INCONSISTENTE |
@@ -10024,7 +9697,7 @@
 | ❓ INCONSISTENTE | `https://balcaovirtual.trf1.jus.br/vara/salvador/3` | 3ª Vara Federal de Salvador | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt5.jus.br/vara/salvador/3` | 3ª Vara do Trabalho de Salvador | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt5.jus.br/vara/salvador/4` | 4ª Vara do Trabalho de Salvador | INCONSISTENTE |
-| ❌ QUEBRADO | `https://balcaovirtual.tjba.jus.br/juizados` | Juizado Especial Cível Central de Salvador | QUEBRADO |
+| ❓ INCONSISTENTE | `https://balcaovirtual.tjba.jus.br/juizados` | Juizado Especial Cível Central de Salvador | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.tjce.jus.br/atendimento` | 1ª Vara Cível e Criminal da Comarca de Crateús | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.trt7.jus.br/atendimento` | Vara do Trabalho de Crateús | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://balcaovirtual.tjce.jus.br/comarca/fortaleza` | 1ª Vara Criminal de Fortaleza | INCONSISTENTE |
@@ -10148,12 +9821,10 @@
 | ❌ QUEBRADO | `https://www.almg.gov.br/deputados/conheca-os-deputados/deputado/?id=28882` | Bella Gonçalves | QUEBRADO |
 | ❌ QUEBRADO | `https://www.almg.gov.br/deputados/conheca-os-deputados` | Bruno Engler | QUEBRADO |
 | ✅ OK | `https://www.al.sp.gov.br/deputado/?matricula=300524` | André do Prado | OK |
-| ❌ QUEBRADO | `https://www.al.sp.gov.br/deputado/todos` | Paula da Bancada Feminista | QUEBRADO |
 | ✅ OK | `https://www.al.ac.leg.br/transparencia` | Geral | OK |
 | ✅ OK | `https://www.al.ac.leg.br/deputados/luiz-gonzaga` | Luiz Gonzaga | OK |
 | ✅ OK | `https://www.al.ac.leg.br/deputados/edvaldo-magalhaes` | Edvaldo Magalhães | OK |
 | ✅ OK | `https://www.al.al.leg.br/transparencia` | Geral | OK |
-| ❌ QUEBRADO | `https://www.al.al.leg.br/deputado/marcelo-victor` | Marcelo Victor | QUEBRADO |
 | ✅ OK | `https://www.al.ap.leg.br/transparencia` | Geral | OK |
 | ❌ QUEBRADO | `https://www.al.ap.leg.br/deputados/alliny-serrao` | Alliny Serrão | QUEBRADO |
 | ✅ OK | `https://www.aleam.gov.br/transparencia` | Geral | OK |
@@ -10161,19 +9832,14 @@
 | ❓ INCONSISTENTE | `https://www.al.ba.gov.br/deputados/deputado-estadual/adolfo-menezes` | Adolfo Menezes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.al.ba.gov.br/deputados/deputado-estadual/rosemberg-pinto` | Rosemberg Pinto | INCONSISTENTE |
 | ✅ OK | `https://www.al.ce.gov.br/deputados/evandro-leitao` | Evandro Leitão | OK |
-| ❌ QUEBRADO | `https://www.cl.df.gov.br/deputados/wellington-luiz` | Wellington Luiz | QUEBRADO |
-| ❌ QUEBRADO | `https://www.cl.df.gov.br/deputados/chico-vigilante` | Chico Vigilante | QUEBRADO |
 | ✅ OK | `https://www.al.es.gov.br/transparencia` | Geral | OK |
-| ❌ QUEBRADO | `https://portal.al.go.leg.br/deputados/bruno-peixoto` | Bruno Peixoto | QUEBRADO |
 | ✅ OK | `https://www.al.mt.gov.br/transparencia` | Geral | OK |
-| ❌ QUEBRADO | `https://www.al.mt.gov.br/deputados/eduardo-botelho` | Eduardo Botelho | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.al.ms.leg.br/transparencia` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.al.ms.leg.br/deputados/gerson-claro` | Gerson Claro | INCONSISTENTE |
 | ✅ OK | `https://www.alepa.pa.gov.br/transparencia` | Geral | OK |
 | ❌ QUEBRADO | `https://www.alepa.pa.gov.br/deputados/chicao` | Chicão (Francisco Melo) | QUEBRADO |
 | ✅ OK | `https://www.al.pb.leg.br/transparencia` | Geral | OK |
 | ✅ OK | `https://www.al.pb.leg.br/deputados/adriano-galdino` | Adriano Galdino | OK |
-| ❌ QUEBRADO | `https://www.assembleia.pr.leg.br/deputados/alexandre-curi` | Alexandre Curi | QUEBRADO |
 | ❌ QUEBRADO | `https://www.assembleia.pr.leg.br/deputados/arilson-chiorato` | Arilson Chiorato | QUEBRADO |
 | ✅ OK | `https://www.alepe.pe.gov.br/parlamentar/alvaro-porto` | Álvaro Porto | OK |
 | ❓ INCONSISTENTE | `https://www.alepi.pi.gov.br/transparencia` | Geral | INCONSISTENTE |
@@ -10207,14 +9873,17 @@
 | ✅ OK | `https://al.se.leg.br/portal-da-transparencia/` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/` | Geral | OK |
 | ✅ OK | `https://api.salic.cultura.gov.br/docs` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br//cmdca` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br//conselhos/codema` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br//diario-oficial` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br//transparencia/conselhos` | Geral | OK |
-| ✅ OK | `https://www.aracaju.se.gov.br/transparencia` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br//cmdca` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br//conselhos/codema` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br//diario-oficial` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br//transparencia/conselhos` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.aracaju.se.gov.br/transparencia` | Geral | INCONSISTENTE |
 | ✅ OK | `https://auniao.pb.gov.br/` | Geral | OK |
+| ↪️ REDIRECT | `https://www.tjba.jus.br/contatos/contato/1a-vara-criminal-de-alagoinhas/` | Geral | REDIRECT |
+| ↪️ REDIRECT | `https://www.tjba.jus.br/contatos/contato/1a-vara-criminal/` | Geral | REDIRECT |
 | ✅ OK | `https://balcaojus.trf2.jus.br/balcaojus/` | Geral | OK |
 | ✅ OK | `https://prefeitura.belem.pa.gov.br/` | Geral | OK |
+| ✅ OK | `https://boavista.rr.gov.br/noticias/2024/6/saude-conselho-municipal-promove-1a-conferencia-de-gestao-do-trabalho-e-educacao-em-saude-de-boa-vista` | Geral | OK |
 | ✅ OK | `https://www.campogrande.ms.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.campogrande.ms.gov.br//cmdca` | Geral | OK |
 | ✅ OK | `https://www.campogrande.ms.gov.br/transparencia` | Geral | OK |
@@ -10223,7 +9892,8 @@
 | ✅ OK | `https://prefeitura.sp.gov.br/saude` | Geral | OK |
 | ✅ OK | `https://www.cearasemfome.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.cetesb.sp.gov.br/cetesb` | Geral | OK |
-| ❓ INCONSISTENTE | `https://acl.ac.gov.br/login/sistema?return=compras` | Geral | INCONSISTENTE |
+| ✅ OK | `https://acl.ac.gov.br/login/sistema?return=compras` | Geral | OK |
+| ✅ OK | `http://comprasnet.gov.br/acesso.asp?url` | Geral | OK |
 | ✅ OK | `https://www.compras.ma.gov.br/portal/` | Geral | OK |
 | ✅ OK | `https://www.compras.rn.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.compras.rs.gov.br/` | Geral | OK |
@@ -10231,6 +9901,7 @@
 | ✅ OK | `https://www.cuiaba.mt.gov.br/noticias/conselho-municipal-cmde` | Geral | OK |
 | ✅ OK | `https://www.dados.pr.gov.br/` | Geral | OK |
 | ✅ OK | `http://dadosabertos.almg.gov.br/documentacao/index` | Geral | OK |
+| ✅ OK | `https://www.almg.gov.br/index.html` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/defensoria-publica-do-estado-de-minas-gerais-dpmg` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/egba/` | Geral | OK |
 | ✅ OK | `https://diariooficial.prefeitura.sp.gov.br/md_epubli_controlador.php?acao=inicio` | Geral | OK |
@@ -10248,10 +9919,14 @@
 | ✅ OK | `https://www2.ima.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://informacoes.anatel.gov.br/legislacao/` | Geral | OK |
 | ✅ OK | `https://inlabs.in.gov.br/acessar.php` | Geral | OK |
+| ✅ OK | `https://itabuna.ba.gov.br/noticias/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizaco-14170/` | Geral | OK |
+| ✅ OK | `https://itabuna.ba.gov.br/noticias/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-15713/` | Geral | OK |
+| ✅ OK | `https://itabuna.ba.gov.br/noticias/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026-17487/` | Geral | OK |
 | ✅ OK | `https://www.itinga.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.joaopessoa.pb.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.joaopessoa.pb.gov.br/servico/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://www.joaopessoa.pb.gov.br/servico/conselho-municipal-do-meio-ambiente/` | Geral | OK |
+| ✅ OK | `https://www.joaopessoa.pb.gov.br/servico/portal-do-contribuinte/` | Geral | OK |
 | ✅ OK | `https://www.joaopessoa.pb.gov.br/servico/conselhos-tutelares/` | Geral | OK |
 | ✅ OK | `https://www.joaopessoa.pb.gov.br/transparencia/` | Geral | OK |
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/` | Geral | OK |
@@ -10259,46 +9934,61 @@
 | ✅ OK | `https://leis.alesc.sc.gov.br/legislativo` | Geral | OK |
 | ✅ OK | `https://portalelegis.alesc.sc.gov.br/proposicoes/processo-legislativo` | Geral | OK |
 | ✅ OK | `https://macapa.ap.gov.br/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-tem-nova-presidencia/` | Geral | OK |
+| ✅ OK | `https://macapa.ap.gov.br/secretario-da-semam-assume-presidencia-da-comissao-de-defesa-do-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://macapa.ap.gov.br/portal/wp-content/uploads/2020/06/diario-oficial-1.png` | Geral | OK |
 | ✅ OK | `https://macapa.ap.gov.br/conselhos-municipais/` | Geral | OK |
 | ✅ OK | `https://macapa.ap.gov.br/portal/wp-content/uploads/2021/09/transparencia.jpeg` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/p/semdes/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/p/semdes/conselho-municipal-de-assistencia-social` | Geral | OK |
+| ✅ OK | `https://maceio.al.gov.br/p/geral/prefeitura-de-maceio-home` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/meioambiente/` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/meioambiente/` | Geral | OK |
 | ✅ OK | `https://www.mpmg.mp.br/portal/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://natal.rn.gov.br/semurb/conplam` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.ba.gov.br/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://ouvidoria.mpmg.mp.br/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://www.ouvidoria.mt.gov.br/` | Geral | OK |
 | ✅ OK | `https://sso.servicos.rj.gov.br/sso?client_id=ouvidoria.servicos.rj.gov.br` | Geral | OK |
 | ✅ OK | `https://www.to.gov.br/cge/` | Geral | OK |
 | ✅ OK | `https://www.palmas.to.gov.br/core/noticias/conselho-municipal-de-meio-ambiente-realiza-reuniao-ordinaria-no-aterro-sanitario-de-palmas/` | Geral | OK |
+| ✅ OK | `https://www.palmas.to.gov.br/core/noticias/prefeitura-de-palmas-adere-a-projeto-do-governo-federal-que-prepara-municipios-para-mudancas-climaticas/` | Geral | OK |
 | ✅ OK | `https://portal2013.palmas.to.gov.br/servicos/conselho-municipal-de-saude/202/` | Geral | OK |
 | ✅ OK | `https://palmas.to.gov.br/core/noticias/novos-membros-do-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-tomam-posse-nesta-quarta-13/` | Geral | OK |
+| ✅ OK | `https://www.pmf.sc.gov.br/` | Geral | OK |
+| ✅ OK | `https://portal.al.go.leg.br/deputados/perfil/51` | Geral | OK |
 | ✅ OK | `https://e-ouv.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://alegodigital.al.go.leg.br/spl/?tipo=1001&ano_proposicao=2026` | Geral | OK |
 | ✅ OK | `https://alegodigital.al.go.leg.br/` | Geral | OK |
 | ✅ OK | `https://portal.al.go.leg.br/` | Geral | OK |
+| ✅ OK | `https://portal.stf.jus.br/erro-404/` | Geral | OK |
 | ✅ OK | `https://portal.trf6.jus.br/wp-content/uploads/2022/05/balcao-virtual.png` | Geral | OK |
+| ✅ OK | `https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-regional-federal-da-6a-regiao-trf6/` | Geral | OK |
 | ✅ OK | `https://portal.trf6.jus.br/corregedoria-regional-do-trf6-realiza-visita-tecnica-a-trf4-e-trf2/` | Geral | OK |
 | ✅ OK | `https://portal.trf6.jus.br/presidencia-do-trf6-empossa-desembargadores-em-orgaos-estrategicos-da-corte/` | Geral | OK |
 | ✅ OK | `https://portal.trf6.jus.br/portal-da-transparencia/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://portal.trt3.jus.br/internet` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.portovelho.ro.gov.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://sema.portovelho.ro.gov.br/pagina/conselho-municipal-de-defesa-do-meio-ambiente` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://semusa.portovelho.ro.gov.br/pagina/conselho-municipal-de-saude-de-porto-velho` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.trt3.jus.br/images/default_tvtrt.htm` | Geral | OK |
+| ✅ OK | `https://www.camarapoa.rs.gov.br/noticias/aprovada-alteracao-na-composicao-do-conselho-municipal-do-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www2.portoalegre.rs.gov.br/portal_pmpa_sitespmpa/` | Geral | OK |
+| ✅ OK | `https://ces.rs.gov.br/nota-publica-do-conselho-municipal-de-saude-de-porto-alegre` | Geral | OK |
+| ✅ OK | `https://www.portovelho.ro.gov.br/` | Geral | OK |
+| ❌ QUEBRADO | `https://sema.portovelho.ro.gov.br/pagina/conselho-municipal-de-defesa-do-meio-ambiente` | Geral | QUEBRADO |
+| ❌ QUEBRADO | `https://semusa.portovelho.ro.gov.br/pagina/conselho-municipal-de-saude-de-porto-velho` | Geral | QUEBRADO |
+| ✅ OK | `https://sgov.portovelho.ro.gov.br/` | Geral | OK |
 | ✅ OK | `https://salvador.ba.gov.br/cmdca-da-posse-a-nova-presidente-para-bienio-2024-2026/` | Geral | OK |
 | ✅ OK | `https://secis.salvador.ba.gov.br/politica-municipal-de-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://salvador.ba.gov.br/diario-oficial/` | Geral | OK |
 | ✅ OK | `https://saude.salvador.ba.gov.br/conselho-municipal/sobre-o-conselho-municipal/` | Geral | OK |
+| ✅ OK | `https://salvador.ba.gov.br/?option=com_content` | Geral | OK |
 | ✅ OK | `https://sapl.al.ac.leg.br/login/?next=/proposicao/` | Geral | OK |
 | ✅ OK | `https://alemalegis.al.ma.leg.br/` | Geral | OK |
 | ✅ OK | `https://sapl3.al.pb.leg.br/` | Geral | OK |
 | ✅ OK | `https://al.rr.leg.br/sistema-do-processo-legislativo/` | Geral | OK |
+| ✅ OK | `https://www.cmm.am.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.saude.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://saude.rs.gov.br/inicial` | Geral | OK |
-| ❓ INCONSISTENTE | `https://semias.portovelho.ro.gov.br/noticias/c-o-m-u-n-i-c-a-d-o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-porto-velho` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.sema.mt.gov.br/site/index.php/sem-virtual` | Geral | INCONSISTENTE |
+| ❌ QUEBRADO | `https://semias.portovelho.ro.gov.br/noticias/c-o-m-u-n-i-c-a-d-o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-porto-velho` | Geral | QUEBRADO |
+| ✅ OK | `https://www.sema.mt.gov.br/site/index.php/sem-virtual` | Geral | OK |
 | ✅ OK | `https://sicg.iphan.gov.br/sicg/login` | Geral | OK |
 | ✅ OK | `https://sca-auth-site.anm.gov.br/usuario/entrar?ReturnUrl=https%3A%2F%2Fsca-auth-api.anm.gov.br%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dapi_sigbm%26redirect_uri%3Dhttps%253A%252F%252Fsigbm.anm.gov.br%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520api_sigbm%26code_challenge%3D9NBnrdOVuT4n9qvofhst_AGcw2K7JcrMpZ3FpSWlGDs%26code_challenge_method%3DS256%26state%3DOpenIdConnect.AuthenticationProperties%253DRmjEXh8uk2sWnkljgDB05opzM03of84YNefTg1D-fkhpK4MHsdDt2Rz52_02WRC8k6te6ZB7hVkDQSl1LB1mAMVXzWs-wUPnDgVe9lAC7QiMNKzJPMmHu5kkWvmjMKZNosalDiSnlT_yxDDqNGTIkI9GREJ8fZZQtmzng-FJWQZTqRAoayZ7D3kdUp4WkEKH7kPaggvA7rOKgLOV3nqLi085yj1Xi0IPHDXtMqgvWOtxFBtjptQVWJnE4A9EiUr-AVMxjQ%26x-client-SKU%3DID_NET472%26x-client-ver%3D6.35.0.0` | Geral | OK |
 | ✅ OK | `https://sistemas.al.ma.leg.br/transparencia/pagina.html;jsessionid=khkJ_aewbv5-WsDbSe3O-pojeyJX2YOna53B-hAX.sistemas?p=diario-oficial&dswid=-5701` | Geral | OK |
@@ -10306,7 +9996,10 @@
 | ✅ OK | `https://www.gov.br/anm/pt-br/assuntos/processos/consulta-de-processos` | Geral | OK |
 | ✅ OK | `http://sistemas.meioambiente.mg.gov.br/licenciamento/site/login` | Geral | OK |
 | ✅ OK | `https://antigo.pmt.pi.gov.br/2026/03/03/semjuv-presidira-o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-teresina-cmdcat/` | Geral | OK |
+| ✅ OK | `https://antigo.pmt.pi.gov.br/teresinensedigital/meio-ambiente-e-recursos-hidricos/` | Geral | OK |
+| ✅ OK | `https://ami.teresina.pi.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.teresina.pi.gov.br/semcaspi/conselho-municipal-de-assistencia-social-de-teresina-cmas/` | Geral | OK |
+| ✅ OK | `https://www.teresina.pi.gov.br/teresina/` | Geral | OK |
 | ✅ OK | `https://transparencia.al.pi.leg.br/control_publicados/` | Geral | OK |
 | ✅ OK | `https://www.transparencia.am.gov.br/` | Geral | OK |
 | ✅ OK | `https://cearatransparente.ce.gov.br/` | Geral | OK |
@@ -10323,6 +10016,7 @@
 | ✅ OK | `https://m.vitoria.es.gov.br/semus/conselho-municipal-de-saude` | Geral | OK |
 | ✅ OK | `https://abaetetuba.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.rj.gov.br/agenersa/` | Geral | OK |
+| ✅ OK | `https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar/2026/marcelo-victor` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ao-vivo` | Geral | OK |
 | ✅ OK | `https://al.ap.gov.br/transparencia/index.php?pg=ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.al.ap.leg.br/` | Geral | OK |
@@ -10341,6 +10035,7 @@
 | ✅ OK | `https://www.al.ma.leg.br/sitealema/tv-alema/` | Geral | OK |
 | ✅ OK | `https://al.ms.gov.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://al.ms.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.al.mt.gov.br/midia/texto/deputado-eleito-jose-eduardo-botelho/visualizar` | Geral | OK |
 | ✅ OK | `https://www.al.mt.gov.br/institucional/ouvidoria-geral` | Geral | OK |
 | ✅ OK | `https://www.al.mt.gov.br/institucional/tv` | Geral | OK |
 | ✅ OK | `https://www.al.pb.leg.br/espaco-do-cidadao/ouvidoria` | Geral | OK |
@@ -10352,6 +10047,7 @@
 | ✅ OK | `https://www.al.rn.leg.br/tvs` | Geral | OK |
 | ✅ OK | `https://transparencia.al.ro.leg.br/Diario/` | Geral | OK |
 | ✅ OK | `https://al.se.leg.br/` | Geral | OK |
+| ✅ OK | `https://www.al.sp.gov.br/deputado/?matricula=300678` | Geral | OK |
 | ✅ OK | `https://www.al.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.al.sp.gov.br/propositura/100000325` | Geral | OK |
 | ✅ OK | `https://www.al.sp.gov.br/propositura/100001825` | Geral | OK |
@@ -10380,6 +10076,7 @@
 | ✅ OK | `https://www.alesc.sc.gov.br/tv/` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/atividade-parlamentar/projetos-de-lei/` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/assembleia-legislativa-do-estado-de-minas-gerais-alemg` | Geral | OK |
+| ✅ OK | `https://www.almg.gov.br/servicos/biblioteca/livraria-do-legislativo/obra/Regimento-Interno-da-ALMG-18-Edicao/` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/apps/fale-com` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/comunicacao/noticias/` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/transparencia/inicial/` | Geral | OK |
@@ -10398,15 +10095,25 @@
 | ✅ OK | `https://www.gov.br/anatel/pt-br` | Geral | OK |
 | ✅ OK | `https://www.apucarana.pr.gov.br/site/` | Geral | OK |
 | ✅ OK | `https://www.apucarana.pr.gov.br/site/apucarana-apresenta-novos-membros-do-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
+| ✅ OK | `https://www.apucarana.pr.gov.br/site/orgaos-da-administracao/meio-ambiente/` | Geral | OK |
+| ↪️ REDIRECT | `https://www.apucarana.pr.gov.br/` | Geral | REDIRECT |
+| ✅ OK | `https://www.apucarana.pr.gov.br/esporte/?page_id=1382` | Geral | OK |
+| ✅ OK | `https://antigo.araguaina.to.gov.br/Conteudo/CMDCA.aspx` | Geral | OK |
 | ✅ OK | `https://araguaina.to.gov.br/noticias/2018/conselho-municipal-de-defesa-do-meio-ambiente-elege-diretoria` | Geral | OK |
+| ↪️ REDIRECT | `https://www.araguaina.to.gov.br/portal/` | Geral | REDIRECT |
+| ✅ OK | `https://araguaina.to.gov.br/` | Geral | OK |
 | ✅ OK | `https://web.arapiraca.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://web.arapiraca.al.gov.br/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://web.arapiraca.al.gov.br/tipo-de-arquivo/codigo-municipal-de-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://web.arapiraca.al.gov.br/conselho-municipal-de-saude/` | Geral | OK |
 | ✅ OK | `https://araraquara.sp.gov.br/noticias/geral/solenidade-marca-a-posse-do-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comcriar` | Geral | OK |
 | ✅ OK | `http://www.araraquara.sp.gov.br/secretarias/meio-ambiente/comdema-meio-ambiente/conselho-municipal-de-defesa-do-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www.araraquara.sp.gov.br/` | Geral | OK |
+| ✅ OK | `http://www.cedca.pe.gov.br/conselhos-tutelares-lista/41-conselhos/conselhos-tutelares/1533-araripina` | Geral | OK |
+| ✅ OK | `https://araripina.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://araxa.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://araxa.mg.gov.br/oops/404` | Geral | OK |
+| ✅ OK | `https://www.assembleia.pr.leg.br/deputados/perfil/alexandre-curi` | Geral | OK |
 | ✅ OK | `https://www.al.pr.leg.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://transparencia.assembleia.pr.leg.br/servicos/dados-abertos` | Geral | OK |
 | ✅ OK | `https://www.assembleia.pr.leg.br/comunicacao/tv-assembleia` | Geral | OK |
@@ -10416,14 +10123,23 @@
 | ✅ OK | `https://www1.barbacena.mg.gov.br/portal/secretarias/50/conselho-municipal-de-defesa-e-conservacao-do-meio-ambiente---codema/` | Geral | OK |
 | ✅ OK | `https://www1.barbacena.mg.gov.br/portal/transparencia` | Geral | OK |
 | ✅ OK | `https://www2.bauru.sp.gov.br/` | Geral | OK |
+| ✅ OK | `https://www2.bauru.sp.gov.br/materia.aspx?n=48513` | Geral | OK |
+| ↪️ REDIRECT | `https://www.bauru.sp.gov.br/materia.aspx?n=26620` | Geral | REDIRECT |
+| ↪️ REDIRECT | `https://www.bauru.sp.gov.br/default.aspx` | Geral | REDIRECT |
+| ✅ OK | `https://www.blumenau.sc.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.blumenau.sc.gov.br/secao/conselho-municipal-meio-ambiente` | Geral | OK |
 | ✅ OK | `https://www.bndes.gov.br/wps/portal/site/home` | Geral | OK |
 | ✅ OK | `https://prefeitura.pbh.gov.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.brusque.sc.gov.br/subportal/fundacao-municipal-do-meio-ambiente-fundema` | Geral | OK |
+| ✅ OK | `https://www.brusque.sc.gov.br/` | Geral | OK |
 | ✅ OK | `https://oficial.cacoal.ro.gov.br/` | Geral | OK |
 | ✅ OK | `https://oficial.cacoal.ro.gov.br/wp-content/uploads/2023/12/cmdca.png` | Geral | OK |
+| ✅ OK | `https://cacoal.ro.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.cacoal.ro.gov.br/index.php?pagina=gestao` | Geral | OK |
 | ✅ OK | `https://caico.rn.gov.br/informa/1259/novos-membros-do-conselho-municipal-dos-direitos-d` | Geral | OK |
+| ✅ OK | `https://caico.rn.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.cajazeiras.pb.gov.br/informa/3358/conselho-do-meio-ambiente-de-cajazeiras-empossa-no` | Geral | OK |
+| ✅ OK | `https://www.cajazeiras.pb.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.camacari.ba.gov.br/cmdca-apresenta-candidatos-a-eleicao-do-conselho-tutelar/` | Geral | OK |
 | ✅ OK | `https://www.camacari.ba.gov.br/estao-abertas-as-inscricoes-para-eleicao-do-conselho-municipal-de-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://www.camacari.ba.gov.br/documentos/diario-oficial-157-de-01-a-07-de-julho-de-2006/` | Geral | OK |
@@ -10434,16 +10150,29 @@
 | ✅ OK | `https://www2.camara.leg.br/atividade-legislativa/legislacao/regimento-interno-da-camara-dos-deputados` | Geral | OK |
 | ✅ OK | `https://camarabarbacena.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://camarabarbacena.mg.gov.br/transparencia/` | Geral | OK |
+| ✅ OK | `https://camaracatalao.go.gov.br/` | Geral | OK |
+| ✅ OK | `https://corumbadegoias.go.leg.br/` | Geral | OK |
+| ✅ OK | `https://www.camaracrateus.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.camaracrato.ce.gov.br/home/` | Geral | OK |
+| ✅ OK | `https://www.camaracriciuma.sc.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.dourados.ms.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.erechim.rs.leg.br/` | Geral | OK |
+| ✅ OK | `https://www.formosa.go.leg.br/` | Geral | OK |
 | ✅ OK | `https://camaraiguatu.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://camaraiguatu.ce.gov.br/transparencia/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://camaraparagominas.pa.gov.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://limeira.sp.leg.br/` | Geral | OK |
+| ✅ OK | `https://camaraparagominas.pa.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.camarapassos.mg.gov.br/` | Geral | OK |
 | ✅ OK | `http://camarapatos.pb.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.camarapiracicaba.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://camaraquixada.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://camaraquixada.ce.gov.br/transparencia/` | Geral | OK |
 | ✅ OK | `https://www.camarasantos.sp.gov.br/onepage` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.camaratucurui.pa.gov.br/site/index.php` | Geral | INCONSISTENTE |
+| ✅ OK | `https://camarasobral.ce.gov.br/` | Geral | OK |
+| ✅ OK | `https://camarasousa.pb.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.camarataubate.sp.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.camaratucurui.pa.gov.br/site/index.php` | Geral | OK |
+| ✅ OK | `https://camaratucurui.pa.gov.br/site/` | Geral | OK |
 | ✅ OK | `https://portal.camarauberaba.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://varginha.mg.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.canoas.rs.gov.br/noticias_tag/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-canoas/` | Geral | OK |
@@ -10452,14 +10181,18 @@
 | ✅ OK | `https://www.canoas.rs.gov.br/noticias/conselhos-do-idoso-e-dos-adolescentes-recebem-veiculos-0km/` | Geral | OK |
 | ✅ OK | `http://carapicuiba.sp.gov.br/departamento/view/14/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-cmdca` | Geral | OK |
 | ✅ OK | `http://carapicuiba.sp.gov.br/departamento/view/16/conselho-municipal-de-defesa-do-meio-ambiente-comdema` | Geral | OK |
+| ✅ OK | `https://fateccarapicuiba.cps.sp.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.carapicuiba.sp.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.carapicuiba.sp.gov.br/portal/secretarias/46/conselho-municipal-de-saude---cms/` | Geral | OK |
 | ✅ OK | `https://caruaru.pe.gov.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://bcr.iphan.gov.br/organizacoes/conselho-municipal-de-defesa-e-conservacao-do-meio-ambiente-de-caruaru/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://bcr.iphan.gov.br/organizacoes/conselho-municipal-de-defesa-e-conservacao-do-meio-ambiente-de-caruaru/` | Geral | OK |
 | ✅ OK | `https://diariooficial.caruaru.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://caruaru.pe.gov.br/arbbrthemecategory/transparencia/` | Geral | OK |
 | ✅ OK | `https://caruaru.pe.gov.br/portal-da-transparencia/conselhos-municipais/` | Geral | OK |
 | ✅ OK | `https://prefa.cascavel.pr.gov.br/` | Geral | OK |
 | ✅ OK | `https://prefa.cascavel.pr.gov.br/cidadao/pagina/9-conferencia-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://prefa.cascavel.pr.gov.br/subportal/secretaria-municipal-de-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www.cascavel.ce.gov.br/index.php` | Geral | OK |
 | ✅ OK | `https://prefa.cascavel.pr.gov.br/transparencia/item/conselho-municipal-de-saude` | Geral | OK |
 | ✅ OK | `https://castanhal.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://castanhal.pa.gov.br/meio-ambiente/` | Geral | OK |
@@ -10468,19 +10201,33 @@
 | ✅ OK | `https://www.cdhu.sp.gov.br/cdhu` | Geral | OK |
 | ✅ OK | `https://www.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.cl.df.gov.br/inicio` | Geral | OK |
+| ✅ OK | `https://www.cl.df.gov.br/chico-vigilante` | Geral | OK |
+| ✅ OK | `https://www.cl.df.gov.br/wellington-luiz-2011-2014` | Geral | OK |
 | ✅ OK | `https://www.cl.df.gov.br/web/tv-camara-distrital` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.cmbh.mg.gov.br/transparencia-principal` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.tjac.jus.br/2025/07/tjac-recebe-inspecao-da-corregedoria-geral-do-conselho-nacional-de-justica-em-agosto/` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/posse/` | Geral | OK |
+| ✅ OK | `https://justicaaberta.cnj.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/transparencia-cnj/` | Geral | OK |
-| ✅ OK | `https://www.cnmp.mp.br/portal/` | Geral | OK |
-| ✅ OK | `https://cnmp.mp.br/portal/institucional/84-institucional/corregedoria` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.cnmp.mp.br/portal/` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://cnmp.mp.br/portal/institucional/84-institucional/corregedoria` | Geral | INCONSISTENTE |
+| ✅ OK | `https://site.mppr.mp.br/crianca/Pagina/Publicacoes-CNMP-Conselho-Nacional-do-Ministerio-Publico` | Geral | OK |
 | ✅ OK | `https://compras.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://site.coruripe.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://transparencia.coruripe.al.gov.br/controle-social/conselho-municipal-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://transparencia.coruripe.al.gov.br/controle-social/conselho-municipal-de-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://transparencia.coruripe.al.gov.br/orgaos/secretaria-municipal-de-governo` | Geral | OK |
 | ✅ OK | `https://transparencia.coruripe.al.gov.br/controle-social/conselho-municipal-de-saude` | Geral | OK |
+| ✅ OK | `https://www.crateus.ce.gov.br/` | Geral | OK |
+| ✅ OK | `https://crateus.ce.gov.br/index.php` | Geral | OK |
+| ✅ OK | `https://crato.ce.gov.br/informa/5467/crato-celebra-20-anos-do-conselho-municipal-de-def` | Geral | OK |
+| ✅ OK | `https://www.crato.ce.gov.br/index.php/` | Geral | OK |
+| ✅ OK | `https://crato.ce.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara?menu=161` | Geral | OK |
+| ✅ OK | `https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/administracao/defensoria-publica-do-estado-de-goias/` | Geral | OK |
+| ↪️ REDIRECT | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2019/2 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE GOIAS.pdf/view` | Geral | REDIRECT |
+| ✅ OK | `https://www.pa.gov.br/orgao?id_orgao=53` | Geral | OK |
 | ✅ OK | `https://portal.diadema.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://portal.diadema.sp.gov.br/cmdca/` | Geral | OK |
 | ✅ OK | `https://portal.diadema.sp.gov.br/conselho-de-defesa-do-meio-ambiente/` | Geral | OK |
@@ -10519,7 +10266,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/02/TE20130204.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/02/TE20130222.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130311.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130314.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130314.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130318.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130319.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/03/TE20130328.png` | Geral | OK |
@@ -10527,7 +10274,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130409.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130412.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130415.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130417.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130417.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130418.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130424.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2013/04/TE20130430.png` | Geral | OK |
@@ -10590,7 +10337,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/02/TE20140214.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/02/TE20140224.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/02/TE20140227.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/03/TE20140320.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/03/TE20140320.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/04/TE20140402.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/04/TE20140407.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/04/TE20140409.png` | Geral | OK |
@@ -10640,7 +10387,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/11/TE20141111.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/11/TE20141118.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/11/TE20141120.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/12/TE20141201.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/12/TE20141201.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/12/TE20141208.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/12/TE20141212.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2014/12/TE20141222.png` | Geral | OK |
@@ -10652,7 +10399,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/02/TE20150213.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/02/TE20150225.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/03/TE20150305.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/03/TE20150317.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/03/TE20150317.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/03/TE20150326.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/04/TE20150410.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/05/TE20150508.png` | Geral | OK |
@@ -10690,7 +10437,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151007.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151014.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151015.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151019.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151019.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151020.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151021.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2015/10/TE20151022.png` | Geral | OK |
@@ -10817,7 +10564,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/04/TE20170424.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/04/TE20170426.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170502.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170505.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170505.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170511.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170512.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/05/TE20170517.png` | Geral | OK |
@@ -10881,7 +10628,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171214.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171215.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171218.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171226.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171226.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171227.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2017/12/TE20171228.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/01/TE20180108.png` | Geral | OK |
@@ -10912,7 +10659,7 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180405.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180406.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180417.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180420.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180420.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180425.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180427.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2018/04/TE20180430.png` | Geral | OK |
@@ -11062,13 +10809,13 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/09/TE20190924.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/09/TE20190927.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/09/TE20190930.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191003.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191003.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191004.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191007.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191008.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191009.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191010.png` | Geral | OK |
-| ❓ INCONSISTENTE | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191011.png` | Geral | INCONSISTENTE |
+| ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191011.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191014.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191016.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2019/10/TE20191017.png` | Geral | OK |
@@ -12091,10 +11838,20 @@
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2026/09/TE20260909.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2026/09/TE20260910.png` | Geral | OK |
 | ✅ OK | `https://diariooficial.ma.gov.br/sgc/modulos/sgc_00/00/src/2026/09/TE20260916.png` | Geral | OK |
+| ✅ OK | `https://www.ce.gov.br/direitoshumanos/` | Geral | OK |
 | ✅ OK | `https://www.divinopolis.mg.gov.br/portal/noticias/0/3/3006/conselho-municipal-dos-direitos--da-crianca-e-do-adolescente-ganha-site` | Geral | OK |
+| ✅ OK | `https://www.divinopolis.mg.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.divinopolis.mg.gov.br/portal` | Geral | OK |
+| ✅ OK | `https://do.dourados.ms.gov.br/` | Geral | OK |
+| ↪️ REDIRECT | `http://www.dpu.gov.br/` | Geral | REDIRECT |
 | ✅ OK | `https://www.ba.gov.br/educacao/` | Geral | OK |
+| ✅ OK | `https://www.educacao.pr.gov.br/desvio.php` | Geral | OK |
 | ✅ OK | `https://www.embasa.ba.gov.br/embasa/canais/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.energy.gov/EDF` | Geral | OK |
+| ✅ OK | `https://www.pmerechim.rs.gov.br/secretaria/15/secretaria-municipal-de-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www.pmerechim.rs.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.pmerechim.rs.gov.br/pagina/665/conselho-municipal-de-saude` | Geral | OK |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef` | Geral | OK |
 | ✅ OK | `https://www.fepam.rs.gov.br/inicial` | Geral | OK |
 | ✅ OK | `https://formosa.go.gov.br/` | Geral | OK |
 | ✅ OK | `https://formosa.go.gov.br/estrutura/secretaria-municipal-de-meio-ambiente/` | Geral | OK |
@@ -12106,17 +11863,26 @@
 | ✅ OK | `https://garanhuns.pe.gov.br/secretarias-e-orgaos/conselhos-municipais/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica/` | Geral | OK |
 | ✅ OK | `https://garanhuns.pe.gov.br/secretarias-e-orgaos/conselhos-municipais/conselho-municipal-de-defesa-do-meio-ambiente-codema/` | Geral | OK |
 | ✅ OK | `https://garanhuns.pe.gov.br/secretarias-e-orgaos/conselhos-municipais/conselhos-fundeb-cae-cemeg/` | Geral | OK |
+| ✅ OK | `https://www.gov.br/aneel/pt-br` | Geral | OK |
+| ✅ OK | `https://dadosabertos.aneel.gov.br/dataset/resultado-de-leiloes` | Geral | OK |
+| ✅ OK | `https://dadosabertos.aneel.gov.br/organization/about/agencia-nacional-de-energia-eletrica` | Geral | OK |
+| ✅ OK | `https://www.gov.br/aneel/pt-br/composicao/regulacao-setor-eletrico/superintendencia-de-regulacao-dos-servicos-de-transmissao-e-distribuicao-de-energia-eletrica-sdt` | Geral | OK |
 | ✅ OK | `https://www.gov.br/fnde/pt-br` | Geral | OK |
 | ✅ OK | `https://www.gov.br/incra/pt-br` | Geral | OK |
 | ✅ OK | `https://www.gov.br/iphan/pt-br/acesso-a-informacao/editais-e-selecoes` | Geral | OK |
 | ✅ OK | `https://www.gov.br/iphan/pt-br/acesso-a-informacao/transparencia-e-prestacao-de-contas` | Geral | OK |
+| ✅ OK | `https://www.gov.br/iphan/pt-br/acesso-a-informacao/institucional/estrutura/centro-nacional-de-arqueologia-cna` | Geral | OK |
 | ✅ OK | `https://www.gov.br/iphan/pt-br/composicao/departamento-de-patrimonio-material-e-fiscalizacao-depam` | Geral | OK |
+| ✅ OK | `https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-imaterial/departamento-de-patrimonio-imaterial-dpi-1` | Geral | OK |
 | ✅ OK | `https://www.gov.br/mulheres/pt-br/composicao/conselho-nacional-dos-direitos-da-mulher` | Geral | OK |
+| ✅ OK | `https://www.gov.br/transportes/pt-br` | Geral | OK |
+| ✅ OK | `https://dados.transportes.gov.br/organization/transportes` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/governo` | Geral | OK |
 | ✅ OK | `https://www.governo.sp.gov.br/sec_governo_relacoes` | Geral | OK |
 | ✅ OK | `https://guarapuava.pr.gov.br/` | Geral | OK |
 | ✅ OK | `https://guarapuava.pr.gov.br/portal-conselhos-municipais/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://guarapuava.pr.gov.br/noticias/conselho-municipal-de-meio-ambiente-de-guarapuava-elege-novos-representantes-para-o-bienio-2025-2026/` | Geral | OK |
+| ✅ OK | `https://www.guarapuava.pr.gov.br/?s=estagios` | Geral | OK |
 | ✅ OK | `https://guarapuava.pr.gov.br/prefeitura-municipal-de-guarapuava/` | Geral | OK |
 | ✅ OK | `https://guarapuava.pr.gov.br/wp-content/uploads/2022/01/conselhos.jpg` | Geral | OK |
 | ✅ OK | `https://www.guarulhos.sp.gov.br/artigo/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-promove-conferencia` | Geral | OK |
@@ -12127,6 +11893,7 @@
 | ✅ OK | `https://gurupi.to.gov.br/2013/04/conselhos-de-assistencia-social-e-de-seguranca-alimentar-de-gurupi-realizam-reuniao-nesta-terca/` | Geral | OK |
 | ✅ OK | `https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf` | Geral | OK |
 | ✅ OK | `https://www.ief.mg.gov.br/w/concursos-publicos` | Geral | OK |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-conservacao-e-recuperacao-de-ecossistema-dcre` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-unidades-de-conservacao` | Geral | OK |
 | ✅ OK | `https://www.ief.mg.gov.br/organograma` | Geral | OK |
 | ✅ OK | `https://www.ief.mg.gov.br/w/transparencia-ief` | Geral | OK |
@@ -12139,18 +11906,19 @@
 | ✅ OK | `https://www.mg.gov.br/iepha/pagina/lei-de-acesso-a-informacao` | Geral | OK |
 | ✅ OK | `https://imperatriz.ma.gov.br/` | Geral | OK |
 | ✅ OK | `https://imperatriz.ma.gov.br/portal/conselho-municipal-da-crianca-e-do-adolescente/locais-de-votacao.html` | Geral | OK |
+| ✅ OK | `https://imperatriz.ma.gov.br/pmi/commam/` | Geral | OK |
+| ✅ OK | `https://imperatriz.ma.gov.br/pmi/cmsi/` | Geral | OK |
 | ✅ OK | `https://www.gov.br/imprensanacional/pt-br` | Geral | OK |
 | ✅ OK | `https://www.in.gov.br/consulta/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/disque-denuncia` | Geral | OK |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/sites/site-inema/files/2025-08/ORGANOGRAMA-PESSOAL-1 (1).pdf` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/transparencia` | Geral | OK |
 | ✅ OK | `https://www.ipaam.am.gov.br/portal-de-servicos/` | Geral | OK |
 | ✅ OK | `https://transparencia.ipatinga.mg.gov.br/detalhe-da-materia/info/conselho-municipal-de-defesa-do-meio-ambiente/109080` | Geral | OK |
 | ✅ OK | `https://www.ipea.gov.br/portal/coluna-5/central-de-conteudo/busca-publicacoes` | Geral | OK |
+| ✅ OK | `https://portal.itabaiana.pb.gov.br/prefeitura/` | Geral | OK |
 | ✅ OK | `https://itabuna.ba.gov.br/` | Geral | OK |
-| ↪️ REDIRECT | `https://itabuna.ba.gov.br/2023/08/10/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizacoes-da-sociedade-civil/` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://itabuna.ba.gov.br/2026/03/05/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026/` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://itabuna.ba.gov.br/2025/01/02/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-presidentes-de-fundacoes-e-ordenadores-de-despesa/` | Geral | REDIRECT |
 | ✅ OK | `https://itacoatiara.am.gov.br/` | Geral | OK |
 | ✅ OK | `https://itacoatiara.am.gov.br/tag/conselho-municipal-do-direito-da-crianca-e-do-adolescente-cmdca/` | Geral | OK |
 | ✅ OK | `https://itacoatiara.am.gov.br/2026/02/prefeitura-de-itacoatiara-retoma-conselho-municipal-de-meio-ambiente-e-define-plano-de-acao-para-2026/` | Geral | OK |
@@ -12158,6 +11926,7 @@
 | ✅ OK | `https://transparencia.itacoatiara.am.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.itaipu.gov.br/contatos/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.itaituba.pa.gov.br/meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www.itaituba.pa.gov.br/comissao` | Geral | OK |
 | ✅ OK | `https://itajai.sc.gov.br/` | Geral | OK |
 | ✅ OK | `https://itajai.sc.gov.br/cmdca` | Geral | OK |
 | ✅ OK | `https://itajai.sc.gov.br/conselhos/codema` | Geral | OK |
@@ -12174,12 +11943,15 @@
 | ✅ OK | `https://www.jatai.go.gov.br/meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://www.jatai.go.gov.br/secretaria-de-desenvolvimento-social/conselhos-municipais-controle-social/` | Geral | OK |
 | ✅ OK | `https://www.jequie.ba.gov.br/noticias/2017/11/prefeitura-de-jequie-nomeia-membros-do-conselho-municipal-de-defesa-do-meio-ambiente` | Geral | OK |
+| ✅ OK | `https://www.jequie.ba.gov.br/` | Geral | OK |
+| ✅ OK | `http://www2.saude.ba.gov.br/cib/conselho_municipal.asp?CodCMS=636` | Geral | OK |
 | ✅ OK | `https://ji-parana.ro.gov.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://ji-parana.ro.gov.br/noticias/cmdca-da-posse-a-novos-conselheiros-e-elege-mesa-diretora/` | Geral | QUEBRADO |
 | ✅ OK | `https://ji-parana.ro.gov.br/secretarias/secretaria-municipal-de-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://ji-parana.ro.gov.br/transparencia-teste/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/institucional/sas/cmdca/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/publicacoes/resolucoes-conselho-municipal-do-meio-ambiente-comdema/` | Geral | OK |
+| ✅ OK | `https://www.joinville.sc.gov.br/splash/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/servicos/acessar-portal-da-transparencia/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/noticias/conselhos-municipais-de-educacao-e-alimentacao-escolar-comemoram-aniversarios-em-evento-especial/` | Geral | OK |
 | ✅ OK | `https://www.juazeiro.ba.gov.br/cmdca-apresenta-candidatos-ao-conselho-tutelar-de-juazeiro/` | Geral | OK |
@@ -12197,6 +11969,8 @@
 | ✅ OK | `https://portal.londrina.pr.gov.br/` | Geral | OK |
 | ✅ OK | `https://blog.londrina.pr.gov.br/?tag=conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://repositorio.londrina.pr.gov.br/index.php/conselho-meio-ambiente` | Geral | OK |
+| ↪️ REDIRECT | `https://www.londrina.pr.gov.br/` | Geral | REDIRECT |
+| ✅ OK | `https://saude.londrina.pr.gov.br/index.php/legislacao-cms/90-transparencia/conselho-municipal-de-saude.html` | Geral | OK |
 | ✅ OK | `https://www.luziania.go.gov.br/conselhos-municipais/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://www.luziania.go.gov.br/conselhos-municipais/conselho-municipal-de-defesa-do-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://www.luziania.go.gov.br/transparenciafiscal/` | Geral | OK |
@@ -12209,8 +11983,11 @@
 | ✅ OK | `https://maraba.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://maraba.pa.gov.br/topicos/meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://www.marilia.sp.gov.br/portal/noticias/0/3/10197/empossado-o-novo-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
+| ✅ OK | `https://www.marilia.sp.gov.br/portal/noticias/0/3/14913/conselho-municipal-de-meio-ambiente-realiza-primeira-reuniao-de-2025-e-define-novas-diretrizes` | Geral | OK |
+| ✅ OK | `https://www.marilia.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://www2.marilia.sp.gov.br/conselho/` | Geral | OK |
 | ✅ OK | `https://www.maringa.pr.gov.br/404` | Geral | OK |
+| ✅ OK | `https://www.maua.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/pro-brumadinho/pagina/transferencia-aos-853-municipios` | Geral | OK |
 | ✅ OK | `https://mineiros.go.gov.br/` | Geral | OK |
 | ✅ OK | `https://mineiros.go.gov.br/cmdca` | Geral | OK |
@@ -12226,8 +12003,12 @@
 | ✅ OK | `https://www.mpac.mp.br/danilo-lovisaro-toma-posse-para-segundo-mandato-como-procurador-geral-de-justica-do-acre/` | Geral | OK |
 | ✅ OK | `https://www.mpac.mp.br/atendimento-ao-cidadao/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://www.mpac.mp.br/ouvidoria-do-mpac-busca-em-salvador-experiencias-para-ampliar-escuta-ao-cidadao/` | Geral | OK |
-| ✅ OK | `https://www.mpal.mp.br/?page_id=2517` | Geral | OK |
-| ✅ OK | `https://www.mpal.mp.br/?page_id=1746` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.mpal.mp.br/` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.mpal.mp.br/?page_id=2517` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.mpal.mp.br/?page_id=1746` | Geral | INCONSISTENTE |
+| ↪️ REDIRECT | `https://diario.mpam.mp.br/` | Geral | REDIRECT |
+| ✅ OK | `https://www.mpam.mp.br/sobre-o-mpam/funcoes-do-mpam` | Geral | OK |
+| ✅ OK | `https://www.mpba.mp.br/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/atendimento-de-pacientes-com-autismo-na-rede-municipal-de-fortaleza-e-tema-de-audiencia-publica/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/institucional/centros-de-apoio-operacional/` | Geral | OK |
@@ -12236,8 +12017,12 @@
 | ✅ OK | `https://mpce.mp.br/institucional/orgaos-de-investigacao/gaeco/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/ouvidoria-da-mulher-e-lancada-em-evento-realizado-pelo-mpce/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/ouvidoria-do-mp-do-ceara-prestara-atendimento-durante-semana-nacional-do-registro-civil-registre-se/` | Geral | OK |
-| ✅ OK | `https://www.mpdft.mp.br/portal/` | Geral | OK |
-| ✅ OK | `https://www.mpdft.mp.br/site/ouvidoria/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.mpdft.mp.br/portal/` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.mpdft.mp.br/site/ouvidoria/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mpf.mp.br/o-mpf/unidades/procuradoria-geral-da-republica-pgr` | Geral | OK |
+| ✅ OK | `https://www.mpf.mp.br/servicos/mpf-servicos` | Geral | OK |
+| ✅ OK | `https://www.mpf.mp.br/concursos/concursos` | Geral | OK |
+| ✅ OK | `https://www.mpf.mp.br/servicos/salas-de-atendimento-ao-cidadao/` | Geral | OK |
 | ✅ OK | `https://www.mpgo.mp.br/portal/` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/administracao/ministerio-publico/` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/administracao/ministerio-publico-do-estado-de-goias/` | Geral | OK |
@@ -12248,9 +12033,13 @@
 | ✅ OK | `https://www.mpma.mp.br/noticias-memorial/` | Geral | OK |
 | ✅ OK | `https://www.mpma.mp.br/ouvidoria-do-mp-apresenta-relatorio-trimestral/` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/ministerio-publico-do-estado-de-minas-gerais-mpmg` | Geral | OK |
+| ✅ OK | `https://www.almg.gov.br/legislacao-mineira/LCP/34/1994/` | Geral | OK |
+| ✅ OK | `https://www.mpms.mp.br/` | Geral | OK |
 | ✅ OK | `https://ouvidoria.mpms.mp.br/` | Geral | OK |
 | ✅ OK | `https://portal.mt.gov.br/orgao/ministerio-publico-do-estado-de-mato-grosso` | Geral | OK |
+| ✅ OK | `https://mpmt.mp.br/` | Geral | OK |
 | ✅ OK | `https://www.mpmt.mp.br/ouvidoria/ouvidoria-client/index.php` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www2.mppa.mp.br/sistemas/portaldeconsultas/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mppa.mp.br/areas/institucional/corregedoria/corregedoria-geral.htm` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mppb.mp.br/index.php/pt/` | Geral | OK |
 | ✅ OK | `https://www.mppb.mp.br/index.php/pt/atendimento` | Geral | OK |
@@ -12267,10 +12056,12 @@
 | ✅ OK | `https://portal.mppe.mp.br/` | Geral | OK |
 | ✅ OK | `https://portal.mppe.mp.br/noticias` | Geral | OK |
 | ✅ OK | `https://portal.mppe.mp.br/ouvidoria` | Geral | OK |
-| ✅ OK | `https://www.mppi.mp.br/internet/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.mppi.mp.br/internet/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://mppr.mp.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://mppr.mp.br/corregedoria` | Geral | OK |
+| ✅ OK | `https://mppr.mp.br/Noticias/operacao-gaeco-transporte` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/ouvidoria` | Geral | OK |
+| ✅ OK | `https://www5.mprj.mp.br/consultaPublica/` | Geral | OK |
 | ✅ OK | `https://www.mprj.mp.br/busca?p_p_id=br_mp_mprj_internet_busca_web_BuscaPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_br_mp_mprj_internet_busca_web_BuscaPortlet_jspPage=%2Fhtml%2Fview.jsp&_br_mp_mprj_internet_busca_web_BuscaPortlet_filtro_param=noticias` | Geral | OK |
 | ✅ OK | `https://www.mprn.mp.br/noticias/atendimento-a-populacao-e-destaque-do-segundo-dia-do-mprn-perto-de-voce-em-caico/` | Geral | OK |
 | ✅ OK | `https://www.mprn.mp.br/corregedoria-consultas/` | Geral | OK |
@@ -12280,8 +12071,12 @@
 | ✅ OK | `https://www.mprn.mp.br/noticias/ouvidoria-do-mprn-e-namvid-iniciam-projeto-dandara-em-ceara-mirim/` | Geral | OK |
 | ✅ OK | `https://www.mpro.mp.br/pages/nossos-contatos/ouvidoria/contato` | Geral | OK |
 | ✅ OK | `https://www.mprr.mp.br/page/o-ministerio-publico-em-roraima-` | Geral | OK |
+| ✅ OK | `https://www.mprs.mp.br/instituicao/` | Geral | OK |
+| ✅ OK | `https://www.mprs.mp.br/contato/` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/atendimento-ao-cidadao` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/documents/d/guest/guia-do-ministerio-publico-de-santa-catarina` | Geral | OK |
+| ✅ OK | `https://www.mpsc.mp.br/` | Geral | OK |
+| ✅ OK | `https://www.mpsc.mp.br/w/gaeco-deflagra-operação-vértice-e-apura-fraude-em-licitações-do-transporte-escolar-no-oeste-catarinense` | Geral | OK |
 | ✅ OK | `https://www.mpto.mp.br/portal/` | Geral | OK |
 | ✅ OK | `https://www.mpto.mp.br/subprocuradoria-geral-de-justica/perfil/luciano-cesar-casaroti/` | Geral | OK |
 | ✅ OK | `https://portal.mt.gov.br/` | Geral | OK |
@@ -12297,13 +12092,19 @@
 | ✅ OK | `https://osasco.sp.gov.br/cmdca/` | Geral | OK |
 | ✅ OK | `https://osasco.sp.gov.br/osasco-empossa-integrantes-do-conselho-municipal-de-defesa-do-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://osasco.sp.gov.br/conselhos-tutelares-e-cmdca/` | Geral | OK |
+| ✅ OK | `https://ouricuri.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.palmas.to.gov.br/core/noticias/fma-da-inicio-ao-processo-eleitoral-para-conselho-municipal-de-meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://paragominas.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://paragominas.pa.gov.br/paragominas-recebe-a-viii-conferencia-municipal-dos-direitos-da-crianca-e-adolescente/` | Geral | OK |
+| ✅ OK | `https://camaraparagominas.pa.gov.br/lei-no-257-2000-de-26-de-junho-de-2000/lei-no-257-00-dispoe-sobre-a-criacao-e-regulamentacao-do-conselho-municipal-de-defesa-do-meio-ambiente-condema/` | Geral | OK |
 | ✅ OK | `https://paragominas.pa.gov.br/mapa-do-site/conselhos-municipais/` | Geral | OK |
 | ✅ OK | `https://www.parceriaseminvestimentos.sp.gov.br/sec-parcerias-investimentos` | Geral | OK |
 | ✅ OK | `https://www.passos.mg.gov.br/portal/noticias/0/3/1591/o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-passos` | Geral | OK |
+| ✅ OK | `https://www.passos.mg.gov.br/portal/secretarias/16/meio-ambiente-agropecuaria-e-abastecimento` | Geral | OK |
+| ✅ OK | `https://www.passos.mg.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.passos.mg.gov.br/cmas-o-conselho` | Geral | OK |
 | ✅ OK | `https://patos.pb.gov.br/servicos/diario-oficial/p16_sectionid/336` | Geral | OK |
+| ✅ OK | `http://patos.pb.gov.br/` | Geral | OK |
 | ✅ OK | `https://patos.pb.gov.br/noticias/conselho-municipal-de-a14115.html` | Geral | OK |
 | ✅ OK | `https://www.pelotas.rs.gov.br/` | Geral | OK |
 | ✅ OK | `https://pesqueira.pe.gov.br/` | Geral | OK |
@@ -12317,6 +12118,8 @@
 | ✅ OK | `https://www.petropolis.rj.gov.br/ccm/index.php/conselhos/comdema-conselho-municipal-de-meio-ambiente.html` | Geral | OK |
 | ✅ OK | `https://www.pi.gov.br/home2/` | Geral | OK |
 | ✅ OK | `https://www2.picos.pi.gov.br/geral/semam-realiza-reuniao-extraordinaria-do-conselho-municipal-de-meio-ambiente/` | Geral | OK |
+| ✅ OK | `https://www.picos.pi.gov.br/secretaria-municipal-de-educacao-seme/` | Geral | OK |
+| ✅ OK | `https://www2.picos.pi.gov.br/` | Geral | OK |
 | ✅ OK | `https://piracicaba.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://piracicaba.sp.gov.br/noticias/cmdca-abre-inscricoes-para-bienio-2016-2018/` | Geral | OK |
 | ✅ OK | `https://piracicaba.sp.gov.br/servicos/conselho-municipal-de-defesa-do-meio-ambiente-comdema/` | Geral | OK |
@@ -12324,7 +12127,10 @@
 | ✅ OK | `https://piracicaba.sp.gov.br/noticias/transparencia-informacao-fiscal-de-piracicaba-e-destaque-em-ranking-de-municipios/` | Geral | OK |
 | ✅ OK | `https://piracicaba.sp.gov.br/noticias/conselhos-tutelares-atendem-normalmente/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/pontesalvadoritaparica/` | Geral | OK |
+| ✅ OK | `http://www.quixada.ce.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.quixada.ce.gov.br/index.php` | Geral | OK |
 | ✅ OK | `https://redencao.pa.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.redencao.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://portaltransparencia.redencao.pa.gov.br/conselho-municipal-de-saude` | Geral | OK |
 | ✅ OK | `https://www.rondonopolis.mt.gov.br/noticias/entidades-podem-apresentar-propostas-para-termo-de-fomento-com-o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://www.rondonopolis.mt.gov.br/orgaos-municipais/secretaria-municipal-de-meio-ambiente/` | Geral | OK |
@@ -12344,12 +12150,16 @@
 | ✅ OK | `https://www5.saude.ba.gov.br/portalces/` | Geral | OK |
 | ✅ OK | `https://www.ce.gov.br/saude/` | Geral | OK |
 | ✅ OK | `https://saude.df.gov.br/conselho-de-saúde-do-distrito-federal` | Geral | OK |
+| ↪️ REDIRECT | `http://www.saude.es.gov.br/contato_ces` | Geral | REDIRECT |
 | ✅ OK | `https://saude.es.gov.br/ces` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/saude/` | Geral | OK |
 | ✅ OK | `http://vigilancia.saude.mg.gov.br/index.php/boletim-epidemiologico-da-secretaria-de-estado-de-saude-de-minas-gerais/` | Geral | OK |
+| ✅ OK | `https://ces.saude.ms.gov.br/` | Geral | OK |
+| ✅ OK | `https://portal.saude.pe.gov.br/servico/conselho-estadual-de-saude-de-pernambuco/` | Geral | OK |
 | ✅ OK | `https://portal.pi.gov.br/sesapi/` | Geral | OK |
 | ✅ OK | `https://saude.rr.gov.br/ces-conselho-estadual-de-saude/` | Geral | OK |
-| ✅ OK | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | OK |
+| ↪️ REDIRECT | `http://ces.rs.gov.br/` | Geral | REDIRECT |
+| ❓ INCONSISTENTE | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://saude.se.gov.br/atas-reunioes-ordinarias/` | Geral | OK |
 | ✅ OK | `https://saude.se.gov.br/ces-e-funesa-constroem-projeto-para-etapa-estadual-da-plenaria-nacional-de-conselhos-de-saude-e-movimentos-sociais/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/sde/` | Geral | OK |
@@ -12361,21 +12171,34 @@
 | ❓ INCONSISTENTE | `https://sema.mt.gov.br/site/index.php/sema/quem-somos/organograma` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sema.mt.gov.br/site/index.php/unidades-administrativas/ouvidoria` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sema.mt.gov.br/site/index.php/portal-da-transparencia` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.ce.gov.br/semace/` | Geral | OK |
 | ✅ OK | `https://portal-servicos-sistemas.semas.pa.gov.br/denuncias-ambientais` | Geral | OK |
 | ✅ OK | `https://www.semas.pa.gov.br/?s=diário+oficial+de+belém+pa` | Geral | OK |
+| ✅ OK | `https://servicos.ibama.gov.br/licenciamento/` | Geral | OK |
 | ✅ OK | `https://semas.pa.gov.br/Home/Page/EstruturaOrganizacional/` | Geral | OK |
 | ✅ OK | `https://semas.pa.gov.br/Home/Institucional/Ouvidoria/` | Geral | OK |
 | ✅ OK | `https://portaldatransparencia.semas.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://www12.senado.leg.br/hpsenado` | Geral | OK |
+| ✅ OK | `https://www25.senado.leg.br/web/atividade` | Geral | OK |
 | ✅ OK | `https://www.serra.es.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.sinop.mt.gov.br/casa-dos-conselhos---direitos-da-crianca-e-do-adolescente---cmdca` | Geral | OK |
+| ✅ OK | `https://www.sinop.mt.gov.br/portal/secretarias/6/secretaria-de-meio-ambiente-e-desenvolvimento-sustentavel` | Geral | OK |
+| ✅ OK | `https://www.sinop.mt.gov.br/?.html` | Geral | OK |
 | ✅ OK | `https://www.sinop.mt.gov.br/conselho-tutelar-de-sinop` | Geral | OK |
 | ✅ OK | `https://www2.snirh.gov.br/cnarh/` | Geral | OK |
+| ✅ OK | `https://contratamaisbrasil.sistema.gov.br/eventos/162/` | Geral | OK |
 | ✅ OK | `https://ama.sobral.ce.gov.br/noticias/principais/476-conselho-municipal-de-defesa-do-meio-ambiente-de-sobral-realiza-ultima-reuniao-de-2024` | Geral | OK |
+| ✅ OK | `https://www.sobral.ce.gov.br/diario/pesquisa/index` | Geral | OK |
+| ✅ OK | `https://cidadania.sorocaba.sp.gov.br/cmdca/` | Geral | OK |
 | ✅ OK | `https://meioambiente.sorocaba.sp.gov.br/legislacao/conselho-municipal-de-desenvolvimento-do-meio-ambiente-comdema/` | Geral | OK |
 | ✅ OK | `https://transparencia.sorocaba.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://conselhos.sorocaba.sp.gov.br/conselho-municipal-de-assistencia-social-cmas/` | Geral | OK |
 | ✅ OK | `https://www.sousa.pb.gov.br/noticia/secretaria-de-assist-ncia-social-realiza-ix-confer-ncia-municipal-dos-direitos-da-crian-a-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://sousa.pb.gov.br/transparencia/conselho-municipal` | Geral | OK |
+| ✅ OK | `https://www.sousa.pb.gov.br/` | Geral | OK |
+| ✅ OK | `http://sousa.pb.gov.br/` | Geral | OK |
+| ✅ OK | `https://transparencia.stj.jus.br/gestao/objetivos-estrategicos/` | Geral | OK |
+| ✅ OK | `https://www.stj.jus.br/sites/portalp/Inicio` | Geral | OK |
 | ✅ OK | `https://transparencia.stj.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.taubate.sp.gov.br/secretarias/governo-e-comunicacao/conselhos/conselho-dos-direitos-da-crianca-e-adolescente/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://taubate.sp.gov.br/secretarias/meio-ambiente-e-bem-estar-animal/conselho-de-meio-ambiente` | Geral | OK |
@@ -12383,13 +12206,20 @@
 | ✅ OK | `https://www.tce.ba.gov.br/noticias/tce-ba-envia-prestacao-de-contas-e-relatorio-de-atividades-de-2025-a-alba` | Geral | OK |
 | ✅ OK | `https://www.tce.mg.gov.br/noticia/Detalhe` | Geral | OK |
 | ✅ OK | `https://tefe.am.gov.br/` | Geral | OK |
+| ✅ OK | `https://tefe.am.gov.br/diario-oficial/materia/67053E32` | Geral | OK |
 | ✅ OK | `https://tefe.am.gov.br/diario-oficial` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.tjac.jus.br/2020/07/corregedoria-acompanha-etapa-conclusiva-da-atualizacao-das-tabelas-processuais/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.tjac.jus.br/2009/07/escola-da-magistratura-da-continuidade-ao-curso-de-iniciacao-para-juizes-substitutos/` | Geral | INCONSISTENTE |
-| ✅ OK | `https://www.tjap.jus.br/portal/` | Geral | OK |
+| ✅ OK | `https://www.tjac.jus.br/2020/07/corregedoria-acompanha-etapa-conclusiva-da-atualizacao-das-tabelas-processuais/` | Geral | OK |
+| ✅ OK | `https://www.tjac.jus.br/2009/07/escola-da-magistratura-da-continuidade-ao-curso-de-iniciacao-para-juizes-substitutos/` | Geral | OK |
+| ✅ OK | `https://www.tjam.jus.br/` | Geral | OK |
+| ✅ OK | `https://www.tjam.jus.br/index.php/iniciativas/metas-apresentacao` | Geral | OK |
+| ✅ OK | `https://www.tjam.jus.br/index.php/publicacoes-documentos/resolucoes-publicacoes-doc/transparencia/relatorio-de-gestao-fiscal` | Geral | OK |
+| ❌ QUEBRADO | `https://www.tjap.jus.br/portal/` | Geral | QUEBRADO |
 | ✅ OK | `https://www.tjba.jus.br/portal/` | Geral | OK |
+| ❌ QUEBRADO | `https://www.tjba.jus.br/portal/1a-vice-presidencia-2/` | Geral | QUEBRADO |
 | ✅ OK | `https://ouvidoria.tjba.jus.br/` | Geral | OK |
-| ✅ OK | `https://www.tjba.jus.br/transparencia/orcamentaria/gestao-fiscal/` | Geral | OK |
+| ↪️ REDIRECT | `https://www.tjba.jus.br/transparencia/orcamentaria/gestao-fiscal/` | Geral | REDIRECT |
+| ✅ OK | `https://www.tjce.jus.br/vice-presidencia/` | Geral | OK |
+| ✅ OK | `https://www.tjce.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjce.jus.br/institucional/custas-processuais/` | Geral | OK |
 | ✅ OK | `https://www.tjce.jus.br/noticias/escola-da-magistratura-abre-curso-sobre-direitos-humanos/` | Geral | OK |
 | ✅ OK | `https://www.tjce.jus.br/noticias/ouvidoria-geral-atende-via-whatsapp-e-mensagem-de-texto/` | Geral | OK |
@@ -12399,40 +12229,65 @@
 | ✅ OK | `https://www.tjes.jus.br/gestao-fiscal/` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/tribunal-de-justica-do-estado-de-minas-gerais-tjmg` | Geral | OK |
+| ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/metas-nacionais.htm` | Geral | OK |
+| ✅ OK | `https://tjmmg.jus.br/novo-regimento-interno-do-tjmg-e-aprovado/` | Geral | OK |
 | ✅ OK | `https://www.tjmt.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjpa.jus.br/PortalExterno/` | Geral | OK |
+| ✅ OK | `https://portal.tjpe.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjpe.jus.br/tjpeatende/` | Geral | OK |
-| ↪️ REDIRECT | `https://www.tjpr.jus.br/corregedoria-geral` | Geral | REDIRECT |
+| ✅ OK | `https://portal.tjpe.jus.br/web/transparencia/gestao/estatistica/metas-nacionais` | Geral | OK |
+| ✅ OK | `https://portal.tjpe.jus.br/web/transparencia/gestao-orcamentaria-e-financeira/relatorio-de-gestao-fiscal` | Geral | OK |
+| ✅ OK | `https://www.tjpi.jus.br/portaltjpi/` | Geral | OK |
+| ✅ OK | `https://www.tjpr.jus.br/web/corregedoria-geral` | Geral | OK |
+| ✅ OK | `https://www.tjpr.jus.br/estatistica/-/asset_publisher/P9zPBWoB8TPZ/content/metas-nacionais/31704` | Geral | OK |
 | ✅ OK | `https://ouvidoria.tjpr.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjpr.jus.br/institucional-presidencia` | Geral | OK |
 | ✅ OK | `https://www.tjpr.jus.br/relatorio-de-gestao-fiscal` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-do-rio-grande-do-norte-tjrn/` | Geral | OK |
+| ✅ OK | `https://tjrn.jus.br/` | Geral | OK |
+| ✅ OK | `https://tjrn.jus.br/vice-presidencia/relatorio-de-gestao/` | Geral | OK |
+| ✅ OK | `https://www.tjro.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjro.jus.br/ouvir/` | Geral | OK |
-| ✅ OK | `https://etransparente.tjro.jus.br/` | Geral | OK |
-| ✅ OK | `https://www.tjrs.jus.br/novo/` | Geral | OK |
+| ❌ QUEBRADO | `https://www.tjro.jus.br/inicio` | Geral | QUEBRADO |
+| ❓ INCONSISTENTE | `https://etransparente.tjro.jus.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://juris.tjrr.jus.br/` | Geral | OK |
+| ✅ OK | `https://www.tjrr.jus.br/index.php/component/content/?Itemid=437` | Geral | OK |
+| ❌ QUEBRADO | `https://www.tjro.jus.br/secretaria-de-orcamento-e-financas-sof/rgf` | Geral | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.tjrs.jus.br/novo/` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.tjrs.jus.br/novo/institucional/administracao/secretaria-da-1a-vice-presidencia/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.tjsc.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjsc.jus.br/web/corregedoria-geral-da-justica` | Geral | OK |
 | ✅ OK | `https://www.tjsc.jus.br/web/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/tribunal-de-justica-do-estado-de-sergipe-2/` | Geral | OK |
+| ✅ OK | `https://www.tjse.jus.br/portal/servicos/judiciais/guias/recolhimento-judicial/itemlist/category/43-tabela-de-custas-e-emolumentos` | Geral | OK |
 | ✅ OK | `https://www.tjse.jus.br/sic/` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/1a-vice-presidencia` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/custas-processuais` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/escola-da-magistratura` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error?aspxerrorpath=/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/ouvidoria-geral` | Geral | OK |
+| ✅ OK | `https://www.tjto.jus.br/?rel=outbound` | Geral | OK |
+| ✅ OK | `https://www.tjto.jus.br/` | Geral | OK |
+| ✅ OK | `https://www.tjto.jus.br/comunicacao/noticias/tjto-apresenta-resultados-positivos-no-cumprimento-das-metas-nacionais` | Geral | OK |
+| ✅ OK | `https://www.toledo.pr.gov.br/municipio/conselhos_municipais/direitos_crianca_adolescente` | Geral | OK |
 | ✅ OK | `https://www.toledo.pr.gov.br/municipio/conselhos_municipais/meio_ambiente/sobre-conselho` | Geral | OK |
 | ✅ OK | `https://www.tst.jus.br/web/corregedoria` | Geral | OK |
+| ✅ OK | `https://www.tst.jus.br/` | Geral | OK |
 | ✅ OK | `https://tucurui.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://tucurui.pa.gov.br/mapa-do-site/transparencia-covid-19/` | Geral | OK |
 | ✅ OK | `https://tucurui.pa.gov.br/mapa-do-site/conselhos-municipais/` | Geral | OK |
 | ✅ OK | `https://www.uberaba.mg.gov.br/portal/principal` | Geral | OK |
 | ✅ OK | `https://portal.uberaba.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.uberaba.mg.gov.br/portal/conteudo,37737` | Geral | OK |
+| ✅ OK | `https://www.umuarama.pr.gov.br/` | Geral | OK |
+| ✅ OK | `https://www.varginha.mg.gov.br/portal/secretarias/14/secretaria-municipal-de-meio-ambiente---semea` | Geral | OK |
+| ✅ OK | `https://www.varginha.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://vilhena.ro.gov.br/` | Geral | OK |
 | ✅ OK | `https://vilhena.ro.gov.br/cmdca-promove-1a-capacitacao-sobre-escuta-especializada-de-criancas-e-adolescentes-vitimas-de-violencia/` | Geral | OK |
 | ✅ OK | `https://vilhena.ro.gov.br/transparencia-e-inovacao-fiscal-vilhena-se-torna-referencia-regional-com-o-programa-minha-nota-tem-valor/` | Geral | OK |
-| ✅ OK | `https://www.al.es.gov.br/Comunicacao/TvAssembleia` | Geral | OK |
 | ✅ OK | `https://www.camara.leg.br/tv` | Geral | OK |
 | ✅ OK | `https://www.assembly.ca.gov/assemblymembers/find-my-rep` | Geral | OK |
+| ✅ OK | `https://www.al.es.gov.br/Comunicacao/TvAssembleia` | Geral | OK |
 | ✅ OK | `https://www2.camara.leg.br/acl_users/credentials_cookie_auth/require_login?came_from=https%3A//www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia` | Geral | OK |
 | ✅ OK | `https://www.al.es.gov.br/` | Geral | OK |
 | ✅ OK | `https://www3.al.es.gov.br/spl/consulta-producao.aspx?tipo=18` | Geral | OK |
@@ -12444,18 +12299,19 @@
 | ✅ OK | `https://www.gov.br/capes/pt-br` | Programa Bilateral CAPES-DAAD de Pesquisa em Transição Energética e Clima | OK |
 | ✅ OK | `https://ec.europa.eu/commission/presscorner` | Refinaria de Níquel e Cobalto de São Miguel Paulista (Projeto Estratégico UE-Brasil) | OK |
 | ✅ OK | `https://www.gov.br/antt/pt-br` | Concessão Ferroviária da Malha Oeste e Ferrogrão (Disputa Internacional) | OK |
-| ✅ OK | `https://www.gov.br/aneel/pt-br` | Mega-Leilão de Transmissão ANEEL e Bipolo Nordeste-Centro (State Grid) | OK |
 | ✅ OK | `https://www.gov.br/inpe/pt-br` | Satélite Sino-Brasileiro CBERS-6 com Radar Orbital para Amazônia | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMijAFBVV95cUxQUDcwYWZrUk9FTzRYeGVHYnN3TWxRZFAyUFZITGVOZEx6d1U3d0l2Q0tJb2ZjMXhwb2Q5c2pLSkNfODk2aE1zRmRLTnlJcVRib2VMSWE4eFl2TUtJQUREZFQ1T3V1Q3NiczJXSDdZSGVudk9vMDdoaGpXZ0poX2xHVkp3YzJobldtVXVvdA?oc=5` | Dois anos após o Novo Acordo do Rio Doce, indenizações chegam a 648 mil pessoas - Diário do Comércio | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5` | Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipwFBVV95cUxOYTkwVHV4UmEyS3RlOGtCTXFsS0xsZV9rWXBQOHE5YWw2ZGVBZGdzajRUN0EtREZ0Q3NDckFqSHN0ai1aN1BnaTFUbzdtUFQ4ODFjLUVtajhBbHRwVERtRHZHUElrNC1RbTFFN2oyRDM4Vi1OWnVfbTF6TzR6WWVjYTRSQWRYWi1uUTlIZUtUZDJXYjRHRXdpSXZ2VnBpV1hESW9Wa0FKWQ?oc=5` | Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMitgFBVV95cUxNaVA4VXlxY2cxVnlQdUlSX3JxTUR1V0ladTRRX2J0TF84TFJkS3o1S09vZzRBb3EyTlpPMXVlNy1uSlFPazNRM05MQWNBV0RKZmVlMzN3ZlRzSjFHMUZlWWI4RkNadjFyZjdFN0tZTXNkSllHX29OWFplaVZ1Z3RyTUt1bU5xQ2U2ZmR4MlBGSkdlUnkxLWdKQ09ycjZKX2JDT29DRmJfWU53LWNacGI5aDNUd2ZRdw?oc=5` | Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG | REDIRECT |
+| ✅ OK | `https://guaicuy.org.br/resultado-edital-projetos-regiao-4/` | Entidade Gestora divulga resultado de edital de projetos na Região 4 | OK |
+| ✅ OK | `https://adaibrasil.org.br/cartilha-solicitacao-credito-r2/?utm_source=rss&utm_medium=rss&utm_campaign=cartilha-solicitacao-credito-r2` | Entidade Gestora do Anexo I.1 lança a cartilha “Solicitação de Crédito e Microcrédito na R2: o que devo saber para solicitar meu empréstimo?” | OK |
+| ✅ OK | `https://guaicuy.org.br/erm-reune-regiao-5/` | ERM se reúne com comunidades da Região 5 | OK |
 | ✅ OK | `https://guaicuy.org.br/guaicuy-finalista-premiacao/` | Guaicuy é finalista em premiação de design | OK |
 | ✅ OK | `https://adaibrasil.org.br/ijs-se-manifestam-contra-remuneracao-conselheiros-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=ijs-se-manifestam-contra-remuneracao-conselheiros-anexoi-1` | Instituições de Justiça se manifestam contrárias à remuneração de Conselheiras e Conselheiros do Anexo I.1 | OK |
 | ✅ OK | `https://guaicuy.org.br/ijs-pagamento-conselheiros-anexo-1-1/` | Instituições de Justiça se manifestam sobre pagamento a conselheiros do Anexo 1.1 | OK |
 | ✅ OK | `https://guaicuy.org.br/cores-sons-e-fe-o-congado-em-paineiras/` | Cores, sons e fé: o Congado em Paineiras | OK |
 | ✅ OK | `https://guaicuy.org.br/sao-jose-do-buriti-muda-com-as-aguas/` | São José do Buriti muda com as águas | OK |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiyAFBVV95cUxOYVZjU3M2UkMzSWxKYnA1ZWRBa2VnX0VReXJBZVd1NjJ3R2FxODRMbURISjJab2d5SjlzRlFkbTJhbkxpQjk1SXJfbTk3Qy11MnhVQTM5ZV9NZG50ck9SQ1RQdWgyYjZJQjhxQXNWcFk4UGtmdFBLaW5UcGxTRHZSakM2M08za0NaRk53Z3VjcExERk5FdUNOX1hlaWtsczVwaWFlWGpXMnJtOTdXTVdTVDBZaWdMdk5EbURUQ0lyYVBjWHl2T2VYbQ?oc=5` | Helena Taliberti lança livro sobre os filhos mortos em barragem em Brumadinho - O TEMPO | REDIRECT |
 | ✅ OK | `https://guaicuy.org.br/fundos-rotativos-solidarios/` | Fundos rotativos solidários: como funcionam? | OK |
 | ✅ OK | `https://adaibrasil.org.br/segundo-turno-eleicoes-presidenciais/?utm_source=rss&utm_medium=rss&utm_campaign=segundo-turno-eleicoes-presidenciais` | Segundo turno das eleições presidenciais: votar é exercer seu direito e fortalecer a democracia | OK |
 | ✅ OK | `https://adaibrasil.org.br/adai-realiza-formacao-de-fortalecimento-dos-conselhos-locais-da-regiao-2/?utm_source=rss&utm_medium=rss&utm_campaign=adai-realiza-formacao-de-fortalecimento-dos-conselhos-locais-da-regiao-2` | Adai promove formação para o fortalecimento dos Conselhos Locais da Região 2 | OK |
@@ -12470,10 +12326,7 @@
 | ✅ OK | `https://adaibrasil.org.br/justica-mg-determina-vale-deposite-nae-novembro/?utm_source=rss&utm_medium=rss&utm_campaign=justica-mg-determina-vale-deposite-nae-novembro` | Justiça de Minas Gerais determina que Vale deposite valores do Novo Auxílio Emergencial de novembro para pessoas atingidas | OK |
 | ✅ OK | `https://adaibrasil.org.br/fgv-esclarece-ao-stf-diferencas-entre-o-ptr-e-o-novo-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=fgv-esclarece-ao-stf-diferencas-entre-o-ptr-e-o-novo-auxilio-emergencial` | FGV esclarece ao STF diferenças entre o PTR e o Novo Auxílio Emergencial | OK |
 | ✅ OK | `https://adaibrasil.org.br/decisao-judicial-libera-recursos-do-anexo-i-3-para-municipios-da-regiao-2/?utm_source=rss&utm_medium=rss&utm_campaign=decisao-judicial-libera-recursos-do-anexo-i-3-para-municipios-da-regiao-2` | Decisão judicial libera recursos do Anexo I.3 para municípios promoverem ações de reparação na Região 2 | OK |
-| ✅ OK | `https://guaicuy.org.br/juiz-intima-vale-a-depositar-parcela-de-novembro-do-novo-auxilio-e-fgv-pede-oficio-a-caixa-economica-sobre-problemas-em-alguns-pagamentos/` | Juiz intima Vale a depositar Novo Auxílio de novembro e FGV pede ofício à CEF sobre problemas em pagamentos | OK |
 | ✅ OK | `https://adaibrasil.org.br/fgv-lanca-novo-site-do-novo-auxilio-emergencial-nae/?utm_source=rss&utm_medium=rss&utm_campaign=fgv-lanca-novo-site-do-novo-auxilio-emergencial-nae` | Fundação Getulio Vargas (FGV) lança novo site do Novo Auxílio Emergencial (NAE) | OK |
-| ✅ OK | `https://adaibrasil.org.br/adai-lanca-cartilhas-credito-e-microcredito-anexo-i-1/?utm_source=rss&utm_medium=rss&utm_campaign=adai-lanca-cartilhas-credito-e-microcredito-anexo-i-1` | Adai Paraopeba lança cartilhas de Crédito e Microcrédito do Anexo I.1 | OK |
-| ✅ OK | `https://guaicuy.org.br/20a-edicao-do-piracema-esta-disponivel/` | 20ª edição do Piracema está disponível! | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipgJBVV95cUxOcHNIY1FiR0RhQmlkMmkxLXFpaExvQTJRbHV0TlQ3SURtbDZkY2NTTzI1aDFsdk1zRFRyR0M0cXJZY29aZU1JMzRaLTZIa09BOXZLelpVbWNKVnBnWURGdF9HcmN0ZmNKNC1mWURZOWRxTU40a21MLVEtdG1Lb1ZPNkxvU2ZMZlA1WEZlUGV0dUN3OUJkYVZpeXRHSW1SOEJYZkZxbk55WFZOSkh0b2xxU0g5X3RJQUd2M2EzdDdTZTFPMXJxZkZxTk0zVm15aE9CMVpocUR2QXVnVnJUbzl4WmFZNERHX0pPclA4ak9PNTA5MUFBam9TTzhnT1FWMGozX0RQaERtZUJTZHVDRXNSY3hjaEhWa0E0b0pRU1htaTV6Smd1UWc?oc=5` | Sete anos após rompimento de barragem, Brumadinho se reinventa no turismo com Instituto Inhotim, natureza, aventura e experiências rurais - Gazeta de São Paulo | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMifEFVX3lxTE04TGNpTHE3Z1NRTlZxcDhuUWxMRnNUOV9QYV80MnFHQ2ZqOTdxWlVDN1ltaVFVZkdBaldsZjhQdVVyWXpXQ3lVbFlKdlFUSTI2LTdZbWcyMXN1dVprbjBNMFY1NVBLSkFlczFXaGRZZGViSDNXbmJOV0JkZms?oc=5` | Análise da barragem da Emicon em Brumadinho está em fase final, diz ANM - Diário do Comércio | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5` | Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski | REDIRECT |
@@ -12497,7 +12350,6 @@
 | ❓ INCONSISTENTE | `https://app.anm.gov.br/SIGBM/Publico/GerenciarMetadados` | Sistema Integrado de Gestão de Segurança de Barragens de Mineração (SIGBM/ANM) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.alessp.sp.gov.br/transparencia/` | Assembleia Legislativa do Estado de São Paulo (Alesp - Transparência) | INCONSISTENTE |
 | ✅ OK | `https://dados.gov.br/dados/conjuntos-dados/serie-historica-de-precos-de-combustiveis` | Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) | OK |
-| ✅ OK | `https://www.gov.br/transportes/pt-br` | Ministério dos Transportes | OK |
 | ↪️ REDIRECT | `https://ec.europa.eu` | Comissão Europeia (Global Gateway - Critical Raw Materials) | REDIRECT |
 | ✅ OK | `https://siconfi.tesouro.gov.br` | Tesouro Nacional (Sistema Siconfi) | OK |
 | ✅ OK | `https://www.gov.br/gestao/pt-br` | Ministério da Gestão e da Inovação em Serviços Públicos (MGI) | OK |
@@ -12505,9 +12357,7 @@
 | ✅ OK | `https://www.gov.br/anp/pt-br` | Agência Nacional do Petróleo (ANP - Painel de Preços) | OK |
 | ✅ OK | `https://precos.petrobras.com.br` | Petrobras (Preços de Venda às Distribuidoras) | OK |
 | ✅ OK | `https://www.confaz.fazenda.gov.br` | Conselho Nacional de Política Fazendária (Confaz) | OK |
-| ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao` | Agência Nacional de Energia Elétrica (ANEEL - Leilões) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.ppi.gov.br` | Programa de Parcerias de Investimentos (PPI) | INCONSISTENTE |
-| ❌ QUEBRADO | `https://compras.dados.gov.br` | Portal de Compras do Governo Federal (Compras.gov.br) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm` | Lei Geral de Proteção de Dados (Lei nº 13.709/2018) | INCONSISTENTE |
 | ✅ OK | `https://adaptabrasil.mcti.gov.br` | AdaptaBrasil / MCTI | OK |
 | ✅ OK | `https://www.cnj.jus.br/sirenejud` | SIRENEJud / CNJ | OK |
@@ -12625,7 +12475,6 @@
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMixwFBVV95cUxPRUw1MV9jMVlKb2hWWEVFN1VZVXVRMzIzci1pcWRTZmNFZU11emg0alhpMWpXV1JNb01uc1k4b21Hd21RNWRVdkhGckFPdHJHRkJmWEZqSnY0RVZEWE4ydTc3NW8zTUNzaDZIZDFwQjRBeVU2b0NLUFhla1k2c0w1X3IxMVo4bWJadmxFTUpGYWJxTFRpbkNnTGpZa2JVUGt2Z2o5Ny1YdVBwWWUtc0pCYVdBMUF2RVI0VlNwTjdubzgwajhHVUdR0gHHAUFVX3lxTE1GZDY4aFVpUHh3amxONGhwQ0lCYkdMZGpycTNwQUZCVnhnSi1NWFJMdzFfYVNHRkp1Tmlyd2RnTldzUUFiMG9ZNVJNWHNZcmt1RTRBdjdYSWtSdFd1Z3M3azR4Z0VWdEU3MnNUTGRCU2E1RjNKeTRyZ0MzREZzQV9IS3RwZVRIOHZ1Ml9xaG9JRk9DOUlBUkZxcFpOcE1hczR6ODZ3RXh6VmphYUtEUVNUQmRVR1E3VncwaTdYN2FPbTZSQ2s3cU0?oc=5` | Ação na Alemanha sobre Brumadinho corre risco de prescrever - DW.com | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMFRwTUwzTC15R3VDakhKZUJZdGVWVGtnWHB5b2w5MkV2MW9LTkd5SmZuQndjQTBmc280WmJTSXhweTRqeGpjeHpoUlN0NG54SUVHSFlGbFM0akRlV0RmQWhwVWdJOVk4UWdnRDVhZFpuSGFEc1NSV2RPdGNUZUE4RGFEak92ZWJJVDQ3eGJEbGRtSDZNYzNJbEZHQS1tV2VzeExleXlZLWxTdw?oc=5` | MPMG pede ao STF para atuar em ação sobre continuidade de auxílio emergencial da Vale a atingidos de Brumadinho - O Fator | REDIRECT |
 | ✅ OK | `https://www.transparencia.mg.gov.br/canais-de-atendimento` | Geral | OK |
-| ❌ QUEBRADO | `https://www.ief.mg.gov.br/institucional/diretoria-de-conservacao-e-recuperacao-de-ecossistemas` | Diretoria de Conservação e Recuperação de Ecossistemas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.ief.mg.gov.br/institucional/diretoria-de-controle-monitoramento-e-geotecnologia` | Diretoria de Controle, Monitoramento e Geotecnologia | QUEBRADO |
 | ❌ QUEBRADO | `https://www.ief.mg.gov.br/institucional/diretoria-de-gestao-regional` | Diretoria de Gestão Regional | QUEBRADO |
 | ✅ OK | `https://www.transparencia.mg.gov.br/estado-pessoal/despesa-com-pessoal` | Portal da Transparência MG — Despesa com Pessoal Ativo IEF | OK |
@@ -12650,10 +12499,8 @@
 | ❓ INCONSISTENTE | `https://www.feam.mg.gov.br/institucional/organograma` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.feam.mg.gov.br/institucional/concursos` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://barragens.feam.mg.gov.br` | Geral | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.gov.br/iphan/pt-br/composicao/cna` | Centro Nacional de Arqueologia | QUEBRADO |
-| ❌ QUEBRADO | `https://www.gov.br/iphan/pt-br/composicao/dpi` | Departamento de Patrimônio Imaterial | QUEBRADO |
 | ❓ INCONSISTENTE | `https://portaldatransparencia.gov.br/servidores` | Painel Estatístico de Pessoal (PEP) — Ministério da Gestão / SIAPE | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pesquisa.apps.tcu.gov.br` | Relatório de Gestão e Prestação de Contas Ordinária IPHAN | INCONSISTENTE |
+| ✅ OK | `https://pesquisa.apps.tcu.gov.br` | Relatório de Gestão e Prestação de Contas Ordinária IPHAN | OK |
 | ✅ OK | `https://www12.senado.leg.br/orcamento/sigabrasil` | Orçamento da União (SIAFI / Siga Brasil) | OK |
 | ✅ OK | `https://www.gov.br/iphan/pt-br/acesso-a-informacao` | Geral | OK |
 | ✅ OK | `https://www.gov.br/iphan/pt-br/composicao` | Geral | OK |
@@ -12668,7 +12515,6 @@
 | ❓ INCONSISTENTE | `https://snirh.gov.br` | Geral | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/composicao/scg` | Superintendência de Concessões e Autorizações de Geração | QUEBRADO |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/composicao/sfg` | Superintendência de Fiscalização dos Serviços de Geração | QUEBRADO |
-| ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/composicao/srt` | Superintendência de Regulação dos Serviços de Transmissão | QUEBRADO |
 | ❓ INCONSISTENTE | `https://portaldatransparencia.gov.br/orgaos/32210` | Orçamento da União — Agência Nacional de Energia Elétrica | INCONSISTENTE |
 | ✅ OK | `https://www.gov.br/aneel/pt-br/acesso-a-informacao` | Geral | OK |
 | ✅ OK | `https://www.gov.br/aneel/pt-br/composicao` | Geral | OK |
@@ -12716,20 +12562,18 @@
 | ❓ INCONSISTENTE | `https://www.sema.mt.gov.br/transparencia` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://simcar.sema.mt.gov.br` | Geral | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.semas.pa.gov.br/institucional/sagra` | Secretaria Adjunta de Gestão e Regularidade Ambiental | QUEBRADO |
-| ❌ QUEBRADO | `https://www.semas.pa.gov.br/institucional/dla` | Diretoria de Licenciamento Ambiental | QUEBRADO |
 | ❌ QUEBRADO | `https://www.semas.pa.gov.br/institucional/difisc` | Diretoria de Fiscalização Ambiental | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.transparencia.pa.gov.br/servidores` | Portal da Transparência do Pará — Servidores SEMAS | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.tcepa.tc.br/processos` | Prestação de Contas Anual SEMAS-PA ao TCE-PA | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.transparencia.pa.gov.br/orcamento` | LOA — Orçamento do Estado do Pará | INCONSISTENTE |
 | ✅ OK | `https://car.semas.pa.gov.br` | Geral | OK |
-| ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-regulacao` | Diretoria de Regulação | QUEBRADO |
 | ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-recursos-hidricos` | Diretoria de Recursos Hídricos e Monitoramento Ambiental | QUEBRADO |
 | ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-fiscalizacao` | Diretoria de Fiscalização e Monitoramento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.transparencia.ba.gov.br/Pessoal` | Portal da Transparência da Bahia — Servidores INEMA | QUEBRADO |
 | ✅ OK | `https://www.transparencia.ba.gov.br/Orcamento` | LOA — Orçamento Geral do Estado da Bahia | OK |
 | ❓ INCONSISTENTE | `https://cefir.inema.ba.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | OK |
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-02` | Geral | OK |
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-03` | Geral | OK |
 | ✅ OK | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-06` | Geral | OK |
@@ -12852,7 +12696,7 @@
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.casal.al.gov.br/` | Geral | QUEBRADO |
 | ❓ INCONSISTENTE | `https://cea.amapa.gov.br/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.caesa.ap.gov.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesa.ap.gov.br/` | Geral | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesa.ap.gov.br/` | Geral | QUEBRADO |
 | ↪️ REDIRECT | `https://www.amazonasenergia.com/` | Geral | REDIRECT |
 | ✅ OK | `https://www.aguasdemanaus.com.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.aguasdemanaus.com.br/` | Geral | QUEBRADO |
@@ -12930,17 +12774,17 @@
 | ✅ OK | `https://g1.globo.com/mg/minas-gerais/` | Sigma Lithium — Suspensão por Órgão Ambiental (2026) | OK |
 | ❌ QUEBRADO | `https://business-humanrights.org/pt/ultimas-noticias` | Impactos Socioambientais — Comunidades Tradicionais | QUEBRADO |
 | ✅ OK | `https://diariodeminas.com.br/` | Crise da Sigma Lithium — Medidas Judiciais (2026) | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG` | Diamantina | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG` | Diamantina | OK |
 | ❌ QUEBRADO | `https://www.diamantina.mg.gov.br/transparencia` | Diamantina | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.couto-de-magalhaes-de-minas.mg.gov.br/transparencia` | Couto de Magalhães de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG` | Felício dos Santos | OK |
 | ❓ INCONSISTENTE | `https://www.felicio-dos-santos.mg.gov.br/transparencia` | Felício dos Santos | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Gouveia&uf=MG` | Gouveia | OK |
 | ❌ QUEBRADO | `https://www.gouveia.mg.gov.br/transparencia` | Gouveia | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | OK |
 | ❓ INCONSISTENTE | `https://www.presidente-kubitschek.mg.gov.br/transparencia` | Presidente Kubitschek | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG` | São Gonçalo do Rio Preto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG` | São Gonçalo do Rio Preto | OK |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo-do-rio-preto.mg.gov.br/transparencia` | São Gonçalo do Rio Preto | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | OK |
 | ❓ INCONSISTENTE | `https://www.senador-modestino-goncalves.mg.gov.br/transparencia` | Senador Modestino Gonçalves | INCONSISTENTE |
@@ -12948,13 +12792,13 @@
 | ❌ QUEBRADO | `https://www.carbonita.mg.gov.br/transparencia` | Carbonita | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG` | Itamarandiba | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.itamarandiba.mg.gov.br/transparencia` | Itamarandiba | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG` | Veredinha | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG` | Veredinha | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.veredinha.mg.gov.br/transparencia` | Veredinha | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Capelinha&uf=MG` | Capelinha | OK |
 | ❓ INCONSISTENTE | `https://www.capelinha.mg.gov.br/transparencia` | Capelinha | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | INCONSISTENTE |
 | ✅ OK | `https://www.angelandia.mg.gov.br/transparencia` | Angelândia | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.aricanduva.mg.gov.br/transparencia` | Aricanduva | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | OK |
 | ✅ OK | `https://www.datas.mg.gov.br/transparencia` | Datas | OK |
@@ -12970,9 +12814,9 @@
 | ❌ QUEBRADO | `https://www.serro.mg.gov.br/transparencia` | Serro | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | OK |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-itambe.mg.gov.br/transparencia` | Santo Antônio do Itambé | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | OK |
 | ❌ QUEBRADO | `https://www.aracuai.mg.gov.br/transparencia` | Araçuaí | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Coronel%20Murta&uf=MG` | Coronel Murta | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Coronel%20Murta&uf=MG` | Coronel Murta | OK |
 | ❓ INCONSISTENTE | `https://www.coronel-murta.mg.gov.br/transparencia` | Coronel Murta | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Berilo&uf=MG` | Berilo | INCONSISTENTE |
 | ✅ OK | `https://www.berilo.mg.gov.br/transparencia` | Berilo | OK |
@@ -12980,43 +12824,43 @@
 | ❓ INCONSISTENTE | `https://www.chapada-do-norte.mg.gov.br/transparencia` | Chapada do Norte | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG` | Francisco Badaró | OK |
 | ❓ INCONSISTENTE | `https://www.francisco-badaro.mg.gov.br/transparencia` | Francisco Badaró | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.itinga.mg.gov.br/transparencia` | Itinga | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | OK |
+| ❌ QUEBRADO | `https://www.itinga.mg.gov.br/transparencia` | Itinga | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.jenipapo-de-minas.mg.gov.br/transparencia` | Jenipapo de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jos%C3%A9%20Gon%C3%A7alves%20de%20Minas&uf=MG` | José Gonçalves de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.jose-goncalves-de-minas.mg.gov.br/transparencia` | José Gonçalves de Minas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Medina&uf=MG` | Medina | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Medina&uf=MG` | Medina | OK |
 | ❌ QUEBRADO | `https://www.medina.mg.gov.br/transparencia` | Medina | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Ponto%20dos%20Volantes&uf=MG` | Ponto dos Volantes | OK |
 | ❓ INCONSISTENTE | `https://www.ponto-dos-volantes.mg.gov.br/transparencia` | Ponto dos Volantes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG` | Virgem da Lapa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.virgem-da-lapa.mg.gov.br/transparencia` | Virgem da Lapa | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | OK |
 | ❓ INCONSISTENTE | `https://www.minas-novas.mg.gov.br/transparencia` | Minas Novas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.turmalina.mg.gov.br/transparencia` | Turmalina | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | OK |
 | ❓ INCONSISTENTE | `https://www.leme-do-prado.mg.gov.br/transparencia` | Leme do Prado | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pedra-azul.mg.gov.br/transparencia` | Pedra Azul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cachoeira-de-pajeu.mg.gov.br/transparencia` | Cachoeira de Pajeú | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.comercinho.mg.gov.br/transparencia` | Comercinho | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | INCONSISTENTE |
 | ✅ OK | `https://www.itaobim.mg.gov.br/transparencia` | Itaobim | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.padre-paraiso.mg.gov.br/transparencia` | Padre Paraíso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Almenara&uf=MG` | Almenara | OK |
-| ❓ INCONSISTENTE | `https://www.almenara.mg.gov.br/transparencia` | Almenara | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.almenara.mg.gov.br/transparencia` | Almenara | QUEBRADO |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | OK |
 | ↪️ REDIRECT | `https://www.bandeira.mg.gov.br/transparencia` | Bandeira | REDIRECT |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG` | Divisópolis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG` | Divisópolis | OK |
 | ❌ QUEBRADO | `https://www.divisopolis.mg.gov.br/transparencia` | Divisópolis | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Felisburgo&uf=MG` | Felisburgo | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.felisburgo.mg.gov.br/transparencia` | Felisburgo | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | OK |
 | ❌ QUEBRADO | `https://www.jacinto.mg.gov.br/transparencia` | Jacinto | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | OK |
 | ❌ QUEBRADO | `https://www.jequitinhonha.mg.gov.br/transparencia` | Jequitinhonha | QUEBRADO |
@@ -13024,67 +12868,67 @@
 | ❌ QUEBRADO | `https://www.joaima.mg.gov.br/transparencia` | Joaíma | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jord%C3%A2nia&uf=MG` | Jordânia | OK |
 | ❌ QUEBRADO | `https://www.jordania.mg.gov.br/transparencia` | Jordânia | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | OK |
 | ❓ INCONSISTENTE | `https://www.mata-verde.mg.gov.br/transparencia` | Mata Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.monte-formoso.mg.gov.br/transparencia` | Monte Formoso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG` | Palmópolis | OK |
-| ❓ INCONSISTENTE | `https://www.palmopolis.mg.gov.br/transparencia` | Palmópolis | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Rio%20do%20Prado&uf=MG` | Rio do Prado | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.palmopolis.mg.gov.br/transparencia` | Palmópolis | QUEBRADO |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Rio%20do%20Prado&uf=MG` | Rio do Prado | OK |
 | ❓ INCONSISTENTE | `https://www.rio-do-prado.mg.gov.br/transparencia` | Rio do Prado | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Rubim&uf=MG` | Rubim | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Rubim&uf=MG` | Rubim | OK |
 | ❌ QUEBRADO | `https://www.rubim.mg.gov.br/transparencia` | Rubim | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG` | Salto da Divisa | OK |
 | ❓ INCONSISTENTE | `https://www.salto-da-divisa.mg.gov.br/transparencia` | Salto da Divisa | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG` | Santa Maria do Salto | OK |
 | ❓ INCONSISTENTE | `https://www.santa-maria-do-salto.mg.gov.br/transparencia` | Santa Maria do Salto | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG` | Santo Antônio do Jacinto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG` | Santo Antônio do Jacinto | OK |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-jacinto.mg.gov.br/transparencia` | Santo Antônio do Jacinto | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=%C3%81guas%20Formosas&uf=MG` | Águas Formosas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=%C3%81guas%20Formosas&uf=MG` | Águas Formosas | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.aguasformosas.mg.gov.br/transparencia` | Águas Formosas | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Atal%C3%A9ia&uf=MG` | Ataléia | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Atal%C3%A9ia&uf=MG` | Ataléia | INCONSISTENTE |
 | ✅ OK | `https://www.ataleia.mg.gov.br/transparencia` | Ataléia | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campanario.mg.gov.br/transparencia` | Campanário | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | OK |
 | ❌ QUEBRADO | `https://www.carai.mg.gov.br/transparencia` | Caraí | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | OK |
 | ✅ OK | `https://www.carloschagas.mg.gov.br/transparencia` | Carlos Chagas | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | OK |
 | ❌ QUEBRADO | `https://www.catuji.mg.gov.br/transparencia` | Catuji | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | OK |
 | ❌ QUEBRADO | `https://www.franciscopolis.mg.gov.br/transparencia` | Franciscópolis | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | OK |
 | ❌ QUEBRADO | `https://www.freigaspar.mg.gov.br/transparencia` | Frei Gaspar | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | OK |
 | ✅ OK | `https://www.fronteiradosvales.mg.gov.br/transparencia` | Fronteira dos Vales | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaip%C3%A9&uf=MG` | Itaipé | OK |
 | ✅ OK | `https://www.itaipe.mg.gov.br/transparencia` | Itaipé | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itambacuri&uf=MG` | Itambacuri | OK |
 | ❌ QUEBRADO | `https://www.itambacuri.mg.gov.br/transparencia` | Itambacuri | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | OK |
 | ❌ QUEBRADO | `https://www.ladainha.mg.gov.br/transparencia` | Ladainha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | OK |
 | ✅ OK | `https://www.machacalis.mg.gov.br/transparencia` | Machacalis | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Malacacheta&uf=MG` | Malacacheta | OK |
 | ❌ QUEBRADO | `https://www.malacacheta.mg.gov.br/transparencia` | Malacacheta | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Nanuque&uf=MG` | Nanuque | OK |
 | ❌ QUEBRADO | `https://www.nanuque.mg.gov.br/transparencia` | Nanuque | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | OK |
 | ✅ OK | `https://www.novamodica.mg.gov.br/transparencia` | Nova Módica | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.novocruzeiro.mg.gov.br/transparencia` | Novo Cruzeiro | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Oriente%20de%20Minas&uf=MG` | Novo Oriente de Minas | OK |
 | ✅ OK | `https://www.novoorientedeminas.mg.gov.br/transparencia` | Novo Oriente de Minas | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | OK |
 | ❌ QUEBRADO | `https://www.ouroverdedeminas.mg.gov.br/transparencia` | Ouro Verde de Minas | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | OK |
 | ❌ QUEBRADO | `https://www.pavao.mg.gov.br/transparencia` | Pavão | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | OK |
 | ❌ QUEBRADO | `https://www.pescador.mg.gov.br/transparencia` | Pescador | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | OK |
 | ❌ QUEBRADO | `https://www.pote.mg.gov.br/transparencia` | Poté | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Helena%20de%20Minas&uf=MG` | Santa Helena de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santa%20Helena%20de%20Minas&uf=MG` | Santa Helena de Minas | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.santahelenademinas.mg.gov.br/transparencia` | Santa Helena de Minas | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Jos%C3%A9%20do%20Divino&uf=MG` | São José do Divino | OK |
 | ❌ QUEBRADO | `https://www.saojosedodivino.mg.gov.br/transparencia` | São José do Divino | QUEBRADO |
@@ -13118,1390 +12962,150 @@
 
 ## Propostas de Correção com Trilha de Auditoria
 
-- **URL Original:** https://www.defensoria.go.def.br/relatorios-prisionais
-  → **URL Proposta:** https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2019/2 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE GOIAS.pdf/view
+- **URL Original:** https://www.camaraniteroi.rj.gov.br/transparencia
+  → **URL Proposta:** https://camaraniteroi.rj.gov.br/site/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cnmp.mp.br/portal/relatorios-inspecoes
-  → **URL Proposta:** https://site.mppr.mp.br/crianca/Pagina/Publicacoes-CNMP-Conselho-Nacional-do-Ministerio-Publico
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppr.mp.br/noticias/operacao-gaeco-transporte
-  → **URL Proposta:** https://mppr.mp.br/Noticias/operacao-gaeco-transporte
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.mpsc.mp.br/noticias/operacao-gaeco-transporte
-  → **URL Proposta:** https://www.mpsc.mp.br/w/gaeco-deflagra-operação-vértice-e-apura-fraude-em-licitações-do-transporte-escolar-no-oeste-catarinense
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.stf.jus.br/transparencia
-  → **URL Proposta:** https://portal.stf.jus.br/transparencia/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.tjam.jus.br/transparencia/gestao-fiscal
-  → **URL Proposta:** https://www.tjam.jus.br/index.php/publicacoes-documentos/resolucoes-publicacoes-doc/transparencia/relatorio-de-gestao-fiscal
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://www.tjam.jus.br/index.php/iniciativas/metas-apresentacao
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjmg.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/metas-nacionais.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/transparencia/gestao-fiscal
-  → **URL Proposta:** https://portal.tjpe.jus.br/web/transparencia/gestao-orcamentaria-e-financeira/relatorio-de-gestao-fiscal
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://portal.tjpe.jus.br/web/transparencia/gestao/estatistica/metas-nacionais
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpr.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://www.tjpr.jus.br/estatistica/-/asset_publisher/P9zPBWoB8TPZ/content/metas-nacionais/31704
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrn.jus.br/transparencia/gestao-fiscal
-  → **URL Proposta:** https://tjrn.jus.br/vice-presidencia/relatorio-de-gestao/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/transparencia/gestao-fiscal
-  → **URL Proposta:** https://www.tjro.jus.br/secretaria-de-orcamento-e-financas-sof/rgf
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjse.jus.br/custas-processuais
-  → **URL Proposta:** https://www.tjse.jus.br/portal/servicos/judiciais/guias/recolhimento-judicial/itemlist/category/43-tabela-de-custas-e-emolumentos
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.tjto.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://www.tjto.jus.br/comunicacao/noticias/tjto-apresenta-resultados-positivos-no-cumprimento-das-metas-nacionais
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cacoal.ro.gov.br/transparencia
-  → **URL Proposta:** https://cacoal.ro.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://portovelho.ro.gov.br/transparencia
-  → **URL Proposta:** https://sgov.portovelho.ro.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://boavista.rr.gov.br/transparencia
-  → **URL Proposta:** https://boavista.rr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.abaetetuba.pa.gov.br/transparencia
-  → **URL Proposta:** https://abaetetuba.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.castanhal.pa.gov.br/transparencia
-  → **URL Proposta:** https://castanhal.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.maraba.pa.gov.br/transparencia
-  → **URL Proposta:** https://maraba.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.paragominas.pa.gov.br/transparencia
-  → **URL Proposta:** https://paragominas.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.redencao.pa.gov.br/transparencia
+- **URL Original:** https://www.redencao.pa.gov.br/diario-oficial
   → **URL Proposta:** https://www.redencao.ce.gov.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.araguaina.to.gov.br/transparencia
-  → **URL Proposta:** https://araguaina.to.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gurupi.to.gov.br/transparencia
-  → **URL Proposta:** https://gurupi.to.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://palmas.to.gov.br/transparencia
-  → **URL Proposta:** https://www.palmas.to.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.imperatriz.ma.gov.br/transparencia
-  → **URL Proposta:** https://imperatriz.ma.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.picos.pi.gov.br/transparencia
-  → **URL Proposta:** https://www2.picos.pi.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://teresina.pi.gov.br/transparencia
-  → **URL Proposta:** https://www.teresina.pi.gov.br/teresina/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.crateus.ce.gov.br/transparencia
-  → **URL Proposta:** https://crateus.ce.gov.br/index.php
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.crato.ce.gov.br/transparencia
-  → **URL Proposta:** https://crato.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://fortaleza.ce.gov.br/transparencia
-  → **URL Proposta:** https://www.fortaleza.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.quixada.ce.gov.br/transparencia
-  → **URL Proposta:** https://www.quixada.ce.gov.br/index.php
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.macaiba.rn.gov.br/transparencia
-  → **URL Proposta:** https://macaiba.rn.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://natal.rn.gov.br/transparencia
-  → **URL Proposta:** https://www.natal.rn.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cajazeiras.pb.gov.br/transparencia
-  → **URL Proposta:** https://www.cajazeiras.pb.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.patos.pb.gov.br/transparencia
-  → **URL Proposta:** http://patos.pb.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sousa.pb.gov.br/transparencia
-  → **URL Proposta:** http://sousa.pb.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.araripina.pe.gov.br/transparencia
-  → **URL Proposta:** https://araripina.pe.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.ouricuri.pe.gov.br/transparencia
-  → **URL Proposta:** https://ouricuri.pe.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.arapiraca.al.gov.br/transparencia
-  → **URL Proposta:** https://web.arapiraca.al.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.coruripe.al.gov.br/transparencia
-  → **URL Proposta:** https://transparencia.coruripe.al.gov.br/orgaos/secretaria-municipal-de-governo
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://maceio.al.gov.br/transparencia
-  → **URL Proposta:** https://maceio.al.gov.br/p/geral/prefeitura-de-maceio-home
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.itabaiana.se.gov.br/transparencia
-  → **URL Proposta:** https://portal.itabaiana.pb.gov.br/prefeitura/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.jequie.ba.gov.br/transparencia
-  → **URL Proposta:** https://www.jequie.ba.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://salvador.ba.gov.br/transparencia
-  → **URL Proposta:** https://salvador.ba.gov.br/?option=com_content
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.divinopolis.mg.gov.br/transparencia
-  → **URL Proposta:** https://www.divinopolis.mg.gov.br/portal
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.passos.mg.gov.br/transparencia
-  → **URL Proposta:** https://www.passos.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.varginha.mg.gov.br/transparencia
-  → **URL Proposta:** https://www.varginha.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://vitoria.es.gov.br/transparencia
-  → **URL Proposta:** https://www.vitoria.es.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.bauru.sp.gov.br/transparencia
-  → **URL Proposta:** https://www.bauru.sp.gov.br/default.aspx
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.carapicuiba.sp.gov.br/transparencia
-  → **URL Proposta:** https://www.carapicuiba.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.jundiai.sp.gov.br/transparencia
-  → **URL Proposta:** https://jundiai.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.marilia.sp.gov.br/transparencia
-  → **URL Proposta:** https://www.marilia.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.osasco.sp.gov.br/transparencia
-  → **URL Proposta:** https://osasco.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.apucarana.pr.gov.br/transparencia
-  → **URL Proposta:** https://www.apucarana.pr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cascavel.pr.gov.br/transparencia
-  → **URL Proposta:** https://www.cascavel.ce.gov.br/index.php
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.londrina.pr.gov.br/transparencia
-  → **URL Proposta:** https://www.londrina.pr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.umuarama.pr.gov.br/transparencia
-  → **URL Proposta:** https://www.umuarama.pr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.blumenau.sc.gov.br/transparencia
-  → **URL Proposta:** https://www.blumenau.sc.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.erechim.rs.gov.br/transparencia
-  → **URL Proposta:** https://www.pmerechim.rs.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.dourados.ms.gov.br/transparencia
-  → **URL Proposta:** https://do.dourados.ms.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-exato
-- **URL Original:** https://cuiaba.mt.gov.br/transparencia
-  → **URL Proposta:** https://www.cuiaba.mt.gov.br/
+- **URL Original:** https://www.cajazeiras.pb.gov.br/diario-oficial
+  → **URL Proposta:** https://www.gov.br/ufcg/pt-br/assuntos/mapas-dos-campi/cajazeiras
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sinop.mt.gov.br/transparencia
-  → **URL Proposta:** https://www.sinop.mt.gov.br/?.html
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://goiania.go.gov.br/transparencia
-  → **URL Proposta:** https://www.goiania.go.gov.br/
+- **URL Original:** https://rio.rj.gov.br//diario-oficial
+  → **URL Proposta:** https://www0.rio.rj.gov.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: site-dominio
-- **URL Original:** https://sapl.portovelho.ro.leg.br/transparencia
-  → **URL Proposta:** https://sapl.portovelho.ro.leg.br/
+- **URL Original:** https://www.rondonopolis.mt.gov.br/diario-oficial
+  → **URL Proposta:** https://www.rondonopolis.mt.gov.br/projetos/rondonopolis-mais-inteligente/governo-digital/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.riobranco.ac.leg.br/transparencia
-  → **URL Proposta:** https://sapl.riobranco.ac.leg.br/
+- **URL Original:** https://www.saude.al.gov.br/ces
+  → **URL Proposta:** https://www.saude.al.gov.br/conselho-estadual-de-saude/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.cmm.am.gov.br/transparencia
-  → **URL Proposta:** https://www.cmm.am.gov.br/
+- **URL Original:** https://www.saude.al.gov.br/atas
+  → **URL Proposta:** https://www.saude.al.gov.br/conselho-estadual-de-saude/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.boavista.rr.leg.br/transparencia
-  → **URL Proposta:** https://sapl.boavista.rr.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaraparagominas.pa.gov.br/transparencia
-  → **URL Proposta:** https://camaraparagominas.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaratucurui.pa.gov.br/transparencia
-  → **URL Proposta:** https://camaratucurui.pa.gov.br/site/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.palmas.to.leg.br/transparencia
-  → **URL Proposta:** https://sapl.palmas.to.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaracrateus.ce.gov.br/transparencia
-  → **URL Proposta:** https://www.camaracrateus.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarasobral.ce.gov.br/transparencia
-  → **URL Proposta:** https://camarasobral.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.natal.rn.leg.br/transparencia
-  → **URL Proposta:** https://sapl.natal.rn.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://sapl.joaopessoa.pb.leg.br/transparencia
-  → **URL Proposta:** https://sapl.joaopessoa.pb.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarasousa.pb.gov.br/transparencia
-  → **URL Proposta:** https://camarasousa.pb.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarapassos.mg.gov.br/transparencia
-  → **URL Proposta:** https://www.camarapassos.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarauberaba.mg.gov.br/transparencia
-  → **URL Proposta:** https://portal.camarauberaba.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaralimeira.sp.gov.br/transparencia
-  → **URL Proposta:** https://limeira.sp.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarapiracicaba.sp.gov.br/transparencia
-  → **URL Proposta:** https://www.camarapiracicaba.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camarataubate.sp.gov.br/transparencia
-  → **URL Proposta:** https://www.camarataubate.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaracriciuma.sc.gov.br/transparencia
-  → **URL Proposta:** https://www.camaracriciuma.sc.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaracorumba.ms.gov.br/transparencia
-  → **URL Proposta:** https://corumbadegoias.go.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaradourados.ms.gov.br/transparencia
-  → **URL Proposta:** https://www.dourados.ms.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaracatalao.go.gov.br/transparencia
-  → **URL Proposta:** https://camaracatalao.go.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.camaraformosa.go.gov.br/transparencia
-  → **URL Proposta:** https://www.formosa.go.leg.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpf.mp.br/servicos/sac
-  → **URL Proposta:** https://www.mpf.mp.br/servicos/salas-de-atendimento-ao-cidadao/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.dpu.def.br/ouvidoria
-  → **URL Proposta:** http://www.dpu.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/aneel/pt-br/canais_atendimento/ouvidoria
-  → **URL Proposta:** https://dadosabertos.aneel.gov.br/organization/about/agencia-nacional-de-energia-eletrica
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://boavista.rr.gov.br//diario-oficial
-  → **URL Proposta:** https://boavista.rr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.castanhal.pa.gov.br/diario-oficial
-  → **URL Proposta:** https://castanhal.pa.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.araguaina.to.gov.br/diario-oficial
-  → **URL Proposta:** https://www.araguaina.to.gov.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.gurupi.to.gov.br/diario-oficial
-  → **URL Proposta:** https://gurupi.to.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://palmas.to.gov.br//diario-oficial
-  → **URL Proposta:** https://www.palmas.to.gov.br/core/noticias/prefeitura-de-palmas-adere-a-projeto-do-governo-federal-que-prepara-municipios-para-mudancas-climaticas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.picos.pi.gov.br/diario-oficial
-  → **URL Proposta:** https://www.picos.pi.gov.br/secretaria-municipal-de-educacao-seme/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://teresina.pi.gov.br//diario-oficial
-  → **URL Proposta:** https://ami.teresina.pi.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.crateus.ce.gov.br/diario-oficial
-  → **URL Proposta:** https://www.crateus.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.crato.ce.gov.br/diario-oficial
-  → **URL Proposta:** https://www.crato.ce.gov.br/index.php/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.quixada.ce.gov.br/diario-oficial
-  → **URL Proposta:** http://www.quixada.ce.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.sobral.ce.gov.br/diario-oficial
-  → **URL Proposta:** https://www.sobral.ce.gov.br/diario/pesquisa/index
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.caico.rn.gov.br/diario-oficial
-  → **URL Proposta:** https://caico.rn.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://joaopessoa.pb.gov.br//diario-oficial
-  → **URL Proposta:** https://www.joaopessoa.pb.gov.br/servico/portal-do-contribuinte/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.sousa.pb.gov.br/diario-oficial
-  → **URL Proposta:** https://www.sousa.pb.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.divinopolis.mg.gov.br/diario-oficial
-  → **URL Proposta:** https://www.divinopolis.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://vitoria.es.gov.br//diario-oficial
-  → **URL Proposta:** https://www.vitoria.es.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.araraquara.sp.gov.br/diario-oficial
-  → **URL Proposta:** https://www.araraquara.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.carapicuiba.sp.gov.br/diario-oficial
-  → **URL Proposta:** https://fateccarapicuiba.cps.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.maua.sp.gov.br/diario-oficial
-  → **URL Proposta:** https://www.maua.sp.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.guarapuava.pr.gov.br/diario-oficial
-  → **URL Proposta:** https://www.guarapuava.pr.gov.br/?s=estagios
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.umuarama.pr.gov.br/diario-oficial
-  → **URL Proposta:** https://www.umuarama.pr.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.blumenau.sc.gov.br/diario-oficial
-  → **URL Proposta:** https://www.blumenau.sc.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.brusque.sc.gov.br/diario-oficial
-  → **URL Proposta:** https://www.brusque.sc.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://pmf.sc.gov.br//diario-oficial
-  → **URL Proposta:** https://www.pmf.sc.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.joinville.sc.gov.br/diario-oficial
-  → **URL Proposta:** https://www.joinville.sc.gov.br/splash/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://portoalegre.rs.gov.br//diario-oficial
-  → **URL Proposta:** https://www2.portoalegre.rs.gov.br/portal_pmpa_sitespmpa/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://cuiaba.mt.gov.br//diario-oficial
-  → **URL Proposta:** https://www.cuiaba.mt.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.direitoshumanos.ce.gov.br
-  → **URL Proposta:** https://www.ce.gov.br/direitoshumanos/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.saude.es.gov.br/atas
-  → **URL Proposta:** http://www.saude.es.gov.br/contato_ces
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.ms.gov.br/atas
-  → **URL Proposta:** https://ces.saude.ms.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.pe.gov.br/ces
-  → **URL Proposta:** https://portal.saude.pe.gov.br/servico/conselho-estadual-de-saude-de-pernambuco/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.pe.gov.br/atas
-  → **URL Proposta:** https://portal.saude.pe.gov.br/servico/conselho-estadual-de-saude-de-pernambuco/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.rs.gov.br/atas
+- **URL Original:** https://www.saude.rs.gov.br/ces
   → **URL Proposta:** http://ces.rs.gov.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cacoal.ro.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.cacoal.ro.gov.br/index.php?pagina=gestao
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.tefe.am.gov.br/cmdca
-  → **URL Proposta:** https://tefe.am.gov.br/diario-oficial/materia/67053E32
+- **URL Original:** https://maceio.al.gov.br//conselhos/codema
+  → **URL Proposta:** https://maceio.al.gov.br/noticias/alurb/conselho-municipal-de-protecao-ao-meio-ambiente-define-agenda-prioritaria-para-2024
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://boavista.rr.gov.br//transparencia/conselhos
-  → **URL Proposta:** https://boavista.rr.gov.br/noticias/2024/6/saude-conselho-municipal-promove-1a-conferencia-de-gestao-do-trabalho-e-educacao-em-saude-de-boa-vista
+- **URL Original:** https://www.al.sp.gov.br/transparencia
+  → **URL Proposta:** https://servicos.sp.gov.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.itaituba.pa.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.itaituba.pa.gov.br/comissao
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.paragominas.pa.gov.br/conselhos/codema
-  → **URL Proposta:** https://camaraparagominas.pa.gov.br/lei-no-257-2000-de-26-de-junho-de-2000/lei-no-257-00-dispoe-sobre-a-criacao-e-regulamentacao-do-conselho-municipal-de-defesa-do-meio-ambiente-condema/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://macapa.ap.gov.br//conselhos/codema
-  → **URL Proposta:** https://macapa.ap.gov.br/secretario-da-semam-assume-presidencia-da-comissao-de-defesa-do-meio-ambiente/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.araguaina.to.gov.br/cmdca
-  → **URL Proposta:** https://antigo.araguaina.to.gov.br/Conteudo/CMDCA.aspx
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.imperatriz.ma.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://imperatriz.ma.gov.br/pmi/cmsi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.imperatriz.ma.gov.br/conselhos/codema
-  → **URL Proposta:** https://imperatriz.ma.gov.br/pmi/commam/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://teresina.pi.gov.br//conselhos/codema
-  → **URL Proposta:** https://antigo.pmt.pi.gov.br/teresinensedigital/meio-ambiente-e-recursos-hidricos/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.crato.ce.gov.br/conselhos/codema
-  → **URL Proposta:** https://crato.ce.gov.br/informa/5467/crato-celebra-20-anos-do-conselho-municipal-de-def
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sobral.ce.gov.br/cmdca
-  → **URL Proposta:** https://contratamaisbrasil.sistema.gov.br/eventos/162/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://natal.rn.gov.br//conselhos/codema
-  → **URL Proposta:** https://natal.rn.gov.br/semurb/conplam
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.araripina.pe.gov.br/cmdca
-  → **URL Proposta:** http://www.cedca.pe.gov.br/conselhos-tutelares-lista/41-conselhos/conselhos-tutelares/1533-araripina
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.jequie.ba.gov.br/transparencia/conselhos
-  → **URL Proposta:** http://www2.saude.ba.gov.br/cib/conselho_municipal.asp?CodCMS=636
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.passos.mg.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.passos.mg.gov.br/cmas-o-conselho
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.passos.mg.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.passos.mg.gov.br/portal/secretarias/16/meio-ambiente-agropecuaria-e-abastecimento
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.varginha.mg.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.varginha.mg.gov.br/portal/secretarias/14/secretaria-municipal-de-meio-ambiente---semea
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.bauru.sp.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.bauru.sp.gov.br/materia.aspx?n=26620
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.bauru.sp.gov.br/cmdca
-  → **URL Proposta:** https://www2.bauru.sp.gov.br/materia.aspx?n=48513
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.carapicuiba.sp.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.carapicuiba.sp.gov.br/portal/secretarias/46/conselho-municipal-de-saude---cms/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.marilia.sp.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.marilia.sp.gov.br/portal/noticias/0/3/14913/conselho-municipal-de-meio-ambiente-realiza-primeira-reuniao-de-2025-e-define-novas-diretrizes
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sorocaba.sp.gov.br/cmdca
-  → **URL Proposta:** https://cidadania.sorocaba.sp.gov.br/cmdca/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.apucarana.pr.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.apucarana.pr.gov.br/esporte/?page_id=1382
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.apucarana.pr.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.apucarana.pr.gov.br/site/orgaos-da-administracao/meio-ambiente/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.londrina.pr.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://saude.londrina.pr.gov.br/index.php/legislacao-cms/90-transparencia/conselho-municipal-de-saude.html
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.toledo.pr.gov.br/cmdca
-  → **URL Proposta:** https://www.toledo.pr.gov.br/municipio/conselhos_municipais/direitos_crianca_adolescente
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.erechim.rs.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.pmerechim.rs.gov.br/pagina/665/conselho-municipal-de-saude
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.erechim.rs.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.pmerechim.rs.gov.br/secretaria/15/secretaria-municipal-de-meio-ambiente
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portoalegre.rs.gov.br//transparencia/conselhos
-  → **URL Proposta:** https://ces.rs.gov.br/nota-publica-do-conselho-municipal-de-saude-de-porto-alegre
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portoalegre.rs.gov.br//conselhos/codema
-  → **URL Proposta:** https://www.camarapoa.rs.gov.br/noticias/aprovada-alteracao-na-composicao-do-conselho-municipal-do-meio-ambiente
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sinop.mt.gov.br/conselhos/codema
-  → **URL Proposta:** https://www.sinop.mt.gov.br/portal/secretarias/6/secretaria-de-meio-ambiente-e-desenvolvimento-sustentavel
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.sinop.mt.gov.br/cmdca
-  → **URL Proposta:** https://www.sinop.mt.gov.br/casa-dos-conselhos---direitos-da-crianca-e-do-adolescente---cmdca
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.semace.ce.gov.br
-  → **URL Proposta:** https://www.ce.gov.br/semace/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.gov.br/aneel
-  → **URL Proposta:** https://www.gov.br/aneel/pt-br
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://dadosabertos.almg.gov.br/api/v1
-  → **URL Proposta:** https://www.almg.gov.br/index.html
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.educacao.pr.gov.br/
-  → **URL Proposta:** https://www.educacao.pr.gov.br/desvio.php
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.gov.br/transportes/secretaria-nacional-de-tr
+- **URL Original:** https://www.gov.br/transportes/agencia-nacional-de-trans
   → **URL Proposta:** https://dados.transportes.gov.br/organization/transportes
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/transportes/departamento-nacional-de
-  → **URL Proposta:** https://dados.transportes.gov.br/organization/transportes
+- **URL Original:** https://www.cnj.jus.br/corregedoriacnj/fale-com-a-corregedoria/
+  → **URL Proposta:** https://www.cnj.jus.br/corregedoria/justica_aberta/?d=index&a=index&f=Principal
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/transportes
-  → **URL Proposta:** https://www.gov.br/transportes/pt-br
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.fazenda.mg.gov.br/gabinete-do-secretario
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.fazenda.mg.gov.br/subsecretaria-da-receita
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.fazenda.mg.gov.br/subsecretaria-do-tesouro
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.fazenda.mg.gov.br/conselho-de-contribuintes
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/secretaria-de-estado-de-fazenda-sef
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.mg.gov.br/subsecretaria-de-acesso-a
-  → **URL Proposta:** https://www.saude.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.saude.mg.gov.br/subsecretaria-de-vigilanc
-  → **URL Proposta:** https://www.saude.mg.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.senado.leg.br/plenario-do-senado
-  → **URL Proposta:** https://www25.senado.leg.br/web/atividade
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.senado.leg.br/comissao-de-assuntos-econ
-  → **URL Proposta:** https://www25.senado.leg.br/web/atividade
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.senado.leg.br/sabatina-de-autoridades
-  → **URL Proposta:** https://www25.senado.leg.br/web/atividade
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.senado.leg.br/advocacia-do-senado-e-con
-  → **URL Proposta:** https://www25.senado.leg.br/web/atividade
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.almg.gov.br/conheca/regimento-interno/
-  → **URL Proposta:** https://www.almg.gov.br/servicos/biblioteca/livraria-do-legislativo/obra/Regimento-Interno-da-ALMG-18-Edicao/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.stf.jus.br/textos/verTexto.asp?servico=legislacaoRegimentoInterno
-  → **URL Proposta:** https://portal.stf.jus.br/erro-404/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.tjmg.jus.br/portal-tjmg/institucional/regimento-interno.htm
-  → **URL Proposta:** https://tjmmg.jus.br/novo-regimento-interno-do-tjmg-e-aprovado/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.mpmg.mp.br/portal/menu/institucional/legislacao/lei-organica.shtml
-  → **URL Proposta:** https://www.almg.gov.br/legislacao-mineira/LCP/34/1994/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cnj.jus.br/sessoes-do-plenario/
-  → **URL Proposta:** https://justicaaberta.cnj.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.cnmp.mp.br/presidencia-direcao-geral
-  → **URL Proposta:** https://www.cnmp.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cnmp.mp.br/plenario-turmas
-  → **URL Proposta:** https://www.cnmp.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cnmp.mp.br/secretaria-geral
-  → **URL Proposta:** https://www.cnmp.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cnmp.mp.br/portal/institucional/corregedoria-nacional
-  → **URL Proposta:** https://www.cnmp.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.ce.def.br/defensoria-geral
+  - Estratégia de busca: site-dominio
+- **URL Original:** https://www.defensoria.ce.def.br/nucleo-de-execucao-penal
   → **URL Proposta:** https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara?menu=161
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.ce.def.br/ouvidoria-geral-externa
-  → **URL Proposta:** https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.ce.def.br/balcao-cidadao
-  → **URL Proposta:** https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara?menu=161
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.pa.def.br/defensoria-geral
-  → **URL Proposta:** https://www.pa.gov.br/orgao?id_orgao=53
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.pa.def.br/nucleo-de-direitos-humano
-  → **URL Proposta:** https://www.pa.gov.br/orgao?id_orgao=53
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.pa.def.br/nucleo-de-execucao-penal
-  → **URL Proposta:** https://www.pa.gov.br/orgao?id_orgao=53
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.pa.def.br/ouvidoria-geral-externa
-  → **URL Proposta:** https://www.pa.gov.br/orgao?id_orgao=53
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.defensoria.pa.def.br/balcao-cidadao
-  → **URL Proposta:** https://www.pa.gov.br/orgao?id_orgao=53
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.dpu.def.br/atuacao
-  → **URL Proposta:** http://www.dpu.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.dpu.def.br/atendimento
-  → **URL Proposta:** http://www.dpu.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.dpu.def.br/corregedoria-geral
-  → **URL Proposta:** http://www.dpu.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpal.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mpal.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpal.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mpal.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpal.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mpal.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpal.mp.br/atendimento
-  → **URL Proposta:** https://www.mpal.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpal.mp.br/corregedoria
-  → **URL Proposta:** https://www.mpal.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpam.mp.br/centros-de-apoio-operacio
+- **URL Original:** https://www.mpam.mp.br/corregedoria-geral-do-mp
   → **URL Proposta:** https://diario.mpam.mp.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpam.mp.br/gaeco
-  → **URL Proposta:** https://www.mpam.mp.br/sobre-o-mpam/funcoes-do-mpam
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpam.mp.br/corregedoria
+- **URL Original:** https://www.mpam.mp.br/ouvidoria-do-mp
   → **URL Proposta:** https://diario.mpam.mp.br/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mpba.mp.br/
+- **URL Original:** https://www.mpma.mp.br/centros-de-apoio-operacio
+  → **URL Proposta:** https://www.mpma.mp.br/institucional/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mpba.mp.br/
+- **URL Original:** https://www.mppr.mp.br/corregedoria-geral-do-mp
+  → **URL Proposta:** https://mppr.mp.br/Categoria-de-Pagina/MPPR
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/gaeco
-  → **URL Proposta:** https://www.mpba.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mpba.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/atendimento
-  → **URL Proposta:** https://www.mpba.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpba.mp.br/corregedoria
-  → **URL Proposta:** https://www.mpba.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpf.mp.br/pgr
-  → **URL Proposta:** https://www.mpf.mp.br/o-mpf/unidades/procuradoria-geral-da-republica-pgr
+- **URL Original:** https://www.tjba.jus.br/balcaovirtual
+  → **URL Proposta:** https://www.tjba.jus.br/manutencao/
   - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
   - Estratégia de busca: redirect
-- **URL Original:** https://www.mpf.mp.br/atuacao-tematica
-  → **URL Proposta:** https://www.mpf.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpf.mp.br/pgr/institucional/organograma
-  → **URL Proposta:** https://www.mpf.mp.br/servicos/mpf-servicos
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpf.mp.br/servicos/ouvidoria
-  → **URL Proposta:** https://www.mpf.mp.br/concursos/concursos
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpf.mp.br/pgr/orgaos-vinculados/corregedoria-do-mpf
-  → **URL Proposta:** https://www.mpf.mp.br/concursos/concursos
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpms.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mpms.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpms.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mpms.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpms.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mpms.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpms.mp.br/atendimento
-  → **URL Proposta:** https://www.mpms.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpms.mp.br/corregedoria
-  → **URL Proposta:** https://www.mpms.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpmt.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://mpmt.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpmt.mp.br/gaeco
-  → **URL Proposta:** https://mpmt.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpmt.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://mpmt.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpmt.mp.br/corregedoria
-  → **URL Proposta:** https://mpmt.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/gaeco
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/atendimento
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppa.mp.br/ouvidoria
-  → **URL Proposta:** https://www2.mppa.mp.br/sistemas/portaldeconsultas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/gaeco
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/atendimento
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppe.mp.br/corregedoria
-  → **URL Proposta:** https://portal.mppe.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/gaeco
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/atendimento
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/ouvidoria
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppi.mp.br/corregedoria
-  → **URL Proposta:** https://www.mppi.mp.br/internet/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppr.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://mppr.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppr.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://mppr.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/gaeco
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/ouvidoria
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprj.mp.br/corregedoria
-  → **URL Proposta:** https://www5.mprj.mp.br/consultaPublica/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprs.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mprs.mp.br/instituicao/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprs.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mprs.mp.br/instituicao/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mprs.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mprs.mp.br/contato/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpsc.mp.br/corregedoria
-  → **URL Proposta:** https://www.mpsc.mp.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpto.mp.br/corregedoria-geral-do-mp
-  → **URL Proposta:** https://www.mpto.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpto.mp.br/centros-de-apoio-operacio
-  → **URL Proposta:** https://www.mpto.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpto.mp.br/ouvidoria-do-mp
-  → **URL Proposta:** https://www.mpto.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mpto.mp.br/atendimento
-  → **URL Proposta:** https://www.mpto.mp.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.stf.jus.br/textos/verTexto.asp?servico=sobreStfComposicaoComposicao
-  → **URL Proposta:** https://portal.stf.jus.br/erro-404/
+- **URL Original:** https://www.tjba.jus.br/corregedoria
+  → **URL Proposta:** https://www.tjba.jus.br/manutencao/
   - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
   - Estratégia de busca: redirect
-- **URL Original:** https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional/Presidencia
-  → **URL Proposta:** https://www.stj.jus.br/sites/portalp/Inicio
+- **URL Original:** https://www.tjro.jus.br/presidencia
+  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-de-rondonia-tjro/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.stj.jus.br/sites/portalp/Institucional/Estrutura-organizacional
-  → **URL Proposta:** https://www.stj.jus.br/sites/portalp/Inicio
+- **URL Original:** https://www.tjro.jus.br/1a-vice-presidencia
+  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-de-rondonia-tjro/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.stj.jus.br/estrategia
-  → **URL Proposta:** https://transparencia.stj.jus.br/gestao/objetivos-estrategicos/
+- **URL Original:** https://www.tjro.jus.br/escola-da-magistratura
+  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-de-rondonia-tjro/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/presidencia
-  → **URL Proposta:** https://www.tjam.jus.br/
+- **URL Original:** https://www.tjro.jus.br/corregedoria
+  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-de-rondonia-tjro/
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/ouvidoria
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/corregedoria
-  → **URL Proposta:** https://www.tjam.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjba.jus.br/presidencia
+- **URL Original:** https://www.tjba.jus.br/contatos/contato/1a-vara-criminal-de-alagoinhas/
+  → **URL Proposta:** https://www.tjba.jus.br/manutencao/
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.tjba.jus.br/contatos/contato/1a-vara-criminal/
+  → **URL Proposta:** https://www.tjba.jus.br/manutencao/
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.apucarana.pr.gov.br/
+  → **URL Proposta:** https://www.apucarana.pr.gov.br/site/
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.araguaina.to.gov.br/portal/
+  → **URL Proposta:** https://www.araguaina.to.gov.br/insufficient-privileges
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.bauru.sp.gov.br/materia.aspx?n=26620
+  → **URL Proposta:** https://www2.bauru.sp.gov.br/materia.aspx?n=26620
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.bauru.sp.gov.br/default.aspx
+  → **URL Proposta:** https://www2.bauru.sp.gov.br/default.aspx
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.londrina.pr.gov.br/
+  → **URL Proposta:** https://portal.londrina.pr.gov.br/
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://diario.mpam.mp.br/
+  → **URL Proposta:** https://diario.mpam.mp.br/pages/home.jsf;jsessionid=228B1EF019D022862CEB866707BCD627
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** http://www.saude.es.gov.br/contato_ces
+  → **URL Proposta:** https://saude.es.gov.br/contato_ces
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** http://ces.rs.gov.br/
+  → **URL Proposta:** https://ces.rs.gov.br/inicial
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.tjba.jus.br/transparencia/orcamentaria/gestao-fiscal/
   → **URL Proposta:** https://www.tjba.jus.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjba.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjba.jus.br/portal/1a-vice-presidencia-2/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: chave-unica
-- **URL Original:** https://www.tjba.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjba.jus.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjba.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjba.jus.br/portal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjce.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjce.jus.br/vice-presidencia/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: chave-unica
-- **URL Original:** https://www.tjce.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjce.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/presidencia
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/ouvidoria
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpe.jus.br/corregedoria
-  → **URL Proposta:** https://portal.tjpe.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpi.jus.br/presidencia
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpi.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: chave-unica
-- **URL Original:** https://www.tjpi.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpi.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpi.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjpi.jus.br/ouvidoria
-  → **URL Proposta:** https://www.tjpi.jus.br/portaltjpi/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrn.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://tjrn.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrn.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://tjrn.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrn.jus.br/balcaovirtual
-  → **URL Proposta:** https://tjrn.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjro.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjro.jus.br/inicio
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjro.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjro.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/presidencia
-  → **URL Proposta:** https://www.tjrr.jus.br/index.php/component/content/?Itemid=437
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://juris.tjrr.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.tjrr.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjrr.jus.br/index.php/component/content/?Itemid=437
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjrr.jus.br/index.php/component/content/?Itemid=437
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjrr.jus.br/index.php/component/content/?Itemid=437
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrr.jus.br/ouvidoria
-  → **URL Proposta:** https://www.tjrr.jus.br/index.php/component/content/?Itemid=437
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/presidencia
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/institucional/administracao/secretaria-da-1a-vice-presidencia/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: chave-unica
-- **URL Original:** https://www.tjrs.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/ouvidoria
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjrs.jus.br/corregedoria
-  → **URL Proposta:** https://www.tjrs.jus.br/novo/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjsc.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjsc.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjsc.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjsc.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjsc.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjsc.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjsc.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjsc.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjto.jus.br/presidencia
-  → **URL Proposta:** https://www.tjto.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjto.jus.br/1a-vice-presidencia
-  → **URL Proposta:** https://www.tjto.jus.br/?rel=outbound
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: chave-unica
-- **URL Original:** https://www.tjto.jus.br/escola-da-magistratura
-  → **URL Proposta:** https://www.tjto.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjto.jus.br/ouvidoria-geral
-  → **URL Proposta:** https://www.tjto.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjto.jus.br/balcaovirtual
-  → **URL Proposta:** https://www.tjto.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjto.jus.br/corregedoria
-  → **URL Proposta:** https://www.tjto.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trf6.jus.br/institucional/composicao-da-corte/
-  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-regional-federal-da-6a-regiao-trf6/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://portal.trf6.jus.br/servicos-judiciais/jurisdicao-e-competencia/
-  → **URL Proposta:** https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-regional-federal-da-6a-regiao-trf6/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://portal.trt3.jus.br/internet/institucional/administracao/presidencia
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/institucional/administracao
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/institucional/composicao/turmas
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/conheca-o-trt/jurisdicao-e-enderecos
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/servicos/balcao-virtual
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://portal.trt3.jus.br/internet/institucional/administracao/corregedoria/atendimento
-  → **URL Proposta:** https://www.trt3.jus.br/images/default_tvtrt.htm
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tst.jus.br/presidencia-direcao-geral
-  → **URL Proposta:** https://www.tst.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tst.jus.br/plenario-turmas
-  → **URL Proposta:** https://www.tst.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tst.jus.br/secretaria-geral
-  → **URL Proposta:** https://www.tst.jus.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://balcaovirtual.tjba.jus.br/atendimento
-  → **URL Proposta:** https://www.tjba.jus.br/contatos/contato/1a-vara-criminal-de-alagoinhas/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://balcaovirtual.tjba.jus.br/comarca/salvador
-  → **URL Proposta:** https://www.tjba.jus.br/contatos/contato/1a-vara-criminal/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.al.sp.gov.br/deputado/todos
-  → **URL Proposta:** https://www.al.sp.gov.br/deputado/?matricula=300678
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.al.al.leg.br/deputado/marcelo-victor
-  → **URL Proposta:** https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar/2026/marcelo-victor
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.cl.df.gov.br/deputados/wellington-luiz
-  → **URL Proposta:** https://www.cl.df.gov.br/wellington-luiz-2011-2014
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.cl.df.gov.br/deputados/chico-vigilante
-  → **URL Proposta:** https://www.cl.df.gov.br/chico-vigilante
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://portal.al.go.leg.br/deputados/bruno-peixoto
-  → **URL Proposta:** https://portal.al.go.leg.br/deputados/perfil/51
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.al.mt.gov.br/deputados/eduardo-botelho
-  → **URL Proposta:** https://www.al.mt.gov.br/midia/texto/deputado-eleito-jose-eduardo-botelho/visualizar
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.assembleia.pr.leg.br/deputados/alexandre-curi
-  → **URL Proposta:** https://www.assembleia.pr.leg.br/deputados/perfil/alexandre-curi
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://itabuna.ba.gov.br/2023/08/10/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizacoes-da-sociedade-civil/
-  → **URL Proposta:** https://itabuna.ba.gov.br/noticias/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizaco-14170/
   - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
   - Estratégia de busca: redirect
-- **URL Original:** https://itabuna.ba.gov.br/2026/03/05/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026/
-  → **URL Proposta:** https://itabuna.ba.gov.br/noticias/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026-17487/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://itabuna.ba.gov.br/2025/01/02/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-presidentes-de-fundacoes-e-ordenadores-de-despesa/
-  → **URL Proposta:** https://itabuna.ba.gov.br/noticias/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-15713/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.tjpr.jus.br/corregedoria-geral
-  → **URL Proposta:** https://www.tjpr.jus.br/web/corregedoria-geral
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.gov.br/aneel/pt-br/assuntos/leiloes-de-transmissao
-  → **URL Proposta:** https://dadosabertos.aneel.gov.br/dataset/resultado-de-leiloes
+- **URL Original:** https://www.gov.br/aneel/pt-br/composicao/sfg
+  → **URL Proposta:** https://www.gov.br/aneel/pt-br/composicao/fiscalizacao-dos-servicos-e-instalacoes-de-energia-eletrica/superintendencia-de-fiscalizacao-tecnica-dos-servicos-de-energia-eletrica-sft
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://compras.dados.gov.br
-  → **URL Proposta:** http://comprasnet.gov.br/acesso.asp?url
+- **URL Original:** https://www.transparencia.ba.gov.br/Pessoal
+  → **URL Proposta:** https://www.portaltransparencia.gov.br/download-de-dados/servidores
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.ief.mg.gov.br/institucional/diretoria-de-conservacao-e-recuperacao-de-ecossistemas
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/diretoria-de-conservacao-e-recuperacao-de-ecossistema-dcre
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/iphan/pt-br/composicao/cna
-  → **URL Proposta:** https://www.gov.br/iphan/pt-br/acesso-a-informacao/institucional/estrutura/centro-nacional-de-arqueologia-cna
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/iphan/pt-br/composicao/dpi
-  → **URL Proposta:** https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-imaterial/departamento-de-patrimonio-imaterial-dpi-1
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.gov.br/aneel/pt-br/composicao/srt
-  → **URL Proposta:** https://www.gov.br/aneel/pt-br/composicao/regulacao-setor-eletrico/superintendencia-de-regulacao-dos-servicos-de-transmissao-e-distribuicao-de-energia-eletrica-sdt
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.semas.pa.gov.br/institucional/dla
-  → **URL Proposta:** https://servicos.ibama.gov.br/licenciamento/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.inema.ba.gov.br/institucional/diretoria-de-regulacao
-  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
 
 ---
 *User-Agent utilizado: `ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular; verificador de links - LinkMender v2)`*
