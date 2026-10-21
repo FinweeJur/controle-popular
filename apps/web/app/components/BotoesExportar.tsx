@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { Download, Printer, Copy, CheckCircle2 } from "lucide-react";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
 
-export interface BotoesExportarProps<T extends Record<string, any>> {
+export interface BotoesExportarProps<T extends object> {
   /** Dados filtrados na tela — array de objetos planos. */
   dados: readonly T[];
   /** Colunas do CSV (reutiliza ColunaCsv do lib/tabela/csv). */
@@ -15,7 +16,7 @@ export interface BotoesExportarProps<T extends Record<string, any>> {
   textoClipboard?: string;
 }
 
-export default function BotoesExportar<T extends Record<string, any>>({
+export default function BotoesExportar<T extends object>({
   dados,
   colunas,
   nomeArquivo,
@@ -54,41 +55,47 @@ export default function BotoesExportar<T extends Record<string, any>>({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <button
-        type="button"
-        onClick={exportarCsv}
-        disabled={dados.length === 0}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface disabled:opacity-40"
-        aria-label="Baixar planilha CSV"
-      >
-        <Download className="h-3.5 w-3.5 text-primary" />
-        CSV
-      </button>
+      <BotaoBrilho raio={8} forca={0.12} afastamento={18}>
+        <button
+          type="button"
+          onClick={exportarCsv}
+          disabled={dados.length === 0}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface disabled:opacity-40"
+          aria-label="Baixar planilha CSV"
+        >
+          <Download className="h-3.5 w-3.5 text-primary" />
+          CSV
+        </button>
+      </BotaoBrilho>
 
-      <button
-        type="button"
-        onClick={copiarTexto}
-        disabled={dados.length === 0}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface disabled:opacity-40"
-        aria-label="Copiar dados para a área de transferência"
-      >
-        {copiado ? (
-          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-        ) : (
-          <Copy className="h-3.5 w-3.5 text-muted" />
-        )}
-        {copiado ? "Copiado!" : "Copiar"}
-      </button>
+      <BotaoBrilho raio={8} forca={0.12} afastamento={18}>
+        <button
+          type="button"
+          onClick={copiarTexto}
+          disabled={dados.length === 0}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface disabled:opacity-40"
+          aria-label="Copiar dados para a área de transferência"
+        >
+          {copiado ? (
+            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+          ) : (
+            <Copy className="h-3.5 w-3.5 text-muted" />
+          )}
+          {copiado ? "Copiado!" : "Copiar"}
+        </button>
+      </BotaoBrilho>
 
-      <button
-        type="button"
-        onClick={imprimir}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface"
-        aria-label="Imprimir esta página"
-      >
-        <Printer className="h-3.5 w-3.5 text-muted" />
-        Imprimir
-      </button>
+      <BotaoBrilho raio={8} forca={0.12} afastamento={18}>
+        <button
+          type="button"
+          onClick={imprimir}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface"
+          aria-label="Imprimir esta página"
+        >
+          <Printer className="h-3.5 w-3.5 text-muted" />
+          Imprimir
+        </button>
+      </BotaoBrilho>
     </div>
   );
 }

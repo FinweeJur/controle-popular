@@ -189,6 +189,23 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["cidades", "municipios", "199", "prefeituras", "minas gerais", "interior"],
   },
   {
+    id: "eleicoes-2026-transporte-gratuito",
+    titulo: "Transporte grátis nas Eleições 2026",
+    descricao:
+      "Gratuidade no transporte coletivo urbano nos dois turnos, políticas de estados e capitais, 27 TREs e denúncias sobre falta ou redução do serviço.",
+    href: "/eleicoes/2026/transporte-gratuito",
+    frente: "geral",
+    rotulo: "Eleições 2026 — Transporte",
+    badgeCor: "var(--cp-geral, #7c7c9c)",
+    palavrasChave: [
+      "transporte gratuito", "tarifa zero", "passe livre", "eleicoes 2026",
+      "segundo turno", "primeiro turno", "onibus", "metro", "vlt", "brt",
+      "tre", "tse", "mpf", "dpu", "seu voto importa", "transporte rural",
+      "transporte fluvial", "denuncia", "cobranca", "falta de onibus", "frota", "linhas",
+      "governo da bahia", "governo do ceara", "prefeitura", "capital", "polo",
+    ],
+  },
+  {
     id: "ambiental-mariana",
     titulo: "Acordo do Rio Doce (Mariana) — Repactuação de R$ 171 Bi",
     descricao: "Execução orçamentária dos R$ 171 bilhões do Acordo de Mariana: repasses estaduais e obras na bacia.",

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown, RotateCcw, Search } from "lucide-react";
 
 import BotoesExportar from "@/app/components/BotoesExportar";
+import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import { normalizar, type Direcao } from "@/lib/tabela/ordenavel";
 import type {
@@ -26,6 +27,63 @@ const ROTULO_TIPO: Record<TipoPolitica, string> = {
   metropolitana: "Metropolitana",
   municipal: "Municipal",
 };
+
+/** Políticas permanentes de domingo que também cobrem 25/10. */
+const POLITICAS_PERMANENTES = new Set([
+  "belem-municipal",
+  "canoas-municipal",
+  "caruaru-municipal",
+  "caucaia-municipal",
+  "cuiaba-municipal",
+]);
+
+/**
+ * Domínios de órgão público. O destaque "Fonte pública" só aparece quando o
+ * link é do próprio ente (governo, TRE, MP, DPU, prefeitura ou agência).
+ * Imprensa continua identificada como imprensa.
+ */
+const DOMINIOS_PUBLICOS = [
+  "gov.br",
+  "jus.br",
+  "leg.br",
+  "mp.br",
+  "def.br",
+  "prefeitura.rio",
+  "prefeitura.poa.br",
+  "agenciapara.com.br",
+  "sptrans.com.br",
+  "agenciabelem.com.br",
+  "prefeiturademossoro.com.br",
+];
+
+const FONTE_DOCUMENTO_OFICIAL = new Set(["campo-grande-municipal"]);
+
+function ehFontePublica(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+    return DOMINIOS_PUBLICOS.some(
+      (dominio) => host === dominio || host.endsWith(`.${dominio}`),
+    );
+  } catch {
+    return false;
+  }
+}
+
+function rotuloFonte(politica: PoliticaTransporte): string {
+  if (FONTE_DOCUMENTO_OFICIAL.has(politica.id)) return "Documento oficial";
+  return ehFontePublica(politica.fonteUrl) ? "Fonte pública" : "Imprensa";
+}
+
+function classeFonte(politica: PoliticaTransporte): string {
+  const rotulo = rotuloFonte(politica);
+  if (rotulo === "Fonte pública") {
+    return "border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300";
+  }
+  if (rotulo === "Documento oficial") {
+    return "border-sky-500/40 bg-sky-500/10 text-sky-800 dark:text-sky-300";
+  }
+  return "border-border bg-surface-2 text-text-soft";
+}
 
 const MESES = [
   "jan",
@@ -86,6 +144,16 @@ const COLUNAS_CSV: readonly ColunaCsv<PoliticaTransporte>[] = [
     chave: "fonteData",
     rotulo: "Data da fonte",
     formatar: (valor) => formatarData(String(valor)),
+  },
+  {
+    chave: "id",
+    rotulo: "Natureza da fonte",
+    formatar: (_valor, linha) => rotuloFonte(linha),
+  },
+  {
+    chave: "id",
+    rotulo: "Política permanente",
+    formatar: (_valor, linha) => (POLITICAS_PERMANENTES.has(linha.id) ? "Sim" : "Não"),
   },
   { chave: "observacao", rotulo: "Observação" },
 ];
@@ -232,14 +300,16 @@ export default function TabelaTransporte({
           </select>
         </label>
 
-        <button
-          type="button"
-          onClick={limpar}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-2 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-        >
-          <RotateCcw className="h-3.5 w-3.5" />
-          Limpar
-        </button>
+        <BotaoBrilho raio={8} forca={0.12} afastamento={20}>
+          <button
+            type="button"
+            onClick={limpar}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-2 text-xs font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            Limpar
+          </button>
+        </BotaoBrilho>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -292,9 +362,16 @@ export default function TabelaTransporte({
                     <p className="text-xs opacity-70">{politica.cobertura}</p>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3 align-top">
-                    <span className="inline-flex rounded-full border border-border bg-surface px-2 py-0.5 text-xs">
-                      {ROTULO_TIPO[politica.tipo]}
-                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="inline-flex rounded-full border border-border bg-surface px-2 py-0.5 text-xs">
+                        {ROTULO_TIPO[politica.tipo]}
+                      </span>
+                      {POLITICAS_PERMANENTES.has(politica.id) ? (
+                        <span className="inline-flex rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[10px] text-text-soft">
+                          Permanente
+                        </span>
+                      ) : null}
+                    </div>
                   </td>
                   <td className="px-3 py-3 align-top">
                     <p>{politica.modalidades}</p>
@@ -310,7 +387,14 @@ export default function TabelaTransporte({
                     >
                       {politica.fonteNome}
                     </a>
-                    <p className="mt-1 text-xs opacity-70">{formatarData(politica.fonteData)}</p>
+                    <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs">
+                      <span
+                        className={`inline-flex rounded-full border px-1.5 py-0.5 text-[10px] font-semibold ${classeFonte(politica)}`}
+                      >
+                        {rotuloFonte(politica)}
+                      </span>
+                      <span className="opacity-70">{formatarData(politica.fonteData)}</span>
+                    </p>
                   </td>
                 </tr>
               ))

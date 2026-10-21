@@ -200,6 +200,10 @@ dia confirmado.
 - [x] Links externos abrem em nova aba com `rel` seguro.
 - [x] Texto distingue obrigação nacional, política local e transporte da JE.
 - [x] Metodologia declara amostra e data.
+- [x] Página indexada na busca, no Seu Nonô e linkada na home.
+- [x] Cards com magnet leve, TREs compactos e fontes públicas destacadas.
+- [x] Páginas relacionadas ao final.
+- [x] Revisor de fatos, links e declarações aplicado.
 - [x] `typecheck`, `eslint` e testes da lib verdes.
 - [ ] Validador global de docs verde; `AUDITORIA-GERAL.md`, gerado por outra
   rotina, está sem frontmatter.
@@ -244,3 +248,8 @@ python scripts/validar-documentacao.py
   Cuiabá) e 16 denúncias/cobranças do MPF, DPU, partidos, entidades da
   sociedade civil e imprensa. Total: 31 políticas, 19 UFs e 69 URLs auditadas,
   sem link morto.
+- **21/10/2026 — revisão e integração.** Revisor de fatos/links corrigiu o
+  caso do Vale do Javari, o enquadramento de candidato/partido, fontes
+  estaduais de CE/RJ e declarações sobre zonas urbanas. A página ganhou cards
+  compactos de TRE, selo “Fonte pública”/“Imprensa”, magnet leve, links
+  relacionados, entrada na busca, no Seu Nonô e na home.

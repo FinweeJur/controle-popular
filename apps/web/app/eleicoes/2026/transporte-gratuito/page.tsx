@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
-import { IndiceWiki, SecaoWiki } from "@/app/components/wiki";
+import SpotlightCard from "@/app/components/react-bits/SpotlightCard";
+import { IndiceWiki, LinksRelacionados, SecaoWiki } from "@/app/components/wiki";
 import { metadataEditavel } from "@/lib/edicoes";
 import {
   acervoTransporte,
   formatarDataFonte,
-  ROTULOS_FONTE_DENUNCIA,
   ROTULOS_STATUS,
   type StatusTre,
 } from "@/lib/eleicoes/transporte-2026";
@@ -48,7 +48,7 @@ export const metadata: Metadata = metadataEditavel(
     title:
       "Transporte grátis nas Eleições 2026: o que cada estado e TRE publicou",
     description:
-      "Gratuidade no transporte coletivo nos dois turnos das Eleições 2026, o transporte especial da Justiça Eleitoral, o que os 27 TREs publicaram e as políticas e denúncias localizadas até 21/10/2026.",
+      "Gratuidade no transporte coletivo urbano nos dois turnos das Eleições 2026, o transporte especial da Justiça Eleitoral, o que os 27 TREs publicaram e as políticas e denúncias localizadas até 21/10/2026.",
   },
 );
 
@@ -79,9 +79,9 @@ const BASES_LEGAIS: BaseLegal[] = [
     titulo: "ADPF 1013",
     orgao: "STF · 2023",
     texto:
-      "O Supremo reconheceu o dever do Poder Público de oferecer transporte coletivo urbano, intermunicipal e metropolitano gratuito nos dias de eleição, com frequência de dias úteis. A decisão vale para os dois turnos e para todos os municípios.",
+      "O Supremo reconheceu o dever do Poder Público de oferecer transporte coletivo urbano, intermunicipal e metropolitano gratuito nos dias de eleição, com frequência de dias úteis. A decisão vale para os dois turnos, nas zonas urbanas de todos os municípios.",
     url: "https://www.stf.jus.br/arquivo/cms/publicacaoBOInternet/anexo/link_download/casos_relevantes/pt/ADPF_1013.pdf",
-    rotulo: "Ler a decisão do STF",
+    rotulo: "Ler o resumo oficial do caso (STF)",
   },
   {
     titulo: "Resolução TSE 23.751/2026",
@@ -95,7 +95,7 @@ const BASES_LEGAIS: BaseLegal[] = [
     titulo: "Lei 6.091/1974",
     orgao: "Congresso Nacional",
     texto:
-      "Cria o transporte gratuito da Justiça Eleitoral para eleitores da zona rural, em regra dentro do município e a partir de 2 km. Os veículos ficam à disposição da JE e recebem a identificação “A serviço da Justiça Eleitoral”.",
+      "Cria o transporte gratuito da Justiça Eleitoral para eleitores da zona rural, em regra dentro do município e quando a distância das zonas rurais ao local de votação for de pelo menos 2 km. Os veículos ficam à disposição da JE e recebem a identificação “A serviço da Justiça Eleitoral”.",
     url: "https://www.planalto.gov.br/ccivil_03/leis/l6091.htm",
     rotulo: "Ler a lei",
   },
@@ -121,23 +121,23 @@ const TENSOES = [
   {
     titulo: "A obrigação não depende de decreto municipal",
     texto:
-      "Município que não publicou decreto não está automaticamente liberado. A decisão do STF e a resolução do TSE valem em todo o país; o decreto organiza a operação, não cria o direito.",
+      "Município que não publicou decreto não está automaticamente liberado. A decisão do STF e a resolução do TSE valem nas zonas urbanas de todo o país; o decreto organiza a operação, não cria o direito.",
     fonte: "ADPF 1013 e Res. TSE 23.751/2026",
     url: "https://www.stf.jus.br/arquivo/cms/publicacaoBOInternet/anexo/link_download/casos_relevantes/pt/ADPF_1013.pdf",
   },
   {
     titulo: "Candidato e partido não podem bancar o transporte",
     texto:
-      "A Justiça Eleitoral alerta que transporte oferecido por candidato, partido ou coligação no dia da votação pode configurar abuso e compra de voto. A redução injustificada da frota também pode ser crime eleitoral.",
+      "A Justiça Eleitoral alerta que transporte oferecido por candidato, partido ou coligação no dia da votação pode configurar crime eleitoral, nos termos do art. 11 da Lei 6.091/1974 e do art. 302 do Código Eleitoral. A redução injustificada da frota também pode ser crime eleitoral.",
     fonte: "TRE-AL e Res. TSE 23.751/2026",
-    url: "https://www.tre-al.jus.br/comunicacao/noticias/2026/Outubro/eleicoes-2026-transporte-gratuito-de-eleitores-nao-pode-ser-oferecido-por-candidatos-partidos-ou-coligacoes",
+    url: "https://www.tre-al.jus.br/comunicacao/noticias/2026/Outubro/tre-al-garante-transporte-gratuito-de-eleitores-em-todo-o-estado-e-alerta-para-proibicao-do-servico-por-candidatos-e-partidos",
   },
   {
-    titulo: "Amazonas: direito reconhecido, logística limitada",
+    titulo: "Amazonas: pedido negado, logística limitada",
     texto:
-      "O TRE-AM reconheceu o direito, mas a UNIVAJA negou transporte a 44 aldeias por falta de condições logísticas. O tribunal orientou a JE a atender 116 localidades indígenas por outros meios. Direito reconhecido não é o mesmo que vaga garantida.",
+      "O TRE-AM negou o pedido da UNIVAJA para transportar eleitores de 44 aldeias do Vale do Javari no 2º turno. A decisão reconheceu a legitimidade da entidade, mas apontou prazos vencidos, falta de dotação e inviabilidade logística. O tribunal informou que o Amazonas tem 116 locais de votação em comunidades indígenas.",
     fonte: "TRE-AM",
-    url: "https://www.tre-am.jus.br/comunicacao/noticias/2026/Outubro/transporte-gratuito-no-dia-da-eleicao-e-garantido-a-eleitores-indigenas-do-amazonas",
+    url: "https://www.tre-am.jus.br/comunicacao/noticias/2026/Outubro/tre-am-esclarece-atuacao-no-transporte-de-eleitores-em-areas-indigenas-e-de-dificil-acesso",
   },
   {
     titulo: "A PEC de 21/10 não muda a regra deste domingo",
@@ -163,7 +163,7 @@ const FONTES: FonteAbnt[] = [
   },
   {
     referencia:
-      "BRASIL. Tribunal Superior Eleitoral. Resolução nº 23.751, de 26 de fevereiro de 2026. Dispõe sobre a gratuidade do transporte nos dias de votação.",
+      "BRASIL. Tribunal Superior Eleitoral. Resolução nº 23.751, de 26 de fevereiro de 2026. Dispõe sobre os atos gerais do processo eleitoral para as Eleições 2026; o art. 23 trata da gratuidade do transporte nos dias de votação.",
     url: "https://www.tse.jus.br/legislacao/compilada/res/2026/resolucao-no-23-751-de-26-de-fevereiro-de-2026",
     rotulo: "Disponível no TSE",
   },
@@ -260,11 +260,14 @@ function CartaoResumo({
   detalhe: string;
 }) {
   return (
-    <div className="rounded-xl border border-border bg-surface-2/60 p-4">
+    <SpotlightCard
+      className="rounded-xl border border-border bg-surface-2/60 p-4"
+      ariaLabel={`${rotulo}: ${valor}`}
+    >
       <p className="font-display text-2xl font-bold text-primary">{valor}</p>
       <p className="mt-1 text-sm font-semibold">{rotulo}</p>
       <p className="mt-1 text-xs leading-relaxed text-text-soft">{detalhe}</p>
-    </div>
+    </SpotlightCard>
   );
 }
 
@@ -273,6 +276,24 @@ function EtiquetaStatus({ status }: { status: StatusTre }) {
     <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] font-medium text-text-soft">
       <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
       {ROTULOS_STATUS[status]}
+    </span>
+  );
+}
+
+function EtiquetaFontePublica() {
+  return (
+    <span className="inline-flex rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 dark:text-emerald-300">
+      Fonte pública
+    </span>
+  );
+}
+
+function EtiquetaFonteDenuncia({ oficial }: { oficial: boolean }) {
+  return oficial ? (
+    <EtiquetaFontePublica />
+  ) : (
+    <span className="inline-flex rounded-full border border-border bg-surface px-2 py-0.5 text-[10px] font-semibold text-text-soft">
+      Imprensa
     </span>
   );
 }
@@ -306,7 +327,7 @@ export default function Page() {
         </h1>
         <ResumoExpandivel
           className="mt-3 max-w-3xl text-text-soft"
-          texto={`Nos dias ${datasDosTurnos}, o transporte coletivo é gratuito por decisão do STF e pela Resolução 23.751/2026 do TSE. Esta página separa essa obrigação nacional do transporte especial da Justiça Eleitoral e reúne o que ${tres.length} TREs, ${politicas.length} políticas estaduais, distritais, municipais e de polos e ${denuncias.length} denúncias ou cobranças localizaram até ${formatarDataFonte(geradoEm)}. É amostra verificada, não censo.`}
+          texto={`Nos dias ${datasDosTurnos}, o transporte coletivo urbano é gratuito por decisão do STF e pela Resolução 23.751/2026 do TSE. Esta página separa essa obrigação nacional do transporte especial da Justiça Eleitoral e reúne o que ${tres.length} TREs, ${politicas.length} políticas estaduais, distritais, municipais e de polos e ${denuncias.length} denúncias ou cobranças localizaram até ${formatarDataFonte(geradoEm)}. É amostra verificada, não censo.`}
         />
         <p className="mt-2 text-xs text-text-soft">
           Última verificação: {formatarDataFonte(geradoEm)} · Amostra declarada,
@@ -321,7 +342,7 @@ export default function Page() {
           <CartaoResumo
             valor="2 turnos"
             rotulo="Obrigação nacional"
-            detalhe={`${datasDosTurnos}: gratuidade em todo o país, inclusive onde não há decreto.`}
+            detalhe={`${datasDosTurnos}: gratuidade nas zonas urbanas de todo o país, inclusive onde não há decreto.`}
           />
           <CartaoResumo
             valor={`${tres.length} TREs`}
@@ -331,16 +352,22 @@ export default function Page() {
           <CartaoResumo
             valor={String(politicas.length)}
             rotulo="Políticas confirmadas"
-            detalhe={`${UFS_COM_POLITICA} UFs com política mapeada: estados, DF, Região Metropolitana de Goiânia, capitais e polos. Inclui ${denuncias.length} denúncias ou cobranças.`}
+            detalhe={`${UFS_COM_POLITICA} UFs com política mapeada: estados, DF, Região Metropolitana de Goiânia, capitais e polos. Cinco são políticas permanentes de domingo que cobrem 25/10.`}
           />
         </div>
 
+        <p className="mt-3 text-xs leading-relaxed text-text-soft">
+          As {denuncias.length} denúncias ou cobranças são uma lista separada
+          das políticas confirmadas e estão na seção 6. Elas não entram na
+          contagem das {politicas.length} políticas.
+        </p>
+
         <div className="mt-5 space-y-3 text-sm leading-relaxed">
           <p>
-            A gratuidade universal é a regra: no dia da votação, o transporte
-            coletivo deve funcionar com a frequência de um dia útil e sem
-            cobrança. O que muda de lugar para lugar é a organização da
-            operação, não o direito.
+            A gratuidade universal é a regra nas zonas urbanas: no dia da
+            votação, o transporte coletivo deve funcionar com a frequência de
+            um dia útil e sem cobrança. O que muda de lugar para lugar é a
+            organização da operação, não o direito.
           </p>
           <p>
             O transporte da Justiça Eleitoral é outra coisa. Ele atende quem
@@ -353,9 +380,10 @@ export default function Page() {
       <SecaoWiki id="lei" titulo="2. O que a lei obriga">
         <div className="grid gap-3 sm:grid-cols-2">
           {BASES_LEGAIS.map((base) => (
-            <article
+            <SpotlightCard
               key={base.titulo}
               className="rounded-xl border border-border bg-surface-2/40 p-4"
+              ariaLabel={base.titulo}
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
                 {base.orgao}
@@ -369,7 +397,7 @@ export default function Page() {
               <LinkFonte href={base.url} className="mt-3 inline-block text-sm">
                 {base.rotulo}
               </LinkFonte>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
 
@@ -400,17 +428,18 @@ export default function Page() {
         </p>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <article className="rounded-xl border border-border bg-surface-2/40 p-4">
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Zona rural">
             <h3 className="font-display text-base font-semibold">
               Zona rural
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-text-soft">
-              Transporte gratuito em regra dentro do município e a partir de 2
-              km da residência. Os veículos são identificados como “A serviço
-              da Justiça Eleitoral”.
+              Transporte gratuito em regra dentro do município e quando a
+              distância das zonas rurais ao local de votação for de pelo menos
+              2 km. Os veículos são identificados como “A serviço da Justiça
+              Eleitoral”.
             </p>
-          </article>
-          <article className="rounded-xl border border-border bg-surface-2/40 p-4">
+          </SpotlightCard>
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Seu Voto Importa">
             <h3 className="font-display text-base font-semibold">
               Seu Voto Importa
             </h3>
@@ -419,8 +448,8 @@ export default function Page() {
               ou mobilidade reduzida, executado pelo TRE, conforme pedido e
               disponibilidade.
             </p>
-          </article>
-          <article className="rounded-xl border border-border bg-surface-2/40 p-4">
+          </SpotlightCard>
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Como pedir">
             <h3 className="font-display text-base font-semibold">
               Como pedir
             </h3>
@@ -429,7 +458,7 @@ export default function Page() {
               do prazo podem ser analisados conforme disponibilidade, mas não
               há garantia automática.
             </p>
-          </article>
+          </SpotlightCard>
         </div>
 
         <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-4">
@@ -488,37 +517,48 @@ export default function Page() {
             {CONTAGEM_STATUS["sem-pagina"]} sem página específica
           </span>
         </div>
+        <p className="mt-2 text-xs text-text-soft">
+          Todos os links desta seção são de tribunais regionais eleitorais:
+          fonte pública.
+        </p>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {tres.map((tre) => (
-            <article
+            <SpotlightCard
               key={tre.uf}
-              className="flex h-full flex-col rounded-xl border border-border bg-surface-2/40 p-4"
+              className="flex h-full flex-col rounded-xl border border-border bg-surface-2/40 p-3"
+              ariaLabel={`${tre.uf} — ${tre.nome}`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-text-soft">
                     {tre.uf}
                   </p>
-                  <h3 className="font-display text-base font-semibold leading-snug">
+                  <h3 className="font-display text-sm font-semibold leading-snug">
                     {tre.nome}
                   </h3>
                 </div>
                 <EtiquetaStatus status={tre.status} />
               </div>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-text-soft">
+              <p className="mt-1.5 line-clamp-2 flex-1 text-xs leading-relaxed text-text-soft">
                 {tre.resumo}
               </p>
-              <p className="mt-2 text-xs leading-relaxed opacity-70">
+              <p
+                className="mt-1 line-clamp-1 text-[10px] leading-relaxed opacity-70"
+                title={tre.observacao}
+              >
                 {tre.observacao}
               </p>
-              <LinkFonte href={tre.fonteUrl} className="mt-3 text-xs">
-                {tre.fonteNome}
-              </LinkFonte>
-              <p className="mt-1 text-[11px] opacity-60">
+              <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                <LinkFonte href={tre.fonteUrl} className="text-[11px]">
+                  {tre.fonteNome}
+                </LinkFonte>
+                <EtiquetaFontePublica />
+              </div>
+              <p className="mt-1 text-[10px] opacity-60">
                 {formatarDataFonte(tre.fonteData)}
               </p>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
       </SecaoWiki>
@@ -528,6 +568,12 @@ export default function Page() {
           A tabela reúne gratuidade universal, isenções e programas
           municipais confirmados em fonte oficial ou de imprensa. Filtre por
           UF, tipo ou palavra-chave; o CSV baixa exatamente o que está na tela.
+        </p>
+        <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-text-soft">
+          <span><strong>Fonte pública:</strong> gov.br, jus.br, leg.br, mp.br, def.br ou órgão oficial.</span>
+          <span><strong>Imprensa:</strong> G1, Folha e veículos equivalentes.</span>
+          <span><strong>Documento oficial:</strong> decreto em PDF hospedado fora do domínio do ente.</span>
+          <span><strong>Permanente:</strong> política de domingo que também cobre 25/10.</span>
         </p>
 
         <div
@@ -565,9 +611,10 @@ export default function Page() {
       <SecaoWiki id="tensoes" titulo="6. Tensões, denúncias e limites">
         <div className="grid gap-3 sm:grid-cols-2">
           {TENSOES.map((tensao) => (
-            <article
+            <SpotlightCard
               key={tensao.titulo}
               className="rounded-xl border border-border bg-surface-2/40 p-4"
+              ariaLabel={tensao.titulo}
             >
               <h3 className="font-display text-base font-semibold leading-snug">
                 {tensao.titulo}
@@ -578,7 +625,7 @@ export default function Page() {
               <LinkFonte href={tensao.url} className="mt-3 inline-block text-xs">
                 {tensao.fonte}
               </LinkFonte>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
 
@@ -592,9 +639,10 @@ export default function Page() {
         </p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {denuncias.map((denuncia) => (
-            <article
+            <SpotlightCard
               key={denuncia.id}
               className="rounded-xl border border-border bg-surface-2/40 p-4"
+              ariaLabel={denuncia.titulo}
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
@@ -605,8 +653,8 @@ export default function Page() {
                     {denuncia.titulo}
                   </h4>
                 </div>
-                <span className="shrink-0 rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] text-text-soft">
-                  {ROTULOS_FONTE_DENUNCIA[denuncia.tipoFonte]}
+                <span className="shrink-0">
+                  <EtiquetaFonteDenuncia oficial={denuncia.tipoFonte === "oficial"} />
                 </span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-text-soft">
@@ -615,13 +663,15 @@ export default function Page() {
               <p className="mt-2 text-xs leading-relaxed opacity-70">
                 {denuncia.observacao}
               </p>
-              <LinkFonte href={denuncia.fonteUrl} className="mt-3 text-xs">
-                {denuncia.fonteNome}
-              </LinkFonte>
+              <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                <LinkFonte href={denuncia.fonteUrl} className="text-xs">
+                  {denuncia.fonteNome}
+                </LinkFonte>
+              </div>
               <p className="mt-1 text-[11px] opacity-60">
                 {formatarDataFonte(denuncia.fonteData)}
               </p>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
 
@@ -737,6 +787,11 @@ export default function Page() {
               A lista é amostra, não censo. Município sem publicação localizada
               pode ter atendimento e continua sujeito à obrigação nacional.
             </li>
+            <li>
+              Revisão de 21/10 corrigiu o caso do Vale do Javari, o
+              enquadramento de candidato/partido e fontes estaduais do Ceará e
+              do Rio de Janeiro.
+            </li>
           </ul>
           <p>
             Encontrou erro? Use os canais de contato do rodapé e informe a UF, o
@@ -751,6 +806,31 @@ export default function Page() {
           </p>
         </div>
       </SecaoWiki>
+
+      <LinksRelacionados
+        links={[
+          {
+            href: "/eleicoes/2026/locais-votacao-alterados",
+            titulo: "Locais de votação alterados",
+            descricao: "Fontes oficiais do TSE e dos TREs para conferir onde votar.",
+          },
+          {
+            href: "/eleicoes/2026/gastos-campanha",
+            titulo: "Gastos de campanha 2026",
+            descricao: "Receita, despesa, publicidade digital e custo por voto.",
+          },
+          {
+            href: "/assistente",
+            titulo: "Perguntar ao Seu Nonô",
+            descricao: "Tire dúvidas sobre transporte, eleições e dados do portal.",
+          },
+          {
+            href: "/sobre",
+            titulo: "Critérios editoriais e fontes",
+            descricao: "Como o portal separa fato, imprensa, lacuna e correção.",
+          },
+        ]}
+      />
     </main>
   );
 }

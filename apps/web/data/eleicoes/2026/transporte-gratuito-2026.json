@@ -65,12 +65,12 @@
       "ente": "Pará",
       "tipo": "estadual",
       "cobertura": "Todo o estado",
-      "modalidades": "Ônibus e barcos intermunicipais; BRT e SIT metropolitanos",
-      "periodo": "12h de 23/10 a 12h de 26/10 (intermunicipal); 0h–24h de 25/10 (BRT/SIT)",
+      "modalidades": "Ônibus e barcos intermunicipais; BRT metropolitano",
+      "periodo": "12h de 23/10 a 12h de 26/10 (intermunicipal); 0h–24h de 25/10 (BRT)",
       "fonteNome": "Agência Pará",
       "fonteUrl": "https://agenciapara.com.br/noticia/80132/governo-do-para-garante-transporte-intermunicipal-gratuito-no-segundo-turno-das-eleicoes",
       "fonteData": "2026-10-19",
-      "observacao": "Decreto 5.715/2026. Intermunicipal exige título/identidade; BRT/SIT não exige documento."
+      "observacao": "Decreto 5.715/2026. Intermunicipal exige título/identidade; BRT não exige documento."
     },
     {
       "id": "pb-estado",
@@ -104,12 +104,12 @@
       "ente": "Rio de Janeiro",
       "tipo": "estadual",
       "cobertura": "Todo o estado",
-      "modalidades": "Ônibus intermunicipais, trens, metrô e barcas",
-      "periodo": "04/10 e 25/10, 6h–20h",
-      "fonteNome": "TRE-RJ",
-      "fonteUrl": "https://www.tre-rj.jus.br/legislacao/compilada/resolucoes/2026/resolucao-tre-rj-no-1-404-de-30-de-junho-de-2026",
-      "fonteData": "2026-06-30",
-      "observacao": "Resolução TRE-RJ 1.404/2026. A capital tem decreto próprio."
+      "modalidades": "Ônibus municipais e intermunicipais, trens, metrô, barcas, BRT e VLT",
+      "periodo": "04/10 e 25/10; capital 6h–20h; demais municípios conforme informações locais",
+      "fonteNome": "TRE-RJ — notícia oficial",
+      "fonteUrl": "https://www.tre-rj.jus.br/comunicacao/noticias/2026/Setembro/eleitoras-es-terao-transporte-gratuito-nos-dias-de-votacao",
+      "fonteData": "2026-09-29",
+      "observacao": "A Res. TRE-RJ 1.404/2026 disciplina a informação; o decreto municipal do Rio fixa 6h–20h na capital."
     },
     {
       "id": "rn-estado",
@@ -199,7 +199,7 @@
       "periodo": "25/10, passe livre durante o dia",
       "fonteNome": "Prefeitura de Porto Alegre",
       "fonteUrl": "https://prefeitura.poa.br/smmu/noticias/transporte-publico-tera-passe-livre-neste-domingo-de-segundo-turno-das-eleicoes",
-      "fonteData": "2026-10-20",
+      "fonteData": "2026-10-21",
       "observacao": "Decreto 23.975/2026. A medida também foi adotada no 1º turno."
     },
     {
@@ -234,12 +234,12 @@
       "ente": "Ceará",
       "tipo": "estadual",
       "cobertura": "Todo o estado",
-      "modalidades": "Ônibus interurbanos e metropolitanos, vans, metrô e VLT",
-      "periodo": "25/10: metropolitano 5h–18h; metrô e VLT gratuitos; interurbano com reserva",
+      "modalidades": "Ônibus interurbanos e metropolitanos; vans e micro-ônibus",
+      "periodo": "25/10; metropolitano conforme Arce; interurbano com reserva",
       "fonteNome": "Arce (agência reguladora do Ceará)",
       "fonteUrl": "https://www.arce.ce.gov.br/2026/10/16/eleicoes-2026-eleitores-podem-solicitar-passagem-gratuita-para-o-segundo-turno-pelo-whatsapp/",
       "fonteData": "2026-10-16",
-      "observacao": "Passagem interurbana gratuita exige reserva com até dois dias de antecedência; vans e micro-ônibus não exigem. Metrô e VLT por lei estadual."
+      "observacao": "A Arce confirma ônibus interurbanos e metropolitanos e vans. Metrô e VLT têm regra própria e não foram confirmados nesta fonte."
     },
     {
       "id": "se-estado",
@@ -265,7 +265,7 @@
       "fonteNome": "Prefeitura de Manaus (IMMU)",
       "fonteUrl": "https://www.manaus.am.gov.br/noticia/nota/nota-prefeitura-immu-gratuidade-transporte-eleicoes/",
       "fonteData": "2026-09-30",
-      "observacao": "Lei 3.708/2026 e Decreto 6.928/2026. Gratuito sem título; frequência de dia útil e linhas especiais autorizadas ao IMMU."
+      "observacao": "Lei 3.708/2026. Gratuito sem título; frequência de dia útil e linhas especiais autorizadas ao IMMU."
     },
     {
       "id": "porto-velho-municipal",
@@ -301,10 +301,10 @@
       "cobertura": "Campo Grande",
       "modalidades": "Ônibus coletivos urbanos",
       "periodo": "04/10 e 25/10, frota e itinerários de dia útil",
-      "fonteNome": "Diogrande/Prefeitura de Campo Grande (decreto)",
+      "fonteNome": "Diário Oficial de Campo Grande (PDF em portal de imprensa)",
       "fonteUrl": "https://cdn6.campograndenews.com.br/uploads/noticias/2026/10/03/fc661e38753952a2d121c2690f57d0d90780968e.pdf",
       "fonteData": "2026-10-01",
-      "observacao": "Decreto 16.753/2026. Texto integral em PDF do Diário Oficial."
+      "observacao": "Decreto 16.753/2026. Texto integral do Diário Oficial, hospedado em portal de imprensa; não é domínio governamental."
     },
     {
       "id": "uberlandia-municipal",
@@ -465,7 +465,7 @@
       "uf": "MA",
       "ente": "Maranhão",
       "titulo": "TRE-MA manda garantir ônibus e ferry no 2º turno",
-      "resumo": "Liminar atendeu pedido da Federação Brasil da Esperança, que apontou falta de confirmação oficial da gratuidade; multa de R$ 50 mil ao estado.",
+      "resumo": "Liminar atendeu pedido da Federação Brasil da Esperança, que apontou falta de confirmação oficial da gratuidade; multa diária de R$ 50 mil ao estado.",
       "fonteNome": "Imirante (imprensa)",
       "fonteUrl": "https://imirante.com/noticias/sao-luis/2026/10/17/ipolitica-tre-ma-onibus-intermunicipais-ferry-gratis-2-turno",
       "fonteData": "2026-10-17",
@@ -750,11 +750,11 @@
       "uf": "PB",
       "nome": "Paraíba",
       "status": "noticia",
-      "resumo": "Transporte rural gratuito em todas as zonas eleitorais, sem cadastro prévio; 143 municípios no Seu Voto Importa.",
+      "resumo": "Transporte rural gratuito em todas as zonas eleitorais, sem cadastro prévio.",
       "fonteNome": "TRE-PB",
       "fonteUrl": "https://www.tre-pb.jus.br/comunicacao/noticias/2026/Setembro/transporte-gratuito-e-disponibilizado-a-eleitores-que-moram-em-areas-afastadas-no-dia-da-eleicao",
       "fonteData": "2026-09-24",
-      "observacao": "A política estadual do 2º turno está na seção de políticas."
+      "observacao": "A política estadual do 2º turno está na seção de políticas; o Seu Voto Importa reabriu inscrições até 22/10."
     },
     {
       "uf": "PE",
@@ -790,11 +790,11 @@
       "uf": "RJ",
       "nome": "Rio de Janeiro",
       "status": "pagina",
-      "resumo": "Resolução 1.404/2026 e notícia orientam sobre a gratuidade estadual de 6h–20h.",
-      "fonteNome": "TRE-RJ",
-      "fonteUrl": "https://www.tre-rj.jus.br/legislacao/compilada/resolucoes/2026/resolucao-tre-rj-no-1-404-de-30-de-junho-de-2026",
-      "fonteData": "2026-06-30",
-      "observacao": "A capital tem decreto próprio."
+      "resumo": "Notícia oficial do TRE-RJ informa a gratuidade estadual e os horários da capital; a Res. 1.404/2026 disciplina a divulgação.",
+      "fonteNome": "TRE-RJ — notícia oficial",
+      "fonteUrl": "https://www.tre-rj.jus.br/comunicacao/noticias/2026/Setembro/eleitoras-es-terao-transporte-gratuito-nos-dias-de-votacao",
+      "fonteData": "2026-09-29",
+      "observacao": "A capital tem decreto próprio; o horário 6h–20h é municipal."
     },
     {
       "uf": "RN",

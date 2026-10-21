@@ -91,7 +91,7 @@ export const ROTULOS_STATUS: Record<StatusTre, string> = {
 };
 
 export const ROTULOS_FONTE_DENUNCIA: Record<FonteDenuncia, string> = {
-  oficial: "Fonte oficial",
+  oficial: "Fonte pública",
   imprensa: "Imprensa",
 };
 

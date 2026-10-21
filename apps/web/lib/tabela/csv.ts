@@ -26,6 +26,7 @@ export interface ColunaCsv<T> {
   /** Rótulo legível que será renderizado no cabeçalho do CSV */
   rotulo: string;
   /** Função opcional de transformação (ex.: formatar data ISO para DD/MM/AAAA, moeda ou máscara) */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formatar?: (valor: any, linha: T) => string | number | null | undefined;
 }
 
@@ -47,7 +48,7 @@ export function escaparCelulaCsv(val: unknown): string {
  * - Usa `;` como separador de colunas.
  * - Usa `\r\n` como terminador de linhas.
  */
-export function formatarCsv<T extends Record<string, any>>(
+export function formatarCsv<T extends object>(
   colunas: readonly ColunaCsv<T>[],
   linhas: readonly T[]
 ): string {
@@ -73,7 +74,7 @@ export function formatarCsv<T extends Record<string, any>>(
  * Dispara o download de um arquivo CSV diretamente no navegador do usuário.
  * Cria e limpa o Blob e URL temporária com segurança de memória.
  */
-export function baixarCsv<T extends Record<string, any>>(
+export function baixarCsv<T extends object>(
   colunas: readonly ColunaCsv<T>[],
   linhas: readonly T[],
   nomeArquivo: string

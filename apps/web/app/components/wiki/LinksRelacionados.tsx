@@ -17,8 +17,8 @@ export default function LinksRelacionados({ links }: { links: LinkRelacionado[] 
   if (links.length === 0) return null;
 
   return (
-    <section data-ignorar-indice aria-label="Paginas relacionadas" className="mt-12 border-t border-border pt-6">
-      <h2 className="font-display text-lg font-semibold">Paginas relacionadas</h2>
+    <section data-ignorar-indice aria-label="Páginas relacionadas" className="mt-12 border-t border-border pt-6">
+      <h2 className="font-display text-lg font-semibold">Páginas relacionadas</h2>
       <ul className="mt-3 space-y-3">
         {links.map((l) => (
           <li key={l.href}>

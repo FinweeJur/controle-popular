@@ -69,6 +69,10 @@ describe("buscarPaginasPortal", () => {
     const resTecnologia = buscarPaginasPortal("ia livre");
     expect(resTecnologia.length).toBeGreaterThan(0);
     expect(resTecnologia[0].href).toBe("/tecnologia");
+
+    const resTransporte = buscarPaginasPortal("transporte gratuito eleicoes 2026");
+    expect(resTransporte.length).toBeGreaterThan(0);
+    expect(resTransporte[0].href).toBe("/eleicoes/2026/transporte-gratuito");
   });
 
   it("tolera acentos e caixa alta", () => {
