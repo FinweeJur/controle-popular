@@ -1008,9 +1008,38 @@ melhor F1 caiu para **0,476** (P 0,556 / R 0,417); só ~9 hard passaram o
 filtro de nuvem. Não é comparação direta — o holdout é outro —, mas a leitura
 é clara: com ~120 recortes de validação, a seleção de época é instável e o
 empate entre o primeiro lote e 26 hard não se resolve por volume. **Decisão:**
-manter o modelo do **primeiro lote hard** (calibrado P 0,917 / R 0,333) e não
+manter o modelo do **primeiro lote hard** como referência histórica e não
 promover o de 26. Antes do próximo treino, congelar o split e
 aumentar o holdout (mais cenas), em vez de trocar o conjunto a cada lote.
+
+## Split congelado e comparação controlada (20/10/2026)
+
+As rodadas anteriores usavam **split móvel**: cada lote novo de cenas mudava o
+conjunto de validação e, com ele, a época escolhida. O `P 0,917 / R 0,333` do
+primeiro lote hard não sobrevive a essa troca e **não deve ser usado como
+número do plano**. Para comparar de verdade, o split foi congelado em
+`scripts/dados/cavas-2m/split-2m.json`:
+
+- **50 cenas** de validação, **155 recortes** (49 positivos / 106 negativos);
+- cenas novas vão para o treino, nunca para a validação;
+- a linha de base exclui os hard **só do treino**; a validação é a mesma nos
+  dois modelos.
+
+| treino | melhor F1 | P ≥ 0,80 | P ≥ 0,85 | P ≥ 0,90 |
+|---|---|---|---|---|
+| sem hard no treino | 0,629 (P 0,520 / R 0,796) | P 0,818 / R 0,367 (0,81) | P 0,889 / R 0,163 (0,87) | P 1,000 / R 0,082 (0,90) |
+| **com hard no treino** | **0,660** (P 0,689 / R 0,633) | **P 0,812 / R 0,531** (0,53) | **P 0,857 / R 0,490** (0,57) | P 1,000 / R 0,102 (0,79) |
+
+Leitura controlada: o hard **melhora o trade-off** na faixa de 80–85% de
+precisão (recall 0,37 → 0,53 em P ≥ 0,80) e sobe o F1 de 0,629 para 0,660.
+Em **P ≥ 0,90 os dois caem para ~10% de recall** — o modelo não entrega 90%
+sozinho. O MVP usa o modelo como fila de alta precisão, com 2 de 3 métodos e
+revisão humana; não como veredito.
+
+Artefatos: `calibracao-2m-frozen-baseline.json` e
+`calibracao-2m-frozen-hard.json` em
+`%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\`. O split versionado é a
+referência para os próximos treinos.
 
 ## Origem
 
