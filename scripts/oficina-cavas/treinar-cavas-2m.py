@@ -29,8 +29,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import sys
+import time
 from collections import namedtuple
 from pathlib import Path
 
@@ -51,8 +53,48 @@ _HARD = _RC / "scripts" / ".cache" / "cavas-calibracao" / "hard-negativos.txt"
 _TMP = Path.home() / "AppData" / "Local" / "Temp" / "opencode" / "cavas"
 _CLIP = _TMP / "chinese-clip"
 _SAIDA = _TMP / "treino-2m"
+_LOCK = _SAIDA / "treino.lock"
 NUVEM_TREINO = 0.30
 TAM = 224   # o visual tower do Chinese-CLIP exige 224x224 (erro medido 16/10)
+
+
+def _pid_vivo(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    try:
+        import psutil
+        return psutil.pid_exists(pid) and psutil.Process(pid).is_running()
+    except Exception:
+        return True
+
+
+def _trava_estrangeira(pid: int) -> bool:
+    return bool(pid) and pid != os.getpid() and _pid_vivo(pid)
+
+
+def _adquirir_treino() -> bool:
+    """Um treino por vez: vigia e supervisor não escrevem melhor.pt juntos."""
+    if _LOCK.exists():
+        try:
+            pid = int(json.loads(_LOCK.read_text(encoding="utf-8")).get("pid", 0))
+        except (OSError, ValueError, json.JSONDecodeError):
+            pid = 0
+        if _trava_estrangeira(pid):
+            return False
+    _LOCK.parent.mkdir(parents=True, exist_ok=True)
+    _LOCK.write_text(json.dumps({"pid": os.getpid(), "ts": time.time()}),
+                     encoding="utf-8")
+    return True
+
+
+def _liberar_treino() -> None:
+    try:
+        if _LOCK.exists():
+            dados = json.loads(_LOCK.read_text(encoding="utf-8"))
+            if int(dados.get("pid", -1)) == os.getpid():
+                _LOCK.unlink()
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
 
 
 def _linha_util(o: dict, nuvem_max: float) -> bool:
@@ -336,19 +378,25 @@ def main() -> int:
     ap.add_argument("--sem-hard", action="store_true",
                     help="exclui os hard negatives (linha de base controlada)")
     args = ap.parse_args()
-    _SAIDA.mkdir(parents=True, exist_ok=True)
-    cfg = Treino(args.epocas, args.batch, args.lr, args.min, args.recorte,
-                 args.sem_hard)
-    res = treinar(cfg)
-    res["recorte"] = args.recorte
-    res["sem_hard"] = args.sem_hard
-    res["lr"] = args.lr
-    res["epocas"] = args.epocas
-    res["gerado_em"] = str(Path(__file__).name)
-    (_SAIDA / "metricas-2m.json").write_text(
-        json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n{res}", flush=True)
-    return 0
+    if not _adquirir_treino():
+        print("outro treino 2m está rodando; saindo", flush=True)
+        return 0
+    try:
+        _SAIDA.mkdir(parents=True, exist_ok=True)
+        cfg = Treino(args.epocas, args.batch, args.lr, args.min,
+                     args.recorte, args.sem_hard)
+        res = treinar(cfg)
+        res["recorte"] = args.recorte
+        res["sem_hard"] = args.sem_hard
+        res["lr"] = args.lr
+        res["epocas"] = args.epocas
+        res["gerado_em"] = str(Path(__file__).name)
+        (_SAIDA / "metricas-2m.json").write_text(
+            json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"\n{res}", flush=True)
+        return 0
+    finally:
+        _liberar_treino()
 
 
 if __name__ == "__main__":

@@ -177,16 +177,19 @@ def historico(n: int = 15) -> int:
     return 0
 
 
-def um_ciclo(regenerar: bool, min_entradas: int, dry: bool = False) -> bool:
+def um_ciclo(regenerar: bool, min_entradas: int, dry: bool = False,
+             treinar: bool = True) -> bool:
     """Um ciclo: fetch + classifica + age. Devolve True se disparou treino.
 
     dry=True só LOGA a decisão e não regenera nem treina (teste seguro).
+    `treinar=False` só regenera o manifesto; o supervisor de treino cuida do
+    retreino local e da calibração.
     """
     _git(["fetch", "origin"])
     atual = _git(["rev-parse", "origin/main"])
     antigos = _commits_novos(_ultima_vista(), atual)
     relevantes = [c for c in antigos if _eh_relevante(c)]
-    _agir(relevantes, len(antigos), (regenerar, min_entradas, dry))
+    _agir(relevantes, len(antigos), (regenerar, min_entradas, dry, treinar))
     if not dry:
         _salvar_vista(atual)
     return bool(relevantes)
@@ -194,7 +197,7 @@ def um_ciclo(regenerar: bool, min_entradas: int, dry: bool = False) -> bool:
 
 def _agir(relevantes, n_novos, cfg) -> None:
     """Decide e executa (ou só loga, em dry). Sem agir se nada é relevante."""
-    regenerar, min_entradas, dry = cfg
+    regenerar, min_entradas, dry, treinar = cfg
     if not relevantes:
         print(f"sem commit de cava 2m novo ({n_novos} commits, nada toca)",
               flush=True)
@@ -206,7 +209,8 @@ def _agir(relevantes, n_novos, cfg) -> None:
         return
     if regenerar:
         _regenerar()
-    _treinar(min_entradas)
+    if treinar:
+        _treinar(min_entradas)
 
 
 def main() -> int:
@@ -220,6 +224,8 @@ def main() -> int:
                     help="segundos entre ciclos no modo loop")
     ap.add_argument("--sem-regenerar", action="store_true",
                     help="não regera PNG antes de treinar (usa o que já há)")
+    ap.add_argument("--sem-treino", action="store_true",
+                    help="só regenera o manifesto; o supervisor treina")
     ap.add_argument("--min", type=int, default=60,
                     help="mínimo de entradas limpas p/ o treino não adiar")
     args = ap.parse_args()
@@ -232,12 +238,14 @@ def main() -> int:
         return 0
     try:
         regenerar = not args.sem_regenerar
+        treinar = not args.sem_treino
         if args.once:
-            um_ciclo(regenerar, args.min, dry=args.dry_run)
+            um_ciclo(regenerar, args.min, dry=args.dry_run, treinar=treinar)
             return 0
         while True:
             try:
-                um_ciclo(regenerar, args.min, dry=args.dry_run)
+                um_ciclo(regenerar, args.min, dry=args.dry_run,
+                         treinar=treinar)
             except Exception as e:
                 print(f"  ciclo falhou (sigo vivo): {type(e).__name__}: {e}",
                       flush=True)

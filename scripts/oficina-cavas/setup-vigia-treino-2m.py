@@ -48,7 +48,7 @@ def _rodar(args: list[str]) -> int:
 def _comando() -> str:
     python = sys.executable
     return (f'"{python}" "{_VIGIA}" --intervalo {_INTERVALO_MIN * 60} '
-            f'--min {_MIN_ENTRADAS}')
+            f'--min {_MIN_ENTRADAS} --sem-treino')
 
 
 # Fallback sem elevação: pasta de Inicialização do USUÁRIO (roda ao logar,
@@ -74,12 +74,12 @@ def _instalar_startup() -> int:
         f'cd /d "{_RAIZ}"\r\n'
         f'start "" /min "{python}" "{_VIGIA}" '
         f"--intervalo {_INTERVALO_MIN * 60} --min {_MIN_ENTRADAS} "
-        f'>> "{_LOG}" 2>&1\r\n'
+        f'--sem-treino >> "{_LOG}" 2>&1\r\n'
     )
     _BAT.write_text(conteudo, encoding="utf-8")
     print(f"OK: instalado em inicialização do usuário: {_BAT}")
-    print(f"    checa origin a cada {_INTERVALO_MIN} min; treino --min "
-          f"{_MIN_ENTRADAS}; log em {_LOG}.")
+    print(f"    checa origin a cada {_INTERVALO_MIN} min; só manifesto "
+          f"(--sem-treino); o supervisor-treino-2m.py treina. Log: {_LOG}.")
     return 0
 
 
