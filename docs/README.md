@@ -80,11 +80,12 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (4):**
+- **Planos ativos (5):**
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
-  [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md) e
-  [`PLANO-CAVAS-MVP.md`](planos/PLANO-CAVAS-MVP.md).
+  [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),
+  [`PLANO-CAVAS-MVP.md`](planos/PLANO-CAVAS-MVP.md) e
+  [`PLANO-RAG-JURIMETRIA-TJMG.md`](planos/PLANO-RAG-JURIMETRIA-TJMG.md).
 - **Histórico:** [`historico/`](historico/) — os outros planos foram
   arquivados em 18/10/2026 em [`historico/planos/`](historico/planos/) e
   [`historico/entregas/`](historico/entregas/), com nota de arquivamento.
