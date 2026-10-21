@@ -290,14 +290,15 @@ máximo 2 casos por município.
    worker, lote de 24 e retomada pelo checkpoint. Chama o gerador 2 m
    (`scripts/oficina-cavas/gerar-recortes-2m-rotulados.py`), não o coletor
    8 m.
-2. **Treino no logon.** Um `.bat` na pasta Startup
-   (`ControlePopular_VigiaTreino2m.bat`), com `cd`, janela minimizada e log,
-   rodando o vigia em loop de 30 min com `--min 250`
-   ([`setup-vigia-treino-2m.py:60–80`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py)).
-   O vigia já adia sozinho quando falta dado limpo; disparar cedo não treina
-   torto.
-3. **Locks contra duplicidade.** Lock próprio em
-   `scripts/.cache/cavas-2m/coleta-2m.lock` (PID + timestamp), mais a opção
+2. **Treino e calibração no logon.** O `.bat` do vigia
+   (`ControlePopular_VigiaTreino2m.bat`) roda com `--sem-treino`: ele só
+   regenera o manifesto publicado. Quem treina é o
+   `supervisor-treino-2m.py` (`ControlePopular_Treino2m.cmd`): espera 20
+   recortes limpos novos, roda o treino no split congelado, calibra por
+   limiar, salva estado e artefatos com carimbo e avisa no Telegram. O
+   treinador tem lock próprio.
+3. **Locks contra duplicidade.** Locks próprios em
+   `scripts/.cache/cavas-2m/{coleta-2m,supervisor,supervisor-treino,vigia,treino}.lock` (PID + timestamp), mais a opção
    "não iniciar nova instância" do Agendador. O lock do `oficina.py` é do
    cache 8 m (`cavas-calibracao`) e não deve ser reutilizado aqui: ele
    bloquearia a coleta 8 m. Se o lock estiver tomado, sair com código 0 e
@@ -311,11 +312,15 @@ máximo 2 casos por município.
    inexistente; manter no máximo uma coleta 8 m, se ainda for necessária,
    com caminho absoluto e teste `--consultar`/`--testar`
    ([`setup-vigia-treino-2m.py:20–23`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py)).
-6. **Log e batimento.** Log em
-   `docs/relatorios-automacao/logs/oficina-coleta.log` (`coleta.cmd:6`),
-   heartbeat por estágio e alerta no Telegram em 2–3 linhas quando falhar.
+6. **Log e batimento.** Logs em `docs/relatorios-automacao/logs/`
+   (`coleta-2m.log`, `vigia-2m.log`, `treino-2m.log`), heartbeat
+   por estágio e alerta no Telegram em 2–3 linhas quando falhar.
 
 ### Ordem de conserto
+1. Instalar o supervisor de treino no Startup.
+2. Rodar `supervisor-treino-2m.py --max-ciclos 1` para criar o estado.
+3. Conferir os locks de coleta, vigia e treino.
+4. Só então deixar o loop ligado no logon.
 
 1. Corrigir o `.bat` do vigia para gravar log e não usar `start` solto.
 2. Criar `coleta-2m.cmd` e a entrada de Startup da coleta.
