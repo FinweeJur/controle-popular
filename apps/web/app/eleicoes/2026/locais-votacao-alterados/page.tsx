@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -166,7 +166,7 @@ export default function LocaisVotacaoAlterados(): ReactElement {
                   {uf.uf} · {uf.nome}
                 </a>
               </BotaoBrilho>
-              <p className="mt-2 break-all text-[11px] opacity-50">
+              <p className="mt-2 break-all text-xs opacity-50">
                 tre-{uf.uf.toLowerCase()}.jus.br
               </p>
             </div>

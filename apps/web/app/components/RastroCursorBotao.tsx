@@ -47,7 +47,7 @@ export default function RastroCursorBotao() {
       onClick={() => definirRastroCursor(!ativo)}
       aria-pressed={ativo}
       title="Rastro mágico do mouse — liga e desliga a trilha de letras"
-      className={`cp-rastro-botao cursor-pointer select-none rounded-full border px-3 py-2 text-[11px] font-semibold ${
+      className={`cp-rastro-botao cursor-pointer select-none rounded-full border px-3 py-2 text-xs font-semibold ${
         ativo
           ? "border-text bg-text text-bg"
           : "border-border bg-surface text-text-soft"

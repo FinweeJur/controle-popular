@@ -57,7 +57,7 @@ export default function RastroCursorToggle() {
       onClick={() => definirRastroCursor(!ativo)}
       aria-pressed={ativo}
       title="Trilha de letras que segue o mouse — desligue se atraplar a leitura"
-      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[11px] font-medium ${
+      className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium ${
         ativo
           ? "border-text bg-text text-bg"
           : "border-border bg-transparent text-text-soft hover:bg-surface-2"

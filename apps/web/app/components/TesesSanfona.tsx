@@ -40,12 +40,12 @@ function BlocoTags({ tese }: { tese: Tese }) {
   return (
     <div hidden={!temBloco} className="mt-2 flex flex-wrap items-center gap-1.5">
       {tese.tags.map((tag) => (
-        <span key={tag} className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+        <span key={tag} className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
           TAG {tag}
         </span>
       ))}
       {tese.desastre === "ambos" && (
-        <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[11px] font-bold text-accent">
+        <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-bold text-accent">
           Mariana + Brumadinho
         </span>
       )}

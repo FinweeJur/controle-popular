@@ -33,7 +33,7 @@ export default function SanfonaResumo({ resumo }: { resumo: string }) {
         className="mt-2 rounded-xl border border-border bg-surface-2 p-4 text-sm leading-relaxed text-text"
       >
         <p className="whitespace-pre-line">{resumo}</p>
-        <p className="mt-2 border-t border-border pt-2 text-[11px] text-text-soft">
+        <p className="mt-2 border-t border-border pt-2 text-xs text-text-soft">
           Resumo na íntegra do repositório da instituição — o portal não reescreve.
         </p>
       </div>
