@@ -182,7 +182,7 @@ dia confirmado.
 - [x] `typecheck`, `eslint` e testes da lib verdes.
 - [ ] Validador global de docs verde; `AUDITORIA-GERAL.md`, gerado por outra
   rotina, está sem frontmatter.
-- [ ] Commit por pathspec e push; sem deploy.
+- [x] Commit por pathspec e push; sem deploy.
 
 ## Verificação
 
@@ -214,5 +214,6 @@ python scripts/validar-documentacao.py
 - **21/10/2026 — implementação.** Página, tabela filtrável, JSON, tipos e
   testes criados. `typecheck`, `eslint`, testes da lib, sitemap e smoke local
   verdes. A Resolução TSE 23.780/2026 foi confirmada em 15/10/2026 e ganhou
-  link oficial. Pendente: validador global de docs (falha em
-  `AUDITORIA-GERAL.md`, gerado por outra rotina sem frontmatter), commit e push.
+  link oficial. Commit `6e6ab7b` publicado em `origin/main`. Pendente:
+  validador global de docs (falha em `AUDITORIA-GERAL.md`, gerado por outra
+  rotina sem frontmatter).
