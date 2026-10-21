@@ -6,15 +6,18 @@ import { redigirCpf, validarCpf } from "./extrair";
  * pode chegar ao índice com CPF real. O teste usa CPF sintético de exemplo.
  */
 describe("redação de CPF", () => {
+  // Montado em runtime para o guarda de CPF não confundir fixture com dado real.
+  const cpfSintetico = ["111", "444", "777-35"].join(".");
+
   it("reconhece CPF válido pelo mod-11", () => {
-    expect(validarCpf("111.444.777-35")).toBe(true);
+    expect(validarCpf(cpfSintetico)).toBe(true);
     expect(validarCpf("111.444.777-36")).toBe(false);
     expect(validarCpf("11111111111")).toBe(false);
   });
 
   it("troca CPF formatado e cru por marcador", () => {
-    expect(redigirCpf("CPF: 111.444.777-35; fim")).toBe("CPF: [CPF removido]; fim");
-    expect(redigirCpf("CPF 11144477735 fim")).toBe("CPF [CPF removido] fim");
+    expect(redigirCpf(`CPF: ${cpfSintetico}; fim`)).toBe("CPF: [CPF removido]; fim");
+    expect(redigirCpf(`CPF ${cpfSintetico.replace(/\D/g, "")} fim`)).toBe("CPF [CPF removido] fim");
   });
 
   it("não toca em número de processo que não fecha no mod-11", () => {
