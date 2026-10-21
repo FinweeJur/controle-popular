@@ -32,4 +32,16 @@ describe("montarPromptUsuario — blindagem indireta", () => {
     expect(prompt).toContain("PERGUNTA: quanto custou a obra?");
     expect(prompt).toContain("[Fonte 1]");
   });
+
+  it("leva o link oficial e a página do documento para o modelo", () => {
+    const f = { ...fonte("o acordo tem 130 páginas"), pagina: 12 };
+    const prompt = montarPromptUsuario("qual a página?", [f]);
+    expect(prompt).toContain("URL oficial: https://exemplo.gov.br");
+    expect(prompt).toContain("Pagina: 12");
+  });
+
+  it("não transforma URL não http em link para o modelo", () => {
+    const prompt = montarPromptUsuario("teste", [{ ...fonte("x"), url: "javascript:alert(1)" }]);
+    expect(prompt).not.toContain("javascript:");
+  });
 });

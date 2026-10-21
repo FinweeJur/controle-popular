@@ -34,6 +34,9 @@ import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto } from "./remoto";
 import { similaridadeCosseno, similaridadeLexical, tokensDe } from "./similaridade";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { temChaveRemota } from "./provedores";
+import { buscarDocumentos } from "../documentos-rag/carregar";
+import { urlDoTrecho } from "../documentos-rag/indice";
+import type { ResultadoDocumento } from "../documentos-rag/tipos";
 
 export type { RespostaRag, FonteRag };
 
@@ -50,6 +53,9 @@ const LIMIAR_ABSTENCAO_LEXICAL = 0.45;
 const PESO_COSSENO = 0.6;
 const PESO_LEXICAL = 0.4;
 const MAX_TENTATIVAS = 2;
+/** Trechos documentais entram depois dos cartões curados; o limite evita prompt gigante. */
+const TOP_K_DOCUMENTOS = 3;
+const MAX_FONTES = 6;
 
 export interface OpcoesRag {
   topK?: number;
@@ -240,6 +246,21 @@ function converterFonte(f: AcervoFonte, score: number, posicao: number): FonteRa
   };
 }
 
+/** Converte trecho de PDF em fonte citável, com página e link oficial. */
+function converterDocumento(resultado: ResultadoDocumento, posicao: number): FonteRag {
+  const trecho = resultado.trecho;
+  return {
+    indice: posicao,
+    texto: trecho.texto,
+    score: resultado.score,
+    titulo: `Documento: ${trecho.titulo}`,
+    url: urlDoTrecho(trecho),
+    rota: urlDoTrecho(trecho),
+    pagina: trecho.pagina > 0 ? trecho.pagina : undefined,
+    documentoId: trecho.docId,
+  };
+}
+
 /**
  * Gera com verificação de citação: marcador [n] inválido dispara UMA
  * re-tentativa com instrução mais estrita (o verificador nunca é portão
@@ -291,18 +312,24 @@ export async function responderComRag(
     throw new OllamaIndisponivel("Ollama nao esta disponivel em http://172.18.176.1:11434");
   }
 
-  const { melhores, abstem } = await buscarNoAcervo(
-    pergunta,
-    opcoes.topK,
-    opcoes.limiarAbstencao,
-    opcoes.pathname
-  );
+  const [{ melhores, abstem }, documentos] = await Promise.all([
+    buscarNoAcervo(pergunta, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname),
+    buscarDocumentos(pergunta, { limite: TOP_K_DOCUMENTOS }).catch(() => []),
+  ]);
 
-  if (abstem) {
+  const fontesAcervo = abstem
+    ? []
+    : melhores.map((r, i) => converterFonte(r.fonte, r.score, i + 1));
+  const documentosRelevantes = documentos.filter((d) => d.score >= 0.12);
+  const fontesDocumentos = documentosRelevantes.map((d, i) =>
+    converterDocumento(d, fontesAcervo.length + i + 1)
+  );
+  const fontes = [...fontesAcervo, ...fontesDocumentos].slice(0, MAX_FONTES);
+
+  if (fontes.length === 0) {
     // Sem fonte, sem modelo: a resposta honesta sai instantânea e gratuita.
     return gerarRespostaRag(pergunta, [], { modelo: opcoes.modeloChat });
   }
 
-  const fontes = melhores.map((r, i) => converterFonte(r.fonte, r.score, i + 1));
   return gerarComVerificacao(pergunta, fontes, opcoes.modeloChat, opcoes.timeoutMs);
 }
