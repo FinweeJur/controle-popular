@@ -89,6 +89,27 @@ indexador agora aplica mod-11 e troca CPF real por `[CPF removido]` antes de
 gravar. O `checar-dado-pessoal-em-dado.py --extra` passa no índice. Nenhum
 PDF bruto é commitado.
 
+## Home-pc medido em 21/10/2026
+
+O inventário amplo do `home-pc` encontrou **45.250 arquivos / 4.078,7 MB**.
+Desses, **1.278 PDFs / 696,5 MB**: 1.150 estão em
+`C:\DevCoder\tjmg-jurimetria\pdfs\_unificados`; fora do TJMG há 46 PDFs,
+mas só **33 únicos / 61,9 MB** depois de descontar clones e worktrees.
+
+Candidatos úteis fora do TJMG:
+
+- `sementeira/public/biblioteca-docs`: 8 PDFs (Anexo I, Cáritas, ofícios).
+- `acervo-documentos`: 5 PDFs (leis de Betim, Diamantina e PBH).
+- `documentos-empresas`: 4 PDFs (REDESCA, SEC 20-F, CNDH, ONU).
+- `esg`: 3 PDFs (Vale, 24,1 MB); já são dado do portal.
+- `tjmg-jurimetria/docs/estudos`: 1 PDF (NACAB).
+- `sementeira/docs/paraopeba`: 1 PDF.
+- Downloads/Telegram: alguns PDFs, inclusive editais; separar antes de indexar.
+
+O `cutiazinha` também está no home-pc: hub Go/Wails com extração de PDF,
+mas não é RAG. O próximo recorte é indexar só candidato com URL oficial
+declarada, descartando clone, duplicata e arquivo pessoal.
+
 ## Próximas fases
 
 1. **OCR** para os PDFs escaneados (Pro-Brumadinho e bases antigas).
