@@ -375,6 +375,30 @@ coluna não é legível no celular. A régua móvel vem antes.
 - **Cérebro principal do OpenMausBot = OpenCode Go** (`opencode-go/*`), não
   Kimi nem outra engine isolada (decisão do dono, 18/10/2026).
 
+## 5.16. Fonte mínima de 12 px em texto de interface
+
+**Regra do dono, 21/10/2026.** Nenhum texto de interface fica abaixo de
+**12 px**. Isso inclui rótulo, badge, data, fonte, legenda, rodapé de card e
+texto auxiliar. `text-xs` é o piso; `text-[10px]`, `text-[11px]` e equivalentes
+não entram.
+
+Para reduzir a altura de um card, **não reduza a fonte**. Ajuste o que não
+carrega informação:
+
+- `leading-snug` ou `leading-tight` no corpo do card, mantendo leitura;
+- margens e `gap` internos;
+- padding do card;
+- número de linhas visíveis, com `line-clamp` e o texto completo em `title`
+  ou link “Ver mais”.
+
+Legibilidade vence densidade: card curto que o leitor não consegue ler é dado
+não publicado (liga com a §5.14). A verificação rápida procura tamanhos
+proibidos:
+
+```bash
+rg "text-\[(9|10|11)px\]" apps/web/app apps/web/lib
+```
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

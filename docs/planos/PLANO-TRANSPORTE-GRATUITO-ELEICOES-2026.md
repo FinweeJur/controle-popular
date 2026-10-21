@@ -253,3 +253,4 @@ python scripts/validar-documentacao.py
   estaduais de CE/RJ e declarações sobre zonas urbanas. A página ganhou cards
   compactos de TRE, selo “Fonte pública”/“Imprensa”, magnet leve, links
   relacionados, entrada na busca, no Seu Nonô e na home.
+- **21/10/2026 — compactação final.** Cards com leading-snug e padding menor, mantendo fonte mínima de 12 px; regra registrada no AGENTS.md §5.16. Altura dos cards reduzida sem cortar informação.

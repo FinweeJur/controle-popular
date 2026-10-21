@@ -261,19 +261,19 @@ function CartaoResumo({
 }) {
   return (
     <SpotlightCard
-      className="rounded-xl border border-border bg-surface-2/60 p-4"
+      className="rounded-xl border border-border bg-surface-2/60 p-3"
       ariaLabel={`${rotulo}: ${valor}`}
     >
       <p className="font-display text-2xl font-bold text-primary">{valor}</p>
       <p className="mt-1 text-sm font-semibold">{rotulo}</p>
-      <p className="mt-1 text-xs leading-relaxed text-text-soft">{detalhe}</p>
+      <p className="mt-1 text-xs leading-snug text-text-soft">{detalhe}</p>
     </SpotlightCard>
   );
 }
 
 function EtiquetaStatus({ status }: { status: StatusTre }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] font-medium text-text-soft">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-2 py-0.5 text-xs font-medium text-text-soft">
       <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
       {ROTULOS_STATUS[status]}
     </span>
@@ -282,7 +282,7 @@ function EtiquetaStatus({ status }: { status: StatusTre }) {
 
 function EtiquetaFontePublica() {
   return (
-    <span className="inline-flex rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 dark:text-emerald-300">
+    <span className="inline-flex rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
       Fonte pública
     </span>
   );
@@ -292,7 +292,7 @@ function EtiquetaFonteDenuncia({ oficial }: { oficial: boolean }) {
   return oficial ? (
     <EtiquetaFontePublica />
   ) : (
-    <span className="inline-flex rounded-full border border-border bg-surface px-2 py-0.5 text-[10px] font-semibold text-text-soft">
+    <span className="inline-flex rounded-full border border-border bg-surface px-2 py-0.5 text-xs font-semibold text-text-soft">
       Imprensa
     </span>
   );
@@ -382,7 +382,7 @@ export default function Page() {
           {BASES_LEGAIS.map((base) => (
             <SpotlightCard
               key={base.titulo}
-              className="rounded-xl border border-border bg-surface-2/40 p-4"
+              className="rounded-xl border border-border bg-surface-2/40 p-3"
               ariaLabel={base.titulo}
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
@@ -391,10 +391,10 @@ export default function Page() {
               <h3 className="mt-1 font-display text-lg font-semibold">
                 {base.titulo}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-soft">
+              <p className="mt-1.5 text-sm leading-snug text-text-soft">
                 {base.texto}
               </p>
-              <LinkFonte href={base.url} className="mt-3 inline-block text-sm">
+              <LinkFonte href={base.url} className="mt-2 inline-block text-sm">
                 {base.rotulo}
               </LinkFonte>
             </SpotlightCard>
@@ -403,7 +403,7 @@ export default function Page() {
 
         <div
           role="note"
-          className="mt-5 rounded-xl border-2 p-4 text-sm leading-relaxed"
+          className="mt-5 rounded-xl border-2 p-3 text-sm leading-snug"
           style={{ borderColor: "var(--cp-alert)" }}
         >
           <p className="font-semibold">O ponto que mais gera confusão</p>
@@ -428,32 +428,32 @@ export default function Page() {
         </p>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Zona rural">
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-3" ariaLabel="Zona rural">
             <h3 className="font-display text-base font-semibold">
               Zona rural
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-soft">
+            <p className="mt-1.5 text-sm leading-snug text-text-soft">
               Transporte gratuito em regra dentro do município e quando a
               distância das zonas rurais ao local de votação for de pelo menos
               2 km. Os veículos são identificados como “A serviço da Justiça
               Eleitoral”.
             </p>
           </SpotlightCard>
-          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Seu Voto Importa">
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-3" ariaLabel="Seu Voto Importa">
             <h3 className="font-display text-base font-semibold">
               Seu Voto Importa
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-soft">
+            <p className="mt-1.5 text-sm leading-snug text-text-soft">
               Transporte individual porta a porta para pessoas com deficiência
               ou mobilidade reduzida, executado pelo TRE, conforme pedido e
               disponibilidade.
             </p>
           </SpotlightCard>
-          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-4" ariaLabel="Como pedir">
+          <SpotlightCard className="rounded-xl border border-border bg-surface-2/40 p-3" ariaLabel="Como pedir">
             <h3 className="font-display text-base font-semibold">
               Como pedir
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-soft">
+            <p className="mt-1.5 text-sm leading-snug text-text-soft">
               Procure o TRE do seu estado ou o cartório eleitoral. Pedidos fora
               do prazo podem ser analisados conforme disponibilidade, mas não
               há garantia automática.
@@ -461,7 +461,7 @@ export default function Page() {
           </SpotlightCard>
         </div>
 
-        <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-4">
+        <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-3">
           <h3 className="font-display text-base font-semibold">
             Não confunda os dois direitos
           </h3>
@@ -526,12 +526,12 @@ export default function Page() {
           {tres.map((tre) => (
             <SpotlightCard
               key={tre.uf}
-              className="flex h-full flex-col rounded-xl border border-border bg-surface-2/40 p-3"
+              className="flex h-full flex-col rounded-xl border border-border bg-surface-2/40 p-2.5"
               ariaLabel={`${tre.uf} — ${tre.nome}`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-wide text-text-soft">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
                     {tre.uf}
                   </p>
                   <h3 className="font-display text-sm font-semibold leading-snug">
@@ -540,22 +540,22 @@ export default function Page() {
                 </div>
                 <EtiquetaStatus status={tre.status} />
               </div>
-              <p className="mt-1.5 line-clamp-2 flex-1 text-xs leading-relaxed text-text-soft">
+              <p className="mt-1 line-clamp-2 flex-1 text-xs leading-snug text-text-soft">
                 {tre.resumo}
               </p>
               <p
-                className="mt-1 line-clamp-1 text-[10px] leading-relaxed opacity-70"
+                className="mt-0.5 line-clamp-1 text-xs leading-snug opacity-70"
                 title={tre.observacao}
               >
                 {tre.observacao}
               </p>
               <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                <LinkFonte href={tre.fonteUrl} className="text-[11px]">
+                <LinkFonte href={tre.fonteUrl} className="text-xs">
                   {tre.fonteNome}
                 </LinkFonte>
                 <EtiquetaFontePublica />
               </div>
-              <p className="mt-1 text-[10px] opacity-60">
+              <p className="mt-1 text-xs opacity-60">
                 {formatarDataFonte(tre.fonteData)}
               </p>
             </SpotlightCard>
@@ -578,7 +578,7 @@ export default function Page() {
 
         <div
           role="note"
-          className="mt-3 rounded-xl border border-border bg-surface-2/60 p-4 text-sm leading-relaxed"
+          className="mt-3 rounded-xl border border-border bg-surface-2/60 p-3 text-sm leading-snug"
         >
           <p className="font-semibold">
             Esta tabela não é a lista do transporte da JE.
@@ -613,16 +613,16 @@ export default function Page() {
           {TENSOES.map((tensao) => (
             <SpotlightCard
               key={tensao.titulo}
-              className="rounded-xl border border-border bg-surface-2/40 p-4"
+              className="rounded-xl border border-border bg-surface-2/40 p-3"
               ariaLabel={tensao.titulo}
             >
               <h3 className="font-display text-base font-semibold leading-snug">
                 {tensao.titulo}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-soft">
+              <p className="mt-1.5 text-sm leading-snug text-text-soft">
                 {tensao.texto}
               </p>
-              <LinkFonte href={tensao.url} className="mt-3 inline-block text-xs">
+              <LinkFonte href={tensao.url} className="mt-2 inline-block text-xs">
                 {tensao.fonte}
               </LinkFonte>
             </SpotlightCard>
@@ -632,7 +632,7 @@ export default function Page() {
         <h3 className="mt-8 font-display text-lg font-semibold">
           Denúncias e cobranças
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-text-soft">
+        <p className="mt-1.5 text-sm leading-snug text-text-soft">
           Casos em que a falta ou a redução do transporte virou cobrança de
           órgão público, partido, entidade da sociedade civil ou denúncia de
           imprensa. A etiqueta diz se a fonte é oficial ou jornalística.
@@ -641,7 +641,7 @@ export default function Page() {
           {denuncias.map((denuncia) => (
             <SpotlightCard
               key={denuncia.id}
-              className="rounded-xl border border-border bg-surface-2/40 p-4"
+              className="rounded-xl border border-border bg-surface-2/40 p-3"
               ariaLabel={denuncia.titulo}
             >
               <div className="flex items-start justify-between gap-2">
@@ -657,10 +657,10 @@ export default function Page() {
                   <EtiquetaFonteDenuncia oficial={denuncia.tipoFonte === "oficial"} />
                 </span>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-text-soft">
+              <p className="mt-1.5 text-sm leading-snug text-text-soft">
                 {denuncia.resumo}
               </p>
-              <p className="mt-2 text-xs leading-relaxed opacity-70">
+              <p className="mt-1 text-xs leading-snug opacity-70">
                 {denuncia.observacao}
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-1.5">
@@ -668,14 +668,14 @@ export default function Page() {
                   {denuncia.fonteNome}
                 </LinkFonte>
               </div>
-              <p className="mt-1 text-[11px] opacity-60">
+              <p className="mt-1 text-xs opacity-60">
                 {formatarDataFonte(denuncia.fonteData)}
               </p>
             </SpotlightCard>
           ))}
         </div>
 
-        <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-4 text-sm leading-relaxed">
+        <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-3 text-sm leading-snug">
           <p className="font-semibold">Como denunciar</p>
           <p className="mt-1 text-text-soft">
             Redução de frota, linha parada ou falta de transporte no dia da

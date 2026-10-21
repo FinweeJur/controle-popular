@@ -367,7 +367,7 @@ export default function TabelaTransporte({
                         {ROTULO_TIPO[politica.tipo]}
                       </span>
                       {POLITICAS_PERMANENTES.has(politica.id) ? (
-                        <span className="inline-flex rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[10px] text-text-soft">
+                        <span className="inline-flex rounded-full border border-border bg-surface-2 px-2 py-0.5 text-xs text-text-soft">
                           Permanente
                         </span>
                       ) : null}
@@ -389,7 +389,7 @@ export default function TabelaTransporte({
                     </a>
                     <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs">
                       <span
-                        className={`inline-flex rounded-full border px-1.5 py-0.5 text-[10px] font-semibold ${classeFonte(politica)}`}
+                        className={`inline-flex rounded-full border px-1.5 py-0.5 text-xs font-semibold ${classeFonte(politica)}`}
                       >
                         {rotuloFonte(politica)}
                       </span>
