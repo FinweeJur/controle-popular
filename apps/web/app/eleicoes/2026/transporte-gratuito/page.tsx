@@ -8,6 +8,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import {
   acervoTransporte,
   formatarDataFonte,
+  ROTULOS_FONTE_DENUNCIA,
   ROTULOS_STATUS,
   type StatusTre,
 } from "@/lib/eleicoes/transporte-2026";
@@ -35,7 +36,7 @@ const SECOES = [
   { id: "justica-eleitoral", titulo: "3. Transporte pela Justiça Eleitoral" },
   { id: "tres", titulo: "4. O que cada TRE publicou" },
   { id: "politicas", titulo: "5. Políticas confirmadas" },
-  { id: "tensoes", titulo: "6. Tensões e limites" },
+  { id: "tensoes", titulo: "6. Tensões, denúncias e limites" },
   { id: "metodologia", titulo: "7. Metodologia e lacunas" },
   { id: "fontes", titulo: "8. Fontes" },
   { id: "correcoes", titulo: "9. Correções" },
@@ -47,7 +48,7 @@ export const metadata: Metadata = metadataEditavel(
     title:
       "Transporte grátis nas Eleições 2026: o que cada estado e TRE publicou",
     description:
-      "Gratuidade no transporte coletivo nos dois turnos das Eleições 2026, o transporte especial da Justiça Eleitoral e o que 27 TREs e 17 políticas confirmaram até 21/10/2026.",
+      "Gratuidade no transporte coletivo nos dois turnos das Eleições 2026, o transporte especial da Justiça Eleitoral, o que os 27 TREs publicaram e as políticas e denúncias localizadas até 21/10/2026.",
   },
 );
 
@@ -277,7 +278,8 @@ function EtiquetaStatus({ status }: { status: StatusTre }) {
 }
 
 export default function Page() {
-  const { eleicao, turnos, geradoEm, tres, politicas } = acervoTransporte;
+  const { eleicao, turnos, geradoEm, tres, politicas, denuncias } =
+    acervoTransporte;
   const datasDosTurnos = turnos
     .map((turno) => formatarDataFonte(turno.data))
     .join(" e ");
@@ -304,7 +306,7 @@ export default function Page() {
         </h1>
         <ResumoExpandivel
           className="mt-3 max-w-3xl text-text-soft"
-          texto={`Nos dias ${datasDosTurnos}, o transporte coletivo é gratuito por decisão do STF e pela Resolução 23.751/2026 do TSE. Esta página separa essa obrigação nacional do transporte especial da Justiça Eleitoral e reúne o que ${tres.length} TREs e ${politicas.length} políticas estaduais, distritais e municipais confirmaram até ${formatarDataFonte(geradoEm)}. É amostra verificada, não censo.`}
+          texto={`Nos dias ${datasDosTurnos}, o transporte coletivo é gratuito por decisão do STF e pela Resolução 23.751/2026 do TSE. Esta página separa essa obrigação nacional do transporte especial da Justiça Eleitoral e reúne o que ${tres.length} TREs, ${politicas.length} políticas estaduais, distritais, municipais e de polos e ${denuncias.length} denúncias ou cobranças localizaram até ${formatarDataFonte(geradoEm)}. É amostra verificada, não censo.`}
         />
         <p className="mt-2 text-xs text-text-soft">
           Última verificação: {formatarDataFonte(geradoEm)} · Amostra declarada,
@@ -329,7 +331,7 @@ export default function Page() {
           <CartaoResumo
             valor={String(politicas.length)}
             rotulo="Políticas confirmadas"
-            detalhe={`${UFS_COM_POLITICA} UFs com política mapeada: estados, DF, Região Metropolitana de Goiânia e capitais.`}
+            detalhe={`${UFS_COM_POLITICA} UFs com política mapeada: estados, DF, Região Metropolitana de Goiânia, capitais e polos. Inclui ${denuncias.length} denúncias ou cobranças.`}
           />
         </div>
 
@@ -560,7 +562,7 @@ export default function Page() {
         </p>
       </SecaoWiki>
 
-      <SecaoWiki id="tensoes" titulo="6. Tensões e limites">
+      <SecaoWiki id="tensoes" titulo="6. Tensões, denúncias e limites">
         <div className="grid gap-3 sm:grid-cols-2">
           {TENSOES.map((tensao) => (
             <article
@@ -578,6 +580,67 @@ export default function Page() {
               </LinkFonte>
             </article>
           ))}
+        </div>
+
+        <h3 className="mt-8 font-display text-lg font-semibold">
+          Denúncias e cobranças
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-text-soft">
+          Casos em que a falta ou a redução do transporte virou cobrança de
+          órgão público ou denúncia de imprensa. A etiqueta diz se a fonte é
+          oficial ou jornalística.
+        </p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {denuncias.map((denuncia) => (
+            <article
+              key={denuncia.id}
+              className="rounded-xl border border-border bg-surface-2/40 p-4"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+                    {denuncia.uf} · {denuncia.ente}
+                  </p>
+                  <h4 className="mt-1 font-display text-base font-semibold leading-snug">
+                    {denuncia.titulo}
+                  </h4>
+                </div>
+                <span className="shrink-0 rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] text-text-soft">
+                  {ROTULOS_FONTE_DENUNCIA[denuncia.tipoFonte]}
+                </span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-text-soft">
+                {denuncia.resumo}
+              </p>
+              <p className="mt-2 text-xs leading-relaxed opacity-70">
+                {denuncia.observacao}
+              </p>
+              <LinkFonte href={denuncia.fonteUrl} className="mt-3 text-xs">
+                {denuncia.fonteNome}
+              </LinkFonte>
+              <p className="mt-1 text-[11px] opacity-60">
+                {formatarDataFonte(denuncia.fonteData)}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-5 rounded-xl border border-border bg-surface-2/60 p-4 text-sm leading-relaxed">
+          <p className="font-semibold">Como denunciar</p>
+          <p className="mt-1 text-text-soft">
+            Redução de frota, linha parada ou falta de transporte no dia da
+            votação deve ser comunicada ao Ministério Público Eleitoral ou à
+            Defensoria Pública da União. TRE-SC e TRE-RS publicam orientações
+            oficiais sobre esses canais.
+          </p>
+          <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+            <LinkFonte href="https://www.tre-sc.jus.br/comunicacao/noticias/2026/Outubro/entenda-como-funcionara-o-transporte-publico-gratuito-no-dia-das-eleicoes-em-santa-catarina">
+              Orientação do TRE-SC
+            </LinkFonte>
+            <LinkFonte href="https://www.tre-rs.jus.br/comunicacao/noticias/2026/Outubro/transporte-de-eleitores-saiba-o-que-e-permitido-e-o-que-e-proibido">
+              Orientação do TRE-RS
+            </LinkFonte>
+          </p>
         </div>
       </SecaoWiki>
 

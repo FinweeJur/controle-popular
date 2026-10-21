@@ -59,7 +59,7 @@ transporte especial da Justiça Eleitoral como tarifa zero universal.
 Nove blocos, com âncoras no `IndiceWiki`:
 
 1. **O essencial.** Três cartões: obrigação nacional nos dois turnos; 27
-   TREs verificados; 17 políticas confirmadas em 12 UFs. Abaixo, um resumo
+   TREs verificados; 31 políticas confirmadas em 19 UFs. Abaixo, um resumo
    curto separando tarifa zero de transporte da JE.
 2. **O que diz a lei.** ADPF 1013, Res. 23.751/2026, Lei 6.091/1974,
    Res. 23.753/2026 e Res. 23.780/2026, com links oficiais.
@@ -70,9 +70,9 @@ Nove blocos, com âncoras no `IndiceWiki`:
    Importa ou sem página específica localizada.
 5. **Políticas confirmadas.** Tabela com estados, Distrito Federal, região
    metropolitana e municípios; filtros por UF e tipo; busca; ordenação; CSV.
-6. **Decisões e tensões.** ADPF 1013, TRE-AM/UNIVAJA, proibição de transporte
-   por candidatos e partidos, redução de frota como possível crime eleitoral e
-   PEC de 21/10/2026.
+6. **Tensões, denúncias e limites.** ADPF 1013, TRE-AM/UNIVAJA, proibição de
+   transporte por candidatos e partidos, redução de frota como possível crime
+   eleitoral, PEC de 21/10/2026 e denúncias/cobranças do MPF, DPU e imprensa.
 7. **Metodologia e limites.** “Amostra verificada, não censo”; data de
    conferência; o que não foi possível confirmar; onde o leitor consulta o
    próprio município.
@@ -94,6 +94,7 @@ Topo:
   ],
   "aviso": "Amostra verificada até 21/10/2026, não censo.",
   "politicas": [],
+  "denuncias": [],
   "tres": []
 }
 ```
@@ -131,8 +132,26 @@ Topo:
 }
 ```
 
+`denuncias`:
+
+```json
+{
+  "id": "mpf-pe-transporte",
+  "uf": "PE",
+  "ente": "Pernambuco",
+  "titulo": "MP Eleitoral cobra transporte gratuito e frota de dia útil em PE",
+  "resumo": "Empresas foram notificadas após comunicação à Ouvidoria do TRE-PE.",
+  "fonteNome": "MPF — PRR5",
+  "fonteUrl": "https://...",
+  "fonteData": "2026-10-19",
+  "tipoFonte": "oficial",
+  "observacao": "A cobrança alcança ônibus urbanos e intermunicipais."
+}
+```
+
 `tipo` aceita `estadual`, `distrital`, `metropolitana` e `municipal`.
 `status` aceita `pagina`, `noticia`, `programa` e `sem-pagina`.
+`tipoFonte` aceita `oficial` e `imprensa`.
 `fonteData` aceita `YYYY-MM-DD` e `YYYY-MM`; a UI mostra mês/ano quando não há
 dia confirmado.
 
@@ -143,8 +162,9 @@ dia confirmado.
   na tabela e a página não transforma notícia em decreto.
 - Varredura dos 27 TREs por página de Eleições 2026, busca interna e notícias.
 - Conferência em 21/10/2026, antes do 2º turno.
-- Auditoria do JSON em 21/10/2026: 39 URLs únicas, 0 mortas, 13 com HTTP 200 e
-  26 bloqueadas por 401/403 (TSE/TREs). Bloqueio não é link morto.
+- Auditoria do JSON em 21/10/2026: 59 URLs únicas, 0 mortas, 32 com HTTP 200 e
+  27 bloqueadas por 401/403 (TSE/TREs e uma prefeitura). Bloqueio não é link
+  morto.
 - Nenhum CPF, dado pessoal ou credencial entra no JSON.
 - Links externos com `target="_blank"` e `rel="noopener noreferrer"`.
 
@@ -217,3 +237,8 @@ python scripts/validar-documentacao.py
   link oficial. Commit `6e6ab7b` publicado em `origin/main`. Pendente:
   validador global de docs (falha em `AUDITORIA-GERAL.md`, gerado por outra
   rotina sem frontmatter).
+- **21/10/2026 — ampliação de cobertura.** Acrescenta 14 políticas oficiais de
+  estados, capitais e polos (CE, SE, Manaus, Porto Velho, Belém, Campo Grande,
+  Uberlândia, Canoas, Caruaru, Mossoró, Caucaia, São Gonçalo, Nova Iguaçu e
+  Cuiabá) e 6 denúncias/cobranças do MPF, DPU e imprensa. Total: 31 políticas,
+  19 UFs e 59 URLs auditadas, sem link morto.

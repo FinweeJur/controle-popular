@@ -10,6 +10,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   acervoTransporte,
+  ROTULOS_FONTE_DENUNCIA,
   ROTULOS_STATUS,
   ROTULOS_TIPO,
 } from "./transporte-2026";
@@ -64,11 +65,18 @@ describe("acervo de transporte das Eleições 2026", () => {
   it("tem políticas confirmadas e ids únicos", () => {
     const ids = acervoTransporte.politicas.map((politica) => politica.id);
 
-    expect(acervoTransporte.politicas.length).toBeGreaterThanOrEqual(17);
+    expect(acervoTransporte.politicas.length).toBeGreaterThanOrEqual(30);
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it("usa apenas tipos e status conhecidos", () => {
+  it("tem denúncias e cobranças com ids únicos", () => {
+    const ids = acervoTransporte.denuncias.map((denuncia) => denuncia.id);
+
+    expect(acervoTransporte.denuncias.length).toBeGreaterThanOrEqual(6);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("usa apenas tipos, status e fontes de denúncia conhecidos", () => {
     for (const politica of acervoTransporte.politicas) {
       expect(ROTULOS_TIPO[politica.tipo]).toBeTruthy();
     }
@@ -76,10 +84,18 @@ describe("acervo de transporte das Eleições 2026", () => {
     for (const tre of acervoTransporte.tres) {
       expect(ROTULOS_STATUS[tre.status]).toBeTruthy();
     }
+
+    for (const denuncia of acervoTransporte.denuncias) {
+      expect(ROTULOS_FONTE_DENUNCIA[denuncia.tipoFonte]).toBeTruthy();
+    }
   });
 
   it("exige fonte, URL https e data em todas as linhas", () => {
-    for (const registro of [...acervoTransporte.politicas, ...acervoTransporte.tres]) {
+    for (const registro of [
+      ...acervoTransporte.politicas,
+      ...acervoTransporte.denuncias,
+      ...acervoTransporte.tres,
+    ]) {
       expect(registro.fonteNome.length).toBeGreaterThan(0);
       expect(registro.fonteUrl.startsWith("https://")).toBe(true);
       expect(registro.fonteData).toMatch(/^\d{4}-\d{2}(-\d{2})?$/);
