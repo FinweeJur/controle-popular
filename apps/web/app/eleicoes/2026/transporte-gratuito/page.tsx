@@ -587,8 +587,8 @@ export default function Page() {
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-text-soft">
           Casos em que a falta ou a redução do transporte virou cobrança de
-          órgão público ou denúncia de imprensa. A etiqueta diz se a fonte é
-          oficial ou jornalística.
+          órgão público, partido, entidade da sociedade civil ou denúncia de
+          imprensa. A etiqueta diz se a fonte é oficial ou jornalística.
         </p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {denuncias.map((denuncia) => (
@@ -630,8 +630,9 @@ export default function Page() {
           <p className="mt-1 text-text-soft">
             Redução de frota, linha parada ou falta de transporte no dia da
             votação deve ser comunicada ao Ministério Público Eleitoral ou à
-            Defensoria Pública da União. TRE-SC e TRE-RS publicam orientações
-            oficiais sobre esses canais.
+            Defensoria Pública da União. Partidos, entidades da sociedade civil
+            e cidadãos também podem representar ao TRE e ao MP. TRE-SC e TRE-RS
+            publicam orientações oficiais sobre esses canais.
           </p>
           <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
             <LinkFonte href="https://www.tre-sc.jus.br/comunicacao/noticias/2026/Outubro/entenda-como-funcionara-o-transporte-publico-gratuito-no-dia-das-eleicoes-em-santa-catarina">

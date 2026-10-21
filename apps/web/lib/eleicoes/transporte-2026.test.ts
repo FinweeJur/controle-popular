@@ -72,7 +72,7 @@ describe("acervo de transporte das Eleições 2026", () => {
   it("tem denúncias e cobranças com ids únicos", () => {
     const ids = acervoTransporte.denuncias.map((denuncia) => denuncia.id);
 
-    expect(acervoTransporte.denuncias.length).toBeGreaterThanOrEqual(6);
+    expect(acervoTransporte.denuncias.length).toBeGreaterThanOrEqual(15);
     expect(new Set(ids).size).toBe(ids.length);
   });
 

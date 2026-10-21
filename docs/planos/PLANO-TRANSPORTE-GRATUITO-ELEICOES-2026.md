@@ -72,7 +72,8 @@ Nove blocos, com âncoras no `IndiceWiki`:
    metropolitana e municípios; filtros por UF e tipo; busca; ordenação; CSV.
 6. **Tensões, denúncias e limites.** ADPF 1013, TRE-AM/UNIVAJA, proibição de
    transporte por candidatos e partidos, redução de frota como possível crime
-   eleitoral, PEC de 21/10/2026 e denúncias/cobranças do MPF, DPU e imprensa.
+   eleitoral, PEC de 21/10/2026 e denúncias/cobranças do MPF, DPU, partidos,
+   entidades da sociedade civil e imprensa.
 7. **Metodologia e limites.** “Amostra verificada, não censo”; data de
    conferência; o que não foi possível confirmar; onde o leitor consulta o
    próprio município.
@@ -162,8 +163,8 @@ dia confirmado.
   na tabela e a página não transforma notícia em decreto.
 - Varredura dos 27 TREs por página de Eleições 2026, busca interna e notícias.
 - Conferência em 21/10/2026, antes do 2º turno.
-- Auditoria do JSON em 21/10/2026: 59 URLs únicas, 0 mortas, 32 com HTTP 200 e
-  27 bloqueadas por 401/403 (TSE/TREs e uma prefeitura). Bloqueio não é link
+- Auditoria do JSON em 21/10/2026: 69 URLs únicas, 0 mortas, 41 com HTTP 200 e
+  28 bloqueadas por 401/403 (TSE/TREs e uma prefeitura). Bloqueio não é link
   morto.
 - Nenhum CPF, dado pessoal ou credencial entra no JSON.
 - Links externos com `target="_blank"` e `rel="noopener noreferrer"`.
@@ -240,5 +241,6 @@ python scripts/validar-documentacao.py
 - **21/10/2026 — ampliação de cobertura.** Acrescenta 14 políticas oficiais de
   estados, capitais e polos (CE, SE, Manaus, Porto Velho, Belém, Campo Grande,
   Uberlândia, Canoas, Caruaru, Mossoró, Caucaia, São Gonçalo, Nova Iguaçu e
-  Cuiabá) e 6 denúncias/cobranças do MPF, DPU e imprensa. Total: 31 políticas,
-  19 UFs e 59 URLs auditadas, sem link morto.
+  Cuiabá) e 16 denúncias/cobranças do MPF, DPU, partidos, entidades da
+  sociedade civil e imprensa. Total: 31 políticas, 19 UFs e 69 URLs auditadas,
+  sem link morto.
