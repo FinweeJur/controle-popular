@@ -40,12 +40,14 @@ from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
 Ctx = namedtuple("Ctx", ["modelo", "cabeca", "disp", "otim"])
-Treino = namedtuple("Treino",
-                    ["epocas", "batch", "lr", "min_entradas", "recorte"])
+Treino = namedtuple("Treino", ["epocas", "batch", "lr", "min_entradas",
+                               "recorte", "sem_hard"])
 
 _RC = Path(__file__).resolve().parents[2]
 _DADOS = _RC / "scripts" / ".cache" / "cavas-2m"
 _CKPT = _DADOS / "checkpoint-2m.jsonl"
+_SPLIT = _RC / "scripts" / "dados" / "cavas-2m" / "split-2m.json"
+_HARD = _RC / "scripts" / ".cache" / "cavas-calibracao" / "hard-negativos.txt"
 _TMP = Path.home() / "AppData" / "Local" / "Temp" / "opencode" / "cavas"
 _CLIP = _TMP / "chinese-clip"
 _SAIDA = _TMP / "treino-2m"
@@ -88,6 +90,13 @@ def _mais_limpo(novo: dict, atual: dict | None) -> bool:
     return (novo.get("nuvem") or 1) < (atual.get("nuvem") or 1)
 
 
+def _hard_hashes() -> set:
+    if not _HARD.exists():
+        return set()
+    return {l.strip() for l in _HARD.read_text(encoding="utf-8").splitlines()
+            if l.strip()}
+
+
 def carregar_entradas(nuvem_max: float = NUVEM_TREINO) -> list[dict]:
     """Recortes 2 m limpos (status ok, nuvem <= teto), com label e cena.
 
@@ -108,9 +117,38 @@ def carregar_entradas(nuvem_max: float = NUVEM_TREINO) -> list[dict]:
     return list(por_hash.values())
 
 
+def _split_congelado(itens: list[dict]):
+    """Lê o split versionado; None se o arquivo não existe ou está vazio."""
+    if not _SPLIT.exists():
+        return None
+    try:
+        dados = json.loads(_SPLIT.read_text(encoding="utf-8"))
+        val_cenas = set(dados.get("val_cenas", []))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not val_cenas:
+        return None
+    treino = [i for i in itens if i["cena"] not in val_cenas]
+    val = [i for i in itens if i["cena"] in val_cenas]
+    if not treino or not val:
+        return None
+    return treino, val, len(val_cenas)
+
+
 def split_por_cena(itens: list[dict], frac_val: float, seed: int = 42):
-    """Holdout = cenas inteiras fora do treino (regra de ouro do projeto)."""
+    """Holdout = cenas inteiras fora do treino (regra de ouro do projeto).
+
+    Se `scripts/dados/cavas-2m/split-2m.json` existe, ele manda: o holdout é
+    congelado e cenas novas vão para o treino. Sem isso, cada lote novo muda
+    o split e invalida a comparação entre modelos (medido 20/10).
+    """
     cenas = sorted({i["cena"] for i in itens})
+    congelado = _split_congelado(itens)
+    if congelado:
+        treino, val, n_val = congelado
+        print(f"split congelado: {n_val} cenas de val, {len(val)} recortes",
+              flush=True)
+        return treino, val, len(cenas)
     rng = random.Random(seed)
     rng.shuffle(cenas)
     n_val = max(1, int(len(cenas) * frac_val))
@@ -254,7 +292,7 @@ def _rodar_epocas(ctx, dl_treino, dl_val, epocas: int) -> dict:
 
 
 def treinar(cfg: Treino) -> dict:
-    epocas, batch, lr, min_entradas, recorte = cfg
+    epocas, batch, lr, min_entradas, recorte, sem_hard = cfg
     itens = carregar_entradas()
     pos, neg = _conta(itens)
     # Sem negativo não há o que separar: o modelo só reaprenderia "tudo é cava"
@@ -265,6 +303,11 @@ def treinar(cfg: Treino) -> dict:
               "Adiar.", flush=True)
         return {"adiado": True, "pos": pos, "neg": neg}
     treino, val, n_cenas = split_por_cena(itens, 0.2)
+    if sem_hard:
+        # A validação fica INTACTA (mesmos 155) para comparar com o modelo
+        # que treinou com hard; só o treino perde os hashes difíceis.
+        hard = _hard_hashes()
+        treino = [i for i in treino if i["hash"] not in hard]
     tpos, tneg = _conta(treino)
     print(f"entradas: treino={len(treino)} (pos {tpos}/neg {tneg}) "
           f"val={len(val)} cenas={n_cenas}", flush=True)
@@ -290,11 +333,15 @@ def main() -> int:
                     help="mínimo de entradas limpas p/ treinar (senão adia)")
     ap.add_argument("--recorte", type=int, default=0,
                     help="px do quadrado central p/ usar o pixel nativo (0=full)")
+    ap.add_argument("--sem-hard", action="store_true",
+                    help="exclui os hard negatives (linha de base controlada)")
     args = ap.parse_args()
     _SAIDA.mkdir(parents=True, exist_ok=True)
-    cfg = Treino(args.epocas, args.batch, args.lr, args.min, args.recorte)
+    cfg = Treino(args.epocas, args.batch, args.lr, args.min, args.recorte,
+                 args.sem_hard)
     res = treinar(cfg)
     res["recorte"] = args.recorte
+    res["sem_hard"] = args.sem_hard
     res["lr"] = args.lr
     res["epocas"] = args.epocas
     res["gerado_em"] = str(Path(__file__).name)
