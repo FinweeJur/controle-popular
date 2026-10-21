@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-10-18
+> **Última medição:** 2026-10-21
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -56,6 +56,7 @@ automáticamente pelos agentes de código.
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Oito qualidades da informação | QUALIDADES | [`04-arquitetura/QUALIDADES-DA-INFORMACAO.md`](04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
+| Manual de RAG, LLM, avaliação e agentes locais | MANUAL-RAG-E-LLM | [`03-desenvolvimento/MANUAL-RAG-E-LLM.md`](03-desenvolvimento/MANUAL-RAG-E-LLM.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
