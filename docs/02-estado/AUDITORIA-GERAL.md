@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 21/10/2026 11:45 BRT |
+| 22/10/2026 11:44 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -70,6 +70,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/destinacoes-uniao-mg.json | OK |
 | data/diario-atos-municipios.json | OK |
 | data/documentos-espelho-r2.json | OK |
+| data/documentos-rag-fontes.json | OK |
 | data/dou-mineracao.json | OK |
 | data/dpu-comite-tematico.json | OK |
 | data/ecossistema-ambiental-nacional.json | OK |
@@ -223,12 +224,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 177 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 178 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 22/10/2026 11:44 BRT - 0 criticos; 0 avisos.
 - 21/10/2026 11:45 BRT - 0 criticos; 0 avisos.
 - 20/10/2026 11:33 BRT - 0 criticos; 0 avisos.
 - 19/10/2026 13:25 BRT - 0 criticos; 0 avisos.
