@@ -367,7 +367,7 @@ function GridFrentes({ cidades }: { cidades: Cidades }) {
 
       {/* Linha de orientação -- decisão do dev, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em
-          `docs/planos/REVISAO-UX-E-ONBOARDING.md` §7 "seis cards + um
+          `docs/historico/planos/REVISAO-UX-E-ONBOARDING.md` §7 "seis cards + um
           banner"). Quem chega sem saber o nome de nenhuma das seis
           frentes varre 6 blocos de texto denso antes de confirmar qual
           é o certo -- o achado registrou duas saídas: redesenhar
@@ -741,7 +741,7 @@ function Manifesto({ }) {
   return (
     <>
 
-      {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md,
+      {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md,
           seção "Manifesto final"). */}
       <section className="mt-8 rounded-lg border border-border p-6 space-y-4">
         {citacaoBirri && <Epigrafe citacao={citacaoBirri} variante="inicio" />}

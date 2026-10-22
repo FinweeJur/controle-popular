@@ -45,7 +45,7 @@ import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100Pagi
  * transversais e situacoes praticas. Cada card descreve o destino e leva
  * a uma pagina de indice ou de conteudo.
  *
- * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título,
+ * ⟲ 02/09/2026, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md): título,
  * descrição e cabeçalho na voz nova — o índice é "o mapa", e cada porta
  * leva ao número com a fonte ao lado. Estrutura e cards intactos.
  *
