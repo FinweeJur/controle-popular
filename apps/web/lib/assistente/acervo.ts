@@ -34,7 +34,7 @@
  * ═══ REFATORAÇÃO DO HOTSPOT CODESCENE (08/10/2026) ═══
  *
  * O CodeScene mediu este arquivo com saúde 6,98 (558 Loc, 15 revisões;
- * leitura de 07/10 registrada em `docs/planos/PENDENCIAS-07-10.md`). A
+ * leitura de 07/10 registrada em `docs/historico/planos/PENDENCIAS-07-10.md`). A
  * refatoração seguiu o padrão de dívida observável, não estética:
  *
  * 1. A régua de frente era 11 `if` encadeados → virou a TABELA DE DADOS
@@ -74,6 +74,7 @@ import {
   type LinhaSerie,
 } from "@/lib/cavas/serie";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
+import { deNormas } from "./acervo-normas";
 import catalogoBases from "@/data/catalogo-bases-dados.json";
 import basesPortal from "@/data/bases-portal.json";
 import { municipioComunicaBR, resumoDosMunicipios } from "@/lib/comunicabr/mg";
@@ -835,6 +836,7 @@ export function montarAcervoDetalhado(): AcervoMontado {
     ...deMemoria(),
     ...deBases(),
     ...deBasesPortal(),
+    ...deNormas(),
   ];
 
   exigirPecasCompletas(acervo);
