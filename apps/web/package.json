@@ -38,8 +38,8 @@
     "rotas:sitemap": "tsx scripts/gerar-rotas-sitemap.mts",
     "//amostras:licencas": "Gera/regenera data/amostras/ dos acervos de licenca (mesmos metadados, so a janela que a pagina publica). O JSON completo fica no repo mas fora do contexto de build do Guara (teto 256 MB) via .dockerignore — o build la le so a amostra.",
     "amostras:licencas": "tsx scripts/gerar-amostras-licencas.mts",
-    "rag:index": "tsx scripts/indexar-documentos-rag.mts --cache --fonte=biblioteca-pro-brumadinho",
-    "rag:index:pdf": "tsx scripts/indexar-documentos-rag.mts --baixar --fonte=biblioteca-pro-brumadinho --limite=95",
+    "rag:index": "tsx scripts/indexar-documentos-rag.mts --cache --fonte=biblioteca-pro-brumadinho,fontes-oficiais",
+    "rag:index:pdf": "tsx scripts/indexar-documentos-rag.mts --baixar --fonte=biblioteca-pro-brumadinho,fontes-oficiais",
     "rag:check": "python ../../scripts/checar-dado-pessoal-em-dado.py --extra public/data/documentos-rag"
   },
   "dependencies": {

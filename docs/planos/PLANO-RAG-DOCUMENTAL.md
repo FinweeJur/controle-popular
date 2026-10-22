@@ -110,6 +110,11 @@ O `cutiazinha` também está no home-pc: hub Go/Wails com extração de PDF,
 mas não é RAG. O próximo recorte é indexar só candidato com URL oficial
 declarada, descartando clone, duplicata e arquivo pessoal.
 
+Na primeira rodada de fontes oficiais, entraram 2 PDFs da PBH (Lei Orgânica
+e Lei 11.181/2008). Betim e Diamantina foram recusados pelo `robots.txt`
+(`Disallow`), então ficaram fora — a regra de coleta vale mais que a
+vontade de indexar.
+
 ## Próximas fases
 
 1. **OCR** para os PDFs escaneados (Pro-Brumadinho e bases antigas).

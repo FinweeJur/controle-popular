@@ -235,6 +235,17 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
     );
   }
 
+  const fontesOficiais = lerJson<ItemGenerico[]>(path.join(APP_ROOT, "data", "documentos-rag-fontes.json"));
+  if (fontesOficiais) {
+    adicionarMetadados(
+      fontesOficiais,
+      documentos,
+      trechos,
+      { prefixo: "oficial", fonte: "fontes-oficiais", categoria: "Legislação", tema: "Cidades", orgao: "Fonte oficial" },
+      urlsVistas
+    );
+  }
+
   return {
     documentos,
     trechos,
@@ -335,14 +346,14 @@ async function processarPdfs(
   relatorio: Relatorio,
   limite: number,
   apenasCache: boolean,
-  fonteFiltro: string
+  fontesFiltro: string[]
 ): Promise<void> {
   const vistosDocIds = new Set(documentos.map((d) => d.id));
   let processados = 0;
 
   for (const documento of documentos) {
     if (!documento.urlPdf) continue;
-    if (fonteFiltro && documento.fonte !== fonteFiltro) continue;
+    if (fontesFiltro.length > 0 && !fontesFiltro.includes(documento.fonte)) continue;
     if (limite > 0 && processados >= limite) break;
     processados += 1;
 
@@ -378,12 +389,12 @@ async function main(): Promise<void> {
   const limite = Number(argumento("limite", "0")) || 0;
   const baixar = process.argv.includes("--baixar");
   const cache = process.argv.includes("--cache");
-  const fonteFiltro = argumento("fonte", "");
+  const fontesFiltro = argumento("fonte", "").split(",").map((f) => f.trim()).filter(Boolean);
   const { documentos, trechos, relatorio } = carregarMetadados();
 
   console.log(`Metadados: ${documentos.length} documentos`);
   if (baixar || cache) {
-    await processarPdfs(documentos, trechos, relatorio, limite, cache && !baixar, fonteFiltro);
+    await processarPdfs(documentos, trechos, relatorio, limite, cache && !baixar, fontesFiltro);
   }
 
   const indice = construirIndiceDocumentos(trechos);
