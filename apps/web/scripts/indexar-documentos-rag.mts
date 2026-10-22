@@ -25,6 +25,7 @@ import type { DocumentoExtraido, DocumentoRagMeta, TrechoDocumento } from "../li
 
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CACHE = path.join(APP_ROOT, ".cache", "documentos-rag");
+const LOCAL_CACHE = path.join(APP_ROOT, ".cache", "documentos-rag-local");
 const SAIDA = path.join(APP_ROOT, "public", "data", "documentos-rag");
 const UA = "FinweeJur/Github Artur colito";
 const PAUSA_MS = 1500;
@@ -59,6 +60,7 @@ interface ItemGenerico {
   url?: string;
   urlOficial?: string;
   urlPdf?: string;
+  arquivoLocal?: string;
   link?: string;
   resumo?: string;
   microResumo?: string;
@@ -122,6 +124,7 @@ function itemParaMeta(
     data: item.data ?? null,
     urlOriginal: url,
     urlPdf: urlPdfDe(item),
+    arquivoLocal: item.arquivoLocal ?? null,
     resumo,
     tags: item.tags ?? item.temas ?? [],
     fonte: opcoes.fonte,
@@ -352,21 +355,33 @@ async function processarPdfs(
   let processados = 0;
 
   for (const documento of documentos) {
-    if (!documento.urlPdf) continue;
+    if (!documento.urlPdf && !documento.arquivoLocal) continue;
     if (fontesFiltro.length > 0 && !fontesFiltro.includes(documento.fonte)) continue;
     if (limite > 0 && processados >= limite) break;
     processados += 1;
 
-    const destino = path.join(CACHE, `${hashDaUrl(documento.urlPdf)}.pdf`);
+    const destino = documento.urlPdf ? path.join(CACHE, `${hashDaUrl(documento.urlPdf)}.pdf`) : null;
+    const local = documento.arquivoLocal ? path.join(LOCAL_CACHE, documento.arquivoLocal) : null;
     try {
-      if (apenasCache && !fs.existsSync(destino)) {
-        relatorio.pulados += 1;
-        continue;
+      let buffer: Buffer;
+      if (local && fs.existsSync(local)) {
+        buffer = fs.readFileSync(local);
+        relatorio.reaproveitados += 1;
+      } else {
+        if (!destino) {
+          relatorio.pulados += 1;
+          continue;
+        }
+        if (apenasCache && !fs.existsSync(destino)) {
+          relatorio.pulados += 1;
+          continue;
+        }
+        const estado = apenasCache ? "cache" : await baixarPdf(documento.urlPdf!, destino);
+        relatorio[estado === "cache" ? "reaproveitados" : "baixados"] += 1;
+        buffer = fs.readFileSync(destino);
       }
-      const estado = apenasCache ? "cache" : await baixarPdf(documento.urlPdf, destino);
-      relatorio[estado === "cache" ? "reaproveitados" : "baixados"] += 1;
 
-      const paginas = await extrairPaginasPdf(fs.readFileSync(destino));
+      const paginas = await extrairPaginasPdf(buffer);
       if (paginas.length === 0) {
         relatorio.semTexto += 1;
         relatorio.semTextoIds.push(documento.id);

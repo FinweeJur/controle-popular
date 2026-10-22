@@ -21,6 +21,8 @@ export interface DocumentoRagMeta {
   data: string | null;
   urlOriginal: string;
   urlPdf: string | null;
+  /** PDF j? coletado e lido do cache local, sem nova requisi??o. */
+  arquivoLocal?: string | null;
   resumo: string;
   tags: string[];
   fonte: string;

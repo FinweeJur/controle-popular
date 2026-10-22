@@ -1,6 +1,6 @@
 {
-  "totalDocumentos": 2241,
-  "totalTrechos": 7512,
+  "totalDocumentos": 2242,
+  "totalTrechos": 7690,
   "porCategoria": [
     {
       "slug": "Prestacao de contas",
@@ -24,7 +24,7 @@
     },
     {
       "slug": "Legislação",
-      "contagem": 710
+      "contagem": 709
     },
     {
       "slug": "Legislacao",
@@ -41,6 +41,10 @@
     {
       "slug": "Outro",
       "contagem": 189
+    },
+    {
+      "slug": "Legisla??o",
+      "contagem": 179
     },
     {
       "slug": "Acad?mico & Pesquisa",
@@ -74,7 +78,7 @@
     },
     {
       "slug": "Cidades",
-      "contagem": 710
+      "contagem": 888
     },
     {
       "slug": "Atingidos por barragens",

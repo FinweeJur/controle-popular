@@ -9,19 +9,12 @@
     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
     "urlPdf": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
     "resumo": "Pesquisa jurisprudencial do NACAB/ADAI sobre a??es de pessoas atingidas pelo rompimento da barragem de Brumadinho no TJMG.",
-    "tags": ["NACAB", "ADAI", "Brumadinho", "jurisprud?ncia"]
-  },
-  {
-    "id": "lei-organica-betim",
-    "titulo": "Lei Orgânica do Município de Betim",
-    "tipo": "Lei",
-    "categoria": "Legislação",
-    "tema": "Cidades",
-    "orgao": "Prefeitura de Betim",
-    "url": "https://www.betim.mg.gov.br/publicos/leiorganicadebetim_21084838.pdf",
-    "urlPdf": "https://www.betim.mg.gov.br/publicos/leiorganicadebetim_21084838.pdf",
-    "resumo": "Lei Orgânica do Município de Betim, publicada no portal oficial da prefeitura.",
-    "tags": ["lei orgânica", "betim", "cidades"]
+    "tags": [
+      "NACAB",
+      "ADAI",
+      "Brumadinho",
+      "jurisprud?ncia"
+    ]
   },
   {
     "id": "lei-organica-pbh",
@@ -33,7 +26,11 @@
     "url": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/controladoria/2018/documentos/Legisla%C3%A7%C3%A3o/Lei_Organica_do_Municipio.pdf",
     "urlPdf": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/controladoria/2018/documentos/Legisla%C3%A7%C3%A3o/Lei_Organica_do_Municipio.pdf",
     "resumo": "Lei Orgânica do Município de Belo Horizonte, disponível no portal oficial da prefeitura.",
-    "tags": ["lei orgânica", "belo horizonte", "cidades"]
+    "tags": [
+      "lei orgânica",
+      "belo horizonte",
+      "cidades"
+    ]
   },
   {
     "id": "lei-11181-pbh",
@@ -45,7 +42,11 @@
     "url": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/meio-ambiente/lei11181-atual.pdf",
     "urlPdf": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/meio-ambiente/lei11181-atual.pdf",
     "resumo": "Lei 11.181/2008, que institui o Plano Diretor de Belo Horizonte.",
-    "tags": ["plano diretor", "belo horizonte", "cidades"]
+    "tags": [
+      "plano diretor",
+      "belo horizonte",
+      "cidades"
+    ]
   },
   {
     "id": "lei-organica-diamantina",
@@ -57,7 +58,11 @@
     "url": "https://www.diamantina.mg.gov.br/arquivos/lei-org--nica-do-munic--pio-de-diamantina_20020813.pdf",
     "urlPdf": "https://www.diamantina.mg.gov.br/arquivos/lei-org--nica-do-munic--pio-de-diamantina_20020813.pdf",
     "resumo": "Lei Orgânica do Município de Diamantina, publicada no portal oficial da prefeitura.",
-    "tags": ["lei orgânica", "diamantina", "cidades"]
+    "tags": [
+      "lei orgânica",
+      "diamantina",
+      "cidades"
+    ]
   },
   {
     "id": "lei-complementar-103-diamantina",
@@ -69,6 +74,44 @@
     "url": "https://www.diamantina.mg.gov.br/imgeditor/file/lei-complementar-n-103-plano-diretor-vigente_22015600.pdf",
     "urlPdf": "https://www.diamantina.mg.gov.br/imgeditor/file/lei-complementar-n-103-plano-diretor-vigente_22015600.pdf",
     "resumo": "Lei Complementar 103, que institui o Plano Diretor vigente de Diamantina.",
-    "tags": ["plano diretor", "diamantina", "cidades"]
+    "tags": [
+      "plano diretor",
+      "diamantina",
+      "cidades"
+    ]
+  },
+  {
+    "id": "lei-organica-betim-local",
+    "titulo": "Lei Org?nica do Munic?pio de Betim",
+    "tipo": "Lei",
+    "categoria": "Legisla??o",
+    "tema": "Cidades",
+    "orgao": "Prefeitura de Betim",
+    "url": "https://www.betim.mg.gov.br/publicos/leiorganicadebetim_21084838.pdf",
+    "urlPdf": null,
+    "arquivoLocal": "betim-lei-organica.pdf",
+    "resumo": "Lei Org?nica do Munic?pio de Betim, coletada do portal oficial da prefeitura.",
+    "tags": [
+      "lei org?nica",
+      "betim",
+      "cidades"
+    ]
+  },
+  {
+    "id": "betim-plano-diretor",
+    "titulo": "Plano Diretor de Betim ? LC 07/2018 e altera??es",
+    "tipo": "Legisla??o",
+    "categoria": "Legisla??o",
+    "tema": "Cidades",
+    "orgao": "Prefeitura de Betim / DPURB",
+    "url": "http://www.dpurb.betim.mg.gov.br/site/index.php/legislacao-2/plano-diretor",
+    "urlPdf": null,
+    "resumo": "P?gina oficial do DPURB com o texto compilado do Plano Diretor de Betim e suas altera??es.",
+    "tags": [
+      "plano diretor",
+      "betim",
+      "zoneamento",
+      "cidades"
+    ]
   }
 ]
