@@ -277,7 +277,7 @@ const EIXOS: EixoCartao[] = [
       selo: "rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-xs font-bold uppercase text-emerald-500",
       titulo: "font-display text-lg font-bold text-text group-hover:text-emerald-500 transition-colors",
       blocoSubfrentes: "mt-4 pt-3 border-t border-emerald-500/20 space-y-1.5",
-      rotuloSubfrentes: "text-[10px] font-bold uppercase tracking-wider text-emerald-400",
+      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-emerald-400",
       itemSubfrente: "font-medium text-emerald-300",
       rodape: "mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500 hover:underline",
     },
@@ -301,7 +301,7 @@ const EIXOS: EixoCartao[] = [
       selo: "rounded border border-alert/30 bg-alert/20 px-2 py-0.5 text-xs font-bold uppercase text-alert",
       titulo: "font-display text-lg font-bold text-text group-hover:text-alert transition-colors",
       blocoSubfrentes: "mt-4 pt-3 border-t border-alert/20 space-y-1.5",
-      rotuloSubfrentes: "text-[10px] font-bold uppercase tracking-wider text-alert",
+      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-alert",
       itemSubfrente: "font-medium text-amber-300",
       rodape: "mt-4 pt-3 border-t border-alert/20 flex items-center justify-between text-xs font-semibold text-alert hover:underline",
     },
@@ -328,7 +328,7 @@ const EIXOS: EixoCartao[] = [
       selo: "rounded border border-sky-500/30 bg-sky-500/20 px-2 py-0.5 text-xs font-bold uppercase text-sky-500",
       titulo: "font-display text-lg font-bold text-text group-hover:text-sky-500 transition-colors",
       blocoSubfrentes: "mt-4 pt-3 border-t border-sky-500/20 space-y-1.5",
-      rotuloSubfrentes: "text-[10px] font-bold uppercase tracking-wider text-sky-400",
+      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-sky-400",
       itemSubfrente: "font-medium text-sky-300",
       rodape: "mt-4 pt-3 border-t border-sky-500/20 flex items-center justify-between text-xs font-semibold text-sky-500 hover:underline",
     },
@@ -352,7 +352,7 @@ const EIXOS: EixoCartao[] = [
       selo: "rounded border border-primary/30 bg-primary/20 px-2 py-0.5 text-xs font-bold uppercase text-primary",
       titulo: "font-display text-lg font-bold text-text group-hover:text-primary transition-colors",
       blocoSubfrentes: "mt-4 pt-3 border-t border-primary/20 space-y-1.5",
-      rotuloSubfrentes: "text-[10px] font-bold uppercase tracking-wider text-primary",
+      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-primary",
       itemSubfrente: "font-medium text-amber-200",
       rodape: "mt-4 pt-3 border-t border-primary/20 flex items-center justify-between text-xs font-semibold text-primary hover:underline",
     },
@@ -647,7 +647,7 @@ function SecaoNovidades({ itens }: { itens: ItemNovidade[] }) {
       <h2 className="flex items-center gap-2 font-display text-xl font-semibold">
         <Sparkles size={20} className="text-primary" aria-hidden="true" />
         Novidades
-        <Link href="/novidades" className="ml-auto text-[11px] font-medium text-text-soft hover:text-primary">
+        <Link href="/novidades" className="ml-auto text-xs font-medium text-text-soft hover:text-primary">
           ver tudo
         </Link>
       </h2>

@@ -1,0 +1,90 @@
+{
+  "_comentario": "Temas que a Secretaria acompanha. O nome do grupo pode variar: a busca e por PALAVRA-CHAVE, entao basta uma parte casar. Vale sinonimo, abreviacao, sem acento e regionalismo de Minas. O relatorio monta o bloco TEMAS cruzando isto com os grupos do WhatsApp e com o Gmail.",
+  "_formato": "cada tema tem 'palavras' (casa em nome de grupo, remetente, assunto ou trecho) e 'notas' (o que o dono quer saber)",
+  "temas": [
+    {
+      "nome": "Mestrado",
+      "palavras": [
+        "mestrado", "mestranda", "mestrando", "mestrados rurais", "mestrado rural", "rural", "pos graduacao", "pós-graduação", "pos-graduacao",
+        "sem professores", "sem professor", "falta de professor", "professor substituto", "reposicao", "reposição",
+        "alessandro", "orientador", "orientadora", "orientacao", "orientação", "coorientador", "coorientacao",
+        "qualificacao", "qualificação", "dissertacao", "dissertação", "banca", "defesa", "defesa publica",
+        "credito", "creditos", "créditos", "disciplina", "matricula", "matrícula", "trancamento", "prorrogacao", "prorrogação",
+        "bolsa", "bolsista", "capes", "fapemig", "cNPq", "cnpq", "agencia de fomento", "auxilio", "auxílio",
+        "intercambio", "intercâmbio", "sanduiche", "sanduíche", "mobilidade", "doutorado sanduiche", "dupla diplomação",
+        "ufvjm", "diamantina", "florestal", "campus mucuri", "arturcolito", "artur colito",
+        "student pack", "github student", "github education", "pack educacao", "beneficio estudante",
+        "google ai studio", "ai studio", "flows", "gemini", "colab", "notebooklm", "copilot", "jetbrains", "notion", "figma", "canva pro", "domínio", "dominio", "hospedagem"
+      ],
+      "notas": "E-mail arturcolito@ufvjm.edu.br, avisos de intercambio e assinaturas do GitHub Student Pack."
+    },
+    {
+      "nome": "RENAP",
+      "palavras": [
+        "renap", "renap mg", "renap minas", "rede nacional", "articulacao nacional", "articulação nacional", "articulacao", "articulação",
+        "encontro nacional", "encontrão", "encontrao", "comunicacao encontrao", "comunicação encontrão", "comunicacao renap",
+        "cpp", "xi seminario", "xi seminário", "seminario", "seminário", "seminario nacional", "congresso", "congresso nacional",
+        "plenaria", "plenária", "plenaria nacional", "formacao", "formação", "escola de formacao", "escola de formação",
+        "agenda renap", "militantes", "delegados", "delegadas", "carta politica", "carta política", "moção", "mocao", "teses"
+      ],
+      "notas": "Grupos RENAP MG, Art. Nacional Renap, Comunicacao Encontrao e CPP XI Seminario."
+    },
+    {
+      "nome": "ABJD",
+      "palavras": [
+        "abjd", "abjd mg", "abjd minas", "colegiado", "colegiado nacional", "executiva", "executiva nacional",
+        "coord abjd", "coordenacao abjd", "coordenação abjd", "coordenacao nacional", "coordenador", "coordenadora",
+        "direcao", "direção", "diretoria", "assembleia", "associados", "associadas", "filiacao", "filiação", "adesao", "adesão",
+        "defensores", "defensoras", "defensoria popular", "assistencia juridica", "assistência jurídica", "advocacia popular",
+        "grupo de trabalho", "gt abjd", "comissao", "comissão", "plenaria abjd", "encontro abjd", "formacao juridica", "formação jurídica"
+      ],
+      "notas": "Colegiado, Executiva, Coord ABJD MG e ABJD MG."
+    },
+    {
+      "nome": "Instituto Esperanca Maria",
+      "palavras": [
+        "esperanca maria", "esperança maria", "instituto esperanca", "instituto esperança", "instituto esperanca maria",
+        "esperanca", "esperança", "iem", "casa de acolhida", "acolhimento", "creche", "assistencia social", "assistência social",
+        "doacao", "doação", "doacoes", "doações", "vaquinha", "mutirao", "mutirão", "voluntariado", "voluntarios", "voluntários",
+        "projeto social", "acao social", "ação social", "cesta basica", "cesta básica", "campanha do agasalho"
+      ],
+      "notas": "Tudo que chegar do Instituto Esperanca Maria."
+    },
+    {
+      "nome": "OAB",
+      "palavras": [
+        "oab", "oab mg", "oab minas", "cndh", "cndh oab", "cdh", "cdh oab", "comissao de direitos humanos", "comissão de direitos humanos",
+        "direitos humanos", "direito ambiental", "comissao de direito ambiental", "comissão de direito ambiental", "ambiental",
+        "conferencia estadual", "conferência estadual", "conferencia estadual da advocacia", "pocos de caldas", "poços de caldas",
+        "advocacia", "advogado", "advogada", "inscricao", "inscrição", "anuidade", "conselho seccional", "subsecao", "subseção",
+        "provimento", "resolucao", "resolução", "comissao", "comissão", "sessao", "sessão", "plenaria", "plenária",
+        "comissao de defesa", "comissão de defesa", "grupo de trabalho oab", "comissao especial"
+      ],
+      "notas": "Inclui a Conferencia Estadual da Advocacia de MG em Pocos de Caldas (evento de calendario)."
+    },
+    {
+      "nome": "MAB",
+      "palavras": [
+        "mab", "mab mg", "movimento dos atingidos", "movimento dos atingidos por barragens", "atingidos", "atingidas",
+        "operativa", "operativa comunica", "comunicacao mab", "comunicação mab", "citrolandia", "citrolândia", "liderancas", "lideranças",
+        "socioambiental", "gt socioambiental", "grupo de trabalho socioambiental", "dh atingidos", "direitos humanos atingidos",
+        "ptr", "nae", "fgv", "barragem", "barragens", "reassentamento", "reparacao", "reparação", "acordo de reparacao",
+        "brumadinho", "mariana", "paraopeba", "rio doce", "bacia", "doce", "vale do rio doce",
+        "consulta previa", "consulta prévia", "protocolo de consulta", "mobilizacao", "mobilização", "marcha", "acampamento",
+        "comissao de atingidos", "comissão de atingidos", "assembleia de atingidos", "plenaria mab", "plenária mab"
+      ],
+      "notas": "Operativa Comunica, Liderancas Citrolandia, GT Socioambiental MAB, DH Atingidos, PTR e NAE, FGV."
+    },
+    {
+      "nome": "CNDH",
+      "palavras": [
+        "cndh", "comissao terra e agua", "comissão terra e água", "terra e agua", "terra e água", "comissao terra", "comissão terra",
+        "direito a agua", "direito à água", "agua", "água", "conflito fundiario", "conflito fundiário", "conflitos fundiarios",
+        "reforma agraria", "reforma agrária", "agraria", "agrária", "assentamento", "acampamento", "posse", "grilagem",
+        "povos tradicionais", "comunidade tradicional", "quilombola", "quilombo", "indigena", "indígena", "geraizeiro", "geraizeira",
+        "veredas", "chapada", "serra", "sertao", "sertão", "norte de minas", "vale do jequitinhonha", "mucuri", "zona da mata"
+      ],
+      "notas": "Comissao Terra e Agua."
+    }
+  ]
+}

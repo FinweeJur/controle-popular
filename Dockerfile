@@ -18,11 +18,10 @@
 #    rastreados pelo `@vercel/nft`, reduzindo a superficie de ataque e o tamanho da imagem.
 
 # ---- Estágio 1: Dependências ----
-# Base pelo ECR Public (espelho oficial das imagens Docker), NÃO pelo Docker
-# Hub: o Hub aplica rate limit por IP e os runners do GitHub o compartilham —
-# o build caiu 3x com "429 Too Many Requests" ao puxar node:22-alpine (medido
-# 09/10/2026). O ECR Public não tem esse limite no pull anônimo.
-FROM public.ecr.aws/docker/library/node:22-alpine AS deps
+# Base pelo mirror.gcr.io, que espelha o manifesto oficial do Docker Hub sem
+# o rate limit por IP que derrubou o build (Docker Hub, 09/10/2026) e sem a
+# cota de dados do ECR Public (429 "Data limit exceeded", 22/10/2026).
+FROM mirror.gcr.io/library/node:22-alpine AS deps
 RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -40,7 +39,7 @@ COPY scripts/configurar-hooks.mjs ./scripts/configurar-hooks.mjs
 RUN npm ci --no-audit --no-fund && npm cache clean --force
 
 # ---- Estágio 2: Build ----
-FROM public.ecr.aws/docker/library/node:22-alpine AS builder
+FROM mirror.gcr.io/library/node:22-alpine AS builder
 RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -85,7 +84,7 @@ RUN npm run build -w @cp/web && \
     rm -rf /root/.npm /tmp/*
 
 # ---- Estágio 3: Runner ----
-FROM public.ecr.aws/docker/library/node:22-alpine AS runner
+FROM mirror.gcr.io/library/node:22-alpine AS runner
 RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat
 WORKDIR /app
 

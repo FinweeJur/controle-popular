@@ -276,6 +276,11 @@ function AtalhosHome({ }) {
               Páginas mais vistas →
             </NextLink>
           </Magnet>
+          <Magnet forca={0.2}>
+            <NextLink href="/eleicoes/2026/transporte-gratuito" className="font-medium text-primary hover:underline">
+              Transporte grátis nas Eleições 2026 →
+            </NextLink>
+          </Magnet>
         </div>
     </>
   );

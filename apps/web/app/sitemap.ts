@@ -411,7 +411,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // anúncio — `/ambiental/car`, as 27 páginas `/cidades/<uf>`,
   // `/internacional`, `/assembleias`... A lista acima mantém seus
   // ajustes de prioridade; esta só preenche o buraco, deduplicando por URL.
-  const jaAnunciadas = new Set(urls.map((u) => u.url));
+  const jaAnunciadas = new Set(urls.map((u: { url: string }) => u.url));
   for (const rota of ROTAS_GLOBAIS) {
     const url = `${BASE_URL}${rota}`;
     if (jaAnunciadas.has(url)) continue;

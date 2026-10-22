@@ -119,7 +119,7 @@ function Selo({ ativo, texto: t }: { ativo: boolean; texto: string }): ReactNode
   if (!ativo) return null;
   return (
     <span
-      className="rounded-md border px-1.5 py-0.5 text-[11px] font-semibold"
+      className="rounded-md border px-1.5 py-0.5 text-xs font-semibold"
       style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
     >
       {t}
@@ -194,7 +194,7 @@ function Cabecalho({
                 className="inline-flex items-center gap-1 font-semibold uppercase tracking-wide hover:underline"
               >
                 {c.rotulo}
-                <span aria-hidden="true" className="font-tabular text-[11px]">
+                <span aria-hidden="true" className="font-tabular text-xs">
                   {seta(ativa, dir)}
                 </span>
               </button>

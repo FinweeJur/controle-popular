@@ -3,7 +3,7 @@
 > Lido automaticamente por opencode e por outros agentes de terminal.
 > **A regra mora no documento linkado; aqui fica o resumo e o caminho.**
 > Os links são caminhos do repositório no GitHub.
-> Última medição: 18/10/2026.
+> **Última medição:** 21/10/2026.
 
 **Palavras-chave:** agente, mapa, regras, commit, worktree, CPF, deploy,
 robots, user-agent, pesquisa, qualidades, SEO, acessibilidade, Ollama.
@@ -114,6 +114,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link`; a casca e o rádio não podem desmontar. |
 | [5.14](docs/03-desenvolvimento/REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado) | O celular é a régua: 390 px, sem rolagem lateral falsa, `<main>` com `w-full`. |
 | [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
+| [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |
 
 ## Verificação mínima
 
@@ -123,6 +124,7 @@ Todo commit, em segundos:
 npx tsc --noEmit                              # em apps/web
 npx vitest run lib/sem-cpf-no-repo.test.ts    # CPF não pode vazar
 npx eslint <arquivos do diff>                 # só o que mudou
+rg "text-\[(9|10|11)px\]" apps/web/app        # fonte mínima 12 px
 python scripts/validar-documentacao.py        # se mexeu em docs/
 ```
 

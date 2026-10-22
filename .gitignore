@@ -180,7 +180,9 @@ apps/web/.wrangler-dist/
 .agents/
 .claude/manha/
 .claude/worktrees/
-.claude/skills/
+.claude/skills/*
+!.claude/skills/ssh/
+!.claude/skills/rag/
 
 # Pacotes e arquivos compactados de trabalho
 *.zip

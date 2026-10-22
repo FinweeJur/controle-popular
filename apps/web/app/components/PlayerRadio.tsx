@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
 import {
   ListMusic,
@@ -148,11 +148,12 @@ export default function PlayerRadio() {
     audio.muted = mudo;
   }, [volume, mudo]);
 
-  // O índice abre no hover do botão. Ao sair, ele NÃO fecha na hora: há um
+  // Índice abre no hover do botão. Ao sair, ele NÃO fecha na hora: há um
   // vão de alguns pixels entre o botão e o painel, e fechar na saída tornava
   // o índice quase inacessível (o ponteiro atravessava o vão e o painel
-  // sumia). Fecha só 1,5 s depois de a pessoa sair (pedido do dono,
-  // 30/09/2026); voltar ao painel dentro desse tempo cancela o fechamento.
+  // sumia). Fecha 1,15 s depois de a pessoa sair — pedido do dono
+  // (21/10/2026): reduzido de 2300 ms para 1150 ms. Voltar ao painel dentro
+  // desse tempo cancela o fechamento.
   const fecharTimer = useRef<number | null>(null);
 
   const abrirIndice = useCallback(() => {
@@ -176,7 +177,7 @@ export default function PlayerRadio() {
     fecharTimer.current = window.setTimeout(() => {
       fecharTimer.current = null;
       setIndiceAberto(false);
-    }, 1500);
+    }, 1150);
   }, []);
 
   // Não deixa um timer pendente disparar depois de desmontar.
@@ -187,6 +188,47 @@ export default function PlayerRadio() {
   }, []);
 
   const estacaoAtual = idAtual ? estacaoPorId(idAtual) ?? null : null;
+
+  // ══ BUG 2 (dono, 21/10/2026): rolagem ao escolher estação ══
+  // Clicar numa estação fazia a lista "subir" para o topo do índice — o botão
+  // clicado ganhava foco e o navegador deslocava a lista de overflow por
+  // programação, escondendo o item selecionado. Defesa: guardar o scrollTop
+  // da lista no pointerdown (que é um gesto do usuário — não desfaz rolagem
+  // natural) e restaurar o valor em um requestAnimationFrame depois do clique.
+  const scrollDaListaRef = useRef<
+    { el: HTMLElement; scrollTop: number } | null
+  >(null);
+  const guardarScrollDaLista = useCallback((ev: ReactPointerEvent) => {
+    const el = ev.currentTarget.closest<HTMLElement>("[data-lenis-prevent]");
+    if (el) scrollDaListaRef.current = { el, scrollTop: el.scrollTop };
+  }, []);
+  const restaurarScrollDaLista = useCallback(() => {
+    const guardado = scrollDaListaRef.current;
+    scrollDaListaRef.current = null;
+    if (!guardado) return;
+    requestAnimationFrame(() => {
+      guardado.el.scrollTop = guardado.scrollTop;
+    });
+  }, []);
+
+  // ══ BUG 3 (dono, 21/10/2026): tooltip de descrição da estação ══
+  // Passar o mouse mais de 1 s sobre o texto da estação abre uma indicação
+  // "hover up" com a descrição dela (estilo hover up, acima do item). Some ao
+  // sair ou ao clicar; foco por teclado abre sem timer. `role="tooltip"` é
+  // apontado por `aria-describedby` do botão da estação. Segura UM tooltip
+  // aberto por vez; o timer fica no ref e é limpo ao sair/desmontar.
+  const [tooltipAberto, setTooltipAberto] = useState<string | null>(null);
+  const tooltipTimer = useRef<number | null>(null);
+  const limparTooltipTimer = useCallback(() => {
+    if (tooltipTimer.current !== null) {
+      window.clearTimeout(tooltipTimer.current);
+      tooltipTimer.current = null;
+    }
+  }, []);
+  // Desmonta: nenhum timer pendente dispara tooltip fantasma.
+  useEffect(() => {
+    return () => limparTooltipTimer();
+  }, [limparTooltipTimer]);
 
   /** Publica o estado para os cartões da `/radio`. */
   useEffect(() => {
@@ -461,11 +503,63 @@ export default function PlayerRadio() {
                     <ul>
                       {grupo.map((e) => {
                         const ativa = e.id === idAtual;
+                        const tooltipDeste = tooltipAberto === e.id;
                         return (
-                          <li key={e.id} data-cp-prox>
+                          <li
+                            key={e.id}
+                            data-cp-prox
+                            className="relative"
+                          >
+                            {/* Tooltip "hover up" (bug 3): só a estação sob o
+                                ponteiro/foco há 1 s o carrega. Posicionado
+                                ACIMA do item (bottom: 100%); não o intercepta. */}
+                            {tooltipDeste && (
+                              <span
+                                id={`cp-dica-estacao-${e.id}`}
+                                role="tooltip"
+                                className="pointer-events-none absolute bottom-full left-0 z-10 mb-1.5 block w-52 rounded-lg border border-border bg-surface px-2 py-1.5 text-[0.7rem] leading-snug text-text shadow-lg"
+                              >
+                                {e.descricao}
+                              </span>
+                            )}
                             <button
                               type="button"
-                              onClick={() => void tocar(e.id)}
+                              onPointerDown={(ev) => {
+                                guardarScrollDaLista(ev);
+                                // Clique fecha o tooltip (critério do dono).
+                                limparTooltipTimer();
+                                setTooltipAberto(null);
+                              }}
+                              onClick={() => {
+                                void tocar(e.id);
+                                restaurarScrollDaLista();
+                              }}
+                              onMouseEnter={() => {
+                                limparTooltipTimer();
+                                tooltipTimer.current = window.setTimeout(() => {
+                                  tooltipTimer.current = null;
+                                  setTooltipAberto(e.id);
+                                }, 1000);
+                              }}
+                              onMouseLeave={() => {
+                                limparTooltipTimer();
+                                setTooltipAberto(null);
+                              }}
+                              onFocus={() => {
+                                // Teclado: abre na hora (o timer de 1 s
+                                // é exigência de MOUSE, dono, 21/10/2026).
+                                limparTooltipTimer();
+                                setTooltipAberto(e.id);
+                              }}
+                              onBlur={() => {
+                                limparTooltipTimer();
+                                setTooltipAberto(null);
+                              }}
+                              aria-describedby={
+                                tooltipDeste
+                                  ? `cp-dica-estacao-${e.id}`
+                                  : undefined
+                              }
                               className={`flex w-full items-center gap-2 rounded-lg px-1.5 py-1.5 text-left transition-colors hover:bg-surface-2 ${
                                 ativa ? "bg-primary/10" : ""
                               }`}

@@ -1,0 +1,57 @@
+# Gate de merge e rotina diaria das fontes oficiais (TSE/TRE).
+# Por que existe: em 19/10/2026 o dono relatou links quebrados na pagina
+# /eleicoes/2026/locais-votacao-alterados. O script verificar-fontes.py
+# confere cada link com User-Agent honesto e ritmo etico (1,5 s por host).
+# CRITICO (404/DNS/timeout) bloqueia; 403 em host que bloqueia robot e
+# apenas AVISO, pois o portal so aponta o link.
+
+name: monitoramento-fontes
+
+on:
+  pull_request:
+    paths:
+      - "apps/web/app/eleicoes/2026/locais-votacao-alterados/**"
+      - "scripts/etl/eleicoes/fontes-oficiais.json"
+      - "scripts/etl/eleicoes/verificar-fontes.py"
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Conferir links das fontes oficiais
+        id: conferencia
+        run: |
+          python scripts/etl/eleicoes/verificar-fontes.py --atualizar-log | tee saida-fontes.txt
+          if grep -q "Criticos: 0" saida-fontes.txt; then
+            echo "resultado=ok" >> "$GITHUB_OUTPUT"
+          else
+            echo "resultado=critico" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bloquear PR se houver link critico
+        if: github.event_name == 'pull_request' && steps.conferencia.outputs.resultado == 'critico'
+        run: |
+          echo "Link critico detectado: merge bloqueado."
+          exit 1
+
+      - name: Registrar log na rotina diaria
+        if: github.event_name != 'pull_request' && steps.conferencia.outputs.resultado == 'ok'
+        run: |
+          git config user.name "Dev CP"
+          git config user.email "noreply@opencode.ai"
+          printf '%s\n' "chore(fontes): auditoria diaria dos links oficiais" "" "Co-Authored-By: opencode <noreply@opencode.ai>" > _msg_monitoramento.txt
+          git add docs/02-estado/AUDITORIA-FONTES.md
+          git diff --cached --quiet || git commit -F _msg_monitoramento.txt
+          git push origin HEAD:main || echo "push da rotina falhou; aviso manual"

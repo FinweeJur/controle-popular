@@ -1,0 +1,45 @@
+# Plano: Monitoramento das fontes oficiais (fase 7)
+
+id: monitoramento-fontes-oficiais
+data: 2026-10-19
+dono: Dev CP
+solicitante: EstrelaQueBrilha (fase 7 - Monitoramento)
+origem: >
+  Dono relatou "nenhuma fonte/link esta funcionando" na pagina
+  /eleicoes/2026/locais-votacao-alterados. Institui-se revisao programada
+  de fontes e links com criterios objetivos.
+
+objetivo: >
+  Garantir que todo hyperlink das fontes oficiais (TSE e TREs) do portal
+  esteja acessivel, com registro de mudancas e bloqueio de merge quando
+  um link critico falhar.
+
+escopo:
+  arquivos:
+    - scripts/etl/eleicoes/fontes-oficiais.json   # registro dos links
+    - scripts/etl/eleicoes/verificar-fontes.py    # rotina de conferencia
+    - .github/workflows/monitoramento-fontes.yml  # rotina diaria + gate de PR
+    - docs/02-estado/AUDITORIA-FONTES.md          # log de mudancas
+
+criterios_objetivos:
+  - "OK: resposta HTTP 2xx/3xx com User-Agent honesto FinweeJur/Github Artur colito."
+  - "AVISO: HTTP 403/405/429/503 em host marcado bloqueia_robot=true (ex.: sig.tse.jus.br e tre-<uf>.tse.jus.br). Nao bloqueia: o portal so aponta o link."
+  - "CRITICO: qualquer outro erro (404, DNS, timeout). Bloqueia merge e exige correcao."
+  - "Ritmo: 1,5 s entre requisicoes por host; timeout de 15 s; so pagina publica; sem coleta de conteudo."
+
+rotina_diaria:
+  quando: cron 09:00 UTC (06:00 BRT), todo dia
+  passos:
+    - "Executar scripts/etl/eleicoes/verificar-fontes.py --atualizar-log"
+    - "Se aparecer CRITICO: commitar o log e avisar o EstrelaQueBrilha e o dono"
+    - "Se tudo OK/AVISO: commitar o log apenas quando o resumo mudar"
+
+gate_de_merge:
+  quando: pull_request que altere a pagina de fontes, o registro JSON ou o script
+  condicao_de_bloqueio: "qualquer link em status CRITICO"
+  acao: "PR fica bloqueado ate o link ser corrigido ou movido para host acessivel"
+
+verificacao:
+  - "python scripts/etl/eleicoes/verificar-fontes.py roda e sai com codigo 0"
+  - "log em docs/02-estado/AUDITORIA-FONTES.md cresce com data nova"
+  - "CI verde no PR"

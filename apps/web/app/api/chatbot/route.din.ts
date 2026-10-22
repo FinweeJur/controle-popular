@@ -110,7 +110,11 @@ export async function POST(req: Request): Promise<Response> {
   const perguntaParaRag = await perguntaComRepasses(pergunta);
 
   try {
-    const resposta: RespostaRag = await responderComRag(perguntaParaRag, { pathname, titulo });
+    const resposta: RespostaRag = await responderComRag(perguntaParaRag, {
+      pathname,
+      titulo,
+      perguntaBusca: pergunta,
+    });
     return NextResponse.json(resposta);
   } catch (e) {
     if (e instanceof OllamaIndisponivel) {

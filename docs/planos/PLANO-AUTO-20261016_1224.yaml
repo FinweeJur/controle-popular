@@ -1,0 +1,70 @@
+```yaml
+titulo: "Documentação e Contratos de Tipagem dos Endpoints da API de Contratos"
+prioridade: "alta"
+milestones:
+  - nome: "M1: Mapeamento de Schemas Zod e Sanitização LGPD (CPF Mod-11)"
+    descricao: "Definir schema estrito com Zod/TypeScript para os modelos de contratos (PNCP e municipais), incorporando sanitização obrigatória de CPF para pessoas físicas (regra do mod-11) e metadados de proveniência oficial."
+    agente: "opencode-go"
+    arquivos:
+      - "apps/web/lib/betim/contratos.ts"
+      - "apps/web/lib/betim/contratos.test.ts"
+    testes:
+      - "npm --prefix apps/web test apps/web/lib/betim/contratos.test.ts"
+      - "npm --prefix apps/web test apps/web/lib/sem-cpf-no-repo.test.ts"
+
+  - nome: "M2: Atualização da Especificação OpenAPI e Swagger UI"
+    descricao: "Integrar os endpoints e schemas de contratos ao openapi.yaml e à interface pública /api, declarando parâmetros de paginação, filtros, códigos de retorno (200, 400, 404, 503) e ressalvas metodológicas no contrato."
+    agente: "opencode-go"
+    arquivos:
+      - "apps/web/public/api/openapi.yaml"
+      - "apps/web/app/api/page.tsx"
+      - "apps/web/app/api/ExemplosApi.tsx"
+    testes:
+      - "npx --prefix apps/web tsc --noEmit"
+
+  - nome: "M3: Exposição de Dataset e Headers de Cache HTTP"
+    descricao: "Disponibilizar agregação de contratos no catálogo estático v1 via gerador da API e aplicar headers de cache (stale-while-revalidate) para proteção de conexões no Heroku Postgres (plano Essential-0)."
+    agente: "opencode-go"
+    arquivos:
+      - "apps/web/scripts/gerar-api-publica.mjs"
+      - "apps/web/app/api/dados-resumidos/route.din.ts"
+    testes:
+      - "node apps/web/scripts/gerar-api-publica.mjs"
+      - "npx --prefix apps/web tsc --noEmit"
+
+  - nome: "M4: Auditoria de Segurança, Dívida Técnica e Commits Conformes"
+    descricao: "Executar varredura completa de dado pessoal e segredos, validando conformidade estrita com o AGENTS.md antes do commit isolado por worktree e pathspec explícito."
+    agente: "opencode-go"
+    arquivos:
+      - "docs/02-estado/ESTADO.md"
+    testes:
+      - "python scripts/checar-dado-pessoal-em-dado.py"
+      - "npm --prefix apps/web test apps/web/lib/sem-cpf-no-repo.test.ts"
+      - "npx --prefix apps/web tsc --noEmit"
+
+riscos:
+  - "Vazamento de CPF não mascarado em contratos de pessoa física (violação da LGPD e §5.2 do AGENTS.md)."
+  - "Esgotamento do pool de conexões do Heroku Postgres em requisições concorrentes sem camada de cache/estático."
+  - "Divergência entre a documentação OpenAPI estática e a resposta real das queries dinâmicas do portal."
+  - "Estouro do teto de payload em coleções de contratos sem paginação ou fatiamento no servidor (§5.1 do AGENTS.md)."
+
+estimativa_horas: 6
+```
+
+### Diretrizes de Execução para o Agente (`opencode-go`)
+
+1. **Isolamento em Worktree:**
+   - Criar worktree dedicado: `git worktree add ~/worktrees/controle-popular-task<id> -b auto/task-<id>`.
+2. **Commit por Pathspec e Mensagem em Arquivo:**
+   - Conferir staging vazio: `git diff --cached --name-only`.
+   - Commitar apenas os caminhos afetados: `git commit --only <caminho> -F <arquivo-de-mensagem>`.
+   - Mensagem em português sem acentos, com trailer de coautoria obrigatório:
+     ```text
+     docs: documenta endpoints da API de contratos no OpenAPI e tipos
+
+     Co-Authored-By: GPT-OSS 120B (Medium) <noreply@deepseek.com>
+     Co-Authored-By: opencode <noreply@opencode.ai>
+     ```
+3. **Privacidade e LGPD:**
+   - Rodar `python scripts/checar-dado-pessoal-em-dado.py` antes de qualquer commit.
+   - Garantir que nenhum token ou variável de ambiente seja incluído na spec ou em fixtures.

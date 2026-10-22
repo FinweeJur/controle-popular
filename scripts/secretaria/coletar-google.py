@@ -25,10 +25,36 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import sys
 from pathlib import Path
 
+# O console do Windows nasce em cp1252; acento e emoji no JSON derrubavam o
+# script com UnicodeEncodeError (medido em 18/10/2026, na rotina da
+# Secretaria). Forcar UTF-8 na saida resolve sem depender de variavel de
+# ambiente de quem chama.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 DIR_PADRAO = Path.home() / ".config" / "mausbot" / "google"
+
+# Caminhos onde o token pode estar. O bot roda comandos no workspace dele, e
+# caminho relativo nao acha nada — foi o que fez a Secretaria concluir, errado,
+# que o token tinha sumido (medido em 18/10/2026). A ordem e: variavel de
+# ambiente, pasta do usuario, e o caminho absoluto desta maquina.
+CANDIDATOS = (
+    os.environ.get("MAUSBOT_GOOGLE_DIR"),
+    str(DIR_PADRAO),
+    r"C:\Users\teste\.config\mausbot\google",
+)
+
+
+def pasta_tokens() -> Path:
+    """Primeira pasta candidata que existe; se nenhuma, a padrao."""
+    for bruto in CANDIDATOS:
+        if bruto and Path(bruto).is_dir():
+            return Path(bruto)
+    return DIR_PADRAO
 
 
 def _servicos(token: Path):
@@ -132,14 +158,18 @@ def coletar(dir_base: Path, dias: int, limite: int) -> list[dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Coleta agenda e Gmail para a Secretaria.")
-    parser.add_argument("--dir", default=str(DIR_PADRAO), help="pasta dos tokens")
+    parser.add_argument("--dir", default="", help="pasta dos tokens (vazio = procura nos caminhos conhecidos)")
     parser.add_argument("--dias", type=int, default=7, help="janela da agenda em dias")
     parser.add_argument("--limite-email", type=int, default=20, help="maximo de e-mails")
     args = parser.parse_args()
 
-    relatorios = coletar(Path(args.dir), args.dias, args.limite_email)
+    pasta = Path(args.dir) if args.dir else pasta_tokens()
+    relatorios = coletar(pasta, args.dias, args.limite_email)
     if not relatorios:
-        print("nenhum token encontrado na pasta", file=sys.stderr)
+        print(
+            "nenhum token token-*.json em: " + " | ".join(str(c) for c in CANDIDATOS if c),
+            file=sys.stderr,
+        )
         return 2
     print(json.dumps(relatorios, ensure_ascii=False, indent=2))
     return 0

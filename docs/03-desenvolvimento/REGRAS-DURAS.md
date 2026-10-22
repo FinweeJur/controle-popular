@@ -347,19 +347,26 @@ coluna não é legível no celular. A régua móvel vem antes.
   OpenCode Go** (`opencode-go/*` — DeepSeek V4.1 Flash, GLM-5.3-Flash, MiMo
   Flash). Só subir de tier se o barato falhar de verdade, e registre por quê.
 - **Soberania de dados decide o motor, não só o custo** (regra do dono,
-  18/10/2026). Três degraus, do mais fechado ao mais exposto:
-  1. **Ollama local** (bot *Engenho*): recebe **tudo**, inclusive CPF e
-     denúncia — nada sai da máquina (§5.8, §5.12);
-  2. **Cérebro CN/BR** (`opencode-go/*` — DeepSeek, GLM, Qwen; Sabiá para
-     PT-BR): trabalho do dia, dados do projeto, estratégia e orquestração.
-     **A cabeça do time mora aqui** (bot *Farol*);
-  3. **Antigravity/Gemini** (bot *Trator*): só **material já público** e
-     tarefa operacional volumosa — varrer diário oficial, OCR, normalizar
-     texto público, classificar em lote, traduzir material aberto. Os
-     créditos são grandes; a confiança, não.
+  18/10/2026; escada revisada no mesmo dia). Do mais fechado ao mais exposto:
+  1. **Ollama local / Needle**: recebe **tudo**, inclusive CPF e denúncia —
+     nada sai da máquina (§5.8, §5.12). Use para coisa **pontual, pequena,
+     automação rápida** ou tarefa de **off-peak** que pode demorar (medido:
+     3B = 35 tok/s; 8B = 0,8 tok/s, inviável);
+  2. **sabiazinho-4-br-sp** (Maritaca, BR): **padrão do chefe de gabinete** —
+     trabalho do dia, resumo, redação em PT-BR, coordenação;
+  3. **sabia-4-br-sp** (Maritaca, BR): só o que é **muito importante ou
+     complexo** — arquitetura, decisão de rumo, plano que governa planos;
+  4. **Modelos chineses por chave API** (`opencode-go/*` — DeepSeek, GLM,
+     Qwen, Kimi, MiMo): quando os anteriores não resolvem; barato primeiro;
+  5. **Antigravity/Gemini**: **último degrau** — só o que precisa de
+     **trator de tokens** E é **pouco sensível** (material já público, OCR,
+     volume bruto, classificação em lote). Google pode reter e treinar.
 - **Google nunca recebe:** CPF, denúncia, caso jurídico identificável, nome
   de pessoa, dado de campanha eleitoral, código privado ou estratégia.
-  Na dúvida, sobe um degrau — local ou CN.
+  Na dúvida, sobe um degrau — local ou BR.
+- **A regra vive também no workspace dos bots:** chefe de gabinete e
+  Secretária têm um `AGENTS.md` próprio com a escada, para acionar antes de
+  escolher motor.
 - **Antigravity/Gemini** é a exceção declarada de modelo não-open (matriz do
   [PLANO-ORQUESTRACAO-AGENTES-V2](/docs/historico/planos/PLANO-ORQUESTRACAO-AGENTES-V2.md)).
 - **Nunca ChatGPT/OpenAI.** Exceção única, temporária e avisada: se **esgotar
@@ -367,6 +374,30 @@ coluna não é legível no celular. A régua móvel vem antes.
   avisando o dono antes (§12). Voltou a cota, volta o Gemini.
 - **Cérebro principal do OpenMausBot = OpenCode Go** (`opencode-go/*`), não
   Kimi nem outra engine isolada (decisão do dono, 18/10/2026).
+
+## 5.16. Fonte mínima de 12 px em texto de interface
+
+**Regra do dono, 21/10/2026.** Nenhum texto de interface fica abaixo de
+**12 px**. Isso inclui rótulo, badge, data, fonte, legenda, rodapé de card e
+texto auxiliar. `text-xs` é o piso; `text-[10px]`, `text-[11px]` e equivalentes
+não entram.
+
+Para reduzir a altura de um card, **não reduza a fonte**. Ajuste o que não
+carrega informação:
+
+- `leading-snug` ou `leading-tight` no corpo do card, mantendo leitura;
+- margens e `gap` internos;
+- padding do card;
+- número de linhas visíveis, com `line-clamp` e o texto completo em `title`
+  ou link “Ver mais”.
+
+Legibilidade vence densidade: card curto que o leitor não consegue ler é dado
+não publicado (liga com a §5.14). A verificação rápida procura tamanhos
+proibidos:
+
+```bash
+rg "text-\[(9|10|11)px\]" apps/web/app apps/web/lib
+```
 
 ## Origem / Histórico
 

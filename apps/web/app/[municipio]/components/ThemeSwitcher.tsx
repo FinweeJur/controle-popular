@@ -43,7 +43,7 @@ function TemasInline({
             aria-pressed={ativo}
             onClick={() => aoEscolher(t.value)}
             title={t.desc}
-            className={`flex items-center gap-1.5 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+            className={`flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs font-medium transition-colors duration-150 ${
               ativo
                 ? "border-primary bg-primary/15 font-semibold text-primary"
                 : "border-border bg-surface text-text hover:border-primary hover:text-primary"

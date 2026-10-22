@@ -879,6 +879,168 @@ Três medições do mesmo dia, todas no `home-pc` e na VM `cp-vm`:
 - rodada de verificação com o conserto: 100 candidatos sorteados,
   em andamento no fecho desta sessão.
 
+## Treino 2 m com os negativos novos (19/10/2026)
+
+Primeira rodada do `treinar-cavas-2m.py` depois que o cache local passou a ter
+negativos limpos. Dado medido no disco: **844 recortes limpos** (nuvem ≤ 0,30),
+sendo **207 positivos** e **637 negativos**, em **163 cenas**. Split por cena:
+683 no treino (179 pos / 504 neg) e **161 na validação** (28 pos).
+
+Configuração: 6 épocas, `lr` 1e-3, `batch` 8, backbone Chinese-CLIP congelado
+(CPU, `torch 2.12.1+cpu`), mesma semente e mesmo split. Três entradas
+comparadas: o PNG inteiro (700 px → 224, **6,25 m/px**), recorte central de
+448 px (896 m → 224, **4 m/px**) e recorte central de 224 px (448 m → 224,
+**2 m/px nativo**). Saída em `%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\`.
+
+| entrada | melhor época | precisão | recall | F1 | tp/fp/fn/tn |
+|---|---|---|---|---|---|
+| PNG inteiro (6,25 m/px) | 1 | 0,769 | 0,357 | 0,488 | 10/3/18/130 |
+| recorte 448 px (4 m/px) | 5 | 0,600 | 0,536 | 0,566 | 15/10/13/123 |
+| **recorte 224 px (2 m/px)** | **5** | **0,548** | **0,607** | **0,576** | 17/14/11/119 |
+
+O pixel nativo confirma a hipótese do plano: F1 sobe de 0,488 para **0,576** e
+o recall de 0,357 para **0,607**. A precisão cai no ponto de melhor F1, mas a
+época 2 do recorte 224 teve **P 0,857 / R 0,429 / F1 0,571** — um ponto
+conservador que o seletor por F1 não guarda.
+
+Leitura: ainda **não comparável ao v12 de 8 m** (F1 0,804, outro holdout) e
+**não passa o gate** de precisão ≥ 0,80 no ponto de melhor F1. O gargalo
+principal segue sendo dado: dos 2.035 positivos do checkpoint de calibração,
+só **532** têm recorte 2 m `ok` (**1.503 ainda sem corte**), e apenas **207**
+passam o teto de nuvem. Próximos passos, nesta ordem: cortar mais positivos,
+calibrar o limiar com corte de precisão (≥ 0,80) e repetir com
+`--recorte 224`.
+
+Consertos no caminho: `modelo.eval()` no backbone congelado (features
+determinísticas, sem dropout), `loss.detach().item()` no lugar de
+`float(loss)` e a opção `--recorte` no treino.
+
+## Coleta 2 m: fila travada e rasterio (19/10/2026)
+
+Ao começar a cortar mais positivos, dois bloqueios apareceram:
+
+1. **`rasterio` ausente** no Python 3.12 da máquina — o gerador morria em
+   todos os 10 alvos. Instalado `rasterio 1.5.2` (o `requirements.txt` já
+   pedia) e a leitura voltou.
+2. **A fila não andava**: `_ler_cheios` só pulava hash com status `ok`. Os
+   **48 hashes `sem-cena`** do começo da lista eram retentados em todo run,
+   então os ~1.450 positivos seguintes nunca eram alcançados.
+
+Conserto: `_ler_feitos` agora pula `ok` **e** `sem-cena` por padrão;
+`--retentar-sem-cena` volta a tentar (caso uma cena nova apareça). Medido no
+mesmo dia, com **1 worker**:
+
+| alvo | resultado | nuvem |
+|---|---|---|
+| 1º ponto novo | `ok` em **84 s** | **1,000** (inútil) |
+| 3 pontos seguintes | `ok` | 0,064 · 0,490 · 0,174 |
+
+Leitura: **1 worker funciona** e respeita o ritmo de 1–2 s por host; o run com
+2 workers devolveu 10 `sem-cena` em segundos, sem ler cena (suspeita de limite
+do INPE). Custo medido: **~84 s por recorte**, então 100 recortes ≈ 2,3 h.
+O corte passou de 532 para **536 positivos `ok`** e de 207 para **209
+positivos limpos** (nuvem ≤ 0,30). A fila agora avança.
+
+## Calibração de limiar do 2 m (20/10/2026)
+
+O treino escolhia a época por F1 e guardava P 0,548; para descoberta o limiar
+útil é o de maior recall com precisão mínima. `scripts/oficina-cavas/calibrar-2m.py`
+relê os pesos salvos e varre o limiar no mesmo split por cena (seed 42).
+Limitação: o checkpoint cresceu durante a coleta, então a validação ficou com
+**172 recortes (39 positivos)** em vez dos 161 do treino — as cenas novas não
+foram vistas pelo modelo, mas o número não é o mesmo holdout.
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,38 | 0,490 | 0,641 | 25/26/14/107 |
+| ≥ 0,70 | 0,56 | 0,737 | 0,359 | 14/5/25/128 |
+| ≥ 0,80 | 0,58 | 0,800 | 0,308 | 12/3/27/130 |
+| ≥ 0,85 | 0,68 | 0,857 | 0,154 | 6/1/33/132 |
+| ≥ 0,90 | 0,81 | 1,000 | 0,077 | 3/0/36/133 |
+
+Leitura: **P ≥ 0,90 só existe com 7,7% de recall** (3 de 39 positivos). O
+G2 do plano (P ≥ 0,80) é alcançável com R ≈ 0,31; para descoberta de 5–10
+casos, isso ainda é pouco. O 2 m precisa de mais positivos limpos e negativos
+difíceis antes de substituir o 8 m como triagem. JSON:
+`%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\calibracao-2m.json`.
+
+### Segundo treino 2 m em GPU (20/10/2026)
+
+Com ~246 positivos limpos (o lote de 100 ainda estava em andamento), o treino
+rodou no Python do Hermes com **CUDA ativa** (RTX 3050), 6 épocas, recorte 224.
+Snapshot: treino 768 (221 pos / 547 neg), validação 114 (25 pos). Melhor época
+(6): P 0,667 / R 0,480 / F1 0,558 no limiar 0,5.
+
+A calibração por limiar achou P 0,8125 / R 0,500 / F1 0,619 no limiar 0,54;
+**nenhum limiar atingiu P ≥ 0,90**. Leitura: acrescentar ~40 positivos sem
+negativos difíceis não melhorou a precisão alta — o ponto de 90% que existia
+no modelo de 19/10 desapareceu. O gargalo é **negativo difícil e rótulo**, não
+volume bruto de positivo. O modelo de 19/10 foi preservado em
+`melhor-20261019-rec224.pt`; o de 20/10 está em `melhor.pt`.
+
+### Terceiro treino 2 m: hard negatives (20/10/2026)
+
+O vigia disparou pelo commit do manifesto e treinou de novo, agora com os
+primeiros negativos difíceis do v7 (falsos positivos de lavoura, desmate,
+cidade e água) além dos 262 positivos. Snapshot: treino 780 (229 pos / 551
+neg), validação 124 (33 pos). Melhor época (5): P 0,692 / R 0,545 / F1 0,610
+no limiar 0,5.
+
+A calibração por limiar:
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,47 | 0,645 | 0,606 | 20/11/13/80 |
+| ≥ 0,80 | 0,58 | 0,800 | 0,485 | 16/4/17/87 |
+| ≥ 0,90 | **0,64** | **0,917** | **0,333** | **11/1/22/90** |
+
+Leitura: **este snapshot** entrega P 0,917 / R 0,333 no limiar 0,64 — 12
+candidatos, 1 falso positivo. Mas a comparação com o modelo de 19/10 está
+confundida: o holdout mudou (124 vs 172) e só **~5** dos hard passaram o
+filtro de nuvem (negativos limpos 637→642). Não atribuir o ganho só aos hard;
+é um ponto de uma rodada, não uma curva. O próximo passo é **congelar o
+split** antes de comparar modelos.
+
+### Quarto treino: 26 hard negatives não superaram (20/10/2026)
+
+Com 26 hard negatives, o split por cena mudou (val 117, 24 positivos) e o
+melhor F1 caiu para **0,476** (P 0,556 / R 0,417); só ~9 hard passaram o
+filtro de nuvem. Não é comparação direta — o holdout é outro —, mas a leitura
+é clara: com ~120 recortes de validação, a seleção de época é instável e o
+empate entre o primeiro lote e 26 hard não se resolve por volume. **Decisão:**
+manter o modelo do **primeiro lote hard** como referência histórica e não
+promover o de 26. Antes do próximo treino, congelar o split e
+aumentar o holdout (mais cenas), em vez de trocar o conjunto a cada lote.
+
+## Split congelado e comparação controlada (20/10/2026)
+
+As rodadas anteriores usavam **split móvel**: cada lote novo de cenas mudava o
+conjunto de validação e, com ele, a época escolhida. O `P 0,917 / R 0,333` do
+primeiro lote hard não sobrevive a essa troca e **não deve ser usado como
+número do plano**. Para comparar de verdade, o split foi congelado em
+`scripts/dados/cavas-2m/split-2m.json`:
+
+- **50 cenas** de validação, **155 recortes** (49 positivos / 106 negativos);
+- cenas novas vão para o treino, nunca para a validação;
+- a linha de base exclui os hard **só do treino**; a validação é a mesma nos
+  dois modelos.
+
+| treino | melhor F1 | P ≥ 0,80 | P ≥ 0,85 | P ≥ 0,90 |
+|---|---|---|---|---|
+| sem hard no treino | 0,629 (P 0,520 / R 0,796) | P 0,818 / R 0,367 (0,81) | P 0,889 / R 0,163 (0,87) | P 1,000 / R 0,082 (0,90) |
+| **com hard no treino** | **0,660** (P 0,689 / R 0,633) | **P 0,812 / R 0,531** (0,53) | **P 0,857 / R 0,490** (0,57) | P 1,000 / R 0,102 (0,79) |
+
+Leitura controlada: o hard **melhora o trade-off** na faixa de 80–85% de
+precisão (recall 0,37 → 0,53 em P ≥ 0,80) e sobe o F1 de 0,629 para 0,660.
+Em **P ≥ 0,90 os dois caem para ~10% de recall** — o modelo não entrega 90%
+sozinho. O MVP usa o modelo como fila de alta precisão, com 2 de 3 métodos e
+revisão humana; não como veredito.
+
+Artefatos: `calibracao-2m-frozen-baseline.json` e
+`calibracao-2m-frozen-hard.json` em
+`%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\`. O split versionado é a
+referência para os próximos treinos.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)

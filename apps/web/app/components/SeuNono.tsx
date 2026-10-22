@@ -70,6 +70,12 @@ import CvdToggle from "@/app/components/CvdToggle";
 // poder desligar o efeito pedindo por aqui).
 import RastroCursorToggle from "@/app/components/RastroCursorToggle";
 import { definirRastroCursor } from "@/app/components/RastroCursor";
+// Passarinho: toggle do cartão de acessibilidade + os comandos de texto
+// usam as mesmas gravações do `CompanheiroOpcional` (dono, 19/10/2026 —
+// dois controles distintos e o Seu Nonô mandando nos dois).
+import CompanheiroToggle from "@/app/components/CompanheiroToggle";
+import { definirCompanheiroAtivo } from "@/app/components/CompanheiroOpcional";
+import { EVENTO_MENU_PET_FECHAR } from "@/lib/companheiro/eventos";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -741,6 +747,19 @@ export function SeuNono() {
     resetar: resetarPata,
   } = useArrastavel("cp_pata_pos");
 
+  // ══ BUG 4 (dono, 21/10/2026): estado do menu de bichinhos da pata ══
+  // A pata anuncia `aria-expanded`; abrir é dela, fechar viaja pelo evento
+  // `EVENTO_MENU_PET_FECHAR` (o menu fecha por Esc, clique fora ou escolha).
+  // O passarinho NÃO liga aqui: quem liga é o clique num bichinho dentro do
+  // menu (`CompanheiroFlutuante` ligado, `CompanheiroMenuOffline` desligado).
+  const [menuPetAberto, setMenuPetAberto] = useState(false);
+  useEffect(() => {
+    if (!menuPetAberto) return;
+    const fechar = () => setMenuPetAberto(false);
+    window.addEventListener(EVENTO_MENU_PET_FECHAR, fechar);
+    return () => window.removeEventListener(EVENTO_MENU_PET_FECHAR, fechar);
+  }, [menuPetAberto]);
+
   // Reposicionamento da janelinha (pedido do dono, 03/10/2026): arrastada para
   // a direita, ela ainda EXPANDIA para a direita e saía da tela. Aqui a base do
   // FAB é a âncora; o utilitário vira o painel para a esquerda quando falta
@@ -959,6 +978,33 @@ export function SeuNono() {
         mensagem: "Pronto! Trilha do cursor ativada.",
         acao: () => definirRastroCursor(true),
         icone: <span className="text-base">✨</span>,
+      },
+      {
+        // Passarinho (dono, 19/10/2026): "tirar" vem ANTES de "ligar" —
+        // a detecção é `includes` e "tirar o passarinho" contém a raiz de
+        // "ativar". Mesmo contrato do `CompanheiroOpcional`.
+        comando: [
+          "tirar passarinho", "tirar o passarinho", "tirar companheiro",
+          "tirar o companheiro", "desativar passarinho", "desativar o passarinho",
+          "desligar passarinho", "desligar o passarinho", "desative o passarinho",
+          "desligue o passarinho", "esconder passarinho", "esconder o passarinho",
+        ],
+        label: "Passarinho",
+        mensagem: "Pronto! Passarinho desligado.",
+        acao: () => definirCompanheiroAtivo(false),
+        icone: <span className="text-base">🐦</span>,
+      },
+      {
+        comando: [
+          "ativar passarinho", "ativar o passarinho", "ligar passarinho",
+          "ligar o passarinho", "ative o passarinho", "ligue o passarinho",
+          "mostrar passarinho", "mostrar o passarinho", "quero o passarinho",
+          "chamar o companheiro", "mostrar companheiro", "mostrar o companheiro",
+        ],
+        label: "Passarinho",
+        mensagem: "Pronto! Passarinho ativado.",
+        acao: () => definirCompanheiroAtivo(true),
+        icone: <span className="text-base">🐦</span>,
       },
     ],
     [setTheme]
@@ -1795,6 +1841,12 @@ export function SeuNono() {
                       </span>
                       <RastroCursorToggle />
                     </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold text-text-soft">
+                        Passarinho:
+                      </span>
+                      <CompanheiroToggle />
+                    </div>
                   </div>
                 </fieldset>
                 {/* Descoberta: os comandos por TEXTO já existiam e ninguém
@@ -1989,7 +2041,7 @@ export function SeuNono() {
 
                   {dadosResumidos && !dadosResumidos.erro && (
                     <div className="mt-3 rounded-lg border border-border bg-surface px-3 py-2">
-                      <p className="text-[11px] font-medium uppercase tracking-wide text-text-soft">
+                      <p className="text-xs font-medium uppercase tracking-wide text-text-soft">
                         Dados atuais
                       </p>
                       {dadosResumidos.total !== undefined && (
@@ -2010,7 +2062,7 @@ export function SeuNono() {
                       )}
                       {dadosResumidos.top && dadosResumidos.top.length > 0 && (
                         <div className="mt-2">
-                          <p className="text-[11px] text-text-soft">Top 3:</p>
+                          <p className="text-xs text-text-soft">Top 3:</p>
                           <ul className="mt-1 space-y-1">
                             {dadosResumidos.top.map((t, i) => (
                               <li key={i} className="flex justify-between text-xs">
@@ -2368,12 +2420,22 @@ export function SeuNono() {
             // Gesto foi arrasto: não abre o menu por acidente.
             if (foiArrastoPata()) return;
             const r = e.currentTarget.getBoundingClientRect();
+            // ══ BUG 4 (dono, 21/10/2026): a pata não abria o menu ══
+            // O menu mora no `CompanheiroFlutuante` (que escuta
+            // `cp:companheiro-menu-pet`), mas ele só fica montado com o
+            // companheiro ATIVO — clicar a pata com o passarinho desligado
+            // não fazia NADA. Fix: a pata SÓ pede o menu; com o companheiro
+            // desligado quem atende é o `CompanheiroMenuOffline` (menu de
+            // bichinhos sem ligar nada). O passarinho só nasce se a pessoa
+            // clicar num bichinho DENTRO do menu.
+            setMenuPetAberto(true);
             window.dispatchEvent(
               new CustomEvent("cp:companheiro-menu-pet", {
                 detail: { x: r.left, y: r.bottom + 8 },
               }),
             );
           }}
+          aria-expanded={menuPetAberto}
           title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
           aria-label="Trocar o bichinho do companheiro"
           className={`flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${

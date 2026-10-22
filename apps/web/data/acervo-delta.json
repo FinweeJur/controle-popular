@@ -1,18 +1,36 @@
 {
-  "geradoEm": "2026-10-15T19:25:53.225Z",
-  "totalPecas": 450,
-  "baselineSha": "4c8bff8101ad85bd",
+  "geradoEm": "2026-10-21T17:45:21.939Z",
+  "totalPecas": 451,
+  "baselineSha": "30c667dce445f6bd",
   "rebuild": false,
-  "novos": [],
-  "modificados": [
+  "novos": [
     {
-      "id": "blog:biblioteca-documentos-barragens-vale",
+      "id": "pagina:eleicoes-2026-transporte-gratuito",
       "frente": "geral",
-      "rota": "/noticias/biblioteca-documentos-barragens-vale",
-      "titulo": "Biblioteca reúne 458 documentos oficiais sobre barragens e a Vale",
-      "fonteUrl": "/noticias/biblioteca-documentos-barragens-vale",
-      "texto": "O acervo unificado do portal reúne documentos públicos, relatórios corporativos e produção acadêmica sobre barragens, mineração e transparência.\nA [biblioteca do portal](/biblioteca) reúne 458 documentos sobre barragens e mineração, com registro de 01/10/2026, e 424 teses e dissertações de 73 universidades, integradas em 14/10/2026. UFMG e UFOP lideram, com 30 trabalhos cada. Há atas, laudos técnicos, relatórios corporativos e produção acadêmica. Cada item aponta para o endereço original do documento.\nSão 91 documentos de instituições de justiça e 20 empresas citadas. Outros 18 itens são produção acadêmica, como artigos e teses. O acervo ainda tem 67 documentos internacionais sobre o tema. A busca por texto ajuda a achar cada peça."
+      "rota": "/eleicoes/2026/transporte-gratuito",
+      "titulo": "Transporte grátis nas Eleições 2026",
+      "fonteUrl": "/eleicoes/2026/transporte-gratuito",
+      "texto": "Página sobre a gratuidade no transporte coletivo urbano nos dois turnos, o transporte especial da Justiça Eleitoral, as políticas oficiais de estados, capitais e polos, os 27 TREs e as denúncias sobre falta ou redução do serviço.\nGratuidade universal nas zonas urbanas determinada pelo STF (ADPF 1013) e pela Res. TSE 23.751/2026\nPolíticas oficiais de estados, capitais e polos, com fonte e data em cada linha\n27 TREs com status, resumo, link oficial e observação\nDenúncias e cobranças de MPF, DPU, partidos, entidades da sociedade civil e imprensa\nAmostra verificada até 21/10/2026, não censo; a obrigação legal não depende de decreto local",
+      "links": [
+        {
+          "href": "/eleicoes/2026/transporte-gratuito",
+          "texto": "Transporte grátis 2026"
+        },
+        {
+          "href": "/eleicoes/2026/locais-votacao-alterados",
+          "texto": "Locais de votação alterados"
+        },
+        {
+          "href": "/eleicoes/2026/gastos-campanha",
+          "texto": "Gastos de campanha 2026"
+        },
+        {
+          "href": "/assistente",
+          "texto": "Perguntar ao Seu Nonô"
+        }
+      ]
     }
   ],
+  "modificados": [],
   "removidos": []
 }

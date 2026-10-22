@@ -1,0 +1,60 @@
+# Gate de merge e rotina diaria do monitoramento geral do portal.
+# Por que existe: em 19/10/2026 o dono pediu revisao programada de todo
+# o site (nao so fontes/links): rotas, dados, componentes e SEO.
+# O script verificar-geral.py confere rotas-chave em producao, parseia
+# todo apps/web/data/*.json e valida robots.txt/sitemap.xml com
+# User-Agent honesto e ritmo de 1,5 s por host.
+# CRITICO (rota fora do ar, JSON corrompido, robots/sitemap quebrado,
+# pagina sem title) bloqueia; AVISO (403 robot-block, falta description)
+# nao bloqueia.
+
+name: monitoramento-geral
+
+on:
+  pull_request:
+    paths:
+      - "apps/web/app/**"
+      - "apps/web/data/**"
+      - "scripts/monitoramento/verificar-geral.py"
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Conferir saude geral do portal
+        id: conferencia
+        run: |
+          python scripts/monitoramento/verificar-geral.py --atualizar-log | tee saida-geral.txt
+          if grep -q "Criticos: 0" saida-geral.txt; then
+            echo "resultado=ok" >> "$GITHUB_OUTPUT"
+          else
+            echo "resultado=critico" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bloquear PR se houver verificacao critica
+        if: github.event_name == 'pull_request' && steps.conferencia.outputs.resultado == 'critico'
+        run: |
+          echo "Verificacao critica detectada: merge bloqueado."
+          exit 1
+
+      - name: Registrar log na rotina diaria
+        if: github.event_name != 'pull_request' && steps.conferencia.outputs.resultado == 'ok'
+        run: |
+          git config user.name "Dev CP"
+          git config user.email "noreply@opencode.ai"
+          printf '%s\n' "chore(monitoramento): auditoria diaria geral do portal" "" "Co-Authored-By: opencode <noreply@opencode.ai>" > _msg_monitoramento_geral.txt
+          git add docs/02-estado/AUDITORIA-GERAL.md
+          git diff --cached --quiet || git commit -F _msg_monitoramento_geral.txt
+          git push origin HEAD:main || echo "push da rotina falhou; aviso manual"

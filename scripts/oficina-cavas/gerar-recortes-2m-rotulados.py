@@ -30,6 +30,7 @@ import argparse
 import importlib.util
 import json
 import math
+import os
 import sys
 import threading
 import time
@@ -40,9 +41,12 @@ import numpy as np
 
 _RAIZ = Path(__file__).resolve().parents[2]
 _CALIB = _RAIZ / "scripts" / ".cache" / "cavas-calibracao"
+_HARD = _CALIB / "hard-negativos.txt"
+_ANALISADOS = _CALIB / "analisados.jsonl"
 _BASE_PATH = _RAIZ / "scripts" / "oficina-cavas" / "baixar-banco-cbers.py"
 _SAIDA = _RAIZ / "scripts" / ".cache" / "cavas-2m"
 _CHECKPOINT = _SAIDA / "checkpoint-2m.jsonl"
+_LOCK = _SAIDA / "coleta.lock"
 
 SIDE_M = 1400
 OUT_PX = 700
@@ -173,16 +177,69 @@ def _gravar(rec: dict, ok: bool) -> None:
         _stats[rec["status"]] += 1
 
 
-def _ler_cheios() -> set:
+def _pid_vivo(pid: int) -> bool:
+    """True se o PID existe e é de outro processo vivo."""
+    if pid <= 0:
+        return False
+    try:
+        import psutil
+        return psutil.pid_exists(pid) and psutil.Process(pid).is_running()
+    except Exception:
+        return True
+
+
+def _trava_estrangeira(pid: int) -> bool:
+    """True se o PID do lock é de outro processo vivo."""
+    return bool(pid) and pid != os.getpid() and _pid_vivo(pid)
+
+
+def _adquirir_trava() -> bool:
+    """Um gerador por cache: evita PNG truncado e linha duplicada.
+
+    Medido 20/10: o supervisor e a execução manual podem rodar juntos; sem
+    trava, os dois leem o mesmo `_ler_feitos` antes das appends e recortam o
+    mesmo hash. Trava órfã (PID morto) é reciclada.
+    """
+    if _LOCK.exists():
+        try:
+            pid = int(json.loads(_LOCK.read_text(encoding="utf-8")).get("pid", 0))
+        except (OSError, ValueError, json.JSONDecodeError):
+            pid = 0
+        if _trava_estrangeira(pid):
+            return False
+    _LOCK.parent.mkdir(parents=True, exist_ok=True)
+    _LOCK.write_text(json.dumps({"pid": os.getpid(), "ts": time.time()}),
+                     encoding="utf-8")
+    return True
+
+
+def _liberar_trava() -> None:
+    try:
+        if _LOCK.exists():
+            dados = json.loads(_LOCK.read_text(encoding="utf-8"))
+            if int(dados.get("pid", -1)) == os.getpid():
+                _LOCK.unlink()
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
+
+
+def _ler_feitos(apenas_ok: bool = False) -> set:
+    """Hashes já tentados, para não repetir a mesma fila.
+
+    Por padrão inclui `sem-cena`: sem isso os 48 pontos sem cena do começo da
+    lista eram retentados em todo run e a fila nunca avançava (medido 19/10).
+    `apenas_ok=True` volta a tentar os sem-cena (cena nova pode ter aparecido).
+    """
     if not _CHECKPOINT.exists():
         return set()
+    alvos = {"ok"} if apenas_ok else {"ok", "sem-cena"}
     feito = set()
     for linha in _CHECKPOINT.read_text(encoding="utf-8").splitlines():
         if not linha.strip():
             continue
         try:
             o = json.loads(linha)
-            if o.get("status") == "ok":
+            if o.get("status") in alvos:
                 feito.add(o["hash"])
         except json.JSONDecodeError:
             continue
@@ -231,6 +288,62 @@ def _carrega_calib(limite: int):
     return out[:limite] if limite else out
 
 
+def _hard_hashes() -> set:
+    if not _HARD.exists():
+        return set()
+    return {l.strip() for l in _HARD.read_text(encoding="utf-8").splitlines()
+            if l.strip()}
+
+
+def _hard_scores(hashes: set) -> dict:
+    score = {}
+    if not _ANALISADOS.exists():
+        return score
+    for linha in _ANALISADOS.read_text(encoding="utf-8").splitlines():
+        try:
+            o = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if o.get("hash") in hashes:
+            score[o["hash"]] = o.get("score_cava") or 0.0
+    return score
+
+
+def _calib_itens(hashes: set) -> list[dict]:
+    ck = _CALIB / "checkpoint.jsonl"
+    out = []
+    if not ck.exists():
+        return out
+    for linha in ck.read_text(encoding="utf-8").splitlines():
+        try:
+            o = json.loads(linha)
+        except json.JSONDecodeError:
+            continue
+        if o.get("hash") in hashes and o.get("bbox"):
+            o["tipo"] = "negativo"
+            out.append(o)
+    return out
+
+
+def _carrega_hard(limite: int):
+    """Negativos difíceis do v7 (1.109 falsos positivos) em 2 m.
+
+    O modelo de 8 m chamava lavoura, desmate, cidade e água de cava. O treino
+    de 2 m sem esses pares só aprende "chão pelado". Aqui eles entram com
+    label 0, ordenados pelo score do v7 (o mais confuso primeiro). A bbox vem
+    do checkpoint de calibração; o score, de `analisados.jsonl`.
+    """
+    hashes = _hard_hashes()
+    if not hashes:
+        return []
+    score = _hard_scores(hashes)
+    out = _calib_itens(hashes)
+    for o in out:
+        o["score_v7"] = score.get(o["hash"], 0.0)
+    out.sort(key=lambda o: o["score_v7"], reverse=True)
+    return out[:limite] if limite else out
+
+
 def _from_manifesto(o: dict):
     """Linha do manifesto publicado (lon/lat/tipo) -> item de corte."""
     if not o.get("hash"):
@@ -267,6 +380,8 @@ def _carrega_manifesto(limite: int, caminho: Path | None = None):
 def _fonte_de(args):
     if args.fonte == "manifesto":
         return lambda n: _carrega_manifesto(n, args.manifesto)
+    if args.fonte == "hard":
+        return _carrega_hard
     return _carrega_calib
 
 
@@ -300,9 +415,14 @@ def main() -> int:
     global base
     ap = argparse.ArgumentParser(description="Recortes 2m PAN rotulados")
     ap.add_argument("--limite", type=int, default=0)
-    ap.add_argument("--workers", type=int, default=2)
-    ap.add_argument("--fonte", choices=("calib", "manifesto"), default="calib",
-                    help="calib=meu dataset; manifesto=regerar lista da outra máquina")
+    ap.add_argument("--workers", type=int, default=2,
+                    help="1 respeita o ritmo de 1-2 s por host; 2 só se a rede ajudar")
+    ap.add_argument("--retentar-sem-cena", action="store_true",
+                    help="volta a tentar hashes que já deram sem-cena")
+    ap.add_argument("--fonte", choices=("calib", "manifesto", "hard"),
+                    default="calib",
+                    help="calib=meu dataset; manifesto=regerar lista da outra "
+                         "máquina; hard=1.109 falsos positivos do v7")
     ap.add_argument("--manifesto", type=Path, default=None,
                     help="caminho do manifesto p/ --fonte manifesto (default: versionado)")
     ap.add_argument("--tipo", choices=("ambos", "positivo", "negativo"),
@@ -310,14 +430,21 @@ def main() -> int:
                     help="só corta desse tipo (negativo=destrava o treino honesto)")
     args = ap.parse_args()
 
-    base = _carregar_base()
-    alvos = _seleciona(args, _ler_cheios())
-    print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
-          f"| workers={args.workers}", flush=True)
-    _executar(alvos, args.workers)
-    print(f"\nFim: ok={_stats['ok']} sem-cena={_stats['sem-cena']} "
-          f"falhou={_stats['falhou']}", flush=True)
-    return 0
+    if not _adquirir_trava():
+        print("outra coleta 2m está rodando; saindo sem tocar no cache",
+              flush=True)
+        return 0
+    try:
+        base = _carregar_base()
+        alvos = _seleciona(args, _ler_feitos(apenas_ok=args.retentar_sem_cena))
+        print(f"{args.fonte}/{args.tipo} pendentes: {len(alvos)} "
+              f"| workers={args.workers}", flush=True)
+        _executar(alvos, args.workers)
+        print(f"\nFim: ok={_stats['ok']} sem-cena={_stats['sem-cena']} "
+              f"falhou={_stats['falhou']}", flush=True)
+        return 0
+    finally:
+        _liberar_trava()
 
 
 if __name__ == "__main__":

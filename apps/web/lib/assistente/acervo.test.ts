@@ -107,6 +107,13 @@ describe("montarAcervo -- pedaços conhecidos das três fontes", () => {
     expect(f.texto.toLowerCase()).toContain("contratos");
     expect(f.links && f.links.length).toBeGreaterThan(1);
   });
+
+  it("inclui a página de transporte das Eleições 2026 no acervo do Seu Nonô", () => {
+    const acervo = montarAcervo();
+    const f = achar(acervo, "pagina:eleicoes-2026-transporte-gratuito");
+    expect(f.rota).toBe("/eleicoes/2026/transporte-gratuito");
+    expect(f.texto.toLowerCase()).toContain("transporte");
+  });
 });
 
 describe("bases de cavas no assistente -- regra 5", () => {

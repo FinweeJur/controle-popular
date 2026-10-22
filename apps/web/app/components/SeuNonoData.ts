@@ -1886,4 +1886,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/inteligencia", texto: "Atalho Central de Inteligência" },
     ],
   },
+  {
+    id: "eleicoes-2026-transporte-gratuito",
+    titulo: "Transporte grátis nas Eleições 2026",
+    resumo:
+      "Página sobre a gratuidade no transporte coletivo urbano nos dois turnos, o transporte especial da Justiça Eleitoral, as políticas oficiais de estados, capitais e polos, os 27 TREs e as denúncias sobre falta ou redução do serviço.",
+    dados: [
+      "Gratuidade universal nas zonas urbanas determinada pelo STF (ADPF 1013) e pela Res. TSE 23.751/2026",
+      "Políticas oficiais de estados, capitais e polos, com fonte e data em cada linha",
+      "27 TREs com status, resumo, link oficial e observação",
+      "Denúncias e cobranças de MPF, DPU, partidos, entidades da sociedade civil e imprensa",
+      "Amostra verificada até 21/10/2026, não censo; a obrigação legal não depende de decreto local",
+    ],
+    links: [
+      { href: "/eleicoes/2026/transporte-gratuito", texto: "Transporte grátis 2026" },
+      { href: "/eleicoes/2026/locais-votacao-alterados", texto: "Locais de votação alterados" },
+      { href: "/eleicoes/2026/gastos-campanha", texto: "Gastos de campanha 2026" },
+      { href: "/assistente", texto: "Perguntar ao Seu Nonô" },
+    ],
+  },
 ];

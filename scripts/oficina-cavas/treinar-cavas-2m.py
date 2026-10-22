@@ -23,13 +23,16 @@ um resumo versionado.
 
 Uso:
   python scripts/oficina-cavas/treinar-cavas-2m.py --epocas 6 --min 400
+  python scripts/oficina-cavas/treinar-cavas-2m.py --recorte 224  # 2 m/px
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import sys
+import time
 from collections import namedtuple
 from pathlib import Path
 
@@ -39,15 +42,59 @@ from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
 Ctx = namedtuple("Ctx", ["modelo", "cabeca", "disp", "otim"])
+Treino = namedtuple("Treino", ["epocas", "batch", "lr", "min_entradas",
+                               "recorte", "sem_hard"])
 
 _RC = Path(__file__).resolve().parents[2]
 _DADOS = _RC / "scripts" / ".cache" / "cavas-2m"
 _CKPT = _DADOS / "checkpoint-2m.jsonl"
+_SPLIT = _RC / "scripts" / "dados" / "cavas-2m" / "split-2m.json"
+_HARD = _RC / "scripts" / ".cache" / "cavas-calibracao" / "hard-negativos.txt"
 _TMP = Path.home() / "AppData" / "Local" / "Temp" / "opencode" / "cavas"
 _CLIP = _TMP / "chinese-clip"
 _SAIDA = _TMP / "treino-2m"
+_LOCK = _SAIDA / "treino.lock"
 NUVEM_TREINO = 0.30
 TAM = 224   # o visual tower do Chinese-CLIP exige 224x224 (erro medido 16/10)
+
+
+def _pid_vivo(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    try:
+        import psutil
+        return psutil.pid_exists(pid) and psutil.Process(pid).is_running()
+    except Exception:
+        return True
+
+
+def _trava_estrangeira(pid: int) -> bool:
+    return bool(pid) and pid != os.getpid() and _pid_vivo(pid)
+
+
+def _adquirir_treino() -> bool:
+    """Um treino por vez: vigia e supervisor não escrevem melhor.pt juntos."""
+    if _LOCK.exists():
+        try:
+            pid = int(json.loads(_LOCK.read_text(encoding="utf-8")).get("pid", 0))
+        except (OSError, ValueError, json.JSONDecodeError):
+            pid = 0
+        if _trava_estrangeira(pid):
+            return False
+    _LOCK.parent.mkdir(parents=True, exist_ok=True)
+    _LOCK.write_text(json.dumps({"pid": os.getpid(), "ts": time.time()}),
+                     encoding="utf-8")
+    return True
+
+
+def _liberar_treino() -> None:
+    try:
+        if _LOCK.exists():
+            dados = json.loads(_LOCK.read_text(encoding="utf-8"))
+            if int(dados.get("pid", -1)) == os.getpid():
+                _LOCK.unlink()
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
 
 
 def _linha_util(o: dict, nuvem_max: float) -> bool:
@@ -78,21 +125,72 @@ def _parse_linha(linha: str, nuvem_max: float):
     return _com_caminho(o)
 
 
+def _mais_limpo(novo: dict, atual: dict | None) -> bool:
+    """True se o recorte novo tem menos nuvem que o atual (ou é o primeiro)."""
+    if atual is None:
+        return True
+    return (novo.get("nuvem") or 1) < (atual.get("nuvem") or 1)
+
+
+def _hard_hashes() -> set:
+    if not _HARD.exists():
+        return set()
+    return {l.strip() for l in _HARD.read_text(encoding="utf-8").splitlines()
+            if l.strip()}
+
+
 def carregar_entradas(nuvem_max: float = NUVEM_TREINO) -> list[dict]:
-    """Recortes 2 m limpos (status ok, nuvem <= teto), com label e cena."""
+    """Recortes 2 m limpos (status ok, nuvem <= teto), com label e cena.
+
+    Dedupe por hash: duas máquinas ou duas execuções podem gravar o mesmo
+    recorte. Fica o de menor nuvem; sem isso o mesmo pixel pode cair no treino
+    e na validação, vazando o holdout.
+    """
     if not _CKPT.exists():
         return []
-    out = []
+    por_hash: dict[str, dict] = {}
     for linha in _CKPT.read_text(encoding="utf-8").splitlines():
         anot = _parse_linha(linha, nuvem_max)
-        if anot:
-            out.append(anot)
-    return out
+        if not anot:
+            continue
+        h = anot["hash"]
+        if _mais_limpo(anot, por_hash.get(h)):
+            por_hash[h] = anot
+    return list(por_hash.values())
+
+
+def _split_congelado(itens: list[dict]):
+    """Lê o split versionado; None se o arquivo não existe ou está vazio."""
+    if not _SPLIT.exists():
+        return None
+    try:
+        dados = json.loads(_SPLIT.read_text(encoding="utf-8"))
+        val_cenas = set(dados.get("val_cenas", []))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not val_cenas:
+        return None
+    treino = [i for i in itens if i["cena"] not in val_cenas]
+    val = [i for i in itens if i["cena"] in val_cenas]
+    if not treino or not val:
+        return None
+    return treino, val, len(val_cenas)
 
 
 def split_por_cena(itens: list[dict], frac_val: float, seed: int = 42):
-    """Holdout = cenas inteiras fora do treino (regra de ouro do projeto)."""
+    """Holdout = cenas inteiras fora do treino (regra de ouro do projeto).
+
+    Se `scripts/dados/cavas-2m/split-2m.json` existe, ele manda: o holdout é
+    congelado e cenas novas vão para o treino. Sem isso, cada lote novo muda
+    o split e invalida a comparação entre modelos (medido 20/10).
+    """
     cenas = sorted({i["cena"] for i in itens})
+    congelado = _split_congelado(itens)
+    if congelado:
+        treino, val, n_val = congelado
+        print(f"split congelado: {n_val} cenas de val, {len(val)} recortes",
+              flush=True)
+        return treino, val, len(cenas)
     rng = random.Random(seed)
     rng.shuffle(cenas)
     n_val = max(1, int(len(cenas) * frac_val))
@@ -106,11 +204,17 @@ def split_por_cena(itens: list[dict], frac_val: float, seed: int = 42):
 
 
 class Dataset2m(Dataset):
-    """Carga de PNG cinza 2 m -> tensor 3-canais (repetido) normalizado."""
+    """Carga de PNG cinza 2 m -> tensor 3-canais (repetido) normalizado.
 
-    def __init__(self, itens: list[dict], treino: bool):
+    `recorte` > 0 usa o pixel NATIVO de 2 m: corta o quadrado central antes de
+    redimensionar. Sem ele, 700 px (1.400 m) viram 224 px e o modelo enxerga
+    ~6,25 m/px — quase o mesmo que o tronco de 8 m.
+    """
+
+    def __init__(self, itens: list[dict], treino: bool, recorte: int = 0):
         self.itens = itens
         self.treino = treino
+        self.recorte = recorte
 
     def __len__(self):
         return len(self.itens)
@@ -118,6 +222,8 @@ class Dataset2m(Dataset):
     def __getitem__(self, idx: int):
         item = self.itens[idx]
         img = Image.open(item["caminho"]).convert("L")
+        if self.recorte > 0:
+            img = _centro(img, self.recorte)
         if self.treino:
             img = _aumentar(img)
         img = img.resize((TAM, TAM))
@@ -135,6 +241,14 @@ def _aumentar(img: Image.Image) -> Image.Image:
     return img
 
 
+def _centro(img: Image.Image, lado: int) -> Image.Image:
+    """Quadrado central `lado` px, sem reamostrar (mantém o pixel de 2 m)."""
+    l, a = img.size
+    lado = min(lado, l, a)
+    x, y = (l - lado) // 2, (a - lado) // 2
+    return img.crop((x, y, x + lado, y + lado))
+
+
 def montar_modelo(dispositivo):
     """Chinese-CLIP (base) + cabeça Linear(512,1). Backbone congelado no 1º passe."""
     from transformers import ChineseCLIPModel
@@ -146,6 +260,7 @@ def montar_modelo(dispositivo):
         p.requires_grad_(False)
     cabeca = torch.nn.Linear(emb_dim, 1)
     modelo.to(dispositivo)
+    modelo.eval()  # features determinísticas: backbone congelado, sem dropout
     cabeca.to(dispositivo)
     return modelo, cabeca
 
@@ -168,7 +283,7 @@ def epoca(ctx, loader) -> float:
             ctx.cabeca(emb.float()), y)
         loss.backward()
         ctx.otim.step()
-        total += float(loss) * x.size(0)
+        total += loss.detach().item() * x.size(0)
         n += x.size(0)
     return total / max(n, 1)
 
@@ -218,7 +333,8 @@ def _rodar_epocas(ctx, dl_treino, dl_val, epocas: int) -> dict:
     return melhor
 
 
-def treinar(epocas: int, batch: int, lr: float, min_entradas: int) -> dict:
+def treinar(cfg: Treino) -> dict:
+    epocas, batch, lr, min_entradas, recorte, sem_hard = cfg
     itens = carregar_entradas()
     pos, neg = _conta(itens)
     # Sem negativo não há o que separar: o modelo só reaprenderia "tudo é cava"
@@ -229,6 +345,11 @@ def treinar(epocas: int, batch: int, lr: float, min_entradas: int) -> dict:
               "Adiar.", flush=True)
         return {"adiado": True, "pos": pos, "neg": neg}
     treino, val, n_cenas = split_por_cena(itens, 0.2)
+    if sem_hard:
+        # A validação fica INTACTA (mesmos 155) para comparar com o modelo
+        # que treinou com hard; só o treino perde os hashes difíceis.
+        hard = _hard_hashes()
+        treino = [i for i in treino if i["hash"] not in hard]
     tpos, tneg = _conta(treino)
     print(f"entradas: treino={len(treino)} (pos {tpos}/neg {tneg}) "
           f"val={len(val)} cenas={n_cenas}", flush=True)
@@ -236,8 +357,9 @@ def treinar(epocas: int, batch: int, lr: float, min_entradas: int) -> dict:
     modelo, cabeca = montar_modelo(disp)
     otim = torch.optim.AdamW(cabeca.parameters(), lr=lr)
     ctx = Ctx(modelo, cabeca, disp, otim)
-    dl_treino = DataLoader(Dataset2m(treino, True), batch_size=batch, shuffle=True)
-    dl_val = DataLoader(Dataset2m(val, False), batch_size=batch)
+    dl_treino = DataLoader(Dataset2m(treino, True, recorte),
+                           batch_size=batch, shuffle=True)
+    dl_val = DataLoader(Dataset2m(val, False, recorte), batch_size=batch)
     melhor = _rodar_epocas(ctx, dl_treino, dl_val, epocas)
     melhor["entradas_treino"] = len(treino)
     melhor["n_cenas"] = n_cenas
@@ -251,14 +373,30 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--min", type=int, default=400,
                     help="mínimo de entradas limpas p/ treinar (senão adia)")
+    ap.add_argument("--recorte", type=int, default=0,
+                    help="px do quadrado central p/ usar o pixel nativo (0=full)")
+    ap.add_argument("--sem-hard", action="store_true",
+                    help="exclui os hard negatives (linha de base controlada)")
     args = ap.parse_args()
-    _SAIDA.mkdir(parents=True, exist_ok=True)
-    res = treinar(args.epocas, args.batch, args.lr, args.min)
-    res["gerado_em"] = str(Path(__file__).name)
-    (_SAIDA / "metricas-2m.json").write_text(
-        json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n{res}", flush=True)
-    return 0
+    if not _adquirir_treino():
+        print("outro treino 2m está rodando; saindo", flush=True)
+        return 0
+    try:
+        _SAIDA.mkdir(parents=True, exist_ok=True)
+        cfg = Treino(args.epocas, args.batch, args.lr, args.min,
+                     args.recorte, args.sem_hard)
+        res = treinar(cfg)
+        res["recorte"] = args.recorte
+        res["sem_hard"] = args.sem_hard
+        res["lr"] = args.lr
+        res["epocas"] = args.epocas
+        res["gerado_em"] = str(Path(__file__).name)
+        (_SAIDA / "metricas-2m.json").write_text(
+            json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"\n{res}", flush=True)
+        return 0
+    finally:
+        _liberar_treino()
 
 
 if __name__ == "__main__":

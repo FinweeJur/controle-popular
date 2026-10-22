@@ -14,9 +14,11 @@ import FaixaDesenvolvimento from "@/app/components/FaixaDesenvolvimento";
 import PaletaComandos from "@/app/components/PaletaComandos";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
-import { CompanheiroFlutuante } from "@/app/components/CompanheiroFlutuante";
+import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
+import RastroCursorBotao from "@/app/components/RastroCursorBotao";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
+import CliqueNegado from "@/app/components/CliqueNegado";
 import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import { InterceptadorLinks } from "@/app/components/InterceptadorLinks";
@@ -28,6 +30,7 @@ import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
 import RolagemSuave from "@/app/components/rolagem/RolagemSuave";
+import { ChaoRolagem } from "@/app/components/rolagem/ChaoRolagem";
 import FundoOnda from "@/app/components/react-bits/FundoOnda";
 import "./globals.css";
 
@@ -343,6 +346,10 @@ export default function RootLayout({
               cada clique. Ver `PlayerRadio.tsx`. */}
           <PlayerRadio />
         <IndicePagina />
+        {/* Teto real (header + subnav do hub) publicado em `--cp-chao`, lido
+            pelo scroll-margin-top das âncoras. Sem isso, título para sob a
+            barra em hub/colapso de menu (medido 15/10/2026). */}
+        <ChaoRolagem />
         {/* Capítulos da página (wiki lateral / scroll-spy): montado aqui
             para valer nas 100 rotas do catálogo sem editar página a página.
             Coleta os h2 do `main`; página com menos de 2 headings não ganha
@@ -361,10 +368,18 @@ export default function RootLayout({
               age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
               no-op. Ver `PonteCompanheiro.tsx`. */}
           <PonteCompanheiro />
-          {/* Companheiro Seu Nonô — galinha flutuante e arrastável no canto
-              inferior esquerdo, acima do widget do Seu Nonô. Roda sozinha:
-              clicar abre o assistente; sem código nem pareamento com app. */}
-          <CompanheiroFlutuante />
+          {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (pedido do
+              dono, 19/10/2026): não nasce sozinho; entra só quando a pessoa
+              clicar no botão dele. Ver `CompanheiroOpcional.tsx`. */}
+          <CompanheiroOpcional />
+          {/* Interruptor flutuante do rastro do mouse: botão mágico que
+              pulsa devagar enquanto a trilha está desligada. A trilha em si
+              é opt-in. Ver `RastroCursorBotao.tsx`. */}
+          <RastroCursorBotao />
+          {/* X de negação no clique fora de botões (pedido do dono,
+              19/10/2026): recado visual de que o alvo é só um card, sem
+              ação. Ver `CliqueNegado.tsx`. */}
+          <CliqueNegado />
         </ThemeProvider>
       </body>
     </html>

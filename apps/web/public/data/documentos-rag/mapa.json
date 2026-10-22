@@ -1,0 +1,370 @@
+{
+  "totalDocumentos": 2242,
+  "totalTrechos": 8057,
+  "porCategoria": [
+    {
+      "slug": "Prestacao de contas",
+      "contagem": 1271
+    },
+    {
+      "slug": "Legislação",
+      "contagem": 1255
+    },
+    {
+      "slug": "Pesquisa academica",
+      "contagem": 1252
+    },
+    {
+      "slug": "Ambiental & Desastres",
+      "contagem": 935
+    },
+    {
+      "slug": "Deliberacao",
+      "contagem": 795
+    },
+    {
+      "slug": "Justiça & Controle",
+      "contagem": 729
+    },
+    {
+      "slug": "Legislacao",
+      "contagem": 529
+    },
+    {
+      "slug": "Acordo e termos",
+      "contagem": 509
+    },
+    {
+      "slug": "Acadêmico & Pesquisa",
+      "contagem": 492
+    },
+    {
+      "slug": "Outro",
+      "contagem": 189
+    },
+    {
+      "slug": "Internacional & Geopolítica",
+      "contagem": 63
+    },
+    {
+      "slug": "Empresas & ESG",
+      "contagem": 25
+    },
+    {
+      "slug": "Manual e comunicacao",
+      "contagem": 12
+    },
+    {
+      "slug": "Relatorio ambiental",
+      "contagem": 1
+    }
+  ],
+  "porTema": [
+    {
+      "slug": "Reparação de Brumadinho",
+      "contagem": 4558
+    },
+    {
+      "slug": "Cidades",
+      "contagem": 1255
+    },
+    {
+      "slug": "Desastres e barragens",
+      "contagem": 935
+    },
+    {
+      "slug": "Atingidos por barragens",
+      "contagem": 474
+    },
+    {
+      "slug": "Instituições de Justiça",
+      "contagem": 296
+    },
+    {
+      "slug": "trâmites processuais",
+      "contagem": 182
+    },
+    {
+      "slug": "infraestrutura",
+      "contagem": 114
+    },
+    {
+      "slug": "socioeconômico",
+      "contagem": 94
+    },
+    {
+      "slug": "meio ambiente",
+      "contagem": 45
+    },
+    {
+      "slug": "Litígios & Regulação Europeia",
+      "contagem": 35
+    },
+    {
+      "slug": "Meio Ambiente & Clima",
+      "contagem": 18
+    },
+    {
+      "slug": "Descolonização & Conflitos",
+      "contagem": 7
+    },
+    {
+      "slug": "Pesquisa & Transnacional Aberta",
+      "contagem": 6
+    },
+    {
+      "slug": "Vale & Mineração",
+      "contagem": 6
+    },
+    {
+      "slug": "Defesa & Segurança Global",
+      "contagem": 5
+    },
+    {
+      "slug": "Inteligência & Espionagem",
+      "contagem": 5
+    },
+    {
+      "slug": "Sigma & Lítio",
+      "contagem": 5
+    },
+    {
+      "slug": "Protocolo de Consulta Prévia",
+      "contagem": 3
+    },
+    {
+      "slug": "Tratados & Economia Global",
+      "contagem": 3
+    },
+    {
+      "slug": "Orçamento & Emendas",
+      "contagem": 2
+    },
+    {
+      "slug": "Transparência & PNCP",
+      "contagem": 2
+    },
+    {
+      "slug": "Cidades & Território",
+      "contagem": 1
+    },
+    {
+      "slug": "Cooperação Militar",
+      "contagem": 1
+    },
+    {
+      "slug": "Direitos Humanos & Governança",
+      "contagem": 1
+    },
+    {
+      "slug": "Geopolítica",
+      "contagem": 1
+    },
+    {
+      "slug": "Licenciamento Ambiental",
+      "contagem": 1
+    },
+    {
+      "slug": "Mercado & Finanças",
+      "contagem": 1
+    },
+    {
+      "slug": "saúde da população",
+      "contagem": 1
+    }
+  ],
+  "porAno": [
+    {
+      "slug": "2026",
+      "contagem": 355
+    },
+    {
+      "slug": "2025",
+      "contagem": 1109
+    },
+    {
+      "slug": "2024",
+      "contagem": 1926
+    },
+    {
+      "slug": "2023",
+      "contagem": 1260
+    },
+    {
+      "slug": "2022",
+      "contagem": 662
+    },
+    {
+      "slug": "2021",
+      "contagem": 560
+    },
+    {
+      "slug": "2020",
+      "contagem": 194
+    },
+    {
+      "slug": "2019",
+      "contagem": 247
+    },
+    {
+      "slug": "2018",
+      "contagem": 30
+    },
+    {
+      "slug": "2017",
+      "contagem": 26
+    },
+    {
+      "slug": "2016",
+      "contagem": 25
+    },
+    {
+      "slug": "2015",
+      "contagem": 11
+    },
+    {
+      "slug": "2014",
+      "contagem": 15
+    },
+    {
+      "slug": "2013",
+      "contagem": 17
+    },
+    {
+      "slug": "2012",
+      "contagem": 28
+    },
+    {
+      "slug": "2011",
+      "contagem": 17
+    },
+    {
+      "slug": "2010",
+      "contagem": 7
+    },
+    {
+      "slug": "2009",
+      "contagem": 7
+    },
+    {
+      "slug": "2008",
+      "contagem": 9
+    },
+    {
+      "slug": "2007",
+      "contagem": 16
+    },
+    {
+      "slug": "2006",
+      "contagem": 5
+    },
+    {
+      "slug": "2005",
+      "contagem": 11
+    },
+    {
+      "slug": "2004",
+      "contagem": 13
+    },
+    {
+      "slug": "2003",
+      "contagem": 3
+    },
+    {
+      "slug": "2001",
+      "contagem": 1
+    },
+    {
+      "slug": "1999",
+      "contagem": 1
+    },
+    {
+      "slug": "1997",
+      "contagem": 1
+    },
+    {
+      "slug": "1992",
+      "contagem": 1
+    },
+    {
+      "slug": "1991",
+      "contagem": 1
+    },
+    {
+      "slug": "1982",
+      "contagem": 1
+    },
+    {
+      "slug": "1981",
+      "contagem": 1
+    },
+    {
+      "slug": "1980",
+      "contagem": 1
+    },
+    {
+      "slug": "1979",
+      "contagem": 1
+    },
+    {
+      "slug": "1975",
+      "contagem": 1
+    },
+    {
+      "slug": "1974",
+      "contagem": 3
+    },
+    {
+      "slug": "1973",
+      "contagem": 1
+    },
+    {
+      "slug": "1972",
+      "contagem": 1
+    },
+    {
+      "slug": "1968",
+      "contagem": 2
+    },
+    {
+      "slug": "1966",
+      "contagem": 1
+    },
+    {
+      "slug": "1965",
+      "contagem": 1
+    },
+    {
+      "slug": "1963",
+      "contagem": 1
+    },
+    {
+      "slug": "1962",
+      "contagem": 1
+    },
+    {
+      "slug": "1961",
+      "contagem": 1
+    },
+    {
+      "slug": "1960",
+      "contagem": 1
+    },
+    {
+      "slug": "1959",
+      "contagem": 1
+    },
+    {
+      "slug": "1957",
+      "contagem": 1
+    },
+    {
+      "slug": "1956",
+      "contagem": 1
+    },
+    {
+      "slug": "1947",
+      "contagem": 1
+    }
+  ]
+}

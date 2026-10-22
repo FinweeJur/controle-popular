@@ -20,6 +20,15 @@
 export const EVENTO_COMPANHEIRO_FAILED = "cp:companheiro-failed";
 
 /**
+ * O menu de bichinhos FECHOU (bug 4 do dono, 21/10/2026). Tanto o menu do
+ * 21/10/2026). Tanto o menu do `CompanheiroFlutuante` (companheiro ligado)
+ * quanto o do `CompanheiroMenuOffline` (desligado) emitem ao sair — Esc,
+ * clique fora, botão fechar ou escolha de bichinho. Quem escuta é a pata do
+ * pet no `SeuNono.tsx`, que tem o `aria-expanded` do menu.
+ */
+export const EVENTO_MENU_PET_FECHAR = "cp:companheiro-menu-pet-fechar";
+
+/**
  * Quanto tempo o bicho fica no estado "failed" após o sinal, em ms.
  *
  * Seis segundos é tempo suficiente para a pessoa ver o bicho "triste" ao cair

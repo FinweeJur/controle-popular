@@ -35,6 +35,11 @@ ESCOPOS = [
     "https://www.googleapis.com/auth/gmail.readonly",
     "https://www.googleapis.com/auth/gmail.compose",
     "https://www.googleapis.com/auth/calendar.readonly",
+    # Tarefas reais do dono, para o bloco PRAZOS do relatorio.
+    "https://www.googleapis.com/auth/tasks.readonly",
+    # Drive com escopo minimo: o app so enxerga o que ele mesmo criou.
+    # Usado para guardar notas fiscais e planilhas, sempre com aprovacao.
+    "https://www.googleapis.com/auth/drive.file",
 ]
 
 DIR_PADRAO = Path(os.environ.get("USERPROFILE", ".")) / ".config" / "mausbot" / "google"

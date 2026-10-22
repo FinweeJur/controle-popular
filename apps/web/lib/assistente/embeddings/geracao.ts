@@ -46,6 +46,10 @@ export interface FonteRag {
   url?: string;
   /** Rota do portal (mesma `url` quando a fonte é interna). */
   rota?: string;
+  /** Página do PDF, quando a fonte é documental. */
+  pagina?: number;
+  /** Documento de origem, para diagnóstico e deduplicação. */
+  documentoId?: string;
 }
 
 export interface RespostaRag {
@@ -72,8 +76,8 @@ Regras rigidas:
 - Nao de opiniao politica nem aconselhamento juridico. Nao acuse ninguem.
 - Nao ponha dois dados lado a lado se a conclusao nao estiver na fonte: insinuacao e dano mesmo quando cada dado isolado esta certo.
 - Quando usar um numero, diga de onde ele veio, com o marcador [n].
-- A resposta deve ser curta, direta, em portugues do Brasil.
-- Ao final, liste as fontes usadas, uma por linha, com o numero e o nome da pagina.`;
+- Cada fonte traz o link oficial no contexto. Ao final, liste as fontes usadas com o link oficial; se houver pagina do PDF, informe a pagina.
+- A resposta deve ser curta, direta, em portugues do Brasil.`;
 
 /**
  * Monta o prompt do USUÁRIO (contexto + pergunta). Exportado para teste.
@@ -94,12 +98,14 @@ export function montarPromptUsuario(
     .map((f, i) => {
       const rotulo = f.titulo ? ` (${f.titulo})` : "";
       const trecho = sanitizarTextoParaContexto(f.texto);
-      return `[Fonte ${i + 1}]${rotulo} (relevancia: ${(f.score * 100).toFixed(1)}%)\n${trecho}`;
+      const link = f.url && /^https?:\/\//i.test(f.url) ? `\nURL oficial: ${f.url}` : "";
+      const pagina = f.pagina ? `\nPagina: ${f.pagina}` : "";
+      return `[Fonte ${i + 1}]${rotulo} (relevancia: ${(f.score * 100).toFixed(1)}%)${link}${pagina}\n${trecho}`;
     })
     .join("\n\n");
 
   const extra = instrucaoExtra ? `\n\nINSTRUCAO ADICIONAL: ${instrucaoExtra}` : "";
-  return `CONTEXTO (dados do portal):\n${contexto}\n\nPERGUNTA: ${pergunta}\n\nResponda com base apenas no contexto. Use marcadores [n] para citar as fontes. Ao final, liste as fontes usadas.${extra}`;
+  return `CONTEXTO (dados do portal):\n${contexto}\n\nPERGUNTA: ${pergunta}\n\nResponda com base apenas no contexto. Use marcadores [n] para citar as fontes. Ao final, liste as fontes usadas com o link oficial.${extra}`;
 }
 
 function montarMensagens(
