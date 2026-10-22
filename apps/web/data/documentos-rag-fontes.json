@@ -1,5 +1,17 @@
 [
   {
+    "id": "nacab-pesquisa-jurisprudencial-2023",
+    "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 ? Brumadinho",
+    "tipo": "Relat?rio",
+    "categoria": "Acad?mico & Pesquisa",
+    "tema": "Atingidos por barragens",
+    "orgao": "NACAB / ADAI",
+    "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+    "urlPdf": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+    "resumo": "Pesquisa jurisprudencial do NACAB/ADAI sobre a??es de pessoas atingidas pelo rompimento da barragem de Brumadinho no TJMG.",
+    "tags": ["NACAB", "ADAI", "Brumadinho", "jurisprud?ncia"]
+  },
+  {
     "id": "lei-organica-betim",
     "titulo": "Lei Orgânica do Município de Betim",
     "tipo": "Lei",

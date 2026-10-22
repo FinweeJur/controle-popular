@@ -1,6 +1,6 @@
 {
   "totalDocumentos": 2241,
-  "totalTrechos": 7393,
+  "totalTrechos": 7512,
   "porCategoria": [
     {
       "slug": "Prestacao de contas",
@@ -12,7 +12,7 @@
     },
     {
       "slug": "Ambiental & Desastres",
-      "contagem": 936
+      "contagem": 935
     },
     {
       "slug": "Deliberacao",
@@ -43,6 +43,10 @@
       "contagem": 189
     },
     {
+      "slug": "Acad?mico & Pesquisa",
+      "contagem": 120
+    },
+    {
       "slug": "Internacional & Geopolítica",
       "contagem": 63
     },
@@ -66,7 +70,7 @@
     },
     {
       "slug": "Desastres e barragens",
-      "contagem": 936
+      "contagem": 935
     },
     {
       "slug": "Cidades",
@@ -74,7 +78,7 @@
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 354
+      "contagem": 474
     },
     {
       "slug": "Instituições de Justiça",

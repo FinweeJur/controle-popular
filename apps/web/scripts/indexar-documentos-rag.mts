@@ -180,6 +180,17 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
   const trechos: TrechoDocumento[] = [];
   const urlsVistas = new Set<string>();
 
+  const fontesOficiais = lerJson<ItemGenerico[]>(path.join(APP_ROOT, "data", "documentos-rag-fontes.json"));
+  if (fontesOficiais) {
+    adicionarMetadados(
+      fontesOficiais,
+      documentos,
+      trechos,
+      { prefixo: "oficial", fonte: "fontes-oficiais", categoria: "Legislação", tema: "Cidades", orgao: "Fonte oficial" },
+      urlsVistas
+    );
+  }
+
   const paraopeba = lerJson<ItemGenerico[]>(path.join(APP_ROOT, "public", "data", "documentos-paraopeba.json"));
   if (paraopeba) {
     adicionarMetadados(
@@ -231,17 +242,6 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
       documentos,
       trechos,
       { prefixo: "probrumadinho", fonte: "biblioteca-pro-brumadinho", categoria: "Pro-Brumadinho", tema: "Reparação de Brumadinho", orgao: "Governo de Minas Gerais" },
-      urlsVistas
-    );
-  }
-
-  const fontesOficiais = lerJson<ItemGenerico[]>(path.join(APP_ROOT, "data", "documentos-rag-fontes.json"));
-  if (fontesOficiais) {
-    adicionarMetadados(
-      fontesOficiais,
-      documentos,
-      trechos,
-      { prefixo: "oficial", fonte: "fontes-oficiais", categoria: "Legislação", tema: "Cidades", orgao: "Fonte oficial" },
       urlsVistas
     );
   }

@@ -111,9 +111,9 @@ mas não é RAG. O próximo recorte é indexar só candidato com URL oficial
 declarada, descartando clone, duplicata e arquivo pessoal.
 
 Na primeira rodada de fontes oficiais, entraram 2 PDFs da PBH (Lei Orgânica
-e Lei 11.181/2008). Betim e Diamantina foram recusados pelo `robots.txt`
-(`Disallow`), então ficaram fora — a regra de coleta vale mais que a
-vontade de indexar.
+e Lei 11.181/2008) e a Pesquisa Jurisprudencial NACAB/ADAI 2023 (49 páginas).
+Betim e Diamantina foram recusados pelo `robots.txt` (`Disallow`), então
+ficaram fora — a regra de coleta vale mais que a vontade de indexar.
 
 ## Próximas fases
 
