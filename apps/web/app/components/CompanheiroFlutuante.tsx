@@ -128,6 +128,7 @@ import { escolherFala } from "@/lib/companheiro/falas";
 import { dicaParaRota, type DicaPagina } from "@/lib/companheiro/dicas-pagina";
 import { usePosicaoPainel, medirTopoUtil, type CaixaAncora } from "@/lib/posicionar-painel";
 import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
+import { EVENTO_MENU_PET_FECHAR } from "@/lib/companheiro/eventos";
 import {
   DUR_VOO_MAX,
   DUR_VOO_MIN,
@@ -547,6 +548,12 @@ export function CompanheiroFlutuante() {
 
   // ── Menu de troca (clique direito no bicho ou pata da pilha) ──────────────
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
+  // Toda saída do menu avisa a pata (`EVENTO_MENU_PET_FECHAR`, bug 4 do dono,
+  // 21/10/2026) para o `aria-expanded` dela voltar a false de verdade.
+  const fecharMenuPet = useCallback(() => {
+    setMenu(null);
+    window.dispatchEvent(new Event(EVENTO_MENU_PET_FECHAR));
+  }, []);
 
   // Posição do menu (pedido do dono, 03/10/2026): ele nasce no ponto do mouse
   // ou embaixo da pata e precisa caber na tela. O utilitário mede o menu e
@@ -786,11 +793,11 @@ export function CompanheiroFlutuante() {
   useEffect(() => {
     if (!menu) return;
     const aoTeclar = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenu(null);
+      if (e.key === "Escape") fecharMenuPet();
     };
     window.addEventListener("keydown", aoTeclar);
     return () => window.removeEventListener("keydown", aoTeclar);
-  }, [menu]);
+  }, [menu, fecharMenuPet]);
 
   // ── Varredura de plataformas: o que da página vale como chão ──────────────
   // 1×/s forçado + em scroll/resize (rAF) + em mutações do DOM (com o mesmo
@@ -1314,7 +1321,7 @@ export function CompanheiroFlutuante() {
           <div
             className="fixed inset-0 z-[60]"
             data-nao-plataforma
-            onPointerDown={() => setMenu(null)}
+            onPointerDown={fecharMenuPet}
             aria-hidden="true"
           />
           <div
@@ -1341,7 +1348,7 @@ export function CompanheiroFlutuante() {
               </p>
               <button
                 type="button"
-                onClick={() => setMenu(null)}
+                onClick={fecharMenuPet}
                 aria-label="Fechar seletor de bichinhos"
                 title="Fechar"
                 className="-mr-1 -mt-0.5 shrink-0 rounded p-0.5 text-text-soft hover:bg-surface-2"
@@ -1356,7 +1363,7 @@ export function CompanheiroFlutuante() {
               type="button"
               onClick={() => {
                 limparPets();
-                setMenu(null);
+                fecharMenuPet();
               }}
               className="w-full rounded-lg px-2 py-1.5 text-left text-xs font-medium text-text-soft hover:bg-surface-2"
             >
@@ -1398,7 +1405,7 @@ export function CompanheiroFlutuante() {
             </ul>
             <button
               type="button"
-              onClick={() => setMenu(null)}
+              onClick={fecharMenuPet}
               className="mt-1 w-full rounded-lg px-2 py-1.5 text-right text-xs font-medium text-text-soft hover:bg-surface-2"
             >
               Fechar

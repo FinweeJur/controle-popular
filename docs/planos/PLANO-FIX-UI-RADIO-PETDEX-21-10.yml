@@ -1,0 +1,78 @@
+# Plano: correcao de 4 bugs de UI (indice do radio e petdex/companheiro)
+
+id: fix-ui-radio-petdex
+data: 2026-10-21
+dono: Dev CP
+solicitante: EstrelaQueBrilha (a pedido do dono)
+origem: >
+  Dono relatou em 21/10/2026: indice do radio fecha 0,8 s a menos apos o
+  ponteiro sair; clicar numa estacao manda a lista rolar para o topo; falta
+  tooltip de descricao apos 1 s de hover; e o botao da pata (petdex/
+  companheiro) nao abre o indice.
+
+objetivo: >
+  Indice do radio fecha no prazo combinado, mantem a posicao de rolagem ao
+  escolher estacao, mostra descricao da estacao em tooltip apos 1 s e a pata
+  do pet abre o menu mesmo com o companheiro desligado.
+
+escopo:
+  arquivos:
+    - apps/web/app/components/PlayerRadio.tsx
+    - apps/web/app/components/SeuNono.tsx
+
+diagnostico:
+  bug1_fechamento_prematuro: >
+    O timer de fechar estava em 1500 ms (PlayerRadio.tsx, agendarFecharIndice).
+    Dono percebeu ~0,8 s a menos e, em 21/10/2026, definiu: 1150 ms, reduzido
+    do valor provisorio de 2300 ms desta worktree. Mantido o cancelamento ao
+    voltar ao painel; nada de 800 ms nem outro valor.
+  bug2_rolagem_ao_clicar: >
+    Suspeita de deslocamento de programacao do navegador ao focar o botao
+    clicado dentro da lista com overflow (o item clicado some da vista).
+    Correcao defensiva: guardar scrollTop da lista em pointerdown e
+    restaurar depois do clique em rAF; scroll do usuario (evento onScroll)
+    nunca e desfeito.
+  bug3_tooltip: >
+    Nenhum tooltip existia. Implementado por estado no componenete: timer de
+    1000 ms no hover do texto da estacao, abre acima do item (hover up),
+    some ao sair ou ao clicar; foco por teclado tambem abre; role="tooltip"
+    com aria-describedby; nao intercepta clique (pointer-events: none).
+  bug4_pata_nao_abre: >
+    A pata (SeuNono.tsx) despacha `cp:companheiro-menu-pet`, mas o
+    CompanheiroFlutuante (que escuta o evento) so esta montado quando o
+    companheiro esta ativo (CompanheiroOpcional NAO monta o flutuante
+    desligado). Sem passarinho ativo, o clique nao faz nada. Correcao FINAL
+    (dono, 21/10/2026: "nao e pra ligar o companheiro antes de abrir"): a
+    pata SÓ pede o menu; com o companheiro desligado, quem atende e o novo
+    `CompanheiroMenuOffline` (montado no ramo desligado de
+    `CompanheiroOpcional`), que abre o menu de bichinhos sem ligar nada.
+    Uma primeira tentativa que ligava o companheiro no clique da pata foi
+    descartada durante o desenvolvimento — violava o pedido do dono.
+    `aria-expanded` da pata acompanha o menu; o fechamento (Esc, clique
+    fora, botao fechar ou escolha de bichinho) viaja pelo novo evento
+    `EVENTO_MENU_PET_FECHAR` (lib/companheiro/eventos.ts) e o flutuante
+    emite o MESMO evento em toda saida do menu.
+
+escopo_extra:
+  arquivos:
+    - apps/web/app/components/CompanheiroOpcional.tsx
+    - apps/web/app/components/CompanheiroMenuOffline.tsx (novo)
+    - apps/web/app/components/CompanheiroFlutuante.tsx
+    - apps/web/lib/companheiro/eventos.ts
+
+criterios_objetivos:
+  - "Sair do indice com o mouse mantem o menu aberto por 1150 ms e nunca fecha com o ponteiro dentro da area; sem piscar ao atravessar o vao."
+  - "Clicar numa estacao NAO muda o scrollTop da lista; a estacao selecionada fica visivel (classe ativa + icone de estado)."
+  - "Tooltip aparece apos 1000 ms de hover, acima do item, com role=tooltip e referencia por aria-describedby; some ao sair ou clicar; foco por teclado abre."
+  - "Clique e teclado (Enter/Espaco) na pata abrem o menu de bichinhos MESMO com o companheiro desligado e NADA liga sozinho; o passarinho so nasce com clique num bichinho DENTRO do menu. Fecha com Esc ou clique fora; aria-expanded reflete o estado."
+
+verificacao:
+  - tsc --noEmit sem erro
+  - eslint sem erro no diff
+  - testes existentes passando (vitest: 278 arquivos, 2814 verdes)
+  - "BUG 1: valor 1150 comprovado no codigo (PlayerRadio.tsx, agendarFecharIndice, setTimeout 1150); comentario atualizado com a ordem do dono de 21/10/2026 (2300 -> 1150)."
+  - "BUG 2: scrollTop da lista guardado em onPointerDown do botao da estacao e restaurado em requestAnimationFrame apos o clique; nenhum scrollIntoView/focus que mude a rolagem na trilha do clique."
+  - "BUG 3: tooltip abre com setTimeout de 1000 ms no onMouseEnter, fecha em onMouseLeave e no clique (onPointerDown); onFocus/onBlur cobrem teclado; elemento com role=tooltip e id ligado por aria-describedby; span tem pointer-events: none."
+  - "BUG 4: abrir o menu NAO chama definirCompanheiroAtivo em nenhum caminho — a unica chamada (true) na trilha do usuario esta dentro de `escolher(pet)`, disparada APENAS pelo clique num bichinho DENTRO do menu (CompanheiroMenuOffline.tsx, escolher). O ramo desligado do CompanheiroOpcional monta CompanheiroMenuOffline; o flutuante (ligado) continua atendendo pelo mesmo evento e emite EVENTO_MENU_PET_FECHAR ao sair; pata tem aria-expanded sincronizada."
+
+rotina_ci: "Nao aplica - alteracao de UI, uso o gate de PR existente (monitoramento-geral)."

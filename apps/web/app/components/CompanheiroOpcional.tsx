@@ -17,6 +17,7 @@
 
 import { useSyncExternalStore } from "react";
 import { CompanheiroFlutuante } from "@/app/components/CompanheiroFlutuante";
+import CompanheiroMenuOffline from "@/app/components/CompanheiroMenuOffline";
 
 export const CHAVE_COMPANHEIRO_ATIVO = "cp_companheiro_ativo";
 export const EVENTO_COMPANHEIRO_ATIVO = "cp:companheiro-ativo";
@@ -62,6 +63,10 @@ export default function CompanheiroOpcional() {
 
   return (
     <>
+      {/* Menu de bichinhos que abre com a pata do pet DESLIGADO (bug 4 do
+          dono, 21/10/2026): abrir o menu não liga nada — o passarinho só
+          nasce num clique num bichinho DENTRO do menu. */}
+      <CompanheiroMenuOffline />
       <button
         type="button"
         onClick={() => definirCompanheiroAtivo(true)}

@@ -75,6 +75,7 @@ import { definirRastroCursor } from "@/app/components/RastroCursor";
 // dois controles distintos e o Seu Nonô mandando nos dois).
 import CompanheiroToggle from "@/app/components/CompanheiroToggle";
 import { definirCompanheiroAtivo } from "@/app/components/CompanheiroOpcional";
+import { EVENTO_MENU_PET_FECHAR } from "@/lib/companheiro/eventos";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -745,6 +746,19 @@ export function SeuNono() {
     handlers: handlersPata,
     resetar: resetarPata,
   } = useArrastavel("cp_pata_pos");
+
+  // ══ BUG 4 (dono, 21/10/2026): estado do menu de bichinhos da pata ══
+  // A pata anuncia `aria-expanded`; abrir é dela, fechar viaja pelo evento
+  // `EVENTO_MENU_PET_FECHAR` (o menu fecha por Esc, clique fora ou escolha).
+  // O passarinho NÃO liga aqui: quem liga é o clique num bichinho dentro do
+  // menu (`CompanheiroFlutuante` ligado, `CompanheiroMenuOffline` desligado).
+  const [menuPetAberto, setMenuPetAberto] = useState(false);
+  useEffect(() => {
+    if (!menuPetAberto) return;
+    const fechar = () => setMenuPetAberto(false);
+    window.addEventListener(EVENTO_MENU_PET_FECHAR, fechar);
+    return () => window.removeEventListener(EVENTO_MENU_PET_FECHAR, fechar);
+  }, [menuPetAberto]);
 
   // Reposicionamento da janelinha (pedido do dono, 03/10/2026): arrastada para
   // a direita, ela ainda EXPANDIA para a direita e saía da tela. Aqui a base do
@@ -2406,12 +2420,22 @@ export function SeuNono() {
             // Gesto foi arrasto: não abre o menu por acidente.
             if (foiArrastoPata()) return;
             const r = e.currentTarget.getBoundingClientRect();
+            // ══ BUG 4 (dono, 21/10/2026): a pata não abria o menu ══
+            // O menu mora no `CompanheiroFlutuante` (que escuta
+            // `cp:companheiro-menu-pet`), mas ele só fica montado com o
+            // companheiro ATIVO — clicar a pata com o passarinho desligado
+            // não fazia NADA. Fix: a pata SÓ pede o menu; com o companheiro
+            // desligado quem atende é o `CompanheiroMenuOffline` (menu de
+            // bichinhos sem ligar nada). O passarinho só nasce se a pessoa
+            // clicar num bichinho DENTRO do menu.
+            setMenuPetAberto(true);
             window.dispatchEvent(
               new CustomEvent("cp:companheiro-menu-pet", {
                 detail: { x: r.left, y: r.bottom + 8 },
               }),
             );
           }}
+          aria-expanded={menuPetAberto}
           title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
           aria-label="Trocar o bichinho do companheiro"
           className={`flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
