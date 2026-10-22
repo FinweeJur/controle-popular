@@ -66,6 +66,9 @@ export interface OpcoesRag {
   pathname?: string;
   /** Título da página atual. */
   titulo?: string;
+  /** Pergunta pura para buscar DOCUMENTOS. O cartão pode usar a pergunta
+   *  enriquecida com repasses; o texto extra não deve diluir o retrieval. */
+  perguntaBusca?: string;
   /** Timeout da GERAÇÃO, em ms — o padrão de `geracao.ts` é 60 s; suba para
    *  modelos 7B em máquina lenta (medido em 31/08: 3B passou de 60 s com o
    *  servidor carregado). */
@@ -312,9 +315,10 @@ export async function responderComRag(
     throw new OllamaIndisponivel("Ollama nao esta disponivel em http://172.18.176.1:11434");
   }
 
+  const perguntaDocumentos = opcoes.perguntaBusca?.trim() || pergunta;
   const [{ melhores, abstem }, documentos] = await Promise.all([
     buscarNoAcervo(pergunta, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname),
-    buscarDocumentos(pergunta, { limite: TOP_K_DOCUMENTOS }).catch(() => []),
+    buscarDocumentos(perguntaDocumentos, { limite: TOP_K_DOCUMENTOS }).catch(() => []),
   ]);
 
   const fontesAcervo = abstem
