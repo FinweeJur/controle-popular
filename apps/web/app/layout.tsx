@@ -231,7 +231,7 @@ export default function RootLayout({
             ⚠️ O CSP do portal ainda e Report-Only: ao promove-lo a
             bloqueante, liberar scripts.simpleanalyticscdn.com (script) e
             queue.simpleanalyticscdn.com (pixel). Ver
-            docs/planos/PLANO-STUDENT-PACK-2026-10.md. */}
+            docs/historico/planos/PLANO-STUDENT-PACK-2026-10.md. */}
         <script
           id="simple-analytics"
           async
