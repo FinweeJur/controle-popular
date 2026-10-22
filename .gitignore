@@ -182,6 +182,7 @@ apps/web/.wrangler-dist/
 .claude/worktrees/
 .claude/skills/*
 !.claude/skills/ssh/
+!.claude/skills/rag/
 
 # Pacotes e arquivos compactados de trabalho
 *.zip

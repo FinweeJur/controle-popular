@@ -1,10 +1,14 @@
 {
   "totalDocumentos": 2242,
-  "totalTrechos": 7690,
+  "totalTrechos": 8057,
   "porCategoria": [
     {
       "slug": "Prestacao de contas",
       "contagem": 1271
+    },
+    {
+      "slug": "Legislação",
+      "contagem": 1255
     },
     {
       "slug": "Pesquisa academica",
@@ -23,10 +27,6 @@
       "contagem": 729
     },
     {
-      "slug": "Legislação",
-      "contagem": 709
-    },
-    {
       "slug": "Legislacao",
       "contagem": 529
     },
@@ -36,19 +36,11 @@
     },
     {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 372
+      "contagem": 492
     },
     {
       "slug": "Outro",
       "contagem": 189
-    },
-    {
-      "slug": "Legisla??o",
-      "contagem": 179
-    },
-    {
-      "slug": "Acad?mico & Pesquisa",
-      "contagem": 120
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -73,12 +65,12 @@
       "contagem": 4558
     },
     {
-      "slug": "Desastres e barragens",
-      "contagem": 935
+      "slug": "Cidades",
+      "contagem": 1255
     },
     {
-      "slug": "Cidades",
-      "contagem": 888
+      "slug": "Desastres e barragens",
+      "contagem": 935
     },
     {
       "slug": "Atingidos por barragens",

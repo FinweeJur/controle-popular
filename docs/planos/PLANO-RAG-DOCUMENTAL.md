@@ -48,9 +48,9 @@ página e o link oficial.
 | `biblioteca-unificada.json` | 458 | microresumo indexado |
 | `biblioteca-teses-atingidos.json` | 424 | resumo acadêmico indexado |
 | `biblioteca-pro-brumadinho.json` | 129 | resumo + PDF quando há texto |
-| **Total único no índice** | **2.236** | **6.683 trechos** |
+| **Total único no índice** | **2.242** | **8.057 trechos** |
 
-O índice tem 16,2 MB. Desses trechos, 4.447 têm página de PDF e 4.775 têm
+O índice tem 18,6 MB. Desses trechos, 5.815 têm página de PDF e 6.148 têm
 link de PDF. O Pro-Brumadinho teve 95 PDFs baixados; 11 não têm camada de
 texto (escaneados) e por isso ficaram só com o metadado.
 
@@ -112,8 +112,15 @@ declarada, descartando clone, duplicata e arquivo pessoal.
 
 Na primeira rodada de fontes oficiais, entraram 2 PDFs da PBH (Lei Orgânica
 e Lei 11.181/2008) e a Pesquisa Jurisprudencial NACAB/ADAI 2023 (49 páginas).
-Betim e Diamantina foram recusados pelo `robots.txt` (`Disallow`), então
-ficaram fora — a regra de coleta vale mais que a vontade de indexar.
+Betim (Lei Orgânica, 72 páginas) e Diamantina (Lei Orgânica, 64 páginas, e
+LC 103/Plano Diretor, 60 páginas) entraram do **PDF já coletado** em
+`acervo-documentos`, com `arquivoLocal` e `urlPdf: null`. O download oficial
+continua recusado pelo `robots.txt` (`Disallow`); a URL oficial permanece
+como citação, sem nova coleta.
+
+O índice ganhou 367 trechos com Diamantina e a varredura de CPF continua
+passando. A skill `/rag` documenta consulta, atualização, caminhos e
+diagnóstico em `.claude/skills/rag/SKILL.md`.
 
 ## Próximas fases
 
@@ -122,11 +129,13 @@ ficaram fora — a regra de coleta vale mais que a vontade de indexar.
    por fonte.
 3. **R2**: usar o pipeline existente, com chave única e domínio único;
    baixar no PC primeiro, subir depois.
-4. **Automação**: corrigir a rotina da madrugada (`--listar` não coleta),
-   incluir as bases documentais no `sincronizar-documentos-r2` e criar
-   `rag:index`/`rag:check`.
-5. **Home-pc**: acessar o acervo local via Tailscale e trazer PDFs que não
-   estão no desktop, sem duplicar cache.
+4. **Automação — pendente**: os coletores e a rotina da madrugada ainda
+   não chamam o RAG. `rag:index`/`rag:check` existem, mas não estão ligados
+   ao `sincronizar-documentos-r2`; falta corrigir a rotina (`--listar` não
+   coleta) e definir o gatilho de reindexação após coleta nova.
+5. **Home-pc — parcial**: o acesso via Tailscale/SSH funciona e o acervo
+   local foi inventariado; Betim e Diamantina já entraram. Faltam os demais
+   candidatos com URL oficial.
 6. **Avaliação**: golden set documental com pergunta, documento e página.
 
 ## Critérios de pronto
@@ -144,4 +153,6 @@ ficaram fora — a regra de coleta vale mais que a vontade de indexar.
 Criado em 21/10/2026 no worktree `rag-jurimetria-tjmg`, depois de o dono
 confirmar que o Seu Nonô precisava acessar biblioteca, PDFs e fontes
 originais. A primeira rodada baixou os PDFs do Pro-Brumadinho e indexou os
-metadados das demais bases. O TJMG continua apenas planejado.
+metadados das demais bases. Betim e Diamantina entraram do cache local;
+Diamantina acrescentou 367 trechos. A skill `/rag` foi criada. O TJMG
+continua apenas planejado e a automação dos coletores ainda não foi feita.
