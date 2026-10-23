@@ -1,12 +1,12 @@
 {
-  "atualizadoEm": "2026-10-22T16:25:07.871Z",
+  "atualizadoEm": "2026-10-23T15:35:07.114Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 208,
+  "latenciaMs": 366,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-22T16:25:07.866Z",
+    "atualizadoEm": "2026-10-23T15:35:07.109Z",
     "totalBasesVerificadas": 822,
     "basesVazias": [],
     "basesCorrompidas": [],
@@ -25,21 +25,12 @@
   "paginas": {
     "base": "https://www.controlepopular.com.br",
     "total": 100,
-    "ok": 98,
-    "falhas": [
-      {
-        "rota": "/",
-        "status": 0
-      },
-      {
-        "rota": "/terra-e-territorios",
-        "status": 0
-      }
-    ],
+    "ok": 100,
+    "falhas": [],
     "siteInteiroFora": false,
-    "inicioEm": "2026-10-22T16:15:08.190Z",
-    "terminoEm": "2026-10-22T16:18:18.671Z",
-    "duracaoMs": 190481
+    "inicioEm": "2026-10-23T15:20:08.985Z",
+    "terminoEm": "2026-10-23T15:23:20.423Z",
+    "duracaoMs": 191438
   },
   "erro": null
 }
