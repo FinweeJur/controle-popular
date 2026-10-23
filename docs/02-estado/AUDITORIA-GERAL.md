@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 22/10/2026 11:44 BRT |
+| 23/10/2026 11:32 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -183,6 +183,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/pncp-manifesto-25-capitais.json | OK |
 | data/polos-interior-ibge.json | OK |
 | data/ppp-mg.json | OK |
+| data/rag-normas.json | OK |
 | data/relatorios-direitos-humanos.json | OK |
 | data/rouanet-mg-incentivadores.json | OK |
 | data/rouanet-mg-projetos.json | OK |
@@ -224,12 +225,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 178 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 179 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 23/10/2026 11:32 BRT - 0 criticos; 0 avisos.
 - 22/10/2026 11:44 BRT - 0 criticos; 0 avisos.
 - 21/10/2026 11:45 BRT - 0 criticos; 0 avisos.
 - 20/10/2026 11:33 BRT - 0 criticos; 0 avisos.
