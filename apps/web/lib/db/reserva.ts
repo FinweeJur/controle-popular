@@ -124,7 +124,11 @@ export async function comBancoReserva<T>(
 
   for (const t of tentativas) {
     try {
-      const timeoutMs = t.nome === "guara" ? 6_000 : 4_000;
+      // 15s no principal: no build SSG o Postgres remoto (RDS us-east-1)
+      // abre conexão fria e o teto de 6s derrubava a página para o estado
+      // vazio (medido em 23/10/2026: /judiciario/indicacoes saiu sem as 140
+      // nomeações, embora a mesma consulta respondesse em 0,6s a quente).
+      const timeoutMs = t.nome === "guara" ? 15_000 : 8_000;
       const r = await comTimeout(
         consulta(t.db),
         timeoutMs,
