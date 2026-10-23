@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** mineração (cavas, modelo de visão, dados territoriais)
-> **Última medição:** 2026-10-20
+> **Última medição:** 2026-10-21
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [MEDICOES-CAVAS-MINERACAO.md](../historico/planos/MEDICOES-CAVAS-MINERACAO.md), [ESTEIRA-CAVAS.md](../historico/planos/ESTEIRA-CAVAS.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md), [PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md](../historico/planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md), [FONTES.md](../06-fontes/FONTES.md), [REGRA-EDITORIAL.md](../01-produto/REGRA-EDITORIAL.md), [PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md](PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md), [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](../../AGENTS.md)
 > **Palavras-chave:** cavas, mineracao, mvp, cbers, pan-sharpen, 2m, 8m, chinese-clip, anm, semad, ibama, embargo, gold-set, funil, revisao-humana, automacao, logon
@@ -89,6 +89,7 @@ desta rodada e está identificado como tal.
 | Modelo 2 m 20/10 (246 limpos, GPU) | F1 **0,619** · P **0,812** · R **0,500** no limiar 0,54; **P ≥ 0,90 inalcançável** | [MEDICOES: segundo treino 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | 2 m, split congelado, **sem hard no treino** | F1 **0,629** · P **0,520** / R **0,796**; P ≥ 0,80: P 0,818 / R 0,367; P ≥ 0,90: R 0,082 | [MEDICOES: split congelado 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | 2 m, split congelado, **com hard no treino** | F1 **0,660** · P **0,689** / R **0,633**; P ≥ 0,80: P 0,812 / R 0,531; P ≥ 0,90: R 0,102 | [MEDICOES: split congelado 20/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
+| 2 m, 21/10, hard completo + automático | F1 **0,613** · P **0,885** / R **0,469**; P ≥ 0,90 em 0,67 com **R 0,163** (8/0/41/110) | [MEDICOES: retreino automático 21/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Base 2 m limpa | 844 recortes: 207 positivos, 637 negativos, 163 cenas | [MEDICOES:884–887](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos 2 m | 536 `ok`; **209 limpos** em 19/10 | [MEDICOES:941](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos limpos ao fim da coleta | **262** (209 → 262; lote de 100 concluído em 20/10) | medição local desta rodada; manifesto fora do repo |
@@ -98,13 +99,14 @@ desta rodada e está identificado como tal.
 | Assinatura de "chão pelado" | mediana de solo nu **0,97** tanto em cava real quanto em falso positivo | [ESTEIRA:50–54](../historico/planos/ESTEIRA-CAVAS.md) |
 | Automação | 2 tarefas de 4 h: uma coleta negativo 8 m; outra aponta para `.cmd` inexistente; vigia de treino não está rodando (Startup existe, tarefa do Agendador ausente) | Agendador em 20/10; intenção em [`coleta.cmd:2`](../../scripts/oficina-cavas/coleta.cmd) e [`setup-vigia-treino-2m.py:34`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py) |
 
-**Status da execução em 20/10:** lote de 100 positivos 2 m concluído
-(100/100, **262 limpos** com 1 worker). O primeiro lote de hard
-parou em 26; a comparação controlada está na seção acima. O manifesto
-publicado tem 2.815 recortes. O próximo treino deve continuar o hard
-e usar este split congelado, sem trocar o conjunto a cada lote.
+**Status da execução em 21/10:** coleta 100 concluída (262 positivos
+limpos), hard completo (71 ok no segundo lote) e **manifesto com
+2.901 recortes**. O supervisor de treino disparou sozinho: F1 0,613,
+P 0,885 / R 0,469; P ≥ 0,90 com R 0,163. A shortlist do gold set
+tem 60 linhas (24 positivos + 10 controles + reservas). O gargalo
+agora é confirmar os casos e fechar o dossiê, não o encanamento.
 
-Três leituras que mudam o plano:
+Leituras que mudam o plano:
 
 - **O 8 m é o melhor modelo hoje, mas não é o produto.** P 0,850 é bom para
   triagem; ainda assim, 76 falsos positivos em 476 negativos viram fila de
@@ -113,14 +115,12 @@ Três leituras que mudam o plano:
   comparável ao 0,804 do 8 m porque o holdout é outro e tem 28 positivos
   ([MEDICOES:906](../historico/planos/MEDICOES-CAVAS-MINERACAO.md)). O ponto
   conservador P 0,857/R 0,429 é útil para descoberta, não para contagem.
-- **O limiar de 90% existe, mas custa o recall.** No split de 20/10,
-  P ≥ 0,90 só aparece no limiar 0,81 com **R 0,077** (3/39 positivos). Para
-  descoberta, o 2 m ainda é confirmação; a triagem continua no 8 m.
-- **O hard ajuda, mas não resolve o 90%.** No split congelado, o hard
-  sobe o F1 de 0,629 para 0,660 e o recall em P ≥ 0,80 de 0,37 para
-  0,53; em P ≥ 0,90 os dois ficam em ~10%. O 0,917/0,333 anterior era
-  artefato de split móvel. O MVP usa o modelo como fila de alta
-  precisão + 2 de 3 + revisão humana, não como veredito.
+- **O ciclo automático já roda.** O supervisor treinou e calibrou
+  sozinho com 934 limpos: F1 **0,613**; P **0,885** / R **0,469**;
+  P ≥ 0,90 no limiar 0,67 com **R 0,163** (8/0/41/110). O manifesto
+  tem 2.901 recortes. O hard ajuda, mas o 90% continua sendo uma fila
+  de alta precisão, não um veredito; o gargalo agora é gold set e
+  confirmação.
 - **O topo da fila atual é falso positivo.** 0/30 na auditoria humana é o
   dado mais importante da frente: o modelo aprendeu "chão pelado com borda"
   e confunde cava com lavoura, desmate e cidade. O MVP só fecha com 2 m,
@@ -250,6 +250,14 @@ válida. O cruzamento com as cavas detectadas achou **11/232 autos** e
 **devem ser excluídos** para não vazar. A proposta é 24 positivos (14 recentes
 com imagem + 10 históricos) + 10 controles legais, com dedup de 1 km e no
 máximo 2 casos por município.
+
+**Shortlist de 21/10:** 60 linhas — 24 positivos primários (14
+recentes + 10 históricos), 10 controles e 26 reservas. Base 277 →
+244 elegíveis; 33 excluídos (12 em treino, 20 sem termo, 1 fora de
+MG). Fontes: 22 autos IBAMA, 17 embargos IBAMA, 1 embargo SEMAD e
+20 controles MapBiomas/ANM. Lacunas: 0 controle com cava confirmada,
+0 ICMBio, 1 SEMAD e 6 recentes sem imagem CBERS. CSV em
+`scripts/.cache/cavas-2m/gold-set/`, sem nome/CPF/CNPJ.
 
 ### Construção proposta
 
