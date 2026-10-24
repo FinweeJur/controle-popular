@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** mineração (cavas, modelo de visão, dados territoriais)
-> **Última medição:** 2026-10-21
+> **Última medição:** 2026-10-23
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [MEDICOES-CAVAS-MINERACAO.md](../historico/planos/MEDICOES-CAVAS-MINERACAO.md), [ESTEIRA-CAVAS.md](../historico/planos/ESTEIRA-CAVAS.md), [PLANO-GLOBO-CAVAS-MINERACAO.md](../historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md), [PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md](../historico/planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md), [FONTES.md](../06-fontes/FONTES.md), [REGRA-EDITORIAL.md](../01-produto/REGRA-EDITORIAL.md), [PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md](PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md), [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](../../AGENTS.md)
 > **Palavras-chave:** cavas, mineracao, mvp, cbers, pan-sharpen, 2m, 8m, chinese-clip, anm, semad, ibama, embargo, gold-set, funil, revisao-humana, automacao, logon
@@ -92,19 +92,25 @@ desta rodada e está identificado como tal.
 | 2 m, 21/10, hard completo + automático | F1 **0,613** · P **0,885** / R **0,469**; P ≥ 0,90 em 0,67 com **R 0,163** (8/0/41/110) | [MEDICOES: retreino automático 21/10](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Base 2 m limpa | 844 recortes: 207 positivos, 637 negativos, 163 cenas | [MEDICOES:884–887](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Positivos 2 m | 536 `ok`; **209 limpos** em 19/10 | [MEDICOES:941](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
-| Positivos limpos ao fim da coleta | **262** (209 → 262; lote de 100 concluído em 20/10) | medição local desta rodada; manifesto fora do repo |
+| Positivos limpos | **305** (G1 atingido em 23/10) | medição local; supervisor de coleta |
 | Positivos 2 m pendentes | **~1.400** (1.503 sem corte em 19/10, menos o avanço de 20/10) | [MEDICOES:909](../historico/planos/MEDICOES-CAVAS-MINERACAO.md) |
 | Auditoria humana dos 30 mais fortes | **0/30** eram cava sem autorização; rio, lago, ilha, cidade, irrigação, pasto, desmate e nuvem | [ESTEIRA:40–48](../historico/planos/ESTEIRA-CAVAS.md) |
 | Falsos positivos do modelo | 1.109 de 3.137 negativos pontuados como cava em score ≥ 0,65 | [ESTEIRA:40–48](../historico/planos/ESTEIRA-CAVAS.md) |
 | Assinatura de "chão pelado" | mediana de solo nu **0,97** tanto em cava real quanto em falso positivo | [ESTEIRA:50–54](../historico/planos/ESTEIRA-CAVAS.md) |
 | Automação | 2 tarefas de 4 h: uma coleta negativo 8 m; outra aponta para `.cmd` inexistente; vigia de treino não está rodando (Startup existe, tarefa do Agendador ausente) | Agendador em 20/10; intenção em [`coleta.cmd:2`](../../scripts/oficina-cavas/coleta.cmd) e [`setup-vigia-treino-2m.py:34`](../../scripts/oficina-cavas/setup-vigia-treino-2m.py) |
 
-**Status da execução em 21/10:** coleta 100 concluída (262 positivos
-limpos), hard completo (71 ok no segundo lote) e **manifesto com
-2.901 recortes**. O supervisor de treino disparou sozinho: F1 0,613,
-P 0,885 / R 0,469; P ≥ 0,90 com R 0,163. A shortlist do gold set
-tem 60 linhas (24 positivos + 10 controles + reservas). O gargalo
-agora é confirmar os casos e fechar o dossiê, não o encanamento.
+**Atualização 23/10:** G1 de positivos atingido (**305 limpos**). O
+supervisor retreinou sozinho com **975 limpos**: F1 **0,630**; P
+**0,810** / R **0,515**; P ≥ 0,90 no limiar 0,62 com **R 0,288**
+(19/2/47/108). O modelo melhorou com o G1; o gargalo agora é o gold
+set.
+
+**Status da execução em 23/10:** G1 de positivos atingido — **305
+limpos**. O supervisor retreinou sozinho com 975 limpos: F1 0,630;
+P 0,810 / R 0,515; P ≥ 0,90 em 0,62 com R 0,288. O manifesto tem
+2.901 recortes e a shortlist do gold set, 60 linhas (24 positivos +
+10 controles + reservas). O gargalo agora é revisar os atos e
+confirmar os casos; o encanamento está pronto.
 
 Leituras que mudam o plano:
 
@@ -121,6 +127,11 @@ Leituras que mudam o plano:
   tem 2.901 recortes. O hard ajuda, mas o 90% continua sendo uma fila
   de alta precisão, não um veredito; o gargalo agora é gold set e
   confirmação.
+- **Com o G1, o modelo subiu de novo.** 305 positivos limpos (975
+  no total): F1 **0,630**; P **0,810** / R **0,515**; P ≥ 0,90 em
+  0,62 com **R 0,288** (19/2/47/108). A fila de alta precisão
+  melhorou, mas ainda é fila; o próximo ganho vem do gold set, não
+  de mais um lote de positivos.
 - **O topo da fila atual é falso positivo.** 0/30 na auditoria humana é o
   dado mais importante da frente: o modelo aprendeu "chão pelado com borda"
   e confunde cava com lavoura, desmate e cidade. O MVP só fecha com 2 m,
@@ -133,7 +144,7 @@ o MVP; gate reprovado não se contorna com número.
 
 | Etapa | O que faz | Gate | Números e estimativa | Prazo |
 |---|---|---|---|---|
-| **1. Dados** | Congela o conjunto 2 m rotulado; corta só o que falta para o gate | **G1:** ≥ 300 positivos limpos e ≥ 300 negativos limpos, por cena | **262 positivos** e 637 negativos limpos em 20/10; faltam ~38 positivos, ~95 cortes, ~2 h de máquina | 1–2 semanas |
+| **1. Dados** | Congela o conjunto 2 m rotulado; corta só o que falta para o gate | **G1 atingido:** 305 positivos limpos e 673 negativos limpos, por cena | 305 positivos e 673 negativos em 23/10; sem corte extra até o gold set | concluído |
 | **2. Modelo** | Treina 2 m no recorte 224; calibra limiar por precisão | **G2:** P ≥ 0,80 no holdout por cena, com R reportado; se não passar, 8 m v12 fica como triagem e 2 m como confirmação | Base de 844 recortes; treino já roda em CPU; 6 épocas é o ponto de partida | 3–5 dias |
 | **3. Varredura** | 8 m v12 pontua as janelas de MG fora do SIGMINE; 2 m reconfere o topo | **G3:** 3.869 janelas pontuadas; top 200 reconferidas em 2 m; top 40 na fila humana | 3.869 janelas (`mining_age` com `dentro_sigmine=false`, [FONTES:845](../06-fontes/FONTES.md)); 200 cortes 2 m ≈ 4,7 h a 84 s cada | 1–2 semanas |
 | **4. Confirmação** | 2 de 3 métodos + revisão humana + checagem ANM/SEMAD/IBAMA | **G4:** 40 revisadas; 10–15 na lista curta; cada uma com método e consulta oficial registrados | 40 × ~20 min ≈ 13 h de revisão; documentação oficial consome mais que a imagem | 1–2 semanas |

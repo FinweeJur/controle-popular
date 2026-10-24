@@ -1071,6 +1071,25 @@ Lacunas: **0 controle com cava confirmada visualmente**, **0 ICMBio**, 1
 SEMAD e 6 recentes sem imagem CBERS (exigem Sentinel/Landsat). O CSV fica em
 `scripts/.cache/cavas-2m/gold-set/`, não versionado, sem nome/CPF/CNPJ.
 
+## Segundo retreino automático com o G1 (23/10/2026)
+
+O supervisor retreinou sozinho quando o G1 passou de 300 positivos limpos.
+Snapshot: **975 limpos** (305 pos / 670 neg), split congelado, val 176
+(66 pos / 110 neg). Melhor época (5): **P 0,8095 / R 0,5152 / F1 0,6296**
+no limiar 0,5.
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,39 | 0,6897 | 0,6061 | 40/18/26/92 |
+| ≥ 0,80 | 0,50 | 0,8095 | 0,5152 | 34/8/32/102 |
+| ≥ 0,85 | 0,52 | 0,8649 | 0,4848 | 32/5/34/105 |
+| ≥ 0,90 | **0,62** | **0,9048** | **0,2879** | **19/2/47/108** |
+
+Leitura: com o G1, o recall em P ≥ 0,90 subiu de 0,163 (975→ antes, 934
+limpos) para **0,288**, e o F1 de 0,613 para 0,630. A fila de alta precisão
+entrega 21 candidatos com 2 falsos positivos no holdout; ainda é fila, não
+veredito. O próximo ganho depende do gold set e da confirmação oficial.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
