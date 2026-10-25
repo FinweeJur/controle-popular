@@ -1,18 +1,18 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-24T06:47:18.132Z
-- Duracao total: 10.7 min
+- Gerado em: 2026-10-25T06:47:05.111Z
+- Duracao total: 10.6 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 388
+- OK: 387
 - QUEBRADOS: 9
-- REDIRECTS: 30
-- INCONSISTENTES: 46
+- REDIRECTS: 29
+- INCONSISTENTES: 48
 - Propostas geradas: 13
-- Links sem proposta: 26
+- Links sem proposta: 25
 
 ## Links quebrados e redirecionados
 
@@ -44,7 +44,6 @@
 | https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
 | https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
 | https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
 | https://www.controlepopular.tech/ | QUEBRADO | 404 | https://www.controlepopular.tech/ |
 | https://www.controlepopular.tech/api/saude | QUEBRADO | 404 | https://www.controlepopular.tech/api/saude |
@@ -209,7 +208,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
@@ -253,7 +251,9 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php (423) — status HTTP 423 (nem ok, nem quebrado, nem redirect)
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (rede) — erro de rede: This operation was aborted
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
+- https://www.gov.br/anp/vivo.pdf (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed

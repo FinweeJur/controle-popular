@@ -1,18 +1,18 @@
 # LinkMender v2 — Auditoria de Links e Validação de Conteúdo
 
-- Data da auditoria: 2026-10-24T15:28:37.419Z
-- Duração da rodada: 31274.8 s
+- Data da auditoria: 2026-10-25T16:44:30.033Z
+- Duração da rodada: 35841.7 s
 - Pausa configurada entre requisições: 300ms
 
 ## Resumo Consolidado
 
 - Total de URLs verificadas (HTTP + validação de conteúdo): 12927
-- ✅ Links Íntegros (OK): 8558
-- ↪️ Redirecionamentos Válidos (REDIRECT): 267
-- ❌ Links Quebrados (QUEBRADO): 936
+- ✅ Links Íntegros (OK): 8222
+- ↪️ Redirecionamentos Válidos (REDIRECT): 263
+- ❌ Links Quebrados (QUEBRADO): 937
 - ⚠️ Respostas Falsas (MENTIROSO / 200 que mente): 5
-- ❓ Inconsistências de Rede (INCONSISTENTE): 3161
-- 📝 Propostas automáticas de correção aceitas: 8
+- ❓ Inconsistências de Rede (INCONSISTENTE): 3500
+- 📝 Propostas automáticas de correção aceitas: 2
 
 ## Detalhamento das Verificações por URL
 
@@ -99,7 +99,7 @@
 | ✅ OK | `https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf` | ANP — Revendedores | OK |
 | ✅ OK | `https://salic.cultura.gov.br/` | Incentivadores da Lei Rouanet × Fornecedores Públicos | OK |
 | ✅ OK | `https://siconfi.tesouro.gov.br/` | SICONFI/Tesouro Nacional | OK |
-| ✅ OK | `https://cnes.datasus.gov.br/` | Rede de saúde cadastrada | OK |
+| ❓ INCONSISTENTE | `https://cnes.datasus.gov.br/` | Rede de saúde cadastrada | INCONSISTENTE |
 | ✅ OK | `https://info.dengue.mat.br/` | Arboviroses (semana mais recente) | OK |
 | ❓ INCONSISTENTE | `https://www.ssp.sp.gov.br/estatistica/dados-mensais` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.mg.gov.br/dataset/crimes-violentos` | Geral | OK |
@@ -460,7 +460,7 @@
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_federais_superficial/MapServer/4` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_estaduais_superficial/MapServer/0` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/server/rest/services/Hosted/outorgas_estaduais_subterraneas/FeatureServer/0` | Geral | OK |
-| ❓ INCONSISTENTE | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | INCONSISTENTE |
+| ✅ OK | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | OK |
 | ✅ OK | `https://fepam.rs.gov.br/upload/arquivos/202602/23110518-autos-de-infracao-2026-02-23.xlsx` | Geral | OK |
 | ✅ OK | `https://geopr.iat.pr.gov.br/server/rest/services/00_PUBLICACOES/licenciamento_ambiental_pr/FeatureServer/0` | Geral | OK |
 | ✅ OK | `https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama` | Geral | OK |
@@ -3064,7 +3064,7 @@
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_rios` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ouvidoria` | Geral | OK |
-| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://transparencia.al.al.leg.br/` | Geral | OK |
 | ❓ INCONSISTENTE | `https://dados.al.al.leg.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://sapl.al.al.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleal_aud_braskem` | Geral | OK |
@@ -3231,7 +3231,6 @@
 | ↪️ REDIRECT | `https://www.globalwitness.org` | Como auditar conflitos socioambientais e violações corporativas no mundo? | REDIRECT |
 | ✅ OK | `https://climatetrace.org` | Quais são os maiores emissores e poluidores industriais do planeta? | OK |
 | ✅ OK | `https://climate.copernicus.eu` | Quais são os maiores emissores e poluidores industriais do planeta? | OK |
-| ↪️ REDIRECT | `https://www.cia.gov/readingroom/` | O que revelam os relatórios desclassificados da CIA, FBI e NSA? | REDIRECT |
 | ✅ OK | `https://vault.fbi.gov/` | O que revelam os relatórios desclassificados da CIA, FBI e NSA? | OK |
 | ✅ OK | `https://www.nsa.gov` | Como funcionam as alianças Five Eyes, Nine Eyes e Twelve Eyes? | OK |
 | ✅ OK | `https://www.gchq.gov.uk` | Como funcionam as alianças Five Eyes, Nine Eyes e Twelve Eyes? | OK |
@@ -3252,7 +3251,7 @@
 | ❌ QUEBRADO | `https://apitempo.inmet.gov.br/avisos/ativos` | Avisos de Risco Meteorológico | QUEBRADO |
 | ❌ QUEBRADO | `https://queimadas.dgi.inpe.br/queimadas/bdqueimadas` | Programa Queimadas — Focos de Calor e Risco de Fogo | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.snis.gov.br/ e https://metadados.ana.gov.br/` | SNIS e Atlas Esgotos — Saneamento Básico e Poluição Hídrica | INCONSISTENTE |
-| ✅ OK | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | OK |
+| ❓ INCONSISTENTE | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | INCONSISTENTE |
 | ✅ OK | `https://aedasmg.org/documento/encontro-o-povo-ainda-luta-despedida-da-aedas-paraopeba/` | FOTOS – Encontro “O Povo Ainda Luta” – Despedida da Aedas Paraopeba | OK |
 | ✅ OK | `https://aedasmg.org/documento/livros-de-danos-coletivos-sofridos-pelas-comunidades-par/` | Livros de Danos Coletivos sofridos pelas Comunidades de Brumadinho e da Região 2 | OK |
 | ✅ OK | `https://aedasmg.org/documento/balanco-anual-aedas-paraopeba-2025/` | Vídeo Balanço Anual Aedas Paraopeba – 2025 | OK |
@@ -4206,7 +4205,7 @@
 | ✅ OK | `https://www.sec.gov/edgar/browse/?CIK=0001861449` | Sigma Lithium — Annual Report Form 20-F (SEC EDGAR CIK 0001861449) | OK |
 | ✅ OK | `https://sigmalithiumcorp.com/sustainability/` | Sigma Lithium — Relatório de Sustentabilidade: Lítio Verde e Impacto Comunitário | OK |
 | ✅ OK | `https://ri.csnmineracao.com.br/` | CSN Mineração — Relatório Integrado e de Sustentabilidade | OK |
-| ↪️ REDIRECT | `https://www.samarco.com/relacionamento-com-investidores/` | Samarco Mineração — Relatório Anual de Gestão e Reparação Rio Doce | REDIRECT |
+| ❌ QUEBRADO | `https://www.samarco.com/relacionamento-com-investidores/` | Samarco Mineração — Relatório Anual de Gestão e Reparação Rio Doce | QUEBRADO |
 | ✅ OK | `https://ri.cemig.com.br/` | Cemig — Relatório Anual Integrado e Caderno de Indicadores GRI | OK |
 | ✅ OK | `https://ri.gerdau.com/` | Gerdau S.A. — Relatório de Sustentabilidade e Transição Climática | OK |
 | ↪️ REDIRECT | `https://ri.eletrobras.com/` | Eletrobras — Relatório Anual e Indicadores ESG | REDIRECT |
@@ -4251,7 +4250,7 @@
 | ❌ QUEBRADO | `https://www.defensoria.es.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Espírito Santo | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/noticias` | Sessão Solene: Tiago Gregório Fernandes assume como Defensor(a) Público(a)-Geral do DPGO (2022–2024) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Goiás | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
 | ✅ OK | `https://defensoria.mg.def.br/noticias/` | Sessão Solene: Raquel Gomes de Sousa da Costa Dias assume como Defensora Pública-Geral do DPMG (2024–2026) | OK |
@@ -4320,7 +4319,6 @@
 | ✅ OK | `https://www.mpba.mp.br/noticias/posse-pedro-maia-souza-marques` | Sessão Solene: Pedro Maia Souza Marques assume como Procurador-Geral de Justiça do MPBA (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.mpba.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Bahia | QUEBRADO |
 | ✅ OK | `https://www.mpba.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPBA combate desvios em licitações de transporte público escolar | OK |
-| ❌ QUEBRADO | `https://www.mpce.mp.br/noticias/posse-haley-de-carvalho-filho` | Sessão Solene: Haley de Carvalho Filho assume como Procurador-Geral de Justiça do MPCE (2024–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpce.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Ceará | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpce.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPCE combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mpdft.mp.br/noticias/posse-georges-seigneur` | Sessão Solene: Georges Seigneur assume como Procurador-Geral de Justiça do MPDFT (2022–2024) | INCONSISTENTE |
@@ -4351,7 +4349,7 @@
 | ❌ QUEBRADO | `https://www.mppi.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Piauí | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppi.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPI combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mppr.mp.br/noticias/posse-francisco-zanicotti` | Sessão Solene: Francisco Zanicotti assume como Procurador-Geral de Justiça do MPPR (2024–2026) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mppr.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.mppr.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio de Janeiro | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPRJ combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprn.mp.br/noticias/posse-elaine-cardoso-de-matos-n` | Sessão Solene: Elaine Cardoso de Matos Novais Teixeira assume como Procurador-Geral de Justiça do MPRN (2023–2025) | QUEBRADO |
@@ -4387,7 +4385,6 @@
 | ✅ OK | `https://www.tjal.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAL 2025/2026) | OK |
 | ✅ OK | `https://www.tjal.jus.br/noticias/metas-nacionais-2026` | TJAL atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
 | ✅ OK | `https://www.tjal.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Alagoas | OK |
-| ❌ QUEBRADO | `https://www.tjam.jus.br/noticias/posse-jomar-ricardo-saunders-fe` | Sessão Solene: Jomar Ricardo Saunders Fernandes assume como Presidente do Tribunal de Justiça do TJAM (2025–2027) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjam.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Amazonas | QUEBRADO |
 | ↪️ REDIRECT | `https://www.tjap.jus.br/noticias/posse-jayme-henrique-ferreira` | Sessão Solene: Jayme Henrique Ferreira assume como Presidente do Tribunal de Justiça do TJAP (2025–2027) | REDIRECT |
 | ↪️ REDIRECT | `https://www.tjap.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJAP 2025/2026) | REDIRECT |
@@ -4430,8 +4427,8 @@
 | ✅ OK | `https://www.tjpb.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPB 2025/2026) | OK |
 | ✅ OK | `https://www.tjpb.jus.br/noticias/metas-nacionais-2026` | TJPB atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
 | ✅ OK | `https://www.tjpb.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Paraíba | OK |
-| ❓ INCONSISTENTE | `https://www.tjpe.jus.br/noticias` | Sessão Solene: Ricardo de Oliveira Paes Barreto assume como Presidente do Tribunal de Justiça do TJPE (2024–2026) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.tjpe.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Pernambuco | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.tjpe.jus.br/noticias` | Sessão Solene: Ricardo de Oliveira Paes Barreto assume como Presidente do Tribunal de Justiça do TJPE (2024–2026) | QUEBRADO |
+| ❌ QUEBRADO | `https://www.tjpe.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Pernambuco | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJPI 2025/2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/noticias/metas-nacionais-2026` | TJPI atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjpi.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Piauí | QUEBRADO |
@@ -4471,13 +4468,13 @@
 | ❌ QUEBRADO | `https://portal.trt3.jus.br/internet/conheca-o-trt/comunicacao/noticias` | Posse Solene: Denise Alves Horta assume como Presidente do TRT da 3ª Região (2024–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tst.jus.br/noticias/posse` | Posse Solene: Aloysio Corrêa da Veiga assume como Presidente do Tribunal Superior do Trabalho (2024–2026) | QUEBRADO |
 | ✅ OK | `https://www.tst.jus.br/transparencia` | Relatório de Gestão e Atividades Institucionais (TST 2025/2026) | OK |
-| ❓ INCONSISTENTE | `https://www.scielo.br/j/csp/a/BrumadinhoSaude` | Avaliação dos Impactos na Saúde Coletiva e Exposição a Metais Pesados Pós-Rompimento da Barragem B1 da Vale em Brumadinho | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.scielo.br/j/csp/a/BrumadinhoSaude` | Avaliação dos Impactos na Saúde Coletiva e Exposição a Metais Pesados Pós-Rompimento da Barragem B1 da Vale em Brumadinho | QUEBRADO |
 | ✅ OK | `https://repositorio.ufmg.br/handle/1843/DIR-ACORDO-BRUMADINHO` | A Arquitetura Jurídico-Econômica do Acordo Judicial de Brumadinho: Assimetria de Informação e Limites da Reparação Integral | OK |
-| ❓ INCONSISTENTE | `https://repositorio.ufop.br/handle/123456789/descaracterizacao-barragens-2024` | Análise Crítica da Descaracterização de Barragens a Montante em Minas Gerais: Prazos, Riscos de Liquefação e a Lei Estadual 23.291/2019 | INCONSISTENTE |
+| ↪️ REDIRECT | `https://repositorio.ufop.br/handle/123456789/descaracterizacao-barragens-2024` | Análise Crítica da Descaracterização de Barragens a Montante em Minas Gerais: Prazos, Riscos de Liquefação e a Lei Estadual 23.291/2019 | REDIRECT |
 | ❌ QUEBRADO | `https://revista.fct.unesp.br/index.php/pegada/article/view/litio-jequitinhonha` | A Corrida Global pelo Lítio e a Pressão Hídrica no Médio Jequitinhonha: O Caso das Cavas Xuxa e Barreiro da Sigma Lithium | QUEBRADO |
 | ❌ QUEBRADO | `https://www.inesc.org.br/publicacoes/transicao-litio-jequitinhonha` | Para Quem É a Transição? Mineração de Lítio, Subsídios Fiscais e Conflitos Socioambientais no Vale do Jequitinhonha | QUEBRADO |
 | ✅ OK | `https://locus.ufv.br/handle/123456789/conflitos-aguas-jequitinhonha` | Conflitos pelo Uso da Água e Vulnerabilidade Climática no Semiárido Mineiro: Análise Histórica e Contemporânea | OK |
-| ❌ QUEBRADO | `https://repositorio.unb.br/handle/10482/consulta-previa-oit169-stf` | O Direito à Consulta Prévia, Livre e Informada (Convenção 169 da OIT): Jurisprudência Vinculante do STF e Corte IDH | QUEBRADO |
+| ❓ INCONSISTENTE | `https://repositorio.unb.br/handle/10482/consulta-previa-oit169-stf` | O Direito à Consulta Prévia, Livre e Informada (Convenção 169 da OIT): Jurisprudência Vinculante do STF e Corte IDH | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.socioambiental.org/publicacoes/protocolos-consulta-previa` | Protocolos Autônomos de Consulta Prévia: Guia Metodológico, Casos Concretos e Defesa Territorial no Brasil | QUEBRADO |
 | ❌ QUEBRADO | `https://www.scielo.br/j/rdgv/a/ConsultaPreviaMineracao` | Consulta Prévia e Mineração: Desafios da Governança Ambiental em Territórios Quilombolas e Tradicionais | QUEBRADO |
 | ❌ QUEBRADO | `https://teses.usp.br/teses/disponiveis/3/pncp-analise-algoritmica` | Transparência Algorítmica e Detecção de Inconsistências em Contratações Públicas a partir dos Dados Abertos do PNCP | QUEBRADO |
@@ -4503,7 +4500,7 @@
 | ❓ INCONSISTENTE | `https://digitalarchive.wilsoncenter.org/document/mao-nixon-meeting-beijing-transcript-1972.pdf` | FMA: Minutas Diplomáticas Desclassificadas das Conversações entre Mao Tsé-Tung e Richard Nixon | INCONSISTENTE |
 | ✅ OK | `https://www.mofa.go.jp/about/history/archive/` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
 | ✅ OK | `https://www.mofa.go.jp/mofaj/files/000182741.pdf` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
-| ✅ OK | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | OK |
+| ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.nationalarchives.gov.za/` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | QUEBRADO |
@@ -4589,7 +4586,7 @@
 | ✅ OK | `https://saoluis.ma.gov.br/transparencia` | Prefeitura Municipal de São Luís | OK |
 | ✅ OK | `https://www.floriano.pi.gov.br/transparencia` | Prefeitura Municipal de Floriano | OK |
 | ✅ OK | `https://www.parnaiba.pi.gov.br/transparencia` | Prefeitura Municipal de Parnaíba | OK |
-| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/transparencia` | Prefeitura Municipal de Iguatu | INCONSISTENTE |
+| ✅ OK | `https://www.iguatu.ce.gov.br/transparencia` | Prefeitura Municipal de Iguatu | OK |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/transparencia` | Prefeitura Municipal de Juazeiro do Norte | INCONSISTENTE |
 | ✅ OK | `https://www.sobral.ce.gov.br/transparencia` | Prefeitura Municipal de Sobral | OK |
 | ❌ QUEBRADO | `https://www.caico.rn.gov.br/transparencia` | Prefeitura Municipal de Caicó | QUEBRADO |
@@ -4750,7 +4747,7 @@
 | ❓ INCONSISTENTE | `https://www.camarafeira-de-santana.ba.gov.br/transparencia` | Câmara Municipal de Feira de Santana | INCONSISTENTE |
 | ✅ OK | `https://www.camarailheus.ba.gov.br/transparencia` | Câmara Municipal de Ilhéus | OK |
 | ❓ INCONSISTENTE | `https://www.camaraitabuna.ba.gov.br/transparencia` | Câmara Municipal de Itabuna | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.camarajequie.ba.gov.br/transparencia` | Câmara Municipal de Jequié | INCONSISTENTE |
+| ✅ OK | `https://www.camarajequie.ba.gov.br/transparencia` | Câmara Municipal de Jequié | OK |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro.ba.gov.br/transparencia` | Câmara Municipal de Juazeiro | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaralauro-de-freitas.ba.gov.br/transparencia` | Câmara Municipal de Lauro de Freitas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapaulo-afonso.ba.gov.br/transparencia` | Câmara Municipal de Paulo Afonso | INCONSISTENTE |
@@ -5036,7 +5033,6 @@
 | ❌ QUEBRADO | `https://www.coruripe.al.gov.br/diario-oficial` | Coruripe | QUEBRADO |
 | ✅ OK | `https://maceio.al.gov.br/` | Maceió | OK |
 | ❓ INCONSISTENTE | `https://sapl.maceio.al.leg.br/` | Maceió | INCONSISTENTE |
-| ❌ QUEBRADO | `https://maceio.al.gov.br//diario-oficial` | Maceió | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.palmeira-dos-indios.al.gov.br` | Palmeira dos Índios | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapalmeira-dos-indios.al.gov.br` | Palmeira dos Índios | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.palmeira-dos-indios.al.gov.br/diario-oficial` | Palmeira dos Índios | INCONSISTENTE |
@@ -5063,7 +5059,7 @@
 | ✅ OK | `https://www.ilheus.ba.gov.br/diario-oficial` | Ilhéus | OK |
 | ❓ INCONSISTENTE | `https://www.camaraitabuna.ba.gov.br` | Itabuna | INCONSISTENTE |
 | ✅ OK | `https://www.jequie.ba.gov.br` | Jequié | OK |
-| ❓ INCONSISTENTE | `https://www.camarajequie.ba.gov.br` | Jequié | INCONSISTENTE |
+| ✅ OK | `https://www.camarajequie.ba.gov.br` | Jequié | OK |
 | ❌ QUEBRADO | `https://www.jequie.ba.gov.br/diario-oficial` | Jequié | QUEBRADO |
 | ✅ OK | `https://www.juazeiro.ba.gov.br` | Juazeiro | OK |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro.ba.gov.br` | Juazeiro | INCONSISTENTE |
@@ -5182,7 +5178,6 @@
 | ✅ OK | `https://www.maua.sp.gov.br` | Mauá | OK |
 | ✅ OK | `https://www.camaramaua.sp.gov.br` | Mauá | OK |
 | ❓ INCONSISTENTE | `https://www.camaraosasco.sp.gov.br` | Osasco | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.osasco.sp.gov.br/diario-oficial` | Osasco | QUEBRADO |
 | ✅ OK | `https://www.camarapiracicaba.sp.gov.br` | Piracicaba | OK |
 | ❓ INCONSISTENTE | `https://www.presidente-prudente.sp.gov.br` | Presidente Prudente | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarapresidente-prudente.sp.gov.br` | Presidente Prudente | INCONSISTENTE |
@@ -5739,7 +5734,6 @@
 | ❌ QUEBRADO | `https://www.itabaiana.se.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Itabaiana - SE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.itabaiana.se.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Itabaiana - SE | QUEBRADO |
 | ❌ QUEBRADO | `https://www.itabaiana.se.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Itabaiana - SE | QUEBRADO |
-| ❌ QUEBRADO | `https://www.alagoinhas.ba.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Alagoinhas - BA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.alagoinhas.ba.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Alagoinhas - BA | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.barreiras.ba.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Barreiras - BA | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.barreiras.ba.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Barreiras - BA | INCONSISTENTE |
@@ -5978,26 +5972,26 @@
 | ❓ INCONSISTENTE | `https://df.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de Brasília - DF | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://df.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Brasília - DF | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://df.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Brasília - DF | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/83551549000100-2-000139/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/83551549000100-2-000139/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/83551549000100-2-000140/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000133/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004603/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004604/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004610/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004611/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=155313` | Geral | INCONSISTENTE |
@@ -6088,7 +6082,7 @@
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=49330` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=51039` | Geral | INCONSISTENTE |
 | ✅ OK | `http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx` | Geral | OK |
-| ✅ OK | `https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html` | Destinacoes de Imoveis da Uniao em Minas Gerais | OK |
+| ❓ INCONSISTENTE | `https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html` | Destinacoes de Imoveis da Uniao em Minas Gerais | INCONSISTENTE |
 | ✅ OK | `https://www.diariomunicipal.com.br/amm-mg/` | EXTRATO: ATA DE REGISTRO DE PREÇOS Nº 043/2026 | OK |
 | ✅ OK | `https://www.betim.mg.gov.br/portal/diario-oficial/` | AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 055/2026 | OK |
 | ❌ QUEBRADO | `https://aracuai.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 041/2026 | QUEBRADO |
@@ -6294,357 +6288,357 @@
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/3585becf4beca3fd.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/c15885fbf1c59366.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://fontes.controlepopular.com.br/docs/a89e6144134d4572.pdf` | Geral | INCONSISTENTE |
-| ✅ OK | `https://www.in.gov.br/consulta/-/buscar/dou` | Geral | OK |
-| ✅ OK | `https://www.in.gov.br/robots.txt` | Geral | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.457-de-28-de-setembro-de-2026-736051365` | Alvará nº 7.457, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.461-de-28-de-setembro-de-2026-736046240` | Alvará nº 7.461, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.456-de-28-de-setembro-de-2026-736045754` | Alvará nº 7.456, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.462-de-28-de-setembro-de-2026-736043973` | Alvará nº 7.462, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.463-de-28-de-setembro-de-2026-736037736` | Alvará nº 7.463, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/resolucao-anm-n-248-de-1-de-outubro-de-2026-736029919` | Resolução ANM Nº 248, DE 1º DE outubro DE 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.458-de-28-de-setembro-de-2026-736025970` | Alvará nº 7.458, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.459-de-28-de-setembro-de-2026-736024143` | Alvará nº 7.459, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.460-de-28-de-setembro-de-2026-736020595` | Alvará nº 7.460, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.455-de-28-de-setembro-de-2026-735723257` | Alvará nº 7.455, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.453-de-28-de-setembro-de-2026-735721116` | Alvará nº 7.453, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.454-de-28-de-setembro-de-2026-735714101` | Alvará nº 7.454, de 28 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.432-de-26-de-setembro-de-2026-735125289` | Alvará nº 7.432, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.444-de-27-de-setembro-de-2026-735125261` | Alvará nº 7.444, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.293-de-25-de-setembro-de-2026-735124477` | Alvará nº 7.293, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.294-de-25-de-setembro-de-2026-735123203` | Alvará nº 7.294, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.285-de-24-de-setembro-de-2026-735121577` | Alvará nº 7.285, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.297-de-25-de-setembro-de-2026-735121503` | Alvará nº 7.297, de 25 de SETEMBRO de 2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/consulta/-/buscar/dou` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/robots.txt` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.457-de-28-de-setembro-de-2026-736051365` | Alvará nº 7.457, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.461-de-28-de-setembro-de-2026-736046240` | Alvará nº 7.461, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.456-de-28-de-setembro-de-2026-736045754` | Alvará nº 7.456, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.462-de-28-de-setembro-de-2026-736043973` | Alvará nº 7.462, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.463-de-28-de-setembro-de-2026-736037736` | Alvará nº 7.463, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/resolucao-anm-n-248-de-1-de-outubro-de-2026-736029919` | Resolução ANM Nº 248, DE 1º DE outubro DE 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.458-de-28-de-setembro-de-2026-736025970` | Alvará nº 7.458, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.459-de-28-de-setembro-de-2026-736024143` | Alvará nº 7.459, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.460-de-28-de-setembro-de-2026-736020595` | Alvará nº 7.460, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.455-de-28-de-setembro-de-2026-735723257` | Alvará nº 7.455, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.453-de-28-de-setembro-de-2026-735721116` | Alvará nº 7.453, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.454-de-28-de-setembro-de-2026-735714101` | Alvará nº 7.454, de 28 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.432-de-26-de-setembro-de-2026-735125289` | Alvará nº 7.432, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.444-de-27-de-setembro-de-2026-735125261` | Alvará nº 7.444, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.293-de-25-de-setembro-de-2026-735124477` | Alvará nº 7.293, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.294-de-25-de-setembro-de-2026-735123203` | Alvará nº 7.294, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.285-de-24-de-setembro-de-2026-735121577` | Alvará nº 7.285, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.297-de-25-de-setembro-de-2026-735121503` | Alvará nº 7.297, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.295-de-25-de-setembro-de-2026-735119154` | Alvará nº 7.295, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.433-de-26-de-setembro-de-2026-735119017` | Alvará nº 7.433, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.437-de-26-de-setembro-de-2026-735118938` | Alvará nº 7.437, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.290-de-24-de-setembro-de-2026-735118175` | Alvará nº 7.290, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.296-de-25-de-setembro-de-2026-735118018` | Alvará nº 7.296, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.429-de-26-de-setembro-de-2026-735117087` | Alvará nº 7.429, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.442-de-27-de-setembro-de-2026-735117008` | Alvará nº 7.442, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.300-de-25-de-setembro-de-2026-735116771` | Alvará nº 7.300, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.436-de-26-de-setembro-de-2026-735116677` | Alvará nº 7.436, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.439-de-26-de-setembro-de-2026-735113971` | Alvará nº 7.439, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.435-de-26-de-setembro-de-2026-735113064` | Alvará nº 7.435, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.438-de-26-de-setembro-de-2026-735111950` | Alvará nº 7.438, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.430-de-26-de-setembro-de-2026-735111152` | Alvará nº 7.430, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735109707` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.291-de-24-de-setembro-de-2026-735108874` | Alvará nº 7.291, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.431-de-26-de-setembro-de-2026-735108726` | Alvará nº 7.431, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.443-de-27-de-setembro-de-2026-735106894` | Alvará nº 7.443, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.446-de-27-de-setembro-de-2026-735106295` | Alvará nº 7.446, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.299-de-25-de-setembro-de-2026-735104551` | Alvará nº 7.299, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.441-de-27-de-setembro-de-2026-735104472` | Alvará nº 7.441, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.445-de-27-de-setembro-de-2026-735104340` | Alvará nº 7.445, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.298-de-25-de-setembro-de-2026-735101444` | Alvará nº 7.298, de 25 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.434-de-26-de-setembro-de-2026-735101365` | Alvará nº 7.434, de 26 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.440-de-27-de-setembro-de-2026-735101219` | Alvará nº 7.440, de 27 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.292-de-24-de-setembro-de-2026-735039774` | Alvará nº 7.292, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.279-de-24-de-setembro-de-2026-734856475` | Alvará nº 7.279, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.277-de-24-de-setembro-de-2026-734854138` | Alvará nº 7.277, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.278-de-24-de-setembro-de-2026-734854057` | Alvará nº 7.278, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.282-de-24-de-setembro-de-2026-734845018` | Alvará nº 7.282, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.289-de-24-de-setembro-de-2026-734842968` | Alvará nº 7.289, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.283-de-24-de-setembro-de-2026-734841113` | Alvará nº 7.283, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.286-de-24-de-setembro-de-2026-734839187` | Alvará nº 7.286, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.276-de-24-de-setembro-de-2026-734837248` | Alvará nº 7.276, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.275-de-23-de-setembro-de-2026-734837247` | Alvará nº 7.275, de 23 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.280-de-24-de-setembro-de-2026-734830945` | Alvará nº 7.280, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.284-de-24-de-setembro-de-2026-734823374` | Alvará nº 7.284, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.281-de-24-de-setembro-de-2026-734820198` | Alvará nº 7.281, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.287-de-24-de-setembro-de-2026-734819346` | Alvará nº 7.287, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.288-de-24-de-setembro-de-2026-734817504` | Alvará nº 7.288, de 24 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.250-de-22-de-setembro-de-2026-734505185` | Alvará nº 7.250, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7261-de-22-de-setembro-de-2026-734504108` | Alvará nº 7261, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.241-de-18-de-setembro-de-2026-734502787` | Alvará nº 7.241, de 18 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.258-de-22-de-setembro-de-2026-734502759` | Alvará nº 7.258, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.259-de-22-de-setembro-de-2026-734501916` | Alvará nº 7.259, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.270-de-22-de-setembro-de-2026-734501835` | Alvará nº 7.270, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.248-de-22-de-setembro-de-2026-734500451` | Alvará nº 7.248, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.271-de-22-de-setembro-de-2026-734500312` | Alvará nº 7.271, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.249-de-22-de-setembro-de-2026-734497959` | Alvará nº 7.249, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.269-de-22-de-setembro-de-2026-734497931` | Alvará nº 7.269, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.257-de-22-de-setembro-de-2026-734496973` | Alvará nº 7.257, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.266-de-22-de-setembro-de-2026-734496945` | Alvará nº 7.266, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.263-de-22-de-setembro-de-2026-734495537` | Alvará nº 7.263, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.268-de-22-de-setembro-de-2026-734494745` | Alvará nº 7.268, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.267-de-22-de-setembro-de-2026-734494166` | Alvará nº 7.267, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.240-de-18-de-setembro-de-2026-734493286` | Alvará nº 7.240, de 18 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.251-de-22-de-setembro-de-2026-734490322` | Alvará nº 7.251, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.239-de-18-de-setembro-de-2026-734473295` | Alvará nº 7.239, de 18 de SETEMBRO de 2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.433-de-26-de-setembro-de-2026-735119017` | Alvará nº 7.433, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.437-de-26-de-setembro-de-2026-735118938` | Alvará nº 7.437, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.290-de-24-de-setembro-de-2026-735118175` | Alvará nº 7.290, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.296-de-25-de-setembro-de-2026-735118018` | Alvará nº 7.296, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.429-de-26-de-setembro-de-2026-735117087` | Alvará nº 7.429, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.442-de-27-de-setembro-de-2026-735117008` | Alvará nº 7.442, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.300-de-25-de-setembro-de-2026-735116771` | Alvará nº 7.300, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.436-de-26-de-setembro-de-2026-735116677` | Alvará nº 7.436, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.439-de-26-de-setembro-de-2026-735113971` | Alvará nº 7.439, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.435-de-26-de-setembro-de-2026-735113064` | Alvará nº 7.435, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.438-de-26-de-setembro-de-2026-735111950` | Alvará nº 7.438, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.430-de-26-de-setembro-de-2026-735111152` | Alvará nº 7.430, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735109707` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.291-de-24-de-setembro-de-2026-735108874` | Alvará nº 7.291, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.431-de-26-de-setembro-de-2026-735108726` | Alvará nº 7.431, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.443-de-27-de-setembro-de-2026-735106894` | Alvará nº 7.443, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.446-de-27-de-setembro-de-2026-735106295` | Alvará nº 7.446, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.299-de-25-de-setembro-de-2026-735104551` | Alvará nº 7.299, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.441-de-27-de-setembro-de-2026-735104472` | Alvará nº 7.441, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.445-de-27-de-setembro-de-2026-735104340` | Alvará nº 7.445, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.298-de-25-de-setembro-de-2026-735101444` | Alvará nº 7.298, de 25 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.434-de-26-de-setembro-de-2026-735101365` | Alvará nº 7.434, de 26 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.440-de-27-de-setembro-de-2026-735101219` | Alvará nº 7.440, de 27 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.292-de-24-de-setembro-de-2026-735039774` | Alvará nº 7.292, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.279-de-24-de-setembro-de-2026-734856475` | Alvará nº 7.279, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.277-de-24-de-setembro-de-2026-734854138` | Alvará nº 7.277, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.278-de-24-de-setembro-de-2026-734854057` | Alvará nº 7.278, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.282-de-24-de-setembro-de-2026-734845018` | Alvará nº 7.282, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.289-de-24-de-setembro-de-2026-734842968` | Alvará nº 7.289, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.283-de-24-de-setembro-de-2026-734841113` | Alvará nº 7.283, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.286-de-24-de-setembro-de-2026-734839187` | Alvará nº 7.286, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.276-de-24-de-setembro-de-2026-734837248` | Alvará nº 7.276, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.275-de-23-de-setembro-de-2026-734837247` | Alvará nº 7.275, de 23 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.280-de-24-de-setembro-de-2026-734830945` | Alvará nº 7.280, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.284-de-24-de-setembro-de-2026-734823374` | Alvará nº 7.284, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.281-de-24-de-setembro-de-2026-734820198` | Alvará nº 7.281, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.287-de-24-de-setembro-de-2026-734819346` | Alvará nº 7.287, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.288-de-24-de-setembro-de-2026-734817504` | Alvará nº 7.288, de 24 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.250-de-22-de-setembro-de-2026-734505185` | Alvará nº 7.250, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7261-de-22-de-setembro-de-2026-734504108` | Alvará nº 7261, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.241-de-18-de-setembro-de-2026-734502787` | Alvará nº 7.241, de 18 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.258-de-22-de-setembro-de-2026-734502759` | Alvará nº 7.258, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.259-de-22-de-setembro-de-2026-734501916` | Alvará nº 7.259, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.270-de-22-de-setembro-de-2026-734501835` | Alvará nº 7.270, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.248-de-22-de-setembro-de-2026-734500451` | Alvará nº 7.248, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.271-de-22-de-setembro-de-2026-734500312` | Alvará nº 7.271, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.249-de-22-de-setembro-de-2026-734497959` | Alvará nº 7.249, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.269-de-22-de-setembro-de-2026-734497931` | Alvará nº 7.269, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.257-de-22-de-setembro-de-2026-734496973` | Alvará nº 7.257, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.266-de-22-de-setembro-de-2026-734496945` | Alvará nº 7.266, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.263-de-22-de-setembro-de-2026-734495537` | Alvará nº 7.263, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.268-de-22-de-setembro-de-2026-734494745` | Alvará nº 7.268, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.267-de-22-de-setembro-de-2026-734494166` | Alvará nº 7.267, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.240-de-18-de-setembro-de-2026-734493286` | Alvará nº 7.240, de 18 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.251-de-22-de-setembro-de-2026-734490322` | Alvará nº 7.251, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.239-de-18-de-setembro-de-2026-734473295` | Alvará nº 7.239, de 18 de SETEMBRO de 2026 | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.256-de-22-de-setembro-de-2026-734473214` | Alvará nº 7.256, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.264-de-22-de-setembro-de-2026-734473135` | Alvará nº 7.264, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.273-de-22-de-setembro-de-2026-734473107` | Alvará nº 7.273, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.265-de-22-de-setembro-de-2026-734471802` | Alvará nº 7.265, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.253-de-22-de-setembro-de-2026-734436305` | Alvará nº 7.253, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.254-de-22-de-setembro-de-2026-734433258` | Alvará nº 7.254, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.272-de-22-de-setembro-de-2026-734433177` | Alvará nº 7.272, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.252-de-22-de-setembro-de-2026-734428605` | Alvará nº 7.252, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.262-de-22-de-setembro-de-2026-734424736` | Alvará nº 7.262, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.260-de-22-de-setembro-de-2026-734421779` | Alvará nº 7.260, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.255-de-22-de-setembro-de-2026-734420555` | Alvará nº 7.255, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.238-de-18-de-setembro-de-2026-734417759` | Alvará nº 7.238, de 18 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.242-de-18-de-setembro-de-2026-734417678` | Alvará nº 7.242, de 18 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.274-de-22-de-setembro-de-2026-734417599` | Alvará nº 7.274, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.245-de-22-de-setembro-de-2026-733737801` | Alvará nº 7.245, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.247-de-22-de-setembro-de-2026-733735869` | Alvará nº 7.247, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.243-de-22-de-setembro-de-2026-733733046` | Alvará nº 7.243, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.244-de-22-de-setembro-de-2026-733724813` | Alvará nº 7.244, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.246-de-22-de-setembro-de-2026-733722260` | Alvará nº 7.246, de 22 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.234-de-17-de-setembro-de-2026-733229497` | Alvará nº 7.234, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.236-de-17-de-setembro-de-2026-733228405` | Alvará nº 7.236, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.235-de-17-de-setembro-de-2026-733219444` | Alvará nº 7.235, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.233-de-17-de-setembro-de-2026-733216746` | Alvará nº 7.233, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.232-de-17-de-setembro-de-2026-733209861` | Alvará nº 7.232, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.237-de-17-de-setembro-de-2026-733208788` | Alvará nº 7.237, de 17 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.116-de-13-de-setembro-de-2026-732982459` | Alvará nº 7.116, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.132-de-14-de-setembro-de-2026-732978454` | Alvará nº 7.132, de 14 de SETEMBRO de 2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.264-de-22-de-setembro-de-2026-734473135` | Alvará nº 7.264, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.273-de-22-de-setembro-de-2026-734473107` | Alvará nº 7.273, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.265-de-22-de-setembro-de-2026-734471802` | Alvará nº 7.265, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.253-de-22-de-setembro-de-2026-734436305` | Alvará nº 7.253, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.254-de-22-de-setembro-de-2026-734433258` | Alvará nº 7.254, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.272-de-22-de-setembro-de-2026-734433177` | Alvará nº 7.272, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.252-de-22-de-setembro-de-2026-734428605` | Alvará nº 7.252, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.262-de-22-de-setembro-de-2026-734424736` | Alvará nº 7.262, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.260-de-22-de-setembro-de-2026-734421779` | Alvará nº 7.260, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.255-de-22-de-setembro-de-2026-734420555` | Alvará nº 7.255, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.238-de-18-de-setembro-de-2026-734417759` | Alvará nº 7.238, de 18 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.242-de-18-de-setembro-de-2026-734417678` | Alvará nº 7.242, de 18 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.274-de-22-de-setembro-de-2026-734417599` | Alvará nº 7.274, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.245-de-22-de-setembro-de-2026-733737801` | Alvará nº 7.245, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.247-de-22-de-setembro-de-2026-733735869` | Alvará nº 7.247, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.243-de-22-de-setembro-de-2026-733733046` | Alvará nº 7.243, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.244-de-22-de-setembro-de-2026-733724813` | Alvará nº 7.244, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.246-de-22-de-setembro-de-2026-733722260` | Alvará nº 7.246, de 22 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.234-de-17-de-setembro-de-2026-733229497` | Alvará nº 7.234, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.236-de-17-de-setembro-de-2026-733228405` | Alvará nº 7.236, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.235-de-17-de-setembro-de-2026-733219444` | Alvará nº 7.235, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.233-de-17-de-setembro-de-2026-733216746` | Alvará nº 7.233, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.232-de-17-de-setembro-de-2026-733209861` | Alvará nº 7.232, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.237-de-17-de-setembro-de-2026-733208788` | Alvará nº 7.237, de 17 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.116-de-13-de-setembro-de-2026-732982459` | Alvará nº 7.116, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.132-de-14-de-setembro-de-2026-732978454` | Alvará nº 7.132, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.136-de-14-de-setembro-de-2026-732978358` | Alvará nº 7.136, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.141-de-15-de-setembro-de-2026-732975372` | Alvará nº 7.141, de 15 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.124-de-13-de-setembro-de-2026-732969647` | Alvará nº 7.124, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.128-de-14-de-setembro-de-2026-732968059` | Alvará nº 7.128, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.134-de-14-de-setembro-de-2026-732956848` | Alvará nº 7.134, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.138-de-14-de-setembro-de-2026-732956769` | Alvará nº 7.138, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.133-de-14-de-setembro-de-2026-732949284` | Alvará nº 7.133, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.137-de-14-de-setembro-de-2026-732949154` | Alvará nº 7.137, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.127-de-14-de-setembro-de-2026-732947348` | Alvará nº 7.127, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.130-de-14-de-setembro-de-2026-732946471` | Alvará nº 7.130, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.135-de-14-de-setembro-de-2026-732944118` | Alvará nº 7.135, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.140-de-14-de-setembro-de-2026-732942528` | Alvará nº 7.140, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.104-de-13-de-setembro-de-2026-732704158` | Alvará nº 7.104, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.120-de-13-de-setembro-de-2026-732704079` | Alvará nº 7.120, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.089-de-13-de-setembro-de-2026-732702629` | Alvará nº 7.089, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.123-de-13-de-setembro-de-2026-732702548` | Alvará nº 7.123, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.108-de-13-de-setembro-de-2026-732700328` | Alvará nº 7.108, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.090-de-13-de-setembro-de-2026-732698823` | Alvará nº 7.090, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.102-de-13-de-setembro-de-2026-732692649` | Alvará nº 7.102, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.122-de-13-de-setembro-de-2026-732692570` | Alvará nº 7.122, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.087-de-13-de-setembro-de-2026-732690363` | Alvará nº 7.087, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.105-de-13-de-setembro-de-2026-732690282` | Alvará nº 7.105, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.085-de-13-de-setembro-de-2026-732689093` | Alvará nº 7.085, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.101-de-13-de-setembro-de-2026-732689065` | Alvará nº 7.101, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.121-de-13-de-setembro-de-2026-732688222` | Alvará nº 7.121, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.106-de-13-de-setembro-de-2026-732627517` | Alvará nº 7.106, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.125-de-13-de-setembro-de-2026-732627433` | Alvará nº 7.125, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.107-de-13-de-setembro-de-2026-732623384` | Alvará nº 7.107, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.117-de-13-de-setembro-de-2026-732619954` | Alvará nº 7.117, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.103-de-13-de-setembro-de-2026-732619935` | Alvará nº 7.103, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.086-de-13-de-setembro-de-2026-732618739` | Alvará nº 7.086, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.088-de-13-de-setembro-de-2026-732615661` | Alvará nº 7.088, de 13 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.131-de-14-de-setembro-de-2026-732412437` | Alvará nº 7.131, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.137-de-14-de-setembro-de-2026-732412356` | Alvará nº 7.137, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.134-de-14-de-setembro-de-2026-732410904` | Alvará nº 7.134, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.140-de-14-de-setembro-de-2026-732410823` | Alvará nº 7.140, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.130-de-14-de-setembro-de-2026-732409286` | Alvará nº 7.130, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.139-de-14-de-setembro-de-2026-732409205` | Alvará nº 7.139, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.135-de-14-de-setembro-de-2026-732406491` | Alvará nº 7.135, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.129-de-14-de-setembro-de-2026-732405294` | Alvará nº 7.129, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.138-de-14-de-setembro-de-2026-732405213` | Alvará nº 7.138, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.136-de-14-de-setembro-de-2026-732402359` | Alvará nº 7.136, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.133-de-14-de-setembro-de-2026-732399817` | Alvará nº 7.133, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.128-de-14-de-setembro-de-2026-732397893` | Alvará nº 7.128, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.126-de-14-de-setembro-de-2026-732396455` | Alvará nº 7.126, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.132-de-14-de-setembro-de-2026-732395021` | Alvará nº 7.132, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.127-de-14-de-setembro-de-2026-732314966` | Alvará nº 7.127, de 14 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.079-de-12-de-setembro-de-2026-731890023` | Alvará nº 7.079, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.078-de-12-de-setembro-de-2026-731889203` | Alvará nº 7.078, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.080-de-12-de-setembro-de-2026-731884607` | Alvará nº 7.080, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.081-de-12-de-setembro-de-2026-731879776` | Alvará nº 7.081, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.082-de-12-de-setembro-de-2026-731878184` | Alvará nº 7.082, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.083-de-12-de-setembro-de-2026-731876670` | Alvará nº 7.083, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.077-de-12-de-setembro-de-2026-731808861` | Alvará nº 7.077, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-7.084-de-12-de-setembro-de-2026-731808724` | Alvará nº 7.084, de 12 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.956-de-10-de-setembro-de-2026-731391249` | Alvará nº 6.956, de 10 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.903-de-9-de-setembro-de-2026-731384724` | Alvará nº 6.903, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.957-de-10-de-setembro-de-2026-731375235` | Alvará nº 6.957, de 10 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.960-de-10-de-setembro-de-2026-731373719` | Alvará nº 6.960, de 10 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.959-de-10-de-setembro-de-2026-731362655` | Alvará nº 6.959, de 10 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.958-de-10-de-setembro-de-2026-731360527` | Alvará nº 6.958, de 10 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.898-de-9-de-setembro-de-2026-731350010` | Alvará nº 6.898, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.900-de-9-de-setembro-de-2026-731349046` | Alvará nº 6.900, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.887-de-9-de-setembro-de-2026-731347861` | Alvará nº 6.887, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.889-de-9-de-setembro-de-2026-731346717` | Alvará nº 6.889, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.895-de-9-de-setembro-de-2026-731344404` | Alvará nº 6.895, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.883-de-9-de-setembro-de-2026-731342652` | Alvará nº 6.883, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.888-de-9-de-setembro-de-2026-731341933` | Alvará nº 6.888, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.896-de-9-de-setembro-de-2026-731341852` | Alvará nº 6.896, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.885-de-9-de-setembro-de-2026-731339825` | Alvará nº 6.885, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.893-de-9-de-setembro-de-2026-731339746` | Alvará nº 6.893, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.894-de-9-de-setembro-de-2026-731337828` | Alvará nº 6.894, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.892-de-9-de-setembro-de-2026-731336897` | Alvará nº 6.892, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.902-de-9-de-setembro-de-2026-731334780` | Alvará nº 6.902, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.891-de-9-de-setembro-de-2026-731333581` | Alvará nº 6.891, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.897-de-9-de-setembro-de-2026-731327314` | Alvará nº 6.897, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.899-de-9-de-setembro-de-2026-731291475` | Alvará nº 6.899, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.886-de-9-de-setembro-de-2026-731290118` | Alvará nº 6.886, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.884-de-9-de-setembro-de-2026-731287320` | Alvará nº 6.884, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.901-de-9-de-setembro-de-2026-731283402` | Alvará nº 6.901, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.890-de-9-de-setembro-de-2026-731279496` | Alvará nº 6.890, de 9 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-n-152.150/sot-anm/anm/2026-731060147` | DESPACHO Nº 152.150/SOT-ANM/ANM/2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-n-96.074/divcli/anm/2026-731043614` | DESPACHO Nº 96.074/DIVCLI/ANM/2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.141-de-15-de-setembro-de-2026-732975372` | Alvará nº 7.141, de 15 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.124-de-13-de-setembro-de-2026-732969647` | Alvará nº 7.124, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.128-de-14-de-setembro-de-2026-732968059` | Alvará nº 7.128, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.134-de-14-de-setembro-de-2026-732956848` | Alvará nº 7.134, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.138-de-14-de-setembro-de-2026-732956769` | Alvará nº 7.138, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.133-de-14-de-setembro-de-2026-732949284` | Alvará nº 7.133, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.137-de-14-de-setembro-de-2026-732949154` | Alvará nº 7.137, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.127-de-14-de-setembro-de-2026-732947348` | Alvará nº 7.127, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.130-de-14-de-setembro-de-2026-732946471` | Alvará nº 7.130, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.135-de-14-de-setembro-de-2026-732944118` | Alvará nº 7.135, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.140-de-14-de-setembro-de-2026-732942528` | Alvará nº 7.140, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.104-de-13-de-setembro-de-2026-732704158` | Alvará nº 7.104, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.120-de-13-de-setembro-de-2026-732704079` | Alvará nº 7.120, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.089-de-13-de-setembro-de-2026-732702629` | Alvará nº 7.089, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.123-de-13-de-setembro-de-2026-732702548` | Alvará nº 7.123, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.108-de-13-de-setembro-de-2026-732700328` | Alvará nº 7.108, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.090-de-13-de-setembro-de-2026-732698823` | Alvará nº 7.090, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.102-de-13-de-setembro-de-2026-732692649` | Alvará nº 7.102, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.122-de-13-de-setembro-de-2026-732692570` | Alvará nº 7.122, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.087-de-13-de-setembro-de-2026-732690363` | Alvará nº 7.087, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.105-de-13-de-setembro-de-2026-732690282` | Alvará nº 7.105, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.085-de-13-de-setembro-de-2026-732689093` | Alvará nº 7.085, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.101-de-13-de-setembro-de-2026-732689065` | Alvará nº 7.101, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.121-de-13-de-setembro-de-2026-732688222` | Alvará nº 7.121, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.106-de-13-de-setembro-de-2026-732627517` | Alvará nº 7.106, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.125-de-13-de-setembro-de-2026-732627433` | Alvará nº 7.125, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.107-de-13-de-setembro-de-2026-732623384` | Alvará nº 7.107, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.117-de-13-de-setembro-de-2026-732619954` | Alvará nº 7.117, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.103-de-13-de-setembro-de-2026-732619935` | Alvará nº 7.103, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.086-de-13-de-setembro-de-2026-732618739` | Alvará nº 7.086, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.088-de-13-de-setembro-de-2026-732615661` | Alvará nº 7.088, de 13 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.131-de-14-de-setembro-de-2026-732412437` | Alvará nº 7.131, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.137-de-14-de-setembro-de-2026-732412356` | Alvará nº 7.137, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.134-de-14-de-setembro-de-2026-732410904` | Alvará nº 7.134, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.140-de-14-de-setembro-de-2026-732410823` | Alvará nº 7.140, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.130-de-14-de-setembro-de-2026-732409286` | Alvará nº 7.130, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.139-de-14-de-setembro-de-2026-732409205` | Alvará nº 7.139, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.135-de-14-de-setembro-de-2026-732406491` | Alvará nº 7.135, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.129-de-14-de-setembro-de-2026-732405294` | Alvará nº 7.129, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.138-de-14-de-setembro-de-2026-732405213` | Alvará nº 7.138, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.136-de-14-de-setembro-de-2026-732402359` | Alvará nº 7.136, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.133-de-14-de-setembro-de-2026-732399817` | Alvará nº 7.133, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.128-de-14-de-setembro-de-2026-732397893` | Alvará nº 7.128, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.126-de-14-de-setembro-de-2026-732396455` | Alvará nº 7.126, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.132-de-14-de-setembro-de-2026-732395021` | Alvará nº 7.132, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.127-de-14-de-setembro-de-2026-732314966` | Alvará nº 7.127, de 14 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.079-de-12-de-setembro-de-2026-731890023` | Alvará nº 7.079, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.078-de-12-de-setembro-de-2026-731889203` | Alvará nº 7.078, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.080-de-12-de-setembro-de-2026-731884607` | Alvará nº 7.080, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.081-de-12-de-setembro-de-2026-731879776` | Alvará nº 7.081, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.082-de-12-de-setembro-de-2026-731878184` | Alvará nº 7.082, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.083-de-12-de-setembro-de-2026-731876670` | Alvará nº 7.083, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.077-de-12-de-setembro-de-2026-731808861` | Alvará nº 7.077, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-7.084-de-12-de-setembro-de-2026-731808724` | Alvará nº 7.084, de 12 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.956-de-10-de-setembro-de-2026-731391249` | Alvará nº 6.956, de 10 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.903-de-9-de-setembro-de-2026-731384724` | Alvará nº 6.903, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.957-de-10-de-setembro-de-2026-731375235` | Alvará nº 6.957, de 10 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.960-de-10-de-setembro-de-2026-731373719` | Alvará nº 6.960, de 10 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.959-de-10-de-setembro-de-2026-731362655` | Alvará nº 6.959, de 10 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.958-de-10-de-setembro-de-2026-731360527` | Alvará nº 6.958, de 10 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.898-de-9-de-setembro-de-2026-731350010` | Alvará nº 6.898, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.900-de-9-de-setembro-de-2026-731349046` | Alvará nº 6.900, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.887-de-9-de-setembro-de-2026-731347861` | Alvará nº 6.887, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.889-de-9-de-setembro-de-2026-731346717` | Alvará nº 6.889, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.895-de-9-de-setembro-de-2026-731344404` | Alvará nº 6.895, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.883-de-9-de-setembro-de-2026-731342652` | Alvará nº 6.883, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.888-de-9-de-setembro-de-2026-731341933` | Alvará nº 6.888, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.896-de-9-de-setembro-de-2026-731341852` | Alvará nº 6.896, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.885-de-9-de-setembro-de-2026-731339825` | Alvará nº 6.885, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.893-de-9-de-setembro-de-2026-731339746` | Alvará nº 6.893, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.894-de-9-de-setembro-de-2026-731337828` | Alvará nº 6.894, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.892-de-9-de-setembro-de-2026-731336897` | Alvará nº 6.892, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.902-de-9-de-setembro-de-2026-731334780` | Alvará nº 6.902, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.891-de-9-de-setembro-de-2026-731333581` | Alvará nº 6.891, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.897-de-9-de-setembro-de-2026-731327314` | Alvará nº 6.897, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.899-de-9-de-setembro-de-2026-731291475` | Alvará nº 6.899, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.886-de-9-de-setembro-de-2026-731290118` | Alvará nº 6.886, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.884-de-9-de-setembro-de-2026-731287320` | Alvará nº 6.884, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.901-de-9-de-setembro-de-2026-731283402` | Alvará nº 6.901, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.890-de-9-de-setembro-de-2026-731279496` | Alvará nº 6.890, de 9 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-n-152.150/sot-anm/anm/2026-731060147` | DESPACHO Nº 152.150/SOT-ANM/ANM/2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-n-96.074/divcli/anm/2026-731043614` | DESPACHO Nº 96.074/DIVCLI/ANM/2026 | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-n-98.576/divcli/anm/2026-731043533` | DESPACHO Nº 98.576/DIVCLI/ANM/2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-n-99.523/divcli/anm/2026-731037706` | DESPACHO Nº 99.523/DIVCLI/ANM/2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-n-106.914/divcli/anm/2026-730966950` | DESPACHO Nº 106.914/DIVCLI/ANM/2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.838-de-4-de-setembro-de-2026-730783670` | Alvará nº 6.838, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.833-de-4-de-setembro-de-2026-730782131` | Alvará nº 6.833, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.837-de-4-de-setembro-de-2026-730782050` | Alvará nº 6.837, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.836-de-4-de-setembro-de-2026-730780292` | Alvará nº 6.836, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.831-de-4-de-setembro-de-2026-730778034` | Alvará nº 6.831, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.832-de-4-de-setembro-de-2026-730776839` | Alvará nº 6.832, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.835-de-4-de-setembro-de-2026-730772472` | Alvará nº 6.835, de 4 de SETEMBRO de 2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-n-99.523/divcli/anm/2026-731037706` | DESPACHO Nº 99.523/DIVCLI/ANM/2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-n-106.914/divcli/anm/2026-730966950` | DESPACHO Nº 106.914/DIVCLI/ANM/2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.838-de-4-de-setembro-de-2026-730783670` | Alvará nº 6.838, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.833-de-4-de-setembro-de-2026-730782131` | Alvará nº 6.833, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.837-de-4-de-setembro-de-2026-730782050` | Alvará nº 6.837, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.836-de-4-de-setembro-de-2026-730780292` | Alvará nº 6.836, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.831-de-4-de-setembro-de-2026-730778034` | Alvará nº 6.831, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.832-de-4-de-setembro-de-2026-730776839` | Alvará nº 6.832, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.835-de-4-de-setembro-de-2026-730772472` | Alvará nº 6.835, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.834-de-4-de-setembro-de-2026-730771119` | Alvará nº 6.834, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.830-de-4-de-setembro-de-2026-730731606` | Alvará nº 6.830, de 4 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.818-de-3-de-setembro-de-2026-730289589` | Alvará nº 6.818, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.819-de-3-de-setembro-de-2026-730283452` | Alvará nº 6.819, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.817-de-3-de-setembro-de-2026-730280364` | Alvará nº 6.817, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.822-de-3-de-setembro-de-2026-730273932` | Alvará nº 6.822, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.820-de-3-de-setembro-de-2026-730272735` | Alvará nº 6.820, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.821-de-3-de-setembro-de-2026-730264756` | Alvará nº 6.821, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.824-de-3-de-setembro-de-2026-730262485` | Alvará nº 6.824, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.816-de-3-de-setembro-de-2026-730260827` | Alvará nº 6.816, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/alvara-n-6.823-de-3-de-setembro-de-2026-730258089` | Alvará nº 6.823, de 3 de SETEMBRO de 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735714400` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735712698` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735415907` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735408958` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735388174` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735109786` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734864351` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734860840` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734856980` | Despacho | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.830-de-4-de-setembro-de-2026-730731606` | Alvará nº 6.830, de 4 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.818-de-3-de-setembro-de-2026-730289589` | Alvará nº 6.818, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.819-de-3-de-setembro-de-2026-730283452` | Alvará nº 6.819, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.817-de-3-de-setembro-de-2026-730280364` | Alvará nº 6.817, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.822-de-3-de-setembro-de-2026-730273932` | Alvará nº 6.822, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.820-de-3-de-setembro-de-2026-730272735` | Alvará nº 6.820, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.821-de-3-de-setembro-de-2026-730264756` | Alvará nº 6.821, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.824-de-3-de-setembro-de-2026-730262485` | Alvará nº 6.824, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.816-de-3-de-setembro-de-2026-730260827` | Alvará nº 6.816, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/alvara-n-6.823-de-3-de-setembro-de-2026-730258089` | Alvará nº 6.823, de 3 de SETEMBRO de 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735714400` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735712698` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735415907` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735408958` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735388174` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735109786` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734864351` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734860840` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734856980` | Despacho | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734856880` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734854991` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734847039` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734846904` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734846876` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734845739` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734845122` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734843130` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734841273` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839650` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839590` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839372` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839210` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734837803` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734831026` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734829916` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734827313` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734825014` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734824692` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734823237` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734817745` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734817717` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734505266` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734504351` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734504189` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734502996` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734499152` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734493522` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734490619` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734425651` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731392397` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731379726` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731379650` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731360606` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731357594` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731333720` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731283483` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731278277` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731064513` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731064434` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731062138` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730978121` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/atos-de-8-de-setembro-de-2026-730782946` | ATOS DE 8 DE SETEMBRO DE 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730771281` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730733567` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730722438` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730303279` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730291345` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730287721` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730271724` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730268829` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730266482` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730266400` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730258249` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730251048` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730232029` | Despacho | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734854991` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734847039` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734846904` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734846876` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734845739` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734845122` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734843130` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734841273` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734839650` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734839590` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734839372` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734839210` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734837803` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734831026` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734829916` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734827313` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734825014` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734824692` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734823237` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734817745` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734817717` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734505266` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734504351` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734504189` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734502996` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734499152` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734493522` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734490619` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734425651` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731392397` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731379726` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731379650` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731360606` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731357594` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731333720` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731283483` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731278277` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731064513` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731064434` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731062138` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730978121` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/atos-de-8-de-setembro-de-2026-730782946` | ATOS DE 8 DE SETEMBRO DE 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730771281` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730733567` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730722438` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730303279` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730291345` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730287721` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730271724` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730268829` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730266482` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730266400` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730258249` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730251048` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730232029` | Despacho | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730140313` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735726310` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735714261` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735711149` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735417105` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735414485` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735411682` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735394340` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735390533` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735387136` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735384961` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735126318` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735112075` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-735103173` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734864265` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734856771` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734856690` | Despacho | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735726310` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735714261` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735711149` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735417105` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735414485` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735411682` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735394340` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735390533` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735387136` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735384961` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735126318` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735112075` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-735103173` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734864265` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734856771` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734856690` | Despacho | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734856614` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734852118` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734852037` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734851551` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734845340` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734841435` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734837831` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734831269` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734829835` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734825710` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734824664` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734824423` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734824291` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734824129` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734820516` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734820358` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734819825` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734819691` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734819610` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734819448` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734811598` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734499252` | Despacho | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734852118` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734852037` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734851551` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734845340` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734841435` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734837831` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734831269` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734829835` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734825710` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734824664` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734824423` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734824291` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734824129` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734820516` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734820358` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734819825` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734819691` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734819610` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734819448` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734811598` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734499252` | Despacho | INCONSISTENTE |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734497852` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734492469` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-732406732` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731342014` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731340875` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731338784` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731292089` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731291556` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731287457` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731286260` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731060226` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731043695` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731039302` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730978202` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730782212` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730779340` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730775486` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730774692` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730731741` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730724811` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730724674` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730294813` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730279879` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730273960` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730268857` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730267987` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730258170` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730241907` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730236971` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730146914` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/atos-de-28-de-setembro-de-2026-735123922` | ATOS DE 28 DE SETEMBRO DE 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734860680` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734835333` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731378613` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731366561` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-731365025` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-730271589` | Despacho | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/circular-n-86-de-3-de-setembro-de-2026-730248549` | CIRCULAR Nº 86, DE 3 DE SETEMBRO DE 2026 | OK |
-| ✅ OK | `https://www.in.gov.br/web/dou/-/aviso-de-consulta-publica-anm-n-2/2026-730158812` | AVISO DE CONSULTA PÚBLICA ANM Nº 2/2026 | OK |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734492469` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-732406732` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731342014` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731340875` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731338784` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731292089` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731291556` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731287457` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731286260` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731060226` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731043695` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731039302` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730978202` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730782212` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730779340` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730775486` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730774692` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730731741` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730724811` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730724674` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730294813` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730279879` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730273960` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730268857` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730267987` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730258170` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730241907` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730236971` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730146914` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/atos-de-28-de-setembro-de-2026-735123922` | ATOS DE 28 DE SETEMBRO DE 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734860680` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734835333` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731378613` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731366561` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-731365025` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-730271589` | Despacho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/circular-n-86-de-3-de-setembro-de-2026-730248549` | CIRCULAR Nº 86, DE 3 DE SETEMBRO DE 2026 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/aviso-de-consulta-publica-anm-n-2/2026-730158812` | AVISO DE CONSULTA PÚBLICA ANM Nº 2/2026 | INCONSISTENTE |
 | ✅ OK | `https://direitoshumanos.dpu.def.br/nota-publica-dpu-reafirma-matriz-negra-africana-dos-povos-de-terreiro-e-defende-enfrentamento-ao-racismo-religioso/` | NOTA PÚBLICA: DPU reafirma matriz negra africana dos Povos de Terreiro e defende enfrentamento ao racismo religioso | OK |
 | ✅ OK | `https://direitoshumanos.dpu.def.br/posse-de-subdefensor-publico-geral-federal-e-corregedor-geral-da-dpu-ocorre-nesta-sexta-feira-4/` | Posse de subdefensor público-geral federal e corregedor-geral da DPU ocorre nesta sexta-feira (4) | OK |
 | ✅ OK | `https://direitoshumanos.dpu.def.br/0x-htm-2/` | hacked by chinafans | OK |
@@ -7470,7 +7464,7 @@
 | ✅ OK | `https://www.tjma.jus.br` | Maranhão | OK |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjma/_search` | Maranhão | OK |
 | ✅ OK | `https://www.mpma.mp.br` | Maranhão | OK |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br` | Maranhão | INCONSISTENTE |
+| ↪️ REDIRECT | `https://www.defensoria.ma.def.br` | Maranhão | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.tce-ma.tc.br` | Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/ma` | Maranhão | INCONSISTENTE |
 | ✅ OK | `https://www.oabma.org.br` | Maranhão | OK |
@@ -7559,7 +7553,7 @@
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/pr` | Paraná | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.oabpr.org.br` | Paraná | REDIRECT |
 | ✅ OK | `https://www.pe.gov.br` | Pernambuco | OK |
-| ✅ OK | `https://transparencia.pe.gov.br` | Pernambuco | OK |
+| ❓ INCONSISTENTE | `https://transparencia.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ✅ OK | `https://dados.pe.gov.br` | Pernambuco | OK |
 | ❓ INCONSISTENTE | `https://diariooficial.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://compras.pe.gov.br` | Pernambuco | INCONSISTENTE |
@@ -7761,9 +7755,9 @@
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/sp-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001023456` | Geral | OK |
 | ✅ OK | `https://prefeitura.rio/` | Inauguração da TransBrasil e entrega de 560 novos ônibus articulados da Mobi-Rio | OK |
-| ✅ OK | `https://prefeitura.rio/saude` | Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho | OK |
-| ✅ OK | `https://educacao.prefeitura.rio/` | Implementação do 120º Ginásio Educacional Tecnológico (GET) na rede municipal | OK |
-| ❌ QUEBRADO | `https://prefeitura.rio/obras` | Parque Rita Lee e Parque Carioca da Pavuna | QUEBRADO |
+| ❓ INCONSISTENTE | `https://prefeitura.rio/saude` | Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://educacao.prefeitura.rio/` | Implementação do 120º Ginásio Educacional Tecnológico (GET) na rede municipal | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://prefeitura.rio/obras` | Parque Rita Lee e Parque Carioca da Pavuna | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/rio-de-janeiro-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001034567` | Geral | OK |
 | ✅ OK | `https://saude.salvador.ba.gov.br/` | Obras estruturais do Hospital Municipal da Criança e contratação de equipamentos | OK |
@@ -8505,11 +8499,11 @@
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpgo/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ma.def.br/defensoria-geral` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/balcao-cidadao` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/balcao-cidadao` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/ouvidoria` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/corregedoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.ma.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | QUEBRADO |
@@ -8880,8 +8874,8 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPRR | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/noticia-gaeco-2026.html` | Operação do GAECO do MPRR combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ✅ OK | `https://www.mprs.mp.br/gaeco` | Ministério Público do Estado de Rio Grande do Sul | OK |
-| ❓ INCONSISTENTE | `https://www.mprs.mp.br/atendimento` | Ministério Público do Estado de Rio Grande do Sul | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mprs.mp.br/ouvidoria` | Ministério Público do Estado de Rio Grande do Sul | INCONSISTENTE |
+| ✅ OK | `https://www.mprs.mp.br/atendimento` | Ministério Público do Estado de Rio Grande do Sul | OK |
+| ✅ OK | `https://www.mprs.mp.br/ouvidoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ✅ OK | `https://www.mprs.mp.br/corregedoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprs/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio Grande do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprs.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -9030,7 +9024,6 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/tjma/tabela-custas-2026.pdf` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Maranhão | QUEBRADO |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/institucional/presidencia/` | Tribunal de Justiça do Estado de Minas Gerais | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/institucional/1-vice-presidencia/` | Tribunal de Justiça do Estado de Minas Gerais | OK |
-| ↪️ REDIRECT | `https://ejef.tjmg.jus.br/` | Tribunal de Justiça do Estado de Minas Gerais | REDIRECT |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/institucional/3-vice-presidencia/` | Tribunal de Justiça do Estado de Minas Gerais | OK |
 | ❓ INCONSISTENTE | `https://corregedoria.tjmg.jus.br/` | Tribunal de Justiça do Estado de Minas Gerais | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.tjmg.jus.br/portal-tjmg/processos/custas-e-despesas-processuais/` | Tabela de Custas Judiciais e FEPJ | QUEBRADO |
@@ -9867,6 +9860,7 @@
 | ✅ OK | `https://diariooficial.prefeitura.sp.gov.br/md_epubli_controlador.php?acao=inicio` | Geral | OK |
 | ✅ OK | `https://e.ambiente.sp.gov.br/login/` | Geral | OK |
 | ✅ OK | `https://educacao.rs.gov.br/inicial` | Geral | OK |
+| ✅ OK | `https://www8.tjmg.jus.br/error/server_error.html` | Geral | OK |
 | ✅ OK | `https://falabr.cgu.gov.br/web/home` | Geral | OK |
 | ✅ OK | `https://urbanismoemeioambiente.fortaleza.ce.gov.br/infocidade/380-conselho-municipal-de-meio-ambiente-comam` | Geral | OK |
 | ✅ OK | `https://fortalezaembairros.fortaleza.ce.gov.br/fortaleza` | Geral | OK |
@@ -9879,7 +9873,7 @@
 | ✅ OK | `https://hubdeprojetos.bndes.gov.br/pt/index.html` | Geral | OK |
 | ✅ OK | `https://www2.ima.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://informacoes.anatel.gov.br/aviso/manutencao-sistemas.html` | Geral | OK |
-| ❌ QUEBRADO | `https://inlabs.in.gov.br/acessar.php` | Geral | QUEBRADO |
+| ❓ INCONSISTENTE | `https://inlabs.in.gov.br/acessar.php` | Geral | INCONSISTENTE |
 | ✅ OK | `https://itabuna.ba.gov.br/noticias/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizaco-14170/` | Geral | OK |
 | ✅ OK | `https://itabuna.ba.gov.br/noticias/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-15713/` | Geral | OK |
 | ✅ OK | `https://itabuna.ba.gov.br/noticias/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026-17487/` | Geral | OK |
@@ -9901,6 +9895,7 @@
 | ✅ OK | `https://macapa.ap.gov.br/portal/wp-content/uploads/2021/09/transparencia.jpeg` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/p/semdes/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/noticias/alurb/conselho-municipal-de-protecao-ao-meio-ambiente-define-agenda-prioritaria-para-2024` | Geral | OK |
+| ✅ OK | `https://digital.maceio.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/p/semdes/conselho-municipal-de-assistencia-social` | Geral | OK |
 | ✅ OK | `https://maceio.al.gov.br/p/geral/prefeitura-de-maceio-home` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/meioambiente/` | Geral | OK |
@@ -9934,7 +9929,7 @@
 | ✅ OK | `https://www2.portoalegre.rs.gov.br/portal_pmpa_sitespmpa/` | Geral | OK |
 | ✅ OK | `https://ces.rs.gov.br/nota-publica-do-conselho-municipal-de-saude-de-porto-alegre` | Geral | OK |
 | ✅ OK | `https://www.portovelho.ro.gov.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://sema.portovelho.ro.gov.br/pagina/conselho-municipal-de-defesa-do-meio-ambiente` | Geral | INCONSISTENTE |
+| ✅ OK | `https://sema.portovelho.ro.gov.br/pagina/conselho-municipal-de-defesa-do-meio-ambiente` | Geral | OK |
 | ✅ OK | `https://semusa.portovelho.ro.gov.br/pagina/conselho-municipal-de-saude-de-porto-velho` | Geral | OK |
 | ✅ OK | `https://sgov.portovelho.ro.gov.br/` | Geral | OK |
 | ✅ OK | `https://www0.rio.rj.gov.br/` | Geral | OK |
@@ -9979,7 +9974,7 @@
 | ✅ OK | `https://m.vitoria.es.gov.br/semus/conselho-municipal-de-saude` | Geral | OK |
 | ✅ OK | `https://abaetetuba.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.rj.gov.br/agenersa/` | Geral | OK |
-| ✅ OK | `http://www.aguasformosas.mg.gov.br` | Geral | OK |
+| ❓ INCONSISTENTE | `http://www.aguasformosas.mg.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar/2026/marcelo-victor` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ao-vivo` | Geral | OK |
 | ❓ INCONSISTENTE | `https://al.ap.gov.br/transparencia/index.php?pg=ouvidoria` | Geral | INCONSISTENTE |
@@ -10028,6 +10023,7 @@
 | ✅ OK | `https://www.al.to.leg.br/ouvidoria/relatorio/2026` | Geral | OK |
 | ✅ OK | `https://www.al.to.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.alagoinhas.ba.gov.br/index.php/conselho-municipal-do-meio-ambiente-convida-para-audiencia-sobre-as-lagoas-de-alagoinhas/` | Geral | OK |
+| ✅ OK | `https://www.alagoinhas.ba.gov.br/wp-content/uploads/2025/03/Eleição-Conselho-Municipal-de-Saúde.pdf` | Geral | OK |
 | ✅ OK | `https://www.aleam.gov.br/` | Geral | OK |
 | ✅ OK | `https://alepa.pa.gov.br/Home/Page/Ouvidoria` | Geral | OK |
 | ✅ OK | `https://alepa.pa.gov.br/` | Geral | OK |
@@ -10169,6 +10165,7 @@
 | ✅ OK | `https://catalao.go.gov.br/conselho-municipal-de-saude` | Geral | OK |
 | ✅ OK | `https://www.cdhu.sp.gov.br/cdhu` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.ce.gov.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.cia.gov/system-maintenance/` | Geral | OK |
 | ✅ OK | `https://www.cl.df.gov.br/inicio` | Geral | OK |
 | ✅ OK | `https://www.cl.df.gov.br/chico-vigilante` | Geral | OK |
 | ✅ OK | `https://www.cl.df.gov.br/wellington-luiz-2011-2014` | Geral | OK |
@@ -11925,10 +11922,10 @@
 | ✅ OK | `https://www.jequie.ba.gov.br/noticias/2017/11/prefeitura-de-jequie-nomeia-membros-do-conselho-municipal-de-defesa-do-meio-ambiente` | Geral | OK |
 | ✅ OK | `https://www.jequie.ba.gov.br/` | Geral | OK |
 | ✅ OK | `http://www2.saude.ba.gov.br/cib/conselho_municipal.asp?CodCMS=636` | Geral | OK |
-| ❓ INCONSISTENTE | `https://ji-parana.ro.gov.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://ji-parana.ro.gov.br/noticias/cmdca-da-posse-a-novos-conselheiros-e-elege-mesa-diretora/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://ji-parana.ro.gov.br/secretarias/secretaria-municipal-de-meio-ambiente/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://ji-parana.ro.gov.br/transparencia-teste/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://ji-parana.ro.gov.br/` | Geral | OK |
+| ❌ QUEBRADO | `https://ji-parana.ro.gov.br/noticias/cmdca-da-posse-a-novos-conselheiros-e-elege-mesa-diretora/` | Geral | QUEBRADO |
+| ✅ OK | `https://ji-parana.ro.gov.br/secretarias/secretaria-municipal-de-meio-ambiente/` | Geral | OK |
+| ✅ OK | `https://ji-parana.ro.gov.br/transparencia-teste/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/institucional/sas/cmdca/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/publicacoes/resolucoes-conselho-municipal-do-meio-ambiente-comdema/` | Geral | OK |
 | ✅ OK | `https://www.joinville.sc.gov.br/splash/` | Geral | OK |
@@ -11993,6 +11990,7 @@
 | ✅ OK | `https://mpce.mp.br/corregedoria-do-cnmp-apresenta-carta-de-brasilia-membros-e-servidores-do-mpce/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/corregedoria-geral-do-mp-do-ceara-visita-gaeco-e-promotorias-de-justica-de-limoeiro-do-norte-morada-nova-quixada-e-ocara-na-proxima-semana/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/institucional/orgaos-de-investigacao/gaeco/` | Geral | OK |
+| ✅ OK | `https://mpce.mp.br/promotor-de-justica-haley-filho-e-nomeado-novo-procurador-geral-de-justica-para-o-bienio-2024-2025/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/ouvidoria-da-mulher-e-lancada-em-evento-realizado-pelo-mpce/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/ouvidoria-do-mp-do-ceara-prestara-atendimento-durante-semana-nacional-do-registro-civil-registre-se/` | Geral | OK |
 | ✅ OK | `https://www.mpdft.mp.br/portal/` | Geral | OK |
@@ -12037,10 +12035,10 @@
 | ✅ OK | `https://portal.mppe.mp.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.mppi.mp.br/internet/` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://mppr.mp.br/administracao` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://mppr.mp.br/corregedoria` | Geral | INCONSISTENTE |
-| ✅ OK | `https://mppr.mp.br/Categoria-de-Pagina/MPPR` | Geral | OK |
-| ↪️ REDIRECT | `https://www.mppr.mp.br/administracao` | Geral | REDIRECT |
-| ✅ OK | `https://mppr.mp.br/Noticias/operacao-gaeco-transporte` | Geral | OK |
+| ❓ INCONSISTENTE | `https://mppr.mp.br/Categoria-de-Pagina/MPPR` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mppr.mp.br/Noticias/operacao-gaeco-transporte` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://mppr.mp.br/ouvidoria` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www5.mprj.mp.br/consultaPublica/` | Geral | OK |
 | ✅ OK | `https://www.mprj.mp.br/busca?p_p_id=br_mp_mprj_internet_busca_web_BuscaPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_br_mp_mprj_internet_busca_web_BuscaPortlet_jspPage=%2Fhtml%2Fview.jsp&_br_mp_mprj_internet_busca_web_BuscaPortlet_filtro_param=noticias` | Geral | OK |
@@ -12049,18 +12047,18 @@
 | ✅ OK | `https://www.mprn.mp.br/paginas/corregedoria-geral-do-mprn/` | Geral | OK |
 | ✅ OK | `https://www.mprn.mp.br/gaeco-do-serido-faz-balanco-apos-1-ano-de-funcionamento/` | Geral | OK |
 | ✅ OK | `https://www.mprn.mp.br/paginas/ouvidoria/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mprn.mp.br/noticias/ouvidoria-do-mprn-e-namvid-iniciam-projeto-dandara-em-ceara-mirim/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mprn.mp.br/noticias/ouvidoria-do-mprn-e-namvid-iniciam-projeto-dandara-em-ceara-mirim/` | Geral | OK |
 | ✅ OK | `https://www.mpro.mp.br/pages/nossos-contatos/ouvidoria/contato` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.mprr.mp.br/page/o-ministerio-publico-em-roraima-` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mprs.mp.br/instituicao/` | Geral | OK |
-| ✅ OK | `https://www.mprs.mp.br/noticias/56718/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.mprs.mp.br/noticias/56718/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mprs.mp.br/contato/` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/atendimento-ao-cidadao` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/documents/d/guest/guia-do-ministerio-publico-de-santa-catarina` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/w/gaeco-deflagra-operação-vértice-e-apura-fraude-em-licitações-do-transporte-escolar-no-oeste-catarinense` | Geral | OK |
-| ↪️ REDIRECT | `https://www.mpto.mp.br/portal/` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www.mpto.mp.br/subprocuradoria-geral-de-justica/perfil/luciano-cesar-casaroti/` | Geral | REDIRECT |
+| ✅ OK | `https://www.mpto.mp.br/portal/` | Geral | OK |
+| ✅ OK | `https://www.mpto.mp.br/subprocuradoria-geral-de-justica/perfil/luciano-cesar-casaroti/` | Geral | OK |
 | ✅ OK | `https://portal.mt.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.mulher.rs.gov.br/inicial` | Geral | OK |
 | ✅ OK | `https://www.mulher.sp.gov.br/sec_mulheres` | Geral | OK |
@@ -12074,6 +12072,7 @@
 | ✅ OK | `https://osasco.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://osasco.sp.gov.br/cmdca/` | Geral | OK |
 | ✅ OK | `https://osasco.sp.gov.br/osasco-empossa-integrantes-do-conselho-municipal-de-defesa-do-meio-ambiente/` | Geral | OK |
+| ✅ OK | `https://osasco.sp.gov.br/a-prefeitura/` | Geral | OK |
 | ✅ OK | `https://osasco.sp.gov.br/conselhos-tutelares-e-cmdca/` | Geral | OK |
 | ✅ OK | `https://ouricuri.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://ouroverdedeminas.mg.gov.br/` | Geral | OK |
@@ -12146,7 +12145,7 @@
 | ✅ OK | `https://portal.saude.pe.gov.br/servico/conselho-estadual-de-saude-de-pernambuco/` | Geral | OK |
 | ✅ OK | `https://portal.pi.gov.br/sesapi/` | Geral | OK |
 | ✅ OK | `https://saude.rr.gov.br/ces-conselho-estadual-de-saude/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | OK |
 | ✅ OK | `https://saude.se.gov.br/atas-reunioes-ordinarias/` | Geral | OK |
 | ✅ OK | `https://saude.se.gov.br/ces-e-funesa-constroem-projeto-para-etapa-estadual-da-plenaria-nacional-de-conselhos-de-saude-e-movimentos-sociais/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/sde/` | Geral | OK |
@@ -12201,6 +12200,7 @@
 | ✅ OK | `https://www.tjac.jus.br/2009/07/escola-da-magistratura-da-continuidade-ao-curso-de-iniciacao-para-juizes-substitutos/` | Geral | OK |
 | ✅ OK | `https://www.tjam.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjam.jus.br/index.php/iniciativas/metas-apresentacao` | Geral | OK |
+| ✅ OK | `https://www.tjam.jus.br/index.php/menu/sala-de-imprensa/13266-desembargador-jomar-fernandes-toma-posse-como-presidente-do-tjam-para-bienio-2025-2026-em-sessao-solene-no-teatro-amazonas` | Geral | OK |
 | ✅ OK | `https://www.tjam.jus.br/index.php/publicacoes-documentos/resolucoes-publicacoes-doc/transparencia/relatorio-de-gestao-fiscal` | Geral | OK |
 | ✅ OK | `https://www.tjap.jus.br/portal/` | Geral | OK |
 | ✅ OK | `https://www.tjba.jus.br/portal/` | Geral | OK |
@@ -12218,7 +12218,7 @@
 | ✅ OK | `https://www.tjes.jus.br/institucional/presidencia-2/` | Geral | OK |
 | ✅ OK | `https://www.tjes.jus.br/gestao-fiscal/` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mg.gov.br/instituicao_unidade/tribunal-de-justica-do-estado-de-minas-gerais-tjmg` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/tribunal-de-justica-do-estado-de-minas-gerais-tjmg` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/metas-nacionais.htm` | Geral | OK |
 | ✅ OK | `https://tjmmg.jus.br/novo-regimento-interno-do-tjmg-e-aprovado/` | Geral | OK |
 | ✅ OK | `https://www.tjmt.jus.br/` | Geral | OK |
@@ -12263,7 +12263,7 @@
 | ✅ OK | `https://www.tjto.jus.br/comunicacao/noticias/tjto-apresenta-resultados-positivos-no-cumprimento-das-metas-nacionais` | Geral | OK |
 | ✅ OK | `https://www.toledo.pr.gov.br/municipio/conselhos_municipais/direitos_crianca_adolescente` | Geral | OK |
 | ✅ OK | `https://www.toledo.pr.gov.br/municipio/conselhos_municipais/meio_ambiente/sobre-conselho` | Geral | OK |
-| ✅ OK | `https://www.tst.jus.br/web/corregedoria` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.tst.jus.br/web/corregedoria` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.tst.jus.br/` | Geral | OK |
 | ✅ OK | `https://tucurui.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://tucurui.pa.gov.br/mapa-do-site/transparencia-covid-19/` | Geral | OK |
@@ -12327,7 +12327,7 @@
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdFN0bmtWYVo3S01xWGdaSGdVNmt5bm51Qno0NFRNT3A3SWlZeHNxeS1JQnhOTVJOenpSSFlDcGFQTWRycThDOW1XR085N0dBeGZqQWRqeC1UcjNIbl81WGVpMDhZTnRZVGJGMFE1TTFURWQ1MHMyTXBNN0tGV1RyX3Vtc0Q5c1RVanRLNmpzdWxJZUhaQUFIMThnYmplN0pzcllpRkZYUkJaaFNONzU2U1dnZEo0OTlWWTYwTnhmbzRXdw?oc=5` | ANM reduz alerta de barragem em Brumadinho, mas moradores ainda não podem voltar para casa - Brasil 247 | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipgJBVV95cUxOcHNIY1FiR0RhQmlkMmkxLXFpaExvQTJRbHV0TlQ3SURtbDZkY2NTTzI1aDFsdk1zRFRyR0M0cXJZY29aZU1JMzRaLTZIa09BOXZLelpVbWNKVnBnWURGdF9HcmN0ZmNKNC1mWURZOWRxTU40a21MLVEtdG1Lb1ZPNkxvU2ZMZlA1WEZlUGV0dUN3OUJkYVZpeXRHSW1SOEJYZkZxbk55WFZOSkh0b2xxU0g5X3RJQUd2M2EzdDdTZTFPMXJxZkZxTk0zVm15aE9CMVpocUR2QXVnVnJUbzl4WmFZNERHX0pPclA4ak9PNTA5MUFBam9TTzhnT1FWMGozX0RQaERtZUJTZHVDRXNSY3hjaEhWa0E0b0pRU1htaTV6Smd1UWc?oc=5` | Sete anos após rompimento de barragem, Brumadinho se reinventa no turismo com Instituto Inhotim, natureza, aventura e experiências rurais - Gazeta de São Paulo | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMifEFVX3lxTE04TGNpTHE3Z1NRTlZxcDhuUWxMRnNUOV9QYV80MnFHQ2ZqOTdxWlVDN1ltaVFVZkdBaldsZjhQdVVyWXpXQ3lVbFlKdlFUSTI2LTdZbWcyMXN1dVprbjBNMFY1NVBLSkFlczFXaGRZZGViSDNXbmJOV0JkZms?oc=5` | Análise da barragem da Emicon em Brumadinho está em fase final, diz ANM - Diário do Comércio | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdTBsd3lxeTVLVXBGcjJxSTlDZTRzSHR3TUNmM2lIQnBMMTRlSllncGxhc2RzOWN3SUhtWDJ2N3NkWko0T2NhR3VHMzRUM2tmVlJpaHBzYnVsYm5aZWF0UEZmWVdlQUhKRnF1ZkpNcjJia1VfX1V3S0JnUEthdWdpUGNlMk9HVy1PdHJNa19vX2p0U3hkV2pveGQ4U2RRZng0OUQxb3otaWlvVHRCek1GeGxlSUZ6OHhfcm1saVY2ZE9kV2l3NEk5WEJ3SEJORTFVTUVSNXNSMmpNS2lVeXAzNnMzbw?oc=5` | TJMG suspende liminarmente multa milionária aplicada à Vale sobre barragem em Brumadinho - Folha de Brumadinho | REDIRECT |
+| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMibEFVX3lxTFBpakk3VVJlc21ndUhIOTVqYjQwb253cW93XzFYTndyVVpMNmhIcXBBR2p4TGd3MWZIZktkZXAtaXFodGlPeml3UWJNWnU3dHRkelVxS2ZHZkNiSkxDMVFGcjl3WDdOcFlUTzZCOA?oc=5` | Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho - Instituto Guaicuy | REDIRECT |
 | ✅ OK | `https://www.scielo.br/` | SciELO — Biblioteca Eletrônica Científica Online | OK |
 | ✅ OK | `https://www.cnj.jus.br/` | Conselho Nacional de Justiça (CNJ) | OK |
 | ✅ OK | `https://semad.mg.gov.br/` | SEMAD — Secretaria de Estado de Meio Ambiente (MG) | OK |
@@ -12546,7 +12546,7 @@
 | ✅ OK | `https://www.gov.br/anm/pt-br/composicao/gerencias-regionais/minas-gerais` | Gerência Regional da ANM no Estado de Minas Gerais | OK |
 | ❓ INCONSISTENTE | `https://portaldatransparencia.gov.br/orgaos/32317` | Execução Orçamentária e Repasses da CFEM — ANM (SIAFI/CGU) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://app.anm.gov.br/sigbm/publico` | Painel Público do Sistema Integrado de Gestão de Segurança de Barragens de Mineração (SIGBM) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.in.gov.br/en/web/dou/-/edital-n-1-de-23-de-dezembro-de-2021-369888941` | Edital nº 01/2021 de Concurso Público ANM — Segurança de Barragens (DOU 24/12/2021) | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.in.gov.br/en/web/dou/-/edital-n-1-de-23-de-dezembro-de-2021-369888941` | Edital nº 01/2021 de Concurso Público ANM — Segurança de Barragens (DOU 24/12/2021) | QUEBRADO |
 | ✅ OK | `https://www.gov.br/anm/pt-br/acesso-a-informacao` | Geral | OK |
 | ✅ OK | `https://www.gov.br/anm/pt-br/composicao` | Geral | OK |
 | ✅ OK | `https://www.gov.br/anm/pt-br/acesso-a-informacao/acoes-e-programas/relatorios-de-gestao` | Geral | OK |
@@ -12569,7 +12569,7 @@
 | ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-fiscalizacao` | Diretoria de Fiscalização e Monitoramento | QUEBRADO |
 | ✅ OK | `https://www.transparencia.ba.gov.br/Orcamento` | LOA — Orçamento Geral do Estado da Bahia | OK |
 | ❓ INCONSISTENTE | `https://cefir.inema.ba.gov.br` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-02` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-03` | Geral | INCONSISTENTE |
@@ -12716,7 +12716,7 @@
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caema.ma.gov.br/` | Geral | QUEBRADO |
 | ❓ INCONSISTENTE | `http://www.sanemat.mt.gov.br/` | Geral | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | http://www.sanemat.mt.gov.br/` | Geral | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.sanesul.ms.gov.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.sanesul.ms.gov.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.sanesul.ms.gov.br/` | Geral | QUEBRADO |
 | ✅ OK | `https://www.cemig.com.br/` | Geral | OK |
 | ✅ OK | `https://www.copasa.com.br/` | Geral | OK |
@@ -12771,43 +12771,43 @@
 | ✅ OK | `https://g1.globo.com/mg/minas-gerais/` | Sigma Lithium — Suspensão por Órgão Ambiental (2026) | OK |
 | ❌ QUEBRADO | `https://business-humanrights.org/pt/ultimas-noticias` | Impactos Socioambientais — Comunidades Tradicionais | QUEBRADO |
 | ✅ OK | `https://diariodeminas.com.br/` | Crise da Sigma Lithium — Medidas Judiciais (2026) | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG` | Diamantina | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG` | Diamantina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.diamantina.mg.gov.br/transparencia` | Diamantina | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.couto-de-magalhaes-de-minas.mg.gov.br/transparencia` | Couto de Magalhães de Minas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG` | Felício dos Santos | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG` | Felício dos Santos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.felicio-dos-santos.mg.gov.br/transparencia` | Felício dos Santos | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Gouveia&uf=MG` | Gouveia | OK |
 | ❌ QUEBRADO | `https://www.gouveia.mg.gov.br/transparencia` | Gouveia | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | OK |
 | ❓ INCONSISTENTE | `https://www.presidente-kubitschek.mg.gov.br/transparencia` | Presidente Kubitschek | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG` | São Gonçalo do Rio Preto | OK |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo-do-rio-preto.mg.gov.br/transparencia` | São Gonçalo do Rio Preto | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | OK |
 | ❓ INCONSISTENTE | `https://www.senador-modestino-goncalves.mg.gov.br/transparencia` | Senador Modestino Gonçalves | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG` | Carbonita | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG` | Itamarandiba | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG` | Itamarandiba | OK |
 | ❌ QUEBRADO | `https://www.itamarandiba.mg.gov.br/transparencia` | Itamarandiba | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG` | Veredinha | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Capelinha&uf=MG` | Capelinha | OK |
 | ❓ INCONSISTENTE | `https://www.capelinha.mg.gov.br/transparencia` | Capelinha | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | OK |
 | ✅ OK | `https://www.angelandia.mg.gov.br/transparencia` | Angelândia | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.aricanduva.mg.gov.br/transparencia` | Aricanduva | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | INCONSISTENTE |
 | ✅ OK | `https://www.datas.mg.gov.br/transparencia` | Datas | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.alvorada-de-minas.mg.gov.br/transparencia` | Alvorada de Minas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Coluna&uf=MG` | Coluna | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Coluna&uf=MG` | Coluna | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.coluna.mg.gov.br/transparencia` | Coluna | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Rio%20Vermelho&uf=MG` | Rio Vermelho | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Rio%20Vermelho&uf=MG` | Rio Vermelho | OK |
 | ❓ INCONSISTENTE | `https://www.rio-vermelho.mg.gov.br/transparencia` | Rio Vermelho | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Serra%20Azul%20de%20Minas&uf=MG` | Serra Azul de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.serra-azul-de-minas.mg.gov.br/transparencia` | Serra Azul de Minas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Serro&uf=MG` | Serro | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Serro&uf=MG` | Serro | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.serro.mg.gov.br/transparencia` | Serro | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-itambe.mg.gov.br/transparencia` | Santo Antônio do Itambé | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | OK |
 | ❌ QUEBRADO | `https://www.aracuai.mg.gov.br/transparencia` | Araçuaí | QUEBRADO |
@@ -12815,47 +12815,47 @@
 | ❓ INCONSISTENTE | `https://www.coronel-murta.mg.gov.br/transparencia` | Coronel Murta | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Berilo&uf=MG` | Berilo | OK |
 | ✅ OK | `https://www.berilo.mg.gov.br/transparencia` | Berilo | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.chapada-do-norte.mg.gov.br/transparencia` | Chapada do Norte | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG` | Francisco Badaró | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG` | Francisco Badaró | OK |
 | ❓ INCONSISTENTE | `https://www.francisco-badaro.mg.gov.br/transparencia` | Francisco Badaró | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jenipapo-de-minas.mg.gov.br/transparencia` | Jenipapo de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jos%C3%A9%20Gon%C3%A7alves%20de%20Minas&uf=MG` | José Gonçalves de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.jose-goncalves-de-minas.mg.gov.br/transparencia` | José Gonçalves de Minas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Medina&uf=MG` | Medina | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Medina&uf=MG` | Medina | OK |
 | ❌ QUEBRADO | `https://www.medina.mg.gov.br/transparencia` | Medina | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ponto%20dos%20Volantes&uf=MG` | Ponto dos Volantes | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ponto%20dos%20Volantes&uf=MG` | Ponto dos Volantes | OK |
 | ❓ INCONSISTENTE | `https://www.ponto-dos-volantes.mg.gov.br/transparencia` | Ponto dos Volantes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG` | Virgem da Lapa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.virgem-da-lapa.mg.gov.br/transparencia` | Virgem da Lapa | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.minas-novas.mg.gov.br/transparencia` | Minas Novas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.turmalina.mg.gov.br/transparencia` | Turmalina | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.leme-do-prado.mg.gov.br/transparencia` | Leme do Prado | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | OK |
 | ❓ INCONSISTENTE | `https://www.pedra-azul.mg.gov.br/transparencia` | Pedra Azul | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | OK |
 | ❓ INCONSISTENTE | `https://www.cachoeira-de-pajeu.mg.gov.br/transparencia` | Cachoeira de Pajeú | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | OK |
 | ❌ QUEBRADO | `https://www.comercinho.mg.gov.br/transparencia` | Comercinho | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | OK |
 | ✅ OK | `https://www.itaobim.mg.gov.br/transparencia` | Itaobim | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | OK |
 | ❓ INCONSISTENTE | `https://www.padre-paraiso.mg.gov.br/transparencia` | Padre Paraíso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Almenara&uf=MG` | Almenara | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | OK |
 | ↪️ REDIRECT | `https://www.bandeira.mg.gov.br/transparencia` | Bandeira | REDIRECT |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG` | Divisópolis | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG` | Divisópolis | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.divisopolis.mg.gov.br/transparencia` | Divisópolis | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Felisburgo&uf=MG` | Felisburgo | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Felisburgo&uf=MG` | Felisburgo | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.felisburgo.mg.gov.br/transparencia` | Felisburgo | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.jacinto.mg.gov.br/transparencia` | Jacinto | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | OK |
 | ❌ QUEBRADO | `https://www.jequitinhonha.mg.gov.br/transparencia` | Jequitinhonha | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Joa%C3%ADma&uf=MG` | Joaíma | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.joaima.mg.gov.br/transparencia` | Joaíma | QUEBRADO |
@@ -12863,7 +12863,7 @@
 | ❌ QUEBRADO | `https://www.jordania.mg.gov.br/transparencia` | Jordânia | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | OK |
 | ❓ INCONSISTENTE | `https://www.mata-verde.mg.gov.br/transparencia` | Mata Verde | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | OK |
 | ❓ INCONSISTENTE | `https://www.monte-formoso.mg.gov.br/transparencia` | Monte Formoso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG` | Palmópolis | OK |
 | ❌ QUEBRADO | `https://www.palmopolis.mg.gov.br/transparencia` | Palmópolis | QUEBRADO |
@@ -12871,50 +12871,50 @@
 | ❓ INCONSISTENTE | `https://www.rio-do-prado.mg.gov.br/transparencia` | Rio do Prado | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Rubim&uf=MG` | Rubim | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.rubim.mg.gov.br/transparencia` | Rubim | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG` | Salto da Divisa | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG` | Salto da Divisa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.salto-da-divisa.mg.gov.br/transparencia` | Salto da Divisa | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG` | Santa Maria do Salto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG` | Santa Maria do Salto | OK |
 | ❓ INCONSISTENTE | `https://www.santa-maria-do-salto.mg.gov.br/transparencia` | Santa Maria do Salto | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG` | Santo Antônio do Jacinto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG` | Santo Antônio do Jacinto | OK |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-jacinto.mg.gov.br/transparencia` | Santo Antônio do Jacinto | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=%C3%81guas%20Formosas&uf=MG` | Águas Formosas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Atal%C3%A9ia&uf=MG` | Ataléia | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Atal%C3%A9ia&uf=MG` | Ataléia | INCONSISTENTE |
 | ✅ OK | `https://www.ataleia.mg.gov.br/transparencia` | Ataléia | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campanario.mg.gov.br/transparencia` | Campanário | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.carai.mg.gov.br/transparencia` | Caraí | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | INCONSISTENTE |
 | ✅ OK | `https://www.carloschagas.mg.gov.br/transparencia` | Carlos Chagas | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.catuji.mg.gov.br/transparencia` | Catuji | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | INCONSISTENTE |
 | ✅ OK | `https://www.fronteiradosvales.mg.gov.br/transparencia` | Fronteira dos Vales | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itaip%C3%A9&uf=MG` | Itaipé | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaip%C3%A9&uf=MG` | Itaipé | OK |
 | ✅ OK | `https://www.itaipe.mg.gov.br/transparencia` | Itaipé | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itambacuri&uf=MG` | Itambacuri | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itambacuri&uf=MG` | Itambacuri | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.itambacuri.mg.gov.br/transparencia` | Itambacuri | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.ladainha.mg.gov.br/transparencia` | Ladainha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | OK |
 | ✅ OK | `https://www.machacalis.mg.gov.br/transparencia` | Machacalis | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Malacacheta&uf=MG` | Malacacheta | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Malacacheta&uf=MG` | Malacacheta | OK |
 | ❌ QUEBRADO | `https://www.malacacheta.mg.gov.br/transparencia` | Malacacheta | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Nanuque&uf=MG` | Nanuque | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Nanuque&uf=MG` | Nanuque | OK |
 | ❌ QUEBRADO | `https://www.nanuque.mg.gov.br/transparencia` | Nanuque | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | OK |
 | ✅ OK | `https://www.novamodica.mg.gov.br/transparencia` | Nova Módica | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Oriente%20de%20Minas&uf=MG` | Novo Oriente de Minas | OK |
 | ✅ OK | `https://www.novoorientedeminas.mg.gov.br/transparencia` | Novo Oriente de Minas | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pavao.mg.gov.br/transparencia` | Pavão | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pescador.mg.gov.br/transparencia` | Pescador | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pote.mg.gov.br/transparencia` | Poté | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santa%20Helena%20de%20Minas&uf=MG` | Santa Helena de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Jos%C3%A9%20do%20Divino&uf=MG` | São José do Divino | INCONSISTENTE |
@@ -12948,38 +12948,14 @@
 
 ## Propostas de Correção com Trilha de Auditoria
 
-- **URL Original:** https://www.cia.gov/readingroom/
-  → **URL Proposta:** https://www.cia.gov/system-maintenance/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.mpce.mp.br/noticias/posse-haley-de-carvalho-filho
-  → **URL Proposta:** https://mpce.mp.br/promotor-de-justica-haley-filho-e-nomeado-novo-procurador-geral-de-justica-para-o-bienio-2024-2025/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjam.jus.br/noticias/posse-jomar-ricardo-saunders-fe
-  → **URL Proposta:** https://www.tjam.jus.br/index.php/menu/sala-de-imprensa/13266-desembargador-jomar-fernandes-toma-posse-como-presidente-do-tjam-para-bienio-2025-2026-em-sessao-solene-no-teatro-amazonas
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://maceio.al.gov.br//diario-oficial
-  → **URL Proposta:** https://digital.maceio.al.gov.br/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: site-dominio
-- **URL Original:** https://www.osasco.sp.gov.br/diario-oficial
-  → **URL Proposta:** https://osasco.sp.gov.br/a-prefeitura/
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-exato
-- **URL Original:** https://www.alagoinhas.ba.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://www.alagoinhas.ba.gov.br/wp-content/uploads/2025/03/Eleição-Conselho-Municipal-de-Saúde.pdf
+- **URL Original:** https://www.picos.pi.gov.br/cmdca
+  → **URL Proposta:** https://www2.picos.pi.gov.br/juridico/wp-content/uploads/2021/07/Portaria-368-2021-Nomeação-Conselho-Municipal-dos-Direitos-da-Criança-e-do-Adolescente.pdf
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-pdf
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://ejef.tjmg.jus.br/
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.mppr.mp.br/administracao
-  → **URL Proposta:** https://mppr.mp.br/administracao
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
+- **URL Original:** https://www.defensoria.ce.def.br/nucleo-de-direitos-humano
+  → **URL Proposta:** https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara
+  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
+  - Estratégia de busca: titulo-orgao-filetype
 
 ---
 *User-Agent utilizado: `ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular; verificador de links - LinkMender v2)`*
