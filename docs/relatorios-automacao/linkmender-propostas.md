@@ -1,24 +1,25 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-25T06:47:05.111Z
-- Duracao total: 10.6 min
+- Gerado em: 2026-10-26T06:48:38.412Z
+- Duracao total: 11.8 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 387
+- OK: 384
 - QUEBRADOS: 9
-- REDIRECTS: 29
-- INCONSISTENTES: 48
+- REDIRECTS: 30
+- INCONSISTENTES: 50
 - Propostas geradas: 13
-- Links sem proposta: 25
+- Links sem proposta: 26
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
 | https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
+| https://brasilpopular.org/ | REDIRECT | 403 | https://agustoto-42.site/register?referral_code=anakbinjai |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
 | https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
@@ -209,6 +210,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
+- https://brasilpopular.org/ (403) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
@@ -236,6 +238,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
 - https://csr.ufmg.br/car20_mg/ (rede) — erro de rede: This operation was aborted
+- https://dadosabertos.anm.gov.br/ (rede) — erro de rede: fetch failed
 - https://datasus.saude.gov.br/ (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
@@ -251,9 +254,9 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php (423) — status HTTP 423 (nem ok, nem quebrado, nem redirect)
+- https://sistemas.anm.gov.br/arrecadacao/extra/Relatorios/arrecadacao_cfem_substancia.aspx (rede) — erro de rede: fetch failed
 - https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (rede) — erro de rede: This operation was aborted
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
-- https://www.gov.br/anp/vivo.pdf (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
@@ -276,6 +279,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
 - https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
 - https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
+- https://www.unesco.org/pt/days/mother-language (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://x (rede) — erro de rede: fetch failed
 - https://x.gov.br (rede) — erro de rede: fetch failed
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed

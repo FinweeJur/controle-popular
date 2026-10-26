@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-10-25T08:31:04.101Z",
+  "geradoEm": "2026-10-26T08:31:08.967Z",
   "agente": "PicoClaw Source Watcher",
   "versao": "2.0.0",
   "total": 42,
@@ -17,7 +17,7 @@
       "tempoRespostaMs": 345,
       "lastModified": null,
       "contentLengthBytes": null,
-      "hashConteudo": "4f647cb79ea805bc"
+      "hashConteudo": "d964f0639c47d0f8"
     },
     {
       "slug": "sigpub-diario",
@@ -26,7 +26,7 @@
       "url": "https://www.diariomunicipal.com.br/amm-mg/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 508,
+      "tempoRespostaMs": 540,
       "lastModified": null,
       "contentLengthBytes": 1,
       "hashConteudo": null
@@ -38,7 +38,7 @@
       "url": "https://api-dom.pbh.gov.br/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 339,
+      "tempoRespostaMs": 1101,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -50,7 +50,7 @@
       "url": "https://www.diariomunicipal.com.br/amm-mg/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 478,
+      "tempoRespostaMs": 464,
       "lastModified": null,
       "contentLengthBytes": 1,
       "hashConteudo": null
@@ -62,7 +62,7 @@
       "url": "https://api-publica.transferegov.gestao.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 331,
+      "tempoRespostaMs": 436,
       "lastModified": "Sun, 25 Oct 2026 00:10:00 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -74,7 +74,7 @@
       "url": "https://comunicabr.presidencia.gov.br/api/v1/municipios/31",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1628,
+      "tempoRespostaMs": 584,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -86,7 +86,7 @@
       "url": "https://salic.cultura.gov.br",
       "statusHttp": 403,
       "ok": true,
-      "tempoRespostaMs": 425,
+      "tempoRespostaMs": 512,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null,
@@ -99,7 +99,7 @@
       "url": "https://dadosabertos.camara.leg.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 207,
+      "tempoRespostaMs": 302,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": "2ebd3de351cebd0d"
@@ -111,7 +111,7 @@
       "url": "https://legis.senado.leg.br/dadosabertos/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 681,
+      "tempoRespostaMs": 791,
       "lastModified": "Thu, 01 Jan 1970 00:00:01 GMT",
       "contentLengthBytes": 734,
       "hashConteudo": null
@@ -123,7 +123,7 @@
       "url": "https://dadosabertos.camara.leg.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 164,
+      "tempoRespostaMs": 184,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": "2ebd3de351cebd0d"
@@ -135,8 +135,8 @@
       "url": "https://www.cnj.jus.br/programas-e-acoes/sirenejud/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 337,
-      "lastModified": "Fri, 23 Oct 2026 22:48:23 GMT",
+      "tempoRespostaMs": 340,
+      "lastModified": "Fri, 23 Oct 2026 21:41:06 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
     },
@@ -147,7 +147,7 @@
       "url": "https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search",
       "statusHttp": 401,
       "ok": true,
-      "tempoRespostaMs": 246,
+      "tempoRespostaMs": 284,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -159,8 +159,8 @@
       "url": "https://www.cnj.jus.br/inspecoes-correicoes/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 269,
-      "lastModified": "Sat, 24 Oct 2026 15:28:03 GMT",
+      "tempoRespostaMs": 500,
+      "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
     },
@@ -171,7 +171,7 @@
       "url": "https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities",
       "statusHttp": null,
       "ok": false,
-      "tempoRespostaMs": 5765,
+      "tempoRespostaMs": 5844,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null,
@@ -184,7 +184,7 @@
       "url": "https://certificacao.incra.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 344,
+      "tempoRespostaMs": 346,
       "lastModified": "Wed, 25 Feb 2026 20:36:58 GMT",
       "contentLengthBytes": 689,
       "hashConteudo": "9e08ebf30ddb2bda"
@@ -196,7 +196,7 @@
       "url": "https://dadosabertos.anm.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 370,
+      "tempoRespostaMs": 382,
       "lastModified": null,
       "contentLengthBytes": 497,
       "hashConteudo": null
@@ -208,7 +208,7 @@
       "url": "https://projetorioparaopeba.fgv.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1415,
+      "tempoRespostaMs": 1302,
       "lastModified": "Fri, 16 Jan 2026 17:38:30 GMT",
       "contentLengthBytes": 100073,
       "hashConteudo": "a8cc982a6f18cf23"
@@ -220,10 +220,10 @@
       "url": "https://www.mg.gov.br/pro-brumadinho",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1133,
-      "lastModified": "Sun, 25 Oct 2026 03:28:52 GMT",
-      "contentLengthBytes": 97532,
-      "hashConteudo": "a0eb184cfb7824cd"
+      "tempoRespostaMs": 2074,
+      "lastModified": "Sun, 25 Oct 2026 14:55:21 GMT",
+      "contentLengthBytes": 97112,
+      "hashConteudo": "638f0e20a5093912"
     },
     {
       "slug": "auditoria-ajri",
@@ -232,10 +232,10 @@
       "url": "https://portal.auditoriasocioambiental.com.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 849,
+      "tempoRespostaMs": 793,
       "lastModified": null,
       "contentLengthBytes": 0,
-      "hashConteudo": "9a788dcf1a5f3129"
+      "hashConteudo": "5b5ef25269356f06"
     },
     {
       "slug": "biblioteca-atis",
@@ -244,7 +244,7 @@
       "url": "https://www.aedasmg.org",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1658,
+      "tempoRespostaMs": 1845,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -256,7 +256,7 @@
       "url": "https://dadosabertos.anm.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 199,
+      "tempoRespostaMs": 183,
       "lastModified": null,
       "contentLengthBytes": 497,
       "hashConteudo": null
@@ -268,7 +268,7 @@
       "url": "https://dados.gov.br/dados/conjuntos-dados/licencas-ambientais",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 195,
+      "tempoRespostaMs": 183,
       "lastModified": "Tue, 21 Jul 2026 14:35:22 GMT",
       "contentLengthBytes": 9632,
       "hashConteudo": null
@@ -280,7 +280,7 @@
       "url": "http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1520,
+      "tempoRespostaMs": 2411,
       "lastModified": null,
       "contentLengthBytes": 42688,
       "hashConteudo": null
@@ -292,7 +292,7 @@
       "url": "https://ecosistemas.meioambiente.mg.gov.br/gtac/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1630,
+      "tempoRespostaMs": 1611,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": "959c013104919a74"
@@ -304,7 +304,7 @@
       "url": "https://dados.mma.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 735,
+      "tempoRespostaMs": 690,
       "lastModified": null,
       "contentLengthBytes": 4294,
       "hashConteudo": null
@@ -316,7 +316,7 @@
       "url": "https://controlepopular.com.br/ambiental/crimes-socioambientais",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1124,
+      "tempoRespostaMs": 1662,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -328,7 +328,7 @@
       "url": "https://aedasmg.org/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 615,
+      "tempoRespostaMs": 694,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -340,7 +340,7 @@
       "url": "https://news.google.com/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1098,
+      "tempoRespostaMs": 1117,
       "lastModified": null,
       "contentLengthBytes": 0,
       "hashConteudo": null
@@ -352,7 +352,7 @@
       "url": "https://www.fundobrasil.org.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 353,
+      "tempoRespostaMs": 357,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -364,7 +364,7 @@
       "url": "https://www.b3.com.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 164,
+      "tempoRespostaMs": 235,
       "lastModified": "Fri, 22 Sep 2017 21:22:49 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -388,7 +388,7 @@
       "url": "https://brasil.io/dataset/socios-brasil/socios/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1133,
+      "tempoRespostaMs": 1243,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -400,7 +400,7 @@
       "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1665,
+      "tempoRespostaMs": 1667,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -412,7 +412,7 @@
       "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 552,
+      "tempoRespostaMs": 546,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -424,7 +424,7 @@
       "url": "https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 872,
+      "tempoRespostaMs": 1557,
       "lastModified": null,
       "contentLengthBytes": 249430,
       "hashConteudo": null
@@ -436,7 +436,7 @@
       "url": "https://direitoshumanos.dpu.def.br/comite-tematico-especializado-rio-doce-brumadinho/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 751,
+      "tempoRespostaMs": 1405,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -448,7 +448,7 @@
       "url": "https://defensoria.mg.def.br/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1035,
+      "tempoRespostaMs": 985,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -460,7 +460,7 @@
       "url": "https://www.gov.br/ibama/pt-br/assuntos/meio-ambiente/areas-protegidas/icmbio",
       "statusHttp": 403,
       "ok": true,
-      "tempoRespostaMs": 175,
+      "tempoRespostaMs": 218,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null,
@@ -473,7 +473,7 @@
       "url": "https://vale.com/en/sustainability",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 395,
+      "tempoRespostaMs": 963,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -485,7 +485,7 @@
       "url": "https://www.mpf.mp.br/atuacao/grandes-casos",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 522,
+      "tempoRespostaMs": 524,
       "lastModified": null,
       "contentLengthBytes": 229279,
       "hashConteudo": null
@@ -497,8 +497,8 @@
       "url": "https://www.cnj.jus.br/programas-e-acoes/sirenejud/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 216,
-      "lastModified": "Fri, 23 Oct 2026 22:48:23 GMT",
+      "tempoRespostaMs": 222,
+      "lastModified": "Fri, 23 Oct 2026 19:55:42 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
     },
@@ -509,7 +509,7 @@
       "url": "https://dados.gov.br/dados/conjuntos-dados/sistema-nacional-de-informacoes-de-seguranca-publica",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 140,
+      "tempoRespostaMs": 180,
       "lastModified": "Tue, 21 Jul 2026 14:35:22 GMT",
       "contentLengthBytes": 9632,
       "hashConteudo": null
