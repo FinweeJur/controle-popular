@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-10-25T16:58:06.259Z",
+ "geradoEm": "2026-10-26T19:01:50.854Z",
  "regra": {
   "tempo-real": 2,
   "diaria": 3,
@@ -26,7 +26,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-15T19:30:29.679Z",
-   "lagDias": 70,
+   "lagDias": 71,
    "veredito": "atrasada"
   },
   {
@@ -36,7 +36,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-15",
-   "lagDias": 71,
+   "lagDias": 72,
    "veredito": "atrasada"
   },
   {
@@ -46,7 +46,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-31T21:00:32.820992+00:00",
-   "lagDias": 54,
+   "lagDias": 55,
    "veredito": "atrasada"
   },
   {
@@ -56,7 +56,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-30",
-   "lagDias": 56,
+   "lagDias": 57,
    "veredito": "atrasada"
   },
   {
@@ -116,7 +116,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-08-15T21:51:45.965Z",
-   "lagDias": 70,
+   "lagDias": 71,
    "veredito": "isenta"
   },
   {
@@ -136,7 +136,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-26T17:39:14.994Z",
-   "lagDias": 59,
+   "lagDias": 61,
    "veredito": "atrasada"
   },
   {
@@ -146,7 +146,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-10-18",
-   "lagDias": 7,
+   "lagDias": 8,
    "veredito": "atrasada"
   },
   {
@@ -156,7 +156,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-31",
-   "lagDias": 55,
+   "lagDias": 56,
    "veredito": "atrasada"
   },
   {
@@ -166,7 +166,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-31",
-   "lagDias": 55,
+   "lagDias": 56,
    "veredito": "atrasada"
   },
   {
@@ -186,7 +186,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-09-07T04:20:29.869Z",
-   "lagDias": 48,
+   "lagDias": 49,
    "veredito": "atrasada"
   },
   {
@@ -196,7 +196,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-10-18T19:15:22.443437+00:00",
-   "lagDias": 6,
+   "lagDias": 7,
    "veredito": "atrasada"
   },
   {
@@ -206,7 +206,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-08-30",
-   "lagDias": 56,
+   "lagDias": 57,
    "veredito": "atrasada"
   },
   {
@@ -216,7 +216,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-01T14:39:35.119Z",
-   "lagDias": 54,
+   "lagDias": 55,
    "veredito": "isenta"
   },
   {
@@ -226,7 +226,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.238458+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   },
   {
@@ -236,7 +236,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T14:23:57.413749+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   },
   {
@@ -246,7 +246,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.242456+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   },
   {
@@ -256,7 +256,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:01:25.201481+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   },
   {
@@ -266,7 +266,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-07T04:12:19.758753Z",
-   "lagDias": 48,
+   "lagDias": 49,
    "veredito": "isenta"
   },
   {
@@ -276,7 +276,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T16:00:48.074119+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   },
   {
@@ -286,7 +286,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T15:01:13.024220+00:00",
-   "lagDias": 49,
+   "lagDias": 50,
    "veredito": "isenta"
   }
  ]
