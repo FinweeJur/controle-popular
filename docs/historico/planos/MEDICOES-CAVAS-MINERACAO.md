@@ -1090,6 +1090,20 @@ limpos) para **0,288**, e o F1 de 0,613 para 0,630. A fila de alta precisão
 entrega 21 candidatos com 2 falsos positivos no holdout; ainda é fila, não
 veredito. O próximo ganho depende do gold set e da confirmação oficial.
 
+## Gold set: enriquecimento local (23/10/2026)
+
+Os 34 casos da revisão (24 positivos + 10 controles) foram cruzados com o
+acervo local: **34/34 localizados** — 17 autos IBAMA, 6 embargos IBAMA, 1
+embargo SEMAD e 10 processos ANM. Nenhuma coordenada ficou a mais de 2 km da
+fonte; os 10 controles têm fase e área ANM (a maioria em concessão de lavra).
+
+O `recortar-gold-2m.py` corta as imagens 2 m em
+`scripts/.cache/cavas-2m/gold-set/imagens/`, em manifesto próprio, **sem tocar
+no checkpoint de treino**. Falta a revisão visual (cava visível) e a
+licença/fase oficial de cada positivo. O CSV enriquecido fica em
+`scripts/.cache/cavas-2m/gold-set/revisao-gold-enriquecido.csv`, sem
+nome/CPF/CNPJ.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
