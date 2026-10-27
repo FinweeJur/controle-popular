@@ -177,8 +177,9 @@ def processar(caminho_zip: Path) -> dict[str, Any]:
 
 
 def main() -> int:
-    if not ARQUIVO_ZIP.exists() or ARQUIVO_ZIP.stat().st_size < 1_000_000:
-        baixar_zip(ARQUIVO_ZIP)
+    # Baixa sempre: reutilizar o zip em cache engana a checagem de fim de
+    # prazo (25/10/2026 passou despercebido exatamente por isso — medido 27/10).
+    baixar_zip(ARQUIVO_ZIP)
     print("lendo", ARQUIVO_ZIP)
     dados = processar(ARQUIVO_ZIP)
     PASTA_SAIDA.mkdir(parents=True, exist_ok=True)

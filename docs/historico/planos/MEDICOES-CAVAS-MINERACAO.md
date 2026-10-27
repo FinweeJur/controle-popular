@@ -1041,6 +1041,55 @@ Artefatos: `calibracao-2m-frozen-baseline.json` e
 `%LOCALAPPDATA%\Temp\opencode\cavas\treino-2m\`. O split versionado é a
 referência para os próximos treinos.
 
+## Retreino automático com o hard completo (21/10/2026)
+
+O supervisor de treino disparou sozinho ao passar de 20 limpos novos e rodou
+treino + calibração sem intervenção. Snapshot: **934 limpos** (262 pos / 672
+neg), split congelado de 50 cenas, val 159 (49 pos / 110 neg). Melhor época
+(6): **P 0,8846 / R 0,4694 / F1 0,6133** no limiar 0,5.
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,44 | 0,794 | 0,551 | 27/7/22/103 |
+| ≥ 0,80 | 0,45 | 0,8125 | 0,5306 | 26/6/23/104 |
+| ≥ 0,90 | **0,67** | **1,000** | **0,1633** | **8/0/41/110** |
+
+Leitura: o ciclo automático funciona. O recall em P ≥ 0,90 subiu de 0,102
+(155 val) para **0,163** com o lote hard completo; ainda é uma fila de alta
+precisão, não um veredito. O manifesto publicado tem **2.901 recortes**
+(636 pos / 2.265 neg). Artefatos com carimbo `20261021-120047`.
+
+## Gold set: shortlist de 60 casos (21/10/2026)
+
+A triagem dos atos oficiais fechou **60 linhas** para revisão: **24 positivos
+primários** (14 recentes + 10 históricos), **10 controles** e 26 reservas.
+Base: 277 candidatos, **244 elegíveis**; 33 excluídos (12 em bbox de treino,
+20 sem termo de extração, 1 fora de MG). Fontes: 22 autos IBAMA, 17 embargos
+IBAMA, 1 embargo SEMAD e 20 controles MapBiomas/ANM.
+
+Lacunas: **0 controle com cava confirmada visualmente**, **0 ICMBio**, 1
+SEMAD e 6 recentes sem imagem CBERS (exigem Sentinel/Landsat). O CSV fica em
+`scripts/.cache/cavas-2m/gold-set/`, não versionado, sem nome/CPF/CNPJ.
+
+## Segundo retreino automático com o G1 (23/10/2026)
+
+O supervisor retreinou sozinho quando o G1 passou de 300 positivos limpos.
+Snapshot: **975 limpos** (305 pos / 670 neg), split congelado, val 176
+(66 pos / 110 neg). Melhor época (5): **P 0,8095 / R 0,5152 / F1 0,6296**
+no limiar 0,5.
+
+| piso de precisão | limiar | precisão | recall | tp/fp/fn/tn |
+|---|---|---|---|---|
+| melhor F1 | 0,39 | 0,6897 | 0,6061 | 40/18/26/92 |
+| ≥ 0,80 | 0,50 | 0,8095 | 0,5152 | 34/8/32/102 |
+| ≥ 0,85 | 0,52 | 0,8649 | 0,4848 | 32/5/34/105 |
+| ≥ 0,90 | **0,62** | **0,9048** | **0,2879** | **19/2/47/108** |
+
+Leitura: com o G1, o recall em P ≥ 0,90 subiu de 0,163 (975→ antes, 934
+limpos) para **0,288**, e o F1 de 0,613 para 0,630. A fila de alta precisão
+entrega 21 candidatos com 2 falsos positivos no holdout; ainda é fila, não
+veredito. O próximo ganho depende do gold set e da confirmação oficial.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
