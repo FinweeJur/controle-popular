@@ -92,10 +92,14 @@ def _linhas() -> list[dict]:
     return out
 
 
+def _limpa_positiva(o: dict) -> bool:
+    return (o.get("status") == "ok" and o.get("label") == 1
+            and (o.get("nuvem") or 0) <= NUVEM_MAX and bool(o.get("hash")))
+
+
 def _limpos(linhas: list[dict]) -> int:
-    return sum(1 for o in linhas
-               if o.get("status") == "ok" and o.get("label") == 1
-               and (o.get("nuvem") or 0) <= NUVEM_MAX)
+    """Positivos limpos por HASH único (linhas duplicadas não contam)."""
+    return len({o["hash"] for o in linhas if _limpa_positiva(o)})
 
 
 def _um_lote(lote: int, workers: int) -> int:
