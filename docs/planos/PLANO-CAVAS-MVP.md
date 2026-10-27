@@ -276,6 +276,12 @@ MG). Fontes: 22 autos IBAMA, 17 embargos IBAMA, 1 embargo SEMAD e
 imagens 2 m estão em `scripts/.cache/cavas-2m/gold-set/imagens/`.
 Falta a revisão visual e a licença/fase oficial de cada positivo.
 
+**Checagem ANM de 23/10:** **20/24 positivos** estão fora de toda
+operação ANM; **P02, P03, P12 e H05** caem dentro de processos ANM
+(concessão/licenciamento) e exigem checagem de fase e licença;
+**10/10 controles** estão dentro. Os 20 de fora são os candidatos
+mais fortes a "sem cadastro na área".
+
 ### Construção proposta
 
 - **Meta:** 20 a 30 casos confirmados com geometria e documento oficial,

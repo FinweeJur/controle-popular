@@ -1104,6 +1104,20 @@ licença/fase oficial de cada positivo. O CSV enriquecido fica em
 `scripts/.cache/cavas-2m/gold-set/revisao-gold-enriquecido.csv`, sem
 nome/CPF/CNPJ.
 
+## Checagem ANM do gold set (23/10/2026)
+
+Os 34 casos foram cruzados com os 7.090 polígonos de operação do SIGMINE
+(`sigmine-operacao.geojson`) por ponto-em-polígono com pré-filtro de bbox:
+**20/24 positivos estão fora de toda operação ANM**; **P02, P03, P12 e H05**
+caem dentro de processos ANM (concessão de lavra/licenciamento) e exigem
+checagem de fase e licença. **10/10 controles estão dentro** de operação ANM,
+como esperado.
+
+Leitura: os 20 de fora são os candidatos mais fortes a "sem cadastro na área";
+os 4 de dentro não são automaticamente regulares — o ato do IBAMA continua
+sendo a evidência, mas o dossiê precisa declarar o processo ANM e a fase. O
+CSV com o resultado é `scripts/.cache/cavas-2m/gold-set/revisao-gold-anm.csv`.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
