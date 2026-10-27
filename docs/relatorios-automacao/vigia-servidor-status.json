@@ -1,12 +1,12 @@
 {
-  "atualizadoEm": "2026-10-26T15:35:07.087Z",
+  "atualizadoEm": "2026-10-27T19:25:06.667Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 225,
+  "latenciaMs": 223,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-26T15:35:07.082Z",
+    "atualizadoEm": "2026-10-27T19:25:06.663Z",
     "totalBasesVerificadas": 822,
     "basesVazias": [],
     "basesCorrompidas": [],
@@ -28,9 +28,9 @@
     "ok": 100,
     "falhas": [],
     "siteInteiroFora": false,
-    "inicioEm": "2026-10-26T15:30:06.944Z",
-    "terminoEm": "2026-10-26T15:32:37.950Z",
-    "duracaoMs": 151006
+    "inicioEm": "2026-10-27T19:20:25.986Z",
+    "terminoEm": "2026-10-27T19:23:06.867Z",
+    "duracaoMs": 160881
   },
   "erro": null
 }

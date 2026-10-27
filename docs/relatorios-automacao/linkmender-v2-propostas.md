@@ -1,18 +1,18 @@
 # LinkMender v2 — Auditoria de Links e Validação de Conteúdo
 
-- Data da auditoria: 2026-10-26T15:38:08.572Z
-- Duração da rodada: 31766.2 s
+- Data da auditoria: 2026-10-27T19:26:43.192Z
+- Duração da rodada: 45451.7 s
 - Pausa configurada entre requisições: 300ms
 
 ## Resumo Consolidado
 
-- Total de URLs verificadas (HTTP + validação de conteúdo): 12926
-- ✅ Links Íntegros (OK): 8547
-- ↪️ Redirecionamentos Válidos (REDIRECT): 261
-- ❌ Links Quebrados (QUEBRADO): 933
-- ⚠️ Respostas Falsas (MENTIROSO / 200 que mente): 5
-- ❓ Inconsistências de Rede (INCONSISTENTE): 3180
-- 📝 Propostas automáticas de correção aceitas: 2
+- Total de URLs verificadas (HTTP + validação de conteúdo): 12920
+- ✅ Links Íntegros (OK): 8031
+- ↪️ Redirecionamentos Válidos (REDIRECT): 258
+- ❌ Links Quebrados (QUEBRADO): 935
+- ⚠️ Respostas Falsas (MENTIROSO / 200 que mente): 6
+- ❓ Inconsistências de Rede (INCONSISTENTE): 3690
+- 📝 Propostas automáticas de correção aceitas: 8
 
 ## Detalhamento das Verificações por URL
 
@@ -20,7 +20,7 @@
 |---|---|---|---|
 | ✅ OK | `https://t.me/ControlePopularBOT` | Geral | OK |
 | ✅ OK | `https://barragens.mpmg.mp.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://csr.ufmg.br/car20_mg/` | Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG | INCONSISTENTE |
+| ✅ OK | `https://csr.ufmg.br/car20_mg/` | Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG | OK |
 | ✅ OK | `https://consulta.car.gov.br/` | Portal oficial da Consulta Pública do SICAR Nacional | OK |
 | ✅ OK | `https://dados.mg.gov.br/dataset/convenios-saida` | Geral | OK |
 | ✅ OK | `https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca` | Geral | OK |
@@ -80,7 +80,7 @@
 | ✅ OK | `https://sidra.ibge.gov.br/pesquisa/ppm/quadros/brasil/2024` | IBGE (PPM) / Base dos Dados | OK |
 | ✅ OK | `https://regionais.betim.digital/regional/citrolandia` | Geral | OK |
 | ✅ OK | `https://open-meteo.com/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php` | Geral | INCONSISTENTE |
+| ✅ OK | `https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php` | Geral | OK |
 | ✅ OK | `https://basedosdados.org/` | Base dos Dados (IBGE/CAGED) | OK |
 | ✅ OK | `https://www.gov.br/inep` | Escolas cadastradas | OK |
 | ❓ INCONSISTENTE | `https://portaldatransparencia.gov.br/convenios` | Geral | INCONSISTENTE |
@@ -92,7 +92,7 @@
 | ❓ INCONSISTENTE | `https://datasus.saude.gov.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www18.fgv.br/projetorioparaopeba/` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.projetobrumadinho.ufmg.br/` | Geral | INCONSISTENTE |
-| ✅ OK | `https://quemfoiquem.org.br/criterios` | Geral | OK |
+| ❓ INCONSISTENTE | `https://quemfoiquem.org.br/criterios` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.diap.org.br` | Geral | OK |
 | ✅ OK | `https://sistemas.anm.gov.br/arrecadacao/extra/Relatorios/arrecadacao_cfem_substancia.aspx` | ANM — Arrecadação CFEM por substância | OK |
 | ✅ OK | `https://radardatransparencia.atricon.org.br/` | Geral | OK |
@@ -359,7 +359,7 @@
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Mura` | Mura — Povos Indígenas no Brasil | OK |
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Waj%C3%A3pi` | Wajãpi — Povos Indígenas no Brasil | OK |
 | ↪️ REDIRECT | `https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217` | A Revolta dos Malês na Bahia | REDIRECT |
-| ✅ OK | `https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19` | Insurreição de Queimado completa 176 anos | OK |
+| ❓ INCONSISTENTE | `https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19` | Insurreição de Queimado completa 176 anos | INCONSISTENTE |
 | ↪️ REDIRECT | `https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada` | Revoltas no Norte: a Cabanagem, a Balaiada e a Sabinada | REDIRECT |
 | ✅ OK | `https://museudainconfidencia.museus.gov.br/` | Museu da Inconfidência — acervo e história | OK |
 | ✅ OK | `https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1` | Guarani Kaiowá — Povos Indígenas no Brasil | OK |
@@ -441,9 +441,9 @@
 | ❓ INCONSISTENTE | `http://projetobrumadinho.ufmg.br/sites/default/files/2025-11/RESUMO_DAS_APRESENTAÇÕES_DE_RESULTADOS_DO_PROJETO_BRUMADINHO_UFMG.pdf` | Resumo das Apresentações de Resultados do Projeto Brumadinho UFMG | INCONSISTENTE |
 | ✅ OK | `https://guaicuy.org.br/biblioteca/publicacoes/cinco-anos-do-desastre-crime-da-vale/` | Revista – Cinco Anos do Desastre-Crime da Vale | OK |
 | ✅ OK | `https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/` | Dossiê Acesso à Justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0524/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0425/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1225/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro de 2025 | OK |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0524/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0425/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1225/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro de 2025 | INCONSISTENTE |
 | ✅ OK | `https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf` | Relatório — Pesquisa Jurisprudencial (2023) | OK |
 | ✅ OK | `https://www18.fgv.br/projetorioparaopeba/acompanhamento-saldo-municipios.html` | Geral | OK |
 | ❓ INCONSISTENTE | `http://exemplo/%E0%A4%A.pdf` | Geral | INCONSISTENTE |
@@ -460,7 +460,7 @@
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_federais_superficial/MapServer/4` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/arcgis/rest/services/DADOSABERTOS/outorgas_estaduais_superficial/MapServer/0` | Geral | OK |
 | ✅ OK | `https://portal1.snirh.gov.br/server/rest/services/Hosted/outorgas_estaduais_subterraneas/FeatureServer/0` | Geral | OK |
-| ✅ OK | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | OK |
+| ❓ INCONSISTENTE | `https://datageo.ambiente.sp.gov.br/geoserver/datageo/ows` | Geral | INCONSISTENTE |
 | ✅ OK | `https://fepam.rs.gov.br/upload/arquivos/202602/23110518-autos-de-infracao-2026-02-23.xlsx` | Geral | OK |
 | ✅ OK | `https://geopr.iat.pr.gov.br/server/rest/services/00_PUBLICACOES/licenciamento_ambiental_pr/FeatureServer/0` | Geral | OK |
 | ✅ OK | `https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama` | Geral | OK |
@@ -1019,11 +1019,11 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=129` | SC-127 Registro de sesmarias (com índice no inicio) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=131` | SC-129 Registro de sesmarias (com índice no final) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=134` | SC-132 Registro de provisões régias, cartas de confirmação de sesmaria e provisões do Governador | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=142` | SC-140 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=148` | SC-146 Registro de cartas de confirmação de sesmaria (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=158` | SC-156 Registro de sesmarias | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=142` | SC-140 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=148` | SC-146 Registro de cartas de confirmação de sesmaria (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=158` | SC-156 Registro de sesmarias | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=173` | SC-171 Registro de cartas, circulares, ordens e portarias do Governador, provisões, nombramentos e sesmarias | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=174` | SC-172 Registro de sesmarias (com índice no início) | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=174` | SC-172 Registro de sesmarias (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=208` | SC-206 Registro de sesmarias (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=21` | SC-21 Registro de cartas, ordens, bandos, instruções, patentes, provisões e sesmarias (com índice no inicio) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=236` | SC-234 Registro de sesmarias (com índice no final) | OK |
@@ -2291,7 +2291,7 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4336` | SG-Cx.42-Doc.18 REQUERIMENTO DE ANTÔNIA MARIA DE JESUS E SEU FILHO MANUEL BARBOSA CASTRO REFERENTE A CARTA DE SESMARIA, NO RIBEIRÃO DO MELO, TERMO DA VILA DE QUELUZ | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4337` | SG-Cx.42-Doc.19 REQUERIMENTO DE BENTO DA COSTA REFERENTE A CARTA DE SESMARIA, NA PARAGEM CHAMADA OS BARREIROS, COMARCA DA VILA DO SABARÁ | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=4359` | SG-Cx.42-Doc.41 REQUERIMENTO DE JOSÉ SIMÕES DE OLIVEIRA REFERENTE A CARTA DE SESMARIA DAS TERRAS NAS VERTENTES DO RIBEIRÃO MANDA SAIA, FREGUESIA DA SENHORA SANTA ANA DE BAMBUÍ, TERMO DA VILA DE SÃO BENTO, RIO DAS MORTES | OK |
-| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3441` | SG-Cx.42-Doc.49 REQUERIMENTO DE ESCOLÁSTICA MARIA NOGUEIRA REFERENTE A CARTA DE SESMARIA DAS TERRAS EM CAMPO GRANDE, FREGUESIA DE POUSO ALTO, TERMO DA VILA DE SÃO JOÃO DEL-REI, RIO DAS MORTES | OK |
+| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3441` | SG-Cx.42-Doc.49 REQUERIMENTO DE ESCOLÁSTICA MARIA NOGUEIRA REFERENTE A CARTA DE SESMARIA DAS TERRAS EM CAMPO GRANDE, FREGUESIA DE POUSO ALTO, TERMO DA VILA DE SÃO JOÃO DEL-REI, RIO DAS MORTES | INCONSISTENTE |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3442` | SG-Cx.42-Doc.50 REQUERIMENTO DO PADRE FRANCISCO XAVIER FORTES DE BUSTAMANTE REFERENTE A CARTA DE SESMARIAS NOS GERAIS DA IBITIPOCA | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3489` | SG-Cx.43-Doc.01 REQUERIMENTO DE FRANCISCO JOSÉ PEREIRA REFERENTE A CARTA DE SESMARIA DAS TERRAS NA CAXOEIRA BOM JARDIM | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3491` | SG-Cx.43-Doc.02 REQUERIMENTO DE JOSÉ DA SILVA DE OLIVEIRA REFERENTE A CARTA DE SESMARIAS NO RIBEIRÃO DAS ARADAS DO TERMO DA VILA DE SÃO BENTO DO TAMANDUÁ | OK |
@@ -2307,7 +2307,7 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3602` | SG-Cx.43-Doc.31 REQUERIMENTO DE JOAQUIM DA SILVA TAVARES REFERENTE A CARTA DE SESMARIA NA APLICAÇÃO DA CONCEIÇÃO, TERMO DE SÃO JOÃO DEL-REI | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3608` | SG-Cx.43-Doc.34 REQUERIMENTO DE MANUEL SANTIAGO REFERENTE A CARTA DE SESMARIA FREGUESIA DO CURRAL DEL-REI | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3610` | SG-Cx.43-Doc.35 REQUERIMENTO DE INÊS CLARA DE JESUS REFERENTE A CARTA DE SESMARIAS NA PARAGEM DOS VEADOS DA BARRA DO RIBEIRÃO FUNDO | OK |
-| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3624` | SG-Cx.43-Doc.45 REQUERIMENTO DE IGNÁCIO DE CUBAS REFERENTE A CARTA DE SESMARIA NA BEIRA DO RIO JACARÉ, TERMO DA VILA DE SÃO BENTO DO TAMANDUÁ | OK |
+| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3624` | SG-Cx.43-Doc.45 REQUERIMENTO DE IGNÁCIO DE CUBAS REFERENTE A CARTA DE SESMARIA NA BEIRA DO RIO JACARÉ, TERMO DA VILA DE SÃO BENTO DO TAMANDUÁ | INCONSISTENTE |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3625` | SG-Cx.43-Doc.46 PROPOSTA DE NOMEAÇÃO QUE FAZEM OS OFICIAIS DA CÂMARA DE VILA RICA AO GOVERNADOR PARA OCUPAR O CARGO DE JUIZ DAS SESMARIAS | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3626` | SG-Cx.43-Doc.47 PARECER DOS OFICIAIS DA CÂMARA DE VILA DE PITANGUI AO GOVERNADOR SOBRE A FALTA DE IMPEDIMENTOS PARA A CONCESSÃO DA SESMARIA PRETENDIDA POR MANUEL LUIS DE SOUSA | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=3633` | SG-Cx.43-Doc.52 REQUERIMENTO DE PEDRO DOMINGOS DE CARVALHO REFERENTE A CARTA DE SESMARIA DAS TERRAS NA APLICAÇÃO DE NOSSA SENHORA DA CONCEIÇÃO DA BARRA, TERMO DE SÃO JOÃO | OK |
@@ -3025,7 +3025,7 @@
 | ✅ OK | `https://www.al.ba.gov.br/ouvidoria` | Geral | OK |
 | ❓ INCONSISTENTE | `https://transparencia.al.ba.gov.br/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.al.ba.gov.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.al.ba.gov.br/atividade-legislativa/proposicoes` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.al.ba.gov.br/atividade-legislativa/proposicoes` | Geral | OK |
 | ❌ QUEBRADO | `https://www.youtube.com/@tvassembleiadabahia` | Geral | QUEBRADO |
 | ✅ OK | `https://www.youtube.com/watch?v=alba_aud_seca` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alba_aud_dh` | Geral | OK |
@@ -3064,7 +3064,7 @@
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_rios` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ouvidoria` | Geral | OK |
-| ✅ OK | `https://transparencia.al.al.leg.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.al.al.leg.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://sapl.al.al.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleal_aud_braskem` | Geral | OK |
@@ -3209,7 +3209,7 @@
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_jalapao` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleto_aud_rios` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais?uf=MG` | Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP? | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/editais?uf=MG` | Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP? | OK |
 | ✅ OK | `https://www.gov.br/anm/pt-br/assuntos/arrecadacao/distribuicao-da-cfem` | Quais municípios fazem parte do polo do lítio no Jequitinhonha e como fiscalizar? | OK |
 | ✅ OK | `https://www.gov.br/funai/pt-br/atuacao/terras-indigenas` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Te%C3%B3filo%20Otoni&uf=MG` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | OK |
@@ -3238,7 +3238,7 @@
 | ✅ OK | `https://dadosabertos.ccee.org.br/` | Quem são os maiores consumidores de água e energia em Minas Gerais? | OK |
 | ✅ OK | `https://cidades.ibge.gov.br` | Base de dados: 199 Cidades Estratégicas do Brasil | OK |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br` | Base de dados: Radar de Editais & Chamamentos Públicos | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://site.ufvjm.edu.br/posestudosrurais` | Base de dados: Acervo de Estudos Rurais e Territoriais | INCONSISTENTE |
+| ❌ QUEBRADO | `https://site.ufvjm.edu.br/posestudosrurais` | Base de dados: Acervo de Estudos Rurais e Territoriais | QUEBRADO |
 | ❓ INCONSISTENTE | `https://paraopeba.fgv.br` | Base de dados: Execução Financeira do Acordo de Brumadinho | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://app.anm.gov.br/sigbm` | Base de dados: Cadastro Nacional de Barragens de Mineração (SIGBM) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://datasus.saude.gov.br` | Base de dados: Cadastro Nacional de Estabelecimentos de Saúde (CNES) | INCONSISTENTE |
@@ -3252,438 +3252,438 @@
 | ❌ QUEBRADO | `https://queimadas.dgi.inpe.br/queimadas/bdqueimadas` | Programa Queimadas — Focos de Calor e Risco de Fogo | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.snis.gov.br/ e https://metadados.ana.gov.br/` | SNIS e Atlas Esgotos — Saneamento Básico e Poluição Hídrica | INCONSISTENTE |
 | ✅ OK | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | OK |
-| ✅ OK | `https://aedasmg.org/documento/encontro-o-povo-ainda-luta-despedida-da-aedas-paraopeba/` | FOTOS – Encontro “O Povo Ainda Luta” – Despedida da Aedas Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/livros-de-danos-coletivos-sofridos-pelas-comunidades-par/` | Livros de Danos Coletivos sofridos pelas Comunidades de Brumadinho e da Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/balanco-anual-aedas-paraopeba-2025/` | Vídeo Balanço Anual Aedas Paraopeba – 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/balanco-da-reparacao-2023-2025-par/` | Balanço da Reparação 2023-2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-pcts-27-p1-final/` | Dossiê com dados referentes ao processo de assessoramento aos PCTs | OK |
-| ✅ OK | `https://aedasmg.org/documento/metricas-e-engajamento-nos-canais-de-comunicacao-2025-2/` | Métricas e engajamento nos canais de Comunicação – 2025.2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/fotos-projeto-aedas-paraopeba/` | FOTOS – Projeto Aedas Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-189-estudos-ufmg-e-atualizacoes-sobre-o-novo-auxilio/` | Aedas No Ar 189 – Estudos UFMG e atualizações sobre o novo auxílio | OK |
-| ✅ OK | `https://aedasmg.org/documento/analise-dos-espacos-participativos-e-das-demandas-das-pessoas-atingidas/` | Análise dos espaços participativos e das demandas das pessoas atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-semanal-aedas-28112025/` | Boletim Semanal da Aedas: Vale realiza o depósito dos valores para o pagamento do Novo Auxílio Emergencial; eleição da nova ATI e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-188-tjmg-autoriza-a-garantia-de-novo-auxilio-emergencial/` | Aedas No Ar 188 – TJMG autoriza a garantia de novo auxílio emergencial | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-retomada-auxilio-emergencial/` | Boletim Semanal da Aedas: Justiça determina retomada do pagamento emergencial para as pessoas atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/lista-das-comunidades-e-dos-conselhos-locais-da-governanca-popular-do-anexo-i-1-na-r1-e-r2/` | Lista das Comunidades e dos Conselhos Locais da Governança Popular do Anexo I.1 na R1 e R2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/documento-sintese-da-participacao-dos-pcts-25p1/` | Documento Sintese da participação dos Povos e Comunidades Tradicionais na região 1 e 2 da Bacia do Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/painel-atendimentos-e-demandas-paraopeba/` | Painel atendimentos e demandas – Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/painel-espacos-participativos-paraopeba/` | Painel espaços participativos – Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1125/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de novembro de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-187-direito-a-ati-e-novo-auxilio-emergencial/` | Aedas No Ar 187 – Direito à ATI e novo Auxílio Emergencial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-186-seguranca-de-barragens/` | Aedas no Ar 186 – Segurança de barragens | OK |
-| ✅ OK | `https://aedasmg.org/documento/documentos-base-para-construcao-de-regimentos-do-setores-regiao-1/` | Documentos base para construção de Regimentos do Setores – Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/documentos-base-para-construcao-de-regimentos-do-setores-regiao-2/` | Documentos base para construção de Regimentos do Setores – Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/regimentos-internos-conselhos-locais-regiao-2-anexo-i-1/` | Regimentos internos conselhos locais Região 2- Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/regimentos-internos-conselhos-locais-regiao-1-anexo-i-1/` | Regimentos internos conselhos locais Região 1 – Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/lista-de-danos-coletivos-atualizada-regiao-2/` | Lista de danos coletivos atualizada – Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/lista-de-danos-coletivos-atualizada-regiao-1/` | Lista de danos coletivos atualizada – Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-47a-edicao-direitos-em-risco/` | Vozes do Paraopeba – 47ª edição: Direitos em risco | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1025/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-241025/` | Boletim Semanal da Aedas: Ato em memória das joias, atualização sobre novo auxílio emergencial e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-demandas-individuais-e-coletivas-ptr/` | Caderno de demandas individuais e coletivas referentes ao Anexo I.2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-185-dano-ambiental-e-a-saude/` | Aedas no ar 185 – Dano Ambiental e à Saúde | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-9/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 9 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-184-medidas-do-novo-auxilio-emergencial/` | Aedas no ar 184 – Medidas do novo auxílio emergencial | OK |
-| ✅ OK | `https://aedasmg.org/documento/formacao-em-direitos-justica-e-defesas/` | Formação em Direitos Justiça e Defesas: caminhos de acesso a direitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-183-atualizacoes-sobre-o-ptr/` | Aedas no ar 183 – Atualizações sobre o PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-031025/` | Boletim Semanal da Aedas: Atualização sobre ação do novo auxílio emergencial, garantia da ATI no acompanhamento da reparação e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/47-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 47ª edição: Direitos em risco | OK |
-| ✅ OK | `https://aedasmg.org/documento/listas-de-ideias-de-projetos-locais-e-regionais-para-o-anexo-i-1/` | Listas de Ideias de Projetos Locais e Regionais para o Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-182-fim-do-ptr-e-decisoes-sobre-a-ati/` | Aedas no Ar 182 – Fim do PTR e Decisões sobre a ATI | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-181-julgamento-de-ex-presidente-da-vale-no-stj/` | Aedas no Ar 181 – Julgamento de ex-presidente da Vale no STJ | OK |
-| ✅ OK | `https://aedasmg.org/documento/consultoria-idafro-e-aedas/` | Consultoria Idafro e Aedas | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-de-sistematizacao-cineparaopeba/` | Caderno de Sistematização – CineParaopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-46a-edicao-fim-do-ptr/` | Vozes do Paraopeba – 46ª edição: Fim do PTR – Atingidas e atingidos da Bacia do Paraopeba cobram da justiça celeridade na definição do novo auxílio emergencial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-180-nota-da-aedas-ao-procedimento-administrativo-das-ijs/` | Aedas no Ar 180 – Nota da Aedas ao Procedimento Administrativo das IJs | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-179-cine-paraopeba/` | Aedas no Ar 179 – Cine Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0825/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-metricas-2025-1/` | Relatório – Métricas e engajamento nos canais de Comunicação 2025.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0725/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-178-juiz-pede-revisao-de-recursos-para-ati/` | Aedas no Ar 178 – Juiz pede revisão de recursos para ATI | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-46a-edicao-fim-do-ptr-2/` | Vozes do Paraopeba – 46ª edição: Fim do PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/mostra-cine-paraopeba-onde-eu-nasci-passa-um-rio/` | FOTOS – Mostra Cine Paraopeba: Onde Eu Nasci Passa um Rio | OK |
-| ✅ OK | `https://aedasmg.org/documento/45-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 45ª edição: Decisão sobre novo auxílio emergencial é adiada e gera insegurança às pessoas atingidas da Bacia do Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-177-mostra-de-cinema-e-espacos-participativos/` | Aedas no Ar 177 – Mostra de cinema e espaços participativos | OK |
-| ✅ OK | `https://aedasmg.org/documento/filme-somos-arana/` | Filme “Somos Aranã” | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-220825/` | Boletim Semanal da Aedas: Ato em memória das joias, julgamento adiado no TJMG e retomada dos Estudos de Risco | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-176-povos-tradicionais-de-matriz-africana-no-ptr/` | Aedas no Ar 176 – Povos Tradicionais de Matriz Africana no PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/memoria-das-atividades-participativas-jan-ago-25/` | Memória das atividades participativas (janeiro a agosto 25) | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-175-formacao-de-conselhos-do-anexo-i-1/` | Aedas no Ar 175 – Formação de Conselhos do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-174-ati-e-direito-conquistado/` | Aedas no Ar 174 – ATI é direito conquistado | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-010825/` | Boletim Semanal da Aedas: Reuniões Intercomunitárias, Manifestação do MPMG e Inclusão de povos de terreiro e matriz africana no PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-45a-edicao-decisao-sobre-novo-auxilio-emergencial-e-adiada-e-gera-inseguranca-as-pessoas-atingidas-da-bacia-do-paraopeba/` | Vozes do Paraopeba – 45ª edição: Decisão sobre novo auxílio emergencial é adiada e gera insegurança às pessoas atingidas da Bacia do Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/44-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 44ª edição: Corte de recursos para acompanhamento do Anexo I.1 mobiliza os territórios | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-173-a-saude-das-pessoas-atingidas/` | Aedas no Ar 173 – A saúde das pessoas atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-8/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 8 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-172-saude-e-reparacao/` | Aedas no Ar 172 – Saúde e reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-171-as-proximas-etapas-do-anexo-i-1/` | Aedas no Ar 171 – As próximas etapas do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1107/` | Boletim Semanal da Aedas: Ato do Movimento dos Atingidos por Barragens e lideranças atingidas em Belo Horizonte e questionamentos ao estudo realizado pela CAMF | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-170-justica-sem-barreiras/` | Aedas no Ar 170 – “Justiça sem Barreiras” | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-04-07-25/` | Boletim Semanal da Aedas: Execução do Anexo I.1, reivindicações das pessoas atingidas e festival de cinema | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-fundamentos-para-fins-de-elegibilidade-no-anexo-i-1-2/` | Dossiê com Fundamentos para fins de elegibilidade no anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0625/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-169-comunidade-tradicional-ribeirinha-da-rua-amianto/` | Aedas no Ar 169 – Comunidade Tradicional Ribeirinha da Rua Amianto | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-44a-edicao-corte-de-recursos-para-acompanhamento-do-anexo-i-1-mobiliza-os-territorios/` | Vozes do Paraopeba – 44ª edição: Corte de recursos para acompanhamento do Anexo I.1 mobiliza os territórios | OK |
-| ✅ OK | `https://aedasmg.org/documento/43-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 43ª edição: Plano de Execução do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/demandas-riscos-a-saude-e-ao-meio-ambiente-15p124/` | Caderno de demandas das pessoas atingidas sobre os riscos à saúde e ao meio ambiente | OK |
-| ✅ OK | `https://aedasmg.org/documento/formacao-em-direitos-politicas-e-acesso-a-justica/` | Formação em Direitos – Políticas e acesso à Justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-168-reparacao-socioambiental/` | Aedas no Ar 168 – Reparação Socioambiental | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-167-comeca-execucao-do-anexo-i-1/` | Aedas no Ar 167 – Começa execução do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/r2-acesso-a-direitos-e-as-instituicoes-de-justica/` | R2: Acesso a Direitos e as Instituições de Justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/r1-acesso-a-direitos-e-as-instituicoes-de-justica/` | R1: Acesso a Direitos e as Instituições de Justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-166-inicio-do-anexo-i-1/` | Aedas no Ar 166 – Início do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-justica-sem-barreiras-par/` | Justiça sem barreiras: o impacto dos marcadores sociais no acesso à justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0525/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-165-anexos-i-3-e-i-4/` | Aedas no Ar 165 – Anexos I.3 e I.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-43a-edicao-plano-de-execucao-do-anexo-i-1/` | Vozes do Paraopeba – 43ª edição: Plano de Execução do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2905/` | Boletim Semanal da Aedas: Auditoria aponta lentidão na reparação socioambiental e ATIs dialogam com IJs sobre Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/42-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 42ª edição: Início do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-164-justica-etnico-racial-e-a-reparacao/` | Aedas no Ar 164 – Justiça étnico-racial e a Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2305/` | Boletim Semanal da Aedas: Ato em memória das joias, PTR e Liquidação Coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/tesouros-da-floresta-a-luta-por-justica-climatica/` | Tesouros da Floresta: A Luta por Justiça Climática | OK |
-| ✅ OK | `https://aedasmg.org/documento/filmes-memoria-caderno-oficina-de-comunicacao/` | Filmes Memória – Caderno Oficina de Comunicação | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-163-direito-ao-auxilio-emergencial-e-gestao-efetiva-do-anexo-i-1/` | Aedas no Ar 163 – Direito ao auxílio emergencial e gestão efetiva do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1605/` | Boletim Semanal da Aedas: Reuniões Intercomunitárias, Informe da FGV e garantia das ATIs em atividades do processo | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-os-resultados-alcancados-pelo-ciclo-de-formacao-das-oficinas-de-comunicacao-popular-fimes-memorias/` | Caderno com os resultados alcançados pelo ciclo de formação das oficinas de Comunicação Popular – Fimes – Memorias | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-162-saude-da-populacao-atingida-e-tema-de-audiencia-na-almg/` | Aedas no Ar 162 – Saúde da população atingida é tema de audiência na ALMG | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0905/` | Boletim Semanal da Aedas: Entidade Gestora se manifesta pelo início do Anexo I.1, parecer do MPMG sobre auxílio emergencial e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-161-atualizacoes-do-ptr/` | Aedas no Ar 161 – Atualizações do PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-42a-edicao-inicio-do-anexo-i-1/` | Vozes do Paraopeba – 42ª edição: Início do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-160-atores-da-reparacao/` | Aedas no Ar 160 – Atores da Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/41-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 41ª edição: Governança, Políticas Públicas e PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-159-programa-de-transferencia-de-renda/` | Aedas no Ar 159 – Programa de Transferência de Renda | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-7/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 7 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-158-informacoes-sobre-o-ptr/` | Aedas no Ar 158 – Informações sobre o PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-157-direitos-humanos-e-patrimonio-cultural/` | Aedas no Ar 157 – Direitos Humanos e Patrimônio Cultural | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0404/` | Boletim Semanal da Aedas: Oficina de Protocolo de Consulta, Reparação Socioambiental e os atores da reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0325/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-156-mulheres-em-luta-pela-reparacao/` | Aedas no Ar 156 – Mulheres em luta pela reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-41a-edicao-governanca-politicas-publicas-e-ptr/` | Vozes do Paraopeba – 41ª edição: Governança, Políticas Públicas e PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-6/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/sistematizacao-dos-direitos-especificos-e-entidades-responsaveis-com-vinculacao-dos-pcts-acompanhados/` | Sistematização dos direitos específicos e entidades responsaveis com vinculação dos PCTs acompanhados | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2803/` | Boletim Semanal da Aedas: Informes do PTR, Processo Judicial e atividade do Anexo I.3 na Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-155-14m-de-luta-pelo-ptr/` | Aedas no Ar 155 – 14M de luta pelo PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/40-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 40ª edição: Mulheres em defesa do Programa de Transferência de Renda (PTR) | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-154-pericia-na-fase-de-liquidacao-e-o-papel-da-ati/` | Aedas no Ar 154 – Perícia na fase de liquidação e o papel da ATI | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-153-reunioes-intercomunitarias/` | Aedas no Ar 153 – Reuniões Intercomunitárias | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-152-4-anos-do-acordo-de-reparacao/` | Aedas no Ar 152 – 4 anos do “Acordo de Reparação” | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0225/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-40a-edicao-mulheres-em-defesa-do-programa-de-transferencia-de-renda-ptr/` | Vozes do Paraopeba – 40ª edição: Mulheres em defesa do Programa de Transferência de Renda (PTR) | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatoria-expandida-das-acoes-e-procedimentos-de-consulta-previa-livre-informada-e-de-boa-fe-junto-as-comunidades-assessoradas/` | Relatoria expandida das ações e procedimentos de Consulta Prévia, Livre, Informada e de Boa – fé, junto as comunidades assessoradas | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-151-pericia-judicial/` | Aedas no Ar 151 – Perícia judicial | OK |
-| ✅ OK | `https://aedasmg.org/documento/39-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 39ª edição: Acordo Judicial completa 4 anos em um cenário de incertezas | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-150-reducao-no-ptr/` | Aedas no Ar 150 – Redução no PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1402/` | Boletim Semanal da Aedas: Julgamento no TJMG, Anexo I.3 e I.4 e desfile de bloco no Citrolândia | OK |
-| ✅ OK | `https://aedasmg.org/documento/quantas-joias-valem-a-mineracao-predatoria/` | Quantas Joias Valem a Mineração Predatória? | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-149-memoria-e-justica/` | Aedas no Ar 149 – Memória e justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0702/` | Boletim Semanal da Aedas: tira-dúvidas sobre a Liquidação Coletiva, Balanço dos Anexos I.3 e I.4 e Histórias Atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-148-atos-no-marco-de-6-anos/` | Aedas no Ar 148 – Atos no marco de 6 anos | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0125/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de janeiro de 2025 | OK |
-| ✅ OK | `https://aedasmg.org/documento/balanco-das-acoes-e-atividades-da-aedas/` | Balanço das Ações e Atividades da Aedas | OK |
-| ✅ OK | `https://aedasmg.org/documento/quanto-vale-a-mineracao-predatoria/` | Quanto vale a mineração predatória? | OK |
-| ✅ OK | `https://aedasmg.org/documento/historias-atingidas/` | Histórias Atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-39a-edicao-acordo-judicial-completa-4-anos-em-um-cenario-de-incertezas/` | Vozes do Paraopeba – 39ª edição: Acordo Judicial completa 4 anos em um cenário de incertezas | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-3101/` | Boletim Semanal da Aedas: nova edição do Vozes do Paraopeba, PTR e jornada de lutas do MAB | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-5/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/38-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 38ª edição: Quantas vidas valem a mineração predatória? | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-147-6-anos-do-rompimento-em-brumadinho/` | Aedas no Ar 147 – 6 anos do rompimento em Brumadinho | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-6/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 6 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-146-caminhos-para-a-liquidacao-coletiva/` | Aedas no Ar 146 – Caminhos para a Liquidação Coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-145-participacao-e-direitos/` | Aedas no Ar 145 – Participação e direitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/assistencia-a-saude-r2-rede-de-atendimento-servicos-publicos/` | Assistência a saúde R2: Rede de atendimento Serviços públicos | OK |
-| ✅ OK | `https://aedasmg.org/documento/assistencia-a-saude-r1-rede-de-atendimento-servicos-publicos/` | Assistência a saúde R1: Rede de atendimento Serviços públicos | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-144-trem-de-passageiros-entrevista-com-vanessa-campolina-do-mpmg/` | Aedas no Ar 144 – Trem de passageiros + Entrevista com Vanessa Campolina, do MPMG | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1224/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-143-mais-balanco-das-acoes-de-2024-parte-2/` | Aedas no Ar 143 – Mais balanço das ações de 2024 (Parte 2) | OK |
-| ✅ OK | `https://aedasmg.org/documento/saude/` | Protocolo de Saúde para a população exposta à mineração | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-38a-edicao-quantas-vidas-valem-a-mineracao-predatoria/` | Vozes do Paraopeba – 38ª edição: Quantas vidas valem a mineração predatória? | OK |
-| ✅ OK | `https://aedasmg.org/documento/infancias-e-emergencias-climaticas-aedinhas-no-ar-edicao-26/` | Infâncias e Emergências Climáticas – Aedinhas no Ar – Edição 26 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-5/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-10-inventario-de-participativo-do-patrimonio-cultural-para-fortalecimento-dos-povos-e-comunidades-tradicionais/` | Caderno 10 -Inventario de Participativo do Patrimonio Cultural para fortalecimento dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-com-balanco-das-demandas-de-vulnerabilidade-e-extrema-vulnerabilidade/` | Relatório com balanço das demandas de vulnerabilidade e extrema vulnerabilidade | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas-4/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (julho a dezembro de 24) | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-5/` | Dossiê de atividades anexos 1.3/1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-6/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-indices-acerca-dos-niveis-de-acesso-inclusao-e-participacao-por-parte-dos-atingidos-e-atingidas/` | Dossiê com índices acerca dos níveis de acesso, inclusão e participação por parte dos atingidos e atingidas. | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-comunicacao-e-relatorio-de-metricas-242/` | Plano de comunicação e relatório de métricas 2024.2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-142-balanco-das-acoes-realizadas-em-2024-parte-1/` | Aedas no Ar 142 – Balanço das Ações realizadas em 2024 (Parte 1) | OK |
-| ✅ OK | `https://aedasmg.org/documento/video-com-balanco-das-acoes-e-atividades-realizadas-pela-assessoria-tecnica-no-ano-vigente-periodicidade-anual-2/` | Vídeo com balanço das ações e atividades realizadas pela Assessoria Técnica no ano vigente (periodicidade Anual) . | OK |
-| ✅ OK | `https://aedasmg.org/documento/video-com-balanco-das-acoes-e-atividades-realizadas-pela-assessoria-tecnica-no-ano-vigente-periodicidade-anual/` | Vídeo com balanço das ações e atividades realizadas pela Assessoria Técnica no ano vigente (periodicidade Anual) . | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2012/` | Boletim Semanal da Aedas: Audiência sobre os ERSHRE, carta de atingida e recesso do judiciário | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 3 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 3 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-juatuba-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Juatuba- Agrupamento 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-juatuba-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Juatuba- Agrupamento 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-igarape/` | Planos Participativos de Reparação e Desenvolvimento, Igarapé | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-4/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 3 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-13/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 13 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-12/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 12 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-11/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 11 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-10/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 10 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-9/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 9 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-8/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 8 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-7/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 7 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-6/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 6 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-5/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 5 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-4/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 3 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/playlist-radio-aedas-no-ar-2021-a-2024/` | Playlist rádio Aedas no Ar (2021 a 2024) | OK |
-| ✅ OK | `https://aedasmg.org/documento/37-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 37ª edição: Panorama dos Atendimentos e Atividades Realizadas nas Regiões 1 e 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1124/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de novembro | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-13-12/` | Boletim Semanal da Aedas: contestação de estudos da Vale e audiência sobre riscos à saúde humana e ecológico | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-06-12/` | Boletim Semanal da Aedas: contestação de estudos da Vale, audiência sobre avaliação de risco à saúde, ecológico e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1024/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-das-demandas-das-pessoas-atingidas-e-documentos-elaborados-pela-ati-relacionados-ao-tema-da-reparacao-socioambiental-e-saude-2/` | Dossiê das demandas das pessoas atingidas e documentos elaborados pela ATI relacionados ao tema da reparação socioambiental e saúde | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-10-inventario-participativo/` | PCT Caderno 10: Inventário Participativo | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-2/` | Caderno com o levantamento das demandas individuais e coletivas referente ao Anexo 1.2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/escrita-pela-ausencia/` | Escrita pela Ausência | OK |
-| ✅ OK | `https://aedasmg.org/documento/filme-memoria/` | Filme-Memória | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-37a-edicao-panorama-dos-atendimentos-e-atividades-realizadas-nas-regioes-1-e-2/` | Vozes do Paraopeba – 37ª edição: Panorama dos Atendimentos e Atividades Realizadas nas Regiões 1 e 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/ciranda-encantada-filme-memoria/` | Ciranda Encantada | Filme-Memória | OK |
-| ✅ OK | `https://aedasmg.org/documento/36-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 36ª edição: Políticas do Patrimônio e a Defesa dos Territórios Negros | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2211/` | Boletim Semanal da Aedas: Processo judicial, Vale questiona atuação das ATIs, direitos dos PCTs e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-de-danos-regiao-2/` | Cadernos de Danos Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-de-danos-regiao-1/` | Cadernos de Danos Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vale-cara-de-pau-filme-memoria/` | Vale Cara de Pau | Filme-Memória | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1411/` | Boletim Semanal da Aedas: Segunda rodada de visitas técnicas do Anexo I.1, Liquidação Coletiva e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/periodo-de-chuvas-informacoes-e-recomendacoes-regiao-1/` | PERÍODO DE CHUVAS: Informações e recomendações Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/periodo-de-chuvas-informacoes-e-recomendacoes-regiao-2/` | PERÍODO DE CHUVAS: Informações e recomendações Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0811/` | Boletim Semanal da Aedas: Informe da FGV sobre redução do valor do PTR e reuniões da Semad em Brumadinho | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0111/` | Boletim Semanal da Aedas: Informe da auditoria dos estudos socioambientais, denúncia de má qualidade de obras do Anexo I.3 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-36a-edicao-politicas-do-patrimonio-e-a-defesa-dos-territorios-negros/` | Vozes do Paraopeba – 36ª edição: Políticas do Patrimônio e a Defesa dos Territórios Negros | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-4/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0924/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de setembro | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-metodologia-oficinas-protocolo-consulta-pcts-r1e2/` | Cartilha com Diretrizes e Proposição Metodológica de Elaboração de Oficinas para Protocolos de Consulta dos Povos e Comunidades Tradicionais Atingidos das Regiões 1 e 2 da Bacia do Paraopeba no Contexto da Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/filme-memoria-oficina-de-comunicacao-popular-paraopeba/` | FOTOS – Filme-Memória: Oficina de Comunicação Popular Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2510/` | Boletim Aedas: Nova edição do Jornal e Informe dos Compromitentes sobre a reforma da Praça do Tejuco | OK |
-| ✅ OK | `https://aedasmg.org/documento/35-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 35ª edição: Juiz aprova proposta definitiva do Anexo I.1 e TJMG decide pela continuidade da liquidação coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-5/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 5 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1810/` | Boletim Semanal da Aedas: Mortandade de peixes no Paraopeba, Festejo em Brumadinho e intimação da Vale por juiz | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1110/` | Boletim Semanal da Aedas: Julgamento da Liquidação Coletiva e Dia das Crianças | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0410/` | Boletim Semanal da Aedas: Anexo I.1, Seminário sobre levantamento de danos e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-4/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-35a-edicao-juiz-aprova-proposta-definitiva-do-anexo-i-1-e-tjmg-decide-pela-continuidade-da-liquidacao-coletiva/` | Vozes do Paraopeba – 35ª edição: Juiz aprova proposta definitiva do Anexo I.1 e TJMG decide pela continuidade da liquidação coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/manual-de-orientacoes-marcadores-sociais-e-pcts-2/` | Manual de orientações para as equipes relativas a questões jurídicas, marcadores sociais e PCTs | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-4/` | Dossiê de atividades anexos 1.3/1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2709/` | Boletim Semanal da Aedas: Recurso da Vale e informações sobre requalificação urbana em Brumadinho | OK |
-| ✅ OK | `https://aedasmg.org/documento/34-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 34ª edição: Saúde e exposição a metais da mineração na Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-9-educacao/` | Caderno 9 – Educação | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1309/` | Boletim Semanal da Aedas: Encontro das Mulheres Atingidas da Bacia do Paraopeba e Represa de Três Marias e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0609/` | Boletim Semanal da Aedas: Formação em Direitos Humanos na R1 e R2, Devolutivas de estudos socioambientais na Região 2 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0824/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-4a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (4ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-9-educacao/` | PCT Caderno 9: Educação | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-34a-edicao-saude-e-exposicao-a-metais-da-mineracao-na-regiao-2/` | Vozes do Paraopeba – 34ª edição: Saúde e exposição a metais da mineração na Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/radio-aedinhas-no-ar-edicao-20/` | Rádio Aedinhas no Ar – Edição 20 | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-regiao-2/` | Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 – Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-regiao-1/` | Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 – Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-3008/` | Boletim Semanal da Aedas: Julgamento no TJMG garante direitos das pessoas atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/33-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 33ª edição: Reparação Socioambiental só com Participação Informada | OK |
-| ✅ OK | `https://aedasmg.org/documento/r1-rede-de-atendimento-violencia-contra-a-mulher/` | R1: Rede de atendimento – violência contra a mulher | OK |
-| ✅ OK | `https://aedasmg.org/documento/r2-rede-de-atendimento-violencia-contra-a-mulher/` | R2: Rede de atendimento – violência contra a mulher | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0908/` | Boletim Semanal da Aedas: Julgamento no TJMG, Eleições 2024 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0724/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0208/` | Boletim Semanal da Aedas: Liquidação Coletiva e festividades em Brumadinho | OK |
-| ✅ OK | `https://aedasmg.org/documento/r1-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-2/` | R1: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/r2-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-2/` | R2: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-33a-edicao-reparacao-socioambiental-so-com-participacao-informada/` | Vozes do Paraopeba – 33ª edição: Reparação Socioambiental só com Participação Informada | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2607/` | Boletim Semanal da Aedas: julgamento no TJMG, prorrogação da Consulta Pública sobre saúde e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-3/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-4/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/32-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 32ª edição: Não existe reparação sem as mulheres negras | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0507/` | Boletim Semanal da Aedas: reunião sobre o PTR, informe da Reparação Socioambiental e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0624/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0424/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0324/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-32a-edicao-nao-existe-reparacao-sem-as-mulheres-negras/` | Vozes do Paraopeba – 32ª edição: Não existe reparação sem as mulheres negras | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-comunicacao-e-relatorio-de-metricas241/` | Plano de comunicação e relatório de métricas 2024.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2806/` | Boletim Semanal da Aedas: Devolutivas dos Compromitentes na R1, cursos profissionalizantes na R2 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-ati-relacionados-ao-tema-da-reparacao-socioambiental-e-saude/` | Dossiê das demandas das pessoas atingidas e documentos elaborados pela ATI relacionados ao tema da reparação socioambiental e saúde . | OK |
-| ✅ OK | `https://aedasmg.org/documento/compilado-dos-relatorios-de-sistematizacao-das-contribuicoes-das-pessoas-atingidas-pt06/` | Compilado dos relatórios de sistematização das contribuições das pessoas atingidas, acerca dos anexos I.1,I.2,I.3 e I.4, da Participação Informada e das Diretrizes da Reparação. | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas-3/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (janeiro a junho de 24) | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-5/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | OK |
-| ✅ OK | `https://aedasmg.org/documento/documentario-amianto/` | Documentário – Amianto | OK |
-| ✅ OK | `https://aedasmg.org/documento/31-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 31ª edição: Participação, um marco na luta pela reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-povos-e-comunidades-tradicionais-3-p27/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-6-saude-par-comunidades-tradicionais/` | Caderno 6 -Saude par Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1406/` | Boletim Semanal da Aedas: Encontro da Bacia, contratação de nova entidade para os Estudos de Avaliação de Risco e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-3/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-sobre-os-anexos-1-3-e-1-4/` | Dossiê sobre os anexos 1.3 e 1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-31a-edicao-participacao-um-marco-na-luta-pela-reparacao/` | Vozes do Paraopeba – 31ª edição: Participação, um marco na luta pela reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/30-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 30ª edição: Reconhecimento e Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1005/` | Boletim Semanal da Aedas: Guia da Entidade Gestora, Dossiê de atividades dos Anexos I.3 e I.4 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-0305/` | Boletim Semanal da Aedas: manifestação da Defensoria Pública, audiência no TJMG e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-30a-edicao-reconhecimento-e-reparacao/` | Vozes do Paraopeba – 30ª edição: Reconhecimento e Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/manual-para-as-equipes-marcadores-sociais-e-pcts-p30/` | Manual de orientações para as equipes relativas a questões jurídicas, marcadores sociais e PCTs | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-8-plano-de-gestao-territorial-e-ambiental-de-comunidades-tradicionais/` | Caderno 8 – Plano de Gestão Territorial e Ambiental de Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-7-regularizacao-fundiaria/` | Caderno 7 – Regularização Fundiaria | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2604/` | Boletim Semanal da Aedas: decisão judicial, momento 2 em Brumadinho, vídeos do Anexo I.1 e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-3/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 3 | OK |
-| ✅ OK | `https://aedasmg.org/documento/29-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 29ª edição: Construção do Anexo I.1 do Acordo de Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0224/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0124/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de janeiro | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-2/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1204/` | Boletim Semanal da Aedas: aprovação do Plano de Trabalho das ATIs, informe de rendimentos do PTR, Anexo I.1 na Zona Quente e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1223/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro de 2023 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-2/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-8-plano-de-gestao-territorial-e-ambiental-de-comunidades-tradicionais/` | PCT Caderno 8: Plano de gestão territorial e ambiental de comunidades tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-7-regularizacao-fundiaria/` | PCT Caderno 7: Regularização fundiária | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-6-saude-para-comunidades-tradicionais/` | PCT Caderno 6: Saúde para comunidades tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-29a-edicao-construcao-do-anexo-i-1-do-acordo-de-reparacao/` | Vozes do Paraopeba – 29ª edição: Construção do Anexo I.1 do Acordo de Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-2/` | Dossiê de atividades anexos 1.3/1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-3/` | Dossiê de atividades anexos 1.3/1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2703/` | Boletim Semanal da Aedas: manifestação do MPMG sobre a Liquidação Coletiva, decisão sobre fornecimento de água, direito das infâncias e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/direito-em-foco-um-olhar-sobre-as-infancias-atingidas/` | Direito em foco: Um olhar sobre as infâncias atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1503/` | Boletim Semanal da Aedas: construção de proposta do Anexo I.1, devolutiva do MPMG na R2, decisão da Justiça Federal e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-5-sistema-unico-de-assistencia-social-suas/` | Caderno 5 -Sistema Único de Assistencia Social – SUAS | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-2a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (2ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/r2-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1/` | R2: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/r1-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1/` | R1: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-i-3-e-i-4/` | Dossiê com detalhamento de projeto pelos PCTs (5ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-sobre-o-anexo-1-3-1-4-2a-versao/` | Dossiê sobre o Anexo 1.3/1.4 (2ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-28a-edicao-mulheres-na-luta-pela-reparacao-socioeconomica/` | Vozes do Paraopeba – 28ª edição: Mulheres na luta pela reparação socioeconômica | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-para-a-governanca-popular-dos-projetos-de-demandas-das-comunidades-atingidas-anexo-i-1-propostas-de-diretrizes-para-fluxos-de-projetos-comunitarios-e-fluxo-de-credito-e-microcredito-reg-2/` | Cadernos para a Governança Popular dos Projetos de Demandas das Comunidades Atingidas (Anexo I.1) – Propostas de Diretrizes para Fluxos de Projetos Comunitários e Fluxo de Crédito e Microcrédito – Região 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/cadernos-para-a-governanca-popular-dos-projetos-de-demandas-das-comunidades-atingidas-anexo-i-1-propostas-de-diretrizes-para-fluxos-de-projetos-comunitarios-e-fluxo-de-credito-e-microcredito-reg/` | Cadernos para a Governança Popular dos Projetos de Demandas das Comunidades Atingidas (Anexo I.1) – Propostas de Diretrizes para Fluxos de Projetos Comunitários e Fluxo de Crédito e Microcrédito – Região 1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/27-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 27ª edição: 3 anos do Acordo: comunidades aguardam projetos e cobram acesso a programas | OK |
-| ✅ OK | `https://aedasmg.org/documento/protocolo-de-consulta-quilombos-brumadinho-minuta-2-ed/` | Protocolo de Consulta Livre, Previa, Informada Consentida e de Boa Fé – Comunidades Quilombolas de Sapé, Rodrigues, Ribeirão E Marinhos, Brumadinho MG. | OK |
-| ✅ OK | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-2/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-5-sistema-unico-de-assistencia-social-suas/` | PCT Caderno 5: Sistema Único de Assistência Social (SUAS) | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-27a-edicao-3-anos-do-acordo-comunidades-aguardam-projetos-e-cobram-acesso-a-programas/` | Vozes do Paraopeba – 27ª edição: 3 anos do Acordo: comunidades aguardam projetos e cobram acesso a programas | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4/` | Dossiê de atividades anexos 1.3/1.4 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-2601/` | Boletim Semanal da Aedas: homenagens às joias nos 5 anos do rompimento, reconhecimento de quilombo no Tejuco e série de vídeo-cartas | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1901/` | Boletim Semanal da Aedas: programação do dia 25, nova edição do Jornal e alerta de chuvas | OK |
-| ✅ OK | `https://aedasmg.org/documento/26-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 26ª edição: Há 5 anos, pessoas atingidas aguardam reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1201/` | Boletim Semanal da Aedas: principais informações das Regiões 1 e 2 da Bacia do Rio Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-1a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (1ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-4/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-26a-edicao-ha-5-anos-pessoas-atingidas-aguardam-reparacao/` | Vozes do Paraopeba – 26ª edição: Há 5 anos, pessoas atingidas aguardam reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar91/` | Aedas no Ar #91 – Juiz decide a favor do início da Liquidação Coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/25-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 25ª edição: A Luta pela Reparação em 2023 | OK |
-| ✅ OK | `https://aedasmg.org/documento/boletim-aedas-1512/` | Boletim Semanal da Aedas: principais informações das Regiões 1 e 2 da Bacia do Rio Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (julho a dezembro de 2023) | OK |
-| ✅ OK | `https://aedasmg.org/documento/dossie-sobre-o-anexo-1-3-1-4-1a-versao/` | Dossiê sobre o Anexo 1.3/1.4 (1ª versão) | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-25a-edicao-a-luta-pela-reparacao-em-2023/` | Vozes do Paraopeba – 25ª edição: A Luta pela Reparação em 2023 | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2/` | Caderno com o levantamento das demandas individuais e coletivas referente ao Anexo 1.2. | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-1023/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro | OK |
-| ✅ OK | `https://aedasmg.org/documento/24-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 24ª edição: Povo Negro Atingido na Bacia do Paraopeba tem danos agravados | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-4-sistemas-agricolas-tradicionais/` | PCT Caderno 4: Sistemas agrícolas tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-3-perspectivas-de-patrimonio/` | PCT Caderno 3: Perspectivas de Patrimônio | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-2-entidades-responsaveis/` | PCT Caderno 2: Entidades responsáveis | OK |
-| ✅ OK | `https://aedasmg.org/documento/pct-caderno-1-legislacoes-e-direitos/` | PCT Caderno 1: Legislações e Direitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-24a-edicao-povo-negro-atingido-na-bacia-do-paraopeba-tem-danos-agravados/` | Vozes do Paraopeba – 24ª edição: Povo Negro Atingido na Bacia do Paraopeba tem danos agravados | OK |
-| ✅ OK | `https://aedasmg.org/documento/protocolo-de-consulta-livre-previa-informada-consentida-e-de-boa-fe-comunitade-tradicional-ribeirinha-rua-amianto/` | Protocolo de Consulta Livre, Previa, Informada Consentida e de Boa Fé – Comunitade Tradicional Ribeirinha Rua Amianto | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-4-sistemas-agricolas-tradicionais/` | Caderno 4- Sistemas Agricolas Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-3-perspectivas-de-patrimonio/` | Caderno 3- Perspectivas de Patrimonio | OK |
-| ✅ OK | `https://aedasmg.org/documento/23-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 23ª edição: O protagonismo das infâncias atingidas na Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0923/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de setembro | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-23a-edicao-o-protagonismo-das-infancias-atingidas-na-reparacao/` | Vozes do Paraopeba – 23ª edição: O protagonismo das infâncias atingidas na Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-2-entidades-responsaveis/` | Caderno 2- Entidades Responsaveis | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-1-legislacoes-e-direitos/` | Caderno 1 – Legislações e Direitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/22-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 22ª edição: Como as pessoas atingidas participam e quais são os atores no Anexo I do Acordo Judicial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar78/` | Aedas no Ar #78: Anexo I.1 – Entrevista com Cáritas, da Entidade Gestora | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0823/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar77/` | Aedas no Ar #77: Anexo I.1: Projetos de demandas das comunidades | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-construindo-projetos-de-demandasdas-comunidades-atingidas/` | Cartilha Construindo projetos de demandas das comunidades atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-22a-edicao-como-as-pessoas-atingidas-participam-e-quais-sao-os-atores-no-anexo-i-do-acordo-judicial/` | Vozes do Paraopeba – 22ª edição: Como as pessoas atingidas participam e quais são os atores no Anexo I do Acordo Judicial | OK |
-| ✅ OK | `https://aedasmg.org/documento/21-edicao-especial-vozes-do-paraopeba/` | Vozes do Paraopeba – 21ª edição: Projetos de Demandas das Comunidades – Entidade Gestora do Anexo I.1 é homologada pelo Juiz | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar76/` | Aedas no Ar #76: Prazo para pedir indenização por danos ainda não acabou, decide TJMG | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar75/` | Aedas no Ar #75: Anexo I.1 – Projetos das Comunidades, Plano Participativo e Governança Popular | OK |
-| ✅ OK | `https://aedasmg.org/documento/anexo-i-1-projetos-de-demandas-das-comunidades-e-credito-e-microcredito-previsto-no-acordo-judicial-de-reparacao/` | Anexo I.1 – Projetos de Demandas das Comunidades e Crédito e Microcrédito, previsto no Acordo Judicial de Reparação. | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-21a-edicao-projetos-de-demandas-das-comunidades-entidade-gestora-do-anexo-i-1-e-homologada-pelo-juiz/` | Vozes do Paraopeba – 21ª edição: Projetos de Demandas das Comunidades – Entidade Gestora do Anexo I.1 é homologada pelo Juiz | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0723/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar74/` | Aedas no Ar #74: Decisões das Instituições de Justiça, Entidade Gestora do Anexo I.1, Julho das Pretas e Festejos | OK |
-| ✅ OK | `https://aedasmg.org/documento/20-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 20ª edição: Agentes Multiplicadores debatem Saúde e Meio Ambiente | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar73/` | Aedas no Ar #73: Saúde, Meio Ambiente e Reparação Socioambiental | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-20a-edicao-agentes-multiplicadores-debatem-saude-e-meio-ambiente/` | Vozes do Paraopeba – 20ª edição: Agentes Multiplicadores debatem Saúde e Meio Ambiente | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0623/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-trabalho-aedas-paraopeba-2023-regioes-1-e-2/` | Plano de Trabalho Aedas Paraopeba 2023 (Regiões 1 e 2) | OK |
-| ✅ OK | `https://aedasmg.org/documento/19-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 19ª edição: Direito à liquidação coletiva e participação informada | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar72/` | Aedas no Ar #72: Entrevista sobre corte de recursos da ATI no Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-19a-edicao-direito-a-liquidacao-coletiva-e-participacao-informada/` | Vozes do Paraopeba – 19ª edição: Direito à liquidação coletiva e participação informada | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0523/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar70/` | Aedas no Ar #70: o povo negro e a mineração | OK |
-| ✅ OK | `https://aedasmg.org/documento/18-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 18ª edição: corte de recursos das ATIs | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0423/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-69/` | Aedas no Ar #69: quais os próximos passos no Anexo I.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-18a-edicao-corte-de-recursos-das-atis/` | Vozes do Paraopeba – 18ª edição: corte de recursos das ATIs | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-68/` | Aedas no Ar #68 – Assessoria Técnica Independente é direito | OK |
-| ✅ OK | `https://aedasmg.org/documento/17-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba: 17ª edição: Protocolo de Consulta é direito e conquista! | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0323/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-17a-edicao-protocolo-de-consulta-e-direito-e-conquista/` | Vozes do Paraopeba: 17ª edição: Protocolo de Consulta é direito e conquista! | OK |
-| ✅ OK | `https://aedasmg.org/documento/informes-aecom-0223/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro | OK |
-| ✅ OK | `https://aedasmg.org/documento/16-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba: 16ª edição: Mês do Dia Internacional da Mulher | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedasnoar64/` | Aedas no Ar #64 – Atingidas em luta por reparação integral | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-16a-edicao-mes-do-dia-internacional-da-mulher/` | Vozes do Paraopeba: 16ª edição: Mês do Dia Internacional da Mulher | OK |
-| ✅ OK | `https://aedasmg.org/documento/15-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 15ª edição: Semana de Luta e Luto | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-15a-edicao-semana-de-luta-e-luto/` | Vozes do Paraopeba – 15ª edição: Semana de Luta e Luto | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-62/` | Aedas no Ar #62 – BRUMADINHO, 4 anos do rompimento e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/14-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 14ª edição: 25 de janeiro é todo dia | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-61/` | Aedas no Ar #61 – Entrevista: Balanço da Assessoria no Paraopeba e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/um-rompimento-quantos-direitos-atingidos/` | Um Rompimento, quantos direitos atingidos? | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-14a-edicao-25-de-janeiro-e-todo-dia/` | Vozes do Paraopeba – 14ª edição: 25 de janeiro é todo dia | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-60/` | Aedas no Ar #60 – Encontro de conclusão do ano de trabalho das Comissões de Atingidas e Atingidos e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-59/` | Aedas no Ar #59 – Audiência sobre contaminação e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/13-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 13ª edição: Os caminhos da Reparação em 2022 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-13a-edicao-os-caminhos-da-reparacao-em-2022/` | Vozes do Paraopeba – 13ª edição: Os caminhos da Reparação em 2022 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-12a-edicao-paraopeba-negro-e-1-ano-de-jornal-editorial/` | Vozes do Paraopeba – 12ª edição: Paraopeba Negro e 1 ano de jornal – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-58/` | Aedas no Ar #58 – Consciência Negra e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/12-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 12ª edição: Paraopeba Negro e 1 ano de jornal – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-57/` | Aedas no Ar #57 – Você sabe o que é racismo ambiental? | Sabor Paraopeba, decisão STF, poligonais e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/o-protagonismo-das-mulheres-na-luta-pela-reparacao-par/` | O protagonismo das mulheres na luta pela reparação integral | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedinhas-no-ar-o-filme/` | Aedinhas no Ar – O FILME | OK |
-| ✅ OK | `https://aedasmg.org/documento/11-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 11ª edição: Movimentações recentes no Processo Judicial – EDITORIAL#vozes | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-11a-edicao-movimentacoes-recentes-no-processo-judicial/` | Vozes do Paraopeba – 11ª edição: Movimentações recentes no Processo Judicial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-56/` | Aedas no Ar #56 – Reparação socioambiental, coletivos e participação informada e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/10-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 10ª edição: Rodas de diálogo discutem a estrutura da governança popular e os avanços do plano participativo do Anexo 1.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-10a-edicao-rodas-de-dialogo-discutem-a-estrutura-da-governanca-popular-e-os-avancos-do-plano-participativo-do-anexo-1-1/` | Vozes do Paraopeba – 10ª edição: Rodas de diálogo discutem a estrutura da governança popular e os avanços do plano participativo do Anexo 1.1 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-55/` | Aedas no Ar #55 – Consulta Popular aos PCTs, envios de sugestão de governança para IJs e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/campanha-um-rompimento-quantos-direitos-atingidos-vozes-9-editorial/` | Vozes do Paraopeba – 9ª edição: Campanha “Um rompimento – Quantos direitos atingidos?” – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-9a-edicao-campanha-um-rompimento-quantos-direitos-atingidos-editorial/` | Vozes do Paraopeba – 9ª edição: Campanha “Um rompimento – Quantos direitos atingidos?” – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-54/` | Aedas no Ar 54: Formação com AGMs, Julho das Pretas e Festa de Mexirica | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-8a-edicao-processo-participativo-fortalece-discussao-do-sistema-de-participacao-e-governanca-do-anexo-1-1-editorial/` | Vozes do Paraopeba – 8ª edição: Processo participativo fortalece discussão do Sistema de Participação e Governança do Anexo 1.1 – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/8-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 8ª edição: Processo participativo fortalece discussão do Sistema de Participação e Governança do Anexo 1.1 – Editorial | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-7a-edicao-atingidos-defendem-direito-a-assessoria-tecnica-independente/` | Vozes do Paraopeba – 7ª edição: Atingidos defendem direito à Assessoria Técnica Independente | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozesdoparaopeba7/` | Vozes do Paraopeba – 7ª edição: Atingidos defendem direito à Assessoria Técnica Independente | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedasnoar52/` | Aedas no Ar 52: milhares de pessoas buscam atendimento presencial do PTR e mais | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-6a-edicao-recursos-do-povo-quem-decide-o-anexo-1-1/` | Vozes do Paraopeba – 6ª edição: “Recursos do povo: Quem decide o Anexo 1.1?” | OK |
-| ✅ OK | `https://aedasmg.org/documento/6-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 6ª edição: “Recursos do povo: Quem decide o Anexo 1.1?” | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-5a-edicao-desbloqueio-de-cadastros-do-ptr-e-o-protagonismo-dos-atingidos-as-no-anexo-1-1-sao-destaques/` | Vozes do Paraopeba – 5ª edição: Desbloqueio de cadastros do PTR e o protagonismo dos atingidos/as no Anexo 1.1 são destaques | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-5-edicao/` | Vozes do Paraopeba – 5ª edição: Desbloqueio de cadastros do PTR e o protagonismo dos atingidos/as no Anexo 1.1 são destaques | OK |
-| ✅ OK | `https://aedasmg.org/documento/documentario-historias-atingidas/` | Documentário: Histórias Atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-51/` | Aedas no Ar #51: Março, mês de luta contra as barragens e em defesa da vida e das águas. | OK |
-| ✅ OK | `https://aedasmg.org/documento/editorial-da-4a-edicao-do-vozes-do-paraopeba-protagonismo-das-mulheres-atingidas-do-paraopeba-na-luta-pela-reparacao-integral/` | Editorial da 4ª edição do Vozes do Paraopeba: Protagonismo das mulheres atingidas do Paraopeba na luta pela reparação integral | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-50/` | Aedas no Ar #50: Solidariedade entre atingidos, governança popular, março é mês de luta das mulheres e mais… | OK |
-| ✅ OK | `https://aedasmg.org/documento/todos-os-radios-aedas-no-ar-2022/` | Todos os rádios “Aedas no Ar” 2022 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedasnoar49/` | Aedas no Ar #49: 3 anos de luta do povo atingido em busca por reparação integral | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-3a-edicao/` | Vozes do Paraopeba – 3ª edição: 3 anos de luta por reparação e justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-3a-edicao-3-anos-de-luta-por-reparacao-e-justica/` | Vozes do Paraopeba – 3ª edição: 3 anos de luta por reparação e justiça | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-48/` | Aedas no Ar #48: ENTREVISTA COM COORDENAÇÕES DA AEDAS e DEPOIMENTOS DE LIDERANÇAS | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-2a-edicao-matriz-de-danos-e-objetivo-das-familias-do-paraopeba-para-2022/` | Vozes do Paraopeba – 2ª edição: Matriz de danos é objetivo das famílias do Paraopeba para 2022 | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-2a-edicao-matriz-de-danos-e-objetivo-das-familias-do-paraopeba-para-2022-2/` | Vozes do Paraopeba – 2ª edição: Matriz de danos é objetivo das famílias do Paraopeba para 2022 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-46-consulta-popular-lista-prioridades-para-a-bacia-do-paraopeba/` | Aedas no Ar #46: consulta popular lista prioridades para a Bacia do Paraopeba | OK |
-| ✅ OK | `https://aedasmg.org/documento/1a-edicao-do-jornal-vozes-do-paraopeba-traz-novas-informacoes-sobre-o-ptr/` | Vozes do Paraopeba – 1ª edição: Novas informações sobre o PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/vozes-do-paraopeba-1a-edicao-novas-informacoes-sobre-o-ptr/` | Vozes do Paraopeba – 1ª edição: Novas informações sobre o PTR | OK |
-| ✅ OK | `https://aedasmg.org/documento/todos-os-radios-aedas-no-ar-2021/` | Todos os rádios “Aedas no Ar” 2021 | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-no-ar-19-comunidades-com-problemas-no-abastecimento-serao-visitadas-por-copasa-e-vale/` | Aedas no Ar #19: Comunidades com problemas no abastecimento serão visitadas por Copasa e Vale | OK |
-| ✅ OK | `https://aedasmg.org/documento/assistencia-social-e-educacao-sao-temas-de-cartilha-da-aedas/` | Assistência social e educação são temas de cartilha da Aedas | OK |
-| ✅ OK | `https://aedasmg.org/documento/povos-e-comunidades-de-tradicao-religiosa-de-matriz-ancestral-destacam-danos-e-demandas-em-cartilha/` | Povos e Comunidades de Tradição Religiosa de Matriz Ancestral destacam danos e demandas em cartilha | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-explica-impacto-a-economia-trabalho-e-renda-provocado-pelo-rompimento-da-barragem-da-vale/` | Cartilha explica impacto à economia, trabalho e renda provocado pelo rompimento da barragem da Vale | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-da-aedas-sistematiza-danos-a-natureza-provocados-pelo-desastre-da-vale-em-brumadinho/` | Cartilha da Aedas sistematiza danos à natureza provocados pelo desastre da Vale em Brumadinho | OK |
-| ✅ OK | `https://aedasmg.org/documento/patrimonio-cultural-esporte-e-lazer-sao-temas-de-mais-uma-cartilha-da-aedas/` | Patrimônio cultural, esporte e lazer são temas de mais uma cartilha da Aedas | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-de-roda-de-dialogo-da-aedas-traz-discussoes-sobre-saude/` | Cartilha de Roda de Diálogo da Aedas traz discussões sobre saúde | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-produz-cartilha-sobre-auxilio-emergencial/` | Aedas produz cartilha sobre auxílio emergencial | OK |
-| ✅ OK | `https://aedasmg.org/documento/planos-de-trabalho-paraopeba-2020-regioes-1-e-2/` | Planos de Trabalho Paraopeba 2020 (Regiões 1 e 2) | OK |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/encontro-o-povo-ainda-luta-despedida-da-aedas-paraopeba/` | FOTOS – Encontro “O Povo Ainda Luta” – Despedida da Aedas Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/livros-de-danos-coletivos-sofridos-pelas-comunidades-par/` | Livros de Danos Coletivos sofridos pelas Comunidades de Brumadinho e da Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/balanco-anual-aedas-paraopeba-2025/` | Vídeo Balanço Anual Aedas Paraopeba – 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/balanco-da-reparacao-2023-2025-par/` | Balanço da Reparação 2023-2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-pcts-27-p1-final/` | Dossiê com dados referentes ao processo de assessoramento aos PCTs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/metricas-e-engajamento-nos-canais-de-comunicacao-2025-2/` | Métricas e engajamento nos canais de Comunicação – 2025.2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/fotos-projeto-aedas-paraopeba/` | FOTOS – Projeto Aedas Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-189-estudos-ufmg-e-atualizacoes-sobre-o-novo-auxilio/` | Aedas No Ar 189 – Estudos UFMG e atualizações sobre o novo auxílio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/analise-dos-espacos-participativos-e-das-demandas-das-pessoas-atingidas/` | Análise dos espaços participativos e das demandas das pessoas atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-semanal-aedas-28112025/` | Boletim Semanal da Aedas: Vale realiza o depósito dos valores para o pagamento do Novo Auxílio Emergencial; eleição da nova ATI e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-188-tjmg-autoriza-a-garantia-de-novo-auxilio-emergencial/` | Aedas No Ar 188 – TJMG autoriza a garantia de novo auxílio emergencial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-retomada-auxilio-emergencial/` | Boletim Semanal da Aedas: Justiça determina retomada do pagamento emergencial para as pessoas atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lista-das-comunidades-e-dos-conselhos-locais-da-governanca-popular-do-anexo-i-1-na-r1-e-r2/` | Lista das Comunidades e dos Conselhos Locais da Governança Popular do Anexo I.1 na R1 e R2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/documento-sintese-da-participacao-dos-pcts-25p1/` | Documento Sintese da participação dos Povos e Comunidades Tradicionais na região 1 e 2 da Bacia do Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/painel-atendimentos-e-demandas-paraopeba/` | Painel atendimentos e demandas – Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/painel-espacos-participativos-paraopeba/` | Painel espaços participativos – Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1125/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de novembro de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-187-direito-a-ati-e-novo-auxilio-emergencial/` | Aedas No Ar 187 – Direito à ATI e novo Auxílio Emergencial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-186-seguranca-de-barragens/` | Aedas no Ar 186 – Segurança de barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/documentos-base-para-construcao-de-regimentos-do-setores-regiao-1/` | Documentos base para construção de Regimentos do Setores – Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/documentos-base-para-construcao-de-regimentos-do-setores-regiao-2/` | Documentos base para construção de Regimentos do Setores – Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/regimentos-internos-conselhos-locais-regiao-2-anexo-i-1/` | Regimentos internos conselhos locais Região 2- Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/regimentos-internos-conselhos-locais-regiao-1-anexo-i-1/` | Regimentos internos conselhos locais Região 1 – Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lista-de-danos-coletivos-atualizada-regiao-2/` | Lista de danos coletivos atualizada – Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lista-de-danos-coletivos-atualizada-regiao-1/` | Lista de danos coletivos atualizada – Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-47a-edicao-direitos-em-risco/` | Vozes do Paraopeba – 47ª edição: Direitos em risco | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1025/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-241025/` | Boletim Semanal da Aedas: Ato em memória das joias, atualização sobre novo auxílio emergencial e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-demandas-individuais-e-coletivas-ptr/` | Caderno de demandas individuais e coletivas referentes ao Anexo I.2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-185-dano-ambiental-e-a-saude/` | Aedas no ar 185 – Dano Ambiental e à Saúde | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-9/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 9 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-184-medidas-do-novo-auxilio-emergencial/` | Aedas no ar 184 – Medidas do novo auxílio emergencial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/formacao-em-direitos-justica-e-defesas/` | Formação em Direitos Justiça e Defesas: caminhos de acesso a direitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-183-atualizacoes-sobre-o-ptr/` | Aedas no ar 183 – Atualizações sobre o PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-031025/` | Boletim Semanal da Aedas: Atualização sobre ação do novo auxílio emergencial, garantia da ATI no acompanhamento da reparação e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/47-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 47ª edição: Direitos em risco | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/listas-de-ideias-de-projetos-locais-e-regionais-para-o-anexo-i-1/` | Listas de Ideias de Projetos Locais e Regionais para o Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-182-fim-do-ptr-e-decisoes-sobre-a-ati/` | Aedas no Ar 182 – Fim do PTR e Decisões sobre a ATI | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-181-julgamento-de-ex-presidente-da-vale-no-stj/` | Aedas no Ar 181 – Julgamento de ex-presidente da Vale no STJ | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/consultoria-idafro-e-aedas/` | Consultoria Idafro e Aedas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-de-sistematizacao-cineparaopeba/` | Caderno de Sistematização – CineParaopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-46a-edicao-fim-do-ptr/` | Vozes do Paraopeba – 46ª edição: Fim do PTR – Atingidas e atingidos da Bacia do Paraopeba cobram da justiça celeridade na definição do novo auxílio emergencial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-180-nota-da-aedas-ao-procedimento-administrativo-das-ijs/` | Aedas no Ar 180 – Nota da Aedas ao Procedimento Administrativo das IJs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-179-cine-paraopeba/` | Aedas no Ar 179 – Cine Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0825/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-metricas-2025-1/` | Relatório – Métricas e engajamento nos canais de Comunicação 2025.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0725/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-178-juiz-pede-revisao-de-recursos-para-ati/` | Aedas no Ar 178 – Juiz pede revisão de recursos para ATI | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-46a-edicao-fim-do-ptr-2/` | Vozes do Paraopeba – 46ª edição: Fim do PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/mostra-cine-paraopeba-onde-eu-nasci-passa-um-rio/` | FOTOS – Mostra Cine Paraopeba: Onde Eu Nasci Passa um Rio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/45-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 45ª edição: Decisão sobre novo auxílio emergencial é adiada e gera insegurança às pessoas atingidas da Bacia do Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-177-mostra-de-cinema-e-espacos-participativos/` | Aedas no Ar 177 – Mostra de cinema e espaços participativos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/filme-somos-arana/` | Filme “Somos Aranã” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-220825/` | Boletim Semanal da Aedas: Ato em memória das joias, julgamento adiado no TJMG e retomada dos Estudos de Risco | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-176-povos-tradicionais-de-matriz-africana-no-ptr/` | Aedas no Ar 176 – Povos Tradicionais de Matriz Africana no PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/memoria-das-atividades-participativas-jan-ago-25/` | Memória das atividades participativas (janeiro a agosto 25) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-175-formacao-de-conselhos-do-anexo-i-1/` | Aedas no Ar 175 – Formação de Conselhos do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-174-ati-e-direito-conquistado/` | Aedas no Ar 174 – ATI é direito conquistado | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-010825/` | Boletim Semanal da Aedas: Reuniões Intercomunitárias, Manifestação do MPMG e Inclusão de povos de terreiro e matriz africana no PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-45a-edicao-decisao-sobre-novo-auxilio-emergencial-e-adiada-e-gera-inseguranca-as-pessoas-atingidas-da-bacia-do-paraopeba/` | Vozes do Paraopeba – 45ª edição: Decisão sobre novo auxílio emergencial é adiada e gera insegurança às pessoas atingidas da Bacia do Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/44-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 44ª edição: Corte de recursos para acompanhamento do Anexo I.1 mobiliza os territórios | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-173-a-saude-das-pessoas-atingidas/` | Aedas no Ar 173 – A saúde das pessoas atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-8/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 8 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-172-saude-e-reparacao/` | Aedas no Ar 172 – Saúde e reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-171-as-proximas-etapas-do-anexo-i-1/` | Aedas no Ar 171 – As próximas etapas do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1107/` | Boletim Semanal da Aedas: Ato do Movimento dos Atingidos por Barragens e lideranças atingidas em Belo Horizonte e questionamentos ao estudo realizado pela CAMF | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-170-justica-sem-barreiras/` | Aedas no Ar 170 – “Justiça sem Barreiras” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-04-07-25/` | Boletim Semanal da Aedas: Execução do Anexo I.1, reivindicações das pessoas atingidas e festival de cinema | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-fundamentos-para-fins-de-elegibilidade-no-anexo-i-1-2/` | Dossiê com Fundamentos para fins de elegibilidade no anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0625/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-169-comunidade-tradicional-ribeirinha-da-rua-amianto/` | Aedas no Ar 169 – Comunidade Tradicional Ribeirinha da Rua Amianto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-44a-edicao-corte-de-recursos-para-acompanhamento-do-anexo-i-1-mobiliza-os-territorios/` | Vozes do Paraopeba – 44ª edição: Corte de recursos para acompanhamento do Anexo I.1 mobiliza os territórios | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/43-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 43ª edição: Plano de Execução do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/demandas-riscos-a-saude-e-ao-meio-ambiente-15p124/` | Caderno de demandas das pessoas atingidas sobre os riscos à saúde e ao meio ambiente | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/formacao-em-direitos-politicas-e-acesso-a-justica/` | Formação em Direitos – Políticas e acesso à Justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-168-reparacao-socioambiental/` | Aedas no Ar 168 – Reparação Socioambiental | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-167-comeca-execucao-do-anexo-i-1/` | Aedas no Ar 167 – Começa execução do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r2-acesso-a-direitos-e-as-instituicoes-de-justica/` | R2: Acesso a Direitos e as Instituições de Justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r1-acesso-a-direitos-e-as-instituicoes-de-justica/` | R1: Acesso a Direitos e as Instituições de Justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-166-inicio-do-anexo-i-1/` | Aedas no Ar 166 – Início do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-justica-sem-barreiras-par/` | Justiça sem barreiras: o impacto dos marcadores sociais no acesso à justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0525/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-165-anexos-i-3-e-i-4/` | Aedas no Ar 165 – Anexos I.3 e I.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-43a-edicao-plano-de-execucao-do-anexo-i-1/` | Vozes do Paraopeba – 43ª edição: Plano de Execução do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2905/` | Boletim Semanal da Aedas: Auditoria aponta lentidão na reparação socioambiental e ATIs dialogam com IJs sobre Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/42-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 42ª edição: Início do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-164-justica-etnico-racial-e-a-reparacao/` | Aedas no Ar 164 – Justiça étnico-racial e a Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2305/` | Boletim Semanal da Aedas: Ato em memória das joias, PTR e Liquidação Coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/tesouros-da-floresta-a-luta-por-justica-climatica/` | Tesouros da Floresta: A Luta por Justiça Climática | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/filmes-memoria-caderno-oficina-de-comunicacao/` | Filmes Memória – Caderno Oficina de Comunicação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-163-direito-ao-auxilio-emergencial-e-gestao-efetiva-do-anexo-i-1/` | Aedas no Ar 163 – Direito ao auxílio emergencial e gestão efetiva do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1605/` | Boletim Semanal da Aedas: Reuniões Intercomunitárias, Informe da FGV e garantia das ATIs em atividades do processo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-os-resultados-alcancados-pelo-ciclo-de-formacao-das-oficinas-de-comunicacao-popular-fimes-memorias/` | Caderno com os resultados alcançados pelo ciclo de formação das oficinas de Comunicação Popular – Fimes – Memorias | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-162-saude-da-populacao-atingida-e-tema-de-audiencia-na-almg/` | Aedas no Ar 162 – Saúde da população atingida é tema de audiência na ALMG | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0905/` | Boletim Semanal da Aedas: Entidade Gestora se manifesta pelo início do Anexo I.1, parecer do MPMG sobre auxílio emergencial e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-161-atualizacoes-do-ptr/` | Aedas no Ar 161 – Atualizações do PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-42a-edicao-inicio-do-anexo-i-1/` | Vozes do Paraopeba – 42ª edição: Início do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-160-atores-da-reparacao/` | Aedas no Ar 160 – Atores da Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/41-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 41ª edição: Governança, Políticas Públicas e PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-159-programa-de-transferencia-de-renda/` | Aedas no Ar 159 – Programa de Transferência de Renda | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-7/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 7 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-158-informacoes-sobre-o-ptr/` | Aedas no Ar 158 – Informações sobre o PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-157-direitos-humanos-e-patrimonio-cultural/` | Aedas no Ar 157 – Direitos Humanos e Patrimônio Cultural | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0404/` | Boletim Semanal da Aedas: Oficina de Protocolo de Consulta, Reparação Socioambiental e os atores da reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0325/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-156-mulheres-em-luta-pela-reparacao/` | Aedas no Ar 156 – Mulheres em luta pela reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-41a-edicao-governanca-politicas-publicas-e-ptr/` | Vozes do Paraopeba – 41ª edição: Governança, Políticas Públicas e PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-6/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/sistematizacao-dos-direitos-especificos-e-entidades-responsaveis-com-vinculacao-dos-pcts-acompanhados/` | Sistematização dos direitos específicos e entidades responsaveis com vinculação dos PCTs acompanhados | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2803/` | Boletim Semanal da Aedas: Informes do PTR, Processo Judicial e atividade do Anexo I.3 na Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-155-14m-de-luta-pelo-ptr/` | Aedas no Ar 155 – 14M de luta pelo PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/40-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 40ª edição: Mulheres em defesa do Programa de Transferência de Renda (PTR) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-154-pericia-na-fase-de-liquidacao-e-o-papel-da-ati/` | Aedas no Ar 154 – Perícia na fase de liquidação e o papel da ATI | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-153-reunioes-intercomunitarias/` | Aedas no Ar 153 – Reuniões Intercomunitárias | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-152-4-anos-do-acordo-de-reparacao/` | Aedas no Ar 152 – 4 anos do “Acordo de Reparação” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0225/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-40a-edicao-mulheres-em-defesa-do-programa-de-transferencia-de-renda-ptr/` | Vozes do Paraopeba – 40ª edição: Mulheres em defesa do Programa de Transferência de Renda (PTR) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatoria-expandida-das-acoes-e-procedimentos-de-consulta-previa-livre-informada-e-de-boa-fe-junto-as-comunidades-assessoradas/` | Relatoria expandida das ações e procedimentos de Consulta Prévia, Livre, Informada e de Boa – fé, junto as comunidades assessoradas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-151-pericia-judicial/` | Aedas no Ar 151 – Perícia judicial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/39-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 39ª edição: Acordo Judicial completa 4 anos em um cenário de incertezas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-150-reducao-no-ptr/` | Aedas no Ar 150 – Redução no PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1402/` | Boletim Semanal da Aedas: Julgamento no TJMG, Anexo I.3 e I.4 e desfile de bloco no Citrolândia | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/quantas-joias-valem-a-mineracao-predatoria/` | Quantas Joias Valem a Mineração Predatória? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-149-memoria-e-justica/` | Aedas no Ar 149 – Memória e justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0702/` | Boletim Semanal da Aedas: tira-dúvidas sobre a Liquidação Coletiva, Balanço dos Anexos I.3 e I.4 e Histórias Atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-148-atos-no-marco-de-6-anos/` | Aedas no Ar 148 – Atos no marco de 6 anos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0125/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de janeiro de 2025 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/balanco-das-acoes-e-atividades-da-aedas/` | Balanço das Ações e Atividades da Aedas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/quanto-vale-a-mineracao-predatoria/` | Quanto vale a mineração predatória? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/historias-atingidas/` | Histórias Atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-39a-edicao-acordo-judicial-completa-4-anos-em-um-cenario-de-incertezas/` | Vozes do Paraopeba – 39ª edição: Acordo Judicial completa 4 anos em um cenário de incertezas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-3101/` | Boletim Semanal da Aedas: nova edição do Vozes do Paraopeba, PTR e jornada de lutas do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-5/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/38-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 38ª edição: Quantas vidas valem a mineração predatória? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-147-6-anos-do-rompimento-em-brumadinho/` | Aedas no Ar 147 – 6 anos do rompimento em Brumadinho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-6/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 6 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-146-caminhos-para-a-liquidacao-coletiva/` | Aedas no Ar 146 – Caminhos para a Liquidação Coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-145-participacao-e-direitos/` | Aedas no Ar 145 – Participação e direitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/assistencia-a-saude-r2-rede-de-atendimento-servicos-publicos/` | Assistência a saúde R2: Rede de atendimento Serviços públicos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/assistencia-a-saude-r1-rede-de-atendimento-servicos-publicos/` | Assistência a saúde R1: Rede de atendimento Serviços públicos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-144-trem-de-passageiros-entrevista-com-vanessa-campolina-do-mpmg/` | Aedas no Ar 144 – Trem de passageiros + Entrevista com Vanessa Campolina, do MPMG | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1224/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-143-mais-balanco-das-acoes-de-2024-parte-2/` | Aedas no Ar 143 – Mais balanço das ações de 2024 (Parte 2) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/saude/` | Protocolo de Saúde para a população exposta à mineração | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-38a-edicao-quantas-vidas-valem-a-mineracao-predatoria/` | Vozes do Paraopeba – 38ª edição: Quantas vidas valem a mineração predatória? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/infancias-e-emergencias-climaticas-aedinhas-no-ar-edicao-26/` | Infâncias e Emergências Climáticas – Aedinhas no Ar – Edição 26 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-5/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-10-inventario-de-participativo-do-patrimonio-cultural-para-fortalecimento-dos-povos-e-comunidades-tradicionais/` | Caderno 10 -Inventario de Participativo do Patrimonio Cultural para fortalecimento dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-com-balanco-das-demandas-de-vulnerabilidade-e-extrema-vulnerabilidade/` | Relatório com balanço das demandas de vulnerabilidade e extrema vulnerabilidade | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas-4/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (julho a dezembro de 24) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-5/` | Dossiê de atividades anexos 1.3/1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-6/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-indices-acerca-dos-niveis-de-acesso-inclusao-e-participacao-por-parte-dos-atingidos-e-atingidas/` | Dossiê com índices acerca dos níveis de acesso, inclusão e participação por parte dos atingidos e atingidas. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-comunicacao-e-relatorio-de-metricas-242/` | Plano de comunicação e relatório de métricas 2024.2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-142-balanco-das-acoes-realizadas-em-2024-parte-1/` | Aedas no Ar 142 – Balanço das Ações realizadas em 2024 (Parte 1) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/video-com-balanco-das-acoes-e-atividades-realizadas-pela-assessoria-tecnica-no-ano-vigente-periodicidade-anual-2/` | Vídeo com balanço das ações e atividades realizadas pela Assessoria Técnica no ano vigente (periodicidade Anual) . | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/video-com-balanco-das-acoes-e-atividades-realizadas-pela-assessoria-tecnica-no-ano-vigente-periodicidade-anual/` | Vídeo com balanço das ações e atividades realizadas pela Assessoria Técnica no ano vigente (periodicidade Anual) . | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2012/` | Boletim Semanal da Aedas: Audiência sobre os ERSHRE, carta de atingida e recesso do judiciário | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 3 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-sao-joaquim-de-bicas-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, São Joaquim de Bicas- Agrupamento 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 3 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-mario-campos-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Mario Campos- Agrupamento 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-juatuba-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Juatuba- Agrupamento 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-juatuba-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Juatuba- Agrupamento 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-igarape/` | Planos Participativos de Reparação e Desenvolvimento, Igarapé | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-4/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 3 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-betim-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Betim – Agrupamento 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-13/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 13 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-12/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 12 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-11/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 11 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-10/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 10 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-9/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 9 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-8/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 8 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-7/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 7 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-6/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 6 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-5/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 5 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-4/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-3/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 3 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-2/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-participativos-de-reparacao-e-desenvolvimento-brumadinho-agrupamento-1/` | Planos Participativos de Reparação e Desenvolvimento, Brumadinho – Agrupamento 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/playlist-radio-aedas-no-ar-2021-a-2024/` | Playlist rádio Aedas no Ar (2021 a 2024) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/37-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 37ª edição: Panorama dos Atendimentos e Atividades Realizadas nas Regiões 1 e 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1124/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de novembro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-13-12/` | Boletim Semanal da Aedas: contestação de estudos da Vale e audiência sobre riscos à saúde humana e ecológico | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-06-12/` | Boletim Semanal da Aedas: contestação de estudos da Vale, audiência sobre avaliação de risco à saúde, ecológico e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1024/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-das-demandas-das-pessoas-atingidas-e-documentos-elaborados-pela-ati-relacionados-ao-tema-da-reparacao-socioambiental-e-saude-2/` | Dossiê das demandas das pessoas atingidas e documentos elaborados pela ATI relacionados ao tema da reparação socioambiental e saúde | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-10-inventario-participativo/` | PCT Caderno 10: Inventário Participativo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-2/` | Caderno com o levantamento das demandas individuais e coletivas referente ao Anexo 1.2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/escrita-pela-ausencia/` | Escrita pela Ausência | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/filme-memoria/` | Filme-Memória | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-37a-edicao-panorama-dos-atendimentos-e-atividades-realizadas-nas-regioes-1-e-2/` | Vozes do Paraopeba – 37ª edição: Panorama dos Atendimentos e Atividades Realizadas nas Regiões 1 e 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/ciranda-encantada-filme-memoria/` | Ciranda Encantada | Filme-Memória | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/36-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 36ª edição: Políticas do Patrimônio e a Defesa dos Territórios Negros | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2211/` | Boletim Semanal da Aedas: Processo judicial, Vale questiona atuação das ATIs, direitos dos PCTs e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-de-danos-regiao-2/` | Cadernos de Danos Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-de-danos-regiao-1/` | Cadernos de Danos Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vale-cara-de-pau-filme-memoria/` | Vale Cara de Pau | Filme-Memória | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1411/` | Boletim Semanal da Aedas: Segunda rodada de visitas técnicas do Anexo I.1, Liquidação Coletiva e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/periodo-de-chuvas-informacoes-e-recomendacoes-regiao-1/` | PERÍODO DE CHUVAS: Informações e recomendações Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/periodo-de-chuvas-informacoes-e-recomendacoes-regiao-2/` | PERÍODO DE CHUVAS: Informações e recomendações Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0811/` | Boletim Semanal da Aedas: Informe da FGV sobre redução do valor do PTR e reuniões da Semad em Brumadinho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0111/` | Boletim Semanal da Aedas: Informe da auditoria dos estudos socioambientais, denúncia de má qualidade de obras do Anexo I.3 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-36a-edicao-politicas-do-patrimonio-e-a-defesa-dos-territorios-negros/` | Vozes do Paraopeba – 36ª edição: Políticas do Patrimônio e a Defesa dos Territórios Negros | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-4/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0924/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de setembro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-metodologia-oficinas-protocolo-consulta-pcts-r1e2/` | Cartilha com Diretrizes e Proposição Metodológica de Elaboração de Oficinas para Protocolos de Consulta dos Povos e Comunidades Tradicionais Atingidos das Regiões 1 e 2 da Bacia do Paraopeba no Contexto da Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/filme-memoria-oficina-de-comunicacao-popular-paraopeba/` | FOTOS – Filme-Memória: Oficina de Comunicação Popular Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2510/` | Boletim Aedas: Nova edição do Jornal e Informe dos Compromitentes sobre a reforma da Praça do Tejuco | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/35-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 35ª edição: Juiz aprova proposta definitiva do Anexo I.1 e TJMG decide pela continuidade da liquidação coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-5/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 5 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1810/` | Boletim Semanal da Aedas: Mortandade de peixes no Paraopeba, Festejo em Brumadinho e intimação da Vale por juiz | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1110/` | Boletim Semanal da Aedas: Julgamento da Liquidação Coletiva e Dia das Crianças | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0410/` | Boletim Semanal da Aedas: Anexo I.1, Seminário sobre levantamento de danos e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-4/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-35a-edicao-juiz-aprova-proposta-definitiva-do-anexo-i-1-e-tjmg-decide-pela-continuidade-da-liquidacao-coletiva/` | Vozes do Paraopeba – 35ª edição: Juiz aprova proposta definitiva do Anexo I.1 e TJMG decide pela continuidade da liquidação coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/manual-de-orientacoes-marcadores-sociais-e-pcts-2/` | Manual de orientações para as equipes relativas a questões jurídicas, marcadores sociais e PCTs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-4/` | Dossiê de atividades anexos 1.3/1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2709/` | Boletim Semanal da Aedas: Recurso da Vale e informações sobre requalificação urbana em Brumadinho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/34-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 34ª edição: Saúde e exposição a metais da mineração na Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-9-educacao/` | Caderno 9 – Educação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1309/` | Boletim Semanal da Aedas: Encontro das Mulheres Atingidas da Bacia do Paraopeba e Represa de Três Marias e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0609/` | Boletim Semanal da Aedas: Formação em Direitos Humanos na R1 e R2, Devolutivas de estudos socioambientais na Região 2 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0824/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-4a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (4ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-9-educacao/` | PCT Caderno 9: Educação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-34a-edicao-saude-e-exposicao-a-metais-da-mineracao-na-regiao-2/` | Vozes do Paraopeba – 34ª edição: Saúde e exposição a metais da mineração na Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/radio-aedinhas-no-ar-edicao-20/` | Rádio Aedinhas no Ar – Edição 20 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-regiao-2/` | Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 – Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-regiao-1/` | Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 – Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-3008/` | Boletim Semanal da Aedas: Julgamento no TJMG garante direitos das pessoas atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/33-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 33ª edição: Reparação Socioambiental só com Participação Informada | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r1-rede-de-atendimento-violencia-contra-a-mulher/` | R1: Rede de atendimento – violência contra a mulher | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r2-rede-de-atendimento-violencia-contra-a-mulher/` | R2: Rede de atendimento – violência contra a mulher | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0908/` | Boletim Semanal da Aedas: Julgamento no TJMG, Eleições 2024 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0724/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0208/` | Boletim Semanal da Aedas: Liquidação Coletiva e festividades em Brumadinho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r1-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-2/` | R1: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r2-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1-2/` | R2: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-33a-edicao-reparacao-socioambiental-so-com-participacao-informada/` | Vozes do Paraopeba – 33ª edição: Reparação Socioambiental só com Participação Informada | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2607/` | Boletim Semanal da Aedas: julgamento no TJMG, prorrogação da Consulta Pública sobre saúde e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-3/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-4/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/32-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 32ª edição: Não existe reparação sem as mulheres negras | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0507/` | Boletim Semanal da Aedas: reunião sobre o PTR, informe da Reparação Socioambiental e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0624/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0424/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0324/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-32a-edicao-nao-existe-reparacao-sem-as-mulheres-negras/` | Vozes do Paraopeba – 32ª edição: Não existe reparação sem as mulheres negras | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-comunicacao-e-relatorio-de-metricas241/` | Plano de comunicação e relatório de métricas 2024.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2806/` | Boletim Semanal da Aedas: Devolutivas dos Compromitentes na R1, cursos profissionalizantes na R2 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-ati-relacionados-ao-tema-da-reparacao-socioambiental-e-saude/` | Dossiê das demandas das pessoas atingidas e documentos elaborados pela ATI relacionados ao tema da reparação socioambiental e saúde . | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/compilado-dos-relatorios-de-sistematizacao-das-contribuicoes-das-pessoas-atingidas-pt06/` | Compilado dos relatórios de sistematização das contribuições das pessoas atingidas, acerca dos anexos I.1,I.2,I.3 e I.4, da Participação Informada e das Diretrizes da Reparação. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas-3/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (janeiro a junho de 24) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-5/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/documentario-amianto/` | Documentário – Amianto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/31-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 31ª edição: Participação, um marco na luta pela reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-povos-e-comunidades-tradicionais-3-p27/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-6-saude-par-comunidades-tradicionais/` | Caderno 6 -Saude par Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1406/` | Boletim Semanal da Aedas: Encontro da Bacia, contratação de nova entidade para os Estudos de Avaliação de Risco e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-3/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-sobre-os-anexos-1-3-e-1-4/` | Dossiê sobre os anexos 1.3 e 1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-31a-edicao-participacao-um-marco-na-luta-pela-reparacao/` | Vozes do Paraopeba – 31ª edição: Participação, um marco na luta pela reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/30-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 30ª edição: Reconhecimento e Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1005/` | Boletim Semanal da Aedas: Guia da Entidade Gestora, Dossiê de atividades dos Anexos I.3 e I.4 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-0305/` | Boletim Semanal da Aedas: manifestação da Defensoria Pública, audiência no TJMG e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-30a-edicao-reconhecimento-e-reparacao/` | Vozes do Paraopeba – 30ª edição: Reconhecimento e Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/manual-para-as-equipes-marcadores-sociais-e-pcts-p30/` | Manual de orientações para as equipes relativas a questões jurídicas, marcadores sociais e PCTs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-8-plano-de-gestao-territorial-e-ambiental-de-comunidades-tradicionais/` | Caderno 8 – Plano de Gestão Territorial e Ambiental de Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-7-regularizacao-fundiaria/` | Caderno 7 – Regularização Fundiaria | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2604/` | Boletim Semanal da Aedas: decisão judicial, momento 2 em Brumadinho, vídeos do Anexo I.1 e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-3/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 3 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/29-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 29ª edição: Construção do Anexo I.1 do Acordo de Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0224/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0124/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de janeiro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais-2/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1204/` | Boletim Semanal da Aedas: aprovação do Plano de Trabalho das ATIs, informe de rendimentos do PTR, Anexo I.1 na Zona Quente e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1223/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro de 2023 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais-2/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-8-plano-de-gestao-territorial-e-ambiental-de-comunidades-tradicionais/` | PCT Caderno 8: Plano de gestão territorial e ambiental de comunidades tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-7-regularizacao-fundiaria/` | PCT Caderno 7: Regularização fundiária | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-6-saude-para-comunidades-tradicionais/` | PCT Caderno 6: Saúde para comunidades tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-29a-edicao-construcao-do-anexo-i-1-do-acordo-de-reparacao/` | Vozes do Paraopeba – 29ª edição: Construção do Anexo I.1 do Acordo de Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-dados-referente-ao-processo-de-assessoramento-aos-povos-e-comunidades-tradicionais/` | Dossiê com dados referente ao processo de assessoramento aos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-2/` | Dossiê de atividades anexos 1.3/1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4-3/` | Dossiê de atividades anexos 1.3/1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2703/` | Boletim Semanal da Aedas: manifestação do MPMG sobre a Liquidação Coletiva, decisão sobre fornecimento de água, direito das infâncias e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/direito-em-foco-um-olhar-sobre-as-infancias-atingidas/` | Direito em foco: Um olhar sobre as infâncias atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1503/` | Boletim Semanal da Aedas: construção de proposta do Anexo I.1, devolutiva do MPMG na R2, decisão da Justiça Federal e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-5-sistema-unico-de-assistencia-social-suas/` | Caderno 5 -Sistema Único de Assistencia Social – SUAS | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-2a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (2ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r2-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1/` | R2: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/r1-cadernos-tecnicos-com-proposicoes-para-a-governanca-popular-do-anexo-i-1/` | R1: Cadernos Técnicos com proposições para a Governança Popular do Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-i-3-e-i-4/` | Dossiê com detalhamento de projeto pelos PCTs (5ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-sobre-o-anexo-1-3-1-4-2a-versao/` | Dossiê sobre o Anexo 1.3/1.4 (2ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-28a-edicao-mulheres-na-luta-pela-reparacao-socioeconomica/` | Vozes do Paraopeba – 28ª edição: Mulheres na luta pela reparação socioeconômica | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-para-a-governanca-popular-dos-projetos-de-demandas-das-comunidades-atingidas-anexo-i-1-propostas-de-diretrizes-para-fluxos-de-projetos-comunitarios-e-fluxo-de-credito-e-microcredito-reg-2/` | Cadernos para a Governança Popular dos Projetos de Demandas das Comunidades Atingidas (Anexo I.1) – Propostas de Diretrizes para Fluxos de Projetos Comunitários e Fluxo de Crédito e Microcrédito – Região 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cadernos-para-a-governanca-popular-dos-projetos-de-demandas-das-comunidades-atingidas-anexo-i-1-propostas-de-diretrizes-para-fluxos-de-projetos-comunitarios-e-fluxo-de-credito-e-microcredito-reg/` | Cadernos para a Governança Popular dos Projetos de Demandas das Comunidades Atingidas (Anexo I.1) – Propostas de Diretrizes para Fluxos de Projetos Comunitários e Fluxo de Crédito e Microcrédito – Região 1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/27-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 27ª edição: 3 anos do Acordo: comunidades aguardam projetos e cobram acesso a programas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/protocolo-de-consulta-quilombos-brumadinho-minuta-2-ed/` | Protocolo de Consulta Livre, Previa, Informada Consentida e de Boa Fé – Comunidades Quilombolas de Sapé, Rodrigues, Ribeirão E Marinhos, Brumadinho MG. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/relatorio-de-prestacao-de-contas-finalistico-financeiro-ciclo-2/` | Relatório de prestação de contas finalístico-financeiro. Ciclo 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-5-sistema-unico-de-assistencia-social-suas/` | PCT Caderno 5: Sistema Único de Assistência Social (SUAS) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-27a-edicao-3-anos-do-acordo-comunidades-aguardam-projetos-e-cobram-acesso-a-programas/` | Vozes do Paraopeba – 27ª edição: 3 anos do Acordo: comunidades aguardam projetos e cobram acesso a programas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-de-atividades-anexos-1-3-1-4/` | Dossiê de atividades anexos 1.3/1.4 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-2601/` | Boletim Semanal da Aedas: homenagens às joias nos 5 anos do rompimento, reconhecimento de quilombo no Tejuco e série de vídeo-cartas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1901/` | Boletim Semanal da Aedas: programação do dia 25, nova edição do Jornal e alerta de chuvas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/26-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 26ª edição: Há 5 anos, pessoas atingidas aguardam reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-sistematizacao-dos-dados-e-danos-dos-povos-e-comunidades-tradicionais/` | Caderno com sistematização dos dados e danos dos Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1201/` | Boletim Semanal da Aedas: principais informações das Regiões 1 e 2 da Bacia do Rio Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-com-detalhamento-de-projeto-pelos-pcts-1a-versao/` | Dossiê com detalhamento de projeto pelos PCTs (1ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2-4/` | Caderno com o levantamento das demandas individuais e coletivas referente ao anexo 1.2. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-26a-edicao-ha-5-anos-pessoas-atingidas-aguardam-reparacao/` | Vozes do Paraopeba – 26ª edição: Há 5 anos, pessoas atingidas aguardam reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar91/` | Aedas no Ar #91 – Juiz decide a favor do início da Liquidação Coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/25-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 25ª edição: A Luta pela Reparação em 2023 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/boletim-aedas-1512/` | Boletim Semanal da Aedas: principais informações das Regiões 1 e 2 da Bacia do Rio Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-memoria-das-atividades-realizadas-junto-as-pessoas-e-comunidades-atingidas-e-as-instancias-participativas/` | Caderno com Memória das atividades realizadas junto às pessoas e comunidades atingidas e às instâncias participativas (julho a dezembro de 2023) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dossie-sobre-o-anexo-1-3-1-4-1a-versao/` | Dossiê sobre o Anexo 1.3/1.4 (1ª versão) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-25a-edicao-a-luta-pela-reparacao-em-2023/` | Vozes do Paraopeba – 25ª edição: A Luta pela Reparação em 2023 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-com-o-levantamento-das-demandas-individuais-e-coletivas-referente-ao-anexo-1-2/` | Caderno com o levantamento das demandas individuais e coletivas referente ao Anexo 1.2. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-1023/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de outubro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/24-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 24ª edição: Povo Negro Atingido na Bacia do Paraopeba tem danos agravados | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-4-sistemas-agricolas-tradicionais/` | PCT Caderno 4: Sistemas agrícolas tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-3-perspectivas-de-patrimonio/` | PCT Caderno 3: Perspectivas de Patrimônio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-2-entidades-responsaveis/` | PCT Caderno 2: Entidades responsáveis | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/pct-caderno-1-legislacoes-e-direitos/` | PCT Caderno 1: Legislações e Direitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-24a-edicao-povo-negro-atingido-na-bacia-do-paraopeba-tem-danos-agravados/` | Vozes do Paraopeba – 24ª edição: Povo Negro Atingido na Bacia do Paraopeba tem danos agravados | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/protocolo-de-consulta-livre-previa-informada-consentida-e-de-boa-fe-comunitade-tradicional-ribeirinha-rua-amianto/` | Protocolo de Consulta Livre, Previa, Informada Consentida e de Boa Fé – Comunitade Tradicional Ribeirinha Rua Amianto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-4-sistemas-agricolas-tradicionais/` | Caderno 4- Sistemas Agricolas Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-3-perspectivas-de-patrimonio/` | Caderno 3- Perspectivas de Patrimonio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/23-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 23ª edição: O protagonismo das infâncias atingidas na Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0923/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de setembro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-23a-edicao-o-protagonismo-das-infancias-atingidas-na-reparacao/` | Vozes do Paraopeba – 23ª edição: O protagonismo das infâncias atingidas na Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-2-entidades-responsaveis/` | Caderno 2- Entidades Responsaveis | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-1-legislacoes-e-direitos/` | Caderno 1 – Legislações e Direitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/22-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 22ª edição: Como as pessoas atingidas participam e quais são os atores no Anexo I do Acordo Judicial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar78/` | Aedas no Ar #78: Anexo I.1 – Entrevista com Cáritas, da Entidade Gestora | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0823/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de agosto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar77/` | Aedas no Ar #77: Anexo I.1: Projetos de demandas das comunidades | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-construindo-projetos-de-demandasdas-comunidades-atingidas/` | Cartilha Construindo projetos de demandas das comunidades atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-22a-edicao-como-as-pessoas-atingidas-participam-e-quais-sao-os-atores-no-anexo-i-do-acordo-judicial/` | Vozes do Paraopeba – 22ª edição: Como as pessoas atingidas participam e quais são os atores no Anexo I do Acordo Judicial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/21-edicao-especial-vozes-do-paraopeba/` | Vozes do Paraopeba – 21ª edição: Projetos de Demandas das Comunidades – Entidade Gestora do Anexo I.1 é homologada pelo Juiz | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar76/` | Aedas no Ar #76: Prazo para pedir indenização por danos ainda não acabou, decide TJMG | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar75/` | Aedas no Ar #75: Anexo I.1 – Projetos das Comunidades, Plano Participativo e Governança Popular | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/anexo-i-1-projetos-de-demandas-das-comunidades-e-credito-e-microcredito-previsto-no-acordo-judicial-de-reparacao/` | Anexo I.1 – Projetos de Demandas das Comunidades e Crédito e Microcrédito, previsto no Acordo Judicial de Reparação. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-21a-edicao-projetos-de-demandas-das-comunidades-entidade-gestora-do-anexo-i-1-e-homologada-pelo-juiz/` | Vozes do Paraopeba – 21ª edição: Projetos de Demandas das Comunidades – Entidade Gestora do Anexo I.1 é homologada pelo Juiz | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0723/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de julho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar74/` | Aedas no Ar #74: Decisões das Instituições de Justiça, Entidade Gestora do Anexo I.1, Julho das Pretas e Festejos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/20-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 20ª edição: Agentes Multiplicadores debatem Saúde e Meio Ambiente | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar73/` | Aedas no Ar #73: Saúde, Meio Ambiente e Reparação Socioambiental | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-20a-edicao-agentes-multiplicadores-debatem-saude-e-meio-ambiente/` | Vozes do Paraopeba – 20ª edição: Agentes Multiplicadores debatem Saúde e Meio Ambiente | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0623/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de junho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-trabalho-aedas-paraopeba-2023-regioes-1-e-2/` | Plano de Trabalho Aedas Paraopeba 2023 (Regiões 1 e 2) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/19-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 19ª edição: Direito à liquidação coletiva e participação informada | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar72/` | Aedas no Ar #72: Entrevista sobre corte de recursos da ATI no Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-19a-edicao-direito-a-liquidacao-coletiva-e-participacao-informada/` | Vozes do Paraopeba – 19ª edição: Direito à liquidação coletiva e participação informada | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0523/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de maio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar70/` | Aedas no Ar #70: o povo negro e a mineração | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/18-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 18ª edição: corte de recursos das ATIs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0423/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de abril | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-69/` | Aedas no Ar #69: quais os próximos passos no Anexo I.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-18a-edicao-corte-de-recursos-das-atis/` | Vozes do Paraopeba – 18ª edição: corte de recursos das ATIs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-68/` | Aedas no Ar #68 – Assessoria Técnica Independente é direito | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/17-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba: 17ª edição: Protocolo de Consulta é direito e conquista! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0323/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de março | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-17a-edicao-protocolo-de-consulta-e-direito-e-conquista/` | Vozes do Paraopeba: 17ª edição: Protocolo de Consulta é direito e conquista! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informes-aecom-0223/` | Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de fevereiro | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/16-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba: 16ª edição: Mês do Dia Internacional da Mulher | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedasnoar64/` | Aedas no Ar #64 – Atingidas em luta por reparação integral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-16a-edicao-mes-do-dia-internacional-da-mulher/` | Vozes do Paraopeba: 16ª edição: Mês do Dia Internacional da Mulher | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/15-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 15ª edição: Semana de Luta e Luto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-15a-edicao-semana-de-luta-e-luto/` | Vozes do Paraopeba – 15ª edição: Semana de Luta e Luto | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-62/` | Aedas no Ar #62 – BRUMADINHO, 4 anos do rompimento e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/14-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 14ª edição: 25 de janeiro é todo dia | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-61/` | Aedas no Ar #61 – Entrevista: Balanço da Assessoria no Paraopeba e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/um-rompimento-quantos-direitos-atingidos/` | Um Rompimento, quantos direitos atingidos? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-14a-edicao-25-de-janeiro-e-todo-dia/` | Vozes do Paraopeba – 14ª edição: 25 de janeiro é todo dia | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-60/` | Aedas no Ar #60 – Encontro de conclusão do ano de trabalho das Comissões de Atingidas e Atingidos e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-59/` | Aedas no Ar #59 – Audiência sobre contaminação e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/13-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 13ª edição: Os caminhos da Reparação em 2022 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-13a-edicao-os-caminhos-da-reparacao-em-2022/` | Vozes do Paraopeba – 13ª edição: Os caminhos da Reparação em 2022 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-12a-edicao-paraopeba-negro-e-1-ano-de-jornal-editorial/` | Vozes do Paraopeba – 12ª edição: Paraopeba Negro e 1 ano de jornal – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-58/` | Aedas no Ar #58 – Consciência Negra e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/12-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 12ª edição: Paraopeba Negro e 1 ano de jornal – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-57/` | Aedas no Ar #57 – Você sabe o que é racismo ambiental? | Sabor Paraopeba, decisão STF, poligonais e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/o-protagonismo-das-mulheres-na-luta-pela-reparacao-par/` | O protagonismo das mulheres na luta pela reparação integral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedinhas-no-ar-o-filme/` | Aedinhas no Ar – O FILME | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/11-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 11ª edição: Movimentações recentes no Processo Judicial – EDITORIAL#vozes | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-11a-edicao-movimentacoes-recentes-no-processo-judicial/` | Vozes do Paraopeba – 11ª edição: Movimentações recentes no Processo Judicial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-56/` | Aedas no Ar #56 – Reparação socioambiental, coletivos e participação informada e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/10-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 10ª edição: Rodas de diálogo discutem a estrutura da governança popular e os avanços do plano participativo do Anexo 1.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-10a-edicao-rodas-de-dialogo-discutem-a-estrutura-da-governanca-popular-e-os-avancos-do-plano-participativo-do-anexo-1-1/` | Vozes do Paraopeba – 10ª edição: Rodas de diálogo discutem a estrutura da governança popular e os avanços do plano participativo do Anexo 1.1 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-55/` | Aedas no Ar #55 – Consulta Popular aos PCTs, envios de sugestão de governança para IJs e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/campanha-um-rompimento-quantos-direitos-atingidos-vozes-9-editorial/` | Vozes do Paraopeba – 9ª edição: Campanha “Um rompimento – Quantos direitos atingidos?” – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-9a-edicao-campanha-um-rompimento-quantos-direitos-atingidos-editorial/` | Vozes do Paraopeba – 9ª edição: Campanha “Um rompimento – Quantos direitos atingidos?” – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-54/` | Aedas no Ar 54: Formação com AGMs, Julho das Pretas e Festa de Mexirica | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-8a-edicao-processo-participativo-fortalece-discussao-do-sistema-de-participacao-e-governanca-do-anexo-1-1-editorial/` | Vozes do Paraopeba – 8ª edição: Processo participativo fortalece discussão do Sistema de Participação e Governança do Anexo 1.1 – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/8-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 8ª edição: Processo participativo fortalece discussão do Sistema de Participação e Governança do Anexo 1.1 – Editorial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-7a-edicao-atingidos-defendem-direito-a-assessoria-tecnica-independente/` | Vozes do Paraopeba – 7ª edição: Atingidos defendem direito à Assessoria Técnica Independente | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozesdoparaopeba7/` | Vozes do Paraopeba – 7ª edição: Atingidos defendem direito à Assessoria Técnica Independente | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedasnoar52/` | Aedas no Ar 52: milhares de pessoas buscam atendimento presencial do PTR e mais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-6a-edicao-recursos-do-povo-quem-decide-o-anexo-1-1/` | Vozes do Paraopeba – 6ª edição: “Recursos do povo: Quem decide o Anexo 1.1?” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/6-edicao-vozes-do-paraopeba/` | Vozes do Paraopeba – 6ª edição: “Recursos do povo: Quem decide o Anexo 1.1?” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-5a-edicao-desbloqueio-de-cadastros-do-ptr-e-o-protagonismo-dos-atingidos-as-no-anexo-1-1-sao-destaques/` | Vozes do Paraopeba – 5ª edição: Desbloqueio de cadastros do PTR e o protagonismo dos atingidos/as no Anexo 1.1 são destaques | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-5-edicao/` | Vozes do Paraopeba – 5ª edição: Desbloqueio de cadastros do PTR e o protagonismo dos atingidos/as no Anexo 1.1 são destaques | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/documentario-historias-atingidas/` | Documentário: Histórias Atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-51/` | Aedas no Ar #51: Março, mês de luta contra as barragens e em defesa da vida e das águas. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/editorial-da-4a-edicao-do-vozes-do-paraopeba-protagonismo-das-mulheres-atingidas-do-paraopeba-na-luta-pela-reparacao-integral/` | Editorial da 4ª edição do Vozes do Paraopeba: Protagonismo das mulheres atingidas do Paraopeba na luta pela reparação integral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-50/` | Aedas no Ar #50: Solidariedade entre atingidos, governança popular, março é mês de luta das mulheres e mais… | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/todos-os-radios-aedas-no-ar-2022/` | Todos os rádios “Aedas no Ar” 2022 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedasnoar49/` | Aedas no Ar #49: 3 anos de luta do povo atingido em busca por reparação integral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-3a-edicao/` | Vozes do Paraopeba – 3ª edição: 3 anos de luta por reparação e justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-3a-edicao-3-anos-de-luta-por-reparacao-e-justica/` | Vozes do Paraopeba – 3ª edição: 3 anos de luta por reparação e justiça | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-48/` | Aedas no Ar #48: ENTREVISTA COM COORDENAÇÕES DA AEDAS e DEPOIMENTOS DE LIDERANÇAS | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-2a-edicao-matriz-de-danos-e-objetivo-das-familias-do-paraopeba-para-2022/` | Vozes do Paraopeba – 2ª edição: Matriz de danos é objetivo das famílias do Paraopeba para 2022 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-2a-edicao-matriz-de-danos-e-objetivo-das-familias-do-paraopeba-para-2022-2/` | Vozes do Paraopeba – 2ª edição: Matriz de danos é objetivo das famílias do Paraopeba para 2022 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-46-consulta-popular-lista-prioridades-para-a-bacia-do-paraopeba/` | Aedas no Ar #46: consulta popular lista prioridades para a Bacia do Paraopeba | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/1a-edicao-do-jornal-vozes-do-paraopeba-traz-novas-informacoes-sobre-o-ptr/` | Vozes do Paraopeba – 1ª edição: Novas informações sobre o PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/vozes-do-paraopeba-1a-edicao-novas-informacoes-sobre-o-ptr/` | Vozes do Paraopeba – 1ª edição: Novas informações sobre o PTR | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/todos-os-radios-aedas-no-ar-2021/` | Todos os rádios “Aedas no Ar” 2021 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-no-ar-19-comunidades-com-problemas-no-abastecimento-serao-visitadas-por-copasa-e-vale/` | Aedas no Ar #19: Comunidades com problemas no abastecimento serão visitadas por Copasa e Vale | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/assistencia-social-e-educacao-sao-temas-de-cartilha-da-aedas/` | Assistência social e educação são temas de cartilha da Aedas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/povos-e-comunidades-de-tradicao-religiosa-de-matriz-ancestral-destacam-danos-e-demandas-em-cartilha/` | Povos e Comunidades de Tradição Religiosa de Matriz Ancestral destacam danos e demandas em cartilha | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-explica-impacto-a-economia-trabalho-e-renda-provocado-pelo-rompimento-da-barragem-da-vale/` | Cartilha explica impacto à economia, trabalho e renda provocado pelo rompimento da barragem da Vale | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-da-aedas-sistematiza-danos-a-natureza-provocados-pelo-desastre-da-vale-em-brumadinho/` | Cartilha da Aedas sistematiza danos à natureza provocados pelo desastre da Vale em Brumadinho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/patrimonio-cultural-esporte-e-lazer-sao-temas-de-mais-uma-cartilha-da-aedas/` | Patrimônio cultural, esporte e lazer são temas de mais uma cartilha da Aedas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-de-roda-de-dialogo-da-aedas-traz-discussoes-sobre-saude/` | Cartilha de Roda de Diálogo da Aedas traz discussões sobre saúde | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-produz-cartilha-sobre-auxilio-emergencial/` | Aedas produz cartilha sobre auxílio emergencial | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/planos-de-trabalho-paraopeba-2020-regioes-1-e-2/` | Planos de Trabalho Paraopeba 2020 (Regiões 1 e 2) | INCONSISTENTE |
 | ✅ OK | `https://guaicuy.org.br/biblioteca/publicacoes/entenda-o-acordo-judicial/` | Folder — Entenda o Acordo Judicial de Reparação | OK |
 | ✅ OK | `https://guaicuy.org.br/biblioteca/publicacoes/piracema-19a-edicao/` | Piracema – 19ª edição | OK |
 | ✅ OK | `https://guaicuy.org.br/biblioteca/publicacoes/travessia-medidas-emergenciais-maio-2026/` | Travessia – Medidas Emergenciais – Maio de 2026 | OK |
@@ -3891,124 +3891,124 @@
 | ✅ OK | `https://nacab.org.br/wp-content/uploads/2026/05/NotaTecnica_02-2026.pdf` | Nota Técnica nº 02/2026 | OK |
 | ✅ OK | `https://nacab.org.br/wp-content/uploads/2026/08/20260817_relatorio_analitico_prt_v2corrigido.pdf` | Relatório Analítico — PRT | OK |
 | ✅ OK | `https://nacab.org.br/wp-content/uploads/2026/07/Nota-Tecnica-Finalistica-06-Suspensao-Acoes-Individuais.pdf` | Nota Técnica Finalística nº 6 — Suspensão de Ações Individuais | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-54-direitos-humanos-e-a-politica-nacional-de-direitos-das-populacoes-atingidas/` | Estação Rio Doce – Edição 54 | Direitos Humanos e a Política Nacional de Direitos das Populações Atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/10-edicao-jornal-territorios-estrategias-coletivas-impulsionam-a-reparacao-nas-comunidades-atingidas/` | #10 Edição Jornal Territórios | Estratégias coletivas impulsionam a reparação nas comunidades atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-53-acompanhamento-das-acoes-de-silagem-no-ambito-da-reparacao-da-bacia-do-rio-doce/` | Estação Rio Doce – Edição 53 | Acompanhamento das ações de silagem no âmbito da reparação da bacia do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-52-rio-doce-participativo-e-a-chamada-publica-de-projetos-estruturantes/` | Estação Rio Doce – Edição 52 | Rio Doce Participativo e a chamada pública de projetos estruturantes | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias-parte-2/` | Estação Rio Doce – Edição 50 | Especial 50 Memórias de Lutas e Vivências (parte 2) | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias/` | Estação Rio Doce – Edição 50 | Especial 50 Memórias de Lutas e Vivências (parte 1) | OK |
-| ✅ OK | `https://aedasmg.org/documento/associacoes-comunitarias-e-o-anexo-6-guia-popular-sobre-regularizacao-de-associacoes-e-participacao-em-projetos-comunitarios-do-fundo-de-participacao-social/` | Associações Comunitárias e o Anexo 6: Guia popular sobre regularização de associações e participação em projetos comunitários do Fundo de Participação Social | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-49-o-trabalho-da-aedas-no-apoio-as-comunidades-atingidas-para-o-edital-rio-doce-participativo/` | Estação Rio Doce – Edição 49 | O trabalho da Aedas no apoio às comunidades atingidas para o Edital Rio Doce Participativo | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-ep-48-turno-de-dialogo-aberto-amplia-voz-das-comunidades-atingidas-em-atividade-em-ipatinga/` | Estação Rio Doce – Edição 48 | Turno de Diálogo Aberto amplia voz das comunidades atingidas em atividade em Ipatinga | OK |
-| ✅ OK | `https://aedasmg.org/documento/edital-rio-doce-participativo-com-linguagem-acessivel/` | Edital Rio Doce Participativo com linguagem acessível | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-47-programa-para-mulheres-abre-consulta-publica-sobre-termo-de-referencia-para-contratacao-de-entidade-de-apoio-tecnico/` | Estação Rio Doce – Edição 47 | Programa para Mulheres abre Consulta Pública sobre Termo de Referência para contratação de Entidade de apoio técnico | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-46-comissoes-do-medio-rio-doce-assessoradas-pela-aedas-realizam-assembleias-territoriais/` | Estação Rio Doce – Edição 46 | Comissões do Médio Rio Doce assessoradas pela Aedas realizam Assembleias Territoriais | OK |
-| ✅ OK | `https://aedasmg.org/documento/09-edicao-jornal-territorios-quando-as-comunidades-se-movimentam-a-reparacao-se-movimenta/` | #09 Edição Jornal Territórios | Quando as comunidades se movimentam, a reparação se movimenta. | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-45-entenda-a-busca-pela-regulamentacao-da-politica-nacional-dos-direitos-das-populacoes-atingidas-por-barragens-pnab/` | Estação Rio Doce – Edição 45 | Entenda a busca pela regulamentação da Política Nacional dos Direitos das Populações Atingidas por Barragens (PNAB) | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-44-pessoas-atingidas-da-bacia-dorio-doce-podem-acessar-informes-de-rendimentos-de-2025-pelo-portal-do-usuario/` | Estação Rio Doce – Edição 44 | Pessoas atingidas da Bacia do Rio Doce podem acessar Informes de Rendimentos de 2025 pelo portal do Usuário | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-43-programa-especial-de-saude-do-rio-doce-inaugura-escritorio-em-governador-valadares/` | Estação Rio Doce – Edição 43 | Programa Especial de Saúde do Rio Doce inaugura escritório em Governador Valadares | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-42-cfps-discute-projetos-comunitarios-e-acompanhamento-da-execucao-do-novo-acordo-rio-doce/` | Estação Rio Doce – Edição 42 | CFPS discute Projetos Comunitários e Acompanhamento da Execução do Novo Acordo Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-41-retomada-economica-e-tema-de-apresentacoes-e-dialogos-entre-governo-federal-e-comunidades-atingidas/` | Estação Rio Doce – Edição 41 | Retomada Econômica é tema de Apresentações e Diálogos entre Governo Federal e Comunidades Atingidas | OK |
-| ✅ OK | `https://aedasmg.org/documento/participacao-social-cfps-bacia-do-rio-doce-e-litoral-norte-capixaba-fundo-de-participacao-social/` | Participação Social: CFPS Bacia do Rio Doce e Litoral Norte Capixaba | Fundo de Participação Social | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-ed-40-gaas-debatem-fundo-de-participacao-social-e-projetos-comunitarios-nos-territorios-atingidos/` | Estação Rio Doce – edição 40 | GAAs debatem Fundo de Participação Social e Projetos Comunitários nos territórios atingidos | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-39-caravana-do-mds-sobre-profort-suas-informa-a-populacao-prazo-para-entrega-do-relatorio-de-exercicio-da-atividade-pesqueira-prorrogado/` | Estação Rio Doce – Edição 39 | Caravana do MDS sobre PROFORT-SUAS informa a população | Prazo para entrega do Relatório de Exercício da Atividade Pesqueira prorrogado | OK |
-| ✅ OK | `https://aedasmg.org/documento/08-edicao-jornal-territorios-organizacao-popular-atingidosas-na-consolidacao-de-direitos-e-conquistas/` | #08 Edição Jornal Territórios | Organização Popular: atingidos(as) na consolidação de direitos e conquistas | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-38-projetos-comunitarios-na-reparacao-da-bacia-do-rio-doce/` | Estação Rio Doce – Edição 38 | Projetos Comunitários na Reparação da Bacia do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-ed-37-participacao-informada-a-ferramenta-do-povo-protagonista-da-reparacao/` | Estação Rio Doce – Edição 37 | Participação Informada, a ferramenta do Povo protagonista da reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-35-analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/` | Estação Rio Doce – Edição 36 | Análise das demandas comuns de saúde das regiões do Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/` | Análise das demandas comuns de saúde das regiões do Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/anexo-6-do-acordo-de-repactuacao/` | Anexo 6 do Acordo de Repactuação | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-tcle/` | Cartilha TCLE | OK |
-| ✅ OK | `https://aedasmg.org/documento/novo-acordo-rio-doce/` | Novo Acordo Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/funai-estatuto-do-indio/` | Funai Estatuto do Índio | OK |
-| ✅ OK | `https://aedasmg.org/documento/lei-estadual-sobre-povos-e-comunidades-tradicionais/` | Lei Estadual sobre Povos e Comunidades Tradicionais | OK |
-| ✅ OK | `https://aedasmg.org/documento/lei-peab/` | Lei PEAB | OK |
-| ✅ OK | `https://aedasmg.org/documento/lei-pnab/` | Lei PNAB | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-organizacoes-comunitarias-e-da-sociedade-civil/` | Cartilha Organizações Comunitárias e da Sociedade Civil | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-34-pessoas-atingidas-tomam-posse-na-imps-doce/` | Estação Rio Doce – Edição 34 | Pessoas atingidas tomam posse na IMPS/Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/07-edicao-jornal-territorios-10-anos-pessoas-atingidas-relembram-historias-de-luta-e-esperanca/` | #07 Edição Jornal Territórios | 10 Anos: Pessoas atingidas relembram histórias de luta e esperança | OK |
-| ✅ OK | `https://aedasmg.org/documento/10-anos-de-luta-essa-historia-nao-se-rompe/` | 10 Anos de Luta: Essa História Não se Rompe | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-32-pessoas-atingidas-tomam-posse-no-conselho-federal-de-participacao/` | Estação Rio Doce – Edição 32 | Pessoas atingidas tomam posse no Conselho Federal de Participação | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-31-organizacoes-populares-associacoes-e-cooperativas/` | Estação Rio Doce – Edição 31 | Organizações Populares, Associações e Cooperativas | OK |
-| ✅ OK | `https://aedasmg.org/documento/projetos-comunitarios-construindo-a-reparacao-coletiva/` | Projetos Comunitários: construindo a reparação coletiva | OK |
-| ✅ OK | `https://aedasmg.org/documento/para-a-repactuacao-justica-mobilizacao-das-pessoas-atingidas-cobra-acordo-de-repactuacao-justo/` | Para a repactuação? Justiça! – Mobilização das pessoas atingidas cobra acordo de repactuação justo | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-30-programa-para-mulheres-ressarcimento-da-previdencia-de-pescadores-artesanais/` | Estação Rio Doce 30 | Programa para Mulheres | Ressarcimento da Previdência de Pescadores Artesanais | OK |
-| ✅ OK | `https://aedasmg.org/documento/06-edicao-jornal-territorios-programa-de-transferencia-de-renda-comeca-a-ser-executado-na-bacia-do-rio-doce/` | #06 Edição Jornal Territórios | Programa de Transferência de Renda começa a ser executado na Bacia do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-29-atendimentos-individuais-ptr-ministerio-da-saude-visita-quilombos/` | Estação Rio Doce – Edição 29 | Atendimentos Individuais PTR | Ministério da Saúde visita Quilombos | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-28-conselho-federal-de-participacao-social-tem-eleitosas-definidosas/` | Estação Rio Doce – Edição 28 | Conselho Federal de Participação Social tem eleitos(as) definidos(as) | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-27-o-cadunico-no-processo-de-reparacao-seis-meses-do-novo-acordo/` | Estação Rio Doce – Edição 27 | O CadÚnico no processo de Reparação | Seis meses do Novo Acordo | OK |
-| ✅ OK | `https://aedasmg.org/documento/folder-cadunico-sua-porta-de-entrada-para-beneficios-sociais-e-reparacao/` | Folder “CadÚnico – Sua porta de entrada para benefícios sociais e reparação!” | OK |
-| ✅ OK | `https://aedasmg.org/documento/05-edicao-jornal-territorios-participacao-popular-e-projetos-comunitarios-na-busca-por-reparacao-integral/` | #05 Edição Jornal Territórios | Participação Popular e Projetos Comunitários na busca por Reparação Integral | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-26-pid-prorrogado-caravana-especial-de-saude-e-comissoes-territoriais/` | Estação Rio Doce – Edição 26 | PID prorrogado, Caravana Especial de Saúde e Comissões Territoriais | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-25-camaras-e-conselhos-municipais-de-saude-portaria-31-ief-e-propesca/` | Estação Rio Doce – Edição 25 | Câmaras e Conselhos Municipais de Saúde , Portaria 31 IEF e PROPESCA. | OK |
-| ✅ OK | `https://aedasmg.org/documento/orientacoes-sobre-o-conselho-municipal-de-saude-e-conferencia-municipal-de-saude/` | Orientações sobre o Conselho Municipal de Saúde e Conferência Municipal de Saúde | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-24-prazos-e-informacoes-para-adesao-ao-pid-atingidos-falam-sobre-gaas/` | Estação Rio Doce – Edição 24 | Prazos e Informações para Adesão ao PID | Atingidos falam sobre GAAs | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-eixos-tematicos/` | Cartilha Eixos Temáticos | OK |
-| ✅ OK | `https://aedasmg.org/documento/indenizacoes-individuais-sap-e-pid/` | Indenizações Individuais – SAP e PID | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-23-abril-indigena-ipcts-no-novo-acordo-de-reparacao/` | Estação Rio Doce – Edição 23 | Abril Indígena: IPCTs no novo acordo de reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-22-sistema-agro-e-pesca-e-programa-de-indenizacao-definitiva-pid/` | Estação Rio Doce – Edição 22 | Sistema “Agro e Pesca” e Programa de Indenização Definitiva (PID) | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-21-reivindicacoes-de-comunidades-atingidas-durante-a-caravana-do-rio-doce/` | Estação Rio Doce – Edição 21| Reivindicações de Comunidades Atingidas durante a Caravana do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/04-edicao-jornal-territorios-a-luta-das-mulheres-atingidas-pela-reparacao/` | #04 Edição Jornal Territórios | A luta das mulheres atingidas pela reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-20-14-de-marco-dia-internacional-de-luta-contra-as-barragens/` | Estação Rio Doce – Edição 20 | 14 de março: Dia Internacional de Luta contra as Barragens | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-19-a-participacao-social-no-novo-acordo-de-reparacao/` | Estação Rio Doce – Edição 19 | A Participação Social no Novo Acordo de Reparação. | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-18-o-direito-a-assessoria-tecnica-na-bacia-do-medio-rio-doce/` | Estação Rio Doce – Edição 18 | O Direito à Assessoria Técnica na Bacia do Médio Rio Doce. | OK |
-| ✅ OK | `https://aedasmg.org/documento/03-edicao-jornal-territorios-programa-de-transferencia-de-renda-sera-implementado-em-territorios-atingidos-nas-modalidades-ptr-rural-e-ptr-pesca/` | #03 Edição Jornal Territórios: Programa de Transferência de Renda será implementado em territórios atingidos nas modalidades PTR-Rural e PTR-Pesca | OK |
-| ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-04-como-ficam-as-indenizacoes/` | Médio Rio Doce | Tira-Dúvidas 04: Como ficam as indenizações? | OK |
-| ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-03-questoes-sobre-cadastros-da-reparacao/` | Médio Rio Doce | Tira-Dúvidas 03: Questões sobre cadastros da Reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-02-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 02: Cadastro Nacional de Agricultura Familiar | OK |
-| ✅ OK | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-01-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 01: Cadastro Nacional de Agricultura Familiar | OK |
-| ✅ OK | `https://aedasmg.org/documento/informacao-e-direito-ptr-rural-e-pesca-previstos-no-acordo-de-reparacao-da-bacia-do-rio-doce/` | INFORMAÇÃO É DIREITO | PTR Rural e Pesca previstos no acordo de reparação da Bacia do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/estacao-rio-doce-edicao-17-cadastro-nacional-da-agricultura-familiar-no-contexto-da-reparacao/` | Estação Rio Doce – Edição 17/Cadastro Nacional da Agricultura Familiar no contexto da reparação | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-16-enchentes-e-dados-de-espacos-participativos-da-aedas/` | Programa Estação Rio Doce – Edição 16/Enchentes e dados de espaços participativos da Aedas | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-trabalho-territorio-7-resplendor-e-itueta/` | Plano de Trabalho Território 7 – Resplendor e Itueta | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-trabalho-territorio-8-aimores/` | Plano de Trabalho Território 8 – Aimorés | OK |
-| ✅ OK | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre-2/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 1º Semestre | OK |
-| ✅ OK | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre-2/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 2º Semestre | OK |
-| ✅ OK | `https://aedasmg.org/documento/contrato-de-gestao-territorio-3-vale-do-aco/` | Contrato de Gestão Território 3 – Vale Do Aço | OK |
-| ✅ OK | `https://aedasmg.org/documento/contrato-de-gestao-territorio-6-conselheiro-pena/` | Contrato de Gestão Território 6 – Conselheiro Pena | OK |
-| ✅ OK | `https://aedasmg.org/documento/contrato-de-gestao-territorio-7-resplendor-e-itueta/` | Contrato de Gestão Território 7 – Resplendor E Itueta | OK |
-| ✅ OK | `https://aedasmg.org/documento/contrato-de-gestao-territorio-8-aimores/` | Contrato de Gestão Território 8 – Aimorés | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-trabalho-territorio-3-vale-do-aco/` | Plano de Trabalho Território 3 – Vale do Aço | OK |
-| ✅ OK | `https://aedasmg.org/documento/plano-de-trabalho-territorio-6-conselheiro-pena/` | Plano de Trabalho Território 6 – Conselheiro Pena | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-15-entenda-sobre-o-caf-e-rgp/` | Programa Estação Rio Doce – Edição 15/Entenda sobre o CAF e RGP | OK |
-| ✅ OK | `https://aedasmg.org/documento/indenizacoes-individuais-anexo-2/` | Indenizações Individuais Anexo 2 | OK |
-| ✅ OK | `https://aedasmg.org/documento/livreto-programa-de-transferencia-de-renda-ptr-anexo-4/` | Livreto “Programa de Transferência de Renda (PTR) Anexo 4” | OK |
-| ✅ OK | `https://aedasmg.org/documento/caderno-tira-duvidas-agm-modulo-01/` | Caderno Tira-Dúvidas AGM – Módulo 01 | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-14-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 14/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/grupo-de-atingidos-e-atingidas-gaa-a-forca-popular-na-conquista-de-direitos/` | Grupo de Atingidos e Atingidas (GAA): a força popular na conquista de direitos! | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-ed-13-principais-duvidas-sobre-indenizacoes-individuais-na-repactuacao/` | Programa Estação Rio Doce – Ed.13/Principais dúvidas sobre Indenizações Individuais na Repactuação | OK |
-| ✅ OK | `https://aedasmg.org/documento/02-edicao-jornal-territorios-povo-em-luta-rio-de-esperanca-9-anos-em-busca-de-justica/` | #02 Edição Jornal Territórios: Povo em Luta, Rio de Esperança. 9 anos em busca de justiça! | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-12-seminario-mulheres-e-reparacao-e-acordo-de-repactuacao/` | Programa Estação Rio Doce – Edição 12/Seminário “Mulheres e Reparação” e Acordo de Repactuação | OK |
-| ✅ OK | `https://aedasmg.org/documento/01-edicao-tematica-do-jornal-territorios-controle-social-e-o-papel-da-assessoria-tecnica-independente-ati/` | #01 Edição temática do Jornal Territórios: controle social e o papel da Assessoria Técnica Independente (ATI) | OK |
-| ✅ OK | `https://aedasmg.org/documento/especial-ciranda-historias-e-direitos-das-criancas-do-rio-doce/` | Especial Ciranda: Histórias e Direitos das Crianças do Rio Doce! | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-11-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 11/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-10-registro-familiar-e-prestacao-de-contas/` | Programa Estação Rio Doce – Edição 10/Registro Familiar e Prestação de Contas | OK |
-| ✅ OK | `https://aedasmg.org/documento/para-a-repactuacao-participacao-pessoas-atingidas-do-medio-rio-doce-cobram-por-transparencia/` | “Para a Repactuação? Participação!” – Pessoas atingidas do Médio Rio Doce cobram por transparência | OK |
-| ✅ OK | `https://aedasmg.org/documento/de-vozes-a-acoes-pessoas-atingidas-na-consolidacao-do-sistema-de-governanca-da-bacia-do-rio-doce/` | De vozes a ações: pessoas atingidas na consolidação do Sistema de Governança da Bacia do Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/01-edicao-do-jornal-territorios-mobilizacao-social-na-garantia-de-direitos/` | #01 Edição do Jornal Territórios: Mobilização Social na Garantia de Direitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-09-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 09/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-08-povos-e-comunidades-tradicionais-no-sistema-de-governanca/` | Programa Estação Rio Doce – Edição 08 – Povos e Comunidades Tradicionais no sistema de governança | OK |
-| ✅ OK | `https://aedasmg.org/documento/protocolo-de-consulta-previa-e-informada-da-comunidade-ucho-betlharo-puri/` | Protocolo de Consulta Prévia e Informada da Comunidade Uchô Betlharó Purí | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-07-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 07/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/dotapa-muum-puriuma-moemlitonema-pury-sobreviventes-do-vale/` | DOTAPÁ-MUÚM PURÍUMA MÔEMLITONEMA – Pury Sobreviventes do Vale | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-06-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 06/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-05-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 05/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-04-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 04/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 1º Semestre | OK |
-| ✅ OK | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 2º Semestre | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-03-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 03/Aedas Médio Rio Doce | OK |
-| ✅ OK | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-02-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 02/Aedas Médio Rio Doce | OK |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-54-direitos-humanos-e-a-politica-nacional-de-direitos-das-populacoes-atingidas/` | Estação Rio Doce – Edição 54 | Direitos Humanos e a Política Nacional de Direitos das Populações Atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/10-edicao-jornal-territorios-estrategias-coletivas-impulsionam-a-reparacao-nas-comunidades-atingidas/` | #10 Edição Jornal Territórios | Estratégias coletivas impulsionam a reparação nas comunidades atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-53-acompanhamento-das-acoes-de-silagem-no-ambito-da-reparacao-da-bacia-do-rio-doce/` | Estação Rio Doce – Edição 53 | Acompanhamento das ações de silagem no âmbito da reparação da bacia do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-52-rio-doce-participativo-e-a-chamada-publica-de-projetos-estruturantes/` | Estação Rio Doce – Edição 52 | Rio Doce Participativo e a chamada pública de projetos estruturantes | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias-parte-2/` | Estação Rio Doce – Edição 50 | Especial 50 Memórias de Lutas e Vivências (parte 2) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias/` | Estação Rio Doce – Edição 50 | Especial 50 Memórias de Lutas e Vivências (parte 1) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/associacoes-comunitarias-e-o-anexo-6-guia-popular-sobre-regularizacao-de-associacoes-e-participacao-em-projetos-comunitarios-do-fundo-de-participacao-social/` | Associações Comunitárias e o Anexo 6: Guia popular sobre regularização de associações e participação em projetos comunitários do Fundo de Participação Social | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-49-o-trabalho-da-aedas-no-apoio-as-comunidades-atingidas-para-o-edital-rio-doce-participativo/` | Estação Rio Doce – Edição 49 | O trabalho da Aedas no apoio às comunidades atingidas para o Edital Rio Doce Participativo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-ep-48-turno-de-dialogo-aberto-amplia-voz-das-comunidades-atingidas-em-atividade-em-ipatinga/` | Estação Rio Doce – Edição 48 | Turno de Diálogo Aberto amplia voz das comunidades atingidas em atividade em Ipatinga | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/edital-rio-doce-participativo-com-linguagem-acessivel/` | Edital Rio Doce Participativo com linguagem acessível | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-47-programa-para-mulheres-abre-consulta-publica-sobre-termo-de-referencia-para-contratacao-de-entidade-de-apoio-tecnico/` | Estação Rio Doce – Edição 47 | Programa para Mulheres abre Consulta Pública sobre Termo de Referência para contratação de Entidade de apoio técnico | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-46-comissoes-do-medio-rio-doce-assessoradas-pela-aedas-realizam-assembleias-territoriais/` | Estação Rio Doce – Edição 46 | Comissões do Médio Rio Doce assessoradas pela Aedas realizam Assembleias Territoriais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/09-edicao-jornal-territorios-quando-as-comunidades-se-movimentam-a-reparacao-se-movimenta/` | #09 Edição Jornal Territórios | Quando as comunidades se movimentam, a reparação se movimenta. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-45-entenda-a-busca-pela-regulamentacao-da-politica-nacional-dos-direitos-das-populacoes-atingidas-por-barragens-pnab/` | Estação Rio Doce – Edição 45 | Entenda a busca pela regulamentação da Política Nacional dos Direitos das Populações Atingidas por Barragens (PNAB) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-44-pessoas-atingidas-da-bacia-dorio-doce-podem-acessar-informes-de-rendimentos-de-2025-pelo-portal-do-usuario/` | Estação Rio Doce – Edição 44 | Pessoas atingidas da Bacia do Rio Doce podem acessar Informes de Rendimentos de 2025 pelo portal do Usuário | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-43-programa-especial-de-saude-do-rio-doce-inaugura-escritorio-em-governador-valadares/` | Estação Rio Doce – Edição 43 | Programa Especial de Saúde do Rio Doce inaugura escritório em Governador Valadares | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-42-cfps-discute-projetos-comunitarios-e-acompanhamento-da-execucao-do-novo-acordo-rio-doce/` | Estação Rio Doce – Edição 42 | CFPS discute Projetos Comunitários e Acompanhamento da Execução do Novo Acordo Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-41-retomada-economica-e-tema-de-apresentacoes-e-dialogos-entre-governo-federal-e-comunidades-atingidas/` | Estação Rio Doce – Edição 41 | Retomada Econômica é tema de Apresentações e Diálogos entre Governo Federal e Comunidades Atingidas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/participacao-social-cfps-bacia-do-rio-doce-e-litoral-norte-capixaba-fundo-de-participacao-social/` | Participação Social: CFPS Bacia do Rio Doce e Litoral Norte Capixaba | Fundo de Participação Social | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-ed-40-gaas-debatem-fundo-de-participacao-social-e-projetos-comunitarios-nos-territorios-atingidos/` | Estação Rio Doce – edição 40 | GAAs debatem Fundo de Participação Social e Projetos Comunitários nos territórios atingidos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-39-caravana-do-mds-sobre-profort-suas-informa-a-populacao-prazo-para-entrega-do-relatorio-de-exercicio-da-atividade-pesqueira-prorrogado/` | Estação Rio Doce – Edição 39 | Caravana do MDS sobre PROFORT-SUAS informa a população | Prazo para entrega do Relatório de Exercício da Atividade Pesqueira prorrogado | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/08-edicao-jornal-territorios-organizacao-popular-atingidosas-na-consolidacao-de-direitos-e-conquistas/` | #08 Edição Jornal Territórios | Organização Popular: atingidos(as) na consolidação de direitos e conquistas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-38-projetos-comunitarios-na-reparacao-da-bacia-do-rio-doce/` | Estação Rio Doce – Edição 38 | Projetos Comunitários na Reparação da Bacia do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-ed-37-participacao-informada-a-ferramenta-do-povo-protagonista-da-reparacao/` | Estação Rio Doce – Edição 37 | Participação Informada, a ferramenta do Povo protagonista da reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-35-analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/` | Estação Rio Doce – Edição 36 | Análise das demandas comuns de saúde das regiões do Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/` | Análise das demandas comuns de saúde das regiões do Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/anexo-6-do-acordo-de-repactuacao/` | Anexo 6 do Acordo de Repactuação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-tcle/` | Cartilha TCLE | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/novo-acordo-rio-doce/` | Novo Acordo Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/funai-estatuto-do-indio/` | Funai Estatuto do Índio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lei-estadual-sobre-povos-e-comunidades-tradicionais/` | Lei Estadual sobre Povos e Comunidades Tradicionais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lei-peab/` | Lei PEAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/lei-pnab/` | Lei PNAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-organizacoes-comunitarias-e-da-sociedade-civil/` | Cartilha Organizações Comunitárias e da Sociedade Civil | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-34-pessoas-atingidas-tomam-posse-na-imps-doce/` | Estação Rio Doce – Edição 34 | Pessoas atingidas tomam posse na IMPS/Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/07-edicao-jornal-territorios-10-anos-pessoas-atingidas-relembram-historias-de-luta-e-esperanca/` | #07 Edição Jornal Territórios | 10 Anos: Pessoas atingidas relembram histórias de luta e esperança | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/10-anos-de-luta-essa-historia-nao-se-rompe/` | 10 Anos de Luta: Essa História Não se Rompe | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-32-pessoas-atingidas-tomam-posse-no-conselho-federal-de-participacao/` | Estação Rio Doce – Edição 32 | Pessoas atingidas tomam posse no Conselho Federal de Participação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-31-organizacoes-populares-associacoes-e-cooperativas/` | Estação Rio Doce – Edição 31 | Organizações Populares, Associações e Cooperativas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/projetos-comunitarios-construindo-a-reparacao-coletiva/` | Projetos Comunitários: construindo a reparação coletiva | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/para-a-repactuacao-justica-mobilizacao-das-pessoas-atingidas-cobra-acordo-de-repactuacao-justo/` | Para a repactuação? Justiça! – Mobilização das pessoas atingidas cobra acordo de repactuação justo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-30-programa-para-mulheres-ressarcimento-da-previdencia-de-pescadores-artesanais/` | Estação Rio Doce 30 | Programa para Mulheres | Ressarcimento da Previdência de Pescadores Artesanais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/06-edicao-jornal-territorios-programa-de-transferencia-de-renda-comeca-a-ser-executado-na-bacia-do-rio-doce/` | #06 Edição Jornal Territórios | Programa de Transferência de Renda começa a ser executado na Bacia do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-29-atendimentos-individuais-ptr-ministerio-da-saude-visita-quilombos/` | Estação Rio Doce – Edição 29 | Atendimentos Individuais PTR | Ministério da Saúde visita Quilombos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-28-conselho-federal-de-participacao-social-tem-eleitosas-definidosas/` | Estação Rio Doce – Edição 28 | Conselho Federal de Participação Social tem eleitos(as) definidos(as) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-27-o-cadunico-no-processo-de-reparacao-seis-meses-do-novo-acordo/` | Estação Rio Doce – Edição 27 | O CadÚnico no processo de Reparação | Seis meses do Novo Acordo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/folder-cadunico-sua-porta-de-entrada-para-beneficios-sociais-e-reparacao/` | Folder “CadÚnico – Sua porta de entrada para benefícios sociais e reparação!” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/05-edicao-jornal-territorios-participacao-popular-e-projetos-comunitarios-na-busca-por-reparacao-integral/` | #05 Edição Jornal Territórios | Participação Popular e Projetos Comunitários na busca por Reparação Integral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-26-pid-prorrogado-caravana-especial-de-saude-e-comissoes-territoriais/` | Estação Rio Doce – Edição 26 | PID prorrogado, Caravana Especial de Saúde e Comissões Territoriais | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-25-camaras-e-conselhos-municipais-de-saude-portaria-31-ief-e-propesca/` | Estação Rio Doce – Edição 25 | Câmaras e Conselhos Municipais de Saúde , Portaria 31 IEF e PROPESCA. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/orientacoes-sobre-o-conselho-municipal-de-saude-e-conferencia-municipal-de-saude/` | Orientações sobre o Conselho Municipal de Saúde e Conferência Municipal de Saúde | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-24-prazos-e-informacoes-para-adesao-ao-pid-atingidos-falam-sobre-gaas/` | Estação Rio Doce – Edição 24 | Prazos e Informações para Adesão ao PID | Atingidos falam sobre GAAs | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-eixos-tematicos/` | Cartilha Eixos Temáticos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/indenizacoes-individuais-sap-e-pid/` | Indenizações Individuais – SAP e PID | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-23-abril-indigena-ipcts-no-novo-acordo-de-reparacao/` | Estação Rio Doce – Edição 23 | Abril Indígena: IPCTs no novo acordo de reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-22-sistema-agro-e-pesca-e-programa-de-indenizacao-definitiva-pid/` | Estação Rio Doce – Edição 22 | Sistema “Agro e Pesca” e Programa de Indenização Definitiva (PID) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-21-reivindicacoes-de-comunidades-atingidas-durante-a-caravana-do-rio-doce/` | Estação Rio Doce – Edição 21| Reivindicações de Comunidades Atingidas durante a Caravana do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/04-edicao-jornal-territorios-a-luta-das-mulheres-atingidas-pela-reparacao/` | #04 Edição Jornal Territórios | A luta das mulheres atingidas pela reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-20-14-de-marco-dia-internacional-de-luta-contra-as-barragens/` | Estação Rio Doce – Edição 20 | 14 de março: Dia Internacional de Luta contra as Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-19-a-participacao-social-no-novo-acordo-de-reparacao/` | Estação Rio Doce – Edição 19 | A Participação Social no Novo Acordo de Reparação. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-18-o-direito-a-assessoria-tecnica-na-bacia-do-medio-rio-doce/` | Estação Rio Doce – Edição 18 | O Direito à Assessoria Técnica na Bacia do Médio Rio Doce. | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/03-edicao-jornal-territorios-programa-de-transferencia-de-renda-sera-implementado-em-territorios-atingidos-nas-modalidades-ptr-rural-e-ptr-pesca/` | #03 Edição Jornal Territórios: Programa de Transferência de Renda será implementado em territórios atingidos nas modalidades PTR-Rural e PTR-Pesca | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-04-como-ficam-as-indenizacoes/` | Médio Rio Doce | Tira-Dúvidas 04: Como ficam as indenizações? | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-03-questoes-sobre-cadastros-da-reparacao/` | Médio Rio Doce | Tira-Dúvidas 03: Questões sobre cadastros da Reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-02-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 02: Cadastro Nacional de Agricultura Familiar | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-01-cadastro-nacional-de-agricultura-familiar/` | Médio Rio Doce | Tira-Dúvidas 01: Cadastro Nacional de Agricultura Familiar | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/informacao-e-direito-ptr-rural-e-pesca-previstos-no-acordo-de-reparacao-da-bacia-do-rio-doce/` | INFORMAÇÃO É DIREITO | PTR Rural e Pesca previstos no acordo de reparação da Bacia do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/estacao-rio-doce-edicao-17-cadastro-nacional-da-agricultura-familiar-no-contexto-da-reparacao/` | Estação Rio Doce – Edição 17/Cadastro Nacional da Agricultura Familiar no contexto da reparação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-16-enchentes-e-dados-de-espacos-participativos-da-aedas/` | Programa Estação Rio Doce – Edição 16/Enchentes e dados de espaços participativos da Aedas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-trabalho-territorio-7-resplendor-e-itueta/` | Plano de Trabalho Território 7 – Resplendor e Itueta | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-trabalho-territorio-8-aimores/` | Plano de Trabalho Território 8 – Aimorés | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre-2/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 1º Semestre | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre-2/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 2º Semestre | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/contrato-de-gestao-territorio-3-vale-do-aco/` | Contrato de Gestão Território 3 – Vale Do Aço | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/contrato-de-gestao-territorio-6-conselheiro-pena/` | Contrato de Gestão Território 6 – Conselheiro Pena | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/contrato-de-gestao-territorio-7-resplendor-e-itueta/` | Contrato de Gestão Território 7 – Resplendor E Itueta | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/contrato-de-gestao-territorio-8-aimores/` | Contrato de Gestão Território 8 – Aimorés | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-trabalho-territorio-3-vale-do-aco/` | Plano de Trabalho Território 3 – Vale do Aço | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/plano-de-trabalho-territorio-6-conselheiro-pena/` | Plano de Trabalho Território 6 – Conselheiro Pena | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-15-entenda-sobre-o-caf-e-rgp/` | Programa Estação Rio Doce – Edição 15/Entenda sobre o CAF e RGP | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/indenizacoes-individuais-anexo-2/` | Indenizações Individuais Anexo 2 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/livreto-programa-de-transferencia-de-renda-ptr-anexo-4/` | Livreto “Programa de Transferência de Renda (PTR) Anexo 4” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caderno-tira-duvidas-agm-modulo-01/` | Caderno Tira-Dúvidas AGM – Módulo 01 | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-14-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 14/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/grupo-de-atingidos-e-atingidas-gaa-a-forca-popular-na-conquista-de-direitos/` | Grupo de Atingidos e Atingidas (GAA): a força popular na conquista de direitos! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-ed-13-principais-duvidas-sobre-indenizacoes-individuais-na-repactuacao/` | Programa Estação Rio Doce – Ed.13/Principais dúvidas sobre Indenizações Individuais na Repactuação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/02-edicao-jornal-territorios-povo-em-luta-rio-de-esperanca-9-anos-em-busca-de-justica/` | #02 Edição Jornal Territórios: Povo em Luta, Rio de Esperança. 9 anos em busca de justiça! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-12-seminario-mulheres-e-reparacao-e-acordo-de-repactuacao/` | Programa Estação Rio Doce – Edição 12/Seminário “Mulheres e Reparação” e Acordo de Repactuação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/01-edicao-tematica-do-jornal-territorios-controle-social-e-o-papel-da-assessoria-tecnica-independente-ati/` | #01 Edição temática do Jornal Territórios: controle social e o papel da Assessoria Técnica Independente (ATI) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/especial-ciranda-historias-e-direitos-das-criancas-do-rio-doce/` | Especial Ciranda: Histórias e Direitos das Crianças do Rio Doce! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-11-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 11/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-10-registro-familiar-e-prestacao-de-contas/` | Programa Estação Rio Doce – Edição 10/Registro Familiar e Prestação de Contas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/para-a-repactuacao-participacao-pessoas-atingidas-do-medio-rio-doce-cobram-por-transparencia/` | “Para a Repactuação? Participação!” – Pessoas atingidas do Médio Rio Doce cobram por transparência | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/de-vozes-a-acoes-pessoas-atingidas-na-consolidacao-do-sistema-de-governanca-da-bacia-do-rio-doce/` | De vozes a ações: pessoas atingidas na consolidação do Sistema de Governança da Bacia do Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/01-edicao-do-jornal-territorios-mobilizacao-social-na-garantia-de-direitos/` | #01 Edição do Jornal Territórios: Mobilização Social na Garantia de Direitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-09-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 09/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-08-povos-e-comunidades-tradicionais-no-sistema-de-governanca/` | Programa Estação Rio Doce – Edição 08 – Povos e Comunidades Tradicionais no sistema de governança | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/protocolo-de-consulta-previa-e-informada-da-comunidade-ucho-betlharo-puri/` | Protocolo de Consulta Prévia e Informada da Comunidade Uchô Betlharó Purí | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-07-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 07/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/dotapa-muum-puriuma-moemlitonema-pury-sobreviventes-do-vale/` | DOTAPÁ-MUÚM PURÍUMA MÔEMLITONEMA – Pury Sobreviventes do Vale | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-06-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 06/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-05-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 05/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-04-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 04/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 1º Semestre | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre/` | Declaração de Igualdade salarial e relatório de critérios remuneratórios Aedas 2º Semestre | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-03-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 03/Aedas Médio Rio Doce | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-02-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 02/Aedas Médio Rio Doce | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-01-aedas-medio-rio-doce/` | Programa Estação Rio Doce – Edição 01/Aedas Médio Rio Doce | INCONSISTENTE |
-| ✅ OK | `https://aedasmg.org/documento/08-anos-de-luta-na-bacia-do-rio-doce-povo-atingido-segue-em-busca-de-direitos-e-participacao/` | 08 anos de luta na Bacia do Rio Doce: povo atingido segue em busca de direitos e participação | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-1-proposta-de-direito-a-participacao-informada-e-governanca-popular-do-acordo-de-repactuacao/` | Cartilha 1 – “Proposta de direito à Participação Informada e Governança Popular do Acordo de Repactuação” | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-2-ninguem-fica-pra-tras-uma-repactuacao-para-todos-e-todas/` | Cartilha 2 – “Ninguém fica pra trás: uma Repactuação para Todos e Todas” | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-3-rio-doce-sem-fome-programa-de-transferencia-de-renda/` | Cartilha 3 – Rio Doce Sem Fome: Programa de Transferência de Renda | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-4-reparacao-pelas-maos-dos-atingidos-e-atingidas-fundo-popular-para-projetos-comunitarios/` | Cartilha 4 – Reparação pelas Mãos dos Atingidos e Atingidas: Fundo Popular para Projetos Comunitários | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-5-auxilio-financeiro-emergencial-afe-para-todas-as-pessoas/` | Cartilha 5 – Auxílio Financeiro Emergencial (AFE) para Todas as Pessoas! | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-6-fundo-de-reparacao-para-as-vitimas-das-enchentes-de-rejeitos/` | Cartilha 6 – Fundo de Reparação para as Vítimas das Enchentes de Rejeitos | OK |
-| ✅ OK | `https://aedasmg.org/documento/cartilha-7-indenizacao-justa-ja/` | Cartilha 7 – Indenização Justa, Já! | OK |
-| ✅ OK | `https://aedasmg.org/documento/aedas-assessora-atingidos-e-atingidas-em-jornada-de-lutas-rumo-a-brasilia/` | Aedas assessora atingidos e atingidas em Jornada de lutas rumo à Brasília | OK |
-| ✅ OK | `https://aedasmg.org/documento/caminhada-em-governador-valadares-por-indenizacao-justa-ja/` | Caminhada em Governador Valadares por Indenização Justa já! | OK |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/08-anos-de-luta-na-bacia-do-rio-doce-povo-atingido-segue-em-busca-de-direitos-e-participacao/` | 08 anos de luta na Bacia do Rio Doce: povo atingido segue em busca de direitos e participação | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-1-proposta-de-direito-a-participacao-informada-e-governanca-popular-do-acordo-de-repactuacao/` | Cartilha 1 – “Proposta de direito à Participação Informada e Governança Popular do Acordo de Repactuação” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-2-ninguem-fica-pra-tras-uma-repactuacao-para-todos-e-todas/` | Cartilha 2 – “Ninguém fica pra trás: uma Repactuação para Todos e Todas” | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-3-rio-doce-sem-fome-programa-de-transferencia-de-renda/` | Cartilha 3 – Rio Doce Sem Fome: Programa de Transferência de Renda | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-4-reparacao-pelas-maos-dos-atingidos-e-atingidas-fundo-popular-para-projetos-comunitarios/` | Cartilha 4 – Reparação pelas Mãos dos Atingidos e Atingidas: Fundo Popular para Projetos Comunitários | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-5-auxilio-financeiro-emergencial-afe-para-todas-as-pessoas/` | Cartilha 5 – Auxílio Financeiro Emergencial (AFE) para Todas as Pessoas! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-6-fundo-de-reparacao-para-as-vitimas-das-enchentes-de-rejeitos/` | Cartilha 6 – Fundo de Reparação para as Vítimas das Enchentes de Rejeitos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/cartilha-7-indenizacao-justa-ja/` | Cartilha 7 – Indenização Justa, Já! | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/aedas-assessora-atingidos-e-atingidas-em-jornada-de-lutas-rumo-a-brasilia/` | Aedas assessora atingidos e atingidas em Jornada de lutas rumo à Brasília | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://aedasmg.org/documento/caminhada-em-governador-valadares-por-indenizacao-justa-ja/` | Caminhada em Governador Valadares por Indenização Justa já! | INCONSISTENTE |
 | ✅ OK | `https://cbhdoce.org.br/wp-content/uploads/2026/08/DN-136_2026-Patrocinio-ao-ENCOB-2026-1.pdf` | Deliberação Normativa nº136, 23 de julho de 2026 | OK |
 | ✅ OK | `https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-135_2026-Apoio-a-Semana-do-Fazendeiro-VF_-1.pdf` | Deliberação Normativa nº 135, de 02 de junho de 2026 | OK |
 | ✅ OK | `https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-134_2026-CT_Instrumentos-de-Gestao-CBH-Doce_VF-1.pdf` | Deliberação Normativa nº 134, de 02 de junho de 2026 | OK |
@@ -4250,8 +4250,8 @@
 | ❌ QUEBRADO | `https://www.defensoria.es.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Espírito Santo | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/noticias` | Sessão Solene: Tiago Gregório Fernandes assume como Defensor(a) Público(a)-Geral do DPGO (2022–2024) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Goiás | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
 | ✅ OK | `https://defensoria.mg.def.br/noticias/` | Sessão Solene: Raquel Gomes de Sousa da Costa Dias assume como Defensora Pública-Geral do DPMG (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.defensoria.mg.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Minas Gerais (NUDEP/DPMG) | QUEBRADO |
@@ -4337,9 +4337,9 @@
 | ✅ OK | `https://www.mpms.mp.br/noticias` | Sessão Solene: Romão Avila Milhan Junior assume como Procurador-Geral de Justiça do MPMS (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.mpms.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpms.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPMS combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br/noticias/posse-deosdete-cruz-junior` | Sessão Solene: Deosdete Cruz Junior assume como Procurador-Geral de Justiça do MPMT (2023–2025) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPMT combate desvios em licitações de transporte público escolar | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.mpmt.mp.br/noticias/posse-deosdete-cruz-junior` | Sessão Solene: Deosdete Cruz Junior assume como Procurador-Geral de Justiça do MPMT (2023–2025) | QUEBRADO |
+| ❌ QUEBRADO | `https://www.mpmt.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso | QUEBRADO |
+| ❌ QUEBRADO | `https://www.mpmt.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPMT combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.mppa.mp.br/noticias` | Sessão Solene: César Mattar Jr. assume como Procurador-Geral de Justiça do MPPA (2023–2025) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mppa.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pará | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mppa.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPA combate desvios em licitações de transporte público escolar | INCONSISTENTE |
@@ -4348,8 +4348,8 @@
 | ❌ QUEBRADO | `https://www.mppi.mp.br/noticias/posse-cleandro-alves-de-moura` | Sessão Solene: Cleandro Alves de Moura assume como Procurador-Geral de Justiça do MPPI (2023–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppi.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Piauí | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppi.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPPI combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mppr.mp.br/noticias/posse-francisco-zanicotti` | Sessão Solene: Francisco Zanicotti assume como Procurador-Geral de Justiça do MPPR (2024–2026) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mppr.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | INCONSISTENTE |
+| ↪️ REDIRECT | `https://www.mppr.mp.br/noticias/posse-francisco-zanicotti` | Sessão Solene: Francisco Zanicotti assume como Procurador-Geral de Justiça do MPPR (2024–2026) | REDIRECT |
+| ❌ QUEBRADO | `https://www.mppr.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio de Janeiro | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprj.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPRJ combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprn.mp.br/noticias/posse-elaine-cardoso-de-matos-n` | Sessão Solene: Elaine Cardoso de Matos Novais Teixeira assume como Procurador-Geral de Justiça do MPRN (2023–2025) | QUEBRADO |
@@ -4441,9 +4441,9 @@
 | ❓ INCONSISTENTE | `https://www.tjrn.jus.br/noticias/posse-ibanez-monteiro` | Sessão Solene: Ibanez Monteiro assume como Presidente do Tribunal de Justiça do TJRN (2025–2026) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.tjrn.jus.br/noticias/metas-nacionais-2026` | TJRN atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.tjrn.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rio Grande do Norte | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjro.jus.br/noticias/posse-alexandre-miguel` | Sessão Solene: Alexandre Miguel assume como Presidente do Tribunal de Justiça do TJRO (2026–2027) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjro.jus.br/noticias/metas-nacionais-2026` | TJRO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjro.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rondônia | QUEBRADO |
+| ✅ OK | `https://www.tjro.jus.br/noticias/posse-alexandre-miguel` | Sessão Solene: Alexandre Miguel assume como Presidente do Tribunal de Justiça do TJRO (2026–2027) | OK |
+| ✅ OK | `https://www.tjro.jus.br/noticias/metas-nacionais-2026` | TJRO atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
+| ✅ OK | `https://www.tjro.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Rondônia | OK |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/noticias/posse-leonardo-cupello` | Sessão Solene: Leonardo Cupello assume como Presidente do Tribunal de Justiça do TJRR (2025–2027) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/noticias/metas-nacionais-2026` | TJRR atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjrr.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Roraima | QUEBRADO |
@@ -4474,9 +4474,9 @@
 | ❌ QUEBRADO | `https://revista.fct.unesp.br/index.php/pegada/article/view/litio-jequitinhonha` | A Corrida Global pelo Lítio e a Pressão Hídrica no Médio Jequitinhonha: O Caso das Cavas Xuxa e Barreiro da Sigma Lithium | QUEBRADO |
 | ❌ QUEBRADO | `https://www.inesc.org.br/publicacoes/transicao-litio-jequitinhonha` | Para Quem É a Transição? Mineração de Lítio, Subsídios Fiscais e Conflitos Socioambientais no Vale do Jequitinhonha | QUEBRADO |
 | ✅ OK | `https://locus.ufv.br/handle/123456789/conflitos-aguas-jequitinhonha` | Conflitos pelo Uso da Água e Vulnerabilidade Climática no Semiárido Mineiro: Análise Histórica e Contemporânea | OK |
-| ❌ QUEBRADO | `https://repositorio.unb.br/handle/10482/consulta-previa-oit169-stf` | O Direito à Consulta Prévia, Livre e Informada (Convenção 169 da OIT): Jurisprudência Vinculante do STF e Corte IDH | QUEBRADO |
+| ❓ INCONSISTENTE | `https://repositorio.unb.br/handle/10482/consulta-previa-oit169-stf` | O Direito à Consulta Prévia, Livre e Informada (Convenção 169 da OIT): Jurisprudência Vinculante do STF e Corte IDH | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.socioambiental.org/publicacoes/protocolos-consulta-previa` | Protocolos Autônomos de Consulta Prévia: Guia Metodológico, Casos Concretos e Defesa Territorial no Brasil | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.scielo.br/j/rdgv/a/ConsultaPreviaMineracao` | Consulta Prévia e Mineração: Desafios da Governança Ambiental em Territórios Quilombolas e Tradicionais | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.scielo.br/j/rdgv/a/ConsultaPreviaMineracao` | Consulta Prévia e Mineração: Desafios da Governança Ambiental em Territórios Quilombolas e Tradicionais | QUEBRADO |
 | ❌ QUEBRADO | `https://teses.usp.br/teses/disponiveis/3/pncp-analise-algoritmica` | Transparência Algorítmica e Detecção de Inconsistências em Contratações Públicas a partir dos Dados Abertos do PNCP | QUEBRADO |
 | ❌ QUEBRADO | `https://www.scielo.br/j/rap/a/HipertrofiaEmendasParlamentares` | A Hipertrofia do Poder Orçamentário do Legislativo: Emendas Individuais, de Bancada e de Comissão (2015–2025) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.transparencia.org.br/publicacoes/relatorio-emendas-pix-2025` | O Rastreamento das 'Transferências Especiais' (Emendas Pix): Desafios de Prestação de Contas nos Municípios Brasileiros | QUEBRADO |
@@ -4500,7 +4500,7 @@
 | ❓ INCONSISTENTE | `https://digitalarchive.wilsoncenter.org/document/mao-nixon-meeting-beijing-transcript-1972.pdf` | FMA: Minutas Diplomáticas Desclassificadas das Conversações entre Mao Tsé-Tung e Richard Nixon | INCONSISTENTE |
 | ✅ OK | `https://www.mofa.go.jp/about/history/archive/` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
 | ✅ OK | `https://www.mofa.go.jp/mofaj/files/000182741.pdf` | MOFA: Relatório Secreto sobre a Renovação do Tratado de Segurança e Cooperação Mútua EUA-Japão | OK |
-| ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
+| ✅ OK | `https://www.nationalarchives.nic.in/` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | OK |
 | ❓ INCONSISTENTE | `https://www.nationalarchives.nic.in/pdf/raw-pokhran-smiling-buddha-1974.pdf` | RAW / MEA: Relatório Ultrassecreto sobre o Teste Nuclear de Pokhran (Operação Smiling Buddha) | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.nationalarchives.gov.za/` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.saha.org.za/pdf/foip/sadf-operation-savannah-angola-1975.pdf` | SADF / DANS: Relatório Militar Secreto sobre a Invasão e Operação Savannah no Sul de Angola | QUEBRADO |
@@ -4606,7 +4606,7 @@
 | ❓ INCONSISTENTE | `https://www.barreiras.ba.gov.br/transparencia` | Prefeitura Municipal de Barreiras | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.feira-de-santana.ba.gov.br/transparencia` | Prefeitura Municipal de Feira de Santana | INCONSISTENTE |
 | ✅ OK | `https://www.ilheus.ba.gov.br/transparencia` | Prefeitura Municipal de Ilhéus | OK |
-| ❓ INCONSISTENTE | `https://www.itabuna.ba.gov.br/transparencia` | Prefeitura Municipal de Itabuna | INCONSISTENTE |
+| ✅ OK | `https://www.itabuna.ba.gov.br/transparencia` | Prefeitura Municipal de Itabuna | OK |
 | ❓ INCONSISTENTE | `https://www.lauro-de-freitas.ba.gov.br/transparencia` | Prefeitura Municipal de Lauro de Freitas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.paulo-afonso.ba.gov.br/transparencia` | Prefeitura Municipal de Paulo Afonso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.vitoria-da-conquista.ba.gov.br/transparencia` | Prefeitura Municipal de Vitória da Conquista | INCONSISTENTE |
@@ -4622,7 +4622,7 @@
 | ❓ INCONSISTENTE | `https://www.sete-lagoas.mg.gov.br/transparencia` | Prefeitura Municipal de Sete Lagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.teofilo-otoni.mg.gov.br/transparencia` | Prefeitura Municipal de Teófilo Otoni | INCONSISTENTE |
 | ✅ OK | `https://www.uberlandia.mg.gov.br/transparencia` | Prefeitura Municipal de Uberlândia | OK |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/transparencia` | Prefeitura Municipal de Linhares | INCONSISTENTE |
+| ✅ OK | `https://www.linhares.es.gov.br/transparencia` | Prefeitura Municipal de Linhares | OK |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/transparencia` | Prefeitura Municipal de Campos dos Goytacazes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.duque-de-caxias.rj.gov.br/transparencia` | Prefeitura Municipal de Duque de Caxias | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.macae.rj.gov.br/transparencia` | Prefeitura Municipal de Macaé | INCONSISTENTE |
@@ -4970,7 +4970,7 @@
 | ✅ OK | `https://fortaleza.ce.gov.br/` | Fortaleza | OK |
 | ❓ INCONSISTENTE | `https://sapl.cmfor.ce.gov.br/` | Fortaleza | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br` | Iguatu | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/diario-oficial` | Juazeiro do Norte | INCONSISTENTE |
@@ -4999,9 +4999,9 @@
 | ❓ INCONSISTENTE | `https://www.campina-grande.pb.gov.br` | Campina Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracampina-grande.pb.gov.br` | Campina Grande | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campina-grande.pb.gov.br/diario-oficial` | Campina Grande | INCONSISTENTE |
-| ✅ OK | `https://www.guarabira.pb.gov.br` | Guarabira | OK |
+| ❓ INCONSISTENTE | `https://www.guarabira.pb.gov.br` | Guarabira | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaraguarabira.pb.gov.br` | Guarabira | INCONSISTENTE |
-| ✅ OK | `https://www.guarabira.pb.gov.br/diario-oficial` | Guarabira | OK |
+| ❓ INCONSISTENTE | `https://www.guarabira.pb.gov.br/diario-oficial` | Guarabira | INCONSISTENTE |
 | ✅ OK | `https://sapl.joaopessoa.pb.leg.br/` | João Pessoa | OK |
 | ✅ OK | `https://www.patos.pb.gov.br` | Patos | OK |
 | ✅ OK | `https://www.sousa.pb.gov.br` | Sousa | OK |
@@ -5120,9 +5120,9 @@
 | ✅ OK | `https://www.uberlandia.mg.gov.br/diario-oficial` | Uberlândia | OK |
 | ✅ OK | `https://www.varginha.mg.gov.br` | Varginha | OK |
 | ❌ QUEBRADO | `https://www.varginha.mg.gov.br/diario-oficial` | Varginha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br` | Linhares | INCONSISTENTE |
+| ✅ OK | `https://www.linhares.es.gov.br` | Linhares | OK |
 | ✅ OK | `https://www.camaralinhares.es.gov.br` | Linhares | OK |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/diario-oficial` | Linhares | INCONSISTENTE |
+| ✅ OK | `https://www.linhares.es.gov.br/diario-oficial` | Linhares | OK |
 | ✅ OK | `https://www.serra.es.gov.br` | Serra | OK |
 | ✅ OK | `https://www.camaraserra.es.gov.br` | Serra | OK |
 | ✅ OK | `https://vitoria.es.gov.br/` | Vitória | OK |
@@ -5136,7 +5136,7 @@
 | ✅ OK | `https://www.macae.rj.gov.br` | Macaé | OK |
 | ❓ INCONSISTENTE | `https://www.camaramacae.rj.gov.br` | Macaé | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.macae.rj.gov.br/diario-oficial` | Macaé | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.camaraniteroi.rj.gov.br` | Niterói | INCONSISTENTE |
+| ✅ OK | `https://www.camaraniteroi.rj.gov.br` | Niterói | OK |
 | ❌ QUEBRADO | `https://www.niteroi.rj.gov.br/diario-oficial` | Niterói | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.nova-friburgo.rj.gov.br` | Nova Friburgo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaranova-friburgo.rj.gov.br` | Nova Friburgo | INCONSISTENTE |
@@ -5511,7 +5511,7 @@
 | ⚠️ MENTIROSO | `https://www.saude.mt.gov.br/atas` | Conselho Estadual de Sa?de de Mato Grosso | MENTIROSO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.mt.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Mato Grosso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.mt.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Mato Grosso | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mulher.mt.gov.br` | Conselho Estadual dos Direitos da Mulher de Mato Grosso | INCONSISTENTE |
+| ✅ OK | `https://www.mulher.mt.gov.br` | Conselho Estadual dos Direitos da Mulher de Mato Grosso | OK |
 | ❓ INCONSISTENTE | `https://www.governo.mt.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Mato Grosso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.mt.gov.br` | Conselho Estadual do Meio Ambiente de Mato Grosso | INCONSISTENTE |
 | ✅ OK | `https://www.saude.ms.gov.br/ces` | Conselho Estadual de Sa?de de Mato Grosso do Sul | OK |
@@ -5564,8 +5564,8 @@
 | ❓ INCONSISTENTE | `https://www.mulher.rj.gov.br` | Conselho Estadual dos Direitos da Mulher de Rio de Janeiro | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.rj.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Rio de Janeiro | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.rj.gov.br` | Conselho Estadual do Meio Ambiente de Rio de Janeiro | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.saude.rn.gov.br/ces` | Conselho Estadual de Sa?de de Rio Grande do Norte | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.saude.rn.gov.br/atas` | Conselho Estadual de Sa?de de Rio Grande do Norte | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.saude.rn.gov.br/ces` | Conselho Estadual de Sa?de de Rio Grande do Norte | QUEBRADO |
+| ❌ QUEBRADO | `https://www.saude.rn.gov.br/atas` | Conselho Estadual de Sa?de de Rio Grande do Norte | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.direitoshumanos.rn.gov.br` | Conselho Estadual de Defesa dos Direitos Humanos de Rio Grande do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.rn.gov.br/conselhos/atas` | Conselho Estadual de Defesa dos Direitos Humanos de Rio Grande do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mulher.rn.gov.br` | Conselho Estadual dos Direitos da Mulher de Rio Grande do Norte | INCONSISTENTE |
@@ -5643,8 +5643,8 @@
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Cametá - PA | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Cametá - PA | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cameta.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Cametá - PA | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Castanhal - PA | QUEBRADO |
-| ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Castanhal - PA | QUEBRADO |
+| ✅ OK | `https://www.castanhal.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Castanhal - PA | OK |
+| ✅ OK | `https://www.castanhal.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Castanhal - PA | OK |
 | ✅ OK | `https://www.itaituba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Itaituba - PA | OK |
 | ❌ QUEBRADO | `https://www.maraba.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Marabá - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.maraba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Marabá - PA | QUEBRADO |
@@ -5793,9 +5793,9 @@
 | ✅ OK | `https://www.uberlandia.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Uberlândia - MG | OK |
 | ❌ QUEBRADO | `https://www.varginha.mg.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Varginha - MG | QUEBRADO |
 | ❌ QUEBRADO | `https://www.varginha.mg.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Varginha - MG | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Linhares - ES | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Linhares - ES | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.linhares.es.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Linhares - ES | INCONSISTENTE |
+| ✅ OK | `https://www.linhares.es.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Linhares - ES | OK |
+| ✅ OK | `https://www.linhares.es.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Linhares - ES | OK |
+| ✅ OK | `https://www.linhares.es.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Linhares - ES | OK |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Campos dos Goytacazes - RJ | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Campos dos Goytacazes - RJ | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campos-dos-goytacazes.rj.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Campos dos Goytacazes - RJ | INCONSISTENTE |
@@ -5866,7 +5866,6 @@
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Foz do Iguaçu - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Foz do Iguaçu - PR | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.foz-do-iguacu.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Foz do Iguaçu - PR | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Paranavaí - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Paranavaí - PR | QUEBRADO |
 | ❌ QUEBRADO | `https://www.paranavai.pr.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Paranavaí - PR | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.ponta-grossa.pr.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Ponta Grossa - PR | INCONSISTENTE |
@@ -5977,19 +5976,19 @@
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004603/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004604/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004610/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004611/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip` | Geral | OK |
@@ -6759,7 +6758,7 @@
 | ✅ OK | `https://www.imasul.ms.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.ms.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.sema.mt.gov.br` | Geral | OK |
-| ✅ OK | `https://www.semas.pa.gov.br` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.semas.pa.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://ouvidoria.pa.gov.br` | Geral | OK |
 | ✅ OK | `https://sudema.pb.gov.br` | Geral | OK |
 | ✅ OK | `https://ouvidoria.pb.gov.br` | Geral | OK |
@@ -6770,7 +6769,7 @@
 | ✅ OK | `https://www.iat.pr.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.pr.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.inea.rj.gov.br` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.idema.rn.gov.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.idema.rn.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.rn.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.sedam.ro.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.ro.gov.br` | Geral | INCONSISTENTE |
@@ -6779,7 +6778,7 @@
 | ❓ INCONSISTENTE | `https://ouvidoria.rs.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.ima.sc.gov.br` | Geral | OK |
 | ✅ OK | `https://ouvidoria.sc.gov.br` | Geral | OK |
-| ✅ OK | `https://adema.se.gov.br` | Geral | OK |
+| ❓ INCONSISTENTE | `https://adema.se.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://ouvidoria.se.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.sp.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.spaguas.sp.gov.br` | Geral | INCONSISTENTE |
@@ -6802,8 +6801,8 @@
 | ✅ OK | `https://www.itaipu.gov.br` | Geral | OK |
 | ✅ OK | `https://www.codevasf.gov.br` | Geral | OK |
 | ✅ OK | `https://www.embrapa.br` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.copasa.com.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.copasa.com.br/ouvidoria` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.copasa.com.br` | Geral | OK |
+| ✅ OK | `https://www.copasa.com.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.sabesp.com.br` | Geral | OK |
 | ✅ OK | `https://www.sanepar.com.br` | Geral | OK |
 | ✅ OK | `https://www.sanepar.com.br/ouvidoria` | Geral | OK |
@@ -6822,7 +6821,7 @@
 | ✅ OK | `https://www.aegea.com.br` | Geral | OK |
 | ❌ QUEBRADO | `https://www.aegea.com.br/contato/ouvidoria` | Geral | QUEBRADO |
 | ✅ OK | `https://www.brkambiental.com.br` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.cemig.com.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.cemig.com.br` | Geral | OK |
 | ✅ OK | `https://www.cemig.com.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.cpfl.com.br` | Geral | OK |
 | ❌ QUEBRADO | `https://www.cpfl.com.br/fale-conosco/ouvidoria` | Geral | QUEBRADO |
@@ -7265,7 +7264,7 @@
 | ✅ OK | `https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419` | Google News — estudos rurais no Jequitinhonha e Mucuri | OK |
 | ✅ OK | `https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419` | Google News — agricultura familiar no Jequitinhonha | OK |
 | ✅ OK | `https://news.google.com/rss/search?q=PPGER%20OR%20%22Estudos%20Rurais%22%20UFVJM&hl=pt-BR&gl=BR&ceid=BR:pt-419` | Google News — PPGER / UFVJM | OK |
-| ❓ INCONSISTENTE | `https://site.ufvjm.edu.br/ica/feed/` | Feed do ICA/UFVJM, filtrado por palavras-chave de estudos rurais | INCONSISTENTE |
+| ✅ OK | `https://site.ufvjm.edu.br/ica/feed/` | Feed do ICA/UFVJM, filtrado por palavras-chave de estudos rurais | OK |
 | ❓ INCONSISTENTE | `https://repositorio.ufvjm.edu.br/collections/69a0a0d2-d9f0-4e08-a825-1265f156f608` | Repositório institucional UFVJM — dissertações do PPGER | INCONSISTENTE |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMi1AFBVV95cUxNS3FrOXh2TW9YQkFqa2U0VTBuMl83emFKVTV2TjFmcGJWQURzUjdpNk93eFoyVC01b19QMXRjelZTVk9CazNRbl9DY2s2bmNHejhtVENyRmhJOVVIOXpFRGM1QjRwSHJ1aU93ZmZ3WDA3R3JiempMX1huUF9sYkFSOHNSdXNFSVZjbU1kQUhnc1FhU0NDX2xjVGJhOFNwenhSUkxidmw0X2tSRXg1V2cxNk12Z1ZyQXFISjcyU0FxT3ZIa3RQX0huV3FXelNqSHZ1NlQ5dw?oc=5` | Feira de Mineiridades reúne artesanato, cultura e agricultura familiar no Ponteio a partir de 17 de agosto - BHAZ | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMisAFBVV95cUxQQ0p4MUtZWUN4aDJyNV9KQ1lmdk9TR25ScXpnUnliaTlYM3QxOVAtTHdNdjExUUpUUVBNSjZhRXNPS2xjd2JVZ1NkLV9PSlhoY3VTLWwzZkEzMmVDWDVpNWswMFphMHlKcFNCNkZCTzMxcTZsTy1fLWZSMjM1dzgyNnc5R05XblV0VGFfaVhCbm9kOWN4OG0yRmJsc002eFlERlZpdFgtR2F6dnpLUzU3YQ?oc=5` | Laticínio em Acauã impulsiona cadeia do leite no Vale do Jequitinhonha - Gazeta de Araçuaí | REDIRECT |
@@ -7282,7 +7281,7 @@
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipgFBVV95cUxNOXFZeFZHdm1YNW1SYjNRVHR1ZGIzNENCb0ZpMEo4UEFLME9FTzNOQnpuNTgwS3k4VEZPRWFORzdyUHlQb0JQNDFXVmMwVy0xbzN5NzdNcUpGRjhoNDRnWVQxVzZVbGUzRTU2SFEybUJMX0stc1kySGxHQm9HUm9xTkZXOF9mQ0Rha3FWMm1qX3h0c1ExUlczS00yWnkwS19YMlJ3blB3?oc=5` | Crédito nas mãos das mulheres muda a dinâmica da agricultura familiar em Minas Gerais - Diário do Comércio | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiqAFBVV95cUxQNGRkNjBEOEFJYXd1cGhTRFJLUnhTajVXcVJQTmhSXzY4akJiS2NmcV9tZ1RNeWJ5ZGRwUDVfTVBRV0dFV0pjNGdDNGtlRE1UcVIzbldkVUtvbXVVbl9pZXkxMjNSa0hiUk45NTI0VV9tVExIMXNvUFg0TXJqT29HbDE2ODFpcmR3VlRkNXlkVm8wMkd0OEpiMnNLVHMzNVdPQllNVFhQY1DSAbABQVVfeXFMT2JFX3IwdlQ3TUVuZ1JKZ3lRR3Q1NXM3MFVfdnFUZS1EX2F0UUJlS2hRV2xvS3VCT2tUX2x3dFpld0x1ZUh4aEJmc2lLQUFTU0VxOUt6ZjFNc2k1V09fT2xLNklYN2pHcXdFRFBaU2MwTUYyVGhaMjluR3dOTDgtN2JVVWMyS0ZPR3RPN0JZcldBUWtwNG5fQVVDQjNmSDlPbG9icGpKbzVraC1QZ25tVG4?oc=5` | Chapada Diamantina conquista direito ao cultivo de Cannabis medicinal - A TARDE | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMi7AFBVV95cUxNZHBhLXNRM0Jjbk1zWFV6WWFfM283WkVDZDZIdFQtUUpzdHRzQkV0SVJ1dm1Xa2J4bWFhemF6dW81VDc3LXE1YWg1T2l2VGZaX2hxZVI4WFRtQ3pxdnJ3YU8xQUM3YVNTdjFtcmtIY1U0dHZ3VE9ZbUtsNjRUdG12NTBDMWNCWXBscktGeW5xd2x5QXhQVVRzZnBmZnVfYlRXcGVGSGhaV2w0b2RDX0VnbXJnVl93dDYzU01MZ1JIUGNkLVQzejdvQWt3Nk01X1FVRkFKRGRXdWhGU3JBbUhWWE11QWluLVlyNEg5ag?oc=5` | Epamig desenvolve projeto para expandir o cultivo de arroz de terras altas no Jequitinhonha e no Norte de Minas - Diário do Comércio | REDIRECT |
-| ❓ INCONSISTENTE | `https://site.ufvjm.edu.br/ica/2026/02/19/dia-de-campo-do-projeto-fazenda-escola-fortalece-integracao-entre-universidade-sociedade-poder-publico-e-setor-produtivo-em-unai/` | Dia de Campo do Projeto Fazenda Escola fortalece integração entre universidade, sociedade, poder público e setor produtivo em Unaí | INCONSISTENTE |
+| ✅ OK | `https://site.ufvjm.edu.br/ica/2026/02/19/dia-de-campo-do-projeto-fazenda-escola-fortalece-integracao-entre-universidade-sociedade-poder-publico-e-setor-produtivo-em-unai/` | Dia de Campo do Projeto Fazenda Escola fortalece integração entre universidade, sociedade, poder público e setor produtivo em Unaí | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiywFBVV95cUxNQlpkbnRaaE9acTdEVDZTN0gxakczb0ZNWDMxdjlsMUFOSGZXQjI3RFdxZ011ZV9VRjFMQ3ZrQUxoQ09vbTNfT1ZoUGZCRlpwUVZReDhvVXc5WjR5UWI3NWNVeklSQ191ZVR6YWtBeGtOOGlUWXlZVzFGYlNfbmdrc2JhMXo5QlQ3WmthT3J3clVseUhyWjI2WFlQUGY2aFd2cmJNb3FJTTlfc19pWm5JQmIyX0tReTJXQjVkcG85Q3Rib0RWd2taMFpYb9IB0AFBVV95cUxPbFdNTFFFbF9ZdWdDczFFODJGMUdHSzFIZnRKSXlhYkJOMnJnSmhET3FybTNEdUtVdlNWM2ZkZjZNalFHNzhFdUhHbHZ0d0JzUW1UdkJkYTlIaDg2dVFkTVBMNmtFOXFZNGhFaTdyN0dya3cxS2R4VVdOQVVYbUt0ZmRKNUZ2UnRqTEdBVGUxSm5MbzNFQVVkY2dadHNkRHRBRl9kQ1gtbnJERHdydkg5cWtwSy02aFp6RjlGd2pCN2s0cmZzLU1hUjUyY3lEUE4w?oc=5` | #Chapada: Comunidade Payayá brilha na 16ª Feira Baiana da Agricultura Familiar em Salvador - Jornal da Chapada | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMizAFBVV95cUxNTzRGeDloSFp2dG1Zak9fR19EUGRoMks1cnRPendXc3lqdlFjSGZ5LXBHakZzaENwWlUxVWtad3JoVjZCcHc4Tm9xYXlOX25RbTh6ekRHekRta1o4MnZwbXFlTWROUXRNX0dLdjFpUl9xSmpHZVE2WU81enFrZW1UTEZYbHFrOGtYdnI4bnpVYS1na2FDTXBFUjZRc2tjRUhHdE1lX1JITFBjbXR3cnlkT3l0S01PUUI0RG5Nb3NtcE5rTkg4blV4QVdDb1E?oc=5` | MEL DA AGRICULTURA FAMILIAR CONQUISTA PALADARES E FORTALECE COMUNIDADES RURAIS DA BAHIA - - Bahia Economica | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMilgFBVV95cUxQMF9XZ3hnV0NXUHk3WVZ0UTVlWmtsUWU1Uk5LbEs4eHltVEtyaURscFNJd1ZfZmttSkRtXzJ0NU5jNjFLWm5sN2RjVHQ1Q0V3ZTV1UjVwTTNfeHZ1SUx0a3hrWnV2ZzJYZmpibmU1WktSRDQ3UHBfNkMxSXN1TkYzNEhCRXUtQ3h5OEptQkUzVFFlX3dvd3c?oc=5` | NOTA | Entidades repudiam homenagem à mineradora Sigma Lithium - mab.org.br | REDIRECT |
@@ -7349,7 +7348,7 @@
 | ❓ INCONSISTENTE | `https://compras.al.gov.br` | Alagoas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://meioambiente.al.gov.br` | Alagoas | INCONSISTENTE |
 | ✅ OK | `https://www.al.al.leg.br` | Alagoas | OK |
-| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br` | Alagoas | INCONSISTENTE |
+| ✅ OK | `https://transparencia.al.al.leg.br` | Alagoas | OK |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.al.leg.br/api` | Alagoas | INCONSISTENTE |
 | ✅ OK | `https://www.tjal.jus.br` | Alagoas | OK |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjal/_search` | Alagoas | OK |
@@ -7364,7 +7363,7 @@
 | ❓ INCONSISTENTE | `https://diariooficial.ap.gov.br` | Amapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://compras.ap.gov.br` | Amapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://meioambiente.ap.gov.br` | Amapá | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.al.ap.leg.br` | Amapá | INCONSISTENTE |
+| ✅ OK | `https://www.al.ap.leg.br` | Amapá | OK |
 | ❓ INCONSISTENTE | `https://transparencia.al.ap.leg.br` | Amapá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.ap.leg.br/api` | Amapá | INCONSISTENTE |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjap/_search` | Amapá | OK |
@@ -7454,7 +7453,7 @@
 | ❓ INCONSISTENTE | `https://www.tce-go.tc.br` | Goiás | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/go` | Goiás | INCONSISTENTE |
 | ✅ OK | `https://www.oabgo.org.br` | Goiás | OK |
-| ✅ OK | `https://transparencia.ma.gov.br` | Maranhão | OK |
+| ❓ INCONSISTENTE | `https://transparencia.ma.gov.br` | Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.ma.gov.br` | Maranhão | INCONSISTENTE |
 | ✅ OK | `https://diariooficial.ma.gov.br` | Maranhão | OK |
 | ❓ INCONSISTENTE | `https://meioambiente.ma.gov.br` | Maranhão | INCONSISTENTE |
@@ -7476,7 +7475,7 @@
 | ❓ INCONSISTENTE | `https://dadosabertos.al.mt.leg.br/api` | Mato Grosso | INCONSISTENTE |
 | ✅ OK | `https://www.tjmt.jus.br` | Mato Grosso | OK |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjmt/_search` | Mato Grosso | OK |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br` | Mato Grosso | INCONSISTENTE |
+| ✅ OK | `https://www.mpmt.mp.br` | Mato Grosso | OK |
 | ✅ OK | `https://www.defensoria.mt.def.br` | Mato Grosso | OK |
 | ❓ INCONSISTENTE | `https://www.tce-mt.tc.br` | Mato Grosso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/mt` | Mato Grosso | INCONSISTENTE |
@@ -7551,9 +7550,9 @@
 | ❓ INCONSISTENTE | `https://www.tce-pr.tc.br` | Paraná | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/pr` | Paraná | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.oabpr.org.br` | Paraná | REDIRECT |
-| ✅ OK | `https://www.pe.gov.br` | Pernambuco | OK |
+| ❓ INCONSISTENTE | `https://www.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ✅ OK | `https://transparencia.pe.gov.br` | Pernambuco | OK |
-| ✅ OK | `https://dados.pe.gov.br` | Pernambuco | OK |
+| ❓ INCONSISTENTE | `https://dados.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://diariooficial.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://compras.pe.gov.br` | Pernambuco | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://meioambiente.pe.gov.br` | Pernambuco | INCONSISTENTE |
@@ -7628,7 +7627,7 @@
 | ✅ OK | `https://www.al.ro.leg.br` | Rondônia | OK |
 | ✅ OK | `https://transparencia.al.ro.leg.br` | Rondônia | OK |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.ro.leg.br/api` | Rondônia | INCONSISTENTE |
-| ✅ OK | `https://www.tjro.jus.br` | Rondônia | OK |
+| ❓ INCONSISTENTE | `https://www.tjro.jus.br` | Rondônia | INCONSISTENTE |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjro/_search` | Rondônia | OK |
 | ✅ OK | `https://www.mpro.mp.br` | Rondônia | OK |
 | ✅ OK | `https://www.defensoria.ro.def.br` | Rondônia | OK |
@@ -7704,7 +7703,7 @@
 | ✅ OK | `https://www.al.to.leg.br` | Tocantins | OK |
 | ❓ INCONSISTENTE | `https://transparencia.al.to.leg.br` | Tocantins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dadosabertos.al.to.leg.br/api` | Tocantins | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.tjto.jus.br` | Tocantins | INCONSISTENTE |
+| ✅ OK | `https://www.tjto.jus.br` | Tocantins | OK |
 | ✅ OK | `https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search` | Tocantins | OK |
 | ✅ OK | `https://www.defensoria.to.def.br` | Tocantins | OK |
 | ❓ INCONSISTENTE | `https://www.tce-to.tc.br` | Tocantins | INCONSISTENTE |
@@ -7754,9 +7753,9 @@
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/sp-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001023456` | Geral | OK |
 | ✅ OK | `https://prefeitura.rio/` | Inauguração da TransBrasil e entrega de 560 novos ônibus articulados da Mobi-Rio | OK |
-| ✅ OK | `https://prefeitura.rio/saude` | Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho | OK |
+| ❓ INCONSISTENTE | `https://prefeitura.rio/saude` | Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho | INCONSISTENTE |
 | ✅ OK | `https://educacao.prefeitura.rio/` | Implementação do 120º Ginásio Educacional Tecnológico (GET) na rede municipal | OK |
-| ❌ QUEBRADO | `https://prefeitura.rio/obras` | Parque Rita Lee e Parque Carioca da Pavuna | QUEBRADO |
+| ❓ INCONSISTENTE | `https://prefeitura.rio/obras` | Parque Rita Lee e Parque Carioca da Pavuna | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/rio-de-janeiro-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001034567` | Geral | OK |
 | ✅ OK | `https://saude.salvador.ba.gov.br/` | Obras estruturais do Hospital Municipal da Criança e contratação de equipamentos | OK |
@@ -8222,7 +8221,7 @@
 | ✅ OK | `https://www.sds.pe.gov.br/` | Decreto Estadual nº 55.700/2023 - Institui o Programa Juntos pela Segurança | OK |
 | ↪️ REDIRECT | `https://www.compesa.com.br/` | Retomada das obras de assentamento da Adutora do Agreste em Caruaru e Toritama | REDIRECT |
 | ✅ OK | `https://portal.saude.pe.gov.br/` | Obras de reforma do trauma e hemodinâmica do Hospital da Restauração | OK |
-| ✅ OK | `https://www.pe.gov.br/` | Programa Estrada da Produção: Requalificação da malha rodoviária do Sertão do Araripe | OK |
+| ❓ INCONSISTENTE | `https://www.pe.gov.br/` | Programa Estrada da Produção: Requalificação da malha rodoviária do Sertão do Araripe | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/pe-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://dados.controlepopular.com.br/planos/pi-plano-governo.pdf` | Geral | INCONSISTENTE |
 | ✅ OK | `https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001609988` | Geral | OK |
@@ -8502,12 +8501,12 @@
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/balcao-cidadao` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/corregedoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/corregedoria` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/acao-moradia-2025.pdf` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ✅ OK | `https://defensoria.mg.def.br/conselho-superior/` | Defensoria Pública do Estado de Minas Gerais | OK |
 | ↪️ REDIRECT | `https://defensoria.mg.def.br/corregedoria/` | Defensoria Pública do Estado de Minas Gerais | REDIRECT |
@@ -8670,18 +8669,18 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dprs/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Rio Grande do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.rs.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dprs/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/defensoria-geral` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/balcao-cidadao` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/ouvidoria` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/corregedoria` | Defensoria Pública do Estado de Santa Catarina | INCONSISTENTE |
+| ✅ OK | `https://www.defensoria.sc.def.br/defensoria-geral` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/balcao-cidadao` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/ouvidoria` | Defensoria Pública do Estado de Santa Catarina | OK |
+| ✅ OK | `https://www.defensoria.sc.def.br/corregedoria` | Defensoria Pública do Estado de Santa Catarina | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpsc/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Santa Catarina (NUDEP/DPSC) | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | INCONSISTENTE |
+| ✅ OK | `https://www.defensoria.sc.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpsc/acao-moradia-2025.pdf` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpsc/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Santa Catarina | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.sc.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | INCONSISTENTE |
+| ✅ OK | `https://www.defensoria.sc.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpsc/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.se.def.br/defensoria-geral` | Defensoria Pública do Estado de Sergipe | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.se.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Sergipe | QUEBRADO |
@@ -8813,7 +8812,7 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpms/noticia-gaeco-2026.html` | Operação do GAECO do MPMS combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.mpmt.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPMT | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mpmt/noticia-gaeco-2026.html` | Operação do GAECO do MPMT combate desvios em licitações de transporte público escolar | QUEBRADO |
@@ -8836,7 +8835,6 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/inspecao-cnmp-2025.pdf` | Relatório da Corregedoria Nacional do Ministério Público (CNMP) sobre o MPPI | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppi/noticia-gaeco-2026.html` | Operação do GAECO do MPPI combate desvios em licitações de transporte público escolar | QUEBRADO |
-| ❌ QUEBRADO | `https://www.mppr.mp.br/atendimento` | Ministério Público do Estado de Paraná | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mppr.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mppr/acp-saude-2025.pdf` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -8873,7 +8871,7 @@
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprr/noticia-gaeco-2026.html` | Operação do GAECO do MPRR combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ✅ OK | `https://www.mprs.mp.br/gaeco` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ✅ OK | `https://www.mprs.mp.br/atendimento` | Ministério Público do Estado de Rio Grande do Sul | OK |
-| ✅ OK | `https://www.mprs.mp.br/ouvidoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
+| ❓ INCONSISTENTE | `https://www.mprs.mp.br/ouvidoria` | Ministério Público do Estado de Rio Grande do Sul | INCONSISTENTE |
 | ✅ OK | `https://www.mprs.mp.br/corregedoria` | Ministério Público do Estado de Rio Grande do Sul | OK |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/mprs/tac-ambiental-2025.pdf` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio Grande do Sul | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mprs.mp.br/atuacao/saude/acp-farmacia` | Ação Civil Pública para Fornecimento Contínuo de Medicamentos de Alto Custo no SUS | QUEBRADO |
@@ -9872,7 +9870,7 @@
 | ✅ OK | `https://www2.ima.al.gov.br/` | Geral | OK |
 | ✅ OK | `https://informacoes.anatel.gov.br/aviso/manutencao-sistemas.html` | Geral | OK |
 | ❌ QUEBRADO | `https://inlabs.in.gov.br/acessar.php` | Geral | QUEBRADO |
-| ✅ OK | `https://itabuna.ba.gov.br/noticias/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizaco-14170/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://itabuna.ba.gov.br/noticias/cmdca-de-itabuna-fecha-analise-de-propostas-ao-chamamento-publico-das-organizaco-14170/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://itabuna.ba.gov.br/noticias/diario-oficial-eletronico-de-itabuna-publica-decretos-de-nomeacao-de-secretarios-15713/` | Geral | OK |
 | ✅ OK | `https://itabuna.ba.gov.br/noticias/conselho-municipal-de-meio-ambiente-de-itabuna-inicia-suas-atividades-em-2026-17487/` | Geral | OK |
 | ✅ OK | `https://www.itinga.mg.gov.br/` | Geral | OK |
@@ -10016,7 +10014,7 @@
 | ✅ OK | `https://www.al.sp.gov.br/propositura/100050426` | Geral | OK |
 | ✅ OK | `https://www.al.sp.gov.br/propositura/100078925` | Geral | OK |
 | ✅ OK | `https://www.al.sp.gov.br/propositura/100089025` | Geral | OK |
-| ✅ OK | `https://servicos.sp.gov.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://servicos.sp.gov.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `http://www.transparencia.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.al.to.leg.br/ouvidoria/relatorio/2026` | Geral | OK |
 | ✅ OK | `https://www.al.to.leg.br/` | Geral | OK |
@@ -10121,8 +10119,8 @@
 | ✅ OK | `https://www.formosa.go.leg.br/` | Geral | OK |
 | ✅ OK | `https://camaraiguatu.ce.gov.br/` | Geral | OK |
 | ✅ OK | `https://camaraiguatu.ce.gov.br/transparencia/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://limeira.sp.leg.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://camaraniteroi.rj.gov.br/site/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://limeira.sp.leg.br/` | Geral | OK |
+| ✅ OK | `https://camaraniteroi.rj.gov.br/site/` | Geral | OK |
 | ✅ OK | `https://camaraparagominas.pa.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.camarapassos.mg.gov.br/` | Geral | OK |
 | ✅ OK | `http://camarapatos.pb.gov.br/` | Geral | OK |
@@ -10192,9 +10190,9 @@
 | ✅ OK | `https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara?menu=161` | Geral | OK |
 | ✅ OK | `https://www.al.ce.gov.br/paginas/defensoria-publica-do-ceara` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/administracao/defensoria-publica-do-estado-de-goias/` | Geral | OK |
-| ↪️ REDIRECT | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2019/2 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE GOIAS.pdf/view` | Geral | REDIRECT |
+| ❓ INCONSISTENTE | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2019/2 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE GOIAS.pdf/view` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.pa.gov.br/orgao?id_orgao=53` | Geral | OK |
-| ↪️ REDIRECT | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2009/3 - RELATORIO DE INSPECAO EM ESTABELECIMENTO PENAL DO RIO GRANDE DO SUL-RS.pdf/view` | Geral | REDIRECT |
+| ❓ INCONSISTENTE | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2009/3 - RELATORIO DE INSPECAO EM ESTABELECIMENTO PENAL DO RIO GRANDE DO SUL-RS.pdf/view` | Geral | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2015/6 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DE SERGIPE.pdf/view` | Geral | REDIRECT |
 | ✅ OK | `https://portal.diadema.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://portal.diadema.sp.gov.br/cmdca/` | Geral | OK |
@@ -11829,7 +11827,7 @@
 | ✅ OK | `https://formosa.go.gov.br/transparencia/` | Geral | OK |
 | ✅ OK | `https://formosa.go.gov.br/portal/conselhos/` | Geral | OK |
 | ❓ INCONSISTENTE | `https://franca.sp.gov.br/administracao-municipal/administracao-direta/meio-ambiente` | Geral | INCONSISTENTE |
-| ✅ OK | `https://www.franciscopolis.mg.gov.br/?m` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.franciscopolis.mg.gov.br/?m` | Geral | INCONSISTENTE |
 | ✅ OK | `https://freigaspar.mg.gov.br/` | Geral | OK |
 | ✅ OK | `https://garanhuns.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://garanhuns.pe.gov.br/secretarias-e-orgaos/conselhos-municipais/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica/` | Geral | OK |
@@ -11885,7 +11883,7 @@
 | ✅ OK | `https://www.in.gov.br/consulta/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/disque-denuncia` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao` | Geral | OK |
-| ✅ OK | `https://www.ba.gov.br/inema/sites/site-inema/files/2025-08/ORGANOGRAMA-PESSOAL-1 (1).pdf` | Geral | OK |
+| ⚠️ MENTIROSO | `https://www.ba.gov.br/inema/sites/site-inema/files/2025-08/ORGANOGRAMA-PESSOAL-1 (1).pdf` | Geral | MENTIROSO |
 | ✅ OK | `https://www.ba.gov.br/inema/transparencia` | Geral | OK |
 | ✅ OK | `https://www.ipaam.am.gov.br/portal-de-servicos/` | Geral | OK |
 | ✅ OK | `https://transparencia.ipatinga.mg.gov.br/detalhe-da-materia/info/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/109082` | Geral | OK |
@@ -11977,9 +11975,9 @@
 | ✅ OK | `https://www.mpac.mp.br/danilo-lovisaro-toma-posse-para-segundo-mandato-como-procurador-geral-de-justica-do-acre/` | Geral | OK |
 | ✅ OK | `https://www.mpac.mp.br/atendimento-ao-cidadao/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://www.mpac.mp.br/ouvidoria-do-mpac-busca-em-salvador-experiencias-para-ampliar-escuta-ao-cidadao/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mpal.mp.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpal.mp.br/?page_id=2517` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpal.mp.br/?page_id=1746` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mpal.mp.br/` | Geral | OK |
+| ✅ OK | `https://www.mpal.mp.br/?page_id=2517` | Geral | OK |
+| ✅ OK | `https://www.mpal.mp.br/?page_id=1746` | Geral | OK |
 | ✅ OK | `https://www.mpam.mp.br/sobre-o-mpam/funcoes-do-mpam` | Geral | OK |
 | ✅ OK | `https://www.mpba.mp.br/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/` | Geral | OK |
@@ -11992,7 +11990,7 @@
 | ✅ OK | `https://mpce.mp.br/ouvidoria-da-mulher-e-lancada-em-evento-realizado-pelo-mpce/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/ouvidoria-do-mp-do-ceara-prestara-atendimento-durante-semana-nacional-do-registro-civil-registre-se/` | Geral | OK |
 | ✅ OK | `https://www.mpdft.mp.br/portal/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mpdft.mp.br/site/ouvidoria/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mpdft.mp.br/site/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://www.mpf.mp.br/o-mpf/unidades/procuradoria-geral-da-republica-pgr` | Geral | OK |
 | ✅ OK | `https://www.mpf.mp.br/servicos/mpf-servicos` | Geral | OK |
 | ✅ OK | `https://www.mpf.mp.br/concursos/concursos` | Geral | OK |
@@ -12007,13 +12005,13 @@
 | ✅ OK | `https://www.mpma.mp.br/corregedoria-geral-do-mpma-busca-adaptacao-em-meio-a-pandemia/` | Geral | OK |
 | ✅ OK | `https://www.mpma.mp.br/noticias-memorial/` | Geral | OK |
 | ✅ OK | `https://www.mpma.mp.br/ouvidoria-do-mp-apresenta-relatorio-trimestral/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mg.gov.br/instituicao_unidade/ministerio-publico-do-estado-de-minas-gerais-mpmg` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/ministerio-publico-do-estado-de-minas-gerais-mpmg` | Geral | OK |
 | ✅ OK | `https://www.almg.gov.br/legislacao-mineira/LCP/34/1994/` | Geral | OK |
 | ✅ OK | `https://www.mpms.mp.br/` | Geral | OK |
 | ✅ OK | `https://ouvidoria.mpms.mp.br/` | Geral | OK |
 | ✅ OK | `https://portal.mt.gov.br/orgao/ministerio-publico-do-estado-de-mato-grosso` | Geral | OK |
-| ❓ INCONSISTENTE | `https://mpmt.mp.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.mpmt.mp.br/ouvidoria/ouvidoria-client/index.php` | Geral | INCONSISTENTE |
+| ✅ OK | `https://mpmt.mp.br/` | Geral | OK |
+| ❌ QUEBRADO | `https://www.mpmt.mp.br/ouvidoria/ouvidoria-client/index.php` | Geral | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www2.mppa.mp.br/sistemas/portaldeconsultas/` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mppa.mp.br/areas/institucional/corregedoria/corregedoria-geral.htm` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mppb.mp.br/index.php/pt/` | Geral | OK |
@@ -12033,9 +12031,9 @@
 | ✅ OK | `https://portal.mppe.mp.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.mppi.mp.br/internet/` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://mppr.mp.br/administracao` | Geral | INCONSISTENTE |
+| ✅ OK | `https://mppr.mp.br/administracao` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/corregedoria` | Geral | OK |
-| ❓ INCONSISTENTE | `https://mppr.mp.br/Categoria-de-Pagina/MPPR` | Geral | INCONSISTENTE |
+| ✅ OK | `https://mppr.mp.br/Categoria-de-Pagina/MPPR` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/Noticias/operacao-gaeco-transporte` | Geral | OK |
 | ✅ OK | `https://mppr.mp.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www5.mprj.mp.br/consultaPublica/` | Geral | OK |
@@ -12049,7 +12047,7 @@
 | ✅ OK | `https://www.mpro.mp.br/pages/nossos-contatos/ouvidoria/contato` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.mprr.mp.br/page/o-ministerio-publico-em-roraima-` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mprs.mp.br/instituicao/` | Geral | OK |
-| ✅ OK | `https://www.mprs.mp.br/noticias/56718/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.mprs.mp.br/noticias/56718/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.mprs.mp.br/contato/` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/atendimento-ao-cidadao` | Geral | OK |
 | ✅ OK | `https://www.mpsc.mp.br/documents/d/guest/guia-do-ministerio-publico-de-santa-catarina` | Geral | OK |
@@ -12079,6 +12077,7 @@
 | ✅ OK | `https://paragominas.pa.gov.br/paragominas-recebe-a-viii-conferencia-municipal-dos-direitos-da-crianca-e-adolescente/` | Geral | OK |
 | ✅ OK | `https://camaraparagominas.pa.gov.br/lei-no-257-2000-de-26-de-junho-de-2000/lei-no-257-00-dispoe-sobre-a-criacao-e-regulamentacao-do-conselho-municipal-de-defesa-do-meio-ambiente-condema/` | Geral | OK |
 | ✅ OK | `https://paragominas.pa.gov.br/mapa-do-site/conselhos-municipais/` | Geral | OK |
+| ✅ OK | `https://portal.paranavai.pr.gov.br/competencias.html` | Geral | OK |
 | ✅ OK | `https://www.parceriaseminvestimentos.sp.gov.br/sec-parcerias-investimentos` | Geral | OK |
 | ✅ OK | `https://www.passos.mg.gov.br/portal/noticias/0/3/1591/o-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-de-passos` | Geral | OK |
 | ✅ OK | `https://www.passos.mg.gov.br/portal/secretarias/16/meio-ambiente-agropecuaria-e-abastecimento` | Geral | OK |
@@ -12122,7 +12121,7 @@
 | ✅ OK | `https://transparencia.rondonopolis.mt.gov.br/rondonopolis` | Geral | OK |
 | ✅ OK | `https://www.rs.gov.br/inicial` | Geral | OK |
 | ✅ OK | `https://goias.gov.br/administracao/saneamento-de-goias-saneago/` | Geral | OK |
-| ✅ OK | `https://santahelenademinas.mg.gov.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://santahelenademinas.mg.gov.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://santana.ap.gov.br/` | Geral | OK |
 | ✅ OK | `https://santana.ap.gov.br/diario-oficial/` | Geral | OK |
 | ✅ OK | `https://www.santos.sp.gov.br/?q=portal/cmdca` | Geral | OK |
@@ -12144,7 +12143,7 @@
 | ✅ OK | `https://portal.saude.pe.gov.br/servico/conselho-estadual-de-saude-de-pernambuco/` | Geral | OK |
 | ✅ OK | `https://portal.pi.gov.br/sesapi/` | Geral | OK |
 | ✅ OK | `https://saude.rr.gov.br/ces-conselho-estadual-de-saude/` | Geral | OK |
-| ✅ OK | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.saude.sc.gov.br/index.php/pt/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://saude.se.gov.br/atas-reunioes-ordinarias/` | Geral | OK |
 | ✅ OK | `https://saude.se.gov.br/ces-e-funesa-constroem-projeto-para-etapa-estadual-da-plenaria-nacional-de-conselhos-de-saude-e-movimentos-sociais/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/sde/` | Geral | OK |
@@ -12183,9 +12182,9 @@
 | ✅ OK | `https://www.sousa.pb.gov.br/` | Geral | OK |
 | ✅ OK | `http://sousa.pb.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/ministro-luis-roberto-barroso-toma-posse-na-presidencia-do-stf-e-do-cnj/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://transparencia.stj.jus.br/gestao/objetivos-estrategicos/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://transparencia.stj.jus.br/gestao/objetivos-estrategicos/` | Geral | OK |
 | ✅ OK | `https://www.stj.jus.br/sites/portalp/Inicio` | Geral | OK |
-| ❓ INCONSISTENTE | `https://transparencia.stj.jus.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://transparencia.stj.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.taubate.sp.gov.br/secretarias/governo-e-comunicacao/conselhos/conselho-dos-direitos-da-crianca-e-adolescente/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://taubate.sp.gov.br/secretarias/meio-ambiente-e-bem-estar-animal/conselho-de-meio-ambiente` | Geral | OK |
 | ✅ OK | `https://www.taubate.sp.gov.br/secretarias/governo/conselhos/conselho-municipal-de-saude` | Geral | OK |
@@ -12240,7 +12239,7 @@
 | ✅ OK | `https://www.tjro.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjro.jus.br/ouvir/` | Geral | OK |
 | ✅ OK | `https://www.tjro.jus.br/inicio` | Geral | OK |
-| ❓ INCONSISTENTE | `https://etransparente.tjro.jus.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://etransparente.tjro.jus.br/` | Geral | OK |
 | ✅ OK | `https://juris.tjrr.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.tjrr.jus.br/index.php/component/content/?Itemid=437` | Geral | OK |
 | ✅ OK | `https://www.tjro.jus.br/secretaria-de-orcamento-e-financas-sof/rgf` | Geral | OK |
@@ -12297,8 +12296,10 @@
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5` | Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipwFBVV95cUxOYTkwVHV4UmEyS3RlOGtCTXFsS0xsZV9rWXBQOHE5YWw2ZGVBZGdzajRUN0EtREZ0Q3NDckFqSHN0ai1aN1BnaTFUbzdtUFQ4ODFjLUVtajhBbHRwVERtRHZHUElrNC1RbTFFN2oyRDM4Vi1OWnVfbTF6TzR6WWVjYTRSQWRYWi1uUTlIZUtUZDJXYjRHRXdpSXZ2VnBpV1hESW9Wa0FKWQ?oc=5` | Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMitgFBVV95cUxNaVA4VXlxY2cxVnlQdUlSX3JxTUR1V0ladTRRX2J0TF84TFJkS3o1S09vZzRBb3EyTlpPMXVlNy1uSlFPazNRM05MQWNBV0RKZmVlMzN3ZlRzSjFHMUZlWWI4RkNadjFyZjdFN0tZTXNkSllHX29OWFplaVZ1Z3RyTUt1bU5xQ2U2ZmR4MlBGSkdlUnkxLWdKQ09ycjZKX2JDT29DRmJfWU53LWNacGI5aDNUd2ZRdw?oc=5` | Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG | REDIRECT |
+| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMijAFBVV95cUxNU0hrbThpd2YwNjR2ekxtZ3VSWWdaNTR1SUYtZDZSSDFEb3J3cjN6akx4elRWb0ZoeFBsb2dYREwxWnc3TUxWT0EwU0lpVUhjRFhpN09BOXJRWlQ5ZXAwc0p3dmZWOUsyenp5RzVzSVJkSjBkUjFQR2R0d2xRTGNhcURDOWV0czBwZ1VuSQ?oc=5` | Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho - O Fator | REDIRECT |
 | ✅ OK | `https://adaibrasil.org.br/por-onde-anda-a-reparacao-23-10-2026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-23-10-2026` | Por Onde Anda a Reparação? STJ suspende pagamento do Auxílio Emergencial; primeiras linhas de microcrédito do Anexo I.1 são lançadas na R2; conheça o Ofício 46 das IJs e mais! | OK |
 | ✅ OK | `https://guaicuy.org.br/entrevista-carol-e-vaninho/` | Reacender o comércio para fortalecer a comunidade – Entrevista | OK |
+| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMi1AFBVV95cUxNYWlPRGxObzlUU09ZdEMyaldzbGY4cndTcjZPcUJCR3N5RnYyRnVDSGZ0aU1Qb3NjZWJHaVd3a3hvYU1wMk5DM29XOW1Va0xNMWc3Qk5TVUxPa3dHY01jaVFMY2txaDZqT2d0ZkwzRE5XZ0ZHTVJVUkZUOXRSQU11ZlJhUXc3UWoySmJrZEZPLUpSLUdkaTZpZVZZd0I1b09PSW15MWhPdFRTSjdjbFZmWGp1dXU3d3VTRGh5YVA3dVIzc1RDSW1ZZ1Zha0IwNDZmanBmNg?oc=5` | Prefeitura de Brumadinho anuncia medidas judiciais contra suspensão do "Novo PTR" - Portal da Cidade - Brumadinho / MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMizgFBVV95cUxNMU1uaHAtQlpmV0xCWk10U2JGNTFhZnI5SmdjMnpuZW9PQ1V3MngteTVzMTNMSE5RMkJrdlpMYkxrZ1ZwS081bDJzU2oyMXc0RnN2NUtZVUtXaUh6YXlrSWhKNk5VYmtrU29tOUphcE8xSFVtbFUtRGZSeE1pOTBFdWpDWmlGY0xoNF9kWjg2ZDhjN1dEbWRBdTBqaERwODE5Z0xhMjVxVmtRaXdKNnFybkVwMlNhN05VdHBmR0V5cWRWRGx2YXR5VWJkVjh2dw?oc=5` | STJ suspende repasse de novo auxílio da Vale aos atingidos pela barragem de Brumadinho - Rádio Itatiaia | REDIRECT |
 | ✅ OK | `https://adaibrasil.org.br/stj-suspende-pagamento-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=stj-suspende-pagamento-auxilio-emergencial` | STJ suspende pagamento do auxílio emergencial para atingidos do desastre-crime da Vale na Bacia do Paraopeba | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiwwFBVV95cUxQWU13Q0F0emhIRi1HRDBISzZVbDR1TGlEaFBWcld0RzBaMzktRjdWUWdiUUJ3YWZJdUpqQ2VXMGc2YzJ0ZTI4RzJnN25teDNtcDh0b2o5UEdWSk1tMHA1eGY0cFlUY0I0TmMwWUR2d080VHBxZkR4ZHNIRWMwNVNtdENmMmoyUHVKYWF1aEpBMG9ObDdVekkxc1plUFc2a1liTlVUZGdROFNqWTFkMXhwcER4UXY2SGhmanRsWlkxdGc5Mk0?oc=5` | Decisão do STJ bloqueia acesso ao novo auxílio emergencial da Vale - Folha de Brumadinho | REDIRECT |
@@ -12320,13 +12321,6 @@
 | ✅ OK | `https://guaicuy.org.br/bancos-comunitarios/` | Entenda o que são bancos comunitários | OK |
 | ✅ OK | `https://adaibrasil.org.br/planodetrabalho-adai-paraopeba/?utm_source=rss&utm_medium=rss&utm_campaign=planodetrabalho-adai-paraopeba` | Planos de Trabalho da Adai para a Assessoria Técnica Independente na Região 2 da Bacia do Rio Paraopeba | OK |
 | ✅ OK | `https://adaibrasil.org.br/por-onde-anda-a-reparacao-giro-semanal-r2-09102026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-giro-semanal-r2-09102026` | Por Onde Anda a Reparação? Reunião com CAMF, Formação com Conselhos; Reunião Aecom; Decisões sobre Anexo I.3; notícias do NAE e mais | OK |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMivwFBVV95cUxQRUxXUHpaNk02WHFzNGNEMmQ4Z2pWS3ZqT2E2U3dxcHg3d2pWU0UzSldnYmF2YW1uRVJXWFFIb3J1TUNXRHZRMVF0YjNuTTl6LWJjT0wyUDFqd0hFdG5yejEwUnU0anhsUmg5SFdsMVRqLWE4eHpYWWRVWUh5LTI0amZUU0NrSnp5aUZYNzJUY251cHUxRV8wWGNleWM2RG0wY01ncVE0Q0drZWdzT0xnQWxwQWJlZVFwZHJXaGtPWQ?oc=5` | Barragem B1A, em Brumadinho, tem nível de emergência reduzido de 2 para 1 — Agência Nacional de Mineração - GOV.BR | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMijwFBVV95cUxNdnhRMzUyZ3d1TlpPU0dFemI5S2M5dzNZTkZqNGkwdUhRczZGOHROaENpSkVRU21Qekl3WmgwUjhUSUk3akxkSGc4aHFsZEpFcDlVbEVucDg5MTh4U3lHWmVxRDc3NHc2ZUdMck40TW0xeDROZHBHaHRqdnlUUWxfUzQ3YzlvR2F2WHNmbGkzcw?oc=5` | ANM reduz nível de emergência de barragem em Brumadinho - Agência iNFRA | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMivwFBVV95cUxPOEhoMHN4QzFXVXVJbjJLdG5udU41R2FTUHo1TVd4OWNhRF94Ul9aN3hmY0ZEd3EyTy01TEFUb08xeWYtZTFuYlhWYlNCZnRyTGxtb0U3akd0VmhCNUJ4bjNsbURveFBxenE5TTNacUw2bDdoSWhzb3lZcTlVV3JSQ241cU9XU0VDMF83bURzdWllLWY0aFNYcGEtaVpxU1JCYmNiaHFManJUN0tpQ2o0VVo0V3RwNlBpZVBlREhYYw?oc=5` | Barragem em Brumadinho tem nível de emergência reduzido, mas monitoramento continua - Canal Rural | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdFN0bmtWYVo3S01xWGdaSGdVNmt5bm51Qno0NFRNT3A3SWlZeHNxeS1JQnhOTVJOenpSSFlDcGFQTWRycThDOW1XR085N0dBeGZqQWRqeC1UcjNIbl81WGVpMDhZTnRZVGJGMFE1TTFURWQ1MHMyTXBNN0tGV1RyX3Vtc0Q5c1RVanRLNmpzdWxJZUhaQUFIMThnYmplN0pzcllpRkZYUkJaaFNONzU2U1dnZEo0OTlWWTYwTnhmbzRXdw?oc=5` | ANM reduz alerta de barragem em Brumadinho, mas moradores ainda não podem voltar para casa - Brasil 247 | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipgJBVV95cUxOcHNIY1FiR0RhQmlkMmkxLXFpaExvQTJRbHV0TlQ3SURtbDZkY2NTTzI1aDFsdk1zRFRyR0M0cXJZY29aZU1JMzRaLTZIa09BOXZLelpVbWNKVnBnWURGdF9HcmN0ZmNKNC1mWURZOWRxTU40a21MLVEtdG1Lb1ZPNkxvU2ZMZlA1WEZlUGV0dUN3OUJkYVZpeXRHSW1SOEJYZkZxbk55WFZOSkh0b2xxU0g5X3RJQUd2M2EzdDdTZTFPMXJxZkZxTk0zVm15aE9CMVpocUR2QXVnVnJUbzl4WmFZNERHX0pPclA4ak9PNTA5MUFBam9TTzhnT1FWMGozX0RQaERtZUJTZHVDRXNSY3hjaEhWa0E0b0pRU1htaTV6Smd1UWc?oc=5` | Sete anos após rompimento de barragem, Brumadinho se reinventa no turismo com Instituto Inhotim, natureza, aventura e experiências rurais - Gazeta de São Paulo | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMifEFVX3lxTE04TGNpTHE3Z1NRTlZxcDhuUWxMRnNUOV9QYV80MnFHQ2ZqOTdxWlVDN1ltaVFVZkdBaldsZjhQdVVyWXpXQ3lVbFlKdlFUSTI2LTdZbWcyMXN1dVprbjBNMFY1NVBLSkFlczFXaGRZZGViSDNXbmJOV0JkZms?oc=5` | Análise da barragem da Emicon em Brumadinho está em fase final, diz ANM - Diário do Comércio | REDIRECT |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMibEFVX3lxTFBpakk3VVJlc21ndUhIOTVqYjQwb253cW93XzFYTndyVVpMNmhIcXBBR2p4TGd3MWZIZktkZXAtaXFodGlPeml3UWJNWnU3dHRkelVxS2ZHZkNiSkxDMVFGcjl3WDdOcFlUTzZCOA?oc=5` | Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho - Instituto Guaicuy | REDIRECT |
 | ✅ OK | `https://www.scielo.br/` | SciELO — Biblioteca Eletrônica Científica Online | OK |
 | ✅ OK | `https://www.cnj.jus.br/` | Conselho Nacional de Justiça (CNJ) | OK |
 | ✅ OK | `https://semad.mg.gov.br/` | SEMAD — Secretaria de Estado de Meio Ambiente (MG) | OK |
@@ -12399,11 +12393,11 @@
 | ✅ OK | `https://www.who.int/data/gho` | OMS — Global Health Observatory | OK |
 | ✅ OK | `https://www.wto.org/english/res_e/statis_e/statis_e.htm` | OMC — Estatísticas do Comércio Internacional | OK |
 | ❌ QUEBRADO | `https://comtradeapi.un.org` | UN Comtrade | QUEBRADO |
-| ✅ OK | `https://comexstat.mdic.gov.br` | MDIC — Comex Stat | OK |
+| ↪️ REDIRECT | `https://comexstat.mdic.gov.br` | MDIC — Comex Stat | REDIRECT |
 | ✅ OK | `https://www.usaspending.gov/search` | USAspending.gov (U.S. Department of the Treasury) | OK |
 | ✅ OK | `https://www.census.gov/foreign-trade/balance/c3510.html` | US Census Bureau — Comércio com o Brasil (país 3510) | OK |
 | ↪️ REDIRECT | `https://controlepopular.com.br/eua/empresas` | Empresas e Fundos dos EUA — Controle Popular | REDIRECT |
-| ❓ INCONSISTENTE | `https://pollution-waste.canada.ca/national-release-inventory/archives/index.html` | Environment and Climate Change Canada — NPRI | INCONSISTENTE |
+| ↪️ REDIRECT | `https://pollution-waste.canada.ca/national-release-inventory/archives/index.html` | Environment and Climate Change Canada — NPRI | REDIRECT |
 | ❓ INCONSISTENTE | `https://tailings.grida.no` | Global Tailings Portal (GRID-Arendal) | INCONSISTENTE |
 | ✅ OK | `https://mines.nrs.gov.bc.ca/p/58851197aaecd9001b8227cc/overview` | Mount Polley — BC Ministry of Energy and Mines | OK |
 | ↪️ REDIRECT | `https://controlepopular.com.br/canada/mineracao` | Mineração Canadá-Brasil — Controle Popular | REDIRECT |
@@ -12568,8 +12562,8 @@
 | ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-fiscalizacao` | Diretoria de Fiscalização e Monitoramento | QUEBRADO |
 | ✅ OK | `https://www.transparencia.ba.gov.br/Orcamento` | LOA — Orçamento Geral do Estado da Bahia | OK |
 | ❓ INCONSISTENTE | `https://cefir.inema.ba.gov.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-02` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-03` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-06` | Geral | INCONSISTENTE |
@@ -12705,7 +12699,7 @@
 | ✅ OK | `https://www.neoenergia.com/web/brasilia` | Geral | OK |
 | ✅ OK | `https://www.caesb.df.gov.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesb.df.gov.br/` | Geral | QUEBRADO |
-| ✅ OK | `https://www.cesan.com.br/` | Geral | OK |
+| ↪️ REDIRECT | `https://www.cesan.com.br/` | Geral | REDIRECT |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cesan.com.br/` | Geral | QUEBRADO |
 | ✅ OK | `https://go.equatorialenergia.com.br/` | Geral | OK |
 | ↪️ REDIRECT | `https://www.saneago.com.br/` | Geral | REDIRECT |
@@ -12772,31 +12766,31 @@
 | ✅ OK | `https://diariodeminas.com.br/` | Crise da Sigma Lithium — Medidas Judiciais (2026) | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Diamantina&uf=MG` | Diamantina | OK |
 | ❌ QUEBRADO | `https://www.diamantina.mg.gov.br/transparencia` | Diamantina | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Couto%20de%20Magalh%C3%A3es%20de%20Minas&uf=MG` | Couto de Magalhães de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.couto-de-magalhaes-de-minas.mg.gov.br/transparencia` | Couto de Magalhães de Minas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG` | Felício dos Santos | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fel%C3%ADcio%20dos%20Santos&uf=MG` | Felício dos Santos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.felicio-dos-santos.mg.gov.br/transparencia` | Felício dos Santos | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Gouveia&uf=MG` | Gouveia | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.gouveia.mg.gov.br/transparencia` | Gouveia | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | OK |
 | ❓ INCONSISTENTE | `https://www.presidente-kubitschek.mg.gov.br/transparencia` | Presidente Kubitschek | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG` | São Gonçalo do Rio Preto | OK |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo-do-rio-preto.mg.gov.br/transparencia` | São Gonçalo do Rio Preto | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.senador-modestino-goncalves.mg.gov.br/transparencia` | Senador Modestino Gonçalves | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG` | Carbonita | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG` | Carbonita | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG` | Itamarandiba | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.itamarandiba.mg.gov.br/transparencia` | Itamarandiba | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG` | Veredinha | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Capelinha&uf=MG` | Capelinha | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.capelinha.mg.gov.br/transparencia` | Capelinha | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | INCONSISTENTE |
 | ✅ OK | `https://www.angelandia.mg.gov.br/transparencia` | Angelândia | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | OK |
 | ❌ QUEBRADO | `https://www.aricanduva.mg.gov.br/transparencia` | Aricanduva | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | INCONSISTENTE |
 | ✅ OK | `https://www.datas.mg.gov.br/transparencia` | Datas | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.alvorada-de-minas.mg.gov.br/transparencia` | Alvorada de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Coluna&uf=MG` | Coluna | OK |
 | ❌ QUEBRADO | `https://www.coluna.mg.gov.br/transparencia` | Coluna | QUEBRADO |
@@ -12806,20 +12800,20 @@
 | ❓ INCONSISTENTE | `https://www.serra-azul-de-minas.mg.gov.br/transparencia` | Serra Azul de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Serro&uf=MG` | Serro | OK |
 | ❌ QUEBRADO | `https://www.serro.mg.gov.br/transparencia` | Serro | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-itambe.mg.gov.br/transparencia` | Santo Antônio do Itambé | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | OK |
 | ❌ QUEBRADO | `https://www.aracuai.mg.gov.br/transparencia` | Araçuaí | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Coronel%20Murta&uf=MG` | Coronel Murta | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.coronel-murta.mg.gov.br/transparencia` | Coronel Murta | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Berilo&uf=MG` | Berilo | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Berilo&uf=MG` | Berilo | INCONSISTENTE |
 | ✅ OK | `https://www.berilo.mg.gov.br/transparencia` | Berilo | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.chapada-do-norte.mg.gov.br/transparencia` | Chapada do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG` | Francisco Badaró | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.francisco-badaro.mg.gov.br/transparencia` | Francisco Badaró | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.jenipapo-de-minas.mg.gov.br/transparencia` | Jenipapo de Minas | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jos%C3%A9%20Gon%C3%A7alves%20de%20Minas&uf=MG` | José Gonçalves de Minas | OK |
 | ❓ INCONSISTENTE | `https://www.jose-goncalves-de-minas.mg.gov.br/transparencia` | José Gonçalves de Minas | INCONSISTENTE |
@@ -12827,23 +12821,23 @@
 | ❌ QUEBRADO | `https://www.medina.mg.gov.br/transparencia` | Medina | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ponto%20dos%20Volantes&uf=MG` | Ponto dos Volantes | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.ponto-dos-volantes.mg.gov.br/transparencia` | Ponto dos Volantes | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG` | Virgem da Lapa | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG` | Virgem da Lapa | OK |
 | ❓ INCONSISTENTE | `https://www.virgem-da-lapa.mg.gov.br/transparencia` | Virgem da Lapa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.minas-novas.mg.gov.br/transparencia` | Minas Novas | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.turmalina.mg.gov.br/transparencia` | Turmalina | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | OK |
 | ❓ INCONSISTENTE | `https://www.leme-do-prado.mg.gov.br/transparencia` | Leme do Prado | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pedra-azul.mg.gov.br/transparencia` | Pedra Azul | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | OK |
 | ❓ INCONSISTENTE | `https://www.cachoeira-de-pajeu.mg.gov.br/transparencia` | Cachoeira de Pajeú | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.comercinho.mg.gov.br/transparencia` | Comercinho | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | OK |
+| ❌ QUEBRADO | `https://www.comercinho.mg.gov.br/transparencia` | Comercinho | QUEBRADO |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | OK |
 | ✅ OK | `https://www.itaobim.mg.gov.br/transparencia` | Itaobim | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | OK |
 | ❓ INCONSISTENTE | `https://www.padre-paraiso.mg.gov.br/transparencia` | Padre Paraíso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Almenara&uf=MG` | Almenara | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | OK |
@@ -12852,7 +12846,7 @@
 | ❌ QUEBRADO | `https://www.divisopolis.mg.gov.br/transparencia` | Divisópolis | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Felisburgo&uf=MG` | Felisburgo | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.felisburgo.mg.gov.br/transparencia` | Felisburgo | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.jacinto.mg.gov.br/transparencia` | Jacinto | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | OK |
 | ❌ QUEBRADO | `https://www.jequitinhonha.mg.gov.br/transparencia` | Jequitinhonha | QUEBRADO |
@@ -12860,15 +12854,15 @@
 | ❌ QUEBRADO | `https://www.joaima.mg.gov.br/transparencia` | Joaíma | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Jord%C3%A2nia&uf=MG` | Jordânia | OK |
 | ❌ QUEBRADO | `https://www.jordania.mg.gov.br/transparencia` | Jordânia | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | OK |
 | ❓ INCONSISTENTE | `https://www.mata-verde.mg.gov.br/transparencia` | Mata Verde | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | OK |
 | ❓ INCONSISTENTE | `https://www.monte-formoso.mg.gov.br/transparencia` | Monte Formoso | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG` | Palmópolis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG` | Palmópolis | OK |
 | ❌ QUEBRADO | `https://www.palmopolis.mg.gov.br/transparencia` | Palmópolis | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Rio%20do%20Prado&uf=MG` | Rio do Prado | OK |
 | ❓ INCONSISTENTE | `https://www.rio-do-prado.mg.gov.br/transparencia` | Rio do Prado | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Rubim&uf=MG` | Rubim | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Rubim&uf=MG` | Rubim | OK |
 | ❌ QUEBRADO | `https://www.rubim.mg.gov.br/transparencia` | Rubim | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG` | Salto da Divisa | OK |
 | ❓ INCONSISTENTE | `https://www.salto-da-divisa.mg.gov.br/transparencia` | Salto da Divisa | INCONSISTENTE |
@@ -12881,15 +12875,15 @@
 | ✅ OK | `https://www.ataleia.mg.gov.br/transparencia` | Ataléia | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | OK |
 | ❓ INCONSISTENTE | `https://www.campanario.mg.gov.br/transparencia` | Campanário | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.carai.mg.gov.br/transparencia` | Caraí | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | OK |
+| ❌ QUEBRADO | `https://www.carai.mg.gov.br/transparencia` | Caraí | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | INCONSISTENTE |
 | ✅ OK | `https://www.carloschagas.mg.gov.br/transparencia` | Carlos Chagas | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | OK |
 | ❌ QUEBRADO | `https://www.catuji.mg.gov.br/transparencia` | Catuji | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | OK |
 | ✅ OK | `https://www.fronteiradosvales.mg.gov.br/transparencia` | Fronteira dos Vales | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaip%C3%A9&uf=MG` | Itaipé | OK |
 | ✅ OK | `https://www.itaipe.mg.gov.br/transparencia` | Itaipé | OK |
@@ -12897,29 +12891,29 @@
 | ❌ QUEBRADO | `https://www.itambacuri.mg.gov.br/transparencia` | Itambacuri | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | OK |
 | ❌ QUEBRADO | `https://www.ladainha.mg.gov.br/transparencia` | Ladainha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | OK |
 | ✅ OK | `https://www.machacalis.mg.gov.br/transparencia` | Machacalis | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Malacacheta&uf=MG` | Malacacheta | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.malacacheta.mg.gov.br/transparencia` | Malacacheta | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Nanuque&uf=MG` | Nanuque | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Nanuque&uf=MG` | Nanuque | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.nanuque.mg.gov.br/transparencia` | Nanuque | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | OK |
 | ✅ OK | `https://www.novamodica.mg.gov.br/transparencia` | Nova Módica | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Novo%20Oriente%20de%20Minas&uf=MG` | Novo Oriente de Minas | INCONSISTENTE |
 | ✅ OK | `https://www.novoorientedeminas.mg.gov.br/transparencia` | Novo Oriente de Minas | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | OK |
 | ❌ QUEBRADO | `https://www.pavao.mg.gov.br/transparencia` | Pavão | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pescador.mg.gov.br/transparencia` | Pescador | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | OK |
 | ❌ QUEBRADO | `https://www.pote.mg.gov.br/transparencia` | Poté | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Helena%20de%20Minas&uf=MG` | Santa Helena de Minas | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Jos%C3%A9%20do%20Divino&uf=MG` | São José do Divino | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Serra%20dos%20Aimor%C3%A9s&uf=MG` | Serra dos Aimorés | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Jos%C3%A9%20do%20Divino&uf=MG` | São José do Divino | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Serra%20dos%20Aimor%C3%A9s&uf=MG` | Serra dos Aimorés | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.serradosaimores.mg.gov.br/transparencia` | Serra dos Aimorés | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Umburatiba&uf=MG` | Umburatiba | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Umburatiba&uf=MG` | Umburatiba | INCONSISTENTE |
 | ✅ OK | `https://www.umburatiba.mg.gov.br/transparencia` | Umburatiba | OK |
 | ✅ OK | `https://api-dom.pbh.gov.br/` | Diário Oficial do Município de Belo Horizonte (DOM-PBH) | OK |
 | ✅ OK | `https://api-publica.transferegov.gestao.gov.br` | Transferegov / Convênios Federais | OK |
@@ -12947,12 +12941,36 @@
 
 ## Propostas de Correção com Trilha de Auditoria
 
-- **URL Original:** https://www.paranavai.pr.gov.br/transparencia/conselhos
-  → **URL Proposta:** https://portal.paranavai.pr.gov.br/competencias.html
+- **URL Original:** https://www.defensoria.rj.def.br/relatorios-prisionais
+  → **URL Proposta:** https://www.gov.br/senappen/pt-br/composicao/cnpcp/relatorios-de-inspecao/2016/8 - RELATORIO DE INSPECAO EM ESTABELECIMENTOS PENAIS DO ESTADO DO RIO DE JANEIRO.pdf/view
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.mppr.mp.br/atendimento
-  → **URL Proposta:** https://mppr.mp.br/
+- **URL Original:** https://www.mppr.mp.br/noticias/posse-francisco-zanicotti
+  → **URL Proposta:** https://mppr.mp.br/Noticias/posse-francisco-zanicotti
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.tjse.jus.br/noticias
+  → **URL Proposta:** https://www.tjse.jus.br/portal/poder-judiciario/lista-de-e-mails/item/7-iolanda-santos-guimaraes
+  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
+  - Estratégia de busca: titulo-orgao-filetype
+- **URL Original:** https://www.varginha.mg.gov.br/cmdca
+  → **URL Proposta:** https://www.varginha.mg.gov.br/portal/editais/0/3/30895/
+  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
+  - Estratégia de busca: site-dominio
+- **URL Original:** https://www.tjpr.jus.br/1a-vice-presidencia
+  → **URL Proposta:** https://www.tjpr.jus.br/regimento-interno-ri
+  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
+  - Estratégia de busca: titulo-orgao-filetype
+- **URL Original:** https://www.tjpr.jus.br/balcaovirtual
+  → **URL Proposta:** https://www.tjpr.jus.br/regimento-interno-ri
+  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
+  - Estratégia de busca: titulo-orgao-filetype
+- **URL Original:** https://comexstat.mdic.gov.br
+  → **URL Proposta:** https://comexstat.mdic.gov.br/comexstat_manutencao.html
+  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
+  - Estratégia de busca: redirect
+- **URL Original:** https://www.inema.ba.gov.br/institucional/diretoria-de-fiscalizacao
+  → **URL Proposta:** https://www.mg.gov.br/instituicao_unidade/diretoria-de-monitoramento-e-fiscalizacao-ambiental-dmfa
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
 
