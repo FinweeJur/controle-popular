@@ -1090,6 +1090,34 @@ limpos) para **0,288**, e o F1 de 0,613 para 0,630. A fila de alta precisão
 entrega 21 candidatos com 2 falsos positivos no holdout; ainda é fila, não
 veredito. O próximo ganho depende do gold set e da confirmação oficial.
 
+## Gold set: enriquecimento local (23/10/2026)
+
+Os 34 casos da revisão (24 positivos + 10 controles) foram cruzados com o
+acervo local: **34/34 localizados** — 17 autos IBAMA, 6 embargos IBAMA, 1
+embargo SEMAD e 10 processos ANM. Nenhuma coordenada ficou a mais de 2 km da
+fonte; os 10 controles têm fase e área ANM (a maioria em concessão de lavra).
+
+O `recortar-gold-2m.py` corta as imagens 2 m em
+`scripts/.cache/cavas-2m/gold-set/imagens/`, em manifesto próprio, **sem tocar
+no checkpoint de treino**. Falta a revisão visual (cava visível) e a
+licença/fase oficial de cada positivo. O CSV enriquecido fica em
+`scripts/.cache/cavas-2m/gold-set/revisao-gold-enriquecido.csv`, sem
+nome/CPF/CNPJ.
+
+## Checagem ANM do gold set (23/10/2026)
+
+Os 34 casos foram cruzados com os 7.090 polígonos de operação do SIGMINE
+(`sigmine-operacao.geojson`) por ponto-em-polígono com pré-filtro de bbox:
+**20/24 positivos estão fora de toda operação ANM**; **P02, P03, P12 e H05**
+caem dentro de processos ANM (concessão de lavra/licenciamento) e exigem
+checagem de fase e licença. **10/10 controles estão dentro** de operação ANM,
+como esperado.
+
+Leitura: os 20 de fora são os candidatos mais fortes a "sem cadastro na área";
+os 4 de dentro não são automaticamente regulares — o ato do IBAMA continua
+sendo a evidência, mas o dossiê precisa declarar o processo ANM e a fase. O
+CSV com o resultado é `scripts/.cache/cavas-2m/gold-set/revisao-gold-anm.csv`.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)

@@ -270,6 +270,18 @@ MG). Fontes: 22 autos IBAMA, 17 embargos IBAMA, 1 embargo SEMAD e
 0 ICMBio, 1 SEMAD e 6 recentes sem imagem CBERS. CSV em
 `scripts/.cache/cavas-2m/gold-set/`, sem nome/CPF/CNPJ.
 
+**Enriquecimento de 23/10:** 34/34 casos localizados no acervo local
+— 17 autos IBAMA, 6 embargos IBAMA, 1 SEMAD e 10 processos ANM;
+0 coordenada a mais de 2 km; 10 controles com fase/área ANM. As
+imagens 2 m estão em `scripts/.cache/cavas-2m/gold-set/imagens/`.
+Falta a revisão visual e a licença/fase oficial de cada positivo.
+
+**Checagem ANM de 23/10:** **20/24 positivos** estão fora de toda
+operação ANM; **P02, P03, P12 e H05** caem dentro de processos ANM
+(concessão/licenciamento) e exigem checagem de fase e licença;
+**10/10 controles** estão dentro. Os 20 de fora são os candidatos
+mais fortes a "sem cadastro na área".
+
 ### Construção proposta
 
 - **Meta:** 20 a 30 casos confirmados com geometria e documento oficial,
