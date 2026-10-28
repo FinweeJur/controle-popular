@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 27/10/2026 12:36 BRT |
+| 28/10/2026 13:21 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -231,6 +231,7 @@ Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap
 
 ## Historico de resumos
 
+- 28/10/2026 13:21 BRT - 0 criticos; 0 avisos.
 - 27/10/2026 12:36 BRT - 0 criticos; 0 avisos.
 - 26/10/2026 13:22 BRT - 0 criticos; 0 avisos.
 - 25/10/2026 11:00 BRT - 0 criticos; 0 avisos.
