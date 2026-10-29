@@ -43,8 +43,15 @@ export async function notificarTelegram(texto) {
 }
 
 // Execucao via CLI: node scripts/notificar-telegram.mjs "mensagem"
+// ou: node scripts/notificar-telegram.mjs --arquivo caminho.txt
+// (o arquivo evita a perda de acentos/emoji na passagem de argumento do Windows)
 if (process.argv[1] && process.argv[1].endsWith("notificar-telegram.mjs")) {
-  const msg = process.argv.slice(2).join(" ");
+  const args = process.argv.slice(2);
+  let msg = args.join(" ");
+  const i = args.indexOf("--arquivo");
+  if (i >= 0 && args[i + 1]) {
+    msg = readFileSync(args[i + 1], "utf-8").replace(/^\uFEFF/, "");
+  }
   if (msg) {
     await notificarTelegram(msg);
   }
