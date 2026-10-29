@@ -322,10 +322,41 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
   );
 }
 
+function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
+  if (!caso.ementa && !caso.resumo) return null;
+  const rotulo = caso.resumo ? "ver resumo" : "ver ementa";
+  return (
+    <details className="mt-1">
+      <summary className="cursor-pointer text-xs font-semibold text-primary underline">
+        {rotulo}
+      </summary>
+      <div className="mt-2 max-w-md space-y-2 rounded border border-[var(--cp-border)] p-2 text-xs leading-relaxed">
+        {caso.resumo ? (
+          <p>
+            <span className="font-semibold">Resumo: </span>
+            {caso.resumo}
+          </p>
+        ) : null}
+        {caso.ementa ? (
+          <p className="opacity-80">
+            <span className="font-semibold">Ementa: </span>
+            {caso.ementa}
+          </p>
+        ) : null}
+      </div>
+    </details>
+  );
+}
+
 function CelulaTemas({ caso }: { caso: CasoJurisprudencia }) {
   const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90) || "—";
   const resto = caso.temas.length > 2 ? ` +${caso.temas.length - 2}` : "";
-  return <>{`${texto}${resto}`}</>;
+  return (
+    <>
+      <span>{`${texto}${resto}`}</span>
+      <TextoDoCaso caso={caso} />
+    </>
+  );
 }
 
 function CelulaMerito({ caso }: { caso: CasoJurisprudencia }) {

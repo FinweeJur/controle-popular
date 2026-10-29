@@ -12,6 +12,38 @@ interface MiniSumarioLateralProps {
  * Aparece na lateral direita em telas maiores após rolar 350px.
  * Destaca o capítulo ativo e fornece botões rápidos para subir ao topo ou descer até o fim.
  */
+function ItemSumario({
+  item,
+  ativo,
+  expandido,
+  onIr,
+}: {
+  item: ItemIndice;
+  ativo: boolean;
+  expandido: boolean;
+  onIr: (id: string) => void;
+}) {
+  return (
+    <li className="flex justify-end">
+      <button
+        type="button"
+        onClick={() => onIr(item.id)}
+        className={`flex items-center gap-2 rounded-lg px-2 py-1 text-right transition-colors ${
+          ativo ? "bg-primary/10 font-bold text-primary" : "text-text-soft hover:bg-surface-2 hover:text-text"
+        }`}
+        aria-current={ativo ? "true" : undefined}
+      >
+        {expandido ? <span className="max-w-[200px] truncate">{item.titulo}</span> : null}
+        <span
+          className={`inline-block h-2 w-2 rounded-full transition-all ${
+            ativo ? "scale-125 bg-primary" : "bg-border"
+          }`}
+        />
+      </button>
+    </li>
+  );
+}
+
 export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
   const [ativo, setAtivo] = useState<string>("");
   const [visivel, setVisivel] = useState(false);
@@ -82,9 +114,23 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
       className="fixed right-6 2xl:right-8 top-24 z-30 hidden flex-col items-end gap-1.5 transition-all xl:flex"
       onMouseEnter={() => setExpandido(true)}
       onMouseLeave={() => setExpandido(false)}
+      onFocus={() => setExpandido(true)}
+      onBlur={() => setExpandido(false)}
     >
-      <div className="flex flex-col items-end rounded-2xl border border-border bg-surface/90 p-2 shadow-lg backdrop-blur">
-        <div className="mb-1.5 flex items-center justify-between gap-2 border-b border-border/60 px-1 pb-1 text-[0.75rem] font-semibold text-text-soft">
+      {/* Minimizado e translúcido por padrão para não tapar o texto; ao passar
+          o mouse (ou focar pelo teclado) fica opaco e legível. */}
+      <div
+        className={`flex flex-col items-end rounded-2xl border p-2 backdrop-blur transition-all duration-300 ${
+          expandido
+            ? "border-border bg-surface/95 opacity-100 shadow-lg"
+            : "border-border/40 bg-surface/35 opacity-55 shadow-sm hover:opacity-80"
+        }`}
+      >
+        <div
+          className={`mb-1.5 flex items-center justify-between gap-2 border-b border-border/60 px-1 pb-1 text-[0.75rem] font-semibold text-text-soft transition-opacity duration-300 ${
+            expandido ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <span>{expandido ? "Capítulos da página" : "Capítulos"}</span>
           <div className="flex gap-1">
             <button
@@ -109,32 +155,15 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
         </div>
 
         <ol className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto py-1 text-xs">
-          {itens.map((item) => {
-            const isAtivo = ativo === item.id;
-            return (
-              <li key={item.id} className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => rolarPara(item.id)}
-                  className={`flex items-center gap-2 rounded-lg px-2 py-1 text-right transition-colors ${
-                    isAtivo
-                      ? "bg-primary/10 font-bold text-primary"
-                      : "text-text-soft hover:bg-surface-2 hover:text-text"
-                  }`}
-                  aria-current={isAtivo ? "true" : undefined}
-                >
-                  {expandido ? (
-                    <span className="max-w-[200px] truncate">{item.titulo}</span>
-                  ) : null}
-                  <span
-                    className={`inline-block h-2 w-2 rounded-full transition-all ${
-                      isAtivo ? "scale-125 bg-primary" : "bg-border"
-                    }`}
-                  />
-                </button>
-              </li>
-            );
-          })}
+          {itens.map((item) => (
+            <ItemSumario
+              key={item.id}
+              item={item}
+              ativo={ativo === item.id}
+              expandido={expandido}
+              onIr={rolarPara}
+            />
+          ))}
         </ol>
       </div>
     </nav>

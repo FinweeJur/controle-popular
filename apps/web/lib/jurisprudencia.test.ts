@@ -18,6 +18,8 @@ const caso = (processo: string, over: Partial<CasoJurisprudencia> = {}): CasoJur
   resultado: "negado",
   recorrente: "atingido",
   temas: ["dano moral"],
+  ementa: "EMENTA: teste",
+  resumo: "resumo de teste",
   danos_pnab: [],
   valor: null,
   link: "",

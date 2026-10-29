@@ -26,6 +26,8 @@ export interface CasoJurisprudencia {
   resultado: string;
   recorrente: string;
   temas: string[];
+  ementa: string;
+  resumo: string;
   danos_pnab: string[];
   valor: number | null;
   link: string;
