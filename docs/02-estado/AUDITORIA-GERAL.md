@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 28/10/2026 13:21 BRT |
+| 29/10/2026 13:30 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -101,6 +101,8 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/judiciario-remuneracoes.json | OK |
 | data/judiciario-unidades-contatos.json | OK |
 | data/juma-acoes-climaticas.json | OK |
+| data/jurisprudencia-casos.json | OK |
+| data/jurisprudencia-resumo.json | OK |
 | data/link-correcoes.json | OK |
 | data/matriz-tramitacao-27-assembleias.json | OK |
 | data/mpf-grandes-casos.json | OK |
@@ -166,6 +168,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/noticias-desastres.json | OK |
 | data/noticias-paraopeba.json | OK |
 | data/noticias-portal.json | OK |
+| data/noticias-tribunais.json | OK |
 | data/noticias-vale.json | OK |
 | data/novidades.json | OK |
 | data/orgaos-capacidade-ambiental.json | OK |
@@ -184,6 +187,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/polos-interior-ibge.json | OK |
 | data/ppp-mg.json | OK |
 | data/rag-normas.json | OK |
+| data/rag-tjes.json | OK |
 | data/relatorios-direitos-humanos.json | OK |
 | data/rouanet-mg-incentivadores.json | OK |
 | data/rouanet-mg-projetos.json | OK |
@@ -225,12 +229,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 179 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 183 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 29/10/2026 13:30 BRT - 0 criticos; 0 avisos.
 - 28/10/2026 13:21 BRT - 0 criticos; 0 avisos.
 - 27/10/2026 12:36 BRT - 0 criticos; 0 avisos.
 - 26/10/2026 13:22 BRT - 0 criticos; 0 avisos.
