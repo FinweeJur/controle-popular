@@ -3,10 +3,15 @@ import { filtrar, ordenar, paginar, poloPorAno, type CasoJurisprudencia } from "
 
 const caso = (processo: string, over: Partial<CasoJurisprudencia> = {}): CasoJurisprudencia => ({
   processo,
+  tribunal: "TJMG",
+  estado: "MG",
   tipo: "apelacao",
   classe: "Apelação Cível",
   comarca: "Belo Horizonte",
   ano: "2023",
+  orgao: "",
+  magistrado: "",
+  assunto: "",
   polo: "empresa",
   resultado: "negado",
   recorrente: "atingido",
@@ -28,6 +33,16 @@ describe("jurisprudencia", () => {
     expect(filtrar(casos, { tema: "tap" })).toHaveLength(2);
     expect(filtrar(casos, { comarca: "Brumadinho", ano: "2022" })[0].processo).toBe("2");
     expect(filtrar(casos, { q: "1" })[0].processo).toBe("1");
+  });
+
+  it("filtra por tribunal e estado (link pre-selecionado)", () => {
+    const casos = [
+      caso("1", { tribunal: "TJMG", estado: "MG" }),
+      caso("2", { tribunal: "TJES", estado: "ES" }),
+    ];
+    expect(filtrar(casos, { tribunal: "TJES" }).map((c) => c.processo)).toEqual(["2"]);
+    expect(filtrar(casos, { estado: "MG" }).map((c) => c.processo)).toEqual(["1"]);
+    expect(filtrar(casos, { tribunal: "TJES", estado: "MG" })).toHaveLength(0);
   });
 
   it("ordena por ano sem perder estabilidade", () => {

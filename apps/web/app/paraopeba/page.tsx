@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 // Data do dado publicada no hub: o carimbo `gerado_em` de `biblioteca-ati.json`,
 // exposto por `coberturaBiblioteca()` — único acervo do hub com carimbo no arquivo.
@@ -61,14 +62,22 @@ export const metadata: Metadata = metadataEditavel("/paraopeba", {
 
 const ZONA = ZONAS.find((z) => z.id === "paraopeba")!;
 
-export default async function ParaopebaHome() {
-  const cob = await coberturaBiblioteca();
-  const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
-  // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
-  // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`
-  // (medido em `COBERTURA_EXECUCAO_FGV`, travado por teste).
+interface BlocoHome {
+  titulo: string;
+  linha: string;
+  texto: string;
+  href: string;
+  linkTexto: string;
+}
 
-  const BLOCOS = [
+type CoberturaBiblioteca = Awaited<ReturnType<typeof coberturaBiblioteca>>;
+
+// Cartões do hub em função própria: o componente `ParaopebaHome` já passava do
+// limite de linhas do CodeScene, e o acervo cresce. O texto de cada cartão
+// continua aqui, colado ao dado que ele cita.
+function montarBlocos(cob: CoberturaBiblioteca): BlocoHome[] {
+  const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria)).size;
+  return [
     {
       // PRIMEIRO cartão de propósito: as siglas deste bloco (NAE, PTR, ERSHRE,
       // zona quente) aparecem em todas as outras telas. Quem chega sem elas lê
@@ -98,7 +107,7 @@ export default async function ParaopebaHome() {
     {
       titulo: "Quem atua na reparação",
       linha: `${formatNumberBR(ATORES_REPARACAO.length)} órgãos e organizações`,
-      texto: `Judiciário, Ministério Público, a gestora dos pagamentos e as organizações que assessoram quem foi atingido — ${tiposDeAtor.size} categorias diferentes, com contato direto.`,
+      texto: `Judiciário, Ministério Público, a gestora dos pagamentos e as organizações que assessoram quem foi atingido — ${tiposDeAtor} categorias diferentes, com contato direto.`,
       href: "/paraopeba/quem-atua",
       linkTexto: "Ver quem atua →",
     },
@@ -164,7 +173,49 @@ export default async function ParaopebaHome() {
       href: "/paraopeba/analise",
       linkTexto: "Ver a análise integrada →",
     },
-  ];
+    {
+      // A página geral de jurisprudência é uma só para os dois desastres;
+      // este cartão abre com o recorte do TJMG já selecionado na query.
+      titulo: "Jurisprudência do Brumadinho",
+      linha: "2.970 acórdãos do TJMG, filtráveis",
+      texto:
+        "As decisões de 2ª instância de Minas Gerais sobre o rompimento da barragem da Mina Córrego do Feijão — polo vencedor, resultado do recurso, temas, danos PNAB/PEAB e valores. A mesma página mostra o Fundão (TJES), com filtro por tribunal e estado.",
+      href: "/jurisprudencia?tribunal=TJMG&estado=MG#lista",
+      linkTexto: "Ver a jurisprudência →",
+    },
+  ];;
+}
+
+function GradeBlocos({ blocos }: { blocos: BlocoHome[] }) {
+  return (
+    <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      {blocos.map((b) => (
+        <NextLink
+          key={b.titulo}
+          href={b.href}
+          className="cp-card-hover flex flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-current"
+        >
+          <h2 className="font-display text-lg font-semibold">{b.titulo}</h2>
+          <p className="mt-1 font-medium" style={{ color: ZONA.cor }}>
+            {b.linha}
+          </p>
+          <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
+          <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
+            {b.linkTexto}
+          </p>
+        </NextLink>
+      ))}
+    </div>
+  );
+}
+
+export default async function ParaopebaHome() {
+  const cob = await coberturaBiblioteca();
+  // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
+  // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`
+  // (medido em `COBERTURA_EXECUCAO_FGV`, travado por teste).
+
+  const BLOCOS = montarBlocos(cob);
 
   // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto aplicado
   // nas cinco subpáginas de /paraopeba e na home da marca (ver o
@@ -184,24 +235,7 @@ export default async function ParaopebaHome() {
 
       <DataColeta coletadoEm={cob.geradoEm} fonte="ATI — Biblioteca das assessorias (acervo Pró-Brumadinho)" />
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
-        {BLOCOS.map((b) => (
-          <a
-            key={b.titulo}
-            href={b.href}
-            className="cp-card-hover flex flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-current"
-          >
-            <h2 className="font-display text-lg font-semibold">{b.titulo}</h2>
-            <p className="mt-1 font-medium" style={{ color: ZONA.cor }}>
-              {b.linha}
-            </p>
-            <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
-            <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
-              {b.linkTexto}
-            </p>
-          </a>
-        ))}
-      </div>
+      <GradeBlocos blocos={BLOCOS} />
 
       {/* Passarela de Legislação e Projetos de Lei */}
       <PassarelaLegislativa tema="paraopeba" />

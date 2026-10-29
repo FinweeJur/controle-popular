@@ -11,10 +11,15 @@
 
 export interface CasoJurisprudencia {
   processo: string;
+  tribunal: string;
+  estado: string;
   tipo: string;
   classe: string;
   comarca: string;
   ano: string;
+  orgao: string;
+  magistrado: string;
+  assunto: string;
   polo: string;
   resultado: string;
   recorrente: string;
@@ -26,6 +31,8 @@ export interface CasoJurisprudencia {
 }
 
 export interface Filtros {
+  tribunal?: string;
+  estado?: string;
   polo?: string;
   tema?: string;
   comarca?: string;
@@ -61,6 +68,8 @@ const ORDENS: Record<string, (a: CasoJurisprudencia, b: CasoJurisprudencia) => n
 };
 
 const PREDICADOS: Record<string, (caso: CasoJurisprudencia, valor: string) => boolean> = {
+  tribunal: (caso, valor) => caso.tribunal === valor,
+  estado: (caso, valor) => caso.estado === valor,
   polo: (caso, valor) => caso.polo === valor,
   comarca: (caso, valor) => caso.comarca === valor,
   ano: (caso, valor) => caso.ano === valor,
@@ -91,7 +100,10 @@ export function paginar<T>(itens: T[], pagina: number, porPagina = POR_PAGINA): 
   return { itens: itens.slice(inicio, inicio + porPagina), pagina: atual, totalPaginas, total };
 }
 
-export function contagemPor(casos: CasoJurisprudencia[], campo: "polo" | "ano" | "comarca"): [string, number][] {
+export function contagemPor(
+  casos: CasoJurisprudencia[],
+  campo: "polo" | "ano" | "comarca" | "tribunal" | "estado",
+): [string, number][] {
   const contagem = new Map<string, number>();
   for (const caso of casos) {
     const chave = caso[campo] || "—";
@@ -100,7 +112,10 @@ export function contagemPor(casos: CasoJurisprudencia[], campo: "polo" | "ano" |
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
-export function valoresUnicos(casos: CasoJurisprudencia[], campo: "comarca" | "ano"): string[] {
+export function valoresUnicos(
+  casos: CasoJurisprudencia[],
+  campo: "comarca" | "ano" | "tribunal" | "estado",
+): string[] {
   return [...new Set(casos.map((caso) => caso[campo]).filter(Boolean))].sort();
 }
 

@@ -13,7 +13,7 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
  * Porta de entrada do caso do Rio Doce — o mesmo papel que
  * `app/paraopeba/page.tsx` tem para Brumadinho. O Acordo de Mariana ganhou
  * uma zona própria porque é um dos dois maiores desastres ambientais do
- * país e porque a Fase 1 do plano (`docs/planos/PLANO-PLATAFORMA-RIO-DOCE.md`,
+ * país e porque a Fase 1 do plano (`docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md`,
  * decisão do dono em 12/10/2026) entrega busca + processos primeiro; as
  * demais frentes (dados espaciais, biblioteca, linha do tempo) entram nas
  * fases seguintes e ganham cartão próprio quando tiverem página.
@@ -58,6 +58,16 @@ const CARTÕES = [
       "Os processos-chave do caso — TTAC, Acordo de 2024, ACPs — com a movimentação consultada na hora na API pública do CNJ. O portal não arquiva nem republica autos.",
     href: "/riodoce/processos",
     linkTexto: "Ver os processos →",
+  },
+  {
+    // A mesma página geral de jurisprudência serve Brumadinho e Rio Doce;
+    // aqui ela abre com o recorte do TJES já selecionado (query string).
+    titulo: "Jurisprudência do Rio Doce",
+    linha: "Acórdãos do TJES sobre o Fundão, filtráveis",
+    texto:
+      "As decisões de 2ª instância do Tribunal de Justiça do Espírito Santo sobre o rompimento da barragem de Fundão — por órgão julgador, tema, ano e processo. A página geral também mostra o Brumadinho (TJMG), com filtro por tribunal e estado.",
+    href: "/jurisprudencia?tribunal=TJES&estado=ES#lista",
+    linkTexto: "Ver a jurisprudência →",
   },
 ] as const;
 
