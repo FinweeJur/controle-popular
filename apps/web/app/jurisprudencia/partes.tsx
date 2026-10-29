@@ -326,11 +326,11 @@ function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
   if (!caso.ementa && !caso.resumo) return null;
   const rotulo = caso.resumo ? "ver resumo" : "ver ementa";
   return (
-    <details className="mt-1">
+    <details className="relative mt-1">
       <summary className="cursor-pointer text-xs font-semibold text-primary underline">
         {rotulo}
       </summary>
-      <div className="mt-2 max-w-md space-y-2 rounded border border-[var(--cp-border)] p-2 text-xs leading-relaxed">
+      <div className="absolute left-0 z-30 mt-1 w-[56rem] max-w-[92vw] space-y-2 rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-xs leading-relaxed shadow-2xl">
         {caso.resumo ? (
           <p>
             <span className="font-semibold">Resumo: </span>
@@ -370,7 +370,7 @@ const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Fren
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-[var(--cp-border)]">
+    <div className="overflow-x-auto rounded-lg border border-[var(--cp-border)] lg:overflow-visible">
       <table className="w-full text-sm">
         <thead className="bg-[var(--cp-surface-2)] text-left">
           <tr>
@@ -389,7 +389,7 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
               <td className="px-3 py-2">{caso.orgao || caso.comarca || "—"}</td>
               <td className="px-3 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
               <td className="px-3 py-2"><CelulaMerito caso={caso} /></td>
-              <td className="px-3 py-2"><CelulaTemas caso={caso} /></td>
+              <td className="relative px-3 py-2"><CelulaTemas caso={caso} /></td>
               <td className="px-3 py-2"><SeloStatus status={caso.status} /></td>
             </tr>
           ))}
