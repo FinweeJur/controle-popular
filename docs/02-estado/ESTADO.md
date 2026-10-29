@@ -302,14 +302,23 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
-**29/10/2026 — Autos de infração da SEMAD no portal (visão estadual, versão rápida):**
+**29/10/2026 — Autos de infração da SEMAD no portal (busca e detalhe, 2024–2026):**
 
-- **Página nova `/ambiental/autuacoes`:** publica o agregado de **583.644
-  autos** do Painel do Sisema (SEMAD 351.630, IEF 232.013), por situação do
-  processo e por ano, com `DataColeta` e sem titular (AGENTS §5.2). Lógica pura
-  em `lib/ambiental/autos-semad.ts`, com teste que confere a soma dos recortes.
-- **Ressalvas na própria tela:** auto lavrado não é multa paga; o recorte do
-  Sisema não se soma ao CAP municipal.
+- **Página `/ambiental/autuacoes` virou busca:** filtros por município, ano,
+  situação e faixa de valor; lista paginada no servidor e "Ver detalhes" com
+  número do auto, data de lavratura, órgão, unidade, município, valor,
+  situação e encerramento. Gráfico de barras de autos por ano.
+- **Fonte:** `Autos_Infracao_Completa` do painel do Sisema (Power BI público),
+  coletada com `--bruto` em 29/10/2026. **36.007 autos** em 2024–2026 e
+  **R$ 1,90 bi** em multa lavrada. Sem nome, CPF/CNPJ nem RG (AGENTS §5.2).
+  O valor do auto usa o MAIOR valor entre linhas duplicadas do mesmo auto
+  (medido: 527 duplicados, 59 com 0,00 contra o valor real).
+- **Dado versionado:** `apps/web/data/sisema-autos/recentes.json` (6,3 MB),
+  lido no servidor; a rota `/api/autos/recentes` filtra e pagina (AGENTS §5.1).
+- **Limite de fonte, não de código:** empresa/CNPJ, medidas (embargo,
+  reflorestamento, suspensão) e o histórico 1992–2023 não estão nesta
+  entidade. Eles vivem no CAP da SEMAD, que termina em 2023 (medido: só 186
+  linhas em 2024–2026). Ficar para a próxima etapa, como fonte separada.
 - **Coleta completa do CAP (853 cidades):** pendente. O banco local do ETL
   precisa ser religado antes (medido 29/10: `etl/betim/.env` aponta
   `127.0.0.1:15432`, morto; o Postgres local responde em `:5433` e recusa

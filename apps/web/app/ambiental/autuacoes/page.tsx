@@ -3,202 +3,37 @@ import Link from "next/link";
 import DataColeta from "@/app/components/DataColeta";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import CartoesResumo from "@/app/components/CartoesResumo";
-import GraficoBarrasSvg from "@/app/components/GraficoBarrasSvg";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
-import { formatNumberBR } from "@/lib/betim/format";
-import {
-  NOME_ORGAO,
-  type ResumoAutosSemad,
-  resumoAutosSemad,
-} from "@/lib/ambiental/autos-semad";
+import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { resumoRecentes } from "@/lib/ambiental/autos-recentes";
+import BuscaAutos from "./BuscaAutos";
 
 /**
- * /ambiental/autuacoes — visão ESTADUAL dos autos de infração ambiental de MG.
+ * /ambiental/autuacoes — autos de infração ambiental de MG, janela 2024–2026.
  *
- * ⚠️ POR QUE ESTA PÁGINA EXISTE
- * O portal já mostrava os autos por município (CAP da SEMAD, rota municipal
- * `/meio-ambiente/autuacoes`). Faltava a leitura do estado inteiro: quanto o
- * Sisema autuou, por órgão, por situação e por ano. Esta tela publica o
- * agregado coletado do Painel de Indicadores do Sisema — sem titular e sem
- * somar recortes que não se somam.
+ * ⚠️ POR QUE ESTA JANELA PRIMEIRO
+ * O foco pedido é o triênio recente. A entidade do Sisema
+ * (`Autos_Infracao_Completa`) tem os 36 mil autos de 2024–2026 com número,
+ * data, órgão, município, valor e situação — e nenhum titular.
  *
- * ⚠️ REGRAS EDITORIAIS DESTA TELA
- * 1. Número grande é AUTO, não multa: a fonte desta aba não traz valor pago.
- * 2. Toda contagem vem com a situação do processo ao lado — "Remissão" e
- *    "Em processamento" são coisas diferentes.
- * 3. O CAP municipal é outro recorte. As duas telas não se somam.
- *
- * A data de coleta vem do cabeçalho do JSON (`coletado_em`), não é digitada
- * à mão (AGENTS § 8, oitava qualidade).
+ * ⚠️ O QUE FICA PARA A PRÓXIMA ETAPA
+ * Empresa/CNPJ, medidas (embargo, reflorestamento, suspensão) e o histórico
+ * desde 1992 estão no CAP da SEMAD, que vai até 2023. O CAP é outra fonte,
+ * outro período: os dois recortes nunca se somam.
  */
 
 export const metadata: Metadata = {
-  title: "Autos de infração ambiental em Minas Gerais — SEMAD e IEF | Controle Popular",
+  title: "Autos de infração ambiental em Minas Gerais (2024–2026) | Controle Popular",
   description:
-    "Quantos autos de infração ambiental foram lavrados em Minas Gerais, por órgão, situação do processo e ano — do painel público do Sisema. Sem nome de autuado e sem somar multa paga.",
+    "Busque os autos de infração ambiental de Minas Gerais por município, ano, situação e valor. Número do auto, data, órgão e valor lavrado, sem nome de autuado.",
 };
 
-const fmt = (n: number) => formatNumberBR(n);
-
-function CartoesTopo({ resumo }: { resumo: ResumoAutosSemad }) {
-  const porOrgao = (sigla: string) =>
-    resumo.orgaos.find((o) => o.rotulo === sigla)?.total ?? 0;
-
-  return (
-    <section className="mb-10 mt-6">
-      <CartoesResumo
-        colunas={4}
-        itens={[
-          {
-            rotulo: "Autos de infração",
-            valor: fmt(resumo.total),
-            detalhe: "Ato lavrado — não é multa paga",
-          },
-          {
-            rotulo: "SEMAD",
-            valor: fmt(porOrgao("SEMAD")),
-            detalhe: "Secretaria de Estado de Meio Ambiente",
-          },
-          {
-            rotulo: "IEF",
-            valor: fmt(porOrgao("IEF")),
-            detalhe: "Instituto Estadual de Florestas",
-          },
-          {
-            rotulo: "Municípios com auto",
-            valor: fmt(resumo.municipiosDistintos),
-            detalhe: "No recorte do painel do Sisema",
-          },
-        ]}
-      />
-    </section>
-  );
-}
-
-function GraficosResumo({ resumo }: { resumo: ResumoAutosSemad }) {
-  const situacoes = resumo.situacoes.map((item) => ({
-    rotulo: item.rotulo,
-    valor: item.total,
-  }));
-  const municipios = resumo.topMunicipios.map((item) => ({
-    rotulo: item.municipio,
-    valor: item.total,
-  }));
-
-  return (
-    <section className="mb-12 grid gap-8 rounded-2xl border border-border bg-surface p-6 lg:grid-cols-2">
-      <GraficoBarrasSvg
-        itens={situacoes}
-        titulo="Situação do auto"
-        subtitulo="Onde o processo parou — remissão, quitação, dívida ativa ou julgamento"
-        descricaoAcessivel={`Distribuição dos ${fmt(resumo.total)} autos por situação do processo.`}
-        orientacao="horizontal"
-      />
-      <GraficoBarrasSvg
-        itens={municipios}
-        titulo="Municípios com mais autos"
-        subtitulo="Os 12 primeiros do painel — não é ranking de gravidade"
-        descricaoAcessivel="Os doze municípios com mais autos de infração no painel do Sisema."
-        orientacao="horizontal"
-      />
-    </section>
-  );
-}
-
-function SeriePorAno({ resumo }: { resumo: ResumoAutosSemad }) {
-  return (
-    <section aria-label="Série por ano" className="mb-12">
-      <h2 className="mb-1 font-display text-xl font-semibold text-text">
-        Autos por ano de lavratura
-      </h2>
-      <p className="mb-4 max-w-3xl text-sm text-text-soft">
-        Da década de 1990 até a coleta. Os dois grupos fora da série são declarados
-        separados: {fmt(resumo.semData)} autos sem data e {fmt(resumo.foraDeFaixa)}{" "}
-        com data implausível na origem.
-      </p>
-      <div className="overflow-x-auto rounded-xl border border-border">
-        <table className="w-full min-w-[280px] border-collapse text-sm">
-          <caption className="sr-only">
-            Quantidade de autos de infração por ano de lavratura
-          </caption>
-          <thead>
-            <tr className="bg-surface-2 text-left">
-              <th scope="col" className="px-4 py-2 font-semibold text-text">
-                Ano
-              </th>
-              <th scope="col" className="px-4 py-2 text-right font-semibold text-text">
-                Autos
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {[...resumo.anos].reverse().map((item) => (
-              <tr key={item.ano} className="border-t border-border">
-                <td className="px-4 py-2 tabular-nums text-text">{item.ano}</td>
-                <td className="px-4 py-2 text-right tabular-nums text-text">
-                  {fmt(item.total)}
-                </td>
-              </tr>
-            ))}
-            <tr className="border-t border-border bg-surface-2">
-              <td className="px-4 py-2 text-text-soft">Sem data</td>
-              <td className="px-4 py-2 text-right tabular-nums text-text-soft">
-                {fmt(resumo.semData)}
-              </td>
-            </tr>
-            <tr className="border-t border-border bg-surface-2">
-              <td className="px-4 py-2 text-text-soft">Data fora de faixa</td>
-              <td className="px-4 py-2 text-right tabular-nums text-text-soft">
-                {fmt(resumo.foraDeFaixa)}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-3 text-xs text-muted">
-        O painel tem 2 autos datados de 2027, ano futuro na data da coleta —
-        provável erro de digitação na origem. Eles aparecem na série, sem correção
-        inventada aqui.
-      </p>
-    </section>
-  );
-}
-
-function Ressalvas({ resumo }: { resumo: ResumoAutosSemad }) {
-  const orgaos = resumo.orgaos
-    .filter((o) => o.rotulo in NOME_ORGAO)
-    .map((o) => `${o.rotulo} (${NOME_ORGAO[o.rotulo]})`)
-    .join(" e ");
-
-  return (
-    <div className="mb-8 space-y-3 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
-      <p>
-        <strong className="text-text">Sem titular.</strong> O portal publica o ato,
-        nunca a pessoa: a entidade coletada não traz nome, CPF/CNPJ nem RG (AGENTS
-        § 5.2).
-      </p>
-      <p>
-        <strong className="text-text">Órgãos.</strong> O painel distingue {orgaos}.
-        Um único registro está sem órgão informado.
-      </p>
-      <p>
-        <strong className="text-text">Recorte diferente do CAP.</strong> O detalhe
-        por município do portal usa o CAP da SEMAD. Esta página usa o painel do
-        Sisema. São sistemas diferentes da mesma fiscalização estadual: os totais
-        não devem ser somados.
-      </p>
-      <p>
-        <strong className="text-text">Fonte e coleta.</strong> {resumo.fonte}. O dado
-        é do painel público, sem login; o formato DSR do Power BI não é documentado
-        e a coleta falha de propósito se ele mudar. Coletor:{" "}
-        <code className="text-xs">etl/betim/etl/apis/sisema_autos_infracao.py</code>.
-      </p>
-    </div>
-  );
-}
-
 export default function AutosSemadPage() {
-  const resumo = resumoAutosSemad(12);
+  const resumo = resumoRecentes();
+  const anos = Object.keys(resumo.porAno).sort();
+  const situacoes = Object.keys(resumo.porSituacao);
+  const municipios = resumo.porMunicipio.map((m) => m.municipio);
+  const emProcessamento = resumo.porSituacao["Em processamento"] ?? 0;
 
   return (
     <main
@@ -225,26 +60,81 @@ export default function AutosSemadPage() {
           Autos de infração ambiental em Minas Gerais
         </h1>
         <p className="max-w-3xl text-base text-text-soft">
-          Quantos autos a fiscalização estadual lavrou, de qual órgão, em que situação
-          e em que ano.{" "}
+          Os autos lavrados pela fiscalização estadual entre <strong>2024 e 2026</strong>:
+          busque por município, ano, situação do processo ou faixa de valor e abra os
+          metadados de cada auto.{" "}
           <strong className="text-text">
-            Auto lavrado não é dano ambiental provado nem multa paga
+            Auto lavrado não é dano provado nem multa paga
           </strong>{" "}
-          — o processo pode ser anulado no julgamento. Por isso cada número vem com a
-          situação ao lado.
+          — o processo pode ser anulado, e por isso a situação acompanha cada cifra.
         </p>
       </header>
 
       <DataColeta
-        coletadoEm={resumo.coletadoEm}
+        coletadoEm={resumo.geradoEm}
         fonte="Painel de Indicadores do Sisema (Power BI público) — aba Autos de Infração"
         competencia="atualização mensal declarada pela fonte"
       />
 
-      <CartoesTopo resumo={resumo} />
-      <GraficosResumo resumo={resumo} />
-      <SeriePorAno resumo={resumo} />
-      <Ressalvas resumo={resumo} />
+      <section className="mb-10 mt-6">
+        <CartoesResumo
+          colunas={4}
+          itens={[
+            {
+              rotulo: "Autos (2024–2026)",
+              valor: formatNumberBR(resumo.totalAutos),
+              detalhe: "Ato lavrado — não é multa paga",
+            },
+            {
+              rotulo: "Valor lavrado",
+              valor: formatCurrencyBRL(resumo.valorTotal),
+              detalhe: "Soma dos autos, sem correção",
+            },
+            {
+              rotulo: "Municípios com auto",
+              valor: formatNumberBR(resumo.porMunicipio.length),
+              detalhe: "No recorte do painel",
+            },
+            {
+              rotulo: "Em processamento",
+              valor: formatNumberBR(emProcessamento),
+              detalhe: "Ainda sem decisão final",
+            },
+          ]}
+        />
+      </section>
+
+      <BuscaAutos
+        municipios={municipios}
+        situacoes={situacoes}
+        anos={anos}
+        fonteUrl={resumo.fonteUrl}
+        totalGeral={resumo.totalAutos}
+      />
+
+      <div className="mt-10 space-y-3 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
+        <p>
+          <strong className="text-text">Sem titular.</strong> O portal publica o ato,
+          nunca a pessoa: a entidade coletada não traz nome, CPF/CNPJ nem RG
+          (AGENTS § 5.2).
+        </p>
+        <p>
+          <strong className="text-text">Valor.</strong> É multa{" "}
+          <strong>lavrada, não paga</strong>. A situação do processo diz se o valor
+          foi quitado, virou dívida ativa ou ainda está em análise.
+        </p>
+        <p>
+          <strong className="text-text">O que este recorte não tem.</strong> Empresa,
+          CNPJ e medidas determinadas (embargo, reflorestamento, suspensão) não
+          existem na entidade publicada do Sisema; eles estão no CAP da SEMAD, que
+          cobre 1992–2023. São fontes e períodos diferentes — os totais não se somam.
+        </p>
+        <p>
+          <strong className="text-text">Fonte e coleta.</strong> {resumo.fonte}.{" "}
+          Coletor:{" "}
+          <code className="text-xs">etl/betim/etl/apis/sisema_autos_infracao.py</code>.
+        </p>
+      </div>
 
       <footer className="border-t border-border pt-8 text-sm text-text-soft">
         <p>

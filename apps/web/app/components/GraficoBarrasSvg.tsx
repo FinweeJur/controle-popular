@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 /**
  * Gráfico de barras em SVG nativo — sem biblioteca de gráfico externa (teto de
@@ -81,7 +81,7 @@ export default function GraficoBarrasSvg({
                     x={margemEsq - 10}
                     y={y + alturaBarra / 2 + 4}
                     textAnchor="end"
-                    fontSize={11}
+                    fontSize={13}
                     fill="currentColor"
                     className="text-text-soft truncate"
                   >
@@ -100,7 +100,7 @@ export default function GraficoBarrasSvg({
                     x={margemEsq + w + 8}
                     y={y + alturaBarra / 2 + 4}
                     textAnchor="start"
-                    fontSize={11}
+                    fontSize={13}
                     fontWeight="bold"
                     fill="currentColor"
                     className="font-tabular text-text"
@@ -177,7 +177,7 @@ export default function GraficoBarrasSvg({
                   x={x + larguraBarra / 2}
                   y={y - 6}
                   textAnchor="middle"
-                  fontSize={10}
+                  fontSize={12}
                   fontWeight="bold"
                   fill="currentColor"
                   className="font-tabular text-text"
@@ -190,7 +190,7 @@ export default function GraficoBarrasSvg({
                   x={x + larguraBarra / 2}
                   y={alturaVertical - 15}
                   textAnchor="middle"
-                  fontSize={10}
+                  fontSize={12}
                   fill="currentColor"
                   className="text-text-soft"
                 >
@@ -226,3 +226,4 @@ export default function GraficoBarrasSvg({
     </figure>
   );
 }
+

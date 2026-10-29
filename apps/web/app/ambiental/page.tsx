@@ -18,7 +18,7 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { obterEstatisticasCar } from "@/lib/ambiental/car";
-import { TOTAL_AUTOS_SEMAD } from "@/lib/ambiental/autos-semad";
+import { TOTAL_AUTOS_RECENTES } from "@/lib/ambiental/autos-recentes";
 
 /**
  * Home da zona /ambiental.
@@ -213,13 +213,13 @@ function montarBlocosInicio(dados: DadosAmbiental): Bloco[] {
 function blocoAutosSemad(): Bloco {
   return {
     titulo: "Autos de infração ambiental no estado",
-    linha: `${formatNumberBR(TOTAL_AUTOS_SEMAD)} autos no painel do Sisema — SEMAD e IEF`,
+    linha: `${formatNumberBR(TOTAL_AUTOS_RECENTES)} autos em 2024–2026 no painel do Sisema — SEMAD e IEF`,
     texto:
-      "Quantos autos a fiscalização estadual lavrou, em que situação o processo está (remissão, quitação, dívida ativa, julgamento) e em que ano — sem nome de autuado e sem tratar auto lavrado como multa paga.",
+      "Busca por município, ano, situação e faixa de valor, com o número do auto, a data, o órgão e o valor lavrado. Sem nome de autuado. Empresa e medidas determinadas ficam no recorte histórico do CAP.",
     fase: "NOVO",
     href: "/ambiental/autuacoes",
     pronta: true,
-    linkTexto: "Ver os autos de infração →",
+    linkTexto: "Buscar os autos →",
   };
 }
 
