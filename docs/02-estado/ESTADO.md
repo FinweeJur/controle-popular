@@ -302,6 +302,19 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
+**29/10/2026 — Autos de infração da SEMAD no portal (visão estadual, versão rápida):**
+
+- **Página nova `/ambiental/autuacoes`:** publica o agregado de **583.644
+  autos** do Painel do Sisema (SEMAD 351.630, IEF 232.013), por situação do
+  processo e por ano, com `DataColeta` e sem titular (AGENTS §5.2). Lógica pura
+  em `lib/ambiental/autos-semad.ts`, com teste que confere a soma dos recortes.
+- **Ressalvas na própria tela:** auto lavrado não é multa paga; o recorte do
+  Sisema não se soma ao CAP municipal.
+- **Coleta completa do CAP (853 cidades):** pendente. O banco local do ETL
+  precisa ser religado antes (medido 29/10: `etl/betim/.env` aponta
+  `127.0.0.1:15432`, morto; o Postgres local responde em `:5433` e recusa
+  `dbuser`).
+
 **18/10/2026 — LinkMender destravado: portão, camada aplicada e escada:**
 
 - **Diagnóstico:** 6 PRs do LinkMender abertos (o maior com 2.467 correções)

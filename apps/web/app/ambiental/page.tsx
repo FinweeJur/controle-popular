@@ -18,6 +18,7 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { obterEstatisticasCar } from "@/lib/ambiental/car";
+import { TOTAL_AUTOS_SEMAD } from "@/lib/ambiental/autos-semad";
 
 /**
  * Home da zona /ambiental.
@@ -200,7 +201,26 @@ function montarBlocosInicio(dados: DadosAmbiental): Bloco[] {
       pronta: LICENCAS_COBERTURA.total > 0,
       linkTexto: "Ver o feed unificado →",
     },
+    blocoAutosSemad(),
   ];
+}
+
+/**
+ * O outro lado da licença: a autuação. Visão ESTADUAL do painel do Sisema
+ * (SEMAD + IEF). O detalhe por município é o CAP, na página municipal de
+ * autuações — recortes de sistemas diferentes.
+ */
+function blocoAutosSemad(): Bloco {
+  return {
+    titulo: "Autos de infração ambiental no estado",
+    linha: `${formatNumberBR(TOTAL_AUTOS_SEMAD)} autos no painel do Sisema — SEMAD e IEF`,
+    texto:
+      "Quantos autos a fiscalização estadual lavrou, em que situação o processo está (remissão, quitação, dívida ativa, julgamento) e em que ano — sem nome de autuado e sem tratar auto lavrado como multa paga.",
+    fase: "NOVO",
+    href: "/ambiental/autuacoes",
+    pronta: true,
+    linkTexto: "Ver os autos de infração →",
+  };
 }
 
 /**

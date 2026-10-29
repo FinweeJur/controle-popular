@@ -32,6 +32,11 @@ const tópicos: Topico[] = [
     descricao: "Reuniões e decisões do Conselho Estadual de Política Ambiental.",
   },
   {
+    href: "/ambiental/autuacoes",
+    titulo: "Autos de infração",
+    descricao: "Autos lavrados pela SEMAD e pelo IEF, por situação do processo e ano.",
+  },
+  {
     href: "/ambiental/decisoes",
     titulo: "Decisões de licenciamento",
     descricao: "Decisões com cobertura declarada do licenciamento.",
