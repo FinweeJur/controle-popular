@@ -1,16 +1,16 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-27T06:49:07.266Z
-- Duracao total: 12.2 min
+- Gerado em: 2026-10-29T06:48:27.302Z
+- Duracao total: 10.8 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 385
+- OK: 391
 - QUEBRADOS: 9
 - REDIRECTS: 28
-- INCONSISTENTES: 51
+- INCONSISTENTES: 45
 - Propostas geradas: 11
 - Links sem proposta: 26
 
@@ -19,7 +19,6 @@
 | URL | classe | status | finalUrl |
 |---|---|---|---|
 | https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
-| https://brasilpopular.org/ | REDIRECT | 403 | https://agustoto-42.site/register?referral_code=anakbinjai |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
 | https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
@@ -42,7 +41,8 @@
 | https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ | REDIRECT | 200 | https://site.ucdb.br/ |
 | https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
 | https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
+| https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
+| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 206 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
 | https://www.controlepopular.tech/ | QUEBRADO | 404 | https://www.controlepopular.tech/ |
 | https://www.controlepopular.tech/api/saude | QUEBRADO | 404 | https://www.controlepopular.tech/api/saude |
@@ -185,9 +185,8 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (206) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
-- https://brasilpopular.org/ (403) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
@@ -205,19 +204,15 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://pt.wikipedia.org/ (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
+- https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br/ambiental/crimes-socioambientais (200) — dominio nao governamental — correcao manual
 - https://news.google.com/ (200) — dominio nao governamental — correcao manual
 
 ## Inconsistentes (nao verificados, sem proposta)
 
-- https://aedasmg.org/ (rede) — erro de rede: This operation was aborted
-- https://aedasmg.org/documento/informes-aecom-0425/ (rede) — erro de rede: This operation was aborted
-- https://aedasmg.org/documento/informes-aecom-0524/ (rede) — erro de rede: This operation was aborted
-- https://aedasmg.org/documento/informes-aecom-1225/ (rede) — erro de rede: This operation was aborted
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
-- https://datasus.saude.gov.br/ (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
@@ -233,7 +228,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
-- https://www.aedasmg.org (rede) — erro de rede: This operation was aborted
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
