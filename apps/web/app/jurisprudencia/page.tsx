@@ -9,6 +9,7 @@ import {
   Formulario,
   GraficoPoloAno,
   Notas,
+  NoticiasTribunais,
   Paginacao,
   reais,
   resumo,
@@ -130,6 +131,7 @@ export default async function Jurisprudencia({
       ) : null}
 
       <BotoesLegislacao />
+      <NoticiasTribunais />
       <Notas semResumo={semResumo} />
 
       <footer className="space-y-2 text-sm opacity-80">

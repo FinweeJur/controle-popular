@@ -1,6 +1,7 @@
 import Link from "next/link";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
+import noticiasJson from "@/data/noticias-tribunais.json";
 import {
   poloPorAno,
   temasUnicos,
@@ -41,6 +42,17 @@ interface ArquivoCasos {
   total: number;
   casos: CasoJurisprudencia[];
 }
+
+interface Noticia {
+  tribunal: string;
+  data: string;
+  titulo: string;
+  resumo: string;
+  url: string;
+  termos: string;
+}
+
+const NOTICIAS = (noticiasJson as { itens: Noticia[] }).itens;
 
 export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
@@ -482,6 +494,38 @@ export function SumulasPorTribunal() {
       total={contar("sumula")}
       nota="STF 736, STJ 673 e TST 463 — enunciados vigentes baixados da fonte oficial."
     />
+  );
+}
+
+export function NoticiasTribunais() {
+  const itens = NOTICIAS.slice(0, 12);
+  return (
+    <section className="space-y-3">
+      <h2 className="font-display text-xl font-semibold">Notícias oficiais dos tribunais</h2>
+      <p className="text-sm opacity-70">
+        Direitos humanos, meio ambiente, Brumadinho, Rio Doce e povos tradicionais, direto
+        da fonte. O STJ não entra: o termo de uso veda coleta automatizada.
+      </p>
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {itens.map((noticia) => (
+          <li key={noticia.url} className="rounded-lg border border-[var(--cp-border)] p-4">
+            <p className="text-xs uppercase tracking-wide opacity-60">
+              {noticia.tribunal} · {noticia.data || "sem data"}
+            </p>
+            <a
+              className="mt-1 block text-sm font-semibold underline"
+              href={noticia.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {noticia.titulo}
+            </a>
+            <p className="mt-1 line-clamp-3 text-xs opacity-70">{noticia.resumo}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="text-xs opacity-60">N = {NOTICIAS.length} notícias coletadas; exibindo as 12 mais recentes.</p>
+    </section>
   );
 }
 
