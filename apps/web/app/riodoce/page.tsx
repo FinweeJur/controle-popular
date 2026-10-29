@@ -4,6 +4,7 @@ import { COBERTURA_ACORDO_RIO_DOCE } from "@/lib/ambiental/ckan-mg-mariana";
 import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import PaginasTema from "./PaginasTema";
 
 /**
  * Hub da Plataforma Rio Doce (`/riodoce`).
@@ -87,6 +88,12 @@ const EM_CONSTRUCAO = [
       "Do rompimento de 05/11/2015 ao Novo Acordo homologado pelo STF em 06/11/2024 — cada marco com link à fonte oficial. Em construção.",
   },
 ] as const;
+
+// Todas as portas do tema, num só bloco: o hub vinha sem uma lista que
+// mostrasse ao leitor o que mais existe sobre o Rio Doce. Cada item aponta
+// para rota que já existe e diz, em uma linha, o que vai encontrar lá. Os
+// recortes de jurisprudência usam query string aceita por /jurisprudencia.
+
 
 export default function RioDoceHub() {
   return (
@@ -193,6 +200,8 @@ export default function RioDoceHub() {
           .
         </p>
       </section>
+
+      <PaginasTema />
 
       <OutrasFrentes atual="riodoce" />
     </div>

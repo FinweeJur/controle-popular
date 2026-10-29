@@ -67,6 +67,10 @@ const LINKS_PORTAL = [
   { label: "Instituições & Secretarias", href: "/instituicoes" },
   { label: "Guia de contatos", href: "/guia" },
   { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
+  // A jurisprudência dos desastres e de direitos humanos é acervo de
+  // consulta frequente e não tinha porta no rodapé; mora ao lado das
+  // varas para quem chega pelo caminho da Justiça.
+  { label: "Jurisprudência — desastres e direitos humanos", href: "/jurisprudencia" },
   // Os dois desastres com zona própria (Rio Doce e Paraopeba) ficam juntos
   // no rodapé — mesma lógica do TopNav: quem procura a reparação acha as
   // duas portas lado a lado, sem precisar saber o nome de uma para achar a

@@ -30,18 +30,24 @@ export const metadata: Metadata = {
     "Hub do caso do Rio Doce: execução do Acordo de Mariana em MG, processos consultados ao vivo no DataJud do CNJ e dados espaciais da bacia. Portal independente.",
 };
 
-// Rotas de PRIMEIRO nível desta zona. Hoje só o hub e /processos existem;
-// busca da zona (/riodoce/busca), dados espaciais, biblioteca e linha do
+// Rotas de PRIMEIRO nível desta zona e as portas do tema. Hoje existem o
+// hub, /processos e /indice; a jurisprudência do caso vive na página
+// geral /jurisprudencia (recorte por frente e tribunal via query string).
+// Busca da zona (/riodoce/busca), dados espaciais, biblioteca e linha do
 // tempo entram nas fases seguintes do plano (F2–F5) e aparecem aqui quando
 // tiverem página de verdade — um link no nav para rota que ainda não existe
 // é 404 na tela do leitor.
 const NAV = [
   { href: "/riodoce", label: "Visão geral" },
   { href: "/riodoce/processos", label: "Processos" },
+  { href: "/riodoce/indice", label: "Índice do tema" },
   // Execução financeira do Acordo em MG continua em /ambiental/mariana —
   // mesma régua de "um número, uma fonte" do plano: o hub só linka, não
   // duplica o acervo do CKAN MG.
   { href: "/ambiental/mariana", label: "Execução do Acordo (MG)" },
+  // A página geral cobre Mariana (TJES), Brumadinho (TJMG) e súmulas;
+  // aqui ela entra com o recorte do Rio Doce já aplicado.
+  { href: "/jurisprudencia?frente=riodoce#lista", label: "Jurisprudência" },
 ];
 
 export default function RioDoceLayout({

@@ -1,48 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { LucideIcon } from 'lucide-react';
-import {
-  Menu,
-  ChevronDown,
-  Bell,
-  Newspaper,
-  HeartHandshake,
-  Globe,
-  Landmark,
-  Compass,
-  Activity,
-  GraduationCap,
-  Briefcase,
-  ShieldCheck,
-  Shield,
-  HelpCircle,
-  FileQuestion,
-  Send,
-  MapPin,
-  Waves,
-  Mountain,
-  AlertTriangle,
-  Scale,
-  ShoppingBag,
-  Building2,
-  BarChart3,
-  Cpu,
-  List,
-  Search,
-  Info,
-  Code2,
-  BookOpen,
-  PhoneCall,
-  Users,
-  FileText,
-  Sparkles,
-  Leaf,
-  FileSpreadsheet,
-  Radio,
-  Layers,
-  X,
-} from 'lucide-react';
+import { SECOES_MENU } from './menu-portal';
+import RodapeMenu from './RodapeMenu';
+import { Menu, ChevronDown, Bell, Newspaper, Compass, Search, X } from "lucide-react";
 import Link from 'next/link';
 import NextLink from 'next/link';
 import Image from 'next/image';
@@ -62,142 +23,7 @@ import { useProximidadeLinha } from '@/app/components/react-bits/useProximidadeL
  * - Eixo 3: Estado e Economia (azul/celeste)
  * - Eixo 4: Central ONSA & Ferramentas (laranja pequi)
  */
-interface ItemMenuLink {
-  label: string;
-  href: string;
-  icone: LucideIcon;
-  destaque?: boolean;
-}
 
-interface SecaoMenu {
-  id: string;
-  badge: string;
-  titulo: string;
-  href: string;
-  icone: LucideIcon;
-  cor: string;
-  corClasse: string;
-  badgeClasse: string;
-  links: ItemMenuLink[];
-}
-
-const SECOES_MENU: SecaoMenu[] = [
-  {
-    id: 'terra',
-    badge: 'EIXO 1',
-    titulo: 'Terra e Território',
-    href: '/terra-e-territorios',
-    icone: Globe,
-    cor: 'var(--cp-eixo-terra)',
-    corClasse: 'text-emerald-500 hover:text-emerald-400',
-    badgeClasse: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
-    links: [
-      { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe },
-      { label: 'Função Social & Globo 3D', href: '/funcaosocialterra/mapa', icone: Globe, destaque: true },
-      // Os dois desastres grandes têm zona própria (dono, 12/10): o Rio Doce
-      // (/riodoce) é o hub do caso; a execução financeira do Acordo em MG
-      // continua em /ambiental/mariana e é linkada de dentro do hub.
-      { label: 'Plataforma Rio Doce (/riodoce)', href: '/riodoce', icone: Waves, destaque: true },
-      { label: 'Repactuação Rio Doce (Mariana)', href: '/ambiental/mariana', icone: Waves, destaque: true },
-      { label: 'Reparação Paraopeba (Brumadinho)', href: '/paraopeba', icone: ShieldCheck, destaque: true },
-      { label: 'Licenciamento Ambiental (11 UFs)', href: '/ambiental/licenciamento', icone: FileSpreadsheet, destaque: true },
-      { label: 'Descaracterização Barragens', href: '/ambiental/barragens/descaracterizacao', icone: AlertTriangle, destaque: true },
-      { label: '203 Cidades Estratégicas', href: '/cidades', icone: MapPin },
-      { label: 'Cidades de Minas (853)', href: '/cidades/mg', icone: MapPin },
-      { label: 'Nossos Rios & Bacias', href: '/terra-e-territorios/nossos-rios', icone: Waves },
-      { label: 'Nossas Serras & Topos de Morro', href: '/terra-e-territorios/nossas-serras', icone: Mountain },
-      { label: 'Cavas de Mineração (satélite)', href: '/mineracao/cavas', icone: Mountain },
-      { label: 'Clima & Risco AdaptaBrasil', href: '/ambiental/clima-risco', icone: Activity },
-      { label: 'Termos de Ajustamento (TAC)', href: '/ambiental/tac', icone: Shield },
-      { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale },
-      { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe },
-      { label: 'América Latina & Mineração', href: '/america-latina', icone: Globe },
-    ],
-  },
-  {
-    id: 'direitos',
-    badge: 'EIXO 2',
-    titulo: 'Direitos em Movimento',
-    href: '/direitos-em-movimento',
-    icone: HeartHandshake,
-    cor: 'var(--cp-eixo-direitos)',
-    corClasse: 'text-alert hover:text-alert',
-    badgeClasse: 'bg-alert/10 text-alert border-alert/30',
-    links: [
-      { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake },
-      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true },
-      { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true },
-      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true },
-      // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
-      // com o passo a passo do desconto; a segunda é a rede de proteção.
-      { label: 'Tarifa Social (Água & Luz)', href: '/noticias/tarifa-social-energia-agua-como-acessar', icone: Newspaper, destaque: true },
-      { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true },
-      { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap },
-      { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase },
-      { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users },
-      { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion },
-      { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send },
-      { label: 'Decisões de Acesso (LAI)', href: '/ambiental/decisoes-lai', icone: FileText },
-      { label: 'Direitos Humanos & Relatórios', href: '/ambiental/direitos-humanos', icone: Shield },
-    ],
-  },
-  {
-    id: 'estado',
-    badge: 'EIXO 3',
-    titulo: 'Estado e Economia',
-    href: '/estado-e-economia',
-    icone: Landmark,
-    cor: 'var(--cp-eixo-estado)',
-    corClasse: 'text-sky-500 hover:text-sky-400',
-    badgeClasse: 'bg-sky-500/10 text-sky-500 border-sky-500/30',
-    links: [
-      { label: 'Visão Geral do Eixo', href: '/estado-e-economia', icone: Landmark },
-      { label: 'Orçamento & Receitas de MG', href: '/estado-e-economia/orcamento', icone: BarChart3, destaque: true },
-      { label: 'Quem fiscaliza a Justiça', href: '/judiciario/instituicoes', icone: Scale, destaque: true },
-      { label: 'Varas, Gabinetes e Balcão', href: '/judiciario/contatos', icone: PhoneCall, destaque: true },
-      { label: 'Assembleias Legislativas (27 UFs)', href: '/assembleias', icone: Landmark, destaque: true },
-      { label: 'Radar de Compras & Contratos', href: '/ambiental/contratos', icone: ShoppingBag, destaque: true },
-      { label: 'Congresso Nacional & Gastos', href: '/congresso', icone: Landmark },
-      { label: 'Gastos de Campanha 2026', href: '/eleicoes/2026/gastos-campanha', icone: BarChart3, destaque: true },
-      { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users },
-      { label: 'Governos: Prometeu? Cumpriu?', href: '/governo', icone: Landmark },
-      { label: 'Grandes Empresas & Fundos ESG', href: '/empresas', icone: Building2 },
-      { label: '1.000 Maiores Fortunas Mundiais', href: '/empresas/fortunas', icone: Building2 },
-      { label: 'EUA: SEC, Fundos & Comércio', href: '/eua', icone: Building2 },
-      { label: 'Europa: Litígios Transnacionais', href: '/europa', icone: Globe },
-      { label: 'Central de Inteligência (12 Eyes)', href: '/internacional/inteligencia', icone: ShieldCheck, destaque: true },
-      { label: 'Mapa Global de Inteligência', href: '/internacional/inteligencia/mapa', icone: MapPin },
-      { label: 'Repasses Federais ComunicaBR', href: '/dados/comunicabr', icone: MapPin },
-      { label: 'Concessões & PPP de MG', href: '/ambiental/ppp', icone: Building2 },
-    ],
-  },
-  {
-    id: 'transversal',
-    badge: 'EIXO 4',
-    titulo: 'Central & Ferramentas',
-    href: '/central',
-    icone: Compass,
-    cor: 'var(--cp-primary)',
-    corClasse: 'text-primary hover:text-primary',
-    badgeClasse: 'bg-primary/10 text-primary border-primary/30',
-    links: [
-      { label: 'Página do Eixo Central', href: '/central', icone: Compass },
-      { label: 'Radar Diário de Editais', href: '/editais', icone: ShoppingBag, destaque: true },
-      { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen, destaque: true },
-      { label: 'Árvore de Conexões (Grafo 3D)', href: '/laboratorio/arvore', icone: Layers, destaque: true },
-      { label: 'Assistente Cívico Seu Nonô', href: '/assistente', icone: Sparkles, destaque: true },
-      { label: 'Índice Geral do Portal', href: '/indice', icone: List },
-      { label: 'Busca Global no Acervo', href: '/busca', icone: Search },
-      { label: 'Laboratório de Dados', href: '/laboratorio', icone: BarChart3 },
-      { label: 'Blog & Notícias Analíticas', href: '/noticias', icone: Newspaper },
-      { label: 'Rádios do Brasil e do Mundo', href: '/radio', icone: Radio },
-      { label: 'Alertas & Notificações', href: '/alertas', icone: Bell },
-      { label: 'Tecnologia & IA Livre', href: '/tecnologia', icone: Cpu },
-      { label: 'Documentação do Sistema', href: '/documentacao', icone: FileText },
-      { label: 'Sobre o ONSA & Método', href: '/sobre', icone: Info },
-    ],
-  },
-] as const;
 
 export default function TopNav() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -405,6 +231,7 @@ export default function TopNav() {
                             <a
                               href={link.href}
                               onClick={fechar}
+                              data-dica={link.dica}
                               className={`flex items-center justify-between gap-1.5 rounded-md px-1.5 py-1 text-[0.85em] leading-snug transition-colors duration-150 ${
                                 link.destaque
                                   ? "font-medium text-foreground bg-primary/10 border-l-2 border-primary pl-2 shadow-xs hover:bg-primary/15"
@@ -435,34 +262,7 @@ export default function TopNav() {
                 ))}
               </div>
 
-              {/* Rodapé do menu com link de acesso rápido ao Eixo Central (ONSA) */}
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/70 pt-3 sm:mt-4 sm:pt-4">
-                <div className="flex items-center gap-2 text-xs text-text-soft">
-                  <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
-                  <span>Observatório Nacional Socioambiental e ferramentas integradas em um só lugar.</span>
-                </div>
-                <NextLink
-                  href="/central"
-                  onClick={fechar}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
-                >
-                  <span>Conhecer o Eixo Central (ONSA)</span>
-                  <span aria-hidden="true">→</span>
-                </NextLink>
-              </div>
-
-              {/* ═══ PREFERÊNCIAS NO CELULAR ═══
-                  A barra esconde tema, tamanho de fonte e paleta daltônica
-                  abaixo de `md` (não cabem: medido em 06/10/2026, logo +
-                  "Índice" + Blog + Alertas + Ouvir já ocupam a linha de 390 px).
-                  Sem isto, quem está no celular só mudava isso pelo assistente.
-                  De `md` para cima a própria barra já mostra as três. */}
-              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/70 pt-3 md:hidden">
-                <span className="text-xs font-semibold text-text-soft">Preferências:</span>
-                <ThemeSwitcher />
-                <FontSizeControl />
-                <CvdToggle />
-              </div>
+              <RodapeMenu onFechar={fechar} />
             </div>
           </nav>
         </div>
