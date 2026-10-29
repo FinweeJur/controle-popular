@@ -1,0 +1,80 @@
+{
+  "geradoEm": "2026-10-28",
+  "fonte": "TJMG — acórdãos do rompimento da barragem de Brumadinho (2019–2024)",
+  "coleta": "2026-10-21",
+  "publicacao": "2026-10-28",
+  "auditoria": {
+    "linhas_decisoes": 3188,
+    "processos_unicos": 2970,
+    "linhas_resumos": 2969,
+    "processos_resumidos": 2969,
+    "sem_resumo": 1,
+    "duplicatas_decisoes": 218,
+    "com_inteiro_teor": 2533,
+    "com_link": 2609
+  },
+  "polo": {
+    "empresa": 1546,
+    "atingido": 992,
+    "parcial": 230,
+    "indeterminado": 202
+  },
+  "resultado": {
+    "negado": 1494,
+    "provido": 1130,
+    "parcial": 246,
+    "indeterminado": 100
+  },
+  "recorrente": {
+    "atingido": 1852,
+    "empresa": 915,
+    "indeterminado": 199,
+    "ambos": 4
+  },
+  "temas": {
+    "dano moral": 1504,
+    "coisa julgada": 561,
+    "tap": 558,
+    "auxilio emergencial": 414,
+    "documentacao": 409,
+    "dano material": 288,
+    "residencia": 285,
+    "pesca": 63,
+    "litigancia predatoria": 61,
+    "ptr": 35
+  },
+  "danos_pnab": {
+    "perda_propriedade": 53,
+    "desvalorizacao_imoveis": 126,
+    "perda_capacidade_produtiva": 1,
+    "perda_areas_pesca": 103,
+    "agua_abastecimento": 53,
+    "perda_renda_trabalho": 98,
+    "mudanca_habitos_psicossociais": 749,
+    "comunidades_tradicionais": 1,
+    "acesso_areas_urbanas_rurais": 2,
+    "deslocamento_compulsorio": 43,
+    "atividades_produtivas_locais": 48,
+    "outros_pnab_peab": 157
+  },
+  "processos_sem_dano": 1765,
+  "valores": {
+    "n": 1350,
+    "mediana": 52075.0,
+    "media": 697036140.68,
+    "q1": 12112.5,
+    "q3": 120000.0,
+    "minimo": 100.0,
+    "maximo": 200000000000.0
+  },
+  "status_resumos": {
+    "aprovado": 2633,
+    "revisao_humana": 336
+  },
+  "amostragem": {
+    "universo": 2970,
+    "amostra": 341,
+    "erro": "5%",
+    "confianca": "95%"
+  }
+}

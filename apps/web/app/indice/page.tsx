@@ -45,7 +45,7 @@ import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100Pagi
  * transversais e situacoes praticas. Cada card descreve o destino e leva
  * a uma pagina de indice ou de conteudo.
  *
- * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título,
+ * ⟲ 02/09/2026, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md): título,
  * descrição e cabeçalho na voz nova — o índice é "o mapa", e cada porta
  * leva ao número com a fonte ao lado. Estrutura e cards intactos.
  *
@@ -218,6 +218,7 @@ const TOPICOS_TEMAS: Topico[] = [
   { href: "/biblioteca", titulo: "Biblioteca Geral & Pesquisa", descricao: "24.000 documentos, estudos de ATIs, relatórios periciais e decisões LAI.", cor: "var(--cp-accent)", badge: "Acervo", icon: <BookOpen size={14} /> },
   { href: "/judiciario/recomendacoes", titulo: "Recomendações CNJ & CNMP", descricao: "O que os conselhos nacionais mandaram corrigir em tribunais e promotorias.", cor: "var(--cp-secondary)", badge: "Justiça", icon: <Scale size={14} /> },
   { href: "/judiciario/contatos", titulo: "Varas e Balcão Virtual", descricao: "Telefone, e-mail, titular e balcão virtual de 990 varas de MG e cidades do Brasil.", cor: "var(--cp-secondary)", badge: "Judiciário", icon: <Scale size={14} /> },
+  { href: "/jurisprudencia", titulo: "Jurisprudência do Brumadinho", descricao: "2.970 acórdãos do TJMG: polo vencedor, temas, danos PNAB/PEAB e valores, com método e fonte.", cor: "var(--cp-secondary)", badge: "✦ Justiça", icon: <Scale size={14} /> },
   { href: "/sobre", titulo: "Sobre", descricao: "O que é, de onde vem os dados e quem somos.", cor: "var(--cp-primary)", badge: "Portal", icon: <BookOpen size={14} /> },
   { href: "/termos", titulo: "Termos e origem dos dados", descricao: "Licença, fontes e limitações.", cor: "var(--cp-primary)", badge: "Portal", icon: <FileText size={14} /> },
 ];
