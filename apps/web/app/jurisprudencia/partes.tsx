@@ -46,8 +46,23 @@ export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
 
 const NOMES_TRIBUNAL: Record<string, string> = {
-  TJMG: "TJMG — Brumadinho (MG)",
-  TJES: "TJES — Fundão/Rio Doce (ES)",
+  TJMG: "TJMG (MG)",
+  TJES: "TJES (ES)",
+  STF: "STF",
+  STJ: "STJ",
+  TST: "TST",
+};
+
+const NOMES_FRENTE: Record<string, string> = {
+  brumadinho: "Brumadinho (TJMG)",
+  riodoce: "Rio Doce",
+  dh: "Direitos humanos (TJMG)",
+  sumula: "Súmulas",
+};
+
+const NOMES_TIPO: Record<string, string> = {
+  acordao: "Acórdão",
+  sumula: "Súmula",
 };
 
 const NOMES_PNAB: Record<string, string> = {
@@ -69,16 +84,22 @@ const ESTILO_STATUS: Record<string, string> = {
   aprovado: "rounded bg-[var(--cp-primary)]/15 px-2 py-0.5 text-xs",
   sem_resumo: "rounded bg-[var(--cp-border)] px-2 py-0.5 text-xs",
   revisao_humana: "rounded bg-[var(--cp-tertiary)]/15 px-2 py-0.5 text-xs",
+  sumula: "rounded bg-[var(--cp-secondary)]/15 px-2 py-0.5 text-xs",
 };
 
 const ROTULO_STATUS: Record<string, string> = {
   aprovado: "aprovado",
   sem_resumo: "sem resumo",
   revisao_humana: "revisão",
+  sumula: "súmula",
 };
 
 export const reais = (valor: number) =>
   valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+function contar(frente: string): number {
+  return CASOS.filter((caso) => caso.frente === frente).length;
+}
 
 export function Tabela({
   titulo,
@@ -123,13 +144,12 @@ export function Tabela({
 }
 
 export function Cartoes() {
-  const porTribunal = contagemPor(CASOS, "tribunal");
   const semResumo = CASOS.filter((caso) => caso.status === "sem_resumo").length;
   const itens: [string, string, string][] = [
-    ["Processos no acervo", CASOS.length.toLocaleString("pt-BR"), "2ª instância, TJMG + TJES"],
-    ["TJMG — Brumadinho", String(porTribunal.find(([k]) => k === "TJMG")?.[1] ?? 0), "polo e danos classificados"],
-    ["TJES — Fundão/Rio Doce", String(porTribunal.find(([k]) => k === "TJES")?.[1] ?? 0), "sem classificação de polo ainda"],
-    ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "aparecem na lista, sem polo"],
+    ["Itens no acervo", CASOS.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
+    ["Acórdãos", (CASOS.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
+    ["Súmulas", contar("sumula").toLocaleString("pt-BR"), "STF, STJ e TST"],
+    ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "entram na lista, sem polo"],
   ];
   return (
     <section className="grid gap-3 sm:grid-cols-2">
@@ -181,30 +201,47 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
   );
 }
 
+function Opcoes({ valores, nomes }: { valores: string[]; nomes: Record<string, string> }) {
+  return (
+    <>
+      <option value="">Todos</option>
+      {valores.map((valor) => (
+        <option key={valor} value={valor}>{nomes[valor] ?? valor}</option>
+      ))}
+    </>
+  );
+}
+
 export function Formulario({ filtros }: { filtros: Filtros }) {
   const campo = "rounded border border-[var(--cp-border)] bg-transparent px-2 py-1";
   return (
     <form method="get" className="grid gap-3 rounded-lg border border-[var(--cp-border)] p-4 sm:grid-cols-2 lg:grid-cols-3">
       <label className="flex flex-col gap-1 text-sm">
-        <span className="opacity-70">Processo</span>
+        <span className="opacity-70">Processo ou súmula</span>
         <input name="q" defaultValue={filtros.q} placeholder="número do processo" className={campo} />
+      </label>
+      <label className="flex flex-col gap-1 text-sm">
+        <span className="opacity-70">Frente</span>
+        <select name="frente" defaultValue={filtros.frente} className={campo}>
+          <Opcoes valores={valoresUnicos(CASOS, "frente")} nomes={NOMES_FRENTE} />
+        </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Tribunal</span>
         <select name="tribunal" defaultValue={filtros.tribunal} className={campo}>
-          <option value="">Todos</option>
-          {valoresUnicos(CASOS, "tribunal").map((tribunal) => (
-            <option key={tribunal} value={tribunal}>{NOMES_TRIBUNAL[tribunal] ?? tribunal}</option>
-          ))}
+          <Opcoes valores={valoresUnicos(CASOS, "tribunal")} nomes={NOMES_TRIBUNAL} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Estado</span>
         <select name="estado" defaultValue={filtros.estado} className={campo}>
-          <option value="">Todos</option>
-          {valoresUnicos(CASOS, "estado").map((estado) => (
-            <option key={estado} value={estado}>{estado}</option>
-          ))}
+          <Opcoes valores={valoresUnicos(CASOS, "estado")} nomes={{}} />
+        </select>
+      </label>
+      <label className="flex flex-col gap-1 text-sm">
+        <span className="opacity-70">Tipo</span>
+        <select name="tipo" defaultValue={filtros.tipo} className={campo}>
+          <Opcoes valores={valoresUnicos(CASOS, "tipo")} nomes={NOMES_TIPO} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -228,19 +265,13 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Comarca</span>
         <select name="comarca" defaultValue={filtros.comarca} className={campo}>
-          <option value="">Todas</option>
-          {valoresUnicos(CASOS, "comarca").map((comarca) => (
-            <option key={comarca} value={comarca}>{comarca}</option>
-          ))}
+          <Opcoes valores={valoresUnicos(CASOS, "comarca")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Ano</span>
         <select name="ano" defaultValue={filtros.ano} className={campo}>
-          <option value="">Todos</option>
-          {valoresUnicos(CASOS, "ano").map((ano) => (
-            <option key={ano} value={ano}>{ano}</option>
-          ))}
+          <Opcoes valores={valoresUnicos(CASOS, "ano")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -280,12 +311,19 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
 }
 
 function CelulaTemas({ caso }: { caso: CasoJurisprudencia }) {
-  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto || "—";
+  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90) || "—";
   const resto = caso.temas.length > 2 ? ` +${caso.temas.length - 2}` : "";
   return <>{`${texto}${resto}`}</>;
 }
 
-const COLUNAS = ["Processo", "Tribunal", "Ano", "Órgão/Comarca", "Polo", "Resultado", "Temas", "Revisão"];
+function CelulaMerito({ caso }: { caso: CasoJurisprudencia }) {
+  if (caso.tipo === "sumula") return <>—</>;
+  const polo = ROTULOS[caso.polo] ?? caso.polo;
+  const resultado = ROTULOS[caso.resultado] ?? caso.resultado;
+  return <>{[polo, resultado].filter(Boolean).join(" · ") || "—"}</>;
+}
+
+const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Status"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
@@ -300,13 +338,14 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
         </thead>
         <tbody>
           {itens.map((caso) => (
-            <tr key={`${caso.tribunal}:${caso.processo}`} className="border-t border-[var(--cp-border)] align-top">
+            <tr key={caso.id} className="border-t border-[var(--cp-border)] align-top">
               <td className="px-3 py-2 font-tabular"><CelulaProcesso caso={caso} /></td>
               <td className="px-3 py-2">{caso.tribunal}/{caso.estado}</td>
+              <td className="px-3 py-2">{NOMES_TIPO[caso.tipo] ?? caso.tipo}</td>
               <td className="px-3 py-2">{caso.ano || "—"}</td>
               <td className="px-3 py-2">{caso.orgao || caso.comarca || "—"}</td>
-              <td className="px-3 py-2">{ROTULOS[caso.polo] ?? (caso.polo || "—")}</td>
-              <td className="px-3 py-2">{ROTULOS[caso.resultado] ?? (caso.resultado || "—")}</td>
+              <td className="px-3 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
+              <td className="px-3 py-2"><CelulaMerito caso={caso} /></td>
               <td className="px-3 py-2"><CelulaTemas caso={caso} /></td>
               <td className="px-3 py-2"><SeloStatus status={caso.status} /></td>
             </tr>
@@ -345,25 +384,60 @@ export function Paginacao({ pagina, filtros }: { pagina: Pagina<CasoJurisprudenc
   );
 }
 
-export function Atalhos({ tribunal, estado }: { tribunal: string; estado: string }) {
+const RECORTES: { rotulo: string; nota: string; href: string; ativo: (t: string, f: string) => boolean }[] = [
+  {
+    rotulo: "Brumadinho — TJMG",
+    nota: "2ª instância de Minas Gerais · polo e danos PNAB/PEAB",
+    href: "/jurisprudencia?frente=brumadinho#lista",
+    ativo: (_t, f) => f === "brumadinho",
+  },
+  {
+    rotulo: "Rio Doce — TJMG",
+    nota: "Comarcas da bacia do Doce · sem resumo ainda",
+    href: "/jurisprudencia?frente=riodoce&tribunal=TJMG#lista",
+    ativo: (t, f) => f === "riodoce" && t === "TJMG",
+  },
+  {
+    rotulo: "Fundão/Rio Doce — TJES",
+    nota: "2ª instância do Espírito Santo · sem polo classificado",
+    href: "/jurisprudencia?frente=riodoce&tribunal=TJES#lista",
+    ativo: (t, f) => f === "riodoce" && t === "TJES",
+  },
+  {
+    rotulo: "Direitos humanos — TJMG",
+    nota: "Acórdãos de DH do TJMG · 123 com resumo",
+    href: "/jurisprudencia?frente=dh#lista",
+    ativo: (_t, f) => f === "dh",
+  },
+  {
+    rotulo: "Súmulas — STF, STJ e TST",
+    nota: "1.872 enunciados, com link para a fonte",
+    href: "/jurisprudencia?frente=sumula#lista",
+    ativo: (_t, f) => f === "sumula",
+  },
+];
+
+export function Atalhos({ tribunal, frente }: { tribunal: string; frente: string }) {
   const ativo = "rounded-lg border-2 border-[var(--cp-primary)] bg-[var(--cp-primary)]/10 p-4";
   const inativo = "rounded-lg border border-[var(--cp-border)] p-4 hover:border-[var(--cp-primary)]";
   return (
     <section className="space-y-3">
-      <h2 className="font-display text-xl font-semibold">Recortes por desastre</h2>
+      <h2 className="font-display text-xl font-semibold">Recortes por frente</h2>
       <div className="grid gap-3 sm:grid-cols-2">
-        <Link className={tribunal === "TJMG" ? ativo : inativo} href="/jurisprudencia?tribunal=TJMG&estado=MG#lista">
-          <p className="font-semibold">Brumadinho — TJMG</p>
-          <p className="text-sm opacity-70">2ª instância de Minas Gerais · polo e danos PNAB/PEAB</p>
-        </Link>
-        <Link className={tribunal === "TJES" ? ativo : inativo} href="/jurisprudencia?tribunal=TJES&estado=ES#lista">
-          <p className="font-semibold">Fundão/Rio Doce — TJES</p>
-          <p className="text-sm opacity-70">2ª instância do Espírito Santo · sem polo classificado ainda</p>
-        </Link>
+        {RECORTES.map((recorte) => (
+          <Link
+            key={recorte.href}
+            className={recorte.ativo(tribunal, frente) ? ativo : inativo}
+            href={recorte.href}
+          >
+            <p className="font-semibold">{recorte.rotulo}</p>
+            <p className="text-sm opacity-70">{recorte.nota}</p>
+          </Link>
+        ))}
       </div>
-      {estado || tribunal ? (
+      {frente || tribunal ? (
         <p className="text-sm opacity-70">
-          Recorte ativo: {[tribunal, estado].filter(Boolean).join(" · ")} ·{" "}
+          Recorte ativo: {[frente, tribunal].filter(Boolean).join(" · ")} ·{" "}
           <Link className="underline" href="/jurisprudencia#lista">ver tudo</Link>
         </p>
       ) : null}
@@ -396,6 +470,21 @@ export function BotoesLegislacao() {
   );
 }
 
+export function SumulasPorTribunal() {
+  const dados = CASOS.filter((caso) => caso.tipo === "sumula").reduce<Record<string, number>>((mapa, caso) => {
+    mapa[caso.tribunal] = (mapa[caso.tribunal] ?? 0) + 1;
+    return mapa;
+  }, {});
+  return (
+    <Tabela
+      titulo="Súmulas por tribunal"
+      dados={dados}
+      total={contar("sumula")}
+      nota="STF 736, STJ 673 e TST 463 — enunciados vigentes baixados da fonte oficial."
+    />
+  );
+}
+
 export function Notas({ semResumo }: { semResumo: number }) {
   return (
     <section className="space-y-2 rounded-lg border border-[var(--cp-border)] p-4 text-sm">
@@ -406,13 +495,13 @@ export function Notas({ semResumo }: { semResumo: number }) {
           resumos ainda estão em revisão humana.
         </li>
         <li>
-          {semResumo.toLocaleString("pt-BR")} acórdãos do TJES entram na lista sem polo nem
-          resultado: a classificação de mérito do Fundão ainda não foi feita.
+          {semResumo.toLocaleString("pt-BR")} itens entram sem resumo de mérito: Rio Doce (TJMG),
+          Fundão (TJES) e a maior parte dos direitos humanos. Eles aparecem na lista, sem polo.
         </li>
         <li>
-          O recorte é a 2ª instância; não é o universo de 1ª instância nem a amostra da
-          18ª Câmara do NACAB.
+          Súmulas não têm polo: são enunciado normativo, não decisão de caso concreto.
         </li>
+        <li>O recorte é a 2ª instância; não é o universo de 1ª instância nem a amostra da 18ª Câmara do NACAB.</li>
         <li>Não há dado pessoal nesta página: só processo, tema, número e fonte.</li>
       </ul>
     </section>

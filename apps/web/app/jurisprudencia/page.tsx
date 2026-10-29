@@ -12,6 +12,7 @@ import {
   Paginacao,
   reais,
   resumo,
+  SumulasPorTribunal,
   Tabela,
   TabelaCasos,
 } from "./partes";
@@ -19,10 +20,10 @@ import {
 /**
  * @file Página /jurisprudencia — jurisprudência geral dos desastres.
  *
- * O QUE É: um só acervo para o Brumadinho (TJMG/MG) e o Fundão-Rio Doce
- * (TJES/ES), com filtro por tribunal, estado, polo, tema, comarca, ano e
- * processo. Os hubs (`/paraopeba` e `/riodoce`) linkam esta página com os
- * filtros já preenchidos por query string.
+ * O QUE É: um só acervo para tudo o que já foi coletado — TJMG (Brumadinho,
+ * Rio Doce e direitos humanos), TJES (Fundão) e as súmulas do STF, STJ e TST.
+ * Filtro por frente, tipo, tribunal, estado, polo, tema, comarca, ano e
+ * processo. Os hubs (`/paraopeba` e `/riodoce`) linkam com o recorte pronto.
  *
  * REGRAS (AGENTS): coleção nunca vai como prop de cliente (§5.1); todo número
  * tem N; valor só como mediana com ressalva; fonte mínima 12 px; link interno
@@ -32,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "Jurisprudência dos desastres — Controle Popular",
   description:
-    "Acórdãos do TJMG sobre Brumadinho e do TJES sobre o Fundão/Rio Doce: tribunal, estado, polo vencedor, resultado, temas, danos PNAB/PEAB e valores, com método e fonte.",
+    "Acórdãos do TJMG (Brumadinho, Rio Doce e direitos humanos), do TJES (Fundão) e súmulas do STF, STJ e TST: tribunal, estado, polo vencedor, resultado, temas, danos PNAB/PEAB e valores, com método e fonte.",
 };
 
 export default async function Jurisprudencia({
@@ -46,6 +47,8 @@ export default async function Jurisprudencia({
     return (Array.isArray(valor) ? valor[0] : valor) ?? "";
   };
   const filtros: Filtros = {
+    frente: texto("frente"),
+    tipo: texto("tipo"),
     tribunal: texto("tribunal"),
     estado: texto("estado"),
     polo: texto("polo"),
@@ -58,19 +61,20 @@ export default async function Jurisprudencia({
   const pagina = paginar(ordenar(filtrar(CASOS, filtros), filtros.ordem), Number(texto("pagina")) || 1);
   const total = resumo.auditoria.processos_unicos;
   const valores = resumo.valores;
-  const tjmg = CASOS.filter((caso) => caso.tribunal === "TJMG" && caso.polo);
+  const tjmg = CASOS.filter((caso) => caso.frente === "brumadinho" && caso.polo);
   const semResumo = CASOS.filter((caso) => caso.status === "sem_resumo").length;
-  const mostrarBrumadinho = !filtros.tribunal || filtros.tribunal === "TJMG";
+  const mostrarBrumadinho = !filtros.frente || filtros.frente === "brumadinho";
 
   return (
     <div className="mx-auto max-w-5xl space-y-10 px-4 py-10">
       <header className="space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência dos desastres</h1>
         <p className="max-w-3xl text-sm opacity-80">
-          Acórdãos de 2ª instância sobre dois rompimentos de barragem:{" "}
-          <strong>Brumadinho</strong> (TJMG, {total.toLocaleString("pt-BR")} processos, 2019–2024)
-          e <strong>Fundão/Rio Doce</strong> (TJES, {semResumo.toLocaleString("pt-BR")}{" "}
-          processos). Filtre por tribunal e estado ou use os recortes abaixo.
+          Tudo o que o portal já coletou em um só lugar: <strong>Brumadinho</strong> (TJMG,{" "}
+          {total.toLocaleString("pt-BR")} processos, 2019–2024), <strong>Rio Doce</strong>{" "}
+          (TJMG, comarcas da bacia) e <strong>Fundão</strong> (TJES), mais{" "}
+          <strong>direitos humanos</strong> no TJMG e as <strong>súmulas</strong> do STF,
+          STJ e TST. Filtre por frente, tipo, tribunal e estado.
         </p>
         <p className="text-xs opacity-70">
           Brumadinho — coleta: {resumo.coleta} · publicação: {resumo.publicacao} · fonte:{" "}
@@ -79,18 +83,20 @@ export default async function Jurisprudencia({
       </header>
 
       <Cartoes />
-      <Atalhos tribunal={filtros.tribunal ?? ""} estado={filtros.estado ?? ""} />
+      <Atalhos tribunal={filtros.tribunal ?? ""} frente={filtros.frente ?? ""} />
 
       <section className="space-y-4" id="lista">
-        <h2 className="font-display text-xl font-semibold">Lista dos acórdãos</h2>
+        <h2 className="font-display text-xl font-semibold">Lista</h2>
         <Formulario filtros={filtros} />
         <p className="text-sm opacity-70">
-          {pagina.total.toLocaleString("pt-BR")} processo(s) · página {pagina.pagina} de{" "}
+          {pagina.total.toLocaleString("pt-BR")} item(ns) · página {pagina.pagina} de{" "}
           {pagina.totalPaginas}
         </p>
         <TabelaCasos itens={pagina.itens} />
         <Paginacao pagina={pagina} filtros={filtros} />
       </section>
+
+      <SumulasPorTribunal />
 
       {mostrarBrumadinho ? (
         <div className="space-y-10">

@@ -10,10 +10,12 @@
  */
 
 export interface CasoJurisprudencia {
+  id: string;
   processo: string;
   tribunal: string;
-  estado: string;
   tipo: string;
+  frente: string;
+  estado: string;
   classe: string;
   comarca: string;
   ano: string;
@@ -31,6 +33,8 @@ export interface CasoJurisprudencia {
 }
 
 export interface Filtros {
+  frente?: string;
+  tipo?: string;
   tribunal?: string;
   estado?: string;
   polo?: string;
@@ -68,6 +72,8 @@ const ORDENS: Record<string, (a: CasoJurisprudencia, b: CasoJurisprudencia) => n
 };
 
 const PREDICADOS: Record<string, (caso: CasoJurisprudencia, valor: string) => boolean> = {
+  frente: (caso, valor) => caso.frente === valor,
+  tipo: (caso, valor) => caso.tipo === valor,
   tribunal: (caso, valor) => caso.tribunal === valor,
   estado: (caso, valor) => caso.estado === valor,
   polo: (caso, valor) => caso.polo === valor,
@@ -102,7 +108,7 @@ export function paginar<T>(itens: T[], pagina: number, porPagina = POR_PAGINA): 
 
 export function contagemPor(
   casos: CasoJurisprudencia[],
-  campo: "polo" | "ano" | "comarca" | "tribunal" | "estado",
+  campo: "polo" | "ano" | "comarca" | "tribunal" | "estado" | "frente" | "tipo",
 ): [string, number][] {
   const contagem = new Map<string, number>();
   for (const caso of casos) {
@@ -114,7 +120,7 @@ export function contagemPor(
 
 export function valoresUnicos(
   casos: CasoJurisprudencia[],
-  campo: "comarca" | "ano" | "tribunal" | "estado",
+  campo: "comarca" | "ano" | "tribunal" | "estado" | "frente" | "tipo",
 ): string[] {
   return [...new Set(casos.map((caso) => caso[campo]).filter(Boolean))].sort();
 }

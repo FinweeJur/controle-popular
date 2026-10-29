@@ -2,10 +2,12 @@
 import { filtrar, ordenar, paginar, poloPorAno, type CasoJurisprudencia } from "./jurisprudencia";
 
 const caso = (processo: string, over: Partial<CasoJurisprudencia> = {}): CasoJurisprudencia => ({
+  id: `TJMG:${processo}`,
   processo,
   tribunal: "TJMG",
+  tipo: "acordao",
+  frente: "brumadinho",
   estado: "MG",
-  tipo: "apelacao",
   classe: "Apelação Cível",
   comarca: "Belo Horizonte",
   ano: "2023",
@@ -43,6 +45,15 @@ describe("jurisprudencia", () => {
     expect(filtrar(casos, { tribunal: "TJES" }).map((c) => c.processo)).toEqual(["2"]);
     expect(filtrar(casos, { estado: "MG" }).map((c) => c.processo)).toEqual(["1"]);
     expect(filtrar(casos, { tribunal: "TJES", estado: "MG" })).toHaveLength(0);
+  });
+
+  it("filtra por frente e tipo (súmula x acórdão)", () => {
+    const casos = [
+      caso("1", { frente: "brumadinho", tipo: "acordao" }),
+      caso("2", { frente: "sumula", tipo: "sumula" }),
+    ];
+    expect(filtrar(casos, { frente: "sumula" }).map((c) => c.processo)).toEqual(["2"]);
+    expect(filtrar(casos, { tipo: "acordao" }).map((c) => c.processo)).toEqual(["1"]);
   });
 
   it("ordena por ano sem perder estabilidade", () => {
