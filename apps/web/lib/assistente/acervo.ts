@@ -75,6 +75,7 @@ import {
 } from "@/lib/cavas/serie";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
 import { deNormas } from "./acervo-normas";
+import { deTjes } from "./acervo-tjes";
 import catalogoBases from "@/data/catalogo-bases-dados.json";
 import basesPortal from "@/data/bases-portal.json";
 import { municipioComunicaBR, resumoDosMunicipios } from "@/lib/comunicabr/mg";
@@ -837,6 +838,7 @@ export function montarAcervoDetalhado(): AcervoMontado {
     ...deBases(),
     ...deBasesPortal(),
     ...deNormas(),
+    ...deTjes(),
   ];
 
   exigirPecasCompletas(acervo);
