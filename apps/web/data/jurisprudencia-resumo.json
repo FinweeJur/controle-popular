@@ -1,8 +1,8 @@
 {
-  "geradoEm": "2026-10-28",
+  "geradoEm": "2026-10-29",
   "fonte": "TJMG — acórdãos do rompimento da barragem de Brumadinho (2019–2024)",
   "coleta": "2026-10-21",
-  "publicacao": "2026-10-28",
+  "publicacao": "2026-10-29",
   "auditoria": {
     "linhas_decisoes": 3188,
     "processos_unicos": 2970,
@@ -14,22 +14,22 @@
     "com_link": 2609
   },
   "polo": {
-    "empresa": 1546,
-    "atingido": 992,
-    "parcial": 230,
-    "indeterminado": 202
+    "empresa": 1561,
+    "atingido": 1021,
+    "parcial": 240,
+    "indeterminado": 148
   },
   "resultado": {
-    "negado": 1494,
-    "provido": 1130,
-    "parcial": 246,
-    "indeterminado": 100
+    "negado": 1496,
+    "provido": 1139,
+    "parcial": 247,
+    "indeterminado": 88
   },
   "recorrente": {
-    "atingido": 1852,
-    "empresa": 915,
-    "indeterminado": 199,
-    "ambos": 4
+    "atingido": 1897,
+    "empresa": 924,
+    "indeterminado": 144,
+    "ambos": 5
   },
   "temas": {
     "dano moral": 1504,
