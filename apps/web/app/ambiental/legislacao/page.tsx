@@ -175,11 +175,10 @@ export default async function LegislacaoAmbientalIndex() {
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Leis, decretos, deliberações e portarias ambientais de Minas Gerais ao lado da legislação
-          ambiental federal (Ministério do Meio Ambiente, Ibama, ICMBio e as Resoluções Conama), das
-          resoluções e recomendações do Conselho Nacional dos Direitos Humanos, de tratados e de
-          decisões de tribunais nacionais e internacionais — numa busca só, filtrável por esfera e
-          por tema de proteção, do licenciamento de mineração à proteção da fauna e dos povos
-          indígenas.
+          federal (MMA, Ibama, ICMBio e Conama), das resoluções do CNDH, de tratados e de decisões
+          de tribunais nacionais e internacionais — numa busca só, filtrável por esfera e tema.
+          Para responsabilizar transnacionais, use o eixo{" "}
+          <Link href="/europa/legislacao-transnacionais" className="font-semibold text-primary hover:underline">Direito internacional</Link>.
         </p>
 
         {totalGeral === 0 ? (
@@ -235,6 +234,7 @@ export default async function LegislacaoAmbientalIndex() {
           </p>
         )}
       </header>
+
 
       {totalGeral > 0 && (
         <>
