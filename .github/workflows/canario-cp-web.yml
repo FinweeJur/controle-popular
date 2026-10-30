@@ -1,0 +1,147 @@
+# Teste e relatorio automatico do canario do cp-web.
+#
+# O QUE FAZ: a cada 30 min, bate direto no FQDN da revisao `cp-web--canario`
+# (0,25 CPU / 0,5 GiB) e le a saude, a memoria e os reinicios no Azure.
+# Manda no Telegram quando encontra problema e, de 6 em 6 horas, um resumo
+# mesmo sem problema. Se o canario ficar com 0% de trafego, o monitor sai em
+# silencio (o teste terminou).
+#
+# POR QUE O FQDN DA REVISAO: o peso de 10% faria poucas requisicoes caírem no
+# canario. O FQDN proprio da revisao permite testar 100% nela sem mexer no
+# trafego do site.
+#
+# ROLLBACK (manual): o relatorio de falha traz o comando pronto. O workflow
+# NAO mexe no trafego sozinho para nao derrubar producao por um falso positivo.
+
+name: Canario cp-web (Telegram)
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: canario-cp-web
+  cancel-in-progress: false
+
+env:
+  APP: cp-web
+  RG: CP-APP
+  CANARIO: cp-web--canario
+  BASE: cp-web--0000057
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Testar o canario
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FORCAR: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+        run: |
+          TRAFEGO=$(az containerapp ingress traffic show -n "$APP" -g "$RG" -o json)
+          PESO=$(printf '%s' "$TRAFEGO" | jq -r --arg r "$CANARIO" '.[] | select(.revisionName==$r) | .weight' || true)
+          if [ -z "$PESO" ] || [ "$PESO" = "0" ]; then
+            echo "canario sem trafego ($PESO) — monitor encerrado"
+            exit 0
+          fi
+
+          INFO=$(az containerapp revision show -n "$APP" -g "$RG" --revision "$CANARIO" -o json 2>/dev/null || true)
+          if [ -z "$INFO" ]; then
+            echo "revisao $CANARIO nao existe — monitor encerrado"
+            exit 0
+          fi
+          FQDN=$(printf '%s' "$INFO" | jq -r '.properties.fqdn')
+          SAUDE=$(printf '%s' "$INFO" | jq -r '.properties.healthState // "desconhecida"')
+          ESTADO=$(printf '%s' "$INFO" | jq -r '.properties.runningState // "desconhecido"')
+          REPLICAS=$(printf '%s' "$INFO" | jq -r '.properties.replicas // 0')
+
+          OK=0; FALHA=0; : > /tmp/tempos.txt
+          for i in $(seq 1 10); do
+            RES=$(curl -s -o /dev/null -w "%{http_code} %{time_total}" --max-time 20 "https://$FQDN/" || echo "000 0")
+            COD=${RES%% *}; TEMPO=${RES##* }
+            if [ "$COD" = "200" ]; then OK=$((OK+1)); else FALHA=$((FALHA+1)); fi
+            echo "$TEMPO" >> /tmp/tempos.txt
+          done
+          P50=$(sort -n /tmp/tempos.txt | awk '{a[NR]=$1} END{print a[int((NR+1)/2)]}')
+          P95=$(sort -n /tmp/tempos.txt | awk '{a[NR]=$1} END{print a[int(NR*0.95)]}')
+          MAX=$(sort -n /tmp/tempos.txt | tail -1)
+
+          ID=$(az containerapp show -n "$APP" -g "$RG" --query id -o tsv)
+          MEM_JSON=$(az monitor metrics list --resource "$ID" --metric WorkingSetBytes \
+            --filter "revisionName eq '$CANARIO'" --interval PT5M --offset 1h --aggregation Average -o json 2>/dev/null || true)
+          MEM_BYTES=$(printf '%s' "$MEM_JSON" | jq -r '[.value[0].timeseries[0].data[].average | select(.!=null)] | last // empty' 2>/dev/null || true)
+          if [ -n "$MEM_BYTES" ]; then
+            MEM_MIB=$(awk -v b="$MEM_BYTES" 'BEGIN{printf "%.0f", b/1048576}')
+            MEM_PCT=$(awk -v b="$MEM_BYTES" 'BEGIN{printf "%.0f", b/536870912*100}')
+          else
+            MEM_MIB="n/d"; MEM_PCT="n/d"
+          fi
+
+          REST_JSON=$(az monitor metrics list --resource "$ID" --metric RestartCount \
+            --filter "revisionName eq '$CANARIO'" --interval PT5M --offset 1h --aggregation Total -o json 2>/dev/null || true)
+          REINICIOS=$(printf '%s' "$REST_JSON" | jq -r '[.value[0].timeseries[0].data[].total | select(.!=null)] | add // 0' 2>/dev/null || true)
+          REINICIOS=${REINICIOS:-0}
+
+          S5_JSON=$(az monitor metrics list --resource "$ID" --metric Requests \
+            --filter "revisionName eq '$CANARIO' and statusCodeCategory eq '5xx'" --interval PT5M --offset 1h --aggregation Total -o json 2>/dev/null || true)
+          S5=$(printf '%s' "$S5_JSON" | jq -r '[.value[0].timeseries[0].data[].total | select(.!=null)] | add // 0' 2>/dev/null || true)
+          S5=${S5:-0}
+
+          FMT() { awk -v v="$1" 'BEGIN{printf "%.2f", v}' | sed 's/\./,/'; }
+          P50F=$(FMT "$P50"); P95F=$(FMT "$P95"); MAXF=$(FMT "$MAX")
+
+          PROBLEMA=0
+          [ "$SAUDE" != "Healthy" ] && PROBLEMA=1
+          [ "$FALHA" -gt 0 ] && PROBLEMA=1
+          [ "${REINICIOS%.*}" -gt 0 ] 2>/dev/null && PROBLEMA=1
+          [ "${S5%.*}" -gt 0 ] 2>/dev/null && PROBLEMA=1
+          [ "$MEM_PCT" != "n/d" ] && [ "$MEM_PCT" -ge 90 ] && PROBLEMA=1
+
+          H=$(date -u +%H); M=$(date -u +%M)
+          REPORTAR=0
+          [ "$PROBLEMA" = "1" ] && REPORTAR=1
+          [ "$FORCAR" = "1" ] && REPORTAR=1
+          if [ "$M" = "00" ] && [ $((10#$H % 6)) -eq 0 ]; then REPORTAR=1; fi
+
+          if [ "$REPORTAR" = "1" ]; then
+            if [ "$PROBLEMA" = "1" ]; then
+              CAB="⛔ Canário cp-web com problema"
+              RODAPE="Rollback:
+          az containerapp ingress traffic set -n cp-web -g CP-APP --revision-weight $BASE=100"
+            else
+              CAB="🧪 Canário cp-web — ok"
+              RODAPE=""
+            fi
+            TEXTO="$CAB
+          Saúde: $SAUDE · estado: $ESTADO · réplicas: $REPLICAS
+          Tráfego: ${PESO}% no canário, $((100-PESO))% na base
+          Teste direto: $OK/10 HTTP 200
+          Latência: p50 ${P50F}s · p95 ${P95F}s · máx ${MAXF}s
+          Memória: $MEM_MIB MiB ($MEM_PCT% de 512)
+          Reinícios 1h: $REINICIOS · 5xx 1h: $S5
+
+          $RODAPE"
+            curl -sf -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=${TEXTO}" > /dev/null
+            echo "relatorio enviado (problema=$PROBLEMA)"
+          else
+            echo "sem problema e fora da janela de resumo — sem mensagem"
+          fi
+
+          [ "$PROBLEMA" = "1" ] && exit 1
+          exit 0
