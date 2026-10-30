@@ -24,6 +24,18 @@ const ROTULO: Record<TipoDireito, string> = {
   coletivos: "Coletivos",
   atingidos_barragens: "Atingidos por barragens",
   atingidos_empreendimentos: "Atingidos por empreendimentos",
+  povos: "Direitos dos povos",
+  idosos: "Pessoas idosas",
+  deficiencia: "Pessoas com deficiência",
+  lgbtqia: "Pessoas LGBTQIA+",
+  migrantes_refugiados: "Migrantes e refugiados",
+  trabalho: "Trabalho",
+  saude: "Saúde",
+  educacao: "Educação",
+  moradia: "Moradia",
+  agua: "Água",
+  terra_territorio: "Terra e território",
+  memoria_verdade_justica: "Memória, verdade e justiça",
 };
 
 const LIMITE_CURTO = 320;

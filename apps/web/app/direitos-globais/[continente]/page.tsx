@@ -16,8 +16,6 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  */
 
 type ContinenteSlug =
-  | "africa"
-  | "asia"
   | "oceania"
   | "europa"
   | "america-do-norte";
@@ -26,16 +24,6 @@ const CONTINENTES: Record<
   ContinenteSlug,
   { nome: string; paises: number; nota: string }
 > = {
-  africa: {
-    nome: "África",
-    paises: 54,
-    nota: "Foco inicial: direitos da natureza, indígenas, campesinos e atingidos por barragens.",
-  },
-  asia: {
-    nome: "Ásia",
-    paises: 48,
-    nota: "Foco inicial: direitos dos trabalhadores migrantes, campesinos e minorias étnicas.",
-  },
   oceania: {
     nome: "Oceania",
     paises: 14,

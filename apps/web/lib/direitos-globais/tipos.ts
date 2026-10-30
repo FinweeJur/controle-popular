@@ -6,7 +6,7 @@
  * com foco em direitos humanos, ambiental, sociais e coletivos.
  */
 
-// Tipos básicos de direitos
+// Tipos básicos de direitos (catálogo unificado de 24 temas)
 export type TipoDireito = 
   | "humanos"
   | "ambiental"
@@ -19,7 +19,20 @@ export type TipoDireito =
   | "campesinos"
   | "coletivos"
   | "atingidos_barragens"
-  | "atingidos_empreendimentos";
+  | "atingidos_empreendimentos"
+  // Novos temas acrescidos (Frentes B e C):
+  | "povos"
+  | "idosos"
+  | "deficiencia"
+  | "lgbtqia"
+  | "migrantes_refugiados"
+  | "trabalho"
+  | "saude"
+  | "educacao"
+  | "moradia"
+  | "agua"
+  | "terra_territorio"
+  | "memoria_verdade_justica";
 
 // Tipos de nível de proteção
 export type NivelProtecao = "inexistente" | "fraco" | "moderado" | "forte" | "muito_forte";

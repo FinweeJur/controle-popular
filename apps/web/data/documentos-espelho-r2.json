@@ -1022,5 +1022,266 @@
     "urlR2": "https://fontes.controlepopular.com.br/docs/a89e6144134d4572.pdf",
     "chaveR2": "docs/a89e6144134d4572.pdf",
     "status": "dry-run"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/dfe7459ff897cdd7.pdf",
+    "chaveR2": "fontes/africa/dfe7459ff897cdd7.pdf",
+    "sha256": "dfe7459ff897cdd7620e69cc10710c65faa9c05ac00a6b73ecdf88c06d449b27",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Comissão Africana (Comunidade Indígena Ogiek) c. República do Quênia",
+    "pais": "Quênia"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/a9e01093fa5c9d3e.pdf",
+    "chaveR2": "fontes/africa/a9e01093fa5c9d3e.pdf",
+    "sha256": "a9e01093fa5c9d3e4f99122e9713b4e5b11a772fd42f536db9b6c5285c94b0ce",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Beneficiários do Falecido Norbert Zongo e outros c. Burkina Faso",
+    "pais": "Burkina Faso"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/8075d9911eb72737.pdf",
+    "chaveR2": "fontes/africa/8075d9911eb72737.pdf",
+    "sha256": "8075d9911eb72737e8c8589a22d87c553af0a7c20a3f8d6ee52761699f102c14",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Lohé Issa Konaté c. Burkina Faso",
+    "pais": "Burkina Faso"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/9272db609af30753.pdf",
+    "chaveR2": "fontes/africa/9272db609af30753.pdf",
+    "sha256": "9272db609af30753eb995406b5215802b5f34be69fb79a3fd5423356e32f632d",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Actions pour la Protection des Droits de l'Homme (APDH) c. República da Costa do Marfim",
+    "pais": "Costa do Marfim"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/370a39205fbb8856.pdf",
+    "chaveR2": "fontes/africa/370a39205fbb8856.pdf",
+    "sha256": "370a39205fbb8856a99e571731c426bd05df2dd75bfbdb82b017bc66016fb1b5",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Anudo Ochieng Anudo c. República Unida da Tanzânia",
+    "pais": "Tanzânia"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/aa883c3c370986c3.pdf",
+    "chaveR2": "fontes/africa/aa883c3c370986c3.pdf",
+    "sha256": "aa883c3c370986c30d0b5c55b08009816f8b59ffc8182efcd54e5c620d3ad8e9",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Alli Rajabu e outros c. República Unida da Tanzânia",
+    "pais": "Tanzânia"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/b674f5256b552048.pdf",
+    "chaveR2": "fontes/africa/b674f5256b552048.pdf",
+    "sha256": "b674f5256b5520486a83d96e79d54388556832ab5ac7aff07f68ec382d0a9569",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Dexter Eddie Johnson c. República de Gana",
+    "pais": "Gana"
+  },
+  "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/dec2c3345d09906e.pdf",
+    "chaveR2": "fontes/africa/dec2c3345d09906e.pdf",
+    "sha256": "dec2c3345d09906e93d56ed12e560cfa589b035740c19e54ddbb0da107a42843",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Corte Africana: Sébastien Germain Marie Aïkoue Ajavon c. República do Benin",
+    "pais": "Benin"
+  },
+  "https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/23e3a2a3a9ec765b.pdf",
+    "chaveR2": "fontes/africa/23e3a2a3a9ec765b.pdf",
+    "sha256": "23e3a2a3a9ec765bc17278532556fad8555b3df76bd6b69ccc233b68692e32da",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Comissão Africana: Centro para o Desenvolvimento dos Direitos das Minorias e outro (Comunidade Endorois) c. Quênia",
+    "pais": "Quênia"
+  },
+  "https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/af791c6369beabf4.pdf",
+    "chaveR2": "fontes/africa/af791c6369beabf4.pdf",
+    "sha256": "af791c6369beabf4648ba60c64892d129972a441e7f7b3c8fdc71868187c9899",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Comissão Africana: Social and Economic Rights Action Center (SERAC) e CESR c. Nigéria",
+    "pais": "Nigéria"
+  },
+  "https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/2f9461ad5a881b63.pdf",
+    "chaveR2": "fontes/africa/2f9461ad5a881b63.pdf",
+    "sha256": "2f9461ad5a881b6376f1f87847465a7c37bfb07c81d730b410576a24ade90660",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Comissão Africana: República Democrática do Congo c. Burundi, Ruanda e Uganda",
+    "pais": "República Democrática do Congo"
+  },
+  "https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/20f7c86ca3d3f323.pdf",
+    "chaveR2": "fontes/africa/20f7c86ca3d3f323.pdf",
+    "sha256": "20f7c86ca3d3f3238d9b51bf943a13ac23c540ae7887d3257d07f943b88df594",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "Comissão Africana: Commission Nationale des Droits de l'Homme et des Libertés c. Chade",
+    "pais": "Chade"
+  },
+  "https://achpr.org/sessions/concludingobservation?id=107": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/d4ef0ac0ff19a005.pdf",
+    "chaveR2": "fontes/africa/d4ef0ac0ff19a005.pdf",
+    "sha256": "d4ef0ac0ff19a0054eb833fdb4220b945d56ebe77a8fcef373472c290e4122b5",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Observações Conclusivas sobre o Relatório Periódico de Angola (Angola)",
+    "pais": "Angola"
+  },
+  "https://achpr.org/sessions/concludingobservation?id=96": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/be9a913ec27e97cd.pdf",
+    "chaveR2": "fontes/africa/be9a913ec27e97cd.pdf",
+    "sha256": "be9a913ec27e97cd60596823376c58c00073289bcb9f5f49e758cd22ebc6262b",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Observações Conclusivas sobre Moçambique (Moçambique)",
+    "pais": "Moçambique"
+  },
+  "https://achpr.org/sessions/concludingobservation?id=101": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/2bb5bd6e85121a5c.pdf",
+    "chaveR2": "fontes/africa/2bb5bd6e85121a5c.pdf",
+    "sha256": "2bb5bd6e85121a5cc5d82d5aa48c922eb2c510d358802ed58a043d63a7e638ce",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Observações Conclusivas sobre a África do Sul (África do Sul)",
+    "pais": "África do Sul"
+  },
+  "https://achpr.org/sessions/concludingobservation?id=103": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/d68b008c1ad15b39.pdf",
+    "chaveR2": "fontes/africa/d68b008c1ad15b39.pdf",
+    "sha256": "d68b008c1ad15b39e222f8364c9e78b46ba6c886add891710fff5e7ec16ab159",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Observações Conclusivas sobre a República Democrática do Congo (República Democrática do Congo)",
+    "pais": "República Democrática do Congo"
+  },
+  "https://achpr.org/sessions/resolutions?id=492": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/b47c9a568711b544.pdf",
+    "chaveR2": "fontes/africa/b47c9a568711b544.pdf",
+    "sha256": "b47c9a568711b544778aa1491d55b4bb09319669b885804ee00fb23da890862a",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Resolução sobre a Situação das Mulheres na África e Protocolo de Maputo (Egito)",
+    "pais": "Egito"
+  },
+  "https://achpr.org/sessions/concludingobservation?id=110": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/africa/09da960242ba9260.pdf",
+    "chaveR2": "fontes/africa/09da960242ba9260.pdf",
+    "sha256": "09da960242ba9260d1eb691823bc1af86beb688d2ab9cfcd9de81e2ddcd1016c",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "ACHPR: Observações Conclusivas sobre a Nigéria (Nigéria)",
+    "pais": "Nigéria"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/cn-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/28b35970fdd9c85d.pdf",
+    "chaveR2": "fontes/onu/28b35970fdd9c85d.pdf",
+    "sha256": "28b35970fdd9c85dd7890e226ff203be17b0796193ad4a9919524fb72bdbf108",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "UPR: Relatório do Grupo de Trabalho da UPR - 4º Ciclo (China) (China)",
+    "pais": "China"
+  },
+  "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=E%2fC.12%2fCHN%2fCO%2f3&Lang=en": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/d22b891dd4210667.pdf",
+    "chaveR2": "fontes/onu/d22b891dd4210667.pdf",
+    "sha256": "d22b891dd4210667574d82791fc39ca76b03a38024a96fd7c1bc75bf0d832042",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "CESCR: Observações Conclusivas sobre o 3º Relatório Periódico da China (China)",
+    "pais": "China"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/ru-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/e243cceeccff28e3.pdf",
+    "chaveR2": "fontes/onu/e243cceeccff28e3.pdf",
+    "sha256": "e243cceeccff28e3f58e0d33cc6860b574b48ddbd7acaedf08696a95f2796e38",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "UPR: Relatório do Grupo de Trabalho da UPR - 4º Ciclo (Federação Russa) (Rússia)",
+    "pais": "Rússia"
+  },
+  "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CCPR%2fC%2fRUS%2fCO%2f8&Lang=en": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/c1e1f60bcc0b8c3d.pdf",
+    "chaveR2": "fontes/onu/c1e1f60bcc0b8c3d.pdf",
+    "sha256": "c1e1f60bcc0b8c3d7b0dd24b9731795abff9b072d4e5bf3203acee3ff2ceef97",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "CCPR: Observações Conclusivas sobre o 8º Relatório da Federação Russa (Rússia)",
+    "pais": "Rússia"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/in-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/05eebf13392a5133.pdf",
+    "chaveR2": "fontes/onu/05eebf13392a5133.pdf",
+    "sha256": "05eebf13392a51337bce4299a77dcec5f2528a5be13e70d45880f12632e36765",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Índia) (Índia)",
+    "pais": "Índia"
+  },
+  "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CEDAW%2fC%2fIND%2fCO%2f4-5&Lang=en": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/441f54331ab74f5b.pdf",
+    "chaveR2": "fontes/onu/441f54331ab74f5b.pdf",
+    "sha256": "441f54331ab74f5bc45947ad5c4d2f21573823265f9db9504867ed998b6de389",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "CEDAW: Observações Conclusivas sobre a Índia (Índia)",
+    "pais": "Índia"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/ph-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/3dc3fbcfa7c32687.pdf",
+    "chaveR2": "fontes/onu/3dc3fbcfa7c32687.pdf",
+    "sha256": "3dc3fbcfa7c32687a8bb7774929478fabe9c0aeaada4a05c6f7919c1eb57fd96",
+    "dataCadastro": "2026-10-30T16:21:23.333Z",
+    "status": "mapeado",
+    "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Filipinas) (Filipinas)",
+    "pais": "Filipinas"
+  },
+  "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CMW%2fC%2fPHL%2fCO%2f3&Lang=en": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/77a017676fa2b132.pdf",
+    "chaveR2": "fontes/onu/77a017676fa2b132.pdf",
+    "sha256": "77a017676fa2b13296cd321e9657694eab362fc5622adedda7ad33903668851a",
+    "dataCadastro": "2026-10-30T16:21:23.334Z",
+    "status": "mapeado",
+    "titulo": "CMW: Observações Conclusivas sobre o 3º Relatório das Filipinas (Filipinas)",
+    "pais": "Filipinas"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/vn-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/2c70d7d295d2b94b.pdf",
+    "chaveR2": "fontes/onu/2c70d7d295d2b94b.pdf",
+    "sha256": "2c70d7d295d2b94b58e029dff4e4da7d531ff09c205774839edd4c5dd46945e2",
+    "dataCadastro": "2026-10-30T16:21:23.334Z",
+    "status": "mapeado",
+    "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Vietnã) (Vietnã)",
+    "pais": "Vietnã"
+  },
+  "https://www.ohchr.org/en/hr-bodies/upr/jp-index": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/a2e87254a35c00c6.pdf",
+    "chaveR2": "fontes/onu/a2e87254a35c00c6.pdf",
+    "sha256": "a2e87254a35c00c6311ef576e9343679c40fb068d5cef65c708b6fb5f221b779",
+    "dataCadastro": "2026-10-30T16:21:23.334Z",
+    "status": "mapeado",
+    "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Japão) (Japão)",
+    "pais": "Japão"
+  },
+  "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CERD%2fC%2fJPN%2fCO%2f10-11&Lang=en": {
+    "urlR2": "https://fontes.controlepopular.com.br/fontes/onu/cc488606d9e801ca.pdf",
+    "chaveR2": "fontes/onu/cc488606d9e801ca.pdf",
+    "sha256": "cc488606d9e801cacc73f5d48e0acdd6c113b07d5e85f0e1c4040685d0aa2a81",
+    "dataCadastro": "2026-10-30T16:21:23.334Z",
+    "status": "mapeado",
+    "titulo": "CERD: Observações Conclusivas sobre o Japão (Japão)",
+    "pais": "Japão"
   }
 }

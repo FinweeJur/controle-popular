@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { Globe, Users, Map, Scale } from "lucide-react";
+import { Globe, Users, Map, Scale, Shield } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
@@ -116,30 +116,53 @@ function FiltrosGlobais() {
 }
 
 /**
- * Direitos em foco.
+ * Direitos em foco — Catálogo unificado de 24 temas.
  */
 function DireitosEmFoco() {
   return (
     <div className="mb-8">
-      <h2 className="mb-6 text-xl font-bold text-text">Direitos em Foco</h2>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+        <h2 className="text-xl font-bold text-text">Catálogo de 24 Temas Prioritários</h2>
+        <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
+          12 Temas Originais + 12 Temas Expandidos
+        </span>
+      </div>
       <div className="grid gap-4 md:grid-cols-3">
         <DireitoCard
-          title="Direitos Humanos"
-          description="Direitos fundamentais e liberdades individuais"
+          title="Direitos Humanos e Políticos"
+          description="Garantias universais, liberdades civis, integridade e devido processo"
           icon={<Users className="h-6 w-6" />}
-          rights={["Constitucionais", "Internacionais", "Jurisprudência"]}
+          rights={["Humanos", "Políticos", "Memória e Verdade", "LGBTQIA+"]}
         />
         <DireitoCard
-          title="Direito Ambiental"
-          description="Proteção do meio ambiente e desenvolvimento sustentável"
+          title="Direitos dos Povos e Coletivos"
+          description="Autodeterminação, demarcação ancestral, recursos naturais e soberania"
           icon={<Scale className="h-6 w-6" />}
-          rights={["Constitucional", "Legislação", "Tratados"]}
+          rights={["Direitos dos Povos", "Indígenas", "Quilombolas", "Campesinos", "Coletivos"]}
         />
         <DireitoCard
-          title="Direitos Sociais"
-          description="Direitos das mulheres, indígenas, quilombolas, campesinos"
+          title="Socioambientais e Atingidos"
+          description="Proteção de bacias, ecossistemas e populações atingidas por megaprojetos"
+          icon={<Globe className="h-6 w-6" />}
+          rights={["Ambiental", "Natureza", "Atingidos por Barragens", "Empreendimentos", "Terra e Território"]}
+        />
+        <DireitoCard
+          title="Gênero, Gerações e Inclusão"
+          description="Proteção contra violência patriarcal, etarismo, barreiras e vulnerabilidades"
           icon={<Users className="h-6 w-6" />}
-          rights={["Específicos", "Coletivos", "Históricos"]}
+          rights={["Mulheres", "Crianças", "Pessoas Idosas", "Pessoas com Deficiência"]}
+        />
+        <DireitoCard
+          title="Direitos Econômicos e Laborais"
+          description="Condições dignas de trabalho, liberdade sindical e renda justa"
+          icon={<Scale className="h-6 w-6" />}
+          rights={["Trabalho Digno", "Migrantes e Refugiados", "Seguridade"]}
+        />
+        <DireitoCard
+          title="Direitos Sociais Fundamentais"
+          description="Acesso universal a bens vitais essenciais à vida digna"
+          icon={<Shield className="h-6 w-6" />}
+          rights={["Saúde", "Educação", "Moradia Adequada", "Água e Saneamento"]}
         />
       </div>
     </div>
@@ -201,49 +224,35 @@ export default function PaginaDireitosGlobais() {
 
       {/* Continentes */}
       <div className="mb-8">
-        <h2 className="mb-6 text-xl font-bold text-text">Explorar por Continente</h2>
-        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
+        <h2 className="mb-6 text-xl font-bold text-text">Explorar por Continente e Sistema Internacional</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <ContinenteCard
             title="América Latina"
             href="/direitos-globais/america-latina"
             countries={20}
             icon={<Globe className="h-8 w-8" />}
-            description="Início da análise comparada"
+            description="CIDH, Corte IDH, 402 sentenças e 59 dispositivos constitucionais"
           />
           <ContinenteCard
             title="África"
             href="/direitos-globais/africa"
             countries={54}
             icon={<Map className="h-8 w-8" />}
-            description="54 países africanos"
+            description="54 países da UA, Corte Africana, ACHPR e Direitos dos Povos"
           />
           <ContinenteCard
             title="Ásia"
             href="/direitos-globais/asia"
             countries={48}
             icon={<Users className="h-8 w-8" />}
-            description="48 países asiáticos"
+            description="Levas 1 a 3, panorama regional e direitos fundamentais"
           />
           <ContinenteCard
-            title="Oceania"
-            href="/direitos-globais/oceania"
-            countries={14}
+            title="Sistema ONU"
+            href="/direitos-globais/onu"
+            countries={193}
             icon={<Scale className="h-8 w-8" />}
-            description="14 países oceânicos"
-          />
-          <ContinenteCard
-            title="Europa"
-            href="/direitos-globais/europa"
-            countries={44}
-            icon={<Globe className="h-8 w-8" />}
-            description="44 países europeus"
-          />
-          <ContinenteCard
-            title="América do Norte"
-            href="/direitos-globais/america-do-norte"
-            countries={3}
-            icon={<Map className="h-8 w-8" />}
-            description="3 países norte-americanos"
+            description="8 Órgãos de Tratados, UPR e recomendações de seguimento"
           />
         </div>
       </div>
