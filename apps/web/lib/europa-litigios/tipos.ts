@@ -137,7 +137,7 @@ export interface ItemClipping {
   titulo: string;
   url: string;
   arquivoUrl?: string;
-  idioma: "pt" | "en" | "es";
+  idioma: "pt" | "en" | "es" | "nl";
   paywall: boolean;
   dataAcesso: string;
 }

@@ -1,7 +1,7 @@
 /**
  * Síntese de "situação atual" da subfrente.
  *
- * Separa o que está confirmado do que está em aberto e do que é lacuna:
+ * Separa o que está confirmado, o que está em aberto e o que é lacuna:
  * o leitor sob estresse não pode confundir sentença de responsabilidade
  * com indenização fixada, nem notícia com decisão oficial.
  */
@@ -10,20 +10,22 @@ import { formatarDataBR } from "@/lib/fontes/dataDoArquivo";
 
 const CONFIRMADO = [
   "Em 14/11/2025, a High Court (TCC) responsabilizou a BHP na primeira etapa, como poluidora e por culpa.",
-  "A sentença não fixou o valor da indenização; a segunda etapa e os temas consequentes seguem em aberto.",
-  "A Suprema Corte do Reino Unido já havia firmado os precedentes Vedanta (2019) e Okpabi (2021) sobre dever de cuidado da matriz.",
+  "A sentença não fixou indenização; a quantificação ficou para a segunda fase, prevista para 2027.",
+  "A permissão de recurso da BHP foi negada pela Court of Appeal em 06/05/2026 e pela Supreme Court no contempt em 29/06/2026.",
+  "Em 24/07/2024, a Braskem S.A. foi responsabilizada em Roterdã pelo afundamento de Maceió.",
+  "A ADPF 1178, relatada por Flávio Dino, limitou a eficácia de decisões estrangeiras e esclareceu o acordo de Mariana.",
 ];
 
 const EM_ABERTO = [
-  "Valor final da indenização e alcance da segunda etapa.",
-  "Eventuais recursos e o cumprimento da decisão de responsabilidade.",
-  "Número, partes e fase do caso Rio Doce Claims no Tribunal de Roterdã.",
-  "Número e relator da eventual ADPF no STF.",
+  "Valor final da indenização e alcance da segunda fase em Londres.",
+  "Decisão de competência da Justiça holandesa no caso Rio Doce Claims.",
+  "Apelação da Braskem em Roterdã, sem decisão localizada até a coleta.",
+  "Julgamento de mérito da ADPF 1178.",
 ];
 
 const LACUNAS = [
   "Não foi localizado litígio europeu confirmado sobre Brumadinho nesta coleta.",
-  "O portal Rechtspraak recusou a consulta (HTTP 403); os dados holandeses vieram do acervo /europa e estão marcados como pendentes.",
+  "O número do processo holandês do Rio Doce não foi localizado.",
   "O arquivo em web.archive.org não foi confirmado para todos os itens de clipping.",
 ];
 
@@ -55,7 +57,8 @@ export default function SituacaoAtual() {
         </ul>
       </div>
       <p className="text-sm text-text-soft md:col-span-3">
-        Data da coleta: <time dateTime={DATA_ACESSO}>{formatarDataBR(DATA_ACESSO)}</time>.
+        Data da coleta:{" "}
+        <time dateTime={DATA_ACESSO}>{formatarDataBR(DATA_ACESSO)}</time>.
         O que não foi conferido em fonte oficial não é apresentado como fato.
       </p>
     </div>

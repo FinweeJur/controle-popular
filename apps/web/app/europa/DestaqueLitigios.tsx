@@ -22,8 +22,8 @@ export default function DestaqueLitigios() {
           Litígios transnacionais de Mariana e Brumadinho na Europa
         </p>
         <p className="mt-1 text-sm text-text-soft">
-          Número do processo, fase, linha do tempo, clipping e o que ainda
-          está pendente de conferência oficial.
+          Número do processo, fase, linha do tempo, clipping, ADPF 1178 e as
+          lacunas declaradas.
         </p>
       </div>
       <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-primary">

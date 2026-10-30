@@ -13,6 +13,7 @@ const ROTULO_IDIOMA: Record<ItemClipping["idioma"], string> = {
   pt: "português",
   en: "inglês",
   es: "espanhol",
+  nl: "holandês",
 };
 
 export default function Clipping({ itens }: { itens: readonly ItemClipping[] }) {

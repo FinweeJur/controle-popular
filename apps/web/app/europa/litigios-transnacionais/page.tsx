@@ -11,7 +11,8 @@
  *
  * Fonte oficial principal: [2025] EWHC 3001 (TCC), conferida em
  * caselaw.nationalarchives.gov.uk. O que não foi conferido em fonte oficial
- * aparece com selo de pendência; a ADPF não é afirmada como 1318.
+ * aparece com selo de pendência. A ADPF é a 1178, conferida em notícia
+ * oficial do STF de 18/08/2025.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -114,7 +115,7 @@ export default function PaginaLitigiosTransnacionais() {
       <div className="mt-3 max-w-3xl">
         <ResumoExpandivel
           className="text-text-soft"
-          texto="A ação contra a BHP no High Court de Londres, as conexões holandesas e o que já foi decidido — com número de processo, fase, fonte oficial e data de coleta. Onde a fonte oficial não abriu ou o número não foi conferido, o item aparece marcado como pendente; a ADPF não é afirmada como 1318."
+          texto="A ação contra a BHP no High Court de Londres, as conexões holandesas e o que já foi decidido — com número de processo, fase, fonte oficial e data de coleta. Onde a fonte oficial não abriu ou o número não foi conferido, o item aparece marcado como pendente. A ADPF é a 1178, conferida em notícia oficial do STF."
         />
         <p className="mt-2 text-sm text-text-soft">
           Data da coleta e conferência:{" "}
