@@ -1,0 +1,117 @@
+# Alerta de custos do Azure no Telegram.
+#
+# POR QUE EXISTE: o credito Azure for Students e US$ 100/ano (~R$ 521,94).
+# Medido em 30/10/2026, outubro fechou em R$ 241,90 (Container Apps = 77%).
+# Nesse ritmo o credito acabaria em ~2 meses, nao em out/2027.
+#
+# O QUE FAZ: todo dia consulta o Cost Management (mes corrente) e manda no
+# Telegram quando o gasto passa de `CUSTO_ALERTA_BRL` (padrao R$ 43,50/mes,
+# o ritmo que faria o credito durar 12 meses). Tambem manda um resumo toda
+# segunda, mesmo abaixo do limite, para o dono ver a tendencia.
+#
+# CREDITO: `CUSTO_CREDITO_BRL` (padrao 521,94) e so para calcular o % usado.
+# A API nao expoe o saldo real do credito; o numero e o valor de referencia
+# mostrado no portal em 30/10/2026.
+#
+# PERMISSAO: usa o OIDC do `cp-github-mirror` (mesmas vars do cavas-preparador).
+# Se o service principal nao puder ler custos, o job falha e avisa no Telegram.
+
+name: Alerta de custos (Telegram)
+
+on:
+  schedule:
+    # 11:00 UTC = 08:00 BRT, depois do fechamento do dia anterior.
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: alerta-custos
+  cancel-in-progress: false
+
+env:
+  LIMITE_BRL: ${{ vars.CUSTO_ALERTA_BRL || '43.50' }}
+  CREDITO_BRL: ${{ vars.CUSTO_CREDITO_BRL || '521.94' }}
+
+jobs:
+  alertar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Entrar no Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Consultar o custo do mes
+        env:
+          SUB: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          cat > /tmp/body.json <<'JSON'
+          {"type":"ActualCost","timeframe":"MonthToDate","dataset":{"granularity":"None","aggregation":{"totalCost":{"name":"PreTaxCost","function":"Sum"}},"grouping":[{"type":"Dimension","name":"ServiceName"}]}}
+          JSON
+
+          ok=0
+          for i in 1 2 3; do
+            if az rest --method post \
+              --url "https://management.azure.com/subscriptions/$SUB/providers/Microsoft.CostManagement/query?api-version=2023-11-01" \
+              --headers "Content-Type=application/json" \
+              --body @/tmp/body.json > /tmp/cost.json 2>/tmp/cost.err; then
+              ok=1
+              break
+            fi
+            echo "tentativa $i falhou"; cat /tmp/cost.err; sleep 20
+          done
+
+          if [ "$ok" -ne 1 ] || [ ! -s /tmp/cost.json ]; then
+            echo "::error::nao consegui ler o Cost Management"
+            curl -sf -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+              --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+              --data-urlencode "text=⚠️ Alerta de custos: não consegui ler o Cost Management. Ver run ${{ github.run_id }}." \
+              > /dev/null || true
+            exit 1
+          fi
+
+      - name: Montar e enviar o resumo
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          TOTAL=$(jq -r '[.properties.rows[][0]] | add // 0' /tmp/cost.json)
+
+          jq -r '.properties.rows | sort_by(-.[0]) | .[0:3][] | "\(.[1])\t\(.[0])"' /tmp/cost.json \
+            | while IFS=$'\t' read -r nome valor; do
+                v=$(awk -v n="$valor" 'BEGIN{printf "%.2f", n}' | sed 's/\./,/')
+                printf '• %s: R$ %s\n' "$nome" "$v"
+              done > /tmp/top.txt
+
+          TOTAL_FMT=$(awk -v t="$TOTAL" 'BEGIN{printf "%.2f", t}' | sed 's/\./,/')
+          LIMITE_FMT=$(awk -v l="$LIMITE_BRL" 'BEGIN{printf "%.2f", l}' | sed 's/\./,/')
+          CREDITO_FMT=$(awk -v c="$CREDITO_BRL" 'BEGIN{printf "%.2f", c}' | sed 's/\./,/')
+          PCT=$(awk -v t="$TOTAL" -v c="$CREDITO_BRL" 'BEGIN{printf "%.1f", (c>0? t/c*100:0)}' | sed 's/\./,/')
+          ACIMA=$(awk -v t="$TOTAL" -v l="$LIMITE_BRL" 'BEGIN{print (t>=l)?"1":"0"}')
+          DIA=$(date -u +%u)
+
+          if [ "$ACIMA" = "1" ] || [ "$DIA" = "1" ]; then
+            TEXTO="💸 Custos Azure — $(date -u +%d/%m)
+          Total do mês: R$ $TOTAL_FMT
+          Crédito: R$ $CREDITO_FMT ($PCT% usado)
+          Limite: R$ $LIMITE_FMT
+
+          Top serviços:
+          $(cat /tmp/top.txt)
+
+          Se o crédito acabar, a Azure para os serviços."
+
+            curl -sf -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=${TEXTO}" > /dev/null
+            echo "alerta enviado (total=$TOTAL_FMT, limite=$LIMITE_FMT)"
+          else
+            echo "abaixo do limite ($TOTAL_FMT < $LIMITE_FMT) e nao e segunda — sem mensagem"
+          fi
