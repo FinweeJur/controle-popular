@@ -330,7 +330,7 @@ function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
       <summary className="cursor-pointer text-xs font-semibold text-primary underline">
         {rotulo}
       </summary>
-      <div className="absolute left-0 z-30 mt-1 w-[56rem] max-w-[92vw] space-y-2 rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-xs leading-relaxed shadow-2xl">
+      <div className="absolute right-0 z-50 mt-1 max-h-[60vh] w-[56rem] max-w-[calc(100vw-2rem)] space-y-2 overflow-y-auto rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-xs leading-relaxed shadow-2xl">
         {caso.resumo ? (
           <p>
             <span className="font-semibold">Resumo: </span>
