@@ -11,10 +11,10 @@
  * - "assinado": assinou, mas não depositou ratificação; ainda não vinculado.
  * - "nao": não assinou nem ratificou.
  *
- * Condenações da Corte IDH não estão aqui: o site corteidh.or.cr responde
- * HTTP 403 ao nosso agente, mesmo com User-Agent honesto. Não contornamos
- * bloqueio. O que existe é a lista de casos que a Comissão enviou à Corte
- * (ver `casos-corte.ts`), que não é sentença.
+ * Condenações: a Corte bloqueia cliente automatizado com Cloudflare
+ * Turnstile. Com autorização do dono, a coleta usou Chrome normal e a
+ * sessão liberada por humano; nenhum CAPTCHA foi resolvido por máquina.
+ * O resultado está em `sentencas.ts`.
  */
 
 import type { Dispositivo } from "./tipos";

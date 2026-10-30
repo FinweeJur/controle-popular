@@ -11,6 +11,11 @@ import {
   casosDoPais,
   paisesComCasos,
 } from "@/lib/direitos-globais/casos-corte";
+import {
+  SENTENCAS,
+  paisesCondenados,
+  sentencasDoPais,
+} from "@/lib/direitos-globais/sentencas";
 import { ListaDispositivos } from "../Dispositivos";
 
 /**
@@ -165,6 +170,62 @@ function dataCurta(iso: string): string {
   const [ano, mes, dia] = iso.split("-");
   const nomeMes = MESES[Number(mes) - 1] ?? mes;
   return `${Number(dia)} ${nomeMes} ${ano}`;
+}
+
+export function CondenacoesCorte() {
+  const paises = paisesCondenados();
+  return (
+    <section className="mb-10">
+      <h2 className="mb-2 text-xl font-bold text-text">
+        Condenações da Corte IDH
+      </h2>
+      <p className="mb-4 text-sm text-text-soft">
+        {SENTENCAS.length} sentenças de mérito contra {paises.length} países,
+        de 1988 a 2026. Só condenação: interpretação, cumprimento e supervisão
+        ficam fora. Fonte: Corte IDH, casos contenciosos.
+      </p>
+      <div className="space-y-3">
+        {paises.map((pais) => {
+          const lista = sentencasDoPais(pais);
+          return (
+            <details
+              key={pais}
+              className="rounded-xl border border-border bg-surface p-4"
+            >
+              <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-2">
+                <span className="font-semibold text-text">{pais}</span>
+                <span className="text-xs text-text-soft">
+                  {lista.length}{" "}
+                  {lista.length === 1 ? "sentença" : "sentenças"}
+                </span>
+              </summary>
+              <ul className="mt-3 space-y-2">
+                {lista.map((s) => (
+                  <li key={s.serie} className="text-sm text-text-soft">
+                    {s.url ? (
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline-offset-2 hover:underline"
+                      >
+                        {s.nome}
+                      </a>
+                    ) : (
+                      <span className="text-text">{s.nome}</span>
+                    )}
+                    <span className="text-text-soft">
+                      {" — "}Serie C {s.serie} · {dataCurta(s.dataSentenca)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          );
+        })}
+      </div>
+    </section>
+  );
 }
 
 export function CasosNaCorte() {

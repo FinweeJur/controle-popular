@@ -4,6 +4,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   AdesaoPorPais,
   CasosNaCorte,
+  CondenacoesCorte,
   Obrigacoes,
   ResumoTratados,
   VoltarParaAmericaLatina,
@@ -91,6 +92,7 @@ export default function PaginaCidh() {
       <Obrigacoes />
       <ResumoTratados />
       <AdesaoPorPais />
+      <CondenacoesCorte />
       <CasosNaCorte />
 
       <div className="mt-8">
