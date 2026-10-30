@@ -37,6 +37,20 @@ export type TipoInstituicao =
 /** Tipo de registro do acervo. */
 export type TipoRegistro = "pesquisa" | "extensao";
 
+/**
+ * Contato público de uma instituição, unidade, grupo ou projeto.
+ *
+ * Só entra o que a fonte oficial publica. Campo ausente significa "a fonte não
+ * informa" — nunca se completa por suposição, e nunca se publica contato
+ * pessoal que não seja o canal institucional declarado.
+ */
+export interface Contato {
+  site?: string;
+  instagram?: string;
+  telefone?: string;
+  email?: string;
+}
+
 /** Instituição de ensino e pesquisa coberta pelo índice. */
 export interface Instituicao {
   /** Sigla única no acervo (ex.: "UFVJM"). É a chave de rota. */
@@ -58,6 +72,8 @@ export interface Instituicao {
   fonteUrl: string;
   /** Data (AAAA-MM-DD) em que os links foram conferidos. */
   dataAcesso: string;
+  /** Canal institucional de contato, quando a fonte publica. */
+  contatos?: Contato;
 }
 
 /** Unidade acadêmica (faculdade, instituto, escola) de uma instituição. */
@@ -70,6 +86,10 @@ export interface Unidade {
   campus?: string;
   /** Site próprio da unidade, quando existe e foi conferido. */
   site?: string;
+  /** Grande área do conhecimento predominante na unidade, quando declarada. */
+  areaConhecimento?: string;
+  /** Canal institucional de contato da unidade, quando a fonte publica. */
+  contatos?: Contato;
 }
 
 /** Grupo de pesquisa cadastrado no DGP/CNPq, lido do relatório oficial. */
@@ -81,12 +101,20 @@ export interface GrupoPesquisa {
   sigla?: string;
   /** Área predominante declarada na fonte (ex.: "Agronomia"). */
   area: string;
+  /** Grande área do conhecimento (CAPES), derivada da área predominante. */
+  areaConhecimento?: string;
+  /** Temas transversais derivados do nome/área pela régua de `temas.ts`. */
+  areaTematica?: string[];
+  /** Sigla da unidade acadêmica a que o grupo pertence, quando a fonte informa. */
+  unidade?: string;
   /** Líder do grupo, como publicado na fonte oficial. */
   lider: string;
   /** Ano de referência do relatório oficial de onde o grupo foi lido. */
   anoReferencia: number;
   fonteUrl: string;
   dataAcesso: string;
+  /** Contato do grupo, quando a fonte publica (nunca deduzido do líder). */
+  contatos?: Contato;
   /**
    * Observação fiel à fonte — por exemplo, nome truncado pelo próprio
    * relatório. Nunca é opinião sobre o grupo.
@@ -99,10 +127,18 @@ export interface ProjetoExtensao {
   instituicao: string;
   nome: string;
   area?: string;
+  /** Grande área do conhecimento, quando declarada. */
+  areaConhecimento?: string;
+  /** Temas transversais derivados do nome/área pela régua de `temas.ts`. */
+  areaTematica?: string[];
+  /** Sigla da unidade acadêmica responsável, quando a fonte informa. */
+  unidade?: string;
   /** Página pública específica do projeto na plataforma da instituição. */
   url: string;
   /** Nome da plataforma (ex.: "SIEXC"). */
   plataforma: string;
   fonteUrl: string;
   dataAcesso: string;
+  /** Contato do projeto, quando a fonte publica. */
+  contatos?: Contato;
 }

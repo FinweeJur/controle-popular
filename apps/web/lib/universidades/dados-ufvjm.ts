@@ -111,6 +111,17 @@ export const INSTITUICAO_UFVJM: Instituicao = {
   fonteUrl:
     "https://portal.ufvjm.edu.br/prppg/pesquisa/grupos-de-pesquisa",
   dataAcesso: UFVJM_DATA_ACESSO,
+  /**
+   * Contato institucional lido da página oficial de contatos da PRPPG
+   * (…/pro-reitoria-de-pesquisa-e-pos-graduacao/contatos), conferida em
+   * 2026-10-30. Não é contato de líder de grupo.
+   */
+  contatos: {
+    site: "https://portal.ufvjm.edu.br",
+    instagram: "https://www.instagram.com/prppg.ufvjm",
+    telefone: "(38) 3532-6886",
+    email: "pro_reitor_prppg@ufvjm.edu.br",
+  },
 };
 
 export const UNIDADES_UFVJM: Unidade[] = [

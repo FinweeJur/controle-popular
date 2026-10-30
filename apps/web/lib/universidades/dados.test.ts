@@ -15,18 +15,25 @@
 
 import { describe, expect, it } from "vitest";
 import {
+  AREA_NAO_INFORMADA,
   GRUPOS,
   INSTITUICOES,
   PROJETOS,
   UNIDADES,
   agruparGruposPorArea,
+  areasConhecimentoDisponiveis,
   areasDisponiveis,
   dataMaisRecente,
+  grandeAreaDe,
+  listarEstados,
   listarGrupos,
+  listarInstituicoes,
   listarProjetos,
   listarUnidades,
   obterInstituicao,
   resumirUniversidades,
+  temasDe,
+  temasDisponiveis,
 } from "./index";
 
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -93,6 +100,36 @@ describe("universidades — grupos de pesquisa", () => {
     expect(saude.every((g) => g.area === "Saúde Coletiva")).toBe(true);
   });
 
+  it("filtra por estado, instituição e grande área", () => {
+    const siglasMg = new Set(
+      listarInstituicoes("MG").map((i) => i.sigla.toUpperCase()),
+    );
+    const mg = listarGrupos({ uf: "mg" });
+    expect(mg.length).toBe(
+      GRUPOS.filter((g) => siglasMg.has(g.instituicao.toUpperCase())).length,
+    );
+    expect(mg.every((g) => siglasMg.has(g.instituicao.toUpperCase()))).toBe(true);
+
+    const ufop = listarGrupos({ instituicao: "ufop" });
+    expect(ufop.length).toBeGreaterThan(0);
+    expect(ufop.every((g) => g.instituicao === "UFOP")).toBe(true);
+
+    const agrarias = listarGrupos({ areaConhecimento: "ciencias agrarias" });
+    expect(agrarias.length).toBeGreaterThan(0);
+    expect(
+      agrarias.every((g) => g.areaConhecimento === "Ciências Agrárias"),
+    ).toBe(true);
+  });
+
+  it("filtra por tema transversal derivado", () => {
+    const agro = listarGrupos({ tema: "agroecologia" });
+    expect(agro.length).toBeGreaterThan(0);
+    expect(agro.every((g) => (g.areaTematica ?? []).includes("agroecologia"))).toBe(
+      true,
+    );
+    expect(listarGrupos({ tema: "tema-inexistente" })).toEqual([]);
+  });
+
   it("busca por termo dentro do nome, da área e do líder", () => {
     const campesinato = listarGrupos({ busca: "campesinato" });
     expect(campesinato.some((g) => g.nome.includes("NAC"))).toBe(true);
@@ -139,6 +176,35 @@ describe("universidades — extensão", () => {
   });
 });
 
+describe("universidades — grandes áreas e temas", () => {
+  it("mapeia a área predominante na grande área da CAPES", () => {
+    expect(grandeAreaDe("Agronomia")).toBe("Ciências Agrárias");
+    expect(grandeAreaDe("Saúde Coletiva")).toBe("Ciências da Saúde");
+    expect(grandeAreaDe("Agronomia ")).toBe("Ciências Agrárias");
+    expect(grandeAreaDe(AREA_NAO_INFORMADA)).toBe(AREA_NAO_INFORMADA);
+    expect(grandeAreaDe("Área inventada")).toBe(AREA_NAO_INFORMADA);
+  });
+
+  it("deriva temas por palavra-chave", () => {
+    expect(
+      temasDe({ nome: "NAC - Núcleo de Agroecologia e Campesinato" }),
+    ).toContain("agroecologia");
+    expect(temasDe({ nome: "Geoquímica Ambiental: UFVJM" })).toContain(
+      "meio-ambiente",
+    );
+    expect(temasDe({ nome: "Geoquímica Ambiental: UFVJM" })).toContain("mineracao");
+    expect(temasDe({ nome: "Grupo sem palavra-chave mapeada" })).toEqual([]);
+  });
+
+  it("lista estados, grandes áreas e temas com contagem", () => {
+    expect(listarEstados()).toContain("MG");
+    expect(areasConhecimentoDisponiveis().length).toBeGreaterThan(0);
+    const temas = temasDisponiveis();
+    expect(temas.length).toBeGreaterThan(0);
+    expect(temas.every((t) => t.total > 0)).toBe(true);
+  });
+});
+
 describe("universidades — agregados", () => {
   it("o cartão de topo bate com os arrays", () => {
     const r = resumirUniversidades();
@@ -147,8 +213,21 @@ describe("universidades — agregados", () => {
     expect(r.grupos).toBe(GRUPOS.length);
     expect(r.projetos).toBe(PROJETOS.length);
     expect(r.areas).toBe(areasDisponiveis().length);
+    expect(r.areasConhecimento).toBe(areasConhecimentoDisponiveis().length);
+    expect(r.temas).toBe(temasDisponiveis().length);
     expect(r.ufs).toBe(new Set(INSTITUICOES.map((i) => i.uf)).size);
     expect(r.verificadoEm).toMatch(ISO);
+  });
+
+  it("toda instituição com contato declara canal oficial", () => {
+    for (const i of INSTITUICOES) {
+      if (!i.contatos) continue;
+      const { site, instagram, telefone, email } = i.contatos;
+      expect([site, instagram, telefone, email].filter(Boolean).length).toBeGreaterThan(0);
+      if (site) expect(site).toMatch(HTTP);
+      if (instagram) expect(instagram).toMatch(HTTP);
+      if (email) expect(email).toContain("@");
+    }
   });
 
   it("a data de verificação é a mais recente do acervo", () => {
