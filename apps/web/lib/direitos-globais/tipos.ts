@@ -66,6 +66,8 @@ export interface Pais {
   regimePolitico: RegimePolitico;
   dataConstituicao: string;
   fontesJuridicas: FonteJuridica[];
+  em_coleta?: boolean;
+  lacuna?: string;
 }
 
 /**
@@ -86,6 +88,8 @@ export interface Dispositivo {
   dataAcesso: string; // ISO 8601
   idiomaOriginal?: string; // "es", "fr", "pt"
   traducao?: string; // observação quando o texto exibido é tradução
+  em_coleta?: boolean;
+  lacuna?: string;
 }
 
 // Interface para direito específico

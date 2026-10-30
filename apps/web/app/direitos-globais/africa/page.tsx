@@ -9,6 +9,8 @@ import { CASOS_AFRICANOS } from "@/lib/direitos-globais/africa/casos-corte-afric
 import { RECOMENDACOES_ACHPR, type RecomendacaoAfricana } from "@/lib/direitos-globais/africa/recomendacoes-achpr";
 import TabelaAfricaInterativa from "../componentes/TabelaAfricaInterativa";
 import TabelaCasosAfricaInterativa from "../componentes/TabelaCasosAfricaInterativa";
+import { DISPOSITIVOS_AFRICA } from "@/lib/direitos-globais/africa/dispositivos";
+import { ListaDispositivos } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "África e Corte Africana | Direitos Globais | Controle Popular",
@@ -236,6 +238,29 @@ function SecaoRecomendacoesACHPR({ recomendacoes }: { recomendacoes: readonly Re
   );
 }
 
+function DispositivosConferidosAfrica() {
+  const paises = [...new Set(DISPOSITIVOS_AFRICA.map((d) => d.pais))].sort((a, b) =>
+    a.localeCompare(b, "pt-BR")
+  );
+  return (
+    <section className="mb-12">
+      <h2 className="mb-2 text-xl font-bold text-text">Dispositivos Constitucionais Conferidos</h2>
+      <p className="mb-6 text-sm text-text-soft">
+        Artigos transcritos na íntegra (verbatim) de constituições africanas com foco em meio ambiente, terras comunitárias e bens vitais.
+      </p>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {paises.map((pais) => (
+          <ListaDispositivos
+            key={pais}
+            pais={pais}
+            dispositivos={DISPOSITIVOS_AFRICA.filter((d) => d.pais === pais)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function PaginaAfrica() {
   return (
     <main id="conteudo-principal" className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
@@ -269,6 +294,7 @@ export default function PaginaAfrica() {
       <SecaoArtigo34 paises={PAISES_AFRICA} />
       <SecaoCasosCorteAfricana />
       <TabelaAdesaoAfrica />
+      <DispositivosConferidosAfrica />
       <SecaoRecomendacoesACHPR recomendacoes={RECOMENDACOES_ACHPR} />
 
       <div className="mt-8">
