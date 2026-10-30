@@ -81,7 +81,8 @@ function concatenar(blocos: Float32Array[]): Float32Array {
   const total = blocos.reduce((acc, b) => acc + b.length, 0);
   const saida = new Float32Array(total);
   let pos = 0;
-  for (const b of blocos) {
+  for (let i = 0; i < blocos.length; i++) {
+    const b = blocos[i];
     saida.set(b, pos);
     pos += b.length;
   }
@@ -95,7 +96,9 @@ function concatenar(blocos: Float32Array[]): Float32Array {
  */
 export function normalizar(audio: Float32Array): Float32Array {
   let pico = 0;
-  for (const amostra of audio) pico = Math.max(pico, Math.abs(amostra));
+  for (let i = 0; i < audio.length; i++) {
+    pico = Math.max(pico, Math.abs(audio[i]));
+  }
   if (pico < 0.01 || pico > 0.95) return audio;
   const fator = 0.95 / pico;
   const saida = new Float32Array(audio.length);

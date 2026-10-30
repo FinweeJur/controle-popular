@@ -22,7 +22,8 @@
  */
 export function guardarRolagemDescendentes(raiz: HTMLElement): () => void {
   const alvos: { el: HTMLElement; topo: number }[] = [];
-  for (const el of raiz.querySelectorAll<HTMLElement>("*")) {
+  const elementos = Array.from(raiz.querySelectorAll<HTMLElement>("*"));
+  for (const el of elementos) {
     if (el.scrollTop > 0) alvos.push({ el, topo: el.scrollTop });
   }
   return () => {
