@@ -130,6 +130,10 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/dados/comunicabr",
   "/dados/populares",
   "/desclassificados",
+  "/direitos-comparados",
+  "/direitos-comparados/indicadores",
+  "/direitos-comparados/pesquisa",
+  "/direitos-comparados/universidades",
   "/direitos-em-movimento",
   "/direitos-em-movimento/ajuda",
   "/direitos-em-movimento/conselhos",
@@ -140,6 +144,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/direitos-em-movimento/seguranca-publica",
   "/direitos-em-movimento/trabalho-e-renda",
   "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
+  "/direitos-globais",
+  "/direitos-globais/america-latina",
   "/documentacao",
   "/documentacao/api-publica",
   "/documentacao/arquitetura",
@@ -255,6 +261,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/terra-e-territorios/nossos-rios",
   "/terra-e-territorios/vales",
   "/transparencia-internacional",
+  "/universidades",
 ];
 
 /**
