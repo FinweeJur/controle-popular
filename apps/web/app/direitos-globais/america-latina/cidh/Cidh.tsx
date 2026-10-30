@@ -1,12 +1,16 @@
 import Link from "next/link";
 import {
-  ADESAO,
   OBRIGACOES,
   PAISES_CIDH,
   adesaoDoPais,
   ratificacoesPorTratado,
   type Adesao,
 } from "@/lib/direitos-globais/cidh";
+import {
+  CASOS_NA_CORTE,
+  casosDoPais,
+  paisesComCasos,
+} from "@/lib/direitos-globais/casos-corte";
 import { ListaDispositivos } from "../Dispositivos";
 
 /**
@@ -142,29 +146,79 @@ export function AdesaoPorPais() {
   );
 }
 
-export function NotaCondenacoes() {
-  const semCorte = Object.values(ADESAO["B-32"]).filter(
-    (a) => a.status !== "ratificado",
-  );
+const MESES = [
+  "jan",
+  "fev",
+  "mar",
+  "abr",
+  "mai",
+  "jun",
+  "jul",
+  "ago",
+  "set",
+  "out",
+  "nov",
+  "dez",
+];
+
+function dataCurta(iso: string): string {
+  const [ano, mes, dia] = iso.split("-");
+  const nomeMes = MESES[Number(mes) - 1] ?? mes;
+  return `${Number(dia)} ${nomeMes} ${ano}`;
+}
+
+export function CasosNaCorte() {
+  const paises = paisesComCasos();
   return (
     <section className="mb-10">
       <h2 className="mb-2 text-xl font-bold text-text">
-        Condenações e denúncias
+        Casos enviados à Corte (2024–2026)
       </h2>
       <p className="mb-4 text-sm text-text-soft">
-        Quem recomenda é a Comissão (CIDH); quem condena é a Corte IDH. Só
-        Estado que ratificou o Pacto de San José pode ser réu na Corte. Nesta
-        lista, {semCorte.length} país não ratificou.
+        {CASOS_NA_CORTE.length} casos em {paises.length} países. O link é a
+        nota de remissão publicada pela própria CIDH, com o número do caso.
       </p>
-      <div className="rounded-xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
-        <p className="mb-3">
-          <strong className="text-text">Ainda sem lista de casos.</strong> O
-          site oficial da Corte responde HTTP 403 ao nosso agente, mesmo com
-          User-Agent honesto. Não contornamos bloqueio de acesso.
-        </p>
-        <p className="mb-3">
-          Até a conferência manual, o caminho é a fonte primária: a busca de
-          casos da Corte e o relatório anual da Comissão.
+      <div className="space-y-3">
+        {paises.map((pais) => {
+          const casos = casosDoPais(pais);
+          return (
+            <details
+              key={pais}
+              className="rounded-xl border border-border bg-surface p-4"
+            >
+              <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-2">
+                <span className="font-semibold text-text">{pais}</span>
+                <span className="text-xs text-text-soft">
+                  {casos.length} {casos.length === 1 ? "caso" : "casos"}
+                </span>
+              </summary>
+              <ul className="mt-3 space-y-2">
+                {casos.map((c) => (
+                  <li key={c.caso} className="text-sm text-text-soft">
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline-offset-2 hover:underline"
+                    >
+                      {c.nome}
+                    </a>
+                    <span className="text-text-soft">
+                      {" — "}Caso {c.caso} · {dataCurta(c.dataRemissao)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          );
+        })}
+      </div>
+      <div className="mt-4 rounded-xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
+        <p className="mb-2">
+          <strong className="text-text">Envio não é condenação.</strong> Esta
+          lista mostra o que a Comissão mandou à Corte. A sentença fica no site
+          da Corte, que responde HTTP 403 ao nosso agente; não contornamos o
+          bloqueio.
         </p>
         <div className="flex flex-wrap gap-4">
           <a
@@ -176,12 +230,12 @@ export function NotaCondenacoes() {
             Corte IDH — busca de casos
           </a>
           <a
-            href="https://www.oas.org/es/cidh/"
+            href="https://www.oas.org/es/cidh/decisiones/pc/demandas.asp"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline-offset-2 hover:underline"
           >
-            CIDH — Comissão Interamericana
+            CIDH — casos enviados à Corte
           </a>
         </div>
       </div>

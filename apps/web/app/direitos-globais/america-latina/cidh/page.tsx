@@ -3,7 +3,7 @@ import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   AdesaoPorPais,
-  NotaCondenacoes,
+  CasosNaCorte,
   Obrigacoes,
   ResumoTratados,
   VoltarParaAmericaLatina,
@@ -91,7 +91,7 @@ export default function PaginaCidh() {
       <Obrigacoes />
       <ResumoTratados />
       <AdesaoPorPais />
-      <NotaCondenacoes />
+      <CasosNaCorte />
 
       <div className="mt-8">
         <VoltarParaAmericaLatina />

@@ -13,7 +13,8 @@
  *
  * Condenações da Corte IDH não estão aqui: o site corteidh.or.cr responde
  * HTTP 403 ao nosso agente, mesmo com User-Agent honesto. Não contornamos
- * bloqueio. O caminho é conferência manual, caso a caso, com link oficial.
+ * bloqueio. O que existe é a lista de casos que a Comissão enviou à Corte
+ * (ver `casos-corte.ts`), que não é sentença.
  */
 
 import type { Dispositivo } from "./tipos";
