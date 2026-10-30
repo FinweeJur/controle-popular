@@ -4,7 +4,7 @@
  *
  * Papel no portal: descrever, em um só lugar, o formato de um verbete de
  * memória (país, região, UF ou município) e a fonte que o sustenta. O
- * desenho vem do plano `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`, que
+ * desenho vem do plano `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md`, que
  * evolve a copy de `lib/memoria-cidades.ts` para as quatro camadas.
  *
  * Fonte oficial das regras de negócio: AGENTS.md §7 (regra editorial:

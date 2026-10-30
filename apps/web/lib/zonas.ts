@@ -17,7 +17,7 @@
  * `ZONAS_PUBLICADAS.length` nas telas — quando o /ambiental publicar, não
  * há uma frase "as três frentes" para alguém esquecer de corrigir.
  *
- * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): os títulos e
+ * ⟲ 02/09/2026, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md): os títulos e
  * descrições das seis frentes ganharam a voz nova — princípio na frente,
  * memória do campo popular, gramática do MAB no Paraopeba. O que NÃO
  * mudou, de propósito: nenhum número foi inventado ou arredondado para
@@ -284,7 +284,7 @@ export const ZONAS: Zona[] = [
     etiqueta: "Reparação · Rompimento da barragem em Brumadinho",
     nomeCurto: "Paraopeba",
     titulo: "A reparação de Brumadinho, acompanhada mês a mês",
-    // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): a descrição ganha
+    // ⟲ 02/09, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md): a descrição ganha
     // a gramática do MAB — atingido é sujeito de direitos que cobra, e
     // reparação não é concessão, é dívida. Registro sóbrio mantido: sem
     // humor, sem metáfora, sem epígrafe literária, e "rompimento" onde a

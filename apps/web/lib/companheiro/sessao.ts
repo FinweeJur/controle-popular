@@ -11,7 +11,7 @@
  *
  * FONTE / REGRA DE NEGÓCIO
  * ------------------------
- * Desenho travado no `docs/planos/PLANO-COMPANHEIRO-SEU-NONO.md`. Uma pergunta
+ * Desenho travado no `docs/historico/planos/PLANO-COMPANHEIRO-SEU-NONO.md`. Uma pergunta
  * gera UM turno, resolvido por `responderComoCompanheiro` (a MESMA regra do
  * site) — este módulo só guarda a sessão e distribui o evento, nunca responde.
  *

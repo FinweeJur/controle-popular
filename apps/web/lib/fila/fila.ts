@@ -1,7 +1,7 @@
 /**
  * Fila distribuída — o "quem pega o quê" entre as máquinas ligadas.
  *
- * Plano: `docs/planos/PLANO-ORQUESTRACAO-DISTRIBUIDA.md` (F1). O problema é
+ * Plano: `docs/historico/planos/PLANO-ORQUESTRACAO-DISTRIBUIDA.md` (F1). O problema é
  * simples de enunciar e fácil de errar: com dois PCs ligados, sem coordenação,
  * os dois pegam a MESMA tarefa e fazem trabalho dobrado (ou batem na mesma
  * fonte ao mesmo tempo). Aqui a coordenação reaproveita o que já é comum às

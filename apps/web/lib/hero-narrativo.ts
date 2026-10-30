@@ -1,6 +1,6 @@
 /**
  * Lógica pura do hero narrativo da home (Fase 1 do plano de identidade
- * visual — `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
+ * visual — `docs/historico/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
  *
  * Nada de React, GSAP ou DOM aqui: é o cálculo que o
  * `HeroNarrative.tsx` consome para decidir camadas de parallax, módulos

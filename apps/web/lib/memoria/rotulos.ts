@@ -6,7 +6,7 @@
  * história das lutas e resistências). Cor nunca é o único canal — por
  * isso o tipo vira texto, e não só etiqueta colorida (AGENTS.md §8).
  *
- * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md`
  * (vocabulário de luta) e `apps/web/lib/memoria/tipos.ts` (o tipo
  * `TipoLuta`). Os rótulos abaixo são a tradução por extenso do
  * vocabulário do plano — se um tipo novo nascer em `tipos.ts`, nasce

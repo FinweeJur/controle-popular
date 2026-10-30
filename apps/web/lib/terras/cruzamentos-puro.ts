@@ -3,7 +3,7 @@ import { semAcento } from "@/lib/busca/normalizar";
 /**
  * ═══ CRUZAMENTOS TERRITÓRIO × EMPREENDIMENTO — LÓGICA PURA (Sprint 3) ═══
  *
- * Plano: `docs/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 3.
+ * Plano: `docs/historico/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 3.
  * O dado bruto são as camadas de alerta JÁ COMPUTADAS pela frente do globo
  * (`public/terras/globo/dados/camadas/alerta-*`) — interseções EXATAS de
  * polígono, sem buffer. Este módulo NÃO refaz geometria: filtra por

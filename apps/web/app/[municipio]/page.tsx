@@ -295,7 +295,7 @@ export default async function HomePage({
   const panoramaJudicial = obterPanoramaJudicial(cidade.nome, cidade.id_municipio);
   const relatoriosLocais = relatoriosPorMunicipio(cidade.nome);
   const dadosRiscoLocal = obterRiscoPorIbge(cidade.id_municipio);
-  // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): o bloco "Já aconteceu
+  // ⟲ 02/09, copy v6 (docs/historico/planos/PLANO-COPY-VOZ.md): o bloco "Já aconteceu
   // aqui" — a memória e a cultura da cidade ANTES dos números. O texto mora
   // em `lib/memoria-cidades.ts`, mesma filosofia deste portal de copy em um
   // lugar só; `memoria: null` lá significa "sem fonte local fechada" e o

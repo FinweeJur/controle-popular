@@ -1,7 +1,7 @@
 /**
  * Testes da Mística do Dia e do calendário de lutas.
  *
- * Guardam as regras que o plano `PLANO-MEMORIA-RESISTENCIAS.md` exige e
+ * Guardam as regras que o plano `historico/planos/PLANO-MEMORIA-RESISTENCIAS.md` exige e
  * que um comentário não sustenta: toda entrada nasce com autor e ano;
  * nenhuma fonte terciária (Wikipédia/Wikidata) decide entrada; o índice
  * por dia casa com zero à esquerda; e dia sem entrada devolve `null` —

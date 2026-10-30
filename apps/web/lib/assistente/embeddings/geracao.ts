@@ -9,7 +9,7 @@
  * - Se nao houver nenhuma chave, cai para Ollama local (laboratorio L4).
  *
  * Ver decisoes 2-4 de `docs/ESTADO.md`, 22/08/2026, e o roteiro de
- * execucao de pendencias (docs/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md).
+ * execucao de pendencias (docs/historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md).
  *
  * A resposta E obrigada a citar as fontes do contexto. O prompt inclui a
  * regra explicitamente.

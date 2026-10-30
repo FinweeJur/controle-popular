@@ -1,6 +1,6 @@
 /**
  * Coletor de câmbio do dia — Pilar 2b do
- * docs/planos/PLANO-CI-RAG-INGESTAO-UNIDADES.md (Fase 5).
+ * docs/historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md (Fase 5).
  *
  * ═══ O QUE FAZ ═══
  *

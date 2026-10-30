@@ -3158,7 +3158,7 @@ export const contadores = pgTable(
  * Documento oficial de licenciamento/condicionante (LP, LI, LO, TAC,
  * parecer, ata). Texto integral no R2; aqui só metadado + hash.
  * Migration `0089_ambiental_condicionantes.sql`, plano
- * `docs/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md`.
+ * `docs/historico/planos/PLANO-CONDICIONANTES-AMBIENTAIS.md`.
  */
 export const documentos_ambientais = pgTable("documentos_ambientais", {
 	id: uuid().defaultRandom().primaryKey().notNull(),

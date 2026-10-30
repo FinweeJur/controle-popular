@@ -22,7 +22,7 @@
 //
 // Os Termos de Uso do portal-fonte proíbem modificar e usar comercialmente o
 // material da AECOM — por isso o espelho de PDF ficou fora desta entrega
-// (`docs/planos/PLANO-ESPELHO-PDF-AJRI.md`) e `descricao` continua transcrita
+// (`docs/historico/planos/PLANO-ESPELHO-PDF-AJRI.md`) e `descricao` continua transcrita
 // sem edição. A leitura adotada aqui é que o resumo é obra nova (paráfrase
 // com citação travada), não modificação — mas a decisão final de PUBLICAR
 // este arquivo é do dev, registrada em pendência. Até lá, o dado pode

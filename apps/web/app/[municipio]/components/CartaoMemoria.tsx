@@ -10,7 +10,7 @@
  * letras, que ainda não há verbete daquele município — a lacuna é
  * informação (AGENTS.md §7), nunca preenchida com marco inventado.
  *
- * Fonte oficial: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md` (arquitetura
+ * Fonte oficial: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md` (arquitetura
  * em quatro camadas, ordem de preferência das fontes e regra de
  * vinculação) e AGENTS.md §7 e §8 (seis qualidades: rótulo por extenso,
  * botão Fonte, link direto).

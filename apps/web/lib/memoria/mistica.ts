@@ -7,7 +7,7 @@
  * a home sempre referencia, quando houver, uma luta popular ou fato de
  * resistência daquele dia.
  *
- * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md`
  * (decisões do dev: fontes não estatais com citação e link; Wikipédia só
  * como terciária) e AGENTS.md §7 (regra editorial).
  *

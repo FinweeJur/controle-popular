@@ -15,7 +15,7 @@ import NextLink from "next/link";
  *
  * ═══ ESTADO DESTA PÁGINA (esqueleto da Fase 1) ═══
  *
- * A Fase 0 do plano (`docs/planos/PLANO-PLATAFORMA-RIO-DOCE.md`, medido
+ * A Fase 0 do plano (`docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md`, medido
  * em 12/10/2026) ainda NÃO levantou os números CNJ dos processos-chave
  * (TTAC de 02/03/2016, Novo Acordo homologado em 06/11/2024, ACPs). Este
  * arquivo é o andaime: explica como a consulta funciona e declara a

@@ -31,7 +31,7 @@
  * erro (`coletar-pncp-mg.mts` espelha o `client.py` de propósito, inclusive o
  * teto de 60s e o 204 → `{data:[], totalPaginas:0}`; `coletar-decisoes-cge-mg.mts`
  * precisa de cookie jar manual). Migração só onde a mudança é mecânica — ver
- * `docs/planos/COLETA-MELHORIAS-2026-09.md`.
+ * `docs/historico/planos/COLETA-MELHORIAS-2026-09.md`.
  *
  * Roda fora do Next (coletores via `npx tsx`), então usa só `node:fs`/
  * `node:path`/`node:crypto` + fetch global do Node 22.

@@ -7,7 +7,7 @@
  * vitest daqui só roda os `.test.ts` de `lib/` — lógica dentro de `.tsx` não
  * tem teste, e era justamente isso que o CodeScene apontou (arquivo com saúde
  * 2,17, o 2º pior do repositório em 07/10/2026, ver
- * `docs/planos/PENDENCIAS-07-10.md`).
+ * `docs/historico/planos/PENDENCIAS-07-10.md`).
  *
  * REGRAS DE NEGÓCIO: o catálogo é a lista versionada em
  * `apps/web/data/top-100-paginas.json` (100 rotas com potencial de interesse

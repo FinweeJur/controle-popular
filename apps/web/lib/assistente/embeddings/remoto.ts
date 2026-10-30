@@ -11,7 +11,7 @@
  * Maritaca/DeepSeek/Ling NÃO publicam endpoint de embeddings (medido em
  * 22/08 e reafirmado em 30/08, `provedores.ts`). O candidato gratuito é a
  * SiliconFlow com `BAAI/bge-m3` (OpenAI-compatible, 1024 dims, free tier
- * sem cartão) — documentado em `docs/planos/PLANO-SEU-NONO-NOTEBOOKLM.md`.
+ * sem cartão) — documentado em `docs/historico/planos/PLANO-SEU-NONO-NOTEBOOKLM.md`.
  *
  * Env (só o NOME vive no código; o valor fica no painel do Guara / .env.local):
  * - `EMBED_API_KEY`  — chave da SiliconFlow (ou outro endpoint OpenAI-compat)

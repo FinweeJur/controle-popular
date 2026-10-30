@@ -57,7 +57,7 @@ describe("Módulo de Gestão / Prometeu? Cumpriu? (Plano v8)", () => {
       expect(m?.gestor.length).toBeGreaterThan(3);
       if (m?.coleta_pendente) {
         // 15 UFs ficaram sem propostas em 02/10/2026: o dado fabricado saiu
-        // do ar (ver docs/planos/PENDENCIAS-02-10.md). Estado pendente tem 0
+        // do ar (ver docs/historico/planos/PENDENCIAS-02-10.md). Estado pendente tem 0
         // metas e a explicação — nunca meta inventada.
         expect(m.propostas.length).toBe(0);
       } else {
