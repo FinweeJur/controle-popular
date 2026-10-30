@@ -42,14 +42,14 @@ import SituacaoAtual from "./components/SituacaoAtual";
 export const metadata: Metadata = {
   title: "Litígios transnacionais de Mariana e Brumadinho na Europa | Controle Popular",
   description:
-    "Ação contra a BHP no High Court de Londres ([2025] EWHC 3001), conexões holandesas, linha do tempo, clipping e ADPF — com fonte oficial, data de coleta e o que ainda está pendente.",
+    "Ação contra a BHP no High Court de Londres ([2025] EWHC 3001), ação contra a TÜV SÜD em Munique, conexões holandesas, linha do tempo, clipping e ADPF 1178 — com fonte oficial e data de coleta.",
 };
 
 const SECOES = [
   { id: "visao-geral", titulo: "1. Visão geral" },
   { id: "mariana-londres", titulo: "2. Mariana / Londres" },
   { id: "mariana-holanda", titulo: "3. Mariana / Holanda" },
-  { id: "brumadinho", titulo: "4. Brumadinho na Europa" },
+  { id: "brumadinho", titulo: "4. Brumadinho / Alemanha" },
   { id: "braskem-maceio", titulo: "5. Conexão Braskem/Maceió" },
   { id: "linha-do-tempo", titulo: "6. Linha do tempo" },
   { id: "clipping", titulo: "7. Clipping" },
@@ -137,25 +137,22 @@ export default function PaginaLitigiosTransnacionais() {
         <CartaoLitigio litigio={LITIGIOS[1]} />
       </SecaoWiki>
 
-      <SecaoWiki id="brumadinho" titulo="4. Brumadinho na Europa">
-        <div className="rounded-xl border border-dashed border-border bg-surface/60 p-4 sm:p-6">
-          <h3 className="font-display text-xl font-semibold text-text">
-            Nenhum litígio europeu confirmado nesta coleta
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-text-soft">
-            A pesquisa não localizou, nas fontes consultadas, ação europeia
-            confirmada sobre o rompimento da barragem de Brumadinho. Isso é uma
-            lacuna declarada, não a conclusão de que tal ação não exista em
-            outro foro. O acompanhamento do caso no Brasil fica na frente do
-            Paraopeba.
-          </p>
-          <Link
-            href="/paraopeba"
-            className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
-          >
-            Ver a frente do Paraopeba →
-          </Link>
-        </div>
+      <SecaoWiki id="brumadinho" titulo="4. Brumadinho / Alemanha">
+        <p className="mb-3 text-sm text-text-soft">
+          O caso europeu de Brumadinho é contra a certificadora TÜV SÜD, no
+          Tribunal Regional de Munique, e não na Inglaterra ou na Holanda. A
+          lei material aplicada é a brasileira; o rito é alemão.
+        </p>
+        <CartaoLitigio litigio={LITIGIOS[2]} />
+        <p className="mt-3 text-sm text-text-soft">
+          O acompanhamento da reparação no Brasil fica na frente do Paraopeba.
+        </p>
+        <Link
+          href="/paraopeba"
+          className="mt-2 inline-block text-sm font-semibold text-primary hover:underline"
+        >
+          Ver a frente do Paraopeba →
+        </Link>
       </SecaoWiki>
 
       <SecaoWiki id="braskem-maceio" titulo="5. Conexão Braskem/Maceió">

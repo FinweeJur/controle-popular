@@ -95,11 +95,12 @@ describe("litígios transnacionais — contrato", () => {
     ).toBe(true);
   });
 
-  it("não inventa litígio europeu de Brumadinho", () => {
-    const brumadinhoConfirmado = LITIGIOS.some(
-      (l) => l.caso === "brumadinho" && !l.pendente,
-    );
-    expect(brumadinhoConfirmado).toBe(false);
+  it("tem o caso de Brumadinho na Alemanha, sem rotular como Mariana", () => {
+    const brumadinho = LITIGIOS.filter((l) => l.caso === "brumadinho");
+    expect(brumadinho).toHaveLength(1);
+    expect(brumadinho[0].tribunal).toContain("Munique");
+    expect(brumadinho[0].partes.reus.join(" ")).toContain("TÜV SÜD");
+    expect(brumadinho[0].titulo.toLowerCase()).toContain("brumadinho");
   });
 
   it("mantém a Braskem/Maceió como conexão, nunca como Brumadinho", () => {

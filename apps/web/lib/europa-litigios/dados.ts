@@ -95,7 +95,7 @@ export const LITIGIOS: readonly Litigio[] = [
     objeto:
       "Responsabilidade civil da BHP pelos danos do rompimento da barragem de Fundão, em Mariana (MG), em 05/11/2015.",
     faseProcessual:
-      "Responsabilidade decidida em 14/11/2025. A High Court negou permissão de recurso em 19/01/2026 e a Court of Appeal em 06/05/2026. A fase de quantificação está prevista para 2027.",
+      "Responsabilidade decidida em 14/11/2025. A High Court negou permissão de recurso em 19/01/2026 e a Court of Appeal em 06/05/2026. A segunda fase (quantum) está marcada para abril de 2027. Em outubro de 2026, a Justiça confirmou o PGMBM como advogado dos autores.",
     status: "em-andamento",
     fatos: [
       {
@@ -103,6 +103,18 @@ export const LITIGIOS: readonly Litigio[] = [
           "O rompimento da barragem de Fundão, em Mariana (MG), ocorreu em 05/11/2015 e atingiu a bacia do Rio Doce.",
         data: "2015-11-05",
         fonteUrl: URL_EWHC_3001,
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 2018, o Município de Mariana e outros autores ajuizaram a ação contra a BHP na Inglaterra.",
+        fonteUrl: "https://pogustgoodhead.com/cases/mariana-dam-disaster/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em junho de 2023, a Supreme Court do Reino Unido recusou o recurso da BHP, encerrando a disputa sobre a jurisdição inglesa.",
+        fonteUrl: "https://pogustgoodhead.com/cases/mariana-dam-disaster/",
         dataAcesso: DATA_ACESSO,
       },
       {
@@ -145,6 +157,38 @@ export const LITIGIOS: readonly Litigio[] = [
           "Em 16/10/2026, a Court of Appeal negou o recurso da BHP sobre juros de custas.",
         data: "2026-10-16",
         fonteUrl: URL_COA_1319,
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 26/06/2025, a High Court reconheceu indícios suficientes para a acusação de contempt criminal contra a BHP por descumprimento de ordem judicial.",
+        data: "2025-06-26",
+        fonteUrl:
+          "https://pogustgoodhead.com/high-court-judge-determines-there-are-to-be-reasonable-grounds-to-allege-that-bhp-is-guilty-of-criminal-contempt/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 02 e 03/07/2025, a High Court realizou audiência para organizar a segunda fase, de quantificação dos danos.",
+        data: "2025-07-02",
+        fonteUrl:
+          "https://pogustgoodhead.com/important-update-on-the-mariana-case-in-england-hearing-held-on-2-and-3-july-2025/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 04/12/2025, a High Court rejeitou pedido de anti-suit injunction da BHP para impedir depoimento do ex-presidente da Renova.",
+        data: "2025-12-04",
+        fonteUrl:
+          "https://pogustgoodhead.com/pogust-goodhead-defeats-bhp-bid-to-block-deposition-of-former-renova-chief/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 12/10/2026, o juiz Waksman confirmou o PGMBM como advogado dos autores e invalidou a tentativa de transferência para outro escritório; a ordem selada saiu em 16/10/2026, com custas interinas de £300 mil.",
+        data: "2026-10-12",
+        fonteUrl:
+          "https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor/",
         dataAcesso: DATA_ACESSO,
       },
     ],
@@ -241,8 +285,9 @@ export const LITIGIOS: readonly Litigio[] = [
     proximosPassos: [
       {
         descricao:
-          "Segunda fase (quantum) prevista para 2027, conforme a sentença de responsabilidade.",
-        fonteUrl: URL_EWHC_3001,
+          "Segunda fase (quantum) marcada para abril de 2027; a conferência de gestão do caso ocorreu em 23/10/2026.",
+        fonteUrl:
+          "https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor-for-mariana-case-claimants/",
       },
       {
         descricao:
@@ -417,6 +462,113 @@ export const LITIGIOS: readonly Litigio[] = [
     observacaoPendencia:
       "Número do processo não localizado. Partes, datas e fase têm fonte; o número não.",
   },
+  {
+    id: "brumadinho-tuv-sud-alemanha",
+    caso: "brumadinho",
+    titulo: "Brumadinho contra a TÜV SÜD no Tribunal de Munique",
+    jurisdicao: "Alemanha",
+    tribunal: "Landgericht München I (Tribunal Regional de Munique)",
+    numeroProcesso: "não localizado nas fontes consultadas",
+    partes: {
+      autores: [
+        "Mais de 1.400 atingidos, além dos municípios de Brumadinho e Mário Campos",
+      ],
+      reus: ["TÜV SÜD"],
+    },
+    objeto:
+      "Responsabilidade da certificadora TÜV SÜD por atestar a estabilidade da barragem da mina Córrego do Feijão antes do rompimento de 25/01/2019.",
+    faseProcessual:
+      "Ação em curso desde 2019, na fase de definição de responsabilidade. Em maio de 2026 o tribunal ouviu perito em barragens e especialista em direito brasileiro. A lei material aplicada é a brasileira; o rito é alemão.",
+    status: "em-andamento",
+    fatos: [
+      {
+        descricao:
+          "O rompimento da barragem da mina Córrego do Feijão, em Brumadinho (MG), ocorreu em 25/01/2019 e matou 272 pessoas; duas vítimas nunca foram encontradas.",
+        data: "2019-01-25",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Desde 2019, mais de 1.400 autores movem ações contra a TÜV SÜD, com pedidos que somam R$ 3,2 bilhões (cerca de € 600 milhões).",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Em 2023, a Justiça alemã nomeou um especialista em direito brasileiro; em dezembro de 2025, designou um segundo perito, especializado em geotecnia.",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "Os autores alegam que a TÜV SÜD usava padrões inferiores aos internacionais e que comunicações internas de maio de 2018 alertavam para o risco de perder contratos da Vale.",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        descricao:
+          "O número do processo no Tribunal de Munique não foi localizado nas fontes consultadas.",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+        pendente: true,
+        observacaoPendencia: "Número não localizado; não é inventado.",
+      },
+    ],
+    atos: [
+      {
+        data: "2026-05-26",
+        titulo: "Audiências em Munique começam",
+        descricao:
+          "O Tribunal Regional de Munique inicia nova etapa de audiências com perito em barragens e especialista em direito brasileiro.",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        data: "2026-05-28",
+        titulo: "Fim das audiências de maio",
+        descricao:
+          "As sessões seguem até 28/05/2026; a próxima fase deve incluir prova testemunhal.",
+        fonteUrl:
+          "https://pogustgoodhead.com/brumadinho-dam-collapse-claim-progresses-following-three-days-hearing-in-munich/",
+        dataAcesso: DATA_ACESSO,
+      },
+    ],
+    proximosPassos: [
+      {
+        descricao:
+          "Produção de prova testemunhal, incluindo depoimentos de executivos da TÜV SÜD.",
+        fonteUrl:
+          "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+      },
+    ],
+    fontes: [
+      {
+        titulo:
+          "Pogust Goodhead. Caso Brumadinho avança na Alemanha com início de audiências em Munique, 26/05/2026.",
+        url: "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+        tipo: "documento",
+        dataAcesso: DATA_ACESSO,
+      },
+      {
+        titulo:
+          "Pogust Goodhead. Brumadinho dam collapse claim progresses following three days hearing in Munich, 29/05/2026.",
+        url: "https://pogustgoodhead.com/brumadinho-dam-collapse-claim-progresses-following-three-days-hearing-in-munich/",
+        tipo: "documento",
+        dataAcesso: DATA_ACESSO,
+      },
+    ],
+    dataAcesso: DATA_ACESSO,
+    pendente: false,
+    observacaoPendencia:
+      "Caso confirmado; o número do processo em Munique não foi localizado.",
+  },
 ];
 
 /**
@@ -557,6 +709,28 @@ export const LINHA_DO_TEMPO: readonly ItemLinhaDoTempo[] = [
     dataAcesso: DATA_ACESSO,
   },
   {
+    id: "contempt-2025",
+    data: "2025-06-26",
+    titulo: "High Court vê indícios de contempt da BHP",
+    descricao:
+      "O juiz Constable rejeitou o pedido da BHP para extinguir a acusação de contempt criminal por descumprimento de ordem judicial.",
+    tipo: "decisao",
+    fonteUrl:
+      "https://pogustgoodhead.com/high-court-judge-determines-there-are-to-be-reasonable-grounds-to-allege-that-bhp-is-guilty-of-criminal-contempt/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "fase2-2025",
+    data: "2025-07-02",
+    titulo: "Audiência da fase de danos",
+    descricao:
+      "A High Court realiza audiência de dois dias para organizar a segunda fase, de quantificação dos danos.",
+    tipo: "audiencia",
+    fonteUrl:
+      "https://pogustgoodhead.com/important-update-on-the-mariana-case-in-england-hearing-held-on-2-and-3-july-2025/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
     id: "holanda-gestao-2025",
     data: "2025-07-14",
     titulo: "Audiência de gestão na Holanda",
@@ -584,6 +758,38 @@ export const LINHA_DO_TEMPO: readonly ItemLinhaDoTempo[] = [
       "A High Court conclui que a BHP é responsável objetivamente como poluidora e também por culpa; a indenização não é fixada nesta etapa.",
     tipo: "decisao",
     fonteUrl: URL_SENTENCA_UK,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "asi-2025",
+    data: "2025-12-04",
+    titulo: "High Court rejeita anti-suit injunction da BHP",
+    descricao:
+      "A Corte rejeitou pedido da BHP para impedir a colheita de depoimento do ex-presidente da Renova.",
+    tipo: "decisao",
+    fonteUrl:
+      "https://pogustgoodhead.com/pogust-goodhead-defeats-bhp-bid-to-block-deposition-of-former-renova-chief/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "recusa-high-court-2026",
+    data: "2026-01-19",
+    titulo: "High Court nega permissão de recurso",
+    descricao:
+      "A juíza O'Farrell manteve a responsabilidade da BHP e negou permissão para recorrer do mérito.",
+    tipo: "decisao",
+    fonteUrl:
+      "https://pogustgoodhead.com/high-court-refuses-bhp-permission-to-appeal/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "contempt-coa-2026",
+    data: "2026-03-16",
+    titulo: "Court of Appeal extingue acusação de contempt",
+    descricao:
+      "A Corte acolheu o recurso da BHP e extinguiu a acusação de contempt ligada à anti-suit injunction.",
+    tipo: "decisao",
+    fonteUrl: URL_COA_294,
     dataAcesso: DATA_ACESSO,
   },
   {
@@ -624,6 +830,17 @@ export const LINHA_DO_TEMPO: readonly ItemLinhaDoTempo[] = [
     tipo: "audiencia",
     fonteUrl:
       "https://www.otempo.com.br/politica/2026/7/9/justica-da-holanda-analisa-nesta-quinta-feira-se-julga-acao-de-vitimas-de-mariana-contra-samarco",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "representacao-2026",
+    data: "2026-10-12",
+    titulo: "Justiça confirma PGMBM como advogado dos autores",
+    descricao:
+      "O juiz Waksman decidiu que o Comitê de Clientes não podia trocar o escritório nem transferir os autores para outro escritório.",
+    tipo: "decisao",
+    fonteUrl:
+      "https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor/",
     dataAcesso: DATA_ACESSO,
   },
   {
@@ -779,6 +996,110 @@ export const CLIPPING: readonly ItemClipping[] = [
     paywall: true,
     dataAcesso: DATA_ACESSO,
   },
+  {
+    id: "pg-vitoria-2025-11",
+    veiculo: "Pogust Goodhead",
+    data: "2025-11-14",
+    titulo:
+      "Vitória histórica: Justiça inglesa declara BHP culpada pelo desastre de Mariana",
+    url: "https://pogustgoodhead.com/justica-inglesa-declara-bhp-culpada-pelo-desastre-de-mariana/",
+    idioma: "pt",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-victory-2025-11",
+    veiculo: "Pogust Goodhead",
+    data: "2025-11-14",
+    titulo: "High Court rules BHP liable for dam disaster in landmark case",
+    url: "https://pogustgoodhead.com/high-court-rules-bhp-liable-for-dam-disaster-in-landmark-case/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-dez-anos-2025-11",
+    veiculo: "Pogust Goodhead",
+    data: "2025-11-04",
+    titulo: "10 anos depois: vítimas do rompimento da barragem de Mariana cobram justiça",
+    url: "https://pogustgoodhead.com/vitimas-do-rompimento-da-barragem-de-mariana-cobram-justica/",
+    idioma: "pt",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-fase2-2025-07",
+    veiculo: "Pogust Goodhead",
+    data: "2025-07-04",
+    titulo: "Important update on the Mariana Case in England",
+    url: "https://pogustgoodhead.com/important-update-on-the-mariana-case-in-england-hearing-held-on-2-and-3-july-2025/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-contempt-2025-06",
+    veiculo: "Pogust Goodhead",
+    data: "2025-06-26",
+    titulo:
+      "High Court judge determines there are to be reasonable grounds to allege that BHP is guilty of criminal contempt",
+    url: "https://pogustgoodhead.com/high-court-judge-determines-there-are-to-be-reasonable-grounds-to-allege-that-bhp-is-guilty-of-criminal-contempt/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-asi-2025-12",
+    veiculo: "Pogust Goodhead",
+    data: "2025-12-04",
+    titulo:
+      "Pogust Goodhead defeats BHP bid to block deposition of former Renova chief",
+    url: "https://pogustgoodhead.com/pogust-goodhead-defeats-bhp-bid-to-block-deposition-of-former-renova-chief/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-recusa-2026-01",
+    veiculo: "Pogust Goodhead",
+    data: "2026-01-19",
+    titulo: "High Court refuses BHP permission to appeal landmark Mariana liability judgment",
+    url: "https://pogustgoodhead.com/high-court-refuses-bhp-permission-to-appeal/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-coa-2026-05",
+    veiculo: "Pogust Goodhead",
+    data: "2026-05-06",
+    titulo: "Court of Appeal shuts down BHP's attempt to overturn Mariana liability judgment",
+    url: "https://pogustgoodhead.com/court-of-appeal-shuts-down-bhps-attempt-to-overturn-mariana-liability-judgment/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-representacao-2026-10",
+    veiculo: "Pogust Goodhead",
+    data: "2026-10-16",
+    titulo:
+      "High Court confirms PGMBM remains solicitor for Mariana case claimants",
+    url: "https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor-for-mariana-case-claimants/",
+    idioma: "en",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-brumadinho-2026-05",
+    veiculo: "Pogust Goodhead",
+    data: "2026-05-26",
+    titulo: "Caso Brumadinho avança na Alemanha com início de audiências em Munique",
+    url: "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+    idioma: "pt",
+    paywall: false,
+    dataAcesso: DATA_ACESSO,
+  },
 ];
 
 /** Posicionamentos oficiais/institucionais, sempre com link. */
@@ -889,6 +1210,24 @@ export const POSICIONAMENTOS: readonly Posicionamento[] = [
     resumo:
       "Documentos da PF citados na denúncia do MPF apontam que a Braskem e a antecessora Salgema sabiam do risco de afundamento desde 1988.",
     url: "https://g1.globo.com/al/alagoas/noticia/2026/06/19/investigacao-da-pf-aponta-que-braskem-sabia-de-risco-de-afundamento-em-maceio-desde-1988.ghtml",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-alinia-brumadinho",
+    autor: "Pogust Goodhead — Alicia Alinia, CEO",
+    data: "2026-05-26",
+    resumo:
+      "Afirmou que os clientes seguem sofrendo os impactos do rompimento e que o escritório busca justiça, reparação adequada e responsabilização.",
+    url: "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "pg-representacao-2026",
+    autor: "Pogust Goodhead — Alicia Alinia, CEO",
+    data: "2026-10-16",
+    resumo:
+      "Disse que os autores não são mercadorias a serem transferidas entre escritórios e que o cronograma segue para a segunda fase em abril de 2027.",
+    url: "https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor-for-mariana-case-claimants/",
     dataAcesso: DATA_ACESSO,
   },
 ];
