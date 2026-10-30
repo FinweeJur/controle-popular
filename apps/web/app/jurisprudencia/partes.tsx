@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EmentaDialog from "./EmentaDialog";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
 import noticiasJson from "@/data/noticias-tribunais.json";
@@ -324,28 +325,7 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
 
 function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
   if (!caso.ementa && !caso.resumo) return null;
-  const rotulo = caso.resumo ? "ver resumo" : "ver ementa";
-  return (
-    <details className="relative mt-1">
-      <summary className="cursor-pointer text-xs font-semibold text-primary underline">
-        {rotulo}
-      </summary>
-      <div className="absolute right-0 z-50 mt-1 max-h-[60vh] w-[56rem] max-w-[calc(100vw-2rem)] space-y-2 overflow-y-auto rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-xs leading-relaxed shadow-2xl">
-        {caso.resumo ? (
-          <p>
-            <span className="font-semibold">Resumo: </span>
-            {caso.resumo}
-          </p>
-        ) : null}
-        {caso.ementa ? (
-          <p className="opacity-80">
-            <span className="font-semibold">Ementa: </span>
-            {caso.ementa}
-          </p>
-        ) : null}
-      </div>
-    </details>
-  );
+  return <EmentaDialog resumo={caso.resumo} ementa={caso.ementa} />;
 }
 
 function CelulaTemas({ caso }: { caso: CasoJurisprudencia }) {
