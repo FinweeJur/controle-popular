@@ -15,6 +15,7 @@ import { PAISES_AFRICA, paisAfricanoPorCodigo, paisesPorSubRegiao } from "./pais
 import { TRATADOS_UA, totalRatificacoesTratado, adesaoPaisUA } from "./tratados-ua";
 import { CASOS_AFRICANOS } from "./casos-corte-africana";
 import { RECOMENDACOES_ACHPR } from "./recomendacoes-achpr";
+import { DISPOSITIVOS_AFRICA, getDispositivosAfrica } from "./dispositivos";
 
 describe("Frente B — Países da África (54 estados)", () => {
   it("contém exatamente 54 países soberanos reconhecidos pela UA", () => {
@@ -133,3 +134,31 @@ describe("Frente B — Recomendações da Comissão Africana", () => {
     }
   });
 });
+
+describe("Frente B — Dispositivos Constitucionais e Auditoria de Lacunas", () => {
+  it("contém dispositivos constitucionais com texto verbatim para países-chave", () => {
+    expect(DISPOSITIVOS_AFRICA.length).toBeGreaterThanOrEqual(10);
+    const paisesComDisp = new Set(DISPOSITIVOS_AFRICA.map((d) => d.pais));
+    expect(paisesComDisp).toContain("África do Sul");
+    expect(paisesComDisp).toContain("Quênia");
+    expect(paisesComDisp).toContain("Nigéria");
+    expect(paisesComDisp).toContain("Angola");
+    expect(paisesComDisp).toContain("Moçambique");
+
+    for (const d of DISPOSITIVOS_AFRICA) {
+      expect(d.texto.length).toBeGreaterThan(20);
+      expect(d.citacao).toBeDefined();
+      expect(d.url).toMatch(/^https:\/\//);
+      expect(d.dataAcesso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  it("getDispositivosAfrica cobre todos os 54 países da África declarando lacunas", () => {
+    const listaCompleta = getDispositivosAfrica();
+    const paisesCobertos = new Set(listaCompleta.map((d) => d.pais));
+    for (const p of PAISES_AFRICA) {
+      expect(paisesCobertos).toContain(p.nome);
+    }
+  });
+});
+

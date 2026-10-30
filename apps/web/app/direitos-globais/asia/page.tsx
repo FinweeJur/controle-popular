@@ -6,6 +6,8 @@ import DataColeta from "@/app/components/DataColeta";
 import { PAISES_ASIA, paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
 import { INSTRUMENTOS_REGIONAIS_ASIA } from "@/lib/direitos-globais/asia/tratados-regionais";
 import TabelaAsiaInterativa from "../componentes/TabelaAsiaInterativa";
+import { DISPOSITIVOS_ASIA } from "@/lib/direitos-globais/asia/dispositivos";
+import { ListaDispositivos } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "Ásia e Direitos Fundamentais | Direitos Globais | Controle Popular",
@@ -192,6 +194,29 @@ function SecaoInstrumentosRegionais() {
   );
 }
 
+function DispositivosConferidosAsia() {
+  const paises = [...new Set(DISPOSITIVOS_ASIA.map((d) => d.pais))].sort((a, b) =>
+    a.localeCompare(b, "pt-BR")
+  );
+  return (
+    <section className="mb-12">
+      <h2 className="mb-2 text-xl font-bold text-text">Dispositivos Constitucionais Conferidos</h2>
+      <p className="mb-6 text-sm text-text-soft">
+        Artigos transcritos na íntegra (verbatim) de constituições asiáticas com foco em equilíbrio ecológico, terras ancestrais e trabalho.
+      </p>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {paises.map((pais) => (
+          <ListaDispositivos
+            key={pais}
+            pais={pais}
+            dispositivos={DISPOSITIVOS_ASIA.filter((d) => d.pais === pais)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function PaginaAsia() {
   const leva1 = paisesPorLeva(1);
   const leva2 = paisesPorLeva(2);
@@ -239,6 +264,7 @@ export default function PaginaAsia() {
       <SecaoLeva1 paises={leva1} />
       <SecaoLeva2 paises={leva2} />
       <SecaoLeva3 paises={leva3} />
+      <DispositivosConferidosAsia />
       <SecaoInstrumentosRegionais />
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
