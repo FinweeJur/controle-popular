@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Globe, Users, Map, Scale, Shield } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DataColeta from "@/app/components/DataColeta";
 
 /**
  * Card de continente para o comparador global.
@@ -218,6 +219,11 @@ export default function PaginaDireitosGlobais() {
         <p className="mt-3 text-lg text-text-soft">
           Comparação de sistemas de direitos entre países do sul global, com foco em direitos humanos, ambiental, sociais e coletivos.
         </p>
+        <DataColeta
+          coletadoEm="2026-10-30"
+          fonte="Bases Oficiais: OEA (oas.org/cidh), Corte IDH, União Africana (au.int) e ONU (ohchr.org)"
+          competencia="América Latina (20), África (54), Ásia e Órgãos de Tratados da ONU"
+        />
       </header>
 
       <FiltrosGlobais />

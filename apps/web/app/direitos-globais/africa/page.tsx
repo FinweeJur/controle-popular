@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Shield, FileText, CheckCircle, AlertTriangle, XCircle, HelpCircle } from "lucide-react";
+import { Shield, CheckCircle, AlertTriangle, XCircle, HelpCircle, FileText } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DataColeta from "@/app/components/DataColeta";
 import { PAISES_AFRICA, type PaisAfricano } from "@/lib/direitos-globais/africa/paises";
-import { ADESAO_UA, totalRatificacoesTratado } from "@/lib/direitos-globais/africa/tratados-ua";
-import { CASOS_AFRICANOS, type CasoAfricano } from "@/lib/direitos-globais/africa/casos-corte-africana";
+import { totalRatificacoesTratado } from "@/lib/direitos-globais/africa/tratados-ua";
+import { CASOS_AFRICANOS } from "@/lib/direitos-globais/africa/casos-corte-africana";
 import { RECOMENDACOES_ACHPR, type RecomendacaoAfricana } from "@/lib/direitos-globais/africa/recomendacoes-achpr";
+import TabelaAfricaInterativa from "../componentes/TabelaAfricaInterativa";
+import TabelaCasosAfricaInterativa from "../componentes/TabelaCasosAfricaInterativa";
 
 export const metadata: Metadata = {
   title: "África e Corte Africana | Direitos Globais | Controle Popular",
@@ -178,110 +181,26 @@ function SecaoArtigo34({ paises }: { paises: readonly PaisAfricano[] }) {
   );
 }
 
-function SecaoCasosCorteAfricana({ casos }: { casos: readonly CasoAfricano[] }) {
+function SecaoCasosCorteAfricana() {
   return (
     <section className="mb-12">
-      <h2 className="text-xl font-bold text-text mb-4">Casos Paradigmáticos da Corte e da Comissão Africana</h2>
-      <div className="space-y-4">
-        {casos.map((caso) => (
-          <article
-            key={`${caso.tribunal}-${caso.numero}`}
-            className="rounded-xl border border-border bg-surface p-5 transition-shadow hover:shadow-sm"
-          >
-            <div className="flex flex-wrap items-start justify-between gap-2">
-              <div>
-                <span className="rounded bg-surface-2 px-2 py-0.5 text-xs font-mono font-medium text-text-soft">
-                  {caso.tribunal} · {caso.numero}
-                </span>
-                <span className="ml-2 text-xs font-semibold text-primary">{caso.pais}</span>
-                <h3 className="mt-1 text-base font-bold text-text">{caso.partes}</h3>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-soft">{caso.data}</span>
-                <StatusBadge status={caso.cumprimento} />
-              </div>
-            </div>
-
-            <p className="mt-3 text-sm text-text-700">{caso.resumoOficial}</p>
-
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
-              <div className="text-xs text-text-soft">
-                <strong className="text-text">Reparações:</strong> {caso.reparacoes.join("; ")}
-              </div>
-              <a
-                href={caso.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
-              >
-                <FileText className="h-3.5 w-3.5" />
-                Acórdão Oficial (PDF)
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
+      <h2 className="text-xl font-bold text-text mb-2">Casos Paradigmáticos da Corte e da Comissão Africana</h2>
+      <p className="text-xs text-text-soft mb-4">
+        Busca textual, filtros por tema e status de cumprimento com exportação de planilha CSV e link para o PDF oficial do acórdão.
+      </p>
+      <TabelaCasosAfricaInterativa casos={CASOS_AFRICANOS} />
     </section>
   );
 }
 
-function CelulaArtigo34({ pais }: { pais: PaisAfricano }) {
-  if (pais.revogouArt34) {
-    return <span className="text-rose-600 dark:text-rose-400 font-medium">Revogou</span>;
-  }
-  if (pais.declarouArt34) {
-    return <span className="text-emerald-600 dark:text-emerald-400 font-medium">Ativo</span>;
-  }
-  return <span className="text-text-soft">Não</span>;
-}
-
-function LinhaPaisAfrica({ pais }: { pais: PaisAfricano }) {
-  const achpr = ADESAO_UA["achpr"]?.[pais.nome]?.status ?? "desconhecido";
-  const corte = ADESAO_UA["corte-protocolo"]?.[pais.nome]?.status ?? "desconhecido";
-  const maputo = ADESAO_UA["maputo"]?.[pais.nome]?.status ?? "desconhecido";
-  const kampala = ADESAO_UA["kampala"]?.[pais.nome]?.status ?? "desconhecido";
-
-  return (
-    <tr className="hover:bg-surface-2/50">
-      <td className="px-3 py-2 font-medium text-text">
-        {pais.nome} <span className="font-mono text-text-soft">({pais.codigo})</span>
-      </td>
-      <td className="px-2 py-2 text-text-soft">{pais.subRegiao}</td>
-      <td className="px-2 py-2"><StatusBadge status={achpr} /></td>
-      <td className="px-2 py-2"><StatusBadge status={corte} /></td>
-      <td className="px-2 py-2"><StatusBadge status={maputo} /></td>
-      <td className="px-2 py-2"><StatusBadge status={kampala} /></td>
-      <td className="px-2 py-2">
-        <CelulaArtigo34 pais={pais} />
-      </td>
-    </tr>
-  );
-}
-
-function TabelaAdesaoAfrica({ paises }: { paises: readonly PaisAfricano[] }) {
+function TabelaAdesaoAfrica() {
   return (
     <section className="mb-12">
       <h2 className="mb-2 text-xl font-bold text-text">Quadro de Adesão aos Tratados da UA (54 Países)</h2>
-      <div className="overflow-x-auto rounded-xl border border-border bg-surface">
-        <table className="w-full text-left text-xs">
-          <thead className="border-b border-border bg-surface-2 text-text font-semibold">
-            <tr>
-              <th className="px-3 py-2.5">País</th>
-              <th className="px-2 py-2.5">Sub-Região</th>
-              <th className="px-2 py-2.5">Carta Africana</th>
-              <th className="px-2 py-2.5">Corte Africana</th>
-              <th className="px-2 py-2.5">Protocolo Maputo</th>
-              <th className="px-2 py-2.5">Convenção Kampala</th>
-              <th className="px-2 py-2.5">Art. 34(6)</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border">
-            {paises.map((p) => (
-              <LinhaPaisAfrica key={p.codigo} pais={p} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <p className="mb-4 text-xs text-text-soft">
+        Busca em tempo real, filtros por sub-região e declaração do Artigo 34(6), ordenação por coluna e download em CSV (Excel BR).
+      </p>
+      <TabelaAfricaInterativa paises={PAISES_AFRICA} />
     </section>
   );
 }
@@ -338,13 +257,18 @@ export default function PaginaAfrica() {
         <p className="mt-3 text-base text-text-soft sm:text-lg">
           Comparação dos 54 países da União Africana com foco central nos Direitos dos Povos, tratados da UA e jurisprudência da Corte Africana.
         </p>
+        <DataColeta
+          coletadoEm="2026-10-30"
+          fonte="União Africana (au.int), Corte Africana (african-court.org) e ACHPR (achpr.org)"
+          competencia="54 países soberanos · Tratados em vigor até 2026"
+        />
       </header>
 
       <EstatisticasAfrica />
       <SecaoDireitosDosPovos />
       <SecaoArtigo34 paises={PAISES_AFRICA} />
-      <SecaoCasosCorteAfricana casos={CASOS_AFRICANOS} />
-      <TabelaAdesaoAfrica paises={PAISES_AFRICA} />
+      <SecaoCasosCorteAfricana />
+      <TabelaAdesaoAfrica />
       <SecaoRecomendacoesACHPR recomendacoes={RECOMENDACOES_ACHPR} />
 
       <div className="mt-8">

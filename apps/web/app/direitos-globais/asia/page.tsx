@@ -2,14 +2,49 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AlertCircle, ExternalLink, ArrowRight } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
+import DataColeta from "@/app/components/DataColeta";
+import { PAISES_ASIA, paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
 import { INSTRUMENTOS_REGIONAIS_ASIA } from "@/lib/direitos-globais/asia/tratados-regionais";
+import TabelaAsiaInterativa from "../componentes/TabelaAsiaInterativa";
 
 export const metadata: Metadata = {
   title: "Ásia e Direitos Fundamentais | Direitos Globais | Controle Popular",
   description:
     "Comparação jurídica dos países asiáticos organizados em levas prioritárias, cruzamento com a ausência de corte regional e remissão ao sistema ONU.",
 };
+
+function ResumoAsia() {
+  const totalPaises = PAISES_ASIA.length;
+  const totalLeva1 = paisesPorLeva(1).length;
+  const totalLeva2 = paisesPorLeva(2).length;
+  const totalLeva3 = paisesPorLeva(3).length;
+
+  return (
+    <section aria-labelledby="indicadores-asia" className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <h2 id="indicadores-asia" className="sr-only">Indicadores da Ásia</h2>
+      <div className="rounded-xl border border-border bg-surface p-4">
+        <p className="text-xs text-text-soft">Total de Países</p>
+        <p className="mt-1 text-2xl font-black text-text">{totalPaises}</p>
+        <p className="text-xs text-text-soft">Levas 1 a 3 catalogadas</p>
+      </div>
+      <div className="rounded-xl border border-border bg-surface p-4">
+        <p className="text-xs text-text-soft">Leva 1 — Prioritários</p>
+        <p className="mt-1 text-2xl font-black text-primary">{totalLeva1}</p>
+        <p className="text-xs text-text-soft">Grandes potências e populações</p>
+      </div>
+      <div className="rounded-xl border border-border bg-surface p-4">
+        <p className="text-xs text-text-soft">Leva 2 — Emergentes</p>
+        <p className="mt-1 text-2xl font-black text-text">{totalLeva2}</p>
+        <p className="text-xs text-text-soft">Sudeste e Sul da Ásia</p>
+      </div>
+      <div className="rounded-xl border border-border bg-surface p-4">
+        <p className="text-xs text-text-soft">Leva 3 — Expansão</p>
+        <p className="mt-1 text-2xl font-black text-text">{totalLeva3}</p>
+        <p className="text-xs text-text-soft">Himalaia, Indochina e Ásia Central</p>
+      </div>
+    </section>
+  );
+}
 
 function AlertaInexistenciaTribunal() {
   return (
@@ -182,9 +217,25 @@ export default function PaginaAsia() {
         <p className="mt-3 text-base text-text-soft sm:text-lg">
           Comparação dos países asiáticos organizados em levas prioritárias e cruzamento com os tratados da ONU.
         </p>
+        <DataColeta
+          coletadoEm="2026-10-30"
+          fonte="Constitute Project, ASEAN (asean.org) e AICHR"
+          competencia="Levas 1 a 3 (23 países) · Atualizado em 2026"
+        />
       </header>
 
+      <ResumoAsia />
+
       <AlertaInexistenciaTribunal />
+
+      <section className="mb-12">
+        <h2 className="text-xl font-bold text-text mb-2">Quadro Comparativo de Países Asiáticos</h2>
+        <p className="text-xs text-text-soft mb-4">
+          Busca textual em tempo real, filtros por leva e sub-região, ordenação por coluna e download de planilha CSV.
+        </p>
+        <TabelaAsiaInterativa paises={PAISES_ASIA} />
+      </section>
+
       <SecaoLeva1 paises={leva1} />
       <SecaoLeva2 paises={leva2} />
       <SecaoLeva3 paises={leva3} />

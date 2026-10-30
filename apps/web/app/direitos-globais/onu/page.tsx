@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle, AlertTriangle, XCircle, FileText, ExternalLink, HelpCircle } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DataColeta from "@/app/components/DataColeta";
 import { ORGAOS_TRATADOS_ONU, adesaoPaisONU, type OrgaoTratadoONU } from "@/lib/direitos-globais/onu/orgaos-tratados";
-import { RECOMENDACOES_ONU_ASIA, type RecomendacaoONU } from "@/lib/direitos-globais/onu/recomendacoes-upr";
+import { RECOMENDACOES_ONU_ASIA } from "@/lib/direitos-globais/onu/recomendacoes-upr";
 import { paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
+import TabelaOnuInterativa from "../componentes/TabelaOnuInterativa";
 
 export const metadata: Metadata = {
   title: "Sistema ONU e Órgãos de Tratados | Direitos Globais | Controle Popular",
@@ -122,41 +124,14 @@ function TabelaAdesaoONU({ paises }: { paises: readonly PaisAsiatico[] }) {
   );
 }
 
-function SecaoRecomendacoesONU({ recomendacoes }: { recomendacoes: readonly RecomendacaoONU[] }) {
+function SecaoRecomendacoesONU() {
   return (
     <section className="mb-12">
       <h2 className="mb-2 text-xl font-bold text-text">Recomendações UPR e Observações Conclusivas de Seguimento</h2>
-      <div className="space-y-4">
-        {recomendacoes.map((rec, i) => (
-          <article key={i} className="rounded-xl border border-border bg-surface p-5 transition-shadow hover:shadow-sm">
-            <div className="flex flex-wrap items-start justify-between gap-2">
-              <div>
-                <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">{rec.pais}</span>
-                <span className="ml-2 rounded bg-surface-2 px-2 py-0.5 text-xs font-mono font-medium text-text-soft">
-                  {rec.orgao} {rec.cicloUpr ? `· ${rec.cicloUpr}` : ""}
-                </span>
-                <h3 className="mt-1 text-sm font-bold text-text">{rec.documento}</h3>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-soft">{rec.data}</span>
-                <StatusBadge status={rec.status} />
-              </div>
-            </div>
-            <p className="mt-3 text-xs sm:text-sm text-text-700 leading-relaxed font-sans">{rec.texto}</p>
-            {rec.evidencia && (
-              <div className="mt-3 rounded border border-border bg-surface-2 p-3 text-xs text-text-700">
-                <strong className="text-text">Evidência oficial:</strong> {rec.evidencia}
-              </div>
-            )}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-xs">
-              <span className="text-text-soft">Sessão: {rec.sessao ?? "Periódica"}</span>
-              <a href={rec.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-primary hover:underline">
-                Documento Oficial da ONU <ExternalLink className="h-3 w-3" />
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
+      <p className="mb-4 text-xs text-text-soft">
+        Busca textual, filtros por órgão/comitê da ONU e país, ordenação por data e download em CSV.
+      </p>
+      <TabelaOnuInterativa recomendacoes={RECOMENDACOES_ONU_ASIA} />
     </section>
   );
 }
@@ -186,11 +161,16 @@ export default function PaginaONU() {
         <p className="mt-3 text-base text-text-soft sm:text-lg">
           Cruzamento documental entre as cobranças dos órgãos de tratados da ONU, recomendações UPR e estado real de execução.
         </p>
+        <DataColeta
+          coletadoEm="2026-10-30"
+          fonte="OHCHR (tbinternet.ohchr.org) e UPR Info"
+          competencia="8 Órgãos de Tratados e 4º Ciclo UPR · Atualizado em 2026"
+        />
       </header>
 
       <SecaoOrgaosTratados comites={ORGAOS_TRATADOS_ONU} />
       <TabelaAdesaoONU paises={paisesLeva1} />
-      <SecaoRecomendacoesONU recomendacoes={RECOMENDACOES_ONU_ASIA} />
+      <SecaoRecomendacoesONU />
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <Link href="/direitos-globais/asia" className="text-sm font-medium text-primary hover:underline">
