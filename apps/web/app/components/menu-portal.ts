@@ -78,6 +78,8 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake, dica: 'Porta do Eixo 2: saúde, educação, trabalho, conselhos, LAI, denúncia e assistência jurídica.' },
       { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true, dica: 'Seis décadas de lutas populares no campo e na cidade, com marcos, datas e fontes.' },
       { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true, dica: 'Biblioteca de leis ambientais e de direitos: o que cada norma garante e como acioná-la.' },
+      { label: 'Direitos Globais', href: '/direitos-globais', icone: Globe, destaque: true, dica: 'Compare direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania.' },
+      { label: 'Direitos Comparados', href: '/direitos-comparados', icone: Scale, destaque: true, dica: 'Indicadores de direitos entre estados brasileiros: IDH, saúde, educação, justiça e finanças.' },
       { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true, dica: 'Indicadores do SUS por município: cobertura, equipes, internações e gastos em saúde.' },
       // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
       // com o passo a passo do desconto; a segunda é a rede de proteção.
@@ -116,7 +118,9 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Grandes Empresas & Fundos ESG', href: '/empresas', icone: Building2, dica: 'Mineradoras e fundos ESG: sócios, relatórios, fornecedores públicos e condenações.' },
       { label: '1.000 Maiores Fortunas Mundiais', href: '/empresas/fortunas', icone: Building2, dica: 'As 1.000 maiores fortunas do mundo e os grupos que controlam a mineração.' },
       { label: 'EUA: SEC, Fundos & Comércio', href: '/eua', icone: Building2, dica: 'SEC, fundos e comércio dos EUA: empresas, investidores e ligações com o Brasil.' },
-      { label: 'Europa: Litígios Transnacionais', href: '/europa', icone: Globe, dica: 'Litígios transnacionais na Europa: BHP em Londres, Braskem em Roterdã e devida diligência.' },
+      { label: 'Europa: Litígios Transnacionais', href: '/europa', icone: Globe, destaque: true, dica: 'Litígios transnacionais na Europa: BHP em Londres, Braskem em Roterdã e devida diligência.' },
+      { label: 'Europa: Mariana e Brumadinho', href: '/europa/litigios-transnacionais', icone: Scale, destaque: true, dica: 'Linha do tempo dos casos na Inglaterra, Alemanha e Holanda, com ADPF 1178 e clipping.' },
+      { label: 'Legislação Transnacional', href: '/europa/legislacao-transnacionais', icone: FileText, destaque: true, dica: 'Leis que alcançam a matriz: CSDDD, LkSG, EUDR, Roma II e precedentes por país.' },
       { label: 'Central de Inteligência (12 Eyes)', href: '/internacional/inteligencia', icone: ShieldCheck, destaque: true, dica: 'Dossiês desclassificados das agências de inteligência e a rede 12 Eyes.' },
       { label: 'Mapa Global de Inteligência', href: '/internacional/inteligencia/mapa', icone: MapPin, dica: 'Mapa interativo de agências, dossiês e operações de inteligência pelo mundo.' },
       { label: 'Repasses Federais ComunicaBR', href: '/dados/comunicabr', icone: MapPin, dica: 'Repasses e ações do governo federal nos municípios de MG, pelo ComunicaBR.' },
@@ -136,6 +140,7 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Página do Eixo Central', href: '/central', icone: Compass, dica: 'Porta do Eixo 4: ferramentas, assistente, busca, acervo e laboratório do portal.' },
       { label: 'Radar Diário de Editais', href: '/editais', icone: ShoppingBag, destaque: true, dica: 'Editais e chamamentos do Diário Oficial de MG, atualizados com radar diário.' },
       { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen, destaque: true, dica: 'Acervo com milhares de documentos, relatórios periciais, estudos e decisões.' },
+      { label: 'Universidades & Grupos de Pesquisa', href: '/universidades', icone: GraduationCap, destaque: true, dica: 'Instituições, grupos de pesquisa e extensão por estado, com contatos e fonte oficial.' },
       { label: 'Árvore de Conexões (Grafo 3D)', href: '/laboratorio/arvore', icone: Layers, destaque: true, dica: 'Grafo 3D que liga os eixos, temas e páginas do portal numa teia navegável.' },
       { label: 'Assistente Cívico Seu Nonô', href: '/assistente', icone: Sparkles, destaque: true, dica: 'Seu Nonô responde sobre os dados do portal e indica onde conferir na fonte.' },
       { label: 'Índice Geral do Portal', href: '/indice', icone: List, dica: 'Índice completo do portal, com busca por tema, situação e eixo.' },
@@ -149,5 +154,11 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Sobre o ONSA & Método', href: '/sobre', icone: Info, dica: 'O que é o portal, o método ONSA, a taxa de erro e a origem dos dados.' },
     ],
   },
-] as const;
+];
 
+// Destaques primeiro em cada seção; a ordem relativa dos demais é preservada.
+for (const secao of SECOES_MENU) {
+  secao.links.sort(
+    (a, b) => Number(Boolean(b.destaque)) - Number(Boolean(a.destaque)),
+  );
+}
