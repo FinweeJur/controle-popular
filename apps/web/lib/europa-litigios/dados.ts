@@ -333,6 +333,13 @@ export const LITIGIOS: readonly Litigio[] = [
         tipo: "tribunal",
         dataAcesso: DATA_ACESSO,
       },
+      {
+        titulo:
+          "Find Case Law (National Archives). 85 decisões do caso Município de Mariana v BHP.",
+        url: "https://caselaw.nationalarchives.gov.uk/search?query=Municipio+de+Mariana",
+        tipo: "tribunal",
+        dataAcesso: DATA_ACESSO,
+      },
       FONTE_VEDANTA,
       FONTE_OKPABI,
     ],
