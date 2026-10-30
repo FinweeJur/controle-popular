@@ -11,7 +11,7 @@
  * (gitignored); o repositório recebe só o índice derivado. O R2 entra numa
  * automação posterior, não neste script.
  *
- * Coleta: User-Agent honesto `FinweeJur/Github Artur colito`, leitura de
+ * Coleta: User-Agent honesto `finweejur/github artur colito`, leitura de
  * `robots.txt`, 1,5 s entre downloads, sem login/CAPTCHA/paywall.
  */
 
@@ -27,7 +27,7 @@ const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 const CACHE = path.join(APP_ROOT, ".cache", "documentos-rag");
 const LOCAL_CACHE = path.join(APP_ROOT, ".cache", "documentos-rag-local");
 const SAIDA = path.join(APP_ROOT, "public", "data", "documentos-rag");
-const UA = "FinweeJur/Github Artur colito";
+const UA = "finweejur/github artur colito";
 const PAUSA_MS = 1500;
 
 interface Relatorio {

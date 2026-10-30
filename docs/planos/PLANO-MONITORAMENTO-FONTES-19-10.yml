@@ -22,7 +22,7 @@ escopo:
     - docs/02-estado/AUDITORIA-FONTES.md          # log de mudancas
 
 criterios_objetivos:
-  - "OK: resposta HTTP 2xx/3xx com User-Agent honesto FinweeJur/Github Artur colito."
+  - "OK: resposta HTTP 2xx/3xx com User-Agent honesto finweejur/github artur colito."
   - "AVISO: HTTP 403/405/429/503 em host marcado bloqueia_robot=true (ex.: sig.tse.jus.br e tre-<uf>.tse.jus.br). Nao bloqueia: o portal so aponta o link."
   - "CRITICO: qualquer outro erro (404, DNS, timeout). Bloqueia merge e exige correcao."
   - "Ritmo: 1,5 s entre requisicoes por host; timeout de 15 s; so pagina publica; sem coleta de conteudo."
