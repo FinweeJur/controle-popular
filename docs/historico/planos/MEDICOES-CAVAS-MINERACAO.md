@@ -1118,6 +1118,15 @@ os 4 de dentro não são automaticamente regulares — o ato do IBAMA continua
 sendo a evidência, mas o dossiê precisa declarar o processo ANM e a fase. O
 CSV com o resultado é `scripts/.cache/cavas-2m/gold-set/revisao-gold-anm.csv`.
 
+## Prova da VM com swap e limites (30/10/2026)
+
+Run manual **41125892522** (`limite=10`): +10 positivos, +10 negativos,
+manifesto `manifesto-20261030-2052.json` no Blob e VM deallocated. A VM de
+887 MB ganhou **swap de 2 GB**; o preparador usa 20/20 por padrão e o
+`GDAL_CACHEMAX` é inteiro. O timer local `preparador-cavas.timer`
+(`OnBootSec=2min`) foi descoberto e desabilitado. O workflow segue
+`disabled_manually`; o `schedule` continua comentado.
+
 ## Origem
 
 Blocos movidos de [PLANO-GLOBO-CAVAS-MINERACAO.md](/docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md)
