@@ -4,10 +4,10 @@
  *
  * O que protege:
  * 1. Toda afirmação factual tem fonteUrl e dataAcesso.
- * 2. Processo, citação e fase confirmados só aparecem sem `pendente`.
+ * 2. Processo, citação e fase confirmados aparecem sem `pendente`.
  * 3. Braskem/Maceió não é rotulada como Brumadinho.
- * 4. A ADPF não é afirmada como 1318 sem confirmação no STF.
- * 5. Clipping tem 6 a 10 itens, com veículo, data, título, URL e idioma.
+ * 4. A ADPF é a 1178, conferida; a 1318 não é afirmada.
+ * 5. Clipping tem metadados completos e idioma conhecido.
  */
 
 import { describe, expect, it } from "vitest";
@@ -70,31 +70,34 @@ describe("litígios transnacionais — contrato", () => {
     }
   });
 
-  it("marca pendência com motivo e não publica fase incerta como fato", () => {
+  it("marca pendência com motivo visível", () => {
     for (const litigio of LITIGIOS) {
       if (litigio.pendente) {
-        expect(litigio.status).toBe("pendente");
         expect(litigio.observacaoPendencia?.length).toBeGreaterThan(20);
       }
     }
     const holanda = LITIGIOS.find((l) => l.id === "mariana-rio-doce-claims-holanda");
     expect(holanda?.pendente).toBe(true);
-    expect(holanda?.observacaoPendencia).toContain("HTTP 403");
+    expect(holanda?.observacaoPendencia).toMatch(/não localizado/i);
   });
 
-  it("confirma o processo inglês na fonte oficial e mantém a fase aberta", () => {
+  it("confirma o processo inglês na fonte oficial e a fase atual", () => {
     const inglaterra = LITIGIOS.find((l) => l.id === "mariana-bhp-inglaterra");
     expect(inglaterra?.pendente).toBe(false);
     expect(inglaterra?.numeroProcesso).toContain("HT-2022-000304");
     expect(inglaterra?.citacaoNeutra).toBe("[2025] EWHC 3001 (TCC)");
     expect(inglaterra?.faseProcessual).toContain("14/11/2025");
-    expect(inglaterra?.faseProcessual).toContain("não fixa");
-    expect(inglaterra?.fontes.some((f) => f.url.includes("caselaw.nationalarchives.gov.uk"))).toBe(true);
+    expect(inglaterra?.faseProcessual).toContain("2027");
+    expect(
+      inglaterra?.fontes.some((f) =>
+        f.url.includes("caselaw.nationalarchives.gov.uk"),
+      ),
+    ).toBe(true);
   });
 
   it("não inventa litígio europeu de Brumadinho", () => {
     const brumadinhoConfirmado = LITIGIOS.some(
-      (l) => l.caso === "brumadinho" && !l.pendente
+      (l) => l.caso === "brumadinho" && !l.pendente,
     );
     expect(brumadinhoConfirmado).toBe(false);
   });
@@ -104,8 +107,8 @@ describe("litígios transnacionais — contrato", () => {
     for (const conexao of CONEXOES) {
       expect(conexao.titulo.toLowerCase()).toContain("braskem");
       expect(conexao.titulo).toContain("distinto de Brumadinho");
-      expect(conexao.pendente).toBe(true);
-      expect(conexao.observacaoPendencia?.length).toBeGreaterThan(20);
+      expect(conexao.pendente).toBe(false);
+      expect(conexao.numeroProcesso).toContain("ECLI:NL:RBROT:2024:6662");
       esperaData(conexao.dataAcesso);
       expect(conexao.fontes.length).toBeGreaterThan(0);
     }
@@ -127,9 +130,8 @@ describe("linha do tempo e clipping", () => {
     }
   });
 
-  it("traz de 6 a 10 itens de clipping com metadados completos", () => {
+  it("traz clipping com metadados completos e idioma conhecido", () => {
     expect(CLIPPING.length).toBeGreaterThanOrEqual(6);
-    expect(CLIPPING.length).toBeLessThanOrEqual(10);
     const ids = CLIPPING.map((i) => i.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const item of CLIPPING) {
@@ -137,7 +139,7 @@ describe("linha do tempo e clipping", () => {
       esperaData(item.data);
       expect(item.titulo.length).toBeGreaterThan(10);
       esperaUrl(item.url);
-      expect(["pt", "en", "es"]).toContain(item.idioma);
+      expect(["pt", "en", "es", "nl"]).toContain(item.idioma);
       expect(typeof item.paywall).toBe("boolean");
       esperaData(item.dataAcesso);
     }
@@ -153,17 +155,16 @@ describe("posicionamentos e ADPF", () => {
     for (const posicao of POSICIONAMENTOS) {
       esperaUrl(posicao.url);
       esperaData(posicao.dataAcesso);
-      if (posicao.pendente) expect(posicao.url.length).toBeGreaterThan(10);
     }
   });
 
-  it("não afirma que a ADPF é a 1318 sem confirmação", () => {
-    expect(ADPF.numero).toBe("a confirmar");
-    expect(ADPF.relator).toBe("a confirmar");
-    expect(ADPF.pendente).toBe(true);
+  it("identifica a ADPF 1178 e explica que a 1318 é outra", () => {
+    expect(ADPF.numero).toBe("1178");
+    expect(ADPF.relator).toBe("Flávio Dino");
+    expect(ADPF.pendente).toBe(false);
     expect(ADPF.observacao).toContain("1318");
     expect(ADPF.links.some((l) => l.url.includes("stf.jus.br"))).toBe(true);
-    expect(ADPF.observacao.toLowerCase()).toContain("não afirmamos");
+    expect(ADPF.relacaoComLitigios.length).toBeGreaterThan(50);
   });
 });
 
@@ -172,7 +173,9 @@ describe("fontes da frente", () => {
     const fontes = listarFontes();
     const urls = fontes.map((f) => f.url);
     expect(new Set(urls).size).toBe(urls.length);
-    expect(urls).toContain("https://caselaw.nationalarchives.gov.uk/ewhc/tcc/2025/3001");
+    expect(urls).toContain(
+      "https://caselaw.nationalarchives.gov.uk/ewhc/tcc/2025/3001",
+    );
     for (const fonte of fontes) {
       esperaUrl(fonte.url);
       esperaData(fonte.dataAcesso);

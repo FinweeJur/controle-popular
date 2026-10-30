@@ -1,10 +1,10 @@
 /**
  * Bloco da ADPF no STF.
  *
- * O número 1318 NÃO é afirmado: fica "a confirmar" até a consulta oficial.
- * O bloco existe para separar o que é controle de constitucionalidade no
- * Brasil do que são as ações civis na Inglaterra e na Holanda — uma coisa
- * não substitui a outra.
+ * A ADPF é a 1178, conferida em notícia oficial do STF. A 1318 é outra ação
+ * (dívida rural) e não é citada como esta. O bloco separa o controle de
+ * constitucionalidade no Brasil das ações civis na Inglaterra e na Holanda —
+ * uma coisa não substitui a outra.
  */
 import type { Adpf } from "@/lib/europa-litigios";
 import { formatarDataBR } from "@/lib/fontes/dataDoArquivo";
