@@ -56,7 +56,7 @@ on:
       limite:
         description: "Limite por classe (positivos e negativos)"
         required: false
-        default: "500"
+        default: "20"
 
 permissions:
   id-token: write
@@ -161,7 +161,7 @@ jobs:
       # canal de diagnostico ficar livre DURANTE a coleta.
       - name: Disparar o preparador (destacado na VM)
         run: |
-          LIM="${{ github.event.inputs.limite || '500' }}"
+          LIM="${{ github.event.inputs.limite || '20' }}"
           B64=$(printf '%s' '${{ steps.sas.outputs.sas }}' | base64 -w0)
           CMD="curl -fsSL --connect-timeout 15 --max-time 120 https://raw.githubusercontent.com/FinweeJur/controle-popular/main/scripts/etl/cavas/preparador-cavas.sh -o /tmp/prep.sh && BLOB_SAS=\$(printf '%s' '$B64' | base64 -d) && systemd-run --no-block --collect --unit=preparador-cavas-\$(date +%s) --property=StandardOutput=append:/var/log/preparador-cavas.log --property=StandardError=append:/var/log/preparador-cavas.log --setenv=BLOB_ACCOUNT=$BLOB_ACCOUNT --setenv=BLOB_CONTAINER=$BLOB_CONTAINER --setenv=\"BLOB_SAS=\$BLOB_SAS\" --setenv=LIM_POS=$LIM --setenv=LIM_NEG=$LIM /bin/bash /tmp/prep.sh && echo preparador_iniciado"
           timeout 300 az vm run-command invoke -g "$GRUPO" -n "$VM" \

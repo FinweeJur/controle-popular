@@ -340,7 +340,11 @@ _DATASETS: dict = {}  # cache de handles abertos (reaproveita por cena; cap 9)
 _ENV = {"GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
         "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif",
         "GDAL_HTTP_HEADERS": f"User-Agent={UA}",
-        "GDAL_HTTP_TIMEOUT": "120"}
+        "GDAL_HTTP_TIMEOUT": "120",
+        # VM de 1 GiB: cache global do GDAL e cache do /vsicurl precisam de
+        # teto. Sem isso o rasterio acumula blocos e o python3 e morto (Killed).
+        "GDAL_CACHEMAX": "64",
+        "CPL_VSIL_CURL_CACHE_SIZE": "33554432"}
 
 
 def _abrir(href: str):
