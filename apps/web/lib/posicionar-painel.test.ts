@@ -9,6 +9,7 @@ import {
   MARGEM_PAINEL,
   posicionarPainel,
 } from "./posicionar-painel";
+import { guardarRolagemDescendentes } from "./painel-rolagem";
 
 const VISAO = { larg: 1000, alt: 800 };
 
@@ -122,6 +123,29 @@ describe("posicionarPainel", () => {
       expect(r.y).toBeGreaterThanOrEqual(NAVBAR);
       expect(r.y + r.altura).toBeLessThanOrEqual(visao.alt - MARGEM_PAINEL);
     });
+  });
+});
+
+/**
+ * Regressão do índice do rádio (dono, 29/10/2026): medir a altura natural do
+ * painel zera a rolagem da LISTA filha. O helper tem de devolver a posição dos
+ * descendentes roláveis e não mexer no que já estava no topo.
+ */
+describe("guardarRolagemDescendentes", () => {
+  it("restaura o scrollTop dos descendentes que rolaram", () => {
+    const lista = { scrollTop: 120 };
+    const topo = { scrollTop: 0 };
+    const raiz = {
+      querySelectorAll: () => [lista, topo],
+    } as unknown as HTMLElement;
+
+    const restaurar = guardarRolagemDescendentes(raiz);
+    lista.scrollTop = 0; // simula a batida sem teto, que zera a lista
+    topo.scrollTop = 30; // quem estava no topo não é tocado pelo helper
+    restaurar();
+
+    expect(lista.scrollTop).toBe(120);
+    expect(topo.scrollTop).toBe(30);
   });
 });
 

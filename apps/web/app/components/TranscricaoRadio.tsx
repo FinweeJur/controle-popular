@@ -3,6 +3,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, Pause, Play, Square, TriangleAlert } from "lucide-react";
 import type { EstacaoRadio } from "@/lib/radio/estacoes";
+import {
+  OPCOES_INFERENCIA,
+  carregarModelo,
+  criarCaptura,
+  liberarTranscritor,
+  limparTexto,
+  normalizar,
+  prepararAudio,
+  type CapturaAudio,
+  type Transcritor,
+} from "@/lib/radio/transcricao";
 
 /**
  * Bolha de transcrição ao vivo — 100% no navegador, sem API de IA.
@@ -21,38 +32,29 @@ import type { EstacaoRadio } from "@/lib/radio/estacoes";
  *    devolve o texto. Nada de áudio sai do aparelho.
  *
  * Decisões e limites, declarados:
- * - a biblioteca e o modelo são baixados na primeira vez (~dezenas de MB) — por
- *   isso a transcrição só começa no clique, nunca automática;
- * - é transcrição de máquina: erra, e por isso a bolha traz o selo "gerado por
- *   máquina" (regra do AGENTS § 7);
+ * - a biblioteca e o modelo são baixados na primeira vez (~250 MB) — por isso a
+ *   transcrição só começa no clique, nunca automática;
+ * - o idioma é FORÇADO para português em cada chamada (`language`/`task` vão nas
+ *   opções de inferência, não na criação do pipeline). Antes iam só no
+ *   construtor, onde o `transformers.js` os ignora: o Whisper autodetectava e
+ *   devolvia inglês em música e fala em português (medido 29/10/2026);
+ * - blocos de 12 s (antes 6 s): janela curta corta palavra e aumenta a
+ *   alucinação; o áudio também é normalizado por pico antes de ir ao modelo;
+ * - é transcrição de FALA, não de letra de música. Música rende pouco e o selo
+ *   "gerado por máquina" existe para isso (regra do AGENTS § 7);
  * - a bolha sobe sozinha; quem rola para trás pausa o acompanhamento e ganha o
  *   botão "voltar ao vivo".
+ *
+ * A parte de áudio/modelo mora em `lib/radio/transcricao.ts` desde 29/10/2026,
+ * quando o CodeScene passou a cobrar a complexidade média deste arquivo.
  */
 
-/** Biblioteca de inferência local (sem chave, sem servidor). O `+esm` do
- * jsDelivr entrega o pacote já no formato de módulo que o navegador importa. */
-const TRANSFORMERS_CDN =
-  "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1/+esm";
-
-/** Modelo multilíngue leve; roda em CPU. */
-const MODELO_WHISPER = "Xenova/whisper-base";
-
-/** Taxa de amostragem que o Whisper exige. */
-const TAXA_WHISPER = 16000;
-
-/** Segundos por bloco enviado ao modelo. */
-const SEGUNDOS_BLOCO = 6;
+/** Blocos enfileirados acima disto são descartados (o mais antigo sai): sem o
+ * teto, uma máquina lenta acumula minutos de atraso e a "transcrição ao vivo"
+ * vira passado. */
+const MAX_FILA = 2;
 
 type Status = "inativo" | "carregando-modelo" | "ouvindo" | "erro";
-
-/** Assinatura mínima do `transformers.js` que a bolha usa. */
-interface ModuloTransformers {
-  pipeline: (
-    tarefa: string,
-    modelo: string,
-    opcoes?: Record<string, unknown>,
-  ) => Promise<(audio: Float32Array) => Promise<{ text: string }>>;
-}
 
 interface Trecho {
   id: number;
@@ -61,18 +63,6 @@ interface Trecho {
 
 export interface TranscricaoRadioProps {
   estacao: EstacaoRadio;
-}
-
-/** Concatena blocos de Float32 num único Float32Array. */
-function concatenar(blocos: Float32Array[]): Float32Array {
-  const total = blocos.reduce((acc, b) => acc + b.length, 0);
-  const saida = new Float32Array(total);
-  let pos = 0;
-  for (const b of blocos) {
-    saida.set(b, pos);
-    pos += b.length;
-  }
-  return saida;
 }
 
 export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
@@ -84,16 +74,14 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const hlsRef = useRef<{ destroy: () => void } | null>(null);
-  const ctxRef = useRef<AudioContext | null>(null);
-  const processorRef = useRef<ScriptProcessorNode | null>(null);
-  const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
-  const ganhoRef = useRef<GainNode | null>(null);
-  // Acumuladores da captura e da fila de inferência.
-  const bufferRef = useRef<Float32Array[]>([]);
-  const amostrasRef = useRef(0);
+  const capturaRef = useRef<CapturaAudio | null>(null);
+  // Fila de inferência.
   const filaRef = useRef<Float32Array[]>([]);
   const processandoRef = useRef(false);
-  const transcriberRef = useRef<((audio: Float32Array) => Promise<{ text: string }>) | null>(null);
+  const transcriberRef = useRef<Transcritor | null>(null);
+  // Token da sessão: um `ligar` em andamento não pode "ressuscitar" depois de
+  // um `parar` (o modelo leva dezenas de segundos para baixar).
+  const sessaoRef = useRef(0);
   const contadorRef = useRef(0);
   const seguirRef = useRef(true);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
@@ -108,11 +96,14 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
     const transcriber = transcriberRef.current;
     if (!transcriber) return;
     try {
-      const saida = await transcriber(bloco);
-      const texto = (saida?.text ?? "").trim();
+      const saida = await transcriber(normalizar(bloco), OPCOES_INFERENCIA);
+      const texto = limparTexto(saida?.text ?? "");
       if (texto.length > 2) {
         contadorRef.current += 1;
         setTrechos((atual) => {
+          // Repetição exata em sequência é alucinação clássica do Whisper
+          // (principalmente em música); não entra duas vezes.
+          if (atual.length > 0 && atual[atual.length - 1].texto === texto) return atual;
           const novo = [...atual, { id: contadorRef.current, texto }];
           // Limita a memória: guarda os últimos 80 trechos.
           return novo.length > 80 ? novo.slice(-80) : novo;
@@ -136,26 +127,28 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
 
   /** Para a captura e libera os recursos de áudio. */
   const parar = useCallback(() => {
+    // Invalida qualquer `ligar` em voo (modelo baixando) antes de fechar.
+    sessaoRef.current += 1;
     if (hlsRef.current) {
       hlsRef.current.destroy();
       hlsRef.current = null;
     }
-    processorRef.current?.disconnect();
-    sourceRef.current?.disconnect();
-    ganhoRef.current?.disconnect();
-    processorRef.current = null;
-    sourceRef.current = null;
-    ganhoRef.current = null;
-    const ctx = ctxRef.current;
-    ctxRef.current = null;
-    if (ctx && ctx.state !== "closed") void ctx.close();
+    const captura = capturaRef.current;
+    capturaRef.current = null;
+    captura?.processor.disconnect();
+    captura?.source.disconnect();
+    captura?.ganho.disconnect();
+    if (captura && captura.ctx.state !== "closed") void captura.ctx.close();
+    // Libera o modelo: sem isto, trocar de estação alocava outro Whisper
+    // (centenas de MB) sem soltar o anterior.
+    const transcriber = transcriberRef.current;
+    transcriberRef.current = null;
+    liberarTranscritor(transcriber);
     const audio = audioRef.current;
     if (audio) {
       audio.pause();
       audio.src = "";
     }
-    bufferRef.current = [];
-    amostrasRef.current = 0;
     filaRef.current = [];
     setStatus("inativo");
   }, []);
@@ -164,81 +157,32 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
   const ligar = useCallback(async () => {
     setErro(null);
     setAberta(true);
+    setTrechos([]); // sessão nova não mistura o texto da anterior
     setStatus("carregando-modelo");
+    const sessao = ++sessaoRef.current;
     try {
-      // 1. Áudio oculto próprio (não soma som: não é ligado ao destino).
-      const audio = new Audio();
-      audio.crossOrigin = "anonymous";
-      audio.preload = "auto";
+      const audio = await prepararAudio(estacao, hlsRef);
       audioRef.current = audio;
-
-      // As federais são HLS (`.m3u8`): o Chrome não toca nativo. Aqui também
-      // vale o `hls.js`, senão não haveria áudio para capturar no Chrome.
-      const suporteHlsNativo =
-        audio.canPlayType("application/vnd.apple.mpegurl") !== "";
-      if (estacao.formato === "hls" && !suporteHlsNativo) {
-        const { default: Hls } = await import("hls.js");
-        if (Hls.isSupported()) {
-          const hls = new Hls({ enableWorker: false });
-          hlsRef.current = hls;
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            void audio.play().catch(() => {});
-          });
-          hls.loadSource(estacao.stream);
-          hls.attachMedia(audio);
-        } else {
-          audio.src = estacao.stream;
-        }
-      } else {
-        audio.src = estacao.stream;
+      if (sessao !== sessaoRef.current) {
+        parar();
+        return;
       }
-      await audio.play().catch(() => {
-        // No HLS o manifesto ainda pode não ter chegado; o listener acima
-        // dispara o play. Nos demais formatos, falha é falha.
-        if (estacao.formato !== "hls") {
-          throw new Error("Não foi possível abrir o áudio desta estação.");
-        }
+
+      const captura = await criarCaptura(audio, (bloco) => {
+        // Teto da fila: descarta o bloco mais antigo quando a máquina não
+        // acompanha, para o texto não ficar minutos atrás do áudio.
+        if (filaRef.current.length >= MAX_FILA) filaRef.current.shift();
+        filaRef.current.push(bloco);
+        void drenarFila();
       });
+      capturaRef.current = captura;
 
-      // 2. Grafo em 16 kHz: fonte → processador → ganho 0 → destino.
-      const ctx = new AudioContext({ sampleRate: TAXA_WHISPER });
-      await ctx.resume();
-      ctxRef.current = ctx;
-      const source = ctx.createMediaElementSource(audio);
-      sourceRef.current = source;
-      const processor = ctx.createScriptProcessor(8192, 1, 1);
-      processorRef.current = processor;
-      const ganho = ctx.createGain();
-      ganho.gain.value = 0; // silêncio: só captura.
-      ganhoRef.current = ganho;
-
-      const alvo = TAXA_WHISPER * SEGUNDOS_BLOCO;
-      processor.onaudioprocess = (ev) => {
-        const dados = ev.inputBuffer.getChannelData(0);
-        bufferRef.current.push(new Float32Array(dados));
-        amostrasRef.current += dados.length;
-        if (amostrasRef.current >= alvo) {
-          const bloco = concatenar(bufferRef.current);
-          bufferRef.current = [];
-          amostrasRef.current = 0;
-          filaRef.current.push(bloco);
-          void drenarFila();
-        }
-      };
-      source.connect(processor);
-      processor.connect(ganho);
-      ganho.connect(ctx.destination);
-
-      // 3. Modelo local (baixado na primeira vez).
-      // Import remoto em runtime: fica FORA do bundle do Next (`webpackIgnore`).
-      const mod = (await import(
-        /* webpackIgnore: true */ TRANSFORMERS_CDN
-      )) as unknown as ModuloTransformers;
-      const transcriber = await mod.pipeline(
-        "automatic-speech-recognition",
-        MODELO_WHISPER,
-        { language: "portuguese", task: "transcribe" },
-      );
+      const transcriber = await carregarModelo();
+      if (sessao !== sessaoRef.current) {
+        liberarTranscritor(transcriber);
+        parar();
+        return;
+      }
       transcriberRef.current = transcriber;
       setStatus("ouvindo");
     } catch (e) {
@@ -328,7 +272,8 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
             <p className="px-1 py-2 text-xs leading-relaxed text-text-soft">
               Ligue para ver o texto do que a rádio fala. A conversão roda no seu
               aparelho, sem enviar o áudio para fora — a primeira vez baixa o
-              modelo (algumas dezenas de MB).
+              modelo (cerca de 250 MB). É transcrição de fala: música pode sair
+              imprecisa.
             </p>
           )}
           {status === "erro" && (

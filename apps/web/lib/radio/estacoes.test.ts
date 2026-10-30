@@ -100,15 +100,25 @@ describe("acervo de estações de rádio", () => {
     }
   });
 
-  it("transcrição só é oferecida em estação federal (CORS medido)", () => {
+  it("transcrição só é oferecida onde o stream foi medido com CORS", () => {
+    // A lista de estações sem CORS é curta e conhecida (medição de
+    // 2026-10-29). Se alguém marcar uma delas por engano, este teste avisa.
+    const semCors = new Set([
+      "radio-ufmg-educativa",
+      "radio-usp",
+      "radio-ufv",
+      "radio-ufabc",
+      "fm-la-tribu",
+      "radio-alhara",
+    ]);
     for (const e of ESTACOES) {
-      if (e.transcrevivel) expect(e.tipo, e.id).toBe("federal");
+      expect(e.transcrevivel, e.id).toBe(!semCors.has(e.id));
     }
   });
 
-  it("toda estação transcrevível usa HLS (federais EBC/Câmara/Senado)", () => {
+  it("toda estação transcrevível usa formato que o Web Audio consegue capturar", () => {
     for (const e of ESTACOES) {
-      if (e.transcrevivel) expect(e.formato, e.id).toBe("hls");
+      if (e.transcrevivel) expect(["mp3", "aac", "ogg", "hls"], e.id).toContain(e.formato);
     }
   });
 });

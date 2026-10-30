@@ -104,11 +104,12 @@ export default function PaginaRadio() {
           para que toquem também no Chrome e no Firefox — no Safari já tocam nativos.
         </p>
         <p className="mt-3 rounded-xl bg-surface p-3">
-          <strong>Sobre a transcrição ao vivo:</strong> só as federais de fala são
-          transcritas, e no <em>próprio navegador</em> (modelo Whisper local, sem enviar o
-          áudio para fora). Isso exige que o stream envie CORS — as federais enviam; as
-          demais não, por isso a transcrição não é oferecida nelas. A transcrição é de
-          máquina: pode errar, e por isso vem marcada como tal.
+          <strong>Sobre a transcrição ao vivo:</strong> a transcrição roda no{" "}
+          <em>próprio navegador</em> (modelo Whisper local, sem enviar o áudio para fora)
+          nas estações cujo stream libera CORS — 46 das 52 na medição de 29/10/2026,
+          inclusive as universitárias. Onde o servidor não libera, o botão não aparece.
+          Português é o idioma forçado. É transcrição de máquina e de <em>fala</em>:
+          música rende pouco, e por isso a bolha vem marcada como “gerado por máquina”.
         </p>
         <p className="mt-3 text-text-soft">
           Registro da coleta e das fontes:{" "}

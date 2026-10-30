@@ -24,10 +24,15 @@
  *   `hls` (`.m3u8`) só toca nativo em Safari — no resto exige a biblioteca
  *   `hls.js`, carregada sob demanda (ver `PlayerRadio.tsx`). Por isso o campo
  *   é explícito e a página avisa a limitação.
- * - `transcrevivel`: só as federais de fala entram. A transcrição local
- *   (Whisper no navegador, sem API) exige CORS no stream — medido: as
- *   federais EBC/Câmara/Senado enviam `Access-Control-Allow-Origin`, as
- *   demais não. Sem CORS, o Web Audio entrega silêncio: melhor não oferecer.
+ * - `transcrevivel`: a transcrição local (Whisper no navegador, sem API) exige
+ *   CORS no stream. O Web Audio entrega SILÊNCIO quando o servidor não manda
+ *   `Access-Control-Allow-Origin` — por isso a flag só fica `true` onde o
+ *   cabeçalho foi medido. Remedido em 2026-10-29 (requisição com `Origin` do
+ *   portal): 46 das 52 estações liberam, inclusive as universitárias via
+ *   radio.garden. Ficaram de fora UFMG, USP, UFV, UFABC, FM La Tribu e a
+ *   Alhara (sem CORS; a Alhara também devolveu 404 na medição). A flag não
+ *   promete qualidade de LETRA: Whisper é transcrição de fala e música rende
+ *   pouco.
  * - A frequência e o país vêm da própria fonte; `verificadoEm` é a data da
  *   conferência. Mudou um stream? Remeça e atualize a data.
  *
@@ -119,7 +124,7 @@ export interface EstacaoRadio {
   logo?: string;
   /** Agregador de referência por onde a estação foi localizada. */
   fonteAgregador: string;
-  /** `true` se o stream aceita CORS e a estação fala (permite transcrição). */
+  /** `true` se o stream responde CORS (medido em 2026-10-29) e permite transcrever. */
   transcrevivel: boolean;
   /** Data (AAAA-MM-DD) em que stream e fonte foram conferidos. */
   verificadoEm: string;
@@ -349,7 +354,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.ufrj.br/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -391,7 +396,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.garden/listen/radio-universitaria-99-7-fm-ufvjm/NBaC2vIa",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -410,7 +415,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.garden/listen/radio-ufop-103-5-fm/Wze7tSY1",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -448,7 +453,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://www.ufu.br/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -467,7 +472,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.ufes.br/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -485,7 +490,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.ufg.br/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -503,7 +508,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.ufal.br/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -522,7 +527,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/radio-universitaria-fm-107-9/CB-dhyZV",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -541,7 +546,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/radio-universitaria-ufd-par/5P4kx2Bu",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -560,7 +565,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/universidade-fm-105-1/QQmPYkiU",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -579,7 +584,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/radio-universidade-am-1160/mycJhvB2",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -597,7 +602,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.garden/listen/radio-educativa-ufms/vJV74IgR",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -616,7 +621,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "ogg",
     site: "https://radio.garden/listen/radio-ufs-car-95-3-fm/d8BXRQos",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -634,7 +639,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/web-radio-ufcg-conecta/UufypBoG",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -652,7 +657,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.garden/listen/radio-pop-goiaba-uff/tTxCph6T",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -671,7 +676,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radio.garden/listen/radio-udesc-fm-100-1/OoNClJ3c",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -708,7 +713,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radio.garden/listen/uel-fm-107-9/Ugy0RBwG",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
 
@@ -731,7 +736,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.autenticafavelafm106-7.com",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -750,7 +755,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     site: "https://www.brasildefato.com.br/",
     logo: "https://www.brasildefato.com.br/favicon.ico",
     fonteAgregador: "radios.com.br",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
 
@@ -771,7 +776,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     site: "https://www.radiorebelde.cu/",
     logo: "https://www.radiorebelde.cu/favicon.ico",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -789,7 +794,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.radionacional.com.ar/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -825,7 +830,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radios.liberaturadio.org/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -843,7 +848,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://www.radioyaravi.com/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -860,7 +865,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://radiocumbiamix.com/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
 
@@ -880,7 +885,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://lmradio.co.mz/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -898,7 +903,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://zeno.fm/radio/timtimol-fm/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -915,7 +920,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://oroko-radio.radiocult.fm/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -933,7 +938,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.helderbergfm.co.za/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -951,7 +956,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://lagosjumpradio.com/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
 
@@ -990,7 +995,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     site: "https://iriefm.net/",
     logo: "https://iriefm.net/favicon.ico",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   // ─── Ampliação de 03/10/2026: Venezuela, Norte/Nordeste e reggae do MA ───
@@ -1013,7 +1018,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radios.feyalegrianoticias.com/puerto-la-cruz/",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1031,7 +1036,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radios.feyalegrianoticias.com/maracaibo-fm/",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1047,7 +1052,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://www.radiofolclorllanero.com/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   // Brasil — duas comunitárias do Norte/Nordeste e o reggae de São Luís (MA).
@@ -1067,7 +1072,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://radiocomunitariagurupa87.minharadio.fm",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1085,7 +1090,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://institutovozpopular.webnode.page",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1107,7 +1112,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "mp3",
     site: "https://portalradiorootsreggae.blogspot.com",
     fonteAgregador: "radio.garden",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1127,7 +1132,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     formato: "aac",
     site: "https://clubepe.fm/",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
   {
@@ -1148,7 +1153,7 @@ export const ESTACOES: readonly EstacaoRadio[] = [
     logo:
       "https://radioaconchego.org/files/2015/03/cropped-cropped-5617042203_961643d1a0_o-180x180.jpg",
     fonteAgregador: "radio-browser.info",
-    transcrevivel: false,
+    transcrevivel: true,
     verificadoEm: RADIO_VERIFICADO_EM,
   },
 ];
