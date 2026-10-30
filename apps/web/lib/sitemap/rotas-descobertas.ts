@@ -146,6 +146,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
   "/direitos-globais",
   "/direitos-globais/america-latina",
+  "/direitos-globais/america-latina/cidh",
   "/documentacao",
   "/documentacao/api-publica",
   "/documentacao/arquitetura",

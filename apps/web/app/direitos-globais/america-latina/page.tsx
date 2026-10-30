@@ -137,6 +137,29 @@ function SubRegioes() {
 }
 
 /**
+ * Atalho para o sistema interamericano (CIDH e Corte IDH).
+ */
+function SistemaInteramericano() {
+  return (
+    <section className="mb-8 rounded-xl border border-border bg-surface p-6">
+      <h2 className="mb-2 text-xl font-bold text-text">
+        Sistema interamericano
+      </h2>
+      <p className="mb-4 text-sm text-text-soft">
+        Quem recomenda é a Comissão (CIDH); quem condena é a Corte IDH. Veja
+        o que a sentença obriga e quais tratados cada país ratificou.
+      </p>
+      <Link
+        href="/direitos-globais/america-latina/cidh"
+        className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90"
+      >
+        Ver CIDH e Corte IDH
+      </Link>
+    </section>
+  );
+}
+
+/**
  * Dispositivos conferidos, um bloco por país.
  *
  * Ordem alfabética para o leitor achar o país sem buscar. Cada bloco mostra
@@ -232,6 +255,8 @@ export default function PaginaAmericaLatina() {
       <FiltrosRegionais />
 
       <SubRegioes />
+
+      <SistemaInteramericano />
 
       <DispositivosConferidos />
 
