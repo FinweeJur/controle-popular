@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { Users, Map, Scale, Globe } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { DISPOSITIVOS } from "@/lib/direitos-globais/dispositivos";
+import { ListaDispositivos } from "./Dispositivos";
 
 /**
  * Card de sub-região para a américa latina.
@@ -23,40 +25,6 @@ function SubRegiaoCard({ title, description, countries, icon }: SubRegiaoCardPro
       <h3 className="mb-2 text-lg font-semibold text-text">{title}</h3>
       <p className="mb-2 text-sm text-text-700">{description}</p>
       <p className="text-xs text-text-soft">{countries} países</p>
-    </div>
-  );
-}
-
-/**
- * Card de país para a américa latina.
- */
-interface PaisCardProps {
-  country: string;
-  idh: string;
-  population: string;
-  area: string;
-  rights: string[];
-}
-
-function PaisCard({ country, idh, population, area, rights }: PaisCardProps) {
-  return (
-    <div className="rounded-lg border border-border bg-surface-2 p-4">
-      <h3 className="mb-3 font-semibold text-text">{country}</h3>
-      <div className="mb-3 space-y-1 text-xs text-text-700">
-        <div>IDH: {idh}</div>
-        <div>População: {population}</div>
-        <div>Área: {area}</div>
-      </div>
-      <div className="flex flex-wrap gap-1">
-        {rights.map((right) => (
-          <span
-            key={right}
-            className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary"
-          >
-            {right}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }
@@ -169,32 +137,32 @@ function SubRegioes() {
 }
 
 /**
- * Direitos por país.
+ * Dispositivos conferidos, um bloco por país.
+ *
+ * Ordem alfabética para o leitor achar o país sem buscar. Cada bloco mostra
+ * a citação e o texto; o texto longo fica atrás de "Ver mais".
  */
-function DireitosPorPais() {
+function DispositivosConferidos() {
+  const paises = [...new Set(DISPOSITIVOS.map((d) => d.pais))].sort((a, b) =>
+    a.localeCompare(b, "pt-BR"),
+  );
   return (
-    <div className="mb-8">
-      <h2 className="mb-6 text-xl font-bold text-text">Direitos por País</h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {[
-          { country: "Brasil", idh: "0.766", population: "213M", area: "8.5M km²", rights: ["Direitos Indígenas", "Direitos Quilombolas", "Direito Ambiental"] },
-          { country: "Argentina", idh: "0.845", population: "45M", area: "2.8M km²", rights: ["Direitos Humanos", "Direito Ambiental", "Direitos das Mulheres"] },
-          { country: "México", idh: "0.774", population: "128M", area: "1.96M km²", rights: ["Direitos Indígenas", "Direitos Humanos", "Direito Ambiental"] },
-          { country: "Colômbia", idh: "0.767", population: "51M", area: "1.14M km²", rights: ["Direitos Indígenas", "Direito Ambiental", "Direitos das Mulheres"] },
-          { country: "Chile", idh: "0.851", population: "19M", area: "0.75M km²", rights: ["Direito Ambiental", "Direitos Humanos", "Direito da Natureza"] },
-          { country: "Peru", idh: "0.777", population: "33M", area: "1.28M km²", rights: ["Direitos Indígenas", "Direito Ambiental", "Direitos Campesinos"] },
-        ].map((item) => (
-          <PaisCard
-            key={item.country}
-            country={item.country}
-            idh={item.idh}
-            population={item.population}
-            area={item.area}
-            rights={item.rights}
+    <section className="mb-8">
+      <h2 className="mb-2 text-xl font-bold text-text">Dispositivos conferidos</h2>
+      <p className="mb-6 text-sm text-text-soft">
+        Nove países com o texto do artigo transcrito e o link da fonte. Os
+        outros onze entram na próxima leva.
+      </p>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {paises.map((pais) => (
+          <ListaDispositivos
+            key={pais}
+            pais={pais}
+            dispositivos={DISPOSITIVOS.filter((d) => d.pais === pais)}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -264,7 +232,7 @@ export default function PaginaAmericaLatina() {
 
       <SubRegioes />
 
-      <DireitosPorPais />
+      <DispositivosConferidos />
 
       <MetricasComparativas />
 

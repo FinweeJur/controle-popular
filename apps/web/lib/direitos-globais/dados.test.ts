@@ -25,6 +25,11 @@ import {
   getPaisesPorContinente,
   getTratadosPorDireito,
 } from "./dados";
+import {
+  DISPOSITIVOS,
+  dispositivosDoPais,
+  paisesComDispositivos,
+} from "./dispositivos";
 import type { NivelProtecao, TipoDireito } from "./tipos";
 
 const NIVEIS: NivelProtecao[] = [
@@ -54,13 +59,17 @@ describe("direitos globais — países", () => {
   it("tem identificador único e campos mínimos", () => {
     const ids = PAISES_AMERICA_LATINA.map((p) => p.id);
     expect(new Set(ids).size).toBe(ids.length);
+    expect(PAISES_AMERICA_LATINA).toHaveLength(20);
     for (const p of PAISES_AMERICA_LATINA) {
       expect(p.nome.length).toBeGreaterThan(3);
       expect(p.codigo).toMatch(/^[A-Z]{2}$/);
-      expect(p.populacao).toBeGreaterThan(0);
-      expect(p.area).toBeGreaterThan(0);
-      expect(p.idh).toBeGreaterThan(0);
-      expect(p.idh).toBeLessThanOrEqual(1);
+      // Campo ausente significa "ainda não conferido", nunca zero nem chute.
+      if (p.populacao !== undefined) expect(p.populacao).toBeGreaterThan(0);
+      if (p.area !== undefined) expect(p.area).toBeGreaterThan(0);
+      if (p.idh !== undefined) {
+        expect(p.idh).toBeGreaterThan(0);
+        expect(p.idh).toBeLessThanOrEqual(1);
+      }
       expect(p.dataConstituicao).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(p.fontesJuridicas.length).toBeGreaterThan(0);
       expect(p.continente).toBe("america-latina");
@@ -124,5 +133,54 @@ describe("direitos globais — formatação", () => {
     expect(formatarArea(8514877)).toBe("8.5M km²");
     expect(formatarArea(756102)).toBe("756.1k km²");
     expect(formatarArea(500)).toBe("500 km²");
+  });
+});
+
+describe("direitos globais — dispositivos conferidos", () => {
+  const nomes = new Set(PAISES_AMERICA_LATINA.map((p) => p.nome));
+
+  it("tem 27 dispositivos nos 9 países da leva", () => {
+    expect(DISPOSITIVOS).toHaveLength(27);
+    expect(paisesComDispositivos()).toHaveLength(9);
+  });
+
+  it("cada dispositivo aponta para país e direito existentes", () => {
+    for (const d of DISPOSITIVOS) {
+      expect(nomes.has(d.pais)).toBe(true);
+      expect(TIPOS).toContain(d.tipo);
+    }
+  });
+
+  it("cada dispositivo tem citação, texto integral e fonte navegável", () => {
+    for (const d of DISPOSITIVOS) {
+      expect(d.citacao).toMatch(/^(Artículo|ARTÍCULO|Artigo|Lei)\b/);
+      expect(d.titulo.length).toBeGreaterThan(2);
+      expect(d.texto.length).toBeGreaterThan(80);
+      expect(d.texto).not.toMatch(/\[\.{3}\]|…\s*$/);
+      expect(d.fonte.length).toBeGreaterThan(3);
+      expect(d.url).toMatch(/^https:\/\//);
+      expect(new URL(d.url).hostname).toBe("www.constituteproject.org");
+      expect(d.dataAcesso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(["es", "fr", "pt"]).toContain(d.idiomaOriginal);
+    }
+  });
+
+  it("haiti avisa que o texto exibido é tradução", () => {
+    for (const d of dispositivosDoPais("Haiti")) {
+      expect(d.idiomaOriginal).toBe("fr");
+      expect(d.traducao).toMatch(/tradu|espanhol/i);
+    }
+  });
+
+  it("filtra por país sem vazar dispositivo de outro", () => {
+    const gt = dispositivosDoPais("Guatemala");
+    expect(gt).toHaveLength(3);
+    expect(gt.every((d) => d.pais === "Guatemala")).toBe(true);
+    expect(dispositivosDoPais("Brasil")).toHaveLength(0);
+  });
+
+  it("não repete a mesma citação no mesmo país", () => {
+    const chaves = DISPOSITIVOS.map((d) => `${d.pais}|${d.citacao}`);
+    expect(new Set(chaves).size).toBe(chaves.length);
   });
 });

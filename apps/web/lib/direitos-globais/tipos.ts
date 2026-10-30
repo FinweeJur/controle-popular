@@ -40,13 +40,39 @@ export interface Pais {
   capital: string;
   idiomasOficiais: string[];
   moeda: string;
-  populacao: number;
-  area: number; // km²
-  idh: number;
-  pibPerCapita: number;
+  /**
+   * Campos demográficos e econômicos são opcionais de propósito.
+   * País sem número conferido fica sem o campo, e a tela mostra "em coleta".
+   * Número inventado em portal de transparência é dano, não enfeite.
+   */
+  populacao?: number;
+  area?: number; // km²
+  idh?: number;
+  pibPerCapita?: number;
+  dadosAno?: number;
   regimePolitico: RegimePolitico;
   dataConstituicao: string;
   fontesJuridicas: FonteJuridica[];
+}
+
+/**
+ * Dispositivo legal concreto: o artigo, o texto e o link da fonte.
+ *
+ * Regra editorial: `texto` é transcrição fiel do dispositivo, sem resumo.
+ * Se o original não for em português, `idiomaOriginal` e `traducao` dizem
+ * de onde veio o texto que o leitor está vendo.
+ */
+export interface Dispositivo {
+  pais: string;
+  tipo: TipoDireito;
+  citacao: string; // "Artículo 97" / "ARTÍCULO 40" / "Lei nº 12.651, art. 1º"
+  titulo: string;
+  texto: string;
+  fonte: string; // nome da fonte, ex.: "Constitute Project"
+  url: string;
+  dataAcesso: string; // ISO 8601
+  idiomaOriginal?: string; // "es", "fr", "pt"
+  traducao?: string; // observação quando o texto exibido é tradução
 }
 
 // Interface para direito específico

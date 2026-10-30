@@ -204,6 +204,126 @@ export const PAISES_AMERICA_LATINA: Pais[] = [
     regimePolitico: "autoritario",
     dataConstituicao: "1999-12-30",
     fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  // ── América Central e Caribe ───────────────────────────────────────────────
+  // Sem população, área e IDH de propósito: esses números ainda não foram
+  // conferidos numa fonte primária. A tela mostra "em coleta" em vez de chutar.
+  {
+    id: "costa-rica",
+    nome: "Costa Rica",
+    codigo: "CR",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "San José",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Colón",
+    regimePolitico: "democracia",
+    dataConstituicao: "1949-11-07",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "el-salvador",
+    nome: "El Salvador",
+    codigo: "SV",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "San Salvador",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Dólar Americano",
+    regimePolitico: "democracia",
+    dataConstituicao: "1983-12-20",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "guatemala",
+    nome: "Guatemala",
+    codigo: "GT",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "Cidade da Guatemala",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Quetzal",
+    regimePolitico: "democracia",
+    dataConstituicao: "1985-05-31",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "honduras",
+    nome: "Honduras",
+    codigo: "HN",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "Tegucigalpa",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Lempira",
+    regimePolitico: "democracia",
+    dataConstituicao: "1982-01-20",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "nicaragua",
+    nome: "Nicarágua",
+    codigo: "NI",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "Manágua",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Córdoba",
+    regimePolitico: "autoritario",
+    dataConstituicao: "1987-01-09",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "panama",
+    nome: "Panamá",
+    codigo: "PA",
+    continente: "america-latina",
+    subRegiao: "América Central",
+    capital: "Cidade do Panamá",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Balboa",
+    regimePolitico: "democracia",
+    dataConstituicao: "1972-10-11",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "cuba",
+    nome: "Cuba",
+    codigo: "CU",
+    continente: "america-latina",
+    subRegiao: "Caribe",
+    capital: "Havana",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Peso Cubano",
+    regimePolitico: "autoritario",
+    dataConstituicao: "2019-04-10",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "republica-dominicana",
+    nome: "República Dominicana",
+    codigo: "DO",
+    continente: "america-latina",
+    subRegiao: "Caribe",
+    capital: "Santo Domingo",
+    idiomasOficiais: ["Espanhol"],
+    moeda: "Peso Dominicano",
+    regimePolitico: "democracia",
+    dataConstituicao: "2015-06-13",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
+  },
+  {
+    id: "haiti",
+    nome: "Haiti",
+    codigo: "HT",
+    continente: "america-latina",
+    subRegiao: "Caribe",
+    capital: "Porto Príncipe",
+    idiomasOficiais: ["Crioulo Haitiano", "Francês"],
+    moeda: "Gourde",
+    regimePolitico: "hibrido",
+    dataConstituicao: "1987-03-29",
+    fontesJuridicas: ["constituicao", "lei_federal", "jurisprudencia", "tratado_internacional"]
   }
 ];
 
