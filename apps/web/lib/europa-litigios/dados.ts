@@ -636,6 +636,17 @@ export const LINHA_DO_TEMPO: readonly ItemLinhaDoTempo[] = [
     dataAcesso: DATA_ACESSO,
   },
   {
+    id: "brumadinho-2019",
+    data: "2019-01-25",
+    titulo: "Rompimento da barragem de Córrego do Feijão",
+    descricao:
+      "A barragem da mina Córrego do Feijão, em Brumadinho (MG), rompe e mata 272 pessoas.",
+    tipo: "desastre",
+    fonteUrl:
+      "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
+    dataAcesso: DATA_ACESSO,
+  },
+  {
     id: "vedanta-2019",
     data: "2019-04-10",
     titulo: "Vedanta: dever de cuidado da matriz",
@@ -817,6 +828,17 @@ export const LINHA_DO_TEMPO: readonly ItemLinhaDoTempo[] = [
       "A Corte nega permissão para a BHP recorrer das conclusões de responsabilidade.",
     tipo: "decisao",
     fonteUrl: URL_COA_502,
+    dataAcesso: DATA_ACESSO,
+  },
+  {
+    id: "munique-2026",
+    data: "2026-05-26",
+    titulo: "Audiências de Brumadinho em Munique",
+    descricao:
+      "O Tribunal Regional de Munique ouve perito em barragens e especialista em direito brasileiro na ação contra a TÜV SÜD.",
+    tipo: "audiencia",
+    fonteUrl:
+      "https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/",
     dataAcesso: DATA_ACESSO,
   },
   {

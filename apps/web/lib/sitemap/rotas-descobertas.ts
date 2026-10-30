@@ -177,6 +177,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/eua/empresas",
   "/eua/institucional",
   "/europa",
+  "/europa/legislacao-transnacionais",
   "/europa/litigios-transnacionais",
   "/funcaosocialterra",
   "/funcaosocialterra/alertas",

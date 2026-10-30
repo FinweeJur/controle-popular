@@ -105,6 +105,7 @@ export default function PaginaLitigiosTransnacionais() {
 
       <nav aria-label="Outras páginas deste eixo" className="mb-6 flex flex-wrap gap-3 text-sm">
         <Link href="/europa" className="font-medium text-primary hover:underline">Hub Europa</Link>
+        <Link href="/europa/legislacao-transnacionais" className="font-medium text-primary hover:underline">Legislação transnacional</Link>
         <Link href="/riodoce" className="font-medium text-primary hover:underline">Rio Doce</Link>
         <Link href="/paraopeba" className="font-medium text-primary hover:underline">Paraopeba</Link>
       </nav>
