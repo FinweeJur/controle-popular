@@ -16,6 +16,8 @@
  */
 
 import { semAcento, separarPalavras } from "@/lib/busca/normalizar";
+import { INSTITUICOES_MG } from "./dados-mg";
+import { GRUPOS_UFOP } from "./dados-ufop";
 import {
   GRUPOS_UFVJM,
   INSTITUICAO_UFVJM,
@@ -29,9 +31,12 @@ import type {
   Unidade,
 } from "./tipos";
 
-export const INSTITUICOES: Instituicao[] = [INSTITUICAO_UFVJM];
+export const INSTITUICOES: Instituicao[] = [
+  INSTITUICAO_UFVJM,
+  ...INSTITUICOES_MG,
+];
 export const UNIDADES: Unidade[] = [...UNIDADES_UFVJM];
-export const GRUPOS: GrupoPesquisa[] = [...GRUPOS_UFVJM];
+export const GRUPOS: GrupoPesquisa[] = [...GRUPOS_UFVJM, ...GRUPOS_UFOP];
 export const PROJETOS: ProjetoExtensao[] = [...PROJETOS_UFVJM];
 
 /** Filtro comum aos catálogos. Texto vazio não filtra. */
