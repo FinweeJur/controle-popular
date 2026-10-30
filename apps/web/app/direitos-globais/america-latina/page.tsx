@@ -1,31 +1,29 @@
 
 import Link from "next/link";
-import { ArrowRight, Users, Map, Scale, Globe } from "lucide-react";
+import { Users, Map, Scale, Globe } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Card de sub-região para a américa latina.
+ *
+ * Não é link de propósito: a lista completa por sub-região ainda não existe.
+ * Link que leva a 404 é pior que card informativo.
  */
 interface SubRegiaoCardProps {
   title: string;
   description: string;
   countries: number;
   icon: React.ReactNode;
-  href: string;
 }
 
-function SubRegiaoCard({ title, description, countries, icon, href }: SubRegiaoCardProps) {
+function SubRegiaoCard({ title, description, countries, icon }: SubRegiaoCardProps) {
   return (
-    <Link href={href} className="block rounded-xl border border-border bg-surface p-6 transition-all hover:border-primary hover:shadow-md">
+    <div className="rounded-xl border border-border bg-surface p-6">
       <div className="mb-4 text-primary">{icon}</div>
       <h3 className="mb-2 text-lg font-semibold text-text">{title}</h3>
       <p className="mb-2 text-sm text-text-700">{description}</p>
       <p className="text-xs text-text-soft">{countries} países</p>
-      <div className="mt-4 flex items-center text-sm text-primary hover:text-primary/80">
-        <span>Explorar</span>
-        <ArrowRight className="ml-1 h-4 w-4" />
-      </div>
-    </Link>
+    </div>
   );
 }
 
@@ -152,21 +150,18 @@ function SubRegioes() {
           description="12 países do sul do continente"
           countries={12}
           icon={<Map className="h-8 w-8" />}
-          href="/direitos-globais/america-latina/america-do-sul"
         />
         <SubRegiaoCard
           title="América Central"
           description="7 países da América Central"
           countries={7}
           icon={<Scale className="h-8 w-8" />}
-          href="/direitos-globais/america-latina/america-central"
         />
         <SubRegiaoCard
           title="Caribe"
           description="11 países e territórios do Caribe"
           countries={11}
           icon={<Globe className="h-8 w-8" />}
-          href="/direitos-globais/america-latina/caribe"
         />
       </div>
     </div>

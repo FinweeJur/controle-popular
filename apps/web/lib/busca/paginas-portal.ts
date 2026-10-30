@@ -42,6 +42,50 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
       "multinacionais", "acordos",
     ],
   },
+  {
+    id: "direitos-globais",
+    titulo: "Direitos Globais",
+    descricao: "Compare quais direitos existem em cada país a partir de constituição, lei federal, súmula e tratado. Começa pela América Latina.",
+    href: "/direitos-globais",
+    frente: "geral",
+    rotulo: "Direitos · Mundo",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "direitos globais", "comparacao internacional", "paises", "america latina",
+      "constituicao", "lei federal", "sumula", "tratado", "direitos humanos",
+      "direito ambiental", "direito da natureza", "direitos indigenas",
+      "quilombolas", "campesinos", "atingidos por barragens", "mulheres",
+      "criancas", "direitos politicos", "direitos coletivos"
+    ],
+  },
+  {
+    id: "direitos-globais-america-latina",
+    titulo: "Direitos Globais — América Latina",
+    descricao: "Comparação de direitos entre os países da América Latina por sub-região, população, território e nível de proteção.",
+    href: "/direitos-globais/america-latina",
+    frente: "geral",
+    rotulo: "Direitos · América Latina",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "america latina", "brasil", "argentina", "mexico", "colombia", "chile",
+      "peru", "equador", "bolivia", "paraguai", "uruguai", "venezuela",
+      "america do sul", "america central", "caribe", "idh", "populacao"
+    ],
+  },
+  {
+    id: "direitos-comparados",
+    titulo: "Direitos Comparados",
+    descricao: "Compare indicadores de direitos fundamentais entre estados, desenvolvimento humano, saúde, educação, justiça e finanças públicas.",
+    href: "/direitos-comparados",
+    frente: "geral",
+    rotulo: "Direitos · Comparação",
+    badgeCor: "var(--cp-eixo-direitos)",
+    palavrasChave: [
+      "direitos comparados", "comparacao", "indicadores", "idh", "desenvolvimento humano",
+      "educacao", "saude", "justica", "trabalho", "financas publicas", "ibge",
+      "inep", "ms", "cnj", "tse", "eleicoes", "municipios", "estados"
+    ],
+  },
   // ═══ EIXO 1: DIREITOS EM MOVIMENTO ═══
   {
     id: "direitos-geral",
@@ -72,6 +116,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     rotulo: "Educação · IDEB",
     badgeCor: "var(--cp-eixo-direitos)",
     palavrasChave: ["educacao", "escolas", "ideb", "professores", "merenda", "ensino", "creche"],
+  },
+  {
+    id: "universidades",
+    titulo: "Universidades & Grupos de Pesquisa",
+    descricao: "Busca por instituição, estado, área do conhecimento e contato. Dados oficiais de grupos de pesquisa e projetos de extensão.",
+    href: "/universidades",
+    frente: "geral",
+    rotulo: "Universidades",
+    badgeCor: "#8b5cf6",
+    palavrasChave: [
+      "universidades", "grupos de pesquisa", "pesquisa", "extensao", "ensino superior",
+      "pos-graduacao", "mestrado", "doutorado", "capes", "cnpq", "instituicao federal",
+      "uf", "faculdade", "campus", "contato", "area do conhecimento", "grande area"
+    ],
   },
   {
     id: "direitos-trabalho",

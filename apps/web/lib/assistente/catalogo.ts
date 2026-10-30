@@ -199,6 +199,9 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/eua", titulo: "Observatório dos Estados Unidos", termos: ["eua", "estados unidos", "sec", "usaspending"], zona: "cidades" },
   { sufixo: "/canada", titulo: "Observatório do Canadá", termos: ["canada", "tsx", "sedar", "npri"], zona: "cidades" },
   { sufixo: "/laboratorio", titulo: "Laboratório de dados", termos: ["laboratorio", "power bi", "powerbi", "comparador"], zona: "cidades" },
+  { sufixo: "/universidades", titulo: "Universidades", termos: ["universidades", "grupos de pesquisa", "pesquisa", "ensino superior", "mestrado", "doutorado", "capes", "cnpq"], zona: "cidades" },
+  { sufixo: "/direitos-comparados", titulo: "Direitos comparados", termos: ["direitos comparados", "comparar direitos", "comparar estados", "comparar indicadores", "idh"], zona: "cidades" },
+  { sufixo: "/direitos-globais", titulo: "Direitos globais", termos: ["direitos globais", "comparacao internacional", "paises", "constituicao", "tratado", "direito da natureza", "quilombolas", "campesinos", "atingidos por barragens"], zona: "cidades" },
   { sufixo: "/estudos-rurais", titulo: "Estudos rurais", termos: ["estudos rurais", "reforma agraria", "agroecologia"], zona: "terras" },
 ];
 
