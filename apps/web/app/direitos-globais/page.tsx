@@ -221,8 +221,8 @@ export default function PaginaDireitosGlobais() {
         </p>
         <DataColeta
           coletadoEm="2026-10-30"
-          fonte="Bases Oficiais: OEA (oas.org/cidh), Corte IDH, União Africana (au.int) e ONU (ohchr.org)"
-          competencia="América Latina (20), África (54), Ásia e Órgãos de Tratados da ONU"
+          fonte="Bases Oficiais: OEA (oas.org/cidh), Corte IDH, União Africana (au.int), ONU (ohchr.org), Conselho da Europa, Constitute Project e Diários Oficiais"
+          competencia="América Latina (20), África (54), Ásia (48), Europa (44), América do Norte (2), Oceania (14) e Órgãos de Tratados da ONU"
         />
       </header>
 
@@ -231,7 +231,7 @@ export default function PaginaDireitosGlobais() {
       {/* Continentes */}
       <div className="mb-8">
         <h2 className="mb-6 text-xl font-bold text-text">Explorar por Continente e Sistema Internacional</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <ContinenteCard
             title="América Latina"
             href="/direitos-globais/america-latina"
@@ -251,7 +251,28 @@ export default function PaginaDireitosGlobais() {
             href="/direitos-globais/asia"
             countries={48}
             icon={<Users className="h-8 w-8" />}
-            description="Levas 1 a 3, panorama regional e direitos fundamentais"
+            description="Levas 1 a 3, panorama regional, dispositivos e direitos fundamentais"
+          />
+          <ContinenteCard
+            title="Europa"
+            href="/direitos-globais/europa"
+            countries={44}
+            icon={<Shield className="h-8 w-8" />}
+            description="44 países, Leva 1, CSDDD e responsabilização de empresas transnacionais"
+          />
+          <ContinenteCard
+            title="América do Norte"
+            href="/direitos-globais/america-do-norte"
+            countries={2}
+            icon={<Scale className="h-8 w-8" />}
+            description="EUA e Canadá: Bill of Rights, Section 35 e auditoria de lacunas federais"
+          />
+          <ContinenteCard
+            title="Oceania"
+            href="/direitos-globais/oceania"
+            countries={14}
+            icon={<Globe className="h-8 w-8" />}
+            description="14 países, terras consuetudinárias tradicionais e soberania climática"
           />
           <ContinenteCard
             title="Sistema ONU"

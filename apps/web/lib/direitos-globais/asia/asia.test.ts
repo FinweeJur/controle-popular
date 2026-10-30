@@ -12,6 +12,7 @@
 import { describe, expect, it } from "vitest";
 import { PAISES_ASIA, paisesPorLeva } from "./paises";
 import { INSTRUMENTOS_REGIONAIS_ASIA } from "./tratados-regionais";
+import { DISPOSITIVOS_ASIA, getDispositivosAsia } from "./dispositivos";
 
 describe("Frente C — Países da Ásia (Levas e Prioridades)", () => {
   it("contém exatamente os 6 países definidos na Leva 1", () => {
@@ -65,5 +66,33 @@ describe("Frente C — Países da Ásia (Levas e Prioridades)", () => {
     const ausencia = INSTRUMENTOS_REGIONAIS_ASIA.find((i) => i.id === "ausencia-corte-asiatica");
     expect(ausencia).toBeDefined();
     expect(ausencia?.descricao).toContain("Não existe na Ásia um tribunal supranacional");
+  });
+});
+
+describe("Frente C — Dispositivos Constitucionais e Auditoria de Lacunas na Ásia", () => {
+  it("contém dispositivos constitucionais com texto verbatim para a Leva 1", () => {
+    expect(DISPOSITIVOS_ASIA.length).toBeGreaterThanOrEqual(8);
+    const paisesComDisp = new Set(DISPOSITIVOS_ASIA.map((d) => d.pais));
+    expect(paisesComDisp).toContain("Filipinas");
+    expect(paisesComDisp).toContain("Índia");
+    expect(paisesComDisp).toContain("China");
+    expect(paisesComDisp).toContain("Vietnã");
+    expect(paisesComDisp).toContain("Japão");
+    expect(paisesComDisp).toContain("Rússia");
+
+    for (const d of DISPOSITIVOS_ASIA) {
+      expect(d.texto.length).toBeGreaterThan(20);
+      expect(d.citacao).toBeDefined();
+      expect(d.url).toMatch(/^https:\/\//);
+      expect(d.dataAcesso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  it("getDispositivosAsia cobre todos os países da Ásia declarando lacunas", () => {
+    const listaCompleta = getDispositivosAsia();
+    const paisesCobertos = new Set(listaCompleta.map((d) => d.pais));
+    for (const p of PAISES_ASIA) {
+      expect(paisesCobertos).toContain(p.nome);
+    }
   });
 });

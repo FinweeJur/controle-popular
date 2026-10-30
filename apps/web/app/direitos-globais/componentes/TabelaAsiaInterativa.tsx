@@ -171,7 +171,7 @@ function TabelaGradeAsia({ paises, ordenarPor, direcao, onAlternarOrdem }: Tabel
                 <td className="px-3 py-2 font-medium text-text">
                   {p.nome} <span className="font-mono text-text-soft">({p.codigo})</span>
                   {p.notaTranscontinental && (
-                    <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.2 text-[10px] text-primary">
+                    <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.5 text-xs text-primary">
                       Transcontinental
                     </span>
                   )}

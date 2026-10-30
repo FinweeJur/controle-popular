@@ -159,7 +159,7 @@ function CartaoCaso({ caso }: { caso: CasoAfricano }) {
       <p className="mt-3 text-sm text-text-700 leading-relaxed">{caso.resumoOficial}</p>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
-        <span className="rounded bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
+        <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
           Tema: {caso.temaPrincipal}
         </span>
       </div>
