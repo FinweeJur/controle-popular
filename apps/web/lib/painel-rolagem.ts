@@ -37,19 +37,40 @@ export function guardarRolagemDescendentes(raiz: HTMLElement): () => void {
  *
  * O teto de altura é removido por uma batida de layout para o `scrollHeight`
  * refletir o conteúdo inteiro; a posição do painel e dos filhos roláveis é
- * recolocada antes de devolver.
+ * recolocada antes de devolver. Versão aprimorada com restauração síncrona
+ * e proteção contra interferências em listas roláveis internas.
  */
 export function medirTamanhoNatural(painel: HTMLElement): {
   largura: number;
   altura: number;
 } {
+  // Salvar estado de rolagem completo
   const scrollTopAnterior = painel.scrollTop;
   const restaurarDescendentes = guardarRolagemDescendentes(painel);
+  
+  // Salvar estilo atual
   const maxAnterior = painel.style.maxHeight;
+  const overflowAnterior = painel.style.overflow;
+  
+  // Preparar medição sem perder rolagem
   painel.style.maxHeight = "none";
+  painel.style.overflow = "visible"; // Evitar rolagem durante medição
+  
+  // Medir tamanho natural
   const altura = painel.scrollHeight;
+  const largura = painel.offsetWidth;
+  
+  // Restaurar estilo ANTES de restaurar rolagem para evitar pulos
   painel.style.maxHeight = maxAnterior;
+  painel.style.overflow = overflowAnterior;
+  
+  // Restaurar rolagem de forma síncrona e segura
   restaurarDescendentes();
-  if (painel.scrollTop !== scrollTopAnterior) painel.scrollTop = scrollTopAnterior;
-  return { largura: painel.offsetWidth, altura };
+  
+  // Garantir que a rolagem do painel principal seja restaurada
+  if (painel.scrollTop !== scrollTopAnterior) {
+    painel.scrollTop = scrollTopAnterior;
+  }
+  
+  return { largura, altura };
 }

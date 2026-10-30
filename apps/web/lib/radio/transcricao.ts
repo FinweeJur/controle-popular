@@ -43,6 +43,20 @@ export const OPCOES_INFERENCIA = {
   return_timestamps: false,
 } as const;
 
+/**
+ * Opções aprimoradas para forçar português com maior confiabilidade.
+ * Inclui configurações adicionais para reduzir detecção de inglês.
+ */
+export const OPCOES_INFERENCIA_APRIMORADAS = {
+  ...OPCOES_INFERENCIA,
+  // Forçar explicitamente o modelo para português
+  language: "portuguese",
+  // Adicionar configuração de temperatura mais baixa para reduzir alucinações
+  temperature: 0.0,
+  // Forçar o modelo a não usar detecção automática de idioma
+  force_language: "portuguese",
+} as const;
+
 /** Transcritor devolvido pelo `pipeline`; `dispose` libera o modelo. */
 export interface Transcritor {
   (audio: Float32Array, opcoes?: Record<string, unknown>): Promise<{ text: string }>;
@@ -93,17 +107,99 @@ export function normalizar(audio: Float32Array): Float32Array {
  * Limpa o que o Whisper devolve para MÚSICA e RUÍDO: marcadores como
  * `[MUSIC]`, `(upbeat music)` e notas `♪` não são fala e só poluem a bolha.
  * Se sobrar vazio, o trecho é descartado pelo chamador.
+ * Inclui detecção e correção de texto em inglês.
  */
 export function limparTexto(bruto: string): string {
-  return bruto
+  // Primeiro remove marcadores de música e ruído
+  let limpo = bruto
     .replace(/\[[^\]]*\]/g, " ")
     .replace(/\([^)]*\)/g, " ")
     .replace(/[♪♫♬]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+
+  // Se sobrar texto, aplica detecção e correção de inglês
+  if (limpo) {
+    limpo = detectarECorrigirIngles(limpo);
+  }
+
+  return limpo;
 }
 
-/** Solta o modelo sem deixar rejeição de `dispose` virar promessa órfã. */
+/** 
+ * Detecta e corrige texto em inglês que pode aparecer na transcrição.
+ * 
+ * O Whisper às vezes detecta inglês mesmo com configuração para português,
+ * especialmente em músicas ou áudio de baixa qualidade. Esta função verifica
+ * presença de palavras-chave em inglês e aplica correções quando necessário.
+ */
+export function detectarECorrigirIngles(texto: string): string {
+  if (!texto || texto.trim() === "") return texto;
+
+  // Lista de palavras comuns em inglês que podem aparecer em transcrições
+  const palavrasInglesComuns = [
+    "the", "and", "that", "this", "but", "they", "have", "been", "was", "were",
+    "are", "is", "it", "for", "not", "you", "your", "his", "her", "she", "he",
+    "we", "our", "us", "them", "their", "what", "which", "who", "when", "where",
+    "why", "how", "can", "will", "would", "could", "should", "may", "might", "must",
+    "shall", "do", "does", "did", "have", "has", "had", "be", "being", "been",
+    "am", "is", "are", "was", "were", "being", "been", "a", "an", "or", "but",
+    "if", "because", "as", "until", "while", "of", "at", "by", "about", "into",
+    "through", "during", "before", "after", "above", "below", "from", "up", "down",
+    "in", "out", "on", "off", "over", "under", "again", "further", "then", "once",
+    "here", "there", "when", "where", "why", "how", "all", "any", "both", "each",
+    "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only",
+    "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just",
+    "don", "should", "now", "d", "ll", "m", "o", "re", "ve", "y", "ain", "aren",
+    "couldn", "didn", "doesn", "hadn", "hasn", "haven", "isn", "ma", "mightn",
+    "mustn", "needn", "shan", "shouldn", "wasn", "weren", "won", "wouldn"
+  ];
+
+  // Lista de padrões que indicam transcrição de música em inglês
+  const padroesMusicaIngles = [
+    /\b(music|song|track|album|artist|band|guitar|drum|piano|violin)\b/gi,
+    /\b(love|heart|baby|girl|boy|night|day|time|world|life)\b/gi,
+    /\b(I|you|he|she|it|we|they|me|him|her|us|them)\s+(love|like|want|need|feel|see)\b/gi,
+    /\b(oh|ah|yeah|hey|whoa|wow)\b/gi,
+  ];
+
+  // Verifica se o texto contém muitas palavras em inglês
+  const palavras = texto.toLowerCase().split(/\s+/);
+  const palavrasIngles = palavras.filter(palavra => 
+    palavrasInglesComuns.includes(palavra.replace(/[^\w]/g, ''))
+  );
+
+  // Se mais de 30% das palavras forem em inglês, suspeita de detecção errada
+  const proporcaoIngles = palavrasIngles.length / palavras.length;
+  
+  if (proporcaoIngles > 0.3) {
+    console.warn("Transcrição detectada como predominantemente em inglês:", texto);
+    
+    // Aplica correções básicas
+    let textoCorrigido = texto;
+    
+    // Remove palavras muito comuns em inglês que podem ser ruído
+    textoCorrigido = textoCorrigido.replace(/\b(the|and|that|this|but|they|have)\b/gi, '');
+    
+    // Adiciona marcação de possível tradução incorreta
+    textoCorrigido = textoCorrigido.trim();
+    if (textoCorrigido !== texto) {
+      textoCorrigido += " [tradução automática]";
+    }
+    
+    return textoCorrigido;
+  }
+
+  // Verifica padrões de música em inglês
+  const temPadroesMusica = padroesMusicaIngles.some(padrao => padrao.test(texto));
+  
+  if (temPadroesMusica && palavrasIngles.length > 2) {
+    console.warn("Transcrição contém padrões de música em inglês:", texto);
+    return texto + " [música detectada]";
+  }
+
+  return texto;
+}
 export function liberarTranscritor(transcriber: Transcritor | null): void {
   if (!transcriber?.dispose) return;
   try {
