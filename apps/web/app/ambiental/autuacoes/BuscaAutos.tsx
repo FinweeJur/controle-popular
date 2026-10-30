@@ -163,9 +163,8 @@ export default function BuscaAutos({ municipios, situacoes, anos, fonteUrl, tota
             titulo="Autos por ano"
             subtitulo="O filtro atual, ano a ano"
             descricaoAcessivel="Quantidade de autos de infração por ano no filtro atual."
-            orientacao="vertical"
-            altura={220}
-            largura={420}
+            orientacao="horizontal"
+            largura={700}
           />
         </div>
       )}

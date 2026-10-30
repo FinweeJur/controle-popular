@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
@@ -107,7 +106,6 @@ export default function PaginaRecomendacoesJudiciario() {
         <LinksRelacionados links={LINKS_RELACIONADOS} />
       </main>
 
-      <FooterGlobal />
     </div>
   );
 }

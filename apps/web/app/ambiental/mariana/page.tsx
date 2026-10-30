@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   COBERTURA_ACORDO_RIO_DOCE,
   RIO_DOCE_POR_INICIATIVA,
@@ -195,7 +194,6 @@ export default function AcordoMarianaPage() {
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <MeioAmbienteRelacionado />
-        <FooterGlobal />
       </footer>
     </main>
   );

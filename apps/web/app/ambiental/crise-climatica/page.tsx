@@ -6,7 +6,6 @@ import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelCriseClimaticaClient from "./PainelCriseClimaticaClient";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
-import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * @file apps/web/app/ambiental/crise-climatica/page.tsx
@@ -243,7 +242,6 @@ export default function PaginaCriseClimatica() {
         <MeioAmbienteRelacionado />
       </div>
 
-      <FooterGlobal />
     </div>
   );
 }

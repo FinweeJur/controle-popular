@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import CartoesResumo from "@/app/components/CartoesResumo";
 import GraficoBarrasSvg from "@/app/components/GraficoBarrasSvg";
 import {
@@ -209,7 +208,6 @@ export default function IbamaIndexPage() {
         </p>
         <div className="mt-6">
       <MeioAmbienteRelacionado />
-          <FooterGlobal />
         </div>
       </footer>
     </main>

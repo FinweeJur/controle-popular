@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import PainelGestaoClient from "@/app/governo/components/PainelGestaoClient";
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -136,7 +135,6 @@ export default async function GestaoMunicipalPage({
         )}
       </main>
 
-      <FooterGlobal />
     </div>
   );
 }

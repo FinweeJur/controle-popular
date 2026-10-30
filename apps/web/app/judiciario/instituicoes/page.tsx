@@ -10,7 +10,6 @@ import instituicoesData from "@/data/judiciario-instituicoes-detalhe.json";
 import DiretorioInstituicoesClient, {
   type InstituicaoSumario,
 } from "./DiretorioInstituicoesClient";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 
@@ -393,10 +392,6 @@ export default function InstituicoesPage() {
       {/* Links Relacionados (Padrão Wiki) */}
       <LinksRelacionados links={LINKS_RELACIONADOS} />
     </main>
-
-    <div className="mx-auto max-w-5xl px-4 sm:px-6">
-      <FooterGlobal />
-    </div>
   </div>
   );
 }
