@@ -44,10 +44,13 @@
 name: Preparador de cavas (VM Azure)
 
 on:
-  schedule:
-    # Concentrado: uma vez por dia, logo apos a janela dos demais bots
-    # (os ETLs rodam ~08:00-12:00 UTC). GitHub cron e SEMPRE em UTC.
-    - cron: "30 12 * * *"
+  # SCHEDULE DESLIGADO em 30/10/2026. Medido nos runs de 18 a 29/10: o cron
+  # diario (12:30 UTC) ligava a cp-vm, o python3 morria (Killed) na coleta de
+  # positivos e/ou dava RasterioIOError em CBERS remoto; sem manifesto, a VM
+  # ficava ~1h30 de pe por dia sem entregar nada. Reativar o cron SO depois de
+  # corrigir a coleta. Ate la, rodar apenas na mao (workflow_dispatch).
+  # schedule:
+  #   - cron: "30 12 * * *"
   workflow_dispatch:
     inputs:
       limite:
