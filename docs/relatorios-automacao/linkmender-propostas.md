@@ -1,16 +1,16 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-29T06:48:27.302Z
-- Duracao total: 10.8 min
+- Gerado em: 2026-10-30T06:50:52.715Z
+- Duracao total: 12.2 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 391
+- OK: 388
 - QUEBRADOS: 9
 - REDIRECTS: 28
-- INCONSISTENTES: 45
+- INCONSISTENTES: 48
 - Propostas geradas: 11
 - Links sem proposta: 26
 
@@ -18,7 +18,6 @@
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
-| https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
 | https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
@@ -31,6 +30,7 @@
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://pt.wikipedia.org/ | REDIRECT | 200 | https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal |
@@ -42,7 +42,7 @@
 | https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
 | https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
 | https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 206 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
+| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
 | https://www.controlepopular.tech/ | QUEBRADO | 404 | https://www.controlepopular.tech/ |
 | https://www.controlepopular.tech/api/saude | QUEBRADO | 404 | https://www.controlepopular.tech/api/saude |
@@ -69,18 +69,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/congresso/almg/page.tsx
 
-### 2. https://api.salic.cultura.gov.br
-
-```diff
-- href="https://api.salic.cultura.gov.br"
-+ href="https://api.salic.cultura.gov.br/docs"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
-
-### 3. https://sistemas.anatel.gov.br
+### 2. https://sistemas.anatel.gov.br
 
 ```diff
 - href="https://sistemas.anatel.gov.br"
@@ -90,6 +79,17 @@ Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
+
+### 3. https://pncp.gov.br/
+
+```diff
+- href="https://pncp.gov.br/"
++ href="https://www.gov.br/pncp/pt-br"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/[municipio]/interesses/page.tsx
 
 ### 4. https://falabr.cgu.gov.br
 
@@ -185,7 +185,7 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (206) — dominio nao governamental — correcao manual
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
@@ -211,6 +211,9 @@ Origem: apps/web/lib/memoria/camadas.ts
 ## Inconsistentes (nao verificados, sem proposta)
 
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
+- https://backup.controlepopular.com.br/ (rede) — erro de rede: This operation was aborted
+- https://backup.controlepopular.com.br/api/saude (rede) — erro de rede: This operation was aborted
+- https://certificacao.incra.gov.br (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
@@ -220,12 +223,12 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
 - https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
+- https://regionais.betim.digital/regional/citrolandia (rede) — erro de rede: fetch failed
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
