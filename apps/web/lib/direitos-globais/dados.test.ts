@@ -139,9 +139,12 @@ describe("direitos globais — formatação", () => {
 describe("direitos globais — dispositivos conferidos", () => {
   const nomes = new Set(PAISES_AMERICA_LATINA.map((p) => p.nome));
 
-  it("tem 27 dispositivos nos 9 países da leva", () => {
-    expect(DISPOSITIVOS).toHaveLength(27);
-    expect(paisesComDispositivos()).toHaveLength(9);
+  it("tem 59 dispositivos nos 20 países", () => {
+    expect(DISPOSITIVOS).toHaveLength(59);
+    expect(paisesComDispositivos()).toHaveLength(20);
+    for (const pais of paisesComDispositivos()) {
+      expect(dispositivosDoPais(pais).length).toBeGreaterThanOrEqual(2);
+    }
   });
 
   it("cada dispositivo aponta para país e direito existentes", () => {
@@ -153,13 +156,16 @@ describe("direitos globais — dispositivos conferidos", () => {
 
   it("cada dispositivo tem citação, texto integral e fonte navegável", () => {
     for (const d of DISPOSITIVOS) {
-      expect(d.citacao).toMatch(/^(Artículo|ARTÍCULO|Artigo|Lei)\b/);
+      expect(d.citacao).toMatch(/^(Artículo|ARTÍCULO|Artigo|Art\.|Lei)(?=\s|$)/);
       expect(d.titulo.length).toBeGreaterThan(2);
       expect(d.texto.length).toBeGreaterThan(80);
       expect(d.texto).not.toMatch(/\[\.{3}\]|…\s*$/);
       expect(d.fonte.length).toBeGreaterThan(3);
       expect(d.url).toMatch(/^https:\/\//);
-      expect(new URL(d.url).hostname).toBe("www.constituteproject.org");
+      expect([
+        "www.constituteproject.org",
+        "www2.camara.leg.br",
+      ]).toContain(new URL(d.url).hostname);
       expect(d.dataAcesso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(["es", "fr", "pt"]).toContain(d.idiomaOriginal);
     }
@@ -176,7 +182,20 @@ describe("direitos globais — dispositivos conferidos", () => {
     const gt = dispositivosDoPais("Guatemala");
     expect(gt).toHaveLength(3);
     expect(gt.every((d) => d.pais === "Guatemala")).toBe(true);
-    expect(dispositivosDoPais("Brasil")).toHaveLength(0);
+    expect(dispositivosDoPais("Atlântida")).toHaveLength(0);
+  });
+
+  it("o Brasil vem da Câmara, em português, com o art. 5º inteiro", () => {
+    const brasil = dispositivosDoPais("Brasil");
+    expect(brasil).toHaveLength(3);
+    for (const d of brasil) {
+      expect(d.idiomaOriginal).toBe("pt");
+      expect(new URL(d.url).hostname).toBe("www2.camara.leg.br");
+    }
+    const art5 = brasil.find((d) => d.citacao === "Art. 5º");
+    expect(art5?.texto).toMatch(/^Art\. 5º Todos são iguais perante a lei/);
+    expect(art5?.texto).toContain("§ 3º");
+    expect(art5?.texto).toContain("LXXIX -");
   });
 
   it("não repete a mesma citação no mesmo país", () => {

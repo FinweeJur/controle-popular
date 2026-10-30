@@ -150,8 +150,9 @@ function DispositivosConferidos() {
     <section className="mb-8">
       <h2 className="mb-2 text-xl font-bold text-text">Dispositivos conferidos</h2>
       <p className="mb-6 text-sm text-text-soft">
-        Nove países com o texto do artigo transcrito e o link da fonte. Os
-        outros onze entram na próxima leva.
+        {paises.length} países com o texto do artigo transcrito e o link da
+        fonte. O Brasil vem da Câmara dos Deputados; os demais, do Constitute
+        Project.
       </p>
       <div className="grid gap-5 lg:grid-cols-2">
         {paises.map((pais) => (
