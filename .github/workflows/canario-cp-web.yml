@@ -1,9 +1,10 @@
 # Teste e relatorio automatico do canario do cp-web.
 #
-# O QUE FAZ: a cada 6 horas, bate direto no FQDN da revisao `cp-web--canario`
+# O QUE FAZ: a cada 30 min, bate direto no FQDN da revisao `cp-web--canario`
 # (0,25 CPU / 0,5 GiB) e le a saude, a memoria e os reinicios no Azure.
-# Manda no Telegram um resumo por rodada, com problema ou sem. Se o canario
-# ficar com 0% de trafego, o monitor sai em silencio (o teste terminou).
+# Se houver problema, avisa na hora. Sem problema, manda um resumo a cada
+# 6 horas. Se o canario ficar com 0% de trafego, o monitor sai em silencio
+# (o teste terminou).
 #
 # POR QUE O FQDN DA REVISAO: o peso de 10% faria poucas requisicoes caírem no
 # canario. O FQDN proprio da revisao permite testar 100% nela sem mexer no
@@ -16,7 +17,7 @@ name: Canario cp-web (Telegram)
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -49,6 +50,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FORCAR: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
         run: |
           TRAFEGO=$(az containerapp ingress traffic show -n "$APP" -g "$RG" -o json)
           PESO=$(printf '%s' "$TRAFEGO" | jq -r --arg r "$CANARIO" '.[] | select(.revisionName==$r) | .weight' || true)
@@ -109,8 +111,12 @@ jobs:
           [ "${S5%.*}" -gt 0 ] 2>/dev/null && PROBLEMA=1
           [ "$MEM_PCT" != "n/d" ] && [ "$MEM_PCT" -ge 90 ] && PROBLEMA=1
 
-          # Uma rodada a cada 6 horas: toda rodada envia um resumo.
-          REPORTAR=1
+          # Teste a cada 30 min; problema avisa na hora; resumo so de 6 em 6h.
+          H=$(date -u +%H); M=$(date -u +%M)
+          REPORTAR=0
+          [ "$PROBLEMA" = "1" ] && REPORTAR=1
+          [ "$FORCAR" = "1" ] && REPORTAR=1
+          if [ "$M" = "00" ] && [ $((10#$H % 6)) -eq 0 ]; then REPORTAR=1; fi
 
           if [ "$REPORTAR" = "1" ]; then
             if [ "$PROBLEMA" = "1" ]; then
