@@ -4,7 +4,6 @@ import { metadataEditavel } from "@/lib/edicoes";
 import { obterEstatisticasContatos, DATA_CONTATOS_STATS } from "@/lib/judiciario/contatos-estatisticas";
 import DataColeta from "@/app/components/DataColeta";
 import PainelVarasContatosClient from "./PainelVarasContatosClient";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 
@@ -103,7 +102,6 @@ export default function PaginaContatosJudiciario() {
         <LinksRelacionados links={LINKS_RELACIONADOS} />
       </main>
 
-      <FooterGlobal />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import {
 } from "@/lib/ambiental/ecossistema-nacional";
 import PainelEcossistema from "./PainelEcossistema";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
-import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = {
   title:
@@ -80,7 +79,6 @@ export default function PaginaEcossistemaNacional() {
         <MeioAmbienteRelacionado />
       </div>
 
-      <FooterGlobal />
     </div>
   );
 }

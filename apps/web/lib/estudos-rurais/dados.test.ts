@@ -79,7 +79,11 @@ describe("estudos-rurais/dados", () => {
     const fontes = listarFontes();
     expect(fontes.length).toBeGreaterThan(0);
     expect([...fontes].sort((a, b) => a.localeCompare(b, "pt-BR"))).toEqual(fontes);
-    expect(listarTipos().map((t) => t.tipo)).toEqual(["noticia"]); // primeira rodada só noticia
+    // A curadoria preencheu artigos e publicações: os três tipos devem existir.
+    const tipos = listarTipos().map((t) => t.tipo);
+    expect(tipos).toContain("noticia");
+    expect(tipos).toContain("artigo");
+    expect(tipos).toContain("publicacao");
     for (const ano of listarAnos()) {
       expect(ITENS.some((i) => i.data?.startsWith(String(ano)))).toBe(true);
     }

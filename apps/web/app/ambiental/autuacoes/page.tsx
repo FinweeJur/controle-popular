@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DataColeta from "@/app/components/DataColeta";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import CartoesResumo from "@/app/components/CartoesResumo";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
@@ -143,7 +142,6 @@ export default function AutosSemadPage() {
         </p>
         <div className="mt-6">
           <MeioAmbienteRelacionado />
-          <FooterGlobal />
         </div>
       </footer>
     </main>

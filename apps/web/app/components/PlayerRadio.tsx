@@ -189,12 +189,14 @@ export default function PlayerRadio() {
 
   const estacaoAtual = idAtual ? estacaoPorId(idAtual) ?? null : null;
 
-  // ══ BUG 2 (dono, 21/10/2026): rolagem ao escolher estação ══
-  // Clicar numa estação fazia a lista "subir" para o topo do índice — o botão
-  // clicado ganhava foco e o navegador deslocava a lista de overflow por
-  // programação, escondendo o item selecionado. Defesa: guardar o scrollTop
-  // da lista no pointerdown (que é um gesto do usuário — não desfaz rolagem
-  // natural) e restaurar o valor em um requestAnimationFrame depois do clique.
+  // ══ BUG 2 (dono, 21/10/2026; causa real em 29/10/2026) ══
+  // Clicar numa estação fazia a lista "subir" para o topo do índice. A defesa
+  // daqui (guardar o scrollTop no pointerdown e restaurar em rAF) não bastava:
+  // o pulo vinha de `usePosicaoPainel`, que tira o teto de altura para medir o
+  // conteúdo e, nessa batida, zera a rolagem da LISTA (filha, não do painel).
+  // Ele ainda dispara de novo quando o `<audio>` responde, depois do rAF. O
+  // conserto de verdade está em `guardarRolagemDescendentes`
+  // (`lib/posicionar-painel.ts`); esta camada fica como reforço do clique.
   const scrollDaListaRef = useRef<
     { el: HTMLElement; scrollTop: number } | null
   >(null);

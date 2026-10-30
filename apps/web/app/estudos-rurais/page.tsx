@@ -25,16 +25,18 @@ import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
  *
  * Página de SERVIDOR com agregados (cartões, gráfico, lacunas) — a lista item
  * a item é `<PainelEstudosRurais />`, componente de CLIENTE que recebe os
- * itens como props. 60 itens da primeira rodada (08/09/2026) são pequenos
- * contra o limite de ~2 mil linhas do AGENTS.md; quando a coleta de
- * dissertações engatar e a coleção engordar, a migração é para índice
- * fatiado (`TabelaEstatica`), não para engordar esta props.
+ * itens como props. A base tem 60 notícias coletadas (08/09/2026) somadas à
+ * curadoria de artigos com DOI e dissertações do BDTD — ainda abaixo do teto
+ * de ~2 mil linhas do AGENTS.md; se a coleção engordar, a migração é para
+ * índice fatiado (`TabelaEstatica`), não para engordar esta prop.
  *
  * ═══ REGRA EDITORIAL ═══
  *
- * O resumo é texto da PRÓPRIA FONTE, truncado na coleta — este portal não
- * reescreve, não resume com modelo e não interpreta. Lacuna é informação: os
- * tipos sem item (publicações, eventos) aparecem com 0 e com o motivo.
+ * O resumo de notícias e artigos é texto da PRÓPRIA FONTE, truncado na coleta
+ * — este portal não reescreve, não resume com modelo e não interpreta. Nas
+ * publicações do BDTD, o texto sob o título identifica a AUTORIA do registro,
+ * não é resumo editorial. Lacuna é informação: o que faltar aparece com o
+ * motivo declarado.
  */
 
 export const metadata: Metadata = metadataEditavel("/estudos-rurais", {
@@ -45,9 +47,6 @@ export const metadata: Metadata = metadataEditavel("/estudos-rurais", {
 });
 
 export default function EstudosRuraisPage() {
-  const anos = listarAnos();
-  const fontes = listarFontes();
-  const tipos = listarTipos();
   const maxAno = Math.max(1, ...SERIE_GRAFICO.map((a) => a.total));
 
   return (
@@ -69,9 +68,10 @@ export default function EstudosRuraisPage() {
           Notícias, artigos, eventos e publicações de estudos rurais — com o{" "}
           <strong className="text-text">PPGER/UFVJM</strong> (Programa de Pós-Graduação em Estudos
           Rurais da Universidade Federal dos Vales do Jequitinhonha e Mucuri) como fonte principal,
-          somado a fontes abertas da internet. O resumo de cada item é{" "}
+          somado a fontes abertas da internet. O resumo de notícias e artigos é{" "}
           <strong className="text-text">texto da própria fonte</strong>, sem edição nem
-          interpretação deste portal. Coleta de{" "}
+          interpretação deste portal; nas publicações do BDTD, o texto sob o título identifica a{" "}
+          <strong className="text-text">autoria do registro</strong>. Retrato de{" "}
           <strong className="text-text">{formatDateBR(COBERTURA.coletadoEm)}</strong>.
         </p>
       </header>

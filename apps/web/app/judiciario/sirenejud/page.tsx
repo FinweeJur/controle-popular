@@ -6,7 +6,6 @@ import { carregarSirenejudBrasil } from "@/lib/judiciario/sirenejud-brasil";
 import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 import DataColeta from "@/app/components/DataColeta";
 import { metadataEditavel } from "@/lib/edicoes";
-import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * `/judiciario/sirenejud` — o recorte nacional dos processos ambientais do
@@ -275,7 +274,6 @@ export default function JudiciarioSirenejudPage() {
           ))}
         </ul>
       </section>
-      <FooterGlobal />
     </div>
   );
 }

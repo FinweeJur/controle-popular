@@ -76,6 +76,7 @@ import random
 import re
 import sys
 import time
+import traceback
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -340,7 +341,11 @@ _DATASETS: dict = {}  # cache de handles abertos (reaproveita por cena; cap 9)
 _ENV = {"GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
         "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif",
         "GDAL_HTTP_HEADERS": f"User-Agent={UA}",
-        "GDAL_HTTP_TIMEOUT": "120"}
+        "GDAL_HTTP_TIMEOUT": "120",
+        # VM de 1 GiB: teto do cache global. O valor precisa ser INTEIRO:
+        # a string "64" fez o rasterio da VM falhar com TypeError em toda
+        # leitura. Sem teto, o rasterio acumula blocos e o python3 e morto.
+        "GDAL_CACHEMAX": 64}
 
 
 def _abrir(href: str):
@@ -388,6 +393,7 @@ def ler_janela(href: str, cx: float, cy: float) -> np.ndarray | None:
             except Exception:
                 pass
         print(f"    leitura falhou: {type(e).__name__}: {e}", flush=True)
+        traceback.print_exc()
         return None
 
 

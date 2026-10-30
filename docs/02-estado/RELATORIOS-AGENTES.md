@@ -207,6 +207,7 @@ Leitura somente-leitura, CPF e segredo redigidos, sem custo de modelo.
 
 | Data | Documento | Domínio | Resumo |
 |---|---|---|---|
+| 2026-10-30 | [HANDOFF — Cavas de mineração: cron desligado, falha diagnosticada e próximos passos](/docs/historico/entregas/HANDOFF-2026-10-30-CAVAS-MINERACAO.md) | mineração (cavas), infraestrutura (Azure) | Cron da VM desligado; falha `abortado-rc0`/`Killed`/`RasterioIOError` diagnosticada; custo do portal e canário no anexo. |
 | 2026-10-18 | [Handoff — Sessão de 02/09/2026 (tarde) — Plano Nossos + Painéis-Sanfona + Telegram](/docs/historico/entregas/2026-09-02-HANDOFF-SESSAO-TELEGRAM.md) | operação do projeto | Handoff — Sessão de 02/09/2026 (tarde) — Plano Nossos + Painéis-Sanfona + Telegram |
 | 2026-10-15 | [Plano — CI de ingestao automatica RAG + busca + padronizacao de unidades](/docs/historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md) | global (CI, RAG, busca, ETL, transformacao de dados) | Tres perguntas do dono, uma so resposta estruturada: |
 | 2026-10-14 | [📤 HANDOFF — Routes de Cidades (Sessão Delegada)](/handoffs/HANDOFF-cidades-routes.md) | — | Expansão nacional do Controle Popular — 5.570 municípios do Brasil já coletados em apps/web/data/municipios-brasil.json. A route /cidades/sp foi implementada como template em apps/web/app/cidades/sp/page.tsx. |

@@ -7,7 +7,6 @@ import {
 import { formatNumberBR } from "@/lib/betim/format";
 import TabelaCapacidade from "./TabelaCapacidade";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
-import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const metadata: Metadata = {
   title:
@@ -167,7 +166,6 @@ export default function PaginaCapacidadeInstitucional() {
         <MeioAmbienteRelacionado />
       </div>
 
-      <FooterGlobal />
     </div>
   );
 }

@@ -25,11 +25,35 @@
 set -euo pipefail
 
 REPO="${CP_REPO:-/opt/controle-popular}"
-LIM_POS="${LIM_POS:-500}"
-LIM_NEG="${LIM_NEG:-500}"
+LIM_POS="${LIM_POS:-20}"
+LIM_NEG="${LIM_NEG:-20}"
 URL_REPO="https://github.com/FinweeJur/controle-popular"
 
 echo "[preparador] inicio $(date -u +%FT%TZ)"
+
+# SEM BLOB_SAS a rodada nao tem prova de fim. O timer/systemd da VM inicia
+# sozinho no boot e rodava local-only ate morrer por OOM (medido 29/10).
+# Teste local de proposito precisa de PERMITIR_LOCAL=1.
+if [ -z "${BLOB_SAS:-}" ] && [ "${PERMITIR_LOCAL:-0}" != "1" ]; then
+  echo "[preparador] sem BLOB_SAS; rodada local exige PERMITIR_LOCAL=1. Saindo."
+  exit 0
+fi
+
+# SWAP 2G: a B2ats_v2 tem ~887 MB e o docker consome parte. Sem swap o
+# coletor morre com Killed (medido 29/10). O disco P4 ja e cobrado; swap nao
+# muda a fatura e evita o OOM. swapfile persiste em /etc/fstab.
+if ! swapon --show 2>/dev/null | grep -q '/swapfile'; then
+  if [ ! -f /swapfile ]; then
+    fallocate -l 2G /swapfile 2>/dev/null \
+      || dd if=/dev/zero of=/swapfile bs=1M count=2048 status=none
+    chmod 600 /swapfile
+    mkswap /swapfile >/dev/null
+  fi
+  swapon /swapfile 2>/dev/null || true
+  grep -q '^/swapfile' /etc/fstab 2>/dev/null \
+    || echo '/swapfile none swap sw 0 0' >> /etc/fstab
+fi
+sysctl -w vm.swappiness=10 >/dev/null 2>&1 || true
 
 STAMP=$(date -u +%Y%m%d-%H%M)
 BLOB_CONTAINER="${BLOB_CONTAINER:-cavas}"

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import CartoesResumo from "@/app/components/CartoesResumo";
 import GraficoBarrasSvg from "@/app/components/GraficoBarrasSvg";
 import { COBERTURA_SIGBM, BARRAGENS_SIGBM } from "@/lib/ambiental/barragens-sigbm";
@@ -156,7 +155,6 @@ export default function BarragensSigbmPage() {
         </p>
         <div className="mt-6">
       <MeioAmbienteRelacionado />
-          <FooterGlobal />
         </div>
       </footer>
     </main>

@@ -113,7 +113,7 @@ entrada da documentação, API e licença.
 
 Vale para este repositório e para os demais repositórios do dono:
 
-1. **User-Agent honesto:** `FinweeJur/Github Artur colito`.
+1. **User-Agent honesto:** `finweejur/github artur colito`.
 2. **Antes de acessar:** termos de uso, `robots.txt`, `/docs` e `/api`.
 3. **Respeitar** `Disallow`, `Crawl-delay`, limite de requisições e área
    autenticada.

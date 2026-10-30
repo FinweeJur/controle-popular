@@ -44,7 +44,6 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { converter } from "@/lib/transformacao/unidades";
 import TabelaCar, { type ImovelCar } from "./TabelaCar";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
-import FooterGlobal from "@/app/components/FooterGlobal";
 
 // Descrição sai do dado: obterEstatisticasCar() lê car-mg.json (IEF/SEMAD/SICAR,
 // extração 20/08/2026) — o número viaja com a medição, não se digita à mão.
@@ -383,7 +382,6 @@ export default function PaginaCarAmbiental() {
         <MeioAmbienteRelacionado />
       </div>
 
-      <FooterGlobal />
     </div>
   );
 }

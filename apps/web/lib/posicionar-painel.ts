@@ -37,6 +37,7 @@
  */
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
+import { medirTamanhoNatural } from "./painel-rolagem";
 
 /** Folga mínima (px) entre o painel e cada borda da viewport. */
 export const MARGEM_PAINEL = 8;
@@ -287,26 +288,11 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
     if (!painel || !ancora) return;
 
     const o = opcoesRef.current;
-    // Mede a ALTURA natural sem o teto inline que aplicamos na rodada anterior:
-    // `scrollHeight` devolveria o valor já cortado e o painel nunca voltaria a
-    // crescer quando a tela aumentasse. Limpar e restaurar na mesma batida de
-    // layout não pisca (roda antes da pintura) e é o preço de ter o teto.
-    //
-    // PRESERVAR A ROLAGEM (conserto 05/10/2026): com o teto removido o painel
-    // cresce até o conteúdo inteiro, o navegador zera o `scrollTop` e restaurar
-    // o teto NÃO devolve a posição. Sem guardar e recolocar o `scrollTop`, toda
-    // medição jogava o leitor de volta ao topo. Pior: `recalcular` roda no
-    // evento de `scroll` do próprio painel — a roda do mouse rolava, o evento
-    // pedia nova medição e a lista pulava para o começo. Efeito medido com
-    // Playwright em 05/10/2026 nos três painéis (rádio, bichinhos e Seu Nonô).
-    const scrollTopAnterior = painel.scrollTop;
-    const maxAnterior = painel.style.maxHeight;
-    painel.style.maxHeight = "none";
-    const alturaNatural = painel.scrollHeight;
-    painel.style.maxHeight = maxAnterior;
-    if (painel.scrollTop !== scrollTopAnterior) painel.scrollTop = scrollTopAnterior;
-
-    const larguraNatural = painel.offsetWidth;
+    // Mede a ALTURA natural sem o teto inline da rodada anterior (ver
+    // `medirTamanhoNatural`): `scrollHeight` devolveria o valor já cortado e o
+    // painel nunca voltaria a crescer quando a tela aumentasse. A rolagem do
+    // painel e a dos filhos roláveis é preservada dentro do helper.
+    const { largura: larguraNatural, altura: alturaNatural } = medirTamanhoNatural(painel);
     const largura = o.larguraMaxima
       ? Math.min(larguraNatural, o.larguraMaxima)
       : larguraNatural;

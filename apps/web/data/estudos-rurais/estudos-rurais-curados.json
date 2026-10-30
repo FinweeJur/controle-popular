@@ -1,0 +1,649 @@
+{
+  "coletadoEm": "2026-10-30T13:33:54.018058+00:00",
+  "nota": "Curadoria de artigos (exportação Scopus fornecida pelo mantenedor) e de dissertações/teses rurais da UFVJM (BDTD). Funde com a coleta de notícias em lib/estudos-rurais/dados.ts.",
+  "itens": [
+    {
+      "id": "scopus:10-1177-0011392113486660",
+      "titulo": "Agrarian reforms",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1177/0011392113486660",
+      "data": "2013-09-01",
+      "resumo": "This article explores key issues around land and agrarian reforms, beginning with definitions. It analyses debates over political intent and the contradictory economic outcomes of (redistributionist) reforms: these decrease some class inequalities but hold potential for further differentiation in th",
+      "url": "https://doi.org/10.1177/0011392113486660"
+    },
+    {
+      "id": "scopus:10-1111-j-1471-0366-2004-00071-x",
+      "titulo": "Neo-classical neo-populism 25 years on: Déjà Vu and Déjà Passé. Towards a critique",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1111/j.1471-0366.2004.00071.x",
+      "data": "2004-01-01",
+      "resumo": "The Griffin, Khan and Ickowitz argument in favour of redistributive land reform, as a means of eradicating rural poverty, is an updated version of a case made by Griffin 30 years ago, and is here seen as a variant of neo-classical neo-populism. The essential logic presented by GKI is considered and ",
+      "url": "https://doi.org/10.1111/j.1471-0366.2004.00071.x"
+    },
+    {
+      "id": "scopus:10-1080-03066150902820339",
+      "titulo": "Development strategies and rural development: Exploring synergies, eradicating poverty",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150902820339",
+      "data": "2009-10-01",
+      "resumo": "This essay reviews some of the main interpretations in development studies on agriculture's contribution to economic development. It explores the relationship between agriculture and industry as well as between the rural and urban sectors in the process of development. These issues are discussed by ",
+      "url": "https://doi.org/10.1080/03066150902820339"
+    },
+    {
+      "id": "scopus:10-1080-03066150-2012-679931",
+      "titulo": "Land grabbing in Latin America and the Caribbean",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150.2012.679931",
+      "data": "2012-01-01",
+      "resumo": "Land grabbing has gained momentum in Latin America and the Caribbean during the past decade. The phenomenon has taken different forms and character as compared to processes that occur in other regions of the world, especially Africa. It puts into question some of the assumptions in the emerging lite",
+      "url": "https://doi.org/10.1080/03066150.2012.679931"
+    },
+    {
+      "id": "scopus:10-4324-9780429307492-9",
+      "titulo": "The peasant community of catacaos and the peruvian agrarian reform",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9780429307492-9",
+      "data": "2019-01-01",
+      "resumo": "Agrarian reform has been a key component of the radical reordering of society throughout Latin America. Mexico, Bolivia, Cuba and Nicaragua have all put the extensive redistribution of land at the center of their social revolutions. Yet land reform is often less than revolutionary. The limited refor",
+      "url": "https://doi.org/10.4324/9780429307492-9"
+    },
+    {
+      "id": "scopus:10-1007-978-3-030-82852-3-3",
+      "titulo": "Land Governance and Land Reform in Southern Africa",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1007/978-3-030-82852-3_3",
+      "data": "2021-01-01",
+      "resumo": "Land governance and reform in Southern Africa is premised on a shared historical legacy of colonialism, inequality, tenure diversity and fragmentation. The persistence of tenure inequity, decades after independence and despite significant and repeated investments in land reform initiatives, raises q",
+      "url": "https://doi.org/10.1007/978-3-030-82852-3_3"
+    },
+    {
+      "id": "scopus:10-1080-09578810312331287505",
+      "titulo": "Questioning the pro-market critique state-led agrarian reforms",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/09578810312331287505",
+      "data": "2003-12-01",
+      "resumo": "This article examines the pro-market critique of state-led agrarian reforms (SLARs). This critique has become the imperative for, and foundation of, the contemporary market-led agrarian reform (MLAR) policy model. Various criticisms of the MLAR have been put forward, but none of these analysed MLAR'",
+      "url": "https://doi.org/10.1080/09578810312331287505"
+    },
+    {
+      "id": "scopus:10-1080-03066150701802876",
+      "titulo": "The 'development state' in Latin America: Whose development, whose state?",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150701802876",
+      "data": "2007-07-01",
+      "resumo": "Examined here are interrelated issues in Latin America of class, class struggle, agrarian movements and several permutations (developmental, neoliberal) of the capitalist state. The latter encompasses rival paths of development in Latin America: state-led, market-assisted and grassroots land reform.",
+      "url": "https://doi.org/10.1080/03066150701802876"
+    },
+    {
+      "id": "scopus:10-1177-0038038585019004006",
+      "titulo": "Class formation within the peasantry: Recent theoretical developments in the analysis of the peasantry with specific reference to the east african debate",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1177/0038038585019004006",
+      "data": "1985-01-01",
+      "resumo": "Debate over the ‘agrarian question’ has continued throughout this century. In recent years, however, partly arising from a renewed interest in Marxist theory, research into rural transformation in Latin America, Africa, and India has both attacked and modified the notion of undifferentiated ‘peasant",
+      "url": "https://doi.org/10.1177/0038038585019004006"
+    },
+    {
+      "id": "scopus:10-26656-fr-2017-8-4-400",
+      "titulo": "Factors influencing the adoption of sustainable agricultural practices in rural regions of developing countries: a review",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.26656/fr.2017.8(4).400",
+      "data": "2024-08-01",
+      "resumo": "Farmers in developing countries show low adoption rates of sustainable agricultural practices. Therefore, this review examines influential factors contributing to sustainable agricultural practices adoption among rural farmers in developing countries in Asia, Latin America, Europe, and Africa, there",
+      "url": "https://doi.org/10.26656/fr.2017.8(4).400"
+    },
+    {
+      "id": "scopus:10-4324-9780203830222",
+      "titulo": "Agriculture, poverty and reform in Iran (RLE Iran D)",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9780203830222",
+      "data": "2012-04-01",
+      "resumo": "As in many developing countries, the prospects for land reform in Iran seemed promising. It was expected to improve rural poverty and stimulate agricultural development by replacing the traditional landlord-peasant system with more peasant-biased, modern farming. This book assesses the economic cons",
+      "url": "https://doi.org/10.4324/9780203830222"
+    },
+    {
+      "id": "scopus:10-1177-0094582x09338607",
+      "titulo": "Agrarian reform and social movements in the age of globalization: Latin America at the dawn of the twenty-first century",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1177/0094582X09338607",
+      "data": "2009-08-01",
+      "resumo": "Although the implementation of neoliberalism would appear to have ended agrarian reform in Latin America, the problem of land distribution remains as serious as ever. New agrarian and peasant social movements are emerging that involve not just the landless but the excluded, the marginalized, and the",
+      "url": "https://doi.org/10.1177/0094582X09338607"
+    },
+    {
+      "id": "scopus:10-1080-02255189-2005-9669030",
+      "titulo": "Rural social movements and the prospects for sustainable rural communities: Evidence from Bolivia",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/02255189.2005.9669030",
+      "data": "2005-01-01",
+      "resumo": "There has been a dramatic shift in the capacity of indigenous and peasant movements to challenge prevailing hyperliberal models of development and present alternatives that foster ethnocultural diversity and social justice. Following a review of Latin America's agrarian question and of alternative p",
+      "url": "https://doi.org/10.1080/02255189.2005.9669030"
+    },
+    {
+      "id": "scopus:10-1111-j-1467-7660-2008-00518-x",
+      "titulo": "Reflections on Latin American rural studies in the neoliberal globalization period: A new rurality?",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1111/j.1467-7660.2008.00518.x",
+      "data": "2008-12-01",
+      "resumo": "This article explores the emergence over the last decade of a new approach to rural development studies in Latin America known as the 'new rurality'. The various interpretations and ambiguities of this approach as well as the ensuing debates are discussed. Analysis focuses on four major transformati",
+      "url": "https://doi.org/10.1111/j.1467-7660.2008.00518.x"
+    },
+    {
+      "id": "scopus:10-4324-9780429501869",
+      "titulo": "Rural Latin America: Exclusionary and uneven agricultural development",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9780429501869",
+      "data": "2018-01-01",
+      "resumo": "Since 1945 Latin America’s rural economy and society have been transformed: External pressures have integrated the region’s agriculture into the global agroindustrial food regime, while internal state policies have introduced agrarian reform and liberalization. By the 1990s the once-dominant haciend",
+      "url": "https://doi.org/10.4324/9780429501869"
+    },
+    {
+      "id": "scopus:10-1111-joac-12421",
+      "titulo": "Twists and turns of land reform in Latin America: From predatory to intermediate states?",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1111/joac.12421",
+      "data": "2021-10-01",
+      "resumo": "Land reform has significantly evolved over time in Latin America. In the early decades of the 20th century, the ‘agrarian question’ involved different national paths of agrarian capitalism and their contributions to industrialization. Later in the century, agriculture played a secondary role, while ",
+      "url": "https://doi.org/10.1111/joac.12421"
+    },
+    {
+      "id": "scopus:10-1093-oxfordhb-9780199372263-013-26",
+      "titulo": "Food, fairness, and global markets",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1093/oxfordhb/9780199372263.013.26",
+      "data": "2018-01-01",
+      "resumo": "This chapter examines issues of fairness in the organization of global agricultural markets. The discussion begins with a survey of the challenges in feeding the world and the debates between \"market fundamentalists\" who defend strongly pro-market, pro-globalization approaches and critics who deny t",
+      "url": "https://doi.org/10.1093/oxfordhb/9780199372263.013.26"
+    },
+    {
+      "id": "scopus:10-1016-j-landusepol-2020-105138",
+      "titulo": "The historical relationship between agrarian reforms and internal armed conflicts: Relevant factors for the Colombian post-conflict scenario",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/j.landusepol.2020.105138",
+      "data": "2021-02-01",
+      "resumo": "With the purpose of identifying relevant factors potentially affecting the implementation of Colombian agrarian reform in its post-conflict phase, this article explores the links between agrarian reform and internal armed conflict in four countries that underwent a similar process. Namely, El Salvad",
+      "url": "https://doi.org/10.1016/j.landusepol.2020.105138"
+    },
+    {
+      "id": "scopus:10-1016-j-worlddev-2018-02-007",
+      "titulo": "Small and medium cities and development of Mexican rural areas",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/j.worlddev.2018.02.007",
+      "data": "2018-07-01",
+      "resumo": "Like the rest of Latin America, Mexico is a highly-urbanized country. Yet rural populations, geographies and economic activities continue to play a significant role in national development, while there are persistent and large rural-urban inequalities in well-being and opportunities. Promoting rural",
+      "url": "https://doi.org/10.1016/j.worlddev.2018.02.007"
+    },
+    {
+      "id": "scopus:10-1016-j-worlddev-2024-106876",
+      "titulo": "Gender and development in the agrarian south",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/j.worlddev.2024.106876",
+      "data": "2025-04-01",
+      "resumo": "A central question posed by the still largely peasant populations of the global south is the feasibility of reproducing a model of development which in advanced capitalist economies, settled the classical agrarian question through the transfer and application of organizational models derived from la",
+      "url": "https://doi.org/10.1016/j.worlddev.2024.106876"
+    },
+    {
+      "id": "scopus:10-1016-j-jrurstud-2026-104379",
+      "titulo": "Landed elites in Latin America: A systematic literature review of elites, wealth and land from colonial times until today",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/j.jrurstud.2026.104379",
+      "data": "2026-09-01",
+      "resumo": "A defining feature of Latin American history is the long-term concentration of land among elite groups, a key factor in explaining the region's persistent wealth inequalities. Scholars and civil society organizations have conceptualized the relationship between elites, wealth, and land (EWL nexus) t",
+      "url": "https://doi.org/10.1016/j.jrurstud.2026.104379"
+    },
+    {
+      "id": "scopus:10-1016-j-landusepol-2021-105530",
+      "titulo": "Understanding institutional change mechanisms for land use: Lessons from Ecuador's history",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/j.landusepol.2021.105530",
+      "data": "2021-09-01",
+      "resumo": "Ecuador constitutes a fascinating case study to explore land policies and reforms. Since colonial times, it has experienced prolonged and ongoing struggles to transform land institutions. This paper investigates how, across levels, historic institutional factors affected land-use decision making in ",
+      "url": "https://doi.org/10.1016/j.landusepol.2021.105530"
+    },
+    {
+      "id": "scopus:10-1080-03066150-2025-2602864",
+      "titulo": "Beyond land in Latin America: rethinking agrarian reform in the twenty-first century",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150.2025.2602864",
+      "data": "2026-01-01",
+      "resumo": "This article reviews the historical role of agrarian reforms in twentieth-century Latin America, not only as policy instruments for land redistribution but also as mechanisms for restructuring the agrarian system and reorganizing rural society within the framework of new social pacts. Drawing on his",
+      "url": "https://doi.org/10.1080/03066150.2025.2602864"
+    },
+    {
+      "id": "scopus:10-4337-9781788972468-00011",
+      "titulo": "The diversity of classical agrarian Marxism",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4337/9781788972468.00011",
+      "data": "2021-01-01",
+      "resumo": "Agrarian Marxism is an important current within critical agrarian studies. ‘Classical’ agrarian Marxism focuses upon the ground-breaking insights into the agrarian question offered by Marx and Engels, Kautsky, Lenin and others in the late 19th and early 20th century. Briefly reviewing a voluminous l",
+      "url": "https://doi.org/10.4337/9781788972468.00011"
+    },
+    {
+      "id": "scopus:10-1080-02255189-2006-9669169",
+      "titulo": "Reframing development: Global peasant movements and the new agrarian question",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/02255189.2006.9669169",
+      "data": "2006-01-01",
+      "resumo": "This paper criticizes the conventional conception of the agrarian question and argues that the way the \"agrarian question\" is traditionally understood should be revised. The role played by the agrarian movement, especially transnational agrarian movements such as the Via Campesina, is underscored.",
+      "url": "https://doi.org/10.1080/02255189.2006.9669169"
+    },
+    {
+      "id": "scopus:10-1016-b978-0-08-102295-5-10456-1",
+      "titulo": "Critical Agrarian Studies",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1016/B978-0-08-102295-5.10456-1",
+      "data": "2019-01-01",
+      "resumo": "Critical agrarian studies (CAS) can be broadly defined as the social, historical, and cultural study of the relationship between rural life, land, and labor. Despite its recent formation as a scholarly network only a decade ago, CAS is a product of over a century of transnational theorizing about th",
+      "url": "https://doi.org/10.1016/B978-0-08-102295-5.10456-1"
+    },
+    {
+      "id": "scopus:10-1080-03066150-2022-2125805",
+      "titulo": "Social differentiation of the peasantry (Marxist)",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150.2022.2125805",
+      "data": "2022-01-01",
+      "resumo": "Marxist understandings of the peasantry focus largely on class relations and seek to locate rural households within wider sets of class structures and dynamics. This article reviews debates and controversies amongst Marxists on the classic agrarian question, class differentiation within processes of",
+      "url": "https://doi.org/10.1080/03066150.2022.2125805"
+    },
+    {
+      "id": "scopus:10-1080-03066151003594906",
+      "titulo": "Surveying the agrarian question (part 2): Current debates and beyond",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066151003594906",
+      "data": "2010-04-01",
+      "resumo": "This two-part article surveys the origin, development and current meaning of the 'agrarian question'. Part One of the survey explored the history of the agrarian question, elaborating its origin in the work of Marx, Engels, Kautsky, and Lenin, and its development in the work of Preobrazhensky, Dobb,",
+      "url": "https://doi.org/10.1080/03066151003594906"
+    },
+    {
+      "id": "scopus:10-1080-03066150-2022-2163164",
+      "titulo": "Politically engaged, pluralist and internationalist: critical agrarian studies today",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150.2022.2163164",
+      "data": "2023-01-01",
+      "resumo": "Critical Agrarian Studies has three actual and aspirational interlocking features which together connect the worlds of academic research and practical politics: it is politically engaged, pluralist and internationalist. These features also defined the older generation of agrarian studies that gave b",
+      "url": "https://doi.org/10.1080/03066150.2022.2163164"
+    },
+    {
+      "id": "scopus:10-4324-9780203804919-17",
+      "titulo": "Politics of the agrarian question",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9780203804919-17",
+      "data": "2014-01-01",
+      "resumo": "This chapter examines an issue that has been highly significant in the history of the ‘development project’ (McMichael 2012: 46) and in understanding processes of social change, namely the politics of the agrarian question. Transformations of rural, and socially embedded, economies (Polanyi 1957) ha",
+      "url": "https://doi.org/10.4324/9780203804919-17"
+    },
+    {
+      "id": "scopus:10-1080-01436590701637326",
+      "titulo": "Land, markets and neoliberal enclosure: An agrarian political economy perspective",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/01436590701637326",
+      "data": "2007-12-01",
+      "resumo": "Market-led agrarian reform is a part of neoliberal agrarian restructuring. It is premised on assumptions that fail to recognise the socially embedded character of land transfers. Agrarian political economy offers an understanding of the processes surrounding land transfers that emphasises social emb",
+      "url": "https://doi.org/10.1080/01436590701637326"
+    },
+    {
+      "id": "scopus:10-4324-9781315774206-28",
+      "titulo": "AGRICULTURE AND THE AGRARIAN QUESTION",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9781315774206-28",
+      "data": "2017-01-01",
+      "resumo": "Marxian political economists have grappled with the “agrarian question” since the late nineteenth century, when European Marxists confronted the vitally important question of making sense of the agrarian peasantry’s role in the rapidly emerging European capitalist economies. By the late nineteenth c",
+      "url": "https://doi.org/10.4324/9781315774206-28"
+    },
+    {
+      "id": "scopus:10-1111-j-1471-0366-2006-00114-x",
+      "titulo": "Differentiation of the peasantry under feudalism and the transition to capitalism: In defence of Rodney Hilton",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1111/j.1471-0366.2006.00114.x",
+      "data": "2006-01-01",
+      "resumo": "The focus of the essay is one specific theme pursued by Rodney Hilton: that of differentiation of the English feudal peasantry and the implications this had for the development of capitalism in England. His contribution on this, along with those of E. A. Kosminsky and of Maurice Dobb, are considered",
+      "url": "https://doi.org/10.1111/j.1471-0366.2006.00114.x"
+    },
+    {
+      "id": "scopus:10-4324-9781003797661-18",
+      "titulo": "The Political Economy of Rural Development: The Case of Western U.S. Boomtowns",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4324/9781003797661-18",
+      "data": "2026-01-01",
+      "resumo": "Both economics and sociology, by studying rural development in isolation and by applying dominant paradigms, have failed to produce a coherent analysis of capitalist dynamics in rural areas. I begin by critiquing these approaches. In their place I propose a Marxist approach which emphasizes the dyna",
+      "url": "https://doi.org/10.4324/9781003797661-18"
+    },
+    {
+      "id": "scopus:10-1007-978-981-33-4635-2-4",
+      "titulo": "The Agrarian Question of Gendered Labour",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1007/978-981-33-4635-2_4",
+      "data": "2021-01-01",
+      "resumo": "This chapter focuses on labour processes associated with rural and agrarian economies through a theoretical exploration of reproductive labour as an agrarian question. We argue that under the global neoliberal economic regime and the resulting labour fragmentation, capitalist markets increasingly re",
+      "url": "https://doi.org/10.1007/978-981-33-4635-2_4"
+    },
+    {
+      "id": "scopus:10-1080-03066150-2011-607692",
+      "titulo": "New frontiers of land control: Introduction",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/03066150.2011.607692",
+      "data": "2011-10-01",
+      "resumo": "Land questions have invigorated agrarian studies and economic history, with particular emphases on its control, since Marx. Words such as 'exclusion', 'alienation', 'expropriation', 'dispossession', and 'violence' describe processes that animate land histories and those of resources, property rights",
+      "url": "https://doi.org/10.1080/03066150.2011.607692"
+    },
+    {
+      "id": "scopus:10-4337-9781788972468-00075",
+      "titulo": "The interface of critical development studies and critical agrarian studies",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.4337/9781788972468.00075",
+      "data": "2021-01-01",
+      "resumo": "This chapter explores the convergences and divergences between critical development studies and critical agrarian studies. It is argued that critical development studies and critical agrarian studies share a fundamental concern for understanding the systemic dynamics of capitalism, and the belief th",
+      "url": "https://doi.org/10.4337/9781788972468.00075"
+    },
+    {
+      "id": "scopus:10-1111-1467-9523-00176",
+      "titulo": "Some reflections on late twentieth century agrarian political economy",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1111/1467-9523.00176",
+      "data": "2001-01-01",
+      "resumo": "The 'new rural sociology' arguably represented the most significant watershed in the development of rural sociology during the 1970s and 1980s. I argue, however, that the new rural sociology, especially its dominant traditions of Chayanovian and neo-Leninist Marxism, has now been almost entirely sup",
+      "url": "https://doi.org/10.1111/1467-9523.00176"
+    },
+    {
+      "id": "scopus:10-1080-02255189-2006-9669166",
+      "titulo": "Is there an agrarian question in the 21st century?",
+      "tipo": "artigo",
+      "fonte": "Scopus/DOI",
+      "fonte_url": "https://doi.org/10.1080/02255189.2006.9669166",
+      "data": "2006-01-01",
+      "resumo": "This paper first explores the lineages and applications of the \"classic\" agrarian question, including its fateful adaptation in the early Soviet Union, as the agrarian question of capital. It then argues that the agrarian question of capital has been superseded in the current period of globalization",
+      "url": "https://doi.org/10.1080/02255189.2006.9669166"
+    },
+    {
+      "id": "bdtd:ufvjm-01",
+      "titulo": "Narrativas orais: saberes e fazeres da arquitetura vernácula na comunidade de São Gonçalo do Rio das Pedras (MG) e entorno",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Mayan Maharishi de Faria Ladeira Amâncio.",
+      "url": "https://acervo.ufvjm.edu.br/items/ef7dece9-6a36-4d9f-851d-e55a12c2019e"
+    },
+    {
+      "id": "bdtd:ufvjm-02",
+      "titulo": "Entre sons e discursos: as representações da mulher e do homem rural na música sertaneja",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Joênio Carvalho dos Anjos.",
+      "url": "https://acervo.ufvjm.edu.br/items/e43599a0-1cc2-4498-989a-fa5638379b30"
+    },
+    {
+      "id": "bdtd:ufvjm-03",
+      "titulo": "Desempenho acadêmico de jovens rurais e percepção dos discentes e docentes sobre o Bacharelado Interdisciplinar no ICA/UFVJM, Campus Unaí/MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Kátia Vieira Souto Lepesqueur.",
+      "url": "https://acervo.ufvjm.edu.br/items/5ba64354-8d28-4256-932e-77b54fde8552"
+    },
+    {
+      "id": "bdtd:ufvjm-04",
+      "titulo": "O processo de identidade de comunidades quilombolas de Peçanha-Minas Gerais: História oral, Cultura e Etnicidade",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Filipe de Oliveira Maciel.",
+      "url": "https://acervo.ufvjm.edu.br/items/1e1f3976-73fd-4139-8d5c-c728796518b3"
+    },
+    {
+      "id": "bdtd:ufvjm-05",
+      "titulo": "Entre o dito e o construído: análise de reassentamento de atingidas/os por barragem no Vale do Jequitinhonha/MG, sob a ótica dos direitos humanos",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Gessica Steffens.",
+      "url": "https://acervo.ufvjm.edu.br/items/4e8cb9dc-1a24-474f-a070-56a68ddd0a5f"
+    },
+    {
+      "id": "bdtd:ufvjm-06",
+      "titulo": "As novas formas de alteração do/no espaço: o turismo e as alterações no modo de vida dos moradores de Tabuleiro do Mato Dentro distrito de Conceição do Mato Dentro-MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Wellington Aguilar de Santana.",
+      "url": "https://acervo.ufvjm.edu.br/items/2f309f38-4561-4582-ad2e-404a396e994b"
+    },
+    {
+      "id": "bdtd:ufvjm-07",
+      "titulo": "O modo de vida tradicional da Comunidade Boiadas no município de Veredinha – MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Paulo André Alves de Amaral.",
+      "url": "https://acervo.ufvjm.edu.br/handle/123456789/3381"
+    },
+    {
+      "id": "bdtd:ufvjm-08",
+      "titulo": "Sítios arqueológicos de arte rupestre na região de Gouveia/MG: memória, ruralidades e identidade socioespacial",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Saulo Ivan Nery.",
+      "url": "https://acervo.ufvjm.edu.br/handle/123456789/3394"
+    },
+    {
+      "id": "bdtd:ufvjm-09",
+      "titulo": "Licenciatura em educação do campo da Universidade Federal dos Vales do Jequitinhonha e Mucuri: um estudo sobre o acesso e permanência",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Kleiton Luiz Carvalho.",
+      "url": "https://acervo.ufvjm.edu.br/items/9e09ded2-2eb6-40bf-97df-d5115e911d17"
+    },
+    {
+      "id": "bdtd:ufvjm-10",
+      "titulo": "Agricultura familiar no Vale do Jequitinhonha: produção agropecuária e o acesso às políticas públicas em Almenara/MG, 2006-2018",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Marcos Vinícius Pacheco Pereira.",
+      "url": "https://acervo.ufvjm.edu.br/items/37119495-d245-4ec2-be95-15ac486dfbe5"
+    },
+    {
+      "id": "bdtd:ufvjm-11",
+      "titulo": "O Batuque como ferramenta de resistência territorial e identitária na Comunidade Quilombola Baú, Araçuaí/MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Paulo Henrique Lacerda Gonzaga.",
+      "url": "https://acervo.ufvjm.edu.br/items/be0bb7a0-8930-4bc8-b664-337080cc7921"
+    },
+    {
+      "id": "bdtd:ufvjm-12",
+      "titulo": "A Escola Família Agrícola de Veredinha e os desafios na formação das juventudes do campo",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Natália Faria de Moura.",
+      "url": "https://acervo.ufvjm.edu.br/items/8aff9372-8e66-466f-bb1e-a74d7524e001"
+    },
+    {
+      "id": "bdtd:ufvjm-13",
+      "titulo": "Vida talhada com as mãos: as representações sociais da feira livre de Capelinha-MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Keyla Karla Fernandes Ferreira.",
+      "url": "https://acervo.ufvjm.edu.br/items/9af855fe-4702-4a35-afab-1660e281c9c4"
+    },
+    {
+      "id": "bdtd:ufvjm-14",
+      "titulo": "As percepções dos agricultores familiares do município de Ladainha – MG acerca do Programa Nacional de Alimentação Escolar: uma análise de conteúdo",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Mariane Rodrigues Silva.",
+      "url": "https://acervo.ufvjm.edu.br/items/66484702-2e8c-4559-a885-21c6e65f8cb5"
+    },
+    {
+      "id": "bdtd:ufvjm-15",
+      "titulo": "Trabalhadores, terra, sindicato: sindicalismo rural em Diamantina – MG (1970-1985)",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Túlio Henrique Pinheiro.",
+      "url": "https://acervo.ufvjm.edu.br/items/00e11c57-18b0-4863-84cc-661c97acf9b2"
+    },
+    {
+      "id": "bdtd:ufvjm-16",
+      "titulo": "Agroecossistemas, trabalho e autonomia: o cotidiano de mulheres camponesas em realidades do Vale do Jequitinhonha",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Bárbara Letícia Lopes.",
+      "url": "https://acervo.ufvjm.edu.br/items/aaa78236-384f-4d5d-8f6d-9f784f3e9083"
+    },
+    {
+      "id": "bdtd:ufvjm-17",
+      "titulo": "Conservação da agrobiodiversidade em um agroecossistema familiar em São Gonçalo do Rio das Pedras, Serro – MG: um estudo de caso",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Euro Henrique Caetano Matos.",
+      "url": "https://acervo.ufvjm.edu.br/items/b14ef2b4-e528-4689-bbd0-15b54ea355ce"
+    },
+    {
+      "id": "bdtd:ufvjm-18",
+      "titulo": "Políticas públicas para agricultura familiar: um estudo na Comunidade Quilombola de Raiz, no município de Presidente Kubitschek, Minas Gerais",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Maycon de Souza Ferreira.",
+      "url": "https://acervo.ufvjm.edu.br/items/8fccd55b-6e00-414c-8170-615386543dd8"
+    },
+    {
+      "id": "bdtd:ufvjm-19",
+      "titulo": "Educação popular, permacultura e agroecologia para transformação social, econômica e ambiental: um estudo de caso na comunidade rural de Extrema – Congonhas do Norte/MG",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Alessandra Lopes Calvão.",
+      "url": "https://acervo.ufvjm.edu.br/items/53869a76-dc52-41c6-b973-4bbeb23152a5"
+    },
+    {
+      "id": "bdtd:ufvjm-20",
+      "titulo": "Agricultura familiar e os circuitos curtos de comercialização no município de Diamantina, MG, durante a pandemia da Covid-19",
+      "tipo": "publicacao",
+      "fonte": "BDTD/UFVJM",
+      "fonte_url": "https://bdtd.ibict.br/",
+      "data": null,
+      "resumo": "Dissertação ou tese depositada no repositório institucional da UFVJM. Autor(a): Leandro Fernandes Oliveira.",
+      "url": "https://acervo.ufvjm.edu.br/items/1d1a1e4b-82b3-4d08-9540-d9332f5adcb4"
+    }
+  ],
+  "fontes": [
+    {
+      "id": "scopus-doi",
+      "titulo": "Artigos com DOI (exportação Scopus)",
+      "url": "https://www.scopus.com/",
+      "metodo": "Exportação de metadados fornecida pelo mantenedor; título, resumo e DOI preservados",
+      "itens": 39,
+      "observacao": "O resumo é o abstract da fonte, truncado em 300 caracteres; nenhum texto foi reescrito."
+    },
+    {
+      "id": "bdtd",
+      "titulo": "BDTD — Biblioteca Digital de Teses e Dissertações",
+      "url": "https://bdtd.ibict.br/",
+      "metodo": "Consulta à API pública do VuFind (robots.txt permite /vufind/api/)",
+      "itens": 20,
+      "observacao": "Dissertações e teses rurais da UFVJM; a API não devolveu data nem resumo por registro."
+    },
+    {
+      "id": "ppger-site",
+      "titulo": "PPGER/UFVJM — site do programa",
+      "url": "https://sgppg.com.br/ppg/ppger/31/",
+      "metodo": "Link oficial citado no Guia da Turma PPGER",
+      "itens": 0,
+      "observacao": "Docentes, linhas de pesquisa, calendários, dissertações e editais."
+    },
+    {
+      "id": "guia-ppger",
+      "titulo": "Guia da Turma PPGER 2026/2",
+      "url": "https://guiappger.pages.dev/",
+      "metodo": "Guia não oficial da turma, mantido por Artur Colito; fonte dos links institucionais",
+      "itens": 0,
+      "observacao": "Documento não oficial; em caso de divergência prevalecem os documentos institucionais."
+    },
+    {
+      "id": "guia-ufvjm",
+      "titulo": "Portal do Estudante UFVJM",
+      "url": "https://guiaufvjm.pages.dev/",
+      "metodo": "Portal não oficial, mantido por Artur Colito; reúne serviços e links oficiais",
+      "itens": 0,
+      "observacao": "Conteúdo não oficial, com a fonte oficial linkada em cada item."
+    },
+    {
+      "id": "periodicos-capes",
+      "titulo": "Portal de Periódicos CAPES",
+      "url": "https://periodicos.capes.gov.br/",
+      "metodo": "Acesso a periódicos assinados citado no Portal do Estudante UFVJM",
+      "itens": 0
+    }
+  ],
+  "lacunas": [
+    "Publicações do repositório UFVJM vieram do BDTD sem data nem resumo por registro; aparecem como “—” e ficam fora do gráfico por ano.",
+    "A coleta direta do DSpace do repositório UFVJM segue bloqueada nesta máquina; o BDTD é a ponte usada até liberar a captura com navegador."
+  ]
+}

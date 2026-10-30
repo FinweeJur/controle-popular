@@ -45,7 +45,7 @@ criterios_objetivos:
   - "OK: verificacao passou."
   - "AVISO: degradacao que nao quebra o cidadao (403 em host robot-block, falta description). Nao bloqueia."
   - "CRITICO: rota fora do ar, dado corrompido, SEO quebrado (robots/sitemap), pagina sem title. Bloqueia merge."
-  - "Ritmo: 1,5 s entre requisicoes por host; timeout de 15 s; User-Agent honesto FinweeJur/Github Artur colito; so leitura publica."
+  - "Ritmo: 1,5 s entre requisicoes por host; timeout de 15 s; User-Agent honesto finweejur/github artur colito; so leitura publica."
 
 rotina_diaria:
   quando: cron 10:00 UTC (07:00 BRT), todo dia, 30 minutos depois da rotina de fontes

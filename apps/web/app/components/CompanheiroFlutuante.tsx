@@ -124,7 +124,8 @@ import {
   type Ponto,
 } from "@/lib/companheiro/plataformas";
 import { DURACAO_FALHA_MS, EVENTO_COMPANHEIRO_FAILED } from "@/lib/companheiro/eventos";
-import { escolherFala } from "@/lib/companheiro/falas";
+import { escolherFala, falaParaRadio } from "@/lib/companheiro/falas";
+import { EVENTO_ESTADO, type EstadoRadio } from "@/lib/radio/eventos";
 import { dicaParaRota, type DicaPagina } from "@/lib/companheiro/dicas-pagina";
 import { usePosicaoPainel, medirTopoUtil, type CaixaAncora } from "@/lib/posicionar-painel";
 import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
@@ -335,6 +336,20 @@ const DICA_TROCA_VISIVEL_MS = (() => {
 })();
 
 /**
+ * Quanto tempo o balãozinho de rádio fica na tela, em ms (pedido do dono,
+ * 30/10/2026: 5 s). Curto de propósito: é um comentário de passagem, não um
+ * aviso. O `NEXT_PUBLIC_*` permite encurtar no teste Playwright; produção não
+ * define nada e usa os 5 s.
+ */
+const BALAO_RADIO_VISIVEL_MS = (() => {
+  const n = Number(process.env.NEXT_PUBLIC_CP_BALAO_RADIO_MS);
+  return Number.isFinite(n) && n > 0 ? n : 5_000;
+})();
+
+/** Duração do fade-out do balão de rádio, em ms (combina com a classe). */
+const BALAO_RADIO_SAIDA_MS = 300;
+
+/**
  * Os balões TEMPORIZADOS, na ordem dos tempos (1 min, 2 min, 5 min, 50 min).
  * A dica de página NÃO entra aqui: o gatilho dela é a troca de rota
  * (`usePathname`), não um relógio — ver o efeito dedicado mais abaixo.
@@ -421,6 +436,25 @@ export function CompanheiroFlutuante() {
   const [pets, setPets] = useState<PetCompanheiro[]>([PET_INICIAL]);
   const petsRef = useRef<PetCompanheiro[]>([PET_INICIAL]);
 
+  // ── Balãozinho de rádio (comentário do pet ao escolher estação) ───────────
+  // SEPARADO dos balões de dica: mora dentro da caixa do pet ATIVO (`pets[0]`),
+  // então acompanha o arrasto sozinho. `saindo` é a fase do fade-out; o timer
+  // de 5 s e o de 300 ms são limpos pelo efeito abaixo (troca, unmount).
+  const [balaoRadio, setBalaoRadio] = useState<{
+    id: string;
+    texto: string;
+    saindo: boolean;
+  } | null>(null);
+  const balaoRadioRef = useRef<HTMLDivElement | null>(null);
+  /** Largura/altura medidas do balão (cache; lidas a cada quadro pelo laço). */
+  const balaoRadioTamanhoRef = useRef({ larg: 0, alt: 0 });
+  /**
+   * Último id de rádio que o pet já comentou. O `cp:radio-estado` também é
+   * publicado em pausa/retomada e em "sintonizando"; guardar o id evita repetir
+   * a fala enquanto a MESMA estação continua escolhida.
+   */
+  const ultimoRadioRef = useRef<string | null>(null);
+
   /** Cria o bicho de quem ainda não tem (o primeiro nasce em x=24). */
   const garantirBichos = useCallback((lista: PetCompanheiro[]) => {
     const salvas = lerPosSalvas();
@@ -463,6 +497,9 @@ export function CompanheiroFlutuante() {
       garantirBichos(lista);
       petsRef.current = lista;
       setPets(lista);
+      // Trocou de pet (ou tirou todos)? O balão de rádio some com o pet que o
+      // dizia — não fica órfão no canto nem aponta para um bicho que saiu.
+      setBalaoRadio(null);
       persistir(lista);
     },
     [garantirBichos, persistir],
@@ -724,6 +761,50 @@ export function CompanheiroFlutuante() {
   }, [dicaAtiva, fecharDica]);
 
   /**
+   * O pet comenta a rádio escolhida. O gatilho é `cp:radio-estado`, não
+   * `cp:radio-tocar`: o primeiro só muda de id quando uma estação NOVA entra
+   * no player (o segundo também dispara ao pausar/retomar a mesma). Mesmo
+   * assim, `cp:radio-estado` é republicado a cada mudança de `tocando`/
+   * `carregando`; `ultimoRadioRef` guarda o id já comentado e corta a
+   * repetição. Sem bicho na tela, não há quem fale: a escolha é ignorada.
+   */
+  useEffect(() => {
+    const aoEstado = (e: Event) => {
+      const estado = (e as CustomEvent<EstadoRadio>).detail;
+      if (!estado || typeof estado.id !== "string") return;
+      if (estado.id === ultimoRadioRef.current) return;
+      ultimoRadioRef.current = estado.id;
+      if (petsRef.current.length === 0) return;
+      setBalaoRadio({
+        id: estado.id,
+        texto: falaParaRadio(estado.id),
+        saindo: false,
+      });
+    };
+    window.addEventListener(EVENTO_ESTADO, aoEstado);
+    return () => window.removeEventListener(EVENTO_ESTADO, aoEstado);
+  }, []);
+
+  /**
+   * Ciclo do balão de rádio: 5 s visível e depois 300 ms de fade-out. Cada
+   * estação nova troca o objeto de estado e reinicia a contagem; o cleanup
+   * limpa o timer pendente no unmount, na troca de pet e na nova escolha.
+   */
+  useEffect(() => {
+    if (!balaoRadio) return;
+    const espera = balaoRadio.saindo
+      ? BALAO_RADIO_SAIDA_MS
+      : BALAO_RADIO_VISIVEL_MS;
+    const t = window.setTimeout(() => {
+      setBalaoRadio((atual) => {
+        if (!atual) return null;
+        return atual.saindo ? null : { ...atual, saindo: true };
+      });
+    }, espera);
+    return () => window.clearTimeout(t);
+  }, [balaoRadio]);
+
+  /**
    * Dica EDUCATIVA da página (balão "pagina"). Diferente dos outros quatro,
    * o gatilho é a ROTA, não o relógio: a cada troca de `pathname`, procuramos
    * uma dica cujo prefixo case. Só mostra se:
@@ -850,6 +931,30 @@ export function CompanheiroFlutuante() {
     return { x, y };
   }, []);
 
+  // ── Posicionamento do balão de rádio ─────────────────────────────────────
+  const posicionarBalaoRadio = useCallback(() => {
+    const balaoRadioEl = balaoRadioRef.current;
+    const caixaPet = balaoRadioEl?.parentElement?.getBoundingClientRect() ?? null;
+    if (balaoRadioEl && caixaPet) {
+      const tamanho = balaoRadioTamanhoRef.current;
+      const largBalao = tamanho.larg || balaoRadioEl.offsetWidth;
+      const altBalao = tamanho.alt || balaoRadioEl.offsetHeight;
+      const centro = caixaPet.left + caixaPet.width / 2;
+      const esq = Math.min(
+        window.innerWidth - largBalao - 8,
+        Math.max(8, centro - largBalao / 2),
+      );
+      balaoRadioEl.style.left = `${Math.round(esq - caixaPet.left)}px`;
+      if (caixaPet.top - altBalao - 6 >= 8) {
+        balaoRadioEl.style.top = "auto";
+        balaoRadioEl.style.bottom = `${Math.round(caixaPet.height + 6)}px`;
+      } else {
+        balaoRadioEl.style.bottom = "auto";
+        balaoRadioEl.style.top = `${Math.round(caixaPet.height + 6)}px`;
+      }
+    }
+  }, []);
+
   // ── O laço: percorre TODOS os bichos a cada quadro ────────────────────────
   useEffect(() => {
     const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -939,12 +1044,20 @@ export function CompanheiroFlutuante() {
         }
       }
 
+      // Balão de rádio: posicionado no MESMO quadro do pet ativo, então
+      // acompanha passeio e arrasto. Usa o retângulo do CONTÊINER do pet (não
+      // a posição interna do laço): o contêiner já é `fixed` e recebe o
+      // `transform` do bicho, então a conta em coordenadas de tela fecha.
+      // Horizontalmente fica centrado no bicho e preso entre 8 px e a borda
+      // direita; verticalmente sobe acima (ou desce, se não houver espaço).
+      posicionarBalaoRadio();
+
       raf = requestAnimationFrame(passo);
     };
 
     raf = requestAnimationFrame(passo);
     return () => cancelAnimationFrame(raf);
-  }, [pontoDoAlvo]);
+  }, [pontoDoAlvo, posicionarBalaoRadio]);
 
   // ── O líder voa em arco até um alvo ──────────────────────────────────────
   const voarPara = useCallback(
@@ -1179,6 +1292,36 @@ export function CompanheiroFlutuante() {
                 }}
               />
             </button>
+
+            {/* Balãozinho de rádio: só no pet ATIVO (`pets[0]`), dentro da
+                MESMA caixa transformada — acompanha o arrasto e o passeio.
+                É `pointer-events-none` (não rouba clique do bicho) e fica
+                acima dele, com fundo translúcido e texto de 12 px. O laço
+                posiciona e trava nas bordas; o fade-out é a classe de
+                opacidade. `data-nao-plataforma`: não é chão dos bichos. */}
+            {p.slug === pets[0]?.slug && balaoRadio && (
+              <div
+                ref={(el) => {
+                  balaoRadioRef.current = el;
+                  if (el) {
+                    balaoRadioTamanhoRef.current = {
+                      larg: el.offsetWidth,
+                      alt: el.offsetHeight,
+                    };
+                  }
+                }}
+                role="status"
+                aria-live="polite"
+                data-cp-balao-radio=""
+                data-nao-plataforma
+                style={{ bottom: "calc(100% + 6px)" }}
+                className={`pointer-events-none absolute left-0 z-10 w-max max-w-[min(11rem,calc(100vw-2rem))] rounded-xl border border-border/70 bg-surface/85 px-2 py-1 text-xs font-medium leading-snug text-text shadow-md backdrop-blur-sm transition-opacity duration-300 ease-out ${
+                  balaoRadio.saindo ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                {balaoRadio.texto}
+              </div>
+            )}
           </div>
         );
       })}

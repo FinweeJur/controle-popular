@@ -31,7 +31,6 @@ import {
 } from "@/lib/ambiente/dados-barragens-globais";
 import PainelBarragensGlobaisClient from "./PainelBarragensGlobaisClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
-import FooterGlobal from "@/app/components/FooterGlobal";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import {
@@ -241,10 +240,6 @@ export default function PaginaBarragensGlobais() {
         <MeioAmbienteRelacionado />
       </div>
 
-      {/* RODAPÉ GLOBAL */}
-      <div className="mt-16 print:hidden">
-        <FooterGlobal />
-      </div>
     </div>
   );
 }

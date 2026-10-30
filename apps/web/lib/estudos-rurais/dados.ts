@@ -1,20 +1,27 @@
 import bruto from "@/data/estudos-rurais/estudos-rurais.json";
+import curado from "@/data/estudos-rurais/estudos-rurais-curados.json";
 
 /**
  * ═══ ESTUDOS RURAIS — LÓGICA PURA DA PÁGINA ═══
  *
  * Padrão do repositório: `<mod>.ts` + `<mod>.test.ts` ao lado, sem React.
- * O JSON vem de `scripts/coletar-estudos-rurais.mts` (fontes, pausas e as
- * decisões de bloqueio documentadas no cabeçalho daquele script).
+ * O JSON coletado vem de `scripts/coletar-estudos-rurais.mts` (fontes, pausas
+ * e as decisões de bloqueio documentadas no cabeçalho daquele script).
  *
- * ═══ LACUNA É INFORMAÇÃO ═══
+ * ═══ COLETA + CURADORIA ═══
  *
- * A primeira rodada coletou apenas `noticia` (radar de Google News + feed do
- * ICA/UFVJM). Dissertações do PPGER ficaram de fora porque a API REST do
- * repositório institucional responde HTML da SPA em toda rota testada
- * (08/09/2026) — a lacuna viaja DENTRO do JSON (`lacunas`), e esta página a
- * declara em vez de escondê-la. Os números abaixo são MEDIDOS do arquivo,
- * nunca digitados à mão.
+ * A coleta automática só entrega `noticia` (radar de Google News + feed do
+ * ICA/UFVJM). Para cumprir a promessa da página — artigos e publicações — o
+ * arquivo `estudos-rurais-curados.json` traz dois blocos versionados:
+ *   • artigos com DOI, extraídos de uma exportação Scopus fornecida pelo
+ *     mantenedor (título, abstract e DOI preservados, resumo truncado em 300);
+ *   • dissertações/teses rurais da UFVJM obtidas pela API pública do BDTD
+ *     (a captura direta do DSpace do repositório segue bloqueada nesta
+ *     máquina; ver `lacunas`).
+ *
+ * A fusão abaixo mantém a coleta como base e acrescenta a curadoria sem
+ * duplicar id. Os números da página são MEDIDOS do resultado, nunca digitados
+ * à mão. Lacuna continua sendo informação: o que faltar aparece declarado.
  */
 
 export type TipoItem = "noticia" | "artigo" | "evento" | "publicacao";
@@ -53,9 +60,51 @@ export interface AcervoEstudosRurais {
   itens: ItemEstudoRural[];
 }
 
-export const ACERVO = bruto as unknown as AcervoEstudosRurais;
+/** Bloco de curadoria: mesma forma do acervo, sem os campos de coleta. */
+interface AcervoCurado {
+  coletadoEm: string;
+  itens: ItemEstudoRural[];
+  fontes: FonteColetada[];
+  lacunas: string[];
+}
 
-export const ITENS: ItemEstudoRural[] = ACERVO.itens;
+const BASE = bruto as unknown as AcervoEstudosRurais;
+const CURADO = curado as unknown as AcervoCurado;
+
+/** Junta duas listas por `id`, mantendo a ordem e descartando repetidos. */
+function juntarPorId<T extends { id: string }>(base: T[], extra: T[]): T[] {
+  const vistos = new Set(base.map((x) => x.id));
+  const saida = [...base];
+  for (const x of extra) {
+    if (vistos.has(x.id)) continue;
+    vistos.add(x.id);
+    saida.push(x);
+  }
+  return saida;
+}
+
+/** Curadoria primeiro (ids próprios), notícias coletadas depois; sem id repetido. */
+export const ITENS: ItemEstudoRural[] = juntarPorId(CURADO.itens, BASE.itens).sort((a, b) =>
+  (b.data ?? "").localeCompare(a.data ?? ""),
+);
+
+export const ACERVO: AcervoEstudosRurais = {
+  ...BASE,
+  // A página passa a exibir a data da curadoria: é ela que fecha o retrato atual.
+  coletadoEm: CURADO.coletadoEm,
+  contagens: {
+    itens: ITENS.length,
+    porTipo: Object.fromEntries(
+      ["noticia", "artigo", "evento", "publicacao"].map((t) => [
+        t,
+        ITENS.filter((i) => i.tipo === t).length,
+      ]),
+    ),
+  },
+  fontes: juntarPorId(BASE.fontes, CURADO.fontes),
+  lacunas: [...new Set([...BASE.lacunas, ...CURADO.lacunas])],
+  itens: ITENS,
+};
 
 export const COBERTURA = {
   itens: ITENS.length,
