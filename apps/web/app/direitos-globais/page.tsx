@@ -70,19 +70,13 @@ function DireitoCard({ title, description, icon, rights }: DireitoCardProps) {
 interface FiltroSelectProps {
   label: string;
   options: string[];
-  value?: string;
-  onChange?: (value: string) => void;
 }
 
-function FiltroSelect({ label, options, value, onChange }: FiltroSelectProps) {
+function FiltroSelect({ label, options }: FiltroSelectProps) {
   return (
     <div>
       <label className="mb-2 block text-sm font-medium text-text">{label}</label>
-      <select 
-        className="w-full rounded-lg border border-border px-3 py-2 text-sm"
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-      >
+      <select className="w-full rounded-lg border border-border px-3 py-2 text-sm">
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}
