@@ -4,6 +4,7 @@ import { COBERTURA_ACORDO_RIO_DOCE } from "@/lib/ambiental/ckan-mg-mariana";
 import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import CartaoLitigiosTransnacionais from "@/app/components/CartaoLitigiosTransnacionais";
 import PaginasTema from "./PaginasTema";
 
 /**
@@ -115,6 +116,8 @@ export default function RioDoceHub() {
         os processos da Justiça e os dados da bacia, cada número apontando a
         fonte oficial de onde veio.
       </p>
+
+      <CartaoLitigiosTransnacionais />
 
       <section aria-labelledby="frentes" className="mt-10">
         <h2 id="frentes" className="font-display text-xl font-semibold">

@@ -27,6 +27,7 @@ import {
 } from "@/lib/internacional/dados-europa";
 import PainelEuropa from "./PainelEuropa";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DestaqueLitigios from "./DestaqueLitigios";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -88,6 +89,9 @@ export default function PaginaHubEuropa() {
           europeias em território brasileiro.
         </p>
       </header>
+
+      {/* DESTAQUE DA SUBFRENTE DE LITÍGIOS TRANSNACIONAIS */}
+      <DestaqueLitigios />
 
       {/* LINKS DE ATALHO PARA OUTRAS ROTAS INTERNACIONAIS */}
       <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 print:hidden">
