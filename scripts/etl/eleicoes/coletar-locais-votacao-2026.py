@@ -44,7 +44,7 @@ from pathlib import Path
 from typing import Any
 from urllib.request import Request, urlopen
 
-USER_AGENT = "FinweeJur/Github Artur colito"
+USER_AGENT = "finweejur/github artur colito"
 URL_FONTE = (
     "https://cdn.tse.jus.br/estatistica/sead/odsele/"
     "eleitorado_locais_votacao/eleitorado_local_votacao_2026.zip"
