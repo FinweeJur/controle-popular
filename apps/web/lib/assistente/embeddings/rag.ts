@@ -27,10 +27,12 @@
  * é checada antes e o erro sai amigável quando o servidor não está de pé.
  */
 
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
 import { montarAcervo, frenteDaRota, type AcervoFonte } from "../acervo";
 import { verificarCitacao, rotuloVerificacao } from "../verificador-citacao";
 import { vetorizar, vetorizarLote, ollamaDisponivel, OllamaIndisponivel } from "./ollama";
-import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto } from "./remoto";
+import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto, EMBED_MODEL_PADRAO } from "./remoto";
 import { similaridadeCosseno, similaridadeLexical, tokensDe } from "./similaridade";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { temChaveRemota } from "./provedores";
@@ -108,6 +110,43 @@ function construirPesoToken(fontes: AcervoFonte[]): (t: string) => number {
 /** Índice vetorial do acervo em memória — indexar custa rede; cache do módulo. */
 let indiceEmMemoria: IndiceAcervo | null = null;
 
+/** Vetores pré-calculados no build (`scripts/gerar-embeddings-acervo.mts`). */
+const CAMINHO_EMBED = path.join(process.cwd(), "data", "acervo-embeddings.json");
+
+/** Modelo de embedding em uso agora: remoto se há chave, senão Ollama. */
+function modeloEmbedAtual(): string {
+  if (temChaveEmbed()) return process.env.EMBED_MODEL || EMBED_MODEL_PADRAO;
+  return process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text";
+}
+
+/**
+ * Carrega os vetores do arquivo, se ele existir e for do MESMO modelo.
+ * Modelo diferente = `null`, e a indexação volta a vetorizar: comparar vetores
+ * de espaços diferentes daria similaridade sem sentido.
+ */
+function vetoresPrecalculados(fontes: AcervoFonte[], modelo: string): number[][] | null {
+  if (!existsSync(CAMINHO_EMBED)) return null;
+  try {
+    const bruto = JSON.parse(readFileSync(CAMINHO_EMBED, "utf8")) as {
+      modelo?: string;
+      pecas?: Record<string, string>;
+    };
+    if (bruto.modelo !== modelo || !bruto.pecas) return null;
+    const vetores: number[][] = [];
+    for (const fonte of fontes) {
+      const codificado = bruto.pecas[fonte.id];
+      if (!codificado) return null;
+      const bytes = Buffer.from(codificado, "base64");
+      const vetor = new Array<number>(bytes.length);
+      for (let i = 0; i < bytes.length; i += 1) vetor[i] = (bytes[i] - 128) / 127;
+      vetores.push(vetor);
+    }
+    return vetores;
+  } catch {
+    return null;
+  }
+}
+
 /** Tamanho de lote ao vetorizar o acervo: 120 textos de uma vez estourou o
  *  timeout de 30 s do Ollama (medido em 31/08); em lotes de 48 cada chamada
  *  cabe no tempo e o modelo vai esquentando. Número divisível, para o lote
@@ -141,6 +180,11 @@ async function vetorizarTextos(textos: string[], timeoutMs?: number): Promise<nu
 async function indexarAcervo(): Promise<IndiceAcervo> {
   if (indiceEmMemoria) return indiceEmMemoria;
   const fontes = montarAcervo();
+  const precalculado = vetoresPrecalculados(fontes, modeloEmbedAtual());
+  if (precalculado) {
+    indiceEmMemoria = { fontes, vetores: precalculado, pesoToken: construirPesoToken(fontes) };
+    return indiceEmMemoria;
+  }
   const textos = fontes.map((f) => f.texto);
   const vetores: number[][] = [];
   for (let i = 0; i < textos.length; i += LOTE_EMBED) {
