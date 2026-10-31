@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-18
+> **Última medição:** 2026-10-31
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [RADAR-HOTSPOTS.md](RADAR-HOTSPOTS.md), [RELATORIOS-AGENTES.md](RELATORIOS-AGENTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, heroku, codescene, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
@@ -33,6 +33,10 @@ Aqui vai ponteiro, não cópia. Mudou algo? Atualize aqui no mesmo commit.
 **Publicação em duas casas (troca de 06/10/2026, pedido do dono).** Enquanto
 o **Azure Container Apps** é o principal, o Guara virou secundário — e está
 ⛔ **com a cota do plano Starter estourada** (aviso do dono em 09/10).
+
+**Revisão em produção (31/10/2026):** `cp-web--0000072`, 100% do tráfego.
+Imagem `ab6e6771`. Publica a memória com país, a lista de universidades e o
+RAG reindexado; detalhe em [Entregas recentes](#entregas-recentes).
 
 | Papel | Modo | Estado |
 |---|---|---|
@@ -299,8 +303,43 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
   (B7). O `cf:build` do OpenNext dispara o mesmo script e **herda a
   flag** — rodar um `cf:build` de fumaça e conferir o bundle do Worker
   contra os 3 MiB antes de depender do fallback Cloudflare.
+- **Extensão universitária só cobre a UFVJM.** São 168 projetos em andamento
+  no SIEXC; BA, RJ, RS e SP seguem com `PROJETOS_*` vazio. Cada instituição
+  usa plataforma própria (PROEX/PEC), sem cadastro nacional único.
+- **Cinco verbetes da mística sem país único** ("Internacional": OIT, Acordo
+  de Paris, Guerra do Paraguai, criação da Internacional e um discurso de
+  1793). Não é lacuna de coleta: o fato não pertence a um país só.
+- **Globo: dois nomes do raio sem polígono.** O shapefile do IBGE renomeou
+  "Marobá dos Teixeira" para "Maroba dos Teixeiras" e "Porto Coris Praia"
+  para "Porto Coris"; falta a tabela de apelidos para religar os polígonos.
 
 ## Entregas recentes
+
+**31/10/2026 — Memória com país, universidades com lista e RAG reindexado:**
+
+- **Mística e Linha do Tempo com país.** Os 542 verbetes ganharam o campo
+  `pais`, exibido como "Onde: lugar · país" na home, em `/memoria`, no
+  calendário e na linha do tempo. Correções: Che Guevara (Argentina), Henfil
+  e Encruzilhada Natalino (Brasil), Dia da Terra (Israel), Enriquillo
+  (República Dominicana); Hong Kong entra como China e Porto Rico como
+  Estados Unidos. União Soviética e Tchecoslováquia mantêm o nome da época.
+  Cinco fatos sem país único ficam como "Internacional".
+- **`/universidades` virou lista de verdade.** 168 projetos de extensão em
+  andamento da UFVJM, lidos do SIEXC (antes eram 2), com coordenador, área,
+  linha, abrangência e período. Entraram o cruzamento tema × estado, o
+  recorte por local e por data, o filtro por ano e a paginação dos projetos.
+  Total: **1.584 registros** (1.414 grupos + 170 projetos).
+- **Contatos na própria página.** Lista de contatos institucionais com
+  telefone, e-mail, site e Instagram; cada cartão cai no canal da instituição
+  quando a fonte não publica contato do grupo.
+- **RAG.** PDF da mística regerado com país (55 páginas) e índice reindexado:
+  **2.243 documentos** e **2.471 trechos**, 229 da mística (228 com país),
+  sem falha e sem PDF vazio.
+- **Busca do Seu Nonô.** Fontes `macro:` (resumos curados) ganham bônus de
+  0,12 quando cobrem a pergunta; o resumo do Acordo de Mariana volta ao top-1.
+  Golden set 22/22 e suíte completa verde (296 arquivos + 201 do globo).
+- **Operação.** 19 branches `cavas-*` já mergeadas foram removidas (28 → 9) e
+  `origin/cp-hero-vivo` apagado depois de arquivado.
 
 **29/10/2026 — Autos de infração da SEMAD no portal (busca e detalhe, 2024–2026):**
 

@@ -557,6 +557,21 @@ medido no corpus dele, não uma constante universal. Reciprocal Rank Fusion
 (RRF) é uma forma robusta de combinar listas sem calibrar score bruto; se usar
 soma ponderada, normalize os scores.
 
+#### 4.1.1 Síntese curada vence documento parecido
+
+Um acervo grande cria um efeito colateral: dezenas de documentos primários
+quase idênticos (ementas, decisões, trechos de lei) empurram para baixo o
+resumo curado que responde à pergunta. Medido no Seu Nonô em 31/10/2026:
+"O que aconteceu no rompimento da barragem de Fundão em Mariana?" devolvia
+cinco ementas do TJES e deixava o cartão do Acordo de Mariana em 16º.
+
+A regra do projeto: fonte `macro:` — resumo curado do portal — recebe bônus de
+**0,12** quando a cobertura lexical já é alta (≥ 0,5). Não é para promover
+cartão que não responde; é para a síntese vencer o documento primário parecido.
+Sem o bônus, o topo era 0,663 (TJES) e o resumo 0,549; com o bônus, o resumo
+vai a 0,669 e assume o topo. O golden set (`lib/assistente/golden-set.test.ts`)
+trava o comportamento.
+
 ### 4.2 Reranking
 
 Recuperar 20–50 candidatos e reranquear para 3–8 é comum. O reranker
@@ -1093,3 +1108,8 @@ O manual não substitui o [PLANO-RAG-COMPLETO.md](../historico/planos/PLANO-RAG-
 ele explica o desenho, os limites e as decisões que o plano precisa respeitar.
 Números de estrelas, licenças e atividade foram medidos em 21/10/2026 e devem
 ser reconferidos antes de uma nova adoção.
+
+**31/10/2026 — bônus de síntese curada.** A seção 4.1.1 nasceu da falha do
+golden set no caso Fundão/Mariana: o resumo do Acordo de Mariana ficava em 16º,
+atrás de ementas do TJES. O bônus de 0,12 para fontes `macro:` com cobertura
+lexical alta devolveu o resumo ao topo e a suíte voltou ao verde.

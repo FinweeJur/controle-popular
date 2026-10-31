@@ -1,5 +1,11 @@
 # Relatório de Fontes e Lacunas - Expansão do Índice de Universidades
 
+> **Nota de 31/10/2026:** este relatório descreve a expansão para 21 estados
+> feita em outra linha de trabalho. O índice publicado nesta branch cobre
+> cinco estados (MG, BA, RJ, RS, SP), com 1.414 grupos e 170 projetos; a
+> expansão de 21 estados ainda não foi mesclada. Números medidos em
+> [ESTADO.md](02-estado/ESTADO.md).
+
 **Projeto:** Controle Popular - Expansão do Índice de Universidades  
 **Subagente:** Especialista em Coleta de Dados Acadêmicos  
 **Período:** 2026-10-30  

@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global (priorização de trabalho, documentação e operação)
-> **Última medição:** 2026-10-18
+> **Última medição:** 2026-10-31
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [ESTADO.md](ESTADO.md), [RELATORIOS-AGENTES.md](RELATORIOS-AGENTES.md), [PLANO-RADAR-AGENTES-HOTSPOTS-18-10.md](../planos/PLANO-RADAR-AGENTES-HOTSPOTS-18-10.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** radar, hotspots, corrigir, atualizar, editar, ampliar, refatorar, publicar, prioridade, links, coletores, codescene, linkmender
@@ -74,6 +74,7 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 | **Rota `/ambiental/contratos` não existe** | 14/10: auditada como “página inexistente” no top 100 | `apps/web/app/ambiental/` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | criar a rota ou remover o link do índice |
 | **`/funcaosocialterra/mapa` fora da régua** | 14/10: faltam 5 itens (seções, índice, relacionados, gráfico, fonte) | `apps/web/app/funcaosocialterra/mapa/page.tsx` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | aplicar o checklist do [PADRAO-PAGINA-WIKI](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | **`/canada` fora da régua** | 14/10: faltam 5 itens; é hub internacional com dado | `apps/web/app/canada/page.tsx` | [padrão de página](../relatorios-automacao/padrao-pagina-2026-10-14.md) | fechar seções, índice, relacionados, gráfico e fonte |
+| **Dois nomes do raio sem polígono** | 31/10: o shapefile do IBGE renomeou Marobá e Porto Coris; 26 de 30 casam | `public/terras/globo/js/ui/pares-do-territorio.js` | [ESTADO, dívida](ESTADO.md#dívida-técnica-registrada) | tabela de apelidos para os dois nomes; o teste do raio já fixa os 4 órfãos |
 
 ## Atualizar dado
 
@@ -109,6 +110,7 @@ Depois de executar, atualize a fonte — não este radar sozinho.
 | **12 cidades ativas no build** | 05/10: 621 rotas com 12 cidades; 5.570 municípios já coletados | `apps/web/scripts/cidades-do-build` e `CIDADES_DO_BUILD` | [ESTADO, A7](ESTADO.md#bloco-a--fazer-agora) | ampliar por lote, com testes do assistente |
 | **22 cidades sem licença na fonte** | 18/10: 22/22 deram zero no WFS da Semad; é lacuna da fonte | `apps/web/lib/ambiental/` | [PENDENCIAS-AMBIENTAL](/docs/historico/planos/PENDENCIAS-AMBIENTAL-18-10.md) | manter “sem registro na fonte”; não inventar dado |
 | **Remuneração de servidores e QSA** | Fila B6: novas APIs, 1–2 semanas, aguarda ordem | fontes no plano arquivado §8 | [ESTADO, B6](ESTADO.md#bloco-b--destravadas-aguardando-ordem) | pedir ordem ao dono antes de começar |
+| **Extensão só na UFVJM** | 31/10: 168 projetos em andamento no SIEXC; BA, RJ, RS e SP com `PROJETOS_*` vazio | `apps/web/lib/universidades/dados-*.ts`, `scripts/coletar-siexc-ufvjm.py` | [ESTADO, dívida](ESTADO.md#dívida-técnica-registrada) | coletar PROEX/PEC de UFOP, UFMG e UFRGS, uma por vez, com `robots.txt` e pausa |
 
 ## Refatorar
 
