@@ -316,3 +316,26 @@ Isto foi feito na mesma sessão, mas é sobre o `cp-web`, não sobre a VM:
   `az containerapp ingress traffic set -n cp-web -g CP-APP --revision-weight cp-web--0000057=100`.
 - **Custo medido**: Container Apps R$ 187,36 (77%), Virtual Network R$ 31,53,
   Storage R$ 22,66, VM R$ 0,00.
+
+## Resultado da sessão de correção (30/10/2026)
+
+- Run manual **41125892522** (`workflow_dispatch`, `limite=10`): `preparar`
+  success, `vigiar` success, `desligar` success; VM **deallocated**.
+- Coleta: **+10 positivos e +10 negativos**; manifesto
+  `manifesto-20261030-2052.json` no Blob `cpdados4751/cavas` e tar
+  `recortes-20261030-2052.tgz`.
+- Causa raiz do `Killed`: VM com **887 MB**, **sem swap**, e um timer local
+  rodando `--limite 20` no boot. Correção: **swap de 2 GB** no preparador,
+  limite padrão **20/20**, `GDAL_CACHEMAX=64` inteiro e guarda
+  `PERMITIR_LOCAL=1` quando não há `BLOB_SAS`.
+- O `TypeError: an integer is required` era o `GDAL_CACHEMAX="64"` string;
+  passou a inteiro. O `RasterioIOError` de cena é logado e pulado; não
+  derruba a rodada.
+- **Achado novo:** a VM tinha `preparador-cavas.timer`
+  (`OnBootSec=2min`, `ExecStart=/bin/bash /opt/preparador-cavas.sh`) rodando
+  local-only a cada boot, além do GitHub Actions. Foi **desabilitado**
+  (`systemctl disable --now`); o handoff anterior dizia que não havia cron
+  interno.
+- O workflow `cavas-preparador.yml` continua **disabled_manually** e o
+  `schedule` comentado. Religar só com ordem do dono.
+- Custo: computação R$ 0; disco + IP seguem ~R$ 1,27/dia; VM deallocated.
