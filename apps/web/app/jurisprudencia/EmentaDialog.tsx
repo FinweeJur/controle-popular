@@ -37,10 +37,10 @@ function PainelEmenta({
         role="dialog"
         aria-modal="true"
         aria-labelledby="ementa-titulo"
-        className="flex max-h-[85vh] w-full max-w-4xl flex-col rounded-xl border border-border bg-surface shadow-2xl"
+        className="flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+        <header className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3">
           <h2 id="ementa-titulo" className="text-sm font-semibold text-text">
             {resumo ? "Resumo do caso" : "Ementa do acórdão"}
           </h2>
@@ -63,7 +63,7 @@ function PainelEmenta({
             </button>
           </div>
         </header>
-        <div className="overflow-y-auto px-4 py-4 text-sm leading-relaxed text-text-soft">
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 text-sm leading-relaxed text-text-soft">
           {resumo ? (
             <p className="mb-4">
               <span className="font-semibold text-text">Resumo: </span>
