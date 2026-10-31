@@ -70,6 +70,7 @@ const NOMES_FRENTE: Record<string, string> = {
   brumadinho: "Brumadinho (TJMG)",
   riodoce: "Rio Doce",
   dh: "Direitos humanos (TJMG)",
+  penal: "Penal e criminal",
   sumula: "Súmulas",
 };
 
