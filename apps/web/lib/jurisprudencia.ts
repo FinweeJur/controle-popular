@@ -32,6 +32,8 @@ export interface CasoJurisprudencia {
   valor: number | null;
   link: string;
   status: string;
+  explicacao: string;
+  exemplo: string;
 }
 
 export interface Filtros {

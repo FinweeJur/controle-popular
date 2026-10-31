@@ -322,27 +322,31 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
   );
 }
 
+function LinhaTexto({ rotulo, texto, destaque = false }: { rotulo: string; texto: string; destaque?: boolean }) {
+  if (!texto) return null;
+  return (
+    <p className={destaque ? undefined : "opacity-80"}>
+      <span className="font-semibold">{rotulo}: </span>
+      {texto}
+    </p>
+  );
+}
+
 function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
-  if (!caso.ementa && !caso.resumo) return null;
-  const rotulo = caso.resumo ? "ver resumo" : "ver ementa";
+  const textos = [caso.explicacao, caso.ementa, caso.resumo].filter(Boolean);
+  if (textos.length === 0) return null;
+  const rotulo = caso.explicacao ? "ver explicação" : caso.resumo ? "ver resumo" : "ver enunciado";
+  const tituloTexto = caso.tipo === "sumula" ? "Enunciado" : "Ementa";
   return (
     <details className="relative mt-1">
       <summary className="cursor-pointer text-xs font-semibold text-primary underline">
         {rotulo}
       </summary>
-      <div className="absolute left-0 z-30 mt-1 w-[56rem] max-w-[92vw] space-y-2 rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-xs leading-relaxed shadow-2xl">
-        {caso.resumo ? (
-          <p>
-            <span className="font-semibold">Resumo: </span>
-            {caso.resumo}
-          </p>
-        ) : null}
-        {caso.ementa ? (
-          <p className="opacity-80">
-            <span className="font-semibold">Ementa: </span>
-            {caso.ementa}
-          </p>
-        ) : null}
+      <div className="absolute left-0 z-30 mt-1 w-[56rem] max-w-[92vw] space-y-2 rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-sm leading-relaxed shadow-2xl">
+        <LinhaTexto rotulo="Explicação" texto={caso.explicacao} destaque />
+        <LinhaTexto rotulo="Exemplo" texto={caso.exemplo} destaque />
+        <LinhaTexto rotulo="Resumo" texto={caso.resumo} />
+        <LinhaTexto rotulo={tituloTexto} texto={caso.ementa} />
       </div>
     </details>
   );
