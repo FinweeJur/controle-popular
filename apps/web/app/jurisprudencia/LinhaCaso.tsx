@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { CasoJurisprudencia } from "@/lib/jurisprudencia";
-import { NOMES_FRENTE, NOMES_TIPO, SeloStatus, merito } from "./rotulos";
+import { NOMES_FRENTE, NOMES_TIPO, merito } from "./rotulos";
 
 /**
  * @file Linha da tabela de jurisprudência, com sanfona.
@@ -70,24 +70,27 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
 }
 
 function CelulaTexto({ caso }: { caso: CasoJurisprudencia }) {
-  if (!ehCurto(caso)) return null;
-  const texto = resumoDe(caso) || ementaDe(caso);
+  const texto = resumoDe(caso) || (caso.tipo === "sumula" ? ementaDe(caso) : "");
   if (!texto) return null;
-  return <p className="mt-1 text-xs leading-snug text-text-soft">{texto}</p>;
+  return (
+    <p className="mt-1 max-h-[4.5rem] overflow-hidden text-xs leading-snug text-text-soft">
+      {texto}
+    </p>
+  );
 }
 
 function Gatilho({ caso, aberto, onToggle }: { caso: CasoJurisprudencia; aberto: boolean; onToggle: () => void }) {
-  if (ehCurto(caso)) return null;
-  if (!resumoDe(caso) && !ementaDe(caso)) return null;
-  const rotulo = aberto ? "fechar" : resumoDe(caso) ? "ver resumo e ementa" : "ver ementa";
+  if (!ementaDe(caso)) return null;
+  const temMais = !ehCurto(caso) || ementaDe(caso) !== resumoDe(caso);
+  if (!temMais) return null;
   return (
     <button
       type="button"
       onClick={onToggle}
       aria-expanded={aberto}
-      className="mt-1 block text-xs font-semibold text-primary underline"
+      className="text-xs font-semibold text-primary underline"
     >
-      {rotulo}
+      {aberto ? "ver menos" : "ver mais"}
     </button>
   );
 }
@@ -107,11 +110,12 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
         <td className="w-full px-2 py-2">
           <span>{temasDe(caso)}</span>
           <CelulaTexto caso={caso} />
+        </td>
+        <td className="whitespace-nowrap px-2 py-2 text-right">
           <Gatilho caso={caso} aberto={aberto} onToggle={() => setAberto((valor) => !valor)} />
         </td>
-        <td className="whitespace-nowrap px-2 py-2"><SeloStatus status={caso.status} /></td>
       </tr>
-      {aberto && !ehCurto(caso) ? (
+      {aberto ? (
         <tr className="border-t border-[var(--cp-border)] bg-[var(--cp-surface-2)]">
           <td colSpan={COLUNAS} className="px-4 py-3">
             <TextoAberto caso={caso} />
