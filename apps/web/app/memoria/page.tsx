@@ -37,8 +37,14 @@ const MESES = [
  */
 const MEDIDO_EM = "03/10/2026";
 
-export default function MemoriaPage() {
-  const verbetes: VerbeteLinha[] = CALENDARIO.map((e) => {
+/**
+ * Recorta cada entrada do calendário no formato que a tela consome.
+ *
+ * Fica fora do componente para a página não carregar mais uma dezena de
+ * linhas e para o recorte poder ser lido sozinho.
+ */
+function montarVerbetes(): VerbeteLinha[] {
+  return CALENDARIO.map((e) => {
     const [mes, dia] = e.diaMes.split("-").map(Number);
     // Onde aconteceu, pelo gazetteer curado (`lib/memoria/locais.ts`): sem
     // reconhecimento, o campo fica indefinido e a tela não inventa lugar.
@@ -55,12 +61,17 @@ export default function MemoriaPage() {
       semData: e.semData,
       dataLabel: `${dia} de ${MESES[mes - 1]}`,
       lugar: local?.nome,
+      pais: e.pais,
       uf: local?.uf,
       lat: local?.lat,
       lon: local?.lon,
       ctx: local?.ctx,
     };
   });
+}
+
+export default function MemoriaPage() {
+  const verbetes: VerbeteLinha[] = montarVerbetes();
 
   // Agregados medidos do próprio dado.
   const total = verbetes.length;

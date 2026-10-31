@@ -114,18 +114,25 @@ function FonteMistica({ item }: { item: ItemMistica }) {
 
 function OndeMistica({ item }: { item: ItemMistica }) {
   const { entrada, local } = item;
-  if (!local) return null;
+  if (!local && !entrada.pais) return null;
   return (
     <p className="mt-0.5 text-[.72em] text-muted">
       <span className="font-semibold">Onde: </span>
-      {local.nome}
-      {local.uf ? `/${local.uf}` : ""} ·{" "}
-      <BotaoVoarAte
-        lat={local.lat}
-        lon={local.lon}
-        nome={`${entrada.titulo} — ${local.nome}${local.uf ? `/${local.uf}` : ""}`}
-        ctx={local.ctx}
-      />
+      {local?.nome}
+      {local?.uf ? `/${local.uf}` : ""}
+      {local && entrada.pais ? " · " : ""}
+      {entrada.pais}
+      {local ? (
+        <>
+          {" · "}
+          <BotaoVoarAte
+            lat={local.lat}
+            lon={local.lon}
+            nome={`${entrada.titulo} — ${local.nome}${local.uf ? `/${local.uf}` : ""}`}
+            ctx={local.ctx}
+          />
+        </>
+      ) : null}
     </p>
   );
 }
