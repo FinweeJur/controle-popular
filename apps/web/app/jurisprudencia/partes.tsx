@@ -356,22 +356,22 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
         <thead className="bg-[var(--cp-surface-2)] text-left">
           <tr>
             {COLUNAS.map((rotulo) => (
-              <th key={rotulo} scope="col" className="px-3 py-2 font-semibold">{rotulo}</th>
+              <th key={rotulo} scope="col" className="whitespace-nowrap px-2 py-2 font-semibold">{rotulo}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {itens.map((caso) => (
             <tr key={caso.id} className="border-t border-[var(--cp-border)] align-top">
-              <td className="px-3 py-2 font-tabular"><CelulaProcesso caso={caso} /></td>
-              <td className="px-3 py-2">{caso.tribunal}/{caso.estado}</td>
-              <td className="px-3 py-2">{NOMES_TIPO[caso.tipo] ?? caso.tipo}</td>
-              <td className="px-3 py-2">{caso.ano || "—"}</td>
-              <td className="px-3 py-2">{caso.orgao || caso.comarca || "—"}</td>
-              <td className="px-3 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
-              <td className="px-3 py-2"><CelulaMerito caso={caso} /></td>
-              <td className="relative px-3 py-2"><CelulaTemas caso={caso} /></td>
-              <td className="px-3 py-2"><SeloStatus status={caso.status} /></td>
+              <td className="whitespace-nowrap px-2 py-2 font-tabular"><CelulaProcesso caso={caso} /></td>
+              <td className="whitespace-nowrap px-2 py-2">{caso.tribunal}/{caso.estado}</td>
+              <td className="whitespace-nowrap px-2 py-2">{NOMES_TIPO[caso.tipo] ?? caso.tipo}</td>
+              <td className="whitespace-nowrap px-2 py-2">{caso.ano || "—"}</td>
+              <td className="px-2 py-2">{caso.orgao || caso.comarca || "—"}</td>
+              <td className="whitespace-nowrap px-2 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
+              <td className="px-2 py-2"><CelulaMerito caso={caso} /></td>
+              <td className="w-full px-2 py-2"><CelulaTemas caso={caso} /></td>
+              <td className="whitespace-nowrap px-2 py-2"><SeloStatus status={caso.status} /></td>
             </tr>
           ))}
         </tbody>

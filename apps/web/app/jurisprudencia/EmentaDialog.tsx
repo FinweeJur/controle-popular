@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Check, Copy, X } from "lucide-react";
 
 /**
@@ -28,16 +29,18 @@ function PainelEmenta({
   onCopiar: () => void;
   onFechar: () => void;
 }) {
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 p-3 sm:p-6"
       onClick={onFechar}
+      onWheel={(e) => e.stopPropagation()}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="ementa-titulo"
-        className="flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
+        style={{ maxHeight: "85vh" }}
+        className="flex w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3">
@@ -63,7 +66,7 @@ function PainelEmenta({
             </button>
           </div>
         </header>
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 text-sm leading-relaxed text-text-soft">
+        <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain px-4 py-4 text-sm leading-relaxed text-text-soft">
           {resumo ? (
             <p className="mb-4">
               <span className="font-semibold text-text">Resumo: </span>
@@ -78,7 +81,8 @@ function PainelEmenta({
           ) : null}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -126,7 +130,7 @@ export default function EmentaDialog({
       <button
         type="button"
         onClick={() => setAberto(true)}
-        className="mt-1 text-xs font-semibold text-primary underline"
+        className="mt-1 block text-xs font-semibold text-primary underline"
       >
         {rotulo}
       </button>
