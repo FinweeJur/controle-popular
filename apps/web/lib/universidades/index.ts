@@ -34,6 +34,7 @@ import {
   PROJETOS_UFVJM,
   UNIDADES_UFVJM,
 } from "./dados-ufvjm";
+import { PROJETOS_EXTENSAO_UFVJM } from "./dados-extensao-ufvjm";
 import {
   AREA_NAO_INFORMADA,
   GRANDES_AREAS,
@@ -64,7 +65,23 @@ export const GRUPOS: GrupoPesquisa[] = [
   ...GRUPOS_BA,
   ...GRUPOS_RS,
 ];
-export const PROJETOS: ProjetoExtensao[] = [...PROJETOS_UFVJM];
+
+/**
+ * Projetos de extensão.
+ *
+ * Duas fontes para a UFVJM: o par de projetos conferido à mão em
+ * `dados-ufvjm.ts` e a leva gerada do SIEXC em `dados-extensao-ufvjm.ts`.
+ * A deduplicação é por URL, a chave que a própria plataforma garante única.
+ */
+export const PROJETOS: ProjetoExtensao[] = (() => {
+  const porUrl = new Map<string, ProjetoExtensao>();
+  // A leva gerada entra primeiro: ela traz coordenador, período e área da
+  // ficha completa. O par conferido à mão só sobrevive se a URL for outra.
+  for (const p of [...PROJETOS_EXTENSAO_UFVJM, ...PROJETOS_UFVJM]) {
+    if (!porUrl.has(p.url)) porUrl.set(p.url, p);
+  }
+  return [...porUrl.values()];
+})();
 
 /** Filtro comum aos catálogos. Campo vazio não filtra. */
 export interface Filtro {
@@ -225,7 +242,7 @@ export function listarProjetos(filtro: Filtro = {}): ProjetoExtensao[] {
 
       const instituicaoNome = obterInstituicao(p.instituicao)?.nome ?? "";
       return casaBusca(
-        `${p.nome} ${p.area ?? ""} ${p.areaConhecimento ?? ""} ${p.unidade ?? ""} ${p.instituicao} ${instituicaoNome}`,
+        `${p.nome} ${p.coordenador ?? ""} ${p.area ?? ""} ${p.areaConhecimento ?? ""} ${p.areaTematicaFonte ?? ""} ${p.linhaExtensao ?? ""} ${p.unidade ?? ""} ${p.instituicao} ${instituicaoNome}`,
         termos,
       );
     })

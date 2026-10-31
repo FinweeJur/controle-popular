@@ -11,6 +11,7 @@ import {
   resumirUniversidades,
 } from "@/lib/universidades";
 import PainelUniversidades from "./PainelUniversidades";
+import ContatosInstituicoes from "./ContatosInstituicoes";
 
 /**
  * `/universidades` — índice de pesquisa e extensão universitária.
@@ -30,9 +31,9 @@ import PainelUniversidades from "./PainelUniversidades";
 
 export const metadata: Metadata = {
   title:
-    "Universidades: grupos de pesquisa e extensão por área e instituição | Controle Popular",
+    "Universidades: grupos de estudo, pesquisa e extensão por tema e estado | Controle Popular",
   description:
-    "Índice de grupos de pesquisa e projetos de extensão das universidades brasileiras, com busca por nome, área temática, área do conhecimento, estado, instituição e faculdade, além de contatos e link para a fonte oficial.",
+    "Lista de grupos de estudo e pesquisa e de projetos de extensão das universidades brasileiras, com contatos, líderes, área, estado, período e cruzamento por tema, local e data. Cada registro traz a fonte oficial.",
 };
 
 const RESUMO = resumirUniversidades();
@@ -73,16 +74,16 @@ export default function PaginaUniversidades() {
         </div>
 
         <h1 className="text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
-          Universidades: pesquisa e extensão
+          Universidades: grupos de estudo, pesquisa e extensão
         </h1>
 
         <ResumoExpandivel
           className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft"
           texto={
-            `Índice de ${fmt(RESUMO.grupos)} grupos de pesquisa e ${fmt(RESUMO.projetos)} projetos de extensão ` +
-            `de ${fmt(RESUMO.instituicoes)} instituições. Busque por nome, líder, área temática, ` +
-            `área do conhecimento, estado, instituição ou faculdade. Cada cartão traz o contato ` +
-            `institucional e o link para a fonte oficial. Onde a fonte não publica lista consolidada, ` +
+            `Lista de ${fmt(RESUMO.grupos)} grupos de pesquisa e de estudo e de ${fmt(RESUMO.projetos)} projetos de extensão ` +
+            `de ${fmt(RESUMO.instituicoes)} instituições. Cada cartão traz líder ou coordenador, área, ` +
+            `contato institucional, período e o link para a fonte oficial. O cruzamento por tema, ` +
+            `estado e data fica logo abaixo dos filtros. Onde a fonte não publica lista consolidada, ` +
             `a ficha aponta o portal certo — grupo não é inventado.`
           }
         />
@@ -93,10 +94,16 @@ export default function PaginaUniversidades() {
         className="mb-6 flex flex-wrap gap-2 text-sm"
       >
         <a
+          href="#cruzamento"
+          className="rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-text hover:border-primary hover:text-primary"
+        >
+          Cruzamento por tema, local e data
+        </a>
+        <a
           href="#grupos-pesquisa"
           className="rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-text hover:border-primary hover:text-primary"
         >
-          Grupos de pesquisa ({fmt(RESUMO.grupos)})
+          Grupos de pesquisa e de estudo ({fmt(RESUMO.grupos)})
         </a>
         <a
           href="#projetos-extensao"
@@ -111,7 +118,7 @@ export default function PaginaUniversidades() {
           colunas={4}
           itens={[
             {
-              rotulo: "Grupos de pesquisa",
+              rotulo: "Grupos de pesquisa e de estudo",
               valor: RESUMO.grupos,
               destaque: true,
               detalhe: `acervo de ${verificadoEm}`,
@@ -126,6 +133,8 @@ export default function PaginaUniversidades() {
           ]}
         />
       </section>
+
+      <ContatosInstituicoes instituicoes={INSTITUICOES} />
 
       <PainelUniversidades
         instituicoes={INSTITUICOES}

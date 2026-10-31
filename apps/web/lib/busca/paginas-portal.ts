@@ -119,16 +119,17 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
   },
   {
     id: "universidades",
-    titulo: "Universidades & Grupos de Pesquisa",
-    descricao: "Busca por instituição, estado, área do conhecimento e contato. Dados oficiais de grupos de pesquisa e projetos de extensão.",
+    titulo: "Universidades & Grupos de Estudo, Pesquisa e Extensão",
+    descricao: "Lista de grupos de estudo e pesquisa e de projetos de extensão, com contatos, líderes, área, estado e período. Cruzamento por tema, local e data.",
     href: "/universidades",
     frente: "geral",
     rotulo: "Universidades",
     badgeCor: "#8b5cf6",
     palavrasChave: [
-      "universidades", "grupos de pesquisa", "pesquisa", "extensao", "ensino superior",
+      "universidades", "grupos de pesquisa", "grupo de estudo", "pesquisa", "extensao", "ensino superior",
       "pos-graduacao", "mestrado", "doutorado", "capes", "cnpq", "instituicao federal",
-      "uf", "faculdade", "campus", "contato", "area do conhecimento", "grande area"
+      "uf", "faculdade", "campus", "contato", "area do conhecimento", "grande area",
+      "cruzamento", "tema", "estado", "projeto de extensao", "coordenador"
     ],
   },
   {

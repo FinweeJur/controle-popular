@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Instituição não encontrada | Controle Popular" };
   }
   return {
-    title: `${instituicao.sigla} — grupos de pesquisa e extensão | Controle Popular`,
-    description: `Grupos de pesquisa e projetos de extensão da ${instituicao.nome} (${instituicao.uf}), com área, contato e link para a fonte oficial.`,
+    title: `${instituicao.sigla} — grupos de estudo, pesquisa e extensão | Controle Popular`,
+    description: `Grupos de estudo e pesquisa e projetos de extensão da ${instituicao.nome} (${instituicao.uf}), com líder ou coordenador, área, período, contato e link para a fonte oficial.`,
   };
 }
 
@@ -110,7 +110,7 @@ export default async function PaginaInstituicao({ params }: Props) {
         </h1>
         <p className="mt-2 text-sm text-text-soft">
           {instituicao.sigla} · {grupos.length} grupo
-          {grupos.length === 1 ? "" : "s"} de pesquisa · {projetos.length} projeto
+          {grupos.length === 1 ? "" : "s"} de estudo e pesquisa · {projetos.length} projeto
           {projetos.length === 1 ? "" : "s"} de extensão · acervo de{" "}
           {dataBr(verificadoEm)}
         </p>

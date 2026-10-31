@@ -140,7 +140,7 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Página do Eixo Central', href: '/central', icone: Compass, dica: 'Porta do Eixo 4: ferramentas, assistente, busca, acervo e laboratório do portal.' },
       { label: 'Radar Diário de Editais', href: '/editais', icone: ShoppingBag, destaque: true, dica: 'Editais e chamamentos do Diário Oficial de MG, atualizados com radar diário.' },
       { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen, destaque: true, dica: 'Acervo com milhares de documentos, relatórios periciais, estudos e decisões.' },
-      { label: 'Universidades & Grupos de Pesquisa', href: '/universidades', icone: GraduationCap, destaque: true, dica: 'Instituições, grupos de pesquisa e extensão por estado, com contatos e fonte oficial.' },
+      { label: 'Universidades: Estudo, Pesquisa e Extensão', href: '/universidades', icone: GraduationCap, destaque: true, dica: 'Lista de grupos de estudo e pesquisa e de projetos de extensão, com contatos, líderes e cruzamento por tema, local e data.' },
       { label: 'Árvore de Conexões (Grafo 3D)', href: '/laboratorio/arvore', icone: Layers, destaque: true, dica: 'Grafo 3D que liga os eixos, temas e páginas do portal numa teia navegável.' },
       { label: 'Assistente Cívico Seu Nonô', href: '/assistente', icone: Sparkles, destaque: true, dica: 'Seu Nonô responde sobre os dados do portal e indica onde conferir na fonte.' },
       { label: 'Índice Geral do Portal', href: '/indice', icone: List, dica: 'Índice completo do portal, com busca por tema, situação e eixo.' },

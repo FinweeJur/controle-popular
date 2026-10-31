@@ -174,6 +174,20 @@ describe("universidades — extensão", () => {
     expect(listarProjetos({ instituicao: "UFVJM" }).length).toBe(PROJETOS.length);
     expect(listarProjetos({ busca: "fibromialgia" }).length).toBe(1);
   });
+
+  it("não repete projeto e publica data coerente quando a fonte informa", () => {
+    const urls = PROJETOS.map((p) => p.url);
+    expect(new Set(urls).size).toBe(urls.length);
+
+    for (const p of PROJETOS) {
+      if (p.inicio) expect(p.inicio).toMatch(ISO);
+      if (p.fim) expect(p.fim).toMatch(ISO);
+      if (p.inicio && p.fim) expect(p.inicio <= p.fim).toBe(true);
+      if (p.coordenador) {
+        expect(p.coordenador.trim().length).toBeGreaterThan(3);
+      }
+    }
+  });
 });
 
 describe("universidades — grandes áreas e temas", () => {

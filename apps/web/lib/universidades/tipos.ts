@@ -131,6 +131,22 @@ export interface ProjetoExtensao {
   areaConhecimento?: string;
   /** Temas transversais derivados do nome/área pela régua de `temas.ts`. */
   areaTematica?: string[];
+  /**
+   * Área temática declarada pela própria plataforma (ex.: "Educação" no
+   * SIEXC). Fica separada de `areaTematica` para o leitor ver o rótulo da
+   * fonte, não só a classificação editorial derivada.
+   */
+  areaTematicaFonte?: string;
+  /** Linha de extensão declarada na fonte (ex.: "Espaços de ciência"). */
+  linhaExtensao?: string;
+  /** Alcance geográfico declarado (ex.: "Regional", "Local"). */
+  abrangencia?: string;
+  /** Coordenador(a) do projeto, como publicado na fonte oficial. */
+  coordenador?: string;
+  /** Início da execução (AAAA-MM-DD), quando a fonte informa. */
+  inicio?: string;
+  /** Fim previsto ou realizado (AAAA-MM-DD), quando a fonte informa. */
+  fim?: string;
   /** Sigla da unidade acadêmica responsável, quando a fonte informa. */
   unidade?: string;
   /** Página pública específica do projeto na plataforma da instituição. */
