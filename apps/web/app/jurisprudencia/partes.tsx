@@ -1,5 +1,6 @@
 import Link from "next/link";
-import EmentaDialog from "./EmentaDialog";
+import { LinhaCaso } from "./LinhaCaso";
+import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
 import noticiasJson from "@/data/noticias-tribunais.json";
@@ -66,19 +67,6 @@ const NOMES_TRIBUNAL: Record<string, string> = {
   TST: "TST",
 };
 
-const NOMES_FRENTE: Record<string, string> = {
-  brumadinho: "Brumadinho (TJMG)",
-  riodoce: "Rio Doce",
-  dh: "Direitos humanos (TJMG)",
-  penal: "Penal e criminal",
-  sumula: "Súmulas",
-};
-
-const NOMES_TIPO: Record<string, string> = {
-  acordao: "Acórdão",
-  sumula: "Súmula",
-};
-
 const NOMES_PNAB: Record<string, string> = {
   perda_propriedade: "Perda de propriedade",
   desvalorizacao_imoveis: "Desvalorização de imóveis",
@@ -92,20 +80,6 @@ const NOMES_PNAB: Record<string, string> = {
   deslocamento_compulsorio: "Deslocamento compulsório",
   atividades_produtivas_locais: "Atividades produtivas locais",
   outros_pnab_peab: "Outros PNAB/PEAB",
-};
-
-const ESTILO_STATUS: Record<string, string> = {
-  aprovado: "rounded bg-[var(--cp-primary)]/15 px-2 py-0.5 text-xs",
-  sem_resumo: "rounded bg-[var(--cp-border)] px-2 py-0.5 text-xs",
-  revisao_humana: "rounded bg-[var(--cp-tertiary)]/15 px-2 py-0.5 text-xs",
-  sumula: "rounded bg-[var(--cp-secondary)]/15 px-2 py-0.5 text-xs",
-};
-
-const ROTULO_STATUS: Record<string, string> = {
-  aprovado: "aprovado",
-  sem_resumo: "sem resumo",
-  revisao_humana: "revisão",
-  sumula: "súmula",
 };
 
 export const reais = (valor: number) =>
@@ -307,46 +281,6 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-function SeloStatus({ status }: { status: string }) {
-  return (
-    <span className={ESTILO_STATUS[status] ?? ESTILO_STATUS.revisao_humana}>
-      {ROTULO_STATUS[status] ?? "revisão"}
-    </span>
-  );
-}
-
-function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
-  if (!caso.link) return <>{caso.processo}</>;
-  return (
-    <a className="underline" href={caso.link} target="_blank" rel="noopener noreferrer">
-      {caso.processo}
-    </a>
-  );
-}
-
-function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
-  if (!caso.ementa && !caso.resumo) return null;
-  return <EmentaDialog resumo={caso.resumo} ementa={caso.ementa} />;
-}
-
-function CelulaTemas({ caso }: { caso: CasoJurisprudencia }) {
-  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90) || "—";
-  const resto = caso.temas.length > 2 ? ` +${caso.temas.length - 2}` : "";
-  return (
-    <>
-      <span>{`${texto}${resto}`}</span>
-      <TextoDoCaso caso={caso} />
-    </>
-  );
-}
-
-function CelulaMerito({ caso }: { caso: CasoJurisprudencia }) {
-  if (caso.tipo === "sumula") return <>—</>;
-  const polo = ROTULOS[caso.polo] ?? caso.polo;
-  const resultado = ROTULOS[caso.resultado] ?? caso.resultado;
-  return <>{[polo, resultado].filter(Boolean).join(" · ") || "—"}</>;
-}
-
 const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Status"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
@@ -362,17 +296,7 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
         </thead>
         <tbody>
           {itens.map((caso) => (
-            <tr key={caso.id} className="border-t border-[var(--cp-border)] align-top">
-              <td className="whitespace-nowrap px-2 py-2 font-tabular"><CelulaProcesso caso={caso} /></td>
-              <td className="whitespace-nowrap px-2 py-2">{caso.tribunal}/{caso.estado}</td>
-              <td className="whitespace-nowrap px-2 py-2">{NOMES_TIPO[caso.tipo] ?? caso.tipo}</td>
-              <td className="whitespace-nowrap px-2 py-2">{caso.ano || "—"}</td>
-              <td className="px-2 py-2">{caso.orgao || caso.comarca || "—"}</td>
-              <td className="whitespace-nowrap px-2 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
-              <td className="px-2 py-2"><CelulaMerito caso={caso} /></td>
-              <td className="w-full px-2 py-2"><CelulaTemas caso={caso} /></td>
-              <td className="whitespace-nowrap px-2 py-2"><SeloStatus status={caso.status} /></td>
-            </tr>
+            <LinhaCaso key={caso.id} caso={caso} />
           ))}
         </tbody>
       </table>
