@@ -88,6 +88,24 @@ export default function PaginaUniversidades() {
         />
       </header>
 
+      <nav
+        aria-label="Atalhos do índice"
+        className="mb-6 flex flex-wrap gap-2 text-sm"
+      >
+        <a
+          href="#grupos-pesquisa"
+          className="rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-text hover:border-primary hover:text-primary"
+        >
+          Grupos de pesquisa ({fmt(RESUMO.grupos)})
+        </a>
+        <a
+          href="#projetos-extensao"
+          className="rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-text hover:border-primary hover:text-primary"
+        >
+          Projetos de extensão ({fmt(RESUMO.projetos)})
+        </a>
+      </nav>
+
       <section aria-label="Resumo em números" className="mb-6">
         <CartoesResumo
           colunas={4}

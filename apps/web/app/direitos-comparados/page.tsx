@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BarChart3, BookOpen, GraduationCap } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
- * Pincipal hub do módulo de Direitos Comparados.
+ * Principal hub do módulo de Direitos Comparados.
  *
- * Papel: centralizar o acesso às três frentes principais:
- * 1. Comparador de indicadores entre estados
- * 2. Análise de grupos de pesquisa e redes
- * 3. Impacto social das universidades
+ * Papel: centralizar o acesso às duas frentes principais:
+ * 1. Comparador de indicadores entre estados.
+ * 2. Educação, pesquisa e extensão — página única em `/universidades`.
  *
- * Design: cards com links claros e descrições objetivas.
+ * A antiga página `/direitos-comparados/pesquisa` era uma maquete com
+ * números fixos e não mostrava a lista real. O acervo oficial de grupos e
+ * projetos vive em `/universidades`; a duplicata saiu do ar.
  * Integração: Eixo 1 - Direitos em Movimento.
  */
 
 export const metadata: Metadata = {
   title: "Direitos Comparados | Controle Popular",
-  description: "Compare indicadores de direitos fundamentais entre estados, análise de grupos de pesquisa e impacto social das universidades.",
+  description: "Compare indicadores de direitos fundamentais entre estados e acesse o índice de educação, pesquisa e extensão das universidades.",
 };
 
 export default function PaginaDireitosComparados() {
@@ -46,7 +47,7 @@ export default function PaginaDireitosComparados() {
         </p>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2">
         {/* Comparador de Indicadores */}
         <Card
           icon={<BarChart3 className="h-8 w-8" />}
@@ -56,22 +57,13 @@ export default function PaginaDireitosComparados() {
           keywords={["IDH", "Educação", "Saúde", "Justiça", "Trabalho", "Finanças"]}
         />
 
-        {/* Grupos de Pesquisa */}
+        {/* Educação, pesquisa e extensão */}
         <Card
           icon={<GraduationCap className="h-8 w-8" />}
-          title="Grupos de Pesquisa"
-          description="Redes de cooperação, produção científica e mapeamento de áreas do conhecimento por estado e instituição."
-          href="/direitos-comparados/pesquisa"
-          keywords={["Pesquisa", "Ciência", "Tecnologia", "Redes", "Cooperação"]}
-        />
-
-        {/* Universidades e Impacto */}
-        <Card
-          icon={<BookOpen className="h-8 w-8" />}
-          title="Universidades e Impacto"
-          description="Indicadores sociais, casos de destaque e metodologia de avaliação do impacto das instituições de ensino."
-          href="/direitos-comparados/universidades"
-          keywords={["Universidades", "Impacto Social", "Indicadores", "Casos"]}
+          title="Educação, pesquisa e extensão"
+          description="Índice real de grupos de pesquisa e projetos de extensão das universidades, com filtros por área, instituição e estado."
+          href="/universidades"
+          keywords={["Educação", "Pesquisa", "Extensão", "Universidades", "CNPq"]}
         />
       </div>
 
