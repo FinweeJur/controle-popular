@@ -27,6 +27,7 @@ import { chaveCorrecao } from "../../apps/web/lib/memoria/correcoes";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RELATORIO = resolve(RAIZ, "docs", "relatorios-automacao", "revisao-textos-memoria.json");
+const LOTE = resolve(RAIZ, "scripts", "memoria", "correcoes-batch.json");
 const DESTINO = resolve(RAIZ, "apps", "web", "lib", "memoria", "correcoes-mistica.ts");
 
 /** O que o relatório traz por verbete (o que este gerador consome). */
@@ -40,6 +41,17 @@ interface AnaliseRelatorio {
 const relatorio = JSON.parse(readFileSync(RELATORIO, "utf8")) as {
   resultados: AnaliseRelatorio[];
 };
+
+/**
+ * Lote do sabiazinho-4 (Batch API) com correções de sujeito.
+ * Só entraram aqui as respostas em que o sujeito citado existe no texto
+ * original — validação feita fora, com normalização; o resto foi rejeitado.
+ */
+const lote = JSON.parse(readFileSync(LOTE, "utf8")) as Array<{
+  indice: number;
+  tituloCurto: string;
+  resumo: string;
+}>;
 
 /**
  * Resumos RETIDOS para revisão humana: a sugestão junta DOIS fatos
@@ -129,6 +141,19 @@ for (const r of relatorio.resultados) {
   }
 
   if (Object.keys(registro).length > 0) correcoes[chave] = registro;
+}
+
+// Lote do sabiazinho-4: corrige sujeito/local onde o modelo provou o sujeito
+// no próprio texto original. Entra antes do manual, que tem a palavra final.
+for (const item of lote) {
+  const entrada = CALENDARIO_LUTAS[item.indice];
+  if (!entrada) continue;
+  const chave = chaveCorrecao(entrada);
+  correcoes[chave] = {
+    ...correcoes[chave],
+    tituloCurto: item.tituloCurto,
+    resumo: item.resumo,
+  };
 }
 
 // Correções manuais entram por último e vencem o modelo.
