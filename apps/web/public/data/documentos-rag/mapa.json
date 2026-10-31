@@ -1,58 +1,62 @@
 {
-  "totalDocumentos": 2242,
-  "totalTrechos": 8057,
+  "totalDocumentos": 2243,
+  "totalTrechos": 2471,
   "porCategoria": [
-    {
-      "slug": "Prestacao de contas",
-      "contagem": 1271
-    },
-    {
-      "slug": "Legislação",
-      "contagem": 1255
-    },
-    {
-      "slug": "Pesquisa academica",
-      "contagem": 1252
-    },
     {
       "slug": "Ambiental & Desastres",
       "contagem": 935
-    },
-    {
-      "slug": "Deliberacao",
-      "contagem": 795
     },
     {
       "slug": "Justiça & Controle",
       "contagem": 729
     },
     {
-      "slug": "Legislacao",
-      "contagem": 529
-    },
-    {
-      "slug": "Acordo e termos",
-      "contagem": 509
-    },
-    {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 492
+      "contagem": 373
     },
     {
-      "slug": "Outro",
-      "contagem": 189
+      "slug": "Memória & Direitos Humanos",
+      "contagem": 229
     },
     {
       "slug": "Internacional & Geopolítica",
       "contagem": 63
     },
     {
+      "slug": "Deliberacao",
+      "contagem": 31
+    },
+    {
       "slug": "Empresas & ESG",
       "contagem": 25
     },
     {
+      "slug": "Pesquisa academica",
+      "contagem": 23
+    },
+    {
+      "slug": "Legislacao",
+      "contagem": 19
+    },
+    {
+      "slug": "Outro",
+      "contagem": 17
+    },
+    {
+      "slug": "Prestacao de contas",
+      "contagem": 10
+    },
+    {
+      "slug": "Acordo e termos",
+      "contagem": 6
+    },
+    {
+      "slug": "Legislação",
+      "contagem": 6
+    },
+    {
       "slug": "Manual e comunicacao",
-      "contagem": 12
+      "contagem": 4
     },
     {
       "slug": "Relatorio ambiental",
@@ -61,24 +65,20 @@
   ],
   "porTema": [
     {
-      "slug": "Reparação de Brumadinho",
-      "contagem": 4558
-    },
-    {
-      "slug": "Cidades",
-      "contagem": 1255
-    },
-    {
       "slug": "Desastres e barragens",
       "contagem": 935
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 474
+      "contagem": 355
     },
     {
       "slug": "Instituições de Justiça",
       "contagem": 296
+    },
+    {
+      "slug": "Mística e linha do tempo",
+      "contagem": 229
     },
     {
       "slug": "trâmites processuais",
@@ -87,6 +87,10 @@
     {
       "slug": "infraestrutura",
       "contagem": 114
+    },
+    {
+      "slug": "Reparação de Brumadinho",
+      "contagem": 111
     },
     {
       "slug": "socioeconômico",
@@ -107,6 +111,10 @@
     {
       "slug": "Descolonização & Conflitos",
       "contagem": 7
+    },
+    {
+      "slug": "Cidades",
+      "contagem": 6
     },
     {
       "slug": "Pesquisa & Transnacional Aberta",
@@ -176,31 +184,31 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 355
+      "contagem": 195
     },
     {
       "slug": "2025",
-      "contagem": 1109
+      "contagem": 403
     },
     {
       "slug": "2024",
-      "contagem": 1926
+      "contagem": 418
     },
     {
       "slug": "2023",
-      "contagem": 1260
+      "contagem": 239
     },
     {
       "slug": "2022",
-      "contagem": 662
+      "contagem": 134
     },
     {
       "slug": "2021",
-      "contagem": 560
+      "contagem": 66
     },
     {
       "slug": "2020",
-      "contagem": 194
+      "contagem": 192
     },
     {
       "slug": "2019",
