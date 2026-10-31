@@ -520,7 +520,7 @@ export default function PainelUniversidades({
       </div>
 
       {gruposFiltrados.length > 0 && (
-        <section aria-label="Grupos de pesquisa" className="space-y-3">
+        <section id="grupos-pesquisa" aria-label="Grupos de pesquisa" className="scroll-mt-24 space-y-3">
           <h2 className="text-lg font-bold text-text">Grupos de pesquisa</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {gruposDaPagina.map((g) => {
@@ -614,7 +614,7 @@ export default function PainelUniversidades({
       )}
 
       {projetosFiltrados.length > 0 && (
-        <section aria-label="Projetos de extensão" className="space-y-3">
+        <section id="projetos-extensao" aria-label="Projetos de extensão" className="scroll-mt-24 space-y-3">
           <h2 className="text-lg font-bold text-text">Projetos de extensão</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {projetosFiltrados.map((p) => {

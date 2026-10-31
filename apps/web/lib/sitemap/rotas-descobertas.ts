@@ -132,8 +132,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/desclassificados",
   "/direitos-comparados",
   "/direitos-comparados/indicadores",
-  "/direitos-comparados/pesquisa",
-  "/direitos-comparados/universidades",
   "/direitos-em-movimento",
   "/direitos-em-movimento/ajuda",
   "/direitos-em-movimento/conselhos",
