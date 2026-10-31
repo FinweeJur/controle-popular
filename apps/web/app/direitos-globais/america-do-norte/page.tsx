@@ -6,7 +6,7 @@ import DataColeta from "@/app/components/DataColeta";
 import { PAISES_AMERICA_DO_NORTE } from "@/lib/direitos-globais/america-do-norte/paises";
 import { DISPOSITIVOS_AMERICA_DO_NORTE } from "@/lib/direitos-globais/america-do-norte/dispositivos";
 import TabelaAmericaDoNorteInterativa from "../componentes/TabelaAmericaDoNorteInterativa";
-import { ListaDispositivos } from "../componentes/Dispositivos";
+import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "América do Norte | Direitos Globais | Controle Popular",
@@ -75,34 +75,6 @@ function NotaEditorialMexico() {
   );
 }
 
-function DispositivosAmericaDoNorte() {
-  const paises = ["Estados Unidos", "Canadá"];
-
-  return (
-    <section className="mb-12">
-      <header className="mb-6">
-        <h2 className="text-xl font-bold text-text">
-          Dispositivos Constitucionais e Declarações de Lacuna
-        </h2>
-        <p className="mt-1 text-sm text-text-soft">
-          Artigos transcritos verbatim das fontes públicas canônicas (Constitute Project e Justice
-          Laws Website Canada) e auditoria de ausência com fundamentação legal.
-        </p>
-      </header>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        {paises.map((pais) => (
-          <ListaDispositivos
-            key={pais}
-            pais={pais}
-            dispositivos={DISPOSITIVOS_AMERICA_DO_NORTE.filter((d) => d.pais === pais)}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function PaginaAmericaDoNorte() {
   return (
     <main id="conteudo-principal" className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
@@ -154,7 +126,11 @@ export default function PaginaAmericaDoNorte() {
         <TabelaAmericaDoNorteInterativa paises={PAISES_AMERICA_DO_NORTE} />
       </section>
 
-      <DispositivosAmericaDoNorte />
+      <SecaoDispositivosComFiltro
+        dispositivos={DISPOSITIVOS_AMERICA_DO_NORTE}
+        titulo="Dispositivos Constitucionais e Declarações de Lacuna"
+        descricao="Preceitos federais verbatim e auditoria legal da ausência de dever constitucional ambiental federal nos EUA."
+      />
 
       <FooterGlobal />
     </main>

@@ -17,16 +17,18 @@ interface ContinenteCardProps {
 
 function ContinenteCard({ title, href, countries, icon, description }: ContinenteCardProps) {
   return (
-    <Link href={href} className="block rounded-xl border border-border bg-surface p-6 transition-all hover:border-primary hover:shadow-md">
-      <div className="mb-4 text-primary">{icon}</div>
-      <h3 className="mb-2 text-lg font-semibold text-text">{title}</h3>
-      <p className="mb-2 text-sm text-text-700">{description}</p>
-      <p className="text-xs text-text-soft">{countries} países</p>
-      <div className="mt-4 flex items-center text-sm text-primary hover:text-primary/80">
-        <span>Explorar</span>
-        <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+    <Link href={href} className="group block rounded-xl border border-border bg-surface p-4 transition-all hover:border-primary hover:shadow-sm">
+      <div className="mb-2.5 text-primary transition-transform group-hover:scale-105">{icon}</div>
+      <h3 className="mb-1 text-base font-semibold text-text group-hover:text-primary">{title}</h3>
+      <p className="mb-2 text-xs text-text-700 leading-relaxed">{description}</p>
+      <div className="flex items-center justify-between border-t border-border/40 pt-2 text-xs">
+        <span className="text-text-soft font-medium">{countries} países</span>
+        <span className="inline-flex items-center gap-0.5 font-semibold text-primary">
+          Explorar
+          <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </span>
       </div>
     </Link>
   );
@@ -44,17 +46,17 @@ interface DireitoCardProps {
 
 function DireitoCard({ title, description, icon, rights }: DireitoCardProps) {
   return (
-    <div className="rounded-lg border border-border bg-surface-2 p-4">
-      <div className="mb-3 flex items-center gap-2 text-primary">
+    <div className="rounded-xl border border-border bg-surface p-3.5 sm:p-4">
+      <div className="mb-2 flex items-center gap-2 text-primary">
         {icon}
-        <h3 className="font-medium text-text">{title}</h3>
+        <h3 className="text-sm font-semibold text-text">{title}</h3>
       </div>
-      <p className="mb-3 text-sm text-text-700">{description}</p>
+      <p className="mb-2.5 text-xs text-text-700 leading-relaxed">{description}</p>
       <div className="flex flex-wrap gap-1">
         {rights.map((right) => (
           <span
             key={right}
-            className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary"
+            className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary"
           >
             {right}
           </span>
@@ -230,56 +232,56 @@ export default function PaginaDireitosGlobais() {
 
       {/* Continentes */}
       <div className="mb-8">
-        <h2 className="mb-6 text-xl font-bold text-text">Explorar por Continente e Sistema Internacional</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <h2 className="mb-4 text-xl font-bold text-text">Explorar por Continente e Sistema Internacional</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <ContinenteCard
             title="América Latina"
             href="/direitos-globais/america-latina"
             countries={20}
-            icon={<Globe className="h-8 w-8" />}
-            description="CIDH, Corte IDH, 402 sentenças e 59 dispositivos constitucionais"
+            icon={<Globe className="h-6 w-6" />}
+            description="20 países, 84 dispositivos conferidos nos 24 temas, CIDH, Corte IDH e 402 sentenças"
           />
           <ContinenteCard
             title="África"
             href="/direitos-globais/africa"
             countries={54}
-            icon={<Map className="h-8 w-8" />}
-            description="54 países da UA, Corte Africana, ACHPR e Direitos dos Povos"
+            icon={<Map className="h-6 w-6" />}
+            description="54 países da UA, 30 dispositivos constitucionais, Corte Africana e Direitos dos Povos"
           />
           <ContinenteCard
             title="Ásia"
             href="/direitos-globais/asia"
             countries={48}
-            icon={<Users className="h-8 w-8" />}
-            description="Levas 1 a 3, panorama regional, dispositivos e direitos fundamentais"
+            icon={<Users className="h-6 w-6" />}
+            description="48 países nas 5 sub-regiões, 28 dispositivos conferidos e remissão ao sistema ONU"
           />
           <ContinenteCard
             title="Europa"
             href="/direitos-globais/europa"
             countries={44}
-            icon={<Shield className="h-8 w-8" />}
-            description="44 países, Leva 1, CSDDD e responsabilização de empresas transnacionais"
+            icon={<Shield className="h-6 w-6" />}
+            description="44 países, 33 dispositivos constitucionais, CSDDD e litígios extraterritoriais"
           />
           <ContinenteCard
             title="América do Norte"
             href="/direitos-globais/america-do-norte"
             countries={2}
-            icon={<Scale className="h-8 w-8" />}
+            icon={<Scale className="h-6 w-6" />}
             description="EUA e Canadá: Bill of Rights, Section 35 e auditoria de lacunas federais"
           />
           <ContinenteCard
             title="Oceania"
             href="/direitos-globais/oceania"
             countries={14}
-            icon={<Globe className="h-8 w-8" />}
+            icon={<Globe className="h-6 w-6" />}
             description="14 países, terras consuetudinárias tradicionais e soberania climática"
           />
           <ContinenteCard
             title="Sistema ONU"
             href="/direitos-globais/onu"
             countries={193}
-            icon={<Scale className="h-8 w-8" />}
-            description="8 Órgãos de Tratados, UPR e recomendações de seguimento"
+            icon={<Scale className="h-6 w-6" />}
+            description="8 Órgãos de Tratados, UPR e recomendações de seguimento internacional"
           />
         </div>
       </div>

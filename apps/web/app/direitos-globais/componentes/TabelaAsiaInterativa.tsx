@@ -23,8 +23,7 @@ function formatarPopulacaoM(pop?: number): string {
   return `${(pop / 1000000).toFixed(0)}M`;
 }
 
-function filtrarPaisAsia(p: PaisAsiatico, leva: string, subRegiao: string, termo: string): boolean {
-  if (leva !== "Todas" && String(p.leva) !== leva) return false;
+function filtrarPaisAsia(p: PaisAsiatico, subRegiao: string, termo: string): boolean {
   if (subRegiao !== "Todas" && p.subRegiao !== subRegiao) return false;
   if (termo.length === 0) return true;
   const texto = semAcento(`${p.nome} ${p.codigo} ${p.capital ?? ""}`.toLowerCase());
@@ -48,8 +47,6 @@ function compararPaisesAsia(
 interface BarraFiltrosAsiaProps {
   busca: string;
   setBusca: (v: string) => void;
-  levaFiltro: string;
-  setLevaFiltro: (v: string) => void;
   subRegiaoFiltro: string;
   setSubRegiaoFiltro: (v: string) => void;
   subRegioes: string[];
@@ -59,8 +56,6 @@ interface BarraFiltrosAsiaProps {
 function BarraFiltrosAsia({
   busca,
   setBusca,
-  levaFiltro,
-  setLevaFiltro,
   subRegiaoFiltro,
   setSubRegiaoFiltro,
   subRegioes,
@@ -77,18 +72,6 @@ function BarraFiltrosAsia({
           placeholder="Buscar país, código, capital..."
           className="rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-text placeholder-text-soft focus:border-primary focus:outline-none"
         />
-
-        <select
-          value={levaFiltro}
-          onChange={(e) => setLevaFiltro(e.target.value)}
-          className="rounded-lg border border-border bg-surface-2 px-2.5 py-1.5 text-xs text-text focus:border-primary focus:outline-none"
-          aria-label="Filtrar por leva"
-        >
-          <option value="Todas">Todas as Levas (1, 2 e 3)</option>
-          <option value="1">Leva 1 (Prioritária - 6 países)</option>
-          <option value="2">Leva 2 (6 países)</option>
-          <option value="3">Leva 3 (11 países)</option>
-        </select>
 
         <select
           value={subRegiaoFiltro}
@@ -204,7 +187,6 @@ function TabelaGradeAsia({ paises, ordenarPor, direcao, onAlternarOrdem }: Tabel
 
 export default function TabelaAsiaInterativa({ paises }: { paises: readonly PaisAsiatico[] }) {
   const [busca, setBusca] = useState("");
-  const [levaFiltro, setLevaFiltro] = useState("Todas");
   const [subRegiaoFiltro, setSubRegiaoFiltro] = useState("Todas");
   const [ordenarPor, setOrdenarPor] = useState<"nome" | "populacao">("nome");
   const [direcao, setDirecao] = useState<"asc" | "desc">("asc");
@@ -216,9 +198,9 @@ export default function TabelaAsiaInterativa({ paises }: { paises: readonly Pais
   const paisesFiltrados = useMemo(() => {
     const termo = semAcento(busca.trim().toLowerCase());
     return paises
-      .filter((p) => filtrarPaisAsia(p, levaFiltro, subRegiaoFiltro, termo))
+      .filter((p) => filtrarPaisAsia(p, subRegiaoFiltro, termo))
       .sort((a, b) => compararPaisesAsia(a, b, ordenarPor, direcao));
-  }, [paises, busca, levaFiltro, subRegiaoFiltro, ordenarPor, direcao]);
+  }, [paises, busca, subRegiaoFiltro, ordenarPor, direcao]);
 
   function alternarOrdem(coluna: "nome" | "populacao") {
     if (ordenarPor === coluna) {
@@ -234,8 +216,6 @@ export default function TabelaAsiaInterativa({ paises }: { paises: readonly Pais
       <BarraFiltrosAsia
         busca={busca}
         setBusca={setBusca}
-        levaFiltro={levaFiltro}
-        setLevaFiltro={setLevaFiltro}
         subRegiaoFiltro={subRegiaoFiltro}
         setSubRegiaoFiltro={setSubRegiaoFiltro}
         subRegioes={subRegioes}

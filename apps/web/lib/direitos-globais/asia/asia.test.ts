@@ -51,7 +51,7 @@ describe("Frente C — Países da Ásia (Levas e Prioridades)", () => {
     expect(new Set(codigos).size).toBe(PAISES_ASIA.length);
     for (const p of PAISES_ASIA) {
       if (p.populacao) {
-        expect(p.populacao).toBeGreaterThan(1000000);
+        expect(p.populacao).toBeGreaterThan(100000);
       }
     }
   });

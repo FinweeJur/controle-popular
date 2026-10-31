@@ -18,7 +18,19 @@
 # sozinho quando o CodeScene nao esta instalado ou quando falta o token.
 # Para ignorar de proposito: `git commit --no-verify`.
 
-# 1. Achar o binario. No PATH ou na instalacao padrao do Windows.
+# 1. Vigia de Tipografia (Fonte Mínima >= 12px, regra §5.16 do portal)
+if command -v npx >/dev/null 2>&1; then
+  npx tsx scripts/vigia-fonte-minima.mts
+  status_vigia=$?
+  if [ "$status_vigia" -ne 0 ]; then
+    echo ""
+    echo "Vigia de Tipografia barrou o commit: encontrada fonte menor que 12px."
+    echo "Corrija os arquivos apontados antes de tentar comitar novamente."
+    exit "$status_vigia"
+  fi
+fi
+
+# 2. Achar o binario do CodeScene. No PATH ou na instalacao padrao do Windows.
 CS_BIN=""
 if command -v cs >/dev/null 2>&1; then
   CS_BIN="cs"

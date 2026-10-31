@@ -1,16 +1,19 @@
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Users, Map, Scale, Globe } from "lucide-react";
+import { Users, Map, Scale, Globe, ArrowRight } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import DataColeta from "@/app/components/DataColeta";
 import { DISPOSITIVOS } from "@/lib/direitos-globais/dispositivos";
-import { ListaDispositivos } from "./Dispositivos";
+import { PAISES_AMERICA_LATINA } from "@/lib/direitos-globais/dados";
+import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import TabelaAmericaLatinaInterativa from "../componentes/TabelaAmericaLatinaInterativa";
 
-/**
- * Card de sub-região para a américa latina.
- *
- * Não é link de propósito: a lista completa por sub-região ainda não existe.
- * Link que leva a 404 é pior que card informativo.
- */
+export const metadata: Metadata = {
+  title: "América Latina e Sistema Interamericano | Direitos Globais | Controle Popular",
+  description:
+    "Comparação dos 20 países da América Latina, 84 dispositivos conferidos cobrindo o catálogo completo de 24 temas prioritários, CIDH, Corte IDH e 402 sentenças.",
+};
+
 interface SubRegiaoCardProps {
   title: string;
   description: string;
@@ -20,18 +23,15 @@ interface SubRegiaoCardProps {
 
 function SubRegiaoCard({ title, description, countries, icon }: SubRegiaoCardProps) {
   return (
-    <div className="rounded-xl border border-border bg-surface p-6">
-      <div className="mb-4 text-primary">{icon}</div>
-      <h3 className="mb-2 text-lg font-semibold text-text">{title}</h3>
-      <p className="mb-2 text-sm text-text-700">{description}</p>
-      <p className="text-xs text-text-soft">{countries} países</p>
+    <div className="rounded-xl border border-border bg-surface p-4 sm:p-4.5">
+      <div className="mb-2.5 text-primary">{icon}</div>
+      <h3 className="mb-1 text-base font-semibold text-text">{title}</h3>
+      <p className="mb-2 text-xs text-text-700 leading-relaxed">{description}</p>
+      <p className="text-xs font-medium text-text-soft">{countries} países catalogados</p>
     </div>
   );
 }
 
-/**
- * Card de métrica comparativa.
- */
 interface MetricaCardProps {
   title: string;
   data: Array<{ region: string; value: string }>;
@@ -40,16 +40,16 @@ interface MetricaCardProps {
 
 function MetricaCard({ title, data, icon }: MetricaCardProps) {
   return (
-    <div className="rounded-lg border border-border bg-surface-2 p-4">
-      <div className="mb-3 flex items-center gap-2 text-primary">
+    <div className="rounded-xl border border-border bg-surface p-4">
+      <div className="mb-2.5 flex items-center gap-2 text-primary">
         {icon}
-        <h3 className="font-medium text-text">{title}</h3>
+        <h3 className="text-sm font-semibold text-text">{title}</h3>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {data.map((item) => (
-          <div key={item.region} className="flex justify-between text-sm">
+          <div key={item.region} className="flex justify-between text-xs">
             <span className="text-text-700">{item.region}</span>
-            <span className="font-medium text-text">{item.value}</span>
+            <span className="font-semibold text-text">{item.value}</span>
           </div>
         ))}
       </div>
@@ -57,165 +57,85 @@ function MetricaCard({ title, data, icon }: MetricaCardProps) {
   );
 }
 
-/**
- * Seletor de filtro regional.
- */
-interface FiltroRegionalProps {
-  label: string;
-  options: string[];
-}
-
-function FiltroRegional({ label, options }: FiltroRegionalProps) {
-  return (
-    <div>
-      <label className="mb-2 block text-sm font-medium text-text">{label}</label>
-      <select className="w-full rounded-lg border border-border px-3 py-2 text-sm">
-        {options.map((option) => (
-          <option key={option}>{option}</option>
-        ))}
-      </select>
-    </div>
-  );
-}
-
-/**
- * Filtros regionais.
- */
-function FiltrosRegionais() {
-  const subRegiaoOptions = ["Todas as sub-regiões", "América do Sul", "América Central", "Caribe"];
-  const paisesOptions = ["Selecionar países", "Brasil", "Argentina", "México", "Colômbia", "Chile", "Peru"];
-  const direitosOptions = ["Todos os direitos", "Direitos Humanos", "Direito Ambiental", "Direito das Mulheres", "Direito da Natureza", "Direitos Indígenas", "Direitos Quilombolas", "Direitos Campesinos", "Direitos Atingidos por Barragens"];
-  const criterioOptions = ["Todos os critérios", "Constitucional", "Legislativo", "Jurisprudencial", "Implementação"];
-
-  return (
-    <div className="mb-8 rounded-xl border border-border bg-surface p-6">
-      <h2 className="mb-4 text-lg font-semibold text-text">Comparar Países da América Latina</h2>
-      <div className="grid gap-4 md:grid-cols-5">
-        <FiltroRegional label="Sub-região" options={subRegiaoOptions} />
-        <FiltroRegional label="Países" options={paisesOptions} />
-        <FiltroRegional label="Direitos" options={direitosOptions} />
-        <FiltroRegional label="Critério" options={criterioOptions} />
-        <div className="flex items-end">
-          <button className="w-full rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90">
-            Comparar Selecionados
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Sub-regiões da américa latina.
- */
 function SubRegioes() {
   return (
     <div className="mb-8">
-      <h2 className="mb-6 text-xl font-bold text-text">Explorar por Sub-região</h2>
-      <div className="grid gap-6 md:grid-cols-3">
+      <h2 className="mb-3 text-lg font-bold text-text">Sub-regiões da América Latina</h2>
+      <div className="grid gap-3.5 sm:grid-cols-3">
         <SubRegiaoCard
           title="América do Sul"
-          description="12 países do sul do continente"
+          description="12 países com forte proteção constitucional ambiental, agrária e indígena"
           countries={12}
-          icon={<Map className="h-8 w-8" />}
+          icon={<Map className="h-6 w-6" />}
         />
         <SubRegiaoCard
           title="América Central"
-          description="7 países da América Central"
+          description="7 repúblicas com garantias expressas de due process e recursos hídricos"
           countries={7}
-          icon={<Scale className="h-8 w-8" />}
+          icon={<Scale className="h-6 w-6" />}
         />
         <SubRegiaoCard
           title="Caribe"
-          description="11 países e territórios do Caribe"
-          countries={11}
-          icon={<Globe className="h-8 w-8" />}
+          description="Cuba, República Dominicana e Haiti sob compromissos da Carta da OEA"
+          countries={1}
+          icon={<Globe className="h-6 w-6" />}
         />
       </div>
     </div>
   );
 }
 
-/**
- * Atalho para o sistema interamericano (CIDH e Corte IDH).
- */
 function SistemaInteramericano() {
   return (
-    <section className="mb-8 rounded-xl border border-border bg-surface p-6">
-      <h2 className="mb-2 text-xl font-bold text-text">
-        Sistema interamericano
-      </h2>
-      <p className="mb-4 text-sm text-text-soft">
-        Quem recomenda é a Comissão (CIDH); quem condena é a Corte IDH. Veja
-        o que a sentença obriga e quais tratados cada país ratificou.
-      </p>
-      <Link
-        href="/direitos-globais/america-latina/cidh"
-        className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90"
-      >
-        Ver CIDH e Corte IDH
-      </Link>
-    </section>
-  );
-}
-
-/**
- * Dispositivos conferidos, um bloco por país.
- *
- * Ordem alfabética para o leitor achar o país sem buscar. Cada bloco mostra
- * a citação e o texto; o texto longo fica atrás de "Ver mais".
- */
-function DispositivosConferidos() {
-  const paises = [...new Set(DISPOSITIVOS.map((d) => d.pais))].sort((a, b) =>
-    a.localeCompare(b, "pt-BR"),
-  );
-  return (
-    <section className="mb-8">
-      <h2 className="mb-2 text-xl font-bold text-text">Dispositivos conferidos</h2>
-      <p className="mb-6 text-sm text-text-soft">
-        {paises.length} países com o texto do artigo transcrito e o link da
-        fonte. O Brasil vem da Câmara dos Deputados; os demais, do Constitute
-        Project.
-      </p>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {paises.map((pais) => (
-          <ListaDispositivos
-            key={pais}
-            pais={pais}
-            dispositivos={DISPOSITIVOS.filter((d) => d.pais === pais)}
-          />
-        ))}
+    <section className="mb-8 rounded-xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
+            Jurisprudência Vinculante
+          </span>
+          <h2 className="mt-1 text-base font-bold text-text">
+            Sistema Interamericano de Direitos Humanos (CIDH e Corte IDH)
+          </h2>
+          <p className="mt-1 text-xs text-text-soft leading-relaxed max-w-2xl">
+            Quem recomenda é a Comissão Interamericana (CIDH); quem condena com sentença vinculante é a Corte IDH.
+            Acesse o banco de 402 sentenças contenciosas e meça o cumprimento das reparações em cada país.
+          </p>
+        </div>
+        <Link
+          href="/direitos-globais/america-latina/cidh"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3.5 py-2 text-xs font-semibold text-white hover:bg-primary/90 transition-colors"
+        >
+          <span>Ver CIDH e Corte IDH</span>
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
       </div>
     </section>
   );
 }
 
-/**
- * Métricas comparativas.
- */
 function MetricasComparativas() {
   return (
     <div className="mb-8">
-      <h2 className="mb-6 text-xl font-bold text-text">Métricas Comparativas</h2>
-      <div className="grid gap-6 md:grid-cols-2">
+      <h2 className="mb-3 text-lg font-bold text-text">Métricas Comparativas</h2>
+      <div className="grid gap-3.5 sm:grid-cols-2">
         <MetricaCard
           title="IDH Médio por Sub-região"
           data={[
             { region: "América do Sul", value: "0.754" },
             { region: "América Central", value: "0.723" },
-            { region: "Caribe", value: "0.699" },
+            { region: "Caribe Latino", value: "0.699" },
           ]}
-          icon={<Users className="h-6 w-6" />}
+          icon={<Users className="h-5 w-5" />}
         />
         <MetricaCard
-          title="Proteção Ambiental Constitucional"
+          title="Proteção Ambiental e Direitos da Natureza"
           data={[
-            { region: "Chile", value: "Forte" },
-            { region: "Brasil", value: "Forte" },
-            { region: "Ecuador", value: "Muito Forte" },
-            { region: "Costa Rica", value: "Forte" },
+            { region: "Equador", value: "Muito Forte (Pacha Mama, Art. 71)" },
+            { region: "Bolívia", value: "Muito Forte (Mãe Terra e Água, Art. 373)" },
+            { region: "Brasil", value: "Forte (CF/88 Art. 225 e PNAB Lei 14.755)" },
+            { region: "Uruguai", value: "Forte (Água Direito Fundamental, Art. 47)" },
           ]}
-          icon={<Scale className="h-6 w-6" />}
+          icon={<Scale className="h-5 w-5" />}
         />
       </div>
     </div>
@@ -230,7 +150,7 @@ export default function PaginaAmericaLatina() {
     >
       <nav
         aria-label="Navegação estrutural"
-        className="mb-6 flex flex-wrap items-center gap-2 text-xs text-text-soft"
+        className="mb-5 flex flex-wrap items-center gap-2 text-xs text-text-soft"
       >
         <Link href="/" className="hover:text-primary hover:underline">
           Início
@@ -243,22 +163,42 @@ export default function PaginaAmericaLatina() {
         <span className="font-semibold text-text">América Latina</span>
       </nav>
 
-      <header className="mb-8">
-        <h1 className="text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
+      <header className="mb-6">
+        <h1 className="text-2xl font-extrabold tracking-tight text-text sm:text-3xl">
           América Latina
         </h1>
-        <p className="mt-3 text-lg text-text-soft">
-          Comparação de sistemas de direitos entre os 20 países da América Latina, com foco em direitos humanos, ambiental, sociais e coletivos.
+        <p className="mt-2 text-sm text-text-soft leading-relaxed">
+          Comparação sistemática de direitos entre os 20 países da América Latina, abrangendo direitos humanos,
+          ambiental, mulheres, crianças, povos indígenas, quilombolas, campesinos, atingidos por barragens e água.
         </p>
+        <DataColeta
+          coletadoEm="2026-10-30"
+          fonte="Fontes Primárias Oficiais: Constitute Project, Câmara dos Deputados (Brasil), Senado da Colômbia e Diários Oficiais"
+          competencia="20 Estados Soberanos da América Latina, Sistema Interamericano (CIDH/Corte IDH)"
+        />
       </header>
-
-      <FiltrosRegionais />
 
       <SubRegioes />
 
       <SistemaInteramericano />
 
-      <DispositivosConferidos />
+      {/* Tabela Interativa com Busca e CSV */}
+      <section className="mb-8">
+        <div className="mb-3">
+          <h2 className="text-lg font-bold text-text">Comparador Geral de Países</h2>
+          <p className="text-xs text-text-soft">
+            Filtre por sub-região, ordene por população ou IDH e exporte os dados consolidados em CSV.
+          </p>
+        </div>
+        <TabelaAmericaLatinaInterativa paises={PAISES_AMERICA_LATINA} />
+      </section>
+
+      {/* Dispositivos Conferidos com Filtro por Tema */}
+      <SecaoDispositivosComFiltro
+        dispositivos={DISPOSITIVOS}
+        titulo="Dispositivos Constitucionais Conferidos na América Latina"
+        descricao="84 dispositivos com texto integral verbatim. Use o seletor para filtrar por mulheres, crianças, quilombolas, campesinos, atingidos ou meio ambiente."
+      />
 
       <MetricasComparativas />
 

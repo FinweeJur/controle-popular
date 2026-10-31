@@ -140,11 +140,14 @@ export default function RolagemSuave({ children }: { children: ReactNode }) {
       ref={lenisRef}
       root
       options={{
-        // Suavização: 1 = sem suavização, 0 = lentíssimo. 0.12 é o
-        // padrão do Lenis — perceptível, sem atrapalhar quem tem pressa.
+        // Suavização: 1 = sem suavização, 0 = lentíssimo. 0.12 é o padrão.
         lerp: 0.12,
         // Saltos de âncora (#...) animados pelo próprio Lenis.
         anchors: true,
+        // Rolagem da roda do mouse 100% nativa do navegador (smoothWheel: false):
+        // impede que o Lenis intercepte wheel com event.preventDefault(), eliminando
+        // de vez o congelamento de scroll relatado pelo usuário em todas as páginas.
+        smoothWheel: false,
         wheelMultiplier: 1,
         touchMultiplier: 1.4,
       }}
