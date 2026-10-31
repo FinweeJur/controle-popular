@@ -11,13 +11,14 @@
  * o nome do território clicado com as feições do raio.
  *
  * O cruzamento é por nome NORMALIZADO (maiúsculas, sem acento, sem
- * pontuação). Medido no arquivo em 15/08/2026: 28 dos 30 nomes do raio
+ * pontuação). Na medição de 15/08/2026, 28 dos 30 nomes do raio
  * casam com `terras-indigenas.geojson` + `territorios-quilombolas.geojson`
- * assim; os 2 que não casam são "FAMILIA TEODORO DE OLIVEIRA E VENTURA"
- * (não tem polígono no mapa — o nome dele não existe nos dois arquivos) e
- * "NOGUEIRA" (no mapa se chama "TQ Nogueira"). Igualdade estrita de
- * propósito: substring casaria "QUILOMBO" com "QUILOMBO SANTA HELENA" e
- * inventaria par que não existe.
+ * assim. Desde a troca do WFS morto pelo shapefile do IBGE (a4d80e20), são 26
+ * de 30: além de "FAMILIA TEODORO DE OLIVEIRA E VENTURA" (sem polígono) e
+ * "NOGUEIRA" (no mapa é "TQ Nogueira"), "MAROBÁ DOS TEIXEIRA" virou "Maroba
+ * dos Teixeiras" e "PORTO CORIS PRAIA" virou "Porto Coris" na fonte nova.
+ * Igualdade estrita de propósito: substring casaria "QUILOMBO" com "QUILOMBO
+ * SANTA HELENA" e inventaria par que não existe.
  */
 
 import { escapar } from './rotulos.js';

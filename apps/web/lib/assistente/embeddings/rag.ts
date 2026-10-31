@@ -50,6 +50,12 @@ const LIMIAR_ABSTENCAO_PADRAO = 0.10;
  * ~0,40 e as dentro do escopo ficam acima de ~0,50 — daí o piso em 0,45.
  */
 const LIMIAR_ABSTENCAO_LEXICAL = 0.45;
+/**
+ * Bônus das fontes `macro:` — resumos curados do portal. Aplicado só quando a
+ * cobertura lexical já é alta (>= 0,5), para a síntese vencer um documento
+ * primário parecido sem promover cartão que não responde à pergunta.
+ */
+const BONUS_MACRO = 0.12;
 const PESO_COSSENO = 0.6;
 const PESO_LEXICAL = 0.4;
 const MAX_TENTATIVAS = 2;
@@ -186,6 +192,82 @@ interface ResultadoBusca {
   score: number;
 }
 
+/**
+ * Bônus de síntese: as fontes `macro:` são os resumos curados do próprio
+ * portal. Quando cobrem a pergunta, respondem melhor que um documento
+ * primário isolado — sem isso, um acervo com muitas ementas parecidas
+ * (caso do TJES sobre Mariana) enterra o resumo que o leitor procura.
+ */
+function comBonusMacro(lexical: number, idFonte: string): number {
+  if (lexical < 0.5 || !idFonte.startsWith("macro:")) return lexical;
+  return Math.min(1, lexical + BONUS_MACRO);
+}
+
+/** A fonte é a própria rota onde o leitor está (ou está dentro dela)? */
+function mesmaRota(fonte: AcervoFonte, pathname: string | undefined): boolean {
+  if (!pathname) return false;
+  if (fonte.rota === pathname) return true;
+  if (pathname === "/") return false;
+  return fonte.rota.startsWith(pathname) || pathname.startsWith(fonte.rota);
+}
+
+/** A fonte pertence à frente da tela atual? */
+function mesmaFrente(fonte: AcervoFonte, frenteRotaAtual: string): boolean {
+  if (!frenteRotaAtual) return false;
+  return (
+    fonte.frente === frenteRotaAtual ||
+    frenteDaRota(fonte.rota) === frenteRotaAtual
+  );
+}
+
+/** Ajusta o lexical pela rota ou frente em que o leitor está. */
+function comAfinidadeDeRota(
+  lexical: number,
+  fonte: AcervoFonte,
+  pathname: string | undefined,
+  frenteRotaAtual: string
+): number {
+  if (mesmaRota(fonte, pathname)) return Math.min(1.0, lexical + 0.15);
+  if (mesmaFrente(fonte, frenteRotaAtual)) return Math.min(1.0, lexical + 0.08);
+  return lexical;
+}
+
+/** Contexto comum da pontuação de cada fonte. */
+interface ContextoPontuacao {
+  pergunta: string;
+  vetorPergunta: number[];
+  pesoToken: (t: string) => number;
+  soLexical: boolean;
+  pathname?: string;
+  frenteRotaAtual: string;
+}
+
+/** Pontua uma fonte: cosseno, lexical, bônus de síntese e afinidade de rota. */
+function pontuarFonte(
+  fonte: AcervoFonte,
+  vetorFonte: number[],
+  ctx: ContextoPontuacao
+): ResultadoBusca {
+  const cosseno = ctx.soLexical
+    ? 0
+    : similaridadeCosseno(ctx.vetorPergunta, vetorFonte);
+  const bruto = similaridadeLexical(
+    ctx.pergunta,
+    `${fonte.titulo} ${fonte.texto}`,
+    ctx.pesoToken
+  );
+  const lexical = comAfinidadeDeRota(
+    comBonusMacro(bruto, fonte.id),
+    fonte,
+    ctx.pathname,
+    ctx.frenteRotaAtual
+  );
+  // Só-lexical: score na MESMA escala do híbrido (0–1) para que o limiar de
+  // abstenção continue significando o que sempre significou.
+  const score = ctx.soLexical ? lexical : scoreHibrido(cosseno, lexical);
+  return { fonte, cosseno, lexical, score };
+}
+
 /** Rankeia o acervo por cosseno ⊕ lexical (ou só lexical, sem embeddings),
  *  do mais para o menos parecido. Considera rota/página atual como boost de relevância. */
 export async function buscarNoAcervo(
@@ -201,34 +283,17 @@ export async function buscarNoAcervo(
   const vetorPergunta = soLexical ? [] : await vetorizarTexto(pergunta);
   const frenteRotaAtual = pathname ? frenteDaRota(pathname) : "";
 
-  const ranqueados: ResultadoBusca[] = indice.fontes
-    .map((fonte, i) => {
-      const cosseno = soLexical
-        ? 0
-        : similaridadeCosseno(vetorPergunta, indice.vetores[i]);
-      let lexical = similaridadeLexical(
-        pergunta,
-        `${fonte.titulo} ${fonte.texto}`,
-        indice.pesoToken
-      );
-      
-      // Boost de afinidade com a rota ou frente da tela onde o usuário está
-      if (pathname && pathname.length > 0) {
-        if (
-          fonte.rota === pathname ||
-          (pathname !== "/" && (fonte.rota.startsWith(pathname) || pathname.startsWith(fonte.rota)))
-        ) {
-          lexical = Math.min(1.0, lexical + 0.15);
-        } else if (frenteRotaAtual && (fonte.frente === frenteRotaAtual || frenteDaRota(fonte.rota) === frenteRotaAtual)) {
-          lexical = Math.min(1.0, lexical + 0.08);
-        }
-      }
+  const contexto: ContextoPontuacao = {
+    pergunta,
+    vetorPergunta,
+    pesoToken: indice.pesoToken,
+    soLexical,
+    pathname,
+    frenteRotaAtual,
+  };
 
-      // Só-lexical: score na MESMA escala do híbrido (0–1) para que o limiar
-      // de abstenção continue significando o que sempre significou.
-      const score = soLexical ? lexical : scoreHibrido(cosseno, lexical);
-      return { fonte, cosseno, lexical, score };
-    })
+  const ranqueados: ResultadoBusca[] = indice.fontes
+    .map((fonte, i) => pontuarFonte(fonte, indice.vetores[i], contexto))
     .sort((a, b) => b.score - a.score);
 
   const k = topK ?? TOP_K_PADRAO;
