@@ -27,6 +27,7 @@ import { chaveCorrecao } from "../../apps/web/lib/memoria/correcoes";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RELATORIO = resolve(RAIZ, "docs", "relatorios-automacao", "revisao-textos-memoria.json");
+const LOTE = resolve(RAIZ, "scripts", "memoria", "correcoes-batch.json");
 const DESTINO = resolve(RAIZ, "apps", "web", "lib", "memoria", "correcoes-mistica.ts");
 
 /** O que o relatório traz por verbete (o que este gerador consome). */
@@ -40,6 +41,17 @@ interface AnaliseRelatorio {
 const relatorio = JSON.parse(readFileSync(RELATORIO, "utf8")) as {
   resultados: AnaliseRelatorio[];
 };
+
+/**
+ * Lote do sabiazinho-4 (Batch API) com correções de sujeito.
+ * Só entraram aqui as respostas em que o sujeito citado existe no texto
+ * original — validação feita fora, com normalização; o resto foi rejeitado.
+ */
+const lote = JSON.parse(readFileSync(LOTE, "utf8")) as Array<{
+  indice: number;
+  tituloCurto: string;
+  resumo: string;
+}>;
 
 /**
  * Resumos RETIDOS para revisão humana: a sugestão junta DOIS fatos
@@ -87,6 +99,19 @@ const MANUAIS: Record<string, { tituloCurto?: string; resumo?: string }> = {
   "08-09|1997|falece em 9 de agosto de 1997, debilitado pela a": {
     tituloCurto: "Morre vítima da Aids, irmão de Henfil e Mário",
   },
+  // 10-30/1979: o título não dizia a cidade. Santo Amaro é bairro de São Paulo.
+  "10-30|s/ano|foi em 30 de outubro, em frente da fabrica sylva": {
+    tituloCurto: "Assassinato de Santo Dias pela PM de Maluf, em São Paulo",
+    resumo:
+      "No ano de 1979, Santo Dias teve desempenho importante na preparação e na realização de uma greve maciça e pacífica. Foi em 30 de outubro, em frente da fábrica Sylvânia, no bairro de Santo Amaro, em São Paulo, que a Polícia Militar do então governador Paulo Maluf o assassinou.",
+  },
+  // 10-31: o verbete fala de Machado de Assis, mas nem o título nem o resumo
+  // nomeavam o sujeito. O nome está no próprio verbete — não é invenção.
+  "10-31|s/ano|mais tarde, consegue um emprego como aprendiz de": {
+    tituloCurto: "Machado de Assis publica Memórias póstumas de Brás-Cubas",
+    resumo:
+      "Em 1873, Machado de Assis ingressa no serviço público pelo Ministério da Agricultura, o que lhe permite dedicar mais tempo à literatura. As suas obras das décadas de 1860 e 1870 são consideradas sua fase influenciada pelo Romantismo, mais subjetiva, porém em 1881 publica Memórias póstumas de Brás-Cubas, considerado o primeiro romance realista no Brasil.",
+  },
 };
 
 const correcoes: Record<string, { tituloCurto?: string; resumo?: string }> = {};
@@ -116,6 +141,19 @@ for (const r of relatorio.resultados) {
   }
 
   if (Object.keys(registro).length > 0) correcoes[chave] = registro;
+}
+
+// Lote do sabiazinho-4: corrige sujeito/local onde o modelo provou o sujeito
+// no próprio texto original. Entra antes do manual, que tem a palavra final.
+for (const item of lote) {
+  const entrada = CALENDARIO_LUTAS[item.indice];
+  if (!entrada) continue;
+  const chave = chaveCorrecao(entrada);
+  correcoes[chave] = {
+    ...correcoes[chave],
+    tituloCurto: item.tituloCurto,
+    resumo: item.resumo,
+  };
 }
 
 // Correções manuais entram por último e vencem o modelo.
