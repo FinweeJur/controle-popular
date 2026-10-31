@@ -6,7 +6,7 @@ import DataColeta from "@/app/components/DataColeta";
 import { PAISES_OCEANIA } from "@/lib/direitos-globais/oceania/paises";
 import { getDispositivosOceania } from "@/lib/direitos-globais/oceania/dispositivos";
 import TabelaOceaniaInterativa from "../componentes/TabelaOceaniaInterativa";
-import { ListaDispositivos } from "../componentes/Dispositivos";
+import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "Oceania e Ilhas do Pacífico | Direitos Globais | Controle Popular",
@@ -70,37 +70,6 @@ function ResumoOceania() {
   );
 }
 
-function DispositivosOceania() {
-  const todosDispositivos = getDispositivosOceania();
-  const paises = [...new Set(todosDispositivos.map((d) => d.pais))].sort((a, b) =>
-    a.localeCompare(b, "pt-BR")
-  );
-
-  return (
-    <section className="mb-12">
-      <header className="mb-6">
-        <h2 className="text-xl font-bold text-text">
-          Dispositivos Constitucionais e Situação Documental por País
-        </h2>
-        <p className="mt-1 text-sm text-text-soft">
-          Artigos transcritos na íntegra de fontes canônicas (Constitute Project, PacLII e Waitangi
-          Tribunal). Para os Estados sem ingestão concluída, a lacuna está expressamente declarada.
-        </p>
-      </header>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        {paises.map((pais) => (
-          <ListaDispositivos
-            key={pais}
-            pais={pais}
-            dispositivos={todosDispositivos.filter((d) => d.pais === pais)}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function PaginaOceania() {
   return (
     <main id="conteudo-principal" className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
@@ -150,7 +119,11 @@ export default function PaginaOceania() {
         <TabelaOceaniaInterativa paises={PAISES_OCEANIA} />
       </section>
 
-      <DispositivosOceania />
+      <SecaoDispositivosComFiltro
+        dispositivos={getDispositivosOceania()}
+        titulo="Dispositivos Constitucionais e Terras Consuetudinárias na Oceania"
+        descricao="Preceitos conferidos de proteção a terras tradicionais inalienáveis, salvaguarda de recifes e soberania climática permanente."
+      />
 
       <FooterGlobal />
     </main>

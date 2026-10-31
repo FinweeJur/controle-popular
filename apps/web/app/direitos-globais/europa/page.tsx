@@ -6,7 +6,7 @@ import DataColeta from "@/app/components/DataColeta";
 import { PAISES_EUROPA } from "@/lib/direitos-globais/europa/paises";
 import { DISPOSITIVOS_EUROPA } from "@/lib/direitos-globais/europa/dispositivos";
 import TabelaEuropaInterativa from "../componentes/TabelaEuropaInterativa";
-import { ListaDispositivos } from "../componentes/Dispositivos";
+import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "Europa e Conselho da Europa | Direitos Globais | Controle Popular",
@@ -98,37 +98,6 @@ function BlocoLegislacaoTransnacionais() {
   );
 }
 
-function DispositivosLeva1Europa() {
-  const paisesLeva1 = [...new Set(DISPOSITIVOS_EUROPA.map((d) => d.pais))].sort((a, b) =>
-    a.localeCompare(b, "pt-BR")
-  );
-
-  return (
-    <section className="mb-12">
-      <header className="mb-6">
-        <h2 className="text-xl font-bold text-text">
-          Dispositivos Constitucionais Conferidos — Leva 1
-        </h2>
-        <p className="mt-1 text-sm text-text-soft">
-          Artigos transcritos na íntegra (verbatim), com indicação do idioma original, tradução em
-          português, fonte primária oficial (Constitute Project e Legislation.gov.uk) e data de
-          auditoria.
-        </p>
-      </header>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        {paisesLeva1.map((pais) => (
-          <ListaDispositivos
-            key={pais}
-            pais={pais}
-            dispositivos={DISPOSITIVOS_EUROPA.filter((d) => d.pais === pais)}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function PaginaEuropa() {
   return (
     <main id="conteudo-principal" className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
@@ -179,7 +148,11 @@ export default function PaginaEuropa() {
         <TabelaEuropaInterativa paises={PAISES_EUROPA} />
       </section>
 
-      <DispositivosLeva1Europa />
+      <SecaoDispositivosComFiltro
+        dispositivos={DISPOSITIVOS_EUROPA}
+        titulo="Dispositivos Constitucionais Conferidos na Europa"
+        descricao="33 artigos transcritos integralmente com fonte e data de acesso para os países prioritários."
+      />
 
       <FooterGlobal />
     </main>

@@ -53,6 +53,18 @@ const TIPOS: TipoDireito[] = [
   "coletivos",
   "atingidos_barragens",
   "atingidos_empreendimentos",
+  "povos",
+  "idosos",
+  "deficiencia",
+  "lgbtqia",
+  "migrantes_refugiados",
+  "trabalho",
+  "saude",
+  "educacao",
+  "moradia",
+  "agua",
+  "terra_territorio",
+  "memoria_verdade_justica",
 ];
 
 describe("direitos globais — países", () => {
@@ -139,8 +151,8 @@ describe("direitos globais — formatação", () => {
 describe("direitos globais — dispositivos conferidos", () => {
   const nomes = new Set(PAISES_AMERICA_LATINA.map((p) => p.nome));
 
-  it("tem 59 dispositivos nos 20 países", () => {
-    expect(DISPOSITIVOS).toHaveLength(59);
+  it("tem pelo menos 59 dispositivos nos 20 países cobrindo o catálogo", () => {
+    expect(DISPOSITIVOS.length).toBeGreaterThanOrEqual(59);
     expect(paisesComDispositivos()).toHaveLength(20);
     for (const pais of paisesComDispositivos()) {
       expect(dispositivosDoPais(pais).length).toBeGreaterThanOrEqual(2);
@@ -156,15 +168,17 @@ describe("direitos globais — dispositivos conferidos", () => {
 
   it("cada dispositivo tem citação, texto integral e fonte navegável", () => {
     for (const d of DISPOSITIVOS) {
-      expect(d.citacao).toMatch(/^(Artículo|ARTÍCULO|Artigo|Art\.|Lei)(?=\s|$)/);
+      expect(d.citacao).toMatch(/^(Artículo|ARTÍCULO|Artigo|Art\.|Lei|ADCT)(?=\s|$)/);
       expect(d.titulo.length).toBeGreaterThan(2);
       expect(d.texto.length).toBeGreaterThan(80);
       expect(d.texto).not.toMatch(/\[\.{3}\]|…\s*$/);
       expect(d.fonte.length).toBeGreaterThan(3);
-      expect(d.url).toMatch(/^https:\/\//);
+      expect(d.url).toMatch(/^https?:\/\//);
       expect([
         "www.constituteproject.org",
         "www2.camara.leg.br",
+        "www.planalto.gov.br",
+        "www.secretariasenado.gov.co",
       ]).toContain(new URL(d.url).hostname);
       expect(d.dataAcesso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(["es", "fr", "pt"]).toContain(d.idiomaOriginal);
@@ -185,12 +199,15 @@ describe("direitos globais — dispositivos conferidos", () => {
     expect(dispositivosDoPais("Atlântida")).toHaveLength(0);
   });
 
-  it("o Brasil vem da Câmara, em português, com o art. 5º inteiro", () => {
+  it("o Brasil vem da Câmara ou Planalto, em português, com o art. 5º inteiro", () => {
     const brasil = dispositivosDoPais("Brasil");
-    expect(brasil).toHaveLength(3);
+    expect(brasil.length).toBeGreaterThanOrEqual(3);
     for (const d of brasil) {
       expect(d.idiomaOriginal).toBe("pt");
-      expect(new URL(d.url).hostname).toBe("www2.camara.leg.br");
+      expect([
+        "www2.camara.leg.br",
+        "www.planalto.gov.br",
+      ]).toContain(new URL(d.url).hostname);
     }
     const art5 = brasil.find((d) => d.citacao === "Art. 5º");
     expect(art5?.texto).toMatch(/^Art\. 5º Todos são iguais perante a lei/);

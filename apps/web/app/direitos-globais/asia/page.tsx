@@ -1,67 +1,136 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AlertCircle, ExternalLink, ArrowRight } from "lucide-react";
+import { AlertCircle, ArrowRight, Globe, Shield, Map, Scale } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import DataColeta from "@/app/components/DataColeta";
-import { PAISES_ASIA, paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
+import { PAISES_ASIA, paisesPorSubRegiao } from "@/lib/direitos-globais/asia/paises";
 import { INSTRUMENTOS_REGIONAIS_ASIA } from "@/lib/direitos-globais/asia/tratados-regionais";
 import TabelaAsiaInterativa from "../componentes/TabelaAsiaInterativa";
 import { DISPOSITIVOS_ASIA } from "@/lib/direitos-globais/asia/dispositivos";
-import { ListaDispositivos } from "../componentes/Dispositivos";
+import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
 
 export const metadata: Metadata = {
   title: "Ásia e Direitos Fundamentais | Direitos Globais | Controle Popular",
   description:
-    "Comparação jurídica dos países asiáticos organizados em levas prioritárias, cruzamento com a ausência de corte regional e remissão ao sistema ONU.",
+    "Comparação dos 48 países asiáticos organizados por sub-regiões geográficas, dispositivos constitucionais conferidos, ausência de corte regional vinculante e controle no sistema ONU.",
 };
 
 function ResumoAsia() {
   const totalPaises = PAISES_ASIA.length;
-  const totalLeva1 = paisesPorLeva(1).length;
-  const totalLeva2 = paisesPorLeva(2).length;
-  const totalLeva3 = paisesPorLeva(3).length;
+  const totalDispositivos = DISPOSITIVOS_ASIA.length;
 
   return (
     <section aria-labelledby="indicadores-asia" className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
       <h2 id="indicadores-asia" className="sr-only">Indicadores da Ásia</h2>
       <div className="rounded-xl border border-border bg-surface p-4">
         <p className="text-xs text-text-soft">Total de Países</p>
-        <p className="mt-1 text-2xl font-black text-text">{totalPaises}</p>
-        <p className="text-xs text-text-soft">Levas 1 a 3 catalogadas</p>
+        <p className="mt-1 text-2xl font-black text-text">{totalPaises} Estados</p>
+        <p className="text-xs text-text-soft">5 sub-regiões geográficas</p>
       </div>
       <div className="rounded-xl border border-border bg-surface p-4">
-        <p className="text-xs text-text-soft">Leva 1 — Prioritários</p>
-        <p className="mt-1 text-2xl font-black text-primary">{totalLeva1}</p>
-        <p className="text-xs text-text-soft">Grandes potências e populações</p>
+        <p className="text-xs text-text-soft">Dispositivos Conferidos</p>
+        <p className="mt-1 text-2xl font-black text-primary">{totalDispositivos}</p>
+        <p className="text-xs text-text-soft">Artigos transcritos verbatim</p>
       </div>
       <div className="rounded-xl border border-border bg-surface p-4">
-        <p className="text-xs text-text-soft">Leva 2 — Emergentes</p>
-        <p className="mt-1 text-2xl font-black text-text">{totalLeva2}</p>
-        <p className="text-xs text-text-soft">Sudeste e Sul da Ásia</p>
+        <p className="text-xs text-text-soft">Corte Regional</p>
+        <p className="mt-1 text-2xl font-black text-amber-600 dark:text-amber-400">Ausente</p>
+        <p className="text-xs text-text-soft">Sem tribunal supranacional</p>
       </div>
       <div className="rounded-xl border border-border bg-surface p-4">
-        <p className="text-xs text-text-soft">Leva 3 — Expansão</p>
-        <p className="mt-1 text-2xl font-black text-text">{totalLeva3}</p>
-        <p className="text-xs text-text-soft">Himalaia, Indochina e Ásia Central</p>
+        <p className="text-xs text-text-soft">Instância de Controle</p>
+        <p className="mt-1 text-2xl font-black text-text">ONU / UPR</p>
+        <p className="text-xs text-text-soft">8 Órgãos de Tratados</p>
       </div>
     </section>
   );
 }
 
+function SubRegioesAsia() {
+  const contagens = {
+    leste: paisesPorSubRegiao("Leste Asiático").length,
+    sudeste: paisesPorSubRegiao("Sudeste Asiático").length,
+    sul: paisesPorSubRegiao("Sul da Ásia").length,
+    central: paisesPorSubRegiao("Ásia Central").length,
+    ocidental: paisesPorSubRegiao("Ásia Ocidental").length,
+  };
+
+  return (
+    <div className="mb-8">
+      <h2 className="mb-3 text-lg font-bold text-text">Sub-regiões da Ásia</h2>
+      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Globe className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Leste Asiático</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            China, Japão, Coreia do Sul, Mongólia e Taiwan: constituições com garantias de trabalho, saúde e igualdade de gênero.
+          </p>
+          <span className="text-xs text-text-soft font-medium">{contagens.leste} países</span>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Map className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Sudeste Asiático</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            Filipinas, Vietnã, Indonésia, Tailândia e membros da ASEAN: mecanismo intergovernamental consultivo (AICHR).
+          </p>
+          <span className="text-xs text-text-soft font-medium">{contagens.sudeste} países</span>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Scale className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Sul da Ásia</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            Índia, Paquistão, Bangladesh, Nepal e Sri Lanka: proteção judicial histórica a castas e comunidades vulneráveis.
+          </p>
+          <span className="text-xs text-text-soft font-medium">{contagens.sul} países</span>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Shield className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Ásia Central</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            Cazaquistão, Uzbequistão, Quirguistão, Tajiquistão e Turcomenistão: reformas pós-soviéticas e acompanhamento pela ONU.
+          </p>
+          <span className="text-xs text-text-soft font-medium">{contagens.central} países</span>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Globe className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Ásia Ocidental (Oriente Médio)</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            18 Estados incluindo Turquia, Arábia Saudita, Irã e Levante: compromissos perante os órgãos de tratados e a Carta Árabe.
+          </p>
+          <span className="text-xs text-text-soft font-medium">{contagens.ocidental} países</span>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-4">
+          <div className="mb-2 text-primary"><Map className="h-5 w-5" /></div>
+          <h3 className="text-base font-semibold text-text">Norte da Ásia (Transcontinental)</h3>
+          <p className="mb-2 text-xs text-text-700 leading-relaxed">
+            Rússia: analisada como Estado transcontinental euro-asiático, sem vinculação ao Conselho da Europa desde 2022.
+          </p>
+          <span className="text-xs text-text-soft font-medium">1 país transcontinental</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AlertaInexistenciaTribunal() {
   return (
-    <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 sm:p-6">
+    <section className="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 sm:p-5">
       <div className="flex items-start gap-3">
-        <AlertCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-600 dark:text-amber-400" />
+        <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600 dark:text-amber-400" />
         <div>
-          <h2 className="text-lg font-bold text-text">
+          <h2 className="text-base font-bold text-text">
             Particularidade Regional: Inexistência de Tribunal Regional Asiático
           </h2>
-          <p className="mt-1.5 text-sm text-text-700 leading-relaxed">
-            Diferente da América Latina e África, a Ásia não possui tratado geral vinculante nem corte de direitos humanos.
-            O controle de cumprimento recai diretamente sobre os órgãos de tratados e a UPR da ONU.
+          <p className="mt-1 text-xs text-text-700 leading-relaxed">
+            Ao contrário da América Latina (Corte IDH), da África (Corte Africana) e da Europa (TEDH), o continente asiático não dispõe de um tribunal supranacional com competência contenciosa vinculante.
+            Dessa forma, o escrutínio sobre o cumprimento de direitos humanos recai essencialmente sobre os comitês de tratados da ONU (CCPR, CESCR, CEDAW, CRC, etc.) e o mecanismo de Revisão Periódica Universal (UPR).
           </p>
-          <div className="mt-3">
+          <div className="mt-2.5">
             <Link
               href="/direitos-globais/onu"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
@@ -76,203 +145,74 @@ function AlertaInexistenciaTribunal() {
   );
 }
 
-function SecaoLeva1({ paises }: { paises: readonly PaisAsiatico[] }) {
-  return (
-    <section className="mb-12">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <h2 className="text-xl font-bold text-text">Leva 1 — Países Prioritários</h2>
-          <p className="text-xs text-text-soft">China, Rússia, Índia, Vietnã, Japão e Filipinas</p>
-        </div>
-        <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">6 Países</span>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {paises.map((p) => (
-          <div
-            key={p.codigo}
-            className="flex flex-col justify-between rounded-xl border border-border bg-surface p-5 transition-shadow hover:shadow-sm"
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-xs text-text-soft font-semibold">{p.codigo}</span>
-                <span className="rounded bg-surface-2 px-2 py-0.5 text-xs text-text-soft">{p.subRegiao}</span>
-              </div>
-              <h3 className="mt-2 text-lg font-bold text-text">{p.nome}</h3>
-              <p className="text-xs text-text-soft">Capital: {p.capital}</p>
-              {p.populacao && (
-                <p className="mt-2 text-xs text-text-700">
-                  <strong className="text-text">População:</strong> {(p.populacao / 1000000).toFixed(0)}M
-                </p>
-              )}
-              {p.notaTranscontinental && (
-                <div className="mt-3 rounded border border-primary/20 bg-primary/5 p-2.5 text-xs text-text-700">
-                  <span className="font-bold text-primary">Nota Transcontinental:</span> {p.notaTranscontinental}
-                </div>
-              )}
-              {p.mecanismoRegional && (
-                <p className="mt-2 text-xs text-text-soft">
-                  <strong className="text-text">Instância:</strong> {p.mecanismoRegional}
-                </p>
-              )}
-            </div>
-            <div className="mt-4 border-t border-border pt-3">
-              <Link
-                href="/direitos-globais/onu"
-                className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
-              >
-                Ver recomendações da ONU para {p.nome}
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SecaoLeva2({ paises }: { paises: readonly PaisAsiatico[] }) {
-  return (
-    <section className="mb-12">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <h2 className="text-xl font-bold text-text">Leva 2 — Economias Emergentes e Sudeste/Sul da Ásia</h2>
-          <p className="text-xs text-text-soft">Indonésia, Bangladesh, Paquistão, Tailândia, Malásia e Coreia do Sul</p>
-        </div>
-      </div>
-      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-        {paises.map((p) => (
-          <div key={p.codigo} className="rounded-lg border border-border bg-surface p-4">
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-text text-sm">{p.nome}</h3>
-              <span className="font-mono text-xs text-text-soft">{p.codigo}</span>
-            </div>
-            <p className="text-xs text-text-soft mt-1">{p.subRegiao} · {p.capital}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SecaoLeva3({ paises }: { paises: readonly PaisAsiatico[] }) {
-  return (
-    <section className="mb-12">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-bold text-text">Leva 3 — Himalaia, Indochina e Ásia Central</h2>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {paises.map((p) => (
-          <span key={p.codigo} className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-text">
-            {p.nome} ({p.codigo}) · {p.subRegiao}
-          </span>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SecaoInstrumentosRegionais() {
-  return (
-    <section className="mb-12 rounded-xl border border-border bg-surface p-6">
-      <h2 className="mb-3 text-xl font-bold text-text">Instrumentos Regionais Declaratórios na Ásia</h2>
-      <div className="space-y-4">
-        {INSTRUMENTOS_REGIONAIS_ASIA.map((inst) => (
-          <div key={inst.id} className="border-l-2 border-primary/40 pl-4">
-            <h3 className="font-semibold text-text text-sm">{inst.nome} ({inst.ano})</h3>
-            <p className="mt-1 text-xs text-text-700 leading-relaxed">{inst.descricao}</p>
-            {inst.url && (
-              <a href={inst.url} target="_blank" rel="noopener noreferrer" className="mt-1.5 inline-flex items-center gap-1 text-xs text-primary hover:underline">
-                Documento Oficial <ExternalLink className="h-3 w-3" />
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function DispositivosConferidosAsia() {
-  const paises = [...new Set(DISPOSITIVOS_ASIA.map((d) => d.pais))].sort((a, b) =>
-    a.localeCompare(b, "pt-BR")
-  );
-  return (
-    <section className="mb-12">
-      <h2 className="mb-2 text-xl font-bold text-text">Dispositivos Constitucionais Conferidos</h2>
-      <p className="mb-6 text-sm text-text-soft">
-        Artigos transcritos na íntegra (verbatim) de constituições asiáticas com foco em equilíbrio ecológico, terras ancestrais e trabalho.
-      </p>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {paises.map((pais) => (
-          <ListaDispositivos
-            key={pais}
-            pais={pais}
-            dispositivos={DISPOSITIVOS_ASIA.filter((d) => d.pais === pais)}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function PaginaAsia() {
-  const leva1 = paisesPorLeva(1);
-  const leva2 = paisesPorLeva(2);
-  const leva3 = paisesPorLeva(3);
-
   return (
     <main id="conteudo-principal" className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
-      <nav aria-label="Navegação estrutural" className="mb-6 flex flex-wrap items-center gap-2 text-xs text-text-soft">
+      <nav aria-label="Navegação estrutural" className="mb-5 flex flex-wrap items-center gap-2 text-xs text-text-soft">
         <Link href="/" className="hover:text-primary hover:underline">Início</Link>
         <span>/</span>
         <Link href="/direitos-globais" className="hover:text-primary hover:underline">Direitos Globais</Link>
         <span>/</span>
-        <span className="font-semibold text-text">Ásia</span>
+        <span className="font-semibold text-text">Ásia e Direitos Fundamentais</span>
       </nav>
 
-      <header className="mb-8">
+      <header className="mb-6">
         <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-          Frente C — Ásia & Sistema ONU
+          Frente C — Ásia e Sistema Universal
         </span>
-        <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
-          Sistemas de Direitos na Ásia
+        <h1 className="mt-2.5 text-2xl font-extrabold tracking-tight text-text sm:text-3xl">
+          Ásia e Direitos Fundamentais
         </h1>
-        <p className="mt-3 text-base text-text-soft sm:text-lg">
-          Comparação dos países asiáticos organizados em levas prioritárias e cruzamento com os tratados da ONU.
+        <p className="mt-2 text-sm text-text-soft leading-relaxed max-w-3xl">
+          Comparação sistemática dos 48 países da Ásia organizados por sub-regiões geográficas, dispositivos constitucionais transcritos na íntegra e cruzamento com as obrigações do sistema de proteção da ONU.
         </p>
         <DataColeta
           coletadoEm="2026-10-30"
-          fonte="Constitute Project, ASEAN (asean.org) e AICHR"
-          competencia="Levas 1 a 3 (23 países) · Atualizado em 2026"
+          fonte="Fontes Primárias: Constitute Project (constituteproject.org), Diários Oficiais e OHCHR / Nações Unidas (ohchr.org)"
+          competencia="48 Estados soberanos da Ásia nas 5 sub-regiões · Órgãos de Tratados da ONU"
         />
       </header>
 
       <ResumoAsia />
 
+      <SubRegioesAsia />
+
       <AlertaInexistenciaTribunal />
 
-      <section className="mb-12">
-        <h2 className="text-xl font-bold text-text mb-2">Quadro Comparativo de Países Asiáticos</h2>
-        <p className="text-xs text-text-soft mb-4">
-          Busca textual em tempo real, filtros por leva e sub-região, ordenação por coluna e download de planilha CSV.
-        </p>
+      {/* Tabela Interativa Unificada com Busca e Filtro por Sub-região */}
+      <section className="mb-8">
+        <div className="mb-3">
+          <h2 className="text-lg font-bold text-text">Comparador Geral dos Países Asiáticos</h2>
+          <p className="text-xs text-text-soft">
+            Explore os 48 países por sub-região geográfica, ordene por população estimada e exporte os dados consolidados em CSV.
+          </p>
+        </div>
         <TabelaAsiaInterativa paises={PAISES_ASIA} />
       </section>
 
-      <SecaoLeva1 paises={leva1} />
-      <SecaoLeva2 paises={leva2} />
-      <SecaoLeva3 paises={leva3} />
-      <DispositivosConferidosAsia />
-      <SecaoInstrumentosRegionais />
+      {/* Dispositivos Constitucionais Conferidos com Filtro por Tema */}
+      <SecaoDispositivosComFiltro
+        dispositivos={DISPOSITIVOS_ASIA}
+        titulo="Dispositivos Constitucionais Conferidos na Ásia"
+        descricao="28 artigos transcritos verbatim abrangendo meio ambiente, mulheres, crianças, povos/minorias, saúde, idosos e trabalho digno."
+      />
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-        <Link href="/direitos-globais" className="text-sm font-medium text-primary hover:underline">
-          ← Voltar para Direitos Globais
-        </Link>
-        <Link href="/direitos-globais/onu" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
-          Explorar Painel de Recomendações da ONU →
+      {/* Mecanismos e Instrumentos Regionais */}
+      <section className="mb-8 rounded-xl border border-border bg-surface p-4 sm:p-5">
+        <h2 className="text-base font-bold text-text mb-2">Instrumentos Regionais e Institucionais da Ásia</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {INSTRUMENTOS_REGIONAIS_ASIA.map((inst) => (
+            <div key={inst.id} className="rounded-lg border border-border/60 bg-surface-2 p-3 text-xs">
+              <h3 className="font-semibold text-text">{inst.nome}</h3>
+              <p className="mt-1 text-text-soft leading-relaxed">{inst.descricao}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-6">
+        <Link href="/direitos-globais" className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline">
+          ← Voltar para o Hub de Direitos Globais
         </Link>
       </div>
 

@@ -289,7 +289,7 @@ function ListaFontesResposta({
           className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2.5 py-1.5 text-xs"
         >
           <span className="truncate text-text-soft">
-            <span className="mr-1 rounded bg-primary/10 px-1 py-0.5 text-[0.68rem] font-bold text-primary">
+            <span className="mr-1 rounded bg-primary/10 px-1 py-0.5 text-xs font-bold text-primary">
               {f.indice}
             </span>
             {f.titulo ?? f.rota}
@@ -343,7 +343,7 @@ function SecaoGalhoRelacionado({ rotaBase }: { rotaBase: string }) {
   return (
     <div className="mt-3 pt-2.5 border-t border-border">
       <div className="flex items-center justify-between mb-1.5">
-        <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
+        <span className="text-xs font-semibold text-text-soft flex items-center gap-1">
           <span>🌿</span>
           <span>Páginas no mesmo eixo:</span>
           <span className="font-bold text-foreground">{galho.eixoNome}</span>
@@ -351,7 +351,7 @@ function SecaoGalhoRelacionado({ rotaBase }: { rotaBase: string }) {
         <Link
           href="/laboratorio/arvore"
           onClick={(e) => e.stopPropagation()}
-          className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
+          className="text-xs text-primary hover:underline inline-flex items-center gap-0.5"
         >
           <span>Árvore de links</span>
           <ExternalLink size={10} />
@@ -363,7 +363,7 @@ function SecaoGalhoRelacionado({ rotaBase }: { rotaBase: string }) {
             key={idx}
             href={link.href}
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
+            className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-xs text-text-soft hover:text-foreground hover:border-primary/50 transition-colors"
           >
             <span>{link.rotulo}</span>
             <ArrowRight size={10} className="opacity-60" />
@@ -462,7 +462,7 @@ function BlocoRespostaEscadaSeuNono({
       title={concluido ? undefined : "Clique para exibir o texto completo"}
     >
       <div className="flex items-center gap-1.5 mb-1.5">
-        <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[0.68rem] font-bold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
+        <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-bold text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1">
           <Sparkles className="h-2.5 w-2.5" />
           {resultado.categoria ?? "Resposta Direta"}
         </span>
@@ -471,7 +471,7 @@ function BlocoRespostaEscadaSeuNono({
         {resultado.titulo}
       </h3>
       {resultado.subtitulo && (
-        <p className="text-[0.72rem] text-text-soft mb-2">{resultado.subtitulo}</p>
+        <p className="text-xs text-text-soft mb-2">{resultado.subtitulo}</p>
       )}
 
       <p className="mt-1.5 whitespace-pre-wrap leading-relaxed text-xs sm:text-sm">
@@ -483,7 +483,7 @@ function BlocoRespostaEscadaSeuNono({
 
       {resultado.atalhos.length > 0 && (
         <div className="mt-3 pt-2.5 border-t border-border">
-          <p className="mb-2 text-[0.72rem] font-semibold text-text-soft">
+          <p className="mb-2 text-xs font-semibold text-text-soft">
             Atalhos e ações diretas:
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -509,16 +509,16 @@ function BlocoRespostaEscadaSeuNono({
       {resultado.galhoRelacionado && resultado.galhoRelacionado.links.length > 0 && (
         <div className="mt-3 pt-2.5 border-t border-border/70">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[0.68rem] font-semibold text-text-soft flex items-center gap-1">
+            <span className="text-xs font-semibold text-text-soft flex items-center gap-1">
               <span>🌿</span>
               <span>Páginas no mesmo eixo:</span>
               <span className="font-bold text-foreground">{resultado.galhoRelacionado.eixoNome}</span>
-              <span className="text-[0.62rem] text-text-soft/80">({resultado.galhoRelacionado.subgalho})</span>
+              <span className="text-xs text-text-soft/80">({resultado.galhoRelacionado.subgalho})</span>
             </span>
             <Link
               href="/laboratorio/arvore"
               onClick={(e) => e.stopPropagation()}
-              className="text-[0.65rem] text-primary hover:underline inline-flex items-center gap-0.5"
+              className="text-xs text-primary hover:underline inline-flex items-center gap-0.5"
             >
               <span>Árvore de links</span>
               <ExternalLink size={10} />
@@ -530,7 +530,7 @@ function BlocoRespostaEscadaSeuNono({
                 key={idx}
                 href={link.href}
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-[0.72rem] text-text-soft hover:text-foreground hover:border-amber-500/50 transition-colors"
+                className="inline-flex items-center gap-1 rounded-md border border-border/80 bg-surface px-2 py-0.5 text-xs text-text-soft hover:text-foreground hover:border-amber-500/50 transition-colors"
               >
                 <span>{link.rotulo}</span>
                 <ArrowRight size={10} className="opacity-60" />
