@@ -28,6 +28,7 @@ import { chaveCorrecao } from "../../apps/web/lib/memoria/correcoes";
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RELATORIO = resolve(RAIZ, "docs", "relatorios-automacao", "revisao-textos-memoria.json");
 const LOTE = resolve(RAIZ, "scripts", "memoria", "correcoes-batch.json");
+const PENDENTES = resolve(RAIZ, "scripts", "memoria", "correcoes-pendentes.json");
 const DESTINO = resolve(RAIZ, "apps", "web", "lib", "memoria", "correcoes-mistica.ts");
 
 /** O que o relatório traz por verbete (o que este gerador consome). */
@@ -48,6 +49,19 @@ const relatorio = JSON.parse(readFileSync(RELATORIO, "utf8")) as {
  * original — validação feita fora, com normalização; o resto foi rejeitado.
  */
 const lote = JSON.parse(readFileSync(LOTE, "utf8")) as Array<{
+  indice: number;
+  tituloCurto: string;
+  resumo: string;
+}>;
+
+/**
+ * Segunda rodada do sabiazinho-4: pendentes que ficaram sem sujeito na
+ * primeira passada. O trecho original do MST foi enviado junto; 56 respostas
+ * passaram na validação e 18 casos-limite foram fechados à mão com o mesmo
+ * trecho. Dois verbetes editoriais (pergunta de revisão e poema solto) saíram
+ * do calendário em `remocoes-mistica.ts`.
+ */
+const pendentes = JSON.parse(readFileSync(PENDENTES, "utf8")) as Array<{
   indice: number;
   tituloCurto: string;
   resumo: string;
@@ -82,10 +96,10 @@ const MANUAIS: Record<string, { tituloCurto?: string; resumo?: string }> = {
       "Foi assassinado na porta de sua casa em 22 de dezembro de 1988. " +
       "Amazônia em chamas, de John Frankenheimer.",
   },
-  // 01-03/1959: o modelo cortou para "Chegada a Havana", que perde o sentido
-  // (a marcha da Revolução). Decisão do dono: "Chegada a Havana da Revolução".
+  // 01-03/1959: o título anterior ("Chegada a Havana da Revolução") não nomeava
+  // o sujeito. Agora nomeia Che e mantém a coluna e a data.
   "01-03|1959|chega a frente de sua coluna em 3 de janeiro de ": {
-    tituloCurto: "Chegada a Havana da Revolução",
+    tituloCurto: "Che Guevara chega a Havana à frente de sua coluna (1959)",
   },
   // 02-05/1944: o modelo cortou o contexto ("Nasce Henfil"). Decisão do dono:
   // manter a descrição curta que o próprio verbete traz.
@@ -146,6 +160,17 @@ for (const r of relatorio.resultados) {
 // Lote do sabiazinho-4: corrige sujeito/local onde o modelo provou o sujeito
 // no próprio texto original. Entra antes do manual, que tem a palavra final.
 for (const item of lote) {
+  const entrada = CALENDARIO_LUTAS[item.indice];
+  if (!entrada) continue;
+  const chave = chaveCorrecao(entrada);
+  correcoes[chave] = {
+    ...correcoes[chave],
+    tituloCurto: item.tituloCurto,
+    resumo: item.resumo,
+  };
+}
+
+for (const item of pendentes) {
   const entrada = CALENDARIO_LUTAS[item.indice];
   if (!entrada) continue;
   const chave = chaveCorrecao(entrada);

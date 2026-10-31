@@ -27,4 +27,9 @@ export const REMOVIDOS = new Set<string>([
   // Miguel Enríquez, morto em 05/10/1974 (a versão certa está em 10-05; esta
   // repetia o texto em 12-06).
   "12-06|s/ano|1974: morto em combate miguel enriquez, secretar",
+  // Nota editorial do documento-fonte, não fato histórico: pergunta de revisão
+  // sobre a data do verbete do dia 22/04.
+  "04-22|s/ano|por que esta no dia 22 de abril esse verbete?",
+  // Poema solto, sem sujeito ou fato datado; não é verbete de calendário.
+  "12-11|s/ano|o amor e que nao se detem ante nenhum obstaculo,",
 ]);
