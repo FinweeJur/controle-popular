@@ -20,6 +20,14 @@ setlocal
 cd /d "%~dp0.."
 if errorlevel 1 exit /b 1
 
+rem Banco remoto liberado (01/11/2026): o banco oficial e o RDS, e a rotina
+rem recusava todo host que nao fosse 127.0.0.1 -- resultado 1 todo dia as 07:00
+rem sem publicar nada. A excecao e estreita e mora no codigo
+rem (apps/web/lib/deploy/banco-local.ts): vale SO para host *.rds.amazonaws.com.
+rem Neon continua recusada, mesmo com esta linha ligada. Tirar esta linha
+rem devolve o comportamento antigo: nada de host remoto, nem o RDS.
+set "PERMITIR_BANCO_REMOTO=1"
+
 set "NODE_BIN=%LOCALAPPDATA%\hermes\node"
 if exist "%NODE_BIN%\node.exe" set "PATH=%NODE_BIN%;%PATH%"
 where npx >nul 2>nul
