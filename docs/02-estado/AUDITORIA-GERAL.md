@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 31/10/2026 12:32 BRT |
+| 01/11/2026 13:30 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -31,6 +31,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 |---|---|
 | data/acervo-baseline.json | OK |
 | data/acervo-delta.json | OK |
+| data/acervo-embeddings.json | OK |
 | data/acordos-reparacao-mg.json | OK |
 | data/ana-outorgas.json | OK |
 | data/apm-listas-populacao.json | OK |
@@ -38,6 +39,8 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/apm-terras-publicas-indice.json | OK |
 | data/assembleias-estaduais.json | OK |
 | data/assistente-acervo.json | OK |
+| data/avaliacao-rag-gabarito.json | OK |
+| data/avaliacao-rag-resultado.json | OK |
 | data/barragens-sigbm.json | OK |
 | data/bases-clima-risco.json | OK |
 | data/bases-portal.json | OK |
@@ -70,6 +73,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/destinacoes-uniao-mg.json | OK |
 | data/diario-atos-municipios.json | OK |
 | data/documentos-espelho-r2.json | OK |
+| data/documentos-rag-embeddings.json | OK |
 | data/documentos-rag-fontes.json | OK |
 | data/dou-mineracao.json | OK |
 | data/dpu-comite-tematico.json | OK |
@@ -229,12 +233,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 183 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 187 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 01/11/2026 13:30 BRT - 0 criticos; 0 avisos.
 - 31/10/2026 12:32 BRT - 0 criticos; 0 avisos.
 - 30/10/2026 13:22 BRT - 0 criticos; 0 avisos.
 - 29/10/2026 13:30 BRT - 0 criticos; 0 avisos.
