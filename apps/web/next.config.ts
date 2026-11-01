@@ -410,6 +410,10 @@ const nextConfig: NextConfig = {
             // do Azure. O `newrelic` ja e externo por padrao no Next, entao
             // basta o COPY aqui.
             "../../node_modules/newrelic/**/*",
+            // Inteiro teor do TJES (2.492 .txt.gz): a rota
+            // `/api/inteiro-teor` le do disco em runtime, então o trace tem
+            // que copiar a pasta para o standalone.
+            "data/inteiro-teor/**/*",
           ],
         },
       }

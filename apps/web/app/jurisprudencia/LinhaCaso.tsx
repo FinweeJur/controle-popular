@@ -61,7 +61,8 @@ function TextoAberto({ caso }: { caso: CasoJurisprudencia }) {
 }
 
 function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
-  if (!caso.link) return <>{caso.processo}</>;
+  // Link interno de inteiro teor não é o tribunal: mostra só o número.
+  if (!caso.link || caso.link.startsWith("/api/")) return <>{caso.processo}</>;
   return (
     <a className="underline" href={caso.link} target="_blank" rel="noopener noreferrer">
       {caso.processo}
@@ -95,6 +96,20 @@ function Gatilho({ caso, aberto, onToggle }: { caso: CasoJurisprudencia; aberto:
   );
 }
 
+function InteiroTeor({ caso }: { caso: CasoJurisprudencia }) {
+  if (!caso.link || !caso.link.startsWith("/api/inteiro-teor")) return null;
+  return (
+    <a
+      className="text-xs font-semibold text-primary underline"
+      href={caso.link}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ver inteiro teor
+    </a>
+  );
+}
+
 export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
   const [aberto, setAberto] = useState(false);
   return (
@@ -112,7 +127,10 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
           <CelulaTexto caso={caso} />
         </td>
         <td className="whitespace-nowrap px-2 py-2 text-right">
-          <Gatilho caso={caso} aberto={aberto} onToggle={() => setAberto((valor) => !valor)} />
+          <div className="flex flex-col items-end gap-1">
+            <Gatilho caso={caso} aberto={aberto} onToggle={() => setAberto((valor) => !valor)} />
+            <InteiroTeor caso={caso} />
+          </div>
         </td>
       </tr>
       {aberto ? (
