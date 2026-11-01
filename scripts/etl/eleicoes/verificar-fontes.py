@@ -6,7 +6,7 @@ Verifica os hyperlinks das fontes oficiais (TSE/TRE) da pagina
 Fonte oficial: TSE e TREs (dadosabertos.tse.jus.br e tre-<uf>.tse.jus.br).
 Por que existe: em 19/10/2026 o dono relatou que nenhuma fonte/link
 estava funcionando; esta rotina confere cada link com User-Agent honesto
-(FinweeJur/Github Artur colito), ritmo de 1,5 s por host, e registra
+(finweejur/github artur colito), ritmo de 1,5 s por host, e registra
 resultado em docs/02-estado/AUDITORIA-FONTES.md.
 
 Regras eticas: so link publico; respeita robots/limite; hosts que
@@ -31,7 +31,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[3]
 REGISTRO = REPO / "scripts" / "etl" / "eleicoes" / "fontes-oficiais.json"
 LOG = REPO / "docs" / "02-estado" / "AUDITORIA-FONTES.md"
-UA = "FinweeJur/Github Artur colito (controlepopular.com.br; verificacao de links oficiais)"
+UA = "finweejur/github artur colito (controlepopular.com.br; verificacao de links oficiais)"
 INTERVALO_S = 1.5
 TIMEOUT_S = 15
 

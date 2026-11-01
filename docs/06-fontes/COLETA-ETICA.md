@@ -32,7 +32,7 @@
 
 Vale para este repositório e para qualquer agente que pesquise em nome dele.
 
-1. **User-Agent honesto, sempre:** `FinweeJur/Github Artur colito`.
+1. **User-Agent honesto, sempre:** `finweejur/github artur colito`.
    Nunca UA de navegador falso, nunca UA vazio, nunca identidade de terceiro.
 2. **Antes de acessar, leia nesta ordem:**
    - os **termos de uso** do site;
@@ -55,7 +55,7 @@ Vale para este repositório e para qualquer agente que pesquise em nome dele.
 
 - [ ] Li os termos de uso e o `robots.txt`.
 - [ ] Li a documentação pública (`/docs`, `/api`).
-- [ ] O UA é `FinweeJur/Github Artur colito`.
+- [ ] O UA é `finweejur/github artur colito`.
 - [ ] A pausa é de 1–2 s por host.
 - [ ] Há checkpoint para retomar.
 - [ ] Nenhum segredo e nenhum CPF saem do disco.

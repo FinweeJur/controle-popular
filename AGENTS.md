@@ -136,7 +136,7 @@ CodeScene, escopo do diff e suíte completa:
 
 Vale para este repositório **e para qualquer repositório do dono**.
 
-1. **User-Agent honesto, sempre:** `FinweeJur/Github Artur colito`.
+1. **User-Agent honesto, sempre:** `finweejur/github artur colito`.
    Nunca UA de navegador falso, nunca UA vazio.
 2. **Antes de acessar, leia:** termos de uso, `robots.txt`, `/docs`/`/api`
    e a licença.
@@ -193,6 +193,6 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 - **18/10/2026 — AGENTS.md vira mapa.** O texto completo das regras foi movido
   para documentos temáticos, com link em cada linha. Nada foi apagado.
 - **18/10/2026 — pesquisa na internet ganha regra própria:** UA honesto
-  `FinweeJur/Github Artur colito`, leitura de termos, `robots.txt`, `/docs`,
+  `finweejur/github artur colito`, leitura de termos, `robots.txt`, `/docs`,
   respeito aos limites e uso ético.
 - Histórico de incidentes: [docs/historico/](docs/historico/).

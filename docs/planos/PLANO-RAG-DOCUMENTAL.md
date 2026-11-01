@@ -67,7 +67,7 @@ catálogo versionado
   -> RAG
 ```
 
-O download usa User-Agent `FinweeJur/Github Artur colito`, lê `robots.txt`,
+O download usa User-Agent `finweejur/github artur colito`, lê `robots.txt`,
 respeita `Disallow`, pausa 1,5 s e não usa login, CAPTCHA ou paywall. PDF
 bruto fica no cache local; o repositório recebe só o índice derivado.
 

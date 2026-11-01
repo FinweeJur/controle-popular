@@ -10,7 +10,7 @@ Confere todo dia a saude do site inteiro, com criterios objetivos:
    <meta name="description"/> (AVISO se faltar).
 
 Regras eticas: so leitura publica, User-Agent honesto
-(FinweeJur/Github Artur colito), ritmo de 1,5 s por host, timeout 15 s.
+(finweejur/github artur colito), ritmo de 1,5 s por host, timeout 15 s.
 Log em docs/02-estado/AUDITORIA-GERAL.md.
 
 Uso: python scripts/monitoramento/verificar-geral.py [--atualizar-log]
@@ -33,7 +33,7 @@ REPO = Path(__file__).resolve().parents[2]
 DADOS = REPO / "apps" / "web" / "data"
 LOG = REPO / "docs" / "02-estado" / "AUDITORIA-GERAL.md"
 ORIGEM = "https://www.controlepopular.com.br"
-UA = "FinweeJur/Github Artur colito (controlepopular.com.br; monitoramento de saude do portal)"
+UA = "finweejur/github artur colito (controlepopular.com.br; monitoramento de saude do portal)"
 INTERVALO_S = 1.5
 TIMEOUT_S = 15
 
