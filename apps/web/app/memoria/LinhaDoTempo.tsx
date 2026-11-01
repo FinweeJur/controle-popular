@@ -51,6 +51,8 @@ export interface VerbeteLinha {
   dataLabel: string;
   /** Onde aconteceu, quando o gazetteer da memória reconhece o movimento. */
   lugar?: string;
+  /** País do fato, em português; vazio quando não há país único. */
+  pais?: string;
   uf?: string;
   lat?: number;
   lon?: number;
@@ -96,7 +98,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
       if (tipos.size > 0 && !v.tipo.some((t) => tipos.has(t))) return false;
       if (alvo) {
         const texto = normalizar(
-          `${v.titulo} ${v.tituloCurto ?? ""} ${v.resumo ?? ""} ${v.lugar ?? ""} ${v.fonteCurta} ${v.dataLabel}`,
+          `${v.titulo} ${v.tituloCurto ?? ""} ${v.resumo ?? ""} ${v.lugar ?? ""} ${v.pais ?? ""} ${v.fonteCurta} ${v.dataLabel}`,
         );
         if (!texto.includes(alvo)) return false;
       }
@@ -280,19 +282,7 @@ export default function LinhaDoTempo({ verbetes }: Props) {
                           </p>
                         ))
                       : null}
-                    {v.lugar && v.lat != null && v.lon != null ? (
-                      <p className="mt-1 text-xs text-muted">
-                        <span className="font-semibold">Onde: </span>
-                        {v.lugar}
-                        {v.uf ? `/${v.uf}` : ""} ·{" "}
-                        <BotaoVoarAte
-                          lat={v.lat}
-                          lon={v.lon}
-                          nome={`${v.tituloCurto ?? v.titulo} — ${v.lugar}${v.uf ? `/${v.uf}` : ""}`}
-                          ctx={v.ctx}
-                        />
-                      </p>
-                    ) : null}
+                    <OndeVerbete v={v} />
                     <p className="mt-1 text-xs text-muted">
                       {v.url ? (
                         <a
@@ -316,5 +306,30 @@ export default function LinhaDoTempo({ verbetes }: Props) {
         </div>
       )}
     </div>
+  );
+}
+
+/** Linha "Onde", com lugar, país e o botão de voar até o mapa. */
+function OndeVerbete({ v }: { v: VerbeteLinha }) {
+  if (!v.lugar && !v.pais) return null;
+  return (
+    <p className="mt-1 text-xs text-muted">
+      <span className="font-semibold">Onde: </span>
+      {v.lugar}
+      {v.uf ? `/${v.uf}` : ""}
+      {v.lugar && v.pais ? " · " : ""}
+      {v.pais}
+      {v.lugar && v.lat != null && v.lon != null ? (
+        <>
+          {" · "}
+          <BotaoVoarAte
+            lat={v.lat}
+            lon={v.lon}
+            nome={`${v.tituloCurto ?? v.titulo} — ${v.lugar}${v.uf ? `/${v.uf}` : ""}`}
+            ctx={v.ctx}
+          />
+        </>
+      ) : null}
+    </p>
   );
 }

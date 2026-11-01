@@ -179,7 +179,7 @@ export function checarFatoCivico(
   const scoreTextual = calcularAderenciaTextual(afirmacao, textoCombinadoFontes);
 
   // 4. Checagem de precisão numérica
-  const { aderentes, divergentes } = checarNumerosAfirmacao(afirmacao, textoCombinadoFontes);
+  const { aderentes: _aderentes, divergentes } = checarNumerosAfirmacao(afirmacao, textoCombinadoFontes);
 
   // 5. Aplicação da Escada de Fact-Checking
   if (scoreTextual < 0.25) {

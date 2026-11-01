@@ -138,6 +138,11 @@ export interface EntradaCalendario {
   tipo: TipoLuta[];
   /** Lugar nomeado, quando a fonte diz. */
   lugar?: string;
+  /**
+   * País do fato, em português. Vazio quando não há país único (acordo,
+   * organismo internacional) ou quando a fonte não permite afirmar.
+   */
+  pais?: string;
   /** Autor que assina a fonte, em ABNT (ex.: "SEFERIAN, Gustavo"). */
   autor: string;
   /** Órgão/veículo da fonte (ex.: "Aos que virão — Calendário Insurgente"). */

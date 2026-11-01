@@ -115,5 +115,27 @@
       "zoneamento",
       "cidades"
     ]
+  },
+  {
+    "id": "controle-popular-mistica-linha-do-tempo",
+    "titulo": "Mística do Dia e Linha do Tempo das Lutas",
+    "tipo": "Base de dados comentada",
+    "categoria": "Memória & Direitos Humanos",
+    "tema": "Mística e linha do tempo",
+    "orgao": "Controle Popular",
+    "url": "https://www.controlepopular.com.br/memoria",
+    "urlPdf": null,
+    "arquivoLocal": "mistica-linha-do-tempo.pdf",
+    "resumo": "Verbetes publicados na Mística do Dia e na Linha do Tempo das Lutas, com dia, ano, título, resumo, país, lugar quando a fonte informa e citação curta. Fontes: Calendário Histórico dos Trabalhadores e Trabalhadoras (MST, 2009); Calendário Insurgente, Blog Aos que Virão (2020); linha do tempo do MAB; Acampamento Terra Livre (APIB); complementos da Wikipédia.",
+    "tags": [
+      "mística",
+      "linha do tempo",
+      "memória",
+      "lutas",
+      "MST",
+      "Aos que Virão",
+      "MAB",
+      "APIB"
+    ]
   }
 ]

@@ -584,6 +584,19 @@ const nextConfig: NextConfig = {
               destination: "/mineracao/:path*",
               permanent: true,
             },
+            // Páginas-maquete de pesquisa e universidades saíram do ar em
+            // 31/10/2026. O acervo real é único em `/universidades`; o
+            // redirect preserva links salvos e indexados.
+            {
+              source: "/direitos-comparados/pesquisa",
+              destination: "/universidades",
+              permanent: true,
+            },
+            {
+              source: "/direitos-comparados/universidades",
+              destination: "/universidades",
+              permanent: true,
+            },
           ];
         },
       }),

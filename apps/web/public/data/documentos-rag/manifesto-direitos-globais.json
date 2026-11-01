@@ -1,0 +1,554 @@
+{
+  "versao": "1.0.0",
+  "dataGeracao": "2026-10-30T16:21:23.323Z",
+  "totalItens": 29,
+  "documentos": [
+    {
+      "id": "africa-caso-006-2012",
+      "titulo": "Corte Africana: Comissão Africana (Comunidade Indígena Ogiek) c. República do Quênia",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Quênia",
+      "ano": 2017,
+      "data": "2017-05-26",
+      "tipo": "jurisprudencia",
+      "tema": "povos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf",
+      "resumo": "Decisão histórica reconhecendo os direitos territoriais ancestrais, culturais e de recursos naturais do povo Ogiek sobre a Floresta Mau, condenando despejos forçados promovidos pelo Estado.",
+      "artigos": [
+        "Carta Africana, arts. 1, 2, 8, 14, 17(2), 17(3), 21 e 22"
+      ],
+      "reparacoes": [
+        "Demarcação e titulação coletiva das terras ancestrais da Floresta Mau",
+        "Indenização pecuniária por danos materiais e morais à comunidade",
+        "Criação de fundo de desenvolvimento comunitário",
+        "Reconhecimento pleno do estatuto de povo indígena aos Ogiek"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-013-2011",
+      "titulo": "Corte Africana: Beneficiários do Falecido Norbert Zongo e outros c. Burkina Faso",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Burkina Faso",
+      "ano": 2014,
+      "data": "2014-03-28",
+      "tipo": "jurisprudencia",
+      "tema": "memoria_verdade_justica",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf",
+      "resumo": "Condenação do Estado por inação judicial deliberada e impunidade durante mais de 15 anos no homicídio do jornalista investigativo Norbert Zongo e seus companheiros.",
+      "artigos": [
+        "Carta Africana, art. 7 (Julgamento justo)",
+        "Carta Africana, art. 9 (Liberdade de expressão)",
+        "Tratado CEDEAO, art. 66"
+      ],
+      "reparacoes": [
+        "Reabertura e conclusão célere das investigações sobre o assassinato do jornalista Norbert Zongo",
+        "Pagamento de reparações pecuniárias aos familiares das vítimas",
+        "Publicação oficial da sentença da Corte nos diários oficiais"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-004-2013",
+      "titulo": "Corte Africana: Lohé Issa Konaté c. Burkina Faso",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Burkina Faso",
+      "ano": 2014,
+      "data": "2014-12-05",
+      "tipo": "jurisprudencia",
+      "tema": "politicos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf",
+      "resumo": "Determinou que penas de prisão por difamação violam a liberdade de expressão da Carta Africana. Cumprido pelo Estado mediante a promulgação da Lei nº 086-2015 de reforma do Código Penal.",
+      "artigos": [
+        "Carta Africana, art. 9",
+        "Pacto Internacional de Direitos Civis e Políticos (ICCPR), art. 19"
+      ],
+      "reparacoes": [
+        "Revogação das penas de prisão privativas de liberdade para crimes de difamação e injúria de imprensa",
+        "Adequação da legislação penal às normas internacionais de direitos humanos",
+        "Reparação pecuniária pelo período de encarceramento indevido"
+      ],
+      "cumprimento": "cumprido"
+    },
+    {
+      "id": "africa-caso-001-2014",
+      "titulo": "Corte Africana: Actions pour la Protection des Droits de l'Homme (APDH) c. República da Costa do Marfim",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Costa do Marfim",
+      "ano": 2016,
+      "data": "2016-11-18",
+      "tipo": "jurisprudencia",
+      "tema": "politicos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf",
+      "resumo": "Primeira sentença de mérito aplicando a Carta Africana sobre Democracia (ACDEG), fixando que órgãos de administração eleitoral devem ser estruturalmente imparciais e independentes do Executivo.",
+      "artigos": [
+        "Carta Africana sobre Democracia, Eleições e Governança (ACDEG), art. 17",
+        "Protocolo da CEDEAO sobre Democracia, art. 3",
+        "Carta Africana, art. 10 e 13"
+      ],
+      "reparacoes": [
+        "Modificação da Lei nº 2014-335 sobre a composição da Comissão Eleitoral Independente (CEI)",
+        "Garantia de paridade e equilíbrio real entre forças governistas e de oposição no órgão eleitoral"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-012-2015",
+      "titulo": "Corte Africana: Anudo Ochieng Anudo c. República Unida da Tanzânia",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Tanzânia",
+      "ano": 2018,
+      "data": "2018-03-22",
+      "tipo": "jurisprudencia",
+      "tema": "migrantes_refugiados",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf",
+      "resumo": "Julgou arbitrária a privação de nacionalidade e expulsão sumária de cidadão sem processo judicial contraditório prévio, violando garantias fundamentais da Carta Africana.",
+      "artigos": [
+        "Carta Africana, art. 7 (Devido processo)",
+        "Declaração Universal, art. 15 (Direito à nacionalidade)",
+        "Pacto ICCPR, art. 12(4)"
+      ],
+      "reparacoes": [
+        "Restauração imediata da nacionalidade e dos documentos de identidade do requerente",
+        "Permissão de retorno seguro ao território tanzaniano sem ameaça de nova deportação",
+        "Compensação pecuniária por danos morais decorrentes do desterro arbitrário"
+      ],
+      "cumprimento": "descumprido"
+    },
+    {
+      "id": "africa-caso-008-2016",
+      "titulo": "Corte Africana: Alli Rajabu e outros c. República Unida da Tanzânia",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Tanzânia",
+      "ano": 2019,
+      "data": "2019-11-28",
+      "tipo": "jurisprudencia",
+      "tema": "humanos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf",
+      "resumo": "Decidiu que a imposição automática de pena de morte por homicídio, sem avaliação judicial discricionária das circunstâncias atenuantes do réu, constitui privação arbitrária da vida.",
+      "artigos": [
+        "Carta Africana, art. 4 (Direito à vida)",
+        "Carta Africana, art. 5 (Proibição de penas cruéis)"
+      ],
+      "reparacoes": [
+        "Eliminação da pena de morte mandatória (obrigatória) no Código Penal tanzaniano",
+        "Realização de novas audiências de dosimetria individualizada de pena para os condenados",
+        "Garantia de recurso com assistência judiciária gratuita"
+      ],
+      "cumprimento": "descumprido"
+    },
+    {
+      "id": "africa-caso-016-2017",
+      "titulo": "Corte Africana: Dexter Eddie Johnson c. República de Gana",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Gana",
+      "ano": 2019,
+      "data": "2019-03-28",
+      "tipo": "jurisprudencia",
+      "tema": "humanos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf",
+      "resumo": "Abordou a aplicação compulsória da pena de morte no direito ganês. Cumprido pelo Estado com a aprovação pelo Parlamento da Lei de Emenda ao Código Penal de 2023 abolindo a pena de morte.",
+      "artigos": [
+        "Carta Africana, art. 4 (Direito à vida)",
+        "Carta Africana, art. 5 (Integridade e dignidade)"
+      ],
+      "reparacoes": [
+        "Extinção da pena capital obrigatória",
+        "Revisão judicial da sentença do requerente"
+      ],
+      "cumprimento": "cumprido"
+    },
+    {
+      "id": "africa-caso-013-2017",
+      "titulo": "Corte Africana: Sébastien Germain Marie Aïkoue Ajavon c. República do Benin",
+      "fonte": "Corte Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Benin",
+      "ano": 2019,
+      "data": "2019-03-29",
+      "tipo": "jurisprudencia",
+      "tema": "politicos",
+      "url": "https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf",
+      "resumo": "Anulou condenação imposta por tribunal de exceção sem garantias plenas de contraditório e duplo grau recursal, evidenciando instrumentalização penal contra opositores.",
+      "artigos": [
+        "Carta Africana, art. 7 (Garantias judiciais)",
+        "Carta Africana, art. 14 (Propriedade privada)"
+      ],
+      "reparacoes": [
+        "Anulação do julgamento realizado pelo Tribunal Especial CRIET sem duplo grau de jurisdição",
+        "Devolução dos bens e licenças empresariais confiscados",
+        "Indenização pecuniária por perdas materiais decorrentes de perseguição política"
+      ],
+      "cumprimento": "descumprido"
+    },
+    {
+      "id": "africa-caso-276-2003",
+      "titulo": "Comissão Africana: Centro para o Desenvolvimento dos Direitos das Minorias e outro (Comunidade Endorois) c. Quênia",
+      "fonte": "Comissão Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Quênia",
+      "ano": 2010,
+      "data": "2010-02-04",
+      "tipo": "jurisprudencia",
+      "tema": "povos",
+      "url": "https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf",
+      "resumo": "Decisão pioneira mundial sobre o Artigo 22 (Direito ao Desenvolvimento) e Artigo 21 (Recursos Naturais), assentando que a expulsão de comunidades indígenas para criar parques turísticos sem consentimento livre, prévio e informado e sem repartição de benefícios viola a Carta Africana.",
+      "artigos": [
+        "Carta Africana, art. 8 (Religião)",
+        "art. 14 (Propriedade)",
+        "art. 17 (Cultura)",
+        "art. 21 (Recursos naturais)",
+        "art. 22 (Desenvolvimento)"
+      ],
+      "reparacoes": [
+        "Reconhecimento da posse tradicional sobre as terras ao redor do Lago Bogoria",
+        "Restituição das terras ancestrais aos Endorois",
+        "Pagamento de royalties pela exploração turística e minerária no Lago Bogoria",
+        "Indenização pelas perdas de gado e meios de subsistência sofridas na expulsão"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-155-1996",
+      "titulo": "Comissão Africana: Social and Economic Rights Action Center (SERAC) e CESR c. Nigéria",
+      "fonte": "Comissão Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Nigéria",
+      "ano": 2001,
+      "data": "2001-10-27",
+      "tipo": "jurisprudencia",
+      "tema": "atingidos_empreendimentos",
+      "url": "https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf",
+      "resumo": "Decisão fundamental da Comissão Africana sobre direitos das populações atingidas por indústrias extrativas e grandes empreendimentos. Fixou as obrigações estatais de proteger contra poluição cometida por transnacionais petrolíferas e assegurar o direito a um meio ambiente sadio (Art. 24) e à saúde (Art. 16).",
+      "artigos": [
+        "Carta Africana, art. 2 (Não discriminação)",
+        "art. 4 (Vida)",
+        "art. 14 (Propriedade)",
+        "art. 16 (Saúde)",
+        "art. 18 (Família)",
+        "art. 21 (Recursos naturais)",
+        "art. 24 (Meio ambiente)"
+      ],
+      "reparacoes": [
+        "Paralisação imediata dos ataques militares e policiais contra comunidades Ogoni",
+        "Limpeza integral e remediação ambiental da bacia e manguezais do Delta do Níger",
+        "Compensação financeira às vítimas de contaminação e violência",
+        "Realização obrigatória de auditorias ambientais independentes para operações de petróleo"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-227-1999",
+      "titulo": "Comissão Africana: República Democrática do Congo c. Burundi, Ruanda e Uganda",
+      "fonte": "Comissão Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "República Democrática do Congo",
+      "ano": 2003,
+      "data": "2003-05-29",
+      "tipo": "jurisprudencia",
+      "tema": "povos",
+      "url": "https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf",
+      "resumo": "Comunicação interestatal paradigmática afirmando que a ocupação armada militar e o saque de recursos naturais violam a soberania popular inalienável sobre as riquezas do solo (Art. 21) e o direito fundamental dos povos à paz e à segurança (Art. 23).",
+      "artigos": [
+        "Carta Africana, art. 19 (Igualdade dos povos)",
+        "art. 20 (Autodeterminação)",
+        "art. 21 (Recursos naturais)",
+        "art. 22 (Desenvolvimento)",
+        "art. 23 (Paz e segurança)"
+      ],
+      "reparacoes": [
+        "Retirada incondicional de tropas estrangeiras ocupantes",
+        "Reparações por saques sistemáticos de recursos minerais (coltán, ouro, diamantes)",
+        "Responsabilização por massacres e abusos sexuais sistemáticos"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "africa-caso-074-1992",
+      "titulo": "Comissão Africana: Commission Nationale des Droits de l'Homme et des Libertés c. Chade",
+      "fonte": "Comissão Africana",
+      "jurisdicao": "Regional Africana",
+      "pais": "Chade",
+      "ano": 1995,
+      "data": "1995-10-11",
+      "tipo": "jurisprudencia",
+      "tema": "memoria_verdade_justica",
+      "url": "https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf",
+      "resumo": "Primeira grande condenação de Estado autoritário na África por desaparecimentos forçados maciços, assentando a responsabilidade internacional do Estado mesmo em períodos de conflito civil interno.",
+      "artigos": [
+        "Carta Africana, art. 4 (Vida)",
+        "art. 5 (Tortura)",
+        "art. 6 (Liberdade)",
+        "art. 7 (Julgamento justo)"
+      ],
+      "reparacoes": [
+        "Fim das execuções extrajudiciais e desaparecimentos forçados",
+        "Investigação e julgamento dos responsáveis por crimes da polícia política",
+        "Indenização estatal aos familiares das vítimas"
+      ],
+      "cumprimento": "parcial"
+    },
+    {
+      "id": "achpr-rec-angola-1",
+      "titulo": "ACHPR: Observações Conclusivas sobre o Relatório Periódico de Angola (Angola)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "Angola",
+      "ano": 2018,
+      "data": "2018-11-13",
+      "tipo": "recomendacao",
+      "tema": "atingidos_empreendimentos",
+      "url": "https://achpr.org/sessions/concludingobservation?id=107",
+      "resumo": "Recomenda garantir que a exploração minerária de diamantes e petróleo na província da Lunda Norte e em Cabinda seja precedida de consultas genuínas às comunidades locais, com avaliação prévia de impacto socioambiental e garantia de reassentamento e reparação justa.",
+      "status": "parcial",
+      "evidencia": "Relatório de seguimento submetido pelo Estado angolano em 2021 relatando aprovação do novo Código Mineiro com previsão de programas sociais, ainda sem titulação definitiva comunitária."
+    },
+    {
+      "id": "achpr-rec-mo-ambique-2",
+      "titulo": "ACHPR: Observações Conclusivas sobre Moçambique (Moçambique)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "Moçambique",
+      "ano": 2015,
+      "data": "2015-05-07",
+      "tipo": "recomendacao",
+      "tema": "atingidos_barragens",
+      "url": "https://achpr.org/sessions/concludingobservation?id=96",
+      "resumo": "Urgir o Estado a fiscalizar os impactos das grandes concessões de mineração de carvão em Tete e projetos hidrelétricos no Rio Zambeze, garantindo que as populações reassentadas tenham acesso contínuo a terras férteis para agricultura e fontes perenes de água potável.",
+      "status": "desconhecido",
+      "evidencia": null
+    },
+    {
+      "id": "achpr-rec--frica-do-sul-3",
+      "titulo": "ACHPR: Observações Conclusivas sobre a África do Sul (África do Sul)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "África do Sul",
+      "ano": 2016,
+      "data": "2016-11-04",
+      "tipo": "recomendacao",
+      "tema": "terra_territorio",
+      "url": "https://achpr.org/sessions/concludingobservation?id=101",
+      "resumo": "Acelerar a restituição fundiária e a reforma agrária, garantindo segurança jurídica na posse da terra para mulheres rurais e comunidades tradicionais que permanecem vulneráveis a despejos em áreas agrícolas privadas.",
+      "status": "parcial",
+      "evidencia": "Livro Branco de Reforma Agrária e Emenda Constitucional debatida no Parlamento sul-africano."
+    },
+    {
+      "id": "achpr-rec-rep-blica-democr-tica-do-congo-4",
+      "titulo": "ACHPR: Observações Conclusivas sobre a República Democrática do Congo (República Democrática do Congo)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "República Democrática do Congo",
+      "ano": 2017,
+      "data": "2017-11-15",
+      "tipo": "recomendacao",
+      "tema": "povos",
+      "url": "https://achpr.org/sessions/concludingobservation?id=103",
+      "resumo": "Implementar com urgência medidas concretas para proteger os povos autóctones (pigmeus) contra despejos forçados de parques nacionais e assegurar seus direitos inalienáveis à caça, coleta tradicional e cogestão de florestas.",
+      "status": "parcial",
+      "evidencia": "Promulgação da Lei nº 22/030 em julho de 2022 sobre Proteção e Promoção dos Direitos dos Povos Autóctones Pigmeus na RDC."
+    },
+    {
+      "id": "achpr-rec-egito-5",
+      "titulo": "ACHPR: Resolução sobre a Situação das Mulheres na África e Protocolo de Maputo (Egito)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "Egito",
+      "ano": 2020,
+      "data": "2020-12-03",
+      "tipo": "recomendacao",
+      "tema": "mulheres",
+      "url": "https://achpr.org/sessions/resolutions?id=492",
+      "resumo": "Reiterar o apelo formal para a ratificação sem reservas do Protocolo de Maputo e criminalização irrestrita de todas as formas de mutilação genital feminina em clínicas e hospitais.",
+      "status": "nao",
+      "evidencia": null
+    },
+    {
+      "id": "achpr-rec-nig-ria-6",
+      "titulo": "ACHPR: Observações Conclusivas sobre a Nigéria (Nigéria)",
+      "fonte": "Comissão Africana dos Direitos Humanos e dos Povos",
+      "jurisdicao": "Regional Africana",
+      "pais": "Nigéria",
+      "ano": 2019,
+      "data": "2019-11-10",
+      "tipo": "recomendacao",
+      "tema": "ambiental",
+      "url": "https://achpr.org/sessions/concludingobservation?id=110",
+      "resumo": "Implementar integralmente as recomendações do Programa das Nações Unidas para o Meio Ambiente (UNEP) para despoluição do Delta do Níger e garantir água potável e atendimento médico às comunidades intoxicadas por vazamentos de óleo cru.",
+      "status": "parcial",
+      "evidencia": "Operações contínuas mas com atrasos do órgão HYPREP (Hydrocarbon Pollution Remediation Project)."
+    },
+    {
+      "id": "onu-rec-china-1",
+      "titulo": "UPR: Relatório do Grupo de Trabalho da UPR - 4º Ciclo (China) (China)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "China",
+      "ano": 2024,
+      "data": "2024-03-22",
+      "tipo": "recomendacao_upr",
+      "tema": "trabalho",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/cn-index",
+      "resumo": "Ratificar as Convenções nº 29 e nº 105 da OIT sobre trabalho forçado e extinguir todos os regimes de trabalho coercitivo em Xinjiang e outras regiões autônomas.",
+      "status": "parcial",
+      "evidencia": "Depósito dos instrumentos de ratificação das Convenções 29 e 105 da OIT junto à Repartição Internacional do Trabalho em 12/08/2022."
+    },
+    {
+      "id": "onu-rec-china-2",
+      "titulo": "CESCR: Observações Conclusivas sobre o 3º Relatório Periódico da China (China)",
+      "fonte": "ONU / CESCR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "China",
+      "ano": 2023,
+      "data": "2023-03-06",
+      "tipo": "recomendacao_upr",
+      "tema": "povos",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=E%2fC.12%2fCHN%2fCO%2f3&Lang=en",
+      "resumo": "Cessar imediatamente os programas de transferência compulsória de populações e reassentamento de nômades tibetanos, bem como o sistema de internatos compulsórios em língua mandarim que desmantela a transmissão cultural e linguística tibetana.",
+      "status": "nao",
+      "evidencia": null
+    },
+    {
+      "id": "onu-rec-r-ssia-3",
+      "titulo": "UPR: Relatório do Grupo de Trabalho da UPR - 4º Ciclo (Federação Russa) (Rússia)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Rússia",
+      "ano": 2023,
+      "data": "2023-11-17",
+      "tipo": "recomendacao_upr",
+      "tema": "politicos",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/ru-index",
+      "resumo": "Revogar a legislação restritiva sobre 'agentes estrangeiros' e 'organizações indesejáveis' que restringe a liberdade de associação, de imprensa e o trabalho legítimo de defensores de direitos humanos.",
+      "status": "nao",
+      "evidencia": null
+    },
+    {
+      "id": "onu-rec-r-ssia-4",
+      "titulo": "CCPR: Observações Conclusivas sobre o 8º Relatório da Federação Russa (Rússia)",
+      "fonte": "ONU / CCPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Rússia",
+      "ano": 2022,
+      "data": "2022-11-03",
+      "tipo": "recomendacao_upr",
+      "tema": "lgbtqia",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CCPR%2fC%2fRUS%2fCO%2f8&Lang=en",
+      "resumo": "Revogar todas as leis que criminalizam a chamada 'propaganda de relações sexuais não tradicionais' e garantir proteção integral contra crimes de ódio e perseguição a pessoas LGBTQIA+ no território federal e na Chechênia.",
+      "status": "nao",
+      "evidencia": null
+    },
+    {
+      "id": "onu-rec--ndia-5",
+      "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Índia) (Índia)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Índia",
+      "ano": 2022,
+      "data": "2022-11-10",
+      "tipo": "recomendacao_upr",
+      "tema": "humanos",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/in-index",
+      "resumo": "Ratificar formalmente a Convenção contra a Tortura (UNCAT) e aprovar lei nacional abrangente que tipifique a tortura sob custódia policial.",
+      "status": "parcial",
+      "evidencia": "Projeto de Lei de Prevenção da Tortura aprovado pela Lok Sabha em 2010 mas não promulgado pela Rajya Sabha."
+    },
+    {
+      "id": "onu-rec--ndia-6",
+      "titulo": "CEDAW: Observações Conclusivas sobre a Índia (Índia)",
+      "fonte": "ONU / CEDAW",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Índia",
+      "ano": 2014,
+      "data": "2014-07-18",
+      "tipo": "recomendacao_upr",
+      "tema": "mulheres",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CEDAW%2fC%2fIND%2fCO%2f4-5&Lang=en",
+      "resumo": "Revogar a isenção de estupro marital no Artigo 375 do Código Penal e implementar fiscalização rigorosa contra a violência e exploração de mulheres de castas desfavorecidas (Dalits) e adivasis.",
+      "status": "parcial",
+      "evidencia": "Revisão judicial pendente na Suprema Corte da Índia (petição sobre criminalização do estupro conjugal de 2022/2023)."
+    },
+    {
+      "id": "onu-rec-filipinas-7",
+      "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Filipinas) (Filipinas)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Filipinas",
+      "ano": 2022,
+      "data": "2022-11-14",
+      "tipo": "recomendacao_upr",
+      "tema": "memoria_verdade_justica",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/ph-index",
+      "resumo": "Investigar de maneira independente todas as alegações de execuções extrajudiciais no contexto das operações antidrogas e responsabilizar criminalmente os mandantes e executores.",
+      "status": "parcial",
+      "evidencia": "Criação do Painel de Revisão do Departamento de Justiça (DOJ) das Filipinas que indiciou policiais em casos emblemáticos (ex: Kian delos Santos)."
+    },
+    {
+      "id": "onu-rec-filipinas-8",
+      "titulo": "CMW: Observações Conclusivas sobre o 3º Relatório das Filipinas (Filipinas)",
+      "fonte": "ONU / CMW",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Filipinas",
+      "ano": 2023,
+      "data": "2023-04-14",
+      "tipo": "recomendacao_upr",
+      "tema": "migrantes_refugiados",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CMW%2fC%2fPHL%2fCO%2f3&Lang=en",
+      "resumo": "Fortalecer a atuação do recém-criado Departamento de Trabalhadores Migrantes (DMW) para combater taxas ilegais de recrutamento cobradas de trabalhadoras domésticas e prestar assistência jurídica a filipinos retidos em situação de abuso no exterior.",
+      "status": "cumprido",
+      "evidencia": "Criação e entrada em operação efetiva do Department of Migrant Workers (DMW) pela Republic Act No. 11641."
+    },
+    {
+      "id": "onu-rec-vietn--9",
+      "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Vietnã) (Vietnã)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Vietnã",
+      "ano": 2024,
+      "data": "2024-05-08",
+      "tipo": "recomendacao_upr",
+      "tema": "trabalho",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/vn-index",
+      "resumo": "Ratificar sem delongas a Convenção nº 87 da OIT sobre Liberdade Sindical e Proteção do Direito de Sindicalização e permitir a criação legal de sindicatos independentes dos trabalhadores.",
+      "status": "parcial",
+      "evidencia": "Código do Trabalho reformado em 2019 admitindo organizações representativas de base, sob regulamentação administrativa pendente."
+    },
+    {
+      "id": "onu-rec-jap-o-10",
+      "titulo": "UPR: Recomendações da UPR - 4º Ciclo (Japão) (Japão)",
+      "fonte": "ONU / UPR",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Japão",
+      "ano": 2023,
+      "data": "2023-01-31",
+      "tipo": "recomendacao_upr",
+      "tema": "migrantes_refugiados",
+      "url": "https://www.ohchr.org/en/hr-bodies/upr/jp-index",
+      "resumo": "Estabelecer um teto máximo de duração para a detenção administrativa de imigrantes em centros de controle e criar autoridade independente para análise de pedidos de refúgio conforme a Convenção de 1951.",
+      "status": "parcial",
+      "evidencia": "Reforma da Lei de Controle de Imigração e Reconhecimento de Refugiados aprovada em junho de 2023 pelo Parlamento do Japão (Diet)."
+    },
+    {
+      "id": "onu-rec-jap-o-11",
+      "titulo": "CERD: Observações Conclusivas sobre o Japão (Japão)",
+      "fonte": "ONU / CERD",
+      "jurisdicao": "Sistema Universal ONU",
+      "pais": "Japão",
+      "ano": 2018,
+      "data": "2018-09-26",
+      "tipo": "recomendacao_upr",
+      "tema": "indigenas",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CERD%2fC%2fJPN%2fCO%2f10-11&Lang=en",
+      "resumo": "Assegurar que a comunidade indígena Ainu tenha direitos de consulta prévia, livre e informada garantidos por lei sobre o uso tradicional de suas terras e recursos em Hokkaido.",
+      "status": "parcial",
+      "evidencia": "Promulgação da Lei de Promoção das Medidas para o Povo Ainu em 2019, que reconheceu formalmente os Ainu como povo indígena."
+    }
+  ]
+}

@@ -51,9 +51,20 @@ export function useColetaSecoes(seletor = "main"): SecaoIndice[] {
     let timer: ReturnType<typeof setTimeout> | undefined;
 
     const coletar = () => {
-      // Re-queried: o `main` da rota nova pode só ter entrado agora.
-      const container = document.querySelector(seletor);
-      if (!container) return;
+      // Re-query e escolhe o `main` VISÍVEL: o App Router pode manter a rota
+      // anterior no DOM por um instante (ou em cache), e pegar o primeiro
+      // `main` fazia o sumário mostrar capítulos da página antiga.
+      const containers = Array.from(
+        document.querySelectorAll<HTMLElement>(seletor),
+      );
+      const container =
+        containers.find(
+          (el) => el.getClientRects().length > 0 && !el.closest("[hidden]"),
+        ) ?? containers[containers.length - 1];
+      if (!container) {
+        setItens((antigos) => (antigos.length === 0 ? antigos : []));
+        return;
+      }
       const novos = coletarSecoes(container);
       // Só grava se mudou — senão o re-render do widget vira mutação,
       // que vira coleta, que vira re-render (loop).

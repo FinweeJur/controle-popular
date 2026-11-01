@@ -73,15 +73,24 @@ test('sem distância medida fica no fim, nunca no meio da ordenação', () => {
 
 /* ---------- limites do cruzamento, medidos e documentados ---------- */
 
-test('28 dos 30 nomes do raio casam com os polígonos do mapa — os 2 órfãos são conhecidos', () => {
+test('26 dos 30 nomes do raio casam com os polígonos do mapa — os 4 órfãos são conhecidos', () => {
   const alvos = new Set([
     ...ti.features.map((f) => normalizarNome(f.properties.nome)),
     ...quil.features.map((f) => normalizarNome(f.properties.nome)),
   ]);
   const nomesRaio = new Set(raio.features.map((f) => normalizarNome(f.properties.territorio_nome)));
   const orfaos = [...nomesRaio].filter((n) => !alvos.has(n)).sort();
-  assert.equal(nomesRaio.size - orfaos.length, 28);
-  assert.deepEqual(orfaos, ['FAMILIATEODORODEOLIVEIRAEVENTURA', 'NOGUEIRA']);
+  assert.equal(nomesRaio.size - orfaos.length, 26);
+  // Desde a troca do WFS morto pelo shapefile do IBGE (a4d80e20), dois nomes
+  // do raio não têm polígono com o mesmo nome: "MAROBÁ DOS TEIXEIRA" aparece
+  // como "Maroba dos Teixeiras" e "PORTO CORIS PRAIA" como "Porto Coris".
+  // Ficam aqui até entrarem os apelidos; o teste falha se aparecer um quinto.
+  assert.deepEqual(orfaos, [
+    'FAMILIATEODORODEOLIVEIRAEVENTURA',
+    'MAROBADOSTEIXEIRA',
+    'NOGUEIRA',
+    'PORTOCORISPRAIA',
+  ]);
 });
 
 test('SÃO SEBASTIÃO não tem par na faixa — a ficha diz 0, não inventa', () => {

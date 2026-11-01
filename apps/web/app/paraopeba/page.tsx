@@ -5,6 +5,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 // exposto por `coberturaBiblioteca()` — único acervo do hub com carimbo no arquivo.
 import DataColeta from "@/app/components/DataColeta";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import CartaoLitigiosTransnacionais from "@/app/components/CartaoLitigiosTransnacionais";
 import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
@@ -231,7 +232,10 @@ export default async function ParaopebaHome() {
         cor={ZONA.cor}
         idFotoBrasilComS="00085"
       >
-        <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." /></HeaderFrenteBrasilComS>
+        <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." />
+      </HeaderFrenteBrasilComS>
+
+      <CartaoLitigiosTransnacionais />
 
       <DataColeta coletadoEm={cob.geradoEm} fonte="ATI — Biblioteca das assessorias (acervo Pró-Brumadinho)" />
 

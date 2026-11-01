@@ -39,6 +39,28 @@ interface Props {
 /** Zero à esquerda para a data ficar sempre com dois dígitos (07/04). */
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Linha "Onde", com lugar e país quando a curadoria conhece. */
+function OndeVerbete({
+  lugar,
+  uf,
+  pais,
+}: {
+  lugar?: string;
+  uf?: string;
+  pais?: string;
+}) {
+  if (!lugar && !pais) return null;
+  return (
+    <p className="mt-0.5 text-xs text-muted">
+      <span className="font-semibold">Onde: </span>
+      {lugar}
+      {uf ? `/${uf}` : ""}
+      {lugar && pais ? " · " : ""}
+      {pais}
+    </p>
+  );
+}
+
 export default function CalendarioMemoria({ verbetes }: Props) {
   // Mês (0-11) → dia (1-31) → verbetes daquele dia, já na ordem da mística.
   const porMes = useMemo(() => {
@@ -118,13 +140,11 @@ export default function CalendarioMemoria({ verbetes }: Props) {
                             {v.tituloCurto ?? v.titulo}
                           </h3>
                         </div>
-                        {v.lugar ? (
-                          <p className="mt-0.5 text-xs text-muted">
-                            <span className="font-semibold">Onde: </span>
-                            {v.lugar}
-                            {v.uf ? `/${v.uf}` : ""}
-                          </p>
-                        ) : null}
+                        <OndeVerbete
+                          lugar={v.lugar}
+                          uf={v.uf}
+                          pais={v.pais}
+                        />
                         <p className="mt-1 text-xs text-muted">
                           {v.url ? (
                             <a

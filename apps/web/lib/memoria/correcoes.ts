@@ -19,6 +19,7 @@
  */
 
 import { CALENDARIO_LUTAS } from "./calendario";
+import { PAISES_MISTICA } from "./paises-mistica";
 import type { EntradaCalendario } from "./tipos";
 import { CORRECOES } from "./correcoes-mistica";
 import { COMPLEMENTOS } from "./complementos-mistica";
@@ -57,15 +58,28 @@ export function aplicarCorrecao(e: EntradaCalendario): EntradaCalendario {
 }
 
 /**
+ * Aplica o país do overlay, quando houver.
+ *
+ * O overlay é gerado do lote de países e chaveado pela mesma `chaveCorrecao`;
+ * verbete sem país (fato sem nação única) fica como está, sem campo vazio.
+ */
+function comPais(e: EntradaCalendario): EntradaCalendario {
+  const pais = PAISES_MISTICA[chaveCorrecao(e)];
+  return pais ? { ...e, pais } : e;
+}
+
+/**
  * O calendário como a tela deve ler: o calendário gerado (com os títulos
  * curtos e resumos revisados aplicados) + os COMPLEMENTOS versionados (fatos
  * do acervo do MAB, terceira fonte). É esta lista que os consumidores usam — a
  * crua (`CALENDARIO_LUTAS`) fica para teste e geração.
  */
 export const CALENDARIO: EntradaCalendario[] = [
-  ...CALENDARIO_LUTAS.map(aplicarCorrecao).filter((e) => !REMOVIDOS.has(chaveCorrecao(e))),
-  ...COMPLEMENTOS,
-  ...COMPLEMENTOS_INDIGENAS,
-  ...COMPLEMENTOS_APIB,
-  ...RECOLOCADOS,
+  ...CALENDARIO_LUTAS.map(aplicarCorrecao)
+    .map(comPais)
+    .filter((e) => !REMOVIDOS.has(chaveCorrecao(e))),
+  ...COMPLEMENTOS.map(comPais),
+  ...COMPLEMENTOS_INDIGENAS.map(comPais),
+  ...COMPLEMENTOS_APIB.map(comPais),
+  ...RECOLOCADOS.map(comPais),
 ];

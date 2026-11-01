@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { LinhaCaso } from "./LinhaCaso";
+import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
 import noticiasJson from "@/data/noticias-tribunais.json";
@@ -65,19 +67,6 @@ const NOMES_TRIBUNAL: Record<string, string> = {
   TST: "TST",
 };
 
-const NOMES_FRENTE: Record<string, string> = {
-  brumadinho: "Brumadinho (TJMG)",
-  riodoce: "Rio Doce",
-  dh: "Direitos humanos (TJMG)",
-  penal: "Penal e criminal",
-  sumula: "Súmulas",
-};
-
-const NOMES_TIPO: Record<string, string> = {
-  acordao: "Acórdão",
-  sumula: "Súmula",
-};
-
 const NOMES_PNAB: Record<string, string> = {
   perda_propriedade: "Perda de propriedade",
   desvalorizacao_imoveis: "Desvalorização de imóveis",
@@ -91,20 +80,6 @@ const NOMES_PNAB: Record<string, string> = {
   deslocamento_compulsorio: "Deslocamento compulsório",
   atividades_produtivas_locais: "Atividades produtivas locais",
   outros_pnab_peab: "Outros PNAB/PEAB",
-};
-
-const ESTILO_STATUS: Record<string, string> = {
-  aprovado: "rounded bg-[var(--cp-primary)]/15 px-2 py-0.5 text-xs",
-  sem_resumo: "rounded bg-[var(--cp-border)] px-2 py-0.5 text-xs",
-  revisao_humana: "rounded bg-[var(--cp-tertiary)]/15 px-2 py-0.5 text-xs",
-  sumula: "rounded bg-[var(--cp-secondary)]/15 px-2 py-0.5 text-xs",
-};
-
-const ROTULO_STATUS: Record<string, string> = {
-  aprovado: "aprovado",
-  sem_resumo: "sem resumo",
-  revisao_humana: "revisão",
-  sumula: "súmula",
 };
 
 export const reais = (valor: number) =>
@@ -306,72 +281,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-function SeloStatus({ status }: { status: string }) {
-  return (
-    <span className={ESTILO_STATUS[status] ?? ESTILO_STATUS.revisao_humana}>
-      {ROTULO_STATUS[status] ?? "revisão"}
-    </span>
-  );
-}
-
-function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
-  if (!caso.link) return <>{caso.processo}</>;
-  return (
-    <a className="underline" href={caso.link} target="_blank" rel="noopener noreferrer">
-      {caso.processo}
-    </a>
-  );
-}
-
-function LinhaTexto({ rotulo, texto, destaque = false }: { rotulo: string; texto: string; destaque?: boolean }) {
-  if (!texto) return null;
-  return (
-    <p className={destaque ? undefined : "opacity-80"}>
-      <span className="font-semibold">{rotulo}: </span>
-      {texto}
-    </p>
-  );
-}
-
-function TextoDoCaso({ caso }: { caso: CasoJurisprudencia }) {
-  const textos = [caso.explicacao, caso.ementa, caso.resumo].filter(Boolean);
-  if (textos.length === 0) return null;
-  const rotulo = caso.explicacao ? "ver explicação" : caso.resumo ? "ver resumo" : "ver enunciado";
-  const tituloTexto = caso.tipo === "sumula" ? "Enunciado" : "Ementa";
-  return (
-    <details className="relative mt-1">
-      <summary className="cursor-pointer text-xs font-semibold text-primary underline">
-        {rotulo}
-      </summary>
-      <div className="absolute left-0 z-30 mt-1 w-[56rem] max-w-[92vw] space-y-2 rounded-lg border border-[var(--cp-border)] bg-[var(--cp-surface)] p-4 text-sm leading-relaxed shadow-2xl">
-        <LinhaTexto rotulo="Explicação" texto={caso.explicacao} destaque />
-        <LinhaTexto rotulo="Exemplo" texto={caso.exemplo} destaque />
-        <LinhaTexto rotulo="Resumo" texto={caso.resumo} />
-        <LinhaTexto rotulo={tituloTexto} texto={caso.ementa} />
-      </div>
-    </details>
-  );
-}
-
-function CelulaTemas({ caso }: { caso: CasoJurisprudencia }) {
-  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90) || "—";
-  const resto = caso.temas.length > 2 ? ` +${caso.temas.length - 2}` : "";
-  return (
-    <>
-      <span>{`${texto}${resto}`}</span>
-      <TextoDoCaso caso={caso} />
-    </>
-  );
-}
-
-function CelulaMerito({ caso }: { caso: CasoJurisprudencia }) {
-  if (caso.tipo === "sumula") return <>—</>;
-  const polo = ROTULOS[caso.polo] ?? caso.polo;
-  const resultado = ROTULOS[caso.resultado] ?? caso.resultado;
-  return <>{[polo, resultado].filter(Boolean).join(" · ") || "—"}</>;
-}
-
-const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Status"];
+const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Ementa"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
@@ -380,23 +290,13 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
         <thead className="bg-[var(--cp-surface-2)] text-left">
           <tr>
             {COLUNAS.map((rotulo) => (
-              <th key={rotulo} scope="col" className="px-3 py-2 font-semibold">{rotulo}</th>
+              <th key={rotulo} scope="col" className="whitespace-nowrap px-2 py-2 font-semibold">{rotulo}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {itens.map((caso) => (
-            <tr key={caso.id} className="border-t border-[var(--cp-border)] align-top">
-              <td className="px-3 py-2 font-tabular"><CelulaProcesso caso={caso} /></td>
-              <td className="px-3 py-2">{caso.tribunal}/{caso.estado}</td>
-              <td className="px-3 py-2">{NOMES_TIPO[caso.tipo] ?? caso.tipo}</td>
-              <td className="px-3 py-2">{caso.ano || "—"}</td>
-              <td className="px-3 py-2">{caso.orgao || caso.comarca || "—"}</td>
-              <td className="px-3 py-2">{NOMES_FRENTE[caso.frente] ?? caso.frente}</td>
-              <td className="px-3 py-2"><CelulaMerito caso={caso} /></td>
-              <td className="relative px-3 py-2"><CelulaTemas caso={caso} /></td>
-              <td className="px-3 py-2"><SeloStatus status={caso.status} /></td>
-            </tr>
+            <LinhaCaso key={caso.id} caso={caso} />
           ))}
         </tbody>
       </table>

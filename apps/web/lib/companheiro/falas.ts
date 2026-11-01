@@ -137,3 +137,23 @@ export function escolherFala(slug: string, aleatorio: () => number = Math.random
   const indice = Math.floor(aleatorio() * lista.length);
   return lista[indice] ?? lista[0];
 }
+
+/**
+ * Fala curta do balão de rádio do companheiro.
+ *
+ * O componente `CompanheiroFlutuante` importa esta função desde a rodada do
+ * player; ela faltava no módulo e derrubava o `tsc`. A escolha é determinística
+ * pelo id da estação, para a mesma rádio não trocar de fala a cada evento.
+ */
+const FALAS_RADIO = [
+  "Rádio ligada. Ouvindo com você.",
+  "Boa escolha. Essa estação está no ar.",
+  "Música e informação no mesmo lugar.",
+  "Deixei a rádio no volume bom.",
+];
+
+export function falaParaRadio(id: string): string {
+  let soma = 0;
+  for (let i = 0; i < id.length; i++) soma += id.charCodeAt(i);
+  return FALAS_RADIO[soma % FALAS_RADIO.length] ?? FALAS_RADIO[0];
+}
