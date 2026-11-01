@@ -1,0 +1,44 @@
+{
+  "gerado_em": "2026-11-01",
+  "objetivo": "Gabarito de avaliação do RAG documental: 30 perguntas reais, com o documento que deveria ser recuperado.",
+  "como_medir": "recall@3 = fração de perguntas em que um documento esperado aparece entre os 3 primeiros.",
+  "itens": [
+    { "id": 1, "tema": "ambiental", "pergunta": "O que o Plano Diretor de Belo Horizonte exige para o licenciamento ambiental de empreendimentos de impacto?", "esperados": ["oficial:lei-11181-pbh"] },
+    { "id": 2, "tema": "ambiental", "pergunta": "Como o Plano Diretor de Diamantina trata as áreas de preservação permanente?", "esperados": ["oficial:lei-complementar-103-diamantina"] },
+    { "id": 3, "tema": "ambiental", "pergunta": "Quais medidas de recuperação ambiental o Acordo Judicial de Reparação prevê para a bacia?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+    { "id": 4, "tema": "ambiental", "pergunta": "Como o saneamento básico é usado como medida compensatória do desastre?", "esperados": ["probrumadinho:pb-a-universalizacao-do-saneamento-basico-como-medida-compensatoria-clad-cuba-2023"] },
+    { "id": 5, "tema": "ambiental", "pergunta": "O que a Lei Orgânica de Belo Horizonte diz sobre meio ambiente e saneamento?", "esperados": ["oficial:lei-organica-pbh"] },
+
+    { "id": 6, "tema": "rio doce", "pergunta": "Quais projetos de segurança hídrica são executados na bacia do Rio Doce?", "esperados": ["probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024"] },
+    { "id": 7, "tema": "rio doce", "pergunta": "Como os povos e comunidades tradicionais participam da reparação do Rio Doce?", "esperados": ["probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023"] },
+    { "id": 8, "tema": "rio doce", "pergunta": "O que é o processo de consulta popular para povos e comunidades tradicionais?", "esperados": ["probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023"] },
+    { "id": 9, "tema": "rio doce", "pergunta": "O que a pesquisa jurisprudencial do NACAB encontrou nas ações das pessoas atingidas por Brumadinho?", "esperados": ["oficial:nacab-pesquisa-jurisprudencial-2023"] },
+    { "id": 10, "tema": "rio doce", "pergunta": "Como os comitês gestores foram criados dentro da reparação?", "esperados": ["probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024"] },
+
+    { "id": 11, "tema": "paraopeba", "pergunta": "Quais obrigações o Acordo Judicial de Reparação impõe à Vale na bacia do Paraopeba?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+    { "id": 12, "tema": "paraopeba", "pergunta": "Qual é o valor total previsto no acordo de reparação de Brumadinho?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+    { "id": 13, "tema": "paraopeba", "pergunta": "Como o relatório semestral de 2025 mede a execução das medidas de reparação?", "esperados": ["probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2025", "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025"] },
+    { "id": 14, "tema": "paraopeba", "pergunta": "O que a prestação de contas de 2023 informa sobre a bacia do Paraopeba?", "esperados": ["probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2023"] },
+    { "id": 15, "tema": "paraopeba", "pergunta": "Quem fiscaliza o cumprimento do acordo de reparação do Paraopeba?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+
+    { "id": 16, "tema": "direito critico", "pergunta": "Como a reparação garante a participação das comunidades atingidas nas decisões?", "esperados": ["probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024", "probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023"] },
+    { "id": 17, "tema": "direito critico", "pergunta": "O que a Lei Orgânica de Belo Horizonte prevê sobre participação popular e direito à cidade?", "esperados": ["oficial:lei-organica-pbh"] },
+    { "id": 18, "tema": "direito critico", "pergunta": "Como o processo de reparação pelo agente poluidor é descrito?", "esperados": ["probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023"] },
+
+    { "id": 19, "tema": "estudos rurais", "pergunta": "Como as comunidades quilombolas aparecem no Plano Diretor de Belo Horizonte?", "esperados": ["oficial:lei-11181-pbh"] },
+    { "id": 20, "tema": "estudos rurais", "pergunta": "Como a agricultura familiar é tratada nos relatórios de reparação?", "esperados": ["probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025", "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2025"] },
+    { "id": 21, "tema": "estudos rurais", "pergunta": "O que o acordo diz sobre reassentamento de famílias e propriedades rurais?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+
+    { "id": 22, "tema": "agua e luz", "pergunta": "Qual é o papel do comitê gestor na execução dos projetos de segurança hídrica?", "esperados": ["probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024"] },
+    { "id": 23, "tema": "agua e luz", "pergunta": "O que a Deliberação 22 atualiza sobre tarifas e serviços?", "esperados": ["probrumadinho:pb-deliberacao-no-22---atualizacoes"] },
+    { "id": 24, "tema": "agua e luz", "pergunta": "Como o abastecimento de água é restabelecido depois do rompimento?", "esperados": ["probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2025", "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024"] },
+    { "id": 25, "tema": "agua e luz", "pergunta": "Quem paga a conta de energia elétrica das famílias atingidas?", "esperados": [], "lacuna": true, "obs": "Não há documento sobre energia elétrica no índice; serve para medir abstenção." },
+
+    { "id": 26, "tema": "pra quem recorrer", "pergunta": "Qual é o papel da Defensoria Pública no acordo de reparação?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+    { "id": 27, "tema": "pra quem recorrer", "pergunta": "A quem a pessoa atingida pode recorrer para denunciar descumprimento do acordo?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] },
+    { "id": 28, "tema": "pra quem recorrer", "pergunta": "Qual é o papel do Ministério Público na fiscalização da reparação?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto", "oficial:nacab-pesquisa-jurisprudencial-2023"] },
+
+    { "id": 29, "tema": "outros", "pergunta": "Como o Decreto 49.121 organiza a estrutura do Estado para a reparação?", "esperados": ["probrumadinho:pb-decreto-no-49121---organizacao-seplag"] },
+    { "id": 30, "tema": "outros", "pergunta": "Quais obrigações de transparência o acordo de reparação prevê?", "esperados": ["probrumadinho:pb-acordo-judicial-de-reparacao-texto"] }
+  ]
+}
