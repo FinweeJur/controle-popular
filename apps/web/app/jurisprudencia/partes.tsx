@@ -111,7 +111,7 @@ export const reais = (valor: number) =>
   valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 function contar(frente: string): number {
-  return CASOS.filter((caso) => caso.frente === frente).length;
+  return CASOS_DESASTRE.filter((caso) => caso.frente === frente).length;
 }
 
 export function Tabela({
@@ -157,10 +157,10 @@ export function Tabela({
 }
 
 export function Cartoes() {
-  const semResumo = CASOS.filter((caso) => caso.status === "sem_resumo").length;
+  const semResumo = CASOS_DESASTRE.filter((caso) => caso.status === "sem_resumo").length;
   const itens: [string, string, string][] = [
-    ["Itens no acervo", CASOS.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
-    ["Acórdãos", (CASOS.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
+    ["Itens no acervo", CASOS_DESASTRE.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
+    ["Acórdãos", (CASOS_DESASTRE.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
     ["Súmulas", contar("sumula").toLocaleString("pt-BR"), "STF, STJ e TST"],
     ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "entram na lista, sem polo"],
   ];
@@ -236,32 +236,32 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Frente</span>
         <select name="frente" defaultValue={filtros.frente} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "frente")} nomes={NOMES_FRENTE} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "frente")} nomes={NOMES_FRENTE} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Tribunal</span>
         <select name="tribunal" defaultValue={filtros.tribunal} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "tribunal")} nomes={NOMES_TRIBUNAL} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "tribunal")} nomes={NOMES_TRIBUNAL} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Estado</span>
         <select name="estado" defaultValue={filtros.estado} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "estado")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "estado")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Tipo</span>
         <select name="tipo" defaultValue={filtros.tipo} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "tipo")} nomes={NOMES_TIPO} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "tipo")} nomes={NOMES_TIPO} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Polo</span>
         <select name="polo" defaultValue={filtros.polo} className={campo}>
           <option value="">Todos</option>
-          {contagemPor(CASOS, "polo").map(([polo]) => (
+          {contagemPor(CASOS_DESASTRE, "polo").map(([polo]) => (
             <option key={polo} value={polo}>{ROTULOS[polo] ?? polo}</option>
           ))}
         </select>
@@ -270,7 +270,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
         <span className="opacity-70">Tema</span>
         <select name="tema" defaultValue={filtros.tema} className={campo}>
           <option value="">Todos</option>
-          {temasUnicos(CASOS).map((tema) => (
+          {temasUnicos(CASOS_DESASTRE).map((tema) => (
             <option key={tema} value={tema}>{tema}</option>
           ))}
         </select>
@@ -278,13 +278,13 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Comarca</span>
         <select name="comarca" defaultValue={filtros.comarca} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "comarca")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "comarca")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Ano</span>
         <select name="ano" defaultValue={filtros.ano} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "ano")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "ano")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
