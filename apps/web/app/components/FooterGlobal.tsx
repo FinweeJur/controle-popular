@@ -105,7 +105,7 @@ const MAILTO_NOVIDADES = `mailto:contato@controlepopular.com.br?subject=
 
 export default function FooterGlobal() {
   return (
-    <div className="mt-8 border-t border-border pt-6 text-[.85em]">
+    <div className="mt-8 border-t border-border pt-6 text-[max(12px,.85em)]">
       <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
         <div>
           <h4 className="mb-2.5 font-semibold tracking-wide text-text-soft uppercase">
@@ -143,7 +143,7 @@ export default function FooterGlobal() {
           </ul>
         </div>
       </div>
-      <div className="mt-4 border-t border-border pt-4 text-[.85em]">
+      <div className="mt-4 border-t border-border pt-4 text-[max(12px,.85em)]">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <PedirDadosEmail />
           <BotoesNotificacao />

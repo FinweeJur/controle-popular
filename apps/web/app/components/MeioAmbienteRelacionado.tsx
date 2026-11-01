@@ -100,7 +100,7 @@ export default function MeioAmbienteRelacionado() {
             <Icon size={18} style={{ color }} className="shrink-0 mt-0.5" />
             <span className="text-[.92em] leading-relaxed text-[var(--cp-text)]">
               {label}
-              <span className="block text-[.78em] text-[var(--cp-muted)] font-mono mt-0.5">
+              <span className="block text-[12px] text-[var(--cp-muted)] font-mono mt-0.5">
                 {href}
               </span>
             </span>

@@ -136,7 +136,7 @@ export default function VitrineLutas({ verbetes }: { verbetes: VerbeteVitrine[] 
                 ))}
               </div>
               {v.fonte.length > 0 ? (
-                <p className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/60 pt-2 text-[.78em]">
+                <p className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/60 pt-2 text-[12px]">
                   <span className="font-semibold text-text">Fonte:</span>
                   {v.fonte.map((f) => (
                     <a
