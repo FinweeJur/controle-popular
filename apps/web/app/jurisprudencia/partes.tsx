@@ -281,7 +281,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Ementa"];
+const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Resumo"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (

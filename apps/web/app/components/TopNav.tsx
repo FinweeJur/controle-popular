@@ -3,17 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { SECOES_MENU } from './menu-portal';
 import RodapeMenu from './RodapeMenu';
-import { Menu, ChevronDown, Bell, Newspaper, Compass, Search, X } from "lucide-react";
+import { Menu, ChevronDown, Compass, X } from "lucide-react";
 import Link from 'next/link';
 import NextLink from 'next/link';
 import Image from 'next/image';
 
 import BuscaGlobal from '@/app/components/BuscaGlobal';
-import CvdToggle from '@/app/components/CvdToggle';
-import FontSizeControl from '@/app/[municipio]/components/FontSizeControl';
-import ThemeSwitcher from '@/app/[municipio]/components/ThemeSwitcher';
+import TopNavControles from '@/app/components/TopNavControles';
 import Marquee from '@/app/components/Marquee';
-import OuvirNavbar from '@/app/components/OuvirNavbar';
 import { useProximidadeLinha } from '@/app/components/react-bits/useProximidadeLinha';
 
 /**
@@ -84,7 +81,11 @@ export default function TopNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-3 sm:px-6 py-2">
+      {/* Uma linha só a partir de lg (pedido do dono, 01/11/2026). O container
+          era `max-w-7xl` (80rem): com busca de 28rem, os controles não cabiam
+          e a navbar quebrava em duas linhas. A 96rem e busca de 16rem cabe
+          tudo; abaixo de lg o wrap continua, porque no celular não há largura. */}
+      <div className="mx-auto flex max-w-[96rem] flex-wrap items-center justify-between gap-x-3 gap-y-2 px-3 sm:px-6 py-2 lg:flex-nowrap">
         {/* Bloco do Logo + Botão de Índice com Menu Suspenso via Hover/Clique */}
         <div
           ref={caixaRef}
@@ -267,50 +268,12 @@ export default function TopNav() {
           </nav>
         </div>
 
-        {/* Barra de Busca Global */}
-        <div className="flex-1 max-w-xs sm:max-w-sm md:max-w-md min-w-0 mx-1">
+        {/* Barra de Busca Global — menor para caber na mesma linha dos botões. */}
+        <div className="mx-1 min-w-0 max-w-[16rem] flex-1 sm:max-w-[18rem]">
           <BuscaGlobal />
         </div>
 
-        {/* Controles e Botões da Navbar (Sempre visíveis e alinhados) */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <Link
-            href="/noticias"
-            className="flex items-center gap-1 rounded-md border border-primary/40 bg-primary/10 px-2 sm:px-2.5 py-1 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
-            aria-label="Blog e Notícias"
-          >
-            <Newspaper size={13} aria-hidden="true" />
-            <span>Blog</span>
-          </Link>
-          <Link
-            href="/alertas"
-            className="flex items-center justify-center rounded-md border border-border p-1.5 text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-            aria-label="Alertas e Notificações"
-            title="Alertas e Notificações"
-          >
-            <Bell size={14} aria-hidden="true" className="text-primary" />
-          </Link>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("abrir-paleta-comandos"))}
-            className="hidden sm:flex items-center gap-1.5 rounded-md border border-border px-2 py-1 text-xs font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-            aria-label="Abrir busca rápida (Ctrl K)"
-            title="Busca rápida (Ctrl+K)"
-          >
-            <Search size={13} aria-hidden="true" />
-            <kbd className="font-mono text-[12px] opacity-70">Ctrl K</kbd>
-          </button>
-          <OuvirNavbar />
-          <Link
-            href="/busca"
-            className="hidden xs:inline-flex rounded-md border border-border px-2 sm:px-2.5 py-1 text-xs font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-          >
-            Busca →
-          </Link>
-          <span className="hidden md:inline-flex"><ThemeSwitcher /></span>
-          <span className="hidden lg:inline-flex"><CvdToggle /></span>
-          <span className="hidden sm:inline-flex"><FontSizeControl /></span>
-        </div>
+        <TopNavControles />
       </div>
       <Marquee frase="✦ FISCALIZA ✦ OLHO ABERTO ✦ O DINHEIRO É NOSSO ✦ TERRITÓRIO COMO ESPERANÇA ✦ NOSSA NATUREZA ✦ NOSSOS MISTÉRIOS ✦ CORAÇÃO SEM MEDO" />
     </header>
