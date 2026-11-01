@@ -56,6 +56,13 @@ export const LIMITE_ARRASTO = 5;
 /** Folga (px) que garante que o painel nunca suma pela borda. */
 export const MARGEM_VISAO = 8;
 
+/** Deslocamento horizontal menor ou igual a isto não é mudança de lugar:
+ *  é resíduo de um arrasto acidental no canto. Na leitura, volta para zero —
+ *  senão a pilha flutuante (rádio, pata, Seu Nonô) perde o eixo para sempre
+ *  por causa de um esbarrão de 10 px (dono, 01/11/2026: "pelo menos ao
+ *  iniciar a página, antes da pessoa mexer, tem de estar alinhado"). */
+export const FOLGA_EIXO = 16;
+
 export interface CaixaElemento {
   esq: number;
   topo: number;
@@ -92,6 +99,11 @@ export function limitarDeslocamento(
     x: Math.min(Math.max(dx, minX), maxX),
     y: Math.min(Math.max(dy, minY), maxY),
   };
+}
+
+/** Ajusta o `x` lido do `localStorage`: resíduo de esbarro volta para zero. */
+export function ajustarEixoX(x: number): number {
+  return Math.abs(x) <= FOLGA_EIXO ? 0 : x;
 }
 
 /** Cancela o arrasto nativo de `<img>` na pega (ver docstring do arquivo). */
@@ -142,14 +154,16 @@ export function useArrastavel(chave: string): UsarArrastavel {
     caixa: CaixaElemento;
   } | null>(null);
 
-  // Carrega a posição salva uma vez, já no cliente.
+  // Carrega a posição salva uma vez, já no cliente. Um `x` irrisório (resíduo
+  // de arrasto acidental) é descartado: a pilha flutuante tem de começar no
+  // eixo comum (ver `FOLGA_EIXO`).
   useEffect(() => {
     try {
       const salvo = window.localStorage.getItem(chave);
       if (salvo) {
         const p = JSON.parse(salvo) as { x?: unknown; y?: unknown };
         if (typeof p.x === "number" && typeof p.y === "number") {
-          atual.current = { x: p.x, y: p.y };
+          atual.current = { x: ajustarEixoX(p.x), y: p.y };
           setDesloc(atual.current);
         }
       }

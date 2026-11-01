@@ -1430,7 +1430,9 @@ export function SeuNono() {
       // (eles andam no conteúdo da página, não na nossa moldura).
       ref={nonoRef}
       style={telaCheia ? undefined : estilo}
-      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 flex flex-col items-start"
+      // Eixo comum da pilha (`--cp-pilha-centro`): centro em 44 px; o FAB tem
+      // 56 px, então `left` = eixo - 28 px. Ver a régua em globals.css.
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-[calc(var(--cp-pilha-centro)-1.75rem)] z-50 flex flex-col items-start"
       data-arrastavel-caixa
       data-nao-plataforma
     >
@@ -2408,7 +2410,7 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_3rem)] left-[1.375rem] z-[46]"
+        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_3rem)] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46]"
         data-arrastavel-caixa
         data-nao-plataforma
       >

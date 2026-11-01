@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2, Pause, Play } from 'lucide-react';
 import BotaoBrilho from '@/app/components/react-bits/BotaoBrilho';
 
 /**
@@ -103,7 +103,12 @@ export function CardCarousel({
 }: CardCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  const autoPlayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Pausa pedida pelo leitor, no botão à direita — independente do hover.
+  const [pausado, setPausado] = useState(false);
+  // Cada clique em seta/marcador reinicia a contagem de 6 s. Sem isto, quem
+  // aperta "próximo" com 0,2 s para o relógio zerar via o card trocar de novo
+  // em seguida e o gesto parecia não ter funcionado (dono, 01/11/2026).
+  const [reinicio, setReinicio] = useState(0);
 
   const toNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % eixos.length);
@@ -117,22 +122,28 @@ export function CardCarousel({
     setActiveIndex(index);
   }, []);
 
-  // Rotação suave automática a cada 6 segundos.
-  // Só pausa se o usuário estiver com o mouse diretamente sobre os cartões do palco.
-  useEffect(() => {
-    if (isHovered) return;
+  /** Clique em seta ou marcador: navega, solta a pausa do hover e zera o
+   *  relógio de 6 s. Era o pedido do dono (01/11/2026): "pausa até clicar no
+   *  botão de seta ou sair do mouse" — sem o reset, a troca automática podia
+   *  cair logo depois do clique e o gesto parecia ignorado. */
+  const navegar = useCallback((acao: () => void) => {
+    acao();
+    setIsHovered(false);
+    setReinicio((r) => r + 1);
+  }, []);
 
-    autoPlayTimerRef.current = setInterval(() => {
-      toNext();
+  // Rotação automática a cada 6 s. Para em dois casos: o pointer está em cima
+  // do carrossel (cards, setas ou marcadores) ou o leitor apertou o botão de
+  // pausa. Caiu o mouse e o botão está no "tocar", a contagem volta do zero.
+  useEffect(() => {
+    if (isHovered || pausado) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % eixos.length);
     }, 6000);
 
-    return () => {
-      if (autoPlayTimerRef.current) {
-        clearInterval(autoPlayTimerRef.current);
-        autoPlayTimerRef.current = null;
-      }
-    };
-  }, [isHovered, toNext]);
+    return () => clearInterval(timer);
+  }, [isHovered, pausado, reinicio, eixos.length]);
 
   const activeEixo = eixos[activeIndex] || eixos[0];
 
@@ -184,7 +195,7 @@ export function CardCarousel({
         className="w-full flex flex-col items-center justify-center relative select-none py-2"
       >
         {/* Contêiner de altura fixa para o palco 3D */}
-        <div className="relative w-full max-w-2xl h-[300px] sm:h-[320px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full max-w-2xl h-[340px] sm:h-[370px] flex items-center justify-center overflow-visible">
           {eixos.map((item, i) => {
             // Posição relativa em anel: 0 = centro, 1 = direita, 2 = esquerda
             const diff = (i - activeIndex + eixos.length) % eixos.length;
@@ -293,51 +304,17 @@ export function CardCarousel({
           })}
         </div>
 
-        {/* Controles de navegação com botões grandes e dots clicáveis */}
-        <div className="mt-4 px-4 py-1.5 flex items-center gap-3 justify-center rounded-full bg-surface-2 border border-border shadow-xs z-20">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              toPrev();
-            }}
-            aria-label="Eixo anterior"
-            title="Ver eixo anterior"
-            className="p-1.5 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground flex items-center justify-center"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <div className="flex justify-center items-center gap-2 px-1">
-            {eixos.map((item, i) => (
-              <button
-                key={item.href}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toSlide(i);
-                }}
-                aria-label={`Selecionar ${item.title}`}
-                className={`rounded-full cursor-pointer h-2.5 transition-all duration-300 border-0 p-0 ${
-                  activeIndex === i
-                    ? 'w-7 bg-primary'
-                    : 'w-2.5 bg-muted hover:bg-foreground/50'
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              toNext();
-            }}
-            aria-label="Próximo eixo"
-            title="Ver próximo eixo"
-            className="p-1.5 cursor-pointer hover:bg-surface rounded-full transition-colors border-0 bg-transparent text-foreground flex items-center justify-center"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+        {/* Controles: ver `ControlesCarrossel` no fim do arquivo (a régua do
+            dono de 01/11/2026 está documentada lá). */}
+        <ControlesCarrossel
+          eixos={eixos}
+          ativo={activeIndex}
+          pausado={pausado}
+          aoAnterior={() => navegar(toPrev)}
+          aoProximo={() => navegar(toNext)}
+          aoMarcador={(i) => navegar(() => toSlide(i))}
+          aoAlternarPausa={() => setPausado((v) => !v)}
+        />
       </div>
 
       {/* Painel de Resumo do Eixo Ativo — Destaque completo com dados reunidos */}
@@ -406,6 +383,113 @@ export function CardCarousel({
         </motion.div>
       </AnimatePresence>
     </section>
+  );
+}
+
+interface ControlesCarrosselProps {
+  eixos: EixoAsset[];
+  ativo: number;
+  pausado: boolean;
+  aoAnterior: () => void;
+  aoProximo: () => void;
+  aoMarcador: (indice: number) => void;
+  aoAlternarPausa: () => void;
+}
+
+/**
+ * Pílula de controles do carrossel — régua do dono (01/11/2026):
+ * - fica no eixo do cartão do centro (o palco é centrado na seção);
+ * - os três marcadores ocupam esquerda/centro/direita, com vão largo entre
+ *   eles (gap-5 no celular, gap-9 daí para cima) e assento de largura fixa
+ *   (`h-6 w-6`): trocar de eixo não move os vizinhos;
+ * - a pausa é pequena e fica colada à direita da pílula, fora do fluxo
+ *   (`absolute left-full`), então não empurra a pílula do centro nem
+ *   estoura a linha quando o texto está no A+ máximo.
+ * Cada botão para o próprio `click` para o cartão de trás não receber o
+ * toque (o palco escuta clique nos cartões para trazê-los ao centro).
+ */
+function ControlesCarrossel({
+  eixos,
+  ativo,
+  pausado,
+  aoAnterior,
+  aoProximo,
+  aoMarcador,
+  aoAlternarPausa,
+}: ControlesCarrosselProps) {
+  const botaoSeta =
+    'flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-foreground transition-colors hover:bg-surface';
+  return (
+    <div className="mt-3 flex w-full items-center justify-center">
+      <div className="relative flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-1.5 py-1 shadow-xs">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            aoAnterior();
+          }}
+          aria-label="Eixo anterior"
+          title="Ver eixo anterior"
+          className={botaoSeta}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+
+        <div className="flex items-center justify-between gap-5 px-1.5 sm:gap-9">
+          {eixos.map((item, i) => {
+            const atual = ativo === i;
+            return (
+              <button
+                key={item.href}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  aoMarcador(i);
+                }}
+                aria-label={`Selecionar ${item.title}`}
+                aria-current={atual ? 'true' : undefined}
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0"
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all duration-300 ${
+                    atual ? 'w-6' : 'w-2 bg-muted hover:bg-foreground/50'
+                  }`}
+                  style={atual ? { backgroundColor: item.corVar } : undefined}
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            aoProximo();
+          }}
+          aria-label="Próximo eixo"
+          title="Ver próximo eixo"
+          className={botaoSeta}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+
+        <button
+          type="button"
+          onClick={aoAlternarPausa}
+          aria-pressed={pausado}
+          aria-label={pausado ? 'Retomar a troca automática de eixo' : 'Pausar a troca automática de eixo'}
+          title={pausado ? 'Retomar a troca automática' : 'Pausar a troca automática'}
+          className="absolute left-full top-1/2 ml-2 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-border bg-surface-2 text-text-soft shadow-xs transition-colors hover:border-primary hover:text-primary"
+        >
+          {pausado ? (
+            <Play className="h-3.5 w-3.5" aria-hidden="true" />
+          ) : (
+            <Pause className="h-3.5 w-3.5" aria-hidden="true" />
+          )}
+        </button>
+      </div>
+    </div>
   );
 }
 

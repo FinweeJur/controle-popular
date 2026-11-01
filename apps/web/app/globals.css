@@ -200,6 +200,17 @@ html .cursor-wait {
   --cp-bw: 1px;
   --cp-tscale: 1;
 
+  /* EIXO DA PILHA FLUTUANTE (dono, 01/11/2026) ───────────────────────────
+     Os três botões redondos do canto inferior esquerdo — rádio, pata do
+     companheiro e Seu Nonô — têm de ficar no MESMO eixo vertical, com o
+     centro de cada um em cima desta linha. Antes o alinhamento saía de uma
+     coincidência de contas (rádio `left-5` + 48/2 = 44; pata `1.375rem` +
+     44/2 = 44; FAB `left-4` + 56/2 = 44): mudar o tamanho de um deles
+     desalinhava os três sem aviso. Cada container agora calcula
+     `left: calc(var(--cp-pilha-centro) - metade-da-própria-largura)`.
+     Mexeu no diâmetro de um botão? Só a metade dele muda aqui. */
+  --cp-pilha-centro: 2.75rem;
+
   /* Ordinal chart ramp (--cp-ord-1 = heaviest tier .. -4 = lightest).
      The proposition types are ORDINAL, not nominal: a Projeto de Lei
      outweighs an Indicação 15:1, so the tier order carries meaning and

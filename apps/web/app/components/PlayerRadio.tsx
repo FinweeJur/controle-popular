@@ -374,7 +374,12 @@ export default function PlayerRadio() {
         // 07/10/2026, pediu sobreposição pequena na pilha).
         ref={grupoRef}
         style={estilo}
-        className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-5 z-[45] flex flex-col items-start print:hidden"
+        // `left` pelo eixo comum da pilha (`--cp-pilha-centro`, globals.css):
+        // o centro do botão cai na mesma linha da pata e do Seu Nonô. Com
+        // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
+        // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
+        // em vez de encostar na borda esquerda da coluna.
+        className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-[calc(var(--cp-pilha-centro)-1.5rem)] z-[45] flex flex-col items-center print:hidden"
         data-arrastavel-caixa
         data-nao-plataforma
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão

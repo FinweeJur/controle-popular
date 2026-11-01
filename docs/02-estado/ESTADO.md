@@ -315,6 +315,28 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
+**01/11/2026 — Controles do carrossel de eixos e eixo da pilha flutuante:**
+
+- **Carrossel de eixos (`CarrosselEixos`).** A pílula de controles encostava
+  no anel laranja do cartão: o cartão ampliado (scale 1.08) passava 15 px do
+  palco. O palco cresceu (340/370 px) e a pílula ficou 25 px abaixo do cartão,
+  no eixo exato do cartão central. Os três marcadores agora ocupam
+  esquerda/centro/direita com vão largo (48 px no celular, 72 px daí para
+  cima) e assento de largura fixa — trocar de eixo não move os vizinhos.
+  Botão de pausa pequeno à direita, fora do fluxo (`absolute left-full`), para
+  não empurrar a pílula do centro nem estourar a linha no texto A+.
+- **Rotação automática.** Passar o mouse no carrossel pausa a troca de 6 s;
+  clicar em seta/marcador solta a pausa e zera o relógio (antes a troca podia
+  cair logo depois do clique); o botão de pausa é independente do hover.
+- **Pilha flutuante (rádio, pata, Seu Nonô).** O alinhamento dos três centros
+  era coincidência de contas (`left-5`+24, `1.375rem`+22, `left-4`+28 = 44).
+  Agora existe `--cp-pilha-centro: 2.75rem` em `globals.css` e cada container
+  calcula o próprio `left`, então os três centros coincidem em qualquer
+  tamanho de texto. `useArrastavel` descarta deslocamento horizontal de até
+  16 px ao ler o `localStorage` — resíduo de esbarro não desalinha a coluna
+  no próximo carregamento. O ícone da transcrição passou a ficar no mesmo
+  eixo.
+
 **01/11/2026 — Bolha da transcrição vira ícone e a dica do índice chega em 1 s:**
 
 - **Transcrição ao vivo (`TranscricaoRadio`).** Com a transcrição desligada, a
