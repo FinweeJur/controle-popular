@@ -116,7 +116,7 @@ export function construirIndiceDocumentos(entrada: readonly TrechoDocumento[]): 
   };
 }
 
-function passaFiltros(trecho: TrechoDocumento, consulta: ConsultaDocumentos): boolean {
+export function passaFiltros(trecho: TrechoDocumento, consulta: ConsultaDocumentos): boolean {
   if (consulta.categoria && trecho.categoria !== consulta.categoria) return false;
   if (consulta.tema && trecho.tema !== consulta.tema) return false;
   if (consulta.ano && trecho.ano !== consulta.ano) return false;
@@ -155,6 +155,25 @@ function scoreDoTrecho(
   }
 
   return { score, motivos };
+}
+
+/**
+ * Pontua todos os trechos pelo léxico, sem cortar.
+ *
+ * Existe para o híbrido com vetor: o cosseno sozinho perde termo exato
+ * ("licenciamento" citado uma vez), e o léxico sozinho perde sinônimo.
+ * A soma dos dois precisa do mapa completo, não só do topo.
+ */
+export function pontuarTrechos(indice: IndiceDocumentos, texto: string): Map<string, number> {
+  const termos = unicos(separarPalavras(texto).filter((t) => t.length >= 3));
+  const mapa = new Map<string, number>();
+  if (termos.length === 0) return mapa;
+  const normalizado = texto.trim().toLowerCase();
+  for (const trecho of indice.trechos) {
+    const { score } = scoreDoTrecho(indice, trecho, termos, normalizado);
+    if (score > 0) mapa.set(trecho.id, score);
+  }
+  return mapa;
 }
 
 /**

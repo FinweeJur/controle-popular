@@ -1,12 +1,12 @@
 {
- "gerado_em": "2026-11-01T03:14:08.232Z",
+ "gerado_em": "2026-11-01T03:34:39.818Z",
  "total": 30,
  "avaliaveis": 29,
- "recall_at_3": 0.4827586206896552,
+ "recall_at_3": 0.6206896551724138,
  "latencia_ms": {
-  "p50": 1727.9755000000005,
-  "p95": 3026.3458999999984,
-  "max": 3322.0049000000004
+  "p50": 1594.1779000000024,
+  "p95": 2627.5427,
+  "max": 3299.6991
  },
  "por_tema": {
   "ambiental": {
@@ -15,7 +15,7 @@
   },
   "rio doce": {
    "n": 5,
-   "acertos": 3
+   "acertos": 4
   },
   "paraopeba": {
    "n": 5,
@@ -31,7 +31,7 @@
   },
   "agua e luz": {
    "n": 3,
-   "acertos": 1
+   "acertos": 3
   },
   "pra quem recorrer": {
    "n": 3,
@@ -39,7 +39,7 @@
   },
   "outros": {
    "n": 2,
-   "acertos": 0
+   "acertos": 1
   }
  },
  "erros": [
@@ -49,24 +49,11 @@
    "pergunta": "Quais medidas de recuperação ambiental o Acordo Judicial de Reparação prevê para a bacia?",
    "lacuna": false,
    "acertou": false,
-   "ms": 3322.0049000000004,
+   "ms": 2394.3592,
    "recuperados": [
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
     "probrumadinho:pb-a-universalizacao-do-saneamento-basico-como-medida-compensatoria-clad-cuba-2023",
-    "probrumadinho:pb-deliberacao-no-24---atualizacoes",
-    "probrumadinho:pb-deliberacao-n-20---atualizacoes"
-   ]
-  },
-  {
-   "id": 6,
-   "tema": "rio doce",
-   "pergunta": "Quais projetos de segurança hídrica são executados na bacia do Rio Doce?",
-   "lacuna": false,
-   "acertou": false,
-   "ms": 1115.0205999999998,
-   "recuperados": [
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2023",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2024",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024"
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022"
    ]
   },
   {
@@ -75,11 +62,11 @@
    "pergunta": "Como os povos e comunidades tradicionais participam da reparação do Rio Doce?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1688.9217000000008,
+   "ms": 1151.6222000000016,
    "recuperados": [
-    "desastre:aedas-mariana:33596",
-    "desastre:aedas-mariana:33569",
-    "desastre:aedas-mariana:33584"
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
+    "probrumadinho:pb-participacao-popular-como-aliada-na-protecao-a-saude-clad-brasilia-2024",
+    "probrumadinho:pb-programa-de-transferencia-de-renda-clad-2023"
    ]
   },
   {
@@ -88,11 +75,11 @@
    "pergunta": "Quais obrigações o Acordo Judicial de Reparação impõe à Vale na bacia do Paraopeba?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1682.8829000000005,
+   "ms": 1650.499399999997,
    "recuperados": [
-    "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
-    "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
-    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023"
+    "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20",
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
+    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico"
    ]
   },
   {
@@ -101,11 +88,11 @@
    "pergunta": "Qual é o valor total previsto no acordo de reparação de Brumadinho?",
    "lacuna": false,
    "acertou": false,
-   "ms": 2544.6849999999977,
+   "ms": 1803.0357000000004,
    "recuperados": [
-    "probrumadinho:pb-deliberacao-no-03---remanejamento-rodoanel-metro",
-    "probrumadinho:pb-deliberacao-no-05---economias-e-ajustes",
-    "probrumadinho:pb-deliberacao-no-03---remanejamento-rodoanel-metro"
+    "probrumadinho:pb-deliberacao-n-20---atualizacoes",
+    "probrumadinho:pb-governanca-e-coordenacao---consad-clad-brasilia-2024",
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024"
    ]
   },
   {
@@ -114,11 +101,11 @@
    "pergunta": "O que a prestação de contas de 2023 informa sobre a bacia do Paraopeba?",
    "lacuna": false,
    "acertou": false,
-   "ms": 2247.879399999998,
+   "ms": 1568.6754999999976,
    "recuperados": [
-    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025"
+    "desastre:ati:aedas-41903",
+    "probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023",
+    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico"
    ]
   },
   {
@@ -127,11 +114,11 @@
    "pergunta": "Como a agricultura familiar é tratada nos relatórios de reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1860.0420000000013,
+   "ms": 1843.9733000000015,
    "recuperados": [
-    "tese:tese-2026-rompimento-rejeito-e-resistencia-monitoramento-p",
-    "probrumadinho:pb-acoes-de-reparacao-a-desastres-minerarios-em-mg-abcp-2024",
-    "probrumadinho:pb-acordo-judicial-de-reparacao-texto"
+    "tese:tese-2016-as-politicas-publicas-na-agricultura-familiar-na",
+    "tese:tese-2011-as-maos-que-alimentam-a-nacao-agricultura-famili",
+    "tese:tese-2020-anseios-e-expectativas-dos-alunos-rurais-do-curs"
    ]
   },
   {
@@ -140,37 +127,11 @@
    "pergunta": "O que o acordo diz sobre reassentamento de famílias e propriedades rurais?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1202.700499999999,
+   "ms": 1246.8607000000047,
    "recuperados": [
-    "tese:tese-2020-entre-o-dito-e-o-construido-analise-de-reassenta",
+    "tese:tese-2013-reterritorializacao-dos-atingidos-pela-barragem",
     "tese:tese-2017-uma-analise-comparativa-das-modalidades-de-reass",
-    "tese:tese-2013-reterritorializacao-dos-atingidos-pela-barragem"
-   ]
-  },
-  {
-   "id": 22,
-   "tema": "agua e luz",
-   "pergunta": "Qual é o papel do comitê gestor na execução dos projetos de segurança hídrica?",
-   "lacuna": false,
-   "acertou": false,
-   "ms": 1990.9650000000038,
-   "recuperados": [
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-deliberacao-no-01-do-conselho-superior",
-    "probrumadinho:pb-deliberacao-no-05---economias-e-ajustes"
-   ]
-  },
-  {
-   "id": 24,
-   "tema": "agua e luz",
-   "pergunta": "Como o abastecimento de água é restabelecido depois do rompimento?",
-   "lacuna": false,
-   "acertou": false,
-   "ms": 1038.5872000000018,
-   "recuperados": [
-    "paraopeba:fde9d8d8-f85d-4cb8-946c-2fab92450047",
-    "paraopeba:4e06a555-4059-4fd5-a7b0-983aa593a1e0",
-    "tese:tese-2018-vulnerabilidade-riparia-socioecologica-a-jusante"
+    "tese:tese-1999-a-cada-passo-um-estudo-de-redes-e-faccionalismo"
    ]
   },
   {
@@ -179,7 +140,7 @@
    "pergunta": "Qual é o papel da Defensoria Pública no acordo de reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 890.8530000000028,
+   "ms": 1421.323900000003,
    "recuperados": [
     "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
     "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024",
@@ -192,11 +153,11 @@
    "pergunta": "A quem a pessoa atingida pode recorrer para denunciar descumprimento do acordo?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1173.9936000000016,
+   "ms": 1594.1779000000024,
    "recuperados": [
-    "probrumadinho:pb-acoes-de-reparacao-a-desastres-minerarios-em-mg-abcp-2024",
     "tese:tese-2022-o-principio-da-precaucao-como-instrumento-de-tut",
-    "tese:tese-2024-pessoas-atingidas-pelo-desastre-criminoso-do-rio"
+    "oficial:lei-organica-diamantina",
+    "probrumadinho:pb-termo-convenio-r10-r13"
    ]
   },
   {
@@ -205,24 +166,11 @@
    "pergunta": "Qual é o papel do Ministério Público na fiscalização da reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1396.807799999995,
-   "recuperados": [
-    "tese:tese-2025-quantas-lagrimas-disfarcamos-sem-berro-a-luta-d",
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022"
-   ]
-  },
-  {
-   "id": 29,
-   "tema": "outros",
-   "pergunta": "Como o Decreto 49.121 organiza a estrutura do Estado para a reparação?",
-   "lacuna": false,
-   "acertou": false,
-   "ms": 1822.8098000000027,
+   "ms": 953.7202000000034,
    "recuperados": [
     "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024",
-    "probrumadinho:pb-praticas-ageis-no-setor-publico-revista-p2p-2024"
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
+    "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024"
    ]
   },
   {
@@ -231,11 +179,11 @@
    "pergunta": "Quais obrigações de transparência o acordo de reparação prevê?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1024.2014000000054,
+   "ms": 1271.6969000000026,
    "recuperados": [
     "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
     "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20",
-    "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20"
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023"
    ]
   }
  ],
@@ -246,7 +194,7 @@
    "pergunta": "O que o Plano Diretor de Belo Horizonte exige para o licenciamento ambiental de empreendimentos de impacto?",
    "lacuna": false,
    "acertou": true,
-   "ms": 2257.1928,
+   "ms": 2627.5427,
    "recuperados": [
     "oficial:lei-11181-pbh",
     "oficial:lei-11181-pbh",
@@ -259,7 +207,7 @@
    "pergunta": "Como o Plano Diretor de Diamantina trata as áreas de preservação permanente?",
    "lacuna": false,
    "acertou": true,
-   "ms": 186.5718999999999,
+   "ms": 844.5286999999998,
    "recuperados": [
     "oficial:lei-11181-pbh",
     "oficial:lei-complementar-103-diamantina",
@@ -272,11 +220,11 @@
    "pergunta": "Quais medidas de recuperação ambiental o Acordo Judicial de Reparação prevê para a bacia?",
    "lacuna": false,
    "acertou": false,
-   "ms": 3322.0049000000004,
+   "ms": 2394.3592,
    "recuperados": [
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
     "probrumadinho:pb-a-universalizacao-do-saneamento-basico-como-medida-compensatoria-clad-cuba-2023",
-    "probrumadinho:pb-deliberacao-no-24---atualizacoes",
-    "probrumadinho:pb-deliberacao-n-20---atualizacoes"
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022"
    ]
   },
   {
@@ -285,11 +233,11 @@
    "pergunta": "Como o saneamento básico é usado como medida compensatória do desastre?",
    "lacuna": false,
    "acertou": true,
-   "ms": 699.4749000000002,
+   "ms": 336.0828999999994,
    "recuperados": [
     "probrumadinho:pb-a-universalizacao-do-saneamento-basico-como-medida-compensatoria-clad-cuba-2023",
     "probrumadinho:pb-a-universalizacao-do-saneamento-basico-como-medida-compensatoria-clad-cuba-2023",
-    "probrumadinho:pb-decisao-judicial---conversao-saneamento"
+    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico"
    ]
   },
   {
@@ -298,11 +246,11 @@
    "pergunta": "O que a Lei Orgânica de Belo Horizonte diz sobre meio ambiente e saneamento?",
    "lacuna": false,
    "acertou": true,
-   "ms": 2228.2335000000003,
+   "ms": 1790.6688000000004,
    "recuperados": [
     "oficial:lei-organica-pbh",
     "oficial:lei-organica-pbh",
-    "oficial:lei-organica-diamantina"
+    "probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023"
    ]
   },
   {
@@ -310,12 +258,12 @@
    "tema": "rio doce",
    "pergunta": "Quais projetos de segurança hídrica são executados na bacia do Rio Doce?",
    "lacuna": false,
-   "acertou": false,
-   "ms": 1115.0205999999998,
+   "acertou": true,
+   "ms": 951.3365000000013,
    "recuperados": [
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2023",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2024",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024"
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024",
+    "desastre:cbh-doce:12f847c0e97e",
+    "desastre:cbh-doce:cad41bda937c"
    ]
   },
   {
@@ -324,11 +272,11 @@
    "pergunta": "Como os povos e comunidades tradicionais participam da reparação do Rio Doce?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1688.9217000000008,
+   "ms": 1151.6222000000016,
    "recuperados": [
-    "desastre:aedas-mariana:33596",
-    "desastre:aedas-mariana:33569",
-    "desastre:aedas-mariana:33584"
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
+    "probrumadinho:pb-participacao-popular-como-aliada-na-protecao-a-saude-clad-brasilia-2024",
+    "probrumadinho:pb-programa-de-transferencia-de-renda-clad-2023"
    ]
   },
   {
@@ -337,11 +285,11 @@
    "pergunta": "O que é o processo de consulta popular para povos e comunidades tradicionais?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1727.9755000000005,
+   "ms": 1247.0897999999997,
    "recuperados": [
     "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
     "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
-    "probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023"
+    "probrumadinho:pb-participacao-popular-como-aliada-na-protecao-a-saude-clad-brasilia-2024"
    ]
   },
   {
@@ -350,11 +298,11 @@
    "pergunta": "O que a pesquisa jurisprudencial do NACAB encontrou nas ações das pessoas atingidas por Brumadinho?",
    "lacuna": false,
    "acertou": true,
-   "ms": 3026.3458999999984,
+   "ms": 3299.6991,
    "recuperados": [
     "oficial:nacab-pesquisa-jurisprudencial-2023",
     "oficial:nacab-pesquisa-jurisprudencial-2023",
-    "probrumadinho:pb-programa-de-transferencia-de-renda-clad-2023"
+    "probrumadinho:pb-governanca-e-coordenacao-das-acoes-de-reparacao-clad-cuba-2023"
    ]
   },
   {
@@ -363,11 +311,11 @@
    "pergunta": "Como os comitês gestores foram criados dentro da reparação?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1791.268799999998,
+   "ms": 1649.9043000000001,
    "recuperados": [
-    "probrumadinho:pb-praticas-ageis-no-setor-publico-revista-p2p-2024",
-    "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024",
-    "probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024"
+    "probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024",
+    "probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024",
+    "probrumadinho:pb-praticas-ageis-no-setor-publico-revista-p2p-2024"
    ]
   },
   {
@@ -376,11 +324,11 @@
    "pergunta": "Quais obrigações o Acordo Judicial de Reparação impõe à Vale na bacia do Paraopeba?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1682.8829000000005,
+   "ms": 1650.499399999997,
    "recuperados": [
-    "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
-    "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
-    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023"
+    "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20",
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023",
+    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico"
    ]
   },
   {
@@ -389,11 +337,11 @@
    "pergunta": "Qual é o valor total previsto no acordo de reparação de Brumadinho?",
    "lacuna": false,
    "acertou": false,
-   "ms": 2544.6849999999977,
+   "ms": 1803.0357000000004,
    "recuperados": [
-    "probrumadinho:pb-deliberacao-no-03---remanejamento-rodoanel-metro",
-    "probrumadinho:pb-deliberacao-no-05---economias-e-ajustes",
-    "probrumadinho:pb-deliberacao-no-03---remanejamento-rodoanel-metro"
+    "probrumadinho:pb-deliberacao-n-20---atualizacoes",
+    "probrumadinho:pb-governanca-e-coordenacao---consad-clad-brasilia-2024",
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024"
    ]
   },
   {
@@ -402,11 +350,11 @@
    "pergunta": "Como o relatório semestral de 2025 mede a execução das medidas de reparação?",
    "lacuna": false,
    "acertou": true,
-   "ms": 2795.951100000002,
+   "ms": 1941.983900000003,
    "recuperados": [
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025",
+    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024",
     "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2025",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025"
+    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2025"
    ]
   },
   {
@@ -415,11 +363,11 @@
    "pergunta": "O que a prestação de contas de 2023 informa sobre a bacia do Paraopeba?",
    "lacuna": false,
    "acertou": false,
-   "ms": 2247.879399999998,
+   "ms": 1568.6754999999976,
    "recuperados": [
-    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-1o-sem2025"
+    "desastre:ati:aedas-41903",
+    "probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023",
+    "probrumadinho:pb-comunicado-compromitentes---saneamento-basico"
    ]
   },
   {
@@ -428,11 +376,11 @@
    "pergunta": "Quem fiscaliza o cumprimento do acordo de reparação do Paraopeba?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1275.4994000000006,
+   "ms": 980.769400000001,
    "recuperados": [
-    "probrumadinho:pb-acordo-judicial-de-reparacao-texto",
     "probrumadinho:pb-governanca-e-coordenacao---consad-clad-brasilia-2024",
-    "probrumadinho:pb-gestao-de-acoes-de-reparacao---seipex-mg-2024"
+    "probrumadinho:pb-acordo-judicial-de-reparacao-texto",
+    "desastre:ati:guaicuy-entenda-o-acordo-judicial"
    ]
   },
   {
@@ -441,10 +389,10 @@
    "pergunta": "Como a reparação garante a participação das comunidades atingidas nas decisões?",
    "lacuna": false,
    "acertou": true,
-   "ms": 2789.0698999999986,
+   "ms": 2056.2072000000007,
    "recuperados": [
     "probrumadinho:pb-processo-de-reparacao-socioambiental-e-participacao-popular-consad-2022",
-    "probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023",
+    "probrumadinho:pb-participacao-popular-como-aliada-na-protecao-a-saude-clad-brasilia-2024",
     "probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023"
    ]
   },
@@ -454,11 +402,11 @@
    "pergunta": "O que a Lei Orgânica de Belo Horizonte prevê sobre participação popular e direito à cidade?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1825.773500000003,
+   "ms": 1806.217700000001,
    "recuperados": [
     "oficial:lei-organica-pbh",
     "oficial:lei-organica-pbh",
-    "probrumadinho:pb-a-participacao-dos-pcts-nos-ershre-clad-cuba-2023"
+    "probrumadinho:pb-processo-de-reparacao-socioambiental-e-participacao-popular-consad-2022"
    ]
   },
   {
@@ -467,11 +415,11 @@
    "pergunta": "Como o processo de reparação pelo agente poluidor é descrito?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1856.4228000000003,
+   "ms": 1946.1176000000014,
    "recuperados": [
     "probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023",
     "probrumadinho:pb-o-processo-de-reparacao-pelo-agente-poluidor-clad-cuba-2023",
-    "probrumadinho:pb-consulta-popular---autenticacao-e-votacao-virtual-consad-2022"
+    "probrumadinho:pb-um-estudo-de-caso-sobre-a-consulta-popular-pdpp-natal-2022"
    ]
   },
   {
@@ -480,11 +428,11 @@
    "pergunta": "Como as comunidades quilombolas aparecem no Plano Diretor de Belo Horizonte?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1198.801400000004,
+   "ms": 1165.2239000000009,
    "recuperados": [
     "oficial:lei-11181-pbh",
     "oficial:lei-11181-pbh",
-    "probrumadinho:pb-relatorio-semestral-prestacao-de-contas-2o-sem2024"
+    "paraopeba:3936e285-0a6e-4e36-9f24-0137a3125000"
    ]
   },
   {
@@ -493,11 +441,11 @@
    "pergunta": "Como a agricultura familiar é tratada nos relatórios de reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1860.0420000000013,
+   "ms": 1843.9733000000015,
    "recuperados": [
-    "tese:tese-2026-rompimento-rejeito-e-resistencia-monitoramento-p",
-    "probrumadinho:pb-acoes-de-reparacao-a-desastres-minerarios-em-mg-abcp-2024",
-    "probrumadinho:pb-acordo-judicial-de-reparacao-texto"
+    "tese:tese-2016-as-politicas-publicas-na-agricultura-familiar-na",
+    "tese:tese-2011-as-maos-que-alimentam-a-nacao-agricultura-famili",
+    "tese:tese-2020-anseios-e-expectativas-dos-alunos-rurais-do-curs"
    ]
   },
   {
@@ -506,11 +454,11 @@
    "pergunta": "O que o acordo diz sobre reassentamento de famílias e propriedades rurais?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1202.700499999999,
+   "ms": 1246.8607000000047,
    "recuperados": [
-    "tese:tese-2020-entre-o-dito-e-o-construido-analise-de-reassenta",
+    "tese:tese-2013-reterritorializacao-dos-atingidos-pela-barragem",
     "tese:tese-2017-uma-analise-comparativa-das-modalidades-de-reass",
-    "tese:tese-2013-reterritorializacao-dos-atingidos-pela-barragem"
+    "tese:tese-1999-a-cada-passo-um-estudo-de-redes-e-faccionalismo"
    ]
   },
   {
@@ -518,12 +466,12 @@
    "tema": "agua e luz",
    "pergunta": "Qual é o papel do comitê gestor na execução dos projetos de segurança hídrica?",
    "lacuna": false,
-   "acertou": false,
-   "ms": 1990.9650000000038,
+   "acertou": true,
+   "ms": 1991.8894999999975,
    "recuperados": [
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-deliberacao-no-01-do-conselho-superior",
-    "probrumadinho:pb-deliberacao-no-05---economias-e-ajustes"
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024",
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024",
+    "probrumadinho:pb-governanca-e-coordenacao---consad-clad-brasilia-2024"
    ]
   },
   {
@@ -532,11 +480,11 @@
    "pergunta": "O que a Deliberação 22 atualiza sobre tarifas e serviços?",
    "lacuna": false,
    "acertou": true,
-   "ms": 1407.0499000000054,
+   "ms": 1017.5076000000045,
    "recuperados": [
+    "probrumadinho:pb-deliberacao-n-20---atualizacoes",
     "probrumadinho:pb-deliberacao-no-22---atualizacoes",
-    "probrumadinho:pb-deliberacao-no-22---atualizacoes",
-    "probrumadinho:pb-deliberacao-n-20---atualizacoes"
+    "probrumadinho:pb-deliberacao-n-17---fhemig"
    ]
   },
   {
@@ -544,12 +492,12 @@
    "tema": "agua e luz",
    "pergunta": "Como o abastecimento de água é restabelecido depois do rompimento?",
    "lacuna": false,
-   "acertou": false,
-   "ms": 1038.5872000000018,
+   "acertou": true,
+   "ms": 731.8458000000028,
    "recuperados": [
-    "paraopeba:fde9d8d8-f85d-4cb8-946c-2fab92450047",
-    "paraopeba:4e06a555-4059-4fd5-a7b0-983aa593a1e0",
-    "tese:tese-2018-vulnerabilidade-riparia-socioecologica-a-jusante"
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024",
+    "probrumadinho:pb-a-importancia-da-execucao-de-projetos-de-seguranca-hidrica-clad-brasilia-2024",
+    "probrumadinho:pb-acordo-judicial-de-reparacao-texto"
    ]
   },
   {
@@ -558,11 +506,11 @@
    "pergunta": "Quem paga a conta de energia elétrica das famílias atingidas?",
    "lacuna": true,
    "acertou": false,
-   "ms": 572.5200000000041,
+   "ms": 973.9487000000008,
    "recuperados": [
+    "tese:tese-2012-responsabilidade-social-corporativa-a-memoria-do",
     "tese:tese-1992-a-besta-fera-e-as-aguas-de-baixo-um-estudo-sobre",
-    "tese:tese-2024-acumulacao-por-despossessao-um-estudo-de-caso-da",
-    "tese:tese-2020-efeito-dos-barramentos-de-pequenas-centrais-hidr"
+    "tese:tese-2015-barragens-no-sul-do-brasil-analise-de-politicas"
    ]
   },
   {
@@ -571,7 +519,7 @@
    "pergunta": "Qual é o papel da Defensoria Pública no acordo de reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 890.8530000000028,
+   "ms": 1421.323900000003,
    "recuperados": [
     "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
     "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024",
@@ -584,11 +532,11 @@
    "pergunta": "A quem a pessoa atingida pode recorrer para denunciar descumprimento do acordo?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1173.9936000000016,
+   "ms": 1594.1779000000024,
    "recuperados": [
-    "probrumadinho:pb-acoes-de-reparacao-a-desastres-minerarios-em-mg-abcp-2024",
     "tese:tese-2022-o-principio-da-precaucao-como-instrumento-de-tut",
-    "tese:tese-2024-pessoas-atingidas-pelo-desastre-criminoso-do-rio"
+    "oficial:lei-organica-diamantina",
+    "probrumadinho:pb-termo-convenio-r10-r13"
    ]
   },
   {
@@ -597,11 +545,11 @@
    "pergunta": "Qual é o papel do Ministério Público na fiscalização da reparação?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1396.807799999995,
+   "ms": 953.7202000000034,
    "recuperados": [
-    "tese:tese-2025-quantas-lagrimas-disfarcamos-sem-berro-a-luta-d",
     "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022"
+    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
+    "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024"
    ]
   },
   {
@@ -609,12 +557,12 @@
    "tema": "outros",
    "pergunta": "Como o Decreto 49.121 organiza a estrutura do Estado para a reparação?",
    "lacuna": false,
-   "acertou": false,
-   "ms": 1822.8098000000027,
+   "acertou": true,
+   "ms": 2174.7618,
    "recuperados": [
-    "probrumadinho:pb-o-papel-do-estado-na-responsabilizacao-por-danos-ambientais-consad-2022",
-    "probrumadinho:pb-acordo-judicial---praticas-ageis-na-governanca-clad-brasilia-2024",
-    "probrumadinho:pb-praticas-ageis-no-setor-publico-revista-p2p-2024"
+    "probrumadinho:pb-decreto-no-49121---organizacao-seplag",
+    "probrumadinho:pb-decreto-no-49121---organizacao-seplag",
+    "probrumadinho:pb-a-criacao-de-comites-gestores-clad-brasilia-2024"
    ]
   },
   {
@@ -623,11 +571,11 @@
    "pergunta": "Quais obrigações de transparência o acordo de reparação prevê?",
    "lacuna": false,
    "acertou": false,
-   "ms": 1024.2014000000054,
+   "ms": 1271.6969000000026,
    "recuperados": [
     "probrumadinho:pb-projetos-de-demandas-das-comunidades-atingidas-clad-2023",
     "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20",
-    "probrumadinho:pb-comunicacao-publica-institucional-para-promocao-da-participacao-social-consad-20"
+    "probrumadinho:pb-processo-de-consulta-popular-para-pcts-clad-2023"
    ]
   }
  ]
