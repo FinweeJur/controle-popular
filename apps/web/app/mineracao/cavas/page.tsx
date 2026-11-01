@@ -405,7 +405,7 @@ export default function PaginaCavas() {
         </p>
         <p className="mt-2 text-text-soft">
           Plano completo, com as medições datadas:{" "}
-          <code>docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md</code>, seção Fase 3.
+          <code>docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md</code>, seção Fase 3.
         </p>
         <p className="mt-2 text-text-soft print:hidden">
           A tabela acima é vetorial e sai nítida na impressão; o botão de planilha baixa exatamente o que

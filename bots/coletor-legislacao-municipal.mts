@@ -2,7 +2,7 @@
 /**
  * Bot coletor de LEGISLAÇÃO MUNICIPAL — Plano A da biblioteca de leis.
  *
- * Plano: `docs/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1. Traz as
+ * Plano: `docs/historico/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1. Traz as
  * matérias legislativas das câmaras municipais com API aberta e grava JSON
  * versionado em `apps/web/data/legislacao-municipal/`, no shape de
  * `ambiental_legislacao` com `esfera='municipal'`. A lógica pura (parser,

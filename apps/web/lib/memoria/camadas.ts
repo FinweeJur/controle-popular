@@ -6,7 +6,7 @@
  * a escada (`resolverMemoria`) e mostra o degrau mais específico com
  * fonte: município → UF → região → país.
  *
- * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md`
  * (esquema, arquitetura em quatro camadas e ordem de preferência das
  * fontes) e AGENTS.md §7 (regra editorial) e §8 (as seis qualidades).
  * Todo fato aqui é consolidado, de livro didático, em registro reverente:

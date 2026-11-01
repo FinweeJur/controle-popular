@@ -6,7 +6,7 @@
  * a assinatura foi preservada — enquanto as páginas novas podem usar as
  * camadas e as guardas diretamente.
  *
- * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md` e
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md` e
  * AGENTS.md §7 e §8. A copy das seis cidades vive em `camadas.ts`
  * (`MEMORIA_CIDADES_LEGADO`); `lib/memoria-cidades.ts` apenas delega
  * para cá, para não duplicar texto nem permitir deriva.

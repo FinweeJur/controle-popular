@@ -38,40 +38,72 @@ export function guardarRolagemDescendentes(raiz: HTMLElement): () => void {
  *
  * O teto de altura é removido por uma batida de layout para o `scrollHeight`
  * refletir o conteúdo inteiro; a posição do painel e dos filhos roláveis é
- * recolocada antes de devolver. Versão aprimorada com restauração síncrona
- * e proteção contra interferências em listas roláveis internas.
+ * recolocada antes de devolver.
+ *
+ * Melhorado em 30/10/2026: adiciona timeout e rollback para garantir que
+ * a rolagem seja restaurada mesmo em casos de falha ou medições consecutivas.
  */
 export function medirTamanhoNatural(painel: HTMLElement): {
   largura: number;
   altura: number;
 } {
-  // Salvar estado de rolagem completo
-  const scrollTopAnterior = painel.scrollTop;
-  const restaurarDescendentes = guardarRolagemDescendentes(painel);
-  
-  // Salvar estilo atual
-  const maxAnterior = painel.style.maxHeight;
-  const overflowAnterior = painel.style.overflow;
-  
-  // Preparar medição sem perder rolagem
+  // Salva estado completo de rolagem antes da medição
+  const estadoRolagem = {
+    painel: {
+      scrollTop: painel.scrollTop,
+      scrollLeft: painel.scrollLeft,
+    },
+    maxAnterior: painel.style.maxHeight,
+    restaurarDescendentes: guardarRolagemDescendentes(painel),
+  };
+
+  // Remove o teto de altura para medição natural
   painel.style.maxHeight = "none";
-  painel.style.overflow = "visible"; // Evitar rolagem durante medição
   
-  // Medir tamanho natural
+  // Mede o tamanho natural
   const altura = painel.scrollHeight;
   const largura = painel.offsetWidth;
-  
-  // Restaurar estilo ANTES de restaurar rolagem para evitar pulos
-  painel.style.maxHeight = maxAnterior;
-  painel.style.overflow = overflowAnterior;
-  
-  // Restaurar rolagem de forma síncrona e segura
-  restaurarDescendentes();
-  
-  // Garantir que a rolagem do painel principal seja restaurada
-  if (painel.scrollTop !== scrollTopAnterior) {
-    painel.scrollTop = scrollTopAnterior;
+
+  // Função de rollback em caso de falha
+  const rollback = () => {
+    // Restaura maxHeight primeiro para evitar flicker
+    painel.style.maxHeight = estadoRolagem.maxAnterior;
+    // Restaura rolagem dos descendentes
+    estadoRolagem.restaurarDescendentes();
+    // Restaura rolagem do painel
+    painel.scrollTop = estadoRolagem.painel.scrollTop;
+    painel.scrollLeft = estadoRolagem.painel.scrollLeft;
+  };
+
+  try {
+    // Restaura maxHeight imediatamente após medição
+    painel.style.maxHeight = estadoRolagem.maxAnterior;
+    
+    // Restaura rolagem dos descendentes
+    estadoRolagem.restaurarDescendentes();
+    
+    // Garante que a rolagem do painel seja restaurada mesmo se houve mudança
+    if (painel.scrollTop !== estadoRolagem.painel.scrollTop) {
+      painel.scrollTop = estadoRolagem.painel.scrollTop;
+    }
+    if (painel.scrollLeft !== estadoRolagem.painel.scrollLeft) {
+      painel.scrollLeft = estadoRolagem.painel.scrollLeft;
+    }
+
+    // Timeout de segurança para garantir restauração final
+    setTimeout(() => {
+      if (painel.scrollTop !== estadoRolagem.painel.scrollTop) {
+        painel.scrollTop = estadoRolagem.painel.scrollTop;
+      }
+      if (painel.scrollLeft !== estadoRolagem.painel.scrollLeft) {
+        painel.scrollLeft = estadoRolagem.painel.scrollLeft;
+      }
+    }, 0);
+
+    return { largura, altura };
+  } catch (error) {
+    // Em caso de erro, usa rollback
+    rollback();
+    throw error;
   }
-  
-  return { largura, altura };
 }

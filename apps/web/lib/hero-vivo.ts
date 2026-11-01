@@ -3,12 +3,12 @@
  * (Terra e Territórios, Direitos em Movimento, Estado e Economia,
  * Central ONSA). A home ENTROU em 05/10/2026 e SAIU em 06/10/2026:
  * o dono devolveu a capa com o título "CONTROLE POPULAR" em cima da
- * foto da onça, entre as citações — ver `docs/planos/PLANO-HERO-VIVO.md`.
+ * foto da onça, entre as citações — ver `docs/historico/planos/PLANO-HERO-VIVO.md`.
  *
  * O que a abertura é: primeira dobra de tela cheia com o NOME da página
  * sobre um fundo animado (Vanta.js / three.js via WebGL), seguida do
  * conteúdo de sempre (epígrafe, resumo, foto). Decisão do dono em
- * 05/10/2026 — ver `docs/planos/PLANO-HERO-VIVO.md`.
+ * 05/10/2026 — ver `docs/historico/planos/PLANO-HERO-VIVO.md`.
  *
  * Nada de React, DOM ou Vanta aqui: é o dado e o cálculo que os
  * componentes consomem, isolado em `lib/` para ter teste unitário,

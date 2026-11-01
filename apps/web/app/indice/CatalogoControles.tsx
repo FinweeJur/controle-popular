@@ -9,7 +9,7 @@ import { Search, Filter, Sparkles } from "lucide-react";
  *
  * O QUE É: extraído de `Catalogo100PaginasClient.tsx` em 08/10/2026 para
  * enxugar o hotspot de saúde 2,17 (CodeScene, leitura de 07/10 em
- * `docs/planos/PENDENCIAS-07-10.md`). As classes, os textos e os atributos de
+ * `docs/historico/planos/PENDENCIAS-07-10.md`). As classes, os textos e os atributos de
  * acessibilidade são os MESMOS de antes — `role="tablist"` na lista de eixos,
  * `role="tab"` + `aria-selected` em cada aba e `aria-label` no campo de busca
  * continuam onde estavam.

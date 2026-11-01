@@ -23,7 +23,7 @@ Traz as matérias legislativas das câmaras com API aberta (SAPL) para
 `apps/web/data/legislacao-municipal/`, no shape de `ambiental_legislacao`
 com `esfera='municipal'`. Lê o `robots.txt` da câmara e respeita o
 `Crawl-delay` declarado. Plano:
-[`PLANO-BIBLIOTECA-LEGISLACAO.md`](../docs/planos/PLANO-BIBLIOTECA-LEGISLACAO.md).
+[`historico/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`](/docs/historico/planos/PLANO-BIBLIOTECA-LEGISLACAO.md).
 
 ```bash
 # Sondagem (não grava) — 1 página de Contagem/2026

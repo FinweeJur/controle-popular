@@ -3,7 +3,7 @@
  * municipal (`app/[municipio]/page.tsx`).
  *
  * Este arquivo agora é só uma PONTE. A copy e as guardas moraram aqui até
- * 29/09/2026; o plano `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md` levou o
+ * 29/09/2026; o plano `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md` levou o
  * conteúdo para o módulo `lib/memoria/`, com as quatro camadas (país,
  * região, UF e município). Manter uma segunda cópia aqui garantiria
  * deriva — a correção de um fato histórico teria de ser feita em dois

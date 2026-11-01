@@ -79,24 +79,40 @@ class ValidadorSimplificado:
     
     def gerar_relatorio(self):
         """Gera relatório de validação."""
+        self._imprimir_cabecalho()
+        self._imprimir_estatisticas()
+        self._imprimir_erros()
+        self._imprimir_alertas()
+        self._imprimir_conclusao()
+    
+    def _imprimir_cabecalho(self):
+        """Imprime o cabeçalho do relatório."""
         print("\n" + "="*60)
         print("RELATÓRIO DE VALIDAÇÃO (Simplificado)")
         print("="*60)
-        
+    
+    def _imprimir_estatisticas(self):
+        """Imprime estatísticas básicas."""
         print(f"\nEstados validados: {self.estados_validados}")
         print(f"Erros encontrados: {len(self.erros)}")
         print(f"Alertas: {len(self.alertas)}")
-        
+    
+    def _imprimir_erros(self):
+        """Imprime lista de erros."""
         if self.erros:
             print("\nERROS:")
             for erro in self.erros:
                 print(f"  [ERRO] {erro}")
-        
+    
+    def _imprimir_alertas(self):
+        """Imprime lista de alertas."""
         if self.alertas:
             print("\nALERTAS:")
             for alerta in self.alertas:
                 print(f"  [ALERTA] {alerta}")
-        
+    
+    def _imprimir_conclusao(self):
+        """Imprime conclusão do relatório."""
         if not self.erros:
             print("\n[OK] Validação básica concluída com sucesso!")
         else:

@@ -6,7 +6,7 @@
  * (`resolverMemoria`) e mostra o degrau mais específico com fonte; esta
  * camada é o degrau de baixo — o mais valioso e o mais caro de fechar.
  *
- * Fonte oficial das regras: `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md`
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md`
  * (F3 — piloto MG municipal; regra de vinculação e teste da vizinhança) e
  * AGENTS.md §7 (nada de insinuação; luto com registro próprio; lacuna é
  * informação) e §8 (as seis qualidades).

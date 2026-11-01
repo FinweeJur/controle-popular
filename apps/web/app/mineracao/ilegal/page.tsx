@@ -148,7 +148,7 @@ export default function PaginaMineracaoIlegal() {
         </p>
         <p className="mt-2 text-text-soft">
           Plano completo, com as medições datadas:{" "}
-          <code>docs/planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md</code>.
+          <code>docs/historico/planos/PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md</code>.
         </p>
         <p className="mt-2 text-text-soft print:hidden">
           A tabela é vetorial e sai nítida na impressão; o botão de planilha baixa exatamente o que está

@@ -1,7 +1,7 @@
 /**
  * ═══ LEGISLAÇÃO MUNICIPAL — DADO VERIFICADO (Sprint 4) ═══
  *
- * Plano: `docs/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 4.
+ * Plano: `docs/historico/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 4.
  *
  * REGRA DE OURO DESTA TABELA: só entra como `encontrado` o que foi
  * localizado em DOMÍNIO OFICIAL (.gov.br) na verificação de 2026-08-22.

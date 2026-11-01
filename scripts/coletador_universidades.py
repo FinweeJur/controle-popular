@@ -23,7 +23,6 @@ from typing import List, Dict, Any
 import requests
 from datetime import datetime
 import time
-import random
 
 
 class ColetorUniversidades:
@@ -59,76 +58,106 @@ class ColetorUniversidades:
     def _gerar_dados_mock(self) -> Dict[str, Any]:
         """Gera dados mock para demonstração do sistema."""
         return {
-            'AC': {
-                'instituicoes': [
-                    {
-                        'sigla': 'UFAC',
-                        'nome': 'Universidade Federal do Acre',
-                        'tipo': 'Universidade',
-                        'uf': 'AC',
-                        'municipios': ['Rio Branco'],
-                        'contatos': {
-                            'email': 'comunicacao@ufac.br',
-                            'telefone': '(68) 3221-3000',
-                            'endereco': 'Av. Brasil, 1000 - Rio Branco - AC, 69900-000'
-                        },
-                        'links': {
-                            'site': 'https://www.ufac.br',
-                            'lattes': 'https://lattes.cnpq.br/ufac'
-                        },
-                        'fonteUrl': 'https://cnpq.br',
-                        'dataAcesso': '2026-10-30'
-                    }
-                ],
-                'grupos': [
-                    {
-                        'id': 'AC001',
-                        'sigla': 'GP-AMAZONAC',
-                        'nome': 'Grupo de Pesquisa em Amazônia Ocidental',
-                        'areaConhecimento': {
-                            'codigo': '40700108',
-                            'nome': 'Ciências Ambientais',
-                            'grandeArea': 'Ciências Biológicas'
-                        },
-                        'grandeArea': 'Ciências Biológicas',
-                        'instituicao': 'UFAC',
-                        'unidade': 'ICEN',
-                        'coordenadores': [
-                            {
-                                'nome': 'Dr. Amazonino Silva',
-                                'lattes': 'http://lattes.cnpq.br/0000000000000001',
-                                'email': 'amazonino.silva@ufac.br'
-                            }
-                        ],
-                        'projetos': ['AC001'],
-                        'fonteUrl': 'https://lattes.cnpq.br/0000000000000001'
-                    }
-                ],
-                'projetos': [
-                    {
-                        'id': 'AC001',
-                        'sigla': 'AMAZONAC',
-                        'nome': 'Biodiversidade da Amazônia Ocidental',
-                        'areaConhecimento': {
-                            'codigo': '40700108',
-                            'nome': 'Ciências Ambientais',
-                            'grandeArea': 'Ciências Biológicas'
-                        },
-                        'grandeArea': 'Ciências Biológicas',
-                        'instituicao': 'UFAC',
-                        'unidade': 'ICEN',
-                        'coordenadores': [
-                            {
-                                'nome': 'Dr. Amazonino Silva',
-                                'lattes': 'http://lattes.cnpq.br/0000000000000001',
-                                'email': 'amazonino.silva@ufac.br'
-                            }
-                        ],
-                        'grupo': 'AC001',
-                        'fonteUrl': 'https://lattes.cnpq.br/0000000000000001'
-                    }
-                ]
-            }
+            'AC': self._criar_estado_mock('AC', 'Rio Branco', 'UFAC', 'Dr. Amazonino Silva'),
+            'AL': self._criar_estado_mock('AL', 'Maceió', 'UFAL', 'Dra. Alagoana Santos'),
+            'AP': self._criar_estado_mock('AP', 'Macapá', 'UFAP', 'Dr. Amapaense Lima'),
+            'AM': self._criar_estado_mock('AM', 'Manaus', 'UFAM', 'Dra. Amazonense Costa'),
+            'BA': self._criar_estado_mock('BA', 'Salvador', 'UFBA', 'Dr. Baiano Silva'),
+            'CE': self._criar_estado_mock('CE', 'Fortaleza', 'UFCE', 'Dra. Cearense Oliveira'),
+            'DF': self._criar_estado_mock('DF', 'Brasília', 'UNB', 'Dr. Brasiliense Santos'),
+            'ES': self._criar_estado_mock('ES', 'Vitória', 'UFES', 'Dra. Espírito-santense Lima'),
+            'GO': self._criar_estado_mock('GO', 'Goiânia', 'UFG', 'Dr. Goiano Oliveira'),
+            'MA': self._criar_estado_mock('MA', 'São Luís', 'UFMA', 'Dra. Maranhense Silva'),
+            'MT': self._criar_estado_mock('MT', 'Cuiabá', 'UFMT', 'Dr. Mato-grossense Lima'),
+            'MS': self._criar_estado_mock('MS', 'Campo Grande', 'UFMS', 'Dra. Mato-grossense-sul Santos'),
+            'MG': self._criar_estado_mock('MG', 'Belo Horizonte', 'UFMG', 'Dr. Mineiro Oliveira'),
+            'PA': self._criar_estado_mock('PA', 'Belém', 'UFPA', 'Dra. Paraense Silva'),
+            'PB': self._criar_estado_mock('PB', 'João Pessoa', 'UFPB', 'Dra. Paraibana Lima'),
+            'PR': self._criar_estado_mock('PR', 'Curitiba', 'UFPR', 'Dr. Paranaense Santos'),
+            'PE': self._criar_estado_mock('PE', 'Recife', 'UFPE', 'Dra. Pernambucana Oliveira'),
+            'PI': self._criar_estado_mock('PI', 'Teresina', 'UFPI', 'Dr. Piauiense Lima'),
+            'RJ': self._criar_estado_mock('RJ', 'Rio de Janeiro', 'UFRJ', 'Dra. Carioca Silva'),
+            'RN': self._criar_estado_mock('RN', 'Natal', 'UFRN', 'Dra. Potiguar Oliveira'),
+            'RS': self._criar_estado_mock('RS', 'Porto Alegre', 'UFRGS', 'Dra. Gaúcha Lima'),
+            'RO': self._criar_estado_mock('RO', 'Porto Velho', 'UFRO', 'Dra. Rondoniense Santos'),
+            'RR': self._criar_estado_mock('RR', 'Boa Vista', 'UFRR', 'Dra. Roraimense Oliveira'),
+            'SC': self._criar_estado_mock('SC', 'Florianópolis', 'UFSC', 'Dra. Catarinana Lima'),
+            'SP': self._criar_estado_mock('SP', 'São Paulo', 'USP', 'Dra. Paulista Silva'),
+            'SE': self._criar_estado_mock('SE', 'Aracaju', 'UFS', 'Dra. Sergipana Oliveira'),
+            'TO': self._criar_estado_mock('TO', 'Palmas', 'UFT', 'Dra. Tocantinense Lima')
+        }
+    
+    def _criar_estado_mock(self, uf: str, cidade: str, sigla_universidade: str, nome_coordenador: str) -> Dict[str, Any]:
+        """Cria dados mock para um estado específico."""
+        return {
+            'instituicoes': [
+                {
+                    'sigla': sigla_universidade,
+                    'nome': f'Universidade Federal de {uf}',
+                    'tipo': 'Universidade',
+                    'uf': uf,
+                    'municipios': [cidade],
+                    'contatos': {
+                        'email': f'comunicacao@{sigla_universidade.lower()}.br',
+                        'telefone': f'({self._ddd_estado(uf)}) 3221-3000',
+                        'endereco': f'Av. Principal, 1000 - {cidade} - {uf}, 69900-000'
+                    },
+                    'links': {
+                        'site': f'https://www.{sigla_universidade.lower()}.br',
+                        'lattes': f'https://lattes.cnpq.br/{sigla_universidade.lower()}'
+                    },
+                    'fonteUrl': 'https://cnpq.br',
+                    'dataAcesso': '2026-10-30'
+                }
+            ],
+            'grupos': [
+                {
+                    'id': f'{uf}001',
+                    'sigla': f'GP-{uf}AMAZON',
+                    'nome': f'Grupo de Pesquisa em Amazônia e {uf}',
+                    'areaConhecimento': {
+                        'codigo': '40700108',
+                        'nome': 'Ciências Ambientais',
+                        'grandeArea': 'Ciências Biológicas'
+                    },
+                    'grandeArea': 'Ciências Biológicas',
+                    'instituicao': sigla_universidade,
+                    'unidade': 'ICEN',
+                    'coordenadores': [
+                        {
+                            'nome': nome_coordenador,
+                            'lattes': f'http://lattes.cnpq.br/0000000000000001',
+                            'email': f'{nome_coordenador.lower().replace(" ", ".")}@{sigla_universidade.lower()}.br'
+                        }
+                    ],
+                    'projetos': [f'{uf}001'],
+                    'fonteUrl': f'https://lattes.cnpq.br/0000000000000001'
+                }
+            ],
+            'projetos': [
+                {
+                    'id': f'{uf}001',
+                    'sigla': f'AMAZON{uf}',
+                    'nome': f'Biodiversidade da {uf} e Região',
+                    'areaConhecimento': {
+                        'codigo': '40700108',
+                        'nome': 'Ciências Ambientais',
+                        'grandeArea': 'Ciências Biológicas'
+                    },
+                    'grandeArea': 'Ciências Biológicas',
+                    'instituicao': sigla_universidade,
+                    'unidade': 'ICEN',
+                    'coordenadores': [
+                        {
+                            'nome': nome_coordenador,
+                            'lattes': f'http://lattes.cnpq.br/0000000000000001',
+                            'email': f'{nome_coordenador.lower().replace(" ", ".")}@{sigla_universidade.lower()}.br'
+                        }
+                    ],
+                    'grupo': f'{uf}001',
+                    'fonteUrl': f'https://lattes.cnpq.br/0000000000000001'
+                }
+            ]
         }
     
     def coletar_estado(self, uf: str) -> Dict[str, Any]:
@@ -140,7 +169,7 @@ class ColetorUniversidades:
             dados = self.dados_mock[uf]
         else:
             # Geração automática de dados para estados não mockados
-            dados = self._gerar_dados_estado(uf)
+            dados = self._criar_estado_mock(uf, f'Cidade Principal {uf}', f'UF{uf}', f'Dr. {uf} Silva')
         
         # Adicionar metadados
         dados_completos = {
@@ -185,78 +214,7 @@ class ColetorUniversidades:
         
         return dados_completos
     
-    def _gerar_dados_estado(self, uf: str) -> Dict[str, Any]:
-        """Gera dados básicos para um estado."""
-        return {
-            'instituicoes': [
-                {
-                    'sigla': f'UF{uf}',
-                    'nome': f'Universidade Federal de {uf}',
-                    'tipo': 'Universidade',
-                    'uf': uf,
-                    'municipios': [f'Cidade Principal {uf}'],
-                    'contatos': {
-                        'email': f'comunicacao@uf{uf}.br',
-                        'telefone': f'({self._ddd_estado(uf)}) 3221-3000',
-                        'endereco': f'Av. Principal, 1000 - Cidade Principal {uf} - {uf}, 69900-000'
-                    },
-                    'links': {
-                        'site': f'https://www.uf{uf}.br',
-                        'lattes': f'https://lattes.cnpq.br/uf{uf}'
-                    },
-                    'fonteUrl': 'https://cnpq.br',
-                    'dataAcesso': '2026-10-30'
-                }
-            ],
-            'grupos': [
-                {
-                    'id': f'{uf}001',
-                    'sigla': f'GP-{uf}AMAZON',
-                    'nome': f'Grupo de Pesquisa em Amazônia e {uf}',
-                    'areaConhecimento': {
-                        'codigo': '40700108',
-                        'nome': 'Ciências Ambientais',
-                        'grandeArea': 'Ciências Biológicas'
-                    },
-                    'grandeArea': 'Ciências Biológicas',
-                    'instituicao': f'UF{uf}',
-                    'unidade': 'ICEN',
-                    'coordenadores': [
-                        {
-                            'nome': f'Dr. {uf} Silva',
-                            'lattes': f'http://lattes.cnpq.br/0000000000000001',
-                            'email': f'{uf}.silva@uf{uf}.br'
-                        }
-                    ],
-                    'projetos': [f'{uf}001'],
-                    'fonteUrl': f'https://lattes.cnpq.br/0000000000000001'
-                }
-            ],
-            'projetos': [
-                {
-                    'id': f'{uf}001',
-                    'sigla': f'AMAZON{uf}',
-                    'nome': f'Biodiversidade da {uf} e Região',
-                    'areaConhecimento': {
-                        'codigo': '40700108',
-                        'nome': 'Ciências Ambientais',
-                        'grandeArea': 'Ciências Biológicas'
-                    },
-                    'grandeArea': 'Ciências Biológicas',
-                    'instituicao': f'UF{uf}',
-                    'unidade': 'ICEN',
-                    'coordenadores': [
-                        {
-                            'nome': f'Dr. {uf} Silva',
-                            'lattes': f'http://lattes.cnpq.br/0000000000000001',
-                            'email': f'{uf}.silva@uf{uf}.br'
-                        }
-                    ],
-                    'grupo': f'{uf}001',
-                    'fonteUrl': f'https://lattes.cnpq.br/0000000000000001'
-                }
-            ]
-        }
+
     
     def _ddd_estado(self, uf: str) -> str:
         """Retorna DDD padrão para o estado."""
@@ -279,7 +237,7 @@ class ColetorUniversidades:
             try:
                 dados = self.coletar_estado(uf)
                 resultados[uf] = dados
-                time.sleep(random.uniform(1, 3))  # Respeitar rate limiting
+                time.sleep(2)  # Respeitar rate limiting
             except Exception as e:
                 print(f"Erro ao coletar dados para {uf}: {e}")
                 continue

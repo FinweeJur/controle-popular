@@ -344,7 +344,7 @@ export default function PaginaHistoria() {
           As <strong>pendências</strong> desta frente (fontes de mineração escravizada, engenhos de cana,
           fazendas de café, cartografia dos tratados e o link canônico das obras acadêmicas) estão
           registradas no plano:{" "}
-          <code>docs/planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md</code>, seção “Pendências a resolver”.
+          <code>docs/historico/planos/PLANO-HISTORIA-CAMADAS-GLOBO-3D.md</code>, seção “Pendências a resolver”.
         </p>
         <p className="mt-2 text-text-soft print:hidden">
           As tabelas são vetoriais e saem nítidas na impressão; cada botão de planilha baixa exatamente

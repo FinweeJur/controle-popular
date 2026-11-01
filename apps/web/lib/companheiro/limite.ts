@@ -10,7 +10,7 @@
  *
  * FONTE / REGRA DE NEGÓCIO
  * ------------------------
- * Contrato de segurança descrito em `docs/planos/PLANO-COMPANHEIRO-SEU-NONO.md`
+ * Contrato de segurança descrito em `docs/historico/planos/PLANO-COMPANHEIRO-SEU-NONO.md`
  * (§ Segurança): limite por IP lido de `ipDoCliente` (cabeçalho que a própria
  * Cloudflare seta na borda, `CF-Connecting-IP`), nunca de `x-forwarded-for` cru.
  *

@@ -1,6 +1,6 @@
 {
- "gerado_em": "2026-10-14T00:34:52+00:00",
- "plano": "docs/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
+ "gerado_em": "2026-10-18T22:48:46+00:00",
+ "plano": "docs/historico/planos/PLANO-GLOBO-CAVAS-MINERACAO.md (Fase 1)",
  "fontes": [
   "MapBiomas Monitor da Mineracao (WFS pto:processos_minerarios; base ANM/SIGMINE)",
   "MapBiomas mining_age (classe mineracao; dentro_sigmine=false na exclusao)",
@@ -15,7 +15,7 @@
  "ressalva": "calibracao interna; positivo = area autorizada, nao atividade em curso; nenhum campo pessoal (sem titular) por design",
  "total": {
   "positivo": 2035,
-  "negativo": 3098
+  "negativo": 3160
  },
  "itens": [
   {
@@ -81032,6 +81032,936 @@
    "nuvem": 0.1402,
    "hash": "b8dad0573b8c8c0833157790030af19db6cbaba8e76c6080586124658e1140dc",
    "arquivo": "b8dad0573b8c8c0833157790.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.200058,
+    -22.308599,
+    -49.158311,
+    -22.269971
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_141_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.2288,
+   "hash": "faf724beceebf61acf1c477ae36038cbe45569cb2e0642a0c3f2db0477a7a73b",
+   "arquivo": "faf724beceebf61acf1c477a.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.032764,
+    -21.753807,
+    -48.991181,
+    -21.715179
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_140_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.2309,
+   "hash": "5e6e5e480b89c483b1ae02a8c8a5773fdffb351364f7f3b6a9a9a0a1c894b48e",
+   "arquivo": "5e6e5e480b89c483b1ae02a8.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.295185,
+    -17.248702,
+    -48.254743,
+    -17.210075
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_135_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.2533,
+   "hash": "84dc056f3fca71bee98053e2fa6fdff4043ef720fe00ebdb8af1ca0ab0f68439",
+   "arquivo": "84dc056f3fca71bee98053e2.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.288387,
+    -17.3038,
+    -48.247933,
+    -17.265172
+   ],
+   "cena": "CBERS_4A_WPM_20260924_206_135_L2",
+   "data": "2026-09-24",
+   "nuvem": 0.2497,
+   "hash": "c0c8c6d6cd956039e5dfd6f275a67501de9fa83e2dd66af3c17b1305a17cc3f6",
+   "arquivo": "c0c8c6d6cd956039e5dfd6f2.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.676463,
+    -16.533619,
+    -43.636174,
+    -16.494991
+   ],
+   "cena": "CBERS_4A_WPM_20260718_201_134_L2",
+   "data": "2026-07-18",
+   "nuvem": 0.2361,
+   "hash": "017699ffad277fa1825d0d62f4047546490b0bef37df89f0877fb3752c970df7",
+   "arquivo": "017699ffad277fa1825d0d62.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.368743,
+    -22.724867,
+    -40.326871,
+    -22.68624
+   ],
+   "cena": "CBERS_4A_WPM_20260717_195_142_L2",
+   "data": "2026-07-17",
+   "nuvem": 0.1354,
+   "hash": "b78951a5f80b7b4cd3c2503cf4b780643e7fb362074f11963b7d061ed2c827d0",
+   "arquivo": "b78951a5f80b7b4cd3c2503c.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.527312,
+    -19.299601,
+    -50.486389,
+    -19.260974
+   ],
+   "cena": "CBERS_4A_WPM_20260714_208_137_L2",
+   "data": "2026-07-14",
+   "nuvem": 0.0665,
+   "hash": "6e48ec709ad3efaf296625968e18f4594043cdaace411f54b7cba30d8a79b737",
+   "arquivo": "6e48ec709ad3efaf29662596.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.888052,
+    -18.484765,
+    -49.847328,
+    -18.446138
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_136_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.2108,
+   "hash": "419598d4a176e6ced71c69dfa7f0069753d30e2d125213c23ee8bb3f5ebff27d",
+   "arquivo": "419598d4a176e6ced71c69df.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.831854,
+    -18.429745,
+    -49.791143,
+    -18.391118
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_136_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.0773,
+   "hash": "515a3a4a6042a9d69bff1ed6174c6bc6be9e60357b534eedf793b7db87c19fa6",
+   "arquivo": "515a3a4a6042a9d69bff1ed6.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.283104,
+    -17.354302,
+    -50.242639,
+    -17.315675
+   ],
+   "cena": "CBERS_4A_WPM_20260407_209_135_L2",
+   "data": "2026-04-07",
+   "nuvem": 0.1275,
+   "hash": "74550b3ebc7062ac652eca794e89f3bad32f05b7951d6a6706a62a3bb1e8592f",
+   "arquivo": "74550b3ebc7062ac652eca79.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.94391,
+    -21.164579,
+    -50.902495,
+    -21.125952
+   ],
+   "cena": "CBERS_4A_WPM_20260709_209_140_L2",
+   "data": "2026-07-09",
+   "nuvem": 0.0512,
+   "hash": "c8e71a7b4f9e3059e31d29a9ce6c7a2bf2841ed20ab5f9f68ae007630f3b8174",
+   "arquivo": "c8e71a7b4f9e3059e31d29a9.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.600378,
+    -15.854023,
+    -50.560227,
+    -15.815395
+   ],
+   "cena": "CBERS_4A_WPM_20260302_210_133_L2",
+   "data": "2026-03-02",
+   "nuvem": 0.2404,
+   "hash": "cea0f46cbf38b0eb1fe5ba445b281423c531df75d413f2127d3e71d30a8d0724",
+   "arquivo": "cea0f46cbf38b0eb1fe5ba44.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.407057,
+    -16.0336,
+    -50.36687,
+    -15.994973
+   ],
+   "cena": "CBERS_4A_WPM_20260302_210_133_L2",
+   "data": "2026-03-02",
+   "nuvem": 0.2076,
+   "hash": "5a1fd477645798797d618091b32e2d3522ed82758d1dde6ee9f74a11ee2e44bf",
+   "arquivo": "5a1fd477645798797d618091.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -45.055425,
+    -15.394762,
+    -45.015364,
+    -15.356135
+   ],
+   "cena": "CBERS_4A_WPM_20260306_203_132_L2",
+   "data": "2026-03-06",
+   "nuvem": 0.2005,
+   "hash": "8f1eba5fff08b5e92d358d534c1b5c4533dfdaece1e632fae3e7cd0f9eadb0a3",
+   "arquivo": "8f1eba5fff08b5e92d358d53.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.892106,
+    -17.648662,
+    -40.851575,
+    -17.610035
+   ],
+   "cena": "CBERS_4A_WPM_20260405_197_135_L2",
+   "data": "2026-04-05",
+   "nuvem": 0.2006,
+   "hash": "2f269869cfc9777d8877f32b7b41d4d0baabb3402191a7a6ec5979d813078b28",
+   "arquivo": "2f269869cfc9777d8877f32b.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.981672,
+    -16.326415,
+    -40.941425,
+    -16.287787
+   ],
+   "cena": "CBERS_4A_WPM_20260707_197_134_L2",
+   "data": "2026-07-07",
+   "nuvem": 0.0403,
+   "hash": "3fa10b33136f90064aac05cbad53a40855b5b986db2c93b219ace0228e45669c",
+   "arquivo": "3fa10b33136f90064aac05cb.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -41.068926,
+    -16.329544,
+    -41.028679,
+    -16.290917
+   ],
+   "cena": "CBERS_4A_WPM_20260807_197_134_L2",
+   "data": "2026-08-07",
+   "nuvem": 0.2231,
+   "hash": "8c99ef22820da2122e9b92dee2e2c8848e51820c8c6b521b9d04cef24779099c",
+   "arquivo": "8c99ef22820da2122e9b92de.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -41.518846,
+    -22.36386,
+    -41.477082,
+    -22.325232
+   ],
+   "cena": "CBERS_4A_WPM_20260611_196_141_L2",
+   "data": "2026-06-11",
+   "nuvem": 0.2071,
+   "hash": "425cf2ea119a18e795a782530f80f2f32f98870672b9f90b884436900c55b9a3",
+   "arquivo": "425cf2ea119a18e795a78253.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -47.284053,
+    -20.021696,
+    -47.242946,
+    -19.983069
+   ],
+   "cena": "CBERS_4A_WPM_20260124_205_138_L2",
+   "data": "2026-01-24",
+   "nuvem": 0.2381,
+   "hash": "606f8fa35fb9b0e3d76300994b78bdaeb8b8d8b1d10655bb76543be5047e6a08",
+   "arquivo": "606f8fa35fb9b0e3d7630099.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -47.886079,
+    -15.829573,
+    -47.845933,
+    -15.790945
+   ],
+   "cena": "CBERS_4A_WPM_20260724_206_133_L2",
+   "data": "2026-07-24",
+   "nuvem": 0.2212,
+   "hash": "dc260beb5ac3ead964a777229f5e189e68948ce90b71ce3721f8bfff8b67e1e7",
+   "arquivo": "dc260beb5ac3ead964a77722.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.279831,
+    -14.68905,
+    -50.239902,
+    -14.650423
+   ],
+   "cena": "CBERS_4A_WPM_20260709_209_132_L2",
+   "data": "2026-07-09",
+   "nuvem": 0.2132,
+   "hash": "2ffb1bb42c0dd5d0ec95209470c8560d6c5d840820ef1ca9bd1e113e6f35e87c",
+   "arquivo": "2ffb1bb42c0dd5d0ec952094.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.323754,
+    -16.226658,
+    -48.283528,
+    -16.18803
+   ],
+   "cena": "CBERS_4A_WPM_20260724_206_133_L2",
+   "data": "2026-07-24",
+   "nuvem": 0.211,
+   "hash": "6ccdd280f0c97dfec267460ddede69abe91ef18a3d37b6bdc6cb93d2bdcf56ab",
+   "arquivo": "6ccdd280f0c97dfec267460d.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -47.447141,
+    -17.059272,
+    -47.40674,
+    -17.020645
+   ],
+   "cena": "CBERS_4A_WPM_20260327_205_135_L2",
+   "data": "2026-03-27",
+   "nuvem": 0.2605,
+   "hash": "7ee11accd3ce8731eaae982332ec88020f8b8c3f87f5e58449bc0f157956ef91",
+   "arquivo": "7ee11accd3ce8731eaae9823.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.011693,
+    -21.186938,
+    -42.970271,
+    -21.14831
+   ],
+   "cena": "CBERS_4A_WPM_20260223_198_140_L2",
+   "data": "2026-02-23",
+   "nuvem": 0.2691,
+   "hash": "4eec427d32af23207bb273569ccc4327f6a1406d971b5c3bcd77b590c862205f",
+   "arquivo": "4eec427d32af23207bb27356.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.748172,
+    -14.660416,
+    -50.708248,
+    -14.621789
+   ],
+   "cena": "CBERS_4A_WPM_20251230_210_131_L2",
+   "data": "2025-12-30",
+   "nuvem": 0.1215,
+   "hash": "4901baa3ccdbec3f06addd8a69c09cc1888f01208eceff861e65c555d0f375a7",
+   "arquivo": "4901baa3ccdbec3f06addd8a.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -44.993313,
+    -16.287534,
+    -44.953075,
+    -16.248906
+   ],
+   "cena": "CBERS_4A_WPM_20260406_203_133_L2",
+   "data": "2026-04-06",
+   "nuvem": 0.204,
+   "hash": "8f6e188e8d732d9ca53602d9da21edeb9b5c3522421183d080b7db4cf8218e3c",
+   "arquivo": "8f6e188e8d732d9ca53602d9.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.430742,
+    -16.998514,
+    -48.390354,
+    -16.959886
+   ],
+   "cena": "CBERS_4A_WPM_20260214_206_134_L2",
+   "data": "2026-02-14",
+   "nuvem": 0.2369,
+   "hash": "6039cf6510ade096df0555da0b73a5110368f03cb2fe0a34529567dc5540d79a",
+   "arquivo": "6039cf6510ade096df0555da.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -45.707117,
+    -21.200702,
+    -45.665691,
+    -21.162074
+   ],
+   "cena": "CBERS_4A_WPM_20251208_202_140_L2",
+   "data": "2025-12-08",
+   "nuvem": 0.2783,
+   "hash": "8eaf1af6778a97d0ea8106cc381ec28e944b371af92fabccc067d55f724309bf",
+   "arquivo": "8eaf1af6778a97d0ea8106cc.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -45.02609,
+    -16.449934,
+    -44.985818,
+    -16.411307
+   ],
+   "cena": "CBERS_4A_WPM_20260306_203_134_L2",
+   "data": "2026-03-06",
+   "nuvem": 0.234,
+   "hash": "c6845d939ee7a1f0126aeb56a3f2a300a00988baea1e4ead7343c42c9afc0111",
+   "arquivo": "c6845d939ee7a1f0126aeb56.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.71974,
+    -16.793934,
+    -40.679396,
+    -16.755307
+   ],
+   "cena": "CBERS_4A_WPM_20260707_197_134_L2",
+   "data": "2026-07-07",
+   "nuvem": 0.1164,
+   "hash": "bf3b192600c111840fc263ea41548e05c9f10738af4b6dee9e6d6ce40845242d",
+   "arquivo": "bf3b192600c111840fc263ea.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -39.841522,
+    -20.548315,
+    -39.800275,
+    -20.509688
+   ],
+   "cena": "CBERS_4A_WPM_20260516_195_139_L2",
+   "data": "2026-05-16",
+   "nuvem": 0.347,
+   "hash": "2560a519e2b97cc2aa2dcdd8ebffe979239d147608ff148289b8485f9616a41b",
+   "arquivo": "2560a519e2b97cc2aa2dcdd8.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.102047,
+    -19.47418,
+    -40.061081,
+    -19.435553
+   ],
+   "cena": "CBERS_4A_WPM_20251212_195_138_L2",
+   "data": "2025-12-12",
+   "nuvem": 0.1506,
+   "hash": "fed61db6bcd2c7778009d550d6d17687d74f4c9ffda2dd1199bb89385f15a285",
+   "arquivo": "fed61db6bcd2c7778009d550.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.117294,
+    -18.553485,
+    -40.076553,
+    -18.514857
+   ],
+   "cena": "CBERS_4A_WPM_20260112_195_136_L2",
+   "data": "2026-01-12",
+   "nuvem": 0.3497,
+   "hash": "97e16c391aba26233b94959e0d3de2cabae7223f497517b3a70e557d0d940d80",
+   "arquivo": "97e16c391aba26233b94959e.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.494648,
+    -21.901864,
+    -50.453022,
+    -21.863236
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_141_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.335,
+   "hash": "68e9a6317a4f05ba23845ad9289ed89915668d710042c54b55ace5d273428c70",
+   "arquivo": "68e9a6317a4f05ba23845ad9.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -51.090184,
+    -18.96478,
+    -51.049344,
+    -18.926153
+   ],
+   "cena": "CBERS_4A_WPM_20260104_209_137_L2",
+   "data": "2026-01-04",
+   "nuvem": 0.314,
+   "hash": "e765a026ad4c5864b18c9e1e72ce0fdbae496b82b18df7abe259c6200e80c2de",
+   "arquivo": "e765a026ad4c5864b18c9e1e.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.422458,
+    -21.157804,
+    -46.381044,
+    -21.119177
+   ],
+   "cena": "CBERS_4A_WPM_20260406_203_140_L2",
+   "data": "2026-04-06",
+   "nuvem": 0.3007,
+   "hash": "036e38dcacab4934da1370273da8c82aee8ee5da742d60524e8937cb0d959212",
+   "arquivo": "036e38dcacab4934da137027.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -42.169955,
+    -19.219874,
+    -42.129052,
+    -19.181247
+   ],
+   "cena": "CBERS_4A_WPM_20260702_198_137_L2",
+   "data": "2026-07-02",
+   "nuvem": 0.2948,
+   "hash": "8f5df24890f21c9624a6562edd6ee55fe2a84782df63dedaf62ecf7d2e641da0",
+   "arquivo": "8f5df24890f21c9624a6562e.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -42.807241,
+    -18.527918,
+    -42.766507,
+    -18.489291
+   ],
+   "cena": "CBERS_4A_WPM_20260627_199_136_L2",
+   "data": "2026-06-27",
+   "nuvem": 0.284,
+   "hash": "96a3c02262cff308981230075c33be73a1715c076a73f00ea74f847fe9b81613",
+   "arquivo": "96a3c02262cff30898123007.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.916354,
+    -16.151553,
+    -46.876143,
+    -16.112926
+   ],
+   "cena": "CBERS_4A_WPM_20260427_205_133_L2",
+   "data": "2026-04-27",
+   "nuvem": 0.2936,
+   "hash": "4fde42a145e4e445c370d19ed4412e52cda3826883690bdce86baa1e4980fb9f",
+   "arquivo": "4fde42a145e4e445c370d19e.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -39.821443,
+    -18.025101,
+    -39.780827,
+    -17.986473
+   ],
+   "cena": "CBERS_4A_WPM_20260410_196_136_L2",
+   "data": "2026-04-10",
+   "nuvem": 0.2425,
+   "hash": "38c3a17eb082498cfeca8448c89fe0420028ece567f3967e1f2c8cb34992405b",
+   "arquivo": "38c3a17eb082498cfeca8448.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.134449,
+    -23.01323,
+    -46.092488,
+    -22.974603
+   ],
+   "cena": "CBERS_4A_WPM_20260108_202_142_L2",
+   "data": "2026-01-08",
+   "nuvem": 0.1822,
+   "hash": "ce8c26bbe8c0a63136d44d4feb987193bc6e8b794304175e6bfdb92ca883ba33",
+   "arquivo": "ce8c26bbe8c0a63136d44d4f.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -42.99584,
+    -18.102134,
+    -42.955206,
+    -18.063507
+   ],
+   "cena": "CBERS_4A_WPM_20260321_200_136_L2",
+   "data": "2026-03-21",
+   "nuvem": 0.1982,
+   "hash": "2700905734ddbf31bde6b2647223afdaef3feddc63b0d436b3feda49e07d7caa",
+   "arquivo": "2700905734ddbf31bde6b264.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.085581,
+    -15.564221,
+    -48.045487,
+    -15.525594
+   ],
+   "cena": "CBERS_4A_WPM_20260214_206_133_L2",
+   "data": "2026-02-14",
+   "nuvem": 0.1289,
+   "hash": "d6ef7ce0d8dbd237670a86fa8f8787ee099787aaa7c9330aeb84dd0b04a40515",
+   "arquivo": "d6ef7ce0d8dbd237670a86fa.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -45.126226,
+    -22.943041,
+    -45.084287,
+    -22.904414
+   ],
+   "cena": "CBERS_4A_WPM_20260718_201_142_L2",
+   "data": "2026-07-18",
+   "nuvem": 0.2463,
+   "hash": "063a8ced96f48cbdaf45185aca59734d23e7f510782fbd84dad6237f31646bf9",
+   "arquivo": "063a8ced96f48cbdaf45185a.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.207842,
+    -19.145214,
+    -40.166958,
+    -19.106586
+   ],
+   "cena": "CBERS_4A_WPM_20260410_196_137_L2",
+   "data": "2026-04-10",
+   "nuvem": 0.3466,
+   "hash": "df0a1bed3779036feaf92d53af7ee6b20d5c55eb5f2559d6391e20128753c765",
+   "arquivo": "df0a1bed3779036feaf92d53.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -41.825421,
+    -22.644819,
+    -41.783572,
+    -22.606192
+   ],
+   "cena": "CBERS_4A_WPM_20260712_196_142_L2",
+   "data": "2026-07-12",
+   "nuvem": 0.2952,
+   "hash": "a61a228190c2599b917e975f2f0acdf7987ea55111cab16cc6ce9f937d5675ca",
+   "arquivo": "a61a228190c2599b917e975f.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -42.204313,
+    -22.353627,
+    -42.162553,
+    -22.315
+   ],
+   "cena": "CBERS_4A_WPM_20260228_197_141_L2",
+   "data": "2026-02-28",
+   "nuvem": 0.3225,
+   "hash": "ad3c3c050a0eaed7f0b20873f456fc48e05b701d5b147829d23d8d583b44d143",
+   "arquivo": "ad3c3c050a0eaed7f0b20873.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -41.175441,
+    -22.181461,
+    -41.133732,
+    -22.142833
+   ],
+   "cena": "CBERS_4A_WPM_20260817_195_141_L2",
+   "data": "2026-08-17",
+   "nuvem": 0.3187,
+   "hash": "b7417f2855cc017280df1663397cd7d20e60ae8549013d702664de56e2d94ba0",
+   "arquivo": "b7417f2855cc017280df1663.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.827853,
+    -15.519049,
+    -46.787768,
+    -15.480422
+   ],
+   "cena": "CBERS_4A_WPM_20260427_205_133_L2",
+   "data": "2026-04-27",
+   "nuvem": 0.2892,
+   "hash": "906c83411f73bc4c3f791529da823a110f801d3b8cf242ababb3bb0b95a14754",
+   "arquivo": "906c83411f73bc4c3f791529.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.518094,
+    -20.997548,
+    -43.476724,
+    -20.95892
+   ],
+   "cena": "CBERS_4A_WPM_20251223_199_139_L2",
+   "data": "2025-12-23",
+   "nuvem": 0.3174,
+   "hash": "42e867c65f4cff4d765387700d6893d91a47c44fe76e6ee30918e43cd0667a88",
+   "arquivo": "42e867c65f4cff4d76538770.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.454925,
+    -20.461991,
+    -43.413702,
+    -20.423364
+   ],
+   "cena": "CBERS_4A_WPM_20251223_199_139_L2",
+   "data": "2025-12-23",
+   "nuvem": 0.3384,
+   "hash": "0592dbe83bb8fb7d4c55b742e58caf26059c4a34c58ca40e127b18b42b86a512",
+   "arquivo": "0592dbe83bb8fb7d4c55b742.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.630934,
+    -17.243973,
+    -43.590493,
+    -17.205346
+   ],
+   "cena": "CBERS_4A_WPM_20260416_201_135_L2",
+   "data": "2026-04-16",
+   "nuvem": 0.3349,
+   "hash": "7d2903c5933813c623907ea4726d3d25ea843c6d485ed1943afebe86156a960e",
+   "arquivo": "7d2903c5933813c623907ea4.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -48.380417,
+    -16.990808,
+    -48.340031,
+    -16.952181
+   ],
+   "cena": "CBERS_4A_WPM_20260214_206_134_L2",
+   "data": "2026-02-14",
+   "nuvem": 0.3153,
+   "hash": "0c81bb7ae0fdcf36864f4a3084f9f5346a5f8473603021e7c8c379be30f1de9a",
+   "arquivo": "0c81bb7ae0fdcf36864f4a30.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -44.839965,
+    -16.553639,
+    -44.799671,
+    -16.515012
+   ],
+   "cena": "CBERS_4A_WPM_20260306_203_134_L2",
+   "data": "2026-03-06",
+   "nuvem": 0.3215,
+   "hash": "2701076fcc196eef36358eca2654a9b98bf9b8fc05d2e1cd44471169021d1911",
+   "arquivo": "2701076fcc196eef36358eca.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -40.33979,
+    -22.398976,
+    -40.298016,
+    -22.360348
+   ],
+   "cena": "CBERS_4A_WPM_20260717_195_141_L2",
+   "data": "2026-07-17",
+   "nuvem": 0.0013,
+   "hash": "6f9b42c21f3de0cdeafa94d6d4edce62fd0f8e6d1435cc330c189d71f3829c03",
+   "arquivo": "6f9b42c21f3de0cdeafa94d6.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -49.846363,
+    -18.523071,
+    -49.80563,
+    -18.484443
+   ],
+   "cena": "CBERS_4A_WPM_20260109_208_136_L2",
+   "data": "2026-01-09",
+   "nuvem": 0.2655,
+   "hash": "69859487e5d43228844fce467292e79317ebe2738805713f7e22da8976a4563b",
+   "arquivo": "69859487e5d43228844fce46.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -46.780373,
+    -14.350075,
+    -46.740505,
+    -14.311448
+   ],
+   "cena": "CBERS_4A_WPM_20260327_205_131_L2",
+   "data": "2026-03-27",
+   "nuvem": 0.243,
+   "hash": "9d327a68b460bc71efcf57b32ef34b73c1c1d084eb6bf6b446c88f74a73b0eee",
+   "arquivo": "9d327a68b460bc71efcf57b3.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.225098,
+    -16.449688,
+    -43.184827,
+    -16.411061
+   ],
+   "cena": "CBERS_4A_WPM_20260118_200_134_L2",
+   "data": "2026-01-18",
+   "nuvem": 0.1616,
+   "hash": "8cb96281495fc4b56b945beaedc385d5af23c29014158d4314b8f4a2c80fc575",
+   "arquivo": "8cb96281495fc4b56b945bea.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -51.048395,
+    -19.328989,
+    -51.007465,
+    -19.290361
+   ],
+   "cena": "CBERS_4A_WPM_20260104_209_137_L2",
+   "data": "2026-01-04",
+   "nuvem": 0.1167,
+   "hash": "bdf8c73928b62a490cd863dd68e92c55d7782f6785d3f1110ad3e17fcf5b9840",
+   "arquivo": "bdf8c73928b62a490cd863dd.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -43.68061,
+    -20.30447,
+    -43.639429,
+    -20.265842
+   ],
+   "cena": "CBERS_4A_WPM_20251223_199_139_L2",
+   "data": "2025-12-23",
+   "nuvem": 0.3469,
+   "hash": "ce9271d1782f0adf791c5959abbdd67283f0785b0e46d1da38a1bc3d3134102f",
+   "arquivo": "ce9271d1782f0adf791c5959.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -50.503356,
+    -14.938101,
+    -50.463381,
+    -14.899473
+   ],
+   "cena": "CBERS_4A_WPM_20251230_210_132_L2",
+   "data": "2025-12-30",
+   "nuvem": 0.3288,
+   "hash": "305dcb87ec837eeca76309a3fd18326bc2a19fc3969d630d00066c3063d590be",
+   "arquivo": "305dcb87ec837eeca76309a3.jpg"
+  },
+  {
+   "tipo": "negativo",
+   "uf": "MG",
+   "bbox": [
+    -39.854513,
+    -16.614441,
+    -39.814207,
+    -16.575814
+   ],
+   "cena": "CBERS_4A_WPM_20260712_196_134_L2",
+   "data": "2026-07-12",
+   "nuvem": 0.1542,
+   "hash": "60dc43cf26e00ce5d2abeb574067a3139df11a13e827539df69a4bcad906056b",
+   "arquivo": "60dc43cf26e00ce5d2abeb57.jpg"
   }
  ]
 }
