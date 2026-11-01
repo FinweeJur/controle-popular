@@ -78,7 +78,10 @@ FONTES = [
         "id": "mab",
         "veiculo": "MAB — Movimento dos Atingidos por Barragens",
         "url": "https://mab.org.br/feed/",
-        "filtrar": True,
+        # Exceção aberta pelo dono em 31/10/2026: quer TODAS as notas do MAB,
+        # não só as que citam lugar. A triagem de obituário ("Nota de pesar:
+        # <nome>") continua valendo, porque é regra editorial, não de escopo.
+        "filtrar": False,
         "nota": "parte interessada no caso; publica a perspectiva das pessoas atingidas",
     },
     {

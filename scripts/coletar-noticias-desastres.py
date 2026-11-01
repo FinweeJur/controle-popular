@@ -142,6 +142,31 @@ BUSCAS = [
             "https://news.google.com/rss/search?q=atingidos+Bahia+barragem+OR+minera%C3%A7%C3%A3o+OR+reconhecimento&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         ),
     },
+    {
+        "id": "auxilio-emergencial",
+        "tema": "Auxílio emergencial",
+        "url": (
+            "https://news.google.com/rss/search?q=aux%C3%ADlio+emergencial+Brumadinho&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "atis",
+        "tema": "ATIs — assessorias técnicas",
+        "url": (
+            "https://news.google.com/rss/search?q=Guaicuy+OR+Nacab+OR+assessoria+t%C3%A9cnica+independente+atingidos&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        # Feed direto do movimento, não busca: o dono pediu TODAS as notas do
+        # MAB (31/10/2026). Por isso `sem_filtro`: a triagem de tema cortaria
+        # nota nacional que ele quer ver. O veículo vem fixo, porque o feed
+        # não traz <source>.
+        "id": "mab",
+        "tema": "MAB — notas e notícias",
+        "url": "https://mab.org.br/feed/",
+        "veiculo": "MAB — Movimento dos Atingidos por Barragens",
+        "sem_filtro": True,
+    },
 ]
 
 # Termo de LUGAR que amarra a noticia a um dos dois casos. Minusculas, sem acento.
@@ -217,15 +242,20 @@ def _texto(item, tag: str, padrao: str = "") -> str:
     return _limpar(item.findtext(tag) or "") or padrao
 
 
+def _passa_filtro(busca: dict, titulo: str, resumo: str | None) -> bool:
+    """Feed pedido inteiro (MAB) passa direto; o resto exige caso + tema."""
+    return bool(busca.get("sem_filtro")) or _relevante(titulo, resumo)
+
+
 def _item_do_feed(item, busca: dict) -> dict | None:
     """Converte um <item> do RSS no registro do radar; None quando não serve."""
     titulo, link = _texto(item, "title"), _texto(item, "link")
     if not titulo or not link:
         return None
     # Armadilha 1: o veiculo real esta no <source> do agregador.
-    veiculo = _texto(item, "source", "veículo não identificado")
+    veiculo = busca.get("veiculo") or _texto(item, "source", "veículo não identificado")
     resumo = _texto(item, "description") or None
-    if not _relevante(titulo, resumo):
+    if not _passa_filtro(busca, titulo, resumo):
         return None
     return {
         "titulo": titulo,
