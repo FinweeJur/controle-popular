@@ -24,6 +24,8 @@ const caso = (processo: string, over: Partial<CasoJurisprudencia> = {}): CasoJur
   valor: null,
   link: "",
   status: "aprovado",
+  explicacao: "",
+  exemplo: "",
   ...over,
 });
 
