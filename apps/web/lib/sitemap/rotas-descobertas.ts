@@ -223,6 +223,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/judiciario/vagas",
   "/judiciario/varas",
   "/jurisprudencia",
+  "/jurisprudencia/penal",
   "/laboratorio",
   "/laboratorio/arvore",
   "/memoria",
