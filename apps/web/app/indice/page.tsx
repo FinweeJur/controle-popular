@@ -260,42 +260,22 @@ const TOPICOS_SITUACOES: Topico[] = [
  * muda, o código virou dado: um array com as quatro variações e um
  * componente (`CartaoEixo`) que desenha qualquer uma delas.
  *
- * O comentário editorial do Eixo 2 (Tarifa Social apontar para a
+ * O comentário editorial do Eixo 1 (Tarifa Social apontar para a
  * notícia, e não para a rede de proteção) fica embaixo, na própria
  * entrada — decisão de conteúdo não se perde em refatoração.
+ *
+ * ORDEM (dono, 01/11/2026): EIXO 1 = Direitos em Movimento,
+ * EIXO 2 = Terra e Territórios. Era o inverso, contra o carrossel da home
+ * e `lib/eixos/`.
  */
 const EIXOS: EixoCartao[] = [
   {
     rotulo: "EIXO 1",
-    titulo: "Terra e Territórios",
-    descricao:
-      "203 Cidades Estratégicas, Bacias Paraopeba e Rio Doce (Brumadinho e Mariana), barragens, clima, licenciamento e Globo 3D.",
-    icone: <Globe className="h-5 w-5 text-emerald-500" />,
-    rodape: { href: "/terra-e-territorios", texto: "Explorar Eixo 1 Completo" },
-    classes: {
-      cartao:
-        "group flex flex-col justify-between rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-5 transition hover:border-emerald-500 hover:bg-emerald-500/10 shadow-xs",
-      selo: "rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-xs font-bold uppercase text-emerald-500",
-      titulo: "font-display text-lg font-bold text-text group-hover:text-emerald-500 transition-colors",
-      blocoSubfrentes: "mt-4 pt-3 border-t border-emerald-500/20 space-y-1.5",
-      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-emerald-400",
-      itemSubfrente: "font-medium text-emerald-300",
-      rodape: "mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500 hover:underline",
-    },
-    subfrentes: [
-      { href: "/funcaosocialterra/mapa", texto: "✦ Função Social & Globo 3D" },
-      { href: "/riodoce", texto: "✦ Rio Doce — caso e repactuação" },
-      { href: "/paraopeba", texto: "✦ Reparação Paraopeba (Brumadinho)" },
-      { href: "/ambiental/licenciamento", texto: "✦ Licenciamentos Ambientais (11 UFs)" },
-    ],
-  },
-  {
-    rotulo: "EIXO 2",
     titulo: "Direitos em Movimento",
     descricao:
       "Saúde (SUS), Educação (IDEB), Trabalho (CAGED), Conselhos de Direitos, LAI, canal de denúncia e assistência jurídica.",
     icone: <HeartHandshake className="h-5 w-5 text-alert" />,
-    rodape: { href: "/direitos-em-movimento", texto: "Explorar Eixo 2 Completo" },
+    rodape: { href: "/direitos-em-movimento", texto: "Explorar Eixo 1 Completo" },
     classes: {
       cartao:
         "group flex flex-col justify-between rounded-2xl border-2 border-alert/40 bg-alert/5 p-5 transition hover:border-alert hover:bg-alert/10 shadow-xs",
@@ -314,6 +294,30 @@ const EIXOS: EixoCartao[] = [
       // Ajuda continua na rede de proteção. Decisão de conteúdo, 08/2026.
       { href: "/noticias/tarifa-social-energia-agua-como-acessar", texto: "✦ Tarifa Social de Água & Luz" },
       { href: "/direitos-em-movimento/ajuda", texto: "✦ Onde Buscar Ajuda" },
+    ],
+  },
+  {
+    rotulo: "EIXO 2",
+    titulo: "Terra e Territórios",
+    descricao:
+      "203 Cidades Estratégicas, Bacias Paraopeba e Rio Doce (Brumadinho e Mariana), barragens, clima, licenciamento e Globo 3D.",
+    icone: <Globe className="h-5 w-5 text-emerald-500" />,
+    rodape: { href: "/terra-e-territorios", texto: "Explorar Eixo 2 Completo" },
+    classes: {
+      cartao:
+        "group flex flex-col justify-between rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-5 transition hover:border-emerald-500 hover:bg-emerald-500/10 shadow-xs",
+      selo: "rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-xs font-bold uppercase text-emerald-500",
+      titulo: "font-display text-lg font-bold text-text group-hover:text-emerald-500 transition-colors",
+      blocoSubfrentes: "mt-4 pt-3 border-t border-emerald-500/20 space-y-1.5",
+      rotuloSubfrentes: "text-xs font-bold uppercase tracking-wider text-emerald-400",
+      itemSubfrente: "font-medium text-emerald-300",
+      rodape: "mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-semibold text-emerald-500 hover:underline",
+    },
+    subfrentes: [
+      { href: "/funcaosocialterra/mapa", texto: "✦ Função Social & Globo 3D" },
+      { href: "/riodoce", texto: "✦ Rio Doce — caso e repactuação" },
+      { href: "/paraopeba", texto: "✦ Reparação Paraopeba (Brumadinho)" },
+      { href: "/ambiental/licenciamento", texto: "✦ Licenciamentos Ambientais (11 UFs)" },
     ],
   },
   {

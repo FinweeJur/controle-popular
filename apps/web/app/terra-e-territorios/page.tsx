@@ -13,7 +13,7 @@ import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
 import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
 
 export const metadata: Metadata = {
-  title: 'Terra e Territórios — Eixo 1 | Controle Popular',
+  title: 'Terra e Territórios - Eixo 2 | Controle Popular',
   description:
     'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e defesa dos biomas.',
 };
@@ -107,7 +107,7 @@ export default function TerraETerritoriosHub() {
           ))}
         </section>
 
-        {/* 1.1 DESTAQUES PRIORITÁRIOS DO EIXO 1 */}
+        {/* 2.1 DESTAQUES PRIORITÁRIOS DO EIXO 2 */}
         <section aria-label="Subfrentes prioritárias" className="mb-12 rounded-2xl border-2 border-emerald-500/30 bg-emerald-500/5 p-6 sm:p-8">
           <div className="mb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-500">✦ Portas Prioritárias</span>

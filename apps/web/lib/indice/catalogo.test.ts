@@ -308,13 +308,13 @@ const CASOS_POR_REGRA: ReadonlyArray<{
   {
     nome: "fallback-eixo-direitos",
     descricao: "eixo de Direitos sem tema específico",
-    pagina: pg({ eixo: "Eixo 2: Direitos em Movimento" }),
+    pagina: pg({ eixo: "Eixo 1: Direitos em Movimento" }),
     icone: Users,
   },
   {
     nome: "fallback-eixo-terra",
     descricao: "eixo de Terra sem tema específico",
-    pagina: pg({ eixo: "Eixo 1: Terra e Território" }),
+    pagina: pg({ eixo: "Eixo 2: Terra e Território" }),
     icone: Leaf,
   },
   {
@@ -336,10 +336,10 @@ const SINTETICAS: PaginaCatalogo[] = [
   ...CASOS_POR_REGRA.map((c) => c.pagina),
   pg({ id: "licitacoes" }),
   pg({ id: "mariana" }),
-  pg({ id: "saude", eixo: "Eixo 1: Terra e Território" }),
+  pg({ id: "saude", eixo: "Eixo 2: Terra e Território" }),
   pg({ titulo: "Agua potavel sem acento" }),
   pg({ id: "sigma-mineracao", titulo: "SIGMA" }),
-  pg({ titulo: "Salario minimo e CAGED", eixo: "Eixo 2: Direitos em Movimento" }),
+  pg({ titulo: "Salario minimo e CAGED", eixo: "Eixo 1: Direitos em Movimento" }),
   pg({ badge: "Judiciário" }),
   pg({ badge: "Cidades" }),
   pg({ id: "comunicabr-repasses", titulo: "Repasses da União" }),
@@ -381,7 +381,7 @@ describe("precedência da tabela (a ordem do array é a ordem do if antigo)", ()
   });
 
   it("tema específico vence o fallback por eixo", () => {
-    expect(obterIconeTema(pg({ id: "saude", eixo: "Eixo 1: Terra e Território" }))).toBe(HeartPulse);
+    expect(obterIconeTema(pg({ id: "saude", eixo: "Eixo 2: Terra e Território" }))).toBe(HeartPulse);
   });
 
   it("acento conta: 'agua' sem til NÃO casa a regra de água", () => {
@@ -414,8 +414,8 @@ describe("equivalência com a cadeia antiga", () => {
 
 describe("estilo do cartão por eixo", () => {
   it("Direitos usa alert, Terra usa esmeralda, Estado usa sky", () => {
-    expect(obterEstiloEixo("Eixo 2: Direitos em Movimento").card).toContain("border-alert/30");
-    expect(obterEstiloEixo("Eixo 1: Terra e Território").card).toContain("border-emerald-500/30");
+    expect(obterEstiloEixo("Eixo 1: Direitos em Movimento").card).toContain("border-alert/30");
+    expect(obterEstiloEixo("Eixo 2: Terra e Território").card).toContain("border-emerald-500/30");
     expect(obterEstiloEixo("Eixo 3: Estado e Economia").card).toContain("border-sky-500/30");
   });
 
@@ -449,7 +449,7 @@ describe("filtragem do catálogo", () => {
   });
 
   it("'Central' casa por CONTÉM, mesmo quando o eixo da página tem sufixo", () => {
-    const variada = [pg({ eixo: "Central ONSA & Ferramentas — Rádios" }), pg({ eixo: "Eixo 1: Terra e Território" })];
+    const variada = [pg({ eixo: "Central ONSA & Ferramentas — Rádios" }), pg({ eixo: "Eixo 2: Terra e Território" })];
     const resultado = filtrarPaginas(variada, { ...semFiltro, eixoAtivo: "Central ONSA & Ferramentas" });
     expect(resultado).toHaveLength(1);
     expect(resultado[0].eixo).toContain("Central");
@@ -457,9 +457,9 @@ describe("filtragem do catálogo", () => {
   });
 
   it("eixo exato filtra só aquele eixo; eixo inexistente devolve vazio", () => {
-    const terra = filtrarPaginas(reais, { ...semFiltro, eixoAtivo: "Eixo 1: Terra e Território" });
+    const terra = filtrarPaginas(reais, { ...semFiltro, eixoAtivo: "Eixo 2: Terra e Território" });
     expect(terra.length).toBeGreaterThan(0);
-    expect(terra.every((p) => p.eixo === "Eixo 1: Terra e Território")).toBe(true);
+    expect(terra.every((p) => p.eixo === "Eixo 2: Terra e Território")).toBe(true);
     expect(filtrarPaginas(reais, { ...semFiltro, eixoAtivo: "Eixo 9: Nao Existe" })).toEqual([]);
   });
 
@@ -493,14 +493,14 @@ describe("filtragem do catálogo", () => {
 
   it("destaque + eixo + termo são cortes encadeados (nenhum sobrescreve o outro)", () => {
     const lista = [
-      pg({ numero: 1, eixo: "Eixo 1: Terra e Território", titulo: "Água da bacia", destaque: true }),
-      pg({ numero: 2, eixo: "Eixo 1: Terra e Território", titulo: "Água da bacia", destaque: false }),
-      pg({ numero: 3, eixo: "Eixo 1: Terra e Território", titulo: "Outro assunto", destaque: true }),
-      pg({ numero: 4, eixo: "Eixo 2: Direitos em Movimento", titulo: "Água da bacia", destaque: true }),
+      pg({ numero: 1, eixo: "Eixo 2: Terra e Território", titulo: "Água da bacia", destaque: true }),
+      pg({ numero: 2, eixo: "Eixo 2: Terra e Território", titulo: "Água da bacia", destaque: false }),
+      pg({ numero: 3, eixo: "Eixo 2: Terra e Território", titulo: "Outro assunto", destaque: true }),
+      pg({ numero: 4, eixo: "Eixo 1: Direitos em Movimento", titulo: "Água da bacia", destaque: true }),
     ];
     const resultado = filtrarPaginas(lista, {
       termo: "água",
-      eixoAtivo: "Eixo 1: Terra e Território",
+      eixoAtivo: "Eixo 2: Terra e Território",
       apenasDestaques: true,
     });
     expect(resultado.map((p) => p.numero)).toEqual([1]);

@@ -15,8 +15,8 @@ import { useProximidadeLinha } from '@/app/components/react-bits/useProximidadeL
 
 /**
  * Estrutura do menu do portal organizada nos 4 Grandes Eixos Temáticos e Central:
- * - Eixo 1: Terra e Território (verde/esmeralda)
- * - Eixo 2: Direitos em Movimento (vermelho/coral)
+ * - Eixo 1: Direitos em Movimento (vermelho/coral)
+ * - Eixo 2: Terra e Território (verde/esmeralda)
  * - Eixo 3: Estado e Economia (azul/celeste)
  * - Eixo 4: Central ONSA & Ferramentas (laranja pequi)
  */

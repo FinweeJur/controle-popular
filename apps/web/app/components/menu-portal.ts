@@ -6,6 +6,14 @@ import { Activity, AlertTriangle, BarChart3, Bell, BookOpen, Briefcase, Building
  *
  * Separado do TopNav porque o CodeScene mede o componente e porque a dica de
  * duas linhas (`dica`) e conteudo editorial, revisavel fora do JSX.
+ *
+ * ORDEM DOS EIXOS (dono, 01/11/2026): EIXO 1 = Direitos em Movimento,
+ * EIXO 2 = Terra e Territorios, EIXO 3 = Estado e Economia, EIXO 4 = Central.
+ * Era o inverso entre terra e direitos — o menu dizia "EIXO 1: Terra" enquanto
+ * o carrossel da home e `lib/eixos/` ja numeravam Direitos como 1. A ordem do
+ * array E a ordem na tela (TopNav mapeia `SECOES_MENU` direto), entao mexer
+ * aqui mexe no indice: nao reordene sem trocar tambem o `badge` e a `dica`
+ * "Porta do Eixo N" da secao que mudou de lugar.
  */
 
 export interface ItemMenuLink {
@@ -33,8 +41,38 @@ export interface SecaoMenu {
 
 export const SECOES_MENU: SecaoMenu[] = [
   {
-    id: 'terra',
+    id: 'direitos',
     badge: 'EIXO 1',
+    titulo: 'Direitos em Movimento',
+    href: '/direitos-em-movimento',
+    icone: HeartHandshake,
+    cor: 'var(--cp-eixo-direitos)',
+    corClasse: 'text-alert hover:text-alert',
+    badgeClasse: 'bg-alert/10 text-alert border-alert/30',
+    links: [
+      { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake, dica: 'Porta do Eixo 1: saúde, educação, trabalho, conselhos, LAI, denúncia e assistência jurídica.' },
+      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true, dica: 'Seis décadas de lutas populares no campo e na cidade, com marcos, datas e fontes.' },
+      { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true, dica: 'Biblioteca de leis ambientais e de direitos: o que cada norma garante e como acioná-la.' },
+      { label: 'Direitos Globais', href: '/direitos-globais', icone: Globe, destaque: true, dica: 'Compare direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania.' },
+      { label: 'Direitos Comparados', href: '/direitos-comparados', icone: Scale, destaque: true, dica: 'Indicadores de direitos entre estados brasileiros: IDH, saúde, educação, justiça e finanças.' },
+      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true, dica: 'Indicadores do SUS por município: cobertura, equipes, internações e gastos em saúde.' },
+      // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
+      // com o passo a passo do desconto; a segunda é a rede de proteção.
+      { label: 'Tarifa Social (Água & Luz)', href: '/noticias/tarifa-social-energia-agua-como-acessar', icone: Newspaper, destaque: true, dica: 'Passo a passo para pedir o desconto da Tarifa Social de água e luz por estado e distribuidora.' },
+      { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true, dica: 'Rede de proteção: assistência jurídica gratuita, CRAS, CREAS e canais de apoio.' },
+      { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap, dica: 'Escolas e IDEB por município: infraestrutura, aprendizado e evolução das notas.' },
+      { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase, dica: 'Emprego formal pelo CAGED: admissões, demissões, salários e setores por cidade.' },
+      { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users, dica: '710 conselhos de direitos: saúde, meio ambiente, tutelares e mulheres, com contatos.' },
+      { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion, dica: 'Como pedir informação pública pela LAI: canais, prazos e o que fazer se negarem.' },
+      { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send, dica: 'Canais locais para denunciar violações ambientais, de direitos e de serviços públicos.' },
+      { label: 'Decisões de Acesso (LAI)', href: '/ambiental/decisoes-lai', icone: FileText, dica: 'Decisões sobre pedidos de acesso à informação: recursos, respostas e precedentes.' },
+      { label: 'Direitos Humanos & Relatórios', href: '/ambiental/direitos-humanos', icone: Shield, dica: 'Relatórios de direitos humanos e violações ligadas a desastres e conflitos no campo.' },
+      { label: 'Jurisprudência — desastres e direitos humanos', href: '/jurisprudencia', icone: Scale, destaque: true, dica: 'Acórdãos do TJMG, TJES e súmulas do STF, STJ e TST sobre desastres e direitos humanos, com filtros.' },
+    ],
+  },
+  {
+    id: 'terra',
+    badge: 'EIXO 2',
     titulo: 'Terra e Território',
     href: '/terra-e-territorios',
     icone: Globe,
@@ -42,7 +80,7 @@ export const SECOES_MENU: SecaoMenu[] = [
     corClasse: 'text-emerald-500 hover:text-emerald-400',
     badgeClasse: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
     links: [
-      { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe, dica: 'Porta do Eixo 1: reúne terra, territórios, barragens, clima e mineração. Explica como cada frente se conecta.' },
+      { label: 'Visão Geral do Eixo', href: '/terra-e-territorios', icone: Globe, dica: 'Porta do Eixo 2: reúne terra, territórios, barragens, clima e mineração. Explica como cada frente se conecta.' },
       { label: 'Função Social & Globo 3D', href: '/funcaosocialterra/mapa', icone: Globe, destaque: true, dica: 'Mapa em globo 3D com camadas de função social da terra, CAR, unidades de conservação e mineração.' },
       // O Rio Doce tem UMA porta no menu: o hub /riodoce. A execução
       // financeira do Acordo em MG continua em /ambiental/mariana, mas é
@@ -63,36 +101,6 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Decisões do COPAM', href: '/ambiental/copam', icone: Scale, dica: 'Decisões do Conselho de Política Ambiental de MG: pautas, deliberações e licenças aprovadas.' },
       { label: 'Canadá & Mineração TSX', href: '/canada', icone: Globe, dica: 'Mineração canadense na TSX: empresas, projetos no Brasil e ligações com desastres ambientais.' },
       { label: 'América Latina & Mineração', href: '/america-latina', icone: Globe, dica: 'Mineração na América Latina: projetos, empresas e conflitos socioambientais por país.' },
-    ],
-  },
-  {
-    id: 'direitos',
-    badge: 'EIXO 2',
-    titulo: 'Direitos em Movimento',
-    href: '/direitos-em-movimento',
-    icone: HeartHandshake,
-    cor: 'var(--cp-eixo-direitos)',
-    corClasse: 'text-alert hover:text-alert',
-    badgeClasse: 'bg-alert/10 text-alert border-alert/30',
-    links: [
-      { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake, dica: 'Porta do Eixo 2: saúde, educação, trabalho, conselhos, LAI, denúncia e assistência jurídica.' },
-      { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true, dica: 'Seis décadas de lutas populares no campo e na cidade, com marcos, datas e fontes.' },
-      { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true, dica: 'Biblioteca de leis ambientais e de direitos: o que cada norma garante e como acioná-la.' },
-      { label: 'Direitos Globais', href: '/direitos-globais', icone: Globe, destaque: true, dica: 'Compare direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania.' },
-      { label: 'Direitos Comparados', href: '/direitos-comparados', icone: Scale, destaque: true, dica: 'Indicadores de direitos entre estados brasileiros: IDH, saúde, educação, justiça e finanças.' },
-      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true, dica: 'Indicadores do SUS por município: cobertura, equipes, internações e gastos em saúde.' },
-      // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
-      // com o passo a passo do desconto; a segunda é a rede de proteção.
-      { label: 'Tarifa Social (Água & Luz)', href: '/noticias/tarifa-social-energia-agua-como-acessar', icone: Newspaper, destaque: true, dica: 'Passo a passo para pedir o desconto da Tarifa Social de água e luz por estado e distribuidora.' },
-      { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true, dica: 'Rede de proteção: assistência jurídica gratuita, CRAS, CREAS e canais de apoio.' },
-      { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap, dica: 'Escolas e IDEB por município: infraestrutura, aprendizado e evolução das notas.' },
-      { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase, dica: 'Emprego formal pelo CAGED: admissões, demissões, salários e setores por cidade.' },
-      { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users, dica: '710 conselhos de direitos: saúde, meio ambiente, tutelares e mulheres, com contatos.' },
-      { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion, dica: 'Como pedir informação pública pela LAI: canais, prazos e o que fazer se negarem.' },
-      { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send, dica: 'Canais locais para denunciar violações ambientais, de direitos e de serviços públicos.' },
-      { label: 'Decisões de Acesso (LAI)', href: '/ambiental/decisoes-lai', icone: FileText, dica: 'Decisões sobre pedidos de acesso à informação: recursos, respostas e precedentes.' },
-      { label: 'Direitos Humanos & Relatórios', href: '/ambiental/direitos-humanos', icone: Shield, dica: 'Relatórios de direitos humanos e violações ligadas a desastres e conflitos no campo.' },
-      { label: 'Jurisprudência — desastres e direitos humanos', href: '/jurisprudencia', icone: Scale, destaque: true, dica: 'Acórdãos do TJMG, TJES e súmulas do STF, STJ e TST sobre desastres e direitos humanos, com filtros.' },
     ],
   },
   {

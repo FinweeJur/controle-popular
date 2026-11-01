@@ -101,7 +101,10 @@ export function CardCarousel({
   className = '',
   eixos = DEFAULT_EIXOS,
 }: CardCarouselProps) {
-  const [activeIndex, setActiveIndex] = useState(1);
+  // Eixo 1 abre no centro (dono, 01/11/2026): a ordem canônica é
+  // 1 = Direitos em Movimento, 2 = Terra e Territórios. Antes a tela abria
+  // no eixo 2 e parecia que o 1 era o Terra.
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   // Pausa pedida pelo leitor, no botão à direita — independente do hover.
   const [pausado, setPausado] = useState(false);
