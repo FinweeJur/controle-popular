@@ -3,12 +3,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
- * ═══ Dica no hover — janelinha explicativa depois de 2 segundos ═══
+ * ═══ Dica no hover — janelinha explicativa depois de 1 segundo ═══
  *
  * Regra do dev, 29/09/2026: ao deixar o mouse PARADO sobre um botão,
- * link ou controle por 2 s, uma janelinha curta explica o que aquele
- * elemento faz. No teclado (Tab) a mesma dica aparece depois de 600 ms,
- * porque quem navega por teclado espera resposta imediata do foco.
+ * link ou controle por um instante, uma janelinha curta explica o que
+ * aquele elemento faz. Eram 2 s; o dono pediu 1 s em 01/11/2026 porque
+ * o índice da navbar parecia não responder — esperar 2 s com o mouse
+ * parado é tempo demais para quem só quer saber o que é a página.
+ * No teclado (Tab) a mesma dica aparece depois de 600 ms, porque quem
+ * navega por teclado espera resposta imediata do foco.
  *
  * POR QUE UM COMPONENTE SÓ, MONTADO NO LAYOUT RAIZ (`app/layout.tsx`):
  * o portal tem ~100 páginas e nenhuma delas precisa ser editada. O App
@@ -35,8 +38,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 /** Identidade da caixinha, usada no `aria-describedby` do alvo. */
 const ID_CAIXA = "cp-dica-caixa";
 
-/** Quanto tempo o mouse tem de ficar parado antes de aparecer. */
-const ATRASO_HOVER_MS = 2000;
+/** Quanto tempo o mouse tem de ficar parado antes de aparecer.
+ *  1 s (era 2 s): o dono mediu lentidão no índice da navbar em 01/11/2026. */
+const ATRASO_HOVER_MS = 1000;
 
 /** No teclado a resposta é quase imediata — o foco já é intencional. */
 const ATRASO_FOCO_MS = 600;

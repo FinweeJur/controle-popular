@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-10-31
+> **Última medição:** 2026-11-01
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [RADAR-HOTSPOTS.md](RADAR-HOTSPOTS.md), [RELATORIOS-AGENTES.md](RELATORIOS-AGENTES.md), [PRODUTO.md](../01-produto/PRODUTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [HANDOFF-22-09-COLETA-GUARA.md](/docs/historico/entregas/HANDOFF-22-09-COLETA-GUARA.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida, decisões, guara, azure, neon, heroku, codescene, tunnel, deploy, tts, shield, postgres, etl, coleta, dominio
@@ -314,6 +314,18 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
   para "Porto Coris"; falta a tabela de apelidos para religar os polígonos.
 
 ## Entregas recentes
+
+**01/11/2026 — Bolha da transcrição vira ícone e a dica do índice chega em 1 s:**
+
+- **Transcrição ao vivo (`TranscricaoRadio`).** Com a transcrição desligada, a
+  barra de ~387 px que tapava o texto no canto inferior esquerdo virou um
+  ícone de lápis com papel de 40 px. O painel atual ("Transcrição ao vivo" +
+  Ligar) abre no hover, no foco por teclado ou no toque, em `absolute` acima
+  do ícone — abrir não empurra o botão do play. Ligada a transcrição, o painel
+  fica aberto. O hover do ícone não abre mais o índice de estações junto
+  (`stopPropagation`).
+- **Dica no hover (`DicaHover`).** O atraso do mouse parado caiu de 2 s para
+  1 s; o teclado continua em 600 ms. Era o "demora demais" do índice da navbar.
 
 **31/10/2026 — Memória com país, universidades com lista e RAG reindexado:**
 

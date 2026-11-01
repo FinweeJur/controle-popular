@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, Pause, Play, Square, TriangleAlert } from "lucide-react";
+import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { Mic, NotebookPen, Pause, Play, Square, TriangleAlert } from "lucide-react";
 import type { EstacaoRadio } from "@/lib/radio/estacoes";
 import {
   OPCOES_INFERENCIA,
@@ -45,6 +45,13 @@ import {
  * - a bolha sobe sozinha; quem rola para trás pausa o acompanhamento e ganha o
  *   botão "voltar ao vivo".
  *
+ * Forma na tela (dono, 01/11/2026): com a transcrição DESLIGADA, a bolha vira
+ * um ícone pequeno de lápis com papel (36 px) — antes era uma barra de 352 px
+ * sempre aberta, tapando o texto da página no canto inferior esquerdo. O botão
+ * atual ("Transcrição ao vivo" + Ligar) só aparece ao passar o mouse, ao focar
+ * pelo teclado ou ao tocar no ícone. Ligada a transcrição, o painel fica aberto:
+ * quem ligou está lendo o texto, não navegando.
+ *
  * A parte de áudio/modelo mora em `lib/radio/transcricao.ts` desde 29/10/2026,
  * quando o CodeScene passou a cobrar a complexidade média deste arquivo.
  */
@@ -71,6 +78,13 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
   const [erro, setErro] = useState<string | null>(null);
   const [trechos, setTrechos] = useState<Trecho[]>([]);
   const [seguir, setSeguir] = useState(true);
+  // Forma compacta (dono, 01/11/2026): parada, a bolha é só um ícone; o painel
+  // abre no hover e no foco por CSS (`group-hover`/`group-focus-within`), sem
+  // trocar o ícone de lugar — trocar desmontaria o botão focado e o teclado
+  // perderia o fio. `fixado` é a saída do celular, onde não existe hover.
+  const [fixado, setFixado] = useState(false);
+  const ativa = status !== "inativo";
+  const painelFixo = ativa || fixado;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const hlsRef = useRef<{ destroy: () => void } | null>(null);
@@ -215,119 +229,208 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
     setSeguir(noFim);
   };
 
-  const rotuloStatus =
-    status === "carregando-modelo"
-      ? "Carregando modelo…"
-      : status === "ouvindo"
-        ? "Transcrevendo ao vivo"
-        : status === "erro"
-          ? "Falhou"
-          : "Transcrição ao vivo";
+  const rotuloStatus = ROTULOS[status];
 
   return (
-    <div className="mb-2 w-[min(calc(100vw-2rem),22rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl">
-      <div className="flex items-center justify-between gap-2 border-b border-border bg-surface-2 px-3 py-2">
-        <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
-          <Mic size={14} aria-hidden="true" className="text-primary" />
-          {rotuloStatus}
-        </p>
-        <div className="flex items-center gap-1">
-          {status === "inativo" || status === "erro" ? (
-            <button
-              type="button"
-              onClick={() => void ligar()}
-              className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[0.75rem] font-semibold text-white hover:opacity-90"
-              title="Roda no seu aparelho: o áudio não sai daqui"
-            >
-              <Play size={11} aria-hidden="true" /> Ligar
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={parar}
-              className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[0.75rem] font-semibold text-text-soft hover:border-primary hover:text-primary"
-            >
-              <Square size={11} aria-hidden="true" /> Parar
-            </button>
-          )}
+    // `group`: o hover no ícone (ou no próprio painel) mantém o painel aberto.
+    // O painel mora em `absolute bottom-full`, então abrir NÃO empurra o botão
+    // do play para cima — o ícone fica no lugar e o painel cresce para cima.
+    // `stopPropagation` no enter/foco: este widget vive DENTRO do grupo do
+    // rádio (`PlayerRadio`), que abre o índice de estações no mesmo gesto.
+    // Sem o corte, passar o mouse no ícone abria dois painéis empilhados.
+    <div
+      className="group relative mb-2 flex flex-col items-start"
+      onMouseEnter={(ev) => ev.stopPropagation()}
+      onFocus={(ev) => ev.stopPropagation()}
+    >
+      <BotaoIcone aberto={painelFixo} aoAlternar={() => setFixado((v) => !v)} />
+
+      <div
+        className={`${painelFixo ? "block" : "hidden group-hover:block group-focus-within:block"} absolute bottom-full left-0 mb-1 w-[min(calc(100vw-2rem),22rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl`}
+      >
+        <Cabecalho
+          rotulo={rotuloStatus}
+          status={status}
+          aberta={aberta}
+          aoLigar={() => void ligar()}
+          aoParar={parar}
+          aoAlternarCorpo={() => {
+            // Recolher com a transcrição desligada esconde o painel inteiro:
+            // é a saída no celular, onde não existe hover.
+            if (aberta && !ativa) setFixado(false);
+            setAberta((v) => !v);
+          }}
+        />
+
+        {aberta && (
+          <Corpo
+            status={status}
+            erro={erro}
+            trechos={trechos}
+            seguir={seguir}
+            scrollerRef={scrollerRef}
+            aoRolar={aoRolar}
+            aoVoltarAoVivo={() => {
+              setSeguir(true);
+              const el = scrollerRef.current;
+              if (el) el.scrollTop = el.scrollHeight;
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** Rótulo do estado, num lugar só (era um encadeado de ternários no render). */
+const ROTULOS: Record<Status, string> = {
+  inativo: "Transcrição ao vivo",
+  "carregando-modelo": "Carregando modelo…",
+  ouvindo: "Transcrevendo ao vivo",
+  erro: "Falhou",
+};
+
+/** Ícone compacto da forma parada: lápis com papel (pedido do dono).
+ *  Só o círculo de 36 px fica na tela; o painel abre por CSS no hover. */
+function BotaoIcone({ aberto, aoAlternar }: { aberto: boolean; aoAlternar: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={aoAlternar}
+      aria-expanded={aberto}
+      aria-label="Transcrição ao vivo da rádio"
+      title="Transcrição ao vivo — passe o mouse para abrir; roda no seu aparelho"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/95 text-text-soft shadow-lg backdrop-blur transition-colors hover:border-primary hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      <NotebookPen size={16} aria-hidden="true" />
+    </button>
+  );
+}
+
+interface CabecalhoProps {
+  rotulo: string;
+  status: Status;
+  aberta: boolean;
+  aoLigar: () => void;
+  aoParar: () => void;
+  aoAlternarCorpo: () => void;
+}
+
+/** Faixa de cima do painel: estado, Ligar/Parar e o chevron do corpo. */
+function Cabecalho({ rotulo, status, aberta, aoLigar, aoParar, aoAlternarCorpo }: CabecalhoProps) {
+  const inativo = status === "inativo" || status === "erro";
+  return (
+    <div className="flex items-center justify-between gap-2 border-b border-border bg-surface-2 px-3 py-2">
+      <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
+        <Mic size={14} aria-hidden="true" className="text-primary" />
+        {rotulo}
+      </p>
+      <div className="flex items-center gap-1">
+        {inativo ? (
           <button
             type="button"
-            onClick={() => setAberta((v) => !v)}
-            aria-expanded={aberta}
-            aria-label={aberta ? "Recolher transcrição" : "Abrir transcrição"}
-            className="rounded-md p-1 text-text-soft hover:text-primary"
+            onClick={aoLigar}
+            className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[0.75rem] font-semibold text-white hover:opacity-90"
+            title="Roda no seu aparelho: o áudio não sai daqui"
           >
-            <Play
-              size={12}
-              aria-hidden="true"
-              className={aberta ? "rotate-90 transition-transform" : "transition-transform"}
-            />
+            <Play size={11} aria-hidden="true" /> Ligar
           </button>
-        </div>
+        ) : (
+          <button
+            type="button"
+            onClick={aoParar}
+            className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[0.75rem] font-semibold text-text-soft hover:border-primary hover:text-primary"
+          >
+            <Square size={11} aria-hidden="true" /> Parar
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={aoAlternarCorpo}
+          aria-expanded={aberta}
+          aria-label={aberta ? "Recolher transcrição" : "Abrir transcrição"}
+          className="rounded-md p-1 text-text-soft hover:text-primary"
+        >
+          <Play
+            size={12}
+            aria-hidden="true"
+            className={aberta ? "rotate-90 transition-transform" : "transition-transform"}
+          />
+        </button>
       </div>
+    </div>
+  );
+}
 
-      {aberta && (
-        <div className="p-2">
-          {status === "inativo" && (
-            <p className="px-1 py-2 text-xs leading-relaxed text-text-soft">
-              Ligue para ver o texto do que a rádio fala. A conversão roda no seu
-              aparelho, sem enviar o áudio para fora — a primeira vez baixa o
-              modelo (cerca de 250 MB). É transcrição de fala: música pode sair
-              imprecisa.
-            </p>
-          )}
-          {status === "erro" && (
-            <p className="flex items-start gap-1.5 px-1 py-2 text-xs text-alert">
-              <TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
-              {erro ?? "Não foi possível transcrever esta estação."}
-            </p>
-          )}
+interface CorpoProps {
+  status: Status;
+  erro: string | null;
+  trechos: Trecho[];
+  seguir: boolean;
+  scrollerRef: RefObject<HTMLDivElement | null>;
+  aoRolar: () => void;
+  aoVoltarAoVivo: () => void;
+}
 
-          {(status === "carregando-modelo" || status === "ouvindo") && (
-            <>
-              <div
-                ref={scrollerRef}
-                onScroll={aoRolar}
-                className="max-h-56 overflow-y-auto rounded-lg border border-border/60 bg-surface-2/40 p-2 text-sm leading-relaxed text-text"
-                aria-live="polite"
+/** Miolo do painel: explicação, erro ou o texto que a rádio falou. */
+function Corpo({ status, erro, trechos, seguir, scrollerRef, aoRolar, aoVoltarAoVivo }: CorpoProps) {
+  const transcrevendo = status === "carregando-modelo" || status === "ouvindo";
+  return (
+    <div className="p-2">
+      {status === "inativo" && (
+        <p className="px-1 py-2 text-xs leading-relaxed text-text-soft">
+          Ligue para ver o texto do que a rádio fala. A conversão roda no seu
+          aparelho, sem enviar o áudio para fora — a primeira vez baixa o
+          modelo (cerca de 250 MB). É transcrição de fala: música pode sair
+          imprecisa.
+        </p>
+      )}
+      {status === "erro" && (
+        <p className="flex items-start gap-1.5 px-1 py-2 text-xs text-alert">
+          <TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
+          {erro ?? "Não foi possível transcrever esta estação."}
+        </p>
+      )}
+
+      {transcrevendo && (
+        <>
+          <div
+            ref={scrollerRef}
+            onScroll={aoRolar}
+            className="max-h-56 overflow-y-auto rounded-lg border border-border/60 bg-surface-2/40 p-2 text-sm leading-relaxed text-text"
+            aria-live="polite"
+          >
+            {trechos.length === 0 ? (
+              <p className="text-xs text-text-soft">
+                {status === "carregando-modelo"
+                  ? "Preparando o modelo no seu aparelho…"
+                  : "Ouvindo… o texto aparece a cada poucos segundos."}
+              </p>
+            ) : (
+              trechos.map((t) => (
+                <p key={t.id} className="mb-1.5">
+                  {t.texto}
+                </p>
+              ))
+            )}
+          </div>
+
+          <div className="mt-2 flex items-center justify-between gap-2">
+            <span className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.75rem] text-text-soft">
+              <TriangleAlert size={10} aria-hidden="true" />
+              gerado por máquina — pode errar
+            </span>
+            {!seguir && (
+              <button
+                type="button"
+                onClick={aoVoltarAoVivo}
+                className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[0.75rem] font-semibold text-primary hover:bg-primary/20"
               >
-                {trechos.length === 0 ? (
-                  <p className="text-xs text-text-soft">
-                    {status === "carregando-modelo"
-                      ? "Preparando o modelo no seu aparelho…"
-                      : "Ouvindo… o texto aparece a cada poucos segundos."}
-                  </p>
-                ) : (
-                  trechos.map((t) => (
-                    <p key={t.id} className="mb-1.5">
-                      {t.texto}
-                    </p>
-                  ))
-                )}
-              </div>
-
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.75rem] text-text-soft">
-                  <TriangleAlert size={10} aria-hidden="true" />
-                  gerado por máquina — pode errar
-                </span>
-                {!seguir && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSeguir(true);
-                      const el = scrollerRef.current;
-                      if (el) el.scrollTop = el.scrollHeight;
-                    }}
-                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[0.75rem] font-semibold text-primary hover:bg-primary/20"
-                  >
-                    <Pause size={11} aria-hidden="true" /> voltar ao vivo
-                  </button>
-                )}
-              </div>
-            </>
-          )}
-        </div>
+                <Pause size={11} aria-hidden="true" /> voltar ao vivo
+              </button>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
