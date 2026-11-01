@@ -1,6 +1,6 @@
 {
- "gerado_em": "2026-09-16T05:30:11.852315+00:00",
- "janela_dias": 45,
+ "gerado_em": "2026-11-01T02:47:40.000662+00:00",
+ "janela_dias": 60,
  "fontes": [
   {
    "id": "mab",
@@ -36,211 +36,315 @@
  "lacuna_conhecida": "TJMG e MPMG não entram: os endereços de RSS dos dois respondiam HTTP 404 em 14/08/2026. Decisão judicial chega aqui pela imprensa ou pelas ATIs, com o atraso delas.",
  "itens": [
   {
-   "titulo": "MPMG ouve pessoas atingidas em encontro com movimentos sociais e sociedade civil organizada",
-   "link": "https://guaicuy.org.br/mpmg-ouve-pessoas-atingidas-em-encontro-com-movimentos-sociais/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-11T18:04:17+00:00",
+   "titulo": "Memorial Brumadinho lança websérie 'Ainda é Agora' neste sábado (31), em Belo Horizonte - Diário do Comércio",
+   "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1ZYkE5VGZxc0xjWnVwNzVTeXdncWJOOUZqa1N2aTBfemU3OHF5UU8zemN2eDRUdzgwQ1U5bjFXcERYYXZRV01vSTdmeDhPS2VlUGVXbWZ2bkxfNGJBMUluNlBZcUpQanJTOEVpdlZZbmJ4a0c2ZDlrZ204Vjg?oc=5",
+   "veiculo": "Diário do Comércio",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-30T19:48:00+00:00",
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho",
-   "link": "https://guaicuy.org.br/problemas-estruturas-vale-brumadinho/",
+   "titulo": "Instituições de Justiça se manifestam sobre composição do Conselho Inter-regional do Anexo 1.1",
+   "link": "https://guaicuy.org.br/ijs-se-manifestam-sobre-conselho-inter-regional/",
    "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
    "fonte_id": "guaicuy",
-   "data": "2026-09-11T17:04:09+00:00",
+   "data": "2026-10-30T18:05:09+00:00",
    "ato_de_autoridade": false
   },
   {
-   "titulo": "MPMG e DPMG realizam reunião virtual sobre o andamento do Anexo I.1 na Bacia do Paraopeba, com apresentação da Entidade Gestora",
-   "link": "https://adaibrasil.org.br/live-mpmg-dpmg-anexoi-1-21desetembro/?utm_source=rss&utm_medium=rss&utm_campaign=live-mpmg-dpmg-anexoi-1-21desetembro",
+   "titulo": "Por Onde Anda a Reparação? Associações recorrem ao STJ contra suspensão do Novo Auxílio Emergencial; Indenização para conselheiros da Governança Popular; Região 2 recebe visita das Instituições de Justiça; Formações nas escolas sobre reparação e mais",
+   "link": "https://adaibrasil.org.br/por-onde-anda-a-reparacao-30-10-2026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-30-10-2026",
    "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
    "fonte_id": "adai",
-   "data": "2026-09-10T13:44:04+00:00",
+   "data": "2026-10-30T17:11:11+00:00",
    "ato_de_autoridade": false
   },
   {
-   "titulo": "Brumadinho contesta pedido do IBRAM ao STF para suspender Novo Auxílio Emergencial",
-   "link": "https://guaicuy.org.br/brumadinho-contesta-pedido-do-ibram-ao-stf-para-suspender-novo-auxilio/",
+   "titulo": "MPMG pede à Justiça adiantamento indenizatório para conselheiros e conselheiras da Governança Popular",
+   "link": "https://adaibrasil.org.br/mpmg-pede-a-justica-adiantamento-indenizatorio-para-conselheiros-e-conselheiras-da-governanca-popular/?utm_source=rss&utm_medium=rss&utm_campaign=mpmg-pede-a-justica-adiantamento-indenizatorio-para-conselheiros-e-conselheiras-da-governanca-popular",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-30T15:58:15+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Associações de atingidos recorrem ao STJ contra suspensão do pagamento do Novo Auxílio Emergencial",
+   "link": "https://adaibrasil.org.br/associacoes-de-atingidos-recorrem-ao-stj-contra-suspensao-do-pagamento-do-novo-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=associacoes-de-atingidos-recorrem-ao-stj-contra-suspensao-do-pagamento-do-novo-auxilio-emergencial",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-30T15:06:20+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWlhna1h1cHcwVldoWFJhUjJRWkJfcTFsLS04dldWRldnWVludV9xTnNub1JqZ1NBclVEbl9HY1cwTXdlSkF3aHhKdmtXdFhZd0N2YnlKMXdFY1ZVejdTb2xlWnlabGJ6RTJhX2RLTGxjOHZlYTZ2dkNNWjE0WGxYdXhMZDVQM05Ya2dHSllXUDFjZVNCbUlEVWt6RXBISW9xeEY1dUh3?oc=5",
+   "veiculo": "O Fator",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-29T22:04:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "NOTA | Atingidos da Bacia do Paraopeba em luta pela continuidade do Auxílio Emergencial",
+   "link": "https://mab.org.br/2026/10/29/nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial",
+   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
+   "fonte_id": "mab",
+   "data": "2026-10-29T19:20:46+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Jornal GGN",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOTEpfSUNYQVBqUnVGT1Uxa3FNTm9MV2g1eVV3RzJZV0dnUV9vQk1YT1pMZjl6OVNMZHVQMi1yakhxTi03T2E2dkFTS3VVRGlCeWpfVldHU29EeHIzNlVTQkVGMXNSVnVpWjcwZFZaNXlXNVE2U3ptdVdmZDMwNWdRUTRTcDlWX0xUUlR1UlpiOEgtQkIwaTRkYmtsa29WUQ?oc=5",
+   "veiculo": "Jornal GGN",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-29T18:25:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Vale diz que não vai depositar auxílio de novembro",
+   "link": "https://guaicuy.org.br/vale-nao-vai-depositar-auxilio/",
    "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
    "fonte_id": "guaicuy",
-   "data": "2026-09-09T19:58:15+00:00",
+   "data": "2026-10-29T13:50:19+00:00",
    "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Consultor Jurídico",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNV9zV3NTSGZrY2hOZ2ZUZ0FIWmhjeVZULWxmXzM2TTAySXdob2Y0V2tQVDVZOHhyYU5KbEtVeUpFTFlCS0pHTTZldHlQWkhMdjFWOUFieHhsTGFmRE92bEZSSjdhYk5YT1dIZWtCMVZrN1lBZ2JmTVgwMFpPcFlJdng0d1gtRzduYU9Id1JkdWZCenB3WnUwM3VBT05nQ1R2V01uRXYzMl9NelpJZnlv?oc=5",
+   "veiculo": "Consultor Jurídico",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-29T12:09:06+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Brumadinho: STJ suspende saques de novo auxílio da Vale até julgamento de recurso - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ1A3UWZKWmlGeXBfMlpsd3VXYVlIdDVRTlF2bFlITTFLaGVKczhCTkNETFBpb1NENzZKaGctZVg4Tm9fN1JObmV2cFdFZGtJUHNjYjBVYkxTLV9ZQnZySWpoTEprTFQ4RjZOMXZ5SVZJNzlLcWhfSkduLXZfX093QXJjMGxRWHBkNnhidl82NkRveG1pWjNSd0pCaGpPY2U4ai1DMkNEVnVyWDFLNEd4akZ3?oc=5",
+   "veiculo": "Migalhas",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-29T11:53:00+00:00",
+   "ato_de_autoridade": true
+  },
+  {
+   "titulo": "STJ suspende saque de novo auxílio em Brumadinho até julgar recurso - STJ",
+   "link": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQVElRZnFHQ0M3azl0bFprVmRBd2hpR0l6V2NfV09PMU5zTWJFSHdfOFhyRXQ0UGpjSzlPOWQ4eVlxLU5lYmpjS0NKM2FnN0s1QWQ0bEJSemJWc2xIc3p1RHgzUmE4VXYwYkVrUVJfUVpnd0t6UHl2eDN1Zk9qZkR2Ml9sUXpkeHRhNndFRUY2R1NkdXBndTBKSktjam5sUFpyVmV6czdnSDRpMDBlYlBWb3BBUWduLVBhRU0wYi1mSUlBUEVaMWpOY1d3N2I0OGZvdmxQS2FrSE5RdXNRYklqZjM0MGtKNHhSVF9fTUFEVkNsbjBmRmhQNmM0Nlo4cHdkT0I4UFRPQnFPX1JhdTMyYzZqRDM4djZ0bWFYelJ5SQ?oc=5",
+   "veiculo": "STJ",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-29T09:50:00+00:00",
+   "ato_de_autoridade": true
+  },
+  {
+   "titulo": "Adai Paraopeba realiza segunda formação em Crédito e Microcrédito do Anexo I.1 e acompanhamento da Reparação",
+   "link": "https://adaibrasil.org.br/segunda-formacao-em-credito-e-microcredito/?utm_source=rss&utm_medium=rss&utm_campaign=segunda-formacao-em-credito-e-microcredito",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-28T14:01:02+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Para IBRAM, suspensão do pagamento no auxílio não é suficiente",
+   "link": "https://guaicuy.org.br/ibram-suspensao-auxilio-emergencial/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-28T13:52:39+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Dino usa ação de tragédia de Brumadinho para mandar PF apurar interferência dos EUA pró-Flávio - UOL Notícias",
+   "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQRHhDZ0Z0c2U0dmN2cjJFc25UMlI3d3N0MzBvZ29HMGFsc3pqMGdZNjdpU0N2WU53WUNFOWJzQ0J5M3I5VUZyWWFHMkljWDMzQ0o1blpmaWk3VE5kcUNhTW5jZ0wwaWFoY3hZbURtX3g3YkMyam5UTXFvOHJOM1pKaGNSY1JOMzhUX1E0eDRTWFE5bExYWlFsdXNxNFM0djZSQ3V5VkhRVm82bXEzWlMzM21iMW91aHRVQnJTNXRmSXJ2OFhOZW1jaFk2dlBiS3NVTzFrMFVqUzdIWFRSdFBQcHlvU19KSlZ6cDhuLThaUVFJZUFlMFpfRldIQWhydw?oc=5",
+   "veiculo": "UOL Notícias",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-28T00:15:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Anexo I.1: Confira documentos e materiais",
+   "link": "https://adaibrasil.org.br/anexoi-1-adai-paraopeba/?utm_source=rss&utm_medium=rss&utm_campaign=anexoi-1-adai-paraopeba",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-27T16:18:35+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNU0hrbThpd2YwNjR2ekxtZ3VSWWdaNTR1SUYtZDZSSDFEb3J3cjN6akx4elRWb0ZoeFBsb2dYREwxWnc3TUxWT0EwU0lpVUhjRFhpN09BOXJRWlQ5ZXAwc0p3dmZWOUsyenp5RzVzSVJkSjBkUjFQR2R0d2xRTGNhcURDOWV0czBwZ1VuSQ?oc=5",
+   "veiculo": "O Fator",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-26T19:25:00+00:00",
+   "ato_de_autoridade": true
+  },
+  {
+   "titulo": "Por Onde Anda a Reparação? STJ suspende pagamento do Auxílio Emergencial; primeiras linhas de microcrédito do Anexo I.1 são lançadas na R2; conheça o Ofício 46 das IJs e mais!",
+   "link": "https://adaibrasil.org.br/por-onde-anda-a-reparacao-23-10-2026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-23-10-2026",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-23T19:56:55+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Reacender o comércio para fortalecer a comunidade – Entrevista",
+   "link": "https://guaicuy.org.br/entrevista-carol-e-vaninho/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-23T15:09:24+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ suspende repasse de novo auxílio da Vale aos atingidos pela barragem de Brumadinho - Rádio Itatiaia",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNMU1uaHAtQlpmV0xCWk10U2JGNTFhZnI5SmdjMnpuZW9PQ1V3MngteTVzMTNMSE5RMkJrdlpMYkxrZ1ZwS081bDJzU2oyMXc0RnN2NUtZVUtXaUh6YXlrSWhKNk5VYmtrU29tOUphcE8xSFVtbFUtRGZSeE1pOTBFdWpDWmlGY0xoNF9kWjg2ZDhjN1dEbWRBdTBqaERwODE5Z0xhMjVxVmtRaXdKNnFybkVwMlNhN05VdHBmR0V5cWRWRGx2YXR5VWJkVjh2dw?oc=5",
+   "veiculo": "Rádio Itatiaia",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-23T03:18:39+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ suspende pagamento do auxílio emergencial para atingidos do desastre-crime da Vale na Bacia do Paraopeba",
+   "link": "https://adaibrasil.org.br/stj-suspende-pagamento-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=stj-suspende-pagamento-auxilio-emergencial",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-23T00:08:50+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ suspende temporariamente o pagamento do Novo Auxílio Emergencial",
+   "link": "https://guaicuy.org.br/stj-suspende-temporariamente-pagamento-novo-auxilio-emergencial/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-22T19:34:05+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "STJ suspende repasse do novo auxílio da Vale aos atingidos pelo desastre de Brumadinho - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNLVdjMmo5VUgwNlV6QWY3X3h3eVhBaEVDMjRSOGIxVE5KcUE1UnJnd1BQR001ekVHVkVtOUtFZ1FvMHBtV1ZQeGtXWWRDelk1Z2E1aGM1TDJUOFo5STNzVkhnUUVGRlNyTVpHTjNEdW1DSlJzWnhiTUs1Q212LVluaEFseGZoVEhfVXVmZ0poTjJocm9TbjN2ZkdFYw?oc=5",
+   "veiculo": "O Fator",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-22T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Primeiras linhas de microcrédito do Anexo I.1 são lançadas na Região 2",
+   "link": "https://adaibrasil.org.br/linhas-de-microcredito-do-anexo-i-1-sao-lancadas-na-regiao-2/?utm_source=rss&utm_medium=rss&utm_campaign=linhas-de-microcredito-do-anexo-i-1-sao-lancadas-na-regiao-2",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-21T18:37:31+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Catadoras de materiais recicláveis compartilham experiências com conselheiras do Anexo I.1 para fortalecer projetos comunitários",
+   "link": "https://adaibrasil.org.br/catadoras-experiencias-conselheiras-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=catadoras-experiencias-conselheiras-anexoi-1",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-21T13:26:03+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Entidade Gestora divulga resultado de edital de projetos na Região 4",
+   "link": "https://guaicuy.org.br/resultado-edital-projetos-regiao-4/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-20T15:40:38+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Entidade Gestora do Anexo I.1 lança a cartilha “Solicitação de Crédito e Microcrédito na R2: o que devo saber para solicitar meu empréstimo?”",
+   "link": "https://adaibrasil.org.br/cartilha-solicitacao-credito-r2/?utm_source=rss&utm_medium=rss&utm_campaign=cartilha-solicitacao-credito-r2",
+   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+   "fonte_id": "adai",
+   "data": "2026-10-20T14:59:09+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "ERM se reúne com comunidades da Região 5",
+   "link": "https://guaicuy.org.br/erm-reune-regiao-5/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-20T13:30:21+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Guaicuy é finalista em premiação de design",
+   "link": "https://guaicuy.org.br/guaicuy-finalista-premiacao/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-19T14:23:44+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Instituições de Justiça se manifestam sobre pagamento a conselheiros do Anexo 1.1",
+   "link": "https://guaicuy.org.br/ijs-pagamento-conselheiros-anexo-1-1/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-16T14:53:31+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Cores, sons e fé: o Congado em Paineiras",
+   "link": "https://guaicuy.org.br/cores-sons-e-fe-o-congado-em-paineiras/",
+   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+   "fonte_id": "guaicuy",
+   "data": "2026-10-16T12:17:20+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Barragem B1A, em Brumadinho, tem nível de emergência reduzido de 2 para 1 — Agência Nacional de Mineração - www.gov.br",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQRUxXUHpaNk02WHFzNGNEMmQ4Z2pWS3ZqT2E2U3dxcHg3d2pWU0UzSldnYmF2YW1uRVJXWFFIb3J1TUNXRHZRMVF0YjNuTTl6LWJjT0wyUDFqd0hFdG5yejEwUnU0anhsUmg5SFdsMVRqLWE4eHpYWWRVWUh5LTI0amZUU0NrSnp5aUZYNzJUY251cHUxRV8wWGNleWM2RG0wY01ncVE0Q0drZWdzT0xnQWxwQWJlZVFwZHJXaGtPWQ?oc=5",
+   "veiculo": "www.gov.br",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-08T12:15:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "ANM reduz nível de emergência de barragem em Brumadinho - Agência iNFRA",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNdnhRMzUyZ3d1TlpPU0dFemI5S2M5dzNZTkZqNGkwdUhRczZGOHROaENpSkVRU21Qekl3WmgwUjhUSUk3akxkSGc4aHFsZEpFcDlVbEVucDg5MTh4U3lHWmVxRDc3NHc2ZUdMck40TW0xeDROZHBHaHRqdnlUUWxfUzQ3YzlvR2F2WHNmbGkzcw?oc=5",
+   "veiculo": "Agência iNFRA",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-08T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Barragem em Brumadinho tem nível de emergência reduzido, mas monitoramento continua - Canal Rural",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPOEhoMHN4QzFXVXVJbjJLdG5udU41R2FTUHo1TVd4OWNhRF94Ul9aN3hmY0ZEd3EyTy01TEFUb08xeWYtZTFuYlhWYlNCZnRyTGxtb0U3akd0VmhCNUJ4bjNsbURveFBxenE5TTNacUw2bDdoSWhzb3lZcTlVV3JSQ241cU9XU0VDMF83bURzdWllLWY0aFNYcGEtaVpxU1JCYmNiaHFManJUN0tpQ2o0VVo0V3RwNlBpZVBlREhYYw?oc=5",
+   "veiculo": "Canal Rural",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-08T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "ANM reduz alerta de barragem em Brumadinho, mas moradores ainda não podem voltar para casa - Brasil 247",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdFN0bmtWYVo3S01xWGdaSGdVNmt5bm51Qno0NFRNT3A3SWlZeHNxeS1JQnhOTVJOenpSSFlDcGFQTWRycThDOW1XR085N0dBeGZqQWRqeC1UcjNIbl81WGVpMDhZTnRZVGJGMFE1TTFURWQ1MHMyTXBNN0tGV1RyX3Vtc0Q5c1RVanRLNmpzdWxJZUhaQUFIMThnYmplN0pzcllpRkZYUkJaaFNONzU2U1dnZEo0OTlWWTYwTnhmbzRXdw?oc=5",
+   "veiculo": "Brasil 247",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-08T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Sete anos após rompimento de barragem, Brumadinho se reinventa no turismo com Instituto Inhotim, natureza, aventura e experiências rurais - Gazeta de São Paulo",
+   "link": "https://news.google.com/rss/articles/CBMipgJBVV95cUxOcHNIY1FiR0RhQmlkMmkxLXFpaExvQTJRbHV0TlQ3SURtbDZkY2NTTzI1aDFsdk1zRFRyR0M0cXJZY29aZU1JMzRaLTZIa09BOXZLelpVbWNKVnBnWURGdF9HcmN0ZmNKNC1mWURZOWRxTU40a21MLVEtdG1Lb1ZPNkxvU2ZMZlA1WEZlUGV0dUN3OUJkYVZpeXRHSW1SOEJYZkZxbk55WFZOSkh0b2xxU0g5X3RJQUd2M2EzdDdTZTFPMXJxZkZxTk0zVm15aE9CMVpocUR2QXVnVnJUbzl4WmFZNERHX0pPclA4ak9PNTA5MUFBam9TTzhnT1FWMGozX0RQaERtZUJTZHVDRXNSY3hjaEhWa0E0b0pRU1htaTV6Smd1UWc?oc=5",
+   "veiculo": "Gazeta de São Paulo",
+   "fonte_id": "google-noticias",
+   "data": "2026-10-07T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho - Instituto Guaicuy",
+   "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBpakk3VVJlc21ndUhIOTVqYjQwb253cW93XzFYTndyVVpMNmhIcXBBR2p4TGd3MWZIZktkZXAtaXFodGlPeml3UWJNWnU3dHRkelVxS2ZHZkNiSkxDMVFGcjl3WDdOcFlUTzZCOA?oc=5",
+   "veiculo": "Instituto Guaicuy",
+   "fonte_id": "google-noticias",
+   "data": "2026-09-11T07:00:00+00:00",
+   "ato_de_autoridade": false
+  },
+  {
+   "titulo": "TJMG suspende liminarmente multa milionária aplicada à Vale sobre barragem em Brumadinho - Folha de Brumadinho",
+   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdTBsd3lxeTVLVXBGcjJxSTlDZTRzSHR3TUNmM2lIQnBMMTRlSllncGxhc2RzOWN3SUhtWDJ2N3NkWko0T2NhR3VHMzRUM2tmVlJpaHBzYnVsYm5aZWF0UEZmWVdlQUhKRnF1ZkpNcjJia1VfX1V3S0JnUEthdWdpUGNlMk9HVy1PdHJNa19vX2p0U3hkV2pveGQ4U2RRZng0OUQxb3otaWlvVHRCek1GeGxlSUZ6OHhfcm1saVY2ZE9kV2l3NEk5WEJ3SEJORTFVTUVSNXNSMmpNS2lVeXAzNnMzbw?oc=5",
+   "veiculo": "Folha de Brumadinho",
+   "fonte_id": "google-noticias",
+   "data": "2026-09-09T20:45:51+00:00",
+   "ato_de_autoridade": true
   },
   {
    "titulo": "Mariana outra vez: depois de Bento Rodrigues e Brumadinho, risco de barragens não admite complacência - Blog do Pedlowski",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcDZjOGl2eGw3SE8zemwtSUFvSmc4N3RtX3dKaDN1UUY2Wi04X19ZRjlLVzdlSXAxcm1GcUZzMWl3SmdLUTRWV1hMMWtBd2FoLUFYWFNhVWxhbTJmbEU0SC00dW5tOU9JdWdEa2pYX21IOHZHTVBRcjBobC1lNnl6ZEZSQ0lseksyYWR2V2Q1N1d3Q21QaWJoSkNmaXRDNXhHVU1ERFJPU1RpeGtsX21IMERiYVdyeXFOM0xBUFdyZ3N5T05GZG03MTliSzlfX1FILXVXSzRn?oc=5",
    "veiculo": "Blog do Pedlowski",
    "fonte_id": "google-noticias",
-   "data": "2026-09-06T14:29:18+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Por Onde Anda a Reparação? Mais de 100 espaços participativos; Projetos do Anexo I.1; NAE de setembro, Reunião com a AECOM; Live e mais",
-   "link": "https://adaibrasil.org.br/por-onde-anda-a-reparacao-giro-semanal-r2-04092026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-giro-semanal-r2-04092026",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-09-04T12:53:26+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Juiz intima Vale a efetuar depósito para o Novo Auxílio de outubro e terceira parcela da FGV",
-   "link": "https://guaicuy.org.br/juiz-intima-vale-deposito-novo-auxilio-outubro/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-03T16:27:08+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Adai Paraopeba acompanha reunião sobre andamento da reparação socioambiental",
-   "link": "https://adaibrasil.org.br/adai-paraopeba-acompanha-reuniao-sobre-andamento-da-reparacao-socioambiental/?utm_source=rss&utm_medium=rss&utm_campaign=adai-paraopeba-acompanha-reuniao-sobre-andamento-da-reparacao-socioambiental",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-09-02T19:48:42+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Anexo I.1: Região 2 inicia diálogos sobre a revisão de divisão de recursos",
-   "link": "https://adaibrasil.org.br/anexo-i-1-regiao-2-inicia-dialogos-sobre-a-revisao-de-divisao-de-recursos/?utm_source=rss&utm_medium=rss&utm_campaign=anexo-i-1-regiao-2-inicia-dialogos-sobre-a-revisao-de-divisao-de-recursos",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-09-02T19:21:36+00:00",
-   "ato_de_autoridade": true
-  },
-  {
-   "titulo": "Levantamento aponta necessidade de melhorias em filtros da Vale",
-   "link": "https://guaicuy.org.br/necessidade-melhorias-filtros-vale/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-02T19:04:32+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Prescrição de ações por indenização: tese da Vale é derrotada no STJ",
-   "link": "https://guaicuy.org.br/prescricao-de-acoes-por-indenizacao-tese-da-vale-e-derrotada-no-stj/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-02T18:05:08+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Conselhos e Setores da Região 2 definem projetos locais para primeira onda do Anexo I.1",
-   "link": "https://adaibrasil.org.br/conselhos-e-setores-da-regiao-2-definem-projetos-locais-do-anexo-i-1/?utm_source=rss&utm_medium=rss&utm_campaign=conselhos-e-setores-da-regiao-2-definem-projetos-locais-do-anexo-i-1",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-09-01T20:22:24+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "IBRAM pede ao STF suspensão de pagamentos do Novo Auxílio Emergencial",
-   "link": "https://guaicuy.org.br/ibram-pede-ao-stf-suspensao-de-pagamentos-do-novo-auxilio/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-01T13:47:11+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "TJMG rejeita recursos da Vale contra Auxílio para pessoas atingidas",
-   "link": "https://guaicuy.org.br/tjmg-rejeita-recursos-vale/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-09-01T13:06:22+00:00",
-   "ato_de_autoridade": true
-  },
-  {
-   "titulo": "STJ equipara vítimas de Brumadinho ao CDC e fixa prescrição de 5 anos - Migalhas",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDExaHhxUWxYLTJycTVzd25sMUZJaDlaR1BFbjUzX1pOM3o3dzNORzRReEFKRHdQMjZkWkVlQ3VqRG5FS1llaURvaS1XZ3Z3ckdRaVp6NC1jZEhQb2phaWsyQXNYTWNRbEtMVE90ZWZCQjgtZ01XVlZ5SnRFTEt0RjFhenh1RnhLMzNTOVN3TzE0TjhBRFYxYXg3QzAyWUlDdEtMc0t1SzBOaksyeDlYdmFn?oc=5",
-   "veiculo": "Migalhas",
-   "fonte_id": "google-noticias",
-   "data": "2026-09-01T07:00:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "ANM aguarda novos documentos para reavaliar barragem da Emicon em Brumadinho - Diário do Comércio",
-   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE13UC1mMk5DVjZIY2xZXzhxVFdlMEhTSHRVcmRWU1lLR2dwTmg1N0JGR3ZZR0RDX3FJTl9TaGtydC16ZU9yWXk0UTJwUm9LMFFJX3FEY3l6eDMzSFZSR1VBbUIyc096RHJJSEZzNTJNMWw1VVhPS1ZXZ19n?oc=5",
-   "veiculo": "Diário do Comércio",
-   "fonte_id": "google-noticias",
-   "data": "2026-09-01T07:00:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Vale informa depósito judicial de recursos para o pagamento do Novo Auxílio Emergencial de setembro às pessoas atingidas",
-   "link": "https://adaibrasil.org.br/vale-informa-deposito-judicial-de-recursos-para-o-pagamento-do-novo-auxilio-emergencial-de-setembro-as-pessoas-atingidas/?utm_source=rss&utm_medium=rss&utm_campaign=vale-informa-deposito-judicial-de-recursos-para-o-pagamento-do-novo-auxilio-emergencial-de-setembro-as-pessoas-atingidas",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-31T14:55:09+00:00",
-   "ato_de_autoridade": true
-  },
-  {
-   "titulo": "Por Onde Anda a Reparação? Justiça derruba recurso da Vale; Regras do Anexo I.1; Roda de Diálogo com PCTs; Povo Aranã conquista PTR e mais",
-   "link": "https://adaibrasil.org.br/por-onde-anda-a-reparacao-giro-semanal-r2-28082026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-giro-semanal-r2-28082026",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-28T20:07:45+00:00",
-   "ato_de_autoridade": true
-  },
-  {
-   "titulo": "Regras para execução dos projetos comunitários do Anexo I.1",
-   "link": "https://adaibrasil.org.br/regras-para-execucao-dos-projetos-comunitarios-do-anexo-i-1/?utm_source=rss&utm_medium=rss&utm_campaign=regras-para-execucao-dos-projetos-comunitarios-do-anexo-i-1",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-28T19:59:20+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Justiça derruba recurso da Vale e mantém decisão que garante pagamento do Novo Auxílio Emergencial",
-   "link": "https://adaibrasil.org.br/justica-derruba-recurso-da-vale-e-mantem-decisao-que-garante-pagamento-do-nae/?utm_source=rss&utm_medium=rss&utm_campaign=justica-derruba-recurso-da-vale-e-mantem-decisao-que-garante-pagamento-do-nae",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-28T19:35:20+00:00",
-   "ato_de_autoridade": true
-  },
-  {
-   "titulo": "Edital de projetos na Região 4 apresenta problemas. Impugnação foi solicitada",
-   "link": "https://guaicuy.org.br/impugnacao-edital-regiao-4/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-08-27T18:47:50+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Pessoas atingidas cobram melhor condução dos Estudos de Risco",
-   "link": "https://guaicuy.org.br/pessoas-atingidas-cobram-melhor-conducao-dos-estudos-de-risco/",
-   "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
-   "fonte_id": "guaicuy",
-   "data": "2026-08-27T14:50:48+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Anexo I.1: Assista à Formação “Como propor um projeto?”, realizada pela Adai Paraopeba",
-   "link": "https://adaibrasil.org.br/anexo-i-1-assista-a-formacao-como-propor-um-projeto-realizada-pela-adai-paraopeba/?utm_source=rss&utm_medium=rss&utm_campaign=anexo-i-1-assista-a-formacao-como-propor-um-projeto-realizada-pela-adai-paraopeba",
-   "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
-   "fonte_id": "adai",
-   "data": "2026-08-26T14:13:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Ibram usa alta do PIB e da receita de Brumadinho para defender fim do auxílio da Vale aos atingidos - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMkN6Njl3VVRjRjVOZ3dqVXFtcDhmbzdEd25CWTZJVW5SZU96cXA2czJaSy1mdU8xbkJZbGZFZlFrcUdMWENTOTRzT0JZU1QwN3U2M01Uakt5LTNLUU5mYVRWb0NjcGlsTUhvU3BldF9DV1hxZnM2YkJiclNTVFNiVjJUSl8zYmpCMVRMcnJQdkdUTWtXazFZQ25CVDl2SGViRWd0ZHJWX3pkSjYwcF81akZPMlZxdWtyZVFHem1TSi15TjlWSTdXcmZKX3ZiZw?oc=5",
-   "veiculo": "O Fator",
-   "fonte_id": "google-noticias",
-   "data": "2026-08-26T07:00:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - JOTA Info",
-   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",
-   "veiculo": "JOTA Info",
-   "fonte_id": "google-noticias",
-   "data": "2026-08-19T07:00:00+00:00",
-   "ato_de_autoridade": false
-  },
-  {
-   "titulo": "Histórico do rompimento das barragens da Vale na Mina Córrego do Feijão | Pró-Brumadinho - - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPRFlnQjZ2Ml9fSUlmcC0tOG9hanZ1ZXlHUFpNcl96ZE9GTk5DcVlkcWJHWlJCSmd0VlhidC1CVE9iZFowNjJlbW1YSHNibFJtU2cwSTRoemlfT2RheHlwVkN4S0RmaS1JYlBVdTBaMkRfOWJHUnRDdWFyeFp4S2Fnc1V2TEc4cWp0ZGxFR2ZaNVZ0N3pwRTVtRkVCNEE5eHVzejZzVmVyNEx0Z0hMRE9PcVdXc3g0UQ?oc=5",
-   "veiculo": "Portal MG",
-   "fonte_id": "google-noticias",
-   "data": "2026-08-07T07:00:00+00:00",
+   "data": "2026-09-06T07:00:00+00:00",
    "ato_de_autoridade": false
   }
  ]

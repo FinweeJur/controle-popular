@@ -1,97 +1,174 @@
 {
  "fonte": "Google News RSS + Agência Brasil + Radar Mineração + G1 MG",
- "gerado_em": "2026-08-30T15:54:45.555Z",
+ "gerado_em": "2026-11-01T02:47:57.511Z",
  "noticias": [
   {
-   "titulo": "VP da Vale defende forças-tarefa para grandes projetos",
-   "link": "https://radarmineracao.com.br/vp-da-vale-defende-forcas-tarefa-para-grandes-projetos-de-mineracao/",
-   "data": "2026-08-28T19:23:36.000Z",
+   "titulo": "UFMG inaugura supercomputador que deve mapear território brasileiro e monitorar mineração ilegal",
+   "link": "https://radarmineracao.com.br/ufmg-inaugura-supercomputador-que-deve-mapear-territorio-brasileiro-e-monitorar-mineracao-ilegal/",
+   "data": "2026-10-30T09:00:00.000Z",
    "fonte": "Radar Mineração",
-   "descricao": "Durante o Fórum LIDE Mineração, Rafael Bittar destacou a urgência de acelerar o licenciamento de megaprojetos, formar novos engenheiros e sondadores e classificar o cobre como o \"novo ouro\" da transição energética O post VP da Vale defende forças-tarefa para grandes projetos apareceu primeiro em Radar Mineração ."
+   "descricao": "Equipamento utiliza Inteligência Artificial para analisar imagens de satélites e drones, identificar minerais e ampliar a precisão do monitoramento ambiental O post UFMG inaugura supercomputador que deve mapear território brasileiro e monitorar mineração ilegal apareceu primeiro em Radar Mineração ."
   },
   {
-   "titulo": "LIDE Mineração: Brasil debate estratégias para destravar potencial dos minerais críticos e liderar a transição energética",
-   "link": "https://radarmineracao.com.br/lide-mineracao-debate-estrategias-para-destravar-potencial-do-brasil/",
-   "data": "2026-08-28T18:42:31.000Z",
+   "titulo": "Minerais críticos para energia solar: quais são e como movimentam a mineração",
+   "link": "https://radarmineracao.com.br/minerais-criticos-energia-solar/",
+   "data": "2026-10-30T06:00:00.000Z",
    "fonte": "Radar Mineração",
-   "descricao": "Debate reúne empresários e autoridades para discutir mapeamento geológico, segurança jurídica, tecnologia e políticas públicas capazes de ampliar a produção e o valor agregado dos minerais estratégicos no país O post LIDE Mineração: Brasil debate estratégias para destravar potencial dos minerais críticos e liderar a transição energética apareceu primeiro em Radar Mineração ."
+   "descricao": "No Brasil, a participação da fonte solar no consumo de minerais associado à matriz elétrica pode passar de cerca de 30% em 2024 para 41% em 2034 O post Minerais críticos para energia solar: quais são e como movimentam a mineração apareceu primeiro em Radar Mineração ."
   },
   {
-   "titulo": "Prêmio Mina 2026 destaca protagonismo feminino na mineração",
-   "link": "https://radarmineracao.com.br/premio-mina-2026-protagonismo-feminino-mineracao/",
-   "data": "2026-08-27T16:47:39.000Z",
+   "titulo": "Aura Minerals registra produção recorde no terceiro trimestre",
+   "link": "https://radarmineracao.com.br/aura-minerals-registra-producao-recorde-no-terceiro-trimestre/",
+   "data": "2026-10-30T06:00:00.000Z",
    "fonte": "Radar Mineração",
-   "descricao": "Terceira edição, realizada na Exposibram 2026, bateu recordes de participação e premiou profissionais em sete categorias ligadas à liderança, operação, ciência, gestão e equidade de gênero O post Prêmio Mina 2026 destaca protagonismo feminino na mineração apareceu primeiro em Radar Mineração ."
+   "descricao": "Companhia projeta o cumprimento do guidance após produzir 93.742 GEO no 3T26; CEO destaca Mineração Serra Grande, que apresentou crescimento de 85% O post Aura Minerals registra produção recorde no terceiro trimestre apareceu primeiro em Radar Mineração ."
   },
   {
-   "titulo": "Mineração circular enfrenta barreira cultural: rejeitos ainda têm baixo valor percebido",
-   "link": "https://radarmineracao.com.br/mineracao-circular-barreira-cultural-rejeitos/",
-   "data": "2026-08-27T14:58:35.000Z",
+   "titulo": "Mineração Usiminas ajusta produção e registra Ebitda de R$ 19 milhões no terceiro trimestre",
+   "link": "https://radarmineracao.com.br/mineracao-usiminas-registra-ebitda-de-r-19-milhoes-no-3t26/",
+   "data": "2026-10-30T06:00:00.000Z",
    "fonte": "Radar Mineração",
-   "descricao": "Especialistas apontam que o financiamento da circularidade na indústria mineral exige conexão entre empresas, segurança regulatória, escala e formação de mercado consumidor O post Mineração circular enfrenta barreira cultural: rejeitos ainda têm baixo valor percebido apareceu primeiro em Radar Mineração ."
+   "descricao": "Com minério mais barato e frete marítimo elevado, empresa mantém custo por tonelada estável e reduz despesas O post Mineração Usiminas ajusta produção e registra Ebitda de R$ 19 milhões no terceiro trimestre apareceu primeiro em Radar Mineração ."
   },
   {
-   "titulo": "Cetem e Ibram detalham novo estudo para minerais críticos e estratégicos",
-   "link": "https://radarmineracao.com.br/cetem-e-ibram-lancam-novo-estudo-para-minerais-criticos/",
-   "data": "2026-08-27T10:26:42.000Z",
-   "fonte": "Radar Mineração",
-   "descricao": "Estudo define oito cadeias prioritárias e propõe metodologia e medidas de curto, médio e longo prazo O post Cetem e Ibram detalham novo estudo para minerais críticos e estratégicos apareceu primeiro em Radar Mineração ."
+   "titulo": "Ofício ao STJ pede retomada do auxílio emergencial para atingidos por Brumadinho - BH 24 Horas",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPc0MtZWR2Y0RuRU5NeHZrWmtiUXJRdmNrdDBma1NnWkhCQXRKT3dlT05MTzhrUzBQS2xxUjlJRlhicS1aOW1fOS1jUHdzRTVsRkJWWFJyRzFQUVd6NnN5WEJ6SlA4WkVWSk9rZ1BfNGJwS1ZGX0lseEFVVXhZQWduejF5MDNIM2ZoVlJVMXhISDZyUWR4VThjTVhTYjFieW5IUGxFS1FOb2ljUlo5dHU3VllMMXpVc2x5Szl3?oc=5",
+   "data": "2026-10-30T05:26:37.000Z",
+   "fonte": "BH 24 Horas",
+   "descricao": "Ofício ao STJ pede retomada do auxílio emergencial para atingidos por Brumadinho BH 24 Horas"
   },
   {
-   "titulo": "“Corrida mineralista” pressiona Brasil na área de minerais críticos",
-   "link": "https://radarmineracao.com.br/minerais-criticos-brasil-previsibilidade-dambrosio/",
-   "data": "2026-08-27T09:00:00.000Z",
+   "titulo": "Vale tem alta de 66% no resultado do cobre e avança para cumprir projeções de produção em todos os negócios",
+   "link": "https://radarmineracao.com.br/vale-tem-alta-de-66-no-resultado-do-cobre-no-terceiro-trimestre/",
+   "data": "2026-10-29T22:56:35.000Z",
    "fonte": "Radar Mineração",
-   "descricao": "Para Alexandre D’Ambrosio, head do LIDE Mineração, país precisa de previsibilidade e Estado indutor para desenvolver cadeia industrial O post “Corrida mineralista” pressiona Brasil na área de minerais críticos apareceu primeiro em Radar Mineração ."
+   "descricao": "Minério de ferro demonstra resiliência, com alta nas vendas, e colhe benefícios da estratégia de frete de longo prazo O post Vale tem alta de 66% no resultado do cobre e avança para cumprir projeções de produção em todos os negócios apareceu primeiro em Radar Mineração ."
   },
   {
-   "titulo": "Políticas públicas da mineração precisam considerar as rotas de cada tipo de minério",
-   "link": "https://radarmineracao.com.br/politicas-publicas-da-mineracao-devem-considerar-rotas-de-minerio/",
-   "data": "2026-08-26T21:48:03.000Z",
-   "fonte": "Radar Mineração",
-   "descricao": "Debate na Exposibram 2026 aponta necessidade de combinar política mineral, industrial, tecnológica e externa para transformar reservas em cadeias produtivas e ampliar a agregação de valor no país O post Políticas públicas da mineração precisam considerar as rotas de cada tipo de minério apareceu primeiro em Radar Mineração ."
-  },
-  {
-   "titulo": "Ibram usa alta do PIB e da receita de Brumadinho para defender fim do auxílio da Vale aos atingidos - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMkN6Njl3VVRjRjVOZ3dqVXFtcDhmbzdEd25CWTZJVW5SZU96cXA2czJaSy1mdU8xbkJZbGZFZlFrcUdMWENTOTRzT0JZU1QwN3U2M01Uakt5LTNLUU5mYVRWb0NjcGlsTUhvU3BldF9DV1hxZnM2YkJiclNTVFNiVjJUSl8zYmpCMVRMcnJQdkdUTWtXazFZQ25CVDl2SGViRWd0ZHJWX3pkSjYwcF81akZPMlZxdWtyZVFHem1TSi15TjlWSTdXcmZKX3ZiZw?oc=5",
-   "data": "2026-08-26T20:06:00.000Z",
+   "titulo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWlhna1h1cHcwVldoWFJhUjJRWkJfcTFsLS04dldWRldnWVludV9xTnNub1JqZ1NBclVEbl9HY1cwTXdlSkF3aHhKdmtXdFhZd0N2YnlKMXdFY1ZVejdTb2xlWnlabGJ6RTJhX2RLTGxjOHZlYTZ2dkNNWjE0WGxYdXhMZDVQM05Ya2dHSllXUDFjZVNCbUlEVWt6RXBISW9xeEY1dUh3?oc=5",
+   "data": "2026-10-29T22:04:00.000Z",
    "fonte": "O Fator",
-   "descricao": "Ibram usa alta do PIB e da receita de Brumadinho para defender fim do auxílio da Vale aos atingidos O Fator"
+   "descricao": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos O Fator"
   },
   {
-   "titulo": "Dividendos da Vale (VALE3): o gatilho que ainda passa despercebido, mas pode colocar mais proventos no bolso de quem tem as ações - Seu Dinheiro",
-   "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxOdDJycE5yUEQ0d2FYaXdUbzlfM3pBZFFTQ3lyMi1vNElzYjVvajdJeFRUZkxKejIxbDBuWnYyNDcyTGFXQ3hiSE9FTEZPU0kzeHJVNXp3a25nUWg3dkxuSURKR04yVl8wUkhkd1VOTHQtNzk0LWh6M3JXVWNLWFVielJXWGtkaGhuUFlERWRFNVk1THk2MWRaelFyQ3ZjNGpfY28xQXVTQVpXQkM1WFEzdy10QnRBamZjSVBUT2pjSndyWVcxUW1Mb1pwY3VEOGVLcTVVMTlGbkVYdzl3dzBxVWFlcVM1VmZNMVhFSFo4bWZOVDkwT2hyWlVENmNZNUlJRk5J?oc=5",
-   "data": "2026-08-26T09:06:23.000Z",
-   "fonte": "Seu Dinheiro",
-   "descricao": "Dividendos da Vale (VALE3): o gatilho que ainda passa despercebido, mas pode colocar mais proventos no bolso de quem tem as ações Seu Dinheiro"
+   "titulo": "STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Jornal GGN",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOTEpfSUNYQVBqUnVGT1Uxa3FNTm9MV2g1eVV3RzJZV0dnUV9vQk1YT1pMZjl6OVNMZHVQMi1yakhxTi03T2E2dkFTS3VVRGlCeWpfVldHU29EeHIzNlVTQkVGMXNSVnVpWjcwZFZaNXlXNVE2U3ptdVdmZDMwNWdRUTRTcDlWX0xUUlR1UlpiOEgtQkIwaTRkYmtsa29WUQ?oc=5",
+   "data": "2026-10-29T18:25:00.000Z",
+   "fonte": "Jornal GGN",
+   "descricao": "STJ suspende novo auxílio emergencial a atingidos de Brumadinho Jornal GGN"
   },
   {
-   "titulo": "STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição - JOTA Info",
-   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQVgxeGwweHh3Q2VUcENXUDRyWDVvSUg5SFdjeVlFbFBncWwtY0RMOV9JdGR2OHBRTVFaOXJidmZYN2RnUHdsejRxTmRWOXB2ZG16RS1DcUVBQjBHZGtWYzk0b21vTVEzdXZJa0cyV3BmM3U0QzRnbEpteVVxR1VfNV94b1pwQ0NDUWhBOGtoYThPWnNQbDRpUWlYXzRlazZnTjVQMUdRSlNKaUpH?oc=5",
-   "data": "2026-08-19T07:00:00.000Z",
-   "fonte": "JOTA Info",
-   "descricao": "STJ equipara vítimas de Brumadinho a consumidores e amplia prazo de prescrição JOTA Info"
+   "titulo": "Vale diz que não vai depositar auxílio de novembro - Instituto Guaicuy",
+   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1zWTNfUG5rc1VpcHVzOUtNN2hoSTMtWkpsMWRLbk0yMmhtSEtJd2VsclRReG9JbmJQVWxDQk5RVGVmakhTUXByVFVnQi1RaUF3Z2YwQ2lKLWhLbzZ4R2dRbnlOalU?oc=5",
+   "data": "2026-10-29T15:32:55.000Z",
+   "fonte": "Instituto Guaicuy",
+   "descricao": "Vale diz que não vai depositar auxílio de novembro Instituto Guaicuy"
   },
   {
-   "titulo": "Reparação Brumadinho: Consulta Popular para Povos e Comunidades Tradicionais da região atingida - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNWE9zRk5MX1Q1QlpkUHBfRi1pS0Rrbk1ER0VUdzFzRUJHT1lDXzNiY05IZFlROG4zNlFuenMtMEl4UnR2a1dFVWFBR0d3Z0haUTgtZGRKYnlBRmFGSVh4emV5b2JXTFlzTkttWjJzdXJDWG9Zd3BkQlZHX28yZkhONlRRdXNqejFoa0loNWtaOFRIVGxPMmZkTmhJZmIxdVg3NHBFTWZnSUJpa3EtWTRwdTd4ckFtRmpBaXA1NDZRZzNjSzRrYWtuNWpFbHRLU2RiNVgtSUVR?oc=5",
-   "data": "2026-08-13T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho: Consulta Popular para Povos e Comunidades Tradicionais da região atingida Portal MG"
+   "titulo": "Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Consultor Jurídico",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNV9zV3NTSGZrY2hOZ2ZUZ0FIWmhjeVZULWxmXzM2TTAySXdob2Y0V2tQVDVZOHhyYU5KbEtVeUpFTFlCS0pHTTZldHlQWkhMdjFWOUFieHhsTGFmRE92bEZSSjdhYk5YT1dIZWtCMVZrN1lBZ2JmTVgwMFpPcFlJdng0d1gtRzduYU9Id1JkdWZCenB3WnUwM3VBT05nQ1R2V01uRXYzMl9NelpJZnlv?oc=5",
+   "data": "2026-10-29T12:09:06.000Z",
+   "fonte": "Consultor Jurídico",
+   "descricao": "Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho Consultor Jurídico"
   },
   {
-   "titulo": "Após 4 dias sem água, indígenas protestam em frente à sede da Vale, em Nova Lima - G1",
-   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOeUtxVXpUZVhCcGx0b3Q5eFU3R3ZRLVdFQXM0Y1JQY1BSa3JFNUlJZHo0XzA2cFNFV19wYTZzQTZ2TmRFTTNZMWZ2ZTdTNl80T2dlbTg2Y0ROTjE1MWtVb05QY0o0aVlNYldRbTlvQWpVcHI1YTZaVmplRmxWMTE0N0pYZ0pkYzB1V3NlajNUSzFZTGNKU3U0Uy1lVmRMeEZib1pSRXpZcFFfUVhZT2N1eTJHNXk1d3ZqdFZyYVpyeURrckFXMWU1SUlYbnpPaFRKZUtwNUFHRdIB5gFBVV95cUxPSnAzcXRtRXhyTlIxS05EaUdVWmtQTGJacFdrTk1INjVka0hmVzNhVFhteFBuNXpyTFgwOHNJMDJHY3ZFMWtMaUVsYnlaYXBPNXp1aEhvOVdpelZBblN0UXJ5cHo1Uk9WQ2RoYmpkMmVGWnRkS1pnOF9mVFBBelp4Wl9XY2NWOGZaVGoxMTcxald2WmFuV0FkU28xWkNMSEJ6Z3I0djh2a2tBSUI5ODdaalVnOTI0X3VKMVlPSkFoVDhsZ1dPTm1lZHBjZUMxMmFVNUtqVk9OMFZKZVpsNDExbUh6LUJOUQ?oc=5",
-   "data": "2026-08-13T07:00:00.000Z",
+   "titulo": "STJ suspende valores destinados a novo auxílio para atingidos pela tragédia de Brumadinho - Portal da Cidade - Brumadinho / MG",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNRzJjYmhiNzFMaUFVbVA2b1RTX2NXbjJpbXFaSHI5eFlTZ1lZRmlwZ0Y0QU45d1paRHJBMUR2T0VrYjM1XzdfT1dGckJpQ0c2RHR4azVWMXZuS0h1OVh6REVQa0g2N3o5enhZWk1QRnEwNmNQRmxnVmJXbURaLWZwUmV2YjRHVjk1UHVlRWo5T3JwZGVKckwxUWY5TDE3VlVhQ3BBSzlhRU5oYk5tNVZrbFhmeDhpbkdicGFOU1F5VThhc281QWljRXN0STBaeExqR3R2RU5wbHdZNU1YcW1kV3F3?oc=5",
+   "data": "2026-10-29T12:00:00.000Z",
+   "fonte": "Portal da Cidade - Brumadinho / MG",
+   "descricao": "STJ suspende valores destinados a novo auxílio para atingidos pela tragédia de Brumadinho Portal da Cidade - Brumadinho / MG"
+  },
+  {
+   "titulo": "Brumadinho: STJ suspende saques de novo auxílio da Vale até julgamento de recurso - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ1A3UWZKWmlGeXBfMlpsd3VXYVlIdDVRTlF2bFlITTFLaGVKczhCTkNETFBpb1NENzZKaGctZVg4Tm9fN1JObmV2cFdFZGtJUHNjYjBVYkxTLV9ZQnZySWpoTEprTFQ4RjZOMXZ5SVZJNzlLcWhfSkduLXZfX093QXJjMGxRWHBkNnhidl82NkRveG1pWjNSd0pCaGpPY2U4ai1DMkNEVnVyWDFLNEd4akZ3?oc=5",
+   "data": "2026-10-29T11:53:00.000Z",
+   "fonte": "Migalhas",
+   "descricao": "Brumadinho: STJ suspende saques de novo auxílio da Vale até julgamento de recurso Migalhas"
+  },
+  {
+   "titulo": "STJ suspende saque de novo auxílio em Brumadinho até julgar recurso - STJ",
+   "link": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQVElRZnFHQ0M3azl0bFprVmRBd2hpR0l6V2NfV09PMU5zTWJFSHdfOFhyRXQ0UGpjSzlPOWQ4eVlxLU5lYmpjS0NKM2FnN0s1QWQ0bEJSemJWc2xIc3p1RHgzUmE4VXYwYkVrUVJfUVpnd0t6UHl2eDN1Zk9qZkR2Ml9sUXpkeHRhNndFRUY2R1NkdXBndTBKSktjam5sUFpyVmV6czdnSDRpMDBlYlBWb3BBUWduLVBhRU0wYi1mSUlBUEVaMWpOY1d3N2I0OGZvdmxQS2FrSE5RdXNRYklqZjM0MGtKNHhSVF9fTUFEVkNsbjBmRmhQNmM0Nlo4cHdkT0I4UFRPQnFPX1JhdTMyYzZqRDM4djZ0bWFYelJ5SQ?oc=5",
+   "data": "2026-10-29T09:50:00.000Z",
+   "fonte": "STJ",
+   "descricao": "STJ suspende saque de novo auxílio em Brumadinho até julgar recurso STJ"
+  },
+  {
+   "titulo": "Leandro Rossi: inovar na mineração não é o problema; o desafio é ganhar escala",
+   "link": "https://radarmineracao.com.br/leandro-rossi-inovar-nao-e-o-problema-o-desafio-e-ganhar-escala/",
+   "data": "2026-10-29T09:00:00.000Z",
+   "fonte": "Radar Mineração",
+   "descricao": "Executivo aponta a priorização estratégica, a governança e o financiamento como fatores para levar a inovação além da fase de testes O post Leandro Rossi: inovar na mineração não é o problema; o desafio é ganhar escala apareceu primeiro em Radar Mineração ."
+  },
+  {
+   "titulo": "Do que é feito o celular? Conheça os minerais presentes nos smartphones",
+   "link": "https://radarmineracao.com.br/do-que-e-feito-o-celular-minerais-brasileiros/",
+   "data": "2026-10-29T08:00:00.000Z",
+   "fonte": "Radar Mineração",
+   "descricao": "Conheça os minerais dos smartphones, suas funções e a participação do Brasil na produção de matérias-primas O post Do que é feito o celular? Conheça os minerais presentes nos smartphones apareceu primeiro em Radar Mineração ."
+  },
+  {
+   "titulo": "Auxílio a atingidos de Brumadinho: Ibram volta a pressionar STF contra pagamentos da Vale - Portal da Cidade - Brumadinho / MG",
+   "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWklObDB4V3RYRFBVdkljeU1JdkRnTW50QmRWSHUwUG51SmZteDhSZFBEc2I0SWxSX3FheVVSSjM5aFBrQWFmbUEza3UxZDYxc2tkbGNMdUNsYTlsMUJnQ0xwcmFWbFZra094emF3RWdWeWZxMEZnb2VVelZEVzNFVDFJZHBrN2xoS1pJd1o2TkZyMVhMVUJ0bG1ubnVXUWpOYWoxbW5Db0pZeVR0OFE1Z1N4dWhYa25pYTI4eDk4TlFmVF9OWVpNTHdFam9pbWZWWnJMRVQzUnd6QlFGS2VpRg?oc=5",
+   "data": "2026-10-27T16:15:00.000Z",
+   "fonte": "Portal da Cidade - Brumadinho / MG",
+   "descricao": "Auxílio a atingidos de Brumadinho: Ibram volta a pressionar STF contra pagamentos da Vale Portal da Cidade - Brumadinho / MG"
+  },
+  {
+   "titulo": "Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNU0hrbThpd2YwNjR2ekxtZ3VSWWdaNTR1SUYtZDZSSDFEb3J3cjN6akx4elRWb0ZoeFBsb2dYREwxWnc3TUxWT0EwU0lpVUhjRFhpN09BOXJRWlQ5ZXAwc0p3dmZWOUsyenp5RzVzSVJkSjBkUjFQR2R0d2xRTGNhcURDOWV0czBwZ1VuSQ?oc=5",
+   "data": "2026-10-26T19:25:00.000Z",
+   "fonte": "O Fator",
+   "descricao": "Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho O Fator"
+  },
+  {
+   "titulo": "STJ suspende repasse de novo auxílio da Vale aos atingidos pela barragem de Brumadinho - Rádio Itatiaia",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNMU1uaHAtQlpmV0xCWk10U2JGNTFhZnI5SmdjMnpuZW9PQ1V3MngteTVzMTNMSE5RMkJrdlpMYkxrZ1ZwS081bDJzU2oyMXc0RnN2NUtZVUtXaUh6YXlrSWhKNk5VYmtrU29tOUphcE8xSFVtbFUtRGZSeE1pOTBFdWpDWmlGY0xoNF9kWjg2ZDhjN1dEbWRBdTBqaERwODE5Z0xhMjVxVmtRaXdKNnFybkVwMlNhN05VdHBmR0V5cWRWRGx2YXR5VWJkVjh2dw?oc=5",
+   "data": "2026-10-23T03:18:39.000Z",
+   "fonte": "Rádio Itatiaia",
+   "descricao": "STJ suspende repasse de novo auxílio da Vale aos atingidos pela barragem de Brumadinho Rádio Itatiaia"
+  },
+  {
+   "titulo": "Decisão do STJ bloqueia acesso ao novo auxílio emergencial da Vale - Folha de Brumadinho",
+   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxORnFwbVp5RFRINUlsMEhNUTZFUmdlZGxieHlaUm9mdGFJajcyck55akVSUWt2YjRMRkJGcHNNWGlSYS11Ty1fdmZ5RnM3X1ZmY2dTUC1pdXA3UTdjN3pGRVBjLW1qcVQxVE9UVEQwLTFId2hEV1pWdXhFN0JtdnhFMGR3bV9laDBxcnhSMGtmOFRranlCUDk5UHgtRlptZ0hFNzlPZHRhS2VoSjhadE9BaElTcjRlYm9wcHg0UWhTREhEb2k4c3c?oc=5",
+   "data": "2026-10-22T23:02:28.000Z",
+   "fonte": "Folha de Brumadinho",
+   "descricao": "Decisão do STJ bloqueia acesso ao novo auxílio emergencial da Vale Folha de Brumadinho"
+  },
+  {
+   "titulo": "STJ suspende pagamento de novo auxílio da Vale a atingidos por tragédia em Brumadinho - G1",
+   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOb3V0cjkyV19FMDkwUXlDOVJKX0NRS0x5S3dzUTY1NnR2SHlKemR2Qm5LakZyYkY0cFZlTl82b0k1VWN1eDl1bjZVTXQ1OXNWcWZOS1ljM2RpZWx5T1lha1UxTzZRLUtWZ09Lc1hHMGFYVjVpUmFGQS1KRlA1bXdHaV9oLTZzVlFWbG16WV9nSnE2cUNyTmVhU0Z6VWVEbFJtdDFTMWJWaEt0cDhhSW1FS08teUpudF83Qm5YY3hhX0JTWkhVbjVPbjJDSjJQR2dUSUVFMWtoLVp5TUnSAeoBQVVfeXFMUFAzMVlXcldKSlpma1Q5TkphMjBGbmsxSkNIUEtZRDhtWkxxTnBBYmZnSzNNTXJQaDdZUnRqd1ZSdEkxdmZnV1ZDZTBfdDJ5d1dCSERZaGhNczd6V053R0IwYU9BYjBTdVVUNzhXU3BXZW9INDU1LVJKVFNFN0lXamQtdHFnNFJtWVJodUNBSzNtdjFXSldNUExNWGVoTGFGQnlPa0h3LTNrVDNhZjhCU1VMaXpxRW1LeTZxb1N2bGRHMDdJcHk4a2lvTkQ2T3pDaHNERUlFLXhRRmtPY3B5QjZSU1B3UVJ4eGJ3?oc=5",
+   "data": "2026-10-22T07:00:00.000Z",
    "fonte": "G1",
-   "descricao": "Após 4 dias sem água, indígenas protestam em frente à sede da Vale, em Nova Lima G1"
+   "descricao": "STJ suspende pagamento de novo auxílio da Vale a atingidos por tragédia em Brumadinho G1"
   },
   {
-   "titulo": "Reparação Brumadinho: Prestação de contas das iniciativas realizadas e concluídas pelo Governo do Estado de Minas Gerais - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPamlxVHJVRXFpbThPNFZPZERaM25QWXJncGd6RjFfckUzeHFSdlJGRHBwQlQ4Skc3UTVjcEdJMGFhUUQ2S2RRMUdWbmZrQnl3UVFMTnMzUXdMeGM0T1BRS0RxS05ZYjNpQVVzRmJMVGhuOElLQ3VMRmhmck5LQUExQTZZRzkxYWJtTkozSGhObVBGS2RvTnA5cFhZa3hvTkZfSGc1LXdxYW5oZ0I4ZkFsRVVtLWJ1cEpVWW9INmNJX3ZfdXVuLXk5bGVSYlNyc3dMY1BaYU54WDI1WHNOclBVZk56Vmc?oc=5",
-   "data": "2026-08-11T15:09:27.000Z",
+   "titulo": "STJ suspende repasse do novo auxílio da Vale aos atingidos pelo desastre de Brumadinho - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNLVdjMmo5VUgwNlV6QWY3X3h3eVhBaEVDMjRSOGIxVE5KcUE1UnJnd1BQR001ekVHVkVtOUtFZ1FvMHBtV1ZQeGtXWWRDelk1Z2E1aGM1TDJUOFo5STNzVkhnUUVGRlNyTVpHTjNEdW1DSlJzWnhiTUs1Q212LVluaEFseGZoVEhfVXVmZ0poTjJocm9TbjN2ZkdFYw?oc=5",
+   "data": "2026-10-22T07:00:00.000Z",
+   "fonte": "O Fator",
+   "descricao": "STJ suspende repasse do novo auxílio da Vale aos atingidos pelo desastre de Brumadinho O Fator"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5",
+   "data": "2026-10-02T07:00:00.000Z",
    "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho: Prestação de contas das iniciativas realizadas e concluídas pelo Governo do Estado de Minas Gerais Portal MG"
+   "descricao": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 Portal MG"
+  },
+  {
+   "titulo": "Novo Auxílio Emergencial: Vale informa depósito para pagamento de outubro - Instituto Guaicuy",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPZElKUnpnRjg2TzhQdUZXa2dVVHVJMWxoWFV2RDU3YjNvV2dNTFRsaDhHb3FuRGxvbkphV1RTcHFZQlYtMlZYUmxHbWtyZHpJVnBsNmo5S3ppSmtmNkpmSFR3VmxRM09SVHFvUkdhU0pkdWhaOUJmZjlkaGpVcm5lMGk0Z1EtRGFFNThVaEloc3c5LWFZSlQ1b0JB?oc=5",
+   "data": "2026-09-24T07:00:00.000Z",
+   "fonte": "Instituto Guaicuy",
+   "descricao": "Novo Auxílio Emergencial: Vale informa depósito para pagamento de outubro Instituto Guaicuy"
+  },
+  {
+   "titulo": "Gilmar pede dados da FGV sobre auxílio da Vale a Brumadinho antes de decidir sobre suspensão dos pagamentos - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNWDd5cnlnOEhpNjg3Q1dfVzZHdDhGU3A5RUtnUGZOZXFwWWhZRVV0OExna1BuQnlJeUFMck11cl85VTdDRFZXcWJzWFJPZHFCbWxRRWozQVA2bG9qM3VFcHdTVl82QUR6Yld2RUQzYzVWeWdBTm9zSlN5YlF2NDlsT2d4dTJla19qaDdwYWlDamZWZGltQ3p3RDdXbnV3UjRtb3hIbGRLWFhOOGhTQWNISEhHVFY1eDh5RzJiTHA0cldMUXpqYXNFZVRaa05ZZzduUEIyaXRrbU4?oc=5",
+   "data": "2026-09-17T07:00:00.000Z",
+   "fonte": "O Fator",
+   "descricao": "Gilmar pede dados da FGV sobre auxílio da Vale a Brumadinho antes de decidir sobre suspensão dos pagamentos O Fator"
   },
   {
    "titulo": "Entenda o Acordo Judicial para reparação ao rompimento em Brumadinho - Portal MG",
@@ -101,74 +178,11 @@
    "descricao": "Entenda o Acordo Judicial para reparação ao rompimento em Brumadinho Portal MG"
   },
   {
-   "titulo": "Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNaVA4VXlxY2cxVnlQdUlSX3JxTUR1V0ladTRRX2J0TF84TFJkS3o1S09vZzRBb3EyTlpPMXVlNy1uSlFPazNRM05MQWNBV0RKZmVlMzN3ZlRzSjFHMUZlWWI4RkNadjFyZjdFN0tZTXNkSllHX29OWFplaVZ1Z3RyTUt1bU5xQ2U2ZmR4MlBGSkdlUnkxLWdKQ09ycjZKX2JDT29DRmJfWU53LWNacGI5aDNUd2ZRdw?oc=5",
-   "data": "2026-08-11T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 Portal MG"
-  },
-  {
-   "titulo": "Manual de Identidade Reparação Brumadinho - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONFRnMFQ3WDhqNlN6aFk5R05rYzBoUFVrM0s1MmlKM051WlZzdlBWc2Z3NEc4Q3M1RDF5TElnLWx4YkZVRXJHZ0R5NUd2WW5wVVdoYy1sbDVzVjBSSjNDVkg2OW8yWFowVUlwTThXaEhzYmpzRVFqaF9GUEFGb2locmJZZmR3ak96bUpLY3RR?oc=5",
-   "data": "2026-08-11T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Manual de Identidade Reparação Brumadinho Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Programa de Mobilidade - Anexo III - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOYW5oU19tSndpbGR6OVJ0cHIwWWF5eG1HS1JyQUZSdmloTVlmMndrVm9lMnRkZjZVaXp2Y3QxNWxqREtpMHlzSTZKbktXTV9JaTNheFV2ZkctT29YaGpqZWJkck1FdU9udGtSc1FyYkZrZzhCSVpTWmMwX19SVVJBdjhSc0NKLTJIQXhHUXZMdTN4LUc1bmF1bE5CQVhNdw?oc=5",
-   "data": "2026-08-07T22:36:46.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Programa de Mobilidade - Anexo III Portal MG"
-  },
-  {
    "titulo": "Histórico do rompimento das barragens da Vale na Mina Córrego do Feijão | Pró-Brumadinho - - Portal MG",
    "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPRFlnQjZ2Ml9fSUlmcC0tOG9hanZ1ZXlHUFpNcl96ZE9GTk5DcVlkcWJHWlJCSmd0VlhidC1CVE9iZFowNjJlbW1YSHNibFJtU2cwSTRoemlfT2RheHlwVkN4S0RmaS1JYlBVdTBaMkRfOWJHUnRDdWFyeFp4S2Fnc1V2TEc4cWp0ZGxFR2ZaNVZ0N3pwRTVtRkVCNEE5eHVzejZzVmVyNEx0Z0hMRE9PcVdXc3g0UQ?oc=5",
    "data": "2026-08-07T07:00:00.000Z",
    "fonte": "Portal MG",
    "descricao": "Histórico do rompimento das barragens da Vale na Mina Córrego do Feijão | Pró-Brumadinho - Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Projetos de demandas das comunidades atingidas - Anexo I.1 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPVW5kaDBlcldRckdlMmVaeXdrdWpHNGxwbzVtb3VBOVZiTmxGZmtNamk0Q1ZMdHdxVEgzdlpLR3VzRXF1eDNyNXk0dVVrei1ZNmFNMHlQQTVRa3dSTGNkZ2VFdUZYSGRicm5XWGVKVHA5Z05BMjF1ei14SDNfQ1pZWlY0d3gzMW5HOXZLc3ZXM1lidzVQVTB0MVhZVjRUR1lSQzNLbEw0VDZITjFwT1RDVVZvNGlMbkJ2TkpwUg?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Projetos de demandas das comunidades atingidas - Anexo I.1 Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Programa de Transferência de Renda à população atingida - Anexo I.2 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPcTJZUlM3aHJiOW1Hdk0tckRobVN4dzIwSi1sRWtfNkJLY1NGZklzekxnZGE2eUJ1WjUtWlBuNlFST25Xanh5NTJOWVJGbHZicUg4aDlvVTd4cEJuWW50eDE3U29KNVpFSVdFSEx6T0N6eGVxaVFPUkx3bTZPLTF5WVlXUm9ybEktQUY2cGZ5cmgzNUZaTjBhWXBRRFlvc0FLcDlHZlBrS3NJT2FvUnltanoyQjJZRVRHZ2xpbjhYeTB4VE5aWFE?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Programa de Transferência de Renda à população atingida - Anexo I.2 Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Programa de Fortalecimento do Serviço Público - Anexo IV - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSmJOMklyYVp3YVg0dEV3Nkw0c1cwLWVzdGhMSDVHZjczQ2lka1hMWDZjemswR2h1aklXc3ZELXVNRVVTbWNnSEc3a0ttdV9RZmY2Z095QmNSay1kZkQ0dXhoa3JMTDNBdFNUNjRscTM1YVFRWXNJUjhGMWJNNDdkVXJlcExnYmxRWmg4cmJfZmVXMXlqVUpZaFJzY1F1b0JEazBTSHBkaWczcVpBTm5EeUNiQS1BM1VjYVNn?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | Programa de Fortalecimento do Serviço Público - Anexo IV Portal MG"
-  },
-  {
-   "titulo": "Compromitentes do Acordo Judicial de Reparação ao rompimento em Brumadinho - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPQWk4Y2pnazBwMlhBdjRQb1lvVVVJd2tPMHAxXzVDWXNsSERCUzlLX09VSTFobTA1cUYybENEc2hfOVVlMUVBRnlpZzcyMmlGY2tDc1ZQMTQ5Wnd5NnkyemlkY2JhNmhZUVZPQTR3T2dmQkN1dzlPT2Y4VkFPMEdEZ2I0UVN1cGE3NjU3aFpfcTNfYy16enlWQTBjTmw1R29MMUVnMW84NmtWdWctam0wY211dDBkcWtiSVE?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Compromitentes do Acordo Judicial de Reparação ao rompimento em Brumadinho Portal MG"
-  },
-  {
-   "titulo": "Reparação Brumadinho | TAC Bombeiros - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOUXREOFc0MUItNkhjLWFEM2U5MnRPRmt0TUxBMkUtWHpQZS1XTktJaU9FWFZFZjFwWVUzRjNrdUVOT0xhd3lWX25VOGJBMk5kMm5BdExzUGNaNmtTeEQ0UGIzeGFVZUtkYkRRS3dob3lVZzVHb2V4OGhhMG5Pc3c4bmJ3OWU?oc=5",
-   "data": "2026-08-07T07:00:00.000Z",
-   "fonte": "Portal MG",
-   "descricao": "Reparação Brumadinho | TAC Bombeiros Portal MG"
   },
   {
    "titulo": "STJ reduz pagamento da Vale a parentes de vítima de Brumadinho - Consultor Jurídico",
@@ -178,74 +192,11 @@
    "descricao": "STJ reduz pagamento da Vale a parentes de vítima de Brumadinho Consultor Jurídico"
   },
   {
-   "titulo": "Atingidos pela tragédia da Vale protestam na sede do MPF, em Belo Horizonte - Folha de Brumadinho",
-   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOVzBwVkVjbXplbzRjY1JmOWEzZU9paXl1R1VOLTJ0Z05OM1JqNG02T3F1dDNfbVVMVHpnTy1rWTdLSnJPWW1WbDc0MS1LSXowWFhxYkNSQ2xHamJnakxVZlNrYUJSR1g4eVdfWEVwLWl6TFBCdnFVNWh0WmsxOFd6dElQOVRaUGhCRkktVXg1emljQ2t5WXhzd2VHQUx4dlllbjBvYnQ1M1BBZHdwSS1iaXVvd0lpSXRTcWRpWGRYNXFZRmlhTXVGeGNWNEdYZHY0?oc=5",
-   "data": "2026-08-03T13:07:51.000Z",
-   "fonte": "Folha de Brumadinho",
-   "descricao": "Atingidos pela tragédia da Vale protestam na sede do MPF, em Belo Horizonte Folha de Brumadinho"
-  },
-  {
-   "titulo": "STJ reduz indenização a familiares de vítima da Vale em Brumadinho - Rádio Itatiaia",
-   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQZFlCUkZpRDRoSFR0YTEtQmZSaFUzQlpvakx6SjMwdlNTMXZsNW1YVm42REtJdWxTbVFDNnNpR2dpN3NKMjEtVXhyQUhTYXRyRTVpWi1DY3kxMGROV1hSVVhpcTFvMW9jcmlxVEhBVmdPYTBvQXZwQVVIMm0za1ZuX0JPVzdoZmVZbjMtMTJFS1ROd19Fc2RZWjNOWHFfOUs4OG10ZWprRFR1cXRhRGFjc1ZZRQ?oc=5",
-   "data": "2026-07-31T07:00:00.000Z",
-   "fonte": "Rádio Itatiaia",
-   "descricao": "STJ reduz indenização a familiares de vítima da Vale em Brumadinho Rádio Itatiaia"
-  },
-  {
-   "titulo": "Atingidos vão às ruas contra tentativa da Vale de influenciar o Judiciário e retirar direitos - MAB - Movimento dos Atingidos por Barragens",
-   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbmhvTE8wRVpiYXM0Z2RlcHNwbkJKV1RRblZSdGYxaUN4bktFRzNsTTFoRWY1MFJ1dVVvWkloamtLdWdOUEpEbTJHeGFzNVZlQk9jOFU0ZEVBMk9SY1hCQTQyS1Zidzd2dDdPUDUwQXdiUDJPSktycW5KOXNEazJQYTM4WGdPVGRsQnJTN2I5aEdkYzMxUS1SS3VxekpmZ2Z4RUZGWUs0c0tVVU5PUk1QakxNX0RqNTFRdXUzSkYyUUNrQQ?oc=5",
-   "data": "2026-07-22T07:00:00.000Z",
-   "fonte": "MAB - Movimento dos Atingidos por Barragens",
-   "descricao": "Atingidos vão às ruas contra tentativa da Vale de influenciar o Judiciário e retirar direitos MAB - Movimento dos Atingidos por Barragens"
-  },
-  {
    "titulo": "Julgamento no STF pode acabar com o auxílio aos atingidos pelo rompimento da barragem de Brumadinho - Brasil de Fato",
    "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPbFdZeWo2eXFFWmFVQ3E5VHZSakIxa0l1UmUyejZNM1NsbEozYUVZSXc2ZXBwTGdlWmkyMGstMWp6TUFMdTNSaWJGNURzSmdaOVVMMkpKeG1uV1I2VWxoLVZzYVpjZkJNd1VGUjJvcmNxSXpHUjVwblV4NzVheGxrM2ZKU1NYYVVTSHpuem1XOWZzQWRldF9fN0o0ZEdjQ0F0REVKQkpYVXB2TUNuc09xZm82eEJ4Wl9STzJWa1hFU0hKOXdBd2p0TWFEby1ObjA5cGEwWXVYMllJdms?oc=5",
    "data": "2026-07-21T07:00:00.000Z",
    "fonte": "Brasil de Fato",
    "descricao": "Julgamento no STF pode acabar com o auxílio aos atingidos pelo rompimento da barragem de Brumadinho Brasil de Fato"
-  },
-  {
-   "titulo": "Ibram faz quarto pedido de urgência ao STF para suspender pagamento de auxílio da Vale em Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPaEdnS3hVOG1aV3YwQ0NXWXg5bXB6ekp6VU9YejJFcGlGSDlQcnNtOXh4MzhHTDRBNXNVM3pVdDlKZnhJWDRZTEotTWhQVFBJenFuQUEwbElwNF9EVmNWZ0lPZ2lhR1RTRG9LckFWUktlUW5DazdIWkUySHQwY1NmTW1OZDFrRUpsdHFCb1VSUGx0VjYwS2luR0VFLVZ4TjJrYlFUaGRncDlsUGtRNXpTbFZ2c2p6RWNWaHQ3M1VJU0c?oc=5",
-   "data": "2026-07-21T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Ibram faz quarto pedido de urgência ao STF para suspender pagamento de auxílio da Vale em Brumadinho O Fator"
-  },
-  {
-   "titulo": "Atingidos protestam em BH contra ameaça ao Novo Auxílio Emergencial de Brumadinho (MG) - Brasil de Fato",
-   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOc19xTlAtVVBsNURlc3lyRHRWaXBwbnJOY3BhaTktS29zVGd4Z2otdkNTR3oxZFNsSVl2LVA5bGZMaVF3VE1UNnRybWhtYThCMDk1bFJQQ0hOVGZ2aDI5UlRJWE1sUUtyZm96eUxqelJ2MTZLSVVZeE9fd0ZyMTg5eVZFMm1iUFN4THpOWkV6dG5WVzNPczNsVnh6STM2ZDdtYnluMWxnSmpTVXFOczBFSEJWS2dMY0x3enY0UHFpZExKS1JJOERV?oc=5",
-   "data": "2026-07-21T07:00:00.000Z",
-   "fonte": "Brasil de Fato",
-   "descricao": "Atingidos protestam em BH contra ameaça ao Novo Auxílio Emergencial de Brumadinho (MG) Brasil de Fato"
-  },
-  {
-   "titulo": "Justiça derruba cobrança milionária contra Vale por Brumadinho - Diário do Poder",
-   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOMHZXTjZuRC1MMzJfaUFZVE5JSENGcEZOejBsR29RZUtQYXdkbGdwaWFYSnBCOXFOTVZlUURUM0NVT1NWSGp0QlNqVDZlSzhqak1yd0hvdHlIZm40S3hsczdQRGtXRHVmVUtfRkZ4VlBLT190V19jNkU0N2QtaTNfcnpmQ2tRODItM1J2Nm5HX2tIYlB2ZjJteDI4VXJCZy1zUTR6QWUyc3FZZHZ2MVpaeExHeTJOdjg5dkVN0gHAAUFVX3lxTE5NLXVxVVFIbk40NENueVVGQ2QtbkFlMUNvSFhMVmh4ZGVwZk95RkV3Q1ZYVDVuRzRMeUt1VmNNbVNoVWtlcVZNYUtoMTZhQWwxRmZUT2JnZnhSRFVuRFRmODYzZDQ3bEtLVkdDZmRrZE5HMUpydFhkeGxCLUc3Tld6UzctZmxudlMtLTYtbTJtNDZOQklQcE9aNlVaeW5qc3J0U2pHdzNHNjJvU0dhRFJoTEhOMlhMREtPSlQ4dHJiQw?oc=5",
-   "data": "2026-07-21T07:00:00.000Z",
-   "fonte": "Diário do Poder",
-   "descricao": "Justiça derruba cobrança milionária contra Vale por Brumadinho Diário do Poder"
-  },
-  {
-   "titulo": "TJMG suspende multa da Vale de R$ 87,9 mi por Brumadinho - Diário do Comércio",
-   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOTGI2UFdERVRYcXpzeXhsR0JCYTZjdjdfNWNHY3BFdkZKV2NSNHhkWnBaYkVjbllsdHBIWE9WNzlPdW92SXZjSW11bUlJTFM2VnMwQVN5SE9RZk5CSVRqbC1iNWZWM1ZvdFBSZkt1ZVI0d3lMVG4tanFwbENfakJQeA?oc=5",
-   "data": "2026-07-21T07:00:00.000Z",
-   "fonte": "Diário do Comércio",
-   "descricao": "TJMG suspende multa da Vale de R$ 87,9 mi por Brumadinho Diário do Comércio"
-  },
-  {
-   "titulo": "Brumadinho: Justiça suspende multa de R$ 88 milhões imposta à Vale - Estado de Minas",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUGljVjA5RE1zYThRaWJJRFl3RTZCWE9jVW1VeFVWUDBIZkFoU2h1Q2VRMmpIbnZEaHJUeDJFRy13YWczT1VOdU9rLWNUTEd4Tjk4aVNoZEFaeEdNNnk2WEk4OURzMU5nRjhGdVFnaUU4dDliNDJXRHhZQmgwdG9QUDZuTHdOUVBFcTRJSmdQNjBoTnBmaXRsc2h0TGhJOWNndmcwNEdRb2tYZGZJMnlpdWg2TEJGUdIBuwFBVV95cUxNb240aEZJa3l0SlBkRWJGNFZ5Zi1EaEpWR3pHOEttRnpTcGt6TEY2bWNsa3N1dDZlU3cwR2NuanltOVVWOVNmVzRJUE5PWmtjdEgxdFBfajE2a3NvYjR0Q1puYlJYZ18tNVRqcWhDZDhQOXNXdW5lTXo1YURSZ2dRbHoxVjF5LXBKb0FuT29fM2otejZWYUxEYVI3SkxjLXBxVG9vazZYVkFJZ1VXUkpEbFhGdGxISTJNU2FB?oc=5",
-   "data": "2026-07-20T07:00:00.000Z",
-   "fonte": "Estado de Minas",
-   "descricao": "Brumadinho: Justiça suspende multa de R$ 88 milhões imposta à Vale Estado de Minas"
-  },
-  {
-   "titulo": "PGR pede que STF derrube decisão do TJMG que manteve auxílio emergencial da Vale em Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPak1yX3VSSmJQMmVjX1c5bVlfWHVjUmVBQnRwLVpsNXRGbVc2c1YxcEJqZmVsaGFncU90aG0wdGthZGpLNEI4ZF9vcVQ5YThxcHk4NWQ5UnktcFByWC1CanJfZklVTXB1SkU3TmRkZU9ja25IQ1R6dTRmR0xiSFVzY0VsQ05ocERoYzVkY2JnZEFNQkFfdVVVUFh6SU9wWDQ?oc=5",
-   "data": "2026-07-17T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "PGR pede que STF derrube decisão do TJMG que manteve auxílio emergencial da Vale em Brumadinho O Fator"
   },
   {
    "titulo": "Brumadinho contesta pedido de caução da Vale e pede audiência de conciliação sobre Novo Auxílio - Instituto Guaicuy",
@@ -255,67 +206,11 @@
    "descricao": "Brumadinho contesta pedido de caução da Vale e pede audiência de conciliação sobre Novo Auxílio Instituto Guaicuy"
   },
   {
-   "titulo": "Juiz rejeita pedido da Vale por caução e homologa FGV como administradora do Auxílio - Instituto Guaicuy",
-   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE83c2NYbldBR3AyYzlIcHItVldGLTRxaUhoT21SbUhSdnVXbWZ4bG9LQS03aHBvUHZndmZQV1pyeWpZUURNQW1vRFp2RjVLZVphN040X3lTRW03c0ZlZlBOY0NNOTBzcVV6ZDV2OFV4RjlaYVVD?oc=5",
-   "data": "2026-07-02T07:00:00.000Z",
-   "fonte": "Instituto Guaicuy",
-   "descricao": "Juiz rejeita pedido da Vale por caução e homologa FGV como administradora do Auxílio Instituto Guaicuy"
-  },
-  {
-   "titulo": "FGV rebate Vale sobre custos para gestão do Novo Auxílio - Instituto Guaicuy",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5nd0xsU3htVGVVS0tqNml2U2dTV2N1R1lCaWhaaGpaNHNEeHlmcmJkeFFrc1FkOWVNcjV0bmpicUZTal9QdW5GY0lsOTBhNXhJ?oc=5",
-   "data": "2026-07-01T07:00:00.000Z",
-   "fonte": "Instituto Guaicuy",
-   "descricao": "FGV rebate Vale sobre custos para gestão do Novo Auxílio Instituto Guaicuy"
-  },
-  {
-   "titulo": "Vale apresenta impugnação de plano da FGV para Novo Auxílio - Instituto Guaicuy",
-   "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1keEd0VUVoMmhXaXdxc0I4YkdBcEdXZW0ycGd0S0NpMTRsZ2Zyd3paZWdnZVVrNi1aUGRlNERIb3JfUl81cFlOdHR2N0hJb1ZZRl9sMUFyOA?oc=5",
-   "data": "2026-06-22T07:00:00.000Z",
-   "fonte": "Instituto Guaicuy",
-   "descricao": "Vale apresenta impugnação de plano da FGV para Novo Auxílio Instituto Guaicuy"
-  },
-  {
-   "titulo": "Com maioria 'pró-Vale', julgamento sobre multa de R$ 86 milhões é interrompido pela segunda vez no STF - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOTnFBdWhXSndBOWNZVFl1d3RwS2plV3Myb20yZmJQUGpDbVdRXy1ncmJtWlJ6V1Faek9tWVFseEtCRDQyYjB5S1F4ZHp1S2QteUl6WFlHN2Y0aHc1MUgyNGNBRE9LckpFTTZDSnk4NWFYOUdZWTByVDhJd1V0QndCSUNiY1RrZmJ5TDlpRXlGUlNZb2t0VkpJMkk4bDFzZG5wbnRFX21EYjM?oc=5",
-   "data": "2026-06-22T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Com maioria 'pró-Vale', julgamento sobre multa de R$ 86 milhões é interrompido pela segunda vez no STF O Fator"
-  },
-  {
-   "titulo": "Voto de Gilmar forma maioria pela cassação de multa de R$ 86 milhões à Vale por Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQX0tSdEpLTDZVSlUyMmRvUjZoTnl0RVdGU19xTkx0SmVvaC1wRnpLYTJHUzdkSEdFWGtVejlTVzlNbGhTQWczU0V3RlhXbXkxWmRrVkVBbkJpTExObWdvZ1pvOHBjZ2RBam1mM0R6Y0gzTmhuMmdOM0RDWTRETTlETmpOcUhSYzVrSTdOTnl4enAyS1o2b3JXRWhTYWM5RWxJRGFLeFgxRzhScHhmdk5IVFI3Qzh1azdsRVlpU1hZaUs?oc=5",
-   "data": "2026-06-19T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Voto de Gilmar forma maioria pela cassação de multa de R$ 86 milhões à Vale por Brumadinho O Fator"
-  },
-  {
-   "titulo": "Rompimento em Brumadinho: engenheiros da Vale e Tüv Süd seguem réus em ação criminal - Agência Pública",
-   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOZktYaTNLM2JMSE1nbnI0ajJPczhHeUlRQ1NobWoteXFoUDFrQVQyRFZYbGdFWVUtS1R1ZGktVFQ5Zm1uS0IyX3pIVkFWN2xyMXNkQTh1RnZ1VHpPVmVKWWZleWhfZExKdE9mNFlkUlIwaHpfQXo0b01WMlF6SkQ3M3NLMDc3Z0tmeXlPQmZpeHZ6a05qX0ZTczRPeWlVQ1VSa3I2czhJYldCcllUcmNn0gG0AUFVX3lxTE05a28zMGxwNF92XzA2blVwU2ZlUGdKSWdWZEZGZjc5R1VQd3RYLXRWdkV6ZWZUQVZnUUhmejFxaXc5d0ZIanFkd3V6TzlpTDgwWTZQbDJEZ2dhRjgwQU9jRHJRblFzMEVzTThrM0lvNEJudmxCUHJQVGdyLV81elNLMHpUTEZLM1VVNnZRM0lXQWJoem95VkNmTGNrbElNMUdjTTNZSEhQYVRDcWVHb2hOZl9Kbg?oc=5",
-   "data": "2026-06-17T07:00:00.000Z",
-   "fonte": "Agência Pública",
-   "descricao": "Rompimento em Brumadinho: engenheiros da Vale e Tüv Süd seguem réus em ação criminal Agência Pública"
-  },
-  {
    "titulo": "Barragem de Brumadinho: Justiça mantém processo contra quatro funcionários - CNN Brasil",
    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSEpyVk1SMlJhcTNjVm0xNVZwOE5UWElYbHlqdDh3WlUySVIxTGlFTnkyWDdzTEQ4VUx0QXpRYVZSdzVPWEJ2U1lkMUZ4VkdNZjJvRkxRdHdtcUJzU1BmTGYwckZ5cXA5WEg3MWp4ZU9GR1VJbmYzaFc1bm5vT1RERl9ONzZ4MEZRZm5QQ2Q2QnppbmZ6ai1WbFlyeFIzc01Pd3RGR2xReUdodUNyLXFNU0k2SjhmZXcydVVBLXpOU3k?oc=5",
    "data": "2026-06-17T07:00:00.000Z",
    "fonte": "CNN Brasil",
    "descricao": "Barragem de Brumadinho: Justiça mantém processo contra quatro funcionários CNN Brasil"
-  },
-  {
-   "titulo": "STJ mantém engenheiros da Vale e da Tüv Süd como réus em ação penal sobre tragédia de Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPSm5rZTdueWNDSml2X2Z2elpEeFJWRlhXNzFBcWRDYlkxTmdrRHN5bXEyZnpzNDVCMzg2UUJZRm1lcm92TzNXUkxIZEFKbmI5dmZyTjRwcWJqcjNTTFdySlI5XzJ4aHNvU2ZfR2lJLUpVVEtsVUhGRkdhYWlLejFBa0pfY3JFbTJZT0FiVURzUG5jejJTOHUzY0hEaFBscnRMSDBFMGRGVFNkR1o1Rkh0X1Nn?oc=5",
-   "data": "2026-06-16T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "STJ mantém engenheiros da Vale e da Tüv Süd como réus em ação penal sobre tragédia de Brumadinho O Fator"
-  },
-  {
-   "titulo": "STJ reduz de R$ 1 milhão para R$ 350 mil indenização a familiares de criança soterrada em Brumadinho - JOTA Info",
-   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxONlFLWGlsMHpIbGFISFN6bW5OZzZBdUFEUF9LS2t3MVppN21ZTG5WNGtWNFU5a1ROR2Nsc1haYmZXT2UzNnVPbjdRUmlPRXlWR2piS0o2N3RBRVItUG9INjU3SVV6UnNBUUtnc3NRYmRGTzBkdzZQaUUwS1Bua1FtM1lzd2JrX3RVSFBFa2hhZVNWNUROX2hLT3dyZ193c0FpZEF6RG5NcWk3NGpVa3dpTWNuYURHM0VCeTNsX3kzNXJUdHY1VUQw?oc=5",
-   "data": "2026-06-09T07:00:00.000Z",
-   "fonte": "JOTA Info",
-   "descricao": "STJ reduz de R$ 1 milhão para R$ 350 mil indenização a familiares de criança soterrada em Brumadinho JOTA Info"
   },
   {
    "titulo": "Vale quer que Brumadinho e associações paguem caução para continuação do Auxílio Emergencial - Instituto Guaicuy",
@@ -332,13 +227,6 @@
    "descricao": "STJ nega recurso e mantém ex-presidente da Vale entre réus por tragédia em Brumadinho G1"
   },
   {
-   "titulo": "Ibram volta ao STF com urgência e aponta rombo de R$ 1 bilhão da Vale em 'ações extras' sobre Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOVHdNRW9weHI1NDQ5T2NCNFFObTFzZVBxVW5VS2xVWnpFMVNwQ09CYl9TclhwX0VpNjRBTER6SmNBWThIVHkxQTg3d25OSHRJc1AtVVR2UVhKeWprdHZ4Ulc3WEtHS3FOTDNVTUh2YUx0aVRhdENGeVZuUWZIY2RIQnROc3hfUQ?oc=5",
-   "data": "2026-05-29T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Ibram volta ao STF com urgência e aponta rombo de R$ 1 bilhão da Vale em 'ações extras' sobre Brumadinho O Fator"
-  },
-  {
    "titulo": "Auxílio: município de Brumadinho contesta recurso da Vale no STJ - Instituto Guaicuy",
    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPNVdsQzRQeEFVZjJtVG40ekxqbjZ2eTBZVHctNmtQaktUeGRqcjF3Qnc4QVBUVjBlQzlZUE9LaFg5YmRKd05IcVdDZGk1emI3ZUpST09CZF9HMDR1dmlJNHdCWnVsRVZqanVXNl8yaGpWNkx0RmNyR2xoR0laQlRlZk5OVG5aMjVudS0xQ3VWaVk?oc=5",
    "data": "2026-05-25T07:00:00.000Z",
@@ -346,81 +234,193 @@
    "descricao": "Auxílio: município de Brumadinho contesta recurso da Vale no STJ Instituto Guaicuy"
   },
   {
-   "titulo": "Atingidos por Brumadinho contestam no STF exigência de caução para receber auxílio que Vale quer suspender - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOSVRkZUQ0bmQwNEZvbWFZdnZzTWxqc1hmNUdiUWVJSXFtTTNEV21LbmY3RXUyMW9lUk9NWnZsZGI2Ml8zdkRSN3RjSjUxekRzY0FmQ0tYUENqSm5XNm1oakxJNXdTaXREeXpfUEl2T1VRR3d2RFoxLXFja0xWLWZXUzZDS0ZMVmFBVVdlLXZLWjBveWdyRFE1cDZ1bVpoc04w?oc=5",
-   "data": "2026-05-25T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Atingidos por Brumadinho contestam no STF exigência de caução para receber auxílio que Vale quer suspender O Fator"
+   "titulo": "Vale deixa de pagar auxílio a vítimas de Brumadinho e caso chega ao STF - ICL Notícias",
+   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNOEhNVy1DdFhUM3QyVUJjeU5vTlAzSkhVS3RSWTVqTGRTRkZmeXFnV3pONVdTby00ZWd4Zm9DS3hwaTRodEdmWF9xUFB3X0UwWDFRQW52a2dtY0lDX3NHdkhJczNaazl4Z2c5NTZ3OUNRUHRNSldGRGlmNGZ6R1Bkdw?oc=5",
+   "data": "2026-04-17T07:00:00.000Z",
+   "fonte": "ICL Notícias",
+   "descricao": "Vale deixa de pagar auxílio a vítimas de Brumadinho e caso chega ao STF ICL Notícias"
   },
   {
-   "titulo": "STF retoma julgamento sobre multa de R$ 86 milhões aplicada pela CGU à Vale por fraude em Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVHJxSVFlaW90bk9zd21ibHJISnplTjg4Q2NfQUlqZWNmN0N1aE1EMGVuVi1iMTBLdGsza2I1NE0zMUFoNDVLQTVsMFRyY2ItdnAxQ1RYa0ZNMUpST2ZQcGZ1TEVJOV9yNkpJcDZYSVdaSUFNRkJ1dzFqb2ZZQVBPWDVSdHhyOEFhb25DZ0NaWXJJVUNseFZEdWs3Yk1UZ2hHazhxbXN3TmNDLXlSbDBhS2pYQnVvb2NIN3dVTTFGSlRUdVhfcU16d3RTWnh5UQ?oc=5",
-   "data": "2026-05-22T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "STF retoma julgamento sobre multa de R$ 86 milhões aplicada pela CGU à Vale por fraude em Brumadinho O Fator"
+   "titulo": "Manutenção de auxílio às vítimas de Brumadinho é questionada no STF - Consultor Jurídico",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPWG5VTVVPcTFIZDl6ajN5UHdZbmQ0UXAycl9qSVFqTjNJbGQwbDMwYjlIQmFuVDdLbXROTWlYd3Z5YmFjd1NjNVlwMDczelVmZ0lsUW1RQW1vVTdOWmZRX0tYQTVLa2VXZkVTRlgxLVNzY0piWExPelM3T2FLS3VPa2xlNDNHd1dlTG1nU0JIV2REdlU1WWZKY25DNHJyZl9NVjFzaw?oc=5",
+   "data": "2026-04-08T07:00:00.000Z",
+   "fonte": "Consultor Jurídico",
+   "descricao": "Manutenção de auxílio às vítimas de Brumadinho é questionada no STF Consultor Jurídico"
   },
   {
-   "titulo": "Ibram usa manifestações da União para pressionar STF em disputa sobre continuidade de auxílio em Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSGg2aXhaSlJFMUtBaFl6SnJoOUozcnp1dXJIb0QtWGN6NmwxUVlZVEdRUWctdWpxdmg0empFVUEtTXBmbkNSVmtfM0g1YnpTcHdJTTFscXpEZWhZYW42a0h0dHlDNm9zUE9YQ3hwRE10TWtJVDREOHJhTUJPQi1nTV9TQ1ljRTI5aC1NZDVvOHdlQWRWUUVmUGRsYWFJXzJBSHJMWmN1d2xReTM2ZTRJaA?oc=5",
-   "data": "2026-05-19T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Ibram usa manifestações da União para pressionar STF em disputa sobre continuidade de auxílio em Brumadinho O Fator"
+   "titulo": "Decisão que determinou manutenção de auxílio às vítimas de Brumadinho é questionada no STF - stf noticias",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVExlMnRDaGwyU0RYZzdKcTdubm1UV2VBTFA3bFpHTl84V3VFVm9KamhMemdlQ0taSDhNRnBxcGEyRVBlVzJaQmtmblNsYkhPb01RVlBaWE9SWGFVRy1tWUs4X1cxSUc5WmhURjFKY2RMel96WEQ5allNRTVCMjI3MlZmWTZ6dWxMNU96cDlWdk5RZldnTkRFOWNucnZ1Q2dtdEJYT00weVp3VWhDNVViVFY1cS13cEQ0dVJ3TXpySGJzRUZtNlNGVUN4VmdrQQ?oc=5",
+   "data": "2026-04-07T07:00:00.000Z",
+   "fonte": "stf noticias",
+   "descricao": "Decisão que determinou manutenção de auxílio às vítimas de Brumadinho é questionada no STF stf noticias"
   },
   {
-   "titulo": "Governo Lula envia ao STF posições distintas sobre auxílio de Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONE02WTd6Wlp3SzczalZDQ2FRUTYxd29nYm5qRUxUTld2QUpWOFRROF9KUXJ3RkM1bEE3S19VcnNfNldpU0g5ZE0xNXFMMWNzclVwUG9yeW4xa3d5alpQbjhicmVJcGZEcExQZHBJTXN2NGlkZkVoaVltR1d0RERHMk9sckxRczF0OVRYR1o5VG5MZjU3eHZyT3Z3WldYSmtHSVE?oc=5",
-   "data": "2026-05-14T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "Governo Lula envia ao STF posições distintas sobre auxílio de Brumadinho O Fator"
-  },
-  {
-   "titulo": "TJMG diz ao STF que acordo de Brumadinho não encerrou obrigações da Vale e defende auxílio emergencial - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPb3d5LXhkX2p1bTBld2lVLXkyV2JiTTNfOFNscmFIcVRPTU5hREhBOGxkdWlESW5uTEVnTjB6QVROUjRxTXFlaUtRWm83SmxpNjVMMzlsNmFPS1FpRkpBUEpsbTUxMmpZbHdkVUU1UTlKeGdjRmY2QUtCYnNOT1JHeThPc3l6NkxCVnVadTFtM0tXOWI3ZGpvbFlCZ2c4elVfcERtWDVlajJwWDkwS0dEZjZYWE9UaV9Qd0xXWXZSd1Z3NDBlNnVfWUgzZVdzQ09Na1E?oc=5",
-   "data": "2026-05-14T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "TJMG diz ao STF que acordo de Brumadinho não encerrou obrigações da Vale e defende auxílio emergencial O Fator"
-  },
-  {
-   "titulo": "Município de Brumadinho pede manutenção do Auxílio Emergencial - Instituto Guaicuy",
-   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9PR2ZYMEJUbWNicHNOdkIwcEd5TXlQRFo0RERxd0pRckxxRnNBcnFnNnM2TU5keEtSXzMzX0tfdFhSVWFfNWkxQ3pVcVpyaDQ5MWpLNTBLNVE5NVFGU0NmNW5haHN5a0Fod1l5eWJhQ1BjQzdtUVVvTWJfTVY5UQ?oc=5",
-   "data": "2026-05-12T07:00:00.000Z",
-   "fonte": "Instituto Guaicuy",
-   "descricao": "Município de Brumadinho pede manutenção do Auxílio Emergencial Instituto Guaicuy"
-  },
-  {
-   "titulo": "Programa Partilhar conecta fornecedores e instituições sociais em Brumadinho e região - vale.com",
-   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPcFN1UlpiRGRyMWU1clhHaW5qa1JCUnkxMVFmZ3lTamk1Ynh0VVpjdFpIUWhWUTdWMks1VXd2ZU15WWVxRWJCMUstX0dsMVF6cTFhaXFKS1V6VzlzdHNyVkRvUWxXNGt6ckNNUWk4S1V2em1GT2UyLXEwclZKel8zdDNvZ0VwZlVsTmkxb0Utc0hLN3hhQi1BNjhBQjhEQkJSMjhzbW9IUQ?oc=5",
-   "data": "2026-05-08T15:21:42.000Z",
-   "fonte": "vale.com",
-   "descricao": "Programa Partilhar conecta fornecedores e instituições sociais em Brumadinho e região vale.com"
-  },
-  {
-   "titulo": "Após decisão do STJ, ex-presidente da Vale volta a responder em ações sobre Brumadinho e terá processos separados - G1",
-   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTW0xUXQxdUJxWWdDZ3RacWRYRHA0WTE1aExDaUNaYUVmSWoxMHhIcnM1dHRxdWYweG1mNzJaR0JsM1J6aTBJQnByOW1rRXFsa2RxTTU3MllFR2NLMGxnanllSzc0X0steERvRDU1WnNJdXhOUm1XRng5N2Fjcmx4MW84YUFUWWVVMU0ydjg4Qk1RbGF4OXd2MnRRQkloZjZtUE1HdEZITVU1clNKZ21SMXJoZmtrdlpURVFSU2UyaG12UWQ5YldYZVcxT3dNaWkxM0QzbmxSemlCTnl1ZHfSAewBQVVfeXFMT3JvbUFYUmp6VGtQa21LVlp2QzN2bmZWT1JoRDhmcW9KOVR1UGZRaVV3U3ZDT19Hei1RRkM3RlRHYlZrY1lYWFNKNGV2RTU5Z1Z3X3pnQ0c5NEg3VXFZRGxFVFlHcmZpVUZMcXhfNXZHbFNlemdka2NBVmszMWxsX0NraUdJV2JPTEpELWVhRksyeUlVdUptU21jSFhEYjRIVzdlWW5RVU9YVi1Lb1BLYXJaUDhzaHBOUDR4QUVmUDFxYWctYWl1TXBOTlJNUWpJdmpGem5uM0RaQWFBWU5GQzM2ZkpRMXpRWm1IdkY?oc=5",
-   "data": "2026-05-08T07:00:00.000Z",
+   "titulo": "Estado multa Vale em R$ 88 milhões por suposta fraude sobre barragem em Brumadinho - G1",
+   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNYzZuRGJkeUNnUGdzVDh5WEVxLW5EazNfNGJhWWpZVUpjcVF5Sm5DWVJFd0xxX0dUUkZGdHZCTE12Y3JGWWJkS0g1M3hjNEVzaEpVOGpSa0RIaC11Q0RfQUtHanlMa2Z3V3pMQ0VXSGhBSFNjcVVJOWxWOFFKY0NYd1ZHSUlGdTJiMjdEWTR6M0V4RjhwREdOOUN5Y2pRT2ZXQ25UMUx6NkgtQmR0enBlTFlqd1p4dE0xZTUtekhta3N0Z0pnb3g0RW5HamNZRW1z0gHfAUFVX3lxTE1TdHdQSG9ycW1ibEFHM1ZsUlZqNHdmRnFEM3liNk9mb0VVMlpnZHE0ZGFiSlp0elhXbVU4Q0pvUHBJTkpOeWNGSXJoX2lYRTFWa2szOGo1LVA2TldBYV9CVDZtbWJaZXlhbU5CcVlMSmpQNHBxSmhIREpIbkIwNkR5Zl9UZW1kV3pLVkktUmZTMElsNHlTbFdKNU9LYWs5MHBLcmI5by1ZN0JaYVRWeU9jTVFkc0pfTV9jYU1zQlR6WDU5UE5HNDdyLVI2d3NQSVVlYWJBdVcxVWRjM2NVeUU?oc=5",
+   "data": "2026-03-20T07:00:00.000Z",
    "fonte": "G1",
-   "descricao": "Após decisão do STJ, ex-presidente da Vale volta a responder em ações sobre Brumadinho e terá processos separados G1"
+   "descricao": "Estado multa Vale em R$ 88 milhões por suposta fraude sobre barragem em Brumadinho G1"
   },
   {
-   "titulo": "Justiça de Minas Gerais reinclui ex-presidente da Vale em ação sobre Brumadinho - Valor Econômico",
-   "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPQkdqM1hlenFzVzliT0laRHZoMF9NN1UtWEMwYUFlQWNxdU9LT3lsWDRoWFM5d0prWFlIVTEtQTNtM2J6UnljeEhVcTROUXg5NTh3dVJ5aTNtbWVkN3NQM3FLOERIVFJSMzlUeGd2NGlSNTlaN1p2VUw0WDVYcGpIc3ktRU5RVUt6SkxUMUw5RFVXYnlpWlJBSVNsRFB1NFdhR25RVEhMM0ZlRHhwTFZHdXowSTIzMXBGb2tlcTFMTjhZeXFFWlVNUVhReFliUGfSAd4BQVVfeXFMUEpmdUlpRWVlS05relNfMDB5d3kzdU1jM0NrenZ2R3NTU3MxTWlYdENScl9rVjVTbDJBdnhJTnZGanN3RHNhbkRmbGJOR3JhOEk1dTlodGZfNnYwajNDUlVnVy1ud3R1NkhLeWlBekFEXzVKS3p3ZUpsWWJtUzBNcFZRb2FkRXZZejQwd1dfX2RlanNCVUVmbExUZ3QyeFppN0JaYlU3SnVkTUNScW5GaUVndENLSzBDLVBOSEMzZEdzdC11dkV4ekxCQVR1RVNWajhkZVAxRGthTVpVd1h3?oc=5",
-   "data": "2026-05-07T07:00:00.000Z",
-   "fonte": "Valor Econômico",
-   "descricao": "Justiça de Minas Gerais reinclui ex-presidente da Vale em ação sobre Brumadinho Valor Econômico"
+   "titulo": "Justiça determina que Vale siga pagando auxílio às vítimas de Brumadinho - CNN Brasil",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOSVhtQ1IwaFI3QWNqVUZCanVRUmpyRnVZQ3daOWNjUml4TXQxZFR3cWh2X2V3Y1ZZam1TQ1ZoX2ZTc1NXM0lJai1DeF81OVhOQV9XRERrNW9HeERXTlVVa2pYb1l5TTdoRGhEYzdMOGszZndmTmkzX05xejhOMHFKVm5KV01pRXowTUpxV3N2bWVoMV9LeW0tS3NjOV9UTEs2LWF0STJHYXR3VEgtLVVFelc1Q0o0R0NvYUhpbkVQSQ?oc=5",
+   "data": "2026-03-06T08:00:00.000Z",
+   "fonte": "CNN Brasil",
+   "descricao": "Justiça determina que Vale siga pagando auxílio às vítimas de Brumadinho CNN Brasil"
   },
   {
-   "titulo": "Ação na Alemanha sobre Brumadinho corre risco de prescrever - DW.com",
-   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPRUw1MV9jMVlKb2hWWEVFN1VZVXVRMzIzci1pcWRTZmNFZU11emg0alhpMWpXV1JNb01uc1k4b21Hd21RNWRVdkhGckFPdHJHRkJmWEZqSnY0RVZEWE4ydTc3NW8zTUNzaDZIZDFwQjRBeVU2b0NLUFhla1k2c0w1X3IxMVo4bWJadmxFTUpGYWJxTFRpbkNnTGpZa2JVUGt2Z2o5Ny1YdVBwWWUtc0pCYVdBMUF2RVI0VlNwTjdubzgwajhHVUdR0gHHAUFVX3lxTE1GZDY4aFVpUHh3amxONGhwQ0lCYkdMZGpycTNwQUZCVnhnSi1NWFJMdzFfYVNHRkp1Tmlyd2RnTldzUUFiMG9ZNVJNWHNZcmt1RTRBdjdYSWtSdFd1Z3M3azR4Z0VWdEU3MnNUTGRCU2E1RjNKeTRyZ0MzREZzQV9IS3RwZVRIOHZ1Ml9xaG9JRk9DOUlBUkZxcFpOcE1hczR6ODZ3RXh6VmphYUtEUVNUQmRVR1E3VncwaTdYN2FPbTZSQ2s3cU0?oc=5",
-   "data": "2026-05-07T07:00:00.000Z",
-   "fonte": "DW.com",
-   "descricao": "Ação na Alemanha sobre Brumadinho corre risco de prescrever DW.com"
+   "titulo": "TJMG mantém pagamento do novo auxílio aos atingidos de Brumadinho - Portal TJMG",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOQ1lKWkphYzFBckUwaHBhN1A2bVdlT2NNSWtsWDZpbFhFZXVGOE1KdE9xdU5YMjF5bllUVzYtbGVkaHV6V2Z1RmVERFRKekljQloxR3cwYUdWU3R3aTZ6c01naS1NQWI3em1tMkM4RnNhU3dRdVl2ZHVSSUpSeGVJQVR1OHFtN0dsdWNkaWRweVNMNTlLSS1ZSVZVVzViQ2xtbVVyYndGTGJFcFc2Y2pnWER5TmhFZTdoT0plUnh3Yw?oc=5",
+   "data": "2026-03-05T08:00:00.000Z",
+   "fonte": "Portal TJMG",
+   "descricao": "TJMG mantém pagamento do novo auxílio aos atingidos de Brumadinho Portal TJMG"
   },
   {
-   "titulo": "MPMG pede ao STF para atuar em ação sobre continuidade de auxílio emergencial da Vale a atingidos de Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMFRwTUwzTC15R3VDakhKZUJZdGVWVGtnWHB5b2w5MkV2MW9LTkd5SmZuQndjQTBmc280WmJTSXhweTRqeGpjeHpoUlN0NG54SUVHSFlGbFM0akRlV0RmQWhwVWdJOVk4UWdnRDVhZFpuSGFEc1NSV2RPdGNUZUE4RGFEak92ZWJJVDQ3eGJEbGRtSDZNYzNJbEZHQS1tV2VzeExleXlZLWxTdw?oc=5",
-   "data": "2026-05-04T07:00:00.000Z",
-   "fonte": "O Fator",
-   "descricao": "MPMG pede ao STF para atuar em ação sobre continuidade de auxílio emergencial da Vale a atingidos de Brumadinho O Fator"
+   "titulo": "TJMG aprova retomada do pagamento de auxílio emergencial a atingidos de Brumadinho - Brasil de Fato",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGw1aXVtUmhISjNDQjB2N0ZLME40aEowMjlNSHljVmtlOTlXZzdMUHloUURyWHJJN2I1cTNDWVduRHQ4a0tSTFRuRGV4ZUhPejlxeC1FbmhWWXpTNFUwNTFIY0FhbXNZZG1FUC1RRlc2RDY5U3hkNThCVG9UN3llMnBTUUZGbU5tOElkZk85RDg1RGoycUJzeXJoSTFWYnRXZU9BdDYzMVRscnFMNjNUMVRBZlhjSlozM3hNRjJILXIwSnFi?oc=5",
+   "data": "2026-03-05T08:00:00.000Z",
+   "fonte": "Brasil de Fato",
+   "descricao": "TJMG aprova retomada do pagamento de auxílio emergencial a atingidos de Brumadinho Brasil de Fato"
+  },
+  {
+   "titulo": "Sete anos após Brumadinho, Vale retoma mina e ameaça as nascentes da região - Mongabay Brasil",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUHotWUdCRzRVd1VkQ0MtMDdTR18xV0Zpa3ZaakdKVGVMbDl0UXZhR1ZUSHUtbDJNcWdBOWtxZldHSWZwVGdIQ29FdlBweVdvN1g3Q1E4YlE3N3czS05TN0VORGl6NTByTTM4NnNwVmZpR25ReWhRYjN2X2M0RkU2alRQQnNhaW9WVWEwMFFtVVFGSTJibWRvQTBqdGtXcDlyLUNBdUV5UmZWVmpkMDhRRg?oc=5",
+   "data": "2026-01-29T08:00:00.000Z",
+   "fonte": "Mongabay Brasil",
+   "descricao": "Sete anos após Brumadinho, Vale retoma mina e ameaça as nascentes da região Mongabay Brasil"
+  },
+  {
+   "titulo": "7 anos após crime em Brumadinho (MG), outras duas minas da Vale registram vazamento - Andes-SN",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPQ1I4aXdWbmlQODFiYXBsazh5b2I1dko2SEFuQmJ3Z3BMTUN6SGsxc2xMUUlFVlNpcy1LcGFENDJVTW9PZUdubC1yQ0RVOGJrWHVJNXNpajdDTXZzOGpDS3luN1dfX1RpdGI0SmtLRWg4SFQ1V1Y1LTgxLTlVOEFyak9Kb0xUWVA2MzN1NWJOQk9qbkJnZHRZOV9saEMxY1dLT0w1ckhKUGo0SmJPYm5MbDYtX0pjYVlCRnZldEdYc0ZOUQ?oc=5",
+   "data": "2026-01-27T08:00:00.000Z",
+   "fonte": "Andes-SN",
+   "descricao": "7 anos após crime em Brumadinho (MG), outras duas minas da Vale registram vazamento Andes-SN"
+  },
+  {
+   "titulo": "Vale deve transferir R$ 234 mi a conta de auxílio a vítimas de Brumadinho - Consultor Jurídico",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbXlYQngtaUlfZ0RtQ1VYcTNuUGtzWVMwTDVWTFN4Uk1sS2J0OWdUVi11dVU3T0V6UTZ4dHowQ3dlZTJYWmRLZ3l5OEwwOU1hZHptSWIyNDBMajBsbnhhRmdGdEp4bUthNGFjRlBoc2FkMHlPY0RZVjRNMkNITk1wYnk2eE52Y0RQTHFiMnBheENTc1FsNmFScTRidFBTYU1KQ0lkZzNjMTI?oc=5",
+   "data": "2025-12-02T08:00:00.000Z",
+   "fonte": "Consultor Jurídico",
+   "descricao": "Vale deve transferir R$ 234 mi a conta de auxílio a vítimas de Brumadinho Consultor Jurídico"
+  },
+  {
+   "titulo": "Justiça determina que Vale transfira R$ 234 milhões para atingidos - Portal TJMG",
+   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOHhHUHlTV3dSSnNGSkk3b3hQNTlCWVY3c1ZsT3NoVWl0N2NfX1dETTd5WVBjaGhPRFRRc2NMSGg0dm85T0Q2dGZVMXlkU0lLSVRSal9QamliVGs1X0lKOUFmWV9nSVVGSGpJZ1RMTkhvY1dRRlJZT1ZfcWRTMkd4b01VNXRuRFRjZFE3cENoRVJLRXcza01xY0M1c2ZVYU5CYnYyRlcybWJVTGx2Y3VuUWtGdUY?oc=5",
+   "data": "2025-11-28T08:00:00.000Z",
+   "fonte": "Portal TJMG",
+   "descricao": "Justiça determina que Vale transfira R$ 234 milhões para atingidos Portal TJMG"
+  },
+  {
+   "titulo": "Justiça institui novo auxílio a vítimas da Tragédia de Brumadinho - Portal TJMG",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbFlWZFlNdlo4MURyMUNxTHgyclZTMTBpbU5ESEJFY0lobFBiMzA4VFhEOFEycjh1NFE4YTlKN2ZQX0NVNW52aW1QdGNOVE5valNWQW1JWnNZdnRJUHdPQ09KdFplU2lNLWJuLWd6YnYtUXN2M1YzcjdLTDN3cGhyeDh5N1NvWjFqUXdFVUJDMmw0bzd4TnJWZVpjckxqYVB3VUUwa0JGRUhqNHFnNHU2bktB?oc=5",
+   "data": "2025-11-14T08:00:00.000Z",
+   "fonte": "Portal TJMG",
+   "descricao": "Justiça institui novo auxílio a vítimas da Tragédia de Brumadinho Portal TJMG"
+  },
+  {
+   "titulo": "NOTA | Luta dos Atingidos de Brumadinho conquista avanços na ação pelo auxílio emergencial - MAB - Movimento dos Atingidos por Barragens",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPb01Qc25wclQ5YnNycExVTzFUelpEbWNMZnQwSm5fMHFkODI5UFMyY0VCbzRiQlhyN0dvVk1zd3dVRGcxM3lCNUlYUm8wQm5ralpPUXo0aVgxQllLMXZ3MER6a3lsWG9NNnFXdWV3NC1CUU9TN2NtVlJ6QzJqbzFMUmQ1Q2Zya1liMU5XalVUbFFzSjNMX2FWYkhrdUdFaE91d1JwX2c0TElULTFoM0hrbmg5Z3d0MVdlaXVr?oc=5",
+   "data": "2025-10-17T07:00:00.000Z",
+   "fonte": "MAB - Movimento dos Atingidos por Barragens",
+   "descricao": "NOTA | Luta dos Atingidos de Brumadinho conquista avanços na ação pelo auxílio emergencial MAB - Movimento dos Atingidos por Barragens"
+  },
+  {
+   "titulo": "Justiça obriga Vale a manter benefícios a atingidos de Brumadinho - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPV1JQdlJqWlJfbkk2ZXNfUWZ4Q1M0anZOb0VQanRpOEJDeU9xRkt6NjJOSnR5dU01QXJTU1NNS1JZM3ppNjB4ZW9GM1FpUllmVF9kbjVKZ0I4eEh1SF9DYmxpYzhCN0ZjanZfTjRsN01GeXVRT0stdnlOcWFSa0dtQ1d3TDZlc3dWRXlTNTAwNDEzaGduNEVHV1h0bUdxTDJpdGotdkRmaXFLR3p6?oc=5",
+   "data": "2025-04-03T07:00:00.000Z",
+   "fonte": "Migalhas",
+   "descricao": "Justiça obriga Vale a manter benefícios a atingidos de Brumadinho Migalhas"
+  },
+  {
+   "titulo": "Brumadinho: Justiça determina que Vale pague auxílio emergencial a atingidos - JOTA Info",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQlNkQmZrRS1hSXhSWk41SmJXTEJtOHNYdlBic2xMeHFSZy05WnZMLXBHeFl4TlotRGVKUXlDaXBsU0RzYi0zN1NvMXlEM2x1aElBZUQxT1o0aGRSU18yd2hDQ3BJVUdjdHBQY2I1U3JQdmhJTEhGUUZXTm5TbXFSa2dzOFN3eXdtY3poVUxwcW1NRk5iZFNHSjFxSVM3aVZUOWRBTk9CaFM?oc=5",
+   "data": "2025-03-31T07:00:00.000Z",
+   "fonte": "JOTA Info",
+   "descricao": "Brumadinho: Justiça determina que Vale pague auxílio emergencial a atingidos JOTA Info"
+  },
+  {
+   "titulo": "Brumadinho: vítimas processam Vale e cobram MP sobre fim de benefício - Agência Brasil",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPRFhhc3M4ZjRGX3JJNXdVOHRaQ09IeUlwYU9qM1gzUl9Sd3d3ODJvUkFHZ29SM1NkejlMUGJrckY5Wm9xS216SEt2ZEZvb3FIWHVpTFR0RGY5X29tMjc1Sk05R2pDdERGTklmM3VDTmtkZFdjbkIxR3p2SjJ3ajJDVlNEd1BtY0FvLV84N3o2U3lsTlIzUlRQWXNiT0s4Z0RsUk9DcVVwNGs0RG1DR1gtMWlfQ1hoaXhmeTlNN0pFc0FfOXZoNzV5Tms1UQ?oc=5",
+   "data": "2025-03-26T07:00:00.000Z",
+   "fonte": "Agência Brasil",
+   "descricao": "Brumadinho: vítimas processam Vale e cobram MP sobre fim de benefício Agência Brasil"
+  },
+  {
+   "titulo": "Seis anos do rompimento da barragem da Vale em Brumadinho - Portal da Assembleia Legislativa de Minas Gerais",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9sNzBmWjEtVG92N05BVWFZV3M3LWN6NHNqckJMekY4WnBOVXdsWEtyVy1YdjMtYzVsdXMwWldfUzVfU0hxenFYa00zbkZoWFZHRkVWeXdIVnpWTW40UnZTZUVtNE02U3RhSlptNi04bjVlOU1ZU0lXa2pLY1N2UQ?oc=5",
+   "data": "2025-01-24T08:00:00.000Z",
+   "fonte": "Portal da Assembleia Legislativa de Minas Gerais",
+   "descricao": "Seis anos do rompimento da barragem da Vale em Brumadinho Portal da Assembleia Legislativa de Minas Gerais"
+  },
+  {
+   "titulo": "Justiça homologa acordo extrajudicial entre Brumadinho e a Vale - Portal TJMG",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNeDNCanRpUVYwOWt0STdHTUw5MTY1X1l3cHE3ZTIwNjFyRmktdUw4U2ZWd3VzWmhFbTBXR0hFRW01cTN1X3VCbVFibmZnU2xybkt6N0lDZ2x2TFRNQl9yd05mVWFyVlJWdUJGajl3WFdBcVpzdElESUJOM255NmxtQldlc0d4QjU0RW1SR2VCb250Nnotc3pUc3RBTERSYklVRi1GSmF3OGx3Qml4Z1dmWlVB?oc=5",
+   "data": "2024-08-22T07:00:00.000Z",
+   "fonte": "Portal TJMG",
+   "descricao": "Justiça homologa acordo extrajudicial entre Brumadinho e a Vale Portal TJMG"
+  },
+  {
+   "titulo": "Vale atualiza últimas informações sobre Brumadinho - vale.com",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE83VDNDakVMVTJTUm9sZXh5SG9NeFBidUt1bkNxV05DbXY0dU1UMXltVGZQRTdWV2ExaEluTFdBY0Vkdi1LOVMtQzMtU0JKZkRhUFEyWGdKMkpPRjUySnlnWXFSN195eDl4N1AyTU56OXNBOGtkeDdSQWJKUVp6dw?oc=5",
+   "data": "2023-12-30T00:42:43.000Z",
+   "fonte": "vale.com",
+   "descricao": "Vale atualiza últimas informações sobre Brumadinho vale.com"
+  },
+  {
+   "titulo": "Jamais esqueceremos Brumadinho - vale.com",
+   "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE9ZTDRNbWlUcG1pbjMwNnN3Zi02S3F2SXdLUldsck5hLVg1cG00dDNmMTFUREJNQVc4azJRMUtWVFBLSTNDQzlDdTd3?oc=5",
+   "data": "2023-12-18T10:04:36.000Z",
+   "fonte": "vale.com",
+   "descricao": "Jamais esqueceremos Brumadinho vale.com"
+  },
+  {
+   "titulo": "Vale atualiza ações da reparação em Brumadinho - vale.com",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNX3dHUXdWZTJJMXZmeUJIODdOUFFIUlk3SlhpRy1zZTJDaERNN2hndkhvbV9OeFZZcHBvcDFfYm9yWVZqOFJUMFVsQmpfZmVLVmVQblhaY3o5WUJpUTZLSzdzQVp1ci1zLW4zd0JQM25WVVpwWGlIanloLUc0dDVjUzdfRXNyQlpZZVB1b1RLaXY4dw?oc=5",
+   "data": "2023-12-14T12:33:01.000Z",
+   "fonte": "vale.com",
+   "descricao": "Vale atualiza ações da reparação em Brumadinho vale.com"
+  },
+  {
+   "titulo": "Reparação Brumadinho I Obrigações de pagar da Vale para projetos de implementação pelo Poder Executivo Estadual - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQSUVWckk5dU1ac1ZKM01YYVhDWDh6QXhGYkxzT0ZYTlZiYThkdzJOMTdBVWRjUVlCU3BWRnVxLVZ6MEJJb1FpWXQteXlfeWtUd05oY2hqNE9Gc2pQM2FZQWE0bVJyTGt6Q0h6Rm5UQUdOeDJidm1tQUZwbGlzWEhCNS1FUnFFWU5qa3RuaVIxN2xvc2o3cXBsdjhwemRjM2tJVk00UA?oc=5",
+   "data": "2023-06-07T22:22:37.000Z",
+   "fonte": "Portal MG",
+   "descricao": "Reparação Brumadinho I Obrigações de pagar da Vale para projetos de implementação pelo Poder Executivo Estadual Portal MG"
+  },
+  {
+   "titulo": "Rompimento da barragem da Vale, em Brumadinho, completa quatro anos - Portal da Assembleia Legislativa de Minas Gerais",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQUVJOM2ZnYjB1QXpGNm94bmNIRVVBLVcxbVdpdU9mSmVlcnRCVFZqLU9FX0FzZ0h3a1JDY1NjMnhSYVNfMlQ5YjhWNmV3a01LRHBVUVVPWk5XRllZanczOS14RDc2UzNnWkswTFM2WkNpTjl1V09mSFpnX0l1Ni00NnBJZExHS0FjRXF4SFp6bkZjUFpTT0xUVldPUlNPREd6aUNZYmZ2cVY3OWRaMUplWVJKejE4T2RSSjVyUQ?oc=5",
+   "data": "2023-01-25T08:00:00.000Z",
+   "fonte": "Portal da Assembleia Legislativa de Minas Gerais",
+   "descricao": "Rompimento da barragem da Vale, em Brumadinho, completa quatro anos Portal da Assembleia Legislativa de Minas Gerais"
+  },
+  {
+   "titulo": "Caso Vale: MPMG recorre ao STF por julgamento em Brumadinho - MPMG",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUkh2TUZVdmdtZ1V2WEJsaFI5WkZsX3NTQlNITVk1MjViOEhiUnZzQ1BCdnQyRk94aFRZSnp5OTl5QnR1WnQ0RzNUVUpvOURLRXp5aUczUVZnVkxwbUsydUdtUVdIc0VIVFh4LUxTZ0NoOEh2Y3VxVVhqazBpUFo3NDlUVUxDNTJWbFY0cm1kbTE1NVdkLVhkRzBMNDVpUmxvdU5tU0J5M1dRYjFlNzd4M2oyZ0pDdll0Rm5zZA?oc=5",
+   "data": "2022-01-14T08:00:00.000Z",
+   "fonte": "MPMG",
+   "descricao": "Caso Vale: MPMG recorre ao STF por julgamento em Brumadinho MPMG"
+  },
+  {
+   "titulo": "Andamento processual: rompimento da barragem da Vale em Brumadinho - Instituto Guaicuy",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5VREFybUtsU2JUeXRqelBzZDQxWjNyZjdoWkJTaTFFbEtYOFZEOXVUV1BxM25NREhXeV9zbVlYbS1jdHRxV1NkU083TGd6RkFra0E?oc=5",
+   "data": "2020-05-20T03:08:17.000Z",
+   "fonte": "Instituto Guaicuy",
+   "descricao": "Andamento processual: rompimento da barragem da Vale em Brumadinho Instituto Guaicuy"
+  },
+  {
+   "titulo": "Funcionário garante que engenheira da Vale conhecia problemas da barragem em Brumadinho - Portal da Câmara dos Deputados",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNMk9uSXJNcEhIcndpeDZvVUViQ01KUzZzMjVyNzUzMk52WDd1VVBSS2tlQTJHbHBKYXNkUmRXYTRvUjQxVHZKTWlXN2JRcFVkSDlpN1NncGxaLUFzSV9hNVRzRThzWEFGUEZveW5CRDhHeDJSRFVRVnlQZHVmd3RkZmRBZGlaY3JSWC1peDAxdkk2dGNqQUVudWw2OXY4SHNQZFgzZ1l3UGRhUXdQNndoSXRhSWp3OFRfWnU2VWNiOUI1YllPVEwtTFVn?oc=5",
+   "data": "2019-06-18T07:00:00.000Z",
+   "fonte": "Portal da Câmara dos Deputados",
+   "descricao": "Funcionário garante que engenheira da Vale conhecia problemas da barragem em Brumadinho Portal da Câmara dos Deputados"
+  },
+  {
+   "titulo": "Brumadinho: há provas para incriminar Vale e funcionários, diz Ministério Público - Senado",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQV3lmVS10MVZqZDFVREh6WWV0WEFXeWRPQk1YV2RhNTdaa21sZ2pqbDNWZU51SDhEOVVYalBpV3N4MFEtTDFnWGRHUC1TaVI1WUVJRzFNaVZzRFloTklNbU5GTnh4X0lvNDB5cGdycEJ4X3lpZWZYM1piTVBIdHdMZlFyZExJbjlQcERsNU9EVzVSZm80a2o1ZDZQbk9BQ2tXcXhOdkF3WGo0YjNCc1U0cnRlMVlzejBqanpReXVLV2M2N3JCMjBmejVIbkxPSG9MN1E?oc=5",
+   "data": "2019-05-30T07:00:00.000Z",
+   "fonte": "Senado",
+   "descricao": "Brumadinho: há provas para incriminar Vale e funcionários, diz Ministério Público Senado"
   }
  ]
 }

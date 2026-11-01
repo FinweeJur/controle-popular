@@ -80,35 +80,66 @@ AGENTE = "ControlePopular/1.0 (radar de noticias; sem coleta de texto; https://c
 
 BUSCAS = [
     {
-        "id": "atingidos-bahia",
-        "tema": "Atingidos — Bahia",
+        "id": "samarco",
+        "tema": "Samarco — caso Mariana",
         "url": (
-            "https://news.google.com/rss/search?"
-            "q=atingidos+Bahia+barragem+OR+minera%C3%A7%C3%A3o+OR+reconhecimento&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+            "https://news.google.com/rss/search?q=Samarco&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         ),
     },
     {
-        "id": "rio-doce-es",
-        "tema": "Rio Doce — Espírito Santo",
+        "id": "novo-acordo",
+        "tema": "Novo Acordo do Rio Doce",
         "url": (
-            "https://news.google.com/rss/search?"
-            "q=atingidos+Rio+Doce+Esp%C3%ADrito+Santo+Samarco&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+            "https://news.google.com/rss/search?q=Novo+Acordo+Rio+Doce&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         ),
     },
     {
-        "id": "mariana",
-        "tema": "Mariana — 2015",
+        "id": "bhp-mariana",
+        "tema": "BHP — ação inglesa",
         "url": (
-            "https://news.google.com/rss/search?"
-            "q=Mariana+Samarco+Fund%C3%A3o+repara%C3%A7%C3%A3o&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+            "https://news.google.com/rss/search?q=BHP+Mariana&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         ),
     },
     {
         "id": "brumadinho",
-        "tema": "Brumadinho — 2019",
+        "tema": "Brumadinho — caso Vale",
         "url": (
-            "https://news.google.com/rss/search?"
-            "q=Brumadinho+Vale+Paraopeba+repara%C3%A7%C3%A3o&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+            "https://news.google.com/rss/search?q=Brumadinho&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "vale-brumadinho",
+        "tema": "Vale — acordo de Brumadinho",
+        "url": (
+            "https://news.google.com/rss/search?q=Vale+Brumadinho+acordo&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "paraopeba",
+        "tema": "Bacia do Paraopeba",
+        "url": (
+            "https://news.google.com/rss/search?q=Paraopeba&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "rio-doce-indenizacao",
+        "tema": "Rio Doce — indenização",
+        "url": (
+            "https://news.google.com/rss/search?q=Rio+Doce+indeniza%C3%A7%C3%A3o&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "mucuri-bahia",
+        "tema": "Mucuri — Bahia",
+        "url": (
+            "https://news.google.com/rss/search?q=Mucuri+atingidos&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        ),
+    },
+    {
+        "id": "atingidos-bahia",
+        "tema": "Atingidos — Bahia",
+        "url": (
+            "https://news.google.com/rss/search?q=atingidos+Bahia+barragem+OR+minera%C3%A7%C3%A3o+OR+reconhecimento&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         ),
     },
 ]
@@ -157,6 +188,56 @@ def _rotulo_desastre(titulo: str) -> str | None:
     return None
 
 
+# Filtro de relevância (31/10/2026). As buscas largas ("Samarco", "Brumadinho")
+# trazem homônimos: clube de futebol Paraopeba, "vale a pena", cidade Mariana
+# sem relação com o desastre. Exigir termo de CASO e termo de TEMA separa os
+# dois universos sem chutar vínculo: quem não casa fica de fora, não vira item.
+TERMOS_CASO = (
+    "samarco", "mariana", "fundao", "fundão", "rio doce", "brumadinho",
+    "paraopeba", "corrego do feijao", "córrego do feijão", "bhp", "renova",
+)
+TERMOS_TEMA = (
+    "indeniz", "repara", "acordo", "barragem", "atingid", "rompimento",
+    "desastre", "sentenca", "sentença", "decisao", "decisão", "justica",
+    "justiça", "mpf", "mpmg", "emergencia", "emergência", "rejeito", "lama",
+    "tragedia", "tragédia", "vitima", "vítima", "auxilio", "auxílio",
+    "repactua", "pid ", "comite", "comitê", "saneamento", "pesca", "agua",
+    "água", "floresta", "obra", "projeto", "multa", "liminar", "tutela",
+    "condena", "laudo", "seguro", "execucao", "execução",
+)
+
+
+def _relevante(titulo: str, resumo: str | None) -> bool:
+    """Título+resumo precisam ter um termo de caso E um de tema."""
+    alvo = _sem_acento(f"{titulo} {resumo or ''}")
+    return any(t in alvo for t in TERMOS_CASO) and any(t in alvo for t in TERMOS_TEMA)
+
+
+def _texto(item, tag: str, padrao: str = "") -> str:
+    return _limpar(item.findtext(tag) or "") or padrao
+
+
+def _item_do_feed(item, busca: dict) -> dict | None:
+    """Converte um <item> do RSS no registro do radar; None quando não serve."""
+    titulo, link = _texto(item, "title"), _texto(item, "link")
+    if not titulo or not link:
+        return None
+    # Armadilha 1: o veiculo real esta no <source> do agregador.
+    veiculo = _texto(item, "source", "veículo não identificado")
+    resumo = _texto(item, "description") or None
+    if not _relevante(titulo, resumo):
+        return None
+    return {
+        "titulo": titulo,
+        "link": link,
+        "veiculo": veiculo,
+        "resumo": resumo,
+        "tema": busca["tema"],
+        "desastre": _rotulo_desastre(titulo),
+        "data": _data_iso(item.findtext("pubDate")),
+    }
+
+
 def coletar_busca(busca: dict) -> list[dict]:
     try:
         corpo = _baixar(busca["url"])
@@ -168,26 +249,8 @@ def coletar_busca(busca: dict) -> list[dict]:
     except ET.ParseError as err:
         print(f"  ! {busca['id']}: resposta nao e XML ({err})", file=sys.stderr)
         return []
-
-    itens = []
-    for item in raiz.iter("item"):
-        titulo = _limpar(item.findtext("title") or "")
-        link = (item.findtext("link") or "").strip()
-        if not titulo or not link:
-            continue
-        # Armadilha 1: o veiculo real esta no <source> do agregador.
-        veiculo = _limpar(item.findtext("source") or "") or "veículo não identificado"
-        resumo = _limpar(item.findtext("description") or "") or None
-        itens.append({
-            "titulo": titulo,
-            "link": link,
-            "veiculo": veiculo,
-            "resumo": resumo,
-            "tema": busca["tema"],
-            "desastre": _rotulo_desastre(titulo),
-            "data": _data_iso(item.findtext("pubDate")),
-        })
-    return itens
+    itens = (_item_do_feed(item, busca) for item in raiz.iter("item"))
+    return [item for item in itens if item]
 
 
 def coletar(dias: int) -> dict:
