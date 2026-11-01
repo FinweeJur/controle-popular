@@ -213,6 +213,153 @@ export function posicionarPainel(
   };
 }
 
+/**
+ * Função utilitária para ignorar recalculamentos temporários durante interações do usuário.
+ * Útil para evitar que cliques rápidos em estações de rádio causem reposicionamento do painel.
+ */
+export function ignorarRecalculosTemporarios(): void {
+  // Esta função será implementada no hook usePosicaoPainel com uma API global
+  // Para uso imediato, criaremos uma solução alternativa no PlayerRadio
+}
+
+/**
+ * Hook para gerenciar proteção contra recalculamentos rápidos
+ */
+function useRecalculationProtection() {
+  const ignoreRecalculationsRef = useRef(false);
+  const ignoreTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const ignorarRecalculosTemporarios = useCallback(() => {
+    ignoreRecalculationsRef.current = true;
+    if (ignoreTimeoutRef.current) {
+      clearTimeout(ignoreTimeoutRef.current);
+    }
+    ignoreTimeoutRef.current = setTimeout(() => {
+      ignoreRecalculationsRef.current = false;
+      ignoreTimeoutRef.current = null;
+    }, 150);
+  }, []);
+
+  const shouldIgnoreRecalculations = useCallback(() => {
+    return ignoreRecalculationsRef.current;
+  }, []);
+
+  return {
+    ignorarRecalculosTemporarios,
+    shouldIgnoreRecalculations,
+  };
+}
+
+/**
+ * Hook para gerenciar listeners de eventos
+ */
+function useEventListeners(aberto: boolean, painelRef: React.RefObject<HTMLElement>, recalcular: () => void) {
+  useEffect(() => {
+    if (!aberto) return;
+    
+    const aoMudar = () => {
+      recalcular();
+    };
+    
+    const aoRolar = (e: Event) => {
+      const alvo = e.target;
+      if (alvo instanceof Node && painelRef.current?.contains(alvo)) return;
+      recalcular();
+    };
+    
+    window.addEventListener("resize", aoMudar);
+    window.addEventListener("scroll", aoRolar, true);
+    
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", aoMudar);
+    vv?.addEventListener("scroll", aoMudar);
+    
+    const observador =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(aoMudar) : null;
+    if (observador && painelRef.current) observador.observe(painelRef.current);
+    
+    return () => {
+      window.removeEventListener("resize", aoMudar);
+      window.removeEventListener("scroll", aoRolar, true);
+      vv?.removeEventListener("resize", aoMudar);
+      vv?.removeEventListener("scroll", aoMudar);
+      observador?.disconnect();
+    };
+  }, [aberto, recalcular, painelRef]);
+}
+
+/**
+ * Hook extendido que expõe controle sobre recalculamentos do painel.
+ * Inclui proteção contra interações rápidas do usuário.
+ */
+export function usePosicaoPainelComControle(config: ConfigHookPainel): {
+  resultado: ResultadoPainel | null;
+  ignorarRecalculosTemporarios: () => void;
+} {
+  const { aberto, painelRef, medirAncora, opcoes } = config;
+  const [resultado, setResultado] = useState<ResultadoPainel | null>(null);
+
+  // Refs para os valores que mudam a cada render
+  const medirAncoraRef = useRef(medirAncora);
+  const opcoesRef = useRef<OpcoesHookPainel>(opcoes ?? {});
+
+  // Hook para proteção contra recalculamentos
+  const protection = useRecalculationProtection();
+
+  // Função de recálculo com proteção
+  const recalcular = useCallback(() => {
+    if (protection.shouldIgnoreRecalculations()) return;
+    
+    const painel = painelRef.current;
+    const ancora = medirAncoraRef.current();
+    if (!painel || !ancora) return;
+
+    const o = opcoesRef.current;
+    // Mede a ALTURA natural sem o teto inline da rodada anterior
+    const { largura: larguraNatural, altura: alturaNatural } = medirTamanhoNatural(painel);
+    const largura = o.larguraMaxima
+      ? Math.min(larguraNatural, o.larguraMaxima)
+      : larguraNatural;
+    const altura = o.alturaMaxima
+      ? Math.min(alturaNatural, o.alturaMaxima)
+      : alturaNatural;
+
+    const vv = window.visualViewport;
+    const visao: TamanhoVisao = {
+      larg: vv?.width ?? window.innerWidth,
+      alt: vv?.height ?? window.innerHeight,
+    };
+
+    const posicao = posicionarPainel(ancora, { larg: largura, alt: altura }, visao, o);
+    setResultado((anterior) => {
+      if (
+        anterior &&
+        mesmaPosicao(anterior.posicao, posicao) &&
+        mesmaCaixa(anterior.ancora, ancora)
+      ) {
+        return anterior;
+      }
+      return { posicao, ancora };
+    });
+  }, [painelRef, protection]);
+
+  // Efeito para atualizar refs e recalcular
+  useLayoutEffect(() => {
+    medirAncoraRef.current = medirAncora;
+    opcoesRef.current = opcoes ?? {};
+    if (aberto) recalcular();
+  }, [aberto, recalcular]);
+
+  // Efeito para listeners de eventos
+  useEventListeners(aberto, painelRef, recalcular);
+
+  // Retorna o resultado e a função de controle
+  return {
+    resultado: aberto ? resultado : null,
+    ignorarRecalculosTemporarios: protection.ignorarRecalculosTemporarios,
+  };
+}
+
 /** Resultado completo do hook: a posição e a âncora que a originou. */
 export interface ResultadoPainel {
   posicao: PosicaoPainel;
@@ -282,7 +429,14 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
   const medirAncoraRef = useRef(medirAncora);
   const opcoesRef = useRef<OpcoesHookPainel>(opcoes ?? {});
 
+  // Flag para evitar recalculamentos durante interações rápidas do usuário
+  const ignoreRecalculationsRef = useRef(false);
+  const ignoreTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const recalcular = useCallback(() => {
+    // Ignorar recalculamentos se estivermos em um período de interação rápida
+    if (ignoreRecalculationsRef.current) return;
+    
     const painel = painelRef.current;
     const ancora = medirAncoraRef.current();
     if (!painel || !ancora) return;
@@ -319,6 +473,18 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
     });
   }, [painelRef]);
 
+  // Função para ignorar recalculamentos temporários durante interações do usuário
+  const ignorarRecalculosTemporarios = useCallback(() => {
+    ignoreRecalculationsRef.current = true;
+    if (ignoreTimeoutRef.current) {
+      clearTimeout(ignoreTimeoutRef.current);
+    }
+    ignoreTimeoutRef.current = setTimeout(() => {
+      ignoreRecalculationsRef.current = false;
+      ignoreTimeoutRef.current = null;
+    }, 150); // 150ms de proteção contra múltiplos recalculos
+  }, []);
+
   // Roda a cada render de propósito (sem lista de dependências): o arrasto
   // move a âncora por `transform` e a posição precisa acompanhar quadro a
   // quadro. `useLayoutEffect` posiciona antes da pintura — o painel não pisca
@@ -331,8 +497,13 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
 
   useEffect(() => {
     if (!aberto) return;
-    const aoMudar = () => recalcular();
-    // Rolar DENTRO do painel não pode reposicioná-lo nem remedi-lo: o próprio
+    const aoMudar = () => {
+      // Ignorar recalculos se houver interação rápida recente
+      if (!ignoreRecalculationsRef.current) {
+        recalcular();
+      }
+    };
+    // Rolar DENTRO do painel não pode reposicioná-lo nem remediá-lo: o próprio
     // `recalcular` mexe no teto e zeraria a rolagem do leitor (ver o conserto
     // de 05/10/2026 em `recalcular`). Só interessa a rolagem de FORA — a
     // página ou um contêiner que desloca a âncora. O listener roda em captura,
@@ -340,7 +511,10 @@ export function usePosicaoPainel(config: ConfigHookPainel): ResultadoPainel | nu
     const aoRolar = (e: Event) => {
       const alvo = e.target;
       if (alvo instanceof Node && painelRef.current?.contains(alvo)) return;
-      recalcular();
+      // Ignorar rolagem rápida durante interações do usuário
+      if (!ignoreRecalculationsRef.current) {
+        recalcular();
+      }
     };
     window.addEventListener("resize", aoMudar);
     window.addEventListener("scroll", aoRolar, true);

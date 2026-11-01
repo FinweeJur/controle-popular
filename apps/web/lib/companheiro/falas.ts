@@ -14,6 +14,10 @@
  * apareça na folha antes de ganhar fala própria: um pet desconhecido nunca
  * fica mudo, só usa a fala genérica.
  *
+ * O arquivo também guarda as falas de RÁDIO (`FALAS_RADIO`), disparadas quando
+ * o leitor escolhe uma estação no player. A chave ali é o id da estação; o
+ * companheiro comenta a escolha num balãozinho curto e volta a se calar.
+ *
  * TOM (decisão do dono)
  * ---------------------
  * Leve e engraçado. Cada fala é uma frase curta, sem número inventado e sem
@@ -115,6 +119,39 @@ export const FALAS_PADRAO: string[] = [
 ];
 
 /**
+ * Fala curta do companheiro quando o leitor ESCOLHE uma rádio no player.
+ *
+ * A chave é o `id` da estação em `lib/radio/estacoes.ts` — o mesmo que viaja
+ * em `cp:radio-tocar`/`cp:radio-estado`. O mapa é pequeno de propósito: só as
+ * estações com um tempero próprio ganham frase; as demais caem em
+ * `FALAS_RADIO_PADRAO`, para nenhuma escolha ficar muda. O tom continua o do
+ * resto do arquivo: opinião leve do bicho, sem afirmar fato, número ou
+ * promessa sobre a programação.
+ */
+export const FALAS_RADIO: Record<string, string> = {
+  "radio-cumbia-mix": "Adoro cumbia!",
+  "radio-yaravi": "Cumbia andina combina com preguiça boa.",
+  "portal-roots-reggae": "Debocho legal com esse reggae.",
+  "irie-fm": "Reggae na medida, sem pressa.",
+  "radio-rebelde": "Son cubano e um café, por favor.",
+  "radio-folclorllanero": "Joropo me deixa de bom humor.",
+  "radio-clube-fm-recife": "Forró, brega e saudade boa.",
+  "radio-favela": "Funk e rap: a quebrada fala.",
+  "radio-mec-fm": "Clássica para acalmar o dia.",
+  "radio-brasil-de-fato": "Informação popular no ar.",
+};
+
+/**
+ * Falas genéricas de rádio, para estação sem frase própria. Curtas para caber
+ * no balãozinho perto do pet, inclusive no celular.
+ */
+export const FALAS_RADIO_PADRAO: string[] = [
+  "Boa escolha!",
+  "Essa eu curto.",
+  "Sintonizei!",
+];
+
+/**
  * Devolve a lista de falas de um slug, ou a lista padrão se ele for novo.
  *
  * @param slug Slug do pet (chave de `FALAS`).
@@ -122,6 +159,25 @@ export const FALAS_PADRAO: string[] = [
  */
 export function falaPara(slug: string): string[] {
   return FALAS[slug] ?? FALAS_PADRAO;
+}
+
+/**
+ * Escolhe a fala da rádio pelo id da estação. Se a estação tem frase própria,
+ * ela vence; senão, sorteia uma genérica. O `aleatorio` é injetável para o
+ * teste ser determinístico, como em `escolherFala`.
+ *
+ * @param id Id da estação (`lib/radio/estacoes.ts`).
+ * @param aleatorio Fonte de aleatoriedade em `[0, 1)`; default `Math.random`.
+ * @returns Uma fala curta, nunca vazia.
+ */
+export function falaParaRadio(
+  id: string,
+  aleatorio: () => number = Math.random,
+): string {
+  const propria = FALAS_RADIO[id];
+  if (propria) return propria;
+  const indice = Math.floor(aleatorio() * FALAS_RADIO_PADRAO.length);
+  return FALAS_RADIO_PADRAO[indice] ?? FALAS_RADIO_PADRAO[0];
 }
 
 /**

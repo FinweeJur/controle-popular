@@ -32,7 +32,7 @@ import { Shield, FileText, Globe2, Eye, LockOpen, MapPin } from "lucide-react";
 export const metadata: Metadata = {
   title: "Central de Inteligência & Documentos Desclassificados | Controle Popular",
   description:
-    "Acervo cívico unificado de relatórios de inteligência, segurança cibernética e dossiês desclassificados do G20, FBI, NSA, CIA e Twelve Eyes: busca, temas, pessoas, datas e links oficiais canônicos.",
+    "Acervo cívico unificado de relatórios de inteligência, segurança cibernética e dossiês desclassificados do G20, FBI, NSA, CIA e Twelve Eyes: busca, temas, pessoas, datas, página oficial de custódia e PDF quando publicado.",
 };
 
 const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
@@ -133,9 +133,10 @@ export default function PaginaInteligenciaG20() {
         </h1>
         <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
           Consulte relatórios de inteligência, avaliações cibernéticas, telegramas diplomáticos, diretrizes de segurança
-          e dossiês desclassificados dos Estados Unidos (CIA, FBI, NSA) e potências da aliança Twelve Eyes. Acesse fontes primárias,
-          identificadores de custódia arquivística oficial, pessoas e países citados, e faça buscas
-          avançadas com exportação de dados.
+          e dossiês desclassificados dos Estados Unidos (CIA, FBI, NSA) e potências da aliança Twelve Eyes. Acesse a página
+          oficial de custódia, identificadores arquivísticos, pessoas e países citados, e faça buscas
+          avançadas com exportação de dados. O PDF original aparece quando o órgão o publica; quando não há link estável,
+          a ficha mantém o registro e a página oficial de consulta.
         </p>
       </header>
 
@@ -153,7 +154,7 @@ export default function PaginaInteligenciaG20() {
             {COBERTURA_DESCLASSIFICADOS.totalDocumentos} Registros
           </div>
           <div className="mt-1 text-sm text-text-soft">
-            Dossiês com links canônicos oficiais e PDFs.
+            Dossiês com página oficial de custódia; PDF quando publicado.
           </div>
         </div>
 

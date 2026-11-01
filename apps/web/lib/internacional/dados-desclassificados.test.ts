@@ -41,7 +41,10 @@ describe("dados-desclassificados", () => {
       expect(doc.dataPublicacao).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(doc.dataDesclassificacao).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(doc.urlOficialCustodia).toMatch(/^https?:\/\//);
-      expect(doc.urlPdfOriginal).toMatch(/^https?:\/\//);
+      // PDF vazio é resultado da medição de 30/10/2026: 55 links de PDF
+      // devolviam 404/500 ou não existiam. A ficha continua com a página
+      // oficial de custódia; o botão de PDF só aparece quando há link vivo.
+      expect(doc.urlPdfOriginal === "" || /^https?:\/\//.test(doc.urlPdfOriginal)).toBe(true);
       expect(doc.numeroRegistroOficial).toBeTruthy();
       expect(doc.quantidadePaginas).toBeGreaterThan(0);
       expect(doc.assuntos.length).toBeGreaterThan(0);
@@ -49,6 +52,26 @@ describe("dados-desclassificados", () => {
       expect(doc.paisesMencionados.length).toBeGreaterThan(0);
       expect(doc.sujeitosMencionados.length).toBeGreaterThan(0);
     }
+  });
+
+  it("não publica os links fabricados removidos na medição de 30/10/2026", () => {
+    const docs = obterDocumentosDesclassificados();
+    const proibidos = [
+      "memoriasreveladas.gov.br",
+      "digitalarchive.wilsoncenter.org/document/",
+      "open.canada.ca/en/search/ati/reference",
+      "vault.fbi.gov/brazil-political-unrest-1968",
+      "nationalarchives.nl/pdf",
+      "sicurezzanazionale.gov.it/sis_r",
+    ];
+    for (const doc of docs) {
+      const juntos = `${doc.urlOficialCustodia} ${doc.urlPdfOriginal}`;
+      for (const trecho of proibidos) {
+        expect(juntos.includes(trecho), `${doc.id}: ${trecho}`).toBe(false);
+      }
+    }
+    // A correção não pode zerar o acervo de PDFs: os links vivos continuam.
+    expect(docs.filter((d) => d.urlPdfOriginal !== "").length).toBeGreaterThanOrEqual(9);
   });
 
   it("localiza o memorando CIA de 1974 sobre execucoes e o relatorio SNI de 1976", () => {

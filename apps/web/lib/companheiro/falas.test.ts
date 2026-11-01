@@ -10,7 +10,16 @@
 
 import { describe, expect, it } from "vitest";
 import { PETS_COMPANHEIRO } from "../../app/components/companheiroPets";
-import { FALAS, FALAS_PADRAO, escolherFala, falaPara } from "./falas";
+import { ESTACOES } from "../radio/estacoes";
+import {
+  FALAS,
+  FALAS_PADRAO,
+  FALAS_RADIO,
+  FALAS_RADIO_PADRAO,
+  escolherFala,
+  falaPara,
+  falaParaRadio,
+} from "./falas";
 
 describe("cobertura do catálogo de falas", () => {
   it("todo slug conhecido tem pelo menos uma fala", () => {
@@ -69,6 +78,41 @@ describe("escolherFala", () => {
 
   it("slug desconhecido sorteia da lista padrão", () => {
     expect(escolherFala("pet-que-nao-existe", () => 0)).toBe(FALAS_PADRAO[0]);
+  });
+});
+
+describe("falas de rádio", () => {
+  it("só aponta para id de estação existente", () => {
+    const ids = new Set(ESTACOES.map((e) => e.id));
+    for (const id of Object.keys(FALAS_RADIO)) {
+      expect(ids.has(id), `fala de rádio órfã: ${id}`).toBe(true);
+    }
+  });
+
+  it("as falas próprias e as genéricas seguem o formato curto", () => {
+    const textos = [...Object.values(FALAS_RADIO), ...FALAS_RADIO_PADRAO];
+    for (const fala of textos) {
+      expect(fala.length).toBeGreaterThan(3);
+      expect(fala.length).toBeLessThanOrEqual(140);
+      expect(fala).not.toMatch(/[\r\n]/);
+      expect(fala).toBe(fala.trim());
+    }
+  });
+
+  it("estação com fala própria vence o sorteio", () => {
+    expect(falaParaRadio("radio-cumbia-mix")).toBe("Adoro cumbia!");
+    expect(falaParaRadio("portal-roots-reggae")).toBe(
+      "Debocho legal com esse reggae.",
+    );
+  });
+
+  it("estação sem fala própria sorteia da lista genérica", () => {
+    expect(falaParaRadio("radio-que-nao-existe", () => 0)).toBe(
+      FALAS_RADIO_PADRAO[0],
+    );
+    expect(falaParaRadio("radio-que-nao-existe", () => 0.99)).toBe(
+      FALAS_RADIO_PADRAO[FALAS_RADIO_PADRAO.length - 1],
+    );
   });
 });
 

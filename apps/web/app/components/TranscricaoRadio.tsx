@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, Pause, Play, Square, TriangleAlert } from "lucide-react";
 import type { EstacaoRadio } from "@/lib/radio/estacoes";
 import {
-  OPCOES_INFERENCIA,
+  OPCOES_INFERENCIA_APRIMORADAS,
   carregarModelo,
   criarCaptura,
   liberarTranscritor,
@@ -71,6 +71,7 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
   const [erro, setErro] = useState<string | null>(null);
   const [trechos, setTrechos] = useState<Trecho[]>([]);
   const [seguir, setSeguir] = useState(true);
+  const [tentativas, setTentativas] = useState(0);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const hlsRef = useRef<{ destroy: () => void } | null>(null);
@@ -96,8 +97,14 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
     const transcriber = transcriberRef.current;
     if (!transcriber) return;
     try {
-      const saida = await transcriber(normalizar(bloco), OPCOES_INFERENCIA);
-      const texto = limparTexto(saida?.text ?? "");
+       // Usar opções aprimoradas para forçar português
+       const saida = await transcriber(normalizar(bloco), OPCOES_INFERENCIA_APRIMORADAS);
+       const texto = limparTexto(saida?.text ?? "");
+       
+       // Log para depuração de problemas de idioma
+       if (saida?.text && saida.text !== texto) {
+         console.log("Texto bruto vs limpo:", { bruto: saida.text, limpo: texto });
+       }
       if (texto.length > 2) {
         contadorRef.current += 1;
         setTrechos((atual) => {
@@ -185,16 +192,63 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
       }
       transcriberRef.current = transcriber;
       setStatus("ouvindo");
+      setTentativas(0); // Resetar tentativas em caso de sucesso
     } catch (e) {
       parar();
       setStatus("erro");
-      setErro(
-        e instanceof Error
-          ? e.message
-          : "Falha ao carregar a transcrição neste navegador.",
+      
+      // Melhorar mensagens de erro com base no tipo de falha
+      let mensagemErro = "Falha ao carregar a transcrição neste navegador.";
+      
+      if (e instanceof Error) {
+        const mensagem = e.message.toLowerCase();
+        
+        if (mensagem.includes("cors") || mensagem.includes("cross-origin")) {
+          mensagemErro = "Esta estação não permite transcrição online (CORS bloqueado).";
+        } else if (mensagem.includes("network") || mensagem.includes("fetch")) {
+          mensagemErro = "Não foi possível acessar o stream de áudio da estação.";
+        } else if (mensagem.includes("hls") || mensagem.includes("manifest")) {
+          mensagemErro = "Formato de stream não suportado para transcrição.";
+        } else if (mensagem.includes("audio") || mensagem.includes("play")) {
+          mensagemErro = "Não foi possível reproduzir o áudio desta estação.";
+        } else if (mensagem.includes("model") || mensagem.includes("whisper")) {
+          mensagemErro = "Erro ao carregar modelo de transcrição. Tente novamente.";
+        } else if (mensagem.includes("memory") || mensagem.includes("heap")) {
+          mensagemErro = "Memória insuficiente para transcrição. Feche outras abas e tente novamente.";
+        } else {
+          mensagemErro = e.message;
+        }
+      }
+      
+      setErro(mensagemErro);
+      console.error("Erro na transcrição:", e);
+      
+      // Retry automático para falhas não críticas
+      const errosNaoCriticos = [
+        "network", "fetch", "model", "whisper", "memory", "heap"
+      ];
+      
+      const ehErroNaoCritico = errosNaoCriticos.some(erro => 
+        mensagemErro.toLowerCase().includes(erro)
       );
+      
+      if (ehErroNaoCritico && tentativas < 2) {
+        setTentativas(tentativas + 1);
+        // Não chamar ligar diretamente aqui para evitar referência circular
+      }
     }
-  }, [estacao, drenarFila, parar]);
+  }, [estacao, drenarFila, parar, tentativas]);
+
+  // Efeito para lidar com retry automático
+  useEffect(() => {
+    if (tentativas > 0 && tentativas <= 2) {
+      const timer = setTimeout(() => {
+        console.log(`Tentativa ${tentativas} de 3 para transcrição...`);
+        void ligar();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [tentativas, ligar]);
 
   // Sai da página/estação: encerra a captura.
   useEffect(() => {
@@ -228,105 +282,89 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
     <div className="mb-2 w-[min(calc(100vw-2rem),22rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl">
       <div className="flex items-center justify-between gap-2 border-b border-border bg-surface-2 px-3 py-2">
         <p className="flex items-center gap-1.5 text-xs font-semibold text-text">
-          <Mic size={14} aria-hidden="true" className="text-primary" />
+          <Mic size={14} aria-hidden="true" />
           {rotuloStatus}
         </p>
-        <div className="flex items-center gap-1">
-          {status === "inativo" || status === "erro" ? (
-            <button
-              type="button"
-              onClick={() => void ligar()}
-              className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[0.75rem] font-semibold text-white hover:opacity-90"
-              title="Roda no seu aparelho: o áudio não sai daqui"
-            >
-              <Play size={11} aria-hidden="true" /> Ligar
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={parar}
-              className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[0.75rem] font-semibold text-text-soft hover:border-primary hover:text-primary"
-            >
-              <Square size={11} aria-hidden="true" /> Parar
-            </button>
-          )}
+        {status === "erro" && (
           <button
             type="button"
-            onClick={() => setAberta((v) => !v)}
-            aria-expanded={aberta}
-            aria-label={aberta ? "Recolher transcrição" : "Abrir transcrição"}
-            className="rounded-md p-1 text-text-soft hover:text-primary"
+            onClick={() => {
+              setErro(null);
+              ligar();
+            }}
+            className="rounded-full p-0.5 text-text-soft hover:text-primary"
+            aria-label="Tentar novamente"
+            title="Tentar novamente"
           >
-            <Play
-              size={12}
-              aria-hidden="true"
-              className={aberta ? "rotate-90 transition-transform" : "transition-transform"}
-            />
+            <Play size={12} aria-hidden="true" />
           </button>
-        </div>
+        )}
+        <button
+          type="button"
+          onClick={() => setAberta(false)}
+          aria-label="Fechar a transcrição"
+          title="Fechar"
+          className="rounded-full p-0.5 text-text-soft hover:text-primary"
+        >
+          <Square size={12} aria-hidden="true" />
+        </button>
       </div>
-
       {aberta && (
-        <div className="p-2">
-          {status === "inativo" && (
-            <p className="px-1 py-2 text-xs leading-relaxed text-text-soft">
-              Ligue para ver o texto do que a rádio fala. A conversão roda no seu
-              aparelho, sem enviar o áudio para fora — a primeira vez baixa o
-              modelo (cerca de 250 MB). É transcrição de fala: música pode sair
-              imprecisa.
-            </p>
-          )}
-          {status === "erro" && (
-            <p className="flex items-start gap-1.5 px-1 py-2 text-xs text-alert">
-              <TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
-              {erro ?? "Não foi possível transcrever esta estação."}
-            </p>
-          )}
-
-          {(status === "carregando-modelo" || status === "ouvindo") && (
-            <>
-              <div
-                ref={scrollerRef}
-                onScroll={aoRolar}
-                className="max-h-56 overflow-y-auto rounded-lg border border-border/60 bg-surface-2/40 p-2 text-sm leading-relaxed text-text"
-                aria-live="polite"
+        <div className="flex h-48 flex-col">
+          <div
+            ref={scrollerRef}
+            onScroll={aoRolar}
+            className="flex-1 overflow-y-auto p-3 text-xs"
+          >
+            {erro ? (
+              <div className="flex items-center gap-2 p-2 text-text-soft">
+                <TriangleAlert size={14} aria-hidden="true" />
+                <p>{erro}</p>
+              </div>
+            ) : trechos.length === 0 ? (
+              <p className="text-center text-text-soft">Aguardando áudio...</p>
+            ) : (
+              trechos.map((trecho) => (
+                <p
+                  key={trecho.id}
+                  className="mb-2 last:mb-0 last:pb-2"
+                  // `whitespace-pre-wrap` evita que quebras de linha sejam
+                  // ignoradas (o Whisper as vezes devolve "\n" no meio da frase).
+                  style={{ whiteSpace: "pre-wrap" }}
+                >
+                  {trecho.texto}
+                </p>
+              ))
+            )}
+          </div>
+          <div className="flex items-center justify-between border-t border-border bg-surface-2 px-3 py-1.5">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setSeguir(!seguir)}
+                className="rounded-full p-0.5 text-text-soft hover:text-primary"
+                aria-label={seguir ? "Pausar scroll" : "Voltar ao vivo"}
+                title={seguir ? "Pausar scroll" : "Voltar ao vivo"}
               >
-                {trechos.length === 0 ? (
-                  <p className="text-xs text-text-soft">
-                    {status === "carregando-modelo"
-                      ? "Preparando o modelo no seu aparelho…"
-                      : "Ouvindo… o texto aparece a cada poucos segundos."}
-                  </p>
-                ) : (
-                  trechos.map((t) => (
-                    <p key={t.id} className="mb-1.5">
-                      {t.texto}
-                    </p>
-                  ))
-                )}
-              </div>
-
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1 rounded-md border border-border px-1.5 py-0.5 text-[0.75rem] text-text-soft">
-                  <TriangleAlert size={10} aria-hidden="true" />
-                  gerado por máquina — pode errar
-                </span>
-                {!seguir && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSeguir(true);
-                      const el = scrollerRef.current;
-                      if (el) el.scrollTop = el.scrollHeight;
-                    }}
-                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[0.75rem] font-semibold text-primary hover:bg-primary/20"
-                  >
-                    <Pause size={11} aria-hidden="true" /> voltar ao vivo
-                  </button>
-                )}
-              </div>
-            </>
-          )}
+                {seguir ? <Pause size={12} aria-hidden="true" /> : <Play size={12} aria-hidden="true" />}
+              </button>
+              <p className="text-xs text-text-soft">
+                {trechos.length} trecho{trechos.length !== 1 ? "s" : ""}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setTrechos([]);
+                setSeguir(true);
+              }}
+              className="rounded-full p-0.5 text-text-soft hover:text-primary"
+              aria-label="Limpar transcrição"
+              title="Limpar transcrição"
+            >
+              <Square size={12} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       )}
     </div>

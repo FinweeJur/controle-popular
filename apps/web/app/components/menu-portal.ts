@@ -1,11 +1,20 @@
 import type { LucideIcon } from "lucide-react";
 import { Activity, AlertTriangle, BarChart3, Bell, BookOpen, Briefcase, Building2, Compass, Cpu, FileQuestion, FileSpreadsheet, FileText, Globe, GraduationCap, HeartHandshake, HelpCircle, Info, Landmark, Layers, List, MapPin, Mountain, Newspaper, PhoneCall, Radio, Scale, Search, Send, Shield, ShieldCheck, ShoppingBag, Sparkles, Users, Waves } from "lucide-react";
 
+import { destacadosPrimeiro } from '@/lib/ordenar-menu-destaques';
+
 /**
  * @file Menu do indice expansivel (navbar).
  *
  * Separado do TopNav porque o CodeScene mede o componente e porque a dica de
  * duas linhas (`dica`) e conteudo editorial, revisavel fora do JSX.
+ *
+ * `SECOES_MENU_CURADO` guarda a ordem editorial de cada eixo. Na exportacao,
+ * `destacadosPrimeiro` sobe os itens `destaque: true` para o topo de cada
+ * coluna, mantendo a ordem relativa dentro do grupo — Eixo 1 ja estava assim,
+ * os Eixos 2 e 3 tinham destaques intercalados (bug do dono, 30/10/2026).
+ * Nao existe campo de data nem `novo`: o conjunto de destacados e o curado
+ * aqui, a mao, e nao um criterio calculado.
  */
 
 export interface ItemMenuLink {
@@ -31,7 +40,7 @@ export interface SecaoMenu {
   links: ItemMenuLink[];
 }
 
-export const SECOES_MENU: SecaoMenu[] = [
+const SECOES_MENU_CURADO: SecaoMenu[] = [
   {
     id: 'terra',
     badge: 'EIXO 1',
@@ -149,5 +158,10 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Sobre o ONSA & Método', href: '/sobre', icone: Info, dica: 'O que é o portal, o método ONSA, a taxa de erro e a origem dos dados.' },
     ],
   },
-] as const;
+];
+
+export const SECOES_MENU: SecaoMenu[] = SECOES_MENU_CURADO.map((secao) => ({
+  ...secao,
+  links: destacadosPrimeiro(secao.links),
+}));
 

@@ -31,7 +31,7 @@ import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeL
 import { useArrastavel } from "@/lib/usarArrastavel";
 import {
   medirTopoUtil,
-  usePosicaoPainel,
+  usePosicaoPainelComControle,
   type CaixaAncora,
 } from "@/lib/posicionar-painel";
 
@@ -128,7 +128,7 @@ export default function PlayerRadio() {
     const r = el.getBoundingClientRect();
     return { esq: r.left, topo: r.top, larg: r.width, alt: r.height };
   }, []);
-  const posIndice = usePosicaoPainel({
+  const posIndice = usePosicaoPainelComControle({
     aberto: indiceAberto,
     painelRef: indiceRef,
     medirAncora: medirAncoraIndice,
@@ -138,6 +138,27 @@ export default function PlayerRadio() {
     // (medido 06/10/2026, "volume cortando no topo").
     opcoes: { margemTopo: medirTopoUtil },
   });
+
+  // Proteger contra recalculamentos durante cliques rápidos em estações
+  useEffect(() => {
+    if (posIndice?.ignorarRecalculosTemporarios) {
+      // Adicionar proteção quando o índice estiver aberto
+      const handleClick = () => {
+        posIndice.ignorarRecalculosTemporarios();
+      };
+      
+      // Adicionar listener ao painel quando estiver aberto
+      if (indiceAberto && indiceRef.current) {
+        indiceRef.current.addEventListener('click', handleClick);
+      }
+      
+      return () => {
+        if (indiceRef.current) {
+          indiceRef.current.removeEventListener('click', handleClick);
+        }
+      };
+    }
+  }, [indiceAberto, posIndice?.ignorarRecalculosTemporarios]);
 
   // Espelha o volume/mudo no elemento de áudio sempre que mudam. Roda também
   // na montagem, para o `<audio>` nascer com os valores do estado.
@@ -434,13 +455,13 @@ export default function PlayerRadio() {
             // Posição vinda do utilitário; `visibility` só evita um flash na
             // primeira pintura, enquanto o `useLayoutEffect` ainda não mediu.
             style={{
-              left: posIndice
-                ? Math.round(posIndice.posicao.x - posIndice.ancora.esq)
+              left: posIndice?.resultado
+                ? Math.round(posIndice.resultado.posicao.x - posIndice.resultado.ancora.esq)
                 : 0,
-              top: posIndice
-                ? Math.round(posIndice.posicao.y - posIndice.ancora.topo)
+              top: posIndice?.resultado
+                ? Math.round(posIndice.resultado.posicao.y - posIndice.resultado.ancora.topo)
                 : 0,
-              maxHeight: posIndice ? Math.round(posIndice.posicao.altura) : undefined,
+              maxHeight: posIndice?.resultado ? Math.round(posIndice.resultado.posicao.altura) : undefined,
               visibility: posIndice ? "visible" : "hidden",
             }}
             // Duas colunas (06/10/2026): esquerda título+lista, direita o
