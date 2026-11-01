@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-10-30T06:50:52.715Z
-- Duracao total: 12.2 min
+- Gerado em: 2026-11-01T06:54:39.843Z
+- Duracao total: 9.2 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 388
+- OK: 390
 - QUEBRADOS: 9
-- REDIRECTS: 28
-- INCONSISTENTES: 48
-- Propostas geradas: 11
+- REDIRECTS: 31
+- INCONSISTENTES: 43
+- Propostas geradas: 14
 - Links sem proposta: 26
 
 ## Links quebrados e redirecionados
@@ -49,8 +49,11 @@
 | https://www.cptnacional.org.br/ | REDIRECT | 200 | https://cptnacional.org.br/ |
 | https://www.fundacaorenova.org | REDIRECT | 200 | https://www.reparacaobaciariodoce.com/ |
 | https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 | REDIRECT | 200 | https://ojs.ifch.unicamp.br/index.php/rhs/article/download/231/217/0 |
+| https://www.mpf.mp.br/atuacao/grandes-casos | REDIRECT | 200 | https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque |
+| https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos | REDIRECT | 200 | https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque/caso-samarco/documentos |
 | https://www.mpmg.mp.br | REDIRECT | 200 | https://www.mpmg.mp.br/portal/ |
 | https://www.revistas.usp.br/revhistoria/article/view/89008 | REDIRECT | 200 | https://revistas.usp.br/revhistoria/pt_BR/article/view/89008 |
+| https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica | REDIRECT | 200 | https://www.se.gov.br/agencia |
 | https://www.tjmg.jus.br | REDIRECT | 200 | https://www.tjmg.jus.br/portal-tjmg/ |
 | https://www.trf6.jus.br | REDIRECT | 200 | https://portal.trf6.jus.br/ |
 | https://www.un.org/pt/observances/indigenous-day | QUEBRADO | 404 | https://www.un.org/pt/observances/indigenous-day |
@@ -161,7 +164,7 @@ Origem: apps/web/lib/glossario/termos.ts
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
++ href="https://dpp-api.anp.gov.br/swagger/ui/index"
 ```
 
 Confianca: media
@@ -178,6 +181,39 @@ Origem: apps/web/lib/linkmender/busca.test.ts
 Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
+
+### 12. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+
+```diff
+- href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
++ href="https://www.se.gov.br/agencia"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/memoria/camadas.ts
+
+### 13. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
+
+```diff
+- href="https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos"
++ href="https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque/caso-samarco/documentos"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: registry
+
+### 14. https://www.mpf.mp.br/atuacao/grandes-casos
+
+```diff
+- href="https://www.mpf.mp.br/atuacao/grandes-casos"
++ href="https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: registry
 
 ## Quebrados e redirecionados sem proposta
 
@@ -211,8 +247,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 ## Inconsistentes (nao verificados, sem proposta)
 
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
-- https://backup.controlepopular.com.br/ (rede) — erro de rede: This operation was aborted
-- https://backup.controlepopular.com.br/api/saude (rede) — erro de rede: This operation was aborted
 - https://certificacao.incra.gov.br (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
@@ -228,7 +262,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
 - https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
-- https://regionais.betim.digital/regional/citrolandia (rede) — erro de rede: fetch failed
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
@@ -252,8 +285,6 @@ Origem: apps/web/lib/memoria/camadas.ts
 - https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
-- https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
-- https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
 - https://x (rede) — erro de rede: fetch failed
 - https://x.gov.br (rede) — erro de rede: fetch failed
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed
