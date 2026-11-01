@@ -54,6 +54,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 
 import { medirAssets, explicar } from "../apps/web/lib/deploy/tamanho-assets.js";
+import { avaliarBanco, excecaoRemotaLigada } from "../apps/web/lib/deploy/banco-local.js";
 import { publicarTunel } from "./agent-tools/publicar-tunel.mts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -286,20 +287,35 @@ function lerDotenv(arquivo: string): Record<string, string> {
 }
 
 /**
+ * A variável que abre a porta estreita do RDS.
+ *
+ * Lida uma vez, quando o módulo carrega: a rotina não relê ambiente no meio da
+ * execução, e assim o valor que decidiu é o mesmo que aparece no log. Quem liga
+ * é `scripts/rotina-local.cmd`, o invocador da tarefa agendada.
+ */
+const BANCO_REMOTO = process.env.PERMITIR_BANCO_REMOTO;
+
+/**
  * A regra que não se negocia (docs/worktrees.md): o banco é 127.0.0.1.
  *
  * Está em código e não em comentário porque já aconteceu — um build local
  * conectou na Neon e levou HTTP 402. Comentário não impede; abortar impede.
+ *
+ * ═══ A EXCEÇÃO DO RDS (01/11/2026) ═══
+ *
+ * O banco oficial virou o RDS, e o guard passou a barrar o uso legítimo: a
+ * tarefa `CP-Rotina-Local` terminou com resultado 1 às 07:00 sem publicar
+ * porque `apps/web/.env.local` aponta para `*.rds.amazonaws.com`.
+ *
+ * O guard não sai. Ele ganha uma porta estreita: com `PERMITIR_BANCO_REMOTO=1`
+ * aceita **só** `*.rds.amazonaws.com`; Neon e qualquer outro host continuam
+ * recusados. A decisão mora em `apps/web/lib/deploy/banco-local.ts`, testada
+ * caso por caso em `banco-local.test.ts` — aqui fica só o abortar.
  */
 function exigirBancoLocal(url: string | undefined, origem: string) {
-  if (!url) throw new Error(`DATABASE_URL ausente em ${origem}`);
-  const hospedeiro = new URL(url.replace(/^postgres(ql)?:/, "http:")).hostname;
-  if (!["127.0.0.1", "localhost", "::1"].includes(hospedeiro)) {
-    throw new Error(
-      `${origem} aponta para "${hospedeiro}", não para o Postgres local. ` +
-        `A rotina se recusa a rodar: foi assim que um build local bateu na Neon e levou 402.`
-    );
-  }
+  const decisao = avaliarBanco(url, origem, excecaoRemotaLigada(BANCO_REMOTO));
+  if (!decisao.aceita) throw new Error(decisao.mensagem);
+  registrar(`banco — ${decisao.mensagem}`);
 }
 
 // ───────────────────────────── cron ─────────────────────────────
@@ -574,7 +590,6 @@ async function principal() {
   const envWeb = lerDotenv(path.join(WEB, ".env.local"));
   exigirBancoLocal(envEtl.DATABASE_URL, "etl/betim/.env");
   exigirBancoLocal(envWeb.DATABASE_URL, "apps/web/.env.local");
-  registrar("banco: 127.0.0.1 nos dois .env — confirmado");
 
   // ── ETL ──────────────────────────────────────────────────────────
   let falhas = 0;
