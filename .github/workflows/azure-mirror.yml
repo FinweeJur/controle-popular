@@ -258,3 +258,60 @@ jobs:
           FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
             --query properties.configuration.ingress.fqdn -o tsv)
           echo "Espelho no ar em: https://$FQDN"
+
+      # ─── Mover o tráfego, conferir e voltar se falhar (01/11/2026) ───
+      # Antes este workflow criava a revisão e parava. O Azure mantinha 100%
+      # na revisão antiga, então o deploy ficava VERDE e o site servia código
+      # velho (medido duas vezes em 01/11/2026: tráfego preso em 0000072).
+      #
+      # Agora: guarda quem atende, promove a revisão mais nova, espera ficar
+      # saudável, roda smoke em três páginas e VOLTA para a anterior se o
+      # smoke falhar. Rollback automático é o que dispensa o canário sem
+      # métrica — o site nunca fica no ar quebrado esperando alguém olhar.
+      - name: Promover revisão, smoke test e rollback
+        run: |
+          ANTERIOR=$(az containerapp ingress traffic show -g "$GRUPO" -n "$APP" \
+            --query "[?weight>\`0\`].revisionName | [0]" -o tsv)
+          NOVA=$(az containerapp revision list -g "$GRUPO" -n "$APP" \
+            --query "sort_by([?properties.active], &properties.createdTime) | [-1].name" -o tsv)
+          echo "atendendo=$ANTERIOR nova=$NOVA"
+          if [ -z "$NOVA" ]; then
+            echo "AVISO: nenhuma revisão ativa; nada a promover"
+            exit 0
+          fi
+          if [ "$NOVA" = "$ANTERIOR" ]; then
+            echo "AVISO: a revisão mais nova já é a que atende; nada a fazer"
+            exit 0
+          fi
+
+          az containerapp ingress traffic set -g "$GRUPO" -n "$APP" \
+            --revision-weight "$NOVA=100" -o none
+          FQDN=$(az containerapp show -g "$GRUPO" -n "$APP" \
+            --query properties.configuration.ingress.fqdn -o tsv)
+          BASE="https://$FQDN"
+
+          # Espera a revisão nova responder (até 2 min). Sem isso, o primeiro
+          # curl pega o cold start e o rollback dispara por falso negativo.
+          pronto=0
+          for i in $(seq 1 12); do
+            codigo=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$BASE/" || echo 000)
+            echo "tentativa $i: $codigo"
+            if [ "$codigo" = "200" ]; then pronto=1; break; fi
+            sleep 10
+          done
+
+          falhou=0
+          [ "$pronto" = "1" ] || falhou=1
+          for caminho in / /jurisprudencia /ambiental/direitos-humanos; do
+            codigo=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$BASE$caminho" || echo 000)
+            echo "$codigo $caminho"
+            [ "$codigo" = "200" ] || falhou=1
+          done
+
+          if [ "$falhou" = "1" ]; then
+            echo "SMOKE FALHOU — voltando o tráfego para $ANTERIOR"
+            az containerapp ingress traffic set -g "$GRUPO" -n "$APP" \
+              --revision-weight "$ANTERIOR=100" -o none
+            exit 1
+          fi
+          echo "Smoke ok: tráfego 100% em $NOVA"
