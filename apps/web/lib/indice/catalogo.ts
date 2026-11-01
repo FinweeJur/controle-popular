@@ -128,7 +128,7 @@ const ESTILO_PADRAO_EIXO: EstiloEixo = {
 /**
  * Escolhe o pacote de cores do cartão conforme o eixo da página.
  *
- * @param eixo nome completo do eixo (ex.: "Eixo 1: Terra e Território").
+ * @param eixo nome completo do eixo (ex.: "Eixo 1: Direitos em Movimento").
  * @returns as quatro classes Tailwind daquele eixo; se nenhum termo casa, o
  * estilo padrão (primary).
  */

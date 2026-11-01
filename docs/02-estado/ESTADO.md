@@ -315,6 +315,22 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
+**01/11/2026 — Eixo 1 é Direitos em Movimento e Eixo 2 é Terra e Territórios:**
+
+- **Ordem canônica dos eixos** (dono, 01/11/2026): 1 = Direitos em Movimento,
+  2 = Terra e Territórios, 3 = Estado e Economia, 4 = Central. O menu da
+  navbar dizia o contrário ("EIXO 1: Terra"), enquanto o carrossel da home e
+  `lib/eixos/` já numeravam Direitos como 1.
+- `menu-portal.ts`: seções reordenadas com `badge` e dica "Porta do Eixo N"
+  ajustados; a ordem do array é a ordem da tela.
+- Carrossel da home abre no **Eixo 1** (antes abria centralizado no 2).
+- `/indice`: cartões editoriais e abas de filtro na ordem nova.
+- `data/top-100-paginas.json`: 36 páginas passaram de "Eixo 1: Terra" para
+  "Eixo 2: Terra" e 18 de "Eixo 2: Direitos" para "Eixo 1: Direitos".
+  Medido na página: filtro Direitos = 18 páginas, Terra = 36.
+- Títulos de `/direitos-em-movimento` (Eixo 1) e `/terra-e-territorios`
+  (Eixo 2) trocados no `<title>`.
+
 **01/11/2026 — Controles do carrossel de eixos e eixo da pilha flutuante:**
 
 - **Carrossel de eixos (`CarrosselEixos`).** A pílula de controles encostava

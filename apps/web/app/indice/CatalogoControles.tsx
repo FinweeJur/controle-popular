@@ -38,8 +38,8 @@ interface Props {
 /** Abas de filtro, na ordem em que aparecem na tela. "Todos" é o padrão. */
 const EIXOS = [
   "Todos",
-  "Eixo 1: Terra e Território",
-  "Eixo 2: Direitos em Movimento",
+  "Eixo 1: Direitos em Movimento",
+  "Eixo 2: Terra e Território",
   "Eixo 3: Estado e Economia",
   "Central ONSA & Ferramentas",
 ] as const;

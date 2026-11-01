@@ -49,7 +49,7 @@ import type { VerbeteVitrine } from "./VitrineLutas";
  *    esquecimento)
  */
 export const metadata: Metadata = metadataEditavel("/direitos-em-movimento", {
-  title: "Direitos em Movimento — Eixo 2 | Controle Popular",
+  title: "Direitos em Movimento - Eixo 1 | Controle Popular",
   description:
     "Que lei protege isso, onde buscar ajuda, como pedir informação e como denunciar — reunidos num lugar só, para quem sofreu ou viu uma violação de direitos.",
 });
@@ -119,7 +119,7 @@ export default async function DireitosEmMovimentoHub() {
           className="text-[.82em] font-semibold uppercase tracking-wide"
           style={{ color: CARD_COR }}
         >
-          Eixo 2: Direitos em Movimento · Para quem sofreu ou viu uma violação
+          Eixo 1: Direitos em Movimento · Para quem sofreu ou viu uma violação
         </p>
         {/* h2, não h1: o h1 único da página vive na abertura viva acima. */}
         <h2 className="font-display text-3xl font-bold sm:text-4xl">Direitos em Movimento</h2>
