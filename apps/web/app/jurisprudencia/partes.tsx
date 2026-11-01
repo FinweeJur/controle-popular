@@ -59,6 +59,31 @@ const NOTICIAS = (noticiasJson as { itens: Noticia[] }).itens;
 export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
 
+/**
+ * Fronteira entre o acervo penal e o acervo de desastres (01/11/2026).
+ *
+ * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras
+ * de desastre, mas a maioria é crime comum da região — homicídio, tráfico,
+ * júri — e não responsabilização criminal do rompimento. O dono pediu página
+ * própria para o penal e a saída desses casos da lista de desastres.
+ *
+ * Exceção mantida: processo penal que CITA o desastre fica nas duas listas,
+ * porque ali o crime é o objeto da responsabilização.
+ */
+const TERMOS_DESASTRE =
+  /barragem|rompimento|samarco|vale\s?s\.?a|brumadinho|mariana|fund[ãa]o|rio doce|atingid/i;
+
+export function penalDeDesastre(caso: CasoJurisprudencia): boolean {
+  if (caso.frente !== "penal") return false;
+  const texto = [caso.ementa, caso.resumo, (caso.temas || []).join(" ")].join(" ");
+  return TERMOS_DESASTRE.test(texto);
+}
+
+/** Acervo da página de desastres: tudo, menos o penal que não é do desastre. */
+export const CASOS_DESASTRE = CASOS.filter(
+  (caso) => caso.frente !== "penal" || penalDeDesastre(caso),
+);
+
 const NOMES_TRIBUNAL: Record<string, string> = {
   TJMG: "TJMG (MG)",
   TJES: "TJES (ES)",
@@ -281,7 +306,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Resumo"];
+const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Ementa"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
@@ -304,27 +329,35 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   );
 }
 
-export function hrefCom(filtros: Filtros, pagina: number): string {
+export function hrefCom(filtros: Filtros, pagina: number, base = "/jurisprudencia"): string {
   const params = new URLSearchParams();
   for (const [chave, valor] of Object.entries(filtros)) {
     if (valor) params.set(chave, String(valor));
   }
   if (pagina > 1) params.set("pagina", String(pagina));
   const query = params.toString();
-  return query ? `/jurisprudencia?${query}` : "/jurisprudencia";
+  return query ? `${base}?${query}` : base;
 }
 
-export function Paginacao({ pagina, filtros }: { pagina: Pagina<CasoJurisprudencia>; filtros: Filtros }) {
+export function Paginacao({
+  pagina,
+  filtros,
+  base = "/jurisprudencia",
+}: {
+  pagina: Pagina<CasoJurisprudencia>;
+  filtros: Filtros;
+  base?: string;
+}) {
   return (
     <nav className="flex items-center justify-between text-sm" aria-label="Paginação">
       {pagina.pagina > 1 ? (
-        <Link className="underline" href={hrefCom(filtros, pagina.pagina - 1)}>← anterior</Link>
+        <Link className="underline" href={hrefCom(filtros, pagina.pagina - 1, base)}>← anterior</Link>
       ) : (
         <span />
       )}
       <span className="opacity-70">{pagina.pagina} / {pagina.totalPaginas}</span>
       {pagina.pagina < pagina.totalPaginas ? (
-        <Link className="underline" href={hrefCom(filtros, pagina.pagina + 1)}>próxima →</Link>
+        <Link className="underline" href={hrefCom(filtros, pagina.pagina + 1, base)}>próxima →</Link>
       ) : (
         <span />
       )}
@@ -362,6 +395,12 @@ const RECORTES: { rotulo: string; nota: string; href: string; ativo: (t: string,
     nota: "1.872 enunciados, com link para a fonte",
     href: "/jurisprudencia?frente=sumula#lista",
     ativo: (_t, f) => f === "sumula",
+  },
+  {
+    rotulo: "Penal e criminal",
+    nota: "6.182 processos do TJES e STF · página própria",
+    href: "/jurisprudencia/penal",
+    ativo: (_t, f) => f === "penal",
   },
 ];
 
