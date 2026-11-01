@@ -34,7 +34,7 @@
  * Desde 30/09/2026 entram também, como documentos, a MEMÓRIA das
  * resistências (`lib/memoria`) e as BASES de dados do portal (catálogo
  * curado + inventário medido, o mesmo acervo do RAG) — ver
- * `docs/planos/PLANO-RAG-COMPLETO.md`.
+ * `docs/historico/planos/PLANO-RAG-COMPLETO.md`.
  *
  * Desde 15/10/2026 o doc municipal do ComunicaBR indexa o DINHEIRO de verdade:
  * total e os 5 repasses diretos da União com a competência de cada um

@@ -2,7 +2,7 @@
  * Registro das câmaras municipais com API aberta — o ponto de partida do
  * coletor de legislação municipal.
  *
- * Plano: `docs/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1 (municipal, MG
+ * Plano: `docs/historico/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1 (municipal, MG
  * primeiro). Cada entrada foi CONFIRMADA ao vivo em 30/09/2026: a API do SAPL
  * respondeu `200` em `/api/materia/materialegislativa/`. Cidade que não
  * respondeu NÃO entra — medir, não supor.

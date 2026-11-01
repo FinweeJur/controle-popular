@@ -1221,9 +1221,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 1px solid var(--cp-border);
-  /* Topo 30% menor que o rodapé: a fita fica mais perto da navbar (pedido do
-     dono, 01/11/2026). O valor antigo era 0.55rem nos dois lados. */
-  padding: 0.385rem 0 0.55rem;
+  padding: 0.55rem 0;
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   font-weight: 600;
@@ -1236,8 +1234,7 @@ body {
 }
 .cp-marquee-trilho {
   display: inline-block;
-  /* Metade da velocidade anterior (era 105s): pedido do dono, 01/11/2026. */
-  animation: cp-mq 210s linear infinite;
+  animation: cp-mq 105s linear infinite;
 }
 .cp-marquee:hover .cp-marquee-trilho {
   animation-play-state: paused;

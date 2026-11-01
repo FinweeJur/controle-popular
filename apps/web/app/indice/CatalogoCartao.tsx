@@ -11,7 +11,7 @@ import { obterEstiloEixo, obterIconeTema, type PaginaCatalogo } from "@/lib/indi
  * O QUE É: o card completo — número, badge, subfrente, título, microresumo,
  * rota no rodapé e a ação "Acessar"/"Abrir" — extraído do componente
  * `Catalogo100PaginasClient.tsx` em 08/10/2026 para enxugar o hotspot de
- * saúde 2,17 (CodeScene, leitura de 07/10 em `docs/planos/PENDENCIAS-07-10.md`).
+ * saúde 2,17 (CodeScene, leitura de 07/10 em `docs/historico/planos/PENDENCIAS-07-10.md`).
  * As classes Tailwind, os textos e os atributos de acessibilidade são os
  * MESMOS de antes; o que mudou foi o endereço do código.
  *

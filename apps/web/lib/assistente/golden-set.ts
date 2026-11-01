@@ -9,7 +9,7 @@
  * acervo e falha se um caso escapar — foi assim que o defeito de abstenção
  * do modo lexical apareceu (30/09/2026).
  *
- * Fonte oficial das regras: `docs/planos/PLANO-RAG-COMPLETO.md` e AGENTS.md
+ * Fonte oficial das regras: `docs/historico/planos/PLANO-RAG-COMPLETO.md` e AGENTS.md
  * §7 ("não sei, e aqui está o que existe perto"; número errado é dano).
  *
  * Decisões técnicas:

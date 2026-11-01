@@ -203,13 +203,13 @@ export default function FiltroDH({
           dizer que a busca falhou.
         </p>
       ) : (
-        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+        <div className="mt-6 flex flex-col gap-6">
           {filtrados.map((r) => (
             <article
               key={r.id}
-              className="rounded-2xl border border-border bg-surface-2 p-4 shadow-sm hover:border-primary/50 transition-colors"
+              className="rounded-2xl border border-border bg-surface-2 p-6 shadow-sm hover:border-primary/50 transition-colors"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-2">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
                 <div className="flex items-center gap-2">
                   <span className="rounded-md bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                     {r.orgao}
@@ -241,23 +241,23 @@ export default function FiltroDH({
                 </div>
               </div>
 
-              <h3 className="mt-2 font-display text-base font-bold text-foreground">
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground">
                 {r.titulo}
               </h3>
-              <p className="mt-1 text-sm leading-snug text-muted">{r.resumoCidadao}</p>
+              <p className="mt-2 text-sm text-muted">{r.resumoCidadao}</p>
 
-              <div className="mt-3 rounded-xl bg-surface-1 p-3">
+              <div className="mt-4 rounded-xl bg-surface-1 p-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-foreground">
                   Recomendações Chave ao Estado:
                 </span>
-                <ul className="mt-1 list-inside list-disc space-y-0.5 text-xs leading-snug text-muted">
+                <ul className="mt-2 list-inside list-disc space-y-1 text-xs text-muted">
                   {r.recomendacoesChave.map((rec, i) => (
                     <li key={i}>{rec}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-3 flex items-center justify-between gap-2 pt-1">
+              <div className="mt-4 flex items-center justify-between pt-2">
                 <span className="text-xs text-muted">
                   Estados: {r.estados.join(", ")} | {r.esfera.replace("_", " ")}
                 </span>

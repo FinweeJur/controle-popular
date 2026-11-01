@@ -13,7 +13,7 @@
  * aparecia se um vigia de pagina notasse a queda. O New Relic preenche essa
  * lacuna com erros + tempo de resposta por rota, sem custo enquanto o dono
  * mantiver a verificacao de estudante (oferta do Student Pack). Ver
- * `docs/planos/PLANO-STUDENT-PACK-2026-10.md`.
+ * `docs/historico/planos/PLANO-STUDENT-PACK-2026-10.md`.
  *
  * TRES GUARDAS ANTES DE CARREGAR O AGENTE
  * 1. So no runtime Node (`NEXT_RUNTIME === "nodejs"`). O agente e CJS e nao

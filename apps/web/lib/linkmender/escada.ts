@@ -2,7 +2,7 @@
  * LinkMender — escada de reparo (D0–D5) e roteiro de LLM.
  *
  * Núcleo PURO e testável do plano
- * (docs/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md, Fase 3): a ordem dos
+ * (docs/historico/planos/PLANO-LINKMENDER-E-ESCADA-18-10.md, Fase 3): a ordem dos
  * degraus, as variações determinísticas de URL, a memória de reparos e os
  * tetos de cada modelo. Nada aqui toca rede nem disco — os adaptadores
  * (Playwright para D3, visão para D4, HTTP para os LLMs) ficam de fora e

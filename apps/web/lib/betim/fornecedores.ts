@@ -6,7 +6,7 @@ import type { FornecedorRow } from "./fornecedores-puro";
 /**
  * ═══ RANKING DE FORNECEDORES POR MUNICÍPIO — ACESSO AO BANCO (Sprint 2) ═══
  *
- * Plano: `docs/planos/PLANO-revisao-dados-visibilizacao.md`, tela 2
+ * Plano: `docs/historico/planos/PLANO-revisao-dados-visibilizacao.md`, tela 2
  * ("Maiores fornecedores"). O agregado mora no banco
  * (`fornecedoresRanking` em `lib/db/queries/betim.ts`); a lógica pura
  * (tipos, indícios, CSV) mora em `fornecedores-puro.ts` e é re-exportada

@@ -2,7 +2,7 @@
  * Testes das guardas editoriais e das camadas de memória.
  *
  * Papel: travar em código as regras do plano
- * `docs/planos/PLANO-MEMORIA-RESISTENCIAS.md` e do AGENTS.md §7 — verbete
+ * `docs/historico/planos/PLANO-MEMORIA-RESISTENCIAS.md` e do AGENTS.md §7 — verbete
  * sem fonte não publica, fonte terciária não decide, a escada cai para a
  * UF quando não há município, e toda fonte abre com `http`.
  *

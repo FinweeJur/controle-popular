@@ -38,7 +38,7 @@ function Marco({ verbete, rotulo }: { verbete: VerbeteMemoria; rotulo: string })
         aria-hidden="true"
         className="absolute left-[-5px] top-6 h-2 w-2 rounded-full bg-primary"
       />
-      <span className="text-[.78em] font-semibold uppercase tracking-wide text-primary">
+      <span className="text-[12px] font-semibold uppercase tracking-wide text-primary">
         {rotulo}
       </span>
       <h3 className="font-display text-[1.1em] font-semibold text-text">
@@ -64,7 +64,7 @@ function Marco({ verbete, rotulo }: { verbete: VerbeteMemoria; rotulo: string })
 
       {fontes.length > 0 ? (
         <p className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="text-[.85em] font-semibold text-text">Fonte:</span>
+          <span className="text-[max(12px,.85em)] font-semibold text-text">Fonte:</span>
           {fontes.map((f) => (
             <a
               key={f.url}

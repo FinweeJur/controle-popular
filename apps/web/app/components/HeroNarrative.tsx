@@ -19,7 +19,7 @@ import { citacaoPorId } from "@/lib/citacoes";
 
 /**
  * Hero narrativo da home — Fase 1 do plano de identidade visual
- * (`docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
+ * (`docs/historico/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
  *
  * É *embrulho visual* do que já existe, não overlay: o conteúdo da home
  * (frentes, cidades, busca) continua logo abaixo, e o CTA é uma âncora

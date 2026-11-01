@@ -1,6 +1,6 @@
 /**
  * SVGs decorativos do hero narrativo — Fase 1 do plano de identidade
- * visual (`docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
+ * visual (`docs/historico/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`).
  *
  * Tudo é SVG inline (nada de bitmap na primeira dobra — decisão de LCP
  * do plano) e toda cor vem de `currentColor` ou dos tokens do design

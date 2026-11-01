@@ -13,7 +13,7 @@ import CatalogoCartao from "./CatalogoCartao";
  * `apps/web/data/top-100-paginas.json` (montada no `page.tsx` da rota),
  * guarda o estado dos três filtros (busca, eixo, apenas-destaques) e
  * desenha a grade de cartões. É o hotspot de saúde 2,17 da leitura do
- * CodeScene de 07/10/2026 (`docs/planos/PENDENCIAS-07-10.md`).
+ * CodeScene de 07/10/2026 (`docs/historico/planos/PENDENCIAS-07-10.md`).
  *
  * POR QUE ENXUTO: até 08/10/2026 este arquivo tinha 505 linhas com a cadeia
  * de ~16 ramos que escolhia o ícone (195 linhas), o `if-chain` de estilos do

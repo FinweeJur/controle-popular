@@ -10,7 +10,7 @@ import { semAcento } from "@/lib/busca/normalizar";
 /**
  * ═══ PAINEL DO CIDADÃO — A LENTE RESUMO (Sprint 5) ═══
  *
- * Plano: `docs/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 5.
+ * Plano: `docs/historico/planos/PLANO-revisao-dados-visibilizacao.md`, Sprint 5.
  * Este módulo é o contrato de dados do painel: recebe o que as telas das
  * Sprints 2-4 já produzem e devolve os números de UMA olhada. Nenhuma
  * conta nova de verdade — concentração/recém-criada reusam EXATAMENTE as

@@ -4,7 +4,7 @@ import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import {
   Atalhos,
   BotoesLegislacao,
-  CASOS,
+  CASOS_DESASTRE,
   Cartoes,
   Formulario,
   GraficoPoloAno,
@@ -59,11 +59,11 @@ export default async function Jurisprudencia({
     q: texto("q"),
     ordem: texto("ordem") || "ano_desc",
   };
-  const pagina = paginar(ordenar(filtrar(CASOS, filtros), filtros.ordem), Number(texto("pagina")) || 1);
+  const pagina = paginar(ordenar(filtrar(CASOS_DESASTRE, filtros), filtros.ordem), Number(texto("pagina")) || 1);
   const total = resumo.auditoria.processos_unicos;
   const valores = resumo.valores;
-  const tjmg = CASOS.filter((caso) => caso.frente === "brumadinho" && caso.polo);
-  const semResumo = CASOS.filter((caso) => caso.status === "sem_resumo").length;
+  const tjmg = CASOS_DESASTRE.filter((caso) => caso.frente === "brumadinho" && caso.polo);
+  const semResumo = CASOS_DESASTRE.filter((caso) => caso.status === "sem_resumo").length;
   const mostrarBrumadinho = !filtros.frente || filtros.frente === "brumadinho";
 
   return (
@@ -76,6 +76,10 @@ export default async function Jurisprudencia({
           (TJMG, comarcas da bacia) e <strong>Fundão</strong> (TJES), mais{" "}
           <strong>direitos humanos</strong> no TJMG e as <strong>súmulas</strong> do STF,
           STJ e TST. Filtre por frente, tipo, tribunal e estado.
+        </p>
+        <p className="text-xs opacity-70">
+          Penal e crime comum ficam em <a className="underline" href="/jurisprudencia/penal">página própria</a>;
+          aqui só aparecem os processos penais que citam o desastre.
         </p>
         <p className="text-xs opacity-70">
           Brumadinho — coleta: {resumo.coleta} · publicação: {resumo.publicacao} · fonte:{" "}

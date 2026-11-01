@@ -1579,7 +1579,7 @@ const COLUNAS_CONTRATO = {
   motivos_alerta: contratos.motivos_alerta,
   temas: contratos.temas,
   // Órgão contratante e tipo — Sprint 2 do plano de revisão de dados
-  // (docs/planos/PLANO-revisao-dados-visibilizacao.md): a tela de maiores
+  // (docs/historico/planos/PLANO-revisao-dados-visibilizacao.md): a tela de maiores
   // contratos precisa mostrar E filtrar por tipo, e o órgão entra como
   // coluna. Ambos são anuláveis na fonte.
   orgao_nome: contratos.orgao_nome,

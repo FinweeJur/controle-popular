@@ -2,7 +2,7 @@
  * Núcleo PURO da coleta de legislação municipal — o "bot" que traz as leis
  * das câmaras para a biblioteca unificada de legislação.
  *
- * Plano: `docs/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1 (municipal, MG
+ * Plano: `docs/historico/planos/PLANO-BIBLIOTECA-LEGISLACAO.md`, Fase F1 (municipal, MG
  * primeiro). Este arquivo NÃO faz rede: recebe o JSON da fonte já baixado e
  * devolve a linha normalizada, no shape de `ambiental_legislacao`
  * (`esfera='municipal'`). Quem fala com a rede é `bots/coletor-legislacao-municipal.mts`,

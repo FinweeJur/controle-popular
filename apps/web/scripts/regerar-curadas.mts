@@ -133,7 +133,7 @@ async function main(): Promise<void> {
     "> **Domínio:** global",
     "> **Última medição:** " + DATA,
     "> **Leitura estimada:** longa (> 15 min)",
-    "> **Relacionados:** [PLANO-RAG-COMPLETO.md](PLANO-RAG-COMPLETO.md), [PLANO-COMPANHEIRO-SEU-NONO.md](PLANO-COMPANHEIRO-SEU-NONO.md), [AGENTS.md](/AGENTS.md)",
+    "> **Relacionados:** [PLANO-RAG-COMPLETO.md](/docs/historico/planos/PLANO-RAG-COMPLETO.md), [PLANO-COMPANHEIRO-SEU-NONO.md](/docs/historico/planos/PLANO-COMPANHEIRO-SEU-NONO.md), [AGENTS.md](/AGENTS.md)",
     "> **Palavras-chave:** seu nono, curadas, respostas prefixadas, rag, revisao, eixos, subfrentes",
     "",
     "## Sumário",

@@ -59,6 +59,31 @@ const NOTICIAS = (noticiasJson as { itens: Noticia[] }).itens;
 export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
 
+/**
+ * Fronteira entre o acervo penal e o acervo de desastres (01/11/2026).
+ *
+ * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras
+ * de desastre, mas a maioria é crime comum da região — homicídio, tráfico,
+ * júri — e não responsabilização criminal do rompimento. O dono pediu página
+ * própria para o penal e a saída desses casos da lista de desastres.
+ *
+ * Exceção mantida: processo penal que CITA o desastre fica nas duas listas,
+ * porque ali o crime é o objeto da responsabilização.
+ */
+const TERMOS_DESASTRE =
+  /barragem|rompimento|samarco|vale\s?s\.?a|brumadinho|mariana|fund[ãa]o|rio doce|atingid/i;
+
+export function penalDeDesastre(caso: CasoJurisprudencia): boolean {
+  if (caso.frente !== "penal") return false;
+  const texto = [caso.ementa, caso.resumo, (caso.temas || []).join(" ")].join(" ");
+  return TERMOS_DESASTRE.test(texto);
+}
+
+/** Acervo da página de desastres: tudo, menos o penal que não é do desastre. */
+export const CASOS_DESASTRE = CASOS.filter(
+  (caso) => caso.frente !== "penal" || penalDeDesastre(caso),
+);
+
 const NOMES_TRIBUNAL: Record<string, string> = {
   TJMG: "TJMG (MG)",
   TJES: "TJES (ES)",
@@ -86,7 +111,7 @@ export const reais = (valor: number) =>
   valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 function contar(frente: string): number {
-  return CASOS.filter((caso) => caso.frente === frente).length;
+  return CASOS_DESASTRE.filter((caso) => caso.frente === frente).length;
 }
 
 export function Tabela({
@@ -132,10 +157,10 @@ export function Tabela({
 }
 
 export function Cartoes() {
-  const semResumo = CASOS.filter((caso) => caso.status === "sem_resumo").length;
+  const semResumo = CASOS_DESASTRE.filter((caso) => caso.status === "sem_resumo").length;
   const itens: [string, string, string][] = [
-    ["Itens no acervo", CASOS.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
-    ["Acórdãos", (CASOS.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
+    ["Itens no acervo", CASOS_DESASTRE.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
+    ["Acórdãos", (CASOS_DESASTRE.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
     ["Súmulas", contar("sumula").toLocaleString("pt-BR"), "STF, STJ e TST"],
     ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "entram na lista, sem polo"],
   ];
@@ -211,32 +236,32 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Frente</span>
         <select name="frente" defaultValue={filtros.frente} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "frente")} nomes={NOMES_FRENTE} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "frente")} nomes={NOMES_FRENTE} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Tribunal</span>
         <select name="tribunal" defaultValue={filtros.tribunal} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "tribunal")} nomes={NOMES_TRIBUNAL} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "tribunal")} nomes={NOMES_TRIBUNAL} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Estado</span>
         <select name="estado" defaultValue={filtros.estado} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "estado")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "estado")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Tipo</span>
         <select name="tipo" defaultValue={filtros.tipo} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "tipo")} nomes={NOMES_TIPO} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "tipo")} nomes={NOMES_TIPO} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Polo</span>
         <select name="polo" defaultValue={filtros.polo} className={campo}>
           <option value="">Todos</option>
-          {contagemPor(CASOS, "polo").map(([polo]) => (
+          {contagemPor(CASOS_DESASTRE, "polo").map(([polo]) => (
             <option key={polo} value={polo}>{ROTULOS[polo] ?? polo}</option>
           ))}
         </select>
@@ -245,7 +270,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
         <span className="opacity-70">Tema</span>
         <select name="tema" defaultValue={filtros.tema} className={campo}>
           <option value="">Todos</option>
-          {temasUnicos(CASOS).map((tema) => (
+          {temasUnicos(CASOS_DESASTRE).map((tema) => (
             <option key={tema} value={tema}>{tema}</option>
           ))}
         </select>
@@ -253,13 +278,13 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Comarca</span>
         <select name="comarca" defaultValue={filtros.comarca} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "comarca")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "comarca")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
         <span className="opacity-70">Ano</span>
         <select name="ano" defaultValue={filtros.ano} className={campo}>
-          <Opcoes valores={valoresUnicos(CASOS, "ano")} nomes={{}} />
+          <Opcoes valores={valoresUnicos(CASOS_DESASTRE, "ano")} nomes={{}} />
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
@@ -281,7 +306,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Resumo"];
+const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Ementa"];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
@@ -304,27 +329,35 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   );
 }
 
-export function hrefCom(filtros: Filtros, pagina: number): string {
+export function hrefCom(filtros: Filtros, pagina: number, base = "/jurisprudencia"): string {
   const params = new URLSearchParams();
   for (const [chave, valor] of Object.entries(filtros)) {
     if (valor) params.set(chave, String(valor));
   }
   if (pagina > 1) params.set("pagina", String(pagina));
   const query = params.toString();
-  return query ? `/jurisprudencia?${query}` : "/jurisprudencia";
+  return query ? `${base}?${query}` : base;
 }
 
-export function Paginacao({ pagina, filtros }: { pagina: Pagina<CasoJurisprudencia>; filtros: Filtros }) {
+export function Paginacao({
+  pagina,
+  filtros,
+  base = "/jurisprudencia",
+}: {
+  pagina: Pagina<CasoJurisprudencia>;
+  filtros: Filtros;
+  base?: string;
+}) {
   return (
     <nav className="flex items-center justify-between text-sm" aria-label="Paginação">
       {pagina.pagina > 1 ? (
-        <Link className="underline" href={hrefCom(filtros, pagina.pagina - 1)}>← anterior</Link>
+        <Link className="underline" href={hrefCom(filtros, pagina.pagina - 1, base)}>← anterior</Link>
       ) : (
         <span />
       )}
       <span className="opacity-70">{pagina.pagina} / {pagina.totalPaginas}</span>
       {pagina.pagina < pagina.totalPaginas ? (
-        <Link className="underline" href={hrefCom(filtros, pagina.pagina + 1)}>próxima →</Link>
+        <Link className="underline" href={hrefCom(filtros, pagina.pagina + 1, base)}>próxima →</Link>
       ) : (
         <span />
       )}
@@ -362,6 +395,12 @@ const RECORTES: { rotulo: string; nota: string; href: string; ativo: (t: string,
     nota: "1.872 enunciados, com link para a fonte",
     href: "/jurisprudencia?frente=sumula#lista",
     ativo: (_t, f) => f === "sumula",
+  },
+  {
+    rotulo: "Penal e criminal",
+    nota: "6.182 processos do TJES e STF · página própria",
+    href: "/jurisprudencia/penal",
+    ativo: (_t, f) => f === "penal",
   },
 ];
 

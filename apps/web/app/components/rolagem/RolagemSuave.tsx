@@ -78,54 +78,61 @@ export default function RolagemSuave({ children }: { children: ReactNode }) {
    * ═══ POR QUE ESTE EFEITO EXISTE: A RODA QUE "NÃO DESCE MAIS" ═══
    *
    * O Lenis mantém um alvo INTERNO (`targetScroll`) e anima a página até ele.
-   * Quando a posição real foge desse alvo — alguém CLICOU NA BARRA LATERAL do
-   * navegador, um `scrollIntoView`/âncora rolou por fora, ou a ALTURA da
-   * página mudou (painel que abre, aba que carrega) — o alvo fica velho e a
-   * roda seguinte "não desce": ela mira num ponto que a página já passou. O
-   * destravador que o dono descobriu sozinho (clicar na barra do navegador)
-   * funciona porque o arrasto NATIVO reposiciona a página por fora — medido em
-   * 06/10/2026 em vários eixos.
+   * Quando a posição real foge desse alvo — clique na barra do navegador,
+   * `scrollIntoView`, ou ALTURA da página que mudou — o alvo fica velho e a
+   * roda seguinte "não desce": ela mira num ponto que a página já passou.
    *
-   * Aqui o Lenis é avisado das duas coisas:
-   * 1. `ResizeObserver` na raiz: altura mudou → `resize()` (o limite de
-   *    rolagem é recalculado);
-   * 2. `scroll` nativo: se a posição real divergir do alvo com o Lenis
-   *    parado, ele se realinha na hora (`scrollTo` imediato e forçado), sem
-   *    pulo visível — o que destrava a roda sem precisar da barra.
+   * A versão anterior (06/10/2026) só conferia dentro do evento `scroll`.
+   * Isso não cobre o caso em que a página TRAVA: sem rolagem, não há evento
+   * `scroll`, e o conserto nunca roda (medido 01/11/2026 em
+   * /direitos-globais/america-latina: parava no quarto scroll).
+   *
+   * Agora há um vigia de 250 ms que não depende de evento nenhum:
+   * 1. se a altura mudou, `resize()` recalcula o limite;
+   * 2. se o alvo divergiu do real com o Lenis parado, realinha na hora.
+   * O custo é uma leitura de `scrollY` a cada 250 ms — barato e invisível.
    */
   useEffect(() => {
-    const lenis = lenisRef.current?.lenis;
-    if (!lenis) return;
+    if (!ativo) return;
 
-    const observador = new ResizeObserver(() => lenis.resize());
-    observador.observe(document.documentElement);
-    observador.observe(document.body);
+    let observador: ResizeObserver | null = null;
 
-    const realinhar = () => {
+    const conferir = () => {
+      if (document.hidden) return;
+      const lenis = lenisRef.current?.lenis;
+      if (!lenis) return;
+
+      if (!observador) {
+        observador = new ResizeObserver(() => lenis.resize());
+        observador.observe(document.documentElement);
+        observador.observe(document.body);
+        lenis.resize();
+      }
+
+      const limite = document.documentElement.scrollHeight - window.innerHeight;
+      if (Math.abs(limite - lenis.limit) > 4) lenis.resize();
       if (lenis.isScrolling) return;
+
       const real = window.scrollY;
       if (Math.abs(real - lenis.targetScroll) > 2) {
         lenis.scrollTo(real, { immediate: true, force: true });
       }
     };
 
+    const vigia = window.setInterval(conferir, 250);
     const aoVoltar = () => {
-      if (!document.hidden) {
-        lenis.resize();
-        realinhar();
-      }
+      if (!document.hidden) conferir();
     };
-
-    window.addEventListener("scroll", realinhar, { passive: true });
-    document.addEventListener("visibilitychange", aoVoltar);
     window.addEventListener("focus", aoVoltar);
-    lenis.resize();
+    document.addEventListener("visibilitychange", aoVoltar);
+    window.addEventListener("scroll", conferir, { passive: true });
 
     return () => {
-      observador.disconnect();
-      window.removeEventListener("scroll", realinhar);
-      document.removeEventListener("visibilitychange", aoVoltar);
+      window.clearInterval(vigia);
+      observador?.disconnect();
       window.removeEventListener("focus", aoVoltar);
+      document.removeEventListener("visibilitychange", aoVoltar);
+      window.removeEventListener("scroll", conferir);
     };
   }, [ativo]);
 

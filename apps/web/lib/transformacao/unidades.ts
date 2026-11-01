@@ -9,7 +9,7 @@
  * Numero errado é dano (AGENTS.md §1) — conversao espalhada multiplica
  * a chance de erro.
  *
- * Fonte: `docs/planos/PLANO-CI-RAG-INGESTAO-UNIDADES.md`, Pilar 2.
+ * Fonte: `docs/historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md`, Pilar 2.
  *
  * ═══ DECISÕES TÉCNICAS ═══
  *
