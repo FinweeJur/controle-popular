@@ -1,0 +1,116 @@
+[
+  {
+    "nome": "agitprop",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\agitprop",
+    "dirty": 0
+  },
+  {
+    "nome": "agitprop-multicidade",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\agitprop-multicidade",
+    "dirty": 0
+  },
+  {
+    "nome": "bh-cultural",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\bh-cultural",
+    "dirty": 0
+  },
+  {
+    "nome": "bh-turismo-app",
+    "acao": "movido",
+    "destino": "X:\\DevCoder\\bh-turismo-app",
+    "rc": 1
+  },
+  {
+    "nome": "despacho",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\despacho",
+    "dirty": 2
+  },
+  {
+    "nome": "foz-growth",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\foz-growth",
+    "dirty": 7
+  },
+  {
+    "nome": "foz-juris",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\foz-juris",
+    "dirty": 0
+  },
+  {
+    "nome": "foz-juris-online",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\foz-juris-online",
+    "dirty": 0
+  },
+  {
+    "nome": "hermes-agent",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\hermes-agent",
+    "dirty": 0
+  },
+  {
+    "nome": "jarvis",
+    "acao": "movido",
+    "destino": "X:\\DevCoder\\jarvis",
+    "rc": 1
+  },
+  {
+    "nome": "labiia_lex",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\labiia_lex",
+    "dirty": 0
+  },
+  {
+    "nome": "odysseus",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\odysseus",
+    "dirty": 11
+  },
+  {
+    "nome": "odysseus-pt",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\odysseus-pt",
+    "dirty": 4
+  },
+  {
+    "nome": "sementeira",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\sementeira",
+    "dirty": 2
+  },
+  {
+    "nome": "skills",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\skills",
+    "dirty": 0
+  },
+  {
+    "nome": "terras-devolutas.OLD-20260728",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\terras-devolutas",
+    "dirty": 14
+  },
+  {
+    "nome": "Vaire",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\Vaire",
+    "dirty": 7
+  },
+  {
+    "nome": "ZCodeProject",
+    "acao": "movido",
+    "destino": "X:\\DevCoder\\ZCodeProject",
+    "rc": 1
+  },
+  {
+    "nome": "controlador-financeiro",
+    "acao": "removido-duplicata",
+    "destino": "X:\\DevCoder\\controlador-financeiro",
+    "dirty": 0
+  }
+]

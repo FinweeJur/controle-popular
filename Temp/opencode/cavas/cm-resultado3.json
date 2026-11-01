@@ -1,0 +1,151 @@
+﻿{
+  "eTag": null,
+  "id": "subscriptions/e81fa71f-63d8-43cc-8dc9-bfe49db8f949/providers/Microsoft.CostManagement/query/d8f45f5e-f656-4d2d-a711-645cc9df5c33",
+  "location": null,
+  "name": "d8f45f5e-f656-4d2d-a711-645cc9df5c33",
+  "properties": {
+    "columns": [
+      {
+        "name": "PreTaxCost",
+        "type": "Number"
+      },
+      {
+        "name": "UsageDate",
+        "type": "Number"
+      },
+      {
+        "name": "ResourceGroupName",
+        "type": "String"
+      },
+      {
+        "name": "Currency",
+        "type": "String"
+      }
+    ],
+    "nextLink": null,
+    "rows": [
+      [
+        0.23861180062514,
+        20261004,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        1.90197717879157,
+        20261005,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.0270611391666667,
+        20261005,
+        "me_cp-env2_cp-app_northcentralus",
+        "BRL"
+      ],
+      [
+        0.18415783,
+        20261005,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        1.51516902409445,
+        20261006,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261006,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        1.51517060954029,
+        20261007,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261007,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        1.51517064628903,
+        20261008,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261008,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        1.51517044679585,
+        20261009,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261009,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        6.10777143033926,
+        20261010,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261010,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        10.9221685006335,
+        20261011,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261011,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        10.082933875922,
+        20261012,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261012,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ],
+      [
+        3.2222635915899,
+        20261013,
+        "cp-app",
+        "BRL"
+      ],
+      [
+        0.234873,
+        20261013,
+        "me_cp-env_cp-app_spaincentral",
+        "BRL"
+      ]
+    ]
+  },
+  "sku": null,
+  "type": "Microsoft.CostManagement/query"
+}

@@ -1,0 +1,553 @@
+﻿{
+  "eTag": null,
+  "id": "subscriptions/e81fa71f-63d8-43cc-8dc9-bfe49db8f949/providers/Microsoft.CostManagement/query/73bcaeb2-3950-4c65-bcfc-abd78256fbb9",
+  "location": null,
+  "name": "73bcaeb2-3950-4c65-bcfc-abd78256fbb9",
+  "properties": {
+    "columns": [
+      {
+        "name": "PreTaxCost",
+        "type": "Number"
+      },
+      {
+        "name": "UsageDate",
+        "type": "Number"
+      },
+      {
+        "name": "Meter",
+        "type": "String"
+      },
+      {
+        "name": "Currency",
+        "type": "String"
+      }
+    ],
+    "nextLink": null,
+    "rows": [
+      [
+        0.0,
+        20261004,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261004,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        0.11134266051384,
+        20261004,
+        "Basic Registry Unit",
+        "BRL"
+      ],
+      [
+        0.02545382802226,
+        20261004,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        0.10181531208904,
+        20261004,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ],
+      [
+        2.08776e-06,
+        20261005,
+        "All Other Operations",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        0.07201282174464,
+        20261005,
+        "Basic Registry Unit",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Free Text To Speech Characters",
+        "BRL"
+      ],
+      [
+        9.97465923428536e-07,
+        20261005,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8865259150356,
+        20261005,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Standard Data Transfer In",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.624689688333334,
+        20261005,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.0604028477046868,
+        20261005,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        0.00165389219151092,
+        20261005,
+        "Standard Memory Duration",
+        "BRL"
+      ],
+      [
+        0.241611390818747,
+        20261005,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ],
+      [
+        0.0150775377371281,
+        20261005,
+        "Standard vCPU Duration",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Free Text To Speech Characters",
+        "BRL"
+      ],
+      [
+        4.1998565196991e-07,
+        20261006,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261006,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261006,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        2.00543148815632e-06,
+        20261007,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261007,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261007,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        2.04218023270369e-06,
+        20261008,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261008,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261008,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        1.84268704801798e-06,
+        20261009,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261009,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261009,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        5.72230450809002e-07,
+        20261010,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261010,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261010,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.8764207704,
+        20261010,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        3.7161814836,
+        20261010,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        2.20492467284203e-06,
+        20261011,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261011,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261011,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        1.792028796,
+        20261011,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        7.6149688956,
+        20261011,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ],
+      [
+        2.08776e-06,
+        20261012,
+        "All Other Operations",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "B2ats v2 - Free",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Hot LRS Write Operations - Free",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Hot Read Operations - Free",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Intra Continent Data Transfer In",
+        "BRL"
+      ],
+      [
+        4.50124531788812e-05,
+        20261012,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "LRS List and Create Container Operations - Free",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261012,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Standard Data Transfer In",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Standard Data Transfer Out - Free",
+        "BRL"
+      ],
+      [
+        0.626328,
+        20261012,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        1.632419544,
+        20261012,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        6.9352986276,
+        20261012,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261013,
+        "Analytics Logs Data Ingestion",
+        "BRL"
+      ],
+      [
+        2.62491032481194e-08,
+        20261013,
+        "Intra Continent Data Transfer Out",
+        "BRL"
+      ],
+      [
+        0.3333152265408,
+        20261013,
+        "P4 LRS Disk",
+        "BRL"
+      ],
+      [
+        0.234873,
+        20261013,
+        "Standard IPv4 Static Public IP",
+        "BRL"
+      ],
+      [
+        0.5208334872,
+        20261013,
+        "Standard Memory Active Usage",
+        "BRL"
+      ],
+      [
+        2.1332418516,
+        20261013,
+        "Standard vCPU Active Usage",
+        "BRL"
+      ]
+    ]
+  },
+  "sku": null,
+  "type": "Microsoft.CostManagement/query"
+}

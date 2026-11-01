@@ -1,0 +1,9 @@
+docs: prompt de sessao nova e skill /cp atualizada
+
+- PROMPT-SESSAO-NOVA.md: prompt longo e curto para outras sessoes
+- CHECKOUT-CANONICO.md: MausBot em X, OMB_DATA_DIR e arquivos travados
+- AGENTS.md, README e LEIA-PRIMEIRO apontam o prompt
+- skill /cp: caminho canonico, MausBot, radar e planos integrados
+
+Co-Authored-By: DeepSeek V4.1 Flash <noreply@deepseek.com>
+Co-Authored-By: opencode <noreply@opencode.ai>

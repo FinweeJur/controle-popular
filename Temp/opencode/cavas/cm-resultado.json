@@ -1,0 +1,427 @@
+﻿{
+  "eTag": null,
+  "id": "subscriptions/e81fa71f-63d8-43cc-8dc9-bfe49db8f949/providers/Microsoft.CostManagement/query/dc36f234-d412-4a5c-bdd7-b8533f2449f3",
+  "location": null,
+  "name": "dc36f234-d412-4a5c-bdd7-b8533f2449f3",
+  "properties": {
+    "columns": [
+      {
+        "name": "PreTaxCost",
+        "type": "Number"
+      },
+      {
+        "name": "UsageDate",
+        "type": "Number"
+      },
+      {
+        "name": "ServiceName",
+        "type": "String"
+      },
+      {
+        "name": "Currency",
+        "type": "String"
+      }
+    ],
+    "nextLink": null,
+    "rows": [
+      [
+        0.1272691401113,
+        20261004,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        0.11134266051384,
+        20261004,
+        "Container Registry",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261004,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261004,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        0.302014238523434,
+        20261005,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        9.97465923428536e-07,
+        20261005,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.016731429928639,
+        20261005,
+        "Container Instances",
+        "BRL"
+      ],
+      [
+        0.07201282174464,
+        20261005,
+        "Container Registry",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Foundry Tools",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8865280027956,
+        20261005,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261005,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        0.8359086575,
+        20261005,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        4.1998565196991e-07,
+        20261006,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Foundry Tools",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261006,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261006,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261006,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        2.00543148815632e-06,
+        20261007,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261007,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261007,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261007,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        2.04218023270369e-06,
+        20261008,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261008,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261008,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261008,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        1.84268704801798e-06,
+        20261009,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261009,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261009,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261009,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        4.592602254,
+        20261010,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        5.72230450809002e-07,
+        20261010,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261010,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261010,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261010,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        9.4069976916,
+        20261011,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        2.20492467284203e-06,
+        20261011,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888406041088,
+        20261011,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261011,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261011,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        8.5677181716,
+        20261012,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        4.50124531788812e-05,
+        20261012,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.8888426918688,
+        20261012,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261012,
+        "Virtual Machines",
+        "BRL"
+      ],
+      [
+        1.252656,
+        20261012,
+        "Virtual Network",
+        "BRL"
+      ],
+      [
+        2.6540753388,
+        20261013,
+        "Azure Container Apps",
+        "BRL"
+      ],
+      [
+        2.62491032481194e-08,
+        20261013,
+        "Bandwidth",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261013,
+        "Load Balancer",
+        "BRL"
+      ],
+      [
+        0.0,
+        20261013,
+        "Log Analytics",
+        "BRL"
+      ],
+      [
+        0.3333152265408,
+        20261013,
+        "Storage",
+        "BRL"
+      ],
+      [
+        0.469746,
+        20261013,
+        "Virtual Network",
+        "BRL"
+      ]
+    ]
+  },
+  "sku": null,
+  "type": "Microsoft.CostManagement/query"
+}

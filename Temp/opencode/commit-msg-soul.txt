@@ -1,0 +1,8 @@
+docs: soul curto de bot de codigo
+
+- SOUL-BOT-DEV.md: soul enxuto para Dev e EstrelaQueBrilha
+- AGENTS.md, README e CHECKOUT-CANONICO apontam o soul
+- o soul referencia AGENTS, CHECKOUT-CANONICO e ESTADO em vez de repetir
+
+Co-Authored-By: DeepSeek V4.1 Flash <noreply@deepseek.com>
+Co-Authored-By: opencode <noreply@opencode.ai>

@@ -1,0 +1,14 @@
+﻿az : ERROR: Bad Request({"error":{"code":"BadRequest","message":"Invalid query definition: Invalid dataset grouping: 
+'ResourceName'; valid values: 'ResourceGroup','ResourceGroupName','ResourceType','ResourceId','ResourceLocation','Subsc
+riptionId','SubscriptionName','MeterCategory','MeterSubcategory','Meter','ServiceFamily','UnitOfMeasure','PartNumber','
+BillingAccountName','BillingProfileId','BillingProfileName','InvoiceSection','InvoiceSectionId','InvoiceSectionName','P
+roduct','ResourceGuid','ChargeType','ServiceName','ProductOrderId','ProductOrderName','PublisherType','ReservationId','
+ReservationName','Frequency','InvoiceId','PricingModel','CostAllocationRuleName','MarkupRuleName','BillingMonth','Provi
+der','BenefitId','BenefitName','CustomerTenantId','CustomerTenantDomainName','ResellerMPNId','PartnerEarnedCreditApplie
+d','CustomerName','PartnerName',''.\r\n\r\n (Request ID: ad877c85-32de-4551-801f-578d8988c365)"}})
+No linha:15 caractere:1
++ az rest --method post --url "https://management.azure.com/subscriptio ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Bad Requ...8d8988c365)"}}):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
