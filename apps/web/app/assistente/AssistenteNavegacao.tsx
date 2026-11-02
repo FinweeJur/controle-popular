@@ -456,28 +456,30 @@ export default function AssistenteNavegacao() {
                     {passo.composicao.b.total === 1 ? "" : "s"}
                   </p>
                   {passo.composicao.linhas.length > 0 ? (
-                    <table className="mt-3 w-full text-sm">
-                      <thead>
-                        <tr className="border-b border-[var(--cp-border)] text-left text-[var(--cp-text-soft)]">
-                          <th scope="col" className="py-1.5 pr-3 font-normal">Tema</th>
-                          <th scope="col" className="py-1.5 pr-3 font-normal">
-                            {passo.composicao.a.nome}
-                          </th>
-                          <th scope="col" className="py-1.5 font-normal">
-                            {passo.composicao.b.nome}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {passo.composicao.linhas.map((l) => (
-                          <tr key={l.tema} className="border-b border-[var(--cp-border)] last:border-0">
-                            <td className="py-1.5 pr-3">{l.tema}</td>
-                            <td className="font-tabular py-1.5 pr-3">{l.a}</td>
-                            <td className="font-tabular py-1.5">{l.b}</td>
+                    <div className="overflow-x-auto">
+                      <table className="mt-3 w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-[var(--cp-border)] text-left text-[var(--cp-text-soft)]">
+                            <th scope="col" className="py-1.5 pr-3 font-normal">Tema</th>
+                            <th scope="col" className="py-1.5 pr-3 font-normal">
+                              {passo.composicao.a.nome}
+                            </th>
+                            <th scope="col" className="py-1.5 font-normal">
+                              {passo.composicao.b.nome}
+                            </th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {passo.composicao.linhas.map((l) => (
+                            <tr key={l.tema} className="border-b border-[var(--cp-border)] last:border-0">
+                              <td className="py-1.5 pr-3">{l.tema}</td>
+                              <td className="font-tabular py-1.5 pr-3">{l.a}</td>
+                              <td className="font-tabular py-1.5">{l.b}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   ) : (
                     <p className="mt-2 text-sm">
                       Nenhum documento das duas cidades tem tema cadastrado — só as

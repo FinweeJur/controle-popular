@@ -193,6 +193,7 @@ _Fonte: Dados públicos oficiais organizados pelo portal independente Controle P
 
           <button
             onClick={copiarTexto}
+            aria-label={copiado ? "Mensagem copiada para a área de transferência" : "Copiar mensagem pronta"}
             className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-semibold text-foreground hover:bg-surface-2"
           >
             {copiado ? (

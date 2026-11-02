@@ -601,7 +601,7 @@ export default function TabelaCapacidade() {
               </div>
 
               {/* Tabela de acessibilidade oculta */}
-              <div className="sr-only">
+              <div className="sr-only overflow-x-auto">
                 <table>
                   <caption>Comparativo de Efetivo 2016 versus 2026</caption>
                   <thead>
@@ -718,7 +718,7 @@ export default function TabelaCapacidade() {
               </div>
 
               {/* Tabela de acessibilidade oculta */}
-              <div className="sr-only">
+              <div className="sr-only overflow-x-auto">
                 <table>
                   <caption>Sobrecarga de processos por analista técnico</caption>
                   <thead>

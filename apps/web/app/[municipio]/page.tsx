@@ -27,6 +27,7 @@ import {
   type IdMunicipio,
 } from "@/lib/db/queries/municipios";
 import Moeda from "@/app/components/Moeda";
+import { CountUp } from "@/app/components/CountUp";
 import { formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -453,9 +454,11 @@ export default async function HomePage({
                 {populacao ? (
                   <>
                     <div className="font-tabular text-[3em] leading-none font-semibold">
-                      {populacao.valor_numerico !== null
-                        ? formatNumberBR(populacao.valor_numerico)
-                        : (populacao.valor ?? "—")}
+                      {populacao.valor_numerico !== null ? (
+                        <CountUp value={populacao.valor_numerico} />
+                      ) : (
+                        populacao.valor ?? "—"
+                      )}
                     </div>
                     <div className="mt-2 text-[.9em] opacity-90">
                       {INDICATOR_LABELS[0].unidade_curta}
@@ -480,34 +483,16 @@ export default async function HomePage({
                       <div className="mt-1.5 font-tabular text-[1.6em] leading-none font-semibold">
                         {row.valor_numerico !== null ? (
                           row.unidade === "R$" ? (
-                            <Moeda value={row.valor_numerico} />
+                            <CountUp value={row.valor_numerico} prefix="R$ " decimals={2} />
                           ) : row.unidade === "pontos" ? (
-                            // IDEB é uma nota com casa decimal significativa
-                            // (4,9 != 5) -- arredondar pro inteiro mais
-                            // próximo perderia a diferença real entre anos.
-                            <>
-                              {row.valor_numerico.toFixed(1).replace(".", ",")}
-                              <span className="ml-1 text-xs font-normal">{row.unidade}</span>
-                            </>
+                            <CountUp value={row.valor_numerico} decimals={1} suffix={` ${row.unidade}`} />
                           ) : nome === "idh" ? (
-                            // IDH é um índice 0-1 com 3 casas decimais
-                            // significativas (convenção do próprio PNUD) --
-                            // Math.round jogaria 0,749 pra "1".
-                            row.valor_numerico.toFixed(3).replace(".", ",")
+                            <CountUp value={row.valor_numerico} decimals={3} />
                           ) : (
-                            <>
-                              {formatNumberBR(Math.round(row.valor_numerico))}
-                              {row.unidade && nome !== "saldo_empregos_caged" ? (
-                                // "vagas" no banco é o rótulo genérico do
-                                // ETL, mas soa como "vaga de emprego aberta
-                                // pra se candidatar" -- o número real é o
-                                // SALDO líquido do CAGED (admissões menos
-                                // demissões), sinal bem diferente. Omitido
-                                // aqui pra não confundir; o rótulo do card
-                                // já deixa "(CAGED)" e "Saldo" explícitos.
-                                <span className="ml-1 text-xs font-normal">{row.unidade}</span>
-                              ) : null}
-                            </>
+                            <CountUp
+                              value={Math.round(row.valor_numerico)}
+                              suffix={row.unidade && nome !== "saldo_empregos_caged" ? ` ${row.unidade}` : ""}
+                            />
                           )
                         ) : (
                           (row.valor ?? "—")

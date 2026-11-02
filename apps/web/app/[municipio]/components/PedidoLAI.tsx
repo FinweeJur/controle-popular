@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCidade } from "@/lib/betim/cidade-cliente";
+import { AnimatedCopyButton } from "@/app/components/AnimatedCopyButton";
 
 /**
  * "Assistente de pedido LAI" (Ação cidadã, plan §10.1). Em vez de um
@@ -126,13 +127,12 @@ export default function PedidoLAI({ orgao }: { orgao: Orgao }) {
             className="w-full resize-y rounded-xl border border-border bg-bg p-3 font-mono text-[.85em] leading-relaxed text-text"
           />
           <div className="mt-2 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={copiar}
-              className="cursor-pointer rounded-lg border border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink"
-            >
-              {copiado ? "Copiado ✓" : "Copiar texto"}
-            </button>
+            <AnimatedCopyButton
+              textToCopy={texto}
+              label="Copiar texto"
+              copiedLabel="Copiado!"
+              className="border-primary bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:opacity-95"
+            />
             <span className="text-xs text-text-soft">
               Depois de copiar, cole no portal de LAI da {portal.nome} (o
               pedido é gratuito; o órgão tem 20 dias pra responder).

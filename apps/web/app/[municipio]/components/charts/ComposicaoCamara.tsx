@@ -137,7 +137,7 @@ export default function ComposicaoCamara({ totaisLinhas }: ComposicaoCamaraProps
           `<div>` encapsulando com overflow:hidden + tamanho travado recorta
           de verdade -- a tabela em si fica sem classe nenhuma, só semântica
           pra leitor de tela. */}
-      <div className="sr-only" style={{ overflow: "hidden", width: "1px", height: "1px" }}>
+      <div className="sr-only overflow-x-auto" style={{ overflow: "hidden", width: "1px", height: "1px" }}>
         <table>
           {/* "Peso base", e não "Peso", porque a multiplicação PAROU DE
               FECHAR: com o desconto de baixo teor e o sinal negativo do

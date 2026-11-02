@@ -72,6 +72,9 @@ export default function CapaFrente({
         src={`/${imagem}`}
         alt=""
         aria-hidden="true"
+        width={1200}
+        height={600}
+        sizes="100vw"
         className="absolute inset-0 h-full w-full object-cover object-top md:object-center"
         style={{ margin: 0 }}
       />

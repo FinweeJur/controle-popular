@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Copy, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { AnimatedCopyButton } from "@/app/components/AnimatedCopyButton";
 
 /**
  * Receitas prontas da API pública (`/api`) — o "experimente aqui" para quem
@@ -45,18 +45,9 @@ const RECEITAS: Receita[] = [
 ];
 
 export default function ExemplosApi() {
-  const [copiado, setCopiado] = useState<string | null>(null);
-
-  async function copiar(receita: Receita) {
+  function comandoCurl(receita: Receita) {
     const origem = typeof window === "undefined" ? "" : window.location.origin;
-    const comando = `curl ${origem}${receita.caminho}`;
-    try {
-      await navigator.clipboard.writeText(comando);
-      setCopiado(receita.caminho);
-      window.setTimeout(() => setCopiado((atual) => (atual === receita.caminho ? null : atual)), 2000);
-    } catch {
-      setCopiado(null);
-    }
+    return `curl ${origem}${receita.caminho}`;
   }
 
   return (
@@ -78,21 +69,12 @@ export default function ExemplosApi() {
                 <p className="text-sm opacity-80">{receita.descricao}</p>
               </div>
               <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => copiar(receita)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 px-3 py-1.5 text-xs font-medium transition-colors hover:text-primary dark:border-white/20"
-                >
-                  {copiado === receita.caminho ? (
-                    <>
-                      <Check size={13} aria-hidden="true" /> Copiado
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={13} aria-hidden="true" /> Copiar curl
-                    </>
-                  )}
-                </button>
+                <AnimatedCopyButton
+                  getText={() => comandoCurl(receita)}
+                  label="Copiar curl"
+                  copiedLabel="Copiado!"
+                  className="px-3 py-1.5"
+                />
                 <a
                   href={receita.caminho}
                   target="_blank"

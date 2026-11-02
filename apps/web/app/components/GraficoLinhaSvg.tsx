@@ -180,27 +180,29 @@ export default function GraficoLinhaSvg({
       </div>
 
       {/* Tabela oculta para tecnologias assistivas (WCAG) */}
-      <table className="sr-only">
-        <caption>{titulo}</caption>
-        <thead>
-          <tr>
-            <th scope="col">Período</th>
-            <th scope="col">Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pontos.map((p) => (
-            <tr key={p.rotulo}>
-              <td>{p.rotulo}</td>
-              <td>
-                {prefixo}
-                {p.valor.toLocaleString("pt-BR")}
-                {unidade}
-              </td>
+      <div className="sr-only overflow-x-auto">
+        <table>
+          <caption>{titulo}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Período</th>
+              <th scope="col">Valor</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {pontos.map((p) => (
+              <tr key={p.rotulo}>
+                <td>{p.rotulo}</td>
+                <td>
+                  {prefixo}
+                  {p.valor.toLocaleString("pt-BR")}
+                  {unidade}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </figure>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import { AnimatedCopyButton } from "./AnimatedCopyButton";
 
 /**
  * "Citar esta página" — o botão de citação (padrão Wikipedia).
@@ -60,12 +61,10 @@ export default function CitarPagina() {
   const [aberto, setAberto] = useState(false);
   const [formato, setFormato] = useState<FormatoCitacao>("abnt");
   const [texto, setTexto] = useState("");
-  const [copiado, setCopiado] = useState(false);
 
   function atualizar(fmt: FormatoCitacao) {
     setFormato(fmt);
     setTexto(fmt === "abnt" ? gerarAbnt() : gerarBibtex());
-    setCopiado(false);
   }
 
   function alternar() {
@@ -75,16 +74,6 @@ export default function CitarPagina() {
     }
     setTexto(formato === "abnt" ? gerarAbnt() : gerarBibtex());
     setAberto(true);
-  }
-
-  async function copiar() {
-    try {
-      await navigator.clipboard.writeText(texto);
-      setCopiado(true);
-      window.setTimeout(() => setCopiado(false), 2000);
-    } catch {
-      setCopiado(false);
-    }
   }
 
   return (
@@ -115,21 +104,12 @@ export default function CitarPagina() {
                 {f === "abnt" ? "ABNT" : "BibTeX"}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={copiar}
-              className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-2.5 py-1 text-xs font-medium text-foreground hover:text-primary"
-            >
-              {copiado ? (
-                <>
-                  <Check size={12} aria-hidden="true" /> Copiado
-                </>
-              ) : (
-                <>
-                  <Copy size={12} aria-hidden="true" /> Copiar
-                </>
-              )}
-            </button>
+            <AnimatedCopyButton
+              textToCopy={texto}
+              className="ml-auto"
+              label="Copiar"
+              copiedLabel="Copiado!"
+            />
           </span>
           <pre className="whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed text-muted">
             {texto}

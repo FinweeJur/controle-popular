@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 
 /**
  * Gráfico de barras em SVG nativo — sem biblioteca de gráfico externa (teto de
@@ -116,27 +116,29 @@ export default function GraficoBarrasSvg({
         </div>
 
         {/* Tabela alternativa para leitores de tela */}
-        <table className="sr-only">
-          <caption>{titulo}</caption>
-          <thead>
-            <tr>
-              <th scope="col">Categoria</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {itens.map((i) => (
-              <tr key={i.rotulo}>
-                <td>{i.rotulo}</td>
-                <td>
-                  {prefixo}
-                  {i.valor.toLocaleString("pt-BR")}
-                  {unidade}
-                </td>
+        <div className="sr-only overflow-x-auto">
+          <table>
+            <caption>{titulo}</caption>
+            <thead>
+              <tr>
+                <th scope="col">Categoria</th>
+                <th scope="col">Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {itens.map((i) => (
+                <tr key={i.rotulo}>
+                  <td>{i.rotulo}</td>
+                  <td>
+                    {prefixo}
+                    {i.valor.toLocaleString("pt-BR")}
+                    {unidade}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </figure>
     );
   }
@@ -202,27 +204,29 @@ export default function GraficoBarrasSvg({
         </svg>
       </div>
 
-      <table className="sr-only">
-        <caption>{titulo}</caption>
-        <thead>
-          <tr>
-            <th scope="col">Categoria</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itens.map((i) => (
-            <tr key={i.rotulo}>
-              <td>{i.rotulo}</td>
-              <td>
-                {prefixo}
-                {i.valor.toLocaleString("pt-BR")}
-                {unidade}
-              </td>
+      <div className="sr-only overflow-x-auto">
+        <table>
+          <caption>{titulo}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Categoria</th>
+              <th scope="col">Total</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {itens.map((i) => (
+              <tr key={i.rotulo}>
+                <td>{i.rotulo}</td>
+                <td>
+                  {prefixo}
+                  {i.valor.toLocaleString("pt-BR")}
+                  {unidade}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </figure>
   );
 }

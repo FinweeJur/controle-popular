@@ -617,6 +617,7 @@ E-mail: `);
                   </span>
                   <button
                     onClick={copiarTexto}
+                    aria-label={copiado ? "Texto copiado para a área de transferência" : "Copiar texto da prévia"}
                     className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
                   >
                     {copiado ? (

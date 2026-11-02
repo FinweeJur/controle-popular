@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -252,6 +252,8 @@ export default function RootLayout({
           <img
             src="https://queue.simpleanalyticscdn.com/noscript.gif"
             alt=""
+            width={1}
+            height={1}
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>

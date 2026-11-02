@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { CountUp } from "./CountUp";
 
 export interface CartaoResumoItem {
   rotulo: string;
@@ -11,6 +14,26 @@ export interface CartaoResumoItem {
 export interface CartoesResumoProps {
   itens: CartaoResumoItem[];
   colunas?: 2 | 3 | 4 | 5;
+}
+
+function renderValor(val: string | number) {
+  if (typeof val === "number") {
+    return <CountUp value={val} />;
+  }
+  const str = String(val).trim();
+  const matchPct = /^(\d+(?:[.,]\d+)?)\s*%$/.exec(str);
+  if (matchPct) {
+    const num = parseFloat(matchPct[1].replace(",", "."));
+    return <CountUp value={num} suffix="%" />;
+  }
+  const matchMoney = /^R\$\s*([\d.]+)(?:,(\d+))?$/.exec(str);
+  if (matchMoney) {
+    const raw = matchMoney[1].replace(/\./g, "") + (matchMoney[2] ? "." + matchMoney[2] : "");
+    const num = parseFloat(raw);
+    const dec = matchMoney[2] ? matchMoney[2].length : 0;
+    return <CountUp value={num} prefix="R$ " decimals={dec} />;
+  }
+  return val;
 }
 
 export default function CartoesResumo({ itens, colunas = 4 }: CartoesResumoProps) {
@@ -41,9 +64,7 @@ export default function CartoesResumo({ itens, colunas = 4 }: CartoesResumoProps
           >
             <p className="text-xs font-medium text-text-soft">{item.rotulo}</p>
             <p className="mt-1 font-tabular text-xl font-bold text-text">
-              {typeof item.valor === "number"
-                ? item.valor.toLocaleString("pt-BR")
-                : item.valor}
+              {renderValor(item.valor)}
             </p>
             {item.detalhe && (
               <p className="mt-1 text-[0.9em] text-text-soft opacity-85">{item.detalhe}</p>

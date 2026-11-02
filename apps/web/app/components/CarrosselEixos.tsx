@@ -239,6 +239,9 @@ export function CardCarousel({
                 <img
                   src={item.src}
                   alt={item.alt}
+                  width={310}
+                  height={310}
+                  sizes="(max-width: 640px) 280px, 310px"
                   referrerPolicy="no-referrer"
                   className="w-[280px] h-[280px] sm:w-[310px] sm:h-[310px] max-w-[calc(100vw-3rem)] max-h-[calc(100vw-3rem)] object-cover rounded-xl shadow-lg border border-border"
                 />

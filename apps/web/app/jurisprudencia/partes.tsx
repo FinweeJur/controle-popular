@@ -444,7 +444,7 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
     <>
       {/* Desktop: 5 colunas com largura fixa — cabe sem rolar de lado. */}
-      <div className="hidden overflow-hidden rounded-lg border border-[var(--cp-border)] md:block">
+      <div className="hidden overflow-x-auto rounded-lg border border-[var(--cp-border)] md:block">
         <table className="w-full table-fixed text-sm">
           <thead className="bg-[var(--cp-surface-2)] text-left">
             <tr>
