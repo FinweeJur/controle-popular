@@ -2,6 +2,36 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "//": "Worktree unifica-educacao (hub unificado de educacao e pesquisa em estilo PowerBI nativo).",
+      "name": "cp-unifica-educacao-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        ".claude/worktrees/unifica-educacao/apps/web",
+        "--",
+        "--port",
+        "3049"
+      ],
+      "port": 3049
+    },
+    {
+      "//": "Worktree concursos-publicos (mapeamento nacional de concursos e contratacoes temporarias).",
+      "name": "cp-concursos-publicos-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        ".claude/worktrees/concursos-publicos/apps/web",
+        "--",
+        "--port",
+        "3037"
+      ],
+      "port": 3037
+    },
+    {
       "//": "Worktree cabecalho-zonas (trilha do item 4 do plano unico, docs/ESTADO.md) -- porta propria, mesma regra dos outros worktrees.",
       "name": "cp-cabecalho-zonas-dev",
       "runtimeExecutable": "npm",
