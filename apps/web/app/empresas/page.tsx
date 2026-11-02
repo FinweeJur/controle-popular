@@ -1,8 +1,44 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { listarTodasEntidades } from "@/lib/empresas/entidades-dados";
+import { contarPorSetor, hrefSetor, setorDe } from "@/lib/empresas/facetas-setor";
+import { PainelFacetas } from "@/app/components/PainelFacetas";
+import CabecalhoObservatorio from "./CabecalhoObservatorio";
 import EmpresasClient from "./EmpresasClient";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+
+/**
+ * @file `/empresas` — Observatório de Grandes Empresas & Fundos.
+ *
+ * O QUE É: a listagem principal do acervo (130 entidades), com a ficha de cada
+ * uma em `/empresas/[slug]`.
+ *
+ * O QUE MUDOU (02/11/2026): ganhou a faixa de facetas por setor estratégico,
+ * com estado na URL (`?setor=mineracao|energia|...`). O painel é renderizado
+ * no servidor e cada botão é LINK — nada de `useState` segurando coleção
+ * (AGENTS §5.1) e a casca não desmonta entre um clique e outro (§5.13).
+ *
+ * O QUE NÃO MUDOU, DE PROPÓSITO: o `EmpresasClient` continua inteiro — busca
+ * textual, filtros de país/tipo/risco ESG, ordenação por coluna e exportação
+ * CSV. A faceta só define o recorte de chegada; dentro da página o filtro
+ * instantâneo segue funcionando sobre as 130 entidades. Trocar a faceta não
+ * apaga a busca nem a ordenação: o recorte chega como prop e o cliente ajusta
+ * o próprio estado sem remontar.
+ *
+ * POR QUE ESTAS ROTAS NÃO VIRARAM FACETA: `/empresas/fortunas` (1.000
+ * fortunas), `/empresas/conglomerados` (grafo de holdings), `/empresas/
+ * executivos` (painel de executivos e porta giratória) e `/empresas/documentos`
+ * (biblioteca de 520 documentos) têm acervo, cliente e números próprios — são
+ * conteúdo, não recorte. Fundir por prefixo destruiria dado, que é exatamente
+ * o erro que este trabalho não repete. Elas ficam linkadas acima e abaixo.
+ *
+ * NÚMEROS: o N de cada faceta é medido em `contarPorSetor`, sobre o mesmo
+ * array que alimenta a lista; o denominador (`entidades.length`) aparece por
+ * extenso na nota da faixa. Nenhum número fixo nesta página.
+ */
+
+interface Props {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
 
 export const metadata: Metadata = {
   title: "Observatório de Grandes Empresas & Fundos de Investimento — Controle Popular",
@@ -10,70 +46,44 @@ export const metadata: Metadata = {
     "Monitoramento cívico das 130 maiores empresas e fundos atuantes no Brasil: ações na B3 e NYSE, transparência, ESG, direitos humanos, licenciamentos ambientais, contratos no PNCP e TACs.",
 };
 
-export default function EmpresasIndexPage() {
+export default async function EmpresasIndexPage({ searchParams }: Props) {
+  const params = await searchParams;
   const entidades = listarTodasEntidades();
+  const facetas = contarPorSetor(entidades);
+  // Slug inválido cai em "Todos": link antigo ou digitado não derruba a página.
+  const setorAtivo = setorDe(params.setor, facetas);
+  const facetaAtiva = facetas.find((faceta) => faceta.slug === setorAtivo);
+  const total = entidades.length;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-8">
-      {/* Navegação e Trilha */}
-      <nav aria-label="Trilha de navegação" className="text-xs text-muted">
-        <Link href="/" className="hover:text-primary transition">
-          Início
-        </Link>{" "}
-        ·{" "}
-        <Link href="/estado-e-economia" className="hover:text-primary transition">
-          Estado & Economia
-        </Link>{" "}
-        · <span className="text-foreground font-semibold">Grandes Empresas & Fundos</span>
-      </nav>
+      {/* Trilha, título e as quatro portas para os acervos irmãos. */}
+      <CabecalhoObservatorio />
 
-      {/* Cabeçalho do Observatório */}
-      <header className="space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
-          <span>🏛️ Setores Estratégicos & Mercado de Capitais</span>
-        </div>
-        <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-          Observatório de Grandes Empresas & Fundos
-        </h1>
-        <p className="max-w-4xl text-sm sm:text-base text-muted leading-relaxed">
-          Acompanhamento cívico e vigilância cidadã sobre as 130 maiores corporações e fundos de investimento atuantes no Brasil.
-          Cruze cotações na B3 e NYSE com licenciamentos ambientais da FEAM e IBAMA, processos minerários na ANM, 
-          contratos públicos no PNCP, auditorias do Tribunal de Contas e TACs do Ministério Público.
+      {/* Faixa de facetas por setor: LINK com estado na URL, render no servidor.
+          O N vem do acervo inteiro; o recorte escolhido é o estado inicial da
+          lista abaixo, sem apagar busca, ordenação nem exportação. */}
+      <section aria-label="Recorte do observatório por setor" className="space-y-3 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+        <PainelFacetas
+          facetas={facetas}
+          atual={setorAtivo}
+          total={total}
+          hrefDe={(slug) => hrefSetor(slug)}
+          titulo="Recorte por setor estratégico"
+          ariaLabel="Recorte do observatório por setor"
+          rotuloTodos="Todos os setores"
+          nota={`N = entidades mapeadas no setor. Ao todo, ${total} entidades em ${facetas.length} setores.`}
+        />
+        <p className="text-sm text-muted">
+          {facetaAtiva
+            ? `Mostrando ${facetaAtiva.n} das ${total} entidades — recorte: ${facetaAtiva.rotulo}.`
+            : `Mostrando as ${total} entidades do acervo.`}{" "}
+          Busca, ordenação e exportação CSV atuam sobre o que a lista exibe.
         </p>
-        <div className="pt-2 flex flex-wrap gap-2.5">
-          <Link
-            href="/empresas/fortunas"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition shadow-2xs"
-          >
-            <span>💰 1.000 Maiores Fortunas</span>
-            <span>→</span>
-          </Link>
-          <Link
-            href="/empresas/conglomerados"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-purple-500/30 bg-purple-500/10 px-3.5 py-2 text-xs sm:text-sm font-semibold text-purple-600 dark:text-purple-400 hover:bg-purple-500/20 transition shadow-2xs"
-          >
-            <span>🕸️ Monopólios & Holdings</span>
-            <span>→</span>
-          </Link>
-          <Link
-            href="/empresas/executivos"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-blue-500/30 bg-blue-500/10 px-3.5 py-2 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition shadow-2xs"
-          >
-            <span>👔 CEOs & Conselhos</span>
-            <span>→</span>
-          </Link>
-          <Link
-            href="/empresas/documentos"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-primary/30 bg-primary/10 px-3.5 py-2 text-xs sm:text-sm font-semibold text-primary hover:bg-primary/20 transition shadow-2xs"
-          >
-            <span>📚 520 Relatórios ESG & CVM</span>
-            <span>→</span>
-          </Link>
-        </div>
-      </header>
+      </section>
 
       {/* Painel Interativo com Gráficos, Filtros e Tabela */}
-      <EmpresasClient entidades={entidades} />
+      <EmpresasClient entidades={entidades} setorInicial={setorAtivo} />
 
       {/* Seção de Páginas Relacionadas e Cruzamentos Cívicos */}
       <SecaoPaginasRelacionadas

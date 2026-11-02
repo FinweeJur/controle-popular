@@ -18,6 +18,9 @@
  * - Exportação de CSV com BOM UTF-8 (\uFEFF) e separador ponto-e-vírgula (;) para compatibilidade com Excel.
  * - Classificação determinística de país de origem (Brasil, Estados Unidos, Canadá) a partir do tipo e bolsa.
  * - Total compatibilidade com o tipo 'empresa_canada' catalogado em entidades-dados.ts.
+ * - `setorInicial` traz o recorte de `?setor=` da faixa de facetas (renderizada
+ *   no servidor em `page.tsx`). É estado inicial, não controle: busca, ordenação,
+ *   CSV e paginação seguem 100% no cliente, sobre o acervo inteiro.
  */
 
 "use client";
@@ -44,6 +47,12 @@ import type { EntidadeDetalhada } from "@/lib/empresas/entidades-dados";
 
 interface Props {
   entidades: EntidadeDetalhada[];
+  /**
+   * Setor vindo do `?setor=` da URL (faixa de facetas do servidor).
+   * `"todos"` quando nenhum recorte está ativo. Serve só como estado inicial:
+   * os filtros instantâneos do cliente continuam mandando depois do carregamento.
+   */
+  setorInicial?: string;
 }
 
 export type PaisOrigem = "brasil" | "eua" | "canada";
@@ -69,14 +78,27 @@ export function obterPaisOrigem(e: EntidadeDetalhada): PaisOrigem {
   return "brasil";
 }
 
-export default function EmpresasClient({ entidades }: Props) {
+export default function EmpresasClient({ entidades, setorInicial }: Props) {
+  // `""` (sem recorte) e ausente significam "todos": o filtro abaixo compara
+  // com esse literal e string vazia esconderia a lista inteira.
+  const setorDeEntrada = setorInicial || "todos";
   const [busca, setBusca] = useState("");
   const [paisAtivo, setPaisAtivo] = useState<string>("todos");
-  const [setorAtivo, setSetorAtivo] = useState<string>("todos");
+  const [setorAtivo, setSetorAtivo] = useState<string>(setorDeEntrada);
   const [tipoAtivo, setTipoAtivo] = useState<string>("todos");
   const [riscoAtivo, setRiscoAtivo] = useState<string>("todos");
   const [ordem, setOrdem] = useState<"nome" | "setor" | "ticker" | "risco">("nome");
   const [direcaoAsc, setDirecaoAsc] = useState(true);
+
+  // A faixa de facetas é navegação de SERVIDOR: ao trocar `?setor=`, a prop muda
+  // e o estado local acompanha no mesmo render. Não é `useEffect` (evita um
+  // quadro com a lista inteira) e não é `key` (remontar apagaria a busca e a
+  // ordenação que o leitor já tinha escolhido).
+  const [setorDaUrl, setSetorDaUrl] = useState<string>(setorDeEntrada);
+  if (setorDeEntrada !== setorDaUrl) {
+    setSetorDaUrl(setorDeEntrada);
+    setSetorAtivo(setorDeEntrada);
+  }
 
   // Contagem por país de origem para os botões de filtro e cartões
   const contagemPaises = useMemo(() => {
