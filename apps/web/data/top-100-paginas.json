@@ -806,7 +806,7 @@
   {
     "id": "congresso-mg",
     "titulo": "Bancada Federal de Minas Gerais",
-    "href": "/congresso/mg",
+    "href": "/congresso/parlamentares?uf=MG",
     "eixo": "Eixo 3: Estado e Economia",
     "subfrenteId": "congresso-nacional",
     "subfrente": "Congresso Nacional",

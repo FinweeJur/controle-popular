@@ -219,9 +219,12 @@ async function rotasDoCongresso(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/congresso", { changeFrequency: "daily", priority: 0.8 }),
     item("/congresso/agenda", { changeFrequency: "daily", priority: 0.6 }),
-    item("/congresso/alertas", { changeFrequency: "weekly", priority: 0.5 }),
+    // Painel de análises de direitos (02/11/2026): duas listas viraram
+    // `?recorte=restringem|ampliam`. O painel sem query ("todas") entra pela
+    // descoberta automática; aqui vão os dois recortes que antes tinham URL.
+    item("/congresso/analises?recorte=restringem", { changeFrequency: "weekly", priority: 0.5 }),
+    item("/congresso/analises?recorte=ampliam", { changeFrequency: "weekly", priority: 0.5 }),
     item("/congresso/bancadas", { changeFrequency: "weekly", priority: 0.6 }),
-    item("/congresso/bons-exemplos", { changeFrequency: "weekly" }),
     item("/congresso/comissoes", { changeFrequency: "weekly", priority: 0.6 }),
     item("/congresso/metodologia", { changeFrequency: "yearly", priority: 0.3 }),
     item("/congresso/parlamentares", { changeFrequency: "weekly", priority: 0.6 }),

@@ -26,28 +26,48 @@ export default function PaginaPonte({
   destino,
   titulo,
   descricao,
+  semMain = false,
 }: {
   /** Caminho novo, absoluto no site, com a query quando houver. */
   destino: string;
   titulo: string;
   /** Uma frase dizendo para onde o conteúdo foi. */
   descricao: string;
+  /**
+   * `true` quando o layout da zona já entrega o `<main id="conteudo-principal">`
+   * (caso de `/congresso`). Sem isto, a ponte criaria um segundo `<main>` e
+   * dois elementos com o mesmo `id` — HTML inválido e dois landmarks iguais
+   * para o leitor de tela.
+   */
+  semMain?: boolean;
 }) {
+  const conteudo = (
+    <>
+      <h1 className="font-display text-2xl font-semibold text-text">{titulo}</h1>
+      <p className="mt-3 text-sm text-text-soft">{descricao}</p>
+      <Link
+        href={destino}
+        className="mt-6 inline-block rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white"
+      >
+        Ir para a página nova
+      </Link>
+    </>
+  );
   return (
     <>
       <meta httpEquiv="refresh" content={`0; url=${destino}`} />
       <link rel="canonical" href={destino} />
       <meta name="robots" content="noindex, follow" />
-      <main id="conteudo-principal" className="mx-auto max-w-2xl px-4 py-20 text-center">
-        <h1 className="font-display text-2xl font-semibold text-text">{titulo}</h1>
-        <p className="mt-3 text-sm text-text-soft">{descricao}</p>
-        <Link
-          href={destino}
-          className="mt-6 inline-block rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white"
+      {semMain ? (
+        <div className="mx-auto max-w-2xl px-4 py-20 text-center">{conteudo}</div>
+      ) : (
+        <main
+          id="conteudo-principal"
+          className="mx-auto max-w-2xl px-4 py-20 text-center"
         >
-          Ir para a página nova
-        </Link>
-      </main>
+          {conteudo}
+        </main>
+      )}
     </>
   );
 }

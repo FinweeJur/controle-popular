@@ -68,7 +68,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/congresso": "Atuação legislativa federal: proposições classificadas por direito violado, bancadas temáticas e comissões.",
   "/congresso/proposicoes": "Projetos de lei de impacto social, tramitação em tempo real, autores, relatores e alertas de risco aos direitos.",
   "/congresso/votacoes": "Placar nominal de votações em plenário com análise de coerência entre discursos e votos sobre pautas populares.",
-  "/congresso/mg": "Atuação detalhada dos 53 deputados federais e 3 senadores de MG: emendas parlamentares destinadas e votações.",
+  "/congresso/parlamentares?uf=MG": "Atuação detalhada dos deputados federais e senadores de MG: emendas parlamentares destinadas e votações.",
   "/governo": "Checagem independente de promessas de campanha registradas no TSE versus entregas reais e decretos governamentais.",
   "/dados/comunicabr": "R$ 139 bi transferidos pela União aos 853 municípios de MG: Bolsa Família, Farmácia Popular, Fundeb e SUS.",
   "/ambiental/convenios": "Acordos e emendas parlamentares federais do Transferegov destinados a obras e custeio nos municípios.",

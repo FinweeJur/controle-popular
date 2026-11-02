@@ -225,7 +225,7 @@ export const CONTEXTOS: ContextoPagina[] = [
         pergunta: "Quais alertas de fiscalização cidadã foram registrados?",
         resposta:
           "Pontos de atenção e indícios em convênios e emendas de bancada para acompanhamento social.",
-        link: "/congresso/alertas",
+        link: "/congresso/analises?recorte=restringem",
         linkTexto: "Ver alertas do Congresso",
       },
     ],
@@ -250,7 +250,7 @@ export const CONTEXTOS: ContextoPagina[] = [
     ],
   },
   {
-    padrao: "^/congresso/alertas",
+    padrao: "^/congresso/analises",
     sugestoes: [
       {
         pergunta: "Onde ver matérias investigativas completas sobre gastos públicos?",

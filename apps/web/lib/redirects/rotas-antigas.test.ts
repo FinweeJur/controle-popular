@@ -81,9 +81,9 @@ describe("registro de rotas antigas", () => {
     expect(semRegistro, `ponte sem destino registrado: ${semRegistro.join(", ")}`).toEqual([]);
   });
 
-  it("destinoAntigo devolve o destino e ignora rota desconhecida", () => {
+  it("destinoAntigo devolve o destino e recusa rota desconhecida", () => {
     const primeira = ROTAS_ANTIGAS[0];
     expect(destinoAntigo(primeira.de)).toBe(primeira.para);
-    expect(destinoAntigo("/rota-que-nao-existe")).toBeUndefined();
+    expect(() => destinoAntigo("/rota-que-nao-existe")).toThrow(/sem destino registrado/);
   });
 });

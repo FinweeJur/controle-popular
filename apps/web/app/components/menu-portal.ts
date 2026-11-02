@@ -121,7 +121,7 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Radar de Compras & Contratos', href: '/ambiental/contratos', icone: ShoppingBag, destaque: true, dica: 'Radar de compras e contratos públicos: valores, fornecedores e objetos por órgão.' },
       { label: 'Congresso Nacional & Gastos', href: '/congresso', icone: Landmark, dica: 'Congresso Nacional: deputados, senadores, gastos e votações, com fonte oficial.' },
       { label: 'Gastos de Campanha 2026', href: '/eleicoes/2026/gastos-campanha', icone: BarChart3, destaque: true, dica: 'Gastos declarados na campanha de 2026: candidatos, doadores e despesas por estado.' },
-      { label: 'Bancada Federal de MG', href: '/congresso/mg', icone: Users, dica: 'Deputados e senadores de Minas: atuação, gastos, votações e emendas.' },
+      { label: 'Bancada Federal de MG', href: '/congresso/parlamentares?uf=MG', icone: Users, dica: 'Deputados e senadores de Minas: atuação, gastos, votações e emendas.' },
       { label: 'Governos: Prometeu? Cumpriu?', href: '/governo', icone: Landmark, dica: 'Promessas de campanha dos governos comparadas às entregas reais, com fonte.' },
       { label: 'Grandes Empresas & Fundos ESG', href: '/empresas', icone: Building2, dica: 'Mineradoras e fundos ESG: sócios, relatórios, fornecedores públicos e condenações.' },
       { label: '1.000 Maiores Fortunas Mundiais', href: '/empresas/fortunas', icone: Building2, dica: 'As 1.000 maiores fortunas do mundo e os grupos que controlam a mineração.' },

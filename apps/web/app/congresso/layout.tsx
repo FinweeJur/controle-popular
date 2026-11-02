@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 };
 
 const NAV = [
-  { href: "/alertas", label: "Alertas" },
-  { href: "/bons-exemplos", label: "Bons exemplos" },
+  { href: "/analises?recorte=restringem", label: "Alertas" },
+  { href: "/analises?recorte=ampliam", label: "Bons exemplos" },
   { href: "/proposicoes", label: "Proposições" },
   { href: "/almg", label: "ALMG (MG)" },
   { href: "/cota-parlamentar", label: "Cota CEAP" },
