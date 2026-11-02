@@ -31,6 +31,9 @@ const PONTES: Record<string, string> = {
   "zap-betim": "/zap",
   "nota-betim": "/nota-transparencia",
   "prefeitura/legislacao": "/camara/legislacao",
+  // A ponte leva a `?area=pessoal`, mas o canônico é o painel sem query: a
+  // área é recorte de navegação, não URL própria (02/11/2026).
+  "prefeitura/diarias": "/prefeitura",
   convenios: "/emendas",
 };
 

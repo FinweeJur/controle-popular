@@ -110,7 +110,15 @@ export const SUFIXOS_DE_CIDADE: EntradaCatalogo[] = [
   { sufixo: "/prefeitura/contratos", titulo: "Contratos da Prefeitura", termos: ["contrato", "contratos", "fornecedor", "fornecedores"] },
   { sufixo: "/prefeitura/licitacoes", titulo: "Licitações", termos: ["licitacao", "licitacoes", "pregao", "edital"] },
   { sufixo: "/prefeitura/despesas", titulo: "Despesas", termos: ["despesa", "despesas", "gasto", "gastos", "orcamento"] },
-  { sufixo: "/prefeitura/diarias", titulo: "Diárias", termos: ["diaria", "diarias", "viagem"] },
+  {
+    // Diárias deixaram de ter rota própria em 02/11/2026: o conteúdo mora no
+    // bloco de pessoal do painel da Prefeitura. O destino leva a query para o
+    // leitor cair na área certa — o catálogo é o único lugar do assistente
+    // que aponta para recorte de painel.
+    sufixo: "/prefeitura?area=pessoal",
+    titulo: "Diárias e viagens",
+    termos: ["diaria", "diarias", "viagem"],
+  },
   { sufixo: "/prefeitura/obras", titulo: "Obras", termos: ["obra", "obras"] },
   { sufixo: "/prefeitura/servidores", titulo: "Servidores", termos: ["servidor", "servidores", "salario", "folha", "concurso"] },
   { sufixo: "/prefeitura/legislacao", titulo: "Leis municipais", termos: ["lei", "leis", "legislacao", "decreto", "norma"] },

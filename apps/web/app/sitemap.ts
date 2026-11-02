@@ -81,8 +81,9 @@ function item(
  *
  * FORA DO SITEMAP, DE PROPÓSITO (motivos em `lib/sitemap/descoberta.ts`):
  *  - `/admin`: painel de moderação protegido por token (`PainelAdmin.tsx`);
- *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`, `/convenios`:
- *    páginas-ponte (`components/PaginaPonte.tsx`) com
+ *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`,
+ *    `/prefeitura/diarias`, `/convenios`: páginas-ponte
+ *    (`components/PaginaPonte.tsx`) com
  *    `<meta name="robots" content="noindex, follow">` e `canonical`
  *    apontando pro destino novo. Indexar a ponte duplicaria o conteúdo que
  *    o canonical já resolve;
@@ -139,7 +140,6 @@ const ROTAS_CIDADE: {
   { sufixo: "/prefeitura/contratos", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/cultura", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/despesas", changeFrequency: "weekly" },
-  { sufixo: "/prefeitura/diarias", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/licitacoes", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/obras", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/servidores", changeFrequency: "weekly" },
