@@ -89,6 +89,23 @@ export default function PaginaUniversidades() {
         />
       </header>
 
+      {/* Ponte Canônica para o Hub Unificado de Educação */}
+      <div className="mb-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+        <div>
+          <span className="font-bold text-foreground">💡 Hub Unificado de Educação & Pesquisa:</span>{" "}
+          <span className="text-muted">
+            Este índice de universidades e grupos CNPq agora integra o painel unificado com cross-filtering,
+            educação básica (IDEB), periódicos e intercâmbio.
+          </span>
+        </div>
+        <Link
+          href="/educacao?topico=universidades"
+          className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all whitespace-nowrap text-center"
+        >
+          Ver no Hub Unificado →
+        </Link>
+      </div>
+
       <nav
         aria-label="Atalhos do índice"
         className="mb-6 flex flex-wrap gap-2 text-sm"

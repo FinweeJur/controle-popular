@@ -60,10 +60,10 @@ export default function PaginaDireitosComparados() {
         {/* Educação, pesquisa e extensão */}
         <Card
           icon={<GraduationCap className="h-8 w-8" />}
-          title="Educação, pesquisa e extensão"
-          description="Índice real de grupos de pesquisa e projetos de extensão das universidades, com filtros por área, instituição e estado."
-          href="/universidades"
-          keywords={["Educação", "Pesquisa", "Extensão", "Universidades", "CNPq"]}
+          title="Educação, Pesquisa e Direitos Comparados"
+          description="Hub unificado com comparador de 27 estados, marcos constitucionais (CF/88, LDB, Fundeb), 1.414 grupos CNPq e séries do IDEB."
+          href="/educacao?topico=comparados"
+          keywords={["Educação", "Pesquisa", "Marcos Legais", "IDEB", "Fundeb", "CNPq"]}
         />
       </div>
 
