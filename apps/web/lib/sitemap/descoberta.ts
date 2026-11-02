@@ -60,6 +60,10 @@ export const EXCLUIR: Record<string, string> = {
   "/ambiental/nossos-territorios": "ponte de URL antiga, noindex",
   "/ambiental/barragens/sigbm": "ponte de URL antiga, noindex",
   "/ambiental/direito-critico": "ponte de URL antiga, noindex",
+  "/judiciario/tribunais": "ponte de URL antiga, noindex",
+  "/judiciario/vagas": "ponte de URL antiga, noindex",
+  "/judiciario/indicacoes": "ponte de URL antiga, noindex",
+  "/judiciario/varas": "ponte de URL antiga, noindex",
 };
 
 /**

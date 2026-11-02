@@ -734,13 +734,13 @@
   {
     "id": "judiciario-tribunais",
     "titulo": "Composição e Vagas nos Tribunais",
-    "href": "/judiciario/tribunais",
+    "href": "/judiciario/composicao",
     "eixo": "Eixo 3: Estado e Economia",
     "subfrenteId": "judiciario-visao",
     "subfrente": "Poder Judiciário",
     "badge": "Justiça",
     "destaque": false,
-    "resumo": "Lista nominal de desembargadores e ministros, idade, tempo de toga, histórico de nomeações e quinto constitucional.",
+    "resumo": "Painel da composição: tribunais acompanhados, próximas vagas por aposentadoria aos 75 anos e indicações ao Senado, com a fonte de cada bloco.",
     "numero": 62
   },
   {

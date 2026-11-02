@@ -297,7 +297,7 @@ export const CONTEXTOS: ContextoPagina[] = [
     ],
   },
   {
-    padrao: "^/judiciario/tribunais",
+    padrao: "^/judiciario/composicao",
     sugestoes: [
       {
         pergunta: "Quanto o TJMG e o MPMG gastam com folha e verbas indenizatórias?",
@@ -313,24 +313,12 @@ export const CONTEXTOS: ContextoPagina[] = [
         link: "/judiciario/sirenejud",
         linkTexto: "Painel SIRENEJud",
       },
-    ],
-  },
-  {
-    padrao: "^/judiciario/indicacoes",
-    sugestoes: [
       {
         pergunta: "Quem fiscaliza a atuação dos magistrados e tribunais?",
         resposta:
           "Conheça o papel do CNJ, do CNMP e as atribuições dos órgãos de corregedoria do Sistema de Justiça.",
         link: "/judiciario/instituicoes",
         linkTexto: "Fiscalização da Justiça",
-      },
-      {
-        pergunta: "Onde acompanhar as ações civis públicas ambientais?",
-        resposta:
-          "Veja os processos judiciais em trâmite no TJMG, TRF-6 e Superior Tribunal de Justiça.",
-        link: "/judiciario/sirenejud",
-        linkTexto: "Processos no SIRENEJud",
       },
     ],
   },

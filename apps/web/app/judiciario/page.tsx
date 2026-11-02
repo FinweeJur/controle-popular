@@ -88,16 +88,16 @@ export default async function Home() {
 
       <section className="grid gap-4 sm:grid-cols-3">
         <Link
-          href="/tribunais"
+          href="/composicao"
           className="rounded-lg border border-[var(--cp-border)] p-5 hover:border-[var(--cp-primary)]"
         >
-          <h2 className="font-display text-lg font-semibold">Ver os tribunais</h2>
+          <h2 className="font-display text-lg font-semibold">Composição dos tribunais</h2>
           <p className="mt-1 text-sm opacity-70">
-            Quem ocupa cada cadeira hoje, e quem indicou.
+            Quem ocupa cada cadeira hoje, quando vaga e quem indicou — num painel só.
           </p>
         </Link>
         <Link
-          href="/vagas"
+          href="/composicao?lente=vagas"
           className="rounded-lg border border-[var(--cp-border)] p-5 hover:border-[var(--cp-primary)]"
         >
           <h2 className="font-display text-lg font-semibold">Próximas vagas</h2>
@@ -106,7 +106,7 @@ export default async function Home() {
           </p>
         </Link>
         <Link
-          href="/indicacoes"
+          href="/composicao?lente=indicacoes"
           className="rounded-lg border border-[var(--cp-border)] p-5 hover:border-[var(--cp-primary)]"
         >
           <h2 className="font-display text-lg font-semibold">Indicações ao Senado</h2>

@@ -61,7 +61,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/assembleias": "Painel comparativo com projetos de lei, despesas de gabinete e composição parlamentar de todas as 27 Assembleias.",
   "/ambiental/contratos": "Monitoramento de contratos administrativos, alertas de dispensa indevida de licitação e concentração de fornecedores.",
   "/judiciario": "Visão geral de tribunais de justiça, cortes superiores e tribunais de contas com dados de composição e remuneração.",
-  "/judiciario/tribunais": "Lista nominal de desembargadores e ministros, idade, tempo de toga, histórico de nomeações e quinto constitucional.",
+  "/judiciario/composicao": "Painel da composição: tribunais acompanhados, próximas vagas por aposentadoria aos 75 anos e indicações ao Senado, com a fonte de cada bloco.",
   "/judiciario/sirenejud": "Base de dados geográfica do CNJ de ações civis públicas ambientais, embargos judiciais e crimes contra a flora.",
   "/judiciario/recomendacoes": "Relatórios de correições e inspeções do CNJ em comarcas mineiras sobre morosidade processual e conduta.",
   "/congresso": "Atuação legislativa federal: proposições classificadas por direito violado, bancadas temáticas e comissões.",

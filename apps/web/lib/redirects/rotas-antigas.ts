@@ -102,7 +102,28 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/ambiental/legislacao",
     motivo: "unificado ao painel de legislacao em 13/08/2026; ponte migrada para o registro (02/11/2026)",
   },
+  {
+    de: "/judiciario/tribunais",
+    para: "/judiciario/composicao",
+    motivo: "virou a lente padrao do painel de composicao (02/11/2026)",
+  },
+  {
+    de: "/judiciario/vagas",
+    para: "/judiciario/composicao?lente=vagas",
+    motivo: "virou a lente de vagas do painel de composicao (02/11/2026)",
+  },
+  {
+    de: "/judiciario/indicacoes",
+    para: "/judiciario/composicao?lente=indicacoes",
+    motivo: "virou a lente de indicacoes do painel de composicao (02/11/2026)",
+  },
+  {
+    de: "/judiciario/varas",
+    para: "/judiciario/contatos",
+    motivo: "duplicava o catalogo de contatos; canonical ja apontava para la (02/11/2026)",
+  },
 ];
+
 
 
 
