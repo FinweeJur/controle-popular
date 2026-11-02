@@ -21,6 +21,33 @@ import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
 
 /**
+ * Dimensoes intrinsecas dos graficos da sintese, lidas do cabecalho dos PNGs
+ * em `public/paraopeba/auditoria/graficos/`. `<img>` cru nao redimensiona
+ * sozinho: sem `width`/`height` o navegador nao reserva espaco e a figura
+ * empurra o texto no 4G. O CSS `h-auto w-full` continua mandando na escala.
+ */
+const DIMENSOES_GRAFICO: Record<string, { largura: number; altura: number }> = {
+  "/paraopeba/auditoria/graficos/01-manejo-rejeitos.png": { largura: 1000, altura: 450 },
+  "/paraopeba/auditoria/graficos/02-estudos-risco-fase1.png": { largura: 1000, altura: 450 },
+  "/paraopeba/auditoria/graficos/03-reparacao-por-frente.png": { largura: 1000, altura: 520 },
+  "/paraopeba/auditoria/graficos/04-previsto-realizado.png": { largura: 1000, altura: 420 },
+};
+
+function ImagemGrafico({ grafico }: { grafico: { src: string; legenda: string } }) {
+  const d = DIMENSOES_GRAFICO[grafico.src];
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={grafico.src}
+      alt={grafico.legenda}
+      width={d?.largura}
+      height={d?.altura}
+      className="h-auto w-full rounded-lg border border-border"
+    />
+  );
+}
+
+/**
  * A síntese por eixos vem em markdown simples de origem (`.md` fora do repo)
  * e o gerador não converte `**negrito**` para HTML — a maioria dos achados
  * nunca usou a marca, mas os que citam o painel de indicadores começam com
@@ -281,13 +308,7 @@ export default function AuditoriaAjriPage() {
               {SINTESE_AJRI.graficosGerais.length > 0 && (
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {SINTESE_AJRI.graficosGerais.map((g, i) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={i}
-                      src={g.src}
-                      alt={g.legenda}
-                      className="w-full rounded-lg border border-border"
-                    />
+                    <ImagemGrafico key={i} grafico={g} />
                   ))}
                 </div>
               )}
@@ -326,13 +347,7 @@ export default function AuditoriaAjriPage() {
                 {eixo.graficos.length > 0 && (
                   <div className="grid gap-4 sm:grid-cols-2">
                     {eixo.graficos.map((g, i) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={i}
-                        src={g.src}
-                        alt={g.legenda}
-                        className="w-full rounded-lg border border-border"
-                      />
+                      <ImagemGrafico key={i} grafico={g} />
                     ))}
                   </div>
                 )}

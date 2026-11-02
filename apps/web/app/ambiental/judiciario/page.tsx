@@ -72,19 +72,21 @@ function GraficoAnual({ serie }: { serie: Record<string, number> }) {
         Processos ambientais ajuizados por ano em MG.{" "}
         <details className="mt-1">
           <summary className="cursor-pointer underline">Ver os números em tabela</summary>
-          <table className="mt-2 text-[.9em]">
-            <thead>
-              <tr><th className="pr-4 text-left">Ano</th><th className="text-right">Processos</th></tr>
-            </thead>
-            <tbody>
-              {anos.map((ano) => (
-                <tr key={ano}>
-                  <td className="pr-4">{ano}</td>
-                  <td className="text-right">{formatNumberBR(serie[ano])}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="mt-2 text-[.9em]">
+              <thead>
+                <tr><th className="pr-4 text-left">Ano</th><th className="text-right">Processos</th></tr>
+              </thead>
+              <tbody>
+                {anos.map((ano) => (
+                  <tr key={ano}>
+                    <td className="pr-4">{ano}</td>
+                    <td className="text-right">{formatNumberBR(serie[ano])}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </details>
       </figcaption>
     </figure>

@@ -393,7 +393,7 @@ export default function PainelAmericaLatina({
             />
             {busca && (
               <button
-                type="button"
+                type="button" aria-label="Limpar busca"
                 onClick={() => setBusca("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-text-soft hover:text-text"
               >
@@ -771,7 +771,7 @@ export default function PainelAmericaLatina({
                 </h3>
               </div>
               <button
-                type="button"
+                type="button" aria-label="Fechar detalhes da instalação"
                 onClick={() => setInstalacaoSelecionada(null)}
                 className="rounded-lg p-1.5 text-text-soft hover:bg-surface-raised hover:text-text"
               >

@@ -171,33 +171,35 @@ function LinhasVagas({ vagas }: { vagas: Ocupacao[] }) {
     <>
       {/* Desktop: tabela. */}
       <div className="hidden overflow-hidden rounded-lg border border-[var(--cp-border)] sm:block">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-[var(--cp-border)] text-left">
-              <th className="px-3 py-2">Tribunal</th>
-              <th className="px-3 py-2">Ministro(a)</th>
-              <th className="px-3 py-2">Cota</th>
-              <th className="px-3 py-2">Vacância projetada</th>
-            </tr>
-          </thead>
-          <tbody>
-            {vagas.map((o) => (
-              <tr key={o.ocupacao_id} className="border-b border-[var(--cp-border)] last:border-0">
-                <td className="px-3 py-2">
-                  <Link
-                    href={`/judiciario/tribunais/${o.tribunal_id}`}
-                    className="uppercase underline"
-                  >
-                    {o.tribunal_id}
-                  </Link>
-                </td>
-                <td className="px-3 py-2">{o.magistrado_nome}</td>
-                <td className="px-3 py-2 opacity-70">{rotuloCota(o.cota)}</td>
-                <td className="px-3 py-2 font-tabular">{fmtData(o.vacancia_projetada)}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[var(--cp-border)] text-left">
+                <th className="px-3 py-2">Tribunal</th>
+                <th className="px-3 py-2">Ministro(a)</th>
+                <th className="px-3 py-2">Cota</th>
+                <th className="px-3 py-2">Vacância projetada</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {vagas.map((o) => (
+                <tr key={o.ocupacao_id} className="border-b border-[var(--cp-border)] last:border-0">
+                  <td className="px-3 py-2">
+                    <Link
+                      href={`/judiciario/tribunais/${o.tribunal_id}`}
+                      className="uppercase underline"
+                    >
+                      {o.tribunal_id}
+                    </Link>
+                  </td>
+                  <td className="px-3 py-2">{o.magistrado_nome}</td>
+                  <td className="px-3 py-2 opacity-70">{rotuloCota(o.cota)}</td>
+                  <td className="px-3 py-2 font-tabular">{fmtData(o.vacancia_projetada)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Celular: o mesmo dado em cartão, sem rolagem lateral (390 px). */}
