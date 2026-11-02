@@ -63,6 +63,7 @@ automáticamente pelos agentes de código.
 | Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 | Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
 | Verificação em camadas | VERIFICACAO-E-ENTREGA | [`03-desenvolvimento/VERIFICACAO-E-ENTREGA.md`](03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
+| Conformidade e responsividade mobile | CONFORMIDADE-MOBILE | [`03-desenvolvimento/CONFORMIDADE-MOBILE.md`](03-desenvolvimento/CONFORMIDADE-MOBILE.md) |
 | Comunicação com o dono | COMUNICACAO-COM-O-DONO | [`03-desenvolvimento/COMUNICACAO-COM-O-DONO.md`](03-desenvolvimento/COMUNICACAO-COM-O-DONO.md) |
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |

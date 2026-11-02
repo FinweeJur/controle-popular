@@ -614,7 +614,7 @@ export default function PainelConsumoCorporativoClient() {
               </select>
 
               <button
-                type="button"
+                type="button" aria-label="Inverter ordem de classificação"
                 onClick={() => setOrdemDesc((d) => !d)}
                 className="p-2 rounded-xl border border-border bg-surface-2 text-foreground hover:border-primary"
               >

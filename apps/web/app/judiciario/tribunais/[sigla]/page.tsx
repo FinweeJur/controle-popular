@@ -219,19 +219,21 @@ export default async function TribunalPage({
                 Composição ainda não semeada.
               </p>
             ) : (
-              <table className="w-full text-sm">
-                <tbody>
-                  {direcao.map((m) => (
-                    <tr key={m.id} className="border-b border-[var(--cp-border)]">
-                      <td className="py-1.5">{CARGO_LABEL[m.cargo ?? ""] ?? m.cargo}</td>
-                      <td className="py-1.5">{m.magistrado_nome}</td>
-                      <td className="py-1.5 font-tabular text-right opacity-70">
-                        {fmtData(m.data_inicio)} – {fmtData(m.data_fim)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <tbody>
+                    {direcao.map((m) => (
+                      <tr key={m.id} className="border-b border-[var(--cp-border)]">
+                        <td className="py-1.5">{CARGO_LABEL[m.cargo ?? ""] ?? m.cargo}</td>
+                        <td className="py-1.5">{m.magistrado_nome}</td>
+                        <td className="py-1.5 font-tabular text-right opacity-70">
+                          {fmtData(m.data_inicio)} – {fmtData(m.data_fim)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </section>
 
@@ -242,26 +244,28 @@ export default async function TribunalPage({
                 Composição ainda não semeada.
               </p>
             ) : (
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-[var(--cp-border)] text-left">
-                    <th className="py-1">Ministro(a)</th>
-                    <th className="py-1">Vaga</th>
-                    <th className="py-1">Biênio até</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {membros.map((m) => (
-                    <tr key={m.id} className="border-b border-[var(--cp-border)]">
-                      <td className="py-1">{m.magistrado_nome}</td>
-                      <td className="py-1 opacity-70">{CARGO_LABEL[m.cargo ?? ""] ?? m.cargo}</td>
-                      <td className="py-1 font-tabular opacity-70">
-                        {m.data_fim ? fmtData(m.data_fim) : <span className="opacity-50">não registrado</span>}
-                      </td>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[var(--cp-border)] text-left">
+                      <th className="py-1">Ministro(a)</th>
+                      <th className="py-1">Vaga</th>
+                      <th className="py-1">Biênio até</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {membros.map((m) => (
+                      <tr key={m.id} className="border-b border-[var(--cp-border)]">
+                        <td className="py-1">{m.magistrado_nome}</td>
+                        <td className="py-1 opacity-70">{CARGO_LABEL[m.cargo ?? ""] ?? m.cargo}</td>
+                        <td className="py-1 font-tabular opacity-70">
+                          {m.data_fim ? fmtData(m.data_fim) : <span className="opacity-50">não registrado</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
             <p className="text-xs opacity-60">
               O TSE não passa por sabatina do Senado — 3 ministros são eleitos pelo STF, 2
@@ -307,32 +311,34 @@ export default async function TribunalPage({
                 (abaixo) já estão disponíveis.
               </p>
             ) : (
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-[var(--cp-border)] text-left">
-                    <th className="py-1">Ministro(a)</th>
-                    <th className="py-1">Cota</th>
-                    <th className="py-1">Posse</th>
-                    <th className="py-1">Vacância projetada</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ocupacoes.map((o) => (
-                    <tr key={o.ocupacao_id} className="border-b border-[var(--cp-border)]">
-                      <td className="py-1">{o.magistrado_nome}</td>
-                      <td className="py-1 opacity-70">{rotuloCota(o.cota)}</td>
-                      <td className="py-1 font-tabular opacity-70">{fmtData(o.data_posse)}</td>
-                      <td className="py-1 font-tabular">
-                        {o.vacancia_projetada ? (
-                          fmtData(o.vacancia_projetada)
-                        ) : (
-                          <span className="opacity-50">nascimento não localizado</span>
-                        )}
-                      </td>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[var(--cp-border)] text-left">
+                      <th className="py-1">Ministro(a)</th>
+                      <th className="py-1">Cota</th>
+                      <th className="py-1">Posse</th>
+                      <th className="py-1">Vacância projetada</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {ocupacoes.map((o) => (
+                      <tr key={o.ocupacao_id} className="border-b border-[var(--cp-border)]">
+                        <td className="py-1">{o.magistrado_nome}</td>
+                        <td className="py-1 opacity-70">{rotuloCota(o.cota)}</td>
+                        <td className="py-1 font-tabular opacity-70">{fmtData(o.data_posse)}</td>
+                        <td className="py-1 font-tabular">
+                          {o.vacancia_projetada ? (
+                            fmtData(o.vacancia_projetada)
+                          ) : (
+                            <span className="opacity-50">nascimento não localizado</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </section>
 

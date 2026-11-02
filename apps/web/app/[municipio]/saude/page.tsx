@@ -131,33 +131,35 @@ export default async function SaudePage({
                   <summary className="cursor-pointer font-medium text-text">
                     Ver os números em tabela
                   </summary>
-                  <table className="mt-3 w-full text-left">
-                    <thead>
-                      <tr className="border-b border-border/60 text-text-soft">
-                        <th className="pb-1.5 font-medium">Ano</th>
-                        <th className="pb-1.5 text-right font-medium">Internações</th>
-                        <th className="pb-1.5 text-right font-medium">Óbitos</th>
-                        <th className="pb-1.5 text-right font-medium">Mortalidade</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border/40 font-tabular">
-                      {[...data.internacoesPorAno]
-                        .sort((a, b) => a.ano - b.ano)
-                        .map((i) => (
-                          <tr key={i.ano}>
-                            <td className="py-1.5 font-medium text-text">{i.ano}</td>
-                            <td className="py-1.5 text-right">{formatNumberBR(i.qtdTotal)}</td>
-                            <td className="py-1.5 text-right">{formatNumberBR(i.obitosTotal)}</td>
-                            <td className="py-1.5 text-right">
-                              {i.qtdTotal > 0
-                                ? ((i.obitosTotal / i.qtdTotal) * 100).toFixed(1).replace(".", ",")
-                                : "—"}
-                              %
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
+                  <div className="overflow-x-auto">
+                    <table className="mt-3 w-full text-left">
+                      <thead>
+                        <tr className="border-b border-border/60 text-text-soft">
+                          <th className="pb-1.5 font-medium">Ano</th>
+                          <th className="pb-1.5 text-right font-medium">Internações</th>
+                          <th className="pb-1.5 text-right font-medium">Óbitos</th>
+                          <th className="pb-1.5 text-right font-medium">Mortalidade</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border/40 font-tabular">
+                        {[...data.internacoesPorAno]
+                          .sort((a, b) => a.ano - b.ano)
+                          .map((i) => (
+                            <tr key={i.ano}>
+                              <td className="py-1.5 font-medium text-text">{i.ano}</td>
+                              <td className="py-1.5 text-right">{formatNumberBR(i.qtdTotal)}</td>
+                              <td className="py-1.5 text-right">{formatNumberBR(i.obitosTotal)}</td>
+                              <td className="py-1.5 text-right">
+                                {i.qtdTotal > 0
+                                  ? ((i.obitosTotal / i.qtdTotal) * 100).toFixed(1).replace(".", ",")
+                                  : "—"}
+                                %
+                              </td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </details>
               </DataCard>
             </section>
