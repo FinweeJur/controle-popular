@@ -19,6 +19,10 @@
  *   /direitos-em-movimento/educacao — ponte de URL antiga, noindex
  *   /direitos-em-movimento/trabalho-e-renda — ponte de URL antiga, noindex
  *   /direitos-em-movimento/servicos — painel com faceta; recortes anunciados no sitemap
+ *   /judiciario/tribunais — ponte de URL antiga, noindex
+ *   /judiciario/vagas — ponte de URL antiga, noindex
+ *   /judiciario/indicacoes — ponte de URL antiga, noindex
+ *   /judiciario/varas — ponte de URL antiga, noindex
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -207,10 +211,10 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/internacional/operacoes-militares/mapa",
   "/internacional/orcamentos",
   "/judiciario",
+  "/judiciario/composicao",
   "/judiciario/contatos",
   "/judiciario/correicoes-trabalhistas",
   "/judiciario/defensoria",
-  "/judiciario/indicacoes",
   "/judiciario/indice",
   "/judiciario/inspecoes",
   "/judiciario/instituicoes",
@@ -221,9 +225,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/judiciario/recomendacoes",
   "/judiciario/sirenejud",
   "/judiciario/sobre",
-  "/judiciario/tribunais",
-  "/judiciario/vagas",
-  "/judiciario/varas",
   "/jurisprudencia",
   "/jurisprudencia/penal",
   "/laboratorio",

@@ -894,7 +894,7 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Como funciona a escolha de desembargadores pelo Quinto Constitucional?",
             resposta:
               "O painel de Vagas e Indicações acompanha a formação de listas tríplices e indicações de advogados e membros do MP para tribunais de 2ª instância.",
-            link: { href: "/judiciario/vagas", texto: "Vagas e Indicações nos Tribunais" },
+            link: { href: "/judiciario/composicao?lente=vagas", texto: "Vagas e Indicações nos Tribunais" },
           },
           {
             id: "inspecoes-presidios-cnj",
@@ -1289,7 +1289,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       "SIRENEJud: processos ambientais do CNJ",
     ],
     links: [
-      { href: "/judiciario/tribunais", texto: "Tribunais" },
+      { href: "/judiciario/composicao", texto: "Tribunais" },
       { href: "/judiciario/sirenejud", texto: "SIRENEJud" },
       { href: "/judiciario/presidios", texto: "Presídios" },
     ],

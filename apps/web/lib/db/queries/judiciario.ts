@@ -88,7 +88,7 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
     (select 'vaga', upper(c.tribunal_id) || ' · cadeira ' || c.numero::text,
             coalesce(v.motivo, 'vaga') ||
               coalesce(', aberta em ' || to_char(v.data_abertura, 'DD/MM/YYYY'), ''),
-            '/judiciario/vagas',
+            '/judiciario/composicao?lente=vagas',
             null::text,
             4
        from judiciario.vagas v
@@ -104,7 +104,7 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
     -- literal de TypeScript, onde backtick fecharia a string.)
     (select 'indicação', coalesce(mg.nome, n.senado_identificacao),
             upper(n.tribunal_id) || coalesce(' · ' || n.resultado, ''),
-            '/judiciario/indicacoes',
+            '/judiciario/composicao?lente=indicacoes',
             n.url_fonte,
             5
        from judiciario.nomeacoes n

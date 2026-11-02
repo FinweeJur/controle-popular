@@ -24,7 +24,7 @@ const tópicos: Topico[] = [
     descricao: "Atuação da Defensoria Pública.",
   },
   {
-    href: "/judiciario/indicacoes",
+    href: "/judiciario/composicao?lente=indicacoes",
     titulo: "Indicações",
     descricao: "Nomeações e indicacoes em tribunais.",
   },
@@ -54,14 +54,14 @@ const tópicos: Topico[] = [
     descricao: "Sistema carcerário e geopresídios.",
   },
   {
-    href: "/judiciario/tribunais",
-    titulo: "Tribunais",
+    href: "/judiciario/composicao",
+    titulo: "Composição dos tribunais",
     descricao: "Tribunais superiores e estaduais.",
   },
   {
-    href: "/judiciario/vagas",
+    href: "/judiciario/composicao?lente=vagas",
     titulo: "Vagas",
-    descricao: "Concursos e vagas no Judiciario.",
+    descricao: "Quando cada ministro completa 75 anos e a cadeira vaga.",
   },
 ];
 

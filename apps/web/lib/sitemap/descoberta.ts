@@ -61,6 +61,14 @@ export const EXCLUIR: Record<string, string> = {
   // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
   // aponta para o recorte, nunca para a URL nua.
   "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
+  // Pontes do painel de composicao do Judiciario (02/11/2026): as tres rotas
+  // antigas viram lentes de `/judiciario/composicao`; `/varas` duplicava o
+  // catalogo de contatos. Indexar qualquer uma duplicaria o destino que o
+  // canonical ja resolve.
+  "/judiciario/tribunais": "ponte de URL antiga, noindex",
+  "/judiciario/vagas": "ponte de URL antiga, noindex",
+  "/judiciario/indicacoes": "ponte de URL antiga, noindex",
+  "/judiciario/varas": "ponte de URL antiga, noindex",
 };
 
 /**

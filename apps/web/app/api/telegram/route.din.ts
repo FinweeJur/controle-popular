@@ -54,7 +54,7 @@ const FRONTES = {
     desc: "Decisões judiciais, processos, tribunais. TJ-MG, CNJ, STF, ADPF e consultas públicas.",
     link: "https://www.controlepopular.com.br/judiciario",
     subfrentes: [
-      { label: "⚖️ Tribunais", link: "https://www.controlepopular.com.br/judiciario/tribunais", desc: "Composição das cortes: TJ-MG, TRFs, STF e demais tribunais." },
+      { label: "⚖️ Tribunais", link: "https://www.controlepopular.com.br/judiciario/composicao", desc: "Composição das cortes: TJ-MG, TRFs, STF e demais tribunais." },
       { label: "⏱️ Processos e prazos", link: "https://www.controlepopular.com.br/judiciario/numeros", desc: "Quanto tempo demora um processo no TJMG: prazos e números da Justiça." },
     ],
   },

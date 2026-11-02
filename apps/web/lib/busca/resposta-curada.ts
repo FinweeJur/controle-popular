@@ -141,10 +141,10 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     zona: "judiciario",
     resposta:
       "A vacância de ministros do STF e dos Tribunais Superiores é calculada de forma determinística pela aposentadoria compulsória aos 75 anos (LC 152/2015). O portal projeta as datas exatas de vacância de cada cadeira.",
-    linkPrincipal: { href: "/judiciario/vagas", texto: "Ver projeção de vagas" },
+    linkPrincipal: { href: "/judiciario/composicao?lente=vagas", texto: "Ver projeção de vagas" },
     linksAdicionais: [
-      { href: "/judiciario/tribunais", texto: "Ver composição dos tribunais" },
-      { href: "/judiciario/indicacoes", texto: "Ver histórico de indicações" },
+      { href: "/judiciario/composicao", texto: "Ver composição dos tribunais" },
+      { href: "/judiciario/composicao?lente=indicacoes", texto: "Ver histórico de indicações" },
     ],
   },
   {
@@ -152,15 +152,15 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     zona: "judiciario",
     resposta:
       "O portal mapeia qual autoridade/Presidente indicou cada ministro em exercício no STF, STJ, TST, TSE, STM e TRFs, acompanhando o histórico de sabatinas no Senado.",
-    linkPrincipal: { href: "/judiciario/indicacoes", texto: "Ver indicações ao Judiciário" },
-    linksAdicionais: [{ href: "/judiciario/tribunais", texto: "Ver tribunais" }],
+    linkPrincipal: { href: "/judiciario/composicao?lente=indicacoes", texto: "Ver indicações ao Judiciário" },
+    linksAdicionais: [{ href: "/judiciario/composicao", texto: "Ver tribunais" }],
   },
   {
     padroes: ["quinto constitucional", "vagas oab", "vagas mp", "cota de origem"],
     zona: "judiciario",
     resposta:
       "O quinto constitucional reserva 20% das vagas nos tribunais a membros da OAB e do Ministério Público. O portal identifica a cota de origem de cada cadeira nos tribunais.",
-    linkPrincipal: { href: "/judiciario/tribunais", texto: "Ver composição e cotas de origem" },
+    linkPrincipal: { href: "/judiciario/composicao", texto: "Ver composição e cotas de origem" },
   },
   {
     padroes: ["quem fiscaliza", "fiscalizacao judiciario", "quem fiscaliza a justica", "inspecoes externas"],

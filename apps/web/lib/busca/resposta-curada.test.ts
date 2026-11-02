@@ -19,7 +19,7 @@ describe("buscarRespostaCurada — respostas determinísticas para busca e suges
     const res = buscarRespostaCurada("Quais vagas abrem no STF até 2030?", "judiciario");
     expect(res).not.toBeNull();
     expect(res?.resposta).toContain("aposentadoria compulsória aos 75 anos");
-    expect(res?.linkPrincipal?.href).toBe("/judiciario/vagas");
+    expect(res?.linkPrincipal?.href).toBe("/judiciario/composicao?lente=vagas");
   });
 
   test("encontra resposta para quem fiscaliza a Justiça", () => {
@@ -87,7 +87,7 @@ describe("buscarRespostaCurada — Fase 3 do plano de correção (01/10/2026)", 
     );
     // "aposentam ate" é fragmento de "aposentam ate 2030".
     expect(buscarRespostaCurada("aposentam ate", "judiciario")?.linkPrincipal?.href).not.toBe(
-      "/judiciario/vagas"
+      "/judiciario/composicao?lente=vagas"
     );
   });
 

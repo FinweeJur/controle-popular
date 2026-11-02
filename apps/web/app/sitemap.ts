@@ -288,12 +288,12 @@ async function rotasDoJudiciario(): Promise<MetadataRoute.Sitemap> {
     item("/judiciario", { changeFrequency: "weekly", priority: 0.8 }),
     item("/judiciario/contatos", { changeFrequency: "weekly", priority: 0.8 }),
     item("/judiciario/instituicoes", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/judiciario/indicacoes", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/judiciario/composicao", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/judiciario/composicao?lente=vagas", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/judiciario/composicao?lente=indicacoes", { changeFrequency: "weekly", priority: 0.7 }),
     item("/judiciario/metodologia", { changeFrequency: "yearly", priority: 0.3 }),
     item("/judiciario/privacidade", { changeFrequency: "yearly", priority: 0.2 }),
     item("/judiciario/sobre", { changeFrequency: "yearly", priority: 0.3 }),
-    item("/judiciario/tribunais", { changeFrequency: "weekly", priority: 0.6 }),
-    item("/judiciario/vagas", { changeFrequency: "weekly", priority: 0.6 }),
   ];
 
   // Mesma união da régua (`TRIBUNAIS`) com o banco que

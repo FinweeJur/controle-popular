@@ -151,9 +151,9 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/congresso/metodologia", titulo: "Metodologia do Congresso", termos: ["metodologia", "rubrica", "criterio"], zona: "congresso" },
 
   { sufixo: "/judiciario", titulo: "Judiciário", termos: ["judiciario", "justica", "tribunal", "tribunais"], zona: "judiciario" },
-  { sufixo: "/judiciario/tribunais", titulo: "Tribunais superiores", termos: ["stf", "stj", "tst", "tribunal superior"], zona: "judiciario" },
-  { sufixo: "/judiciario/indicacoes", titulo: "Indicações", termos: ["indicacao", "indicacoes", "sabatina"], zona: "judiciario" },
-  { sufixo: "/judiciario/vagas", titulo: "Vagas nos tribunais", termos: ["vaga", "vagas", "cadeira", "aposentadoria"], zona: "judiciario" },
+  { sufixo: "/judiciario/composicao", titulo: "Tribunais superiores", termos: ["stf", "stj", "tst", "tribunal superior"], zona: "judiciario" },
+  { sufixo: "/judiciario/composicao?lente=indicacoes", titulo: "Indicações", termos: ["indicacao", "indicacoes", "sabatina"], zona: "judiciario" },
+  { sufixo: "/judiciario/composicao?lente=vagas", titulo: "Vagas nos tribunais", termos: ["vaga", "vagas", "cadeira", "aposentadoria"], zona: "judiciario" },
   { sufixo: "/judiciario/metodologia", titulo: "Metodologia do Judiciário", termos: ["metodologia do judiciario"], zona: "judiciario" },
   { sufixo: "/judiciario/sobre", titulo: "Sobre o Judiciário", termos: ["sobre o judiciario"], zona: "judiciario" },
 

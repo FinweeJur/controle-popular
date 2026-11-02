@@ -32,6 +32,7 @@ const PAGINAS_ZONA: Record<string, string> = {
   "/congresso/comissoes": "Congresso — Comissões",
   "/congresso/parlamentares": "Congresso — Parlamentares",
   "/judiciario": "Judiciário — Início",
+  "/judiciario/composicao": "Judiciário — Composição",
   "/judiciario/tribunais": "Judiciário — Tribunais",
   "/judiciario/indicacoes": "Judiciário — Indicações",
   "/judiciario/vagas": "Judiciário — Vagas",
