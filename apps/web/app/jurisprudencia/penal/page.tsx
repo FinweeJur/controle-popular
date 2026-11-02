@@ -61,9 +61,17 @@ export default async function JurisprudenciaPenal({
       <header className="space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência penal</h1>
         <p className="max-w-3xl text-sm opacity-80">
-          <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos penais do TJES e do STF,
-          coletados nas regiões atingidas. A maior parte é crime comum — homicídio, tráfico,
-          júri, violência doméstica — e não responsabilização criminal do rompimento.
+          <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos coletados por âncoras
+          penais no TJES e no STF. A maior parte é crime comum — homicídio, tráfico, júri,
+          violência doméstica — e não responsabilização criminal do rompimento.
+        </p>
+        <p className="max-w-3xl text-sm opacity-80">
+          A âncora de coleta não separa classe processual, então o acervo também traz{" "}
+          <strong>1.260 ações cíveis</strong> (apelação cível, agravo de instrumento, recurso
+          inominado) e <strong>1.473 recursos constitucionais</strong> (ARE, RE, reclamação, ADI)
+          que citam os mesmos temas. Eles ficam aqui para não sumirem do mapa, e a classificação
+          de polo os marca como <em>indeterminado</em>, porque matéria cível não tem acusação e
+          defesa.
         </p>
         <p className="max-w-3xl text-sm opacity-80">
           Os casos que citam o desastre continuam também em{" "}
