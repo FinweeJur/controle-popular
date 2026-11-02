@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Barras as BarrasBase } from "@/app/components/Barras";
+import { PainelFacetas } from "@/app/components/PainelFacetas";
 import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
 import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
@@ -116,77 +118,29 @@ function contar(frente: string): number {
 }
 
 /**
- * Ranking em barras.
+ * Ranking em barras de /jurisprudencia.
  *
- * Substitui a tabela de três colunas onde o que importa é a ordem, não o
- * cruzamento: no celular a barra cabe inteira, a tabela rolava de lado.
- *
- * `total` é o denominador do percentual e vem do chamador — nunca do maior
- * item da lista. Percentual sobre base errada é o erro mais fácil de publicar
- * sem perceber.
+ * O desenho mora em `app/components/Barras.tsx`; aqui só se resolve o rótulo
+ * do domínio — polo, resultado e dano PNAB/PEAB têm nome próprio, e o ranking
+ * de tribunal/frente usa o nome cru. `total` continua vindo do chamador.
  */
-export function Barras({
-  titulo,
-  dados,
-  total,
-  nota,
-  limite = 10,
-}: {
+export function Barras(props: {
   titulo: string;
   dados: [string, number][];
   total: number;
   nota?: string;
   limite?: number;
 }) {
-  const itens: [string, number][] = dados.slice(0, limite);
-  const resto = dados.slice(limite).reduce((soma, [, n]) => soma + n, 0);
-  if (resto > 0) itens.push([`+ ${dados.length - limite} categorias`, resto]);
-  const maior = Math.max(...itens.map(([, n]) => n), 1);
-  return (
-    <section className="space-y-2">
-      <h2 className="font-display text-lg font-semibold">{titulo}</h2>
-      <ul className="space-y-1.5">
-        {itens.map(([chave, n]) => {
-          const rotulo = ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave;
-          return (
-            <li key={chave} className="flex items-center gap-2 text-sm">
-              <span className="w-[8.5rem] shrink-0 truncate" title={rotulo}>
-                {rotulo}
-              </span>
-              <span
-                className="h-2.5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]"
-                role="img"
-                aria-label={`${rotulo}: ${n} de ${total}`}
-              >
-                <span
-                  className="block h-full rounded bg-[var(--cp-primary)]"
-                  style={{ width: `${(100 * n) / maior}%` }}
-                />
-              </span>
-              <span className="w-14 shrink-0 text-right font-tabular">{n.toLocaleString("pt-BR")}</span>
-              <span className="w-11 shrink-0 text-right font-tabular opacity-60">
-                {total ? `${Math.round((100 * n) / total)}%` : "—"}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-      {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
-    </section>
-  );
+  return <BarrasBase {...props} rotulos={{ ...NOMES_PNAB, ...ROTULOS }} />;
 }
 
 /**
- * Faixa de botões do painel: um recorte por vez, estado na URL.
+ * Faixa de temas de indenização de /jurisprudencia.
  *
- * É link, não `useState` (AGENTS §5.1 e §5.13): o acervo tem 16.834 itens e não
- * pode virar prop de cliente; e a casca não desmonta entre um clique e outro.
- * De quebra, cada recorte fica compartilhável e o histórico do navegador
- * funciona como "voltar".
- *
- * A contagem do acervo inteiro é cara (normaliza 16.834 ementas) e não muda
- * entre requisições: fica em cache de módulo, no servidor. Sem isso, cada
- * clique num botão de tema refaria a varredura completa.
+ * A faixa em si mora em `app/components/PainelFacetas.tsx`; aqui só se mede a
+ * contagem e se monta o href. A contagem do acervo inteiro é cara (normaliza
+ * 16.834 ementas) e não muda entre requisições: fica em cache de módulo, no
+ * servidor. Sem isso, cada clique num botão de tema refaria a varredura.
  */
 let cacheTemasIndenizacao: ReturnType<typeof contagemTemasIndenizacao> | null = null;
 
@@ -196,40 +150,16 @@ function contagemTemasDoAcervo() {
 }
 
 export function FaixaTemas({ filtros }: { filtros: Filtros }) {
-  const contagem = contagemTemasDoAcervo();
-  const total = CASOS_DESASTRE.length;
-  const semRecorte: Filtros = { ...filtros, recorte: undefined };
-  const botao = (ativo: boolean) =>
-    `rounded-full border px-3 py-1 text-sm ${
-      ativo
-        ? "border-[var(--cp-primary)] bg-[var(--cp-primary)] text-white"
-        : "border-[var(--cp-border)] hover:border-[var(--cp-primary)]"
-    }`;
   return (
-    <nav className="space-y-2" aria-label="Recorte por tema de indenização">
-      <h2 className="font-display text-lg font-semibold">Recorte por tema</h2>
-      <ul className="flex flex-wrap gap-2">
-        <li>
-          <Link className={botao(!filtros.recorte)} href={hrefCom(semRecorte, 1)}>
-            Todos · {total.toLocaleString("pt-BR")}
-          </Link>
-        </li>
-        {contagem.map((tema) => (
-          <li key={tema.slug}>
-            <Link
-              className={botao(filtros.recorte === tema.slug)}
-              href={hrefCom({ ...filtros, recorte: tema.slug }, 1)}
-            >
-              {tema.rotulo} · {tema.n.toLocaleString("pt-BR")}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <p className="text-xs opacity-70">
-        Cada número é quantos itens do acervo citam o tema no texto da decisão — um caso pode
-        entrar em mais de um recorte.
-      </p>
-    </nav>
+    <PainelFacetas
+      facetas={contagemTemasDoAcervo()}
+      atual={filtros.recorte}
+      total={CASOS_DESASTRE.length}
+      hrefDe={(slug) => hrefCom({ ...filtros, recorte: slug }, 1)}
+      titulo="Recorte por tema"
+      ariaLabel="Recorte por tema de indenização"
+      nota="Cada número é quantos itens do acervo citam o tema no texto da decisão — um caso pode entrar em mais de um recorte."
+    />
   );
 }
 
