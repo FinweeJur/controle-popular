@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { ROTAS_ANTIGAS } from "./lib/redirects/rotas-antigas";
 
 /**
  * App único do monorepo, servindo as três zonas em rotas próprias:
@@ -601,33 +602,18 @@ const nextConfig: NextConfig = {
               destination: "/universidades",
               permanent: true,
             },
-            // Três rotas irmãs viraram uma faceta só (02/11/2026): saúde,
-            // educação e trabalho e renda tinham o mesmo esqueleto (quatro
-            // cartões, uma série, lista de fichas) e passaram a ser
-            // `?subfrente=` em `/direitos-em-movimento/servicos`.
+            // Rotas antigas que viraram recorte de painel. A lista mora em
+            // `lib/redirects/rotas-antigas.ts` e é a MESMA que as páginas-ponte
+            // leem: aqui valem onde há servidor; lá, no alvo `output: 'export'`
+            // (GitHub Pages), onde esta função nem é aplicada.
             //
-            // O destino carrega a query porque é ela que preserva o recorte:
-            // mandar tudo para o painel seco faria o leitor de um link antigo
-            // cair na saúde quando queria o trabalho e renda.
-            //
-            // No alvo `output: 'export'` (GitHub Pages) esta função não
-            // existe: lá quem redireciona é a página-ponte de cada rota
-            // antiga, em `app/direitos-em-movimento/<rota>/page.tsx`.
-            {
-              source: "/direitos-em-movimento/saude-publica",
-              destination: "/direitos-em-movimento/servicos?subfrente=saude-publica",
+            // A query faz parte do destino: `/saude-publica` vira o recorte de
+            // saúde, não o painel seco.
+            ...ROTAS_ANTIGAS.map((rota) => ({
+              source: rota.de,
+              destination: rota.para,
               permanent: true,
-            },
-            {
-              source: "/direitos-em-movimento/educacao",
-              destination: "/direitos-em-movimento/servicos?subfrente=educacao",
-              permanent: true,
-            },
-            {
-              source: "/direitos-em-movimento/trabalho-e-renda",
-              destination: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
-              permanent: true,
-            },
+            })),
           ];
         },
       }),
