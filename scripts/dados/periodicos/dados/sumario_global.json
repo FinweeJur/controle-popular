@@ -1,0 +1,283 @@
+{
+  "total_periodicos_mundo": 23577,
+  "total_paises": 141,
+  "total_fluxo_continuo": 6759,
+  "total_ciclicos_confirmados": 16818,
+  "periodicos_gratuitos_diamond_oa": 14729,
+  "porcentagem_gratuitos_diamond": 62.47,
+  "periodicos_com_doi_ativo": 20133,
+  "periodicos_plataforma_ojs": 10745,
+  "periodicos_por_periodicidade": [
+    [
+      "Fluxo Contínuo",
+      6759
+    ],
+    [
+      "Semestral (2x ao ano)",
+      5236
+    ],
+    [
+      "Trimestral (4x ao ano)",
+      5107
+    ],
+    [
+      "Quadrimestral (3x ao ano)",
+      3486
+    ],
+    [
+      "Anual (1x ao ano)",
+      2986
+    ],
+    [
+      "Mensal (12x ao ano)",
+      2
+    ],
+    [
+      "Bimestral (6x ao ano)",
+      1
+    ]
+  ],
+  "periodicos_por_tipo_instituicao": [
+    [
+      "Editora / Fundação Acadêmica",
+      9964
+    ],
+    [
+      "Universidade / Centro Acadêmico",
+      9796
+    ],
+    [
+      "Sociedade Científica / Associação",
+      3322
+    ],
+    [
+      "Instituto de Pesquisa Público",
+      371
+    ],
+    [
+      "Órgão Governamental / Escola de Governo",
+      124
+    ]
+  ],
+  "periodicos_por_regiao": {
+    "Ásia e China": 6142,
+    "Europa": 10478,
+    "África": 910,
+    "Brasil e Lusófonos": 1565,
+    "América Latina e Caribe": 1970,
+    "Oceania e Resto do Mundo": 936,
+    "América do Norte": 1576
+  },
+  "top_20_paises": [
+    [
+      "Indonésia",
+      2730
+    ],
+    [
+      "Reino Unido",
+      2332
+    ],
+    [
+      "Brasil",
+      1395
+    ],
+    [
+      "Estados Unidos",
+      1340
+    ],
+    [
+      "Iran, Islamic Republic of",
+      1096
+    ],
+    [
+      "Espanha",
+      1031
+    ],
+    [
+      "Polônia",
+      1013
+    ],
+    [
+      "Suíça",
+      821
+    ],
+    [
+      "Türkiye",
+      716
+    ],
+    [
+      "Russian Federation",
+      654
+    ],
+    [
+      "China",
+      577
+    ],
+    [
+      "Itália",
+      549
+    ],
+    [
+      "Ukraine",
+      547
+    ],
+    [
+      "Países Baixos",
+      513
+    ],
+    [
+      "Colômbia",
+      464
+    ],
+    [
+      "Alemanha",
+      464
+    ],
+    [
+      "Índia",
+      443
+    ],
+    [
+      "Argentina",
+      418
+    ],
+    [
+      "França",
+      417
+    ],
+    [
+      "Egito",
+      390
+    ]
+  ],
+  "periodicos_por_grande_area": [
+    [
+      "Ciências Humanas e Linguística",
+      7582
+    ],
+    [
+      "Ciências da Saúde",
+      4933
+    ],
+    [
+      "Ciências Sociais Aplicadas",
+      4497
+    ],
+    [
+      "Engenharias e Computação",
+      2639
+    ],
+    [
+      "Multidisciplinar e Geral",
+      1314
+    ],
+    [
+      "Ciências Biológicas",
+      968
+    ],
+    [
+      "Ciências Exatas e da Terra",
+      957
+    ],
+    [
+      "Ciências Agrárias",
+      687
+    ]
+  ],
+  "top_10_idiomas_aceitos": [
+    [
+      "English",
+      19874
+    ],
+    [
+      "Spanish",
+      4137
+    ],
+    [
+      "Portuguese",
+      2307
+    ],
+    [
+      "French",
+      1946
+    ],
+    [
+      "Indonesian",
+      1799
+    ],
+    [
+      "Russian",
+      949
+    ],
+    [
+      "Italian",
+      921
+    ],
+    [
+      "German",
+      908
+    ],
+    [
+      "Persian",
+      655
+    ],
+    [
+      "Arabic",
+      651
+    ]
+  ],
+  "plataformas_de_submissao": [
+    [
+      "OJS / SEER",
+      10745
+    ],
+    [
+      "Sistema Próprio / Portal Institucional",
+      10155
+    ],
+    [
+      "Elsevier Editorial",
+      867
+    ],
+    [
+      "Wiley Online",
+      518
+    ],
+    [
+      "MDPI SuSy",
+      416
+    ],
+    [
+      "Springer Nature Submission",
+      382
+    ],
+    [
+      "SciELO Publishing Network",
+      210
+    ],
+    [
+      "Frontiers Editorial System",
+      204
+    ],
+    [
+      "Pensoft ARPHA",
+      46
+    ],
+    [
+      "Scholastica",
+      28
+    ],
+    [
+      "Editorial Manager",
+      3
+    ],
+    [
+      "ScholarOne Manuscripts",
+      2
+    ],
+    [
+      "Janeway System",
+      1
+    ]
+  ]
+}
