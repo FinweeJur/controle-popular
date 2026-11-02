@@ -315,6 +315,17 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
+**02/11/2026 — Bolha da transcrição abre e fecha só no próprio ícone:**
+
+- O painel usava `group-hover:block`/`group-focus-within:block` crus. Essas
+  variantes casam com **qualquer** ancestral `.group`, e o `PlayerRadio` — que
+  envolve o widget — é um deles. Resultado: focar o botão do play (o que
+  acontece ao clicar para tocar) deixava a bolha aberta, e ela parecia
+  "sempre visível".
+- Grupo virou nomeado: `group/transcricao` + `group-hover/transcricao` e
+  `group-focus-within/transcricao`. Medido no navegador: foco no play → painel
+  `none`; foco no ícone → `block`; ao sair → `none`.
+
 **01/11/2026 — Eixo 1 é Direitos em Movimento e Eixo 2 é Terra e Territórios:**
 
 - **Ordem canônica dos eixos** (dono, 01/11/2026): 1 = Direitos em Movimento,

@@ -79,9 +79,14 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
   const [trechos, setTrechos] = useState<Trecho[]>([]);
   const [seguir, setSeguir] = useState(true);
   // Forma compacta (dono, 01/11/2026): parada, a bolha é só um ícone; o painel
-  // abre no hover e no foco por CSS (`group-hover`/`group-focus-within`), sem
-  // trocar o ícone de lugar — trocar desmontaria o botão focado e o teclado
-  // perderia o fio. `fixado` é a saída do celular, onde não existe hover.
+  // abre no hover e no foco por CSS (`group-hover/transcricao`), sem trocar o
+  // ícone de lugar — trocar desmontaria o botão focado e o teclado perderia o
+  // fio. `fixado` é a saída do celular, onde não existe hover.
+  // ⚠️ Grupo NOMEADO de propósito: `group-hover:` cru casa com QUALQUER
+  // ancestral `.group` — e o `PlayerRadio` (que envolve este widget) é um
+  // deles. Com o nome sem sufixo, focar o botão do play (`:focus-within` do
+  // grupo do rádio) abria a bolha sozinha e ela ficava aberta depois do
+  // clique (dono, 02/11/2026: "aparece sempre, não é expansível").
   const [fixado, setFixado] = useState(false);
   const ativa = status !== "inativo";
   const painelFixo = ativa || fixado;
@@ -239,14 +244,14 @@ export default function TranscricaoRadio({ estacao }: TranscricaoRadioProps) {
     // rádio (`PlayerRadio`), que abre o índice de estações no mesmo gesto.
     // Sem o corte, passar o mouse no ícone abria dois painéis empilhados.
     <div
-      className="group relative mb-2 flex flex-col items-start"
+      className="group/transcricao relative mb-2 flex flex-col items-center"
       onMouseEnter={(ev) => ev.stopPropagation()}
       onFocus={(ev) => ev.stopPropagation()}
     >
       <BotaoIcone aberto={painelFixo} aoAlternar={() => setFixado((v) => !v)} />
 
       <div
-        className={`${painelFixo ? "block" : "hidden group-hover:block group-focus-within:block"} absolute bottom-full left-0 mb-1 w-[min(calc(100vw-2rem),22rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl`}
+        className={`${painelFixo ? "block" : "hidden group-hover/transcricao:block group-focus-within/transcricao:block"} absolute bottom-full left-0 mb-1 w-[min(calc(100vw-2rem),22rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl`}
       >
         <Cabecalho
           rotulo={rotuloStatus}
