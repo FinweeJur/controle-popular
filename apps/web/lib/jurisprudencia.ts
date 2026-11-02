@@ -70,6 +70,11 @@ export const ROTULOS: Record<string, string> = {
   negado: "Negado",
   provido: "Provido",
   ambos: "Ambos",
+  // Vocabulário do penal: ali não existe empresa x atingido, existe acusação
+  // e defesa. Sem estes dois, a página penal mostrava "Empresa · negado" num
+  // caso criminal (visto em 02/11/2026).
+  reu: "Réu",
+  mp: "Ministério Público",
 };
 
 const ORDENS: Record<string, (a: CasoJurisprudencia, b: CasoJurisprudencia) => number> = {
