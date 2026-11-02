@@ -1,6 +1,27 @@
 # Plano — análise de teses (estatística, garantista e sistematizadora)
 
-Criado: 2026-11-02. Status: em execução (extração rodando).
+> **Tipo:** PLANO
+> **Domínio:** jurisprudência
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [PLANO-CLASSIFICACAO-GLM-02-11.md](PLANO-CLASSIFICACAO-GLM-02-11.md), [PLANO-JURISPRUDENCIA-02-11.md](PLANO-JURISPRUDENCIA-02-11.md), [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md), [PRODUTO.md](../01-produto/PRODUTO.md)
+> **Palavras-chave:** tese, jurisprudência, canonização, divergência, penal, desastre, direitos humanos, garantia, prescrição
+
+## Sumário
+
+- [O que existe e o que faltava](#1-o-que-existe-e-o-que-faltava)
+- [Por que a canonização é regra e não modelo](#2-por-que-a-canonização-é-regra-e-não-modelo-medido)
+- [Os três olhares](#3-os-três-olhares)
+- [Resultado do piloto](#4-resultado-do-piloto-22-casos)
+- [Custo e ritmo](#5-custo-e-ritmo)
+- [O que falta](#6-o-que-falta-e-é-a-próxima-etapa)
+- [Critérios de aceite](#7-critérios-de-aceite)
+- [O que não fazer](#8-o-que-não-fazer)
+- [Estado em 02/11](#9-estado-em-02112026-fim-do-dia)
+- [O que falta para publicar](#10-o-que-falta-para-publicar)
+
+Criado: 2026-11-02. Status: **extração concluída nas três lentes; falta a
+publicação**. Ver seção 9.
 Pedido do dono: "rodar análises via GLM do restante do ponto de vista estatístico,
 garantista, sistematizador, analisando padrões, divergências, teses consolidadas,
 teses mudadas".
@@ -61,7 +82,8 @@ achado que o gráfico de polo não mostrava.
 
 ## 5. Custo e ritmo
 
-- Universo: **10.891** decisões de desastre com ementa.
+- Universo real de desastre: **6.382** decisões (brumadinho 1.111 + riodoce 5.271).
+  O número 10.891 do primeiro rascunho somava direitos humanos e súmula por engano.
 - ~1 chamada por caso no GLM-4.5-flash (gratuito), 4 em paralelo.
 - Ritmo medido no piloto: ~2,6 s por caso com 429 intercalado → **~2 h** para o
   acervo.
@@ -91,3 +113,61 @@ achado que o gráfico de polo não mostrava.
 - Não publicar tese com N=1 como se fosse padrão.
 - Não misturar rubrica de desastre com penal ou direitos humanos.
 - Não deixar o modelo escrever número: número é contagem.
+
+## 9. Estado em 02/11/2026, fim do dia
+
+Extração fechada nas três lentes, com cobertura acima de 99%:
+
+| Lente | Teses extraídas | Universo |
+|---|---:|---:|
+| desastre | 6.378 | 6.382 |
+| direitos humanos | 2.382 | 2.398 |
+| penal | 6.181 | 6.182 |
+
+Canonização por lente (regra de termo, sem modelo). Cobertura e o que ficou
+fora, declarado no próprio relatório:
+
+| Lente | Rótulos crus | Sem regra |
+|---|---:|---:|
+| desastre | 2.997 | 50,9% |
+| direitos humanos | 1.397 | 38,4% |
+| penal | 5.273 | 55,8% |
+
+O "sem regra" alto é esperado: 85% dos rótulos aparecem uma única vez. A regra
+agrupa os institutos recorrentes; o rótulo solto nunca some, e o relatório diz
+quanto ficou fora — em vez de fingir 100% de cobertura.
+
+Relatórios gerados: `tjmg-jurimetria/relatorios/TESES-DESASTRE.md`,
+`TESES-DH.md`, `TESES-PENAL.md`.
+
+Achados que já sustentam leitura (todos de contagem):
+
+- **Desastre:** prescrição da pretensão indenizatória é a tese mais frequente
+  (722; 11,3%) e a mais dividida — 381 pró-atingido × 294 pró-empresa, com
+  desembargadores exclusivos de cada lado.
+- **Desastre:** nexo causal aparece 73 vezes e em 71 delas o sentido é
+  pró-empresa. Não é tese em disputa; é porta de saída.
+- **Desastre, mudou:** auxílio emergencial era 50×7 pró-atingido antes de 2022 e
+  virou 18×21 pró-empresa depois. Dano material endureceu (21×51).
+- **Direitos humanos:** saúde ocupa 36% da frente (568 direito à saúde + 290
+  medicamento), quase sempre pró-cidadão.
+- **Penal:** prisão preventiva (342) e dosimetria (256) dominam, com reexame de
+  fatos e provas em 221 casos e 220 deles pró-acusação.
+
+## 10. O que falta para publicar
+
+| # | Item | Estado |
+|---|---|---|
+| 1 | Revisão humana de 30 teses | **bloqueia a publicação** |
+| 2 | Bloco de teses em `/jurisprudencia` | não começou |
+| 3 | Página própria se passar de 10 blocos | decidir na hora |
+| 4 | Aviso na página penal sobre mistura de classes | feito (1.260 cíveis, 1.473 constitucionais) |
+
+Duas decisões de produto pendentes do dono:
+
+1. **O que conta como penal.** A frente é montada por âncora de coleta: 3.449
+   criminais, 1.260 cíveis e 1.473 recursos constitucionais. Filtrar por classe
+   mudaria o número publicado de 6.182 para ~3.449.
+2. **Canonização mais agressiva.** As regras atuais agrupam os institutos
+   recorrentes; subir a cobertura exige mais regras ou um dicionário assistido.
+   Mais cobertura, mais risco de juntar teses que não são a mesma.
