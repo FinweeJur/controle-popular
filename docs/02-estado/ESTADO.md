@@ -315,6 +315,17 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
 
 ## Entregas recentes
 
+**02/11/2026 — Contraste da lista nativa de `<select>` nos temas escuros:**
+
+- A janela aberta do `<select>` é pintada pelo navegador: fundo branco do
+  sistema com o texto herdado do tema. No filtro "Tag" das barragens isso
+  virava cinza-claro sobre branco (dono, 02/11/2026).
+- `globals.css`: `select option` fixa fundo e cor nos tokens (`--cp-surface`,
+  `--cp-text`) — vale em todos os temas — e `color-scheme` acompanha o tema
+  (`light` só no claro; os demais são escuros).
+- `TabelaFeam`: o `<select>` de Tag saiu de `bg-transparent` para
+  `bg-surface text-text`.
+
 **02/11/2026 — Bolha da transcrição abre e fecha só no próprio ícone:**
 
 - O painel usava `group-hover:block`/`group-focus-within:block` crus. Essas

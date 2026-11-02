@@ -161,6 +161,29 @@ html .cursor-wait {
   cursor: url("/cursor/busy.ani") 11 11, wait !important;
 }
 
+/* ═══ CONTROLES NATIVOS (<select>) ═══════════════════════════════════════
+   A lista aberta de um `<select>` é pintada PELO NAVEGADOR, não pelo nosso
+   CSS de fundo: ele usa o branco do sistema e o texto herda a cor do tema.
+   Nos temas escuros isso virava texto cinza-claro sobre branco — ilegível
+   no filtro "Tag" das barragens (dono, 02/11/2026).
+   - `option` fixa fundo e cor nos tokens do tema: vale em todos os temas;
+   - `color-scheme` avisa o navegador para desenhar a lista, a barra de
+     rolagem e o item selecionado no modo escuro. O tema claro continua
+     `light`; todo outro `[data-theme]` do portal é escuro. */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme]:not([data-theme="light"]) {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: var(--cp-surface);
+  color: var(--cp-text);
+}
+
 :root {
   --cp-bg: #f7f8fa;
   --cp-surface: #ffffff;

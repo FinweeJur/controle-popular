@@ -197,7 +197,9 @@ export default function TabelaFeam({ barragens }: { barragens: BarragemFeamMg[] 
         <select
           value={tag}
           onChange={(e) => setTag(e.target.value)}
-          className="rounded-md border border-[var(--cp-border)] bg-transparent px-2 py-1 text-xs"
+          // `bg-transparent` deixava a lista nativa branca com texto claro
+          // (tema escuro). Fundo e cor sólidos vêm dos tokens do tema.
+          className="rounded-md border border-[var(--cp-border)] bg-surface px-2 py-1 text-xs text-text"
         >
           <option value="todos">Todas</option>
           {opcoesTag.map((t) => (
