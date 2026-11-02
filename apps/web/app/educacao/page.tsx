@@ -19,6 +19,7 @@ import {
   listarDepartamentos,
   listarProgramas,
   listarCursos,
+  listarEventosCalendario,
   resumirIntercambio
 } from "@/lib/intercambio";
 
@@ -58,6 +59,7 @@ export default function PaginaEducacao() {
   const departamentos = listarDepartamentos();
   const programas = listarProgramas();
   const cursos = listarCursos();
+  const eventosCalendario = listarEventosCalendario();
   const resumoIntercambio = resumirIntercambio();
 
   return (
@@ -149,11 +151,12 @@ export default function PaginaEducacao() {
         </div>
       </section>
 
-      {/* Bloco 1: Intercâmbio, Departamentos e Cursos Oferecidos */}
+      {/* Bloco 1: Calendário Anual, Intercâmbio, Departamentos e Cursos Oferecidos */}
       <PainelIntercambioCursos
         departamentos={departamentos}
         programas={programas}
         cursos={cursos}
+        eventosCalendario={eventosCalendario}
         resumo={resumoIntercambio}
       />
 
