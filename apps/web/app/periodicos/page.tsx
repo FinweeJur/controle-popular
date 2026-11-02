@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { BookOpen, Globe, CheckCircle, ShieldCheck, Sparkles, Layers, FileText, ArrowRight } from "lucide-react";
+import { BookOpen, Globe, CheckCircle, ShieldCheck, Sparkles, Layers } from "lucide-react";
 import PainelPeriodicos from "./PainelPeriodicos";
 import dadosSumario from "@/data/periodicos-sumario.json";
 
@@ -79,6 +79,23 @@ export default function PaginaPeriodicos() {
           com destaque para revistas <strong>100% gratuitas (Acesso Aberto Diamante)</strong>.
         </p>
       </header>
+
+      {/* Ponte Canônica para o Hub Unificado de Educação */}
+      <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+        <div>
+          <span className="font-bold text-foreground">💡 Hub Unificado de Educação & Ciência:</span>{" "}
+          <span className="text-muted">
+            Este acervo de periódicos científicos agora também integra o Hub Unificado em estilo PowerBI,
+            com cross-filtering, grupos de pesquisa CNPq e bolsas de mobilidade.
+          </span>
+        </div>
+        <Link
+          href="/educacao?topico=periodicos"
+          className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all whitespace-nowrap text-center"
+        >
+          Ver no Hub Unificado →
+        </Link>
+      </div>
 
       {/* Cartões de Métricas Globais */}
       <section className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">

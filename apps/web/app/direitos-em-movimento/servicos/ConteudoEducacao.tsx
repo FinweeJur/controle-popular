@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
@@ -44,6 +45,23 @@ export default function ConteudoEducacao() {
 
   return (
     <>
+      {/* Ponte Canônica para o Hub Unificado de Educação */}
+      <div className="mb-4 rounded-2xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+        <div>
+          <span className="font-bold text-foreground">💡 Hub Unificado de Educação:</span>{" "}
+          <span className="text-muted">
+            Acesse o painel completo estilo PowerBI com cruzamentos municipais por cidade, simulador analítico,
+            universidades e periódicos abertos.
+          </span>
+        </div>
+        <Link
+          href="/educacao?topico=basica"
+          className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all whitespace-nowrap text-center"
+        >
+          Abrir Hub de Educação →
+        </Link>
+      </div>
+
       <section aria-label="Indicadores da educação básica" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {INDICADORES.map((item) => (
           <div key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">

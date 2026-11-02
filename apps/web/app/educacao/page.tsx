@@ -3,18 +3,11 @@ import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   GraduationCap,
-  BookOpen,
-  Calendar,
-  Sparkles,
-  Building2,
-  Clock,
   ShieldCheck,
-  Plane,
-  Users
 } from "lucide-react";
-import PainelEducacaoPeriodicos from "./PainelEducacaoPeriodicos";
-import PainelIntercambioCursos from "./PainelIntercambioCursos";
+import PainelEducacaoPowerBI from "./PainelEducacaoPowerBI";
 import dadosEducacao from "@/data/educacao-periodicos.json";
+import dadosInepMg from "@/data/educacao-inep-mg.json";
 import {
   listarDepartamentos,
   listarProgramas,
@@ -22,45 +15,57 @@ import {
   listarEventosCalendario,
   resumirIntercambio
 } from "@/lib/intercambio";
+import {
+  INSTITUICOES,
+  UNIDADES,
+  listarGrupos,
+  listarProjetos,
+  resumirUniversidades
+} from "@/lib/universidades";
 
 /**
- * /educacao — Oportunidades de Publicação Acadêmica, Intercâmbio e Ensino Superior
+ * /educacao — Hub Unificado de Educação Básica, Superior, Pesquisa e Mobilidade (PowerBI Cívico)
  *
  * Papel no portal:
- *   Democratizar o acesso ao ensino superior e à pesquisa, reunindo:
- *   1. Periódicos de submissão contínua e cíclicos de 141 países.
- *   2. Editais oficiais de intercâmbio (Erasmus+, PILA, AUGM/Escala, Brafitec, Santander...).
- *   3. Departamentos de relações internacionais (DRI/SRI) com contatos oficiais.
- *   4. Cursos de graduação/pós-graduação com nomes e e-mails institucionais de professores coordenadores.
+ *   Centralizar, auditar e correlacionar todo o ecossistema educacional do país:
+ *   1. Educação Básica & IDEB: 178.416 escolas, 47,3 mi de matrículas, série 2015-2023 e cruzamentos municipais.
+ *   2. Universidades & Extensão: 1.414 grupos CNPq, 170 projetos de extensão e 39 instituições de ensino superior.
+ *   3. Periódicos Científicos: 23.577 títulos do DOAJ e SciELO, 14.729 Diamante (100% sem APC).
+ *   4. Mobilidade Internacional: 10 programas de intercâmbio, 31 diretorias de R.I. e calendário 12 meses.
+ *   5. Direitos Comparados: matriz federativa de 27 UFs e marcos legais (CF/88, LDB, Fundeb, PNE).
  *
  * As Oito Qualidades da Informação atendidas (QUALIDADES-DA-INFORMACAO.md):
- *   1. Linkável e Verificado à Fonte Oficial Direta (submissão, editais e páginas institucionais).
- *   2. Buscável e Filtrável (tempo real, tolerante a acentos e facetas reais).
- *   3. Classificável e Ordenável por Coluna (título, tempo de avaliação, país).
+ *   1. Linkável e Verificado à Fonte Oficial Direta (INEP, MEC, CNPq, DOAJ, Planalto e DRIs).
+ *   2. Buscável e Filtrável (tempo real, tolerante a acentos e slicers multidimensionais).
+ *   3. Classificável e Ordenável por Coluna (notas do IDEB, títulos, tempo médio de avaliação).
  *   4. Resumo e Cartões de Topo (números medidos derivados dos dados).
  *   5. Chatbot com Contexto Cívico (integração nativa com o Seu Nonô).
  *   6. Exportável Multi-formato (CSV com BOM UTF-8 e ponto-e-vírgula + @media print).
  *   7. Responsiva (390 px para celulares até 4K, sem rolagem lateral falsa).
- *   8. Rastreável no Tempo (data visível e derivada do arquivo gerado pelo coletor).
+ *   8. Rastreável no Tempo (data visível e derivada dos arquivos de dados).
  */
 
 export const metadata: Metadata = {
-  title: "Educação Superior, Intercâmbio e Publicação Acadêmica — Controle Popular",
+  title: "Educação, Pesquisa e Mobilidade Acadêmica (PowerBI Cívico) — Controle Popular",
   description:
-    "Catálogo unificado de periódicos abertos, editais de intercâmbio (Erasmus+, PILA, AUGM/Escala, Brafitec, Santander), diretorias de relações internacionais e contatos de professores coordenadores de cursos.",
+    "Hub unificado de educação básica (Censo Escolar e IDEB), 1.414 grupos de pesquisa CNPq, 23.577 periódicos científicos abertos, editais de intercâmbio e direitos comparados.",
 };
-
-const fmt = (n: number) => n.toLocaleString("pt-BR");
 
 export default function PaginaEducacao() {
   const { metricas, amostra_educacao, atualizado_em } = dadosEducacao;
   const dataFormatada = atualizado_em.split("-").reverse().join("/");
 
+  // Módulos carregados no servidor com dados canônicos
   const departamentos = listarDepartamentos();
   const programas = listarProgramas();
   const cursos = listarCursos();
   const eventosCalendario = listarEventosCalendario();
   const resumoIntercambio = resumirIntercambio();
+
+  const grupos = listarGrupos();
+  const projetos = listarProjetos();
+  const resumoUniversidades = resumirUniversidades();
+  const municipiosInep = dadosInepMg.municipios;
 
   return (
     <main
@@ -76,7 +81,7 @@ export default function PaginaEducacao() {
           Início
         </Link>
         <span>/</span>
-        <span className="font-semibold text-foreground">Educação & Pesquisa</span>
+        <span className="font-semibold text-foreground">Educação, Pesquisa & Mobilidade</span>
       </nav>
 
       {/* Cabeçalho principal com rastreabilidade temporal (Qualidade 8) */}
@@ -84,148 +89,71 @@ export default function PaginaEducacao() {
         <div className="flex flex-wrap items-center gap-2 text-xs text-primary font-semibold uppercase tracking-wider">
           <span className="px-2.5 py-1 rounded-full bg-primary/10 flex items-center gap-1">
             <GraduationCap className="w-3.5 h-3.5" />
-            Educação Superior, Pesquisa & Mobilidade Cívica
+            Hub Unificado · PowerBI Cívico
           </span>
           <span className="text-muted">•</span>
           <time dateTime={atualizado_em} className="text-muted">
-            Dados verificados em {dataFormatada}
+            Dados auditados em {dataFormatada}
           </time>
         </div>
 
         <h1 className="mt-3 font-display text-2xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-          Oportunidades Acadêmicas, Intercâmbio e Publicação Científica
+          Educação, Produção Científica e Mobilidade Acadêmica
         </h1>
 
         <p className="mt-3 text-sm sm:text-base text-muted leading-relaxed max-w-4xl">
-          Diretório público para estudantes, pesquisadores e movimentos cívicos encontrarem
-          <strong> editais de intercâmbio internacional</strong> (Erasmus+, PILA, AUGM/Escala, Brafitec, Santander),
-          <strong> diretorias de relações internacionais</strong> (DRI/SRI), <strong>cursos com contatos de professores coordenadores</strong> e
-          <strong> periódicos acadêmicos gratuitos</strong> (submissão contínua e cíclica).
+          Central canônica que unifica os indicadores da <strong>Educação Básica</strong> (178.416 escolas e série histórica do IDEB),
+          o diretório de <strong>Universidades & CNPq</strong> (1.414 grupos de pesquisa e 170 projetos de extensão),
+          a sistematização mundial de <strong>Periódicos Científicos Abertos</strong> (23.577 títulos, 62,5% Diamante sem taxas),
+          o catálogo de <strong>Mobilidade e Intercâmbio</strong> (10 programas de bolsas e 31 diretorias de R.I.) e a matriz de <strong>Direitos Comparados</strong>.
         </p>
       </header>
 
-      {/* Cartões de Topo e Agregados Medidos (Qualidade 4) */}
-      <section className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
-          <div className="flex items-center gap-2 text-primary text-xs font-semibold uppercase">
-            <BookOpen className="w-4 h-4" />
-            Revistas Científicas
-          </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
-            {fmt(metricas.total_periodicos)}
-          </div>
-          <p className="mt-1 text-xs text-muted">{fmt(metricas.gratuitos_diamond)} sem APC (Diamante)</p>
-        </div>
-
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
-          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase">
-            <Plane className="w-4 h-4" />
-            Editais de Intercâmbio
-          </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
-            {resumoIntercambio.totalProgramas}
-          </div>
-          <p className="mt-1 text-xs text-muted">Erasmus+, PILA, AUGM, Brafitec...</p>
-        </div>
-
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
-          <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase">
-            <Building2 className="w-4 h-4" />
-            Departamentos de R.I.
-          </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
-            {resumoIntercambio.totalDepartamentos}
-          </div>
-          <p className="mt-1 text-xs text-muted">Diretorias DRI/SRI mapeadas</p>
-        </div>
-
-        <div className="rounded-2xl border border-border bg-surface p-5 shadow-xs">
-          <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase">
-            <Users className="w-4 h-4" />
-            Cursos & Coordenadores
-          </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
-            {resumoIntercambio.totalCursosMapeados}
-          </div>
-          <p className="mt-1 text-xs text-muted">Canais de coordenação direta</p>
-        </div>
-      </section>
-
-      {/* Bloco 1: Calendário Anual, Intercâmbio, Departamentos e Cursos Oferecidos */}
-      <PainelIntercambioCursos
+      {/* Painel Interativo PowerBI com Cross-Filtering, Slicers e Tópicos Dedicados */}
+      <PainelEducacaoPowerBI
+        amostraEducacao={amostra_educacao}
+        metricasPeriodicos={metricas}
+        atualizadoEmPeriodicos={atualizado_em}
+        municipiosInep={municipiosInep}
+        instituicoes={INSTITUICOES}
+        unidades={UNIDADES}
+        grupos={grupos}
+        projetos={projetos}
+        resumoUniversidades={resumoUniversidades}
         departamentos={departamentos}
         programas={programas}
         cursos={cursos}
         eventosCalendario={eventosCalendario}
-        resumo={resumoIntercambio}
+        resumoIntercambio={resumoIntercambio}
       />
 
-      {/* Explicação Didática: Como Funciona o Intercâmbio Universitário */}
-      <section className="mt-8 rounded-3xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
-        <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-          <GraduationCap className="w-6 h-6 text-primary" />
-          Guia Rápido: Como Participar de Intercâmbios Acadêmicos com Bolsa
-        </h2>
-
-        <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3 text-xs sm:text-sm text-muted leading-relaxed">
-          <div className="p-4 rounded-2xl bg-surface-soft border border-border">
-            <h3 className="font-bold text-foreground text-sm flex items-center gap-1.5">
-              <span>🏛️</span> 1. Procure a DRI da sua Universidade
-            </h3>
-            <p className="mt-2">
-              Os editais para o <strong>Erasmus+</strong>, <strong>PILA</strong>, <strong>AUGM</strong> e <strong>Brafitec</strong> são lançados
-              sempre pela Diretoria de Relações Internacionais (DRI) da instituição onde você estuda.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-surface-soft border border-border">
-            <h3 className="font-bold text-foreground text-sm flex items-center gap-1.5">
-              <span>📄</span> 2. Validação com o Coordenador
-            </h3>
-            <p className="mt-2">
-              Antes de viajar, procure o professor coordenador do seu curso para montar o <strong>plano de equivalência</strong> de
-              disciplinas, garantindo o aproveitamento integral de todos os créditos cursados no exterior.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-surface-soft border border-border">
-            <h3 className="font-bold text-foreground text-sm flex items-center gap-1.5">
-              <span>💰</span> 3. Bolsas e Isenção de Taxas
-            </h3>
-            <p className="mt-2">
-              Programas como PILA e AUGM garantem <strong>moradia e alimentação gratuitas</strong> na universidade anfitriã. O Erasmus+ e Brafitec
-              concedem bolsas mensais de manutenção em euros e passagens aéreas.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Bloco 2: Catálogo de Periódicos e Oportunidades Acadêmicas */}
-      <PainelEducacaoPeriodicos
-        amostra={amostra_educacao}
-        atualizadoEm={atualizado_em}
-      />
-
-      {/* Rodapé institucional com link para os dados brutos */}
-      <section className="mt-8 rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+      {/* Rodapé institucional e soberania do dado */}
+      <section className="mt-12 rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-foreground flex items-center gap-2">
+            <h2 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-primary" />
-              Soberania do Dado e Download Aberto
+              Soberania do Dado e Acesso Aberto Cívico
             </h2>
             <p className="mt-1 text-xs sm:text-sm text-muted max-w-2xl">
-              Dados auditados de editais de mobilidade, diretorias de relações internacionais,
-              coordenações de curso e acervo mundial de periódicos disponíveis abertamente para consulta cívica.
+              Todos os dados do portal vêm de fontes oficiais auditadas (INEP, MEC, CNPq, DOAJ,
+              SciELO, IBGE e Planalto). Nenhum número é inventado ou manipulado. Todos os registros
+              podem ser baixados em formato aberto CSV com delimitador brasileiro e codificação UTF-8.
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/universidades"
-              className="px-4 py-2 rounded-xl bg-surface border border-border text-xs font-semibold text-foreground hover:bg-surface-hover hover:border-primary/40 transition-colors shadow-2xs"
+              className="px-3.5 py-2 rounded-xl bg-surface border border-border text-xs font-semibold text-foreground hover:bg-surface-hover hover:border-primary/40 transition-colors shadow-2xs"
             >
-              Ver Índice de Universidades →
+              Índice de Universidades →
+            </Link>
+            <Link
+              href="/periodicos"
+              className="px-3.5 py-2 rounded-xl bg-surface border border-border text-xs font-semibold text-foreground hover:bg-surface-hover hover:border-primary/40 transition-colors shadow-2xs"
+            >
+              Periódicos Contínuos →
             </Link>
           </div>
         </div>
