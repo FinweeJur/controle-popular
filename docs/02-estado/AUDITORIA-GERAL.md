@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 01/11/2026 13:30 BRT |
+| 02/11/2026 16:53 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -63,6 +63,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/cnj-inspecoes-defensoria.json | OK |
 | data/comunicabr-31.json | OK |
 | data/comunidades-tradicionais-mineracao-mg.json | OK |
+| data/concursos-publicos.json | OK |
 | data/congresso-ceap-mg.json | OK |
 | data/congresso-ceap-nacional.json | OK |
 | data/congresso-mg.json | OK |
@@ -82,6 +83,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/editais-consolidado.json | OK |
 | data/educacao-ibge-mg.json | OK |
 | data/educacao-inep-mg.json | OK |
+| data/educacao-periodicos.json | OK |
 | data/empresas-documentos.json | OK |
 | data/esg-update.json | OK |
 | data/fepam-rs-licencas.json | OK |
@@ -98,6 +100,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/indicadores-regionais.json | OK |
 | data/inema-ba-licencas.json | OK |
 | data/instituicoes-todas-esferas.json | OK |
+| data/inteiro-teor.json | OK |
 | data/iphan-bens-tombados.json | OK |
 | data/judiciario-contatos-stats.json | OK |
 | data/judiciario-designacoes.json | OK |
@@ -178,6 +181,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/orgaos-capacidade-ambiental.json | OK |
 | data/patrimonio-tombado-iepha.json | OK |
 | data/pedido-build.json | OK |
+| data/periodicos-sumario.json | OK |
 | data/pib-municipal-3103405.json | OK |
 | data/pib-municipal-3106200.json | OK |
 | data/pib-municipal-3106705.json | OK |
@@ -233,12 +237,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 187 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 191 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 02/11/2026 16:53 BRT - 0 criticos; 0 avisos.
 - 01/11/2026 13:30 BRT - 0 criticos; 0 avisos.
 - 31/10/2026 12:32 BRT - 0 criticos; 0 avisos.
 - 30/10/2026 13:22 BRT - 0 criticos; 0 avisos.
