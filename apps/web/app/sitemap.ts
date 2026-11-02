@@ -81,9 +81,8 @@ function item(
  *
  * FORA DO SITEMAP, DE PROPÓSITO (motivos em `lib/sitemap/descoberta.ts`):
  *  - `/admin`: painel de moderação protegido por token (`PainelAdmin.tsx`);
- *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`,
- *    `/prefeitura/diarias`, `/convenios`: páginas-ponte
- *    (`components/PaginaPonte.tsx`) com
+ *  - `/zap-betim`, `/nota-betim`, `/prefeitura/legislacao`, `/convenios`:
+ *    páginas-ponte (`components/PaginaPonte.tsx`) com
  *    `<meta name="robots" content="noindex, follow">` e `canonical`
  *    apontando pro destino novo. Indexar a ponte duplicaria o conteúdo que
  *    o canonical já resolve;
@@ -140,6 +139,7 @@ const ROTAS_CIDADE: {
   { sufixo: "/prefeitura/contratos", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/cultura", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/despesas", changeFrequency: "weekly" },
+  { sufixo: "/prefeitura/diarias", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/licitacoes", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/obras", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/servidores", changeFrequency: "weekly" },
@@ -219,12 +219,9 @@ async function rotasDoCongresso(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/congresso", { changeFrequency: "daily", priority: 0.8 }),
     item("/congresso/agenda", { changeFrequency: "daily", priority: 0.6 }),
-    // Painel de análises de direitos (02/11/2026): duas listas viraram
-    // `?recorte=restringem|ampliam`. O painel sem query ("todas") entra pela
-    // descoberta automática; aqui vão os dois recortes que antes tinham URL.
-    item("/congresso/analises?recorte=restringem", { changeFrequency: "weekly", priority: 0.5 }),
-    item("/congresso/analises?recorte=ampliam", { changeFrequency: "weekly", priority: 0.5 }),
+    item("/congresso/alertas", { changeFrequency: "weekly", priority: 0.5 }),
     item("/congresso/bancadas", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/congresso/bons-exemplos", { changeFrequency: "weekly" }),
     item("/congresso/comissoes", { changeFrequency: "weekly", priority: 0.6 }),
     item("/congresso/metodologia", { changeFrequency: "yearly", priority: 0.3 }),
     item("/congresso/parlamentares", { changeFrequency: "weekly", priority: 0.6 }),
@@ -340,10 +337,27 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
 }
 
 /**
- * O painel de noticias do Paraopeba (02/11/2026) entra pelos DOIS recortes,
- * nunca pela URL nua: ela e o mesmo HTML do recorte padrao, como em
- * `/direitos-em-movimento/servicos`.
+ * Recortes do painel de serviços essenciais e da Coleção Nossos, anunciados um
+ * a um. As URLs nuas dos dois painéis entram pelo inventário descoberto
+ * (`lib/sitemap/rotas-descobertas.ts`).
  */
+const ITENS_SERVICOS: MetadataRoute.Sitemap = [
+  item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
+  item("/direitos-em-movimento/servicos?subfrente=educacao", { changeFrequency: "weekly", priority: 0.8 }),
+  item("/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+  item("/congresso/analises?recorte=restringem", { changeFrequency: "weekly", priority: 0.5 }),
+  item("/congresso/analises?recorte=ampliam", { changeFrequency: "weekly", priority: 0.5 }),
+  item("/paraopeba/noticias?fonte=bacia", { changeFrequency: "weekly", priority: 0.7 }),
+  item("/paraopeba/noticias?fonte=vale", { changeFrequency: "weekly", priority: 0.7 }),
+];
+
+/** Recortes do painel da Coleção Nossos, anunciados um a um. */
+const ITENS_NOSSOS: MetadataRoute.Sitemap = [
+  item("/ambiental/nossos?colecao=rios", { changeFrequency: "weekly", priority: 0.7 }),
+  item("/ambiental/nossos?colecao=serras", { changeFrequency: "weekly", priority: 0.7 }),
+  item("/ambiental/nossos?colecao=territorios", { changeFrequency: "weekly", priority: 0.7 }),
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
@@ -370,11 +384,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/documentacao/fontes-e-coletas", { changeFrequency: "monthly", priority: 0.6 }),
     item("/documentacao/api-publica", { changeFrequency: "monthly", priority: 0.7 }),
     item("/documentacao/editorial", { changeFrequency: "monthly", priority: 0.6 }),
+
     // Eixo 1: Direitos em Movimento
     item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=educacao", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+    ...ITENS_SERVICOS,
     item("/direitos-em-movimento/ajuda", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/denuncia", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/informacao", { changeFrequency: "weekly", priority: 0.7 }),
@@ -394,14 +407,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/ambiental/tac", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/legislacao", { changeFrequency: "monthly", priority: 0.6 }),
+    ...ITENS_NOSSOS,
 
+    // Paraopeba & Bacia
     item("/paraopeba", { changeFrequency: "daily", priority: 0.9 }),
     item("/paraopeba/execucao", { changeFrequency: "weekly", priority: 0.8 }),
     item("/paraopeba/vale", { changeFrequency: "daily", priority: 0.8 }),
     item("/paraopeba/entenda", { changeFrequency: "monthly", priority: 0.6 }),
     item("/paraopeba/biblioteca", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/paraopeba/noticias?fonte=bacia", { changeFrequency: "daily", priority: 0.7 }),
-    item("/paraopeba/noticias?fonte=vale", { changeFrequency: "daily", priority: 0.6 }),
 
     // Função Social da Terra
     item("/funcaosocialterra", { changeFrequency: "weekly", priority: 0.8 }),
@@ -421,11 +434,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ajustes de prioridade; esta só preenche o buraco, deduplicando por URL.
   const jaAnunciadas = new Set(urls.map((u: { url: string }) => u.url));
   for (const rota of ROTAS_GLOBAIS) {
-    if (jaAnunciadas.has(`${BASE_URL}${rota}`)) continue;
+    const url = `${BASE_URL}${rota}`;
+    if (jaAnunciadas.has(url)) continue;
     urls.push(item(rota));
   }
 
-  const porCidade = await Promise.all((await listarCidades()).map(rotasDeCidade));
+  const cidades = await listarCidades();
+  const porCidade = await Promise.all(cidades.map(rotasDeCidade));
   for (const lote of porCidade) urls.push(...lote);
 
   urls.push(...(await rotasDoCongresso()));

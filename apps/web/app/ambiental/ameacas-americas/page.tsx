@@ -208,7 +208,7 @@ export default function PaginaAmeacasAmericas() {
               icone: "globo",
             },
             {
-              href: "/ambiental/nossos-rios",
+              href: "/ambiental/nossos?colecao=rios",
               titulo: "Nossos Rios & Bacias Hidrográficas",
               descricao: "Monitoramento das 7 bacias estaduais, qualidade da água e outorgas de captação.",
               badge: "Bacias",

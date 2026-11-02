@@ -849,7 +849,7 @@ export const CONTEXTOS: ContextoPagina[] = [
         pergunta: "Onde ver a qualidade da água dos rios e bacias dos Vales?",
         resposta:
           "Acompanhe as bacias do Jequitinhonha, Mucuri, Doce e São Francisco no painel hidrográfico.",
-        link: "/ambiental/nossos-rios",
+        link: "/ambiental/nossos?colecao=rios",
         linkTexto: "Ver Nossos Rios & Bacias",
       },
       {

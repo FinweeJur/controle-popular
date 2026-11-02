@@ -77,7 +77,33 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/cidades#catalogo-cidades",
     motivo: "repetia o catalogo e os totais de /cidades; virou ancora da pagina canonica (02/11/2026)",
   },
+  {
+    de: "/ambiental/nossos-rios",
+    para: "/ambiental/nossos?colecao=rios",
+    motivo: "virou faceta do painel da Colecao Nossos (02/11/2026)",
+  },
+  {
+    de: "/ambiental/nossas-serras",
+    para: "/ambiental/nossos?colecao=serras",
+    motivo: "virou faceta do painel da Colecao Nossos (02/11/2026)",
+  },
+  {
+    de: "/ambiental/nossos-territorios",
+    para: "/ambiental/nossos?colecao=territorios",
+    motivo: "virou faceta do painel da Colecao Nossos (02/11/2026)",
+  },
+  {
+    de: "/ambiental/barragens/sigbm",
+    para: "/ambiental/barragens#sigbm-anm",
+    motivo: "absorvida pela pagina de barragens; a tabela SIGBM ja vivia la (02/11/2026)",
+  },
+  {
+    de: "/ambiental/direito-critico",
+    para: "/ambiental/legislacao",
+    motivo: "unificado ao painel de legislacao em 13/08/2026; ponte migrada para o registro (02/11/2026)",
+  },
 ];
+
 
 
 /**

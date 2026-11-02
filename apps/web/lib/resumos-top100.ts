@@ -49,7 +49,6 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/direitos-em-movimento/denuncia": "Roteiro guiado para formatar denúncias a ouvidorias e MPs: gera documento DOCX localmente no navegador sem salvar dados.",
   "/ambiental/decisoes-lai": "Decisões colegiadas que derrubaram negativas indevidas de órgãos públicos para fundamentar recursos de cidadãos.",
   "/ambiental/direitos-humanos": "Relatórios e recomendações do CNDH sobre violações contra populações atingidas por barragens e comunidades tradicionais.",
-  "/ambiental/direito-critico": "Artigos, teses garantistas e pareceres da assessoria jurídica popular para defesa de direitos coletivos e difusos.",
   "/ambiental/conselhos": "Funcionamento de conselhos municipais de meio ambiente em Minas Gerais e canais para representação comunitária.",
   "/ambiental/capacidade-institucional": "Auditoria de quadro de pessoal, fiscais de campo e capacidade operacional da FEAM, IEF, IGAM e IBAMA.",
   "/ambiental/ecossistema": "Rede de cooperação entre movimentos sociais, sindicatos, universidades e organizações não governamentais.",

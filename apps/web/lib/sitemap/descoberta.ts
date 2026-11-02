@@ -55,6 +55,11 @@ export const EXCLUIR: Record<string, string> = {
   "/paraopeba/noticias-vale": "ponte de URL antiga, noindex",
   "/paraopeba/noticias": "painel com faceta; recortes anunciados no sitemap",
   "/terra-e-territorios/cidades": "ponte de URL antiga, noindex",
+  "/ambiental/nossos-rios": "ponte de URL antiga, noindex",
+  "/ambiental/nossas-serras": "ponte de URL antiga, noindex",
+  "/ambiental/nossos-territorios": "ponte de URL antiga, noindex",
+  "/ambiental/barragens/sigbm": "ponte de URL antiga, noindex",
+  "/ambiental/direito-critico": "ponte de URL antiga, noindex",
 };
 
 /**

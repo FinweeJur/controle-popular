@@ -31,8 +31,13 @@ function diretoriosDeRota(dir: string, acc: string[] = []): string[] {
  * na URL e são ignorados.
  */
 function hrefBateComRota(rota: string, href: string): boolean {
+  // Query e hash não fazem parte da rota: `/ambiental/nossos?colecao=rios`
+  // aponta para a MESMA página que `/ambiental/nossos`, com outro recorte.
+  // Sem este corte, o guarda confundiria recorte de painel com rota inexistente
+  // e obrigaria o catálogo a linkar a URL nua — menos preciso para o leitor.
+  const caminho = href.split(/[?#]/)[0];
   const alvos = rota.split("/").filter(Boolean);
-  const pedidos = href.split("/").filter(Boolean);
+  const pedidos = caminho.split("/").filter(Boolean);
   let i = 0;
   for (const seg of alvos) {
     if (seg.startsWith("(") || seg.startsWith("@")) continue;

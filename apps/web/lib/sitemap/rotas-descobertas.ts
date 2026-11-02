@@ -25,6 +25,11 @@
  *   /paraopeba/noticias-vale — ponte de URL antiga, noindex
  *   /paraopeba/noticias — painel com faceta; recortes anunciados no sitemap
  *   /terra-e-territorios/cidades — ponte de URL antiga, noindex
+ *   /ambiental/nossos-rios — ponte de URL antiga, noindex
+ *   /ambiental/nossas-serras — ponte de URL antiga, noindex
+ *   /ambiental/nossos-territorios — ponte de URL antiga, noindex
+ *   /ambiental/barragens/sigbm — ponte de URL antiga, noindex
+ *   /ambiental/direito-critico — ponte de URL antiga, noindex
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -47,7 +52,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/ambiental/barragens",
   "/ambiental/barragens-globais",
   "/ambiental/barragens/descaracterizacao",
-  "/ambiental/barragens/sigbm",
   "/ambiental/capacidade-institucional",
   "/ambiental/car",
   "/ambiental/clima-risco",
@@ -60,7 +64,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/ambiental/crise-climatica",
   "/ambiental/decisoes",
   "/ambiental/decisoes-lai",
-  "/ambiental/direito-critico",
   "/ambiental/direitos-humanos",
   "/ambiental/ecossistema",
   "/ambiental/estudos",
@@ -73,11 +76,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/ambiental/litigios-climaticos",
   "/ambiental/mariana",
   "/ambiental/nossa-gente",
-  "/ambiental/nossas-serras",
   "/ambiental/nossos",
   "/ambiental/nossos-animais",
-  "/ambiental/nossos-rios",
-  "/ambiental/nossos-territorios",
   "/ambiental/patrimonio-cultural",
   "/ambiental/ppp",
   "/ambiental/tac",

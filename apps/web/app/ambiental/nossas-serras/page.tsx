@@ -1,84 +1,34 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { LUGARES_CATALOGO } from "@/lib/lugares";
-import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { notFound } from "next/navigation";
+import PaginaPonte from "@/app/components/PaginaPonte";
+import { destinoAntigo } from "@/lib/redirects/rotas-antigas";
+
+/**
+ * @file Ponte de `/ambiental/nossas-serras`.
+ *
+ * O conteúdo virou recorte do painel `/ambiental/nossos` (`?colecao=serras`) em
+ * 02/11/2026: era a mesma lista de `lib/lugares.ts` filtrada por `tipo:
+ * "serra"`. O detalhe de cada serra continua em
+ * `/ambiental/nossas-serras/<id>`.
+ *
+ * O destino vem de `lib/redirects/rotas-antigas.ts` — a mesma lista que monta
+ * o `redirects()` do `next.config.ts` e que a ponte usa no alvo estático.
+ */
+const ROTA = "/ambiental/nossas-serras";
 
 export const metadata: Metadata = {
-  title: "Nossas Serras — Meio Ambiente (ONSA) · Meio Ambiente & Terras",
-  description:
-    "Acompanhamento cívico das cordilheiras, unidades de conservação, relevo e conflitos de mineração e preservação em Minas Gerais.",
+  title: "Nossas Serras — endereço novo | Controle Popular",
+  robots: { index: false, follow: true },
 };
 
-export default function NossasSerrasIndexPage() {
-  const serras = LUGARES_CATALOGO.filter((l) => l.tipo === "serra");
-
+export default function PonteNossasSerras() {
+  const destino = destinoAntigo(ROTA);
+  if (!destino) notFound();
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <nav aria-label="Navegação estrutural" className="text-xs text-text-soft">
-        <ol className="flex items-center gap-1.5">
-          <li>
-            <Link href="/" className="hover:underline">Início</Link>
-          </li>
-          <li>›</li>
-          <li>
-            <Link href="/ambiental" className="hover:underline">ONSA</Link>
-          </li>
-          <li>›</li>
-          <li>
-            <Link href="/ambiental/nossos" className="hover:underline">Nossos</Link>
-          </li>
-          <li>›</li>
-          <li className="font-semibold text-text">Nossas Serras</li>
-        </ol>
-      </nav>
-
-      <header className="mt-5 border-b border-border pb-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-            #natureza
-          </span>
-          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-            #ecossistema
-          </span>
-          <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-medium text-text-soft border border-border">
-            Cordilheiras & Relevo
-          </span>
-        </div>
-
-        <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-text">
-          Nossas Serras: A Guardiã das Águas e da Paisagem
-        </h1>
-        <p className="mt-2 text-base text-text-soft max-w-3xl leading-relaxed">
-          Cordilheiras, picos e campos rupestres que protegem nascentes vitais, abrigam parques estaduais e enfrentam a pressão de títulos minerários.
-        </p>
-      </header>
-
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        {serras.map((serra) => (
-          <article
-            key={serra.id}
-            className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6 shadow-sm hover:border-primary transition-colors"
-          >
-            <div>
-              <span className="text-2xl">⛰️</span>
-              <h2 className="mt-2 font-display text-xl font-bold text-text">{serra.nome}</h2>
-              <p className="mt-2 text-xs text-text-soft leading-relaxed">{serra.resumoVozCidada}</p>
-              <div className="mt-3 text-[0.75rem] text-text-soft">
-                Biomas: {serra.biomas.join(" / ")}
-              </div>
-            </div>
-            <div className="mt-5 pt-3 border-t border-border">
-              <Link
-                href={`/ambiental/nossas-serras/${serra.id}`}
-                className="text-xs font-semibold text-primary hover:underline"
-              >
-                Abrir painel da serra e impacto na nossa gente →
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
-      <MeioAmbienteRelacionado />
-    </main>
+    <PaginaPonte
+      destino={destino}
+      titulo="Nossas Serras agora é um recorte da Coleção Nossos"
+      descricao="O conteúdo é o mesmo: as fichas das cordilheiras, campos rupestres e a pressão minerária sobre o relevo. Agora elas dividem a página com rios e territórios."
+    />
   );
 }
