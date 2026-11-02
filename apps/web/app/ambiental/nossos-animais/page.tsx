@@ -1,5 +1,7 @@
 import Link from "next/link";
 import PainelDialogo from "@/app/components/PainelDialogo";
+import FichaCard from "@/app/components/eixos/FichaCard";
+import { listarFichasPorSubfrente } from "@/lib/eixos/fichas";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
@@ -76,6 +78,114 @@ export const metadata = {
     "Monitoramento cívico de espécies ameaçadas, corredores de fauna, atropelamentos e fiscalização no Observatório Nacional Socioambiental.",
 };
 
+/** Os três cartões de topo: números de referência das fontes, não medição do portal. */
+function CartoesStatusFauna() {
+  return (
+    <section aria-label="Indicadores da fauna" className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted">Espécies Ameaçadas Monitoradas</span>
+        <p className="mt-2 font-display text-3xl font-bold text-foreground">1.051</p>
+        <span className="mt-1 block text-xs text-muted">Fonte: ICMBio / Livro Vermelho da Fauna Brasileira</span>
+      </div>
+      <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted">Corredores Prioritários</span>
+        <p className="mt-2 font-display text-3xl font-bold text-emerald-600 dark:text-emerald-400">4 grandes eixos</p>
+        <span className="mt-1 block text-xs text-muted">Espinhaço, Rio Doce, Serra do Mar e Canastra</span>
+      </div>
+      <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted">Resgates & Apreensões</span>
+        <p className="mt-2 font-display text-3xl font-bold text-foreground">28.410</p>
+        <span className="mt-1 block text-xs text-muted">Registros anuais de fiscalização (IBAMA / PMMA)</span>
+      </div>
+    </section>
+  );
+}
+
+/** Distribuição por grupo taxonômico — barras em CSS, sem biblioteca de gráfico. */
+function DistribuicaoPorGrupo() {
+  const grupos = [
+    { grupo: "Aves (passeriformes, rapinantes e brejos)", pct: 36, valor: "380 espécies" },
+    { grupo: "Peixes Continentais (bacias São Francisco e Doce)", pct: 26, valor: "275 espécies" },
+    { grupo: "Mamíferos (primatas, carnívoros e roedores)", pct: 18, valor: "192 espécies" },
+    { grupo: "Invertebrados Terrestres e Aquáticos", pct: 12, valor: "128 espécies" },
+    { grupo: "Répteis e Anfíbios de Encosta", pct: 8, valor: "76 espécies" },
+  ];
+
+  return (
+    <section aria-label="Gráfico de distribuição da fauna" className="mb-12 rounded-2xl border border-border bg-surface-2 p-6 shadow-sm">
+      <h2 className="font-display text-lg font-bold text-foreground">
+        Distribuição de Espécies Ameaçadas por Grupo no Sudeste
+      </h2>
+      <p className="mt-1 text-xs text-muted">
+        Proporção aproximada de espécies catalogadas com algum grau de ameaça nos biomas da região (Fonte: ICMBio).
+      </p>
+
+      <div className="mt-6 flex flex-col gap-3">
+        {grupos.map((item) => (
+          <div key={item.grupo}>
+            <div className="mb-1 flex justify-between text-xs">
+              <span className="font-medium text-foreground">{item.grupo}</span>
+              <span className="text-muted">{item.valor} ({item.pct}%)</span>
+            </div>
+            <div className="h-3 w-full overflow-hidden rounded-full bg-surface-3">
+              <div
+                className="h-full rounded-full bg-emerald-600 dark:bg-emerald-500 transition-all duration-500"
+                style={{ width: `${item.pct}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <span className="mt-4 block text-xs text-muted">
+        * A perda e fragmentação de florestas nativas e a poluição de cursos d’água são os principais fatores de pressão.
+      </span>
+    </section>
+  );
+}
+
+/**
+ * Fichas das espécies ameaçadas.
+ *
+ * A tabela acima é o retrato curto do acervo; a ficha é onde o leitor encontra
+ * grau de ameaça, bioma, corredor e pressão com fonte oficial e data. O texto
+ * vem do catálogo versionado (`data/fichas/catalogo.json`), gerado a partir do
+ * acervo de ameaças das Américas — nada é redigitado nesta página.
+ */
+function FichasFauna({
+  fichas,
+}: {
+  fichas: ReturnType<typeof listarFichasPorSubfrente>;
+}) {
+  if (fichas.length === 0) return null;
+  return (
+    <section aria-labelledby="titulo-fichas-fauna" className="mb-12">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2
+            id="titulo-fichas-fauna"
+            className="font-display text-xl font-bold text-foreground"
+          >
+            Fichas da Fauna Ameaçada
+          </h2>
+          <p className="mt-1 text-sm text-muted">
+            Grau de ameaça, bioma, corredor e pressão de cada espécie, com a fonte oficial e o ano
+            da avaliação.
+          </p>
+        </div>
+        <span className="rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-semibold text-muted">
+          {fichas.length} fichas
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {fichas.map((ficha) => (
+          <FichaCard key={ficha.id} ficha={ficha} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function PaginaNossosAnimais() {
   const gerarCsv = () => {
     const cabecalho = "Nome Popular;Nome Científico;Bioma;Categoria de Ameaça;Corredor Ecológico;Principais Ameaças\n";
@@ -122,64 +232,13 @@ export default function PaginaNossosAnimais() {
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (lote Grande Sertão: Veredas, Cap. 4) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "Sertão é onde manda quem é forte, com as astúcias." — João Guimarães Rosa, Grande Sertão: Veredas, 1956
+          &ldquo;Sertão é onde manda quem é forte, com as astúcias.&rdquo; — João Guimarães Rosa, Grande Sertão: Veredas, 1956
         </p>
       </header>
 
-      {/* CARTÕES DE STATUS DE TOPO */}
-      <section aria-label="Indicadores da fauna" className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Espécies Ameaçadas Monitoradas</span>
-          <p className="mt-2 font-display text-3xl font-bold text-foreground">1.051</p>
-          <span className="mt-1 block text-xs text-muted">Fonte: ICMBio / Livro Vermelho da Fauna Brasileira</span>
-        </div>
-        <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Corredores Prioritários</span>
-          <p className="mt-2 font-display text-3xl font-bold text-emerald-600 dark:text-emerald-400">4 grandes eixos</p>
-          <span className="mt-1 block text-xs text-muted">Espinhaço, Rio Doce, Serra do Mar e Canastra</span>
-        </div>
-        <div className="rounded-2xl border border-border bg-surface-2 p-5 shadow-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Resgates & Apreensões</span>
-          <p className="mt-2 font-display text-3xl font-bold text-foreground">28.410</p>
-          <span className="mt-1 block text-xs text-muted">Registros anuais de fiscalização (IBAMA / PMMA)</span>
-        </div>
-      </section>
+      <CartoesStatusFauna />
 
-      {/* GRÁFICO SVG NATIVO (Distribuição de grupos taxonômicos ameaçados) */}
-      <section aria-label="Gráfico de distribuição da fauna" className="mb-12 rounded-2xl border border-border bg-surface-2 p-6 shadow-sm">
-        <h2 className="font-display text-lg font-bold text-foreground">
-          Distribuição de Espécies Ameaçadas por Grupo no Sudeste
-        </h2>
-        <p className="mt-1 text-xs text-muted">
-          Proporção aproximada de espécies catalogadas com algum grau de ameaça nos biomas da região (Fonte: ICMBio).
-        </p>
-
-        <div className="mt-6 flex flex-col gap-3">
-          {[
-            { grupo: "Aves (passeriformes, rapinantes e brejos)", pct: 36, valor: "380 espécies" },
-            { grupo: "Peixes Continentais (bacias São Francisco e Doce)", pct: 26, valor: "275 espécies" },
-            { grupo: "Mamíferos (primatas, carnívoros e roedores)", pct: 18, valor: "192 espécies" },
-            { grupo: "Invertebrados Terrestres e Aquáticos", pct: 12, valor: "128 espécies" },
-            { grupo: "Répteis e Anfíbios de Encosta", pct: 8, valor: "76 espécies" },
-          ].map((item) => (
-            <div key={item.grupo}>
-              <div className="mb-1 flex justify-between text-xs">
-                <span className="font-medium text-foreground">{item.grupo}</span>
-                <span className="text-muted">{item.valor} ({item.pct}%)</span>
-              </div>
-              <div className="h-3 w-full overflow-hidden rounded-full bg-surface-3">
-                <div
-                  className="h-full rounded-full bg-emerald-600 dark:bg-emerald-500 transition-all duration-500"
-                  style={{ width: `${item.pct}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-        <span className="mt-4 block text-xs text-muted">
-          * A perda e fragmentação de florestas nativas e a poluição de cursos d’água são os principais fatores de pressão.
-        </span>
-      </section>
+      <DistribuicaoPorGrupo />
 
       {/* TABELA DE ESPÉCIES EMBLEMÁTICAS */}
       <section aria-label="Espécies emblemáticas monitoradas" className="mb-12">
@@ -233,6 +292,9 @@ export default function PaginaNossosAnimais() {
           </table>
         </div>
       </section>
+
+      {/* FICHAS DAS ESPÉCIES (texto completo do acervo) */}
+      <FichasFauna fichas={listarFichasPorSubfrente('biomas')} />
 
       {/* DIÁLOGO ENTRE FRENTES (Sanfona) */}
       <PainelDialogo

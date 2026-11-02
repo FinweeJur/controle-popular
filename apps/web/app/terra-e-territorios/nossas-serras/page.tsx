@@ -20,7 +20,10 @@ export default function NossasSerrasPage() {
   const indicadoresSerras = [
     { rotulo: 'Unidades de Conservação (CNUC)', valor: '387', obs: 'Parques, APAs e RPPNs mapeados em MG' },
     { rotulo: 'Processos de Mineração Ativos', valor: '1.899', obs: 'Faixa de amortecimento SIGMINE/ANM' },
-    { rotulo: 'Cadeias Montanhosas Monitoradas', valor: '4', obs: 'Espinhaço, Canastra, Mantiqueira e Curral' },
+    // A contagem sai das fichas desta página: antes era o texto fixo "4"
+    // (Espinhaço, Canastra, Mantiqueira e Curral), enquanto a seção de fichas
+    // já cobria outras serras — o cartão e a lista discordavam.
+    { rotulo: 'Cadeias Montanhosas Monitoradas', valor: String(fichas.length), obs: 'Espinhaço, Canastra, Mantiqueira, Curral e outras' },
     { rotulo: 'Sobreposições em Áreas Críticas', valor: '6', obs: 'Processos minerários × Territórios Quilombolas' },
   ];
 

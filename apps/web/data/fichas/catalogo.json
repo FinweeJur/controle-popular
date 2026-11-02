@@ -1,5 +1,1689 @@
 [
   {
+    "id": "ficha-serra-serra-do-espinhaco",
+    "slug": "serra-do-espinhaco-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra do Espinhaço: geologia, água e pressão minerária",
+    "resumo": "Única cordilheira do Brasil, guardiã de centenas de comunidades tradicionais de apanhadoras de flores sempre-vivas reconhecidas pela FAO como Patrimônio Agrícola Mundial.",
+    "conteudo": "Geologia: cordilheira de quartzitos e metarenitos do Supergrupo Espinhaço, sobre rochas do embasamento cristalino; o relevo alongado funciona como divisor de águas entre as bacias do São Francisco, do Doce e do Jequitinhonha. Única cordilheira do Brasil, guardiã de centenas de comunidades tradicionais de apanhadoras de flores sempre-vivas reconhecidas pela FAO como Patrimônio Agrícola Mundial. Sofre pressões desmedidas pela instalação de eólicas nos topos de cristas.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Relatórios Periódicos de Revisão da Reserva da Biosfera da Serra do Espinhaço / UNESCO MaB",
+        "url": "https://www.ief.mg.gov.br/reserva-da-biosfera-da-serra-do-espinhaco",
+        "orgao": "Comitê da Reserva da Biosfera da Serra do Espinhaço (UNESCO) / IEF-MG"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da serra",
+        "valor": "1.200",
+        "unidade": "km",
+        "fonte": "Comitê da Reserva da Biosfera da Serra do Espinhaço (UNESCO) / IEF-MG",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Reserva da Biosfera UNESCO",
+        "fonte": "Comitê da Reserva da Biosfera da Serra do Espinhaço (UNESCO) / IEF-MG",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "espinhaco",
+      "cerrado",
+      "mineracao"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-serra-serra-da-canastra",
+    "slug": "serra-da-canastra-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra da Canastra: geologia, água e pressão minerária",
+    "resumo": "Onde nasce o Rio São Francisco e vivem populações-chave de pato-mergulhador, lobo-guará e tamanduá-bandeira.",
+    "conteudo": "Geologia: quartzitos e metassedimentos do Grupo Canastra, soerguidos em planalto a mais de 1.400 m; é a cabeceira do Rio São Francisco, em São Roque de Minas. Onde nasce o Rio São Francisco e vivem populações-chave de pato-mergulhador, lobo-guará e tamanduá-bandeira. A indefinição fundiária histórica de meio século fomenta conflitos armados e invasão de cabeceiras por pecuária clandestina.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo do Parque Nacional da Serra da Canastra / ICMBio",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidades-de-conservacao/unidades-de-biomas/cerrado/parque-nacional-da-serra-da-canastra",
+        "orgao": "ICMBio / Parque Nacional da Serra da Canastra"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Área protegida",
+        "valor": "200.000",
+        "unidade": "hectares",
+        "fonte": "ICMBio / Parque Nacional da Serra da Canastra",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Parque Nacional com Regularização Fundiária Incompleta",
+        "fonte": "ICMBio / Parque Nacional da Serra da Canastra",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "canastra",
+      "cerrado-rupestre",
+      "mineracao"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-da-mantiqueira",
+    "slug": "serra-da-mantiqueira-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra da Mantiqueira: geologia, água e pressão minerária",
+    "resumo": "Berço das nascentes que alimentam os rios Paraíba do Sul e Grande.",
+    "conteudo": "Geologia: granitos, gnaisses e migmatitos do embasamento cristalino, com escarpas de falha que separam o planalto do Vale do Paraíba; o ponto mais alto é a Pedra da Mina, com 2.790 m. Berço das nascentes que alimentam os rios Paraíba do Sul e Grande. O parcelamento clandestino de glebas para chalés turísticos e residências de veraneio provoca desestabilização de encostas e risco de soterramento em tempestades de verão.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo da APA Serra da Mantiqueira / SOS Mata Atlântica Atlas dos Remanescentes",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidades-de-conservacao/unidades-de-biomas/mata-atlantica/apa-serra-da-mantiqueira",
+        "orgao": "ICMBio / APA Serra da Mantiqueira / Polícia Militar de Meio Ambiente"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da serra",
+        "valor": "500",
+        "unidade": "km",
+        "fonte": "ICMBio / APA Serra da Mantiqueira / Polícia Militar de Meio Ambiente",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "APA Federal",
+        "fonte": "ICMBio / APA Serra da Mantiqueira / Polícia Militar de Meio Ambiente",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "mantiqueira",
+      "mata-atlantica"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-serra-serra-do-curral",
+    "slug": "serra-do-curral-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra do Curral: geologia, água e pressão minerária",
+    "resumo": "Símbolo eleito da identidade de Belo Horizonte.",
+    "conteudo": "Geologia: itabiritos e cangas do Supergrupo Minas, no Quadrilátero Ferrífero; a crista é aquífero de recarga e referência paisagística de Belo Horizonte. Símbolo eleito da identidade de Belo Horizonte. A mineração em suas encostas coloca em risco a recarga de aquíferos que abastecem adutoras da RMBH e ameaça destruir sítios arqueológicos e espécies raras de canga.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Dossiê de Tombamento Estadual da Serra do Curral (IEPHA 2022) / Ações Civis Públicas MPMG e MPF",
+        "url": "https://www.iepha.mg.gov.br/",
+        "orgao": "IPHAN / IEPHA-MG / Observatório da Serra do Curral"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da serra",
+        "valor": "14",
+        "unidade": "km",
+        "fonte": "IPHAN / IEPHA-MG / Observatório da Serra do Curral",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Tombada pelo IPHAN",
+        "fonte": "IPHAN / IEPHA-MG / Observatório da Serra do Curral",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "curral",
+      "mata-atlantica",
+      "mineracao"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-da-gandarela",
+    "slug": "serra-da-gandarela-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra da Gandarela: geologia, água e pressão minerária",
+    "resumo": "Maior concentração de nascentes puras que alimentam tanto a bacia do Rio das Velhas quanto a do Rio Doce.",
+    "conteudo": "Geologia: formação Gandarela, com carbonatos e itabiritos do Supergrupo Minas; o maciço concentra nascentes que alimentam as bacias do Velhas e do Doce. Maior concentração de nascentes puras que alimentam tanto a bacia do Rio das Velhas quanto a do Rio Doce. A canga ferruginosa da Gandarela funciona como uma esponja colossal que garante água potável perene para a Grande BH.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo do Parque Nacional da Serra do Gandarela / ICMBio Relatório de Criação",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidades-de-conservacao/unidades-de-biomas/mata-atlantica/parque-nacional-da-serra-do-gandarela",
+        "orgao": "ICMBio / Parque Nacional da Serra do Gandarela / Movimento Gandarela"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Área protegida",
+        "valor": "31.270",
+        "unidade": "hectares",
+        "fonte": "ICMBio / Parque Nacional da Serra do Gandarela / Movimento Gandarela",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Parque Nacional Criado Parcialmente",
+        "fonte": "ICMBio / Parque Nacional da Serra do Gandarela / Movimento Gandarela",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "gandarela",
+      "cerrado",
+      "mineracao"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-do-cipo",
+    "slug": "serra-do-cipo-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra do Cipó: geologia, água e pressão minerária",
+    "resumo": "Apresenta um dos maiores índices de endemismo botânico do mundo por quilômetro quadrado, com centenas de espécies de sempre-vivas, canelas-de-ema e orquídeas que só existem nessa serra e perecem com os incêndios que varrem a crista.",
+    "conteudo": "Geologia: quartzitos do Supergrupo Espinhaço em campos rupestres de altitude, com afloramentos que sustentam alto endemismo botânico. Apresenta um dos maiores índices de endemismo botânico do mundo por quilômetro quadrado, com centenas de espécies de sempre-vivas, canelas-de-ema e orquídeas que só existem nessa serra e perecem com os incêndios que varrem a crista.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo do Parque Nacional da Serra do Cipó / ICMBio",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidades-de-conservacao/unidades-de-biomas/cerrado/parque-nacional-da-serra-do-cipo",
+        "orgao": "ICMBio / Parque Nacional da Serra do Cipó / IEF-MG"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Área protegida",
+        "valor": "33.800",
+        "unidade": "hectares",
+        "fonte": "ICMBio / Parque Nacional da Serra do Cipó / IEF-MG",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Parque Nacional",
+        "fonte": "ICMBio / Parque Nacional da Serra do Cipó / IEF-MG",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "cipo",
+      "cerrado"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-da-piedade",
+    "slug": "serra-da-piedade-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra da Piedade: geologia, água e pressão minerária",
+    "resumo": "O maciço abriga a basílica consagrada da padroeira de Minas Gerais.",
+    "conteudo": "Geologia: itabiritos e rochas do Quadrilátero Ferrífero, com cavas históricas na encosta norte; o topo chega a 1.746 m. O maciço abriga a basílica consagrada da padroeira de Minas Gerais. O avanço de cavas profundas de minério no século XX roeu as encostas da serra, demandando contestações judiciais permanentes para proibir a retomada da lavra mineral.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Dossiê de Proteção Integrada da Serra da Piedade / Termos de Ajustamento de Conduta MPMG",
+        "url": "https://www.iepha.mg.gov.br/",
+        "orgao": "IPHAN / IEPHA-MG / Arquidiocese de Belo Horizonte"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Tombada pelo IPHAN e IEPHA",
+        "fonte": "IPHAN / IEPHA-MG / Arquidiocese de Belo Horizonte",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "piedade",
+      "mata-atlantica",
+      "mineracao"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-do-brigadeiro",
+    "slug": "serra-do-brigadeiro-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra do Brigadeiro: geologia, água e pressão minerária",
+    "resumo": "Guarda um dos maiores santuários mundiais do muriqui-do-norte e dezenas de nascentes que alimentam as bacias do Rio Doce e do Paraíba do Sul.",
+    "conteudo": "Geologia: gnaisses e granitoides do embasamento cristalino cobertos por floresta nebular de altitude, entre as bacias do Doce e do Paraíba do Sul. Guarda um dos maiores santuários mundiais do muriqui-do-norte e dezenas de nascentes que alimentam as bacias do Rio Doce e do Paraíba do Sul. A mineração de bauxita rasga o topo das colinas no entorno, decapitando lençóis freáticos de pequenos agricultores.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo do Parque Estadual da Serra do Brigadeiro / IEF-MG",
+        "url": "https://www.ief.mg.gov.br/unidades-de-conservacao/parque-estadual-da-serra-do-brigadeiro",
+        "orgao": "IEF-MG / Parque Estadual da Serra do Brigadeiro / Movimento pelas Serras e Águas"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Área protegida",
+        "valor": "14.984",
+        "unidade": "hectares",
+        "fonte": "IEF-MG / Parque Estadual da Serra do Brigadeiro / Movimento pelas Serras e Águas",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Parque Estadual",
+        "fonte": "IEF-MG / Parque Estadual da Serra do Brigadeiro / Movimento pelas Serras e Águas",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "brigadeiro",
+      "mata-atlantica",
+      "mineracao"
+    ],
+    "nivel": "estadual"
+  },
+  {
+    "id": "ficha-serra-serra-do-mar",
+    "slug": "serra-do-mar-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra do Mar: geologia, água e pressão minerária",
+    "resumo": "A combinação do relevo mais escarpado do Brasil com eventos meteorológicos extremos de precipitação pluviométrica causa deslizamentos de terra de proporções devastadoras, soterrando comunidades vulnerabilizadas estabelecidas nas franjas...",
+    "conteudo": "Geologia: escarpas de falha em granitos e gnaisses do embasamento, com até 1.500 km de frente para o Atlântico; o relevo íngreme concentra deslizamentos em chuvas extremas. A combinação do relevo mais escarpado do Brasil com eventos meteorológicos extremos de precipitação pluviométrica causa deslizamentos de terra de proporções devastadoras, soterrando comunidades vulnerabilizadas estabelecidas nas franjas das serras.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Mapeamento de Riscos Geológicos de Deslizamento (CPRM / SGB) / SOS Mata Atlântica",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "Fundação Florestal-SP / INEA-RJ / ICMBio"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da serra",
+        "valor": "1.500",
+        "unidade": "km",
+        "fonte": "Fundação Florestal-SP / INEA-RJ / ICMBio",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Vulnerabilidade Extrema a Desastres Climáticos",
+        "fonte": "Fundação Florestal-SP / INEA-RJ / ICMBio",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "mar",
+      "mata-atlantica"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-serra-serra-dos-carajas",
+    "slug": "serra-dos-carajas-geologia",
+    "eixo": "terra",
+    "subfrente": "nossas-serras",
+    "titulo": "Serra dos Carajás: geologia, água e pressão minerária",
+    "resumo": "A mineração a céu aberto removeu platôs inteiros de canga amazônica que abrigavam flora hiperespecializada endêmica (como a flor-de-carajás), transformando a floresta do entorno em um mar de pastagens para pecuária extensiva.",
+    "conteudo": "Geologia: platôs de canga e minério de ferro de alto teor, em savanas metalófilas sobre a Floresta Nacional de Carajás. A mineração a céu aberto removeu platôs inteiros de canga amazônica que abrigavam flora hiperespecializada endêmica (como a flor-de-carajás), transformando a floresta do entorno em um mar de pastagens para pecuária extensiva.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo da Floresta Nacional de Carajás (ICMBio) / Relatórios ANM",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidades-de-conservacao/unidades-de-biomas/amazonia/floresta-nacional-de-carajas",
+        "orgao": "ICMBio / FLONA Carajás / IBAMA"
+      },
+      {
+        "nome": "CPRM/Serviço Geológico do Brasil — Mapa Geológico do Brasil (1:1.000.000)",
+        "url": "https://www.sgb.gov.br/",
+        "orgao": "SGB/CPRM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Área protegida",
+        "valor": "411.948",
+        "unidade": "hectares",
+        "fonte": "ICMBio / FLONA Carajás / IBAMA",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação de proteção",
+        "valor": "Complexo Minerário Gigantesco Enravado em Floresta Nacional",
+        "fonte": "ICMBio / FLONA Carajás / IBAMA",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "serra",
+      "carajas",
+      "amazonia",
+      "mineracao"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-doce",
+    "slug": "rio-doce-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Doce: água, território e reparação",
+    "resumo": "Maior catástrofe ambiental da história do Brasil em extensão fluvial (650 km até o mar).",
+    "conteudo": "Maior catástrofe ambiental da história do Brasil em extensão fluvial (650 km até o mar). A deposição de metais pesados (chumbo, arsênio, ferro e manganês) dizimou a ictiofauna nativa e violou os direitos de povos indígenas Krenak e ribeirinhos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Relatório de Monitoramento da Qualidade das Águas do Rio Doce (IGAM/IEMA 2024) / Acordo Rio Doce",
+        "url": "https://www.igam.mg.gov.br/bacia-do-rio-doce",
+        "orgao": "Comitê da Bacia Hidrográfica do Rio Doce (CBH Doce) / ANA / IGAM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "853",
+        "unidade": "km",
+        "fonte": "Comitê da Bacia Hidrográfica do Rio Doce (CBH Doce) / ANA / IGAM",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Contaminação Crônica por Rejeitos de Mineração",
+        "fonte": "Comitê da Bacia Hidrográfica do Rio Doce (CBH Doce) / ANA / IGAM",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "doce",
+      "mata-atlantica",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-paraopeba",
+    "slug": "rio-paraopeba-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Paraopeba: água, território e reparação",
+    "resumo": "A tragédia-crime de Brumadinho soterrou o Córrego do Feijão e contaminou 300 km do Paraopeba até a represa de Retiro Baixo.",
+    "conteudo": "A tragédia-crime de Brumadinho soterrou o Córrego do Feijão e contaminou 300 km do Paraopeba até a represa de Retiro Baixo. Asfixiou o ecossistema com turbidez astronômica e cortou a captação direta de água da RMBH por anos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Boletins Informativos Especiais da Bacia do Rio Paraopeba (IGAM) / Termo de Reparação Integral",
+        "url": "https://www.igam.mg.gov.br/monitoramento-rio-paraopeba",
+        "orgao": "IGAM / COPASA / CBH Paraopeba / Comitê Pró-Brumadinho"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "510",
+        "unidade": "km",
+        "fonte": "IGAM / COPASA / CBH Paraopeba / Comitê Pró-Brumadinho",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Contaminação Severa por Rejeitos",
+        "fonte": "IGAM / COPASA / CBH Paraopeba / Comitê Pró-Brumadinho",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "paraopeba",
+      "cerrado",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-sao-francisco",
+    "slug": "rio-sao-francisco-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio São Francisco: água, território e reparação",
+    "resumo": "Rio sagrado e vital para a sobrevivência do Nordeste semiárido.",
+    "conteudo": "Rio sagrado e vital para a sobrevivência do Nordeste semiárido. Sofre com a redução de mais de 30% em sua vazão histórica na foz devido à destruição das matas ciliares no alto curso e à evaporação em reservatórios artificiais.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Relatório de Conjuntura dos Recursos Hídricos no Brasil (ANA 2024) / Plano Diretor de Recursos Hídricos CBHSF",
+        "url": "https://cbhsaofrancisco.org.br/monitoramento/",
+        "orgao": "Comitê da Bacia Hidrográfica do Rio São Francisco (CBHSF) / ANA"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "2.863",
+        "unidade": "km",
+        "fonte": "Comitê da Bacia Hidrográfica do Rio São Francisco (CBHSF) / ANA",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Estresse Hídrico Crítico",
+        "fonte": "Comitê da Bacia Hidrográfica do Rio São Francisco (CBHSF) / ANA",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "sao",
+      "francisco",
+      "cerrado",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-das-velhas",
+    "slug": "rio-das-velhas-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio das Velhas: água, território e reparação",
+    "resumo": "Nasce límpido em Ouro Preto e é morto biologicamente ao receber as águas dos ribeirões Arrudas e Onça na Região Metropolitana de BH.",
+    "conteudo": "Nasce límpido em Ouro Preto e é morto biologicamente ao receber as águas dos ribeirões Arrudas e Onça na Região Metropolitana de BH. Milhões de reais em saneamento ainda não devolveram peixes vivos ao trecho de Sabará a Lagoa Santa.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Diagnóstico Hidroambiental do Rio das Velhas / Projeto Manuelzão UFMG",
+        "url": "https://cbhvelhas.org.br/",
+        "orgao": "CBH Rio das Velhas / Projeto Manuelzão / IGAM"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "801",
+        "unidade": "km",
+        "fonte": "CBH Rio das Velhas / Projeto Manuelzão / IGAM",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Poluição Severa na Região Metropolitana",
+        "fonte": "CBH Rio das Velhas / Projeto Manuelzão / IGAM",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "velhas",
+      "cerrado",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-jequitinhonha",
+    "slug": "rio-jequitinhonha-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Jequitinhonha: água, território e reparação",
+    "resumo": "A instalação de extensos plantios industriais de eucalipto sobre os lençóis freáticos das chapadas secou centenas de veredas que alimentavam os afluentes do Jequitinhonha, agravando a seca para pequenos agricultores camponeses.",
+    "conteudo": "A instalação de extensos plantios industriais de eucalipto sobre os lençóis freáticos das chapadas secou centenas de veredas que alimentavam os afluentes do Jequitinhonha, agravando a seca para pequenos agricultores camponeses.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano Integrado de Recursos Hídricos da Bacia do Jequitinhonha / IGAM",
+        "url": "https://www.igam.mg.gov.br/bacias-hidrograficas/jequitinhonha",
+        "orgao": "CBH Jequitinhonha / IGAM / ANA"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "1.090",
+        "unidade": "km",
+        "fonte": "CBH Jequitinhonha / IGAM / ANA",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Assoreamento por Garimpos",
+        "fonte": "CBH Jequitinhonha / IGAM / ANA",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "jequitinhonha",
+      "cerrado",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-tiete",
+    "slug": "rio-tiete-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Tietê: água, território e reparação",
+    "resumo": "Apesar de investimentos bilionários no Projeto Tietê ao longo de três décadas, o trecho que atravessa a Grande SP e cidades como Salto e Pirapora do Bom Jesus continua registrando qualidade de água péssima e espumas tóxicas recorrentes.",
+    "conteudo": "Apesar de investimentos bilionários no Projeto Tietê ao longo de três décadas, o trecho que atravessa a Grande SP e cidades como Salto e Pirapora do Bom Jesus continua registrando qualidade de água péssima e espumas tóxicas recorrentes.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Relatório Anual Observando os Rios (Fundação SOS Mata Atlântica 2024) / CETESB Qualidade das Águas",
+        "url": "https://www.sosma.org.br/iniciativas/observando-os-rios/",
+        "orgao": "CETESB / Fundação SOS Mata Atlântica / DAEE-SP"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "1.100",
+        "unidade": "km",
+        "fonte": "CETESB / Fundação SOS Mata Atlântica / DAEE-SP",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Poluição Severa no Médio Tietê",
+        "fonte": "CETESB / Fundação SOS Mata Atlântica / DAEE-SP",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "tiete",
+      "mata-atlantica",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-tapajos",
+    "slug": "rio-tapajos-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Tapajós: água, território e reparação",
+    "resumo": "Águas originalmente verde-azuladas e transparentes transformadas em caldo marrom de lama e mercúrio.",
+    "conteudo": "Águas originalmente verde-azuladas e transparentes transformadas em caldo marrom de lama e mercúrio. Estudos da Fiocruz revelaram que 100% dos indígenas Munduruku testados em aldeias ribeirinhas apresentam níveis tóxicos de mercúrio no sangue.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Laudos Periciais do MPF/Fiocruz sobre Contaminação por Mercúrio no Tapajós (2020-2024)",
+        "url": "https://www.mpf.mp.br/pa/sala-de-imprensa/noticias-pa/mpf-alerta-para-catastrofe-de-mercurio-no-tapajos",
+        "orgao": "IBAMA / ICMBio / Ministério Público Federal (MPF)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "851",
+        "unidade": "km",
+        "fonte": "IBAMA / ICMBio / Ministério Público Federal (MPF)",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Contaminação Crônica por Mercúrio",
+        "fonte": "IBAMA / ICMBio / Ministério Público Federal (MPF)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "tapajos",
+      "amazonia",
+      "mineracao",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-bacia-rio-xingu",
+    "slug": "rio-xingu-bacia",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Bacia do Rio Xingu: água, território e reparação",
+    "resumo": "A UHE Belo Monte alterou radicalmente o hidrograma da Volta Grande do Xingu, secando igapós e canais rochosos onde quelônios e peixes como o acari-zebra se reproduzem, gerando insegurança alimentar crônica para ribeirinhos.",
+    "conteudo": "A UHE Belo Monte alterou radicalmente o hidrograma da Volta Grande do Xingu, secando igapós e canais rochosos onde quelônios e peixes como o acari-zebra se reproduzem, gerando insegurança alimentar crônica para ribeirinhos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Monitoramento Independente da Volta Grande do Xingu (ISA/UFPA) / Processo de Licenciamento IBAMA",
+        "url": "https://www.socioambiental.org/noticias-socioambientais/volta-grande-do-xingu",
+        "orgao": "IBAMA / MPF / Instituto Socioambiental (ISA)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Extensão da calha principal",
+        "valor": "1.979",
+        "unidade": "km",
+        "fonte": "IBAMA / MPF / Instituto Socioambiental (ISA)",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Situação da bacia",
+        "valor": "Seccionamento de Vazão Ecológica",
+        "fonte": "IBAMA / MPF / Instituto Socioambiental (ISA)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "bacias",
+      "rio",
+      "xingu",
+      "amazonia",
+      "mineracao",
+      "agua"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-lobo-guara",
+    "slug": "lobo-guara-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Lobo-guará (Chrysocyon brachyurus)",
+    "resumo": "Símbolo vivo do Cerrado brasileiro, essencial como dispersor primário de sementes da lobeira.",
+    "conteudo": "Símbolo vivo do Cerrado brasileiro, essencial como dispersor primário de sementes da lobeira. A expansão acelerada de lavouras e malhas viárias corta rotas migratórias vitais entre a Serra da Canastra e o Espinhaço.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Avaliação do Risco de Extinção do Lobo-Guará (ICMBio 2022) / IUCN Red List",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-canideos",
+        "orgao": "ICMBio / CENAP"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "24.000",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / CENAP",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / CENAP",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "lobo",
+      "guara",
+      "cerrado",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-muriqui-do-norte",
+    "slug": "muriqui-do-norte-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Muriqui-do-norte (Brachyteles hypoxanthus)",
+    "resumo": "Maior primata não humano das Américas e conhecido como o jardineiro da floresta.",
+    "conteudo": "Maior primata não humano das Américas e conhecido como o jardineiro da floresta. Vive confinado em manchas florestais desconectadas em Minas Gerais, sem capacidade de troca gênica sem corredores ecológicos artificiais.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Ação Nacional para Conservação dos Primatas da Mata Atlântica (PAN Primatas)",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-primatas-mata-atlantica",
+        "orgao": "ICMBio / CPB / Associação Pró-Muriqui"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "1.000",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / CPB / Associação Pró-Muriqui",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo (CR - ICMBio/IUCN)",
+        "fonte": "ICMBio / CPB / Associação Pró-Muriqui",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "muriqui",
+      "norte",
+      "mata-atlantica",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-onca-pintada",
+    "slug": "onca-pintada-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Onça-pintada (Panthera onca)",
+    "resumo": "Maior felino das Américas e espécie guarda-chuva para a preservação de biomas inteiros.",
+    "conteudo": "Maior felino das Américas e espécie guarda-chuva para a preservação de biomas inteiros. Perdeu mais de 50% de sua distribuição histórica global e sofre com fragmentação letal de corredores na Mata Atlântica e Cerrado.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Portaria MMA nº 148/2022 / Livro Vermelho da Fauna Brasileira / IUCN Red List 2024.2",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-grandes-felinos",
+        "orgao": "ICMBio / CENAP / IUCN"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "150.000 a 170.000",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / CENAP / IUCN",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / CENAP / IUCN",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "onca",
+      "pintada",
+      "pantanal",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-surubim-do-jequitinhonha",
+    "slug": "surubim-do-jequitinhonha-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Surubim-do-jequitinhonha (Steindachneridion amblyrhynchus)",
+    "resumo": "Peixe de couro nobre e de grande porte endêmico do Jequitinhonha.",
+    "conteudo": "Peixe de couro nobre e de grande porte endêmico do Jequitinhonha. As barragens hidrelétricas alteraram a temperatura e oxigenação da água, inviabilizando a fecundação de ovas e isolando cardumes remanescentes.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "PAN Peixes do Jequitinhonha e Mucuri / Livro Vermelho da Fauna Brasileira",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-peixes-jequitinhonha",
+        "orgao": "ICMBio / CEPTA / IEF-MG"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo (CR - ICMBio/Portaria MMA 148)",
+        "fonte": "ICMBio / CEPTA / IEF-MG",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "surubim",
+      "jequitinhonha",
+      "cerrado",
+      "mineracao"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-tamandua-bandeira",
+    "slug": "tamandua-bandeira-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Tamanduá-bandeira (Myrmecophaga tridactyla)",
+    "resumo": "Animal de hábitos lentos e visão reduzida que sofre índices massivos de mortalidade por colisão com carretas de grãos no Centro-Oeste e Minas Gerais, além de ser dizimado pelos grandes incêndios anuais.",
+    "conteudo": "Animal de hábitos lentos e visão reduzida que sofre índices massivos de mortalidade por colisão com carretas de grãos no Centro-Oeste e Minas Gerais, além de ser dizimado pelos grandes incêndios anuais.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Avaliação do Risco de Extinção dos Xenartros Brasileiros (ICMBio 2023)",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-tamandua-bandeira",
+        "orgao": "ICMBio / Projeto Bandeiras e Rodovias (ICAS)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / Projeto Bandeiras e Rodovias (ICAS)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "tamandua",
+      "bandeira",
+      "cerrado",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-bicudo",
+    "slug": "bicudo-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Bicudo (Sporophila maximiliani)",
+    "resumo": "Aves de bico maciço adaptado a quebrar sementes de navalha e gramíneas de várzea.",
+    "conteudo": "Aves de bico maciço adaptado a quebrar sementes de navalha e gramíneas de várzea. Foi praticamente extirpado das veredas do norte mineiro e do Triângulo pelo tráfico ilegal de animais silvestres de alto valor comercial.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Ação Nacional para Conservação dos Passeriformes Ameaçados dos Campos Sulinos e Cerrado",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-passeriformes-cerrado",
+        "orgao": "ICMBio / CEMAVE"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "250",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / CEMAVE",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo (CR - ICMBio/IUCN)",
+        "fonte": "ICMBio / CEMAVE",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "bicudo",
+      "cerrado",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-anta-brasileira",
+    "slug": "anta-brasileira-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Anta-brasileira (Tapirus terrestris)",
+    "resumo": "Conhecida como a jardineira das florestas devido à sua imensa capacidade de ingerir e dispersar frutos de grandes sementes a longas distâncias, viabilizando a regeneração natural dos ecossistemas tropicais.",
+    "conteudo": "Conhecida como a jardineira das florestas devido à sua imensa capacidade de ingerir e dispersar frutos de grandes sementes a longas distâncias, viabilizando a regeneração natural dos ecossistemas tropicais.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Iniciativa Nacional para a Conservação da Anta Brasileira (INCAB) / ICMBio 2023",
+        "url": "https://www.ipe.org.br/projetos/anta-brasileira",
+        "orgao": "ICMBio / INCAB-IPÊ"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / INCAB-IPÊ",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "anta",
+      "brasileira",
+      "amazonia",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-arara-azul-de-lear",
+    "slug": "arara-azul-de-lear-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Arara-azul-de-lear (Anodorhynchus leari)",
+    "resumo": "Ave de plumagem azul-cobalto de extrema beleza que se alimenta quase que exclusivamente dos coquinhos da palmeira licuri.",
+    "conteudo": "Ave de plumagem azul-cobalto de extrema beleza que se alimenta quase que exclusivamente dos coquinhos da palmeira licuri. Confinada a paredões rochosos da Caatinga baiana, sofre com a instalação desordenada de usinas eólicas em suas rotas diárias de voo.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Censo Anual da Arara-Azul-de-Lear / PAN Aves da Caatinga",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-arara-azul-de-lear",
+        "orgao": "ICMBio / CEMAVE / Fundação Biodiversitas"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "2.200",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / CEMAVE / Fundação Biodiversitas",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / CEMAVE / Fundação Biodiversitas",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "arara",
+      "azul",
+      "lear",
+      "caatinga"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-ariranha",
+    "slug": "ariranha-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Ariranha (Pteronura brasiliensis)",
+    "resumo": "O maior mustelídeo aquático do mundo, predador de topo em rios limpos.",
+    "conteudo": "O maior mustelídeo aquático do mundo, predador de topo em rios limpos. Sofre diretamente com a perda de praias arenosas para tocas e a destruição da ictiofauna nativa por dragagens de mineração e usinas.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Avaliação do Estado de Conservação da Ariranha no Brasil (ICMBio) / IUCN 2024",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-ariranha",
+        "orgao": "ICMBio / IUCN Otter Specialist Group"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "2.000 e 5.000",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / IUCN Otter Specialist Group",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / IUCN Otter Specialist Group",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "ariranha",
+      "pantanal",
+      "mineracao",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-baleia-franca-austral",
+    "slug": "baleia-franca-austral-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Baleia-franca-austral (Eubalaena australis)",
+    "resumo": "Histórica vítima de caça comercial que quase a exterminou na costa brasileira até meados do século XX.",
+    "conteudo": "Histórica vítima de caça comercial que quase a exterminou na costa brasileira até meados do século XX. O tráfego de embarcações de grande porte na bacia de Santos e portos de Itajaí/Rio Grande eleva o risco de choques fatais.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo da APA da Baleia Franca (ICMBio) / Instituto Australis Monitoramento",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-cetaceos",
+        "orgao": "ICMBio / APA da Baleia Franca / Instituto Australis"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "550",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / APA da Baleia Franca / Instituto Australis",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN no Brasil - ICMBio)",
+        "fonte": "ICMBio / APA da Baleia Franca / Instituto Australis",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "baleia",
+      "franca",
+      "austral",
+      "marinho-costeiro"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-boto-cor-de-rosa",
+    "slug": "boto-cor-de-rosa-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Boto-cor-de-rosa (Inia geoffrensis)",
+    "resumo": "O maior golfinho de água doce do planeta.",
+    "conteudo": "O maior golfinho de água doce do planeta. O barramento de rios amazônicos fragmenta suas populações e bloqueia a migração de cardumes, enquanto o mercúrio de dragas de garimpo se bioacumula em sua gordura corporal.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "PAN Cetáceos Amazônicos (ICMBio) / Moratória da Pesca da Piracatinga (MPA/MMA)",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-cetaceos-aquaticos",
+        "orgao": "ICMBio / INPA / Associação Amigos do Peixe-Boi (AMPA)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / INPA / Associação Amigos do Peixe-Boi (AMPA)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "boto",
+      "cor",
+      "rosa",
+      "amazonia"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-cervo-do-pantanal",
+    "slug": "cervo-do-pantanal-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Cervo-do-pantanal (Blastocerus dichotomus)",
+    "resumo": "Maior cervídeo da América do Sul, adaptado exclusivamente a áreas alagadiças com membranas interdigitais.",
+    "conteudo": "Maior cervídeo da América do Sul, adaptado exclusivamente a áreas alagadiças com membranas interdigitais. É altamente vulnerável a doenças infecciosas transmitidas por gado bovino solto em pastagens alagadas.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "PAN Ungulados / ICMBio Avaliação de Espécies Ameaçadas",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-ungulados",
+        "orgao": "ICMBio / Núcleo de Pesquisa e Conservação de Cervídeos (NUPECCE)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / Núcleo de Pesquisa e Conservação de Cervídeos (NUPECCE)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "cervo",
+      "pantanal",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-gato-maracaja",
+    "slug": "gato-maracaja-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Gato-maracajá (Leopardus wiedii)",
+    "resumo": "Felino estritamente arborícola com articulações dos tornozelos capazes de girar 180 graus para descer troncos de cabeça para baixo.",
+    "conteudo": "Felino estritamente arborícola com articulações dos tornozelos capazes de girar 180 graus para descer troncos de cabeça para baixo. A substituição de florestas nativas por monoculturas inviabiliza sua caça acrobática em copas.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Avaliação do Risco de Extinção dos Felídeos Neotropicais (ICMBio) / IUCN 2024",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-pequenos-felinos",
+        "orgao": "ICMBio / CENAP"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - ICMBio/IUCN)",
+        "fonte": "ICMBio / CENAP",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "gato",
+      "maracaja",
+      "mata-atlantica",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-harpia-gaviao-real",
+    "slug": "harpia-gaviao-real-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Harpia / Gavião-real (Harpia harpyja)",
+    "resumo": "Mais poderosa ave de rapina das Américas.",
+    "conteudo": "Mais poderosa ave de rapina das Américas. Tem taxa reprodutiva extremamente lenta, gerando apenas um filhote a cada três anos, o que inviabiliza sua recuperação frente à taxa de desmatamento da fronteira agrícola.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Projeto Harpia / INPA Ministério da Ciência, Tecnologia e Inovação",
+        "url": "https://www.gov.br/inpa/pt-br/assuntos/pesquisa/projetos-em-destaque/projeto-harpia",
+        "orgao": "ICMBio / Projeto Gavião-Real (INPA)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - IUCN/ICMBio)",
+        "fonte": "ICMBio / Projeto Gavião-Real (INPA)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "harpia",
+      "gaviao",
+      "real",
+      "amazonia"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-jacutinga",
+    "slug": "jacutinga-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Jacutinga (Aburria jacutinga)",
+    "resumo": "Cracídeo florestal conhecido pela plumagem negra com manchas brancas nas asas e barbela vermelho-azulada.",
+    "conteudo": "Cracídeo florestal conhecido pela plumagem negra com manchas brancas nas asas e barbela vermelho-azulada. Sua sobrevivência está intrinsecamente atrelada à conservação do palmito-juçara, também sob forte ameaça de corte ilegal.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Projeto Jacutinga (SAVE Brasil) / Livro Vermelho da Fauna Brasileira ICMBio",
+        "url": "https://www.savebrasil.org.br/projeto-jacutinga",
+        "orgao": "ICMBio / SAVE Brasil"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "2.500",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / SAVE Brasil",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / SAVE Brasil",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "jacutinga",
+      "mata-atlantica",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-mico-leao-dourado",
+    "slug": "mico-leao-dourado-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Mico-leão-dourado (Leontopithecus rosalia)",
+    "resumo": "Espécie bandeira internacional da conservação brasileira.",
+    "conteudo": "Espécie bandeira internacional da conservação brasileira. A construção do primeiro viaduto vegetado sobre a rodovia BR-101 no Rio de Janeiro salvou a espécie do colapso por endocruzamento genético.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Manejo da REBIO Poço das Antas / Censo Populacional AMLD 2023-2024",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-micos-leoes",
+        "orgao": "ICMBio / Associação Mico-Leão-Dourado (AMLD)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "4.800",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / Associação Mico-Leão-Dourado (AMLD)",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / Associação Mico-Leão-Dourado (AMLD)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "mico",
+      "leao",
+      "dourado",
+      "mata-atlantica"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-peixe-boi-marinho",
+    "slug": "peixe-boi-marinho-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Peixe-boi-marinho (Trichechus manatus)",
+    "resumo": "Mamífero aquático manso e herbívoro, essencial para o equilíbrio dos bancos de capim-marinho.",
+    "conteudo": "Mamífero aquático manso e herbívoro, essencial para o equilíbrio dos bancos de capim-marinho. Sofre com a perda de estuários tranquilos onde as fêmeas parem e amamentam seus filhotes.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Ação Nacional para Conservação dos Sirênios (PAN Sirênios)",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-sirenios",
+        "orgao": "ICMBio / Centro Nacional de Pesquisa e Conservação da Biodiversidade Marinha do Nordeste (CEPENE)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "1.000 a 1.200",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / Centro Nacional de Pesquisa e Conservação da Biodiversidade Marinha do Nordeste (CEPENE)",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo no Brasil (CR - ICMBio)",
+        "fonte": "ICMBio / Centro Nacional de Pesquisa e Conservação da Biodiversidade Marinha do Nordeste (CEPENE)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "peixe",
+      "boi",
+      "marinho",
+      "marinho-costeiro"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-queixada",
+    "slug": "queixada-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Queixada (Tayassu pecari)",
+    "resumo": "Espécie engenheira dos ecossistemas florestais, que anda em grandes varas de centenas de indivíduos remexendo a serapilheira e abrindo clareiras que promovem a diversidade de plantas e micro-habitats aquáticos.",
+    "conteudo": "Espécie engenheira dos ecossistemas florestais, que anda em grandes varas de centenas de indivíduos remexendo a serapilheira e abrindo clareiras que promovem a diversidade de plantas e micro-habitats aquáticos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Plano de Ação Nacional para Conservação dos Ungulados / Portaria MMA 148/2022",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-ungulados",
+        "orgao": "ICMBio / CENAP / IUCN Peccary Specialist Group"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Vulnerável (VU - IUCN/ICMBio)",
+        "fonte": "ICMBio / CENAP / IUCN Peccary Specialist Group",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "queixada",
+      "florestas-tropicais",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-sauim-de-coleira",
+    "slug": "sauim-de-coleira-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Sauim-de-coleira (Saguinus bicolor)",
+    "resumo": "Espécie símbolo de Manaus com distribuição geográfica minúscula de apenas três municípios.",
+    "conteudo": "Espécie símbolo de Manaus com distribuição geográfica minúscula de apenas três municípios. Está sendo encurralada contra o Rio Negro pela urbanização acelerada e por linhagens de sauim-de-mãos-amarelas que invadem seu nicho.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "PAN Sauim-de-Coleira (ICMBio) / Lista Vermelha MMA",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-sauim-de-coleira",
+        "orgao": "ICMBio / Projeto Sauim-de-Coleira (UFAM)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo (CR - ICMBio/IUCN)",
+        "fonte": "ICMBio / Projeto Sauim-de-Coleira (UFAM)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "sauim",
+      "coleira",
+      "amazonia",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-soldadinho-do-araripe",
+    "slug": "soldadinho-do-araripe-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Soldadinho-do-araripe (Antilophia bokermanni)",
+    "resumo": "Pássaro de crista vermelha brilhante descoberto apenas em 1996 e restrito às encostas úmidas da Chapada do Araripe.",
+    "conteudo": "Pássaro de crista vermelha brilhante descoberto apenas em 1996 e restrito às encostas úmidas da Chapada do Araripe. Depende estritamente do fluxo contínuo de água de nascentes protegidas para nidificar sobre córregos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "PAN Soldadinho-do-Araripe / Portaria MMA 148/2022",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-soldadinho-do-araripe",
+        "orgao": "ICMBio / Associação Aquasis"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "População estimada",
+        "valor": "800",
+        "unidade": "indivíduos",
+        "fonte": "ICMBio / Associação Aquasis",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo (CR - ICMBio/IUCN)",
+        "fonte": "ICMBio / Associação Aquasis",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "soldadinho",
+      "araripe",
+      "caatinga",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-tartaruga-da-amazonia",
+    "slug": "tartaruga-da-amazonia-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Tartaruga-da-amazônia (Podocnemis expansa)",
+    "resumo": "O maior quelônio de água doce da América do Sul, com fêmeas ultrapassando 60 kg.",
+    "conteudo": "O maior quelônio de água doce da América do Sul, com fêmeas ultrapassando 60 kg. A inundação permanente de praias pelas barragens de Belo Monte, Santo Antônio e Jirau destruiu locais ancestrais de postura de ovos.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Programa Quelônios da Amazônia (PQA) / ICMBio Relatório de Gestão 2024",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-quelonios",
+        "orgao": "ICMBio / RAN (Centro Nacional de Répteis e Anfíbios)"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Quase Ameaçada (NT - IUCN)",
+        "fonte": "ICMBio / RAN (Centro Nacional de Répteis e Anfíbios)",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "tartaruga",
+      "amazonia",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-tartaruga-de-couro-gigante",
+    "slug": "tartaruga-de-couro-gigante-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Tartaruga-de-couro / Gigante (Dermochelys coriacea)",
+    "resumo": "A maior tartaruga marinha existente, pesando até 700 kg e capaz de mergulhar a mais de 1.200 metros de profundidade.",
+    "conteudo": "A maior tartaruga marinha existente, pesando até 700 kg e capaz de mergulhar a mais de 1.200 metros de profundidade. A lama tóxica do desastre de Mariana atingiu diretamente o estuário de Linhares, principal berçário da espécie no país.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Relatório Anual de Desovas Projeto Tamar / Portaria MMA 148/2022",
+        "url": "https://www.tamar.org.br/tartaruga.php?cod=22",
+        "orgao": "ICMBio / Fundação Projeto Tamar"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "extensao_ou_populacao",
+        "nome": "Desovas registradas por ano",
+        "valor": "120",
+        "unidade": "desovas",
+        "fonte": "ICMBio / Fundação Projeto Tamar",
+        "anoReferencia": 2024
+      },
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Criticamente em Perigo no Brasil (CR - ICMBio)",
+        "fonte": "ICMBio / Fundação Projeto Tamar",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "tartaruga",
+      "couro",
+      "gigante",
+      "oceanico"
+    ],
+    "nivel": "federal"
+  },
+  {
+    "id": "ficha-fauna-tatu-bola-da-caatinga",
+    "slug": "tatu-bola-da-caatinga-fauna",
+    "eixo": "terra",
+    "subfrente": "biomas",
+    "titulo": "Tatu-bola-da-caatinga (Tolypeutes semicinctus)",
+    "resumo": "Única espécie de tatu endêmica do Brasil com capacidade de se fechar completamente em formato de esfera.",
+    "conteudo": "Única espécie de tatu endêmica do Brasil com capacidade de se fechar completamente em formato de esfera. Sua defesa natural o torna presa fácil para apanhadores humanos frente à rápida degradação do semiárido.",
+    "dataPublicacao": "2026-11-02T10:00:00.000Z",
+    "fontes": [
+      {
+        "nome": "Portaria MMA nº 148/2022 / PAN Tatu-Bola",
+        "url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-tatu-bola",
+        "orgao": "ICMBio / Associação Caatinga"
+      }
+    ],
+    "indicadores": [
+      {
+        "chave": "status_conservacao",
+        "nome": "Grau de ameaça",
+        "valor": "Em Perigo (EN - ICMBio/IUCN)",
+        "fonte": "ICMBio / Associação Caatinga",
+        "anoReferencia": 2024
+      }
+    ],
+    "tags": [
+      "fauna",
+      "especie",
+      "tatu",
+      "bola",
+      "caatinga",
+      "especie-ameacada"
+    ],
+    "nivel": "federal"
+  },
+  {
     "id": "ficha-bh-saude-sus",
     "slug": "capacidade-hospitalar-bh",
     "eixo": "direitos",
@@ -9,8 +1693,14 @@
     "conteudo": "Belo Horizonte conta com uma rede referenciada para mais de 5 milhões de pessoas na Região Metropolitana. A relação leito/habitante atinge patamares acima da média estadual, mas a concentração de atendimentos de alta complexidade pressiona a atenção primária nas Unidades Básicas de Saúde.",
     "dataPublicacao": "2026-08-15T10:00:00.000Z",
     "fontes": [
-      { "nome": "DataSUS - Cadastro Nacional de Estabelecimentos de Saúde (CNES)", "orgao": "Ministério da Saúde" },
-      { "nome": "SIH-SUS - Sistema de Informações Hospitalares", "orgao": "DataSUS" }
+      {
+        "nome": "DataSUS - Cadastro Nacional de Estabelecimentos de Saúde (CNES)",
+        "orgao": "Ministério da Saúde"
+      },
+      {
+        "nome": "SIH-SUS - Sistema de Informações Hospitalares",
+        "orgao": "DataSUS"
+      }
     ],
     "indicadores": [
       {
@@ -31,8 +1721,18 @@
         "anoReferencia": 2026
       }
     ],
-    "cidadesRelacionadas": ["3106200"],
-    "tags": ["saude", "sus", "cnes", "leitos", "hospitais", "belo-horizonte", "orcamento"],
+    "cidadesRelacionadas": [
+      "3106200"
+    ],
+    "tags": [
+      "saude",
+      "sus",
+      "cnes",
+      "leitos",
+      "hospitais",
+      "belo-horizonte",
+      "orcamento"
+    ],
     "nivel": "municipal"
   },
   {
@@ -45,8 +1745,14 @@
     "conteudo": "A rede municipal de ensino fundamental em BH apresenta evolução consistente no IDEB, embora escolas em áreas de maior vulnerabilidade socioeconômica demandem reforço pedagógico e retenção de docentes.",
     "dataPublicacao": "2026-08-20T14:00:00.000Z",
     "fontes": [
-      { "nome": "INEP - Censo Escolar", "orgao": "MEC" },
-      { "nome": "INEP - Índice de Desenvolvimento da Educação Básica (IDEB)", "orgao": "MEC" }
+      {
+        "nome": "INEP - Censo Escolar",
+        "orgao": "MEC"
+      },
+      {
+        "nome": "INEP - Índice de Desenvolvimento da Educação Básica (IDEB)",
+        "orgao": "MEC"
+      }
     ],
     "indicadores": [
       {
@@ -57,8 +1763,17 @@
         "anoReferencia": 2024
       }
     ],
-    "cidadesRelacionadas": ["3106200"],
-    "tags": ["educacao", "ideb", "inep", "escolas", "belo-horizonte", "orcamento"],
+    "cidadesRelacionadas": [
+      "3106200"
+    ],
+    "tags": [
+      "educacao",
+      "ideb",
+      "inep",
+      "escolas",
+      "belo-horizonte",
+      "orcamento"
+    ],
     "nivel": "municipal"
   },
   {
@@ -71,8 +1786,14 @@
     "conteudo": "Belo Horizonte possui um dos maiores orçamentos municipais do país. Mais de 40% das despesas correntes são alocadas em saúde e educação, superando os mínimos constitucionais.",
     "dataPublicacao": "2026-08-18T11:30:00.000Z",
     "fontes": [
-      { "nome": "Portal da Transparência de Belo Horizonte", "orgao": "Prefeitura de Belo Horizonte" },
-      { "nome": "SICONFI - Tesouro Nacional", "orgao": "Ministério da Fazenda" }
+      {
+        "nome": "Portal da Transparência de Belo Horizonte",
+        "orgao": "Prefeitura de Belo Horizonte"
+      },
+      {
+        "nome": "SICONFI - Tesouro Nacional",
+        "orgao": "Ministério da Fazenda"
+      }
     ],
     "indicadores": [
       {
@@ -83,8 +1804,18 @@
         "anoReferencia": 2026
       }
     ],
-    "cidadesRelacionadas": ["3106200"],
-    "tags": ["orcamento", "financas", "receitas", "gastos", "saude", "educacao", "belo-horizonte"],
+    "cidadesRelacionadas": [
+      "3106200"
+    ],
+    "tags": [
+      "orcamento",
+      "financas",
+      "receitas",
+      "gastos",
+      "saude",
+      "educacao",
+      "belo-horizonte"
+    ],
     "nivel": "municipal"
   },
   {
@@ -97,8 +1828,14 @@
     "conteudo": "Os ribeirões Arrudas e Onça drenam a maior parte da capital em direção ao Rio das Velhas. Apesar dos avanços no tratamento de esgoto, pontos de extravasamento pluvial continuam exigindo fiscalização.",
     "dataPublicacao": "2026-08-25T09:00:00.000Z",
     "fontes": [
-      { "nome": "Instituto Mineiro de Gestão das Águas (IGAM)", "orgao": "SEMAD-MG" },
-      { "nome": "Comitê da Bacia Hidrográfica do Rio das Velhas", "orgao": "CBH Velhas" }
+      {
+        "nome": "Instituto Mineiro de Gestão das Águas (IGAM)",
+        "orgao": "SEMAD-MG"
+      },
+      {
+        "nome": "Comitê da Bacia Hidrográfica do Rio das Velhas",
+        "orgao": "CBH Velhas"
+      }
     ],
     "indicadores": [
       {
@@ -109,8 +1846,17 @@
         "anoReferencia": 2024
       }
     ],
-    "cidadesRelacionadas": ["3106200"],
-    "tags": ["meio-ambiente", "rios", "saneamento", "belo-horizonte", "bacias", "onsa"],
+    "cidadesRelacionadas": [
+      "3106200"
+    ],
+    "tags": [
+      "meio-ambiente",
+      "rios",
+      "saneamento",
+      "belo-horizonte",
+      "bacias",
+      "onsa"
+    ],
     "nivel": "municipal"
   },
   {
@@ -123,8 +1869,14 @@
     "conteudo": "Betim abriga um dos mais ativos hospitais públicos de trauma da RMBH. A integração com contratos de fornecimento e compras públicas de insumos é detalhada nesta ficha.",
     "dataPublicacao": "2026-08-28T16:00:00.000Z",
     "fontes": [
-      { "nome": "CNES - Ministério da Saúde", "orgao": "DataSUS" },
-      { "nome": "Secretaria Municipal de Saúde de Betim", "orgao": "Prefeitura de Betim" }
+      {
+        "nome": "CNES - Ministério da Saúde",
+        "orgao": "DataSUS"
+      },
+      {
+        "nome": "Secretaria Municipal de Saúde de Betim",
+        "orgao": "Prefeitura de Betim"
+      }
     ],
     "indicadores": [
       {
@@ -136,8 +1888,17 @@
         "anoReferencia": 2026
       }
     ],
-    "cidadesRelacionadas": ["3106705"],
-    "tags": ["saude", "sus", "cnes", "leitos", "betim", "contratos"],
+    "cidadesRelacionadas": [
+      "3106705"
+    ],
+    "tags": [
+      "saude",
+      "sus",
+      "cnes",
+      "leitos",
+      "betim",
+      "contratos"
+    ],
     "nivel": "municipal"
   },
   {
@@ -150,11 +1911,26 @@
     "conteudo": "Betim recebeu recursos da cota de reparação municipal do Acordo de Brumadinho. Esta ficha monitora a aplicação dos repasses em infraestrutura de contenção de enchentes e abastecimento.",
     "dataPublicacao": "2026-08-30T10:00:00.000Z",
     "fontes": [
-      { "nome": "Auditoria Socioambiental Independente (AECOM/AJRI)", "orgao": "Justiça Federal" },
-      { "nome": "Comitê Pró-Brumadinho", "orgao": "Governo de Minas Gerais" }
+      {
+        "nome": "Auditoria Socioambiental Independente (AECOM/AJRI)",
+        "orgao": "Justiça Federal"
+      },
+      {
+        "nome": "Comitê Pró-Brumadinho",
+        "orgao": "Governo de Minas Gerais"
+      }
     ],
-    "cidadesRelacionadas": ["3106705"],
-    "tags": ["paraopeba", "reparacao", "acordo-judicial", "betim", "rios", "obras"],
+    "cidadesRelacionadas": [
+      "3106705"
+    ],
+    "tags": [
+      "paraopeba",
+      "reparacao",
+      "acordo-judicial",
+      "betim",
+      "rios",
+      "obras"
+    ],
     "nivel": "municipal"
   },
   {
@@ -167,7 +1943,10 @@
     "conteudo": "O Sistema de Informações Georreferenciadas do Poder Judiciário (SIRENEJud) rastreia processos ambientais com polígonos sobrepostos a áreas de conservação e terras públicas.",
     "dataPublicacao": "2026-08-31T08:00:00.000Z",
     "fontes": [
-      { "nome": "SIRENEJud - Conselho Nacional de Justiça", "orgao": "CNJ" }
+      {
+        "nome": "SIRENEJud - Conselho Nacional de Justiça",
+        "orgao": "CNJ"
+      }
     ],
     "indicadores": [
       {
@@ -178,7 +1957,14 @@
         "anoReferencia": 2026
       }
     ],
-    "tags": ["judiciario", "sirenejud", "cnj", "processos", "meio-ambiente", "minas-gerais"],
+    "tags": [
+      "judiciario",
+      "sirenejud",
+      "cnj",
+      "processos",
+      "meio-ambiente",
+      "minas-gerais"
+    ],
     "nivel": "estadual"
   }
 ]

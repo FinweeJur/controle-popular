@@ -11,24 +11,54 @@ interface Props {
   showEixoTag?: boolean;
 }
 
+/**
+ * Rota da subfrente, quando ela tem endereço próprio. Fora do componente de
+ * propósito: são mapas fixos, não estado — recriá-los a cada render não muda o
+ * resultado e só engorda a função.
+ */
+const SUBFRENTES_MAPEADAS: Record<string, string> = {
+  'saude-publica': '/direitos-em-movimento/servicos?subfrente=saude-publica',
+  educacao: '/direitos-em-movimento/servicos?subfrente=educacao',
+  'trabalho-e-renda': '/direitos-em-movimento/servicos?subfrente=trabalho-e-renda',
+  cidades: '/cidades#catalogo-cidades',
+  'nossas-serras': '/terra-e-territorios/nossas-serras',
+  'nossos-rios': '/terra-e-territorios/nossos-rios',
+  biomas: '/ambiental/nossos-animais',
+  'meio-ambiente': '/ambiental',
+  judiciario: '/judiciario/instituicoes',
+  orcamento: '/estado-e-economia/orcamento',
+  congresso: '/congresso',
+};
+
+/** Destino fino de fichas que vivem fora da subfrente (caso a caso). */
+const DESTINOS_DE_FICHA: Record<string, string> = {
+  'ficha-bh-saude-sus': '/direitos-em-movimento/servicos?subfrente=saude-publica',
+  'ficha-bh-educacao-ideb': '/direitos-em-movimento/servicos?subfrente=educacao',
+  'ficha-bh-orcamento-execucao': '/estado-e-economia/orcamento',
+  'ficha-bh-meio-ambiente-velhas': '/terra-e-territorios/nossos-rios',
+  'ficha-betim-saude-cnes': '/betim',
+  'ficha-betim-paraopeba-obras': '/paraopeba',
+  'ficha-sirenejud-processos-mg': '/judiciario/sirenejud',
+};
+
+const formatarData = (iso: string) => {
+  try {
+    return new Date(iso).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
+  } catch {
+    return iso;
+  }
+};
+
 export default function FichaCard({ ficha, variant = 'normal', showEixoTag = true }: Props) {
   const eixo = CATALOGO_EIXOS[ficha.eixo];
   const subfrente = eixo?.subfrentes.find((s) => s.id === ficha.subfrente);
 
   const corVar = eixo?.corVar ?? '--cp-primary';
   const corInkVar = eixo?.corInkVar ?? '--cp-primary-ink';
-
-  const formatarData = (iso: string) => {
-    try {
-      return new Date(iso).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      });
-    } catch {
-      return iso;
-    }
-  };
 
   const rotaEixo =
     ficha.eixo === 'direitos'
@@ -37,30 +67,8 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
       ? '/terra-e-territorios'
       : '/estado-e-economia';
 
-  const subfrentesMapeadas: Record<string, string> = {
-    'saude-publica': '/direitos-em-movimento/servicos?subfrente=saude-publica',
-    educacao: '/direitos-em-movimento/servicos?subfrente=educacao',
-    'trabalho-e-renda': '/direitos-em-movimento/servicos?subfrente=trabalho-e-renda',
-    cidades: '/cidades#catalogo-cidades',
-    'nossas-serras': '/terra-e-territorios/nossas-serras',
-    'nossos-rios': '/terra-e-territorios/nossos-rios',
-    'meio-ambiente': '/ambiental',
-    judiciario: '/judiciario/instituicoes',
-    orcamento: '/estado-e-economia/orcamento',
-    congresso: '/congresso',
-  };
-  const rotaSubfrente = subfrentesMapeadas[ficha.subfrente] ?? `${rotaEixo}?subfrente=${ficha.subfrente}`;
-
-  const fichasDestino: Record<string, string> = {
-    'ficha-bh-saude-sus': '/direitos-em-movimento/servicos?subfrente=saude-publica',
-    'ficha-bh-educacao-ideb': '/direitos-em-movimento/servicos?subfrente=educacao',
-    'ficha-bh-orcamento-execucao': '/estado-e-economia/orcamento',
-    'ficha-bh-meio-ambiente-velhas': '/terra-e-territorios/nossos-rios',
-    'ficha-betim-saude-cnes': '/betim',
-    'ficha-betim-paraopeba-obras': '/paraopeba',
-    'ficha-sirenejud-processos-mg': '/judiciario/sirenejud',
-  };
-  const destinoFicha = fichasDestino[ficha.id] ?? rotaSubfrente;
+  const rotaSubfrente = SUBFRENTES_MAPEADAS[ficha.subfrente] ?? `${rotaEixo}?subfrente=${ficha.subfrente}`;
+  const destinoFicha = DESTINOS_DE_FICHA[ficha.id] ?? rotaSubfrente;
 
   if (variant === 'compact') {
     return (

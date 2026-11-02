@@ -483,12 +483,43 @@ function RedeCidades({ stats }: { stats: ReturnType<typeof obterEstatisticasExpa
   );
 }
 
+/**
+ * As três frentes que têm ficha própria, com a rota onde a lista completa vive.
+ * O hub mostra duas fichas de cada uma: ler as 43 aqui viraria parede.
+ */
+const FRENTES_COM_FICHAS = [
+  {
+    subfrente: 'nossas-serras',
+    rotulo: 'Serras e geologia',
+    href: '/terra-e-territorios/nossas-serras',
+  },
+  {
+    subfrente: 'nossos-rios',
+    rotulo: 'Rios e bacias',
+    href: '/terra-e-territorios/nossos-rios',
+  },
+  {
+    subfrente: 'biomas',
+    rotulo: 'Fauna ameaçada',
+    href: '/ambiental/nossos-animais',
+  },
+] as const;
+
 function SecaoFichas({
   fichas,
 }: {
   fichas: ReturnType<typeof listarFichasPorEixo>;
 }) {
   if (fichas.length === 0) return null;
+
+  const porFrente = FRENTES_COM_FICHAS.map((frente) => ({
+    ...frente,
+    total: fichas.filter((f) => f.subfrente === frente.subfrente).length,
+  }));
+  const destaque = FRENTES_COM_FICHAS.flatMap((frente) =>
+    fichas.filter((f) => f.subfrente === frente.subfrente).slice(0, 2),
+  );
+
   return (
     <section id="fichas" aria-labelledby="fichas-terra-titulo" className="mb-12 scroll-mt-24">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
@@ -500,7 +531,7 @@ function SecaoFichas({
             Fichas Socioambientais e Territoriais
           </h2>
           <p className="text-sm text-muted">
-            Bacias hidrográficas, monitoramento de desastres e licenciamento ambiental
+            Geologia das serras, bacias hidrográficas e fauna ameaçada, com fonte oficial e ano
           </p>
         </div>
         <span className="rounded-full bg-surface-2 border border-border px-3 py-1 text-xs font-semibold text-muted">
@@ -508,8 +539,25 @@ function SecaoFichas({
         </span>
       </div>
 
+      <ul className="mb-6 flex flex-wrap gap-2 text-sm">
+        {porFrente.map((frente) =>
+          frente.total === 0 ? null : (
+            <li key={frente.subfrente}>
+              <Link
+                href={frente.href}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 hover:border-emerald-500 transition-colors"
+              >
+                <span className="font-medium text-foreground">{frente.rotulo}</span>
+                <span className="text-xs text-muted">{frente.total}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </li>
+          ),
+        )}
+      </ul>
+
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {fichas.map((f) => (
+        {destaque.map((f) => (
           <FichaCard key={f.id} ficha={f} />
         ))}
       </div>
