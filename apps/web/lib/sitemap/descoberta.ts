@@ -61,6 +61,14 @@ export const EXCLUIR: Record<string, string> = {
   // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
   // aponta para o recorte, nunca para a URL nua.
   "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
+  // Frente Paraopeba (02/11/2026): o indice era so lista de links e virou a
+  // secao `#indice` do hub; o radar da Vale virou `?fonte=vale` do painel de
+  // noticias. As duas rotas antigas sao ponte, com `noindex`.
+  "/paraopeba/indice": "ponte de URL antiga, noindex",
+  "/paraopeba/noticias-vale": "ponte de URL antiga, noindex",
+  // O painel de noticias sem faceta e o mesmo HTML do recorte padrao: quem
+  // anuncia sao as duas URLs com `?fonte=` em `app/sitemap.ts`.
+  "/paraopeba/noticias": "painel com faceta; recortes anunciados no sitemap",
 };
 
 /**

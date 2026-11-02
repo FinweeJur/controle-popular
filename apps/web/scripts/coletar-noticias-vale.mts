@@ -1,8 +1,8 @@
 /**
  * coletar-noticias-vale.mts — painel de notícias recentes sobre a Vale.
  *
- * Grava `apps/web/data/noticias-vale.json`, lido no BUILD pela rota
- * `/paraopeba/noticias-vale`. É o gêmeo do radar do Paraopeba
+ * Grava `apps/web/data/noticias-vale.json`, lido no BUILD pelo recorte
+ * `?fonte=vale` do painel `/paraopeba/noticias`. É o gêmeo do radar do Paraopeba
  * (`scripts/coletar-noticias-paraopeba.py`): o mesmo contrato — guardar
  * título, link, fonte, data e resumo da própria fonte, nunca o corpo da
  * matéria. Reproduzir reportagem inteira é uso de obra de terceiro, e este

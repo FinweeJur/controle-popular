@@ -1,101 +1,35 @@
 import type { Metadata } from "next";
-import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
-import { IndiceWiki } from "@/app/components/wiki";
+import { notFound } from "next/navigation";
+import PaginaPonte from "@/app/components/PaginaPonte";
+import { destinoAntigo } from "@/lib/redirects/rotas-antigas";
 
-const tópicos: Topico[] = [
-  {
-    href: "/paraopeba",
-    titulo: "Visão geral",
-    descricao: "Panorama da reparação de Brumadinho.",
-  },
-  {
-    href: "/paraopeba/analise",
-    titulo: "Analise",
-    descricao: "Análises sobre a reparação e o acordo.",
-  },
-  {
-    href: "/paraopeba/auditoria",
-    titulo: "Auditoria",
-    descricao: "Auditorias e fiscalização da reparação.",
-  },
-  {
-    href: "/paraopeba/auxilio",
-    titulo: "Auxilio",
-    descricao: "Auxílio emergencial e pagamentos às famílias atingidas.",
-  },
-  {
-    href: "/paraopeba/biblioteca",
-    titulo: "Biblioteca",
-    descricao: "Documentos e publicacoes sobre a reparação.",
-  },
-  {
-    href: "/paraopeba/clipping",
-    titulo: "Clipping",
-    descricao: "Notícias e cobertura de imprensa sobre Brumadinho.",
-  },
-  {
-    href: "/paraopeba/documentos",
-    titulo: "Documentos",
-    descricao: "Documentos oficiais da reparação e do acordo.",
-  },
-  {
-    href: "/paraopeba/entenda",
-    titulo: "Entenda",
-    descricao: "Como funciona a reparação e o Acordo de Brumadinho.",
-  },
-  {
-    href: "/paraopeba/execucao",
-    titulo: "Execução",
-    descricao: "Execução do acordo e andamento das obrigações.",
-  },
-  {
-    href: "/paraopeba/linha-do-tempo",
-    titulo: "Linha do tempo",
-    descricao: "Cronologia dos principais marcos desde 2019.",
-  },
-  {
-    href: "/paraopeba/pericia",
-    titulo: "Pericia",
-    descricao: "Pareceres e perícias técnicas.",
-  },
-  {
-    href: "/paraopeba/quem-atua",
-    titulo: "Quem atua",
-    descricao: "Entidades envolvidas na reparação.",
-  },
-];
+/**
+ * @file Ponte de `/paraopeba/indice`.
+ *
+ * O índice era uma lista de 12 links para as telas da frente, sem dado
+ * próprio. Em 02/11/2026 a lista foi absorvida pelo hub `/paraopeba`, na seção
+ * `#indice` — mesmos títulos e mesmas descrições, agora ao lado do dado que
+ * cada porta abre.
+ *
+ * O destino vem de `lib/redirects/rotas-antigas.ts`, a mesma lista que monta o
+ * `redirects()` do `next.config.ts`: uma lista só evita o 301 e a ponte
+ * divergirem no primeiro dia em que alguém edita uma e esquece a outra.
+ */
+const ROTA = "/paraopeba/indice";
 
 export const metadata: Metadata = {
-  title: "Índice — Reparação de Brumadinho — Controle Popular",
-  description:
-    "Navegue pelos dados da reparação de Brumadinho: auxilio, execucao do acordo, documentos, perícias e linha do tempo.",
+  title: "Índice da frente Paraopeba — endereço novo | Controle Popular",
+  robots: { index: false, follow: true },
 };
 
-export default function ÍndiceParaopeba() {
+export default function PonteIndiceParaopeba() {
+  const destino = destinoAntigo(ROTA);
+  if (!destino) notFound();
   return (
-    <main
-      id="conteudo-principal"
-      tabIndex={-1}
-      className="mx-auto max-w-5xl px-4 py-8"
-    >
-      <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Índice — Reparação de Brumadinho</h1>
-        <p className="max-w-2xl text-text-soft">
-          Dados da reparação de Brumadinho: auxilio, execucao do acordo,
-          documentos, perícias e linha do tempo.
-        </p>
-      </header>
-
-      <IndiceWiki itens={[{ id: "tópicos", titulo: "Tópicos" }]} />
-
-      <section className="mt-10" id="tópicos">
-        <h2 className="font-display text-xl font-semibold">Tópicos</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tópicos.map((topico) => (
-            <CartaoTopico key={topico.href} topico={topico} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <PaginaPonte
+      destino={destino}
+      titulo="O índice da frente Paraopeba agora mora no hub"
+      descricao="A lista de telas é a mesma — análise, auditoria, auxílio, biblioteca, clipping, documentos, entenda, execução, linha do tempo, perícia e quem atua — agora na seção “Índice da frente”, dentro de /paraopeba."
+    />
   );
 }

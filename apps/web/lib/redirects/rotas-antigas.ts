@@ -50,6 +50,16 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
     motivo: "virou faceta do painel de servicos essenciais (02/11/2026)",
   },
+  {
+    de: "/paraopeba/indice",
+    para: "/paraopeba#indice",
+    motivo: "indice sem dado proprio absorvido pelo hub da frente (02/11/2026)",
+  },
+  {
+    de: "/paraopeba/noticias-vale",
+    para: "/paraopeba/noticias?fonte=vale",
+    motivo: "virou recorte do painel de noticias da bacia e da Vale (02/11/2026)",
+  },
 ];
 
 /**

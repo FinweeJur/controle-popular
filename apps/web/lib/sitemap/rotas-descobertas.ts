@@ -19,6 +19,9 @@
  *   /direitos-em-movimento/educacao — ponte de URL antiga, noindex
  *   /direitos-em-movimento/trabalho-e-renda — ponte de URL antiga, noindex
  *   /direitos-em-movimento/servicos — painel com faceta; recortes anunciados no sitemap
+ *   /paraopeba/indice — ponte de URL antiga, noindex
+ *   /paraopeba/noticias-vale — ponte de URL antiga, noindex
+ *   /paraopeba/noticias — painel com faceta; recortes anunciados no sitemap
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -245,10 +248,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/paraopeba/documentos",
   "/paraopeba/entenda",
   "/paraopeba/execucao",
-  "/paraopeba/indice",
   "/paraopeba/linha-do-tempo",
-  "/paraopeba/noticias",
-  "/paraopeba/noticias-vale",
   "/paraopeba/pericia",
   "/paraopeba/quem-atua",
   "/paraopeba/vale",
