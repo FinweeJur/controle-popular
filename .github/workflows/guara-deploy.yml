@@ -7,6 +7,11 @@ name: Guara Cloud CI & Deploy
 # 2. Typecheck (tsc --noEmit). O build standalone do Guara pula o tsc embutido
 #    do `next build` para não gastar cota (ver apps/web/next.config.ts); este
 #    passo é a rede que substitui aquela checagem.
+# 2b. Lint (eslint) do apps/web. Os passos 2, 2b e 3 usam `if: always()` para
+#     que uma falha nos testes nao deixe o typecheck "skipped" (02/11/2026).
+#     Linha de base em 02/11/2026: 252 erros e 3418 avisos no eslint do
+#     apps/web. Por isso o passo de lint roda com continue-on-error e vira
+#     bloqueante quando a divida chegar a zero.
 # 3. Varredura estrita de privacidade (scripts/checar-dado-pessoal-em-dado.py)
 #
 # Deploy NÃO roda em push (política do dono, OPERACAO.md §0, 19/09/2026):
@@ -28,7 +33,7 @@ concurrency:
 
 jobs:
   testar:
-    name: Testes e Validação de Privacidade
+    name: Testes, Typecheck, Lint e Validação de Privacidade
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,9 +56,16 @@ jobs:
         run: npm run test:lib -w @cp/web
 
       - name: Typecheck (apps/web)
+        if: always()
         run: npm run typecheck -w @cp/web
 
+      - name: Lint (apps/web) - informativo, nao bloqueia
+        if: always()
+        continue-on-error: true
+        run: npm run lint -w @cp/web
+
       - name: Validar privacidade e ausência de CPF em dados ingeridos
+        if: always()
         run: python scripts/checar-dado-pessoal-em-dado.py
 
   deploy:

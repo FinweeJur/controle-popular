@@ -126,6 +126,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/cidades/sp",
   "/cidades/to",
   "/comparar",
+  "/concursos",
   "/congresso",
   "/congresso/agenda",
   "/congresso/almg",
