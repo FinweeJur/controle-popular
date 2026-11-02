@@ -601,6 +601,33 @@ const nextConfig: NextConfig = {
               destination: "/universidades",
               permanent: true,
             },
+            // Três rotas irmãs viraram uma faceta só (02/11/2026): saúde,
+            // educação e trabalho e renda tinham o mesmo esqueleto (quatro
+            // cartões, uma série, lista de fichas) e passaram a ser
+            // `?subfrente=` em `/direitos-em-movimento/servicos`.
+            //
+            // O destino carrega a query porque é ela que preserva o recorte:
+            // mandar tudo para o painel seco faria o leitor de um link antigo
+            // cair na saúde quando queria o trabalho e renda.
+            //
+            // No alvo `output: 'export'` (GitHub Pages) esta função não
+            // existe: lá quem redireciona é a página-ponte de cada rota
+            // antiga, em `app/direitos-em-movimento/<rota>/page.tsx`.
+            {
+              source: "/direitos-em-movimento/saude-publica",
+              destination: "/direitos-em-movimento/servicos?subfrente=saude-publica",
+              permanent: true,
+            },
+            {
+              source: "/direitos-em-movimento/educacao",
+              destination: "/direitos-em-movimento/servicos?subfrente=educacao",
+              permanent: true,
+            },
+            {
+              source: "/direitos-em-movimento/trabalho-e-renda",
+              destination: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
+              permanent: true,
+            },
           ];
         },
       }),

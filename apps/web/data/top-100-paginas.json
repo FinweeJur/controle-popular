@@ -482,7 +482,7 @@
   {
     "id": "direitos-saude-publica",
     "titulo": "Saúde Pública & Capacidade SUS",
-    "href": "/direitos-em-movimento/saude-publica",
+    "href": "/direitos-em-movimento/servicos?subfrente=saude-publica",
     "eixo": "Eixo 1: Direitos em Movimento",
     "subfrenteId": "saude-publica",
     "subfrente": "Saúde Pública",
@@ -494,7 +494,7 @@
   {
     "id": "direitos-educacao",
     "titulo": "Educação Básica, Escolas e IDEB",
-    "href": "/direitos-em-movimento/educacao",
+    "href": "/direitos-em-movimento/servicos?subfrente=educacao",
     "eixo": "Eixo 1: Direitos em Movimento",
     "subfrenteId": "educacao-basica",
     "subfrente": "Educação",
@@ -506,7 +506,7 @@
   {
     "id": "direitos-trabalho-renda",
     "titulo": "Trabalho Formal e Renda (CAGED/RAIS)",
-    "href": "/direitos-em-movimento/trabalho-e-renda",
+    "href": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
     "eixo": "Eixo 1: Direitos em Movimento",
     "subfrenteId": "trabalho-renda",
     "subfrente": "Trabalho e Renda",

@@ -102,7 +102,7 @@ export const CONTEXTOS: ContextoPagina[] = [
         pergunta: "Como estão as contratações e empregos formais na cidade?",
         resposta:
           "O Eixo Direitos em Movimento monitora admissões do CAGED e geração de renda em Betim.",
-        link: "/direitos-em-movimento/trabalho-e-renda",
+        link: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
         linkTexto: "Painel de Trabalho e Renda",
       },
     ],

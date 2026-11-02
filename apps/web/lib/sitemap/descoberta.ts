@@ -51,6 +51,16 @@ export const EXCLUIR: Record<string, string> = {
   // Painel de status do portal (oferta GitHub Pages). E pagina de SERVICO,
   // marcada `noindex` no proprio metadata — nao e conteudo para o buscador.
   "/status": "pagina de servico, noindex",
+  // Pontes do painel de servicos (02/11/2026): a rota antiga redireciona
+  // para `/direitos-em-movimento/servicos?subfrente=...`. Indexar a ponte
+  // duplicaria o destino que o canonical ja resolve.
+  "/direitos-em-movimento/saude-publica": "ponte de URL antiga, noindex",
+  "/direitos-em-movimento/educacao": "ponte de URL antiga, noindex",
+  "/direitos-em-movimento/trabalho-e-renda": "ponte de URL antiga, noindex",
+  // O painel sem faceta e o mesmo HTML do recorte padrao: quem anuncia sao as
+  // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
+  // aponta para o recorte, nunca para a URL nua.
+  "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
 };
 
 /**

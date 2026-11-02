@@ -289,7 +289,18 @@ const EIXOS: EixoCartao[] = [
     subfrentes: [
       { href: "/memoria", texto: "✦ Linha do Tempo das Lutas & Memória" },
       { href: "/ambiental/legislacao", texto: "✦ Que Lei Protege Isso (Biblioteca)" },
-      { href: "/direitos-em-movimento/saude-publica", texto: "✦ Saúde Pública & SUS" },
+      {
+        href: "/direitos-em-movimento/servicos?subfrente=saude-publica",
+        texto: "✦ Saúde Pública & SUS",
+      },
+      {
+        href: "/direitos-em-movimento/servicos?subfrente=educacao",
+        texto: "✦ Educação & IDEB",
+      },
+      {
+        href: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
+        texto: "✦ Trabalho & Renda",
+      },
       // Tarifa Social aponta para a notícia (passo a passo do desconto);
       // Ajuda continua na rede de proteção. Decisão de conteúdo, 08/2026.
       { href: "/noticias/tarifa-social-energia-agua-como-acessar", texto: "✦ Tarifa Social de Água & Luz" },

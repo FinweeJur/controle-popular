@@ -203,7 +203,7 @@ const FERRAMENTAS: EntradaCartao[] = [
       atalhos: [
         { rotulo: "Painel ComunicaBR", href: "/dados/comunicabr", principal: true },
         { rotulo: "199 Cidades Estratégicas", href: "/cidades" },
-        { rotulo: "Saúde Pública e SUS", href: "/direitos-em-movimento/saude-publica" },
+        { rotulo: "Saúde Pública e SUS", href: "/direitos-em-movimento/servicos?subfrente=saude-publica" },
       ],
     },
   },

@@ -181,7 +181,7 @@ export default async function DireitosEmMovimentoHub() {
           </NextLink>
 
           <NextLink
-            href="/direitos-em-movimento/saude-publica"
+            href="/direitos-em-movimento/servicos?subfrente=saude-publica"
             className="group flex flex-col justify-between rounded-xl border border-amber-500/40 bg-surface p-4 hover:border-amber-500 hover:bg-amber-500/10 transition-all shadow-xs"
           >
             <div>

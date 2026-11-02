@@ -365,9 +365,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Eixo 1: Direitos em Movimento
     item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/educacao", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/servicos?subfrente=educacao", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
     item("/direitos-em-movimento/ajuda", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/denuncia", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/informacao", { changeFrequency: "weekly", priority: 0.7 }),

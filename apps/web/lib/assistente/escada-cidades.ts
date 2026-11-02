@@ -149,7 +149,7 @@ const CIDADES: EntradaCartao[] = [
         { rotulo: "199 Cidades Estratégicas", href: "/cidades", principal: true },
         { rotulo: "Governo: Prometeu? Cumpriu?", href: "/governo" },
         { rotulo: "Tarifa Social de Energia e Água", href: "/noticias/tarifa-social-energia-agua-como-acessar" },
-        { rotulo: "Painel de Saúde Pública", href: "/direitos-em-movimento/saude-publica" },
+        { rotulo: "Painel de Saúde Pública", href: "/direitos-em-movimento/servicos?subfrente=saude-publica" },
       ],
     },
   },

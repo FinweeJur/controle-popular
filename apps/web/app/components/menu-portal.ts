@@ -55,13 +55,13 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true, dica: 'Biblioteca de leis ambientais e de direitos: o que cada norma garante e como acioná-la.' },
       { label: 'Direitos Globais', href: '/direitos-globais', icone: Globe, destaque: true, dica: 'Compare direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania.' },
       { label: 'Direitos Comparados', href: '/direitos-comparados', icone: Scale, destaque: true, dica: 'Indicadores de direitos entre estados brasileiros: IDH, saúde, educação, justiça e finanças.' },
-      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/saude-publica', icone: Activity, destaque: true, dica: 'Indicadores do SUS por município: cobertura, equipes, internações e gastos em saúde.' },
+      { label: 'Saúde Pública & SUS', href: '/direitos-em-movimento/servicos?subfrente=saude-publica', icone: Activity, destaque: true, dica: 'Indicadores do SUS: referência nacional de leitos e internações, com as fichas de saúde.' },
       // Tarifa Social e Ajuda são coisas distintas: a primeira é uma notícia
       // com o passo a passo do desconto; a segunda é a rede de proteção.
       { label: 'Tarifa Social (Água & Luz)', href: '/noticias/tarifa-social-energia-agua-como-acessar', icone: Newspaper, destaque: true, dica: 'Passo a passo para pedir o desconto da Tarifa Social de água e luz por estado e distribuidora.' },
       { label: 'Onde Buscar Ajuda', href: '/direitos-em-movimento/ajuda', icone: HelpCircle, destaque: true, dica: 'Rede de proteção: assistência jurídica gratuita, CRAS, CREAS e canais de apoio.' },
-      { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/educacao', icone: GraduationCap, dica: 'Escolas e IDEB por município: infraestrutura, aprendizado e evolução das notas.' },
-      { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/trabalho-e-renda', icone: Briefcase, dica: 'Emprego formal pelo CAGED: admissões, demissões, salários e setores por cidade.' },
+      { label: 'Educação & Escolas (IDEB)', href: '/direitos-em-movimento/servicos?subfrente=educacao', icone: GraduationCap, dica: 'Série do IDEB e escolas: referência nacional, com as fichas de educação.' },
+      { label: 'Trabalho & Emprego (CAGED)', href: '/direitos-em-movimento/servicos?subfrente=trabalho-e-renda', icone: Briefcase, dica: 'Emprego formal pelo CAGED: saldo por setor e as fichas de trabalho e renda.' },
       { label: 'Conselhos de Direitos (710)', href: '/direitos-em-movimento/conselhos', icone: Users, dica: '710 conselhos de direitos: saúde, meio ambiente, tutelares e mulheres, com contatos.' },
       { label: 'Pedir Informação (LAI)', href: '/direitos-em-movimento/informacao', icone: FileQuestion, dica: 'Como pedir informação pública pela LAI: canais, prazos e o que fazer se negarem.' },
       { label: 'Canal de Denúncia Local', href: '/direitos-em-movimento/denuncia', icone: Send, dica: 'Canais locais para denunciar violações ambientais, de direitos e de serviços públicos.' },

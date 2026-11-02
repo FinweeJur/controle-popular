@@ -38,9 +38,9 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
       : '/estado-e-economia';
 
   const subfrentesMapeadas: Record<string, string> = {
-    'saude-publica': '/direitos-em-movimento/saude-publica',
-    educacao: '/direitos-em-movimento/educacao',
-    'trabalho-e-renda': '/direitos-em-movimento/trabalho-e-renda',
+    'saude-publica': '/direitos-em-movimento/servicos?subfrente=saude-publica',
+    educacao: '/direitos-em-movimento/servicos?subfrente=educacao',
+    'trabalho-e-renda': '/direitos-em-movimento/servicos?subfrente=trabalho-e-renda',
     cidades: '/terra-e-territorios/cidades',
     'nossas-serras': '/terra-e-territorios/nossas-serras',
     'nossos-rios': '/terra-e-territorios/nossos-rios',
@@ -52,8 +52,8 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
   const rotaSubfrente = subfrentesMapeadas[ficha.subfrente] ?? `${rotaEixo}?subfrente=${ficha.subfrente}`;
 
   const fichasDestino: Record<string, string> = {
-    'ficha-bh-saude-sus': '/direitos-em-movimento/saude-publica',
-    'ficha-bh-educacao-ideb': '/direitos-em-movimento/educacao',
+    'ficha-bh-saude-sus': '/direitos-em-movimento/servicos?subfrente=saude-publica',
+    'ficha-bh-educacao-ideb': '/direitos-em-movimento/servicos?subfrente=educacao',
     'ficha-bh-orcamento-execucao': '/estado-e-economia/orcamento',
     'ficha-bh-meio-ambiente-velhas': '/terra-e-territorios/nossos-rios',
     'ficha-betim-saude-cnes': '/betim',

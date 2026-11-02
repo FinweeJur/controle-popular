@@ -15,6 +15,10 @@
  *   /notificacoes — redirect para /alertas
  *   /assistente-ia-lab — laboratorio interno, nao publicado
  *   /status — pagina de servico, noindex
+ *   /direitos-em-movimento/saude-publica — ponte de URL antiga, noindex
+ *   /direitos-em-movimento/educacao — ponte de URL antiga, noindex
+ *   /direitos-em-movimento/trabalho-e-renda — ponte de URL antiga, noindex
+ *   /direitos-em-movimento/servicos — painel com faceta; recortes anunciados no sitemap
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -136,11 +140,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/direitos-em-movimento/ajuda",
   "/direitos-em-movimento/conselhos",
   "/direitos-em-movimento/denuncia",
-  "/direitos-em-movimento/educacao",
   "/direitos-em-movimento/informacao",
-  "/direitos-em-movimento/saude-publica",
   "/direitos-em-movimento/seguranca-publica",
-  "/direitos-em-movimento/trabalho-e-renda",
   "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
   "/direitos-globais",
   "/direitos-globais/africa",
@@ -157,6 +158,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/documentacao/editorial",
   "/documentacao/fontes-e-coletas",
   "/editais",
+  "/educacao",
   "/eleicoes/2026/gastos-campanha",
   "/eleicoes/2026/locais-votacao-alterados",
   "/eleicoes/2026/transporte-gratuito",
@@ -252,6 +254,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/paraopeba/vale",
   "/paraopeba/vale/documentos",
   "/pasta",
+  "/periodicos",
   "/politica-de-ia",
   "/radio",
   "/recapitular",
