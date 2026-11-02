@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
+import {
+  CorpoGrafico,
+  prepararItens,
+  TIPOS_GRAFICO,
+  type TipoGrafico,
+} from "./graficos";
 import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
@@ -128,54 +134,58 @@ function contar(frente: string): number {
  * item da lista. Percentual sobre base errada é o erro mais fácil de publicar
  * sem perceber.
  */
-export function Barras({
+export function Grafico({
   titulo,
   dados,
   total,
   nota,
   limite = 10,
+  tipo = "barras",
 }: {
   titulo: string;
   dados: [string, number][];
   total: number;
   nota?: string;
   limite?: number;
+  tipo?: TipoGrafico;
 }) {
-  const itens: [string, number][] = dados.slice(0, limite);
-  const resto = dados.slice(limite).reduce((soma, [, n]) => soma + n, 0);
-  if (resto > 0) itens.push([`+ ${dados.length - limite} categorias`, resto]);
-  const maior = Math.max(...itens.map(([, n]) => n), 1);
+  // Rosca e blocos não se leem com dez fatias: nesses dois, o limite cai.
+  const teto = tipo === "barras" ? limite : 6;
+  const itens = prepararItens(dados, teto, (chave) => ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave);
   return (
     <section className="space-y-2">
       <h2 className="font-display text-lg font-semibold">{titulo}</h2>
-      <ul className="space-y-1.5">
-        {itens.map(([chave, n]) => {
-          const rotulo = ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave;
-          return (
-            <li key={chave} className="flex items-center gap-2 text-sm">
-              <span className="w-[8.5rem] shrink-0 truncate" title={rotulo}>
-                {rotulo}
-              </span>
-              <span
-                className="h-2.5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]"
-                role="img"
-                aria-label={`${rotulo}: ${n} de ${total}`}
-              >
-                <span
-                  className="block h-full rounded bg-[var(--cp-primary)]"
-                  style={{ width: `${(100 * n) / maior}%` }}
-                />
-              </span>
-              <span className="w-14 shrink-0 text-right font-tabular">{n.toLocaleString("pt-BR")}</span>
-              <span className="w-11 shrink-0 text-right font-tabular opacity-60">
-                {total ? `${Math.round((100 * n) / total)}%` : "—"}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+      <CorpoGrafico tipo={tipo} itens={itens} total={total} />
       {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
     </section>
+  );
+}
+
+/**
+ * Troca a representação do painel inteiro: barras, rosca ou blocos.
+ *
+ * Mesmo mecanismo da faixa de temas — link com o estado na URL. Escolher
+ * "rosca" troca os oito gráficos de uma vez, o que é o comportamento de painel
+ * que o dono pediu; não faz sentido ter metade do painel em barras.
+ */
+export function SeletorGrafico({ filtros, tipo }: { filtros: Filtros; tipo: TipoGrafico }) {
+  return (
+    <nav className="flex flex-wrap items-center gap-2 text-sm" aria-label="Tipo de gráfico">
+      <span className="opacity-70">Como ver:</span>
+      {TIPOS_GRAFICO.map((opcao) => (
+        <Link
+          key={opcao.slug}
+          href={hrefCom({ ...filtros, grafico: opcao.slug }, 1)}
+          className={
+            tipo === opcao.slug
+              ? "rounded-full border border-[var(--cp-primary)] bg-[var(--cp-primary)] px-3 py-1 text-white"
+              : "rounded-full border border-[var(--cp-border)] px-3 py-1 hover:border-[var(--cp-primary)]"
+          }
+        >
+          {opcao.rotulo}
+        </Link>
+      ))}
+    </nav>
   );
 }
 
@@ -648,7 +658,13 @@ export function NoticiasTribunais() {
  * acervo entra. Todos os blocos saem do MESMO `casos`, então o número do topo,
  * a barra e a lista nunca discordam.
  */
-export function PainelRecorte({ casos }: { casos: CasoJurisprudencia[] }) {
+export function PainelRecorte({
+  casos,
+  tipo = "barras",
+}: {
+  casos: CasoJurisprudencia[];
+  tipo?: TipoGrafico;
+}) {
   const total = casos.length;
   const comTemas = casos.filter((caso) => caso.temas.length > 0).length;
   const comDanos = casos.filter((caso) => caso.danos_pnab.length > 0).length;
@@ -664,37 +680,42 @@ export function PainelRecorte({ casos }: { casos: CasoJurisprudencia[] }) {
         {CASOS_DESASTRE.length.toLocaleString("pt-BR")}.
       </p>
       <div className="grid gap-8 md:grid-cols-2">
-        <Barras titulo="Por tribunal" dados={contagemPor(casos, "tribunal")} total={total} />
-        <Barras titulo="Por frente" dados={contagemPor(casos, "frente")} total={total} />
-        <Barras
+        <Grafico titulo="Por tribunal" dados={contagemPor(casos, "tribunal")} total={total} tipo={tipo} />
+        <Grafico titulo="Por frente" dados={contagemPor(casos, "frente")} total={total} tipo={tipo} />
+        <Grafico
           titulo="Resultado do recurso"
           dados={contagemPor(casos, "resultado")}
           total={total}
+          tipo={tipo}
           nota="Inclui itens sem resultado registrado na categoria —."
         />
-        <Barras
+        <Grafico
           titulo="Polo vencedor"
           dados={contagemPor(casos, "polo")}
           total={total}
+          tipo={tipo}
           nota={`Polo só existe onde o resumo de mérito foi classificado: ${comPolo.toLocaleString("pt-BR")} itens.`}
         />
-        <Barras titulo="Por ano da decisão" dados={porAno} total={total} />
-        <Barras
+        <Grafico titulo="Por ano da decisão" dados={porAno} total={total} tipo={tipo} />
+        <Grafico
           titulo="Temas do acervo"
           dados={contarLista(casos, "temas")}
           total={comTemas}
+          tipo={tipo}
           nota={`Um processo entra em vários temas: ${comTemas.toLocaleString("pt-BR")} itens com tema preenchido.`}
         />
-        <Barras
+        <Grafico
           titulo="Danos PNAB/PEAB reconhecidos"
           dados={contarLista(casos, "danos_pnab")}
           total={comDanos}
+          tipo={tipo}
           nota={`${comDanos.toLocaleString("pt-BR")} itens com dano classificado.`}
         />
-        <Barras
+        <Grafico
           titulo="Faixa de valor mencionado"
           dados={faixas.dados}
           total={faixas.n}
+          tipo={tipo}
           nota={
             faixas.n
               ? `${faixas.n.toLocaleString("pt-BR")} decisões com valor em R$ — mediana ${reais(valores.mediana)}.`

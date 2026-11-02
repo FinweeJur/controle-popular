@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Check, Copy } from "lucide-react";
 import type { CasoJurisprudencia } from "@/lib/jurisprudencia";
 import { NOMES_FRENTE, NOMES_TIPO, merito } from "./rotulos";
 
@@ -50,15 +51,30 @@ function temMaisTexto(caso: CasoJurisprudencia): boolean {
   return !ehCurto(caso) || ementaDe(caso) !== resumoDe(caso);
 }
 
+/** Ficha da decisão: o que saiu da linha e virou detalhe. */
+function fichaDe(caso: CasoJurisprudencia): string {
+  return [caso.orgao, caso.comarca, caso.classe, caso.recorrente].filter(Boolean).join(" · ");
+}
+
+/** Link de inteiro teor, quando existe. Um lugar só decide isso. */
+function linkInteiro(caso: CasoJurisprudencia): string | null {
+  const link = caso.link ?? "";
+  return link.startsWith("/api/inteiro-teor") ? link : null;
+}
+
+/** Rótulo do gatilho conforme o que está aberto. */
+function rotuloGatilho(aberto: "resumo" | "inteiro" | null, qual: "resumo" | "inteiro"): string {
+  if (aberto !== qual) return qual === "resumo" ? "ver mais" : "ver inteiro teor";
+  return qual === "resumo" ? "ver menos" : "fechar inteiro teor";
+}
+
 function Detalhe({ caso }: { caso: CasoJurisprudencia }) {
   const resumo = resumoDe(caso);
   const ementa = ementaDe(caso);
   // A ementa vem do gerador com teto de 12.000 caracteres; só marca corte
   // quando o texto bate no teto.
   const cortada = ementa.length >= 12000 ? " […]" : "";
-  const ficha = [caso.orgao, caso.comarca, caso.classe, caso.recorrente]
-    .filter(Boolean)
-    .join(" · ");
+  const ficha = fichaDe(caso);
   return (
     <div className="max-h-[60vh] space-y-3 overflow-y-auto overscroll-contain pr-1 text-sm leading-relaxed">
       {ficha ? <p className="text-xs opacity-70">{ficha}</p> : null}
@@ -97,6 +113,107 @@ function ResumoCurto({ caso }: { caso: CasoJurisprudencia }) {
   );
 }
 
+/**
+ * Inteiro teor dentro da própria lista, não em aba de texto cru.
+ *
+ * Antes o botão abria `/api/inteiro-teor?...` numa aba nova: o leitor via
+ * texto puro em fonte monoespaçada, com cara de terminal, e sem como baixar.
+ * Agora o texto carrega aqui, na tipografia do portal, e o download é um link
+ * ao lado — o mesmo conteúdo, servido com `content-disposition` pela rota.
+ */
+function InteiroTeorPainel({ caso }: { caso: CasoJurisprudencia }) {
+  const [estado, setEstado] = useState<"carregando" | "erro" | "ok">("carregando");
+  const [texto, setTexto] = useState("");
+  useEffect(() => {
+    let vivo = true;
+    const url = caso.link ?? "";
+    fetch(url)
+      .then((resposta) => (resposta.ok ? resposta.text() : Promise.reject(new Error(String(resposta.status)))))
+      .then((conteudo) => {
+        if (!vivo) return;
+        setTexto(conteudo);
+        setEstado("ok");
+      })
+      .catch(() => vivo && setEstado("erro"));
+    return () => {
+      vivo = false;
+    };
+  }, [caso.link]);
+  return (
+    <div className="space-y-2">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs opacity-70">
+          Inteiro teor · {caso.processo} · {caso.tribunal}
+        </p>
+        <a
+          className="inline-flex items-center gap-1 text-xs font-semibold text-primary underline"
+          href={`${caso.link}&download=1`}
+          download={`${caso.processo}.txt`}
+        >
+          baixar .txt
+        </a>
+      </div>
+      {estado === "carregando" ? <p className="text-sm opacity-70">carregando…</p> : null}
+      {estado === "erro" ? (
+        <p className="text-sm opacity-70">
+          O inteiro teor deste processo não está disponível no portal.
+        </p>
+      ) : null}
+      {estado === "ok" ? (
+        <div className="max-h-[60vh] overflow-y-auto overscroll-contain whitespace-pre-wrap pr-1 text-sm leading-relaxed">
+          {texto}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * Copia resumo + ementa para a área de transferência.
+ *
+ * O botão existia no diálogo de ementa (`EmentaDialog.tsx`) e sumiu quando a
+ * leitura virou sanfona na própria linha. De volta aqui, com o mesmo texto e o
+ * mesmo ícone: o leitor copia a decisão para colar no laudo, no processo ou na
+ * conversa — sem isso ele seleciona 12 mil caracteres na mão.
+ */
+function BotaoCopiar({ caso }: { caso: CasoJurisprudencia }) {
+  const [copiado, setCopiado] = useState(false);
+  useEffect(() => {
+    if (!copiado) return;
+    const relogio = setTimeout(() => setCopiado(false), 2000);
+    return () => clearTimeout(relogio);
+  }, [copiado]);
+
+  const semPrefixo = (texto: string, prefixo: string) =>
+    texto.replace(new RegExp(`^${prefixo}:\\s*`, "i"), "").trim();
+  const texto = [
+    resumoDe(caso) ? `Resumo: ${semPrefixo(resumoDe(caso), "resumo")}` : "",
+    ementaDe(caso) ? `Ementa: ${semPrefixo(ementaDe(caso), "ementa")}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+  if (!texto) return null;
+
+  return (
+    <button
+      type="button"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(texto);
+          setCopiado(true);
+        } catch {
+          setCopiado(false);
+        }
+      }}
+      aria-label={`Copiar ementa do processo ${caso.processo}`}
+      className="inline-flex items-center gap-1 text-xs font-semibold text-primary underline"
+    >
+      {copiado ? <Check size={14} /> : <Copy size={14} />}
+      {copiado ? "copiado" : "copiar ementa"}
+    </button>
+  );
+}
+
 function Acoes({
   caso,
   aberto,
@@ -104,38 +221,42 @@ function Acoes({
   classe,
 }: {
   caso: CasoJurisprudencia;
-  aberto: boolean;
-  onToggle: () => void;
+  aberto: "resumo" | "inteiro" | null;
+  onToggle: (qual: "resumo" | "inteiro") => void;
   classe?: string;
 }) {
+  const temInteiro = Boolean(linkInteiro(caso));
   return (
     <div className={classe ?? "flex flex-col items-end gap-1"}>
       {temMaisTexto(caso) ? (
         <button
           type="button"
-          onClick={onToggle}
-          aria-expanded={aberto}
+          onClick={() => onToggle("resumo")}
+          aria-expanded={aberto === "resumo"}
           className="text-xs font-semibold text-primary underline"
         >
-          {aberto ? "ver menos" : "ver mais"}
+          {rotuloGatilho(aberto, "resumo")}
         </button>
       ) : null}
-      {caso.link?.startsWith("/api/inteiro-teor") ? (
-        <a
+      <BotaoCopiar caso={caso} />
+      {temInteiro ? (
+        <button
+          type="button"
+          onClick={() => onToggle("inteiro")}
+          aria-expanded={aberto === "inteiro"}
           className="text-xs font-semibold text-primary underline"
-          href={caso.link}
-          target="_blank"
-          rel="noopener noreferrer"
         >
-          ver inteiro teor
-        </a>
+          {rotuloGatilho(aberto, "inteiro")}
+        </button>
       ) : null}
     </div>
   );
 }
 
 export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
-  const [aberto, setAberto] = useState(false);
+  const [aberto, setAberto] = useState<"resumo" | "inteiro" | null>(null);
+  const alternar = (qual: "resumo" | "inteiro") =>
+    setAberto((atual) => (atual === qual ? null : qual));
   return (
     <>
       <tr className="hidden border-t border-[var(--cp-border)] align-top md:table-row">
@@ -151,13 +272,13 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
           <ResumoCurto caso={caso} />
         </td>
         <td className="w-[7.5rem] px-2 py-2 text-right">
-          <Acoes caso={caso} aberto={aberto} onToggle={() => setAberto((valor) => !valor)} />
+          <Acoes caso={caso} aberto={aberto} onToggle={alternar} />
         </td>
       </tr>
       {aberto ? (
         <tr className="hidden border-t border-[var(--cp-border)] bg-[var(--cp-surface-2)] md:table-row">
           <td colSpan={COLUNAS} className="px-4 py-3">
-            <Detalhe caso={caso} />
+            {aberto === "inteiro" ? <InteiroTeorPainel caso={caso} /> : <Detalhe caso={caso} />}
           </td>
         </tr>
       ) : null}
@@ -167,7 +288,9 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
 
 /** Cartão do celular: mesma informação, empilhada, sem rolagem lateral. */
 export function CartaoCaso({ caso }: { caso: CasoJurisprudencia }) {
-  const [aberto, setAberto] = useState(false);
+  const [aberto, setAberto] = useState<"resumo" | "inteiro" | null>(null);
+  const alternar = (qual: "resumo" | "inteiro") =>
+    setAberto((atual) => (atual === qual ? null : qual));
   return (
     <li className="space-y-1 rounded-lg border border-[var(--cp-border)] p-3 text-sm">
       <div className="flex items-start justify-between gap-2">
@@ -185,15 +308,10 @@ export function CartaoCaso({ caso }: { caso: CasoJurisprudencia }) {
       <ResumoCurto caso={caso} />
       {aberto ? (
         <div className="rounded bg-[var(--cp-surface-2)] p-2">
-          <Detalhe caso={caso} />
+          {aberto === "inteiro" ? <InteiroTeorPainel caso={caso} /> : <Detalhe caso={caso} />}
         </div>
       ) : null}
-      <Acoes
-        caso={caso}
-        aberto={aberto}
-        onToggle={() => setAberto((valor) => !valor)}
-        classe="flex flex-wrap gap-3 pt-1"
-      />
+      <Acoes caso={caso} aberto={aberto} onToggle={alternar} classe="flex flex-wrap gap-3 pt-1" />
     </li>
   );
 }

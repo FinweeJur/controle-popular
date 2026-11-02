@@ -14,9 +14,11 @@ import {
   PainelRecorte,
   resumo,
   RodapeMetodo,
+  SeletorGrafico,
   SumulasPorTribunal,
   TabelaCasos,
 } from "./partes";
+import type { TipoGrafico } from "./graficos";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -61,8 +63,12 @@ export default async function Jurisprudencia({
     ano: texto("ano"),
     q: texto("q"),
     recorte: texto("recorte"),
+    grafico: texto("grafico"),
     ordem: texto("ordem") || "ano_desc",
   };
+  const pedido = texto("grafico");
+  const tipoGrafico: TipoGrafico =
+    pedido === "rosca" || pedido === "blocos" ? pedido : "barras";
 
   // Um único recorte alimenta painel e lista: o que o leitor vê nos números é
   // exatamente o que ele vê na tabela abaixo.
@@ -98,7 +104,8 @@ export default async function Jurisprudencia({
         <FaixaTemas filtros={filtros} />
         <Atalhos tribunal={filtros.tribunal ?? ""} frente={filtros.frente ?? ""} />
 
-        <PainelRecorte casos={visiveis} />
+        <SeletorGrafico filtros={filtros} tipo={tipoGrafico} />
+        <PainelRecorte casos={visiveis} tipo={tipoGrafico} />
 
         <section className="space-y-4" id="lista">
           <h2 className="font-display text-xl font-semibold">Lista</h2>

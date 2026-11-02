@@ -17,7 +17,12 @@ export const runtime = "nodejs";
 const PERMITIDO = /^[\d.\-/]+$/;
 
 export async function GET(request: Request): Promise<Response> {
-  const processo = new URL(request.url).searchParams.get("processo") ?? "";
+  const url = new URL(request.url);
+  const processo = url.searchParams.get("processo") ?? "";
+  // `download=1` é o mesmo texto, com nome de arquivo: o leitor que vai usar a
+  // decisão fora do portal não deveria ter de selecionar 40 mil caracteres e
+  // salvar na mão.
+  const baixar = url.searchParams.get("download") === "1";
   if (!PERMITIDO.test(processo)) {
     return new Response("processo inválido", { status: 400 });
   }
@@ -29,6 +34,9 @@ export async function GET(request: Request): Promise<Response> {
       headers: {
         "content-type": "text/plain; charset=utf-8",
         "cache-control": "public, max-age=86400, stale-while-revalidate=604800",
+        ...(baixar
+          ? { "content-disposition": `attachment; filename="${processo}.txt"` }
+          : {}),
       },
     });
   } catch {

@@ -49,6 +49,8 @@ export interface Filtros {
   ordem?: string;
   /** Recorte de indenização (auxílio emergencial, PTR…), vindo da faixa de botões. */
   recorte?: string;
+  /** Representação do painel: barras, rosca ou blocos. Não filtra nada. */
+  grafico?: string;
 }
 
 export interface Pagina<T> {
