@@ -268,8 +268,8 @@ export default function TopNav() {
           </nav>
         </div>
 
-        {/* Barra de Busca Global — menor para caber na mesma linha dos botões. */}
-        <div className="mx-1 min-w-0 max-w-[16rem] flex-1 sm:max-w-[18rem]">
+        {/* Barra de Busca Global Expandível — padrão Lightswind UI */}
+        <div className="mx-1 flex min-w-0 items-center justify-end sm:justify-start">
           <BuscaGlobal />
         </div>
 
