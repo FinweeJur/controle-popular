@@ -19,12 +19,14 @@
  */
 
 import React from "react";
+import Link from "next/link";
 import {
   BookOpen,
   GraduationCap,
   Plane,
   Scale,
   School,
+  Briefcase,
   ArrowRight
 } from "lucide-react";
 import type { TopicoEducacao } from "./KpisExecutivos";
@@ -391,6 +393,34 @@ export default function TopicoPanoramaGeral({
             Abrir Direitos Comparados
             <ArrowRight className="w-4 h-4" />
           </button>
+        </div>
+      </section>
+
+      {/* Bloco 4: Carreiras Públicas, Magistério e Pesquisa */}
+      <section className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-6 sm:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-2 border border-emerald-500/20">
+              <Briefcase className="w-3.5 h-3.5" />
+              Carreiras Públicas, Magistério & Ciência
+            </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-foreground">
+              Concursos Públicos e Contratações Temporárias (PSS) na Educação
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">
+              Consulte vagas abertas e autorizadas para professores do magistério superior federal e estadual,
+              docentes da educação básica municipal, pesquisadores em institutos públicos (Fiocruz, Embrapa, IBGE, INEP)
+              e processos seletivos simplificados (PSS) em todo o país.
+            </p>
+          </div>
+
+          <Link
+            href="/concursos"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-xs hover:bg-emerald-700 transition-all cursor-pointer whitespace-nowrap"
+          >
+            Acessar Radar de Concursos
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>

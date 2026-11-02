@@ -20,7 +20,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Briefcase, ArrowRight } from "lucide-react";
 import PainelUniversidades from "@/app/universidades/PainelUniversidades";
 import ContatosInstituicoes from "@/app/universidades/ContatosInstituicoes";
 import type {
@@ -96,6 +96,30 @@ export default function TopicoUniversidadesExtensao({
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Chamada Cívica: Concursos Docentes e Pesquisa */}
+        <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-2xl bg-surface-2 border border-border">
+          <div className="flex items-center gap-3">
+            <span className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <Briefcase className="w-4 h-4" />
+            </span>
+            <div>
+              <span className="text-xs font-bold text-foreground block">
+                Carreira Acadêmica: Concursos Docentes e Pesquisadores
+              </span>
+              <p className="text-xs text-muted">
+                Consulte certames abertos para professores de universidades federais, estaduais e institutos de pesquisa.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/concursos"
+            className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline shrink-0"
+          >
+            <span>Ver Concursos Abertos</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
 

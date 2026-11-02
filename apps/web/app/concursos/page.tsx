@@ -76,9 +76,16 @@ export default function ConcursosPage() {
 
       {/* ─── CABEÇALHO DA PÁGINA ───────────────────────────────────────── */}
       <header className="space-y-4">
-        <p className="text-xs sm:text-sm font-semibold tracking-wide text-text-soft uppercase">
-          Carreira Pública & Acesso Cívico · Transparência & Controle Social
-        </p>
+        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wide text-text-soft uppercase">
+          <span>Carreira Pública & Acesso Cívico</span>
+          <span>•</span>
+          <Link
+            href="/educacao"
+            className="text-primary hover:underline font-bold"
+          >
+            🎓 Ver Hub de Educação, Pesquisa & Mobilidade →
+          </Link>
+        </div>
         <h1 className="font-display text-[clamp(1.8em,4vw,2.5em)] font-bold tracking-tight text-text">
           Concursos Públicos e Seleções Temporárias do Brasil
         </h1>

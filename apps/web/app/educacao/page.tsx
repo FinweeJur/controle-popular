@@ -92,6 +92,13 @@ export default function PaginaEducacao() {
             Hub Unificado · PowerBI Cívico
           </span>
           <span className="text-muted">•</span>
+          <Link
+            href="/concursos"
+            className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-500/20 transition-colors flex items-center gap-1"
+          >
+            <span>🏛️ Concursos & PSS da Educação</span>
+          </Link>
+          <span className="text-muted">•</span>
           <time dateTime={atualizado_em} className="text-muted">
             Dados auditados em {dataFormatada}
           </time>

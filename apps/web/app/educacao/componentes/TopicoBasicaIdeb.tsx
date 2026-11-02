@@ -18,6 +18,7 @@
  */
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import {
   School,
   TrendingUp,
@@ -26,6 +27,7 @@ import {
   Building,
   Wifi,
   ArrowUpDown,
+  ArrowRight,
   Info
 } from "lucide-react";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
@@ -242,6 +244,30 @@ export default function TopicoBasicaIdeb({
         <Info className="w-3.5 h-3.5 text-primary" />
         {REFERENCIA_NACIONAL}
       </p>
+
+      {/* Chamada Cívica: Concursos da Educação Básica e PSS */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-2xl bg-surface border border-border shadow-xs">
+        <div className="flex items-center gap-3">
+          <span className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
+            <School className="w-4 h-4" />
+          </span>
+          <div>
+            <span className="text-xs font-bold text-foreground block">
+              Docência e Magistério na Educação Básica
+            </span>
+            <p className="text-xs text-muted">
+              Veja concursos públicos e processos seletivos simplificados (PSS) abertos para professores e pedagogos nas redes municipais e estaduais.
+            </p>
+          </div>
+        </div>
+        <Link
+          href="/concursos"
+          className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline shrink-0"
+        >
+          <span>Ver Concursos e PSS</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
 
       {/* Gráfico da Série Histórica do IDEB */}
       <section
