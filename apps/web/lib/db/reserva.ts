@@ -76,6 +76,15 @@ function conexaoDe(url: string): DB {
   return db;
 }
 
+/** Evita poluir o log repetindo o mesmo aviso 100+ vezes durante prerender SSG. */
+const avisosEmitidos = new Set<string>();
+function avisarUmaVez(chave: string, msg: string) {
+  if (!avisosEmitidos.has(chave)) {
+    avisosEmitidos.add(chave);
+    console.warn(msg);
+  }
+}
+
 export interface OpcoesReserva<T> {
   /** O resultado é "vazio" (tenta o próximo banco)? */
   vazio: (r: T) => boolean;
@@ -146,11 +155,12 @@ export async function comBancoReserva<T>(
         // build) — o log antigo prometia uma segunda tentativa que nunca
         // acontecia e mandou a investigação de 01/10 atrás de um fantasma.
         const haReserva = tentativas.length > 1;
-        console.warn(
+        avisarUmaVez(
+          `guara:${rotulo}`,
           `[banco:${rotulo}] principal (Guara) vazio${haReserva ? "; tentando reserva" : ""}`
         );
       } else {
-        console.warn(`[banco:${rotulo}] reserva ${t.nome} vazia`);
+        avisarUmaVez(`reserva:${t.nome}:${rotulo}`, `[banco:${rotulo}] reserva ${t.nome} vazia`);
       }
     } catch (e) {
       // Sem Postgres local a consulta falha com ECONNREFUSED: em dev isso é

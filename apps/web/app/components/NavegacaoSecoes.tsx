@@ -29,7 +29,7 @@ export interface SecaoNavegavel {
 }
 
 const BOTAO =
-  "inline-flex min-h-10 items-center gap-1 rounded-lg border border-border bg-surface px-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary";
+  "inline-flex min-h-11 items-center gap-1 rounded-lg border border-border bg-surface px-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
 
 export default function NavegacaoSecoes({
   secoes,

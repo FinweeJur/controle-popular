@@ -120,7 +120,7 @@ function Paginacao({ visao }: { visao: VisaoPainel }) {
     <nav aria-label="Paginação das análises" className="flex flex-wrap items-center gap-3 text-sm">
       {pagina.pagina > 1 ? (
         <Link
-          className="rounded-full border border-[var(--cp-border)] px-3 py-1 hover:border-[var(--cp-primary)]"
+          className="inline-flex min-h-11 items-center rounded-full border border-[var(--cp-border)] bg-[var(--cp-surface)] px-4 py-1.5 transition hover:border-[var(--cp-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--cp-primary)]"
           href={hrefAnalises({ recorte, tema: tema?.slug, pagina: pagina.pagina - 1 })}
           rel="prev"
         >
@@ -133,7 +133,7 @@ function Paginacao({ visao }: { visao: VisaoPainel }) {
       </span>
       {pagina.pagina < pagina.totalPaginas ? (
         <Link
-          className="rounded-full border border-[var(--cp-border)] px-3 py-1 hover:border-[var(--cp-primary)]"
+          className="inline-flex min-h-11 items-center rounded-full border border-[var(--cp-border)] bg-[var(--cp-surface)] px-4 py-1.5 transition hover:border-[var(--cp-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--cp-primary)]"
           href={hrefAnalises({ recorte, tema: tema?.slug, pagina: pagina.pagina + 1 })}
           rel="next"
         >

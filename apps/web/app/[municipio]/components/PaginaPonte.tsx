@@ -79,7 +79,7 @@ export default function PaginaPonte({
         </p>
         <Link
           href={destino}
-          className="mt-6 inline-block rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white"
+          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           Ir para a página nova
         </Link>

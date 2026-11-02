@@ -168,13 +168,13 @@
     {
       "id": "pergunta:direitos:emprego-caged",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/trabalho-e-renda",
+      "rota": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "titulo": "Como consultar contratações e demissões no CAGED?",
-      "fonteUrl": "/direitos-em-movimento/trabalho-e-renda",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "texto": "O painel de Trabalho e Renda monitora admissões e desligamentos do CAGED por município, demonstrando o saldo formal de vagas.",
       "links": [
         {
-          "href": "/direitos-em-movimento/trabalho-e-renda",
+          "href": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
           "texto": "Painel de Trabalho e Renda"
         }
       ]
@@ -182,13 +182,13 @@
     {
       "id": "pergunta:direitos:renda-local",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/trabalho-e-renda",
+      "rota": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "titulo": "Qual o impacto dos contratos públicos na renda do trabalhador?",
-      "fonteUrl": "/direitos-em-movimento/trabalho-e-renda",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "texto": "Cruzamos contratos e compras públicas com postos de trabalho gerados, avaliando o efeito multiplicador da economia local.",
       "links": [
         {
-          "href": "/direitos-em-movimento/trabalho-e-renda",
+          "href": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
           "texto": "Ver análise de renda"
         }
       ]
@@ -196,13 +196,13 @@
     {
       "id": "pergunta:direitos:leitos-sus",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/saude-publica",
+      "rota": "/direitos-em-movimento/servicos?subfrente=saude-publica",
       "titulo": "Como saber a quantidade de leitos do SUS na minha cidade?",
-      "fonteUrl": "/direitos-em-movimento/saude-publica",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=saude-publica",
       "texto": "O portal monitora o Cadastro Nacional de Estabelecimentos de Saúde (CNES) e a razão de leitos por habitante em comparação com os parâmetros da OMS.",
       "links": [
         {
-          "href": "/direitos-em-movimento/saude-publica",
+          "href": "/direitos-em-movimento/servicos?subfrente=saude-publica",
           "texto": "Painel de Saúde Pública"
         }
       ]
@@ -210,13 +210,13 @@
     {
       "id": "pergunta:direitos:hospitais-atendimento",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/saude-publica",
+      "rota": "/direitos-em-movimento/servicos?subfrente=saude-publica",
       "titulo": "Onde consultar a capacidade hospitalar e estabelecimentos CNES?",
-      "fonteUrl": "/direitos-em-movimento/saude-publica",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=saude-publica",
       "texto": "Consulte postos de saúde, UPAs e hospitais municipais com dados oficiais do DataSUS.",
       "links": [
         {
-          "href": "/direitos-em-movimento/saude-publica",
+          "href": "/direitos-em-movimento/servicos?subfrente=saude-publica",
           "texto": "Ver hospitais e leitos"
         }
       ]
@@ -224,13 +224,13 @@
     {
       "id": "pergunta:direitos:ideb-escolas",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/educacao",
+      "rota": "/direitos-em-movimento/servicos?subfrente=educacao",
       "titulo": "O que é o IDEB e como ver a nota da minha cidade?",
-      "fonteUrl": "/direitos-em-movimento/educacao",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=educacao",
       "texto": "O IDEB avalia o fluxo escolar e o aprendizado em português e matemática apurado pelo INEP para os anos iniciais e finais do ensino fundamental.",
       "links": [
         {
-          "href": "/direitos-em-movimento/educacao",
+          "href": "/direitos-em-movimento/servicos?subfrente=educacao",
           "texto": "Painel de Educação"
         }
       ]
@@ -238,13 +238,13 @@
     {
       "id": "pergunta:direitos:infraestrutura-escolar",
       "frente": "direitos",
-      "rota": "/direitos-em-movimento/educacao",
+      "rota": "/direitos-em-movimento/servicos?subfrente=educacao",
       "titulo": "Como verificar a infraestrutura das escolas municipais?",
-      "fonteUrl": "/direitos-em-movimento/educacao",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=educacao",
       "texto": "Dados do Censo Escolar revelam a presença de bibliotecas, quadras, laboratórios e saneamento nas escolas da rede pública.",
       "links": [
         {
-          "href": "/direitos-em-movimento/educacao",
+          "href": "/direitos-em-movimento/servicos?subfrente=educacao",
           "texto": "Infraestrutura Escolar"
         }
       ]
@@ -726,13 +726,13 @@
     {
       "id": "pergunta:terra:nossos-rios-qualidade",
       "frente": "terra",
-      "rota": "/ambiental/nossos-rios",
+      "rota": "/ambiental/nossos?colecao=rios",
       "titulo": "Como verificar a qualidade da água dos rios e bacias de MG?",
-      "fonteUrl": "/ambiental/nossos-rios",
+      "fonteUrl": "/ambiental/nossos?colecao=rios",
       "texto": "O painel monitora as 7 bacias hidrográficas (Velhas, Doce, Paraopeba, São Francisco, Jequitinhonha, Mucuri e Paranaíba) com dados do IGAM e outorgas de captação.",
       "links": [
         {
-          "href": "/ambiental/nossos-rios",
+          "href": "/ambiental/nossos?colecao=rios",
           "texto": "Nossos Rios & Bacias Hidrográficas"
         }
       ]
@@ -740,13 +740,13 @@
     {
       "id": "pergunta:terra:nossas-serras-recarga",
       "frente": "terra",
-      "rota": "/ambiental/nossas-serras",
+      "rota": "/ambiental/nossos?colecao=serras",
       "titulo": "Por que as serras e áreas de recarga hídrica são protegidas?",
-      "fonteUrl": "/ambiental/nossas-serras",
+      "fonteUrl": "/ambiental/nossos?colecao=serras",
       "texto": "Acompanhe o monitoramento da Serra do Gandarela, Serra da Moeda e Serra do Curral frente a pressões minerárias e imobiliárias.",
       "links": [
         {
-          "href": "/ambiental/nossas-serras",
+          "href": "/ambiental/nossos?colecao=serras",
           "texto": "Nossas Serras & Áreas de Recarga"
         }
       ]
@@ -1474,13 +1474,13 @@
     {
       "id": "pergunta:estado:vagas-indicacoes-quinto",
       "frente": "estado",
-      "rota": "/judiciario/vagas",
+      "rota": "/judiciario/composicao?lente=vagas",
       "titulo": "Como funciona a escolha de desembargadores pelo Quinto Constitucional?",
-      "fonteUrl": "/judiciario/vagas",
+      "fonteUrl": "/judiciario/composicao?lente=vagas",
       "texto": "O painel de Vagas e Indicações acompanha a formação de listas tríplices e indicações de advogados e membros do MP para tribunais de 2ª instância.",
       "links": [
         {
-          "href": "/judiciario/vagas",
+          "href": "/judiciario/composicao?lente=vagas",
           "texto": "Vagas e Indicações nos Tribunais"
         }
       ]
@@ -2036,13 +2036,13 @@
     {
       "id": "contexto:3:1",
       "frente": "direitos-em-movimento",
-      "rota": "/direitos-em-movimento/trabalho-e-renda",
+      "rota": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "titulo": "Como estão as contratações e empregos formais na cidade?",
-      "fonteUrl": "/direitos-em-movimento/trabalho-e-renda",
+      "fonteUrl": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
       "texto": "O Eixo Direitos em Movimento monitora admissões do CAGED e geração de renda em Betim.",
       "links": [
         {
-          "href": "/direitos-em-movimento/trabalho-e-renda",
+          "href": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
           "texto": "Painel de Trabalho e Renda"
         }
       ]
@@ -2218,13 +2218,13 @@
     {
       "id": "contexto:9:1",
       "frente": "congresso",
-      "rota": "/congresso/alertas",
+      "rota": "/congresso/analises?recorte=restringem",
       "titulo": "Quais alertas de fiscalização cidadã foram registrados?",
-      "fonteUrl": "/congresso/alertas",
+      "fonteUrl": "/congresso/analises?recorte=restringem",
       "texto": "Pontos de atenção e indícios em convênios e emendas de bancada para acompanhamento social.",
       "links": [
         {
-          "href": "/congresso/alertas",
+          "href": "/congresso/analises?recorte=restringem",
           "texto": "Ver alertas do Congresso"
         }
       ]
@@ -3156,13 +3156,13 @@
     {
       "id": "contexto:34:1",
       "frente": "ambiental",
-      "rota": "/ambiental/nossos-rios",
+      "rota": "/ambiental/nossos?colecao=rios",
       "titulo": "Onde ver a qualidade da água dos rios e bacias dos Vales?",
-      "fonteUrl": "/ambiental/nossos-rios",
+      "fonteUrl": "/ambiental/nossos?colecao=rios",
       "texto": "Acompanhe as bacias do Jequitinhonha, Mucuri, Doce e São Francisco no painel hidrográfico.",
       "links": [
         {
-          "href": "/ambiental/nossos-rios",
+          "href": "/ambiental/nossos?colecao=rios",
           "texto": "Ver Nossos Rios & Bacias"
         }
       ]
@@ -3506,7 +3506,7 @@
           "texto": "Bancadas"
         },
         {
-          "href": "/congresso/alertas",
+          "href": "/congresso/analises?recorte=restringem",
           "texto": "Alertas"
         }
       ]
@@ -3514,13 +3514,13 @@
     {
       "id": "pagina:judiciario",
       "frente": "judiciario",
-      "rota": "/judiciario/tribunais",
+      "rota": "/judiciario/composicao",
       "titulo": "Judiciário",
-      "fonteUrl": "/judiciario/tribunais",
+      "fonteUrl": "/judiciario/composicao",
       "texto": "Dados do Judiciário: tribunais, indicações, vagas, inspeções, presídios e SIRENEJud.\nTribunais estaduais e federais de MG\nIndicações de desembargadores e juízes\nVagas em tribunais\nInspeções em presídios\nDefensoria Pública\nSIRENEJud: processos ambientais do CNJ",
       "links": [
         {
-          "href": "/judiciario/tribunais",
+          "href": "/judiciario/composicao",
           "texto": "Tribunais"
         },
         {
@@ -3694,17 +3694,17 @@
     {
       "id": "pagina:ambiental-rios-serras",
       "frente": "ambiental",
-      "rota": "/ambiental/nossos-rios",
+      "rota": "/ambiental/nossos?colecao=rios",
       "titulo": "Nossos Rios, Serras & Patrimônio Cultural",
-      "fonteUrl": "/ambiental/nossos-rios",
+      "fonteUrl": "/ambiental/nossos?colecao=rios",
       "texto": "Qualidade da água das 7 bacias de MG, proteção de serras de recarga e acervo do patrimônio tombado.\nMonitoramento hídrico das bacias do Velhas, Doce, Paraopeba e São Francisco\nÁreas de recarga e aquíferos (Gandarela, Moeda, Curral)\n1.800+ bens tombados pelo IEPHA e IPHAN em risco\nLitígios climáticos e ações de adaptação urbana",
       "links": [
         {
-          "href": "/ambiental/nossos-rios",
+          "href": "/ambiental/nossos?colecao=rios",
           "texto": "Nossos Rios"
         },
         {
-          "href": "/ambiental/nossas-serras",
+          "href": "/ambiental/nossos?colecao=serras",
           "texto": "Nossas Serras"
         },
         {
@@ -4531,7 +4531,7 @@
       "rota": "/noticias/trabalho-renda-e-conselhos-de-direitos",
       "titulo": "Emprego formal e controle social: vagas do CAGED e a força dos 710 conselhos municipais",
       "fonteUrl": "/noticias/trabalho-renda-e-conselhos-de-direitos",
-      "texto": "Dados do Ministério do Trabalho mostram contratações por setor. Mapeamento de conselhos aponta onde a população tem voz ativa.\nA geração de renda e a participação popular formam os pilares da cidadania plena. O portal acompanha os números do Novo CAGED no painel de [Trabalho e Renda](/direitos-em-movimento/trabalho-e-renda).\nO levantamento destaca os setores de serviços, indústria e agropecuária. Permite avaliar o impacto de grandes contratações públicas municipais na abertura de postos de trabalho locais."
+      "texto": "Dados do Ministério do Trabalho mostram contratações por setor. Mapeamento de conselhos aponta onde a população tem voz ativa.\nA geração de renda e a participação popular formam os pilares da cidadania plena. O portal acompanha os números do Novo CAGED no painel de [Trabalho e Renda](/direitos-em-movimento/servicos?subfrente=trabalho-e-renda).\nO levantamento destaca os setores de serviços, indústria e agropecuária. Permite avaliar o impacto de grandes contratações públicas municipais na abertura de postos de trabalho locais."
     },
     {
       "id": "blog:saude-publica-sus-e-educacao-ideb",
@@ -4539,7 +4539,7 @@
       "rota": "/noticias/saude-publica-sus-e-educacao-ideb",
       "titulo": "Saúde e educação básica: raio-x de leitos hospitalares e desempenho escolar em MG",
       "fonteUrl": "/noticias/saude-publica-sus-e-educacao-ideb",
-      "texto": "Indicadores cruzam dados do DATASUS e do INEP. Revelam desigualdades regionais no acesso a postos de saúde e qualidade de salas de aula.\nA garantia de direitos sociais passa pelo acompanhamento permanente dos serviços públicos essenciais. Na página de [Saúde Pública & SUS](/direitos-em-movimento/saude-publica), o portal reúne dados do Cadastro Nacional de Estabelecimentos de Saúde (CNES).\nOs indicadores mostram a relação entre população e leitos de internação. Enquanto polos metropolitanos concentram UTIs, municípios do interior enfrentam sobrecarga no transporte de pacientes."
+      "texto": "Indicadores cruzam dados do DATASUS e do INEP. Revelam desigualdades regionais no acesso a postos de saúde e qualidade de salas de aula.\nA garantia de direitos sociais passa pelo acompanhamento permanente dos serviços públicos essenciais. Na página de [Saúde Pública & SUS](/direitos-em-movimento/servicos?subfrente=saude-publica), o portal reúne dados do Cadastro Nacional de Estabelecimentos de Saúde (CNES).\nOs indicadores mostram a relação entre população e leitos de internação. Enquanto polos metropolitanos concentram UTIs, municípios do interior enfrentam sobrecarga no transporte de pacientes."
     },
     {
       "id": "blog:estudos-rurais-e-funcao-social-da-terra",
@@ -6090,13 +6090,13 @@
     {
       "id": "base:cnes-saude-mg",
       "frente": "direitos-em-movimento",
-      "rota": "/direitos-em-movimento/saude-publica",
+      "rota": "/direitos-em-movimento/servicos?subfrente=saude-publica",
       "titulo": "Base de dados: Cadastro Nacional de Estabelecimentos de Saúde (CNES)",
       "fonteUrl": "https://datasus.saude.gov.br",
-      "texto": "O portal publica a base \"Cadastro Nacional de Estabelecimentos de Saúde (CNES)\" (14200 registros, JSON), com origem em DATASUS / Ministério da Saúde. Aparece em: /direitos-em-movimento/saude-publica, /[municipio]/saude. Fonte: https://datasus.saude.gov.br.",
+      "texto": "O portal publica a base \"Cadastro Nacional de Estabelecimentos de Saúde (CNES)\" (14200 registros, JSON), com origem em DATASUS / Ministério da Saúde. Aparece em: /direitos-em-movimento/servicos?subfrente=saude-publica, /[municipio]/saude. Fonte: https://datasus.saude.gov.br.",
       "links": [
         {
-          "href": "/direitos-em-movimento/saude-publica",
+          "href": "/direitos-em-movimento/servicos?subfrente=saude-publica",
           "texto": "Ver no portal"
         },
         {
@@ -6236,13 +6236,13 @@
     {
       "id": "bases:tema:ambiental-outorgas",
       "frente": "ambiental",
-      "rota": "/ambiental/nossos-rios",
+      "rota": "/ambiental/nossos?colecao=rios",
       "titulo": "Bases de Outorgas de água (ANA/IGAM)",
-      "fonteUrl": "/ambiental/nossos-rios",
-      "texto": "Tema \"Outorgas de água (ANA/IGAM)\": 2 arquivo(s), 21 MB (contagem parcial: arquivos grandes não abertos). Exemplos: ana-outorgas.json, igam-outorgas.json. Página do tema: /ambiental/nossos-rios. Inventário medido em 30/09/2026.",
+      "fonteUrl": "/ambiental/nossos?colecao=rios",
+      "texto": "Tema \"Outorgas de água (ANA/IGAM)\": 2 arquivo(s), 21 MB (contagem parcial: arquivos grandes não abertos). Exemplos: ana-outorgas.json, igam-outorgas.json. Página do tema: /ambiental/nossos?colecao=rios. Inventário medido em 30/09/2026.",
       "links": [
         {
-          "href": "/ambiental/nossos-rios",
+          "href": "/ambiental/nossos?colecao=rios",
           "texto": "Outorgas de água (ANA/IGAM)"
         }
       ]

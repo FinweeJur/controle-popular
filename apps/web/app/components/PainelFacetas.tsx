@@ -24,7 +24,8 @@ export interface Faceta {
   n: number;
 }
 
-const BOTAO = "rounded-full border px-3 py-1 text-sm";
+const BOTAO =
+  "inline-flex min-h-11 items-center rounded-full border px-3.5 py-1.5 text-sm transition focus:outline-none focus:ring-2 focus:ring-[var(--cp-primary)] focus:ring-offset-2";
 
 export function PainelFacetas({
   facetas,
@@ -52,25 +53,36 @@ export function PainelFacetas({
   const classe = (ativo: boolean) =>
     `${BOTAO} ${
       ativo
-        ? "border-[var(--cp-primary)] bg-[var(--cp-primary)] text-white"
-        : "border-[var(--cp-border)] hover:border-[var(--cp-primary)]"
+        ? "border-[var(--cp-primary)] bg-[var(--cp-primary)] font-semibold text-white"
+        : "border-[var(--cp-border)] bg-[var(--cp-surface)] hover:border-[var(--cp-primary)]"
     }`;
   return (
     <nav className="space-y-2" aria-label={ariaLabel}>
       <h2 className="font-display text-lg font-semibold">{titulo}</h2>
       <ul className="flex flex-wrap gap-2">
         <li>
-          <Link className={classe(!atual)} href={hrefDe()}>
+          <Link
+            className={classe(!atual)}
+            href={hrefDe()}
+            aria-current={!atual ? "page" : undefined}
+          >
             {rotuloTodos} · {total.toLocaleString("pt-BR")}
           </Link>
         </li>
-        {facetas.map((faceta) => (
-          <li key={faceta.slug}>
-            <Link className={classe(atual === faceta.slug)} href={hrefDe(faceta.slug)}>
-              {faceta.rotulo} · {faceta.n.toLocaleString("pt-BR")}
-            </Link>
-          </li>
-        ))}
+        {facetas.map((faceta) => {
+          const ativo = atual === faceta.slug;
+          return (
+            <li key={faceta.slug}>
+              <Link
+                className={classe(ativo)}
+                href={hrefDe(faceta.slug)}
+                aria-current={ativo ? "page" : undefined}
+              >
+                {faceta.rotulo} · {faceta.n.toLocaleString("pt-BR")}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
       {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
     </nav>

@@ -1079,6 +1079,7 @@ export default async function HomePage({
               <img
                 src={anuncioAtivo.banner_url}
                 alt={anuncioAtivo.nome_comercio}
+                height={64}
                 className="max-h-16 rounded-lg"
               />
             ) : null}

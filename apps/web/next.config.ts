@@ -645,6 +645,17 @@ const nextConfig: NextConfig = {
         },
       }),
 
+  turbopack: {
+    // Permite que o Turbopack resolva junções de node_modules fora de apps/web quando em worktrees
+    root: (() => {
+      const cwd = process.cwd();
+      if (cwd.includes(".claude") && cwd.includes("worktrees")) {
+        return cwd.split(".claude")[0];
+      }
+      return undefined;
+    })(),
+  },
+
   /**
    * ═══ OTIMIZAÇÃO DE DISCO NO BUILDKIT (GUARA CLOUD / DOCKER STANDALONE) ═══
    * Em contêineres de CI/CD descartáveis, o cache de compilação em disco
