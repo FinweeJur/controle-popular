@@ -19,6 +19,8 @@
  *   /direitos-em-movimento/educacao — ponte de URL antiga, noindex
  *   /direitos-em-movimento/trabalho-e-renda — ponte de URL antiga, noindex
  *   /direitos-em-movimento/servicos — painel com faceta; recortes anunciados no sitemap
+ *   /congresso/alertas — ponte de URL antiga, noindex
+ *   /congresso/bons-exemplos — ponte de URL antiga, noindex
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -117,11 +119,10 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/comparar",
   "/congresso",
   "/congresso/agenda",
-  "/congresso/alertas",
   "/congresso/almg",
   "/congresso/almg/proposicoes",
+  "/congresso/analises",
   "/congresso/bancadas",
-  "/congresso/bons-exemplos",
   "/congresso/comissoes",
   "/congresso/cota-parlamentar",
   "/congresso/financiamento-eleitoral",

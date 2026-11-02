@@ -146,8 +146,8 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/congresso/comissoes", titulo: "Comissões do Congresso", termos: ["comissao federal", "comissoes do congresso"], zona: "congresso" },
   { sufixo: "/congresso/votacoes", titulo: "Votações do Congresso", termos: ["votacao federal", "voto nominal"], zona: "congresso" },
   { sufixo: "/congresso/agenda", titulo: "Agenda do Congresso", termos: ["agenda", "pauta", "sessao"], zona: "congresso" },
-  { sufixo: "/congresso/alertas", titulo: "Alertas do Congresso", termos: ["alerta", "alertas"], zona: "congresso" },
-  { sufixo: "/congresso/bons-exemplos", titulo: "Bons exemplos", termos: ["bons exemplos", "bom exemplo"], zona: "congresso" },
+  { sufixo: "/congresso/analises?recorte=restringem", titulo: "Alertas do Congresso", termos: ["alerta", "alertas"], zona: "congresso" },
+  { sufixo: "/congresso/analises?recorte=ampliam", titulo: "Bons exemplos", termos: ["bons exemplos", "bom exemplo"], zona: "congresso" },
   { sufixo: "/congresso/metodologia", titulo: "Metodologia do Congresso", termos: ["metodologia", "rubrica", "criterio"], zona: "congresso" },
 
   { sufixo: "/judiciario", titulo: "Judiciário", termos: ["judiciario", "justica", "tribunal", "tribunais"], zona: "judiciario" },

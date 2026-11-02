@@ -1273,7 +1273,7 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       { href: "/congresso/proposicoes", texto: "Proposições" },
       { href: "/congresso/votacoes", texto: "Votações" },
       { href: "/congresso/bancadas", texto: "Bancadas" },
-      { href: "/congresso/alertas", texto: "Alertas" },
+      { href: "/congresso/analises?recorte=restringem", texto: "Alertas" },
     ],
   },
   {

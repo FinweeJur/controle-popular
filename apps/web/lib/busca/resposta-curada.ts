@@ -104,10 +104,10 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     zona: "congresso",
     resposta:
       "O portal classifica as proposições federais (Câmara e Senado) sob a ótica de direitos fundamentais. A página de Alertas lista projetos de lei com risco de restrição e permite gerar ofícios em PDF para manifestação cidadã.",
-    linkPrincipal: { href: "/congresso/alertas", texto: "Ver alertas de direitos" },
+    linkPrincipal: { href: "/congresso/analises?recorte=restringem", texto: "Ver alertas de direitos" },
     linksAdicionais: [
       { href: "/congresso/proposicoes", texto: "Ver todas as proposições" },
-      { href: "/congresso/bons-exemplos", texto: "Ver bons exemplos" },
+      { href: "/congresso/analises?recorte=ampliam", texto: "Ver bons exemplos" },
     ],
   },
   {

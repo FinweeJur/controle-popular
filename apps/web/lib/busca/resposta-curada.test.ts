@@ -6,7 +6,7 @@ describe("buscarRespostaCurada — respostas determinísticas para busca e suges
     const res = buscarRespostaCurada("Quais projetos restringem direitos agora?", "congresso");
     expect(res).not.toBeNull();
     expect(res?.resposta).toContain("classifica as proposições federais");
-    expect(res?.linkPrincipal?.href).toBe("/congresso/alertas");
+    expect(res?.linkPrincipal?.href).toBe("/congresso/analises?recorte=restringem");
   });
 
   test("encontra resposta para pauta da CCJC", () => {
@@ -83,7 +83,7 @@ describe("buscarRespostaCurada — Fase 3 do plano de correção (01/10/2026)", 
     // "restricao de" é fragmento de "restricao de direitos": só a direção
     // "a pergunta contém o padrão" casava — a inversa foi removida.
     expect(buscarRespostaCurada("restricao de", "congresso")?.linkPrincipal?.href).not.toBe(
-      "/congresso/alertas"
+      "/congresso/analises?recorte=restringem"
     );
     // "aposentam ate" é fragmento de "aposentam ate 2030".
     expect(buscarRespostaCurada("aposentam ate", "judiciario")?.linkPrincipal?.href).not.toBe(
@@ -97,7 +97,7 @@ describe("buscarRespostaCurada — Fase 3 do plano de correção (01/10/2026)", 
     );
     expect(
       buscarRespostaCurada("restricao de direitos", "congresso")?.linkPrincipal?.href
-    ).toBe("/congresso/alertas");
+    ).toBe("/congresso/analises?recorte=restringem");
   });
 
   test("nenhuma entrada traz cifra de acervo digitada na mão (achado 22.3)", () => {

@@ -61,6 +61,12 @@ export const EXCLUIR: Record<string, string> = {
   // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
   // aponta para o recorte, nunca para a URL nua.
   "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
+  // Pontes do painel de analises do Congresso (02/11/2026): as duas listas
+  // eram a mesma entidade separada pelo sentido do rotulo e viraram
+  // `/congresso/analises?recorte=...`. O painel sem faceta continua anunciado
+  // como a visao "todas"; as pontes nao.
+  "/congresso/alertas": "ponte de URL antiga, noindex",
+  "/congresso/bons-exemplos": "ponte de URL antiga, noindex",
 };
 
 /**

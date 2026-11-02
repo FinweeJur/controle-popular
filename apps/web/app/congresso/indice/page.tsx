@@ -14,9 +14,10 @@ const tópicos: Topico[] = [
     descricao: "Pauta dos próximos dias no Congresso.",
   },
   {
-    href: "/congresso/alertas",
-    titulo: "Alertas",
-    descricao: "Mudanças e movimentações relevantes em proposições e votações.",
+    href: "/congresso/analises",
+    titulo: "Análises de direitos",
+    descricao:
+      "Painel único das proposições analisadas: o que restringe e o que amplia direitos, com o dispositivo e o trecho que fundamentam cada rótulo.",
   },
   {
     href: "/congresso/bancadas",
@@ -24,12 +25,7 @@ const tópicos: Topico[] = [
     descricao: "Cada bancada estadual no Congresso.",
   },
   {
-    href: "/congresso/bons-exemplos",
-    titulo: "Bons exemplos",
-    descricao: "Práticas de transparência e boas ações parlamentares.",
-  },
-  {
-    href: "/congresso/comissões",
+    href: "/congresso/comissoes",
     titulo: "Comissões",
     descricao: "Comissões permanentes e suas composições.",
   },
@@ -44,12 +40,12 @@ const tópicos: Topico[] = [
     descricao: "Deputados e senadores com perfil e atividade.",
   },
   {
-    href: "/congresso/proposições",
+    href: "/congresso/proposicoes",
     titulo: "Proposições",
     descricao: "Projetos de lei e outras proposições em tramitação.",
   },
   {
-    href: "/congresso/votações",
+    href: "/congresso/votacoes",
     titulo: "Votações",
     descricao: "Resultados de votações no plenário e nas comissões.",
   },
