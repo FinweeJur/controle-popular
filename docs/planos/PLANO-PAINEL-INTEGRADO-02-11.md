@@ -1,5 +1,22 @@
 # Plano — usar o padrão de painel para reduzir a dispersão de rotas
 
+> **Tipo:** PLANO
+> **Domínio:** front-end, rotas, facetas, SEO, redirects
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** curta (5–15 min)
+> **Relacionados:** [PROMPT-PAINEL-INTEGRADO.md](PROMPT-PAINEL-INTEGRADO.md), [AGENTS.md](/AGENTS.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md)
+> **Palavras-chave:** painel, facetas, rotas, redirects, ponte, direitos, jurisprudencia, seo
+
+## Sumário
+
+- [O número que motiva](#1-o-número-que-motiva)
+- [O padrão que se repete](#2-o-padrão-que-se-repete)
+- [Onde aplicar, em ordem](#3-onde-aplicar-em-ordem)
+- [O que não fazer](#4-o-que-não-fazer)
+- [Como saber que funcionou](#5-como-saber-que-funcionou)
+- [Ordem de trabalho para a próxima sessão](#6-ordem-de-trabalho-sugerida-para-a-próxima-sessão)
+- [Execução de 02/11/2026](#7-execução--02112026-tarefa-a-e-fase-1)
+
 Criado: 2026-11-02. Status: proposta.
 Origem: o painel construído em `/jurisprudencia` (facetas por link, render no
 servidor, estado na URL) resolve o mesmo problema em outras famílias de página.
@@ -88,10 +105,16 @@ cidade, e a URL continua linda (`/betim/prefeitura?area=contratos`).
 
 - **Não apagar rota sem redirecionar.** Cada rota do top-100 tem link externo e
   histórico. Mas o mecanismo depende do alvo: `redirects()` no
-  `next.config.ts` **só vale onde há servidor**; em `output: 'export'` ele é
-  ignorado em silêncio e o equivalente é `components/PaginaPonte.tsx`
+  `next.config.ts` **só vale onde há servidor**. No alvo `output: 'export'`
+  (`PAGES_BASE_PATH` definido → GitHub Pages) ele é ignorado em silêncio e o
+  equivalente é a página-ponte genérica `app/components/PaginaPonte.tsx`
   (`<meta http-equiv="refresh">`). Ver `next.config.ts` linha ~523.
   Antes de remover uma rota, confirme qual alvo está publicado.
+  ⚠️ Correção de 02/11/2026: a versão anterior deste plano chamava o alvo
+  estático de "Cloudflare estático" e mandava a ponte para
+  `components/PaginaPonte.tsx` sem o prefixo `app/`. O Cloudflare roda com
+  servidor (Workers) e é o alvo em que `redirects()` funciona; o estático é o
+  GitHub Pages, e a ponte mora em `app/components/PaginaPonte.tsx`.
 - **Não deixar duas rotas com o mesmo conteúdo** indexável: canônica aponta
   para o painel, a antiga redireciona.
 - **Não usar estado de cliente** para a faceta: quebra compartilhamento,
@@ -129,3 +152,84 @@ casca.
 
 O prompt pronto para a sessão nova está em
 [`PROMPT-PAINEL-INTEGRADO.md`](PROMPT-PAINEL-INTEGRADO.md).
+
+## 7. Execução — 02/11/2026 (tarefa A e fase 1)
+
+Branch `painel-facetas`, worktree `.claude/worktrees/painel-facetas`, porta 3048.
+
+### Tarefa A — componentes extraídos (feito)
+
+- `apps/web/app/components/PainelFacetas.tsx`: faixa de facetas por link, com
+  `facetas`, `atual`, `total` e `hrefDe`. Não conhece eixo nem acervo.
+- `apps/web/app/components/Barras.tsx`: ranking com denominador vindo do
+  chamador e rótulos por prop (chave sem tradução aparece crua, não inventada).
+- `/jurisprudencia` importa os dois; `FaixaTemas` e `Barras` ficaram como
+  adaptadores finos. Os 14 testes seguem verdes e nada muda na tela.
+
+### Fase 1 — medido antes de migrar (o plano estava otimista)
+
+A família **não** eram 8 irmãs:
+
+| Rota | O que é | Decisão |
+|---|---|---|
+| `/direitos-em-movimento` | hub de navegação, com abertura viva | continua rota |
+| `/ajuda` | diretório da rede de proteção | continua rota |
+| `/informacao` | canais de LAI | continua rota |
+| `/conselhos` | painel de 710 conselhos, com cliente próprio | continua rota |
+| `/denuncia` | entrevista guiada + DOCX no navegador | continua rota |
+| `/seguranca-publica` | Sinesp VDE, dado real com tabela própria | continua rota |
+| `/saude-publica` | 4 cartões + série + fichas | **faceta** |
+| `/educacao` | mesma forma | **faceta** |
+| `/trabalho-e-renda` | mesma forma | **faceta** |
+| `/trabalho-e-renda/cadastro-empregadores` | lista nominal de CNPJ | continua rota |
+
+Três, não seis — e as três compartilhavam o mesmo esqueleto de fato.
+
+### Achado que mudou a execução: os cartões eram "dados sintéticos"
+
+As três páginas traziam números fixos no código, comentados como "dados
+sintéticos oficiais de referência", rotulados com fonte oficial (CNES, INEP,
+CAGED). Num portal cuja regra é "todo número com fonte", isso é risco
+editorial: o leitor não distingue referência nacional de medição do portal.
+
+Decisão do dono: manter os números, com rótulo honesto. O que foi feito:
+
+- `apps/web/lib/direitos/servicos.ts` guarda a dimensão da faceta, a fonte de
+  cada recorte e a `ressalva` (o que o número não diz).
+- `AvisoReferencia` aparece **antes** do primeiro cartão: "referência nacional,
+  não medição deste portal", com link para a página oficial da fonte.
+- O N das facetas é o número de fichas catalogadas por subfrente — o único N
+  real disponível (hoje 2, 1 e 0). Não se inventou contagem para enfeitar botão.
+
+### O que foi entregue
+
+- Rota canônica `/direitos-em-movimento/servicos?subfrente=saude-publica|educacao|trabalho-e-renda`.
+- Conteúdo movido sem perda para `servicos/ConteudoSaude|ConteudoEducacao|ConteudoTrabalho.tsx`,
+  mais `FichasDaSubfrente.tsx` (lista e sugestões, antes repetidas três vezes).
+- As três rotas antigas viraram ponte (`app/components/PaginaPonte.tsx`,
+  criado nesta sessão) **e** entrada em `redirects()` do `next.config.ts`,
+  cada uma apontando para o recorte certo.
+- `top-100-paginas.json`, `resumos-top100.ts`, `sitemap.ts`, `rotas-descobertas.ts`,
+  `indice`, `menu-portal`, `FichaCard`, escada do assistente e `contexto-pagina`
+  deixaram de apontar para rota redirecionada.
+- As três pontes entraram em `EXCLUIR` de `lib/sitemap/descoberta.ts`; o painel
+  sem faceta também, porque quem é anunciado são os três recortes.
+
+### O que mudou de plano
+
+1. **A URL do painel é `/servicos`, não a raiz do eixo.** O hub é a porta de
+   entrada (quatro portas, abertura viva); pendurar o painel nele misturaria
+   dois níveis de página.
+2. **O alvo estático é GitHub Pages, não Cloudflare.** O Cloudflare roda com
+   servidor (Workers), onde `redirects()` funciona. Corrigido também no prompt.
+3. **A ponte mora em `app/components/PaginaPonte.tsx`.** A versão anterior do
+   texto apontava `components/PaginaPonte.tsx`, caminho que não existia.
+4. **Rotas a menos: 3 → 1** nesta fase (mais 1 arquivo de ponte por rota, que
+   não conta como página de conteúdo). A meta de −40 continua nas fases 2–4.
+
+### Pendência registrada
+
+Os números de referência continuam sem data de competência ("2023", "2025"
+aparecem só na prosa). Quando alguém for atualizá-los, trocar valor **e** data
+no mesmo commit — número velho sem data envelhece calado.
+

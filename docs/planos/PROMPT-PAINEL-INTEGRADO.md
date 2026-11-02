@@ -1,11 +1,37 @@
 # Prompt — painel de facetas para reduzir dispersão de rotas
 
+> **Tipo:** PROMPT
+> **Domínio:** front-end, rotas, facetas, redirects, SEO
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** curta (5–15 min)
+> **Relacionados:** [PLANO-PAINEL-INTEGRADO-02-11.md](PLANO-PAINEL-INTEGRADO-02-11.md), [AGENTS.md](/AGENTS.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md)
+> **Palavras-chave:** prompt, painel, facetas, faceta, redirects, ponte, direitos, jurisprudencia
+
+## Sumário
+
+- [Papel e objetivo](#0-papel-e-objetivo)
+- [O padrão](#1-o-padrão-leia-antes-de-escrever-código)
+- [Estado medido](#2-estado-medido-02112026--não-repita-a-medição-sem-motivo)
+- [Tarefa A](#3-tarefa-a--extrair-o-componente)
+- [Tarefa B](#4-tarefa-b--piloto-em-direitos-em-movimento)
+- [Tarefa C](#5-tarefa-c--repetir-em-uma-família-por-vez)
+- [Critérios de aceite](#6-critérios-de-aceite)
+- [Comandos](#7-comandos)
+- [O que não fazer](#8-o-que-não-fazer)
+- [Entrega](#9-entrega)
+
 Copie daqui até o fim e cole numa sessão nova do opencode aberta em
 `X:\DevCoder\OpenCode\controle-popular`.
 
 ---
 
 ## 0. Papel e objetivo
+
+> ⚠️ **Fase 1 já executada em 02/11/2026** (tarefa A + `/direitos-em-movimento`).
+> O padrão vive em `app/components/PainelFacetas.tsx` e
+> `app/components/Barras.tsx`; a ponte genérica em `app/components/PaginaPonte.tsx`.
+> Leia a seção 7 de `PLANO-PAINEL-INTEGRADO-02-11.md` antes de repetir qualquer
+> etapa e siga para a fase 2.
 
 Você é o agente de front-end do Controle Popular. O portal tem **343 rotas**
 (`page.tsx`) e `~46` páginas do top-100 são irmãs que diferem só por uma
@@ -89,9 +115,11 @@ mesmo esqueleto (indicador, série, lista).
    está documentada em `apps/web/next.config.ts` (linha ~523):
    - alvo com servidor (`azure`/`tunnel`): `async redirects()` no
      `next.config.ts`, `permanent: true`;
-   - alvo `output: 'export'` (Cloudflare estático): `redirects()` **não é
-     aplicado e o Next não avisa** — o equivalente é a página-ponte
-     `components/PaginaPonte.tsx` com `<meta http-equiv="refresh">`.
+   - alvo `output: 'export'` (`PAGES_BASE_PATH` definido → GitHub Pages):
+     `redirects()` **não é aplicado e o Next não avisa** — o equivalente é a
+     página-ponte `app/components/PaginaPonte.tsx` com
+     `<meta http-equiv="refresh">`. O Cloudflare é o outro alvo e roda com
+     servidor (Workers), onde `redirects()` vale.
    Se você usar `redirects()` e testar só no alvo estático, a rota antiga vira
    404 em produção sem nenhum erro no build.
 5. Atualizar `top-100-paginas.json` e o catálogo do índice: nenhuma entrada
