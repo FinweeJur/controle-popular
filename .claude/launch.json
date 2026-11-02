@@ -540,6 +540,21 @@
         "3047"
       ],
       "port": 3047
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-painel-facetas) -- extracao do painel de facetas de /jurisprudencia e piloto em /direitos-em-movimento. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-painel-facetas-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3048"
+      ],
+      "port": 3048
     }
   ]
 }

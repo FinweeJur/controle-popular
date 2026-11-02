@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LinhaCaso } from "./LinhaCaso";
+import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
 import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
@@ -9,6 +9,7 @@ import {
   temasUnicos,
   valoresUnicos,
   contagemPor,
+  contagemTemasIndenizacao,
   ROTULOS,
   type CasoJurisprudencia,
   type Filtros,
@@ -112,6 +113,124 @@ export const reais = (valor: number) =>
 
 function contar(frente: string): number {
   return CASOS_DESASTRE.filter((caso) => caso.frente === frente).length;
+}
+
+/**
+ * Ranking em barras.
+ *
+ * Substitui a tabela de três colunas onde o que importa é a ordem, não o
+ * cruzamento: no celular a barra cabe inteira, a tabela rolava de lado.
+ *
+ * `total` é o denominador do percentual e vem do chamador — nunca do maior
+ * item da lista. Percentual sobre base errada é o erro mais fácil de publicar
+ * sem perceber.
+ */
+export function Barras({
+  titulo,
+  dados,
+  total,
+  nota,
+  limite = 10,
+}: {
+  titulo: string;
+  dados: [string, number][];
+  total: number;
+  nota?: string;
+  limite?: number;
+}) {
+  const itens: [string, number][] = dados.slice(0, limite);
+  const resto = dados.slice(limite).reduce((soma, [, n]) => soma + n, 0);
+  if (resto > 0) itens.push([`+ ${dados.length - limite} categorias`, resto]);
+  const maior = Math.max(...itens.map(([, n]) => n), 1);
+  return (
+    <section className="space-y-2">
+      <h2 className="font-display text-lg font-semibold">{titulo}</h2>
+      <ul className="space-y-1.5">
+        {itens.map(([chave, n]) => {
+          const rotulo = ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave;
+          return (
+            <li key={chave} className="flex items-center gap-2 text-sm">
+              <span className="w-[8.5rem] shrink-0 truncate" title={rotulo}>
+                {rotulo}
+              </span>
+              <span
+                className="h-2.5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]"
+                role="img"
+                aria-label={`${rotulo}: ${n} de ${total}`}
+              >
+                <span
+                  className="block h-full rounded bg-[var(--cp-primary)]"
+                  style={{ width: `${(100 * n) / maior}%` }}
+                />
+              </span>
+              <span className="w-14 shrink-0 text-right font-tabular">{n.toLocaleString("pt-BR")}</span>
+              <span className="w-11 shrink-0 text-right font-tabular opacity-60">
+                {total ? `${Math.round((100 * n) / total)}%` : "—"}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
+    </section>
+  );
+}
+
+/**
+ * Faixa de botões do painel: um recorte por vez, estado na URL.
+ *
+ * É link, não `useState` (AGENTS §5.1 e §5.13): o acervo tem 16.834 itens e não
+ * pode virar prop de cliente; e a casca não desmonta entre um clique e outro.
+ * De quebra, cada recorte fica compartilhável e o histórico do navegador
+ * funciona como "voltar".
+ *
+ * A contagem do acervo inteiro é cara (normaliza 16.834 ementas) e não muda
+ * entre requisições: fica em cache de módulo, no servidor. Sem isso, cada
+ * clique num botão de tema refaria a varredura completa.
+ */
+let cacheTemasIndenizacao: ReturnType<typeof contagemTemasIndenizacao> | null = null;
+
+function contagemTemasDoAcervo() {
+  cacheTemasIndenizacao ??= contagemTemasIndenizacao(CASOS_DESASTRE);
+  return cacheTemasIndenizacao;
+}
+
+export function FaixaTemas({ filtros }: { filtros: Filtros }) {
+  const contagem = contagemTemasDoAcervo();
+  const total = CASOS_DESASTRE.length;
+  const semRecorte: Filtros = { ...filtros, recorte: undefined };
+  const botao = (ativo: boolean) =>
+    `rounded-full border px-3 py-1 text-sm ${
+      ativo
+        ? "border-[var(--cp-primary)] bg-[var(--cp-primary)] text-white"
+        : "border-[var(--cp-border)] hover:border-[var(--cp-primary)]"
+    }`;
+  return (
+    <nav className="space-y-2" aria-label="Recorte por tema de indenização">
+      <h2 className="font-display text-lg font-semibold">Recorte por tema</h2>
+      <ul className="flex flex-wrap gap-2">
+        <li>
+          <Link className={botao(!filtros.recorte)} href={hrefCom(semRecorte, 1)}>
+            Todos · {total.toLocaleString("pt-BR")}
+          </Link>
+        </li>
+        {contagem.map((tema) => (
+          <li key={tema.slug}>
+            <Link
+              className={botao(filtros.recorte === tema.slug)}
+              href={hrefCom({ ...filtros, recorte: tema.slug }, 1)}
+            >
+              {tema.rotulo} · {tema.n.toLocaleString("pt-BR")}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <p className="text-xs opacity-70">
+        Cada número é quantos itens do acervo citam o tema no texto da decisão — um caso pode
+        entrar em mais de um recorte.
+      </p>
+    </nav>
+  );
 }
 
 export function Tabela({
@@ -306,26 +425,41 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-const COLUNAS = ["Processo", "Tribunal", "Tipo", "Ano", "Órgão/Comarca", "Frente", "Polo/Resultado", "Temas", "Ementa"];
+const COLUNAS = ["Processo", "Tribunal/Ano", "Polo/Resultado", "Temas", ""];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-[var(--cp-border)] lg:overflow-visible">
-      <table className="w-full text-sm">
-        <thead className="bg-[var(--cp-surface-2)] text-left">
-          <tr>
-            {COLUNAS.map((rotulo) => (
-              <th key={rotulo} scope="col" className="whitespace-nowrap px-2 py-2 font-semibold">{rotulo}</th>
+    <>
+      {/* Desktop: 5 colunas com largura fixa — cabe sem rolar de lado. */}
+      <div className="hidden overflow-hidden rounded-lg border border-[var(--cp-border)] md:block">
+        <table className="w-full table-fixed text-sm">
+          <thead className="bg-[var(--cp-surface-2)] text-left">
+            <tr>
+              {COLUNAS.map((rotulo, indice) => (
+                <th
+                  key={rotulo || `coluna-${indice}`}
+                  scope="col"
+                  className="whitespace-nowrap px-2 py-2 font-semibold"
+                >
+                  {rotulo || <span className="sr-only">Ações</span>}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {itens.map((caso) => (
+              <LinhaCaso key={caso.id} caso={caso} />
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          {itens.map((caso) => (
-            <LinhaCaso key={caso.id} caso={caso} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+      {/* Celular: cartão empilhado, nada de tabela de 9 colunas rolando. */}
+      <ul className="space-y-3 md:hidden">
+        {itens.map((caso) => (
+          <CartaoCaso key={caso.id} caso={caso} />
+        ))}
+      </ul>
+    </>
   );
 }
 
@@ -510,8 +644,15 @@ export function Notas({ semResumo }: { semResumo: number }) {
       <h2 className="font-display text-lg font-semibold">Como ler e o que não afirmar</h2>
       <ul className="list-disc space-y-1 pl-5 opacity-80">
         <li>
-          O polo do Brumadinho é recalculado pela regra NACAB; {resumo.status_resumos.revisao_humana}{" "}
-          resumos ainda estão em revisão humana.
+          A classificação é do portal, com método de assessoria jurídica popular: leitura da
+          decisão, polo vencedor, resultado do recurso, dano reconhecido e valor, e revisão
+          humana do que a automação não fecha. {resumo.status_resumos.revisao_humana} resumos
+          ainda estão em revisão.
+        </li>
+        <li>
+          Os relatórios das assessorias técnicas independentes — Guaicuy (Paraopeba) e NACAB
+          (Brumadinho) — servem de referência e de contraponto. Os números desta página não são
+          os deles.
         </li>
         <li>
           {semResumo.toLocaleString("pt-BR")} itens entram sem resumo de mérito: Rio Doce (TJMG),
@@ -520,7 +661,7 @@ export function Notas({ semResumo }: { semResumo: number }) {
         <li>
           Súmulas não têm polo: são enunciado normativo, não decisão de caso concreto.
         </li>
-        <li>O recorte é a 2ª instância; não é o universo de 1ª instância nem a amostra da 18ª Câmara do NACAB.</li>
+        <li>O recorte é a 2ª instância; não é o universo de 1ª instância.</li>
         <li>Não há dado pessoal nesta página: só processo, tema, número e fonte.</li>
       </ul>
     </section>
