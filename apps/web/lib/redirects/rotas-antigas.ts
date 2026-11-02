@@ -60,6 +60,11 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/paraopeba/noticias?fonte=vale",
     motivo: "virou recorte do painel de noticias da bacia e da Vale (02/11/2026)",
   },
+  {
+    de: "/terra-e-territorios/cidades",
+    para: "/cidades#catalogo-cidades",
+    motivo: "repetia o catalogo e os totais de /cidades; virou ancora da pagina canonica (02/11/2026)",
+  },
 ];
 
 /**

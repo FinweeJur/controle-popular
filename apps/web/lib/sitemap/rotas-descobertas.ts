@@ -22,6 +22,7 @@
  *   /paraopeba/indice — ponte de URL antiga, noindex
  *   /paraopeba/noticias-vale — ponte de URL antiga, noindex
  *   /paraopeba/noticias — painel com faceta; recortes anunciados no sitemap
+ *   /terra-e-territorios/cidades — ponte de URL antiga, noindex
  *
  * Sufixos de cidade excluídos:
  *   /admin — painel interno, protegido por token
@@ -267,7 +268,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/temas",
   "/termos",
   "/terra-e-territorios",
-  "/terra-e-territorios/cidades",
   "/terra-e-territorios/nossas-serras",
   "/terra-e-territorios/nossos-rios",
   "/terra-e-territorios/vales",

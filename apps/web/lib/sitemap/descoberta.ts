@@ -69,6 +69,10 @@ export const EXCLUIR: Record<string, string> = {
   // O painel de noticias sem faceta e o mesmo HTML do recorte padrao: quem
   // anuncia sao as duas URLs com `?fonte=` em `app/sitemap.ts`.
   "/paraopeba/noticias": "painel com faceta; recortes anunciados no sitemap",
+  // Terra e Territorios (02/11/2026): o indice de cidades repetia a tabela e
+  // os totais de `/cidades` e virou ancora da pagina canonica. O perfil de
+  // cada cidade (`/terra-e-territorios/cidades/[slug]`) NAO e afetado.
+  "/terra-e-territorios/cidades": "ponte de URL antiga, noindex",
 };
 
 /**

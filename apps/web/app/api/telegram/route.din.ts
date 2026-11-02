@@ -99,7 +99,7 @@ const FRONTES = {
     desc: "Soberania socioambiental: 203 cidades estratégicas, bacias, terras indígenas, serras e biomas.",
     link: "https://www.controlepopular.com.br/terra-e-territorios",
     subfrentes: [
-      { label: "🏙️ 199 Cidades Estratégicas", link: "https://www.controlepopular.com.br/terra-e-territorios/cidades", desc: "27 capitais e 172 polos regionais. Saúde, educação e finanças de cada município." },
+      { label: "🏙️ 203 Cidades Estratégicas", link: "https://www.controlepopular.com.br/cidades", desc: "27 capitais e 176 polos regionais. Saúde, educação e finanças de cada município." },
       { label: "🌍 Meio Ambiente (ONSA)", link: "https://www.controlepopular.com.br/ambiental", desc: "Licenciamento, COPAM, TACs e barragens SIGBM." },
       { label: "🛡️ Terras Indígenas e Quilombolas", link: "https://www.controlepopular.com.br/funcaosocialterra", desc: "Demarcações, sobreposições de mineração e defesa de povos originários." },
       { label: "⛰️ Nossas Serras", link: "https://www.controlepopular.com.br/terra-e-territorios/nossas-serras", desc: "Preservação de topos de morro e contenção da expansão minerária predatória." },

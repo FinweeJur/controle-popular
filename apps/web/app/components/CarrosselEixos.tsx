@@ -65,7 +65,7 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
     legenda:
       'Reúne dados de 203 cidades estratégicas no radar, licenciamento ambiental do ONSA em 11 estados, 942 barragens de mineração (SIGBM), Cadastro Ambiental Rural (CAR), demarcação de terras indígenas e quilombolas, poligonais minerárias e bacias hidrográficas.',
     destaques: [
-      { rotulo: '203 Cidades Estratégicas', href: '/terra-e-territorios/cidades' },
+      { rotulo: '203 Cidades Estratégicas', href: '/cidades#catalogo-cidades' },
       { rotulo: 'Licenças Ambientais (11 Estados)', href: '/ambiental/licenciamento' },
       { rotulo: '942 Barragens SIGBM', href: '/ambiental/barragens' },
       { rotulo: 'CAR & Terras Indígenas', href: '/ambiental/car' },

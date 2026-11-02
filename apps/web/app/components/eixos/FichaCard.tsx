@@ -41,7 +41,7 @@ export default function FichaCard({ ficha, variant = 'normal', showEixoTag = tru
     'saude-publica': '/direitos-em-movimento/servicos?subfrente=saude-publica',
     educacao: '/direitos-em-movimento/servicos?subfrente=educacao',
     'trabalho-e-renda': '/direitos-em-movimento/servicos?subfrente=trabalho-e-renda',
-    cidades: '/terra-e-territorios/cidades',
+    cidades: '/cidades#catalogo-cidades',
     'nossas-serras': '/terra-e-territorios/nossas-serras',
     'nossos-rios': '/terra-e-territorios/nossos-rios',
     'meio-ambiente': '/ambiental',
