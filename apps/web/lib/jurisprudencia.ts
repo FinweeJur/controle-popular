@@ -49,6 +49,8 @@ export interface Filtros {
   ordem?: string;
   /** Recorte de indenização (auxílio emergencial, PTR…), vindo da faixa de botões. */
   recorte?: string;
+  /** Representação do painel: barras, rosca ou blocos. Não filtra nada. */
+  grafico?: string;
 }
 
 export interface Pagina<T> {
@@ -180,14 +182,27 @@ export function faixasDeValor(casos: CasoJurisprudencia[]): { dados: [string, nu
   const dados: [string, number][] = FAIXAS_VALOR.map((faixa) => [faixa.rotulo, 0]);
   let n = 0;
   for (const caso of casos) {
-    const valor = caso.valor;
-    if (typeof valor !== "number" || !Number.isFinite(valor) || valor <= 0) continue;
+    const valor = valorNumerico(caso.valor);
+    if (valor === null) continue;
     n += 1;
     const indice = FAIXAS_VALOR.findIndex((faixa) => valor <= faixa.ate);
     const alvo = indice === -1 ? FAIXAS_VALOR.length - 1 : indice;
     dados[alvo][1] += 1;
   }
   return { dados, n };
+}
+
+/**
+ * Valor em R$ que entra nas contas, ou `null` quando não há valor.
+ *
+ * Um único lugar decide o que é "valor válido" — `null`, zero, negativo e NaN
+ * ficam de fora. Espalhar essa condição por mediana e por faixa foi o que fez
+ * o CodeScene apontar complexidade duplicada.
+ */
+function valorNumerico(valor: number | null): number | null {
+  if (typeof valor !== "number") return null;
+  if (!Number.isFinite(valor) || valor <= 0) return null;
+  return valor;
 }
 
 export interface EstatisticaValor {
@@ -206,8 +221,8 @@ export interface EstatisticaValor {
  */
 export function estatisticasDeValor(casos: CasoJurisprudencia[]): EstatisticaValor {
   const valores = casos
-    .map((caso) => caso.valor)
-    .filter((valor): valor is number => typeof valor === "number" && Number.isFinite(valor) && valor > 0)
+    .map((caso) => valorNumerico(caso.valor))
+    .filter((valor): valor is number => valor !== null)
     .sort((a, b) => a - b);
   if (valores.length === 0) return { n: 0, mediana: 0, q1: 0, q3: 0 };
   const emPosicao = (fracao: number) => {

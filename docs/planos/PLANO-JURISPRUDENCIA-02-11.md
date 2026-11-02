@@ -166,7 +166,23 @@ extraordinário"), com a data da medição na nota.
 **De onde vem o N:** `casosPorTema(casos, slug)` em `lib/jurisprudencia.ts`, com
 a tabela de termos versionada e teste ao lado.
 
-## 6. Ordem de execução
+## 6. Estado das tarefas (atualizado 02/11/2026)
+
+| # | Entrega | Estado |
+|---|---|---|
+| 1 | Texto do método + links oficiais | ✅ feito |
+| 2 | `Barras` → `Grafico` com barras, rosca e blocos | ✅ feito |
+| 3 | Legenda dentro **e** ao lado/abaixo | ✅ feito |
+| 4 | Tabela estreita (5 colunas + cartão no celular) | ✅ feito |
+| 5 | Faixa de temas com N real | ✅ feito |
+| 6 | Inteiro teor em sanfona + baixar `.txt` | ✅ feito |
+| 7 | Classificação GLM de polo/resultado | 🚧 plano pronto, piloto a rodar |
+| 8 | Arquivo compacto do painel (40,7 MB) | ⏳ pendente |
+
+A tarefa 7 tem plano próprio:
+[`PLANO-CLASSIFICACAO-GLM-02-11.md`](PLANO-CLASSIFICACAO-GLM-02-11.md).
+
+## 7. Ordem de execução
 
 | # | Entrega | Arquivos | Verificação |
 |---|---|---|---|
@@ -181,7 +197,7 @@ a tabela de termos versionada e teste ao lado.
 Antes de entregar: `npx tsc --noEmit`, `npm test`, `rg "text-\[(9|10|11)px\]"
 apps/web/app`, e leitura no celular.
 
-## 7. O que não fazer
+## 8. O que não fazer
 
 - Não chamar de "método NACAB" o que é método nosso.
 - Não publicar link sem abrir: URL quebrada em página de transparência custa

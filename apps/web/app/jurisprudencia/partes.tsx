@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { Barras as BarrasBase } from "@/app/components/Barras";
-import { PainelFacetas } from "@/app/components/PainelFacetas";
 import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
+import {
+  CorpoGrafico,
+  prepararItens,
+  TIPOS_GRAFICO,
+  type TipoGrafico,
+} from "./graficos";
 import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
 import casosJson from "@/data/jurisprudencia-casos.json";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
@@ -12,6 +16,9 @@ import {
   valoresUnicos,
   contagemPor,
   contagemTemasIndenizacao,
+  contarLista,
+  estatisticasDeValor,
+  faixasDeValor,
   ROTULOS,
   type CasoJurisprudencia,
   type Filtros,
@@ -118,29 +125,81 @@ function contar(frente: string): number {
 }
 
 /**
- * Ranking em barras de /jurisprudencia.
+ * Ranking em barras.
  *
- * O desenho mora em `app/components/Barras.tsx`; aqui só se resolve o rótulo
- * do domínio — polo, resultado e dano PNAB/PEAB têm nome próprio, e o ranking
- * de tribunal/frente usa o nome cru. `total` continua vindo do chamador.
+ * Substitui a tabela de três colunas onde o que importa é a ordem, não o
+ * cruzamento: no celular a barra cabe inteira, a tabela rolava de lado.
+ *
+ * `total` é o denominador do percentual e vem do chamador — nunca do maior
+ * item da lista. Percentual sobre base errada é o erro mais fácil de publicar
+ * sem perceber.
  */
-export function Barras(props: {
+export function Grafico({
+  titulo,
+  dados,
+  total,
+  nota,
+  limite = 10,
+  tipo = "barras",
+}: {
   titulo: string;
   dados: [string, number][];
   total: number;
   nota?: string;
   limite?: number;
+  tipo?: TipoGrafico;
 }) {
-  return <BarrasBase {...props} rotulos={{ ...NOMES_PNAB, ...ROTULOS }} />;
+  // Rosca e blocos não se leem com dez fatias: nesses dois, o limite cai.
+  const teto = tipo === "barras" ? limite : 6;
+  const itens = prepararItens(dados, teto, (chave) => ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave);
+  return (
+    <section className="space-y-2">
+      <h2 className="font-display text-lg font-semibold">{titulo}</h2>
+      <CorpoGrafico tipo={tipo} itens={itens} total={total} />
+      {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
+    </section>
+  );
 }
 
 /**
- * Faixa de temas de indenização de /jurisprudencia.
+ * Troca a representação do painel inteiro: barras, rosca ou blocos.
  *
- * A faixa em si mora em `app/components/PainelFacetas.tsx`; aqui só se mede a
- * contagem e se monta o href. A contagem do acervo inteiro é cara (normaliza
- * 16.834 ementas) e não muda entre requisições: fica em cache de módulo, no
- * servidor. Sem isso, cada clique num botão de tema refaria a varredura.
+ * Mesmo mecanismo da faixa de temas — link com o estado na URL. Escolher
+ * "rosca" troca os oito gráficos de uma vez, o que é o comportamento de painel
+ * que o dono pediu; não faz sentido ter metade do painel em barras.
+ */
+export function SeletorGrafico({ filtros, tipo }: { filtros: Filtros; tipo: TipoGrafico }) {
+  return (
+    <nav className="flex flex-wrap items-center gap-2 text-sm" aria-label="Tipo de gráfico">
+      <span className="opacity-70">Como ver:</span>
+      {TIPOS_GRAFICO.map((opcao) => (
+        <Link
+          key={opcao.slug}
+          href={hrefCom({ ...filtros, grafico: opcao.slug }, 1)}
+          className={
+            tipo === opcao.slug
+              ? "rounded-full border border-[var(--cp-primary)] bg-[var(--cp-primary)] px-3 py-1 text-white"
+              : "rounded-full border border-[var(--cp-border)] px-3 py-1 hover:border-[var(--cp-primary)]"
+          }
+        >
+          {opcao.rotulo}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
+/**
+ * Faixa de botões do painel: um recorte por vez, estado na URL.
+ *
+ * É link, não `useState` (AGENTS §5.1 e §5.13): o acervo tem 16.834 itens e não
+ * pode virar prop de cliente; e a casca não desmonta entre um clique e outro.
+ * De quebra, cada recorte fica compartilhável e o histórico do navegador
+ * funciona como "voltar".
+ *
+ * A contagem do acervo inteiro é cara (normaliza 16.834 ementas) e não muda
+ * entre requisições: fica em cache de módulo, no servidor. Sem isso, cada
+ * clique num botão de tema refaria a varredura completa.
  */
 let cacheTemasIndenizacao: ReturnType<typeof contagemTemasIndenizacao> | null = null;
 
@@ -150,16 +209,40 @@ function contagemTemasDoAcervo() {
 }
 
 export function FaixaTemas({ filtros }: { filtros: Filtros }) {
+  const contagem = contagemTemasDoAcervo();
+  const total = CASOS_DESASTRE.length;
+  const semRecorte: Filtros = { ...filtros, recorte: undefined };
+  const botao = (ativo: boolean) =>
+    `rounded-full border px-3 py-1 text-sm ${
+      ativo
+        ? "border-[var(--cp-primary)] bg-[var(--cp-primary)] text-white"
+        : "border-[var(--cp-border)] hover:border-[var(--cp-primary)]"
+    }`;
   return (
-    <PainelFacetas
-      facetas={contagemTemasDoAcervo()}
-      atual={filtros.recorte}
-      total={CASOS_DESASTRE.length}
-      hrefDe={(slug) => hrefCom({ ...filtros, recorte: slug }, 1)}
-      titulo="Recorte por tema"
-      ariaLabel="Recorte por tema de indenização"
-      nota="Cada número é quantos itens do acervo citam o tema no texto da decisão — um caso pode entrar em mais de um recorte."
-    />
+    <nav className="space-y-2" aria-label="Recorte por tema de indenização">
+      <h2 className="font-display text-lg font-semibold">Recorte por tema</h2>
+      <ul className="flex flex-wrap gap-2">
+        <li>
+          <Link className={botao(!filtros.recorte)} href={hrefCom(semRecorte, 1)}>
+            Todos · {total.toLocaleString("pt-BR")}
+          </Link>
+        </li>
+        {contagem.map((tema) => (
+          <li key={tema.slug}>
+            <Link
+              className={botao(filtros.recorte === tema.slug)}
+              href={hrefCom({ ...filtros, recorte: tema.slug }, 1)}
+            >
+              {tema.rotulo} · {tema.n.toLocaleString("pt-BR")}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <p className="text-xs opacity-70">
+        Cada número é quantos itens do acervo citam o tema no texto da decisão — um caso pode
+        entrar em mais de um recorte.
+      </p>
+    </nav>
   );
 }
 
@@ -565,6 +648,150 @@ export function NoticiasTribunais() {
       </ul>
       <p className="text-xs opacity-60">N = {NOTICIAS.length} notícias coletadas; exibindo as 12 mais recentes.</p>
     </section>
+  );
+}
+
+/**
+ * O painel do recorte atual: contadores, oito barras, polo por ano e valores.
+ *
+ * Fica aqui, e não em `page.tsx`, porque é desenho — a página só decide qual
+ * acervo entra. Todos os blocos saem do MESMO `casos`, então o número do topo,
+ * a barra e a lista nunca discordam.
+ */
+export function PainelRecorte({
+  casos,
+  tipo = "barras",
+}: {
+  casos: CasoJurisprudencia[];
+  tipo?: TipoGrafico;
+}) {
+  const total = casos.length;
+  const comTemas = casos.filter((caso) => caso.temas.length > 0).length;
+  const comDanos = casos.filter((caso) => caso.danos_pnab.length > 0).length;
+  const comPolo = casos.filter((caso) => caso.polo).length;
+  const valores = estatisticasDeValor(casos);
+  const faixas = faixasDeValor(casos);
+  const porAno = [...contagemPor(casos, "ano")].sort((a, b) => a[0].localeCompare(b[0]));
+  return (
+    <section className="space-y-8" aria-label="Painel do recorte">
+      <p className="text-sm opacity-80">
+        <strong>{total.toLocaleString("pt-BR")}</strong>{" "}
+        {total === 1 ? "item no recorte" : "itens no recorte"} de{" "}
+        {CASOS_DESASTRE.length.toLocaleString("pt-BR")}.
+      </p>
+      <div className="grid gap-8 md:grid-cols-2">
+        <Grafico titulo="Por tribunal" dados={contagemPor(casos, "tribunal")} total={total} tipo={tipo} />
+        <Grafico titulo="Por frente" dados={contagemPor(casos, "frente")} total={total} tipo={tipo} />
+        <Grafico
+          titulo="Resultado do recurso"
+          dados={contagemPor(casos, "resultado")}
+          total={total}
+          tipo={tipo}
+          nota="Inclui itens sem resultado registrado na categoria —."
+        />
+        <Grafico
+          titulo="Polo vencedor"
+          dados={contagemPor(casos, "polo")}
+          total={total}
+          tipo={tipo}
+          nota={`Polo só existe onde o resumo de mérito foi classificado: ${comPolo.toLocaleString("pt-BR")} itens.`}
+        />
+        <Grafico titulo="Por ano da decisão" dados={porAno} total={total} tipo={tipo} />
+        <Grafico
+          titulo="Temas do acervo"
+          dados={contarLista(casos, "temas")}
+          total={comTemas}
+          tipo={tipo}
+          nota={`Um processo entra em vários temas: ${comTemas.toLocaleString("pt-BR")} itens com tema preenchido.`}
+        />
+        <Grafico
+          titulo="Danos PNAB/PEAB reconhecidos"
+          dados={contarLista(casos, "danos_pnab")}
+          total={comDanos}
+          tipo={tipo}
+          nota={`${comDanos.toLocaleString("pt-BR")} itens com dano classificado.`}
+        />
+        <Grafico
+          titulo="Faixa de valor mencionado"
+          dados={faixas.dados}
+          total={faixas.n}
+          tipo={tipo}
+          nota={
+            faixas.n
+              ? `${faixas.n.toLocaleString("pt-BR")} decisões com valor em R$ — mediana ${reais(valores.mediana)}.`
+              : "Nenhuma decisão deste recorte traz valor em R$."
+          }
+        />
+      </div>
+
+      <GraficoPoloAno casos={casos} />
+
+      <section className="space-y-2">
+        <h2 className="font-display text-lg font-semibold">Valores do recorte</h2>
+        <p className="text-sm opacity-80">
+          {valores.n.toLocaleString("pt-BR")} decisões com valor numérico. Mediana{" "}
+          {reais(valores.mediana)}; Q1 {reais(valores.q1)}; Q3 {reais(valores.q3)}.
+        </p>
+        <p className="text-xs opacity-70">
+          O campo é o maior valor em R$ mencionado no texto — pode ser pedido, condenação ou
+          valor de ação coletiva. A média não é publicada: um outlier de R$ 200 bilhões a
+          distorce.
+        </p>
+      </section>
+    </section>
+  );
+}
+
+/** Método e fontes externas do acervo. */
+export function RodapeMetodo() {
+  return (
+    <footer className="space-y-2 text-sm opacity-80">
+      <h2 className="font-display text-base font-semibold">Método e fontes</h2>
+      <p>
+        A classificação é do portal, com método de assessoria jurídica popular — leitura da
+        decisão, polo vencedor, resultado, dano e valor — e revisão humana. As assessorias
+        técnicas independentes entram como referência e contraponto:
+      </p>
+      <ul className="list-disc space-y-1 pl-5">
+        <li>
+          <a
+            className="underline"
+            href="https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NACAB — Relatório de Pesquisa Jurisprudencial 2023
+          </a>{" "}
+          (PDF, 1,6 MB).
+        </li>
+        <li>
+          <a
+            className="underline"
+            href="https://guaicuy.org.br/biblioteca/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Guaicuy — biblioteca de publicações
+          </a>{" "}
+          (assessoria técnica independente do Paraopeba).
+        </li>
+        <li>
+          <a
+            className="underline"
+            href="https://github.com/FinweeJur/tjmg-jurimetria/blob/master/relatorios/RELATORIO-GUAICUY-NACAB.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Análise do portal sobre os dois relatórios
+          </a>{" "}
+          — o que eles cobrem e o que não cobrem.
+        </li>
+      </ul>
+      <p>
+        O assistente do portal consulta este acervo pelo RAG. Para a lista caso a caso, use o
+        filtro acima ou a <Link className="underline" href="/busca">busca</Link>.
+      </p>
+    </footer>
   );
 }
 
