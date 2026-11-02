@@ -61,6 +61,15 @@ export const EXCLUIR: Record<string, string> = {
   // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
   // aponta para o recorte, nunca para a URL nua.
   "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
+  // Pontes do painel ambiental (02/11/2026): as tres listas da Colecao Nossos
+  // viraram `?colecao=`, o SIGBM foi absorvido pela pagina de barragens e o
+  // direito critico ja era ponte desde 13/08/2026. Indexar a ponte duplicaria
+  // o destino que o canonical resolve.
+  "/ambiental/nossos-rios": "ponte de URL antiga, noindex",
+  "/ambiental/nossas-serras": "ponte de URL antiga, noindex",
+  "/ambiental/nossos-territorios": "ponte de URL antiga, noindex",
+  "/ambiental/barragens/sigbm": "ponte de URL antiga, noindex",
+  "/ambiental/direito-critico": "ponte de URL antiga, noindex",
 };
 
 /**

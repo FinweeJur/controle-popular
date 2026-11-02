@@ -162,9 +162,8 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/ambiental/barragens", titulo: "Barragens de Minas", termos: ["barragem de minas", "barragens de minas"], zona: "ambiental" },
   { sufixo: "/ambiental/condicionantes", titulo: "Condicionantes de barragens", termos: ["condicionante", "condicionantes", "irape", "setubal"], zona: "ambiental" },
   { sufixo: "/ambiental/copam", titulo: "COPAM", termos: ["copam", "conselho de politica ambiental"], zona: "ambiental" },
-  { sufixo: "/ambiental/legislacao", titulo: "Legislação ambiental", termos: ["legislacao ambiental", "lei ambiental"], zona: "ambiental" },
+  { sufixo: "/ambiental/legislacao", titulo: "Legislação ambiental", termos: ["legislacao ambiental", "lei ambiental", "direito critico", "precedente", "precedentes", "doutrina"], zona: "ambiental" },
   { sufixo: "/ambiental/patrimonio-cultural", titulo: "Patrimônio cultural", termos: ["patrimonio", "tombamento", "tombado"], zona: "ambiental" },
-  { sufixo: "/ambiental/direito-critico", titulo: "Direito crítico", termos: ["direito critico"], zona: "ambiental" },
 
   { sufixo: "/funcaosocialterra", titulo: "Função social da terra", termos: ["funcao social", "terra devoluta", "terras devolutas"], zona: "terras" },
   // Título sem o "3D" que o resto do repo usa: a regra de "nenhum título

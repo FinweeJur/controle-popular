@@ -384,7 +384,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     camada: "data-json",
     caminhoArquivo: "apps/web/data/barragens-sigbm.json",
     constanteCobertura: "COBERTURA_SIGBM",
-    rotaPortal: "/ambiental/barragens/sigbm",
+    rotaPortal: "/ambiental/barragens",
   },
   "ibama-licencas-sancoes": {
     slug: "ibama-licencas-sancoes",

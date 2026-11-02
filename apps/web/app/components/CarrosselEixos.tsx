@@ -69,7 +69,7 @@ export const DEFAULT_EIXOS: EixoAsset[] = [
       { rotulo: 'Licenças Ambientais (11 Estados)', href: '/ambiental/licenciamento' },
       { rotulo: '942 Barragens SIGBM', href: '/ambiental/barragens' },
       { rotulo: 'CAR & Terras Indígenas', href: '/ambiental/car' },
-      { rotulo: 'Rios & Bacias', href: '/ambiental/nossos-rios' },
+      { rotulo: 'Rios & Bacias', href: '/ambiental/nossos?colecao=rios' },
     ],
   },
   {

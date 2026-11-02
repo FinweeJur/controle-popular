@@ -42,19 +42,15 @@ const tópicos: Topico[] = [
     descricao: "Decisões com cobertura declarada do licenciamento.",
   },
   {
-    href: "/ambiental/direito-critico",
-    titulo: "Direito crítico",
-    descricao: "Análises e estudos jurídicos sobre a agenda ambiental.",
-  },
-  {
     href: "/ambiental/estudos",
     titulo: "Estudos",
     descricao: "Estudos de impacto ambiental e relatórios.",
   },
   {
     href: "/ambiental/legislacao",
-    titulo: "Legislação",
-    descricao: "Normas ambientais municipais, estaduais e federais.",
+    titulo: "Legislação, precedentes e direito crítico",
+    descricao:
+      "Normas ambientais municipais, estaduais e federais, mais os precedentes judiciais e a doutrina da assessoria jurídica popular, num painel só.",
   },
   {
     href: "/ambiental/licenciamento",

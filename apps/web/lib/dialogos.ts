@@ -341,7 +341,7 @@ export const DIALOGOS_CATALOGO: DialogoEntreFrentes[] = [
         frenteOrigem: "cidades",
         rotaOrigem: "/rio-de-janeiro",
         frenteDestino: "ambiental",
-        rotaDestino: "/ambiental/nossas-serras",
+        rotaDestino: "/ambiental/nossos?colecao=serras",
         rotuloAmigavel: "Ver contenção de encostas e Mata Atlântica nos maciços",
         topico: "Parque Nacional da Tijuca e Gestão de Riscos",
         razaoEditorial:
@@ -774,7 +774,7 @@ export const DIALOGOS_CATALOGO: DialogoEntreFrentes[] = [
         frenteOrigem: "ambiental",
         rotaOrigem: "/ambiental/nossos-rios/rio-paraopeba",
         frenteDestino: "ambiental",
-        rotaDestino: "/ambiental/nossos-territorios",
+        rotaDestino: "/ambiental/nossos?colecao=territorios",
         rotuloAmigavel: "Ver comunidades quilombolas e ribeirinhas na bacia",
         topico: "Povos Tradicionais e Subsistência",
         razaoEditorial:

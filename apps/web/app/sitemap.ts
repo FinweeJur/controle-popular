@@ -336,6 +336,24 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
   return urls;
 }
 
+/**
+ * Recortes do painel de serviços essenciais e da Coleção Nossos, anunciados um
+ * a um. As URLs nuas dos dois painéis entram pelo inventário descoberto
+ * (`lib/sitemap/rotas-descobertas.ts`).
+ */
+const ITENS_SERVICOS: MetadataRoute.Sitemap = [
+  item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
+  item("/direitos-em-movimento/servicos?subfrente=educacao", { changeFrequency: "weekly", priority: 0.8 }),
+  item("/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+];
+
+/** Recortes do painel da Coleção Nossos, anunciados um a um. */
+const ITENS_NOSSOS: MetadataRoute.Sitemap = [
+  item("/ambiental/nossos?colecao=rios", { changeFrequency: "weekly", priority: 0.7 }),
+  item("/ambiental/nossos?colecao=serras", { changeFrequency: "weekly", priority: 0.7 }),
+  item("/ambiental/nossos?colecao=territorios", { changeFrequency: "weekly", priority: 0.7 }),
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
@@ -365,9 +383,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Eixo 1: Direitos em Movimento
     item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=educacao", { changeFrequency: "weekly", priority: 0.8 }),
-    item("/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", { changeFrequency: "weekly", priority: 0.8 }),
+    ...ITENS_SERVICOS,
     item("/direitos-em-movimento/ajuda", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/denuncia", { changeFrequency: "weekly", priority: 0.7 }),
     item("/direitos-em-movimento/informacao", { changeFrequency: "weekly", priority: 0.7 }),
@@ -387,6 +403,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/ambiental/tac", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/legislacao", { changeFrequency: "monthly", priority: 0.6 }),
+    ...ITENS_NOSSOS,
 
     // Paraopeba & Bacia
     item("/paraopeba", { changeFrequency: "daily", priority: 0.9 }),

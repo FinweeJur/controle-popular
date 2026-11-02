@@ -907,7 +907,7 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     titulo: "Nossos Rios — Doce, Paraopeba e Jequitinhonha",
     descricao:
       "Outorgas de água da ANA e do IGAM, comitês de bacia e a qualidade da água dos rios monitorados, com fonte oficial.",
-    href: "/ambiental/nossos-rios",
+    href: "/ambiental/nossos?colecao=rios",
     frente: "ambiental",
     rotulo: "Rios · Água",
     badgeCor: "var(--cp-eixo-terra)",

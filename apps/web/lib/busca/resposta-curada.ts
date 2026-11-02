@@ -213,9 +213,8 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     padroes: ["legislacao ambiental", "normas ambientais", "mma", "cndh", "urn lexml"],
     zona: "ambiental",
     resposta:
-      "Acervo com as normas federais (MMA/CNDH) e as estaduais de Minas Gerais, categorizadas por tema e identificadas por URN canônica do LexML.",
-    linkPrincipal: { href: "/ambiental/legislacao", texto: "Ver legislação ambiental" },
-    linksAdicionais: [{ href: "/ambiental/direito-critico", texto: "Ver Direito Crítico" }],
+      "Acervo com as normas federais (MMA/CNDH) e as estaduais de Minas Gerais, categorizadas por tema e identificadas por URN canônica do LexML. O mesmo painel reúne os precedentes judiciais e a doutrina da assessoria jurídica popular, filtráveis por esfera.",
+    linkPrincipal: { href: "/ambiental/legislacao", texto: "Ver legislação e precedentes" },
   },
 
   // ─── PARAOPEBA ──────────────────────────────────────────────

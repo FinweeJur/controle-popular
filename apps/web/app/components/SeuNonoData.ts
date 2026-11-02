@@ -434,14 +434,14 @@ export const FRENTES: SeuNonoFrente[] = [
             pergunta: "Como verificar a qualidade da água dos rios e bacias de MG?",
             resposta:
               "O painel monitora as 7 bacias hidrográficas (Velhas, Doce, Paraopeba, São Francisco, Jequitinhonha, Mucuri e Paranaíba) com dados do IGAM e outorgas de captação.",
-            link: { href: "/ambiental/nossos-rios", texto: "Nossos Rios & Bacias Hidrográficas" },
+            link: { href: "/ambiental/nossos?colecao=rios", texto: "Nossos Rios & Bacias Hidrográficas" },
           },
           {
             id: "nossas-serras-recarga",
             pergunta: "Por que as serras e áreas de recarga hídrica são protegidas?",
             resposta:
               "Acompanhe o monitoramento da Serra do Gandarela, Serra da Moeda e Serra do Curral frente a pressões minerárias e imobiliárias.",
-            link: { href: "/ambiental/nossas-serras", texto: "Nossas Serras & Áreas de Recarga" },
+            link: { href: "/ambiental/nossos?colecao=serras", texto: "Nossas Serras & Áreas de Recarga" },
           },
           {
             id: "patrimonio-cultural-tombamentos",
@@ -1450,8 +1450,8 @@ export const PAGINAS_DADOS: PaginaDados[] = [
       "Litígios climáticos e ações de adaptação urbana",
     ],
     links: [
-      { href: "/ambiental/nossos-rios", texto: "Nossos Rios" },
-      { href: "/ambiental/nossas-serras", texto: "Nossas Serras" },
+      { href: "/ambiental/nossos?colecao=rios", texto: "Nossos Rios" },
+      { href: "/ambiental/nossos?colecao=serras", texto: "Nossas Serras" },
       { href: "/ambiental/patrimonio-cultural", texto: "Patrimônio Cultural" },
       { href: "/ambiental/litigios-climaticos", texto: "Litígios Climáticos" },
     ],

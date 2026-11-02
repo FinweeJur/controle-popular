@@ -115,7 +115,7 @@ const EMPRESAS: EntradaCartao[] = [
       categoria: "Empresas",
       atalhos: [
         { rotulo: "Tarifa Social de Água e Esgoto", href: "/noticias/tarifa-social-energia-agua-como-acessar", principal: true },
-        { rotulo: "Nossos Rios & Bacias Hidrográficas", href: "/ambiental/nossos-rios" },
+        { rotulo: "Nossos Rios & Bacias Hidrográficas", href: "/ambiental/nossos?colecao=rios" },
         { rotulo: "Canais Oficiais LAI", href: "/direitos-em-movimento/informacao" },
       ],
     },
