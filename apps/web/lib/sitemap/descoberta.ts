@@ -41,32 +41,20 @@ import { join } from "node:path";
  * conteúdo dentro dela — o buscador perde confiança no host.
  */
 export const EXCLUIR: Record<string, string> = {
-  // Casco de erro exibido sem rede: não tem conteúdo próprio a indexar.
   "/offline": "casco offline, sem conteudo proprio",
-  // `redirect("/alertas")` — indexar a origem do redirect duplica o destino.
   "/notificacoes": "redirect para /alertas",
-  // Laboratorio do pipeline RAG. O proprio cabecalho do arquivo diz que
-  // "nao e uma rota publicada do portal".
   "/assistente-ia-lab": "laboratorio interno, nao publicado",
-  // Painel de status do portal (oferta GitHub Pages). E pagina de SERVICO,
-  // marcada `noindex` no proprio metadata — nao e conteudo para o buscador.
   "/status": "pagina de servico, noindex",
-  // Pontes do painel de servicos (02/11/2026): a rota antiga redireciona
-  // para `/direitos-em-movimento/servicos?subfrente=...`. Indexar a ponte
-  // duplicaria o destino que o canonical ja resolve.
   "/direitos-em-movimento/saude-publica": "ponte de URL antiga, noindex",
   "/direitos-em-movimento/educacao": "ponte de URL antiga, noindex",
   "/direitos-em-movimento/trabalho-e-renda": "ponte de URL antiga, noindex",
-  // O painel sem faceta e o mesmo HTML do recorte padrao: quem anuncia sao as
-  // tres URLs com `?subfrente=` em `app/sitemap.ts`, e o canonical do painel
-  // aponta para o recorte, nunca para a URL nua.
   "/direitos-em-movimento/servicos": "painel com faceta; recortes anunciados no sitemap",
-  // Pontes do painel de analises do Congresso (02/11/2026): as duas listas
-  // eram a mesma entidade separada pelo sentido do rotulo e viraram
-  // `/congresso/analises?recorte=...`. O painel sem faceta continua anunciado
-  // como a visao "todas"; as pontes nao.
   "/congresso/alertas": "ponte de URL antiga, noindex",
   "/congresso/bons-exemplos": "ponte de URL antiga, noindex",
+  "/paraopeba/indice": "ponte de URL antiga, noindex",
+  "/paraopeba/noticias-vale": "ponte de URL antiga, noindex",
+  "/paraopeba/noticias": "painel com faceta; recortes anunciados no sitemap",
+  "/terra-e-territorios/cidades": "ponte de URL antiga, noindex",
 };
 
 /**
@@ -75,15 +63,10 @@ export const EXCLUIR: Record<string, string> = {
  * anuncia por sufixo (elas se repetem em toda cidade ativa).
  */
 export const EXCLUIR_SUFIXO: Record<string, string> = {
-  // Painel de moderação protegido por token (`PainelAdmin.tsx`).
   "/admin": "painel interno, protegido por token",
-  // Páginas-ponte de URL antiga: `noindex` + `meta refresh` para o destino.
-  // Indexar a ponte duplicaria o conteúdo que o canonical já resolve.
   "/zap-betim": "ponte de URL antiga, noindex",
   "/nota-betim": "ponte de URL antiga, noindex",
   "/prefeitura/legislacao": "ponte de URL antiga, noindex",
-  // Diárias viraram o bloco de pessoal do painel da Prefeitura (02/11/2026).
-  // A ponte é `noindex`; o painel é quem é anunciado.
   "/prefeitura/diarias": "ponte de URL antiga, noindex",
   "/convenios": "ponte de URL antiga, noindex",
 };

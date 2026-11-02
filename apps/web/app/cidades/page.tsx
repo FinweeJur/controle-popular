@@ -202,6 +202,16 @@ export default function PaginaCidadesEstrategicas() {
               <p className="mt-1 text-xs text-muted">26 Estados + DF</p>
             </div>
           </div>
+          {/* População abrangida: informação que vivia em
+              `/terra-e-territorios/cidades`, absorvida por esta página em
+              02/11/2026. É referência da base de cidades estratégicas, não
+              soma recalculada neste build — por isso o rótulo. */}
+          <p className="mt-3 text-xs text-muted">
+            População abrangida:{" "}
+            <strong className="text-foreground">112+ milhões de habitantes</strong> — mais de 55%
+            da população do país. Valor de referência da base de cidades estratégicas; o portal não
+            o recalcula neste build.
+          </p>
         </section>
 
         {/* 2. GRÁFICO SVG NATIVO: DISTRIBUIÇÃO POR REGIÃO */}

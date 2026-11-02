@@ -339,6 +339,11 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
   return urls;
 }
 
+/**
+ * O painel de noticias do Paraopeba (02/11/2026) entra pelos DOIS recortes,
+ * nunca pela URL nua: ela e o mesmo HTML do recorte padrao, como em
+ * `/direitos-em-movimento/servicos`.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
@@ -365,7 +370,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/documentacao/fontes-e-coletas", { changeFrequency: "monthly", priority: 0.6 }),
     item("/documentacao/api-publica", { changeFrequency: "monthly", priority: 0.7 }),
     item("/documentacao/editorial", { changeFrequency: "monthly", priority: 0.6 }),
-
     // Eixo 1: Direitos em Movimento
     item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
     item("/direitos-em-movimento/servicos?subfrente=saude-publica", { changeFrequency: "weekly", priority: 0.8 }),
@@ -391,12 +395,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/legislacao", { changeFrequency: "monthly", priority: 0.6 }),
 
-    // Paraopeba & Bacia
     item("/paraopeba", { changeFrequency: "daily", priority: 0.9 }),
     item("/paraopeba/execucao", { changeFrequency: "weekly", priority: 0.8 }),
     item("/paraopeba/vale", { changeFrequency: "daily", priority: 0.8 }),
     item("/paraopeba/entenda", { changeFrequency: "monthly", priority: 0.6 }),
     item("/paraopeba/biblioteca", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/paraopeba/noticias?fonte=bacia", { changeFrequency: "daily", priority: 0.7 }),
+    item("/paraopeba/noticias?fonte=vale", { changeFrequency: "daily", priority: 0.6 }),
 
     // Função Social da Terra
     item("/funcaosocialterra", { changeFrequency: "weekly", priority: 0.8 }),
@@ -416,13 +421,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ajustes de prioridade; esta só preenche o buraco, deduplicando por URL.
   const jaAnunciadas = new Set(urls.map((u: { url: string }) => u.url));
   for (const rota of ROTAS_GLOBAIS) {
-    const url = `${BASE_URL}${rota}`;
-    if (jaAnunciadas.has(url)) continue;
+    if (jaAnunciadas.has(`${BASE_URL}${rota}`)) continue;
     urls.push(item(rota));
   }
 
-  const cidades = await listarCidades();
-  const porCidade = await Promise.all(cidades.map(rotasDeCidade));
+  const porCidade = await Promise.all((await listarCidades()).map(rotasDeCidade));
   for (const lote of porCidade) urls.push(...lote);
 
   urls.push(...(await rotasDoCongresso()));

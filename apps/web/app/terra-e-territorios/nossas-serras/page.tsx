@@ -5,6 +5,7 @@ import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
 import RelacaoSuggestions from '@/app/components/eixos/RelacaoSuggestions';
 import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
+import AvisoReferenciaTerritorio from '../AvisoReferencia';
 
 export const metadata: Metadata = {
   title: 'Nossas Serras — Eixo Terra e Territórios | Controle Popular',
@@ -32,6 +33,7 @@ export default function NossasSerrasPage() {
       heroCaption="Cachoeira e fauna nativa em paredão rochoso — a defesa das serras brasileiras, caixas d'água naturais do país e refúgio da biodiversidade."
     >
       {/* CARTÕES DE STATUS */}
+      <AvisoReferenciaTerritorio ressalva="As sobreposições entre processos minerários e territórios quilombolas são uma contagem da fonte, não uma avaliação jurídica de conflito." />
       <section aria-label="Indicadores de serras e unidades de conservação" className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-8">
         {indicadoresSerras.map((item) => (
           <div key={item.rotulo} className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">

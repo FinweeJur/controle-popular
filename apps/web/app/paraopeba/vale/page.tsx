@@ -395,7 +395,7 @@ export default function ValePage() {
           📑 Documentos CVM (ITR, DFP, FRE)
         </NextLink>
         <NextLink
-          href="/paraopeba/noticias-vale"
+          href="/paraopeba/noticias?fonte=vale"
           className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
         >
           📰 Radar de Notícias

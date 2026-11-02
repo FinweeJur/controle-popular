@@ -19,7 +19,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/uberlandia": "Maior cidade do interior de Minas: logística do agronegócio, orçamento municipal e contratos públicos.",
   "/juiz-de-fora": "Indicadores fiscais, saúde pública regional, Câmara Municipal e serviços essenciais da Zona da Mata.",
   "/terra-e-territorios/vales": "82 municípios analisados: corrida do lítio, comunidades quilombolas, povo Maxakali e IDH regional.",
-  "/terra-e-territorios/nossos-rios": "Monitoramento hidrológico de 8 bacias: qualidade da água, outorgas, desastres industriais e saneamento básico.",
+  "/terra-e-territorios/nossos-rios": "Monitoramento hidrológico de 9 calhas: qualidade da água, outorgas, desastres industriais e saneamento básico.",
   "/terra-e-territorios/nossas-serras": "Defesa de formações geológicas, recarga de aquíferos e contenção da expansão minerária na Serra do Curral e Espinhaço.",
   "/paraopeba": "Biblioteca de crimes socioambientais: monitoramento dos R$ 37,7 bi do acordo de Brumadinho e direitos atingidos.",
   "/paraopeba/execucao": "Detalhamento de cada desembolso da Vale S.A., cronograma físico-financeiro de projetos e obras nos 26 municípios.",

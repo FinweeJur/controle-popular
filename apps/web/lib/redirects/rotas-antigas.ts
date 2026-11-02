@@ -37,7 +37,6 @@ export interface RotaAntiga {
 }
 
 export const ROTAS_ANTIGAS: RotaAntiga[] = [
-  // ── Fase 1: serviços essenciais de Direitos (02/11/2026) ──────────────
   {
     de: "/direitos-em-movimento/saude-publica",
     para: "/direitos-em-movimento/servicos?subfrente=saude-publica",
@@ -53,7 +52,6 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
     motivo: "virou faceta do painel de servicos essenciais (02/11/2026)",
   },
-  // ── Congresso: a mesma lista, separada só pelo sentido do rótulo ──────
   {
     de: "/congresso/alertas",
     para: "/congresso/analises?recorte=restringem",
@@ -64,7 +62,23 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/congresso/analises?recorte=ampliam",
     motivo: "virou recorte do painel de analises do congresso (02/11/2026)",
   },
+  {
+    de: "/paraopeba/indice",
+    para: "/paraopeba#indice",
+    motivo: "indice sem dado proprio absorvido pelo hub da frente (02/11/2026)",
+  },
+  {
+    de: "/paraopeba/noticias-vale",
+    para: "/paraopeba/noticias?fonte=vale",
+    motivo: "virou recorte do painel de noticias da bacia e da Vale (02/11/2026)",
+  },
+  {
+    de: "/terra-e-territorios/cidades",
+    para: "/cidades#catalogo-cidades",
+    motivo: "repetia o catalogo e os totais de /cidades; virou ancora da pagina canonica (02/11/2026)",
+  },
 ];
+
 
 /**
  * Destino de uma rota antiga.
