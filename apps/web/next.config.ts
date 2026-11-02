@@ -646,7 +646,28 @@ const nextConfig: NextConfig = {
       }),
 
   turbopack: {
-    // Permite que o Turbopack resolva junções de node_modules fora de apps/web quando em worktrees
+    /**
+     * RAIZ DO TURBOPACK FORA DE `apps/web` (worktrees)
+     *
+     * O Turbopack recusa qualquer link ou juncao que aponte para FORA da raiz
+     * do projeto ("Symlink points out of the filesystem root"). Sessao
+     * paralela economiza disco ligando o `node_modules` do worktree ao do
+     * checkout canonico, entao sem esta raiz o worktree nao builda com
+     * Turbopack e cai para o webpack.
+     *
+     * Alargar a raiz para o checkout canonico resolve os dois lados: worktree
+     * e alvo da juncao ficam DENTRO da raiz. Medido em 02/11/2026 no worktree
+     * `painel-facetas` (Next 16.3.6): dev Turbopack pronto em 713 ms e
+     * `next build --turbopack` verde -- compile em 35 s, TypeScript em 5,0 min,
+     * 716 paginas estaticas em 61 s, 7,1 min no total sem o prebuild. No mesmo
+     * dia, webpack: compile de 5,4 min.
+     *
+     * CUSTO, e por isso a condicao: a raiz passa a ser compartilhada entre
+     * sessoes. Um `npm ci`/`npm install` no checkout canonico durante o build
+     * de um worktree troca dependencia embaixo do build. Fora de worktree a
+     * raiz continua a padrao (`undefined`), e o Docker (cwd `/app`) nunca
+     * entra na condicao.
+     */
     root: (() => {
       const cwd = process.cwd();
       if (cwd.includes(".claude") && cwd.includes("worktrees")) {

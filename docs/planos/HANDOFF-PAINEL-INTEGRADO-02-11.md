@@ -7,6 +7,14 @@
 > **Relacionados:** [PLANO-PAINEL-INTEGRADO-02-11.md](PLANO-PAINEL-INTEGRADO-02-11.md), [PROMPT-PAINEL-INTEGRADO.md](PROMPT-PAINEL-INTEGRADO.md), [PLANO-BUILD-RAPIDA.md](PLANO-BUILD-RAPIDA.md), [CONFORMIDADE-MOBILE.md](../03-desenvolvimento/CONFORMIDADE-MOBILE.md), [HIERARQUIA-DE-ACAO.md](../03-desenvolvimento/HIERARQUIA-DE-ACAO.md)
 > **Palavras-chave:** handoff, painel, facetas, redirects, deploy, build, worktree
 
+> **Atualização em 02/11/2026, depois deste handoff.** O merge foi feito
+> (`618ac6a6`), o `assistente-acervo.json` foi regenerado (`ae91ff5c`, 53
+> referências trocadas, 0 rotas velhas) e as cidades foram regeradas
+> (`cb62069b`) — itens 1 a 3 da seção 4 estão fechados. O mesmo `ae91ff5c`
+> acrescentou `turbopack.root` ao `next.config.ts`: **o worktree builda com
+> Turbopack**, e a armadilha da junção deixou de valer. O que continua aberto
+> é o item 4 (smoke pós-deploy), parte do 5 (medição de consultas) e o 6.
+
 ## Sumário
 
 - [Onde está o trabalho](#1-onde-está-o-trabalho)
@@ -55,24 +63,31 @@ sozinho; auditoria mobile (`scripts/auditar-mobile.mjs`).
 - Top-100: **0 de 100** apontando para rota redirecionada.
 - Auditoria mobile: 346 rotas, 1 achado (banner de anúncio sem dimensão).
 - `npx next build --webpack`: **714 páginas**, verde (antes dos últimos merges).
+- `npx next build --turbopack` no worktree, depois de `ae91ff5c`: **716 páginas
+  estáticas**, compile em 35 s, 7,1 min no total sem prebuild.
 
 ## 4. O que falta
 
 1. **Merge na `main`** — 20 commits atrás; conflitos prováveis em
    `data/*.json`, `cidades-do-build.ts` e `proveniencia.json` (gerados).
-2. **Build de produção (Turbopack) na `main`** — o worktree não roda: junção de
-   `node_modules` é recusada com *“Symlink points out of the filesystem root”*.
-3. **Regenerar `data/assistente-acervo.json`** — ainda guarda 17 URLs antigas.
-   O 301 salva o clique, mas o assistente sugere rota velha.
+2. **Build de produção (Turbopack) na `main`** — o worktree **já roda** com
+   Turbopack desde `ae91ff5c` (`turbopack.root`); medido em 02/11/2026:
+   compile em 35 s, 716 páginas estáticas, 7,1 min sem prebuild.
+3. **Regenerar `data/assistente-acervo.json`** — feito em `ae91ff5c`: as 53
+   referências antigas viraram as 17 rotas canônicas, 0 rotas velhas.
 4. **Smoke pós-deploy** com `scripts/aquecer-pos-deploy.mts`.
 5. **Medidas de build** (`PLANO-BUILD-RAPIDA.md`): medir consultas antes de
-   cachear; `npm ci` local no worktree para usar Turbopack.
+   cachear; o type-check dentro do build já é 5 dos 7 min no worktree.
 6. Hierarquia botão × link: regra escrita, aplicação feita só em `/servicos`.
 
 ## 5. Armadilhas desta rodada
 
-- **Turbopack + junção de `node_modules` = build quebrado.** Use `--webpack`
-  no worktree ou `npm ci` local.
+- **Turbopack + junção de `node_modules`: resolvido por `turbopack.root`.** O
+  erro *“Symlink points out of the filesystem root”* acontece porque o alvo da
+  junção fica fora da raiz do projeto. Com a raiz apontada para o checkout
+  canônico, worktree e alvo ficam dentro dela — e o build volta ao Turbopack.
+  A junção em si **não é obrigatória**: `npm ci` no worktree também serve, ao
+  custo de 1,1 GB por worktree.
 - **`git show ... > arquivo` no PowerShell grava UTF-16** e quebra o parse.
   Use `execFileSync` ou `Out-File -Encoding utf8`.
 - **Commit com `--only` exige `git add -N`** para arquivo novo.
@@ -87,7 +102,7 @@ sozinho; auditoria mobile (`scripts/auditar-mobile.mjs`).
 # trabalhar na branch
 cd X:\DevCoder\OpenCode\controle-popular\.claude\worktrees\painel-facetas
 
-# dev (webpack, por causa da junção)
+# dev (webpack; Turbopack tambem sobe: npx next dev --turbopack)
 cd apps\web; npm run dev -- --port 3048
 
 # verificação

@@ -45,10 +45,19 @@ Build medida em 02/11/2026, no worktree `painel-facetas`, alvo padrão:
    `[banco:congresso] principal (Guara) vazio` **139 vezes** — cada linha é
    uma tentativa de reserva, não uma página. Memoizar a leitura por build
    troca 139 tentativas por uma.
-3. **Worktree não usa Turbopack.** A junção de `node_modules`
-   (`New-Item -ItemType Junction`) é recusada: *“Symlink points out of the
-   filesystem root”*. O build cai para webpack, que é mais lento e mais
-   gordo — e é o que qualquer sessão paralela sofre hoje.
+3. **Worktree agora usa Turbopack — com uma condição.** A junção de
+   `node_modules` (`New-Item -ItemType Junction`) é recusada com *“Symlink
+   points out of the filesystem root”* porque o alvo fica fora da raiz do
+   projeto. Desde 02/11/2026 o `next.config.ts` declara `turbopack.root`
+   apontando para o checkout canônico quando o `cwd` está em
+   `.claude\worktrees`: worktree e alvo da junção passam a ficar dentro da
+   raiz. Medido em 02/11/2026 no `painel-facetas` (Next 16.3.6):
+   `next build --turbopack` verde, **compile em 35 s** contra 5,4 min do
+   webpack, TypeScript em 5,0 min e 716 páginas estáticas em 61 s — 7,1 min
+   no total, sem o prebuild.
+   O custo é o isolamento: a raiz é compartilhada, então `npm ci`/`npm install`
+   no canônico durante um build de worktree troca dependência embaixo do
+   build. A alternativa hermética é `npm ci` dentro do worktree.
 
 ## 4. As três medidas
 
@@ -67,12 +76,19 @@ Ganho esperado: minutos no prebuild e no prerender; medir antes de afirmar.
 
 ### 4.3 Worktree com dependências locais
 
-Duas saídas, na ordem de preferência:
+**Feito em 02/11/2026, pela segunda via.** Duas saídas, na ordem de
+preferência:
 
 - `npm ci --prefer-offline` dentro do worktree: build hermético, Turbopack
   funciona. Custa disco e ~2–3 min uma vez por worktree.
 - `turbopack.root` apontando para o repositório canônico: ganha o Turbopack,
   mas quebra o isolamento entre sessões — só se a primeira não servir.
+
+Escolhida a segunda em 02/11/2026 porque o `node_modules` é um só para todo o
+monorepo (1,1 GB, 69 mil arquivos) e havia 16 worktrees abertas: instalar em
+cada uma custaria ~17 GB. O `turbopack.root` entregou o mesmo ganho de
+compilação (5,4 min → 35 s) sem duplicar dependência, ao preço de a raiz ser
+compartilhada — por isso o build de produção continua sendo feito na `main`.
 
 ## 5. Como medir
 
