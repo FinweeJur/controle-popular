@@ -568,6 +568,20 @@ const nextConfig: NextConfig = {
               destination: "/:municipio/camara/legislacao",
               permanent: true,
             },
+            // As diárias saíram da rota própria em 02/11/2026. Era a única
+            // tela da família sem busca, filtro ou exportação — uma tabela
+            // servida pelo servidor —, e virou o bloco de pessoal do painel
+            // (`app/[municipio]/prefeitura/PainelDiarias.tsx`). A query faz
+            // parte do destino: sem ela o leitor de um link antigo cairia no
+            // topo do painel, longe do bloco que procurava.
+            //
+            // A ponte em `app/[municipio]/prefeitura/diarias/` cobre o alvo
+            // `output: 'export'`, onde esta função não é aplicada.
+            {
+              source: "/:municipio/prefeitura/diarias",
+              destination: "/:municipio/prefeitura?area=pessoal",
+              permanent: true,
+            },
             // IBGE codes → slugs: URLs like `/3106200` redirect to `/bh`.
             { source: "/3103405", destination: "/aracuai", permanent: true },
             { source: "/3106200", destination: "/bh", permanent: true },

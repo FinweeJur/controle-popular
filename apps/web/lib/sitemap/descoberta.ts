@@ -76,6 +76,9 @@ export const EXCLUIR_SUFIXO: Record<string, string> = {
   "/zap-betim": "ponte de URL antiga, noindex",
   "/nota-betim": "ponte de URL antiga, noindex",
   "/prefeitura/legislacao": "ponte de URL antiga, noindex",
+  // Diárias viraram o bloco de pessoal do painel da Prefeitura (02/11/2026).
+  // A ponte é `noindex`; o painel é quem é anunciado.
+  "/prefeitura/diarias": "ponte de URL antiga, noindex",
   "/convenios": "ponte de URL antiga, noindex",
 };
 

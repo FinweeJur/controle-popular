@@ -40,6 +40,8 @@ export default function PaginaPonte({
   destino,
   titulo,
   fonte = "rotas_legadas",
+  canonico,
+  explicacao = "Esta página mudou de endereço quando o portal passou a atender mais de uma cidade. O conteúdo é o mesmo.",
 }: {
   cidade: Cidade;
   /** Caminho novo, relativo à cidade — ex. `/zap`. */
@@ -47,21 +49,33 @@ export default function PaginaPonte({
   titulo: string;
   /** Chave de `municipios.fontes` que libera a ponte; `null` = toda cidade. */
   fonte?: string | null;
+  /**
+   * Caminho canônico, relativo à cidade, quando o destino carrega query ou
+   * âncora que não devem entrar no `canonical` (ex.: `?area=pessoal`).
+   * Ausente = o próprio destino, como antes.
+   */
+  canonico?: string;
+  /**
+   * Uma frase dizendo por que a URL mudou. O padrão fala da virada
+   * multi-cidade; ponte por outro motivo (diárias viraram recorte de painel)
+   * passa a explicação certa em vez de herdar uma história que não é a dela.
+   */
+  explicacao?: string;
 }) {
   if (fonte !== null && !temFonte(cidade, fonte)) notFound();
 
   const absoluto = `/${cidade.slug}${destino}`;
+  const absolutoCanonico = `/${cidade.slug}${canonico ?? destino}`;
 
   return (
     <>
       <meta httpEquiv="refresh" content={`0; url=${absoluto}`} />
-      <link rel="canonical" href={absoluto} />
+      <link rel="canonical" href={absolutoCanonico} />
       <meta name="robots" content="noindex, follow" />
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
         <h1 className="font-display text-2xl font-semibold text-text">{titulo}</h1>
         <p className="mt-3 text-sm text-text-soft">
-          Esta página mudou de endereço quando o portal passou a atender mais
-          de uma cidade. O conteúdo é o mesmo.
+          {explicacao}
         </p>
         <Link
           href={destino}

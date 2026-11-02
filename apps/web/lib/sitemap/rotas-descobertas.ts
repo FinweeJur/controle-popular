@@ -25,6 +25,7 @@
  *   /zap-betim — ponte de URL antiga, noindex
  *   /nota-betim — ponte de URL antiga, noindex
  *   /prefeitura/legislacao — ponte de URL antiga, noindex
+ *   /prefeitura/diarias — ponte de URL antiga, noindex
  *   /convenios — ponte de URL antiga, noindex
  */
 
@@ -322,7 +323,6 @@ export const SUFIXOS_CIDADE: readonly string[] = [
   "/prefeitura/contratos",
   "/prefeitura/cultura",
   "/prefeitura/despesas",
-  "/prefeitura/diarias",
   "/prefeitura/diario",
   "/prefeitura/fornecedores",
   "/prefeitura/licitacoes",
