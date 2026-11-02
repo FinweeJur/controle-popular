@@ -51,6 +51,8 @@ export const SECOES_MENU: SecaoMenu[] = [
     badgeClasse: 'bg-alert/10 text-alert border-alert/30',
     links: [
       { label: 'Visão Geral do Eixo', href: '/direitos-em-movimento', icone: HeartHandshake, dica: 'Porta do Eixo 1: saúde, educação, trabalho, conselhos, LAI, denúncia e assistência jurídica.' },
+      { label: 'Painel Nacional de Indicadores', href: '/indicadores', icone: BarChart3, destaque: true, dica: 'Dashboard cívico dos 27 estados e municípios: saúde SUS, educação básica, IDH e comparador global.' },
+      { label: 'Hub Unificado de Educação', href: '/educacao', icone: GraduationCap, destaque: true, dica: 'Hub unificado com 2.600+ IES, cursos, periódicos, intercâmbio e 1.414 grupos CNPq.' },
       { label: 'Linha do Tempo das Lutas', href: '/memoria', icone: BookOpen, destaque: true, dica: 'Seis décadas de lutas populares no campo e na cidade, com marcos, datas e fontes.' },
       { label: 'Que Lei Protege Isso', href: '/ambiental/legislacao', icone: ShieldCheck, destaque: true, dica: 'Biblioteca de leis ambientais e de direitos: o que cada norma garante e como acioná-la.' },
       { label: 'Direitos Globais', href: '/direitos-globais', icone: Globe, destaque: true, dica: 'Compare direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania.' },
@@ -114,6 +116,7 @@ export const SECOES_MENU: SecaoMenu[] = [
     badgeClasse: 'bg-sky-500/10 text-sky-500 border-sky-500/30',
     links: [
       { label: 'Visão Geral do Eixo', href: '/estado-e-economia', icone: Landmark, dica: 'Porta do Eixo 3: orçamento, justiça, assembleias, contratos, campanhas e empresas.' },
+      { label: 'Concursos Públicos & Carreiras', href: '/concursos', icone: Briefcase, destaque: true, dica: 'Radar nacional de vagas e editais abertos nos 27 estados, poderes e esferas públicas.' },
       { label: 'Orçamento & Receitas de MG', href: '/estado-e-economia/orcamento', icone: BarChart3, destaque: true, dica: 'Receitas e despesas do orçamento de MG: por função, órgão e ano, direto da fonte oficial.' },
       { label: 'Quem fiscaliza a Justiça', href: '/judiciario/instituicoes', icone: Scale, destaque: true, dica: 'Instituições que fiscalizam o Judiciário: CNJ, corregedorias, ouvidorias e Conselhos.' },
       { label: 'Varas, Gabinetes e Balcão', href: '/judiciario/contatos', icone: PhoneCall, destaque: true, dica: 'Varas, gabinetes e balcão virtual: telefone, e-mail e titular de cada unidade.' },
@@ -148,7 +151,7 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Página do Eixo Central', href: '/central', icone: Compass, dica: 'Porta do Eixo 4: ferramentas, assistente, busca, acervo e laboratório do portal.' },
       { label: 'Radar Diário de Editais', href: '/editais', icone: ShoppingBag, destaque: true, dica: 'Editais e chamamentos do Diário Oficial de MG, atualizados com radar diário.' },
       { label: 'Biblioteca Geral & Pesquisa', href: '/biblioteca', icone: BookOpen, destaque: true, dica: 'Acervo com milhares de documentos, relatórios periciais, estudos e decisões.' },
-      { label: 'Universidades: Estudo, Pesquisa e Extensão', href: '/universidades', icone: GraduationCap, destaque: true, dica: 'Lista de grupos de estudo e pesquisa e de projetos de extensão, com contatos, líderes e cruzamento por tema, local e data.' },
+      { label: 'Educação, Pesquisa e Universidades', href: '/educacao', icone: GraduationCap, destaque: true, dica: 'Hub unificado de educação: 2.600+ IES, 40.000+ cursos, periódicos abertos e grupos CNPq.' },
       { label: 'Árvore de Conexões (Grafo 3D)', href: '/laboratorio/arvore', icone: Layers, destaque: true, dica: 'Grafo 3D que liga os eixos, temas e páginas do portal numa teia navegável.' },
       { label: 'Assistente Cívico Seu Nonô', href: '/assistente', icone: Sparkles, destaque: true, dica: 'Seu Nonô responde sobre os dados do portal e indica onde conferir na fonte.' },
       { label: 'Índice Geral do Portal', href: '/indice', icone: List, dica: 'Índice completo do portal, com busca por tema, situação e eixo.' },
