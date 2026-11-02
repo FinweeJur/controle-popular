@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -12,20 +12,15 @@ import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
 import FaixaDesenvolvimento from "@/app/components/FaixaDesenvolvimento";
 import PaletaComandos from "@/app/components/PaletaComandos";
-import { SeuNono } from "@/app/components/SeuNono";
-import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
-import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
-import RastroCursorBotao from "@/app/components/RastroCursorBotao";
+import WidgetsFlutuantes from "@/app/components/WidgetsFlutuantes";
 import { BackToTop } from "@/app/components/BackToTop";
 import RastroCursor from "@/app/components/RastroCursor";
-import CliqueNegado from "@/app/components/CliqueNegado";
 import CursorTema from "@/app/components/CursorTema";
 import PlayerRadio from "@/app/components/PlayerRadio";
 import { InterceptadorLinks } from "@/app/components/InterceptadorLinks";
 import IndicePagina from "@/app/components/IndicePagina";
 import { CapitulosFlutuantes } from "@/app/components/wiki";
 import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
-import DicaHover from "@/app/components/DicaHover";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
 import ScrollbarExpansivel from "@/app/components/ScrollbarExpansivel";
 import RegistrarServiceWorker from "@/app/components/RegistrarServiceWorker";
@@ -35,25 +30,25 @@ import FundoOnda from "@/app/components/react-bits/FundoOnda";
 import "./globals.css";
 
 /**
- * Layout raiz do monorepo. Só o que é comum aos três eixos vive aqui:
+ * Layout raiz do monorepo. SÃ³ o que Ã© comum aos trÃªs eixos vive aqui:
  * `<html>`/`<body>`, as fontes, o tema e o anti-flash do tamanho de fonte.
- * Header, nav e footer são de cada zona (`app/<zona>/layout.tsx`), porque
- * divergem — o Betim tem Header/Footer próprios envolvidos em `ForaDoHub`,
- * o Congresso e o Judiciário montam a barra inline.
+ * Header, nav e footer sÃ£o de cada zona (`app/<zona>/layout.tsx`), porque
+ * divergem â€” o Betim tem Header/Footer prÃ³prios envolvidos em `ForaDoHub`,
+ * o Congresso e o JudiciÃ¡rio montam a barra inline.
  *
- * Antes da unificação, cada um dos três repos tinha o seu próprio
- * RootLayout com `<html>`; num app só, apenas a raiz pode declará-lo.
+ * Antes da unificaÃ§Ã£o, cada um dos trÃªs repos tinha o seu prÃ³prio
+ * RootLayout com `<html>`; num app sÃ³, apenas a raiz pode declarÃ¡-lo.
  */
 const BASE_URL = "https://www.controlepopular.com.br";
 const SITE_NAME = "Controle Popular";
 const DEFAULT_DESCRIPTION =
-  "Quanto sua prefeitura gasta e com quem contrata, quais barragens e licenças existem perto de você, como votou seu parlamentar, o orçamento da Justiça e da saúde — com link para a fonte oficial.";
+  "Quanto sua prefeitura gasta e com quem contrata, quais barragens e licenÃ§as existem perto de vocÃª, como votou seu parlamentar, o orÃ§amento da JustiÃ§a e da saÃºde â€” com link para a fonte oficial.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
-    template: `%s — ${SITE_NAME}`,
+    default: `${SITE_NAME} â€” Portal Independente de FiscalizaÃ§Ã£o CidadÃ£`,
+    template: `%s â€” ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
   openGraph: {
@@ -61,34 +56,34 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: BASE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
+    title: `${SITE_NAME} â€” Portal Independente de FiscalizaÃ§Ã£o CidadÃ£`,
     description: DEFAULT_DESCRIPTION,
     images: [
       {
         url: "/capas/home-page.webp",
         width: 1200,
         height: 630,
-        alt: "Controle Popular — R$ 251 bilhões em recursos públicos fiscalizados",
+        alt: "Controle Popular â€” R$ 251 bilhÃµes em recursos pÃºblicos fiscalizados",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
+    title: `${SITE_NAME} â€” Portal Independente de FiscalizaÃ§Ã£o CidadÃ£`,
     description: DEFAULT_DESCRIPTION,
     images: ["/capas/home-page.webp"],
   },
-  // SEM `alternates.canonical` aqui. O merge de metadata do Next é raso: o
+  // SEM `alternates.canonical` aqui. O merge de metadata do Next Ã© raso: o
   // canonical "/" declarado na raiz era herdado por TODA rota sem
-  // `alternates` próprio — medido no ar em 04/10/2026: /ambiental/car,
+  // `alternates` prÃ³prio â€” medido no ar em 04/10/2026: /ambiental/car,
   // /cidades e /congresso devolviam <link rel="canonical" href=".../">,
   // ou seja, diziam ao Google que eram a home. Canonical errado derruba a
-  // página do índice; canonical ausente não (o buscador escolhe sozinho).
+  // pÃ¡gina do Ã­ndice; canonical ausente nÃ£o (o buscador escolhe sozinho).
   // Cada rota declara a sua: `metadataEditavel()` (maioria), o
-  // `metadataDaCidade()` das páginas municipais e a home, abaixo.
+  // `metadataDaCidade()` das pÃ¡ginas municipais e a home, abaixo.
   // PWA: permite instalar o portal como app e abrir o casco sem rede.
-  // O service worker (`public/sw.js`) faz network-first para HTML — dado
-  // velho é dano. Ver `RegistrarServiceWorker.tsx`.
+  // O service worker (`public/sw.js`) faz network-first para HTML â€” dado
+  // velho Ã© dano. Ver `RegistrarServiceWorker.tsx`.
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -109,9 +104,9 @@ export const metadata: Metadata = {
   },
 };
 
-// O controle A−/A/A+ vive num atributo próprio (`data-fs`) porque o
-// next-themes só gerencia um. Ler o localStorage antes da pintura evita o
-// texto redimensionar na hidratação — mesmo truque do next-themes.
+// O controle Aâˆ’/A/A+ vive num atributo prÃ³prio (`data-fs`) porque o
+// next-themes sÃ³ gerencia um. Ler o localStorage antes da pintura evita o
+// texto redimensionar na hidrataÃ§Ã£o â€” mesmo truque do next-themes.
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
@@ -150,9 +145,9 @@ const FONT_SIZE_NO_FLASH_SCRIPT = `
 })();
 `;
 
-// Mesmo truque, para a paleta seguro-para-daltônicos (`CvdToggle.tsx`):
-// atributo próprio (`data-cvd`), lido antes da pintura para não trocar
-// --cp-accent/--cp-alert já com o primeiro frame na tela.
+// Mesmo truque, para a paleta seguro-para-daltÃ´nicos (`CvdToggle.tsx`):
+// atributo prÃ³prio (`data-cvd`), lido antes da pintura para nÃ£o trocar
+// --cp-accent/--cp-alert jÃ¡ com o primeiro frame na tela.
 const CVD_NO_FLASH_SCRIPT = `
 (function() {
   try {
@@ -162,12 +157,14 @@ const CVD_NO_FLASH_SCRIPT = `
 })();
 `;
 
-// Script síncrono para garantir carregamento instantâneo do tema Pequi:
-// lê localStorage ou assume 'pequi', evitando qualquer flash de tema claro.
+// Script sÃ­ncrono para o tema inicial. Desde 02/11/2026 o padrÃ£o Ã© o tema
+// CLARO (`light`): quem chega sem escolha vÃª a pÃ¡gina branca e recebe um
+// convite discreto para experimentar o escuro ou um dos temas de bioma.
+// O atributo Ã© escrito antes da primeira pintura para nÃ£o haver flash.
 const THEME_NO_FLASH_SCRIPT = `
 (function() {
   try {
-    var th = localStorage.getItem('theme') || 'pequi';
+    var th = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', th);
   } catch (e) {}
 })();
@@ -179,30 +176,30 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      data-theme="pequi"
+      data-theme="light"
       className={`h-full ${clashDisplay.variable} ${generalSans.variable} ${tabular.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* ═══ SCRIPTS DO CASCO: <script> CRU DE SERVIDOR, NUNCA `next/script` ═══
+        {/* â•â•â• SCRIPTS DO CASCO: <script> CRU DE SERVIDOR, NUNCA `next/script` â•â•â•
             Medido em 06/10/2026 (o dono viu o erro no overlay do Next):
             "Encountered a script tag while rendering React component" apontando
             para as linhas de `<Script strategy="beforeInteractive">` daqui.
 
-            O `next/script` é componente de CLIENTE. Em qualquer posição ele
+            O `next/script` Ã© componente de CLIENTE. Em qualquer posiÃ§Ã£o ele
             renderiza um `<script>` de bootstrap (`self.__next_s.push(...)`) na
-            hidratação, e o React 19 recusa `<script>` como filho de componente
-            no cliente — o erro aparecia em TODA página, com quatro avisos por
+            hidrataÃ§Ã£o, e o React 19 recusa `<script>` como filho de componente
+            no cliente â€” o erro aparecia em TODA pÃ¡gina, com quatro avisos por
             carga (um por script abaixo).
 
-            A prova foi um par de páginas de teste: com `next/script` o erro
-            aparece; com `<script>` cru (componente de SERVIDOR) não aparece
-            nenhum. E o `<script>` cru é MELHOR aqui: ele nasce no HTML servido,
+            A prova foi um par de pÃ¡ginas de teste: com `next/script` o erro
+            aparece; com `<script>` cru (componente de SERVIDOR) nÃ£o aparece
+            nenhum. E o `<script>` cru Ã© MELHOR aqui: ele nasce no HTML servido,
             roda durante a leitura do documento (antes da primeira pintura, que
-            é a razão de existir do anti-flash) e o crawler o vê sem executar JS.
+            Ã© a razÃ£o de existir do anti-flash) e o crawler o vÃª sem executar JS.
 
-            As três armadilhas do id: ele fica só para leitura do HTML (nada
-            depende dele). O anti-flash de tema precisa vir PRIMEIRO — é ele que
+            As trÃªs armadilhas do id: ele fica sÃ³ para leitura do HTML (nada
+            depende dele). O anti-flash de tema precisa vir PRIMEIRO â€” Ã© ele que
             escolhe a paleta antes de qualquer pixel. */}
         <script
           id="cp-theme-no-flash"
@@ -221,14 +218,14 @@ export default function RootLayout({
           id="cp-cvd-no-flash"
           dangerouslySetInnerHTML={{ __html: CVD_NO_FLASH_SCRIPT }}
         />
-        {/* Simple Analytics — analytics sem cookie, sem fingerprint e sem
+        {/* Simple Analytics â€” analytics sem cookie, sem fingerprint e sem
             dado pessoal; respeita Do-Not-Track. Oferta do GitHub Student
             Pack; preenche a lacuna de analytics do portal (hoje so ha a
             contagem de page_views no D1, sem leitura de trafego).
-            `async` (e não `next/script`): carrega sem bloquear a leitura do
-            documento e sem passar pelo render do React — era o último
+            `async` (e nÃ£o `next/script`): carrega sem bloquear a leitura do
+            documento e sem passar pelo render do React â€” era o Ãºltimo
             `next/script` do casco, e a causa raiz do erro do overlay.
-            ⚠️ O CSP do portal ainda e Report-Only: ao promove-lo a
+            âš ï¸ O CSP do portal ainda e Report-Only: ao promove-lo a
             bloqueante, liberar scripts.simpleanalyticscdn.com (script) e
             queue.simpleanalyticscdn.com (pixel). Ver
             docs/planos/PLANO-STUDENT-PACK-2026-10.md. */}
@@ -240,11 +237,11 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-full flex-col antialiased">
         {/* Fundo de ondas (dono, 06/10/2026): grade que acende no cursor e
-            ondula no clique, presa ao viewport, atrás de TUDO. Substituiu o
+            ondula no clique, presa ao viewport, atrÃ¡s de TUDO. Substituiu o
             fundo de Cubes no mesmo dia. `pointer-events: none` e
             `aria-hidden`; desliga em movimento reduzido, alto contraste e
-            tela de toque (ver `FundoOnda.tsx`). Fica no layout raiz para não
-            desmontar na navegação (casca persistente, AGENTS §5.13). */}
+            tela de toque (ver `FundoOnda.tsx`). Fica no layout raiz para nÃ£o
+            desmontar na navegaÃ§Ã£o (casca persistente, AGENTS Â§5.13). */}
         <FundoOnda />
         {/* Pixel do Simple Analytics para quem navega com JavaScript
             desligado. `alt=""` porque e decorativo; `no-referrer` para nao
@@ -260,126 +257,103 @@ export default function RootLayout({
         </noscript>
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="pequi"
+          defaultTheme="light"
           enableSystem={false}
           themes={["pequi", "light", "dark", "high-contrast", "cerrado", "mata-atlantica", "caatinga", "pantanal"]}
         >
-          {/* ⟲ 13/08, revisão de onboarding: WCAG 2.4.1 (Bypass Blocks).
-              Precisa ser o PRIMEIRO elemento focável do `<body>` — antes
-              de qualquer cabeçalho de zona — para valer a pena; por isso
-              mora aqui e não dentro de cada `layout.tsx` de zona. Aponta
+          {/* âŸ² 13/08, revisÃ£o de onboarding: WCAG 2.4.1 (Bypass Blocks).
+              Precisa ser o PRIMEIRO elemento focÃ¡vel do `<body>` â€” antes
+              de qualquer cabeÃ§alho de zona â€” para valer a pena; por isso
+              mora aqui e nÃ£o dentro de cada `layout.tsx` de zona. Aponta
               para `#conteudo-principal`, o `id` que o `<main>` de cada
-              zona compartilhada (Cidades/Congresso/Judiciário/Ambiental)
-              e a home da marca já ganharam nesta revisão. Página sem o
-              `id` (ainda faltam algumas fora das quatro zonas — ver
-              `docs/REVISAO-UX-E-ONBOARDING.md`) só não faz nada ao
-              clicar, não quebra. */}
+              zona compartilhada (Cidades/Congresso/JudiciÃ¡rio/Ambiental)
+              e a home da marca jÃ¡ ganharam nesta revisÃ£o. PÃ¡gina sem o
+              `id` (ainda faltam algumas fora das quatro zonas â€” ver
+              `docs/REVISAO-UX-E-ONBOARDING.md`) sÃ³ nÃ£o faz nada ao
+              clicar, nÃ£o quebra. */}
           <a href="#conteudo-principal" className="cp-skip-link">
-            Pular para o conteúdo
+            Pular para o conteÃºdo
           </a>
-          {/* Faixa de aviso global ("site em desenvolvimento ... última
-              atualização"), ACIMA da barra e em toda página: o portal está em
-              construção e anunciar isso no topo é mais honesto do que deixar
-              número provisório ser lido como definitivo. Não é sticky — a
-              navbar logo abaixo é que gruda no topo; ver `FaixaDesenvolvimento.tsx`
-              para as decisões de desenho e para a origem da data. */}
+          {/* Faixa de aviso global ("site em desenvolvimento ... Ãºltima
+              atualizaÃ§Ã£o"), ACIMA da barra e em toda pÃ¡gina: o portal estÃ¡ em
+              construÃ§Ã£o e anunciar isso no topo Ã© mais honesto do que deixar
+              nÃºmero provisÃ³rio ser lido como definitivo. NÃ£o Ã© sticky â€” a
+              navbar logo abaixo Ã© que gruda no topo; ver `FaixaDesenvolvimento.tsx`
+              para as decisÃµes de desenho e para a origem da data. */}
           <FaixaDesenvolvimento />
-          {/* Barra superior global, fixa em TODA página: logo no canto abre
+          {/* Barra superior global, fixa em TODA pÃ¡gina: logo no canto abre
               o menu do portal (hover/foco/clique) e os controles de
-              tema/tamanho/contraste moram aqui, em UMA cópia. Fica antes de
+              tema/tamanho/contraste moram aqui, em UMA cÃ³pia. Fica antes de
               {children} porque precisa estar ACIMA dos headers de zona (que
-              deixaram de ser fixos — ver `TopNav.tsx` e os layouts de zona). */}
+              deixaram de ser fixos â€” ver `TopNav.tsx` e os layouts de zona). */}
           <TopNav />
-          {/* Rede de segurança da casca persistente: captura cliques em
-              qualquer `<a>` interno de PÁGINA (inclusive os de `href`
-              dinâmico que o ESLint não vê) e navega no cliente. Sem isto um
-              `<a>` cru faz reload e mata o áudio do `PlayerRadio` e o estado
+          {/* Rede de seguranÃ§a da casca persistente: captura cliques em
+              qualquer `<a>` interno de PÃGINA (inclusive os de `href`
+              dinÃ¢mico que o ESLint nÃ£o vÃª) e navega no cliente. Sem isto um
+              `<a>` cru faz reload e mata o Ã¡udio do `PlayerRadio` e o estado
               do pet. Ver `InterceptadorLinks.tsx`. */}
           <InterceptadorLinks />
           {/* Paleta de comandos global (Ctrl/Cmd+K): ir, perguntar e buscar
-              num só atalho. Ver `PaletaComandos.tsx`. */}
+              num sÃ³ atalho. Ver `PaletaComandos.tsx`. */}
           <PaletaComandos />
-          {/* Rolagem suave (Lenis) — envolve o CONTEÚDO das páginas no
-              modo raiz do Lenis: a rolagem é do documento inteiro, e a
-              raiz não desmonta na navegação, então sobe uma vez e fica.
-              reduced-motion e o toggle do rodapé desligam de verdade
+          {/* Rolagem suave (Lenis) â€” envolve o CONTEÃšDO das pÃ¡ginas no
+              modo raiz do Lenis: a rolagem Ã© do documento inteiro, e a
+              raiz nÃ£o desmonta na navegaÃ§Ã£o, entÃ£o sobe uma vez e fica.
+              reduced-motion e o toggle do rodapÃ© desligam de verdade
               (children volta cru, scroll nativo). Ver `RolagemSuave.tsx`. */}
           <RolagemSuave>{children}</RolagemSuave>
-          {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
-              <main> (inclusive /busca e /funcaosocialterra, que não usam o
-              Header/layout de nenhuma das quatro zonas) com um só
-              componente, em vez de duplicar o botão zona por zona como
+          {/* Global, fora do cabeÃ§alho de zona: cobre TODA pÃ¡gina que tem
+              <main> (inclusive /busca e /funcaosocialterra, que nÃ£o usam o
+              Header/layout de nenhuma das quatro zonas) com um sÃ³
+              componente, em vez de duplicar o botÃ£o zona por zona como
               ThemeSwitcher/FontSizeControl fazem hoje. Ver `OuvirPagina.tsx`. */}
           <OuvirPagina />
           {/* Mesmo motivo do <OuvirPagina /> acima: contador de
-              visualizações precisa rodar em toda página das quatro zonas,
-              não só nas que têm layout próprio. Ver `PageViewBeacon.tsx`. */}
+              visualizaÃ§Ãµes precisa rodar em toda pÃ¡gina das quatro zonas,
+              nÃ£o sÃ³ nas que tÃªm layout prÃ³prio. Ver `PageViewBeacon.tsx`. */}
           <PageViewBeacon />
           {/* Registra o service worker do PWA (modo offline do casco). */}
           <RegistrarServiceWorker />
 
-          {/* Overlay global de carregamento — spinner + contador de segundos
-              no canto inferior direito ao navegar entre páginas. */}
+          {/* Overlay global de carregamento â€” spinner + contador de segundos
+              no canto inferior direito ao navegar entre pÃ¡ginas. */}
           <LoadingOverlay />
 
           {/* Barra de rolagem global: fina e engrossada perto da borda
-              direita. Só liga um atributo no <html>; a aparência mora no
-              globals.css. Padrão de todas as páginas, como a navbar. */}
+              direita. SÃ³ liga um atributo no <html>; a aparÃªncia mora no
+              globals.css. PadrÃ£o de todas as pÃ¡ginas, como a navbar. */}
           <ScrollbarExpansivel />
 
-          {/* Botão acessível para retornar ao topo da página em rolagens longas */}
+          {/* BotÃ£o acessÃ­vel para retornar ao topo da pÃ¡gina em rolagens longas */}
           <BackToTop />
           {/* Trilha de palavras que segue o mouse (efeito "cursor trail
               text"). Decorativa: pointer-events none, aria-hidden e desligada
               em prefers-reduced-motion e em tela de toque. Ver
               `RastroCursor.tsx`. */}
           <RastroCursor />
-          {/* Pinta o preenchimento dos cursores com a cor primária do tema
-              (contorno preto intacto). O binário `.cur` não lê custom
-              property; a recoloração é feita em runtime e publicada em
-              variáveis CSS lidas pelo `globals.css`. Ver `CursorTema.tsx`. */}
+          {/* Pinta o preenchimento dos cursores com a cor primÃ¡ria do tema
+              (contorno preto intacto). O binÃ¡rio `.cur` nÃ£o lÃª custom
+              property; a recoloraÃ§Ã£o Ã© feita em runtime e publicada em
+              variÃ¡veis CSS lidas pelo `globals.css`. Ver `CursorTema.tsx`. */}
           <CursorTema />
-          {/* Rádio Brasil de Fato — player PERSISTENTE. Montado no layout
-              raiz de propósito: a raiz não desmonta na navegação entre
-              páginas, então a transmissão continua ao trocar de página ou de
-              eixo. Se ficasse no rodapé (renderizado por página), pararia a
+          {/* RÃ¡dio Brasil de Fato â€” player PERSISTENTE. Montado no layout
+              raiz de propÃ³sito: a raiz nÃ£o desmonta na navegaÃ§Ã£o entre
+              pÃ¡ginas, entÃ£o a transmissÃ£o continua ao trocar de pÃ¡gina ou de
+              eixo. Se ficasse no rodapÃ© (renderizado por pÃ¡gina), pararia a
               cada clique. Ver `PlayerRadio.tsx`. */}
           <PlayerRadio />
         <IndicePagina />
         {/* Teto real (header + subnav do hub) publicado em `--cp-chao`, lido
-            pelo scroll-margin-top das âncoras. Sem isso, título para sob a
+            pelo scroll-margin-top das Ã¢ncoras. Sem isso, tÃ­tulo para sob a
             barra em hub/colapso de menu (medido 15/10/2026). */}
         <ChaoRolagem />
-        {/* Capítulos da página (wiki lateral / scroll-spy): montado aqui
-            para valer nas 100 rotas do catálogo sem editar página a página.
-            Coleta os h2 do `main`; página com menos de 2 headings não ganha
-            widget. Só aparece em tela grande (xl), como sempre. */}
+        {/* CapÃ­tulos da pÃ¡gina (wiki lateral / scroll-spy): montado aqui
+            para valer nas 100 rotas do catÃ¡logo sem editar pÃ¡gina a pÃ¡gina.
+            Coleta os h2 do `main`; pÃ¡gina com menos de 2 headings nÃ£o ganha
+            widget. SÃ³ aparece em tela grande (xl), como sempre. */}
         <CapitulosFlutuantes />
         <BeaconDownloadsGlobal />
-          {/* Dica no hover: janelinha explicativa depois de 2 s parado
-              sobre um botão ou link. Um componente aqui cobre as ~100
-              páginas do portal — o texto sai do `data-dica`, do
-              `aria-label` ou do `title` que a página já tem. */}
-          <DicaHover />
-          {/* Seu Nonô — assistente flutuante. Modo texto enquanto IA não está
-              configurada; modo IA (RAG) quando houver chave de API. */}
-          <SeuNono />
-          {/* Ponte responsiva para o companheiro de desktop (bichinho). Só
-              age com NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um
-              no-op. Ver `PonteCompanheiro.tsx`. */}
-          <PonteCompanheiro />
-          {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (pedido do
-              dono, 19/10/2026): não nasce sozinho; entra só quando a pessoa
-              clicar no botão dele. Ver `CompanheiroOpcional.tsx`. */}
-          <CompanheiroOpcional />
-          {/* Interruptor flutuante do rastro do mouse: botão mágico que
-              pulsa devagar enquanto a trilha está desligada. A trilha em si
-              é opt-in. Ver `RastroCursorBotao.tsx`. */}
-          <RastroCursorBotao />
-          {/* X de negação no clique fora de botões (pedido do dono,
-              19/10/2026): recado visual de que o alvo é só um card, sem
-              ação. Ver `CliqueNegado.tsx`. */}
-          <CliqueNegado />
+        <WidgetsFlutuantes />
         </ThemeProvider>
       </body>
     </html>

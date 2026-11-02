@@ -727,6 +727,11 @@ export function CompanheiroFlutuante() {
     };
 
     for (const d of AGENDA_DICAS) {
+      // 02/11/2026 (dono): o bichinho NÃO fala sozinho. A fala automática saiu
+      // da agenda — o balão aparecendo por cima da leitura sem a pessoa ter
+      // pedido. O pet continua visível e o chat do Seu Nonô continua sendo o
+      // lugar de perguntar; o que morreu foi a mensagem não solicitada.
+      if (d.tipo === "fala") continue;
       timers.push(window.setTimeout(() => tentar(d), d.apareceMs));
     }
     return () => {
