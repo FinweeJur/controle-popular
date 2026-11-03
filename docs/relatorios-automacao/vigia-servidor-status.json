@@ -1,16 +1,21 @@
 {
-  "atualizadoEm": "2026-11-01T16:05:06.400Z",
+  "atualizadoEm": "2026-11-03T17:45:05.761Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 314,
+  "latenciaMs": 258,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-11-01T16:05:06.395Z",
+    "atualizadoEm": "2026-11-03T17:45:05.756Z",
     "totalBasesVerificadas": 822,
     "basesVazias": [],
     "basesCorrompidas": [],
-    "basesEstagnadas": [],
+    "basesEstagnadas": [
+      {
+        "arquivo": "apps/web/data/congresso-ceap-nacional.json",
+        "diasSemAtualizar": 62
+      }
+    ],
     "etlsComFalha": [],
     "etlsPendentes": [],
     "statusGeral": "SAUDAVEL",
@@ -18,27 +23,15 @@
       "Bases verificadas: 822 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
-      "Bases com estagnação (>60d): 0",
+      "Bases com estagnação (>60d): 1",
       "Fontes/ETLs com status adverso: 0"
     ]
   },
   "paginas": {
     "base": "https://www.controlepopular.com.br",
     "total": 100,
-    "ok": 66,
+    "ok": 91,
     "falhas": [
-      {
-        "rota": "/",
-        "status": 0
-      },
-      {
-        "rota": "/betim",
-        "status": 0
-      },
-      {
-        "rota": "/ambiental/direito-critico",
-        "status": 0
-      },
       {
         "rota": "/ambiental/conselhos",
         "status": 0
@@ -53,11 +46,11 @@
       },
       {
         "rota": "/ambiental/patrimonio-cultural",
-        "status": 0
+        "status": 503
       },
       {
         "rota": "/recursos/estados",
-        "status": 0
+        "status": 503
       },
       {
         "rota": "/estado-e-economia/orcamento",
@@ -74,100 +67,12 @@
       {
         "rota": "/assembleias",
         "status": 0
-      },
-      {
-        "rota": "/ambiental/contratos",
-        "status": 0
-      },
-      {
-        "rota": "/judiciario/tribunais",
-        "status": 0
-      },
-      {
-        "rota": "/judiciario/sirenejud",
-        "status": 0
-      },
-      {
-        "rota": "/judiciario/recomendacoes",
-        "status": 0
-      },
-      {
-        "rota": "/congresso/proposicoes",
-        "status": 0
-      },
-      {
-        "rota": "/congresso/votacoes",
-        "status": 0
-      },
-      {
-        "rota": "/congresso/mg",
-        "status": 0
-      },
-      {
-        "rota": "/ambiental/convenios",
-        "status": 0
-      },
-      {
-        "rota": "/ambiental/ppp",
-        "status": 0
-      },
-      {
-        "rota": "/empresas/fortunas",
-        "status": 0
-      },
-      {
-        "rota": "/empresas/conglomerados",
-        "status": 0
-      },
-      {
-        "rota": "/empresas/executivos",
-        "status": 0
-      },
-      {
-        "rota": "/eua",
-        "status": 0
-      },
-      {
-        "rota": "/europa",
-        "status": 0
-      },
-      {
-        "rota": "/internacional/inteligencia",
-        "status": 0
-      },
-      {
-        "rota": "/laboratorio/arvore",
-        "status": 0
-      },
-      {
-        "rota": "/assistente",
-        "status": 0
-      },
-      {
-        "rota": "/indice",
-        "status": 0
-      },
-      {
-        "rota": "/radio",
-        "status": 0
-      },
-      {
-        "rota": "/api",
-        "status": 503
-      },
-      {
-        "rota": "/dados/populares",
-        "status": 503
-      },
-      {
-        "rota": "/internacional",
-        "status": 503
       }
     ],
     "siteInteiroFora": false,
-    "inicioEm": "2026-11-01T15:55:06.038Z",
-    "terminoEm": "2026-11-01T16:01:06.706Z",
-    "duracaoMs": 360668
+    "inicioEm": "2026-11-03T17:30:07.261Z",
+    "terminoEm": "2026-11-03T17:34:11.114Z",
+    "duracaoMs": 243853
   },
   "erro": null
 }
