@@ -14,6 +14,13 @@ export const metadata: Metadata = {
  * o scroll. `destaque` saiu do shape: com o trilho percorrido pela estrela,
  * o realce visual de 3 dos 12 itens virava ruído decorativo — todos os marcos
  * se equivalem na leitura.
+ *
+ * REGRA DA LISTA (03/11/2026, a pedido do dono — "o histórico pode crescer
+ * mais"): todo marco entra com data medida na fonte — `docs/02-estado/
+ * ESTADO.md` (entregas e fila) ou `git log` da rota citada. Número sem data
+ * não entra (AGENTS). Para não repetir um marco, o critério é "mudou o que o
+ * leitor vê ou onde o portal mora": build, banco, casa de publicação, frente
+ * nova e ferramenta própria contam; ajuste fino de componente não.
  */
 const MARCOS = [
   {
@@ -87,6 +94,96 @@ const MARCOS = [
     titulo: "Transparência Internacional",
     descricao:
       "Top 10 empresas e fundos dos EUA. Dados de CVM, SEC e câmbio.",
+  },
+  {
+    data: "Setembro 2026",
+    titulo: "Onda de frentes novas",
+    descricao:
+      "29–30/09: abrem /internacional (hub multilíngue), /eua, /canada, /assembleias (27 legislativas estaduais), /mineracao/cavas, /laboratorio e /radio — 44 estações de 11 países.",
+  },
+  {
+    data: "Setembro 2026",
+    titulo: "RAG em memória e espelhos do código",
+    descricao:
+      "O índice documental do Seu Nonô roda em memória (397 pedaços, sem pgvector); entra o Vigia ETL de 397 bases, o motor de fact-checking e o espelho do código no GitLab e Hugging Face (29/09).",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Rádio que sobrevive à navegação",
+    descricao:
+      "3/10: interceptador global de links e navegação no cliente — navbar, faixa, rodapé, Seu Nonô, companheiro e rádio persistem entre páginas. /memoria ganha visão calendário e as fontes da APIB.",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Build leve e rápido",
+    descricao:
+      "Contexto de build cai de 442 para 223,5 MB (1/10); Turbopack medido e adotado — 338 s contra 369–398 s, com as mesmas 621 rotas (5/10).",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Casa nova: Azure e Heroku",
+    descricao:
+      "O www passa a ser publicado no Azure Container Apps (6–7/10) e o banco migra para o Heroku Postgres (8/10). O Guara para por cota do plano Starter (9/10).",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Links que se consertam sozinhos",
+    descricao:
+      "Bot do Telegram com os 43 links conferidos e 14 quebrados corrigidos (5/10); LinkMender ganha portão tolerante, memória de reparos e escada D0–D5, com 85 testes verdes (18/10).",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Cavas: gate v7 aprovado",
+    descricao:
+      "O modelo de detecção de cavas de mineração passa no gate com os 31 negativos da pasta certa (11/10); o workflow da VM ganha vigia e desligamento sempre.",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Plataforma Rio Doce nasce",
+    descricao:
+      "12/10: hub /riodoce e /riodoce/processos — 8 processos confirmados no DataJud, 38 camadas da SEMAD medidas e a mancha de inundação do Fundão com 1.243 feições.",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Licenciamento completo: 831 cidades",
+    descricao:
+      "A coleta de licenciamento COPAM fecha rodada completa: 19.713 licenças em 831 municípios (antes, 145 cidades paradas no município 145) — morre o bug do \"zero licença\" (18/10).",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Jurisprudência TJMG e TJES",
+    descricao:
+      "28/10: acórdãos do Fundão (TJES) e de Brumadinho (TJMG) em página filtrável por órgão julgador, tema, ano e processo, com extrator e acervo versionado.",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Autos de infração da SEMAD",
+    descricao:
+      "29/10: 36.007 autos de 2024–2026, R$ 1,90 bi em multas lavradas — busca, filtros e detalhe por município, sem nome nem documento pessoal no dado.",
+  },
+  {
+    data: "Outubro 2026",
+    titulo: "Memória com país, universidades de verdade",
+    descricao:
+      "31/10: os 542 verbetes da memória ganham país; /universidades vira lista real com 168 projetos de extensão da UFVJM (1.584 registros no total); o RAG reindexa com 2.243 documentos e 2.471 trechos.",
+  },
+  {
+    data: "Novembro 2026",
+    titulo: "Ordem canônica dos eixos",
+    descricao:
+      "1º Direitos em Movimento, 2º Terra e Territórios, 3º Estado e Economia, 4º Central (1/11) — menu, carrossel da home, índice e 54 títulos de páginas alinhados na mesma numeração.",
+  },
+  {
+    data: "Novembro 2026",
+    titulo: "Vigia de coletores",
+    descricao:
+      "2/11: rotina diária audita o estado dos coletores e a saúde dos links oficiais, com relatório datado no repositório — fonte muda, o portal conta.",
+  },
+  {
+    data: "Novembro 2026",
+    titulo: "Linha do tempo com estrela",
+    descricao:
+      "3/11: a estrela que desce pelo trilho conforme o scroll entra em seis linhas do tempo do portal — sem dependência nova, presa nas pontas, invisível ao leitor de tela e parada com movimento reduzido.",
   },
 ];
 
