@@ -4,9 +4,14 @@
  * Ordem crescente, data visível em `<time>` e link de fonte por marco.
  * Marco que veio de notícia, não de decisão oficial, aparece com o selo de
  * pendência e o motivo — a lacuna é informação, não algo para esconder.
+ *
+ * A estrela que desce no scroll (03/11/2026) é a ilha cliente `ScrollStar`:
+ * o texto continua vindo pelo servidor, o eixo do trilho é o `border-l-2`
+ * do `<ol>` (centro em x = 1 px), e o wrapper `relative` é o pai do ponto.
  */
 import type { ItemLinhaDoTempo } from "@/lib/europa-litigios";
 import { formatarDataBR } from "@/lib/fontes/dataDoArquivo";
+import ScrollStar from "@/app/components/ScrollStar";
 import SeloPendente from "./SeloPendente";
 
 export default function LinhaDoTempo({
@@ -15,7 +20,8 @@ export default function LinhaDoTempo({
   itens: readonly ItemLinhaDoTempo[];
 }) {
   return (
-    <ol className="mt-2 space-y-4 border-l-2 border-border pl-4 sm:pl-5">
+    <div className="relative mt-2">
+      <ol className="space-y-4 border-l-2 border-border pl-4 sm:pl-5">
       {itens.map((item) => (
         <li key={item.id} className="relative">
           <span
@@ -44,6 +50,8 @@ export default function LinhaDoTempo({
           </a>
         </li>
       ))}
-    </ol>
+      </ol>
+      <ScrollStar eixo={1} />
+    </div>
   );
 }

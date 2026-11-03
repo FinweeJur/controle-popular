@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LinhaDoTempo from "@/app/components/LinhaDoTempo";
 
 export const metadata: Metadata = {
   title: "Linha do Tempo — Desenvolvimento do Controle Popular",
@@ -7,13 +8,19 @@ export const metadata: Metadata = {
     " Marcos do desenvolvimento do portal Controle Popular de transparência pública.",
 };
 
+/*
+ * Marcos do portal. A linha é desenhada pelo componente genérico
+ * `LinhaDoTempo` (03/11/2026), que põe a estrela a descer no trilho conforme
+ * o scroll. `destaque` saiu do shape: com o trilho percorrido pela estrela,
+ * o realce visual de 3 dos 12 itens virava ruído decorativo — todos os marcos
+ * se equivalem na leitura.
+ */
 const MARCOS = [
   {
     data: "Agosto 2026",
     titulo: "Nascimento do Controle Popular",
     descricao:
       "Portal lançado com foco em Betim (MG). Primeiras rotas: prefeitura, legislação, licenciamento ambiental, convênios e orçamento.",
-    destaque: true,
   },
   {
     data: "Agosto 2026",
@@ -56,7 +63,6 @@ const MARCOS = [
     titulo: "Biblioteca de Crimes Socioambientais",
     descricao:
       "Acervo unificado de documentos de Mariana (2015) e Brumadinho (2019). 944 itens de fontes ministeriais, defensorias e ATIs.",
-    destaque: true,
   },
   {
     data: "Setembro 2026",
@@ -75,7 +81,6 @@ const MARCOS = [
     titulo: "Seu Nonô — Chatbot",
     descricao:
       "Assistente de IA baseado em dados do portal. Responde perguntas sobre contratos, licenciamento, barragens e mais.",
-    destaque: true,
   },
   {
     data: "Setembro 2026",
@@ -105,26 +110,13 @@ export default function HistoricoPage() {
         </p>
       </header>
 
-      <div className="relative space-y-8 border-l-2 border-border pl-8">
-        {MARCOS.map((marco, i) => (
-          <div key={i} className="relative">
-            <div
-              className={`absolute -left-10 top-1 h-4 w-4 rounded-full border-2 ${
-                marco.destaque
-                  ? "border-primary bg-primary"
-                  : "border-border bg-surface"
-              }`}
-            />
-            <div className="space-y-1">
-              <p className="text-sm text-text-soft">{marco.data}</p>
-              <h2 className="font-display text-lg font-bold text-text">
-                {marco.titulo}
-              </h2>
-              <p className="text-text-soft">{marco.descricao}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <LinhaDoTempo
+        itens={MARCOS.map((marco) => ({
+          marco: marco.data,
+          titulo: marco.titulo,
+          texto: marco.descricao,
+        }))}
+      />
     </main>
   );
 }
