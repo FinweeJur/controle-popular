@@ -2,48 +2,48 @@
 
 /**
  * @file ScrollStar.tsx
- * @description A estrela que desce pela linha do tempo conforme o SCROLL da
+ * @description A estrela que percorre a linha do tempo conforme o SCROLL da
  * página — não em animação solta. Reimplementação própria do efeito
  * "scroll-star" do Lightswind (a página oficial duplica o conteúdo e o
  * registry responde 401: não há código público; nada foi copiado).
  *
- * ═══ COMO SE COMPORTA ═══
+ * ═══ COMO SE COMPORTA (revisão do dono, 03/11/2026) ═══
+ *
+ * A estrela fica CERTINHA no evento relacionado: o item da linha que está
+ * sob a âncora de 55% da janela, centralizada verticalmente nele. Rolar a
+ * página atravessa um item por vez — um passo por evento, com a transição
+ * de 240 ms `ease-out` do CSS dando o "scroll controlado". Antes da seção,
+ * presa no primeiro evento; depois dela, presa no último. A fórmula é pura
+ * e mora em `lib/estrela-scroll.ts` (com teste).
  *
  * A trilha (`div.scroll-star`) cobre a altura do pai, que DEVE ser
- * `position: relative` — por contrato, o pai é a linha do tempo (a classe
- * `.linha-do-tempo` do `LinhaDoTempo.tsx` já garante isso; nas linhas
- * existentes do portal, o integrador envolve o `<ol>` num wrapper relativo e
- * informa o eixo do trilho pela prop `eixo`, em px, para a estrela centro no
- * traço já desenhado pela página).
- *
- * O ponto (`div.scroll-star__dot`) fica sempre na altura de 55% da janela
- * enquanto a seção atravessa a tela: no topo da linha quando a seção entra,
- * no fim quando a seção acaba, presa nas pontas fora disso. A fórmula é pura
- * e mora em `lib/estrela-scroll.ts` (com teste).
+ * `position: relative` — nas linhas existentes do portal, o integrador
+ * envolve o `<ol>` num wrapper relativo e informa o eixo do trilho pela
+ * prop `eixo`, em px, para a estrela centro no traço já desenhado.
  *
  * ═══ POR QUE ESCREVE NO DOM DIRETO ═══
  *
- * Um quadro de rolagem = uma leitura de `getBoundingClientRect()` + uma
- * escrita em `style.top`, dentro de UM `requestAnimationFrame` agendado no
- * máximo uma vez por evento de scroll. Zero `setState` por quadro — re-render
- * do React a cada frame travaria as páginas longas (`/memoria` tem ~260 itens
- * na tela). O `transition: top 120ms linear` do CSS amacia o passo; sem
- * "pulo" ao inverter a rolagem.
+ * Os centros dos eventos são lidos UMA vez por montagem/resize/edição do
+ * DOM (filtro, expansão) e ficam em cache com coordenadas de documento — o
+ * quadro de scroll só faz conta (binária O(log n), lista de ~260 itens em
+ * `/memoria` custa 8 leituras, não 260) e escreve `style.top` quando o
+ * valor muda. Zero `setState` por quadro; re-render do React a cada frame
+ * travaria as páginas longas.
  *
  * ═══ ACESSIBILIDADE E MOVIMENTO ═══
  *
  * A estrela é decoração: `aria-hidden="true"` e `pointer-events: none` —
- * teclado e leitor de tela não a encontram, e os itens (o `<ol>` do pai) são
- * lidos normalmente. O porteiro é o `useEfeitoPermitido` dos react-bits: com
- * `prefers-reduced-motion: reduce` ou tema alto-contraste o componente não
- * monta (e o CSS ainda esconde a trilha, por segurança). Sem JS, nada
+ * teclado e leitor de tela não a encontram, e os itens (o `<ol>` do pai)
+ * são lidos normalmente. O porteiro é o `useEfeitoPermitido` dos react-bits:
+ * com `prefers-reduced-motion: reduce` ou tema alto-contraste o componente
+ * não monta (e o CSS ainda esconde a trilha, por segurança). Sem JS, nada
  * aparece — a linha continua legível.
  */
 
 import { useEffect, useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { useEfeitoPermitido } from "./react-bits/useEfeitoPermitido";
-import { progressoDaEstrela } from "@/lib/estrela-scroll";
+import { ANCORAGEM_DA_ESTRELA, eventoNoAlvo, topoDoPonto } from "@/lib/estrela-scroll";
 import "./ScrollStar.css";
 
 interface Props {
@@ -67,38 +67,7 @@ export default function ScrollStar({ eixo = 0 }: Props) {
     const trilha = trilhaRef.current;
     const ponto = pontoRef.current;
     if (!trilha || !ponto) return;
-
-    // Um rAF por vez: o evento de scroll só agenda, quem mede é o quadro.
-    let rafId = 0;
-    let ultimoProgresso = -1;
-
-    const medir = () => {
-      rafId = 0;
-      const rect = trilha.getBoundingClientRect();
-      const progresso = progressoDaEstrela(rect.top, rect.height, window.innerHeight);
-      // Reescrever o mesmo valor reiniciaria a transição de 120 ms a cada
-      // quadro e o ponto "andaria" para sempre atrás do scroll.
-      if (progresso === ultimoProgresso) return;
-      ultimoProgresso = progresso;
-      // Meio ponto (0,75rem) abaixo da posição em % para o CENTRO da estrela
-      // casar com a âncora — em rem, não em 12px, porque o portal tem
-      // controle de tamanho de fonte e a estrela escala junto.
-      ponto.style.top = `calc(${progresso} * 100% - 0.75rem)`;
-    };
-
-    const agendar = () => {
-      if (!rafId) rafId = requestAnimationFrame(medir);
-    };
-
-    agendar(); // posição imediata na montagem (deep-link, âncora, recarga)
-    window.addEventListener("scroll", agendar, { passive: true });
-    window.addEventListener("resize", agendar, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", agendar);
-      window.removeEventListener("resize", agendar);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
+    return ligarEstrela(trilha, ponto);
   }, [permitido]);
 
   if (!permitido) return null;
@@ -117,4 +86,92 @@ export default function ScrollStar({ eixo = 0 }: Props) {
       </div>
     </div>
   );
+}
+
+/**
+ * Liga o ciclo scroll→quadro da estrela e devolve a limpeza (remover
+ * listeners, desligar o MutationObserver, cancelar o rAF pendente — nada
+ * sobra depois de desmontar ou trocar de rota).
+ */
+function ligarEstrela(trilha: HTMLDivElement, ponto: HTMLDivElement): () => void {
+  const wrapper = trilha.parentElement;
+  if (!wrapper) return () => {};
+
+  // Cache em coordenadas de DOCUMENTO: só muda quando o layout muda
+  // (resize, filtro que troca os <li>, expansão da tramitação), nunca por
+  // quadro de scroll.
+  let topos: number[] = [];
+  let fins: number[] = [];
+  let topoTrilha = 0;
+  let alturaTrilha = 0;
+  let alturaPonto = 0;
+
+  let rafId = 0;
+  let ultimoTopo = -1;
+
+  const lerEventos = () => {
+    const sy = window.scrollY;
+    const novosTopos: number[] = [];
+    const novosFins: number[] = [];
+    for (const li of Array.from(wrapper.querySelectorAll("li"))) {
+      const r = li.getBoundingClientRect();
+      novosTopos.push(r.top + sy);
+      novosFins.push(r.bottom + sy);
+    }
+    topos = novosTopos;
+    fins = novosFins;
+    const rt = trilha.getBoundingClientRect();
+    topoTrilha = rt.top + sy;
+    alturaTrilha = rt.height;
+    // alturaPonto lido do DOM: com o controle de fonte da casca, o ponto
+    // (1,5rem) escala, e a centralização tem de escalar junto.
+    alturaPonto = ponto.offsetHeight;
+  };
+
+  const escrever = (topPx: number) => {
+    // Reescrever o mesmo valor reiniciaria a transição de 240 ms e a
+    // estrela nunca terminaria o passo.
+    if (topPx === ultimoTopo) return;
+    ultimoTopo = topPx;
+    ponto.style.top = `${topPx}px`;
+  };
+
+  const medir = () => {
+    rafId = 0;
+    if (topos.length === 0) {
+      escrever(0); // filtro sem resultado: estrela presa no topo da trilha
+      return;
+    }
+    const alvoDoc = window.scrollY + window.innerHeight * ANCORAGEM_DA_ESTRELA;
+    const i = eventoNoAlvo(alvoDoc, topos, fins);
+    escrever(topoDoPonto((topos[i] + fins[i]) / 2, topoTrilha, alturaTrilha, alturaPonto));
+  };
+
+  const agendar = () => {
+    // Um rAF por quadro no máximo, aconteça quantos scroll eventos vierem.
+    if (!rafId) rafId = requestAnimationFrame(medir);
+  };
+
+  const reconstruir = () => {
+    lerEventos();
+    agendar();
+  };
+
+  lerEventos();
+  medir(); // posição imediata na montagem (deep-link, âncora, recarga), sem
+  // esperar o primeiro quadro — com a janela em pintura pausada o rAF atrasa.
+  window.addEventListener("scroll", agendar, { passive: true });
+  window.addEventListener("resize", reconstruir, { passive: true });
+  // Filtro (/memoria, /paraopeba) e expansão (/congresso) trocam os <li> sem
+  // passar por resize — o observer avisa para reler o cache. Só childList:
+  // mudar classe no hover não deve reler a lista inteira.
+  const observador = new MutationObserver(reconstruir);
+  observador.observe(wrapper, { childList: true, subtree: true });
+
+  return () => {
+    window.removeEventListener("scroll", agendar);
+    window.removeEventListener("resize", reconstruir);
+    observador.disconnect();
+    if (rafId) cancelAnimationFrame(rafId);
+  };
 }

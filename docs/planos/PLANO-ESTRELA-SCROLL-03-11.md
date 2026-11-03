@@ -18,9 +18,16 @@
 
 Reimplementação própria do efeito "scroll-star" (Lightswind — registry deles
 responde 401, não há código público). Uma estrela pequena percorre a trilha
-vertical da linha do tempo **conforme o scroll da página**: âncora a 55% da
-altura da janela, presa nas pontas fora da seção. Sem dependência nova, sem
-`setState` por quadro, sem `position: fixed`.
+vertical da linha do tempo **conforme o scroll da página**, sem dependência
+nova, sem `setState` por quadro, sem `position: fixed`.
+
+**Revisão do dono (03/11/2026), depois do primeiro corte:** a estrela não
+persegue o scroll de forma solta — fica **certinha no evento relacionado**:
+o item que está sob a âncora de 55% da janela, **centralizada
+verticalmente** nele, descendo **de evento em evento** com passo controlado
+(transição de 240 ms `ease-out`, um salto por item). Antes da seção, presa
+no primeiro evento; depois dela, presa no último. O eixo horizontal continua
+o traço da linha (mover a estrela para a direita soltaria ela do trilho).
 
 Componentes novos (em `apps/web/app/components/`):
 
@@ -43,7 +50,7 @@ continua legível.
 | 2 | Reparação de Brumadinho (`/paraopeba/linha-do-tempo`) | `app/paraopeba/linha-do-tempo/LinhaDoTempo.tsx` | 23 marcos | ✅ estrela sobre o conector (eixo 8 px) |
 | 3 | Litígios transnacionais (`/europa/litigios-transnacionais`, seção 6) | `app/europa/litigios-transnacionais/components/LinhaDoTempo.tsx` | 25 | ✅ ilha cliente sobre o trilho existente |
 | 4 | História do município (`/[municipio]/historico`) | `app/[municipio]/historico/page.tsx` | variável, 4 camadas | ✅ mesma ilha |
-| 5 | Desenvolvimento do portal (`/historico`) | `app/historico/page.tsx` | 12 | ✅ vira o componente genérico `LinhaDoTempo` |
+| 5 | Desenvolvimento do portal (`/historico`) | `app/historico/page.tsx` | 27 (12 até setembro; crescido a pedido do dono em 03/11) | ✅ vira o componente genérico `LinhaDoTempo` |
 | 6 | Tramitação no Congresso (`/congresso/proposicoes/[id]`) | `app/components/LinhaDoTempoTramitacao.tsx` | dinâmico, 15+ | ✅ prop opt-in `estrela`, ligada só na página da proposição |
 
 Onde **não** entra, e por quê (medido, não opinião):
@@ -75,8 +82,11 @@ Onde **não** entra, e por quê (medido, não opinião):
 
 ## Critérios de aceite
 
-1. A estrela desce pela trilha conforme o scroll e para no fim da linha.
-2. Ao subir, volta sem saltos (transição curta de 120 ms linear).
+1. A estrela desce pela trilha **de evento em evento** conforme o scroll e
+   para presa no último item.
+2. Em cada parada, o centro do ponto bate com o centro vertical do item sob
+   a âncora de 55%; ao subir, volta com o mesmo passo (240 ms `ease-out`),
+   sem saltar itens nem tremer na borda.
 3. Fora da seção, fica presa nas pontas e não migra para outra área.
 4. Em 390 px: coluna única, estrela no eixo do trilho, sem rolagem lateral
    (`document.documentElement.scrollWidth === clientWidth`).

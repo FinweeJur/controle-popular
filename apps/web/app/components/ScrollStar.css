@@ -23,13 +23,16 @@
 .scroll-star__dot {
   position: absolute;
   left: 0;
-  top: 0; /* o JS move com style.top = calc(p * 100% - 0.75rem) */
+  top: 0; /* o JS move com style.top em px, centralizando no evento atual */
   width: 1.5rem;
   height: 1.5rem;
   display: grid;
   place-items: center;
   color: var(--cp-primary);
-  transition: top 120ms linear; /* amacia o passo entre quadros; sem "pulo" ao rolar para cima */
+  /* Passo controlado (dono, 03/11/2026): a estrela salta de evento em
+     evento, um por vez; 240 ms com ease-out é a descida sem "pulo" ao
+     rolar para cima e sem atraso que pareça solta do scroll. */
+  transition: top 240ms cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /*
