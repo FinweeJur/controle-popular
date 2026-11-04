@@ -1,5 +1,23 @@
 # Prompt do batch — análise de teses, estatística e jurimetria (Rio Doce)
 
+> **Tipo:** PLANO
+> **Domínio:** jurisprudência
+> **Última medição:** 2026-11-03
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [PLANO-ANALISE-INTEGRADA-03-11.md](PLANO-ANALISE-INTEGRADA-03-11.md), [PROMPT-POLO-RIODOCE-ANTIGRAVITY.md](PROMPT-POLO-RIODOCE-ANTIGRAVITY.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md), [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md)
+> **Palavras-chave:** prompt, batch, sabia, jurimetria, teses, guaicuy, nacab, pnab, fontes, custo
+
+## Sumário
+
+- [O que já está pronto](#0-o-que-já-está-pronto-para-esta-análise)
+- [Por que duas etapas](#1-por-que-duas-etapas)
+- [System prompt](#2-system-prompt)
+- [Payload da etapa 2](#3-payload-da-etapa-2-o-que-vai-no-user)
+- [Ficha do caso (Guaicuy)](#31-ficha-do-caso--o-que-o-guaicuy-mede-e-entra-na-etapa-1)
+- [Como o RAG entra](#4-como-o-rag-entra-e-onde-não-entra)
+- [Custo e modalidade](#5-custo-e-modalidade-preço-de-03112026)
+- [Aceite](#6-aceite-auditável-não-retórico)
+
 **Não enviado.** Este é o texto que irá ao lote. Precisa da revisão do dono antes
 de sair (§5.17) — o custo estimado está no fim.
 
@@ -51,11 +69,15 @@ REGRA DOIS: separe sempre tres coisas, e nao misture:
 REGRA TRES: "reparacao integral" nao e conclusao. Se usar a expressao, diga o
 que foi medido e o que nao foi.
 
+REGRA QUATRO: valor de indenizacao so aparece com o N ao lado e com a frase
+"casos em que o valor foi localizado". Sem esse N, o numero vira media falsa
+do acervo.
+
 ESTRUTURA OBRIGATORIA (sete secoes, nesta ordem):
 1. Nota metodologica: o que e contagem deste acervo e o que e leitura de modelo;
    quantos casos ficaram sem variavel legivel e por que.
-2. Retrato quantitativo: favorabilidade, quem recorre, taxa por comarca e por
-   relator, onde ha base suficiente e onde nao ha.
+2. Retrato quantitativo: favorabilidade, quem recorre, taxa por comarca, por
+   relator, por camara e por turma, sempre com a base (N decididos) declarada.
 3. Teses predominantes e teses perdedoras: para cada uma, N, sentido dominante
    e o que a decisao enfrentou (merito ou preliminar).
 4. Divergencias: mesma tese com os dois sentidos, com orgao nomeado dos dois
@@ -63,10 +85,12 @@ ESTRUTURA OBRIGATORIA (sete secoes, nesta ordem):
 5. O que a literatura acrescenta e o que ela nao decide: ligue achado cientifico
    a tese juridica sem transformar artigo em prova de processo.
 6. Lacunas: o que o acervo nao permite responder.
-7. Questoes de pesquisa: tres, com a justificativa de cada uma.
+7. Questoes de pesquisa: cinco, com a justificativa de cada uma.
 
-PROIBIDO: adjetivo de valor ("lamentavel", "justo"), previsao de resultado,
-tom de parecer, e qualquer frase que sugira que o portal conclui por juiz.
+PROIBIDO: previsao de resultado, tom de parecer e qualquer frase que sugira que
+o portal conclui por juiz. Adjetivo que qualifica o FATO e permitido ("dano
+grave", "contaminacao persistente"); adjetivo que qualifica a PESSOA nao
+("juiz leniente", "empresa cruel").
 ```
 
 ## 3. Payload da etapa 2 (o que vai no user)
@@ -89,14 +113,24 @@ por recorrente (N / favorável a ele / desfavorável a ele):
   atingido: 1.395 / 418 / 774
   empresa:    670 / 155 / 197
 
-taxa de favorável por comarca (mín. 20 casos):
-  Governador Valadares 354 casos 35,6% | Mariana 267 26,6%
-  Ponte Nova 203 8,9% | Aimorés 187 4,3% | Ipatinga 130 20,8%
+taxa de favorável por comarca (mín. 20 casos; base = casos decididos):
+  Governador Valadares 354 casos, 225 decididos, 56.0%
+  Mariana 267 casos, 191 decididos, 37.2%
+  Ponte Nova 203 casos, 75 decididos, 24.0%
+  Aimores 187 casos, 142 decididos, 5.6%
+  Ipatinga 130 casos, 110 decididos, 24.5%
 
-taxa de favorável por relator (mín. 50 casos):
-  Des.(a) Maria Lúcia Cabral Caruso 1.564 20,3% | Des.(a) Saldanha da Fonseca 477 5,0%
-  Des.(a) Juliana Campos Horta 179 0,6% | Des.(a) Octávio de Almeida 77 77,9%
-  Des.(a) Monteiro de Castro 59 28,8%
+taxa de favorável por relator (mín. 50 casos; base = casos decididos):
+  Des.(a) Maria Lúcia Cabral Caruso 1564 casos, 804 decididos, 39.6%
+  Des.(a) Saldanha da Fonseca 477 casos, 361 decididos, 6.6%
+  Des.(a) Juliana Campos Horta 179 casos, 6 decididos, 16.7%
+  Des.(a) Octávio de Almeida Neves 77 casos, 71 decididos, 84.5%
+  Des.(a) Monteiro de Castro 59 casos, 35 decididos, 48.6%
+
+por câmara e por turma: NÃO MEDIDO. O acervo só traz órgão julgador em 1.039
+  casos, e neles o resultado está indeterminado; nos 1.544 decididos o campo
+  'órgão' guarda o nome do relator. A etapa 1 preenche câmara e turma lendo o
+  cabeçalho da ementa; até lá não se publica taxa por câmara.
 
 teses mais frequentes (N):
   prescrição da pretensão indenizatória 716 | gratuidade de justiça 338
@@ -105,7 +139,7 @@ teses mais frequentes (N):
 valores fixados (onde há número com cara de real): 75 casos, mediana R$ 30.000,
 mínimo R$ 0, máximo R$ 850.000. Fora desses, "não consta".
 
-FONTES (25 chaves, DOI conferido na Crossref; citar só estas, por chave):
+FONTES — artigos (25 chaves, DOI conferido na Crossref; citar por chave):
   água e sedimento: alcantara2020 (10.1016/j.jag.2020.102119) | thompson2019 (10.1016/j.scitotenv.2019.135914) | pacheco2023 (10.1016/j.apgeochem.2023.105644)
   biota e peixe: vergilio2020 (10.1038/s41598-020-62700-w) | parente2020 (10.1016/j.envres.2020.110526) | pacheco2021 (10.1016/j.scitotenv.2021.151157)
   saúde humana: freitas2019 (10.1590/0102-311x00052519) | noal2019 (10.1590/0102-311x00048419) | peixoto2022 (10.1590/1980-549720220002.supl.2)
@@ -115,12 +149,26 @@ FONTES (25 chaves, DOI conferido na Crossref; citar só estas, por chave):
   território e uso do solo: pereira2019 (10.24221/jeap.4.2.2019.2373.122-129) | laschefski2020 (10.48075/amb.v2i1.23299) | scarpelin2020 (10.33448/rsd-v9i4.2517)
   valoração econômica: barcelos2021 (10.24302/drd.v11.2876) | fernandes2016 (10.1016/j.ncon.2016.10.003) | sanchez2022 (10.2305/iucn.ch.2022.11.pt)
   causa e risco da ruptura: semautor2026 (10.14210/alcance.v33n1(jan/abr).p1-20)
-  (semautor2026 é artigo de 2026 cuja exportação não trazia autor;
-   a chave é essa mesma — está na lista, é citável, o DOI confere)
+  (semautor2026 é artigo de 2026 sem autor na exportação; a chave é
+   essa, está na lista e o DOI confere)
+
+FONTES — documentos institucionais da biblioteca (citar por chave):
+  aedas-41856 — AEDAS, 2026: Livros de Danos Coletivos sofridos pelas Comunidades de Brumadinho e da Região 2 (https://aedasmg.org/documento/livros-de-danos-coletivos-sofridos-pelas-comunidades-par/)
+  aedas-41903 — AEDAS, 2025: Balanço da Reparação 2023-2025 (https://aedasmg.org/documento/balanco-da-reparacao-2023-2025-par/)
+  aedas-41906 — AEDAS, 2025: Aedas divulga informes sobre auditoria dos estudos socioambientais feitos pela AECOM no mês de dezembro de 2025 (https://aedasmg.org/documento/informes-aecom-1225/)
+  guaicuy-entenda-o-acordo-judicia — Guaicuy, 2026: Folder — Entenda o Acordo Judicial de Reparação (https://guaicuy.org.br/biblioteca/publicacoes/entenda-o-acordo-judicial/)
+  guaicuy-resolucao-coletiva-inden — Guaicuy, 2025: Como anda o processo de resolução coletiva das indenizações individuais? (https://guaicuy.org.br/biblioteca/videos/resolucao-coletiva-indenizacoes-individuais/)
+  guaicuy-entenda-a-decisao-de-sus — Guaicuy, 2025: Entenda a decisão de suspensão das ações individuais de indenização (https://guaicuy.org.br/biblioteca/videos/entenda-a-decisao-de-suspensao-das-acoes-individuais/)
+  nacab-boletim-mobilizacao-06-ser — NACAB, sem ano: Mobilização nº 6 — Ser mulher atingida (https://nacab.org.br/wp-content/uploads/2022/03/Boletim-Mobilizacao-06-Ser-mulher-atingida.pdf)
+  nacab-reparacao-15-pdf-site-1 — NACAB, sem ano: Jornal Reparação nº 15 (https://nacab.org.br/wp-content/uploads/2026/07/Reparacao-15_PDF-site-1.pdf)
+  nacab-reparacao-14 — NACAB, sem ano: Jornal Reparação nº 14 (https://nacab.org.br/wp-content/uploads/2025/05/reparacao_14.pdf)
+  ac-003 — MPMG, 2024: MPMG — TAC: Gerdau — R$ 27 mi para Reparação (https://www.mpmg.mp.br/)
 
 LIMITES DESTE RECORTE:
   - 3.818 casos sem recorrente/resultado legíveis: não entram em percentual.
   - valor de indenização só aparece em 75 casos: não serve para média do acervo.
+  - por câmara e por turma não é publicado antes da etapa 1: o campo não existe
+    no acervo para os casos decididos.
   - tese e sentido vêm de regra de termo e leitura de modelo, nessa ordem de
     confiança; divergência só é publicada com N ≥ 3 nos dois sentidos.
 ```
@@ -140,6 +188,9 @@ e passam a ser pedidos na etapa 1:
 | `provas` | pericia · documental · testemunhal · nenhuma · nao_consta | separa quem perdeu por não provar |
 | `ptr_auxilio` | discutido · concedido · negado · nao_consta | auxílio emergencial / PTR atravessa metade dos casos |
 | `estado_processo` | sentenca · acordo · recurso · extinto · nao_consta | evita tratar recurso como decisão final |
+| `camara` | 1ª Cível · 2ª Cível · 3ª Cível · 4ª Cível · Criminal · Reunidas · Plenário | o acervo só traz câmara em 1.039 casos, e neles o resultado é indeterminado |
+| `turma` | Turma Recursal 1..5 · 1º Grupo Criminal · nao_consta | idem |
+| `palavras_chave` | 3 a 6 termos curtos, separados por `;` | alimenta o RAG depois, sem reler o acórdão |
 | `tempo_duracao` | dias (só se o texto trouxer as duas datas) | se não trouxer, `nao_consta` — não estimar |
 
 O que **não** entra: documentos juntados na petição inicial e "estado do processo
@@ -166,21 +217,50 @@ Assim a citação é rastreável ao artigo e ao DOI conferido — e não a um re
 que o modelo lembrou de ter visto. Pergunta do leitor ("de onde vem esse
 número?") tem resposta em três cliques: frase → chave → DOI.
 
-## 5. Custo
+## 5. Custo e modalidade (preço de 03/11/2026)
 
-| Etapa | Chamadas | Entrada | Saída | Custo (sabiazinho batch) |
+Tabela de preço da Maritaca, por milhão de tokens:
+
+| Modalidade | S5 | Sabiá 4 | Sabiá 4 Thinking | Sabiazinho 4 |
 |---|---:|---:|---:|---:|
-| 1. etiquetar | 5.362 | 1,16 M tok | 1,39 M tok | ~R$ 3,37 |
-| 1b. só os sem variável | 3.818 | 0,83 M | 0,99 M | ~R$ 2,40 |
-| 2. sintetizar | 1 | ~4 mil tok | ~2 mil tok | < R$ 0,02 |
+| Padrão (entrada/saída) | 0,50 / 2,50 | 5,00 / 20,00 | 5,00 / 40,00 | 1,00 / 4,00 |
+| **Batch (entrada)** | 0,25 | 2,50 | 2,50 | 0,50 |
+| **Flex (entrada/saída)** | 0,25 / 1,25 | 2,50 / 10,00 | 2,50 / 20,00 | 0,50 / 2,00 |
 
-Preço do **sabia-4** não está tabelado em fonte pública que abra sem login:
-os valores acima usam o preço do **sabiazinho-4 em batch**, já medido. Se o
-sabia-4 custar o dobro, dobra tudo. Confirmar na console antes de enviar.
+**Batch e Flex custam o mesmo por token.** A diferença é operacional:
+`batch` é assíncrono, aceita o volume inteiro de uma vez e devolve em até 24 h;
+`flex` é síncrono, com limite de taxa e a chamada presa ao processo.
 
-Como a pergunta é "análise de teses e jurimetria", a etapa 1 pode rodar só nos
-**3.818 sem variável legível**: os 1.544 já decididos entram na análise pelas
-colunas que a planilha tem. Isso reduz a etapa cara a ~R$ 2,40.
+### Por que batch
+
+5.362 casos em `flex` são 5.362 requisições síncronas: o gargalo vira a taxa da
+API, não o modelo, e o trabalho fica pendurado em processo vivo. Em `batch` o
+arquivo sobe uma vez, o estado fica em disco (`logs/…-lote.json`) e a rotina
+baixa sozinha quando conclui — exatamente o que já funciona para polo e tese.
+`flex` só se justifica para piloto de 50 a 100 casos, quando se quer ver o
+resultado em minutos.
+
+### Custo do universo (5.362 casos; 1,16 M entrada e 1,39 M saída)
+
+| Modelo em batch | Entrada | Saída | Total |
+|---|---:|---:|---:|
+| Sabiazinho 4 | R$ 0,58 | R$ 2,78 | **R$ 3,36** |
+| Sabiá 4 | R$ 2,90 | R$ 13,90 | **R$ 16,80** |
+| S5 | R$ 0,29 | R$ 1,74 | **R$ 2,03** |
+
+Etapa 2 (síntese, 1 chamada, ~6 mil tokens) custa menos de R$ 0,05 em qualquer
+um dos três.
+
+### Recomendação
+
+- **Etapa 1 (5.362 etiquetas): Sabiazinho 4 em batch — R$ 3,36.** A tarefa é
+  estruturada (campo fechado), e é ele que já rotulou polo e tese do acervo.
+- **Etapa 2 (síntese): Sabiá 4 em batch — centavos.** É onde a diferença de
+  modelo aparece: texto longo, nuance jurídica, cinco questões de pesquisa.
+
+Se a qualidade da etiqueta do Sabiazinho não convencer no piloto de 200, o passo
+seguinte é Sabiá 4 **só no que ficou `indeterminado`** (hoje 3.818), não no
+universo: R$ 12,00 em vez de R$ 16,80, e sem reler o que já está decidido.
 
 ## 6. Aceite (auditável, não retórico)
 

@@ -4,7 +4,7 @@
 > **Domínio:** jurisprudência
 > **Última medição:** 2026-11-03
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [PROMPT-BATCH-SABIA-ANALISE-RIO-DOCE.md](PROMPT-BATCH-SABIA-ANALISE-RIO-DOCE.md), [PROMPT-BATCH-SABIA-RIO-DOCE.md](PROMPT-BATCH-SABIA-RIO-DOCE.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md), [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md)
+> **Relacionados:** [PROMPT-BATCH-SABIA-ANALISE-RIO-DOCE.md](PROMPT-BATCH-SABIA-ANALISE-RIO-DOCE.md), `tjmg-jurimetria/docs/PROMPT-BATCH-SABIA-RIO-DOCE.md`, [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md), [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md)
 > **Palavras-chave:** jurimetria, teses, guaicuy, nacab, pnab, peab, amostra, acórdão, processo, análise
 
 ## Sumário
