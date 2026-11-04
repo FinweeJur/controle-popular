@@ -24,6 +24,7 @@
 
 import { useState } from "react";
 import { GitCommit, Calendar, ChevronDown, ChevronUp, ExternalLink, MapPin } from "lucide-react";
+import ScrollStar from "./ScrollStar";
 
 /** Contrato universal de um evento na linha do tempo de tramitação */
 export interface EventoTramitacaoUniversal {
@@ -58,6 +59,13 @@ interface LinhaDoTempoTramitacaoProps {
   urlProcessoOficial?: string;
   /** Nome ou sigla da Casa (ex: "Câmara dos Deputados", "ALMG", "ALESP") */
   casaNome?: string;
+  /**
+   * Estrela que desce no scroll (ver `ScrollStar`). É opt-in porque o
+   * componente também vive dentro de célula de tabela expandida
+   * (`assembleias/components/TabelaProposicoes.tsx`), onde o trilho curto
+   * atrás de um `<td>` viraria ruído. A página da proposição liga.
+   */
+  estrela?: boolean;
 }
 
 /**
@@ -112,6 +120,7 @@ export default function LinhaDoTempoTramitacao({
   limiteInicial = 15,
   urlProcessoOficial,
   casaNome,
+  estrela = false,
 }: LinhaDoTempoTramitacaoProps) {
   const [expandido, setExpandido] = useState(false);
 
@@ -166,74 +175,16 @@ export default function LinhaDoTempoTramitacao({
         )}
       </div>
 
-      <ol className="relative border-l-2 border-primary/30 ml-3 space-y-6 pt-2 pb-2">
-        {itensExibidos.map((ev, index) => {
-          const ehUltimo = index === 0; // Se a lista estiver do mais recente para o mais antigo
-
-          return (
-            <li key={ev.sequencia ?? index} className="ml-6 group">
-              {/* Marcador na linha do tempo */}
-              <span
-                className={`absolute -left-[9px] mt-1.5 h-4 w-4 rounded-full border-2 bg-background transition-transform group-hover:scale-125 ${
-                  ehUltimo
-                    ? "border-primary bg-primary ring-4 ring-primary/20"
-                    : "border-muted-foreground/60 bg-surface"
-                }`}
-                aria-hidden="true"
-              />
-
-              <div className="rounded-xl border border-border/80 bg-surface p-4 shadow-xs transition-colors hover:border-primary/40">
-                {/* Cabeçalho do evento: Data + Órgão */}
-                <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                  <div className="flex items-center gap-1.5 text-muted font-medium">
-                    <Calendar size={13} aria-hidden="true" />
-                    <time dateTime={ev.dataHora ?? undefined}>{formatarDataHora(ev.dataHora)}</time>
-                  </div>
-
-                  {ev.siglaOrgao && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
-                      <MapPin size={11} aria-hidden="true" />
-                      {ev.siglaOrgao}
-                    </span>
-                  )}
-                </div>
-
-                {/* Descrição principal da ação */}
-                {ev.descricao && (
-                  <p className="mt-2 text-sm font-semibold text-foreground leading-relaxed">
-                    {ev.descricao}
-                  </p>
-                )}
-
-                {/* Despacho ou parecer detalhado */}
-                {ev.despacho && (
-                  <div className="mt-2 rounded-lg bg-surface-2/60 p-3 text-sm text-foreground/90 border-l-2 border-primary/40">
-                    <p className="text-xs font-medium text-muted uppercase tracking-wider mb-1">
-                      Despacho / Parecer:
-                    </p>
-                    <p className="leading-relaxed whitespace-pre-line text-sm">{ev.despacho}</p>
-                  </div>
-                )}
-
-                {/* Documento anexo se houver */}
-                {ev.urlDocumento && (
-                  <div className="mt-3">
-                    <a
-                      href={ev.urlDocumento}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
-                    >
-                      <span>Documento anexo ao andamento</span>
-                      <ExternalLink size={12} aria-hidden="true" />
-                    </a>
-                  </div>
-                )}
-              </div>
-            </li>
-          );
-        })}
-      </ol>
+      {/* Wrapper relativo da estrela opt-in: o eixo do trilho fica em
+          x = 13 px (o `ml-3` = 12 px do <ol> + centro do `border-l-2`). */}
+      <div className="relative">
+        <ol className="relative border-l-2 border-primary/30 ml-3 space-y-6 pt-2 pb-2">
+          {itensExibidos.map((ev, index) => (
+            <ItemAndamento key={ev.sequencia ?? index} ev={ev} maisRecente={index === 0} />
+          ))}
+        </ol>
+        {estrela ? <ScrollStar eixo={13} /> : null}
+      </div>
 
       {/* Controle de expansão progressiva */}
       {temMais && (
@@ -258,5 +209,77 @@ export default function LinhaDoTempoTramitacao({
         </div>
       )}
     </section>
+  );
+}
+
+/**
+ * Um `<li>` da tramitação: ponto no trilho (o andamento mais recente — a
+ * lista vem do mais novo para o mais velho — ganha o anel destacado), data,
+ * órgão, descrição, despacho e documento anexo quando existem. Extraído do
+ * corpo do componente (03/11/2026) para o gate CodeScene de método grande;
+ * comportamento idêntico ao anterior.
+ */
+function ItemAndamento({ ev, maisRecente }: { ev: EventoTramitacaoUniversal; maisRecente: boolean }) {
+  return (
+    <li className="ml-6 group">
+      {/* Marcador na linha do tempo */}
+      <span
+        className={`absolute -left-[9px] mt-1.5 h-4 w-4 rounded-full border-2 bg-background transition-transform group-hover:scale-125 ${
+          maisRecente
+            ? "border-primary bg-primary ring-4 ring-primary/20"
+            : "border-muted-foreground/60 bg-surface"
+        }`}
+        aria-hidden="true"
+      />
+
+      <div className="rounded-xl border border-border/80 bg-surface p-4 shadow-xs transition-colors hover:border-primary/40">
+        {/* Cabeçalho do evento: Data + Órgão */}
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="flex items-center gap-1.5 text-muted font-medium">
+            <Calendar size={13} aria-hidden="true" />
+            <time dateTime={ev.dataHora ?? undefined}>{formatarDataHora(ev.dataHora)}</time>
+          </div>
+
+          {ev.siglaOrgao && (
+            <span className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">
+              <MapPin size={11} aria-hidden="true" />
+              {ev.siglaOrgao}
+            </span>
+          )}
+        </div>
+
+        {/* Descrição principal da ação */}
+        {ev.descricao && (
+          <p className="mt-2 text-sm font-semibold text-foreground leading-relaxed">
+            {ev.descricao}
+          </p>
+        )}
+
+        {/* Despacho ou parecer detalhado */}
+        {ev.despacho && (
+          <div className="mt-2 rounded-lg bg-surface-2/60 p-3 text-sm text-foreground/90 border-l-2 border-primary/40">
+            <p className="text-xs font-medium text-muted uppercase tracking-wider mb-1">
+              Despacho / Parecer:
+            </p>
+            <p className="leading-relaxed whitespace-pre-line text-sm">{ev.despacho}</p>
+          </div>
+        )}
+
+        {/* Documento anexo se houver */}
+        {ev.urlDocumento && (
+          <div className="mt-3">
+            <a
+              href={ev.urlDocumento}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+            >
+              <span>Documento anexo ao andamento</span>
+              <ExternalLink size={12} aria-hidden="true" />
+            </a>
+          </div>
+        )}
+      </div>
+    </li>
   );
 }

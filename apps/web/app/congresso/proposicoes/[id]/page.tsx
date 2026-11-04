@@ -197,7 +197,7 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
         <LinhaDoTempoTramitacao
           eventos={tramitacoes}
           urlProcessoOficial={p.url_fonte ?? undefined}
-          casaNome={p.casa_id === "senado" ? "Senado Federal" : "Câmara dos Deputados"}
+          casaNome={p.casa_id === "senado" ? "Senado Federal" : "Câmara dos Deputados"} estrela
         />
       ) : null}
     </div>

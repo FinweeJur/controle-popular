@@ -1,0 +1,59 @@
+/*
+ * Estilos do ScrollStar — a estrela que percorre a linha do tempo no scroll.
+ *
+ * A trilha pertence à linha, não à janela: `position: absolute` dentro do pai
+ * `relative`, cobrindo a altura dela (`top: 0; bottom: 0`). Nada de
+ * `position: fixed` — fora da seção a estrela fica presa nas pontas da
+ * própria trilha, nunca "aparece em outro lugar".
+ *
+ * Cores só por token (`--cp-primary`), como o resto do portal. Sem
+ * `will-change` permanente: o movimento é um `top` por quadro com transição
+ * curta, não uma animação contínua que justifique camada extra de compositor.
+ */
+
+.scroll-star {
+  position: absolute;
+  left: -0.75rem; /* centro do ponto sobre a borda-esquerda do pai */
+  top: 0;
+  bottom: 0;
+  width: 1.5rem;
+  pointer-events: none; /* decoração: nunca intercepta clique nem foco */
+}
+
+.scroll-star__dot {
+  position: absolute;
+  left: 0;
+  top: 0; /* o JS move com style.top em px, centralizando no evento atual */
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  color: var(--cp-primary);
+  /* Brilho no ponto — a receita do site do dono (drop-shadow), com o
+     `--cp-glow` do portal no lugar do amarelo dele: por tema, sem hex. */
+  filter: drop-shadow(0 0 10px var(--cp-glow));
+  /* Passo controlado (dono, 03/11/2026): a estrela salta de evento em
+     evento, um por vez; 240 ms com ease-out é a descida sem "pulo" ao
+     rolar para cima e sem atraso que pareça solta do scroll. */
+  transition: top 240ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Estrela de quatro pontas — a mesma do site encontrolenirlivre.pages.dev:
+   lá o svg mede 0,95rem dentro do ponto de 1,5rem; copiei a proporção.
+   Em rem: escala junto com o controle de tamanho de fonte da casca. */
+.scroll-star__estrela {
+  width: 0.95rem;
+  height: 0.95rem;
+  display: block;
+}
+
+/*
+ * Cinto-e-suspensório: o componente nem monta com movimento reduzido ou
+ * alto-contraste (porteiro `useEfeitoPermitido`), mas se sobrar trilha no
+ * DOM por qualquer caminho, ela fica invisível e imóvel.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-star {
+    display: none;
+  }
+}

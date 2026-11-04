@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Activity, AlertTriangle, BarChart3, Bell, BookOpen, Briefcase, Building2, Compass, Cpu, FileQuestion, FileSpreadsheet, FileText, Globe, GraduationCap, HeartHandshake, HelpCircle, Info, Landmark, Layers, List, MapPin, Mountain, Newspaper, PhoneCall, Radio, Scale, Search, Send, Shield, ShieldCheck, ShoppingBag, Sparkles, Users, Waves } from "lucide-react";
+import { Activity, AlertTriangle, BarChart3, Bell, BookOpen, Briefcase, Building2, Compass, Cpu, FileQuestion, FileSpreadsheet, FileText, Globe, GraduationCap, HeartHandshake, HelpCircle, Info, Landmark, Layers, List, MapPin, Mountain, Newspaper, PhoneCall, RadioTower, Scale, Search, Send, Shield, ShieldCheck, ShoppingBag, Sparkles, Users, Waves } from "lucide-react";
 
 /**
  * @file Menu do indice expansivel (navbar).
@@ -158,7 +158,7 @@ export const SECOES_MENU: SecaoMenu[] = [
       { label: 'Busca Global no Acervo', href: '/busca', icone: Search, dica: 'Busca por palavra em todo o acervo do portal: páginas, dados e documentos.' },
       { label: 'Laboratório de Dados', href: '/laboratorio', icone: BarChart3, dica: 'Compare dois conjuntos de dados em gráficos e veja o que muda lado a lado.' },
       { label: 'Blog & Notícias Analíticas', href: '/noticias', icone: Newspaper, dica: 'Estudos, análises e investigações cívicas com a fonte ao lado de cada afirmação.' },
-      { label: 'Rádios do Brasil e do Mundo', href: '/radio', icone: Radio, dica: 'Rádios comunitárias e do Brasil e do mundo: transmissões e boletins de áudio.' },
+      { label: 'Rádios do Brasil e do Mundo', href: '/radio', icone: RadioTower, dica: 'Rádios comunitárias e do Brasil e do mundo: transmissões e boletins de áudio.' },
       { label: 'Alertas & Notificações', href: '/alertas', icone: Bell, dica: 'Central de alertas e notificações: acompanhe novidades e receba por e-mail.' },
       { label: 'Tecnologia & IA Livre', href: '/tecnologia', icone: Cpu, dica: 'Oficinas de IA livre, catálogo open source e ferramentas para uso cidadão.' },
       { label: 'Documentação do Sistema', href: '/documentacao', icone: FileText, dica: 'Arquitetura, fontes, API pública e princípios editoriais para pesquisadores.' },
