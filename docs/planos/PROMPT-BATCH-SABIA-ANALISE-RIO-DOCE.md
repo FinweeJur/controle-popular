@@ -224,12 +224,34 @@ Tabela de preço da Maritaca, por milhão de tokens:
 | Modalidade | S5 | Sabiá 4 | Sabiá 4 Thinking | Sabiazinho 4 |
 |---|---:|---:|---:|---:|
 | Padrão (entrada/saída) | 0,50 / 2,50 | 5,00 / 20,00 | 5,00 / 40,00 | 1,00 / 4,00 |
-| **Batch (entrada)** | 0,25 | 2,50 | 2,50 | 0,50 |
-| **Flex (entrada/saída)** | 0,25 / 1,25 | 2,50 / 10,00 | 2,50 / 20,00 | 0,50 / 2,00 |
+| **Batch API (entrada/saída)** | 0,25 / 1,25 | 2,50 / 10,00 | 2,50 / 20,00 | 0,50 / 2,00 |
+| Flex (entrada/saída) | 0,25 / 1,25 | 2,50 / 10,00 | 2,50 / 20,00 | 0,50 / 2,00 |
+| Noturno, 22h–6h (entrada/saída) | 0,35 / 1,75 | 3,50 / 14,00 | 3,50 / 28,00 | 0,70 / 2,80 |
+
+Conferido em `docs.maritaca.ai/pt/precos` em 04/11/2026. Batch e Flex **têm o
+mesmo preço**; noturno é exclusivo com os dois (não somam) e `S5-free` não tem
+Batch nem Flex — 60 RPM fixos e 256k TPM, só texto.
 
 **Batch e Flex custam o mesmo por token.** A diferença é operacional:
 `batch` é assíncrono, aceita o volume inteiro de uma vez e devolve em até 24 h;
 `flex` é síncrono, com limite de taxa e a chamada presa ao processo.
+
+
+### Limites operacionais (conferidos na doc, 04/11/2026)
+
+| Fato | Valor | Consequência prática |
+|---|---|---|
+| Requisições por arquivo | 50.000 | os 3.656 do universo cabem em um arquivo |
+| Tamanho do arquivo | 200 MB | idem |
+| Modelos por arquivo | **um só** | não misturar sabiazinho e sabiá-4 no mesmo .jsonl |
+| Limite diário do Batch | por **caracteres**: 4 M no tier 0, 1,2 bi nos tiers 1-5 | tier 0 não aguenta o universo (4,6 M chars): fatiar |
+| Resultado do lote | fica 30 dias | baixar logo, não confiar em prazo |
+| Falhas | vão para `error_file_id`, não para a saída | **ler o arquivo de erro**; sem isso a falha é invisível |
+| Janela | até 24 h; expirado, os concluídos ainda são cobrados | não usar para urgência |
+
+O piloto de 200 casos mostrou 21 respostas com JSON quebrado e o arquivo de erro
+**vazio**: não foi falha da API, foi corte do `max_tokens` (600). Corrigido para
+1000 e o `--baixar` passou a ler o arquivo de erro.
 
 ### Por que batch
 
