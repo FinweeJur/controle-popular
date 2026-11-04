@@ -1,6 +1,6 @@
 "use client";
 
-import { Play } from "lucide-react";
+import { RadioTower } from "lucide-react";
 
 /**
  * Botão de rádio do rodapé — liga/desliga o player persistente.
@@ -12,6 +12,9 @@ import { Play } from "lucide-react";
  * `cp:radio-toggle`, que o `PlayerRadio` escuta. Se nada estiver carregado, o
  * player abre na Rádio Brasil de Fato (a estação padrão); o diretório inteiro
  * fica em `/radio`. Um controle, um estado.
+ *
+ * Ícone (dono, 03/11/2026): o `Play` não dizia "rádio"; o aparelho sem
+ * antena também não — ficou a torre de transmissão com sinais, lida de cara.
  */
 
 export default function BotaoRadio() {
@@ -21,7 +24,7 @@ export default function BotaoRadio() {
       onClick={() => window.dispatchEvent(new Event("cp:radio-toggle"))}
       className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
     >
-      <Play size={14} aria-hidden="true" /> Ouvir a rádio
+      <RadioTower size={14} aria-hidden="true" /> Ouvir a rádio
     </button>
   );
 }

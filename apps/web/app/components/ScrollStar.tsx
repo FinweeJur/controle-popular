@@ -41,10 +41,32 @@
  */
 
 import { useEffect, useRef } from "react";
-import { Sparkles } from "lucide-react";
 import { useEfeitoPermitido } from "./react-bits/useEfeitoPermitido";
 import { ANCORAGEM_DA_ESTRELA, eventoNoAlvo, topoDoPonto } from "@/lib/estrela-scroll";
 import "./ScrollStar.css";
+
+/**
+ * Estrela de quatro pontas — o MESMO ícone do site do dono
+ * `encontrolenirlivre.pages.dev` (pedido em 03/11/2026: "trocar pela mesma
+ * estrela daquele site"). É o traço dele, extraído do bundle do próprio site:
+ * um caminho único, côncavo, `fill="currentColor"` (herda o `--cp-primary` do
+ * ponto). Não é SVG inventado aqui: vem da casa do dono.
+ */
+function EstrelaQuatroPontas() {
+  return (
+    <svg
+      className="scroll-star__estrela"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M12 0c.8 7.2 4.8 11.2 12 12-7.2.8-11.2 4.8-12 12-.8-7.2-4.8-11.2-12-12C7.2 11.2 11.2 7.2 12 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
 
 interface Props {
   /**
@@ -82,7 +104,7 @@ export default function ScrollStar({ eixo = 0 }: Props) {
       aria-hidden="true"
     >
       <div ref={pontoRef} className="scroll-star__dot">
-        <Sparkles size={16} />
+        <EstrelaQuatroPontas />
       </div>
     </div>
   );

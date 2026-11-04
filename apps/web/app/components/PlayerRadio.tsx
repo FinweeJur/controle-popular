@@ -6,7 +6,7 @@ import {
   ListMusic,
   Pause,
   Play,
-  Radio,
+  RadioTower,
   Volume2,
   VolumeX,
   X,
@@ -90,7 +90,7 @@ export default function PlayerRadio() {
   const [idAtual, setIdAtual] = useState<string | null>(null);
   const [tocando, setTocando] = useState(false);
   // Ícone do botão (pedido do dono, 14/10/2026): antes de tocar a rádio o
-  // círculo mostra o aparelho (Radio) — Play só depois que o leitor já
+  // círculo mostra a torre de transmissão (RadioTower) — Play só depois que o leitor já
   // ouviu alguma vez, para o "aperte aqui" inicial ser óbvio.
   const [jaTocou, setJaTocou] = useState(false);
   const [carregando, setCarregando] = useState(false);
@@ -400,9 +400,9 @@ export default function PlayerRadio() {
 
         {/* Botão redondo só com play/pause (pedido do dono, 03/10/2026):
             a pílula com nome, arrasto e chevron saiu. Ícone do estado
-            (pedido do dono, 14/10/2026): Radio antes da primeira vez,
-            Pause tocando, Play pausado depois que já tocou. Nome da
-            estação, volume e lista vivem no índice. */}
+            (14/10/2026; torre com antena em 03/11/2026, pedido do dono):
+            torre antes da primeira vez, Pause tocando, Play depois. Nome
+            da estação, volume e lista vivem no índice. */}
         <button
           type="button"
           {...handlers}
@@ -427,7 +427,7 @@ export default function PlayerRadio() {
           ) : jaTocou ? (
             <Play size={20} aria-hidden="true" className="text-primary" />
           ) : (
-            <Radio size={20} aria-hidden="true" className="text-primary" />
+            <RadioTower size={20} aria-hidden="true" className="text-primary" />
           )}
         </button>
 
