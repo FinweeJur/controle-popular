@@ -1,0 +1,409 @@
+{
+  "geradoEm": "2026-11-04T00:56:14",
+  "frente": "riodoce",
+  "total": 902,
+  "fila": 3656,
+  "cobertura": 24.7,
+  "lados": {
+    "indeterminado": 495,
+    "empresa": 254,
+    "atingido": 131,
+    "parcial": 22
+  },
+  "conflitos": [
+    [
+      "materiaestranhaaodesastre",
+      203
+    ],
+    [
+      "prescricao",
+      160
+    ],
+    [
+      "provaepericia",
+      114
+    ],
+    [
+      "sobrestamentotema",
+      79
+    ],
+    [
+      "gratuidadejustica",
+      73
+    ],
+    [
+      "outro",
+      61
+    ],
+    [
+      "acordoindenizacao",
+      59
+    ],
+    [
+      "honorarioscustas",
+      38
+    ],
+    [
+      "coisajulgadaacordo",
+      28
+    ],
+    [
+      "danomoral",
+      24
+    ],
+    [
+      "auxilioemergencialptr",
+      13
+    ],
+    [
+      "legitimidade",
+      12
+    ]
+  ],
+  "direitos": [
+    [
+      "agua_abastecimento",
+      86
+    ],
+    [
+      "perda_renda_trabalho",
+      82
+    ],
+    [
+      "perda_areas_pesca",
+      56
+    ],
+    [
+      "outros_pnab_peab",
+      38
+    ],
+    [
+      "mudanca_habitos_psicossociais",
+      23
+    ],
+    [
+      "perda_capacidade_produtiva",
+      10
+    ],
+    [
+      "perda_propriedade",
+      7
+    ],
+    [
+      "desvalorizacao_imoveis",
+      7
+    ],
+    [
+      "atividades_produtivas_locais",
+      7
+    ],
+    [
+      "deslocamento_compulsorio",
+      4
+    ]
+  ],
+  "motivos": [
+    [
+      "(não informado)",
+      407
+    ],
+    [
+      "materiaestranha",
+      192
+    ],
+    [
+      "sobrestamento",
+      99
+    ],
+    [
+      "textoinsuficiente",
+      72
+    ],
+    [
+      "preliminar",
+      68
+    ],
+    [
+      "acordo",
+      34
+    ],
+    [
+      "outro",
+      28
+    ],
+    [
+      "semdispositivo",
+      2
+    ]
+  ],
+  "confianca": {
+    "media": 303,
+    "alta": 458,
+    "baixa": 141
+  },
+  "palavras_chave": [
+    [
+      "prescrição",
+      175
+    ],
+    [
+      "embargos de declaração",
+      161
+    ],
+    [
+      "agravo de instrumento",
+      134
+    ],
+    [
+      "barragem do fundão",
+      109
+    ],
+    [
+      "dano moral",
+      98
+    ],
+    [
+      "barragem de fundão",
+      74
+    ],
+    [
+      "desastre ambiental",
+      70
+    ],
+    [
+      "suspensão",
+      69
+    ],
+    [
+      "samarco",
+      68
+    ],
+    [
+      "rompimento da barragem do fundão",
+      66
+    ],
+    [
+      "irdr 41",
+      63
+    ],
+    [
+      "gratuidade de justiça",
+      52
+    ],
+    [
+      "cassação da sentença",
+      51
+    ],
+    [
+      "inversão do ônus da prova",
+      50
+    ],
+    [
+      "danos morais",
+      48
+    ],
+    [
+      "recurso desprovido",
+      48
+    ],
+    [
+      "apelação cível",
+      45
+    ],
+    [
+      "hipossuficiência",
+      41
+    ],
+    [
+      "nexo causal",
+      40
+    ],
+    [
+      "acordo extrajudicial",
+      35
+    ]
+  ],
+  "divergencias": [
+    {
+      "conflito": "materiaestranhaaodesastre",
+      "casos": 203,
+      "lados": {
+        "indeterminado": 192,
+        "empresa": 8,
+        "atingido": 2,
+        "parcial": 1
+      },
+      "teses_distintas": 203,
+      "exemplos": [
+        {
+          "processo": "0000019-65.2021.8.08.0068",
+          "lado": "indeterminado",
+          "tese": "Ação monitória de cédula rural pignoratícia: defensor dativo não presume hipossuficiência e matérias não arguidas em embargos não podem ser inovadas e"
+        },
+        {
+          "processo": "0000092-76.2017.8.08.0068",
+          "lado": "indeterminado",
+          "tese": "Apelação em ação de empréstimo consignado não reconhecido, com prescrição afastada e dano moral in re ipsa."
+        }
+      ]
+    },
+    {
+      "conflito": "prescricao",
+      "casos": 160,
+      "lados": {
+        "indeterminado": 47,
+        "empresa": 73,
+        "atingido": 38,
+        "parcial": 2
+      },
+      "teses_distintas": 138,
+      "exemplos": [
+        {
+          "processo": "0001000-34.2015.8.08.0059",
+          "lado": "indeterminado",
+          "tese": "A ausência de citação no prazo legal inviabiliza a interrupção da prescrição, salvo se a demora for atribuível exclusivamente ao Judiciário."
+        },
+        {
+          "processo": "0157995-34.2026.8.13",
+          "lado": "indeterminado",
+          "tese": "Sobrestamento parcial pelo Tema Repetitivo STJ nº 1.280 em ação indenizatória do desastre do Fundão."
+        }
+      ]
+    },
+    {
+      "conflito": "provaepericia",
+      "casos": 114,
+      "lados": {
+        "empresa": 50,
+        "indeterminado": 28,
+        "parcial": 3,
+        "atingido": 33
+      },
+      "teses_distintas": 111,
+      "exemplos": [
+        {
+          "processo": "0000336-30.2009.8.08.0021",
+          "lado": "empresa",
+          "tese": "Perícia insuficiente sobre classificação e valor do imóvel rural anula sentença que condenou a CESAN por danos da obra de saneamento."
+        },
+        {
+          "processo": "0001270-86.2021.8.08.0014",
+          "lado": "empresa",
+          "tese": "Responsabilidade objetiva por dano ambiental exige prova do nexo causal e do dano individualizado; ausência de prova mínima leva à improcedência."
+        }
+      ]
+    },
+    {
+      "conflito": "sobrestamentotema",
+      "casos": 79,
+      "lados": {
+        "indeterminado": 68,
+        "empresa": 3,
+        "atingido": 8
+      },
+      "teses_distintas": 64,
+      "exemplos": [
+        {
+          "processo": "0015108-90.2018.8.13",
+          "lado": "indeterminado",
+          "tese": "IRDR nº 41 suspende ações sobre qualidade da água; sentença cassada para observar a suspensão."
+        },
+        {
+          "processo": "0253729-12.2026.8.13",
+          "lado": "indeterminado",
+          "tese": "Sobrestamento parcial até o Tema Repetitivo STJ nº 1.280, mantendo a instrução para evitar perecimento de provas."
+        }
+      ]
+    },
+    {
+      "conflito": "gratuidadejustica",
+      "casos": 73,
+      "lados": {
+        "empresa": 30,
+        "indeterminado": 33,
+        "atingido": 10
+      },
+      "teses_distintas": 73,
+      "exemplos": [
+        {
+          "processo": "0000724-33.2018.8.08.0015",
+          "lado": "atingido",
+          "tese": "Revogação de ofício da gratuidade sem prévia oitiva viola contraditório e não surpresa; restabelece-se o benefício."
+        },
+        {
+          "processo": "0007969-79.2020.8.08.0030",
+          "lado": "indeterminado",
+          "tese": "Indeferimento de justiça gratuita por inércia da parte autoriza extinção sem mérito por falta de recolhimento das custas."
+        }
+      ]
+    },
+    {
+      "conflito": "outro",
+      "casos": 61,
+      "lados": {
+        "indeterminado": 52,
+        "empresa": 3,
+        "atingido": 6
+      },
+      "teses_distintas": 39,
+      "exemplos": [
+        {
+          "processo": "0007833-24.2016.8.08.0030",
+          "lado": "atingido",
+          "tese": "Juros de mora em indenização por dano moral decorrente do desastre do Rio Doce incidem desde a data do evento danoso, por responsabilidade civil extra"
+        },
+        {
+          "processo": "0010320-59.2019.8.08.0030",
+          "lado": "indeterminado",
+          "tese": "Apelação contra sentença de improcedência em ação indenizatória por danos materiais e morais decorrentes do desastre do rio Doce."
+        }
+      ]
+    },
+    {
+      "conflito": "acordoindenizacao",
+      "casos": 59,
+      "lados": {
+        "indeterminado": 34,
+        "empresa": 16,
+        "parcial": 3,
+        "atingido": 6
+      },
+      "teses_distintas": 59,
+      "exemplos": [
+        {
+          "processo": "0000181-86.2020.8.08.0006",
+          "lado": "empresa",
+          "tese": "Embargos de declaração rejeitados; mantida decisão que acolheu parcialmente impugnação ao cumprimento de sentença por excesso de execução no âmbito do"
+        },
+        {
+          "processo": "0000714-86.2018.8.08.0015",
+          "lado": "atingido",
+          "tese": "Embargos de declaração desprovidos; acórdão restabeleceu gratuidade, extinguiu por perda de interesse e condenou Samarco em ônus pelo princípio da cau"
+        }
+      ]
+    },
+    {
+      "conflito": "honorarioscustas",
+      "casos": 38,
+      "lados": {
+        "empresa": 13,
+        "atingido": 7,
+        "parcial": 4,
+        "indeterminado": 14
+      },
+      "teses_distintas": 38,
+      "exemplos": [
+        {
+          "processo": "0000013-46.2019.8.08.0030",
+          "lado": "indeterminado",
+          "tese": "Embargos de declaração rejeitados; reconhecido de ofício erro material na majoração dos honorários sucumbenciais recursais."
+        },
+        {
+          "processo": "0000086-58.2017.8.08.0007",
+          "lado": "indeterminado",
+          "tese": "Embargos de declaração acolhidos para suprir omissão sobre alegada duplicidade de honorários advocatícios, sem efeitos infringentes."
+        }
+      ]
+    }
+  ]
+}

@@ -57,7 +57,13 @@ Serve ao revisor acadêmico e ao dono.
 | 04/11/2026 | P2 | vínculo temático: 62 notícias de acordo ↔ 19 acórdãos `acordo_indenizacao`; 2 de perícia ↔ 14 `prova_e_pericia` | `ATI-PROCESSO-COLETIVO.md` |
 | 04/11/2026 | P2 | gatilho virou multi-rótulo: notícia de sobrestamento também diz "acordo" e sumia do cruzamento | `triar_atis.py` |
 | 04/11/2026 | P3 | rubrica v3 (catálogo) rodando no S5-free, checkpoint por linha | `sync-S5-free.csv` |
+| 04/11/2026 | P3 | frente virou parâmetro: Brumadinho 2.471 na fila, dh 2.373, penal 6.166; Rio Doce segue 3.656 | `lote_rotulagem.fila(frente)` |
+| 04/11/2026 | P3 | planilha da própria frente decide quem não vai ao modelo: 413 chamadas evitadas em Brumadinho | `_ja_decidido` |
+| 04/11/2026 | P3 | glm-4.5-flash medido: 148 s para 1.300 caracteres de ementa; reserva, não volume | `logs/` |
+| 04/11/2026 | P3 | cadeia de frentes criada: espera a rodada viva e retoma do checkpoint | `encadear_catalogos.py` |
 | 04/11/2026 | P6 | primeira crítica: 6 arquivos ok, citações 0 fora do catálogo, amostra 20 com 7 divergências de polo | `CRITICA-ACADEMICA.md` |
+| 04/11/2026 | P6 | números do crítico deixaram de acusar milhar, percentual e data como órfãos | `CRITICA-ACADEMICA.md` |
+| 04/11/2026 | P6 | cobertura passou a ser medida por frente, não pelo repo inteiro | `critico_academico.py --frente` |
 
 ## Pendências
 

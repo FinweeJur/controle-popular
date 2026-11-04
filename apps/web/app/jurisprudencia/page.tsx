@@ -19,6 +19,7 @@ import {
   TabelaCasos,
 } from "./partes";
 import type { TipoGrafico } from "./graficos";
+import { CatalogoIndeterminados } from "./Catalogo";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -106,6 +107,8 @@ export default async function Jurisprudencia({
 
         <SeletorGrafico filtros={filtros} tipo={tipoGrafico} />
         <PainelRecorte casos={visiveis} tipo={tipoGrafico} />
+
+        <CatalogoIndeterminados />
 
         <section className="space-y-4" id="lista">
           <h2 className="font-display text-xl font-semibold">Lista</h2>
