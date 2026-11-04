@@ -1,6 +1,6 @@
 {
-  "totalDocumentos": 2243,
-  "totalTrechos": 2471,
+  "totalDocumentos": 2361,
+  "totalTrechos": 2361,
   "porCategoria": [
     {
       "slug": "Ambiental & Desastres",
@@ -12,11 +12,7 @@
     },
     {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 373
-    },
-    {
-      "slug": "Memória & Direitos Humanos",
-      "contagem": 229
+      "contagem": 491
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -59,6 +55,10 @@
       "contagem": 4
     },
     {
+      "slug": "Memória & Direitos Humanos",
+      "contagem": 1
+    },
+    {
       "slug": "Relatorio ambiental",
       "contagem": 1
     }
@@ -77,12 +77,12 @@
       "contagem": 296
     },
     {
-      "slug": "Mística e linha do tempo",
-      "contagem": 229
-    },
-    {
       "slug": "trâmites processuais",
       "contagem": 182
+    },
+    {
+      "slug": "Evidência científica sobre barragens",
+      "contagem": 118
     },
     {
       "slug": "infraestrutura",
@@ -177,6 +177,10 @@
       "contagem": 1
     },
     {
+      "slug": "Mística e linha do tempo",
+      "contagem": 1
+    },
+    {
       "slug": "saúde da população",
       "contagem": 1
     }
@@ -184,35 +188,35 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 195
+      "contagem": 201
     },
     {
       "slug": "2025",
-      "contagem": 403
-    },
-    {
-      "slug": "2024",
       "contagem": 418
     },
     {
+      "slug": "2024",
+      "contagem": 430
+    },
+    {
       "slug": "2023",
-      "contagem": 239
+      "contagem": 256
     },
     {
       "slug": "2022",
-      "contagem": 134
+      "contagem": 147
     },
     {
       "slug": "2021",
-      "contagem": 66
+      "contagem": 84
     },
     {
       "slug": "2020",
-      "contagem": 192
+      "contagem": 209
     },
     {
       "slug": "2019",
-      "contagem": 247
+      "contagem": 258
     },
     {
       "slug": "2018",
@@ -220,11 +224,11 @@
     },
     {
       "slug": "2017",
-      "contagem": 26
+      "contagem": 31
     },
     {
       "slug": "2016",
-      "contagem": 25
+      "contagem": 28
     },
     {
       "slug": "2015",
@@ -248,7 +252,7 @@
     },
     {
       "slug": "2010",
-      "contagem": 7
+      "contagem": 8
     },
     {
       "slug": "2009",
