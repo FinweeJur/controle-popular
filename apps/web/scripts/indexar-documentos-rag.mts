@@ -238,6 +238,23 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
     );
   }
 
+  const evidencias = lerJson<ArquivoItens>(path.join(APP_ROOT, "data", "biblioteca-evidencias-cientificas.json"));
+  if (evidencias?.itens) {
+    adicionarMetadados(
+      evidencias.itens,
+      documentos,
+      trechos,
+      {
+        prefixo: "evidencia",
+        fonte: "biblioteca-evidencias",
+        categoria: "Acadêmico & Pesquisa",
+        tema: "Evidência científica sobre barragens",
+        orgao: "Periódico acadêmico",
+      },
+      urlsVistas
+    );
+  }
+
   const proBrumadinho = lerJson<ArquivoItens>(path.join(APP_ROOT, "public", "data", "biblioteca-pro-brumadinho.json"));
   if (proBrumadinho?.itens) {
     adicionarMetadados(
