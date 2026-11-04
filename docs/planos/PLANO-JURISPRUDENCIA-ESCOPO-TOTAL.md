@@ -9,6 +9,7 @@
 
 ## Sumário
 
+- [Estado das fases](#estado-das-fases)
 - [Veredito executivo](#veredito-executivo)
 - [Estado medido](#estado-medido)
 - [Regras de ferro](#regras-de-ferro)
@@ -22,6 +23,20 @@
 - [Agenda](#agenda)
 - [O que trava](#o-que-trava)
 - [Decisões pendentes](#decisões-pendentes)
+
+## Estado das fases
+
+| Fase | Frente | Estado |
+|---|---|---|
+| F0 | Rio Doce | ✅ fechada: 3.656/3.656, crítico limpo, no ar |
+| F1 | Brumadinho | ✅ fechada: 2.469/2.471, 2 casos sem JSON listados |
+| F2 | Itatiaiuçu | ✅ medida: 7 acórdãos confirmados na ementa; expansão exige coleta nova |
+| F3 | Direitos humanos | 🚧 rodando no home-pc com rubrica própria |
+| F4 | Penal | ⏸ não começou: tem página e classificação próprias |
+| F5 | Estadual (TJES) | ◐ parcialmente coberta pela frente do Rio Doce (2.492 casos TJES) |
+| F6 | Teses gerais | ✅ 3 relatórios refeitos pela esteira |
+| F7 | Sínteses por tribunal | ✅ primeira versão: `SINTESE-TEMATICA.md` |
+| F8 | Página e RAG | ◐ página com catálogo por frente; RAG aguarda lote controlado |
 
 ## Veredito executivo
 
