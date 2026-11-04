@@ -31,8 +31,8 @@
 | F0 | Rio Doce | ✅ fechada: 3.656/3.656, crítico limpo, no ar |
 | F1 | Brumadinho | ✅ fechada: 2.469/2.471, 2 casos sem JSON listados |
 | F2 | Itatiaiuçu | ✅ medida: 7 acórdãos confirmados na ementa; expansão exige coleta nova |
-| F3 | Direitos humanos | 🚧 rodando no home-pc com rubrica própria |
-| F4 | Penal | ⏸ não começou: tem página e classificação próprias |
+| F3 | Direitos humanos | ✅ fechada: 2.373/2.373, rubrica própria, crítico limpo |
+| F4 | Penal | ✅ separado: 6.182 casos fora da página de desastres, com página própria |
 | F5 | Estadual (TJES) | ◐ parcialmente coberta pela frente do Rio Doce (2.492 casos TJES) |
 | F6 | Teses gerais | ✅ 3 relatórios refeitos pela esteira |
 | F7 | Sínteses por tribunal | ✅ primeira versão: `SINTESE-TEMATICA.md` |

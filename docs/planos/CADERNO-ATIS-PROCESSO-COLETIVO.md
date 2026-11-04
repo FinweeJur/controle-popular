@@ -70,6 +70,10 @@ Serve ao revisor acadêmico e ao dono.
 | 04/11/2026 | P3 | rubrica de direitos humanos (v1) com vocabulário próprio; `--variante` no rotulador | `rubrica-rotulo-dh-v1.txt` |
 | 04/11/2026 | P2 | Itatiaiuçu medido: 7 acórdãos confirmados na ementa, 173 menções de passagem | `ITATIAIACU.md` |
 | 04/11/2026 | P7 | síntese temática: conflito × órgão × comarca × ano sobre 6.125 casos | `SINTESE-TEMATICA.md` |
+| 04/11/2026 | P6 | auditoria de evidência: 512 de 6.125 linhas citavam trecho ausente da fonte; reparadas | `EVIDENCIA-AUDITORIA.md` |
+| 04/11/2026 | P3 | direitos humanos fechado: 2.373/2.373 com rubrica própria no home-pc | `CATALOGO-DH.md` |
+| 04/11/2026 | P3 | um 502 da Maritaca matou a rodada de DH em 1.903; agora há repetição e fallback gratuito | `rotular_sync.py` |
+| 04/11/2026 | P3 | Brumadinho: processo anterior a 25/01/2019 sai da frente (2 casos, número de 2013 e 2014) | `jurisprudencia_fontes.py` |
 
 ## Pendências
 
