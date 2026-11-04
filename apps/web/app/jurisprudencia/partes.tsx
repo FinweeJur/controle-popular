@@ -70,29 +70,18 @@ export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
 
 /**
- * Fronteira entre o acervo penal e o acervo de desastres (01/11/2026).
+ * Fronteira entre o acervo penal e o acervo de desastres (04/11/2026).
  *
- * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras
- * de desastre, mas a maioria é crime comum da região — homicídio, tráfico,
- * júri — e não responsabilização criminal do rompimento. O dono pediu página
- * própria para o penal e a saída desses casos da lista de desastres.
+ * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras de
+ * desastre, mas a maioria é crime comum da região — homicídio, tráfico, júri — e
+ * não responsabilização criminal do rompimento.
  *
- * Exceção mantida: processo penal que CITA o desastre fica nas duas listas,
- * porque ali o crime é o objeto da responsabilização.
+ * Até 04/11 a página de desastres ainda trazia 239 desses casos, com a desculpa
+ * de que citavam o desastre. O dono cortou: penal tem página própria e não
+ * aparece nesta. Processo penal do desastre continua acessível em
+ * `/jurisprudencia/penal`, onde o recorte é o crime, não a indenização.
  */
-const TERMOS_DESASTRE =
-  /barragem|rompimento|samarco|vale\s?s\.?a|brumadinho|mariana|fund[ãa]o|rio doce|atingid/i;
-
-export function penalDeDesastre(caso: CasoJurisprudencia): boolean {
-  if (caso.frente !== "penal") return false;
-  const texto = [caso.ementa, caso.resumo, (caso.temas || []).join(" ")].join(" ");
-  return TERMOS_DESASTRE.test(texto);
-}
-
-/** Acervo da página de desastres: tudo, menos o penal que não é do desastre. */
-export const CASOS_DESASTRE = CASOS.filter(
-  (caso) => caso.frente !== "penal" || penalDeDesastre(caso),
-);
+export const CASOS_DESASTRE = CASOS.filter((caso) => caso.frente !== "penal");
 
 const NOMES_TRIBUNAL: Record<string, string> = {
   TJMG: "TJMG (MG)",

@@ -92,7 +92,7 @@ export default async function Jurisprudencia({
           <Link className="underline" href="/jurisprudencia/penal">
             página própria
           </Link>
-          ; aqui só aparecem os processos penais que citam o desastre.
+          ; nesta página não aparece nenhum processo penal.
         </p>
         <p className="text-xs opacity-70">
           Brumadinho — coleta: {resumo.coleta} · publicação: {resumo.publicacao} · fonte:{" "}
