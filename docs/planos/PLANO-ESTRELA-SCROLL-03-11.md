@@ -34,10 +34,13 @@ Componentes novos (em `apps/web/app/components/`):
 | Arquivo | Papel |
 |---|---|
 | `ScrollStar.tsx` + `ScrollStar.css` | ilha cliente: trilha da estrela sobre o eixo da linha. Pai precisa ser `position: relative` |
-| `LinhaDoTempo.tsx` + `LinhaDoTempo.css` | linha do tempo genérica: `itens: { marco; titulo; texto }[]`, `<ol>` com grade `5.5rem minmax(0,1fr)` (coluna única abaixo de 640 px) |
+| `LinhaDoTempo.tsx` + `LinhaDoTempo.css` | linha do tempo genérica: `itens: { marco; titulo; texto; href? }[]` — o `href` opcional linkia o título à página da frente (dono, 03/11/2026); `<ol>` com grade `5.5rem minmax(0,1fr)` (coluna única abaixo de 640 px) |
 | `lib/estrela-scroll.ts` (+ teste) | cálculo puro do progresso `(janela*0.55 − topoDaTrilha) ÷ altura`, limitado a `[0,1]` |
 
-A estrela usa o ícone `Sparkles` do `lucide-react` (já espalhado pelo portal).
+A estrela é a **estrela de quatro pontas do site do dono**
+(`encontrolenirlivre.pages.dev`, pedido de 03/11/2026): caminho único,
+`fill="currentColor"`, brilho do ponto com o `--cp-glow` do portal e a mesma
+proporção de lá (svg de 0,95rem dentro do ponto de 1,5rem).
 O porteiro de movimento é o `useEfeitoPermitido` dos react-bits: com
 `prefers-reduced-motion` ou tema alto-contraste, nada se monta e a linha
 continua legível.
@@ -50,7 +53,7 @@ continua legível.
 | 2 | Reparação de Brumadinho (`/paraopeba/linha-do-tempo`) | `app/paraopeba/linha-do-tempo/LinhaDoTempo.tsx` | 23 marcos | ✅ estrela sobre o conector (eixo 8 px) |
 | 3 | Litígios transnacionais (`/europa/litigios-transnacionais`, seção 6) | `app/europa/litigios-transnacionais/components/LinhaDoTempo.tsx` | 25 | ✅ ilha cliente sobre o trilho existente |
 | 4 | História do município (`/[municipio]/historico`) | `app/[municipio]/historico/page.tsx` | variável, 4 camadas | ✅ mesma ilha |
-| 5 | Desenvolvimento do portal (`/historico`) | `app/historico/page.tsx` | 27 (12 até setembro; crescido a pedido do dono em 03/11) | ✅ vira o componente genérico `LinhaDoTempo` |
+| 5 | Desenvolvimento do portal (`/historico`) | `app/historico/page.tsx` | 33 — reescrita 03/11: frentes e conteúdos por mês (07–11/2026), no máximo 3 itens de casa em linguagem de leigo, todo marco linkado à página que inaugurou | ✅ vira o componente genérico `LinhaDoTempo` |
 | 6 | Tramitação no Congresso (`/congresso/proposicoes/[id]`) | `app/components/LinhaDoTempoTramitacao.tsx` | dinâmico, 15+ | ✅ prop opt-in `estrela`, ligada só na página da proposição |
 
 Onde **não** entra, e por quê (medido, não opinião):

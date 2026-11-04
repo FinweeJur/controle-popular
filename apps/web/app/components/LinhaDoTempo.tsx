@@ -25,14 +25,21 @@
  * portal).
  */
 
+import Link from "next/link";
 import ScrollStar from "./ScrollStar";
 import "./LinhaDoTempo.css";
 
-/** Um item da linha: o marco (ano/data), o título e o texto do fato. */
+/**
+ * Um item da linha: o marco (ano/data), o título, o texto do fato e —
+ * pedido do dono em 03/11/2026 — o `href` opcional para a página da frente
+ * que o marco inaugurou. Título linkado quando há destino.
+ */
 export interface ItemLinhaDoTempoPortal {
   marco: string;
   titulo: string;
   texto: string;
+  /** Caminho interno (regra 5.13: navega no cliente, a casca não desmonta). */
+  href?: string;
 }
 
 interface Props {
@@ -47,7 +54,15 @@ export default function LinhaDoTempo({ itens }: Props) {
           <li key={`${item.marco}-${item.titulo}-${i}`} className="linha-do-tempo__item">
             <span className="linha-do-tempo__marco">{item.marco}</span>
             <div className="linha-do-tempo__conteudo">
-              <h2 className="linha-do-tempo__titulo">{item.titulo}</h2>
+              <h2 className="linha-do-tempo__titulo">
+                {item.href ? (
+                  <Link href={item.href} className="linha-do-tempo__titulo-link">
+                    {item.titulo}
+                  </Link>
+                ) : (
+                  item.titulo
+                )}
+              </h2>
               <p className="linha-do-tempo__texto">{item.texto}</p>
             </div>
           </li>

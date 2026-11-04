@@ -63,6 +63,25 @@
   color: var(--cp-text);
 }
 
+/* Título que é link para a página da frente (dono, 03/11/2026): herda o
+   corpo do título, entrega a cor primária no hover e um "→" discreto. */
+.linha-do-tempo__titulo-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.linha-do-tempo__titulo-link::after {
+  content: " →";
+  color: var(--cp-primary);
+}
+
+.linha-do-tempo__titulo-link:hover,
+.linha-do-tempo__titulo-link:focus-visible {
+  color: var(--cp-primary);
+  text-decoration: underline;
+}
+
 .linha-do-tempo__texto {
   margin: 0.25rem 0 0;
   font-size: 1rem;
