@@ -105,18 +105,18 @@ teses mais frequentes (N):
 valores fixados (onde há número com cara de real): 75 casos, mediana R$ 30.000,
 mínimo R$ 0, máximo R$ 850.000. Fora desses, "não consta".
 
-FONTES (bloco gerado por `scripts/fontes_para_analise.py`; lista completa das 25
-chaves em `relatorios/FONTES-ANALISE.md`; citar só estas, por chave):
-  pinheiro2025  — síntese da dispersão das plumas ao longo da costa brasileira (doi 10.1016/j.marpolbul.2025.119124)
-  lopes2025    — avaliação ecotoxicológica de seis anos, rio Doce e área costeira (doi 10.1016/j.envpol.2025.125897)
-  soares2025   — revisão sistemática dos impactos ambientais do rompimento (doi 10.1007/s11356-025-36695-8)
-  gabriel2021  — contaminação de longo prazo do estuário do rio Doce (doi 10.1016/j.pecon.2021.09.001)
-  francini2019 — pluma do rio Doce alcançou o sul do Banco dos Abrolhos (doi 10.1016/j.scitotenv.2019.134038)
-  dadalto2020  — mudanças percebidas por comunidades pesqueiras tradicionais (doi 10.1080/00207233.2019.1663628)
-  santos2025   — caracterização das comunidades pesqueiras e desafios atuais (doi 10.21664/2238-8869.2025v14i3.7122)
-  losekann2021 — governança e participação no desastre do rio Doce (doi 10.1177/00113921211059224)
-  zhouri2025   — violência, resistência e vozes de mulheres no desastre (doi 10.1080/01436597.2025.2556011)
-  kananizadeh2023 — comparação estatística da qualidade da água marinha (doi 10.1002/ieam.4818)
+FONTES (25 chaves, DOI conferido na Crossref; citar só estas, por chave):
+  água e sedimento: alcantara2020 (10.1016/j.jag.2020.102119) | thompson2019 (10.1016/j.scitotenv.2019.135914) | pacheco2023 (10.1016/j.apgeochem.2023.105644)
+  biota e peixe: vergilio2020 (10.1038/s41598-020-62700-w) | parente2020 (10.1016/j.envres.2020.110526) | pacheco2021 (10.1016/j.scitotenv.2021.151157)
+  saúde humana: freitas2019 (10.1590/0102-311x00052519) | noal2019 (10.1590/0102-311x00048419) | peixoto2022 (10.1590/1980-549720220002.supl.2)
+  pesca e comunidades tradicionais: barreto2020 (10.1590/1807-0310/2020v32214674) | fiorott2017 (10.21664/2238-8869.2017v6i2.p127-146) | lins2025 (10.7440/res91.2025.04)
+  governança e participação: melo2024 (10.1016/j.ijdrr.2024.104945) | petesse2024 (10.20950/1678-2305/bip.2024.50.e879) | almeida2024 (10.5130/ccs.v16.i1.8305)
+  direito e reparação: losekann2019 (10.1016/j.exis.2019.11.015) | primo2021 (10.3390/ijerph182111346) | ayala2023 (10.5007/2177-7055.2022.e85363)
+  território e uso do solo: pereira2019 (10.24221/jeap.4.2.2019.2373.122-129) | laschefski2020 (10.48075/amb.v2i1.23299) | scarpelin2020 (10.33448/rsd-v9i4.2517)
+  valoração econômica: barcelos2021 (10.24302/drd.v11.2876) | fernandes2016 (10.1016/j.ncon.2016.10.003) | sanchez2022 (10.2305/iucn.ch.2022.11.pt)
+  causa e risco da ruptura: semautor2026 (10.14210/alcance.v33n1(jan/abr).p1-20)
+  (semautor2026 é artigo de 2026 cuja exportação não trazia autor;
+   a chave é essa mesma — está na lista, é citável, o DOI confere)
 
 LIMITES DESTE RECORTE:
   - 3.818 casos sem recorrente/resultado legíveis: não entram em percentual.
