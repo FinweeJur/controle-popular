@@ -1,24 +1,26 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-11-03T07:14:41.514Z
-- Duracao total: 11.1 min
+- Gerado em: 2026-11-04T06:47:10.668Z
+- Duracao total: 8.7 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 389
+- OK: 388
 - QUEBRADOS: 9
-- REDIRECTS: 29
-- INCONSISTENTES: 46
-- Propostas geradas: 13
-- Links sem proposta: 25
+- REDIRECTS: 32
+- INCONSISTENTES: 44
+- Propostas geradas: 15
+- Links sem proposta: 26
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
+| https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
+| https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
 | https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
 | https://dadosabertos.almg.gov.br | REDIRECT | 200 | http://dadosabertos.almg.gov.br/documentacao/index |
 | https://drive.google.com/exemplo | QUEBRADO | 404 | https://drive.google.com/exemplo |
@@ -41,7 +43,7 @@
 | https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
 | https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
 | https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 206 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
+| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
 | https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
 | https://www.controlepopular.tech/ | QUEBRADO | 404 | https://www.controlepopular.tech/ |
 | https://www.controlepopular.tech/api/saude | QUEBRADO | 404 | https://www.controlepopular.tech/api/saude |
@@ -52,6 +54,7 @@
 | https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos | REDIRECT | 200 | https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque/caso-samarco/documentos |
 | https://www.mpmg.mp.br | REDIRECT | 200 | https://www.mpmg.mp.br/portal/ |
 | https://www.revistas.usp.br/revhistoria/article/view/89008 | REDIRECT | 200 | https://revistas.usp.br/revhistoria/pt_BR/article/view/89008 |
+| https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica | REDIRECT | 200 | https://www.se.gov.br/agencia |
 | https://www.tjmg.jus.br | REDIRECT | 200 | https://www.tjmg.jus.br/portal-tjmg/ |
 | https://www.trf6.jus.br | REDIRECT | 200 | https://portal.trf6.jus.br/ |
 | https://www.un.org/pt/observances/indigenous-day | QUEBRADO | 404 | https://www.un.org/pt/observances/indigenous-day |
@@ -70,7 +73,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/congresso/almg/page.tsx
 
-### 2. https://sistemas.anatel.gov.br
+### 2. https://api.salic.cultura.gov.br
+
+```diff
+- href="https://api.salic.cultura.gov.br"
++ href="https://api.salic.cultura.gov.br/docs"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
+
+### 3. https://sistemas.anatel.gov.br
 
 ```diff
 - href="https://sistemas.anatel.gov.br"
@@ -81,7 +95,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 
-### 3. https://pncp.gov.br/
+### 4. https://pncp.gov.br/
 
 ```diff
 - href="https://pncp.gov.br/"
@@ -92,7 +106,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/[municipio]/interesses/page.tsx
 
-### 4. https://falabr.cgu.gov.br
+### 5. https://falabr.cgu.gov.br
 
 ```diff
 - href="https://falabr.cgu.gov.br"
@@ -103,7 +117,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 5. https://www.cnmp.mp.br
+### 6. https://www.cnmp.mp.br
 
 ```diff
 - href="https://www.cnmp.mp.br"
@@ -114,7 +128,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 6. https://www.tjmg.jus.br
+### 7. https://www.tjmg.jus.br
 
 ```diff
 - href="https://www.tjmg.jus.br"
@@ -125,7 +139,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 7. https://www.mpmg.mp.br
+### 8. https://www.mpmg.mp.br
 
 ```diff
 - href="https://www.mpmg.mp.br"
@@ -136,7 +150,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 8. https://portal.trt3.jus.br
+### 9. https://portal.trt3.jus.br
 
 ```diff
 - href="https://portal.trt3.jus.br"
@@ -147,7 +161,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 9. https://www.trf6.jus.br
+### 10. https://www.trf6.jus.br
 
 ```diff
 - href="https://www.trf6.jus.br"
@@ -158,18 +172,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 10. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 11. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
++ href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf"
 ```
 
 Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
+Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
 Origem: apps/web/lib/linkmender/busca.test.ts
 
-### 11. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 12. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -180,7 +194,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 12. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
+### 13. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+
+```diff
+- href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
++ href="https://www.se.gov.br/agencia"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/lib/memoria/camadas.ts
+
+### 14. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos"
@@ -191,7 +216,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: registry
 
-### 13. https://www.mpf.mp.br/atuacao/grandes-casos
+### 15. https://www.mpf.mp.br/atuacao/grandes-casos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos"
@@ -208,7 +233,7 @@ Origem: registry
 - https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
 - https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
 - https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (206) — dominio nao governamental — correcao manual
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/ (404) — dominio nao governamental — correcao manual
 - https://www.controlepopular.tech/api/saude (404) — dominio nao governamental — correcao manual
@@ -228,6 +253,7 @@ Origem: registry
 - https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
 - https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
 - https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
+- https://controlepopular.com.br/ambiental/crimes-socioambientais (200) — dominio nao governamental — correcao manual
 - https://news.google.com/ (200) — dominio nao governamental — correcao manual
 
 ## Inconsistentes (nao verificados, sem proposta)
@@ -236,7 +262,6 @@ Origem: registry
 - https://certificacao.incra.gov.br (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
-- https://controlepopular.com.br/ambiental/crimes-socioambientais (rede) — erro de rede: This operation was aborted
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
@@ -248,9 +273,10 @@ Origem: registry
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
-- https://quemfoiquem.org.br/criterios (rede) — erro de rede: This operation was aborted
+- https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
 - https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
+- https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
@@ -272,8 +298,6 @@ Origem: registry
 - https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
-- https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
-- https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
 - https://x (rede) — erro de rede: fetch failed
 - https://x.gov.br (rede) — erro de rede: fetch failed
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed
