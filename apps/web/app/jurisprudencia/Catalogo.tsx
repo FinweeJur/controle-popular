@@ -1,3 +1,4 @@
+import Link from "next/link";
 import frentesJson from "@/data/catalogo-frentes.json";
 
 /**
@@ -252,10 +253,19 @@ function BlocoFrente({ dados }: { dados: Catalogo }) {
                     .map(([lado, quantidade]) => `${nome(NOMES_LADO, lado)}: ${numero(quantidade)}`)
                     .join(" · ")}
                 </p>
+                <p className="mt-2 text-xs opacity-60">
+                  Clique no número do processo para abrir o caso no acervo, com ementa e inteiro
+                  teor.
+                </p>
                 <ul className="mt-2 space-y-1">
                   {divergencia.exemplos.map((exemplo) => (
                     <li key={exemplo.processo} className="text-xs opacity-80">
-                      <span className="font-mono">{exemplo.processo}</span>
+                      <Link
+                        className="font-mono underline"
+                        href={`/jurisprudencia?q=${encodeURIComponent(exemplo.processo)}#lista`}
+                      >
+                        {exemplo.processo}
+                      </Link>
                       {exemplo.lado ? ` (${nome(NOMES_LADO, exemplo.lado)})` : ""} — {exemplo.tese}
                     </li>
                   ))}
@@ -274,7 +284,7 @@ export function CatalogoIndeterminados() {
     return null;
   }
   return (
-    <section className="space-y-6">
+    <section className="space-y-6" id="catalogo">
       <header className="space-y-3">
         <h2 className="font-display text-xl font-semibold">O que os acórdãos decidem</h2>
         <p className="max-w-3xl text-sm opacity-80">

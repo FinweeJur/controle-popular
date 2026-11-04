@@ -108,9 +108,10 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
 function ResumoCurto({ caso }: { caso: CasoJurisprudencia }) {
   const texto = resumoDe(caso) || (caso.tipo === "sumula" ? ementaDe(caso) : "");
   if (!texto) return null;
-  return (
-    <p className="mt-1 line-clamp-2 text-xs leading-snug text-text-soft">{texto}</p>
-  );
+  // Sem clamp: o resumo do acervo tem mediana de 321 caracteres, e cortar em duas
+  // linhas escondia justamente o desfecho. Quem quiser o texto inteiro usa o
+  // "ver mais"; aqui o resumo aparece por completo, quebrando linha.
+  return <p className="mt-1 text-xs leading-snug text-text-soft">{texto}</p>;
 }
 
 /**

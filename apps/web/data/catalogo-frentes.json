@@ -1,15 +1,15 @@
 [
   {
-    "geradoEm": "2026-11-04T07:45:40",
+    "geradoEm": "2026-11-04T09:14:51",
     "frente": "riodoce",
     "total": 3656,
     "fila": 3656,
     "cobertura": 100.0,
     "lados": {
-      "indeterminado": 2147,
-      "empresa": 1006,
-      "atingido": 424,
-      "parcial": 79
+      "indeterminado": 2331,
+      "empresa": 866,
+      "atingido": 387,
+      "parcial": 72
     },
     "conflitos": [
       [
@@ -106,7 +106,7 @@
     "motivos": [
       [
         "(não informado)",
-        1509
+        1325
       ],
       [
         "materiaestranha",
@@ -125,22 +125,22 @@
         252
       ],
       [
+        "semdispositivo",
+        208
+      ],
+      [
         "outro",
         94
       ],
       [
         "acordo",
         65
-      ],
-      [
-        "semdispositivo",
-        24
       ]
     ],
     "confianca": {
-      "media": 925,
-      "alta": 1938,
-      "baixa": 793
+      "media": 913,
+      "baixa": 1270,
+      "alta": 1473
     },
     "palavras_chave": [
       [
@@ -212,11 +212,11 @@
         169
       ],
       [
-        "ementa",
+        "voto",
         166
       ],
       [
-        "voto",
+        "ementa",
         166
       ],
       [
@@ -226,58 +226,13 @@
     ],
     "divergencias": [
       {
-        "conflito": "materiaestranhaaodesastre",
-        "casos": 793,
-        "lados": {
-          "indeterminado": 757,
-          "empresa": 31,
-          "atingido": 2,
-          "parcial": 3
-        },
-        "teses_distintas": 781,
-        "exemplos": [
-          {
-            "processo": "0000010-10.2021.8.08.0002",
-            "lado": "indeterminado",
-            "tese": "Recurso em sentido estrito contra pronúncia; negado provimento para submeter o réu ao Tribunal do Júri."
-          },
-          {
-            "processo": "0000013-34.2016.8.08.0068",
-            "lado": "indeterminado",
-            "tese": "Recurso de apelação criminal em homicídio qualificado conhecido e desprovido, mantida condenação do Tribunal do Júri."
-          }
-        ]
-      },
-      {
-        "conflito": "outro",
-        "casos": 609,
-        "lados": {
-          "indeterminado": 558,
-          "empresa": 40,
-          "atingido": 11
-        },
-        "teses_distintas": 246,
-        "exemplos": [
-          {
-            "processo": "0000232-88.2021.8.08.0030",
-            "lado": "indeterminado",
-            "tese": "Apelação contra sentença que indeferiu a petição inicial e extinguiu a ação indenizatória, com condenação em custas e honorários."
-          },
-          {
-            "processo": "0000244-05.2021.8.08.0030",
-            "lado": "indeterminado",
-            "tese": "Apelação contra sentença que extinguiu o feito por indeferimento da inicial, com discussão sobre advocacia predatória e dialeticidade recursal."
-          }
-        ]
-      },
-      {
         "conflito": "provaepericia",
         "casos": 518,
         "lados": {
-          "empresa": 322,
-          "indeterminado": 85,
+          "empresa": 302,
+          "indeterminado": 114,
           "parcial": 16,
-          "atingido": 95
+          "atingido": 86
         },
         "teses_distintas": 397,
         "exemplos": [
@@ -297,8 +252,8 @@
         "conflito": "gratuidadejustica",
         "casos": 388,
         "lados": {
-          "empresa": 78,
-          "indeterminado": 178,
+          "indeterminado": 179,
+          "empresa": 77,
           "atingido": 131,
           "parcial": 1
         },
@@ -320,9 +275,9 @@
         "conflito": "prescricao",
         "casos": 343,
         "lados": {
-          "indeterminado": 159,
-          "empresa": 121,
-          "atingido": 61,
+          "indeterminado": 225,
+          "empresa": 67,
+          "atingido": 49,
           "parcial": 2
         },
         "teses_distintas": 233,
@@ -340,35 +295,13 @@
         ]
       },
       {
-        "conflito": "sobrestamentotema",
-        "casos": 148,
-        "lados": {
-          "indeterminado": 135,
-          "empresa": 5,
-          "atingido": 8
-        },
-        "teses_distintas": 97,
-        "exemplos": [
-          {
-            "processo": "0015108-90.2018.8.13",
-            "lado": "indeterminado",
-            "tese": "IRDR nº 41 suspende ações sobre qualidade da água; sentença cassada para observar a suspensão."
-          },
-          {
-            "processo": "0253729-12.2026.8.13",
-            "lado": "indeterminado",
-            "tese": "Sobrestamento parcial até o Tema Repetitivo STJ nº 1.280, mantendo a instrução para evitar perecimento de provas."
-          }
-        ]
-      },
-      {
         "conflito": "danomoral",
         "casos": 137,
         "lados": {
-          "empresa": 68,
+          "indeterminado": 26,
           "atingido": 32,
-          "indeterminado": 14,
-          "parcial": 23
+          "empresa": 57,
+          "parcial": 22
         },
         "teses_distintas": 127,
         "exemplos": [
@@ -388,10 +321,10 @@
         "conflito": "acordoindenizacao",
         "casos": 117,
         "lados": {
-          "indeterminado": 66,
-          "empresa": 32,
-          "parcial": 8,
-          "atingido": 11
+          "indeterminado": 77,
+          "empresa": 27,
+          "parcial": 4,
+          "atingido": 9
         },
         "teses_distintas": 112,
         "exemplos": [
@@ -406,25 +339,93 @@
             "tese": "Embargos de declaração desprovidos; acórdão restabeleceu gratuidade, extinguiu por perda de interesse e condenou Samarco em ônus pelo princípio da cau"
           }
         ]
+      },
+      {
+        "conflito": "auxilioemergencialptr",
+        "casos": 97,
+        "lados": {
+          "indeterminado": 35,
+          "atingido": 18,
+          "empresa": 41,
+          "parcial": 3
+        },
+        "teses_distintas": 93,
+        "exemplos": [
+          {
+            "processo": "0006056-79.2018.8.08.0047",
+            "lado": "empresa",
+            "tese": "Auxílio financeiro da Fundação Renova a pescadores exige mínima comprovação do exercício da atividade pesqueira."
+          },
+          {
+            "processo": "0007065-64.2017.8.08.0030",
+            "lado": "indeterminado",
+            "tese": "Pescador de Regência pede auxílio subsistência por impossibilidade de pescar após rompimento da barragem de Fundão."
+          }
+        ]
+      },
+      {
+        "conflito": "competencia",
+        "casos": 96,
+        "lados": {
+          "indeterminado": 83,
+          "empresa": 10,
+          "atingido": 3
+        },
+        "teses_distintas": 93,
+        "exemplos": [
+          {
+            "processo": "0001230-84.2016.8.13",
+            "lado": "indeterminado",
+            "tese": "Prevenção do art. 79 do RITJMG abrange causas derivadas do mesmo fato, impondo redistribuição por dependência."
+          },
+          {
+            "processo": "0003618-91.2016.8.13",
+            "lado": "indeterminado",
+            "tese": "Conflito negativo de competência entre desembargadores; conexão reconhecida em primeira instância impõe distribuição por dependência (art. 79 RITJMG)."
+          }
+        ]
+      },
+      {
+        "conflito": "honorarioscustas",
+        "casos": 80,
+        "lados": {
+          "indeterminado": 41,
+          "atingido": 12,
+          "parcial": 5,
+          "empresa": 22
+        },
+        "teses_distintas": 80,
+        "exemplos": [
+          {
+            "processo": "0000013-46.2019.8.08.0030",
+            "lado": "indeterminado",
+            "tese": "Embargos de declaração rejeitados; reconhecido de ofício erro material na majoração dos honorários sucumbenciais recursais."
+          },
+          {
+            "processo": "0000086-58.2017.8.08.0007",
+            "lado": "indeterminado",
+            "tese": "Embargos de declaração acolhidos para suprir omissão sobre alegada duplicidade de honorários advocatícios, sem efeitos infringentes."
+          }
+        ]
       }
     ]
   },
   {
-    "geradoEm": "2026-11-04T07:45:43",
+    "geradoEm": "2026-11-04T09:14:49",
     "frente": "brumadinho",
-    "total": 2469,
-    "fila": 2471,
+    "total": 2468,
+    "fila": 2470,
     "cobertura": 99.9,
     "lados": {
-      "indeterminado": 244,
+      "indeterminado": 248,
       "atingido": 382,
-      "empresa": 1782,
-      "parcial": 61
+      "empresa": 1778,
+      "parcial": 60
     },
     "conflitos": [
       [
         "danomoral",
-        720
+        719
       ],
       [
         "provaepericia",
@@ -474,7 +475,7 @@
     "direitos": [
       [
         "mudanca_habitos_psicossociais",
-        1342
+        1341
       ],
       [
         "perda_renda_trabalho",
@@ -489,11 +490,11 @@
         77
       ],
       [
-        "desvalorizacao_imoveis",
+        "agua_abastecimento",
         70
       ],
       [
-        "agua_abastecimento",
+        "desvalorizacao_imoveis",
         70
       ],
       [
@@ -516,7 +517,7 @@
     "motivos": [
       [
         "(não informado)",
-        2225
+        2220
       ],
       [
         "preliminar",
@@ -532,7 +533,7 @@
       ],
       [
         "semdispositivo",
-        10
+        14
       ],
       [
         "materiaestranha",
@@ -544,22 +545,22 @@
       ]
     ],
     "confianca": {
-      "alta": 1882,
-      "media": 517,
-      "baixa": 70
+      "alta": 1850,
+      "media": 514,
+      "baixa": 104
     },
     "palavras_chave": [
       [
         "brumadinho",
-        2365
+        2364
       ],
       [
         "dano moral",
-        1584
+        1583
       ],
       [
         "laudo pericial",
-        648
+        647
       ],
       [
         "improcedência",
@@ -583,7 +584,7 @@
       ],
       [
         "cerceamento de defesa",
-        268
+        267
       ],
       [
         "prova pericial",
@@ -633,24 +634,24 @@
     "divergencias": [
       {
         "conflito": "danomoral",
-        "casos": 720,
+        "casos": 719,
         "lados": {
           "indeterminado": 31,
-          "empresa": 565,
+          "empresa": 564,
           "atingido": 99,
           "parcial": 25
         },
-        "teses_distintas": 600,
+        "teses_distintas": 599,
         "exemplos": [
-          {
-            "processo": "0090656-09.2014.8.13",
-            "lado": "empresa",
-            "tese": "Dano moral por rompimento de barragem exige comprovação; laudo pericial judicial prevalece sobre relatório particular."
-          },
           {
             "processo": "0263348-63.2026.8.13",
             "lado": "empresa",
             "tese": "Dano moral por abalo mental não comprovado; improcedência mantida e recurso parcialmente prejudicado."
+          },
+          {
+            "processo": "0340807-44.2026.8.13",
+            "lado": "empresa",
+            "tese": "Julgamento de recurso conexo que afasta a condenação por danos morais prejudica o exame do pedido de majoração."
           }
         ]
       },
@@ -695,28 +696,6 @@
             "processo": "1623216-81.2023.8.13",
             "lado": "atingido",
             "tese": "Vale deve custear tratamento psiquiátrico da autora na clínica que a acolhe, nos limites da tutela de urgência já deferida."
-          }
-        ]
-      },
-      {
-        "conflito": "outro",
-        "casos": 130,
-        "lados": {
-          "atingido": 13,
-          "empresa": 21,
-          "indeterminado": 96
-        },
-        "teses_distintas": 106,
-        "exemplos": [
-          {
-            "processo": "0258244-61.2024.8.13",
-            "lado": "empresa",
-            "tese": "Embargos de declaração rejeitados por ausência de omissão, contradição ou erro material; multa aplicada por caráter protelatório."
-          },
-          {
-            "processo": "0338699-13.2024.8.13",
-            "lado": "indeterminado",
-            "tese": "Embargos de declaração rejeitados por ausência de contradição, omissão ou erro material; rediscussão do tema é descabida."
           }
         ]
       },
@@ -770,10 +749,10 @@
         "conflito": "honorarioscustas",
         "casos": 101,
         "lados": {
-          "empresa": 71,
-          "indeterminado": 16,
+          "empresa": 68,
+          "indeterminado": 20,
           "atingido": 4,
-          "parcial": 10
+          "parcial": 9
         },
         "teses_distintas": 69,
         "exemplos": [
@@ -790,24 +769,46 @@
         ]
       },
       {
-        "conflito": "nexocausal",
-        "casos": 101,
+        "conflito": "legitimidade",
+        "casos": 53,
         "lados": {
-          "empresa": 98,
-          "indeterminado": 1,
-          "parcial": 2
+          "empresa": 14,
+          "atingido": 28,
+          "indeterminado": 11
         },
-        "teses_distintas": 91,
+        "teses_distintas": 48,
         "exemplos": [
           {
-            "processo": "1.0000.19.022922-9/002",
-            "lado": "empresa",
-            "tese": "Embargos rejeitados: contradição interna não configurada; mero inconformismo com a perícia que afastou nexo causal."
+            "processo": "0817841-98.2024.8.13",
+            "lado": "atingido",
+            "tese": "Legitimidade ativa se aferem in statu assertionis; comprovada a compra e venda, anula-se a extinção por ilegitimidade."
           },
           {
-            "processo": "1.0000.20.059357-2/002",
+            "processo": "0845823-53.2025.8.13",
+            "lado": "indeterminado",
+            "tese": "Cabe instar a ANM a dizer se quer intervir como assistente simples em ação de responsabilidade por atos contra a administração ligada ao rompimento da"
+          }
+        ]
+      },
+      {
+        "conflito": "litispendenciaacp",
+        "casos": 42,
+        "lados": {
+          "atingido": 22,
+          "empresa": 15,
+          "indeterminado": 5
+        },
+        "teses_distintas": 41,
+        "exemplos": [
+          {
+            "processo": "0189571-89.2019.8.13",
+            "lado": "indeterminado",
+            "tese": "Embargos de Declaração não servem para introduzir litispendência não suscitada antes; recurso rejeitado."
+          },
+          {
+            "processo": "1.0000.23.081018-6/005",
             "lado": "empresa",
-            "tese": "Residir fora da Zona de Autossalvamento exige prova do nexo causal e do dano psíquico, não bastando presunção."
+            "tese": "Suspensão de ação individual sobre Brumadinho é válida quando ACP coletiva trata dos mesmos direitos individuais homogêneos, salvo saúde mental."
           }
         ]
       }
