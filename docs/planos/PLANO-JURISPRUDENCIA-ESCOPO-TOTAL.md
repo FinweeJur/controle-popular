@@ -154,12 +154,20 @@ Cada fase tem: objetivo, fonte, script, portão, saída, custo e tempo.
   no acervo, o trabalho começa pela coleta, não pelo modelo.
 - Portão: coleta auditada pelo crítico antes de qualquer rotulagem.
 
-### F3 — Direitos humanos (2.373 casos)
+### F3 — Direitos humanos (2.373 casos) — **bloqueada por medição**
 
-- Fonte: frente `dh`, tabelas `direitos-humanos`.
-- Diferença de método: aqui o eixo é direito violado (saúde, moradia, água,
-  informação), não indenização.
-- Portão: catálogo + relatório de direitos citados.
+- Fonte: `direitos-humanos_jurimetria.csv` (coleta por termo livre "direitos
+  humanos" na ementa do TJMG) e `direitos-humanos_resumos.csv`.
+- **Medido em 04/11:** só 6 dos 2.373 casos citam desastre, Renova ou barragem.
+  O restante é jurisprudência comum: 1.145 apelações cíveis, mandado de
+  segurança de concurso público, plano de saúde, alongamento capilar.
+- Consequência: a rubrica de desastre (v3/v4) não serve aqui, e `lado_vencedor`
+  atingido/empresa não existe nesses casos. Catalogar seria 95 minutos de lixo.
+- O que falta antes de rotular: decidir se `dh` é **frente temática** (direito à
+  saúde, moradia, água) com rubrica própria — direito violado, resultado do
+  recurso, esfera administrativa — ou se a coleta por termo livre deve ser
+  substituída por recorte de assunto do tribunal.
+- Portão: nenhuma linha de dh entra no catálogo antes disso.
 
 ### F4 — Penal (6.182 casos)
 
