@@ -109,6 +109,7 @@ const NOMES_MOTIVO: Record<string, string> = {
   "(não informado)": "Não informado",
   materiaestranha: "Matéria estranha ao desastre",
   materia_alheia: "Matéria alheia ao direito humano",
+  materiaalheia: "Matéria alheia ao direito humano",
   sobrestamento: "Sobrestamento",
   textoinsuficiente: "Texto insuficiente",
   preliminar: "Decisão preliminar",
