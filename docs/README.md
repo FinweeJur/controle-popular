@@ -81,14 +81,18 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (7):**
+- **Planos ativos (9):**
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
   [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),
   [`PLANO-CAVAS-MVP.md`](planos/PLANO-CAVAS-MVP.md),
   [`PLANO-RAG-JURIMETRIA-TJMG.md`](planos/PLANO-RAG-JURIMETRIA-TJMG.md),
-  [`PLANO-RAG-DOCUMENTAL.md`](planos/PLANO-RAG-DOCUMENTAL.md) e
-  [`PLANO-ESPELHO-PUBLICO-V1.md`](planos/PLANO-ESPELHO-PUBLICO-V1.md).
+  [`PLANO-RAG-DOCUMENTAL.md`](planos/PLANO-RAG-DOCUMENTAL.md),
+  [`PLANO-ESPELHO-PUBLICO-V1.md`](planos/PLANO-ESPELHO-PUBLICO-V1.md),
+  [`PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md`](planos/PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md)
+  (com o prompt de delegação em
+  [`PROMPT-DELEGACAO-BRUMADINHO.md`](planos/PROMPT-DELEGACAO-BRUMADINHO.md)) e
+  [`CADERNO-ATIS-PROCESSO-COLETIVO.md`](planos/CADERNO-ATIS-PROCESSO-COLETIVO.md).
 - **Histórico:** [`historico/`](historico/) — os outros planos foram
   arquivados em 18/10/2026 em [`historico/planos/`](historico/planos/) e
   [`historico/entregas/`](historico/entregas/), com nota de arquivamento.
