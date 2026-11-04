@@ -105,7 +105,8 @@ teses mais frequentes (N):
 valores fixados (onde há número com cara de real): 75 casos, mediana R$ 30.000,
 mínimo R$ 0, máximo R$ 850.000. Fora desses, "não consta".
 
-FONTES (literatura verificada na Crossref; citar só estas, por chave):
+FONTES (bloco gerado por `scripts/fontes_para_analise.py`; lista completa das 25
+chaves em `relatorios/FONTES-ANALISE.md`; citar só estas, por chave):
   pinheiro2025  — síntese da dispersão das plumas ao longo da costa brasileira (doi 10.1016/j.marpolbul.2025.119124)
   lopes2025    — avaliação ecotoxicológica de seis anos, rio Doce e área costeira (doi 10.1016/j.envpol.2025.125897)
   soares2025   — revisão sistemática dos impactos ambientais do rompimento (doi 10.1007/s11356-025-36695-8)
@@ -123,6 +124,32 @@ LIMITES DESTE RECORTE:
   - tese e sentido vêm de regra de termo e leitura de modelo, nessa ordem de
     confiança; divergência só é publicada com N ≥ 3 nos dois sentidos.
 ```
+
+## 3.1 Ficha do caso — o que o Guaicuy mede e entra na etapa 1
+
+O *Dossiê das ações individuais de indenização nas Regiões 4 e 5* (Instituto
+Guaicuy, 2024) organiza cada ação numa ficha com 11 campos, e o relatório
+percorre os mesmos sete eixos por região. Destes, sete exigem leitura do acórdão
+e passam a ser pedidos na etapa 1:
+
+| Campo | Valores fechados | Por que importa |
+|---|---|---|
+| `competencia` | justica_estadual · justica_federal · nao_consta | a federalização muda o foro e o tempo do processo |
+| `justica_gratuita` | concedida · negada · nao_requerida · nao_consta | barreira de acesso concreta |
+| `acordo` | homologado · proposto_e_recusado · nao_consta | mede solução negociada, não só sentença |
+| `provas` | pericia · documental · testemunhal · nenhuma · nao_consta | separa quem perdeu por não provar |
+| `ptr_auxilio` | discutido · concedido · negado · nao_consta | auxílio emergencial / PTR atravessa metade dos casos |
+| `estado_processo` | sentenca · acordo · recurso · extinto · nao_consta | evita tratar recurso como decisão final |
+| `tempo_duracao` | dias (só se o texto trouxer as duas datas) | se não trouxer, `nao_consta` — não estimar |
+
+O que **não** entra: documentos juntados na petição inicial e "estado do processo
+em 1º semestre de 2024". Os dois exigem o processo, não o acórdão. Ficam
+declarados como lacuna, no lugar de preenchidos por inferência.
+
+O desenho do Guaicuy é amostral (452 processos, amostra de 318, confiança 99%,
+margem 4%). O nosso é censo sobre o que foi coletado — mais forte em cobertura,
+mais fraco em homogeneidade, e a nota metodológica tem de dizer isso com todas
+as letras.
 
 ## 4. Como o RAG entra (e onde não entra)
 
