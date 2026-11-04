@@ -64,6 +64,12 @@ Serve ao revisor acadêmico e ao dono.
 | 04/11/2026 | P6 | primeira crítica: 6 arquivos ok, citações 0 fora do catálogo, amostra 20 com 7 divergências de polo | `CRITICA-ACADEMICA.md` |
 | 04/11/2026 | P6 | números do crítico deixaram de acusar milhar, percentual e data como órfãos | `CRITICA-ACADEMICA.md` |
 | 04/11/2026 | P6 | cobertura passou a ser medida por frente, não pelo repo inteiro | `critico_academico.py --frente` |
+| 04/11/2026 | P3 | Rio Doce fechado: 3.656/3.656; crítico 0 erro em 14 conferências; deploy concluído | `CATALOGO-INDETERMINADOS.md` |
+| 04/11/2026 | P3 | Brumadinho fechado: 2.469/2.471; 2 casos nunca devolveram JSON e estão listados | `sync-brumadinho-S5-free.csv` |
+| 04/11/2026 | P3 | rubrica v4 sem amarrar o texto ao Rio Doce: Brumadinho tem 90,1% de lado declarado | `rubrica-rotulo-v4.txt` |
+| 04/11/2026 | P3 | rubrica de direitos humanos (v1) com vocabulário próprio; `--variante` no rotulador | `rubrica-rotulo-dh-v1.txt` |
+| 04/11/2026 | P2 | Itatiaiuçu medido: 7 acórdãos confirmados na ementa, 173 menções de passagem | `ITATIAIACU.md` |
+| 04/11/2026 | P7 | síntese temática: conflito × órgão × comarca × ano sobre 6.125 casos | `SINTESE-TEMATICA.md` |
 
 ## Pendências
 
