@@ -123,7 +123,7 @@ const NOMES_LADO: Record<string, string> = {
   parcial: "Parcial",
   indeterminado: "Indeterminado",
   titular: "Titular do direito",
-  ente_publico: "Ente público",
+  entepublico: "Ente público",
 };
 
 const numero = (valor: number) => valor.toLocaleString("pt-BR");

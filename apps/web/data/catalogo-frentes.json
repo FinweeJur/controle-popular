@@ -1,9 +1,9 @@
 [
   {
-    "geradoEm": "2026-11-04T09:14:51",
+    "geradoEm": "2026-11-04T10:07:34",
     "frente": "riodoce",
     "total": 3656,
-    "fila": 3656,
+    "fila": 3655,
     "cobertura": 100.0,
     "lados": {
       "indeterminado": 2331,
@@ -411,7 +411,7 @@
     ]
   },
   {
-    "geradoEm": "2026-11-04T09:14:49",
+    "geradoEm": "2026-11-04T10:07:36",
     "frente": "brumadinho",
     "total": 2468,
     "fila": 2470,
@@ -809,6 +809,409 @@
             "processo": "1.0000.23.081018-6/005",
             "lado": "empresa",
             "tese": "Suspensão de ação individual sobre Brumadinho é válida quando ACP coletiva trata dos mesmos direitos individuais homogêneos, salvo saúde mental."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "geradoEm": "2026-11-04T10:07:37",
+    "frente": "dh",
+    "total": 2373,
+    "fila": 2373,
+    "cobertura": 100.0,
+    "lados": {
+      "indeterminado": 947,
+      "entepublico": 228,
+      "titular": 1037,
+      "parcial": 92,
+      "empresa": 69
+    },
+    "conflitos": [
+      [
+        "saude",
+        1064
+      ],
+      [
+        "materiaalheia",
+        433
+      ],
+      [
+        "liberdadeseguranca",
+        297
+      ],
+      [
+        "meioambientesadio",
+        291
+      ],
+      [
+        "criancaadolescente",
+        71
+      ],
+      [
+        "educacao",
+        58
+      ],
+      [
+        "pessoaidosapcd",
+        37
+      ],
+      [
+        "processoadministrativodisciplinar",
+        31
+      ],
+      [
+        "trabalho",
+        30
+      ],
+      [
+        "outro",
+        26
+      ],
+      [
+        "previdenciaassistencia",
+        13
+      ],
+      [
+        "moradia",
+        12
+      ]
+    ],
+    "direitos": [
+      [
+        "crianca",
+        269
+      ],
+      [
+        "privado_de_liberdade",
+        240
+      ],
+      [
+        "pessoa_com_deficiencia",
+        173
+      ],
+      [
+        "populacao_rural",
+        105
+      ],
+      [
+        "adolescente",
+        70
+      ],
+      [
+        "mulher",
+        43
+      ],
+      [
+        "pessoa_idosa",
+        43
+      ],
+      [
+        "pessoa_negra",
+        4
+      ],
+      [
+        "indigena",
+        2
+      ]
+    ],
+    "motivos": [
+      [
+        "(não informado)",
+        1426
+      ],
+      [
+        "textoinsuficiente",
+        592
+      ],
+      [
+        "semdispositivo",
+        175
+      ],
+      [
+        "preliminar",
+        82
+      ],
+      [
+        "materiaalheia",
+        63
+      ],
+      [
+        "outro",
+        35
+      ]
+    ],
+    "confianca": {
+      "alta": 658,
+      "media": 950,
+      "baixa": 765
+    },
+    "palavras_chave": [
+      [
+        "saúde",
+        607
+      ],
+      [
+        "responsabilidade solidária",
+        473
+      ],
+      [
+        "direito à saúde",
+        419
+      ],
+      [
+        "medicamento",
+        259
+      ],
+      [
+        "dano moral",
+        223
+      ],
+      [
+        "execução penal",
+        180
+      ],
+      [
+        "tutela de urgência",
+        152
+      ],
+      [
+        "ação civil pública",
+        146
+      ],
+      [
+        "sus",
+        144
+      ],
+      [
+        "cerceamento de defesa",
+        143
+      ],
+      [
+        "fornecimento de medicamento",
+        138
+      ],
+      [
+        "prova pericial",
+        124
+      ],
+      [
+        "danos morais",
+        122
+      ],
+      [
+        "obrigação de fazer",
+        120
+      ],
+      [
+        "água",
+        119
+      ],
+      [
+        "audiência de justificação",
+        102
+      ],
+      [
+        "tema 793 stf",
+        100
+      ],
+      [
+        "agravo de instrumento",
+        99
+      ],
+      [
+        "falta grave",
+        98
+      ],
+      [
+        "ampla defesa",
+        97
+      ]
+    ],
+    "divergencias": [
+      {
+        "conflito": "saude",
+        "casos": 1064,
+        "lados": {
+          "indeterminado": 487,
+          "titular": 503,
+          "entepublico": 43,
+          "parcial": 28,
+          "empresa": 3
+        },
+        "teses_distintas": 955,
+        "exemplos": [
+          {
+            "processo": "0000105-67.2018.8.13",
+            "lado": "indeterminado",
+            "tese": "O direito social à saúde deve ser garantido conforme protocolos clínicos e diretrizes terapêuticas, com repartição de competências entre os entes fede"
+          },
+          {
+            "processo": "0000463-06.2020.8.13",
+            "lado": "titular",
+            "tese": "É dever do Estado fornecer medicamentos, exames e cirurgia, sendo possível o bloqueio de verba pública para garantir a efetividade do direito à saúde."
+          }
+        ]
+      },
+      {
+        "conflito": "liberdadeseguranca",
+        "casos": 297,
+        "lados": {
+          "titular": 159,
+          "entepublico": 85,
+          "indeterminado": 36,
+          "parcial": 17
+        },
+        "teses_distintas": 218,
+        "exemplos": [
+          {
+            "processo": "0000066-45.2020.8.13",
+            "lado": "indeterminado",
+            "tese": "Reconhecimento de nulidades não verificadas e manutenção da condenação por tráfico de drogas, associação e resistência, com decote de majorante."
+          },
+          {
+            "processo": "0000088-74.2016.8.13",
+            "lado": "ente_publico",
+            "tese": "A criminalização do desacato a policial militar no exercício da função é compatível com o direito de liberdade de expressão previsto na Convenção Amer"
+          }
+        ]
+      },
+      {
+        "conflito": "meioambientesadio",
+        "casos": 291,
+        "lados": {
+          "entepublico": 13,
+          "titular": 189,
+          "indeterminado": 85,
+          "parcial": 4
+        },
+        "teses_distintas": 152,
+        "exemplos": [
+          {
+            "processo": "0002268-86.2015.8.13",
+            "lado": "titular",
+            "tese": "O fornecimento de água imprópria para consumo humano configura falha no saneamento básico, sendo responsabilidade da Administração Pública, cabendo mu"
+          },
+          {
+            "processo": "0003770-69.2016.8.13",
+            "lado": "indeterminado",
+            "tese": "O ambiente ecologicamente equilibrado é direito humano fundamental, mas a improcedência da ação civil pública por dano ambiental deve ser mantida quan"
+          }
+        ]
+      },
+      {
+        "conflito": "criancaadolescente",
+        "casos": 71,
+        "lados": {
+          "titular": 38,
+          "indeterminado": 21,
+          "entepublico": 7,
+          "parcial": 5
+        },
+        "teses_distintas": 71,
+        "exemplos": [
+          {
+            "processo": "0000829-26.2023.8.13",
+            "lado": "ente_publico",
+            "tese": "Costumes e tradições de comunidade indígena não impedem a condenação por estupro de vulnerável, sendo desnecessário estudo antropológico."
+          },
+          {
+            "processo": "0003661-37.2021.8.13",
+            "lado": "indeterminado",
+            "tese": "É válido o depoimento especial de criança vítima de violência, conforme a Lei 13.431/17, e não há nulidade pelo indeferimento de prova pericial irrele"
+          }
+        ]
+      },
+      {
+        "conflito": "educacao",
+        "casos": 58,
+        "lados": {
+          "titular": 47,
+          "parcial": 1,
+          "indeterminado": 8,
+          "entepublico": 2
+        },
+        "teses_distintas": 55,
+        "exemplos": [
+          {
+            "processo": "0004581-59.2016.8.13",
+            "lado": "indeterminado",
+            "tese": "O aluno com deficiência visual tem direito à educação e ao profissional de apoio escolar, conforme os artigos 205 e 208, II, da Constituição."
+          },
+          {
+            "processo": "0004746-71.2020.8.13",
+            "lado": "indeterminado",
+            "tese": "Direito à educação infantil, com matrícula em estabelecimento público, como exercício da cidadania."
+          }
+        ]
+      },
+      {
+        "conflito": "pessoaidosapcd",
+        "casos": 37,
+        "lados": {
+          "indeterminado": 17,
+          "titular": 14,
+          "parcial": 1,
+          "entepublico": 4,
+          "empresa": 1
+        },
+        "teses_distintas": 36,
+        "exemplos": [
+          {
+            "processo": "0006919-61.2018.8.13",
+            "lado": "indeterminado",
+            "tese": "A curatela de idoso exige prova de causa transitória ou permanente que o impossibilite de exprimir sua vontade; ausente a prova, mantém-se a improcedê"
+          },
+          {
+            "processo": "0041913-79.2016.8.13",
+            "lado": "indeterminado",
+            "tese": "A acessibilidade é princípio geral do direito e a deficiência deve ser vista sob o modelo social, conforme a Convenção Internacional sobre os Direitos"
+          }
+        ]
+      },
+      {
+        "conflito": "processoadministrativodisciplinar",
+        "casos": 31,
+        "lados": {
+          "titular": 14,
+          "indeterminado": 5,
+          "entepublico": 11,
+          "parcial": 1
+        },
+        "teses_distintas": 28,
+        "exemplos": [
+          {
+            "processo": "0008614-08.2015.8.13",
+            "lado": "indeterminado",
+            "tese": "Contratação excessiva de servidores sem concurso público, em regime temporário, descumprindo TAC firmado com o Ministério Público, configura ato de im"
+          },
+          {
+            "processo": "0019378-66.2018.8.13",
+            "lado": "titular",
+            "tese": "Falta disciplinar de conselheiro tutelar não correlacionada ao exercício da função e sem prejuízo ao Conselho não justifica perda do mandato, violando"
+          }
+        ]
+      },
+      {
+        "conflito": "trabalho",
+        "casos": 30,
+        "lados": {
+          "entepublico": 7,
+          "titular": 18,
+          "parcial": 2,
+          "indeterminado": 3
+        },
+        "teses_distintas": 29,
+        "exemplos": [
+          {
+            "processo": "0029087-13.2017.8.13",
+            "lado": "titular",
+            "tese": "Responsabilidade objetiva do município por acidente de trabalho de servidor barqueiro, com dever de indenizar danos morais e materiais."
+          },
+          {
+            "processo": "0165550-64.2015.8.13",
+            "lado": "ente_publico",
+            "tese": "Progressão funcional por qualificação profissional exige demonstração dos requisitos da Lei Complementar Municipal nº 170/2014; recurso desprovido."
           }
         ]
       }
