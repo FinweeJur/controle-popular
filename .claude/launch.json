@@ -585,6 +585,21 @@
         "3048"
       ],
       "port": 3048
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-estrela-scroll) -- linha do tempo com estrela que desce no scroll (/memoria, /paraopeba/linha-do-tempo, /europa/litigios, /[municipio]/historico, /historico, /congresso). Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-estrela-scroll-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3050"
+      ],
+      "port": 3050
     }
   ]
 }

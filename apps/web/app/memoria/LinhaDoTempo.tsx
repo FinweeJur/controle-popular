@@ -25,6 +25,7 @@ import { useMemo, useState } from "react";
 import { ExternalLink, Search } from "lucide-react";
 import BotoesExportar from "@/app/components/BotoesExportar";
 import BotaoVoarAte from "@/app/components/BotaoVoarAte";
+import ScrollStar from "@/app/components/ScrollStar";
 import { TagChip } from "@/app/components/TagChip";
 import type { ColunaCsv } from "@/lib/tabela/csv";
 import {
@@ -246,7 +247,13 @@ export default function LinhaDoTempo({ verbetes }: Props) {
           este resultado é definitivo, não parcial.
         </p>
       ) : (
-        <div className="space-y-10">
+        /*
+         * A estrela percorre o eixo comum dos trilhos por século: todas as
+         * listas têm a borda esquerda no mesmo x (1 px do `border-l-2`), com
+         * vão nos cabeçalhos de século — o ponto cruza o vão por cima do
+         * cabeçalho fixo, que tem `z-10` e segue mandando na pilha.
+         */
+        <div className="relative space-y-10">
           {grupos.map(([rotuloSeculo, lista]) => (
             <section key={rotuloSeculo} aria-label={rotuloSeculo}>
               <h2 className="sticky top-0 z-10 -mx-1 border-b border-border bg-bg/95 px-1 py-2 font-display text-lg font-bold text-foreground backdrop-blur">
@@ -257,55 +264,62 @@ export default function LinhaDoTempo({ verbetes }: Props) {
               </h2>
               <ol className="mt-2 space-y-1 border-l-2 border-border/70">
                 {lista.map((v, i) => (
-                  <li
-                    key={`${v.diaMes}-${v.titulo}-${i}`}
-                    className="relative py-3 pl-5 print:break-inside-avoid"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-[-5px] top-5 h-2 w-2 rounded-full bg-primary"
-                    />
-                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                      <span className="font-mono text-sm font-semibold text-primary">
-                        {v.ano || "sem data"}
-                      </span>
-                      <span className="text-xs text-muted">{v.dataLabel}</span>
-                    </div>
-                    <h3 className="mt-0.5 font-semibold text-foreground">{v.tituloCurto ?? v.titulo}</h3>
-                    {v.resumo
-                      ? v.resumo.split(/\n{2,}/).map((paragrafo, j) => (
-                          <p
-                            key={j}
-                            className="mt-1 text-sm leading-relaxed text-text-soft"
-                          >
-                            {paragrafo}
-                          </p>
-                        ))
-                      : null}
-                    <OndeVerbete v={v} />
-                    <p className="mt-1 text-xs text-muted">
-                      {v.url ? (
-                        <a
-                          href={v.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-primary"
-                        >
-                          {v.fonteCurta}
-                          <ExternalLink className="ml-1 inline h-3 w-3 align-[-1px]" aria-hidden="true" />
-                        </a>
-                      ) : (
-                        v.fonteCurta
-                      )}
-                    </p>
-                  </li>
+                  <ItemVerbete key={`${v.diaMes}-${v.titulo}-${i}`} v={v} />
                 ))}
               </ol>
             </section>
           ))}
+          <ScrollStar eixo={1} />
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * Um verbete da linha: ponto no trilho, ano + dia, título, resumo em
+ * parágrafos, "onde" e a fonte citada direto (sem rótulo "Fonte:", decisão
+ * do dono de 30/09/2026). Extraído para cá (03/11/2026) porque a função da
+ * tela tinha virado método grande demais para o gate CodeScene.
+ */
+function ItemVerbete({ v }: { v: VerbeteLinha }) {
+  return (
+    <li className="relative py-3 pl-5 print:break-inside-avoid">
+      <span
+        aria-hidden="true"
+        className="absolute left-[-5px] top-5 h-2 w-2 rounded-full bg-primary"
+      />
+      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <span className="font-mono text-sm font-semibold text-primary">
+          {v.ano || "sem data"}
+        </span>
+        <span className="text-xs text-muted">{v.dataLabel}</span>
+      </div>
+      <h3 className="mt-0.5 font-semibold text-foreground">{v.tituloCurto ?? v.titulo}</h3>
+      {v.resumo
+        ? v.resumo.split(/\n{2,}/).map((paragrafo, j) => (
+            <p key={j} className="mt-1 text-sm leading-relaxed text-text-soft">
+              {paragrafo}
+            </p>
+          ))
+        : null}
+      <OndeVerbete v={v} />
+      <p className="mt-1 text-xs text-muted">
+        {v.url ? (
+          <a
+            href={v.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-primary"
+          >
+            {v.fonteCurta}
+            <ExternalLink className="ml-1 inline h-3 w-3 align-[-1px]" aria-hidden="true" />
+          </a>
+        ) : (
+          v.fonteCurta
+        )}
+      </p>
+    </li>
   );
 }
 

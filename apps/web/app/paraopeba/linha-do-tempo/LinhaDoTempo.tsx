@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ScrollStar from "@/app/components/ScrollStar";
 import {
   MARCOS_PARAOPEBA,
   ROTULO_TIPO_MARCO,
@@ -245,8 +246,38 @@ export default function LinhaDoTempo() {
         </div>
       </section>
 
-      {/* A lista, com a legenda do tipo ao lado de cada marco */}
-      <ol className="flex flex-col gap-0">
+      {/* A lista, com a legenda do tipo ao lado de cada marco. O wrapper é o
+          pai relativo da estrela; o eixo do conector desenhado por cada `<li>`
+          fica em x = 8 px (esquerda 7 px, largura 0,5 = 2 px). */}
+      <div className="relative">
+        <ListaMarcos
+          visiveis={visiveis}
+          marcoHover={marcoHover}
+          setMarcoHover={setMarcoHover}
+        />
+        <ScrollStar eixo={8} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * O `<ol>` dos marcos: conector por item, ponto colorido pelo tipo e card
+ * com data, valor encontrado no texto e legenda. Extraído para função própria
+ * (03/11/2026) porque o componente da tela tinha estourado o gate de método
+ * grande do CodeScene — a régua das 5 coisas continua a mesma.
+ */
+function ListaMarcos({
+  visiveis,
+  marcoHover,
+  setMarcoHover,
+}: {
+  visiveis: MarcoParaopeba[];
+  marcoHover: number | null;
+  setMarcoHover: (i: number | null) => void;
+}) {
+  return (
+    <ol className="flex flex-col gap-0">
         {visiveis.map((m, i) => {
           const tipo = tipoDeMarco(m.cor);
           const valorEncontrado = m.descricao.match(/(R\$\s*[\d,.]+(?:\s*(?:bi|mi|milhões|bilhões|mil))?|\b\d+%\b)/i)?.[0];
@@ -297,7 +328,6 @@ export default function LinhaDoTempo() {
             Nenhum marco neste grupo.
           </li>
         )}
-      </ol>
-    </div>
+    </ol>
   );
 }
