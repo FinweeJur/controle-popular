@@ -61,8 +61,17 @@ Acervo publicado (`apps/web/data/jurisprudencia-casos.json`): **23.533 casos**.
 | STJ | 673 |
 | TST | 463 |
 
-Catálogo da rubrica v3 (S5-free), medido às 00:42: **575 de 3.656** na fila do
-Rio Doce (16%), a 2,4 s por caso — cerca de **2 h** para fechar.
+Catálogo da rubrica v3 (S5-free), medido às 01:20: **1.503 de 3.656** na fila do
+Rio Doce (41%), a 2,4 s por caso — fecha por volta das 02:50.
+
+Fila medida por frente (antes de gastar chamada):
+
+| Frente | Na fila | Observação |
+|---|---:|---|
+| Rio Doce | 3.656 | planilha NACAB decide o resto |
+| Brumadinho | 2.471 | planilha própria decide 413 casos |
+| Direitos humanos | 2.373 | sem planilha de polo; rubrica a validar |
+| Penal | 6.166 | fora da cadeia por ora: tem página e rubrica próprias |
 
 RAG: 2.361 documentos no índice; biblioteca de evidências com 1.081 itens.
 
@@ -90,7 +99,7 @@ Ordem de tentativa, com o que já está configurado em
 | # | Modelo | Como é chamado | Custo | Observação |
 |---|---|---|---|---|
 | 1 | `S5-free` (Maritaca) | HTTP, `MARITACA_API_KEY` | zero | 1 M de contexto, 60 RPM, 256 k TPM. **Sem batch.** |
-| 2 | `glm-4.5-flash` (Z.ai) | HTTP, `ZAI_API_KEY` | zero | `glm-4.7-flash` ainda não está na config — entra quando existir |
+| 2 | `glm-4.5-flash` (Z.ai) | HTTP, `ZAI_API_KEY` | zero | `glm-4.7-flash` ainda não está na config. **Medido: 148 s por caso** — reserva, não volume |
 | 3 | `deepseek/deepseek-v4.1-flash-free` (OrcaRouter) | HTTP, `ORCAROUTER_API_KEY` | zero | 32 k de contexto: só ementa, nunca inteiro teor |
 | 4 | `S5` (Maritaca) | HTTP, pago | R$ 0,50 / R$ 2,50 por Mi | Universo do Rio Doce em batch: R$ 2,03 |
 | 5 | `qwen3.8-flash` (plano Go) | CLI | conforme plano | provedor ainda **não** configurado |
@@ -197,7 +206,15 @@ Cada fase tem: objetivo, fonte, script, portão, saída, custo e tempo.
 
 Medido no `home-pc` em 04/11: repo em `C:\DevCoder\tjmg-jurimetria`, `.venv`
 presente, `ZAI_API_KEY` gravada, **sem** `MARITACA_API_KEY` e sem git no PATH do
-SSH. Consequência: lá roda GLM free; o resultado volta por `scp`, não por push.
+SSH. Rodei o catálogo de Brumadinho lá: a cadeia caiu no GLM e fez 7 casos em
+~5 min (148 s por caso, medido depois em chamada isolada). Para 2.471 casos
+seriam 4 dias — inviável. O home-pc fica como reserva para o pacote GitHub e
+para conferência, não para volume.
+
+Consequência prática: **o volume é sequencial no S5-free**, a 2,4 s por caso.
+Tentar paralelizar esbarra no limite de 60 RPM da oferta gratuita. Se o dono
+copiar a `MARITACA_API_KEY` para o home-pc, as duas máquinas rodam frentes
+diferentes ao mesmo tempo e o tempo total cai pela metade.
 
 Coordenação por SSH segue a skill `/ssh`:
 
