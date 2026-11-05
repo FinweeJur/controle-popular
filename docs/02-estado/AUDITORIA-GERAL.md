@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 03/11/2026 14:26 BRT |
+| 04/11/2026 14:38 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -45,12 +45,14 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/bases-clima-risco.json | OK |
 | data/bases-portal.json | OK |
 | data/biblioteca-desastres-unificada.json | OK |
+| data/biblioteca-evidencias-cientificas.json | OK |
 | data/biblioteca-teses-atingidos.json | OK |
 | data/biblioteca-unificada.json | OK |
 | data/cambio-dia.json | OK |
 | data/canais-informacao-lai.json | OK |
 | data/car-mg.json | OK |
 | data/catalogo-bases-dados.json | OK |
+| data/catalogo-frentes.json | OK |
 | data/cavas-calibracao-manifesto.json | OK |
 | data/cavas-estados-mg.json | OK |
 | data/cavas-evidencias-mg.json | OK |
@@ -86,6 +88,8 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/educacao-periodicos.json | OK |
 | data/empresas-documentos.json | OK |
 | data/esg-update.json | OK |
+| data/evidencias-cientificas-brumadinho.json | OK |
+| data/evidencias-cientificas-rio-doce-costeiro.json | OK |
 | data/fepam-rs-licencas.json | OK |
 | data/fontes-27-estados.json | OK |
 | data/iat-pr-licencas.json | OK |
@@ -237,12 +241,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 191 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 195 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 04/11/2026 14:38 BRT - 0 criticos; 0 avisos.
 - 03/11/2026 14:26 BRT - 0 criticos; 0 avisos.
 - 02/11/2026 16:53 BRT - 0 criticos; 0 avisos.
 - 01/11/2026 13:30 BRT - 0 criticos; 0 avisos.
