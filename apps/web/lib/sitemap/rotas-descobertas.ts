@@ -225,6 +225,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/judiciario/indice",
   "/judiciario/inspecoes",
   "/judiciario/instituicoes",
+  "/judiciario/jurisprudencia",
   "/judiciario/metodologia",
   "/judiciario/numeros",
   "/judiciario/presidios",

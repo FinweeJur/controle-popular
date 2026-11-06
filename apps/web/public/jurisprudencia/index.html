@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busca — jurisprudência TJMG</title>
+<style>
+  :root { --fg:#1b1b1b; --mut:#666; --bd:#d9d9d9; --bg:#fff; --hl:#ffe680; --acc:#7a1220; --ok:#0f7b3f; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.45 system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--fg); background:var(--bg); }
+  header { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--bd); padding:12px 16px; z-index:5; }
+  h1 { font-size:17px; margin:0 0 8px; color:var(--acc); }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  input[type=search] { flex:1 1 300px; padding:9px 12px; font-size:15px; border:1px solid var(--bd); border-radius:8px; }
+  select { padding:8px; border:1px solid var(--bd); border-radius:8px; background:#fff; }
+  .tag { font-size:12px; color:var(--mut); margin-top:6px; }
+  main { padding:14px 16px 60px; max-width:1100px; }
+  .count { color:var(--mut); margin:4px 0 12px; font-size:13px; }
+  article { border:1px solid var(--bd); border-radius:10px; padding:10px 12px; margin-bottom:10px; }
+  .top { display:flex; gap:8px; align-items:center; }
+  article h2 { font-size:14px; margin:0; flex:1; }
+  .meta { color:var(--mut); font-size:12.5px; margin:4px 0 6px; }
+  .badge { display:inline-block; font-size:11px; padding:1px 7px; border-radius:99px; border:1px solid var(--bd); margin-right:4px; }
+  .b-empresa { background:#fde8e8; } .b-atingido { background:#e6f4ea; } .b-parcial { background:#fff4d6; }
+  .b-indeterminado { background:#eee; } .b-cat { background:#eef3fb; } .b-fonte { background:#f3eefb; }
+  a.link { font-size:12.5px; color:var(--acc); text-decoration:none; white-space:nowrap; }
+  a.link:hover { text-decoration:underline; }
+  mark { background:var(--hl); }
+  details { margin-top:6px; }
+  summary { cursor:pointer; color:var(--acc); font-size:13px; }
+  .teor { white-space:pre-wrap; font-size:13px; max-height:340px; overflow:auto; background:#fafafa; border-radius:8px; padding:8px; margin-top:6px; }
+  .copiar { position:relative; border:1px solid var(--bd); background:#fff; border-radius:8px; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:border-color .15s, background .15s, transform .12s; }
+  .copiar:hover { background:#f7f7f7; }
+  .copiar:active { transform:scale(.92); }
+  .copiar svg { width:16px; height:16px; }
+  .copiar .ic-ok { display:none; color:var(--ok); }
+  .copiar.ok { border-color:var(--ok); background:#eaf7ef; animation:pop .25s ease-out; }
+  .copiar.ok .ic-copy { display:none; } .copiar.ok .ic-ok { display:block; }
+  .copiar .dica { position:absolute; bottom:36px; right:0; background:#222; color:#fff; font-size:11px; padding:3px 7px; border-radius:6px; opacity:0; pointer-events:none; transition:opacity .15s; white-space:nowrap; }
+  .copiar.ok .dica { opacity:1; }
+  @keyframes pop { 0% { transform:scale(.9); } 60% { transform:scale(1.06); } 100% { transform:scale(1); } }
+  .err { color:#a00; }
+  .voltar { position:absolute; top:12px; right:16px; font-size:12.5px; color:var(--acc); text-decoration:none; }
+  .voltar:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Busca na jurisprudência — TJMG e TJES</h1>
+  <a class="voltar" href="/judiciario/jurisprudencia">← Controle Popular</a>
+  <div class="row">
+    <input id="q" type="search" placeholder="palavras-chave (todas precisam aparecer). Ex.: barragem dano moral pesca" autofocus>
+    <select id="fonte" title="base"></select>
+    <select id="escopo" title="onde procurar">
+      <option value="ambos">Ementa + inteiro teor</option>
+      <option value="ementa">Só ementa</option>
+      <option value="teor">Só inteiro teor</option>
+    </select>
+    <select id="cat" title="categoria">
+      <option value="">Todas as categorias</option>
+      <option value="A">A — barragens/mineração</option>
+      <option value="B">B — direitos humanos</option>
+      <option value="C">C — ambiental</option>
+    </select>
+    <select id="polo" title="polo vencedor">
+      <option value="">Todos os polos</option>
+      <option value="atingido">Pró-atingido</option>
+      <option value="empresa">Pró-mineradora</option>
+      <option value="parcial">Parcial</option>
+      <option value="indeterminado">Indeterminado</option>
+    </select>
+  </div>
+  <div class="tag" id="tag"></div>
+</header>
+<main>
+  <div class="count" id="count"></div>
+  <div id="lista"></div>
+  <div id="mais"></div>
+</main>
+<script src="dados.js"></script>
+<script>
+const FONTES = window.FONTES || [];
+const ACENTOS = {'á':'a','à':'a','â':'a','ã':'a','ä':'a','é':'e','è':'e','ê':'e','ë':'e','í':'i','ì':'i','î':'i','ï':'i','ó':'o','ò':'o','ô':'o','õ':'o','ö':'o','ú':'u','ù':'u','û':'u','ü':'u','ç':'c','ñ':'n'};
+function norm(s) { s = (s || '').toLowerCase(); let out = ''; for (const ch of s) out += ACENTOS[ch] || ch; return out; }
+function esc(s) { return (s || '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+const el = id => document.getElementById(id);
+const baixadas = {};
+const ativas = new Set();
+const PARTES = {'brumadinho': 2, 'tjes-rompimento-mariana': 2};
+function carrega(fonte) {
+  if (baixadas[fonte]) return Promise.resolve();
+  const n = PARTES[fonte] || 1;
+  const urls = [];
+  for (let i = 1; i <= n; i++) urls.push('dados-' + fonte + (n > 1 ? '-' + i : '') + '.js');
+  return urls.reduce((p, url) => p.then(() => new Promise((ok, falha) => {
+    const s = document.createElement('script');
+    s.src = url;
+    s.onload = ok;
+    s.onerror = () => falha(new Error('falha ao carregar ' + url));
+    document.head.appendChild(s);
+  })), Promise.resolve()).then(() => { baixadas[fonte] = true; });
+}
+function registros() {
+  let out = [];
+  for (const f of FONTES) if (ativas.has(f.id)) out = out.concat((window.DADOS_BASES || {})[f.id].registros);
+  for (const r of out) if (r._n === undefined) { r._e = norm(r.e); r._t = norm(r.x || ''); r._n = 1; }
+  return out;
+}
+let mostrados = 0;
+function termos() { return norm(el('q').value).split(/\s+/).filter(t => t.length >= 2); }
+function filtra() {
+  const ts = termos(), escopo = el('escopo').value, cat = el('cat').value, polo = el('polo').value;
+  const res = [];
+  for (const r of registros()) {
+    if (cat && !(r.ca || []).includes(cat)) continue;
+    if (polo && r.po !== polo) continue;
+    if (!ts.length) { res.push([0, r]); continue; }
+    let score = 0, ok = true;
+    for (const t of ts) {
+      const emE = r._e.includes(t), emT = r._t.includes(t);
+      if (!(escopo === 'ementa' ? emE : escopo === 'teor' ? emT : (emE || emT))) { ok = false; break; }
+      score += (emE ? 2 : 0) + (emT ? 1 : 0);
+    }
+    if (ok) res.push([score, r]);
+  }
+  res.sort((a, b) => b[0] - a[0] || a[1].p.localeCompare(b[1].p));
+  return [ts, res];
+}
+function trecho(txt, ts, n) {
+  if (!txt) return '';
+  const base = norm(txt);
+  let pos = -1;
+  for (const t of ts) { const i = base.indexOf(t); if (i >= 0 && (pos < 0 || i < pos)) pos = i; }
+  if (pos < 0) pos = 0;
+  const ini = Math.max(0, pos - n), fim = Math.min(txt.length, pos + n * 2);
+  return (ini > 0 ? '…' : '') + txt.slice(ini, fim) + (fim < txt.length ? '…' : '');
+}
+function marca(txt, ts) {
+  let html = esc(txt);
+  for (const t of ts) {
+    const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    html = html.replace(re, '<mark>$1</mark>');
+  }
+  return html;
+}
+const ICONE_COPIAR = '<svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+function botaoCopiar(texto) {
+  const b = document.createElement('button');
+  b.className = 'copiar'; b.title = 'Copiar número do processo';
+  b.setAttribute('aria-label', 'Copiar número do processo');
+  b.innerHTML = ICONE_COPIAR + '<span class="dica">Copiado!</span>';
+  b.onclick = async (e) => {
+    e.stopPropagation();
+    try { await navigator.clipboard.writeText(texto); }
+    catch (_) {
+      const t = document.createElement('textarea');
+      t.value = texto; document.body.appendChild(t); t.select();
+      document.execCommand('copy'); t.remove();
+    }
+    b.classList.add('ok');
+    setTimeout(() => b.classList.remove('ok'), 1600);
+  };
+  return b;
+}
+function render() {
+  const [ts, res] = filtra();
+  el('count').textContent = res.length + ' decisão(ões)' + (ts.length ? ' para: ' + ts.join(' + ') : '');
+  const alvo = res.slice(0, 100);
+  el('lista').innerHTML = '';
+  for (const [, r] of alvo) {
+    const art = document.createElement('article');
+    const top = document.createElement('div'); top.className = 'top';
+    const h = document.createElement('h2'); h.textContent = r.p || '(sem processo)'; top.appendChild(h);
+    top.appendChild(botaoCopiar(r.p || ''));
+    art.appendChild(top);
+    const badges = [];
+    if (r.f) badges.push('<span class="badge b-fonte">' + esc(r.f) + '</span>');
+    if (r.po) badges.push('<span class="badge b-' + esc(r.po) + '">' + esc(r.po) + '</span>');
+    for (const c of (r.ca || [])) badges.push('<span class="badge b-cat">' + esc(c) + '</span>');
+    if (r.g) badges.push('<span class="badge b-cat">gêmeas #' + esc(r.g) + '</span>');
+    if (r.l) badges.push('<a class="link" href="' + esc(r.l) + '" target="_blank" rel="noopener" title="Abrir no TJMG">Ver no TJMG ↗</a>');
+    const meta = document.createElement('div'); meta.className = 'meta';
+    meta.innerHTML = badges.join(' ') + (badges.length ? ' · ' : '') + esc([r.c, r.r, r.d, r.m].filter(Boolean).join(' · '));
+    art.appendChild(meta);
+    const corpo = document.createElement('div');
+    corpo.innerHTML = ts.length ? marca(trecho(r.e, ts, 180), ts) : esc((r.e || '').slice(0, 360));
+    art.appendChild(corpo);
+    if (r.x) {
+      const det = document.createElement('details');
+      const sum = document.createElement('summary'); sum.textContent = 'Ver trecho do inteiro teor';
+      const div = document.createElement('div'); div.className = 'teor';
+      div.innerHTML = marca(r.x, ts);
+      det.appendChild(sum); det.appendChild(div); art.appendChild(det);
+    }
+    el('lista').appendChild(art);
+  }
+  el('mais').innerHTML = res.length > 100 ? '<span class="tag">mostrando as 100 mais relevantes de ' + res.length + ' — refine a busca</span>' : '';
+}
+async function trocaFonte() {
+  const sel = el('fonte').value;
+  el('count').textContent = 'carregando…';
+  ativas.clear();
+  try {
+    if (sel === 'todas') { for (const f of FONTES) { await carrega(f.id); ativas.add(f.id); } }
+    else { await carrega(sel); ativas.add(sel); }
+    render();
+  } catch (e) { el('count').textContent = 'erro: ' + e.message; }
+}
+el('fonte').addEventListener('change', trocaFonte);
+let timer = null;
+el('q').addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 180); });
+for (const id of ['escopo','cat','polo']) el(id).addEventListener('change', render);
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== el('q')) { e.preventDefault(); el('q').focus(); }
+  if (e.key === 'Escape') { el('q').value = ''; render(); }
+});
+el('tag').textContent = 'Gerado em ' + (window.GERADO || '') + ' · ' + FONTES.map(f => f.label + ': ' + f.n).join(' · ');
+el('fonte').innerHTML = FONTES.map(f => '<option value="' + f.id + '">' + f.label + ' (' + f.n + ')</option>').join('') + '<option value="todas">Todas as bases</option>';
+trocaFonte();
+</script>
+</body>
+</html>
