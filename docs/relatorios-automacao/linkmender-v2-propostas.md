@@ -1,18 +1,18 @@
 # LinkMender v2 — Auditoria de Links e Validação de Conteúdo
 
-- Data da auditoria: 2026-11-05T23:13:17.060Z
-- Duração da rodada: 59219.4 s
+- Data da auditoria: 2026-11-06T19:29:16.549Z
+- Duração da rodada: 45758.8 s
 - Pausa configurada entre requisições: 300ms
 
 ## Resumo Consolidado
 
-- Total de URLs verificadas (HTTP + validação de conteúdo): 23711
-- ✅ Links Íntegros (OK): 19584
-- ↪️ Redirecionamentos Válidos (REDIRECT): 294
-- ❌ Links Quebrados (QUEBRADO): 930
+- Total de URLs verificadas (HTTP + validação de conteúdo): 23678
+- ✅ Links Íntegros (OK): 19629
+- ↪️ Redirecionamentos Válidos (REDIRECT): 259
+- ❌ Links Quebrados (QUEBRADO): 935
 - ⚠️ Respostas Falsas (MENTIROSO / 200 que mente): 3
-- ❓ Inconsistências de Rede (INCONSISTENTE): 2900
-- 📝 Propostas automáticas de correção aceitas: 35
+- ❓ Inconsistências de Rede (INCONSISTENTE): 2852
+- 📝 Propostas automáticas de correção aceitas: 1
 
 ## Detalhamento das Verificações por URL
 
@@ -23,7 +23,7 @@
 | ✅ OK | `https://csr.ufmg.br/car20_mg/` | Plataforma CAR 2.0 MG do Centro de Sensoriamento Remoto da UFMG | OK |
 | ✅ OK | `https://consulta.car.gov.br/` | Portal oficial da Consulta Pública do SICAR Nacional | OK |
 | ✅ OK | `https://dados.mg.gov.br/dataset/convenios-saida` | Geral | OK |
-| ✅ OK | `https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca` | Geral | OK |
+| ❓ INCONSISTENTE | `https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx` | Geral | OK |
 | ✅ OK | `https://github.com/FinweeJur/controle-popular` | Geral | OK |
 | ✅ OK | `https://dados.mg.gov.br/dataset/portal_mariana` | Geral | OK |
@@ -64,7 +64,7 @@
 | ✅ OK | `https://datajud-wiki.cnj.jus.br/` | Geral | OK |
 | ✅ OK | `https://geoserver.meioambiente.mg.gov.br/IDE/ows` | Geral | OK |
 | ↪️ REDIRECT | `https://transparencia.fundacaorenova.org/inicio` | Geral | REDIRECT |
-| ✅ OK | `https://mab.org.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://mab.org.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://levante.org.br/` | Geral | OK |
 | ✅ OK | `https://brasilpopular.org/` | Geral | OK |
 | ✅ OK | `https://codigonaobinario.org/` | Geral | OK |
@@ -378,26 +378,26 @@
 | ✅ OK | `https://apiboficial.org/atl2023/` | Acampamento Terra Livre 2022 — Retomando o Brasil: demarcar territórios e aldear a política | OK |
 | ✅ OK | `https://apiboficial.org/atl2022/` | Acampamento Terra Livre 2021 — segunda edição virtual, demarcando as telas | OK |
 | ✅ OK | `https://apiboficial.org/atl2021/` | XIII Acampamento Terra Livre — carta pública contra os retrocessos do governo Temer | OK |
-| ✅ OK | `https://mab.org.br/timeline/i-encontro-nacional-de-trabalhadores-atingidos-por-barragens/` | Fundação do MAB — Movimento dos Atingidos por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/i-congresso-nacional-dos-atingidos-por-barragens/` | II Congresso Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/ii-congresso-nacional-do-mab/` | Preparação do I Encontro Internacional de Atingidos | OK |
-| ✅ OK | `https://mab.org.br/timeline/preparacao-do-i-encontro-internacional-de-atingidos/` | III Congresso Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/iii-congresso-nacional-do-mab/` | I Encontro Internacional de Atingidos por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/i-encontro-internacional-de-atingidos-por-barragens/` | IV Congresso Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/iv-congresso-do-mab/` | 5º Encontro Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/5o-encontro-nacional-e-ii-encontro-internacional-de-atingidos/` | Marcha Nacional Águas pela Vida | OK |
-| ✅ OK | `https://mab.org.br/timeline/marcha-nacional-aguas-pela-vida/` | 6º Encontro Nacional dos Atingidos por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/6o-encontro-nacional-dos-atingidos-por-barragens/` | O Estado reconhece a dívida com os atingidos por barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/pela-primeira-vez-fomos-reconhecidos-enquanto-atingidos-por-um-presidente/` | III Encontro Internacional dos Atingidos por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/iii-encontro-internacional-dos-atingidos-por-barragens/` | I Encontro das Mulheres Atingidas por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/i-encontro-das-mulheres-atingidas-por-barragens/` | 7º Encontro Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/7-encontro-nacional-do-mab/` | Fundação do Movimiento de Afectados por Represas (MAR) | OK |
-| ✅ OK | `https://mab.org.br/timeline/fundacao-do-mar-movimiento-de-afectados-por-represas/` | 8º Encontro Nacional do MAB | OK |
-| ✅ OK | `https://mab.org.br/timeline/8o-encontro-nacional-do-mab/` | Jornada de Lutas do MAB: É Tempo de Avançar | OK |
-| ✅ OK | `https://mab.org.br/timeline/jornada-de-lutas-e-tempo-de-avancar/` | Sanção da PNAB — Política Nacional dos Atingidos por Barragens | OK |
-| ✅ OK | `https://mab.org.br/timeline/sancao-da-pnab-lei-no-14-755/` | IV Encontro Internacional de Atingidos por Barragens e Crise Climática | OK |
-| ✅ OK | `https://mab.org.br/timeline/iv-encontro-internacional-de-atingidos/` | Geral | OK |
-| ✅ OK | `https://mab.org.br/linha-do-tempo/` | Linha do tempo do MAB | OK |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/i-encontro-nacional-de-trabalhadores-atingidos-por-barragens/` | Fundação do MAB — Movimento dos Atingidos por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/i-congresso-nacional-dos-atingidos-por-barragens/` | II Congresso Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/ii-congresso-nacional-do-mab/` | Preparação do I Encontro Internacional de Atingidos | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/preparacao-do-i-encontro-internacional-de-atingidos/` | III Congresso Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/iii-congresso-nacional-do-mab/` | I Encontro Internacional de Atingidos por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/i-encontro-internacional-de-atingidos-por-barragens/` | IV Congresso Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/iv-congresso-do-mab/` | 5º Encontro Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/5o-encontro-nacional-e-ii-encontro-internacional-de-atingidos/` | Marcha Nacional Águas pela Vida | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/marcha-nacional-aguas-pela-vida/` | 6º Encontro Nacional dos Atingidos por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/6o-encontro-nacional-dos-atingidos-por-barragens/` | O Estado reconhece a dívida com os atingidos por barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/pela-primeira-vez-fomos-reconhecidos-enquanto-atingidos-por-um-presidente/` | III Encontro Internacional dos Atingidos por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/iii-encontro-internacional-dos-atingidos-por-barragens/` | I Encontro das Mulheres Atingidas por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/i-encontro-das-mulheres-atingidas-por-barragens/` | 7º Encontro Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/7-encontro-nacional-do-mab/` | Fundação do Movimiento de Afectados por Represas (MAR) | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/fundacao-do-mar-movimiento-de-afectados-por-represas/` | 8º Encontro Nacional do MAB | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/8o-encontro-nacional-do-mab/` | Jornada de Lutas do MAB: É Tempo de Avançar | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/jornada-de-lutas-e-tempo-de-avancar/` | Sanção da PNAB — Política Nacional dos Atingidos por Barragens | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/sancao-da-pnab-lei-no-14-755/` | IV Encontro Internacional de Atingidos por Barragens e Crise Climática | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/iv-encontro-internacional-de-atingidos/` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://mab.org.br/linha-do-tempo/` | Linha do tempo do MAB | INCONSISTENTE |
 | ↪️ REDIRECT | `https://wmo.int/about-wmo/world-meteorological-day` | Dia Meteorológico Mundial | REDIRECT |
 | ✅ OK | `https://www.gov.br/mma/pt-br` | Biomas brasileiros — Caatinga | OK |
 | ❓ INCONSISTENTE | `https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm` | Lei 3.353, de 13 de maio de 1888 (Lei Áurea) | INCONSISTENTE |
@@ -432,7 +432,7 @@
 | ✅ OK | `https://www.brasildefato.com.br/2026/09/16/sigma-segue-operando-no-jequitinhonha-mg-mesmo-apos-justica-paralisar-lavra-dizem-moradores/` | Sigma segue operando no Jequitinhonha (MG) mesmo após Justiça paralisar lavra, dizem moradores | OK |
 | ✅ OK | `https://www.brasildefato.com.br/2016/04/18/ato-em-governador-valadares-mg-denuncia-descaso-da-samarco-com-atingidos/` | Ato em Governador Valadares (MG) denuncia descaso da Samarco com atingidos | OK |
 | ✅ OK | `https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/` | Massacre de Felisburgo, que assassinou cinco militantes do MST, completa 20 anos sem justiça | OK |
-| ✅ OK | `https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/` | Rompimento da barragem de Fundão em Mariana (MG) | OK |
+| ❓ INCONSISTENTE | `https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/` | Rompimento da barragem de Fundão em Mariana (MG) | INCONSISTENTE |
 | ✅ OK | `https://pt.wikipedia.org/wiki/H%C3%A9lder_C%C3%A2mara` | Nasce Dom Hélder Câmara, em Fortaleza | OK |
 | ✅ OK | `https://www.gov.br/cgu/pt-br/assuntos/transparencia-publica/lai` | Lei nº 12.527/2011, arts. 15 e 16 (recursos) | OK |
 | ❓ INCONSISTENTE | `https://www.planalto.gov.br/ccivil_03/leis/l6938.htm` | Notícia de fato ao Ministério Público (dano ambiental) | INCONSISTENTE |
@@ -1005,9 +1005,9 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/mapas_populacao/brtacervo.php?cid=77` | MAPAS DE POPULAÇÃO | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/search.php?query=sesmaria` | Geral | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=1` | SC-01 Registro de alvarás, regimentos, cartas e ordens régias, cartas patentes, provisões, confirmações de cartas patentes, sesmarias e doações | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=2` | SC-02 Registro de alvarás, regimentos, cartas, ordens régias, cartas patentes, provisões, confirmações de cartas patentes, sesmarias e doações | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=2` | SC-02 Registro de alvarás, regimentos, cartas, ordens régias, cartas patentes, provisões, confirmações de cartas patentes, sesmarias e doações | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=7` | SC-07 Registro de resoluções, bandos, cartas patentes, provisões, patentes e sesmarias (com índice no final) | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=9` | SC-09 Registro de cartas, ordens, despachos, instruções, bandos, cartas patentes, provisões e sesmarias (com índice no início) | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=9` | SC-09 Registro de cartas, ordens, despachos, instruções, bandos, cartas patentes, provisões e sesmarias (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=103` | SC-101-B Registro de cartas, portarias, instruções, provisões, nombramentos e sesmarias concernentes a Colônia  Rio Grande do Sul (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=108` | SC-106 Registro de sesmarias (com índice no final) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=114` | SC-112 Registro de sesmarias (com índice no final) | OK |
@@ -1015,43 +1015,43 @@
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=12` | SC-12 Registro de provisões, patentes e sesmarias | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=122` | SC-120 Registro de provisões e nombramentos, cartas e confirmações de sesmarias (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=124` | SC-122 Registro de sesmarias (com índice no final) | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=127` | SC-125 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=129` | SC-127 Registro de sesmarias (com índice no inicio) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=131` | SC-129 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=134` | SC-132 Registro de provisões régias, cartas de confirmação de sesmaria e provisões do Governador | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=142` | SC-140 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=148` | SC-146 Registro de cartas de confirmação de sesmaria (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=158` | SC-156 Registro de sesmarias | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=173` | SC-171 Registro de cartas, circulares, ordens e portarias do Governador, provisões, nombramentos e sesmarias | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=174` | SC-172 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=208` | SC-206 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=21` | SC-21 Registro de cartas, ordens, bandos, instruções, patentes, provisões e sesmarias (com índice no inicio) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=236` | SC-234 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=258` | SC-256 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=268` | SC-265 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=278` | SC-275 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=28` | SC-28 Registro de patentes, provisões e sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=289` | SC-285 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=290` | SC-286 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=293` | SC-289 Registro de sesmarias | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=297` | SC-293 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=303` | SC-299 Registro de patentes de confirmação de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=30` | SC-30 Registro de provisões régias, alvarás, confirmações de patentes e sesmarias (com índice no início) | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=127` | SC-125 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=129` | SC-127 Registro de sesmarias (com índice no inicio) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=131` | SC-129 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=134` | SC-132 Registro de provisões régias, cartas de confirmação de sesmaria e provisões do Governador | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=142` | SC-140 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=148` | SC-146 Registro de cartas de confirmação de sesmaria (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=158` | SC-156 Registro de sesmarias | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=173` | SC-171 Registro de cartas, circulares, ordens e portarias do Governador, provisões, nombramentos e sesmarias | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=174` | SC-172 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=208` | SC-206 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=21` | SC-21 Registro de cartas, ordens, bandos, instruções, patentes, provisões e sesmarias (com índice no inicio) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=236` | SC-234 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=258` | SC-256 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=268` | SC-265 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=278` | SC-275 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=28` | SC-28 Registro de patentes, provisões e sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=289` | SC-285 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=290` | SC-286 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=293` | SC-289 Registro de sesmarias | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=297` | SC-293 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=303` | SC-299 Registro de patentes de confirmação de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=30` | SC-30 Registro de provisões régias, alvarás, confirmações de patentes e sesmarias (com índice no início) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=310` | SC-305 Registro de sesmarias (com índice no início) | OK |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=31` | SC-31 Registro de provisões, patentes e sesmarias | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=357` | SC-352 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=369` | SC-363 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=37` | SC-37 Registro de sesmarias, ordens, portarias, bandos e cartas | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=383` | SC-377 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=390` | SC-384 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=42` | SC-42 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=43` | SC-43 Registro de cartas de confirmação de patentes e sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=72` | SC-72 Registro de sesmarias (com índice no final) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=80` | SC-80 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=85` | SC-85 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=90` | SC-90 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=94` | SC-94 Registro de sesmarias (com índice no início) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=96` | SC-96 Registro de cartas de confirmação de sesmarias (com índice no final) | INCONSISTENTE |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=31` | SC-31 Registro de provisões, patentes e sesmarias | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=357` | SC-352 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=369` | SC-363 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=37` | SC-37 Registro de sesmarias, ordens, portarias, bandos e cartas | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=383` | SC-377 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=390` | SC-384 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=42` | SC-42 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=43` | SC-43 Registro de cartas de confirmação de patentes e sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=72` | SC-72 Registro de sesmarias (com índice no final) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=80` | SC-80 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=85` | SC-85 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=90` | SC-90 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=94` | SC-94 Registro de sesmarias (com índice no início) | OK |
+| ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=96` | SC-96 Registro de cartas de confirmação de sesmarias (com índice no final) | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=435` | SG-Cx.01-Doc.03 REQUERIMENTO DO SARGENTO-MOR FRANCISCO FÉLIX CORREA, REFERENTE A CARTA DE SESMARIA DAS TERRAS ATRÁS DA SERRA DO PARAÍBA, VILA DE TAUBATÉ, MINAS DO PARÁ | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=448` | SG-Cx.02-Doc.02 CARTA DE SESMARIA REFERERENTE A CONCESSÃO DE TERRAS DA FAZENDA CHAMADA SERRA À INÁCIO DE OLIVEIRA | OK |
 | ✅ OK | `https://www.siaapm.cultura.mg.gov.br/modules/brtacervo/brtacervo.php?cid=472` | SG-Cx.03-Doc.04 REQUERIMENTO DE LUIS COELHO DE ALMEIDA REFERENTE À CONCESSÃO DE CARTA DE SESMARIA DE UMA ROÇA NO CÔNEGO DO MEL E DE UMA CAPOEIRA | OK |
@@ -3058,13 +3058,13 @@
 | ✅ OK | `https://www.youtube.com/watch?v=alpb_aud_inclusao` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alpb_aud_saude` | Geral | OK |
 | ❓ INCONSISTENTE | `https://dados.al.pi.leg.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://sapl.al.pi.leg.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://sapl.al.pi.leg.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.youtube.com/@tvassembleiadopiaui` | Geral | QUEBRADO |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_h2v` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_saude` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=alepi_aud_rios` | Geral | OK |
 | ✅ OK | `https://www.al.al.leg.br/ouvidoria` | Geral | OK |
-| ❓ INCONSISTENTE | `https://transparencia.al.al.leg.br/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://transparencia.al.al.leg.br/` | Geral | OK |
 | ❓ INCONSISTENTE | `https://dados.al.al.leg.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://sapl.al.al.leg.br/` | Geral | OK |
 | ✅ OK | `https://www.youtube.com/watch?v=aleal_aud_braskem` | Geral | OK |
@@ -3212,7 +3212,7 @@
 | ✅ OK | `https://pncp.gov.br/app/editais?uf=MG` | Como consultar compras e contratos das cidades do Vale do Jequitinhonha no PNCP? | OK |
 | ✅ OK | `https://www.gov.br/anm/pt-br/assuntos/arrecadacao/distribuicao-da-cfem` | Quais municípios fazem parte do polo do lítio no Jequitinhonha e como fiscalizar? | OK |
 | ✅ OK | `https://www.gov.br/funai/pt-br/atuacao/terras-indigenas` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Te%C3%B3filo%20Otoni&uf=MG` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Te%C3%B3filo%20Otoni&uf=MG` | Como acompanhar os 27 municípios do Vale do Mucuri e as terras indígenas Maxakali? | OK |
 | ✅ OK | `https://www.gov.br/gestao/pt-br/assuntos/patrimonio-da-uniao` | Como consultar os imóveis da União em Minas Gerais? | OK |
 | ✅ OK | `https://www.transparencia.mg.gov.br` | Quais são as concessões e PPPs de Minas Gerais? | OK |
 | ❓ INCONSISTENTE | `https://www.money.tmx.com` | Quais mineradoras canadenses operam no Vale do Jequitinhonha? | INCONSISTENTE |
@@ -3251,7 +3251,7 @@
 | ❌ QUEBRADO | `https://apitempo.inmet.gov.br/avisos/ativos` | Avisos de Risco Meteorológico | QUEBRADO |
 | ❌ QUEBRADO | `https://queimadas.dgi.inpe.br/queimadas/bdqueimadas` | Programa Queimadas — Focos de Calor e Risco de Fogo | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.snis.gov.br/ e https://metadados.ana.gov.br/` | SNIS e Atlas Esgotos — Saneamento Básico e Poluição Hídrica | INCONSISTENTE |
-| ✅ OK | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | OK |
+| ❓ INCONSISTENTE | `https://mapbiomas.org/` | MapBiomas Brasil — Cobertura e Uso da Terra | INCONSISTENTE |
 | ✅ OK | `https://aedasmg.org/documento/encontro-o-povo-ainda-luta-despedida-da-aedas-paraopeba/` | FOTOS – Encontro “O Povo Ainda Luta” – Despedida da Aedas Paraopeba | OK |
 | ✅ OK | `https://aedasmg.org/documento/livros-de-danos-coletivos-sofridos-pelas-comunidades-par/` | Livros de Danos Coletivos sofridos pelas Comunidades de Brumadinho e da Região 2 | OK |
 | ✅ OK | `https://aedasmg.org/documento/balanco-anual-aedas-paraopeba-2025/` | Vídeo Balanço Anual Aedas Paraopeba – 2025 | OK |
@@ -4192,7 +4192,7 @@
 | ✅ OK | `https://www.gov.br/feam/pt-br/` | Conflito Quilombola PCH Mucuri — Comunidade Marques vs. Queiroz Galvão | OK |
 | ✅ OK | `https://www.gov.br/ibama/pt-br/assuntos/meio-ambiente/licenciamento` | Mineroduto Minas-Rio vs. Quilombolas — Anglo American | OK |
 | ✅ OK | `https://www.mpf.mp.br/` | MPF/MG — ACP: Repasse de Multas Ambientais ao Funcap | OK |
-| ❓ INCONSISTENTE | `https://direitoshumanos.dpu.def.br/comite-tematico-especializado-rio-doce-brumadinho/` | DPU — Comitê Temático Rio Doce/Brumadinho | INCONSISTENTE |
+| ✅ OK | `https://direitoshumanos.dpu.def.br/comite-tematico-especializado-rio-doce-brumadinho/` | DPU — Comitê Temático Rio Doce/Brumadinho | OK |
 | ❓ INCONSISTENTE | `https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos` | MPF Grandes Casos — Laudo Instituto Lactec | INCONSISTENTE |
 | ✅ OK | `https://defensoria.mg.def.br/` | DPMG — Atuação em Comitês do Acordo de Reparação | OK |
 | ✅ OK | `https://www.ibama.gov.br/cif/notas-tecnicas/` | CIF/IBAMA — Notas Técnicas Ambientais GTA-PMQQS | OK |
@@ -4201,7 +4201,7 @@
 | ↪️ REDIRECT | `https://www.vale.com/direitos-humanos` | Vale S.A. — Política de Direitos Humanos e Relações Comunitárias | REDIRECT |
 | ✅ OK | `https://sustentabilidade.petrobras.com.br/` | Petrobras — Relatório de Sustentabilidade e Transição Justa | OK |
 | ✅ OK | `https://www.investidorpetrobras.com.br/` | Petrobras — Demonstrações Financeiras Padronizadas (DFP / CVM) | OK |
-| ✅ OK | `https://sustentabilidade.petrobras.com.br/clima/` | Petrobras — Caderno de Clima e Descarbonização do Refino | OK |
+| ❌ QUEBRADO | `https://sustentabilidade.petrobras.com.br/clima/` | Petrobras — Caderno de Clima e Descarbonização do Refino | QUEBRADO |
 | ✅ OK | `https://www.sec.gov/edgar/browse/?CIK=0001861449` | Sigma Lithium — Annual Report Form 20-F (SEC EDGAR CIK 0001861449) | OK |
 | ✅ OK | `https://sigmalithiumcorp.com/sustainability/` | Sigma Lithium — Relatório de Sustentabilidade: Lítio Verde e Impacto Comunitário | OK |
 | ✅ OK | `https://ri.csnmineracao.com.br/` | CSN Mineração — Relatório Integrado e de Sustentabilidade | OK |
@@ -4250,9 +4250,9 @@
 | ❌ QUEBRADO | `https://www.defensoria.es.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Espírito Santo | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/noticias` | Sessão Solene: Tiago Gregório Fernandes assume como Defensor(a) Público(a)-Geral do DPGO (2022–2024) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Goiás | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s` | Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/relatorios-prisionais` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
 | ✅ OK | `https://defensoria.mg.def.br/noticias/` | Sessão Solene: Raquel Gomes de Sousa da Costa Dias assume como Defensora Pública-Geral do DPMG (2024–2026) | OK |
 | ❌ QUEBRADO | `https://www.defensoria.mg.def.br/balanco-anual-2026` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Minas Gerais | QUEBRADO |
 | ✅ OK | `https://www.defensoria.ms.def.br/noticias/posse-pedro-paulo-gasparini` | Sessão Solene: Pedro Paulo Gasparini assume como Defensor(a) Público(a)-Geral do DPMS (2023–2025) | OK |
@@ -4307,8 +4307,7 @@
 | ❌ QUEBRADO | `https://www.mpac.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPAC combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpal.mp.br/noticias` | Sessão Solene: Lean Antônio Ferreira de Araújo assume como Procurador-Geral de Justiça do MPAL (2024–2026) | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpal.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Alagoas | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.mpal.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPAL combate desvios em licitações de transporte público escolar | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.mpam.mp.br/noticias/posse-alberto-rodrigues-do-nasc` | Sessão Solene: Alberto Rodrigues do Nascimento Júnior assume como Procurador-Geral de Justiça do MPAM (2022–2024) | QUEBRADO |
+| ❌ QUEBRADO | `https://www.mpal.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPAL combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/tacs-ambientais` | Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Amazonas | QUEBRADO |
 | ❌ QUEBRADO | `https://www.mpam.mp.br/noticias/operacao-gaeco-transporte` | Operação do GAECO do MPAM combate desvios em licitações de transporte público escolar | QUEBRADO |
 | ✅ OK | `https://www.mpap.mp.br/noticias/posse-paulo-celso-ramos-dos-san` | Sessão Solene: Paulo Celso Ramos dos Santos assume como Procurador-Geral de Justiça do MPAP (2023–2025) | OK |
@@ -4450,7 +4449,6 @@
 | ❌ QUEBRADO | `https://www.tjsc.jus.br/noticias/metas-nacionais-2026` | TJSC atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjsc.jus.br/custas-processuais` | Resolução de Reajuste da Tabela de Custas Judiciais e Emolumentos de Cartórios de Santa Catarina | QUEBRADO |
 | ❌ QUEBRADO | `https://www.tjse.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJSE 2025/2026) | QUEBRADO |
-| ❌ QUEBRADO | `https://www.tjse.jus.br/noticias/metas-nacionais-2026` | TJSE atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | QUEBRADO |
 | ✅ OK | `https://www.tjsp.jus.br/noticias/posse-fernando-antonio-torres-g` | Sessão Solene: Fernando Antonio Torres Garcia assume como Presidente do Tribunal de Justiça do TJSP (2024–2026) | OK |
 | ✅ OK | `https://www.tjsp.jus.br/transparencia/gestao-fiscal` | Relatório de Gestão Fiscal e Cumprimento da LRF (TJSP 2025/2026) | OK |
 | ✅ OK | `https://www.tjsp.jus.br/noticias/metas-nacionais-2026` | TJSP atinge 98,4% de cumprimento das Metas Nacionais de Julgamento | OK |
@@ -4474,13 +4472,13 @@
 | ❌ QUEBRADO | `https://www.transparencia.org.br/publicacoes/relatorio-emendas-pix-2025` | O Rastreamento das 'Transferências Especiais' (Emendas Pix): Desafios de Prestação de Contas nos Municípios Brasileiros | QUEBRADO |
 | ❌ QUEBRADO | `https://www.anadep.org.br/diagnostico-defensoria-publica-2024` | V Diagnóstico da Defensoria Pública no Brasil: Mapa das Assimetrias Orçamentárias frente aos TJs e Ministérios Públicos | QUEBRADO |
 | ✅ OK | `https://www.cnj.jus.br/pesquisas-judiciarias/justica-em-numeros` | Custos da Justiça, Despesa com Pessoal e Produtividade nos 27 Tribunais Estaduais: Uma Leitura Cívica do Justiça em Números | OK |
-| ❓ INCONSISTENTE | `https://www.scielo.br/j/rda/a/AtuacaoMPTermosConduta` | A Atuação Extrajudicial do Ministério Público em Conflitos Ambientais: Efetividade dos TACs e Limites da Tutela Coletiva | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.scielo.br/j/rda/a/AtuacaoMPTermosConduta` | A Atuação Extrajudicial do Ministério Público em Conflitos Ambientais: Efetividade dos TACs e Limites da Tutela Coletiva | QUEBRADO |
 | ✅ OK | `https://repositorio.ufmg.br/handle/1843/IGC-SEGREGACO-URBANA-RMBH` | Segregação Socioespacial, Enchentes e Orçamento Municipal na Região Metropolitana de Belo Horizonte | OK |
 | ✅ OK | `https://discovery.nationalarchives.gov.uk/details/r/C11234980` | MI5 / Security Service: Dossiê de Contraespionagem sobre a Fuga de Kim Philby e os Cinco de Cambridge | OK |
 | ❓ INCONSISTENTE | `https://discovery.nationalarchives.gov.uk/download/KV-2-3498.pdf` | MI5 / Security Service: Dossiê de Contraespionagem sobre a Fuga de Kim Philby e os Cinco de Cambridge | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.stasi-unterlagen-archiv.de/archiv/themen/beitrag/mauerbau-1961/` | Stasi / HA II: Dossiê Operacional sobre a Construção e Fechamento do Muro de Berlim | REDIRECT |
 | ↪️ REDIRECT | `https://www.stasi-unterlagen-archiv.de/pdf/mfs-ha-ii-berliner-mauer-1961.pdf` | Stasi / HA II: Dossiê Operacional sobre a Construção e Fechamento do Muro de Berlim | REDIRECT |
-| ✅ OK | `https://www.servicehistorique.sga.defense.gouv.fr/` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | OK |
+| ❓ INCONSISTENTE | `https://www.servicehistorique.sga.defense.gouv.fr/` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | INCONSISTENTE |
 | ⚠️ MENTIROSO | `https://francearchives.gouv.fr/pdf/shd-sdece-algerie-1957.pdf` | SDECE / SHD: Diretiva Operacional sobre a Batalha de Argel e Ações Especiais na Argélia | MENTIROSO |
 | ❌ QUEBRADO | `http://dati.acs.beniculturali.it/comitatodirettiva/` | Direttiva Declassifica: Dossiê SISMI sobre o Atentado Terrorista na Estação de Bolonha | QUEBRADO |
 | ❌ QUEBRADO | `http://dati.acs.beniculturali.it/declassificati/strage-bologna-fasc-22.pdf` | Direttiva Declassifica: Dossiê SISMI sobre o Atentado Terrorista na Estação de Bolonha | QUEBRADO |
@@ -4555,7 +4553,7 @@
 | ✅ OK | `https://www.neoenergia.com/` | Espanha: Iberdrola S.A. — ANEEL / Procons Nordeste | OK |
 | ↪️ REDIRECT | `https://www.repsolsinopec.com.br/` | Espanha: Repsol S.A. (Madri) — ANP / IBAMA CGPEG / CNMV Espanha | REDIRECT |
 | ↪️ REDIRECT | `https://www.latibex.com/` | Espanha: Bolsas y Mercados Españoles (BME) — BME Latibex / CNMV Espanha / B3 | REDIRECT |
-| ❓ INCONSISTENTE | `https://www.edp.com.br/` | Portugal: EDP - Energias de Portugal S.A. (Lisboa) — ANEEL / CMVM Portugal / B3 | INCONSISTENTE |
+| ✅ OK | `https://www.edp.com.br/` | Portugal: EDP - Energias de Portugal S.A. (Lisboa) — ANEEL / CMVM Portugal / B3 | OK |
 | ✅ OK | `https://www.galp.com/corp/pt/` | Portugal: Galp Energia SGPS S.A. — ANP / IBAMA CGPEG / CMVM Portugal | OK |
 | ✅ OK | `https://dciap.ministeriopublico.pt/` | Portugal: Departamento Central de Investigação e Ação Penal (DCIAP) — DCIAP / Polícia Judiciária (Portugal) / MPF / PF | OK |
 | ✅ OK | `https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32023R1115` | União Europeia: União Europeia (27 Estados-Membros) — Comissão Europeia / Parlamento Europeu / TRACES-NT | OK |
@@ -4576,9 +4574,9 @@
 | ✅ OK | `https://www.itaituba.pa.gov.br/transparencia` | Prefeitura Municipal de Itaituba | OK |
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br/transparencia` | Prefeitura Municipal de Santarém | INCONSISTENTE |
 | ✅ OK | `https://saoluis.ma.gov.br/transparencia` | Prefeitura Municipal de São Luís | OK |
-| ✅ OK | `https://www.floriano.pi.gov.br/transparencia` | Prefeitura Municipal de Floriano | OK |
+| ❓ INCONSISTENTE | `https://www.floriano.pi.gov.br/transparencia` | Prefeitura Municipal de Floriano | INCONSISTENTE |
 | ✅ OK | `https://www.parnaiba.pi.gov.br/transparencia` | Prefeitura Municipal de Parnaíba | OK |
-| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/transparencia` | Prefeitura Municipal de Iguatu | INCONSISTENTE |
+| ✅ OK | `https://www.iguatu.ce.gov.br/transparencia` | Prefeitura Municipal de Iguatu | OK |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/transparencia` | Prefeitura Municipal de Juazeiro do Norte | INCONSISTENTE |
 | ✅ OK | `https://www.sobral.ce.gov.br/transparencia` | Prefeitura Municipal de Sobral | OK |
 | ❌ QUEBRADO | `https://www.caico.rn.gov.br/transparencia` | Prefeitura Municipal de Caicó | QUEBRADO |
@@ -4888,7 +4886,6 @@
 | ✅ OK | `https://www.brisanet.com.br/ouvidoria/` | Brisanet Telecomunicações | OK |
 | ✅ OK | `https://plataforma.monitormineracao.mapbiomas.org/` | Geral | OK |
 | ❓ INCONSISTENTE | `https://www.camaracacoal.ro.gov.br` | Cacoal | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www.cacoal.ro.gov.br/diario-oficial` | Cacoal | REDIRECT |
 | ❓ INCONSISTENTE | `https://www.camaraji-parana.ro.gov.br` | Ji-Paraná | INCONSISTENTE |
 | ✅ OK | `https://sapl.portovelho.ro.leg.br/` | Porto Velho | OK |
 | ❓ INCONSISTENTE | `https://www.camaravilhena.ro.gov.br` | Vilhena | INCONSISTENTE |
@@ -4926,7 +4923,7 @@
 | ❓ INCONSISTENTE | `https://www.camaraitaituba.pa.gov.br` | Itaituba | INCONSISTENTE |
 | ✅ OK | `https://www.itaituba.pa.gov.br/diario-oficial` | Itaituba | OK |
 | ❓ INCONSISTENTE | `https://www.camaramaraba.pa.gov.br` | Marabá | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.maraba.pa.gov.br/diario-oficial` | Marabá | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.maraba.pa.gov.br/diario-oficial` | Marabá | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.paragominas.pa.gov.br/diario-oficial` | Paragominas | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.camararedencao.pa.gov.br` | Redenção | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br` | Santarém | INCONSISTENTE |
@@ -4960,8 +4957,8 @@
 | ✅ OK | `https://www.crato.ce.gov.br` | Crato | OK |
 | ✅ OK | `https://fortaleza.ce.gov.br/` | Fortaleza | OK |
 | ❓ INCONSISTENTE | `https://sapl.cmfor.ce.gov.br/` | Fortaleza | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br` | Iguatu | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | INCONSISTENTE |
+| ✅ OK | `https://www.iguatu.ce.gov.br` | Iguatu | OK |
+| ❌ QUEBRADO | `https://www.iguatu.ce.gov.br/diario-oficial` | Iguatu | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camarajuazeiro-do-norte.ce.gov.br` | Juazeiro do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.juazeiro-do-norte.ce.gov.br/diario-oficial` | Juazeiro do Norte | INCONSISTENTE |
@@ -5208,7 +5205,7 @@
 | ❓ INCONSISTENTE | `https://www.campo-mourao.pr.gov.br` | Campo Mourão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaracampo-mourao.pr.gov.br` | Campo Mourão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.campo-mourao.pr.gov.br/diario-oficial` | Campo Mourão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.camaracascavel.pr.gov.br` | Cascavel | INCONSISTENTE |
+| ✅ OK | `https://www.camaracascavel.pr.gov.br` | Cascavel | OK |
 | ❌ QUEBRADO | `https://www.cascavel.pr.gov.br/diario-oficial` | Cascavel | QUEBRADO |
 | ✅ OK | `https://curitiba.pr.gov.br/` | Curitiba | OK |
 | ❓ INCONSISTENTE | `https://sapl.curitiba.pr.leg.br/` | Curitiba | INCONSISTENTE |
@@ -5311,12 +5308,12 @@
 | ✅ OK | `https://www.caceres.mt.gov.br` | Cáceres | OK |
 | ❓ INCONSISTENTE | `https://www.camaracaceres.mt.gov.br` | Cáceres | INCONSISTENTE |
 | ✅ OK | `https://www.caceres.mt.gov.br/diario-oficial` | Cáceres | OK |
-| ✅ OK | `https://cuiaba.mt.gov.br/` | Cuiabá | OK |
+| ❓ INCONSISTENTE | `https://cuiaba.mt.gov.br/` | Cuiabá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://sapl.cuiaba.mt.leg.br/` | Cuiabá | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br` | Lucas do Rio Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.camaralucas-do-rio-verde.mt.gov.br` | Lucas do Rio Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.lucas-do-rio-verde.mt.gov.br/diario-oficial` | Lucas do Rio Verde | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.rondonopolis.mt.gov.br` | Rondonópolis | INCONSISTENTE |
+| ✅ OK | `https://www.rondonopolis.mt.gov.br` | Rondonópolis | OK |
 | ✅ OK | `https://www.camararondonopolis.mt.gov.br` | Rondonópolis | OK |
 | ✅ OK | `https://www.sinop.mt.gov.br` | Sinop | OK |
 | ❓ INCONSISTENTE | `https://www.camarasinop.mt.gov.br` | Sinop | INCONSISTENTE |
@@ -5368,53 +5365,53 @@
 | ✅ OK | `https://www.betim.mg.gov.br` | Betim | OK |
 | ✅ OK | `https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/CNES/cnes_estabelecimentos_json.zip` | Geral | OK |
 | ✅ OK | `https://comunicabr.presidencia.gov.br/api/v2/indicadores` | Geral | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/107970` | Ana Paula Leão | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/107970` | Ana Paula Leão | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220632` | Ana Pimentel | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204515` | André Janones | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74646` | Aécio Neves | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/74646` | Aécio Neves | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/210989` | Bruno Farias | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/206018` | Célia Xakriabá | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220629` | Dandara | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220625` | Delegada Ione | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204512` | Delegado Marcelo Freitas | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160588` | Diego Andrade | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160599` | Dimas Fabiano | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160758` | Domingos Sávio | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204518` | Dr. Frederico | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/227800` | Duarte Gonçalves Jr | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204512` | Delegado Marcelo Freitas | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/160588` | Diego Andrade | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/160599` | Dimas Fabiano | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/160758` | Domingos Sávio | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204518` | Dr. Frederico | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/227800` | Duarte Gonçalves Jr | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220623` | Duda Salabert | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/228272` | Délio Pinheiro | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/161550` | Emidinho Madeira | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160640` | Eros Biondini | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204482` | Euclydes Pettersen | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/234388` | Fabiano Cazeca | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/234388` | Fabiano Cazeca | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/227370` | Felipe Saliba | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204494` | Fred Costa | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204491` | Gilberto Abramo | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/236284` | Glaycon Franco | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/229333` | Gláucia Santiago | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/198197` | Greyce Elias | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204539` | Hercílio Coelho Diniz | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204508` | Igor Timo | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/235620` | Ilacir Bicalho | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204520` | Junio Amaral | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/208297` | Katia Dias | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/98057` | Lafayette de Andrada | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204491` | Gilberto Abramo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/236284` | Glaycon Franco | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/229333` | Gláucia Santiago | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/198197` | Greyce Elias | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204539` | Hercílio Coelho Diniz | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204508` | Igor Timo | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/235620` | Ilacir Bicalho | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204520` | Junio Amaral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/208297` | Katia Dias | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/98057` | Lafayette de Andrada | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74156` | Leonardo Monteiro | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74585` | Lincoln Portela | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160510` | Luis Tibé | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/141487` | Luiz Fernando Faria | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/160510` | Luis Tibé | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/141487` | Luiz Fernando Faria | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/179000` | Marcelo Álvaro Antônio | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220628` | Mauricio do Vôlei | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/220628` | Mauricio do Vôlei | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/171786` | Miguel Ângelo | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/178895` | Misael Varella | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74158` | Mário Heringer | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220622` | Nely Aquino | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/220622` | Nely Aquino | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/178896` | Newton Cardoso Jr | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/209787` | Nikolas Ferreira | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/209787` | Nikolas Ferreira | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74159` | Odair Cunha | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160556` | Padre João | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/74160` | Patrus Ananias | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/160556` | Padre João | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/74160` | Patrus Ananias | INCONSISTENTE |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/141516` | Paulo Abi-Ackel | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204492` | Paulo Guedes | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/220630` | Pedro Aihara | OK |
@@ -5431,7 +5428,7 @@
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/235712` | Vavá | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160518` | Weliton Prado | OK |
 | ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/160632` | Zé Silva | OK |
-| ✅ OK | `https://dadosabertos.camara.leg.br/api/v2/deputados/204517` | Zé Vitor | OK |
+| ❓ INCONSISTENTE | `https://dadosabertos.camara.leg.br/api/v2/deputados/204517` | Zé Vitor | INCONSISTENTE |
 | ✅ OK | `https://www.betim.mg.gov.br/portal/secretarias-paginas/79/conselho-municipal-de-saude/` | Conselho Municipal de Saúde de Betim | OK |
 | ✅ OK | `https://conselho.saude.gov.br` | Conselho Nacional de Sa?de | OK |
 | ✅ OK | `https://conselho.saude.gov.br/atas-cns` | Conselho Nacional de Sa?de | OK |
@@ -5600,7 +5597,6 @@
 | ❓ INCONSISTENTE | `https://www.mulher.to.gov.br` | Conselho Estadual dos Direitos da Mulher de Tocantins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.governo.to.gov.br/mulher/atas` | Conselho Estadual dos Direitos da Mulher de Tocantins | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.to.gov.br` | Conselho Estadual do Meio Ambiente de Tocantins | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www.cacoal.ro.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Cacoal - RO | REDIRECT |
 | ❌ QUEBRADO | `https://www.vilhena.ro.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Vilhena - RO | QUEBRADO |
 | ❌ QUEBRADO | `https://www.vilhena.ro.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Vilhena - RO | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.cruzeiro-do-sul.ac.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Cruzeiro do Sul - AC | INCONSISTENTE |
@@ -5636,7 +5632,6 @@
 | ❌ QUEBRADO | `https://www.castanhal.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Castanhal - PA | QUEBRADO |
 | ✅ OK | `https://www.itaituba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Itaituba - PA | OK |
 | ❌ QUEBRADO | `https://www.maraba.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Marabá - PA | QUEBRADO |
-| ↪️ REDIRECT | `https://www.maraba.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Marabá - PA | REDIRECT |
 | ❌ QUEBRADO | `https://www.redencao.pa.gov.br/conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Redenção - PA | QUEBRADO |
 | ❌ QUEBRADO | `https://www.redencao.pa.gov.br/cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Redenção - PA | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.santarem.pa.gov.br/transparencia/conselhos` | Conselho Municipal de Sa?de de Santarém - PA | INCONSISTENTE |
@@ -5955,35 +5950,35 @@
 | ❓ INCONSISTENTE | `https://df.gov.br//transparencia/conselhos` | Conselho Municipal de Sa?de de Brasília - DF | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://df.gov.br//conselhos/codema` | Conselho Municipal de Conserva??o e Defesa do Meio Ambiente de Brasília - DF | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://df.gov.br//cmdca` | Conselho Municipal dos Direitos da Crian?a e do Adolescente de Brasília - DF | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/83551549000100-2-000139/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/83551549000100-2-000139/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/83551549000100-2-000140/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000133/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000134/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/92465228000175-2-000135/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004600/2026` | Geral | OK |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004601/2026` | Geral | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004602/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004603/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004604/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004605/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004606/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004607/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004608/2026` | Geral | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004609/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004610/2026` | Geral | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004611/2026` | Geral | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004612/2026` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos/00394460005887-2-004613/2026` | Geral | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos/00394460005887-2-004614/2026` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=155313` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=155313` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2025.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=152874` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=146543` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=150500` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=152560` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=150500` | Geral | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=152560` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=145455` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2024.zip` | Geral | OK |
@@ -6001,27 +5996,27 @@
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=129283` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=131627` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123591` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123591` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2022.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123327` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2022.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=114080` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=118792` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=121194` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=121194` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=112054` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2021.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=109022` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2021.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=103078` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=106831` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=109308` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=106831` | Geral | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=109308` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=100475` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2020.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=96220` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2020.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=92568` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=92568` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=95152` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=97948` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2019.zip` | Geral | OK |
@@ -6031,9 +6026,9 @@
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2019.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=83060` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=93633` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=88794` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=88794` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2018.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=82269` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=82269` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2018.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=80267` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2018.zip` | Geral | OK |
@@ -6041,7 +6036,7 @@
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=76479` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=78256` | Geral | INCONSISTENTE |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2017.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=71834` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=71834` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2017.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=69107` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2017.zip` | Geral | OK |
@@ -6053,20 +6048,20 @@
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2016.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=59975` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2016.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=55326` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=58299` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=60202` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=55326` | Geral | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=58299` | Geral | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=60202` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2015.zip` | Geral | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=53612` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=53612` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2015.zip` | Geral | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=52210` | Geral | OK |
 | ✅ OK | `https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2015.zip` | Geral | OK |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=46237` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=49330` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=51039` | Geral | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=51039` | Geral | OK |
 | ✅ OK | `http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx` | Geral | OK |
 | ✅ OK | `https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html` | Destinacoes de Imoveis da Uniao em Minas Gerais | OK |
-| ✅ OK | `https://www.diariomunicipal.com.br/amm-mg/` | EXTRATO: ATA DE REGISTRO DE PREÇOS Nº 043/2026 | OK |
+| ❓ INCONSISTENTE | `https://www.diariomunicipal.com.br/amm-mg/` | EXTRATO: ATA DE REGISTRO DE PREÇOS Nº 043/2026 | INCONSISTENTE |
 | ✅ OK | `https://www.betim.mg.gov.br/portal/diario-oficial/` | AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 055/2026 | OK |
 | ❌ QUEBRADO | `https://aracuai.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 041/2026 | QUEBRADO |
 | ❌ QUEBRADO | `https://itinga.mg.gov.br/diario-oficial` | EXTRATO DE CONTRATO Nº 019/2026 | QUEBRADO |
@@ -6498,7 +6493,7 @@
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734843130` | Despacho | OK |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734841273` | Despacho | OK |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839650` | Despacho | OK |
-| ❓ INCONSISTENTE | `https://www.in.gov.br/web/dou/-/despacho-734839590` | Despacho | INCONSISTENTE |
+| ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839590` | Despacho | OK |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839372` | Despacho | OK |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734839210` | Despacho | OK |
 | ✅ OK | `https://www.in.gov.br/web/dou/-/despacho-734837803` | Despacho | OK |
@@ -6734,7 +6729,7 @@
 | ✅ OK | `https://iema.es.gov.br` | Geral | OK |
 | ✅ OK | `https://ouvidoria.es.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.go.gov.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://sema.ma.gov.br` | Geral | INCONSISTENTE |
+| ✅ OK | `https://sema.ma.gov.br` | Geral | OK |
 | ❓ INCONSISTENTE | `https://ouvidoria.ma.gov.br` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.meioambiente.mg.gov.br` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.feam.br` | Geral | OK |
@@ -6789,8 +6784,8 @@
 | ✅ OK | `https://www.copasa.com.br` | Geral | OK |
 | ✅ OK | `https://www.copasa.com.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.sabesp.com.br` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.sanepar.com.br` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.sanepar.com.br/ouvidoria` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.sanepar.com.br` | Geral | OK |
+| ✅ OK | `https://www.sanepar.com.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.corsan.com.br` | Geral | OK |
 | ✅ OK | `https://www.embasa.ba.gov.br` | Geral | OK |
 | ↪️ REDIRECT | `https://www.compesa.com.br` | Geral | REDIRECT |
@@ -6804,8 +6799,8 @@
 | ↪️ REDIRECT | `https://aguasdorio.com.br` | Geral | REDIRECT |
 | ↪️ REDIRECT | `https://aguasdorio.com.br/ouvidoria` | Geral | REDIRECT |
 | ✅ OK | `https://www.aegea.com.br` | Geral | OK |
-| ❌ QUEBRADO | `https://www.aegea.com.br/contato/ouvidoria` | Geral | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.brkambiental.com.br` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www.aegea.com.br/contato/ouvidoria` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.brkambiental.com.br` | Geral | OK |
 | ✅ OK | `https://www.cemig.com.br` | Geral | OK |
 | ✅ OK | `https://www.cemig.com.br/ouvidoria` | Geral | OK |
 | ✅ OK | `https://www.cpfl.com.br` | Geral | OK |
@@ -6858,7 +6853,7 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159452` | ANTONIO MANOEL MARQUES GUEDES DA CRUZ JUNIOR | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161445` | AMARO LUIZ DE OLIVEIRA GOMES | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161398` | ALAN CARLOS GUEDES DE OLIVEIRA | OK |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157774` | TATIANA ROSITO | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157774` | TATIANA ROSITO | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159614` | BRUNO DUQUE HORTA NOGUEIRA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161335` | ADEMARIO ALVES DE JESUS | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157745` | SARAH TARSILA ARAÚJO ANDREOZZI | OK |
@@ -6915,14 +6910,14 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=154496` | HAROLDO GUIMARÃES BRASIL | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161020` | NOURIVAL DE SOUZA RESENDE FILHO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160132` | BRUNO SILVA DALCOLMO | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158392` | CARLOS FERNANDO COUTO DE OLIVEIRA SOUTO | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158392` | CARLOS FERNANDO COUTO DE OLIVEIRA SOUTO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160389` | DANIELLA GODINHO ABREU | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158858` | ALBÉRICO MACHADO MASCARENHAS | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158970` | JAIRO EDUARDO DE BARROS ALVARES | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161425` | ANDERSON MARCIO DE OLIVEIRA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159431` | FELIPE MAGNO PARREIRAS DE SOUSA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161419` | ANATALICIO RISDEN JUNIOR | OK |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161326` | YOSHIAKI NAKANO | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161326` | YOSHIAKI NAKANO | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161210` | ANDRE CLARK JULIANO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157189` | JOSÉ ANTONIO MIGUEL NETO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161060` | WALFRIDO SILVINO DOS MARES GUIA NETO | OK |
@@ -6931,13 +6926,13 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159298` | ANA CAROLINA MIRANDA LOPES ALMEIDA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159949` | ANDRÉ DA SILVA CURCIO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161304` | ANDRE VILANOVA DA SILVA | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157154` | IVAN MARQUES DE TOLEDO CAMARGO | INCONSISTENTE |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158824` | VICENTE CORTES DE CARVALHO | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157154` | IVAN MARQUES DE TOLEDO CAMARGO | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158824` | VICENTE CORTES DE CARVALHO | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159136` | GUILHERME PENIN SANTOS DE LIMA | OK |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159856` | DANIEL ALVES CAVALHEIRO | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159856` | DANIEL ALVES CAVALHEIRO | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160158` | ANTONIO CARNEIRO ALVES | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161447` | RENATA LACERDA SIMAS | OK |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161438` | RICARDO ALEXANDRE PEREIRA BENÍCIO | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161438` | RICARDO ALEXANDRE PEREIRA BENÍCIO | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159410` | NATÁLIA MARCASSA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158601` | MARCELO DE OLIVEIRA E SILVA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159617` | RENATA REGIANE LACERDA SIMAS | OK |
@@ -6946,7 +6941,7 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161287` | MARCOS DE BARROS CRUZ | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160333` | DIOGO MAC CORD DE FARIA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161145` | ANTONIO KANDIR | OK |
-| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160931` | OTTO ALEXANDRE LEVY REIS | OK |
+| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160931` | OTTO ALEXANDRE LEVY REIS | INCONSISTENTE |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161449` | ANTÔNIO KANDIR | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=157161` | VALDIR AUGUSTO DE ASSUNÇÃO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161070` | PEDRO WONGTSCHOWSKI | OK |
@@ -6957,7 +6952,7 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158234` | UDO DÖHLER | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160365` | JOÃO ELISIO FERRAZ DE CAMPOS | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161468` | JOÃO ALBERTO GOMES BERNACCHIO | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160782` | HÉLIO VETTER | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160782` | HÉLIO VETTER | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161215` | EDISON ANTONIO COSTA BRITTO GARCIA | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=148387` | IVO SERGIO BARAN | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=149686` | MÁRCIO SANTIAGO CÂMARA | OK |
@@ -7058,8 +7053,8 @@
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=156830` | AMÉRICO FRANKLIN FERREIRA NETO | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=159594` | LEANDRO REIS TAVARES | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161054` | MAURICIO BATISTA DA SILVA | OK |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158063` | LUIS HENRIQUE FERREIRA PINTO | INCONSISTENTE |
-| ❓ INCONSISTENTE | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161343` | MARIANNE ALBERS | INCONSISTENTE |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=158063` | LUIS HENRIQUE FERREIRA PINTO | OK |
+| ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161343` | MARIANNE ALBERS | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161317` | LEANDRO FELTRAN BARBIERI | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161305` | ÁLVARO AMARAL DE FRANÇA COUTO PALMA DE JORGE | OK |
 | ✅ OK | `http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=154796` | ALCIDES LOPES TÁPIAS | OK |
@@ -7425,7 +7420,7 @@
 | ❓ INCONSISTENTE | `https://www.tce-es.tc.br` | Espírito Santo | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://osbrasil.org.br/unidade/es` | Espírito Santo | INCONSISTENTE |
 | ✅ OK | `https://www.oabes.org.br` | Espírito Santo | OK |
-| ❓ INCONSISTENTE | `https://www.go.gov.br` | Goiás | INCONSISTENTE |
+| ✅ OK | `https://www.go.gov.br` | Goiás | OK |
 | ✅ OK | `https://transparencia.go.gov.br` | Goiás | OK |
 | ✅ OK | `https://dados.go.gov.br` | Goiás | OK |
 | ❓ INCONSISTENTE | `https://diariooficial.go.gov.br` | Goiás | INCONSISTENTE |
@@ -8479,17 +8474,17 @@
 | ❌ QUEBRADO | `https://www.defensoria.go.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpgo/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/defensoria-geral` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/nucleo-de-direitos-humano` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/nucleo-de-execucao-penal` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
+| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria-geral-externa` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/balcao-cidadao` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/ouvidoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/corregedoria` | Defensoria Pública do Estado de Maranhão | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/corregedoria` | Defensoria Pública do Estado de Maranhão | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/inspecao-prisional-2025.pdf` | Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA) | QUEBRADO |
 | ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/atuacao/moradia-coletiva` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | INCONSISTENTE |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/acao-moradia-2025.pdf` | Ação Coletiva de Regularização Fundiária e Suspensão de Despejo em Comunidade Periférica | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/balanco-atendimentos-2026.pdf` | Balanço Anual de Atendimento e Litigância Estratégica da Defensoria Pública de Maranhão | QUEBRADO |
-| ❓ INCONSISTENTE | `https://www.defensoria.ma.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | INCONSISTENTE |
+| ❌ QUEBRADO | `https://www.defensoria.ma.def.br/recomendacao-seguranca-2026` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ❌ QUEBRADO | `https://arquivos.controlepopular.com.br/justica/dpma/recomendacao-cameras-2026.pdf` | Recomendação Conjunta sobre Uso de Câmeras Corporais e Protocolos de Abordagem Policial | QUEBRADO |
 | ✅ OK | `https://defensoria.mg.def.br/conselho-superior/` | Defensoria Pública do Estado de Minas Gerais | OK |
 | ↪️ REDIRECT | `https://defensoria.mg.def.br/corregedoria/` | Defensoria Pública do Estado de Minas Gerais | REDIRECT |
@@ -13182,25 +13177,23 @@
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=510618&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=374015&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=324363&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=462049&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=465469&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=514392&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=25&codigoOrigem=0&inteiroTeor=true&numero=104244&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=476420&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=478853&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=465268&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=25&codigoOrigem=0&inteiroTeor=true&numero=354209&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=224742&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=360287&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=83127&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=461799&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=373708&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=510558&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=422885&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=486106&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=462049&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=465469&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=514392&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=25&codigoOrigem=0&inteiroTeor=true&numero=104244&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=476420&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=478853&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=465268&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=25&codigoOrigem=0&inteiroTeor=true&numero=354209&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=224742&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=360287&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=83127&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=510558&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=422885&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=486106&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=462083&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=25&codigoOrigem=0&inteiroTeor=true&numero=63470&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=419466&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=419466&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=40743&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=35565&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=482787&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
@@ -13976,37 +13969,19 @@
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=343306&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=47003&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=378284&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=17203&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=286506&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=6228&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=222573&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=219456&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=341226&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=280462&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=256289&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=55361&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=343394&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=270437&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=245279&sequencial=5&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=339205&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=257270&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=13604&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=10385&sequencial=3&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=17821&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=302018&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=340224&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=330769&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=254670&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=334853&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=26923&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=378531&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=332132&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=19242&sequencial=3&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=17203&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=286506&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=6228&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=222573&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=219456&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=341226&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=280462&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=256289&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=267332&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=343400&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=82184&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=285950&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=263098&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=263098&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=63540&sequencial=3&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=243380&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=263077&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
@@ -14330,26 +14305,17 @@
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=209780&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=282716&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=27096&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=181517&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=220828&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=252620&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=221464&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=305187&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=146836&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=89462&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=92278&sequencial=4&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=202784&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=314717&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=181517&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=220828&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=252620&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=221464&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=305187&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=146836&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=89462&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=92278&sequencial=4&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=202784&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=314717&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=85128&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=261188&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=321358&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=52121&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=134378&sequencial=3&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=238281&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=330045&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=334242&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=322670&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
-| ↪️ REDIRECT | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=221957&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | REDIRECT |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=274835&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=236614&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=17042&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
@@ -14702,7 +14668,6 @@
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=217286&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=19&codigoOrigem=393&inteiroTeor=true&numero=1835&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=336597&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ↪️ REDIRECT | `https://portal.stf.jus.br/jurisprudencia/obterInteiroTeor.asp?idDocumento=775752637` | Geral | REDIRECT |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=251631&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=229047&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=258764&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
@@ -16666,11 +16631,11 @@
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=47836&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=20&codigoOrigem=0&inteiroTeor=true&numero=541299&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=74334&sequencial=3&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=247259&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=41529&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=41300&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=247259&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=41529&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
+| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=41300&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=245279&sequencial=2&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
-| ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=40306&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=40306&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=37317&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=37295&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
 | ✅ OK | `https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=22&codigoOrigem=0&inteiroTeor=true&numero=35575&sequencial=1&sequencialAcordao=0&ttriCodigo=1` | Geral | OK |
@@ -18326,6 +18291,7 @@
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775738305` | Geral | OK |
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775752630` | Geral | OK |
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775752636` | Geral | OK |
+| ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775752637` | Geral | OK |
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775821990` | Geral | OK |
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775827614` | Geral | OK |
 | ✅ OK | `https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775928687` | Geral | OK |
@@ -20909,7 +20875,7 @@
 | ✅ OK | `https://www.canoas.rs.gov.br/noticias/conselhos-do-idoso-e-dos-adolescentes-recebem-veiculos-0km/` | Geral | OK |
 | ✅ OK | `http://carapicuiba.sp.gov.br/departamento/view/14/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-cmdca` | Geral | OK |
 | ✅ OK | `http://carapicuiba.sp.gov.br/departamento/view/16/conselho-municipal-de-defesa-do-meio-ambiente-comdema` | Geral | OK |
-| ✅ OK | `https://fateccarapicuiba.cps.sp.gov.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://fateccarapicuiba.cps.sp.gov.br/` | Geral | INCONSISTENTE |
 | ✅ OK | `https://www.carapicuiba.sp.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.carapicuiba.sp.gov.br/portal/secretarias/46/conselho-municipal-de-saude---cms/` | Geral | OK |
 | ✅ OK | `https://www.cisaje.mg.gov.br/institucional/servicos/entes-consorciados/71-carbonita` | Geral | OK |
@@ -22636,10 +22602,10 @@
 | ✅ OK | `https://guarapuava.pr.gov.br/wp-content/uploads/2022/01/conselhos.jpg` | Geral | OK |
 | ✅ OK | `https://www.guarulhos.sp.gov.br/artigo/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-promove-conferencia` | Geral | OK |
 | ✅ OK | `https://www.guarulhos.sp.gov.br/conselho-municipal-de-saude-0` | Geral | OK |
-| ❓ INCONSISTENTE | `https://gurupi.to.gov.br/` | Geral | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://gurupi.to.gov.br/2017/11/cmdca-convoca-suplente-de-conselheiro-tutelar/` | Geral | INCONSISTENTE |
-| ✅ OK | `https://cidadao.gurupi.to.gov.br/fundo-meio-ambiente/conselho/conselho-municipal-de-meio-ambiente-2` | Geral | OK |
-| ❓ INCONSISTENTE | `https://gurupi.to.gov.br/2013/04/conselhos-de-assistencia-social-e-de-seguranca-alimentar-de-gurupi-realizam-reuniao-nesta-terca/` | Geral | INCONSISTENTE |
+| ✅ OK | `https://gurupi.to.gov.br/` | Geral | OK |
+| ✅ OK | `https://gurupi.to.gov.br/2017/11/cmdca-convoca-suplente-de-conselheiro-tutelar/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://cidadao.gurupi.to.gov.br/fundo-meio-ambiente/conselho/conselho-municipal-de-meio-ambiente-2` | Geral | INCONSISTENTE |
+| ✅ OK | `https://gurupi.to.gov.br/2013/04/conselhos-de-assistencia-social-e-de-seguranca-alimentar-de-gurupi-realizam-reuniao-nesta-terca/` | Geral | OK |
 | ✅ OK | `https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf` | Geral | OK |
 | ✅ OK | `https://www.ief.mg.gov.br/w/concursos-publicos` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-conservacao-e-recuperacao-de-ecossistema-dcre` | Geral | OK |
@@ -22651,7 +22617,7 @@
 | ✅ OK | `https://www.mg.gov.br/iepha/periodo-eleitoral` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-conservacao-e-restauracao-0` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/iepha/pagina/uncategorised/quem-e-quem` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mg.gov.br/iepha/pagina/tombamento-e-registro` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mg.gov.br/iepha/pagina/tombamento-e-registro` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/iepha/pagina/lei-de-acesso-a-informacao` | Geral | OK |
 | ✅ OK | `https://imperatriz.ma.gov.br/` | Geral | OK |
 | ✅ OK | `https://imperatriz.ma.gov.br/portal/conselho-municipal-da-crianca-e-do-adolescente/locais-de-votacao.html` | Geral | OK |
@@ -22661,7 +22627,7 @@
 | ✅ OK | `https://www.in.gov.br/consulta/` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/disque-denuncia` | Geral | OK |
 | ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-monitoramento-e-fiscalizacao-ambiental-dmfa` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/diretoria-de-regulacao` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/sites/site-inema/files/2025-08/ORGANOGRAMA-PESSOAL-1 (1).pdf` | Geral | OK |
 | ✅ OK | `https://www.ba.gov.br/inema/transparencia` | Geral | OK |
 | ✅ OK | `https://www.ipaam.am.gov.br/portal-de-servicos/` | Geral | OK |
@@ -22733,6 +22699,7 @@
 | ✅ OK | `https://macaiba.rn.gov.br/secretaria/secretaria-municipal-de-meio-ambiente-e-urbanismo/` | Geral | OK |
 | ✅ OK | `https://macaiba.rn.gov.br/servicos/diario-oficial/` | Geral | OK |
 | ✅ OK | `https://maraba.pa.gov.br/` | Geral | OK |
+| ✅ OK | `https://maraba.pa.gov.br/cmdca-conferencia-municipal-350-criancas-2026/` | Geral | OK |
 | ✅ OK | `https://maraba.pa.gov.br/topicos/meio-ambiente/` | Geral | OK |
 | ✅ OK | `https://www.marilia.sp.gov.br/portal/noticias/0/3/10197/empossado-o-novo-conselho-municipal-dos-direitos-da-crianca-e-do-adolescente/` | Geral | OK |
 | ✅ OK | `https://www.marilia.sp.gov.br/portal/noticias/0/3/14913/conselho-municipal-de-meio-ambiente-realiza-primeira-reuniao-de-2025-e-define-novas-diretrizes` | Geral | OK |
@@ -22759,6 +22726,7 @@
 | ✅ OK | `https://www.mpal.mp.br/?page_id=2517` | Geral | OK |
 | ✅ OK | `https://www.mpal.mp.br/?page_id=1746` | Geral | OK |
 | ✅ OK | `https://www.mpam.mp.br/sobre-o-mpam/funcoes-do-mpam` | Geral | OK |
+| ✅ OK | `https://www.mpam.mp.br/comunicacao/noticias/alberto-rodrigues-do-nascimento-junior-e-reconduzido-ao-cargo-de-procurador-geral-de-justica-do-amazonas` | Geral | OK |
 | ✅ OK | `https://www.mpba.mp.br/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/` | Geral | OK |
 | ✅ OK | `https://mpce.mp.br/atendimento-de-pacientes-com-autismo-na-rede-municipal-de-fortaleza-e-tema-de-audiencia-publica/` | Geral | OK |
@@ -22872,7 +22840,7 @@
 | ✅ OK | `https://patos.pb.gov.br/noticias/conselho-municipal-de-a14115.html` | Geral | OK |
 | ✅ OK | `https://www.pelotas.rs.gov.br/` | Geral | OK |
 | ✅ OK | `https://pesqueira.pe.gov.br/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.pesqueira.pe.leg.br/noticia/18/Camara-Municipal-de-Pesqueira-aprova-alteracoes-no-Conselho-Municipal-de-Meio-Ambiente-e-Sustentabilidade` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.pesqueira.pe.leg.br/noticia/18/Camara-Municipal-de-Pesqueira-aprova-alteracoes-no-Conselho-Municipal-de-Meio-Ambiente-e-Sustentabilidade` | Geral | OK |
 | ✅ OK | `https://pesqueira.pe.gov.br/transparencia-e-responsabilidade-gestao-municipal-apresenta-metas-fiscais-em-audiencia-publica/` | Geral | OK |
 | ✅ OK | `https://petrolina.pe.gov.br/` | Geral | OK |
 | ✅ OK | `https://petrolina.pe.gov.br/secretarias/agencia-municipal-de-meio-ambiente/` | Geral | OK |
@@ -22967,7 +22935,7 @@
 | ✅ OK | `https://www.sousa.pb.gov.br/` | Geral | OK |
 | ✅ OK | `http://sousa.pb.gov.br/` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/ministro-luis-roberto-barroso-toma-posse-na-presidencia-do-stf-e-do-cnj/` | Geral | OK |
-| ✅ OK | `https://www.stj.jus.br/sites/portalp/Inicio` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.stj.jus.br/sites/portalp/Inicio` | Geral | INCONSISTENTE |
 | ✅ OK | `https://transparencia.stj.jus.br/` | Geral | OK |
 | ✅ OK | `https://www.taubate.sp.gov.br/secretarias/governo-e-comunicacao/conselhos/conselho-dos-direitos-da-crianca-e-adolescente/conselho-municipal-dos-direitos-da-crianca-e-do-adolescente` | Geral | OK |
 | ✅ OK | `https://taubate.sp.gov.br/secretarias/meio-ambiente-e-bem-estar-animal/conselho-de-meio-ambiente` | Geral | OK |
@@ -22995,13 +22963,13 @@
 | ✅ OK | `https://www.tjce.jus.br/noticias/escola-da-magistratura-abre-curso-sobre-direitos-humanos/` | Geral | OK |
 | ✅ OK | `https://www.tjce.jus.br/noticias/ouvidoria-geral-atende-via-whatsapp-e-mensagem-de-texto/` | Geral | OK |
 | ✅ OK | `https://www.cnj.jus.br/poder-judiciario/tribunais/tribunal-de-justica-do-espirito-santo-tjes/` | Geral | OK |
-| ✅ OK | `https://www.tjes.jus.br/em_manutencao.html` | Geral | OK |
+| ❌ QUEBRADO | `https://www.tjes.jus.br/em_manutencao.html` | Geral | QUEBRADO |
 | ✅ OK | `https://www.tjes.jus.br/desembargador-samuel-meira-brasil-junior-e-o-novo-presidente-do-tribunal-de-justica-do-espirito-santo/` | Geral | OK |
 | ✅ OK | `https://www.tjes.jus.br/portal-transparencia/ouvidoria/` | Geral | OK |
 | ✅ OK | `https://www.tjes.jus.br/institucional/presidencia-2/` | Geral | OK |
 | ✅ OK | `https://www.tjes.jus.br/gestao-fiscal/` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/` | Geral | OK |
-| ❓ INCONSISTENTE | `https://www.mg.gov.br/instituicao_unidade/tribunal-de-justica-do-estado-de-minas-gerais-tjmg` | Geral | INCONSISTENTE |
+| ✅ OK | `https://www.mg.gov.br/instituicao_unidade/tribunal-de-justica-do-estado-de-minas-gerais-tjmg` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/metas-nacionais.htm` | Geral | OK |
 | ✅ OK | `https://tjmmg.jus.br/novo-regimento-interno-do-tjmg-e-aprovado/` | Geral | OK |
 | ✅ OK | `https://www.tjmg.jus.br/portal-tjmg/hotsites/relatorio-de-gestao-2026/relatorio-de-gestao-2026.htm` | Geral | OK |
@@ -23040,6 +23008,7 @@
 | ✅ OK | `https://www.cnj.jus.br/tribunal-de-justica-do-estado-de-sergipe-2/` | Geral | OK |
 | ✅ OK | `https://www.tjse.jus.br/portal/servicos/judiciais/guias/recolhimento-judicial/itemlist/category/43-tabela-de-custas-e-emolumentos` | Geral | OK |
 | ✅ OK | `https://www.tjse.jus.br/portal/poder-judiciario/lista-de-e-mails/item/7-iolanda-santos-guimaraes` | Geral | OK |
+| ✅ OK | `https://agencia.tjse.jus.br/noticias/item/16057-gestores-do-tjse-e-corregedoria-geral-discutem-cumprimento-das-metas-nacionais` | Geral | OK |
 | ✅ OK | `https://www.tjse.jus.br/sic/` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/1a-vice-presidencia` | Geral | OK |
 | ✅ OK | `https://www.tjsp.jus.br/Error/NotFound?aspxerrorpath=/custas-processuais` | Geral | OK |
@@ -23088,6 +23057,11 @@
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5` | Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipwFBVV95cUxOYTkwVHV4UmEyS3RlOGtCTXFsS0xsZV9rWXBQOHE5YWw2ZGVBZGdzajRUN0EtREZ0Q3NDckFqSHN0ai1aN1BnaTFUbzdtUFQ4ODFjLUVtajhBbHRwVERtRHZHUElrNC1RbTFFN2oyRDM4Vi1OWnVfbTF6TzR6WWVjYTRSQWRYWi1uUTlIZUtUZDJXYjRHRXdpSXZ2VnBpV1hESW9Wa0FKWQ?oc=5` | Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 - Portal MG | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMitgFBVV95cUxNaVA4VXlxY2cxVnlQdUlSX3JxTUR1V0ladTRRX2J0TF84TFJkS3o1S09vZzRBb3EyTlpPMXVlNy1uSlFPazNRM05MQWNBV0RKZmVlMzN3ZlRzSjFHMUZlWWI4RkNadjFyZjdFN0tZTXNkSllHX29OWFplaVZ1Z3RyTUt1bU5xQ2U2ZmR4MlBGSkdlUnkxLWdKQ09ycjZKX2JDT29DRmJfWU53LWNacGI5aDNUd2ZRdw?oc=5` | Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG | REDIRECT |
+| ✅ OK | `https://guaicuy.org.br/entidade-gestora-abre-edital-com-vagas-de-trabalho/` | Entidade Gestora abre edital com vagas de trabalho | OK |
+| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMikAFBVV95cUxPV3BUZ1o2RW9vSXVrZGFIT0w3a1NOc1BrV0pvNzloVUVnSDdhc3RiYVZlV19Ib3huSjZrcWxreXJVUHNIb3oyOWtIX0R3V0Y2Z2ZDZzFvQzlfWjRrdEF1aDFkZXp1NHJTWFZsZ3k0ZklnemVfdWZpQWNscFFSYVJuVVk2WmpsbVJ5RGdxc2JiTVo?oc=5` | Vale usa decisão do STJ em duas frentes para frear continuidade do novo auxílio aos atingidos de Brumadinho - O Fator | REDIRECT |
+| ✅ OK | `https://adaibrasil.org.br/liderancas-atingidas-da-regiao-2-recebem-visita-dos-compromitentes-do-acordo/?utm_source=rss&utm_medium=rss&utm_campaign=liderancas-atingidas-da-regiao-2-recebem-visita-dos-compromitentes-do-acordo` | Lideranças atingidas da Região 2 recebem visita dos Compromitentes do Acordo | OK |
+| ✅ OK | `https://adaibrasil.org.br/adai-divulga-video-peabp/?utm_source=rss&utm_medium=rss&utm_campaign=adai-divulga-video-peabp` | Adai divulga vídeos das Consultas Públicas do Programa de Educação Ambiental em quatro municípios da Região 2 | OK |
+| ✅ OK | `https://guaicuy.org.br/projetos-para-o-programa-de-saneamento-da-bacia-do-paraopeba-podem-ser-submetidos-ate-2027/` | Projetos para o Programa de Saneamento da Bacia do Paraopeba podem ser submetidos até 2027 | OK |
 | ✅ OK | `https://guaicuy.org.br/brumadinho-pede-ao-stj-que-restabeleca-os-pagamentos-do-novo-auxilio-emergencial/` | Município de Brumadinho pede ao STJ que restabeleça os pagamentos do Novo Auxílio Emergencial | OK |
 | ✅ OK | `https://adaibrasil.org.br/mutiroes-microcredito-eg-r2/?utm_source=rss&utm_medium=rss&utm_campaign=mutiroes-microcredito-eg-r2` | Entidade Gestora do Anexo I.1 realiza mutirões de atendimento para acesso às linhas de crédito e microcrédito na Região 2 | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMikgFBVV95cUxNdkpHVDVtTVBWclRVSWNvaXpVcGN4YmhBMXlsb0xLUkM4eURtbFV0em0xeUdZRk9KZDRCTVBuQWdEalFUOE41bGh2Zm5vOUw0MlNqUGh1T0pGWEFRMnhaUDlDNzgycm9YTWJRWlg5Z3dQOG1oLThMbnB6WlZzbG9yOHl2N0ZjXzk0RmRMaXVlcGpsdw?oc=5` | PGR rebate Gilmar e defende multa de R$ 86 milhões à Vale por Brumadinho; STF retoma julgamento - O Fator | REDIRECT |
@@ -23096,12 +23070,9 @@
 | ✅ OK | `https://adaibrasil.org.br/por-onde-anda-a-reparacao-30-10-2026/?utm_source=rss&utm_medium=rss&utm_campaign=por-onde-anda-a-reparacao-30-10-2026` | Por Onde Anda a Reparação? Associações recorrem ao STJ contra suspensão do Novo Auxílio Emergencial; Indenização para conselheiros da Governança Popular; Região 2 recebe visita das Instituições de Justiça; Formações nas escolas sobre reparação e mais | OK |
 | ✅ OK | `https://adaibrasil.org.br/mpmg-pede-a-justica-adiantamento-indenizatorio-para-conselheiros-e-conselheiras-da-governanca-popular/?utm_source=rss&utm_medium=rss&utm_campaign=mpmg-pede-a-justica-adiantamento-indenizatorio-para-conselheiros-e-conselheiras-da-governanca-popular` | MPMG pede à Justiça adiantamento indenizatório para conselheiros e conselheiras da Governança Popular | OK |
 | ✅ OK | `https://adaibrasil.org.br/associacoes-de-atingidos-recorrem-ao-stj-contra-suspensao-do-pagamento-do-novo-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=associacoes-de-atingidos-recorrem-ao-stj-contra-suspensao-do-pagamento-do-novo-auxilio-emergencial` | Associações de atingidos recorrem ao STJ contra suspensão do pagamento do Novo Auxílio Emergencial | OK |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMiuwFBVV95cUxPc0MtZWR2Y0RuRU5NeHZrWmtiUXJRdmNrdDBma1NnWkhCQXRKT3dlT05MTzhrUzBQS2xxUjlJRlhicS1aOW1fOS1jUHdzRTVsRkJWWFJyRzFQUVd6NnN5WEJ6SlA4WkVWSk9rZ1BfNGJwS1ZGX0lseEFVVXhZQWduejF5MDNIM2ZoVlJVMXhISDZyUWR4VThjTVhTYjFieW5IUGxFS1FOb2ljUlo5dHU3VllMMXpVc2x5Szl3?oc=5` | Ofício ao STJ pede retomada do auxílio emergencial para atingidos por Brumadinho - BH 24 Horas | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMipgFBVV95cUxNWlhna1h1cHcwVldoWFJhUjJRWkJfcTFsLS04dldWRldnWVludV9xTnNub1JqZ1NBclVEbl9HY1cwTXdlSkF3aHhKdmtXdFhZd0N2YnlKMXdFY1ZVejdTb2xlWnlabGJ6RTJhX2RLTGxjOHZlYTZ2dkNNWjE0WGxYdXhMZDVQM05Ya2dHSllXUDFjZVNCbUlEVWt6RXBISW9xeEY1dUh3?oc=5` | Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos - O Fator | REDIRECT |
-| ❓ INCONSISTENTE | `https://mab.org.br/2026/10/29/nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial` | NOTA | Atingidos da Bacia do Paraopeba em luta pela continuidade do Auxílio Emergencial | INCONSISTENTE |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMingFBVV95cUxOTEpfSUNYQVBqUnVGT1Uxa3FNTm9MV2g1eVV3RzJZV0dnUV9vQk1YT1pMZjl6OVNMZHVQMi1yakhxTi03T2E2dkFTS3VVRGlCeWpfVldHU29EeHIzNlVTQkVGMXNSVnVpWjcwZFZaNXlXNVE2U3ptdVdmZDMwNWdRUTRTcDlWX0xUUlR1UlpiOEgtQkIwaTRkYmtsa29WUQ?oc=5` | STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Jornal GGN | REDIRECT |
+| ✅ OK | `https://mab.org.br/2026/10/29/nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial` | NOTA | Atingidos da Bacia do Paraopeba em luta pela continuidade do Auxílio Emergencial | OK |
 | ✅ OK | `https://guaicuy.org.br/vale-nao-vai-depositar-auxilio/` | Vale diz que não vai depositar auxílio de novembro | OK |
-| ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMirwFBVV95cUxPNV9zV3NTSGZrY2hOZ2ZUZ0FIWmhjeVZULWxmXzM2TTAySXdob2Y0V2tQVDVZOHhyYU5KbEtVeUpFTFlCS0pHTTZldHlQWkhMdjFWOUFieHhsTGFmRE92bEZSSjdhYk5YT1dIZWtCMVZrN1lBZ2JmTVgwMFpPcFlJdng0d1gtRzduYU9Id1JkdWZCenB3WnUwM3VBT05nQ1R2V01uRXYzMl9NelpJZnlv?oc=5` | Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Consultor Jurídico | REDIRECT |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMinwJBVV95cUxQVElRZnFHQ0M3azl0bFprVmRBd2hpR0l6V2NfV09PMU5zTWJFSHdfOFhyRXQ0UGpjSzlPOWQ4eVlxLU5lYmpjS0NKM2FnN0s1QWQ0bEJSemJWc2xIc3p1RHgzUmE4VXYwYkVrUVJfUVpnd0t6UHl2eDN1Zk9qZkR2Ml9sUXpkeHRhNndFRUY2R1NkdXBndTBKSktjam5sUFpyVmV6czdnSDRpMDBlYlBWb3BBUWduLVBhRU0wYi1mSUlBUEVaMWpOY1d3N2I0OGZvdmxQS2FrSE5RdXNRYklqZjM0MGtKNHhSVF9fTUFEVkNsbjBmRmhQNmM0Nlo4cHdkT0I4UFRPQnFPX1JhdTMyYzZqRDM4djZ0bWFYelJ5SQ?oc=5` | STJ suspende saque de novo auxílio em Brumadinho até julgar recurso - STJ | REDIRECT |
 | ✅ OK | `https://adaibrasil.org.br/segunda-formacao-em-credito-e-microcredito/?utm_source=rss&utm_medium=rss&utm_campaign=segunda-formacao-em-credito-e-microcredito` | Adai Paraopeba realiza segunda formação em Crédito e Microcrédito do Anexo I.1 e acompanhamento da Reparação | OK |
 | ✅ OK | `https://guaicuy.org.br/ibram-suspensao-auxilio-emergencial/` | Para IBRAM, suspensão do pagamento no auxílio não é suficiente | OK |
@@ -23110,11 +23081,7 @@
 | ✅ OK | `https://guaicuy.org.br/entrevista-carol-e-vaninho/` | Reacender o comércio para fortalecer a comunidade – Entrevista | OK |
 | ✅ OK | `https://adaibrasil.org.br/stj-suspende-pagamento-auxilio-emergencial/?utm_source=rss&utm_medium=rss&utm_campaign=stj-suspende-pagamento-auxilio-emergencial` | STJ suspende pagamento do auxílio emergencial para atingidos do desastre-crime da Vale na Bacia do Paraopeba | OK |
 | ✅ OK | `https://guaicuy.org.br/stj-suspende-temporariamente-pagamento-novo-auxilio-emergencial/` | STJ suspende temporariamente o pagamento do Novo Auxílio Emergencial | OK |
-| ✅ OK | `https://adaibrasil.org.br/linhas-de-microcredito-do-anexo-i-1-sao-lancadas-na-regiao-2/?utm_source=rss&utm_medium=rss&utm_campaign=linhas-de-microcredito-do-anexo-i-1-sao-lancadas-na-regiao-2` | Primeiras linhas de microcrédito do Anexo I.1 são lançadas na Região 2 | OK |
-| ✅ OK | `https://adaibrasil.org.br/catadoras-experiencias-conselheiras-anexoi-1/?utm_source=rss&utm_medium=rss&utm_campaign=catadoras-experiencias-conselheiras-anexoi-1` | Catadoras de materiais recicláveis compartilham experiências com conselheiras do Anexo I.1 para fortalecer projetos comunitários | OK |
 | ✅ OK | `https://guaicuy.org.br/resultado-edital-projetos-regiao-4/` | Entidade Gestora divulga resultado de edital de projetos na Região 4 | OK |
-| ✅ OK | `https://guaicuy.org.br/erm-reune-regiao-5/` | ERM se reúne com comunidades da Região 5 | OK |
-| ✅ OK | `https://guaicuy.org.br/guaicuy-finalista-premiacao/` | Guaicuy é finalista em premiação de design | OK |
 | ↪️ REDIRECT | `https://news.google.com/rss/articles/CBMivwFBVV95cUxQRUxXUHpaNk02WHFzNGNEMmQ4Z2pWS3ZqT2E2U3dxcHg3d2pWU0UzSldnYmF2YW1uRVJXWFFIb3J1TUNXRHZRMVF0YjNuTTl6LWJjT0wyUDFqd0hFdG5yejEwUnU0anhsUmg5SFdsMVRqLWE4eHpYWWRVWUh5LTI0amZUU0NrSnp5aUZYNzJUY251cHUxRV8wWGNleWM2RG0wY01ncVE0Q0drZWdzT0xnQWxwQWJlZVFwZHJXaGtPWQ?oc=5` | Barragem B1A, em Brumadinho, tem nível de emergência reduzido de 2 para 1 — Agência Nacional de Mineração - www.gov.br | REDIRECT |
 | ✅ OK | `https://www.scielo.br/` | SciELO — Biblioteca Eletrônica Científica Online | OK |
 | ✅ OK | `https://www.cnj.jus.br/` | Conselho Nacional de Justiça (CNJ) | OK |
@@ -23355,7 +23322,7 @@
 | ❌ QUEBRADO | `https://www.inema.ba.gov.br/institucional/diretoria-de-recursos-hidricos` | Diretoria de Recursos Hídricos e Monitoramento Ambiental | QUEBRADO |
 | ✅ OK | `https://www.transparencia.ba.gov.br/Orcamento` | LOA — Orçamento Geral do Estado da Bahia | OK |
 | ❓ INCONSISTENTE | `https://cefir.inema.ba.gov.br` | Geral | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100104/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/editais/3100203/2026` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-02` | Geral | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jornalminasgerais.mg.gov.br/edicao-do-dia?dataPublicacao=2026-10-03` | Geral | INCONSISTENTE |
@@ -23490,7 +23457,7 @@
 | ✅ OK | `https://www.cagece.com.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cagece.com.br/` | Geral | QUEBRADO |
 | ✅ OK | `https://www.neoenergia.com/web/brasilia` | Geral | OK |
-| ✅ OK | `https://www.caesb.df.gov.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.caesb.df.gov.br/` | Geral | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.caesb.df.gov.br/` | Geral | QUEBRADO |
 | ✅ OK | `https://www.cesan.com.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cesan.com.br/` | Geral | QUEBRADO |
@@ -23510,7 +23477,7 @@
 | ✅ OK | `https://pa.equatorialenergia.com.br/` | Geral | OK |
 | ✅ OK | `https://www.cosanpa.pa.gov.br/` | Geral | OK |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cosanpa.pa.gov.br/` | Geral | QUEBRADO |
-| ✅ OK | `https://www.cagepa.pb.gov.br/` | Geral | OK |
+| ❓ INCONSISTENTE | `https://www.cagepa.pb.gov.br/` | Geral | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social | https://www.gov.br/aneel/pt-br/canais_atendimento/fale-com-a-sua-distribuidora | https://www.cagepa.pb.gov.br/` | Geral | QUEBRADO |
 | ↪️ REDIRECT | `https://www.copel.com/` | Geral | REDIRECT |
 | ✅ OK | `https://www.sanepar.com.br/` | Geral | OK |
@@ -23565,25 +23532,25 @@
 | ❓ INCONSISTENTE | `https://www.felicio-dos-santos.mg.gov.br/transparencia` | Felício dos Santos | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Gouveia&uf=MG` | Gouveia | OK |
 | ❌ QUEBRADO | `https://www.gouveia.mg.gov.br/transparencia` | Gouveia | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Presidente%20Kubitschek&uf=MG` | Presidente Kubitschek | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.presidente-kubitschek.mg.gov.br/transparencia` | Presidente Kubitschek | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Gon%C3%A7alo%20do%20Rio%20Preto&uf=MG` | São Gonçalo do Rio Preto | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.sao-goncalo-do-rio-preto.mg.gov.br/transparencia` | São Gonçalo do Rio Preto | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Senador%20Modestino%20Gon%C3%A7alves&uf=MG` | Senador Modestino Gonçalves | OK |
 | ❓ INCONSISTENTE | `https://www.senador-modestino-goncalves.mg.gov.br/transparencia` | Senador Modestino Gonçalves | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG` | Carbonita | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Carbonita&uf=MG` | Carbonita | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itamarandiba&uf=MG` | Itamarandiba | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.itamarandiba.mg.gov.br/transparencia` | Itamarandiba | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Veredinha&uf=MG` | Veredinha | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Capelinha&uf=MG` | Capelinha | OK |
 | ❓ INCONSISTENTE | `https://www.capelinha.mg.gov.br/transparencia` | Capelinha | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Angel%C3%A2ndia&uf=MG` | Angelândia | INCONSISTENTE |
 | ✅ OK | `https://www.angelandia.mg.gov.br/transparencia` | Angelândia | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Aricanduva&uf=MG` | Aricanduva | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.aricanduva.mg.gov.br/transparencia` | Aricanduva | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Datas&uf=MG` | Datas | OK |
 | ✅ OK | `https://www.datas.mg.gov.br/transparencia` | Datas | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Alvorada%20de%20Minas&uf=MG` | Alvorada de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.alvorada-de-minas.mg.gov.br/transparencia` | Alvorada de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Coluna&uf=MG` | Coluna | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.coluna.mg.gov.br/transparencia` | Coluna | QUEBRADO |
@@ -23593,20 +23560,20 @@
 | ❓ INCONSISTENTE | `https://www.serra-azul-de-minas.mg.gov.br/transparencia` | Serra Azul de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Serro&uf=MG` | Serro | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.serro.mg.gov.br/transparencia` | Serro | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Itamb%C3%A9&uf=MG` | Santo Antônio do Itambé | OK |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-itambe.mg.gov.br/transparencia` | Santo Antônio do Itambé | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ara%C3%A7ua%C3%AD&uf=MG` | Araçuaí | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.aracuai.mg.gov.br/transparencia` | Araçuaí | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Coronel%20Murta&uf=MG` | Coronel Murta | OK |
 | ❓ INCONSISTENTE | `https://www.coronel-murta.mg.gov.br/transparencia` | Coronel Murta | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Berilo&uf=MG` | Berilo | OK |
 | ✅ OK | `https://www.berilo.mg.gov.br/transparencia` | Berilo | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Chapada%20do%20Norte&uf=MG` | Chapada do Norte | OK |
 | ❓ INCONSISTENTE | `https://www.chapada-do-norte.mg.gov.br/transparencia` | Chapada do Norte | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisco%20Badar%C3%B3&uf=MG` | Francisco Badaró | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.francisco-badaro.mg.gov.br/transparencia` | Francisco Badaró | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Itinga&uf=MG` | Itinga | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jenipapo%20de%20Minas&uf=MG` | Jenipapo de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jenipapo-de-minas.mg.gov.br/transparencia` | Jenipapo de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jos%C3%A9%20Gon%C3%A7alves%20de%20Minas&uf=MG` | José Gonçalves de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.jose-goncalves-de-minas.mg.gov.br/transparencia` | José Gonçalves de Minas | INCONSISTENTE |
@@ -23616,24 +23583,24 @@
 | ❓ INCONSISTENTE | `https://www.ponto-dos-volantes.mg.gov.br/transparencia` | Ponto dos Volantes | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Virgem%20da%20Lapa&uf=MG` | Virgem da Lapa | OK |
 | ❓ INCONSISTENTE | `https://www.virgem-da-lapa.mg.gov.br/transparencia` | Virgem da Lapa | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Minas%20Novas&uf=MG` | Minas Novas | OK |
 | ❓ INCONSISTENTE | `https://www.minas-novas.mg.gov.br/transparencia` | Minas Novas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Turmalina&uf=MG` | Turmalina | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.turmalina.mg.gov.br/transparencia` | Turmalina | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Leme%20do%20Prado&uf=MG` | Leme do Prado | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.leme-do-prado.mg.gov.br/transparencia` | Leme do Prado | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pedra%20Azul&uf=MG` | Pedra Azul | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.pedra-azul.mg.gov.br/transparencia` | Pedra Azul | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Cachoeira%20de%20Paje%C3%BA&uf=MG` | Cachoeira de Pajeú | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.cachoeira-de-pajeu.mg.gov.br/transparencia` | Cachoeira de Pajeú | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Comercinho&uf=MG` | Comercinho | OK |
 | ❌ QUEBRADO | `https://www.comercinho.mg.gov.br/transparencia` | Comercinho | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaobim&uf=MG` | Itaobim | OK |
 | ✅ OK | `https://www.itaobim.mg.gov.br/transparencia` | Itaobim | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Padre%20Para%C3%ADso&uf=MG` | Padre Paraíso | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.padre-paraiso.mg.gov.br/transparencia` | Padre Paraíso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Almenara&uf=MG` | Almenara | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Bandeira&uf=MG` | Bandeira | INCONSISTENTE |
 | ↪️ REDIRECT | `https://www.bandeira.mg.gov.br/transparencia` | Bandeira | REDIRECT |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Divis%C3%B3polis&uf=MG` | Divisópolis | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.divisopolis.mg.gov.br/transparencia` | Divisópolis | QUEBRADO |
@@ -23641,15 +23608,15 @@
 | ❌ QUEBRADO | `https://www.felisburgo.mg.gov.br/transparencia` | Felisburgo | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jacinto&uf=MG` | Jacinto | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.jacinto.mg.gov.br/transparencia` | Jacinto | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Jequitinhonha&uf=MG` | Jequitinhonha | OK |
 | ❌ QUEBRADO | `https://www.jequitinhonha.mg.gov.br/transparencia` | Jequitinhonha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Joa%C3%ADma&uf=MG` | Joaíma | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Joa%C3%ADma&uf=MG` | Joaíma | OK |
 | ❌ QUEBRADO | `https://www.joaima.mg.gov.br/transparencia` | Joaíma | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Jord%C3%A2nia&uf=MG` | Jordânia | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.jordania.mg.gov.br/transparencia` | Jordânia | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Mata%20Verde&uf=MG` | Mata Verde | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.mata-verde.mg.gov.br/transparencia` | Mata Verde | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Monte%20Formoso&uf=MG` | Monte Formoso | OK |
 | ❓ INCONSISTENTE | `https://www.monte-formoso.mg.gov.br/transparencia` | Monte Formoso | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Palm%C3%B3polis&uf=MG` | Palmópolis | OK |
 | ❌ QUEBRADO | `https://www.palmopolis.mg.gov.br/transparencia` | Palmópolis | QUEBRADO |
@@ -23659,23 +23626,23 @@
 | ❌ QUEBRADO | `https://www.rubim.mg.gov.br/transparencia` | Rubim | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Salto%20da%20Divisa&uf=MG` | Salto da Divisa | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.salto-da-divisa.mg.gov.br/transparencia` | Salto da Divisa | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG` | Santa Maria do Salto | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Maria%20do%20Salto&uf=MG` | Santa Maria do Salto | OK |
 | ❓ INCONSISTENTE | `https://www.santa-maria-do-salto.mg.gov.br/transparencia` | Santa Maria do Salto | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Santo%20Ant%C3%B4nio%20do%20Jacinto&uf=MG` | Santo Antônio do Jacinto | OK |
 | ❓ INCONSISTENTE | `https://www.santo-antonio-do-jacinto.mg.gov.br/transparencia` | Santo Antônio do Jacinto | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=%C3%81guas%20Formosas&uf=MG` | Águas Formosas | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=%C3%81guas%20Formosas&uf=MG` | Águas Formosas | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Atal%C3%A9ia&uf=MG` | Ataléia | OK |
 | ✅ OK | `https://www.ataleia.mg.gov.br/transparencia` | Ataléia | OK |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Campan%C3%A1rio&uf=MG` | Campanário | OK |
 | ❓ INCONSISTENTE | `https://www.campanario.mg.gov.br/transparencia` | Campanário | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Cara%C3%AD&uf=MG` | Caraí | OK |
 | ❌ QUEBRADO | `https://www.carai.mg.gov.br/transparencia` | Caraí | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Carlos%20Chagas&uf=MG` | Carlos Chagas | INCONSISTENTE |
 | ✅ OK | `https://www.carloschagas.mg.gov.br/transparencia` | Carlos Chagas | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Catuji&uf=MG` | Catuji | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.catuji.mg.gov.br/transparencia` | Catuji | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Francisc%C3%B3polis&uf=MG` | Franciscópolis | INCONSISTENTE |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Frei%20Gaspar&uf=MG` | Frei Gaspar | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Fronteira%20dos%20Vales&uf=MG` | Fronteira dos Vales | INCONSISTENTE |
 | ✅ OK | `https://www.fronteiradosvales.mg.gov.br/transparencia` | Fronteira dos Vales | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Itaip%C3%A9&uf=MG` | Itaipé | OK |
@@ -23684,7 +23651,7 @@
 | ❌ QUEBRADO | `https://www.itambacuri.mg.gov.br/transparencia` | Itambacuri | QUEBRADO |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ladainha&uf=MG` | Ladainha | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.ladainha.mg.gov.br/transparencia` | Ladainha | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Machacalis&uf=MG` | Machacalis | OK |
 | ✅ OK | `https://www.machacalis.mg.gov.br/transparencia` | Machacalis | OK |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Malacacheta&uf=MG` | Malacacheta | OK |
 | ❌ QUEBRADO | `https://www.malacacheta.mg.gov.br/transparencia` | Malacacheta | QUEBRADO |
@@ -23692,24 +23659,24 @@
 | ❌ QUEBRADO | `https://www.nanuque.mg.gov.br/transparencia` | Nanuque | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Nova%20M%C3%B3dica&uf=MG` | Nova Módica | OK |
 | ✅ OK | `https://www.novamodica.mg.gov.br/transparencia` | Nova Módica | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Novo%20Cruzeiro&uf=MG` | Novo Cruzeiro | INCONSISTENTE |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Novo%20Oriente%20de%20Minas&uf=MG` | Novo Oriente de Minas | OK |
 | ✅ OK | `https://www.novoorientedeminas.mg.gov.br/transparencia` | Novo Oriente de Minas | OK |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Ouro%20Verde%20de%20Minas&uf=MG` | Ouro Verde de Minas | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pav%C3%A3o&uf=MG` | Pavão | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pavao.mg.gov.br/transparencia` | Pavão | QUEBRADO |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pescador&uf=MG` | Pescador | INCONSISTENTE |
 | ❌ QUEBRADO | `https://www.pescador.mg.gov.br/transparencia` | Pescador | QUEBRADO |
-| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | INCONSISTENTE |
+| ✅ OK | `https://pncp.gov.br/app/contratos?q=Pot%C3%A9&uf=MG` | Poté | OK |
 | ❌ QUEBRADO | `https://www.pote.mg.gov.br/transparencia` | Poté | QUEBRADO |
 | ✅ OK | `https://pncp.gov.br/app/contratos?q=Santa%20Helena%20de%20Minas&uf=MG` | Santa Helena de Minas | OK |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=S%C3%A3o%20Jos%C3%A9%20do%20Divino&uf=MG` | São José do Divino | INCONSISTENTE |
-| ✅ OK | `https://pncp.gov.br/app/contratos?q=Serra%20dos%20Aimor%C3%A9s&uf=MG` | Serra dos Aimorés | OK |
+| ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Serra%20dos%20Aimor%C3%A9s&uf=MG` | Serra dos Aimorés | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://www.serradosaimores.mg.gov.br/transparencia` | Serra dos Aimorés | INCONSISTENTE |
 | ❓ INCONSISTENTE | `https://pncp.gov.br/app/contratos?q=Umburatiba&uf=MG` | Umburatiba | INCONSISTENTE |
 | ✅ OK | `https://www.umburatiba.mg.gov.br/transparencia` | Umburatiba | OK |
 | ✅ OK | `https://api-dom.pbh.gov.br/` | Diário Oficial do Município de Belo Horizonte (DOM-PBH) | OK |
-| ✅ OK | `https://api-publica.transferegov.gestao.gov.br` | Transferegov / Convênios Federais | OK |
+| ❓ INCONSISTENTE | `https://api-publica.transferegov.gestao.gov.br` | Transferegov / Convênios Federais | INCONSISTENTE |
 | ✅ OK | `https://comunicabr.presidencia.gov.br/api/v1/municipios/31` | ComunicaBR — Ações e Repasses do Governo Federal | OK |
 | ✅ OK | `https://www.cnj.jus.br/programas-e-acoes/sirenejud/` | SIRENEJud (Processos Ambientais do Judiciário) | OK |
 | ✅ OK | `https://www.cnj.jus.br/inspecoes-correicoes/` | Biblioteca de Inspeções da Corregedoria Nacional de Justiça | OK |
@@ -23732,146 +23699,10 @@
 
 ## Propostas de Correção com Trilha de Auditoria
 
-- **URL Original:** https://www.mpam.mp.br/noticias/posse-alberto-rodrigues-do-nasc
-  → **URL Proposta:** https://www.mpam.mp.br/comunicacao/noticias/alberto-rodrigues-do-nascimento-junior-e-reconduzido-ao-cargo-de-procurador-geral-de-justica-do-amazonas
+- **URL Original:** https://www.ouricuri.pe.gov.br/cmdca
+  → **URL Proposta:** http://www.cedca.pe.gov.br/conselhos-tutelares-lista/41-conselhos/conselhos-tutelares/1326-ouricuri
   - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
   - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.tjse.jus.br/noticias/metas-nacionais-2026
-  → **URL Proposta:** https://agencia.tjse.jus.br/noticias/item/16057-gestores-do-tjse-e-corregedoria-geral-discutem-cumprimento-das-metas-nacionais
-  - Critérios validados: vivo-2xx, dominio-oficial, corpo-confere, caminho-especifico, titulo-similar, tipo-igual-html
-  - Estratégia de busca: titulo-orgao-filetype
-- **URL Original:** https://www.cacoal.ro.gov.br/diario-oficial
-  → **URL Proposta:** https://cacoal.ro.gov.br/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.cacoal.ro.gov.br/conselhos/codema
-  → **URL Proposta:** https://cacoal.ro.gov.br/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www.maraba.pa.gov.br/cmdca
-  → **URL Proposta:** https://maraba.pa.gov.br/cmdca-conferencia-municipal-350-criancas-2026/
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=461799&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=373708&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=55361&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=343394&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=270437&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=245279&sequencial=5&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=339205&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=257270&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=13604&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=10385&sequencial=3&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=17821&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=302018&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=340224&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=330769&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=254670&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=334853&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=26923&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=378531&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=332132&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=21&codigoOrigem=0&inteiroTeor=true&numero=19242&sequencial=3&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=261188&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=321358&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=52121&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=134378&sequencial=3&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=238281&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=23&codigoOrigem=0&inteiroTeor=true&numero=330045&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=334242&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=322670&sequencial=1&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://www5.tjmg.jus.br/jurisprudencia/relatorioEspelhoAcordao.do?ano=24&codigoOrigem=0&inteiroTeor=true&numero=221957&sequencial=2&sequencialAcordao=0&ttriCodigo=1
-  → **URL Proposta:** https://www8.tjmg.jus.br/error/server_error.html
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
-- **URL Original:** https://portal.stf.jus.br/jurisprudencia/obterInteiroTeor.asp?idDocumento=775752637
-  → **URL Proposta:** https://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&docID=775752637
-  - Critérios validados: redirect-declarado-pelo-servidor, dominio-oficial, destino-verificado-vivo
-  - Estratégia de busca: redirect
 
 ---
 *User-Agent utilizado: `ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular; verificador de links - LinkMender v2)`*

@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-11-05T06:46:14.451Z
-- Duracao total: 8.7 min
+- Gerado em: 2026-11-06T06:46:34.122Z
+- Duracao total: 9.0 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 473
-- OK: 389
+- OK: 367
 - QUEBRADOS: 9
-- REDIRECTS: 31
-- INCONSISTENTES: 44
-- Propostas geradas: 14
+- REDIRECTS: 32
+- INCONSISTENTES: 65
+- Propostas geradas: 15
 - Links sem proposta: 26
 
 ## Links quebrados e redirecionados
@@ -31,6 +31,7 @@
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://pt.wikipedia.org/ | REDIRECT | 200 | https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal |
@@ -94,7 +95,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 
-### 4. https://falabr.cgu.gov.br
+### 4. https://pncp.gov.br/
+
+```diff
+- href="https://pncp.gov.br/"
++ href="https://www.gov.br/pncp/pt-br"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/[municipio]/interesses/page.tsx
+
+### 5. https://falabr.cgu.gov.br
 
 ```diff
 - href="https://falabr.cgu.gov.br"
@@ -105,7 +117,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 5. https://www.cnmp.mp.br
+### 6. https://www.cnmp.mp.br
 
 ```diff
 - href="https://www.cnmp.mp.br"
@@ -116,7 +128,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 6. https://www.tjmg.jus.br
+### 7. https://www.tjmg.jus.br
 
 ```diff
 - href="https://www.tjmg.jus.br"
@@ -127,7 +139,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 7. https://www.mpmg.mp.br
+### 8. https://www.mpmg.mp.br
 
 ```diff
 - href="https://www.mpmg.mp.br"
@@ -138,7 +150,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 8. https://portal.trt3.jus.br
+### 9. https://portal.trt3.jus.br
 
 ```diff
 - href="https://portal.trt3.jus.br"
@@ -149,7 +161,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 9. https://www.trf6.jus.br
+### 10. https://www.trf6.jus.br
 
 ```diff
 - href="https://www.trf6.jus.br"
@@ -160,7 +172,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 10. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 11. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
@@ -171,7 +183,7 @@ Confianca: media
 Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
 Origem: apps/web/lib/linkmender/busca.test.ts
 
-### 11. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 12. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -182,7 +194,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 12. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
+### 13. https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica
 
 ```diff
 - href="https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica"
@@ -193,7 +205,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 13. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
+### 14. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos"
@@ -204,7 +216,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: registry
 
-### 14. https://www.mpf.mp.br/atuacao/grandes-casos
+### 15. https://www.mpf.mp.br/atuacao/grandes-casos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos"
@@ -256,8 +268,29 @@ Origem: registry
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
+- https://mab.org.br/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/linha-do-tempo/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/5o-encontro-nacional-e-ii-encontro-internacional-de-atingidos/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/6o-encontro-nacional-dos-atingidos-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/7-encontro-nacional-do-mab/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/8o-encontro-nacional-do-mab/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/fundacao-do-mar-movimiento-de-afectados-por-represas/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/i-congresso-nacional-dos-atingidos-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/i-encontro-das-mulheres-atingidas-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/i-encontro-internacional-de-atingidos-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/i-encontro-nacional-de-trabalhadores-atingidos-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/ii-congresso-nacional-do-mab/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/iii-congresso-nacional-do-mab/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/iii-encontro-internacional-dos-atingidos-por-barragens/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/iv-congresso-do-mab/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/iv-encontro-internacional-de-atingidos/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/jornada-de-lutas-e-tempo-de-avancar/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/marcha-nacional-aguas-pela-vida/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/pela-primeira-vez-fomos-reconhecidos-enquanto-atingidos-por-um-presidente/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/preparacao-do-i-encontro-internacional-de-atingidos/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://mab.org.br/timeline/sancao-da-pnab-lei-no-14-755/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
