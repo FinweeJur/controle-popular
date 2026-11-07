@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 06/11/2026 14:00 BRT |
+| 07/11/2026 12:58 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -112,6 +112,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/judiciario-remuneracoes.json | OK |
 | data/judiciario-unidades-contatos.json | OK |
 | data/juma-acoes-climaticas.json | OK |
+| data/jurisprudencia-buscador-resumo.json | OK |
 | data/jurisprudencia-casos.json | OK |
 | data/jurisprudencia-resumo.json | OK |
 | data/link-correcoes.json | OK |
@@ -241,12 +242,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 195 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 196 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 07/11/2026 12:58 BRT - 0 criticos; 0 avisos.
 - 06/11/2026 14:00 BRT - 0 criticos; 0 avisos.
 - 05/11/2026 14:44 BRT - 0 criticos; 0 avisos.
 - 04/11/2026 14:38 BRT - 0 criticos; 0 avisos.
