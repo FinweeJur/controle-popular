@@ -1,9 +1,9 @@
 [
   {
-    "geradoEm": "2026-11-04T10:07:34",
+    "geradoEm": "2026-11-06T21:55:22",
     "frente": "riodoce",
     "total": 3656,
-    "fila": 3655,
+    "fila": 3656,
     "cobertura": 100.0,
     "lados": {
       "indeterminado": 2331,
@@ -411,7 +411,7 @@
     ]
   },
   {
-    "geradoEm": "2026-11-04T10:07:36",
+    "geradoEm": "2026-11-06T21:55:25",
     "frente": "brumadinho",
     "total": 2468,
     "fila": 2470,
@@ -815,7 +815,7 @@
     ]
   },
   {
-    "geradoEm": "2026-11-04T10:07:37",
+    "geradoEm": "2026-11-06T21:55:27",
     "frente": "dh",
     "total": 2373,
     "fila": 2373,
