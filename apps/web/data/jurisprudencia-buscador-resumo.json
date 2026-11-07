@@ -1,0 +1,155 @@
+{
+ "geradoEm": "2026-11-06",
+ "total": 44812,
+ "comInteiroTeor": 3555,
+ "semProcesso": 0,
+ "periodo": {
+  "de": 2008,
+  "ate": 2026
+ },
+ "porTribunal": {
+  "TJMG": 25615,
+  "TJES": 19197
+ },
+ "categorias": {
+  "A": 19127,
+  "B": 132,
+  "C": 9135
+ },
+ "polos": {
+  "indeterminado": 39385,
+  "reu": 82,
+  "autor": 46,
+  "atingido": 975,
+  "empresa": 1726,
+  "parcial": 2598
+ },
+ "fontes": [
+  {
+   "id": "atingidos-barragem",
+   "label": "atingidos-barragem",
+   "n": 1637,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "brumadinho-inteiro",
+   "label": "brumadinho-inteiro",
+   "n": 2880,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "direitos-ambientais",
+   "label": "direitos-ambientais",
+   "n": 50,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "direitos-humanos",
+   "label": "direitos-humanos",
+   "n": 2801,
+   "comTeor": 325,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-bhp",
+   "label": "rio-doce-bhp",
+   "n": 285,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-fundao",
+   "label": "rio-doce-fundao",
+   "n": 2812,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-inteiro",
+   "label": "rio-doce-inteiro",
+   "n": 28,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-mariana",
+   "label": "rio-doce-mariana",
+   "n": 615,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-renova",
+   "label": "rio-doce-renova",
+   "n": 276,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-rio-doce",
+   "label": "rio-doce-rio-doce",
+   "n": 905,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-samarco",
+   "label": "rio-doce-samarco",
+   "n": 459,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rio-doce-ttac",
+   "label": "rio-doce-ttac",
+   "n": 39,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "rompimento-brumadinho",
+   "label": "rompimento-brumadinho",
+   "n": 3437,
+   "comTeor": 0,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "brumadinho",
+   "label": "brumadinho",
+   "n": 9391,
+   "comTeor": 3230,
+   "tribunal": "TJMG"
+  },
+  {
+   "id": "tjes-atingidos-mineracao",
+   "label": "TJES · atingidos-mineracao",
+   "n": 864,
+   "comTeor": 0,
+   "tribunal": "TJES"
+  },
+  {
+   "id": "tjes-rompimento-mariana",
+   "label": "TJES · rompimento-mariana",
+   "n": 15116,
+   "comTeor": 0,
+   "tribunal": "TJES"
+  },
+  {
+   "id": "tjes-rio-doce",
+   "label": "TJES · rio-doce",
+   "n": 2387,
+   "comTeor": 0,
+   "tribunal": "TJES"
+  },
+  {
+   "id": "tjes-atingidos-barragens",
+   "label": "TJES · atingidos-barragens",
+   "n": 830,
+   "comTeor": 0,
+   "tribunal": "TJES"
+  }
+ ]
+}

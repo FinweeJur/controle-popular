@@ -1,24 +1,29 @@
 {
-  "atualizadoEm": "2026-10-15T23:47:52.254Z",
+  "atualizadoEm": "2026-11-06T19:27:51.582Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 2138,
+  "latenciaMs": 208,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-10-15T23:45:09.684Z",
-    "totalBasesVerificadas": 703,
+    "atualizadoEm": "2026-11-06T19:25:07.301Z",
+    "totalBasesVerificadas": 823,
     "basesVazias": [],
     "basesCorrompidas": [],
-    "basesEstagnadas": [],
+    "basesEstagnadas": [
+      {
+        "arquivo": "apps/web/data/congresso-ceap-nacional.json",
+        "diasSemAtualizar": 66
+      }
+    ],
     "etlsComFalha": [],
     "etlsPendentes": [],
     "statusGeral": "SAUDAVEL",
     "resumoLinhas": [
-      "Bases verificadas: 703 arquivos JSON",
+      "Bases verificadas: 823 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
-      "Bases com estagnação (>60d): 0",
+      "Bases com estagnação (>60d): 1",
       "Fontes/ETLs com status adverso: 0"
     ]
   },
@@ -28,9 +33,9 @@
     "ok": 100,
     "falhas": [],
     "siteInteiroFora": false,
-    "inicioEm": "2026-10-15T23:45:09.692Z",
-    "terminoEm": "2026-10-15T23:47:52.201Z",
-    "duracaoMs": 162509
+    "inicioEm": "2026-11-06T19:25:07.309Z",
+    "terminoEm": "2026-11-06T19:27:51.530Z",
+    "duracaoMs": 164221
   },
   "erro": null
 }

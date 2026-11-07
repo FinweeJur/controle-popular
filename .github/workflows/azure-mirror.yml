@@ -318,7 +318,7 @@ jobs:
 
           falhou=0
           [ "$pronto" = "1" ] || falhou=1
-          for caminho in / /jurisprudencia /ambiental/direitos-humanos; do
+          for caminho in / /jurisprudencia /jurisprudencia/index.html /judiciario/jurisprudencia /ambiental/direitos-humanos; do
             codigo=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$BASE$caminho" || echo 000)
             echo "$codigo $caminho"
             [ "$codigo" = "200" ] || falhou=1

@@ -6,6 +6,8 @@ import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
+import { formatNumberBR } from "@/lib/betim/format";
+import resumoJurisprudencia from "@/data/jurisprudencia-buscador-resumo.json";
 
 export const metadata: Metadata = {
   title: "Judiciário brasileiro: ministros, indicações e próximas vagas — Controle Popular",
@@ -173,6 +175,12 @@ export default async function Home() {
               titulo: "Quanto demora um processo",
               texto:
                 "De cada 10 processos que o TJMG tinha para resolver em 2025, 7 continuaram parados.",
+            },
+            {
+              href: "/jurisprudencia",
+              titulo: "O que os tribunais decidem sobre barragens",
+              texto:
+                `${formatNumberBR(resumoJurisprudencia.total)} decisões do TJMG e do TJES sobre Brumadinho, Rio Doce, Fundão e direitos humanos — busca por palavra, ementa e inteiro teor.`,
             },
             {
               href: "/sirenejud",
