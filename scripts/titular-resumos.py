@@ -40,9 +40,14 @@ def main() -> int:
     for arquivo in sorted(PASTA.glob("*.json")):
         resumo = json.loads(arquivo.read_text(encoding="utf-8"))
         markdown = (resumo.get("markdown") or "").lstrip()
-        if markdown.startswith("## "):
+        if markdown.startswith("# "):
             continue
-        resumo["markdown"] = f"## {titulo_de(resumo['rota'])}\n\n{markdown}"
+        if markdown.startswith("## "):
+            # Título no nível errado: o parser mapeia `#` para h2 e `##` para h3.
+            markdown = markdown[1:]
+        else:
+            markdown = f"# {titulo_de(resumo['rota'])}\n\n{markdown}"
+        resumo["markdown"] = markdown
         arquivo.write_text(json.dumps(resumo, ensure_ascii=False, indent=1), encoding="utf-8")
         ajustados += 1
     print(f"titulados: {ajustados}")
