@@ -29,17 +29,16 @@ portal (barragens, atores, transparência); agora o eixo é o *assunto que o
 leitor procura*. Barragens virou frente de Meio ambiente; Atores virou frente de
 Justiça e Economia; Transparência virou Dados.
 
-O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 11 eixos, 57 frentes,
+O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 10 eixos, 56 frentes,
 `caminhoDe()` para a trilha e `paginasDoEixo()` para a contagem.
 
-## Os 11 eixos
+## Os 10 eixos
 
 | Eixo | Frentes | Rotas | Estado da porta |
 |---|---|---:|---|
 | Casos | Brumadinho, Rio Doce, Itatiaiuçu | 21 | proposta |
-| Direitos | Em movimento, Saúde, Educação, Trabalho, Globais, Comparados | 20 | proposta |
+| Direitos | Em movimento, Memória, Saúde, Educação, Trabalho, Globais, Comparados | 26 | proposta |
 | Meio ambiente | Barragens, Licenciamento, Fiscalização, Conflitos, Clima | 22 | no ar (`/ambiental`) |
-| Movimentos | Memória, Direitos em movimento | 6 | proposta |
 | Terra e território | Territórios, Função social | 5 | no ar |
 | Cidades | Índice, Município | 2 (+68 municipais) | no ar |
 | Política | Congresso, Assembleias, Governo, Eleições | 15 | no ar |
@@ -75,13 +74,17 @@ O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 11 eixos, 57 frentes,
   "a barragem perto de mim é segura?" na primeira dobra.
 - **Preservar**: as 48 rotas de `/ambiental`.
 
-### Movimentos — memória e direitos em movimento se cruzam
+### Por que Movimentos deixou de ser eixo
 
-- **Duplica**: MAB aparece em `/memoria` (verbetes) e em
-  `/direitos-em-movimento` (serviços).
-- **Juntar**: `/movimentos` com duas frentes: memória das lutas e o que fazer
-  agora.
-- **Preservar**: `/memoria` inteira.
+MAB aparecia em `/memoria` (verbetes) e em `/direitos-em-movimento` (serviços):
+dois nomes para a mesma história. Memória das lutas é **direito em movimento**,
+não assunto paralelo.
+
+- **Fusão**: `/memoria` vira frente de Direitos, ao lado de "Direitos em
+  movimento".
+- **Ganho**: 10 eixos. "Direitos" passa a cobrir o que se conquista, o que se
+  perde e quem luta — num lugar só.
+- **Preservar**: `/memoria` inteira, com busca, filtros e CSV.
 
 ### Por que Trabalho, Saúde e Educação deixaram de ser eixos
 
@@ -164,6 +167,8 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
 
 ## Origem / Histórico
 
+- **08/11/2026 — 11 → 10 eixos.** Movimentos vira frente de Direitos:
+  memória das lutas é direito em movimento, não eixo separado.
 - **08/11/2026 — 14 → 11 eixos.** Trabalho, Saúde e Educação viram frentes de
   Direitos: eram portas para páginas que já moravam lá.
 - **08/11/2026 — criado.** Substitui a divisão por produto (barragens, atores,

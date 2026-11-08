@@ -12,14 +12,13 @@
  *
  * Os eixos seguem a lógica de editoria que o leitor já conhece de veículo de
  * movimento popular (inspiração: Brasil de Fato): Direitos, Meio ambiente,
- * Movimentos, Terra, Cidades, Política, Economia, Justiça, Internacional. O
- * portal acrescenta "Casos" (os desastres) e "Dados", que são a razão de existir
- * dele.
+ * Terra, Cidades, Política, Economia, Justiça, Internacional. O portal
+ * acrescenta "Casos" (os desastres) e "Dados", que são a razão de existir dele.
  *
- * Trabalho, Saúde e Educação NÃO são eixos próprios (decisão de 08/11/2026):
- * eram três portas para páginas que já vivem em Direitos, e o portal ficava com
- * 14 eixos — demais para o leitor. Viraram frentes de Direitos, com o mesmo
- * endereço canônico.
+ * DECISÕES DE ENXUGAMENTO (08/11/2026): o portal tinha 14 eixos, demais para o
+ * leitor escolher. Trabalho, Saúde e Educação viraram frentes de Direitos, e
+ * Movimentos também — memória das lutas é direito em movimento, não assunto
+ * separado. Restam 10 eixos, sem mover nenhuma página.
  *
  * REGRA: nada aqui move página. `rotas` lista o que existe hoje; `rota` da frente
  * é a porta que já está no ar. Página nova entra como `estado: "proposta"`.
@@ -153,6 +152,13 @@ export const EIXOS: Eixo[] = [
         ],
       },
       {
+        slug: "memoria",
+        rotulo: "Memória das lutas",
+        descricao: "Verbetes cronológicos das lutas populares, com fonte e filtro.",
+        rota: "/memoria",
+        rotas: ["/memoria"],
+      },
+      {
         slug: "direitos-globais",
         rotulo: "Direitos globais",
         descricao: "O mesmo direito em outros países e nos organismos internacionais.",
@@ -248,23 +254,6 @@ export const EIXOS: Eixo[] = [
           "/ambiental/litigios-climaticos",
         ],
       },
-    ],
-  },
-  {
-    slug: "movimentos",
-    rotulo: "Movimentos",
-    descricao: "Quem resiste: memória das lutas, MAB, comissões de atingidos e ATIs.",
-    rota: "/movimentos",
-    estado: "proposta",
-    frentes: [
-      {
-        slug: "memoria",
-        rotulo: "Memória das lutas",
-        descricao: "Verbetes cronológicos das lutas populares, com fonte e filtro.",
-        rota: "/memoria",
-        rotas: ["/memoria"],
-      },
-      MOVIMENTO,
     ],
   },
   {
@@ -529,7 +518,7 @@ const ALIAS: { prefixo: string; eixo: string; frente?: string }[] = [
   { prefixo: "/direitos-em-movimento", eixo: "direitos", frente: "direitos-em-movimento" },
   { prefixo: "/direitos-globais", eixo: "direitos", frente: "direitos-globais" },
   { prefixo: "/direitos-comparados", eixo: "direitos", frente: "direitos-comparados" },
-  { prefixo: "/memoria", eixo: "movimentos", frente: "memoria" },
+  { prefixo: "/memoria", eixo: "direitos", frente: "memoria" },
   { prefixo: "/instituicoes", eixo: "justica", frente: "instituicoes" },
   { prefixo: "/empresas", eixo: "economia", frente: "empresas" },
   { prefixo: "/governo", eixo: "politica", frente: "governo" },
