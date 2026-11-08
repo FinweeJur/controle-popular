@@ -1,6 +1,6 @@
 [
   {
-    "geradoEm": "2026-11-08T11:13:28",
+    "geradoEm": "2026-11-08T19:28:36",
     "frente": "riodoce",
     "total": 3656,
     "fila": 3656,
@@ -212,11 +212,11 @@
         169
       ],
       [
-        "voto",
+        "ementa",
         166
       ],
       [
-        "ementa",
+        "voto",
         166
       ],
       [
@@ -331,12 +331,12 @@
           {
             "processo": "0000181-86.2020.8.08.0006",
             "lado": "empresa",
-            "tese": "Embargos de declaração rejeitados; mantida decisão que acolheu parcialmente impugnação ao cumprimento de sentença por excesso de execução no âmbito do"
+            "tese": "Embargos de declaração rejeitados; mantida decisão que acolheu parcialmente impugnação ao cumprimento de sentença por excesso de execução no âmbito do…"
           },
           {
             "processo": "0000714-86.2018.8.08.0015",
             "lado": "atingido",
-            "tese": "Embargos de declaração desprovidos; acórdão restabeleceu gratuidade, extinguiu por perda de interesse e condenou Samarco em ônus pelo princípio da cau"
+            "tese": "Embargos de declaração desprovidos; acórdão restabeleceu gratuidade, extinguiu por perda de interesse e condenou Samarco em ônus pelo princípio da cau…"
           }
         ]
       },
@@ -408,10 +408,11 @@
           }
         ]
       }
-    ]
+    ],
+    "casos": []
   },
   {
-    "geradoEm": "2026-11-08T11:13:32",
+    "geradoEm": "2026-11-08T19:28:53",
     "frente": "brumadinho",
     "total": 2468,
     "fila": 2488,
@@ -490,11 +491,11 @@
         77
       ],
       [
-        "agua_abastecimento",
+        "desvalorizacao_imoveis",
         70
       ],
       [
-        "desvalorizacao_imoveis",
+        "agua_abastecimento",
         70
       ],
       [
@@ -713,12 +714,12 @@
           {
             "processo": "0096994-87.2022.8.13",
             "lado": "empresa",
-            "tese": "TAP deve ser interpretado restritivamente; sem documentos exigidos e adstrito aos limites geográficos, não há probabilidade do direito para tutela de "
+            "tese": "TAP deve ser interpretado restritivamente; sem documentos exigidos e adstrito aos limites geográficos, não há probabilidade do direito para tutela de…"
           },
           {
             "processo": "0140289-77.2022.8.13",
             "lado": "empresa",
-            "tese": "Termo de Acordo Preliminar deve ser interpretado restritivamente, não havendo probabilidade do direito para auxílio emergencial sem documentos exigido"
+            "tese": "Termo de Acordo Preliminar deve ser interpretado restritivamente, não havendo probabilidade do direito para auxílio emergencial sem documentos exigido…"
           }
         ]
       },
@@ -786,7 +787,7 @@
           {
             "processo": "0845823-53.2025.8.13",
             "lado": "indeterminado",
-            "tese": "Cabe instar a ANM a dizer se quer intervir como assistente simples em ação de responsabilidade por atos contra a administração ligada ao rompimento da"
+            "tese": "Cabe instar a ANM a dizer se quer intervir como assistente simples em ação de responsabilidade por atos contra a administração ligada ao rompimento da…"
           }
         ]
       },
@@ -812,10 +813,11 @@
           }
         ]
       }
-    ]
+    ],
+    "casos": []
   },
   {
-    "geradoEm": "2026-11-08T11:13:33",
+    "geradoEm": "2026-11-08T19:28:55",
     "frente": "dh",
     "total": 2373,
     "fila": 2373,
@@ -1044,7 +1046,7 @@
           {
             "processo": "0000105-67.2018.8.13",
             "lado": "indeterminado",
-            "tese": "O direito social à saúde deve ser garantido conforme protocolos clínicos e diretrizes terapêuticas, com repartição de competências entre os entes fede"
+            "tese": "O direito social à saúde deve ser garantido conforme protocolos clínicos e diretrizes terapêuticas, com repartição de competências entre os entes fede…"
           },
           {
             "processo": "0000463-06.2020.8.13",
@@ -1072,7 +1074,7 @@
           {
             "processo": "0000088-74.2016.8.13",
             "lado": "ente_publico",
-            "tese": "A criminalização do desacato a policial militar no exercício da função é compatível com o direito de liberdade de expressão previsto na Convenção Amer"
+            "tese": "A criminalização do desacato a policial militar no exercício da função é compatível com o direito de liberdade de expressão previsto na Convenção Amer…"
           }
         ]
       },
@@ -1090,12 +1092,12 @@
           {
             "processo": "0002268-86.2015.8.13",
             "lado": "titular",
-            "tese": "O fornecimento de água imprópria para consumo humano configura falha no saneamento básico, sendo responsabilidade da Administração Pública, cabendo mu"
+            "tese": "O fornecimento de água imprópria para consumo humano configura falha no saneamento básico, sendo responsabilidade da Administração Pública, cabendo mu…"
           },
           {
             "processo": "0003770-69.2016.8.13",
             "lado": "indeterminado",
-            "tese": "O ambiente ecologicamente equilibrado é direito humano fundamental, mas a improcedência da ação civil pública por dano ambiental deve ser mantida quan"
+            "tese": "O ambiente ecologicamente equilibrado é direito humano fundamental, mas a improcedência da ação civil pública por dano ambiental deve ser mantida quan…"
           }
         ]
       },
@@ -1118,7 +1120,7 @@
           {
             "processo": "0003661-37.2021.8.13",
             "lado": "indeterminado",
-            "tese": "É válido o depoimento especial de criança vítima de violência, conforme a Lei 13.431/17, e não há nulidade pelo indeferimento de prova pericial irrele"
+            "tese": "É válido o depoimento especial de criança vítima de violência, conforme a Lei 13.431/17, e não há nulidade pelo indeferimento de prova pericial irrele…"
           }
         ]
       },
@@ -1160,12 +1162,12 @@
           {
             "processo": "0006919-61.2018.8.13",
             "lado": "indeterminado",
-            "tese": "A curatela de idoso exige prova de causa transitória ou permanente que o impossibilite de exprimir sua vontade; ausente a prova, mantém-se a improcedê"
+            "tese": "A curatela de idoso exige prova de causa transitória ou permanente que o impossibilite de exprimir sua vontade; ausente a prova, mantém-se a improcedê…"
           },
           {
             "processo": "0041913-79.2016.8.13",
             "lado": "indeterminado",
-            "tese": "A acessibilidade é princípio geral do direito e a deficiência deve ser vista sob o modelo social, conforme a Convenção Internacional sobre os Direitos"
+            "tese": "A acessibilidade é princípio geral do direito e a deficiência deve ser vista sob o modelo social, conforme a Convenção Internacional sobre os Direitos…"
           }
         ]
       },
@@ -1183,12 +1185,12 @@
           {
             "processo": "0008614-08.2015.8.13",
             "lado": "indeterminado",
-            "tese": "Contratação excessiva de servidores sem concurso público, em regime temporário, descumprindo TAC firmado com o Ministério Público, configura ato de im"
+            "tese": "Contratação excessiva de servidores sem concurso público, em regime temporário, descumprindo TAC firmado com o Ministério Público, configura ato de im…"
           },
           {
             "processo": "0019378-66.2018.8.13",
             "lado": "titular",
-            "tese": "Falta disciplinar de conselheiro tutelar não correlacionada ao exercício da função e sem prejuízo ao Conselho não justifica perda do mandato, violando"
+            "tese": "Falta disciplinar de conselheiro tutelar não correlacionada ao exercício da função e sem prejuízo ao Conselho não justifica perda do mandato, violando…"
           }
         ]
       },
@@ -1215,10 +1217,11 @@
           }
         ]
       }
-    ]
+    ],
+    "casos": []
   },
   {
-    "geradoEm": "2026-11-08T11:43:53",
+    "geradoEm": "2026-11-08T19:28:56",
     "frente": "itatiaiaucu",
     "total": 7,
     "fila": 7,
@@ -1244,7 +1247,7 @@
     },
     "palavras_chave": [
       [
-        "tac",
+        "paebm",
         7
       ],
       [
@@ -1252,7 +1255,7 @@
         7
       ],
       [
-        "paebm",
+        "tac",
         7
       ],
       [
@@ -1268,11 +1271,11 @@
         3
       ],
       [
-        "interrupção",
+        "prazo quinquenal",
         2
       ],
       [
-        "prazo quinquenal",
+        "interrupção",
         2
       ],
       [
