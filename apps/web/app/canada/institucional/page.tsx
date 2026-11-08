@@ -32,6 +32,7 @@ import {
 import PainelInstitucionalCanada from "./PainelInstitucionalCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Institucional Canadá: Cidades SGC, Parlamento, CanLII & Ouvidoria CORE | Controle Popular",
@@ -77,6 +78,8 @@ export default function PaginaInstitucionalCanada() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Instituições Canadenses, Justiça e Direitos Territoriais
         </h1>
+
+        <ResumoRealidadeBox rota="/canada/institucional" />
         <p className="mt-2 max-w-4xl text-base text-muted sm:text-lg">
           Mapeamento das cidades polo, decisões judiciais e ouvidoria federal de direitos humanos.
         </p>

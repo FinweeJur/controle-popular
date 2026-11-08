@@ -4,6 +4,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import FonteRodape from "@/app/judiciario/components/FonteRodape";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import resumo from "@/data/jurisprudencia-buscador-resumo.json";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/judiciario/jurisprudencia` — o buscador de decisões sobre barragens,
@@ -47,6 +48,8 @@ export default function JurisprudenciaPage() {
 
         <header className="space-y-3">
           <h1 className="font-display text-3xl font-bold">Jurisprudência de barragens e direitos humanos</h1>
+
+        <ResumoRealidadeBox rota="/judiciario/jurisprudencia" />
           <p className="text-base opacity-80">
             São <strong>{formatNumberBR(resumo.total)} decisões</strong> do TJMG e do TJES
             sobre rompimento de barragens, mineração e direitos dos atingidos, de{" "}

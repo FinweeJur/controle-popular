@@ -8,6 +8,7 @@ import { rotuloResultado } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
 import { formatNumberBR } from "@/lib/betim/format";
 import resumoJurisprudencia from "@/data/jurisprudencia-buscador-resumo.json";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Judiciário brasileiro: ministros, indicações e próximas vagas — Controle Popular",
@@ -45,6 +46,7 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
+      <ResumoRealidadeBox rota="/judiciario" />
       <HeaderFrenteBrasilComS
         etiqueta="PODER JUDICIÁRIO"
         titulo="Quem ocupa, quem indicou, quando vaga"

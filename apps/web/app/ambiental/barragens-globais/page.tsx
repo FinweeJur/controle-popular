@@ -42,6 +42,7 @@ import {
   Waves,
   Mountain,
 } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Grandes Barragens Mundiais (Água, Energia, Mineração) | Controle Popular",
@@ -107,6 +108,8 @@ export default function PaginaBarragensGlobais() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Grandes Barragens Mundiais: Água, Energia e Mineração
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/barragens-globais" />
 
         {/* Resumo da página respeitando a regra de fonte mínima (§5.10) */}
         <div className="mt-3 max-w-4xl text-text-soft">

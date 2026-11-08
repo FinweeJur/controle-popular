@@ -25,6 +25,7 @@ import {
 import { bigtech, dataColeta, fornecedores, meta, partidos, porPartido, porUfAnalise } from "./dados";
 import { formatCurrencyCompactaBR } from "@/lib/betim/format";
 import { formatarMoedaBR, formatarNumeroBR } from "@/lib/utilitarios/calculos";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/eleicoes/2026/gastos-campanha` — quanto as campanhas de 2026 gastaram
@@ -92,6 +93,8 @@ export default function GastosCampanha2026(): ReactElement {
         <h1 className="font-display text-3xl font-bold">
           Gastos de campanha 2026: onde o dinheiro da publicidade foi parar
         </h1>
+
+        <ResumoRealidadeBox rota="/eleicoes/2026/gastos-campanha" />
         <ResumoExpandivel
           className="max-w-3xl opacity-80"
           texto={`Receita declarada de ${formatCurrencyCompactaBR(meta.totais.receita)}, despesa contratada de ${formatCurrencyCompactaBR(meta.totais.contratado)} e ${formatCurrencyCompactaBR(meta.totais.pago)} já pagos até ${dataColeta} — este é o dinheiro das Eleições de 2026 visto pela prestação de contas ao TSE. A publicidade digital contratada soma ${formatCurrencyCompactaBR(meta.grupos.digital.contratado)} e a Meta recebeu ${formatCurrencyCompactaBR(gruposBigTech[0]?.total ?? 0)} disso. Cada linha traz votos, custo por voto e o caminho de volta para a fonte oficial. O dado é parcial: as contas definitivas valem até 03/11/2026 e o 2º turno é em 25/10/2026.`}

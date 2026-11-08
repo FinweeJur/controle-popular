@@ -29,6 +29,7 @@ import PainelEuropa from "./PainelEuropa";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import DestaqueLitigios from "./DestaqueLitigios";
 import { ArrowRight } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Europa & Conexões Transnacionais: Litígios, Devida Diligência & Concessões | Controle Popular",
@@ -83,6 +84,8 @@ export default function PaginaHubEuropa() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Europa e Conexões Transnacionais com o Brasil
         </h1>
+
+        <ResumoRealidadeBox rota="/europa" />
         <p className="mt-3 max-w-4xl text-base text-text-soft sm:text-lg leading-relaxed">
           Audite litígios de responsabilidade extraterritorial em cortes estrangeiras, regras de devida
           diligência em cadeias globais de suprimentos e concessões públicas essenciais operadas por gigantes

@@ -52,6 +52,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/tac", {
   title: "Projetos de TAC ambiental — Controle Popular · Ambiental",
   description: `Execução financeira dos ${formatNumberBR(COBERTURA_TAC_PROJETOS.projetos)} projetos custeados por mineradoras em Termos de Ajustamento de Conduta ambientais de Minas Gerais, entre ${COBERTURA_TAC_PROJETOS.anoInicial} e ${COBERTURA_TAC_PROJETOS.anoFinal}: quanto cada empresa prometeu, para qual órgão, e quanto de fato foi executado até ${COBERTURA_TAC_PROJETOS.ultimoAnoComExecucao}.`,
 });
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 const C = COBERTURA_TAC_PROJETOS;
 const G = COBERTURA_TAC_GTAC;
@@ -91,6 +92,8 @@ export default function TacAmbientalPage() {
         <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
           O dinheiro dos TACs ambientais de Minas
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/tac" />
         <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
           Quando uma mineradora firma um <strong className="text-text">Termo de Ajustamento de
           Conduta</strong> ambiental, parte da reparação vira dinheiro para projetos tocados por

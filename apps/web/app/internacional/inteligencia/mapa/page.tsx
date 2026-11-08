@@ -33,6 +33,7 @@ import {
   LockOpen,
   Eye,
 } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Mapa Global de Inteligência & Documentos Desclassificados | Controle Popular",
@@ -98,6 +99,8 @@ export default function PaginaMapaInteligenciaG20() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Mapa Global de Inteligência & Documentos Desclassificados
         </h1>
+
+        <ResumoRealidadeBox rota="/internacional/inteligencia/mapa" />
         <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
           Explore no mapa a distribuição geográfica de relatórios históricos e contemporâneos de agências
           de inteligência dos EUA, Europa e Twelve Eyes. Clique em qualquer localidade para auditar o dossiê,

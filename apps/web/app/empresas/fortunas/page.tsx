@@ -24,6 +24,7 @@ import Link from "next/link";
 import { obterFortunasMundiais, COBERTURA_FORTUNAS } from "@/lib/empresas/dados-fortunas";
 import PainelFortunasClient from "./PainelFortunasClient";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "1.000 Maiores Fortunas Mundiais — Concentração de Riqueza e Equivalência Social",
@@ -73,6 +74,8 @@ export default function PaginaFortunasMundiais() {
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-display tracking-tight text-foreground">
           1.000 Maiores Fortunas Mundiais
         </h1>
+
+        <ResumoRealidadeBox rota="/empresas/fortunas" />
 
         {/* Descrição conforme regra 5.10 de acessibilidade (piso text-sm) */}
         <p className="text-sm sm:text-base text-muted max-w-4xl leading-relaxed">

@@ -38,6 +38,7 @@ import {
   obterTodosOrcamentos,
 } from "@/lib/internacional/dados-orcamentos";
 import PainelOrcamentosClient from "./PainelOrcamentosClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title:
@@ -148,6 +149,8 @@ export default function PaginaOrcamentosComparados() {
         <h1 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
           Orçamentos Estratégicos: EUA, Canadá e Europa
         </h1>
+
+        <ResumoRealidadeBox rota="/internacional/orcamentos" />
 
         {/* Resumo com controle "Ver + Texto" para não empurrar os dados (Regra § 5.10) */}
         <ResumoExpandivel texto={descricaoPagina} className="text-muted max-w-5xl" />

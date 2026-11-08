@@ -16,6 +16,7 @@ import CartoesResumo from "@/app/components/CartoesResumo";
 import GraficoBarrasSvg from "@/app/components/GraficoBarrasSvg";
 import { metadataEditavel } from "@/lib/edicoes";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/barragens", {
   title: "Barragens em Minas Gerais — Controle Popular · Ambiental",
@@ -167,6 +168,8 @@ function Cabecalho({ contagem }: { contagem: Contagem }) {
       <h1 className="font-display text-3xl font-bold sm:text-4xl">
         As barragens de Minas Gerais, nos três cadastros que existem
       </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/barragens" />
       <p className="max-w-2xl text-[1.05em] opacity-85">
         Não existe UM cadastro de barragens em Minas — existem três, cobrindo coisas
         diferentes: o inventário da FEAM (mineração e indústria de Minas), o cadastro

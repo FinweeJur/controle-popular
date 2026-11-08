@@ -8,6 +8,7 @@ import PainelAmeacasClient from "./PainelAmeacasClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file apps/web/app/ambiental/ameacas-americas/page.tsx
@@ -88,6 +89,8 @@ export default function PaginaAmeacasAmericas() {
         <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
           Ameaças Ambientais nas Américas
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/ameacas-americas" />
 
         {/* Descrição com piso de 14px e controle Ver + Texto (Regra § 5.10) */}
         <div className="max-w-4xl text-text-soft">

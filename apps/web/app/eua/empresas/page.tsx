@@ -4,6 +4,7 @@ import { COBERTURA_EUA, obterEmpresasSecEua } from "@/lib/internacional/dados-eu
 import SubNavEua from "../components/SubNavEua";
 import PainelEmpresasSec from "./PainelEmpresasSec";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file apps/web/app/eua/empresas/page.tsx
@@ -73,6 +74,8 @@ export default function PaginaEmpresasEua() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Empresas e Fundos dos EUA na SEC: Conexão com o Brasil
         </h1>
+
+        <ResumoRealidadeBox rota="/eua/empresas" />
         <p className="mt-3 max-w-4xl text-base text-muted sm:text-lg">
           Balanços auditados, formulários anuais 10-K e 20-F e fatores de risco.
           Descubra quem financia, controla e lucra com recursos estratégicos brasileiros.

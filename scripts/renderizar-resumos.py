@@ -58,11 +58,24 @@ def inserir_importe(texto: str) -> str:
 
 def inserir_bloco(texto: str, rota: str) -> str | None:
     alvo = texto.find("</h1>")
-    if alvo < 0:
-        return None
-    fim = alvo + len("</h1>")
-    bloco = f'\n\n        <ResumoRealidadeBox rota="{rota}" />'
-    return texto[:fim] + bloco + texto[fim:]
+    if alvo >= 0:
+        fim = alvo + len("</h1>")
+        bloco = f'\n\n        <ResumoRealidadeBox rota="{rota}" />'
+        return texto[:fim] + bloco + texto[fim:]
+    # Página sem <h1>: o título mora em componente de cliente. Entra no topo
+    # do fragmento retornado, que é o único ponto seguro.
+    fragmento = re.search(r"return \(\s*\n(\s*)<>", texto)
+    if fragmento:
+        fim = fragmento.end()
+        bloco = f'\n{fragmento.group(1)}  <ResumoRealidadeBox rota="{rota}" />'
+        return texto[:fim] + bloco + texto[fim:]
+    # Raiz é `<div ...>`: entra logo depois da tag de abertura.
+    div = re.search(r"return \(\s*\n(\s*)(<div[^>]*>)\s*\n", texto)
+    if div:
+        fim = div.end()
+        bloco = f'{div.group(1)}  <ResumoRealidadeBox rota="{rota}" />\n'
+        return texto[:fim] + bloco + texto[fim:]
+    return None
 
 
 def main() -> int:

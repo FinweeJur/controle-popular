@@ -32,6 +32,7 @@ import {
   DollarSign,
   AlertTriangle,
 } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Mapa Global de Operações Militares, Golpes e PMCs | Controle Popular",
@@ -97,6 +98,8 @@ export default function PaginaMapaOperacoesMilitares() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Mapa Global de Operações Militares, Conflitos e PMCs
         </h1>
+
+        <ResumoRealidadeBox rota="/internacional/operacoes-militares/mapa" />
         <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
           Consulte as coordenadas geográficas de intervenções militares, golpes de Estado,
           operações de empresas militares privadas (PMCs) e grandes contratos bélicos articulados
