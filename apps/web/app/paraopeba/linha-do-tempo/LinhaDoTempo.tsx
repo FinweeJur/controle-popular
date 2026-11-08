@@ -1,8 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import ScrollStar from "@/app/components/ScrollStar";
 import {
+  COR_ATOR,
+  ROTULO_ATOR,
   MARCOS_PARAOPEBA,
   ROTULO_TIPO_MARCO,
   formatarDataMarco,
@@ -262,6 +265,62 @@ export default function LinhaDoTempo() {
 }
 
 /**
+ * Quem agiu no fato: selo por classe de ator, logo abaixo da descrição.
+ *
+ * A leitura é editorial (dono, 08/11/2026): separar movimento popular, Estado,
+ * Judiciário e empresa evita a confusão de "o caso" como se fosse um só ator.
+ */
+function SeloAtores({ atores }: { atores: string[] }) {
+  return (
+    <div className="mt-2 flex flex-wrap gap-1.5">
+      {atores.map((ator) => {
+        const chave = ator as keyof typeof ROTULO_ATOR;
+        const cor = COR_ATOR[chave] ?? "#4B5563";
+        return (
+          <span
+            key={ator}
+            className="rounded-full border px-2 py-0.5 text-xs font-semibold"
+            style={{ borderColor: cor, color: cor }}
+          >
+            {ROTULO_ATOR[chave] ?? ator}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Botões pequenos de fonte, logo depois do fato — não numa lista no rodapé. */
+function FontesMarco({ fontes }: { fontes: { rotulo: string; url: string }[] }) {
+  if (!fontes?.length) return null;
+  return (
+    <div className="mt-2 flex flex-wrap gap-1.5">
+      {fontes.map((fonte) => {
+        const externo = fonte.url.startsWith("http");
+        const classe =
+          "rounded-md border border-border px-2 py-0.5 text-xs font-medium text-text-soft transition-colors hover:border-current hover:text-text";
+        return externo ? (
+          <a
+            key={fonte.url}
+            href={fonte.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classe}
+            title={`Abrir ${fonte.rotulo} em nova aba`}
+          >
+            {fonte.rotulo} ↗
+          </a>
+        ) : (
+          <Link key={fonte.url} href={fonte.url} className={classe}>
+            {fonte.rotulo} →
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
  * O `<ol>` dos marcos: conector por item, ponto colorido pelo tipo e card
  * com data, valor encontrado no texto e legenda. Extraído para função própria
  * (03/11/2026) porque o componente da tela tinha estourado o gate de método
@@ -319,6 +378,8 @@ function ListaMarcos({
                 </div>
                 <p className="mt-0.5 font-display text-base font-semibold text-text">{m.titulo}</p>
                 <p className="mt-1 text-sm text-text-soft">{m.descricao}</p>
+                <SeloAtores atores={m.atores} />
+                <FontesMarco fontes={m.fontes} />
               </div>
             </li>
           );
