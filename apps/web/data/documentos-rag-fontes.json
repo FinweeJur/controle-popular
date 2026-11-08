@@ -1,5 +1,25 @@
 [
   {
+    "id": "guaicuy-dossie-acoes-individuais-2024",
+    "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+    "tipo": "Relatório",
+    "categoria": "Acadêmico & Pesquisa",
+    "tema": "Atingidos por barragens",
+    "orgao": "Instituto Guaicuy",
+    "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+    "urlPdf": null,
+    "arquivoLocal": "guaicuy-dossie-acoes-individuais-2024.pdf",
+    "resumo": "Diagnóstico das ações individuais das Regiões 4 e 5 que buscam indenização pelo rompimento das barragens B-I, B-IV e B-IVA da Vale S.A. Base para confrontar as teses do tribunal com as teses da assessoria técnica.",
+    "tags": [
+      "Guaicuy",
+      "indenização individual",
+      "ações individuais",
+      "Região 4",
+      "Região 5",
+      "Paraopeba"
+    ]
+  },
+  {
     "id": "nacab-pesquisa-jurisprudencial-2023",
     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
     "tipo": "Relatório",
@@ -7,7 +27,8 @@
     "tema": "Atingidos por barragens",
     "orgao": "NACAB / ADAI",
     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
-    "urlPdf": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+    "urlPdf": null,
+    "arquivoLocal": "nacab-pesquisa-jurisprudencial-2023.pdf",
     "resumo": "Pesquisa jurisprudencial do NACAB/ADAI sobre ações de pessoas atingidas pelo rompimento da barragem de Brumadinho no TJMG.",
     "tags": [
       "NACAB",

@@ -1,18 +1,18 @@
 {
   "totalDocumentos": 2361,
-  "totalTrechos": 2361,
+  "totalTrechos": 2630,
   "porCategoria": [
     {
       "slug": "Ambiental & Desastres",
-      "contagem": 935
+      "contagem": 934
+    },
+    {
+      "slug": "Acadêmico & Pesquisa",
+      "contagem": 761
     },
     {
       "slug": "Justiça & Controle",
       "contagem": 729
-    },
-    {
-      "slug": "Acadêmico & Pesquisa",
-      "contagem": 491
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -66,11 +66,11 @@
   "porTema": [
     {
       "slug": "Desastres e barragens",
-      "contagem": 935
+      "contagem": 934
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 355
+      "contagem": 625
     },
     {
       "slug": "Instituições de Justiça",
@@ -196,7 +196,7 @@
     },
     {
       "slug": "2024",
-      "contagem": 430
+      "contagem": 429
     },
     {
       "slug": "2023",
