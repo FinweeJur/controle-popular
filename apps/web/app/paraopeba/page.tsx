@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 // Data do dado publicada no hub: o carimbo `gerado_em` de `biblioteca-ati.json`,
 // exposto por `coberturaBiblioteca()` — único acervo do hub com carimbo no arquivo.
@@ -600,6 +601,8 @@ export default async function ParaopebaHome() {
   // no hub desta frente.
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+      <CaminhoSistema rota="/paraopeba" />
+
       <HeaderFrenteBrasilComS
         etiqueta={ZONA.etiqueta}
         titulo={ZONA.titulo}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import Link from "@/lib/congresso/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
@@ -22,6 +23,8 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
+      <CaminhoSistema rota="/congresso" />
+
       <HeaderFrenteBrasilComS
         etiqueta="PODER LEGISLATIVO FEDERAL"
         titulo="O que o Congresso está decidindo sobre os seus direitos"

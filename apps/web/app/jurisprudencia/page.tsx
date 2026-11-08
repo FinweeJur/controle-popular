@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import {
   Atalhos,
@@ -79,6 +80,10 @@ export default async function Jurisprudencia({
 
   return (
     <div className="w-full space-y-10 px-4 py-10">
+      <div className="mx-auto max-w-5xl">
+        <CaminhoSistema rota="/jurisprudencia" />
+      </div>
+
       <header className="mx-auto max-w-5xl space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência dos desastres</h1>
         <p className="max-w-3xl text-sm opacity-80">

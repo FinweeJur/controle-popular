@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import Link from "next/link";
 import { History, BookOpen, ExternalLink, CalendarDays } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -94,12 +95,7 @@ export default function MemoriaPage() {
       tabIndex={-1}
       className="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-6 lg:px-8"
     >
-      <nav aria-label="Trilha de navegação" className="text-xs text-muted">
-        <Link href="/" className="transition hover:text-primary">
-          Início
-        </Link>{" "}
-        · <span className="font-semibold text-foreground">Linha do Tempo das Lutas</span>
-      </nav>
+      <CaminhoSistema rota="/memoria" />
 
       <header className="space-y-4 rounded-3xl border border-border bg-surface p-6 shadow-xs sm:p-8">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
