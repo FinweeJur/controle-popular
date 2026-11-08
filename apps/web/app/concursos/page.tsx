@@ -20,6 +20,7 @@ import PainelConcursos from "./PainelConcursos";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
 import BotaoPerguntarNono from "@/app/components/BotaoPerguntarNono";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * ═══ CONCURSOS PÚBLICOS E CONTRATAÇÕES TEMPORÁRIAS DO BRASIL ═══
@@ -97,11 +98,11 @@ export default function ConcursosPage() {
         </p>
       </header>
 
+      {/* Resumo de realidade (F2): números contados no próprio JSON da página. */}
+      <ResumoRealidadeBox rota="/concursos" className="mt-6" />
+
       {/* ─── DATA DA COLETA E CARIMBO OFICIAL ───────────────────────────── */}
-      <DataColeta
-        coletadoEm={METRICAS_CONCURSOS.atualizadoEm}
-        fonte="Diários Oficiais da União, Estados e Municípios e Bancas Credenciadas"
-      />
+      <DataColeta coletadoEm={METRICAS_CONCURSOS.atualizadoEm} fonte="Diários Oficiais da União, Estados e Municípios e Bancas Credenciadas" />
 
       {/* ─── CARTÕES DE TOPO (TOTAIS DERIVADOS MATEMATICAMENTE) ─────────── */}
       <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">

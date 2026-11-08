@@ -1,0 +1,6 @@
+{
+  "rota": "/concursos",
+  "geradoEm": "2026-11-08",
+  "verificado": true,
+  "markdown": "# 74 certames, 80.250 vagas imediatas e 170.420 de cadastro reserva\n\nO radar reúne 74 certames com dados atualizados em 2 de novembro de 2026: 80.250 vagas imediatas e 170.420 vagas de cadastro reserva. [medido — contagem do arquivo de concursos]\n\nPor esfera, são 36 certames estaduais, 21 municipais e 17 federais. Por Poder: 33 no Executivo, 19 no Judiciário, 10 em tribunais de contas, 6 no Legislativo, 3 no Ministério Público e 3 na Defensoria Pública. [medido — mesma contagem]\n\nSão 65 concursos efetivos, 6 processos seletivos simplificados e 3 contratações temporárias. No recorte de status, 27 estão com inscrições abertas e 13 com edital publicado. [medido]\n\nA maior remuneração inicial registrada é R$ 36.210,00. A base cobre as 27 unidades federativas e o âmbito nacional; Minas Gerais aparece em 13 certames. [medido]\n\nVaga anunciada não é nomeação: o arquivo registra o que o edital oferece, não provimento, posse ou desistência. [não dá para concluir]\n\nFonte: arquivo concursos-publicos.json, campos totalCertames, totalVagasImediatas, totalVagasCadastroReserva, maiorRemuneracao e resumo. A página lê os mesmos campos."
+}

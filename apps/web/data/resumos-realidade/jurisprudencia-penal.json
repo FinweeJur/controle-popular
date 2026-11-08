@@ -1,0 +1,6 @@
+{
+  "rota": "/jurisprudencia/penal",
+  "geradoEm": "2026-11-08",
+  "verificado": true,
+  "markdown": "# O acervo penal: 6.182 acórdãos, maioria habeas corpus e resultado negado\n\nA frente penal do acervo tem 6.182 acórdãos: 3.190 do TJES e 2.992 do STF. Não há decisão do TJMG nesta fatia. [medido — contagem do arquivo de casos]\n\nHabeas corpus é o tipo mais frequente: 1.699 decisões (27,5%), somadas as classes HC e Habeas Corpus Criminal. [medido]\n\nO resultado registrado é “negado” em 4.396 casos (71,1%). Em 430 casos (7,0%) o campo de resultado está vazio ou marcado como “não consta”. [medido]\n\nA série é recente: 3.458 casos são de 2026, 1.298 de 2025 e 587 de 2024; o mais antigo é de 1947. [medido]\n\nO campo que identifica quem recorreu está vazio em 2.122 dos 6.182 casos (34,3%); portanto, não dá para concluir, pelo acervo, qual lado venceu na maioria. [não dá para concluir]\n\nFonte: arquivo jurisprudencia-casos.json, gerado em 8 de novembro de 2026, filtro frente = penal. A coleta usa âncoras penais: crime comum da região e crime ligado a desastre entram juntos."
+}

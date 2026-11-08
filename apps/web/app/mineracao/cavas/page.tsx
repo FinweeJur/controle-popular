@@ -10,6 +10,7 @@ import {
 } from "@/lib/cavas/serie";
 import TabelaCavas from "./TabelaCavas";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/mineracao/cavas` — Fase 5 do plano de cavas: a série anual da mineração
@@ -196,12 +197,11 @@ export default function PaginaCavas() {
         </p>
       </header>
 
+      {/* Resumo de realidade (F2): números contados nos dois JSONs da página. */}
+      <ResumoRealidadeBox rota="/mineracao/cavas" className="mb-6" />
+
       <section aria-label="Resumo em números" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Cartao
-          valor={fmt(C.poligonos)}
-          rotulo="polígonos de mineração mapeados"
-          nota={`série de ${C.qtdAnos} anos, ${C.primeiroAno}→${C.ultimoAno}`}
-        />
+        <Cartao valor={fmt(C.poligonos)} rotulo="polígonos de mineração mapeados" nota={`série de ${C.qtdAnos} anos, ${C.primeiroAno}→${C.ultimoAno}`} />
         <Cartao
           valor={`${fmt(C.area, 1)} ha`}
           rotulo="área mapeada no total"

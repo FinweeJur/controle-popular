@@ -1,0 +1,6 @@
+{
+  "rota": "/mineracao/cavas",
+  "geradoEm": "2026-11-08",
+  "verificado": true,
+  "markdown": "# 86.694 polígonos de mineração em Minas Gerais, mapeados entre 1985 e 2024\n\nA série cobre 40 anos, de 1985 a 2024, e soma 86.694 polígonos de mineração, 104.186,77 hectares mapeados por satélite em Minas Gerais. [medido — série MapBiomas, camada pto:mining_age]\n\nO maior crescimento anual depois do começo da série foi em 2020, com 11.464,6 hectares novos. Em 2024 foram 4.234,4 hectares em 3.799 polígonos. [medido]\n\n3.869 polígonos somam 2.589,54 hectares fora de todo polígono da ANM/SIGMINE. [medido]\n\nNo cruzamento com a ANM, em amostra datada de 120 cavas (semente 42, folga de 80 metros), 84 estão em área com fase que autoriza extrair, 34 têm indício processual e 2 estão sem cadastro. [medido]\n\nLimite do dado: a resolução é de 30 metros (Landsat), então cava menor que isso não aparece; área mapeada não é atividade em curso. [medido — ficha da série]\n\nFonte: cavas-serie-mineracao-mg.json e cavas-estados-mg.json, coletados em 29 de setembro de 2026; a página lê os mesmos campos."
+}

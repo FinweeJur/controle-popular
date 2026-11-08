@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -79,6 +80,9 @@ export default async function JurisprudenciaPenal({
           porque ali o crime é o objeto da responsabilização.
         </p>
       </header>
+
+      {/* Resumo de realidade (F2): números contados no próprio JSON da página. */}
+      <ResumoRealidadeBox rota="/jurisprudencia/penal" />
 
       <section className="space-y-4" id="lista">
         <div className="flex flex-wrap items-center gap-3 text-sm">
