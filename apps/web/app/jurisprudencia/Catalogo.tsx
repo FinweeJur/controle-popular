@@ -39,6 +39,8 @@ type Catalogo = {
   confianca: Record<string, number>;
   palavras_chave: Par[];
   divergencias: Divergencia[];
+  /** Frente pequena: a lista dos casos, não percentual de sete. */
+  casos?: { processo: string; tese: string; lado: string }[];
 };
 
 const FRENTES = frentesJson as unknown as Catalogo[];
@@ -170,7 +172,7 @@ function TabelaContagem({
   );
 }
 
-function BlocoFrente({ dados }: { dados: Catalogo }) {
+function CartoesFrente({ dados }: { dados: Catalogo }) {
   const declarados = Object.entries(dados.lados)
     .filter(([lado]) => lado !== "indeterminado")
     .reduce((soma, [, quantidade]) => soma + quantidade, 0);
@@ -179,6 +181,45 @@ function BlocoFrente({ dados }: { dados: Catalogo }) {
     { rotulo: "Cobertura da fila", valor: percentual(dados.total, dados.fila) },
     { rotulo: "Com lado vencedor declarado", valor: numero(declarados) },
   ];
+  return (
+    <div className="grid gap-3 sm:grid-cols-3">
+      {cartoes.map((cartao) => (
+        <div key={cartao.rotulo} className="rounded-lg border border-[var(--cp-border)] p-4">
+          <p className="text-xs uppercase tracking-wide opacity-60">{cartao.rotulo}</p>
+          <p className="mt-1 font-display text-2xl font-semibold tabular-nums">{cartao.valor}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ListaCasos({ casos }: { casos: NonNullable<Catalogo["casos"]> }) {
+  return (
+    <div className="space-y-2">
+      <h4 className="font-display text-sm font-semibold">Os casos da frente</h4>
+      <p className="text-sm opacity-70">
+        São poucos acórdãos: a lista diz mais que percentual. Clique no número para abrir
+        ementa e inteiro teor.
+      </p>
+      <ul className="space-y-2">
+        {casos.map((caso) => (
+          <li key={caso.processo} className="rounded-lg border border-[var(--cp-border)] p-3 text-xs">
+            <Link
+              className="font-mono underline"
+              href={`/jurisprudencia?q=${encodeURIComponent(caso.processo)}#lista`}
+            >
+              {caso.processo}
+            </Link>
+            {caso.lado ? ` (${nome(NOMES_LADO, caso.lado)})` : ""} — {caso.tese}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function BlocoFrente({ dados }: { dados: Catalogo }) {
+  const temLista = Boolean(dados.casos && dados.casos.length > 0);
   return (
     <article className="space-y-5 rounded-xl border border-[var(--cp-border)] p-4 sm:p-6">
       <header className="space-y-2">
@@ -192,14 +233,7 @@ function BlocoFrente({ dados }: { dados: Catalogo }) {
         </p>
       </header>
 
-      <div className="grid gap-3 sm:grid-cols-3">
-        {cartoes.map((cartao) => (
-          <div key={cartao.rotulo} className="rounded-lg border border-[var(--cp-border)] p-4">
-            <p className="text-xs uppercase tracking-wide opacity-60">{cartao.rotulo}</p>
-            <p className="mt-1 font-display text-2xl font-semibold tabular-nums">{cartao.valor}</p>
-          </div>
-        ))}
-      </div>
+      {temLista && dados.casos ? <ListaCasos casos={dados.casos} /> : <CartoesFrente dados={dados} />}
 
       <div className="grid gap-6 sm:grid-cols-2">
         <TabelaContagem

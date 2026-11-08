@@ -1,6 +1,6 @@
 [
   {
-    "geradoEm": "2026-11-06T21:55:22",
+    "geradoEm": "2026-11-08T11:13:28",
     "frente": "riodoce",
     "total": 3656,
     "fila": 3656,
@@ -411,11 +411,11 @@
     ]
   },
   {
-    "geradoEm": "2026-11-06T21:55:25",
+    "geradoEm": "2026-11-08T11:13:32",
     "frente": "brumadinho",
     "total": 2468,
-    "fila": 2470,
-    "cobertura": 99.9,
+    "fila": 2488,
+    "cobertura": 99.2,
     "lados": {
       "indeterminado": 248,
       "atingido": 382,
@@ -815,7 +815,7 @@
     ]
   },
   {
-    "geradoEm": "2026-11-06T21:55:27",
+    "geradoEm": "2026-11-08T11:13:33",
     "frente": "dh",
     "total": 2373,
     "fila": 2373,
@@ -1214,6 +1214,124 @@
             "tese": "Progressão funcional por qualificação profissional exige demonstração dos requisitos da Lei Complementar Municipal nº 170/2014; recurso desprovido."
           }
         ]
+      }
+    ]
+  },
+  {
+    "geradoEm": "2026-11-08T11:43:53",
+    "frente": "itatiaiaucu",
+    "total": 7,
+    "fila": 7,
+    "cobertura": 100.0,
+    "lados": {
+      "atingido": 7
+    },
+    "conflitos": [
+      [
+        "prescricao",
+        7
+      ]
+    ],
+    "direitos": [],
+    "motivos": [
+      [
+        "(não informado)",
+        7
+      ]
+    ],
+    "confianca": {
+      "alta": 7
+    },
+    "palavras_chave": [
+      [
+        "tac",
+        7
+      ],
+      [
+        "consumidor por equiparação",
+        7
+      ],
+      [
+        "paebm",
+        7
+      ],
+      [
+        "prescrição",
+        5
+      ],
+      [
+        "tema 1.280",
+        3
+      ],
+      [
+        "barragem",
+        3
+      ],
+      [
+        "interrupção",
+        2
+      ],
+      [
+        "prazo quinquenal",
+        2
+      ],
+      [
+        "prescrição quinquenal",
+        2
+      ],
+      [
+        "interrupção da prescrição",
+        1
+      ],
+      [
+        "barragem serra azul",
+        1
+      ],
+      [
+        "recurso desprovido",
+        1
+      ],
+      [
+        "barragem de mineração",
+        1
+      ]
+    ],
+    "divergencias": [],
+    "casos": [
+      {
+        "processo": "0596176-39.2026.8.13",
+        "tese": "Acionamento do PAEBM por risco de rompimento de barragem atrai consumidor por equiparação e prescrição quinquenal, com TAC interrompendo o prazo.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "0635032-72.2026.8.13",
+        "tese": "Consumidor por equiparação e TAC interrompem prescrição quinquenal em ação indenizatória por acionamento de PAEBM.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "0635263-02.2026.8.13",
+        "tese": "Consumidor por equiparação e TAC interrompem prescrição quinquenal em ação indenizatória por acionamento de PAEBM.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "1386462-56.2025.8.13",
+        "tese": "Acionamento de PAEBM por risco de rompimento de barragem atrai consumidor por equiparação e prazo prescricional quinquenal do CDC.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "1939698-26.2026.8.13",
+        "tese": "Acionamento do PAEBM por risco de rompimento de barragem atrai consumidor por equiparação e prazo quinquenal; TAC interrompe a prescrição.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "4670878-82.2026.8.13",
+        "tese": "Consumidor por equiparação e TAC interrompem prescrição; inaplicável o Tema 1.280 do STJ ao evento Serra Azul.",
+        "lado": "atingido"
+      },
+      {
+        "processo": "4695230-07.2026.8.13",
+        "tese": "Consumidor por equiparação e TAC como ato interruptivo afastam a prescrição trienal; prazo quinquenal do CDC.",
+        "lado": "atingido"
       }
     ]
   }
