@@ -12,13 +12,16 @@ import resumoAmbientalConselhos from "./ambiental-conselhos.json";
 import resumoAmbientalEcossistema from "./ambiental-ecossistema.json";
 import resumoAmbientalMariana from "./ambiental-mariana.json";
 import resumoAssembleias from "./assembleias.json";
+import resumoBiblioteca from "./biblioteca.json";
 import resumoConcursos from "./concursos.json";
 import resumoDireitosEmMovimentoConselhos from "./direitos-em-movimento-conselhos.json";
 import resumoEditais from "./editais.json";
+import resumoEstadoEEconomiaAcordosELicitacoesInternacionais from "./estado-e-economia-acordos-e-licitacoes-internacionais.json";
 import resumoEstudosRurais from "./estudos-rurais.json";
 import resumoGuia from "./guia.json";
 import resumoHistoria from "./historia.json";
 import resumoIndice from "./indice.json";
+import resumoInstituicoes from "./instituicoes.json";
 import resumoJudiciarioContatos from "./judiciario-contatos.json";
 import resumoJudiciarioInstituicoes from "./judiciario-instituicoes.json";
 import resumoJudiciarioRecomendacoes from "./judiciario-recomendacoes.json";
@@ -30,6 +33,7 @@ import resumoNoticias from "./noticias.json";
 import resumoNovidades from "./novidades.json";
 import resumoParaopebaAuditoria from "./paraopeba-auditoria.json";
 import resumoParaopebaBiblioteca from "./paraopeba-biblioteca.json";
+import resumoParaopebaDocumentos from "./paraopeba-documentos.json";
 import resumoTerraETerritoriosVales from "./terra-e-territorios-vales.json";
 
 export const RESUMOS: Record<string, ResumoRealidade> = {
@@ -37,13 +41,16 @@ export const RESUMOS: Record<string, ResumoRealidade> = {
   "/ambiental/ecossistema": resumoAmbientalEcossistema as ResumoRealidade,
   "/ambiental/mariana": resumoAmbientalMariana as ResumoRealidade,
   "/assembleias": resumoAssembleias as ResumoRealidade,
+  "/biblioteca": resumoBiblioteca as ResumoRealidade,
   "/concursos": resumoConcursos as ResumoRealidade,
   "/direitos-em-movimento/conselhos": resumoDireitosEmMovimentoConselhos as ResumoRealidade,
   "/editais": resumoEditais as ResumoRealidade,
+  "/estado-e-economia/acordos-e-licitacoes-internacionais": resumoEstadoEEconomiaAcordosELicitacoesInternacionais as ResumoRealidade,
   "/estudos-rurais": resumoEstudosRurais as ResumoRealidade,
   "/guia": resumoGuia as ResumoRealidade,
   "/historia": resumoHistoria as ResumoRealidade,
   "/indice": resumoIndice as ResumoRealidade,
+  "/instituicoes": resumoInstituicoes as ResumoRealidade,
   "/judiciario/contatos": resumoJudiciarioContatos as ResumoRealidade,
   "/judiciario/instituicoes": resumoJudiciarioInstituicoes as ResumoRealidade,
   "/judiciario/recomendacoes": resumoJudiciarioRecomendacoes as ResumoRealidade,
@@ -55,5 +62,6 @@ export const RESUMOS: Record<string, ResumoRealidade> = {
   "/novidades": resumoNovidades as ResumoRealidade,
   "/paraopeba/auditoria": resumoParaopebaAuditoria as ResumoRealidade,
   "/paraopeba/biblioteca": resumoParaopebaBiblioteca as ResumoRealidade,
+  "/paraopeba/documentos": resumoParaopebaDocumentos as ResumoRealidade,
   "/terra-e-territorios/vales": resumoTerraETerritoriosVales as ResumoRealidade,
 };
