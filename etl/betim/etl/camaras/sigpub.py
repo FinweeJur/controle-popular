@@ -146,6 +146,17 @@ duas entidades da cidade, uma de cada vez, sob o MESMO `id_municipio`.
     meio de uma coleta longa custa mais do que a familiaridade de usar
     `requests` como os outros módulos de `camaras/`.
 
+11. **LAYOUT NOVO EM NOVEMBRO/2026 (medido 08/11/2026):** a busca trocou
+    `busca_avancada[entidadeUsuaria]` por `busca_avancada[entidade]`, as
+    datas passaram a ser ISO (`AAAA-MM-DD`), o token CSRF saiu do formulário
+    e a tabela `#datatable` virou cartões `ul.lista-materias >
+    li.materia-card`. A página nova **não exige sessão nem token**: GET
+    direto devolve resultado. Este módulo detecta o layout na primeira
+    resposta e usa o novo por padrão; o caminho antigo (token +
+    `#datatable`) fica como fallback para quando a fonte voltar a servir o
+    formulário velho. Ver `_detectar_layout` — o diagnóstico vive em
+    `docs/relatorios-automacao/expansao-fase1-2026-11-08.md`.
+
 ═══ O QUE ESTE MÓDULO ESCREVE ═══
 
 `atos_diario` (migration `0077_atos_diario.sql`) — upsert por
@@ -220,13 +231,18 @@ COLETOR = "sigpub"
 # ganha uma linha (não um regex adivinhado).
 HOSTS_CONFIRMADOS = {"www.diariomunicipal.com.br"}
 
-USER_AGENT = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
+USER_AGENT = "finweejur/github artur colito"
 
 # Armadilha 7 do cabeçalho: pausa entre requisições a este host de terceiro —
 # mesmo valor pedido para esta tarefa e já usado por outros coletores do
 # projeto contra hosts de terceiro (ex. `etl.apis` diversos).
 PAUSA = 1.5
 TIMEOUT = 60
+
+# Contadores por processo, só para o resumo de `--sondar` (a Fase 1 da
+# expansão precisou de tempo/bytes por cidade sem envolver o módulo num
+# wrapper externo). Não entram em `sync()` nem em linha de banco.
+_METRICAS = {"requisicoes": 0, "bytes": 0}
 
 
 class BloqueioSigpub(RuntimeError):
@@ -274,7 +290,10 @@ def _http_get(url: str, *, params: dict[str, str] | None = None, session: _reque
     ultimo: Exception | None = None
     for tentativa in range(tentativas):
         try:
-            return _requests_get_uma_vez(url, params=params, session=session)
+            resposta = _requests_get_uma_vez(url, params=params, session=session)
+            _METRICAS["requisicoes"] += 1
+            _METRICAS["bytes"] += len(resposta.corpo.encode("utf-8"))
+            return resposta
         except Exception as e:  # noqa: BLE001 — timeout, reset, connection error
             ultimo = e
             time.sleep(3.0 * (tentativa + 1))
@@ -294,15 +313,55 @@ def _extrair_token(corpo: str) -> str | None:
     return valores[0] if valores else None
 
 
+# Marcadores que distinguem o formulário/resultado novo do antigo (armadilha
+# 11 do cabeçalho). O nome do campo basta: `name="busca_avancada[entidade]"`
+# não é substring de `name="busca_avancada[entidadeUsuaria]"` porque o `]`
+# fecha antes do `"`.
+_LAYOUT_NOVO = (
+    'name="busca_avancada[entidade]"',
+    "lista-materias",
+    "materia-card",
+    "busca-avancada__resumo",
+)
+_LAYOUT_ANTIGO = (
+    'name="busca_avancada[_token]"',
+    'id="datatable"',
+    "busca_avancada[entidadeUsuaria]",
+)
+
+
+def _detectar_layout(corpo: str) -> str | None:
+    """"novo", "antigo" ou None quando a resposta não tem marca conhecida.
+
+    Layout novo em primeiro lugar: é o que a fonte serve hoje (08/11/2026).
+    None não vira "0 matérias" — quem chama trata como bloqueio, no mesmo
+    espírito da armadilha 7.
+    """
+    if any(marcador in corpo for marcador in _LAYOUT_NOVO):
+        return "novo"
+    if any(marcador in corpo for marcador in _LAYOUT_ANTIGO):
+        return "antigo"
+    return None
+
+
 def _texto(el) -> str:
     return " ".join(el.text_content().split())
 
 
 def _extrair_total_declarado(corpo: str) -> int | None:
-    """"Mostrando de 1 até 11 de 196 registros" -> 196. Confiável (conferido
-    até a última página em teste manual — ver armadilha 4): uso isto como o
-    total esperado da paginação, não o "até Y" (que mede 1 a mais do que as
-    linhas reais de dado por página — bug cosmético da fonte, não usado)."""
+    """Total anunciado pela fonte, nos dois layouts.
+
+    Novo: "Mostrando 1 a 25 de 213 matérias." (o número vem em <strong>).
+    Antigo: "Mostrando de 1 até 11 de 196 registros".
+    O "até Y" continua fora de propósito: mede 1 a mais que as linhas reais
+    (bug cosmético da fonte antiga, já registrado na armadilha 4).
+    """
+    doc = _doc(corpo)
+    resumos = doc.xpath("//p[contains(@class,'busca-avancada__resumo')]")
+    if resumos:
+        m = re.search(r"de\s+([\d.]+)\s+mat", _texto(resumos[0]), re.I)
+        if m:
+            return int(m.group(1).replace(".", ""))
     m = re.search(r"de\s+([\d.]+)\s+registros", corpo, re.I)
     if not m:
         return None
@@ -310,9 +369,61 @@ def _extrair_total_declarado(corpo: str) -> int | None:
 
 
 def _extrair_linhas(corpo: str) -> list[dict]:
-    """Uma linha por `<tr>` de `#datatable > tbody` com link de matéria.
-    Página vazia (sem resultado, ou além do fim — armadilha 9) devolve []."""
+    """Linhas de resultado, no layout novo (cartões) ou no antigo (tabela).
+
+    O layout é reconhecido pela própria resposta, não pelo estado da sessão:
+    uma página de resultado antiga no meio de uma rodada nova não pode
+    virar "0 matérias" silencioso. Página vazia (sem resultado, ou além do
+    fim — armadilha 9) devolve [].
+    """
     doc = _doc(corpo)
+    cartoes = doc.xpath("//ul[contains(@class,'lista-materias')]/li[contains(@class,'materia-card')]")
+    if cartoes:
+        linhas = []
+        for cartao in cartoes:
+            linha = _linha_do_cartao(cartao)
+            if linha is not None:
+                linhas.append(linha)
+        return linhas
+    return _extrair_linhas_tabela(doc)
+
+
+def _texto_do_cartao(cartao, xpath: str) -> str:
+    nos = cartao.xpath(xpath)
+    return _texto(nos[0]) if nos else ""
+
+
+def _linha_do_cartao(cartao) -> dict | None:
+    """Uma `li.materia-card` vira o mesmo dicionário que a tabela dava.
+
+    O hash sai do href `/materia/<HASH>` (link estável — armadilha 6
+    continua valendo). `data_circulacao` chega em dd/mm/aaaa no layout novo
+    e dd-mm-aaaa no antigo: `_data_iso` aceita os dois separadores.
+    """
+    hrefs = cartao.xpath(".//h2[contains(@class,'materia-card__titulo')]//a/@href")
+    if not hrefs:
+        return None
+    href = hrefs[0].strip()
+    hash_materia = href.rstrip("/").rsplit("/", 1)[-1]
+    data_circulacao = ""
+    for dados in cartao.xpath(".//dl[contains(@class,'materia-card__dados')]/div"):
+        rotulos = dados.xpath("./dt")
+        valores = dados.xpath("./dd")
+        if rotulos and valores and _texto(rotulos[0]).lower().startswith("circula"):
+            data_circulacao = _texto(valores[0])
+            break
+    return {
+        "hash": hash_materia,
+        "entidade": _texto_do_cartao(cartao, ".//span[contains(@class,'materia-card__entidade')]"),
+        "titulo": _texto_do_cartao(cartao, ".//h2[contains(@class,'materia-card__titulo')]"),
+        "orgao": _texto_do_cartao(cartao, ".//span[contains(@class,'materia-card__orgao')]"),
+        "data_circulacao": data_circulacao,
+        "link": href,
+    }
+
+
+def _extrair_linhas_tabela(doc) -> list[dict]:
+    """Layout antigo: uma linha por `<tr>` de `#datatable > tbody`."""
     linhas = []
     for tr in doc.xpath("//table[@id='datatable']//tbody/tr"):
         hrefs = tr.xpath(".//a[contains(@href,'/load/')]/@href")
@@ -335,7 +446,7 @@ def _extrair_linhas(corpo: str) -> list[dict]:
 
 
 def _data_iso(data_circulacao: str) -> str | None:
-    partes = (data_circulacao or "").strip().split("-")
+    partes = re.split(r"[-/]", (data_circulacao or "").strip())
     if len(partes) != 3 or not all(p.isdigit() for p in partes):
         return None
     d, m, a = partes
@@ -383,33 +494,95 @@ def _extrair_detalhe(corpo: str) -> dict:
 # ───────────────────────────── sessão ──────────────────────────────
 
 
-def _iniciar_sessao(base_url: str, session: _requests.Session) -> str:
-    """Um GET a `<base_url>pesquisar` para pegar cookie de sessão + o token
-    CSRF do formulário. Chamado UMA VEZ por rodada — armadilha 1: o token não
-    é de uso único, serve para todas as buscas desta sessão."""
+def _iniciar_sessao(base_url: str, session: _requests.Session) -> dict[str, str | None]:
+    """Detecta o layout da busca e, no antigo, pega cookie + token CSRF.
+
+    Layout novo (armadilha 11) não tem token: devolve
+    `{"layout": "novo", "token": None}`. Resposta sem nenhuma marca
+    conhecida é bloqueio — não "0 matérias".
+    """
     resp = _http_get(urljoin(base_url, "pesquisar"), session=session)
     if resp.status != 200:
         raise RuntimeError(f"GET {base_url}pesquisar devolveu HTTP {resp.status} — sessão não iniciada.")
+    layout = _detectar_layout(resp.corpo)
+    if layout == "novo":
+        return {"layout": "novo", "token": None}
+    if layout is None:
+        raise BloqueioSigpub(
+            f"{base_url}pesquisar não tem o formulário novo (busca_avancada[entidade]) "
+            "nem o antigo (busca_avancada[_token]) — pode ser bloqueio (reCAPTCHA/WAF), "
+            "não '0 matérias'."
+        )
     token = _extrair_token(resp.corpo)
     if not token:
         raise RuntimeError(
             f"token CSRF (busca_avancada[_token]) não encontrado em {base_url}pesquisar — "
             "a página pode ter mudado de forma; revise `_extrair_token`."
         )
-    return token
+    return {"layout": "antigo", "token": token}
 
 
 # ──────────────────────── busca por mês, paginada ──────────────────────
 
 
+def _conferir_pagina_inicial(corpo: str, rotulo_entidade: str, ano: int, mes: int) -> None:
+    """Bloqueio só quando falta o formulário inteiro; mês vazio é silêncio
+    legítimo (a busca nova some com `ul.lista-materias` quando não há nada)."""
+    if "busca_avancada" not in corpo:
+        raise BloqueioSigpub(
+            f"{rotulo_entidade} {ano:04d}-{mes:02d}: resposta sem tabela/cartões de "
+            "resultado E sem o formulário de busca — pode ser bloqueio "
+            "(reCAPTCHA/WAF), não '0 matérias'."
+        )
+
+
 def _buscar_pagina(
-    base_url: str, session: _requests.Session, token: str, entidade_id: str, data_inicio: str, data_fim: str, pagina: int
+    base_url: str,
+    session: _requests.Session,
+    estado: dict[str, str | None],
+    entidade_id: str,
+    inicio_iso: str,
+    fim_iso: str,
+    inicio_br: str,
+    fim_br: str,
+    pagina: int,
 ) -> str:
+    """Uma página de resultado no layout detectado.
+
+    Novo: `entidade`, datas ISO e `pagina` — sem token (armadilha 11).
+    Antigo: `entidadeUsuaria`, datas dd/mm/aaaa, `_token` e `page`.
+    Se a resposta nova vier no layout antigo, troca o estado e repete a
+    requisição no formato antigo (fallback da Fase 1).
+    """
+    if estado["layout"] == "novo":
+        params = {
+            "busca_avancada[entidade]": str(entidade_id),
+            "busca_avancada[dataInicio]": inicio_iso,
+            "busca_avancada[dataFim]": fim_iso,
+        }
+        if pagina > 1:
+            params["busca_avancada[pagina]"] = str(pagina)
+        resp = _http_get(urljoin(base_url, "pesquisar"), params=params, session=session)
+        if resp.status != 200:
+            raise RuntimeError(f"GET pesquisar (pagina={pagina}) devolveu HTTP {resp.status}.")
+        if _detectar_layout(resp.corpo) != "antigo":
+            return resp.corpo
+        # A fonte respondeu no formato velho: guarda o token que veio nela
+        # (ou reinicia a sessão) e repete com os nomes de campo antigos.
+        estado["layout"] = "antigo"
+        estado["token"] = _extrair_token(resp.corpo) or estado.get("token")
+        if not estado["token"]:
+            estado.update(_iniciar_sessao(base_url, session))
+            if estado["layout"] != "antigo" or not estado["token"]:
+                raise RuntimeError(
+                    "resultado veio no layout antigo, mas não achei o token CSRF para repetir a busca."
+                )
+
     params = {
         "busca_avancada[entidadeUsuaria]": str(entidade_id),
-        "busca_avancada[dataInicio]": data_inicio,
-        "busca_avancada[dataFim]": data_fim,
-        "busca_avancada[_token]": token,
+        "busca_avancada[dataInicio]": inicio_br,
+        "busca_avancada[dataFim]": fim_br,
+        "busca_avancada[_token]": str(estado["token"]),
     }
     if pagina > 1:
         params["busca_avancada[page]"] = str(pagina)
@@ -420,7 +593,13 @@ def _buscar_pagina(
 
 
 def _buscar_mes(
-    base_url: str, session: _requests.Session, token: str, entidade_id: str, ano: int, mes: int, rotulo_entidade: str
+    base_url: str,
+    session: _requests.Session,
+    estado: dict[str, str | None],
+    entidade_id: str,
+    ano: int,
+    mes: int,
+    rotulo_entidade: str,
 ) -> list[dict]:
     """Todas as matérias de UMA entidade em UM mês fechado, paginando e
     conferindo contra o total que a própria página anuncia (mesma disciplina
@@ -428,31 +607,26 @@ def _buscar_mes(
     grava com subcoleta)."""
     primeiro_dia = date(ano, mes, 1)
     ultimo_dia = date(ano, mes, calendar.monthrange(ano, mes)[1])
-    data_inicio = primeiro_dia.strftime("%d/%m/%Y")
-    data_fim = ultimo_dia.strftime("%d/%m/%Y")
+    inicio_iso = primeiro_dia.isoformat()
+    fim_iso = ultimo_dia.isoformat()
+    inicio_br = primeiro_dia.strftime("%d/%m/%Y")
+    fim_br = ultimo_dia.strftime("%d/%m/%Y")
 
     por_hash: dict[str, dict] = {}
     pagina = 1
     total_declarado: int | None = None
     primeira_pagina = True
     while True:
-        # A pausa entre requisições mora em `_curl_get` (ponto único), não
+        # A pausa entre requisições mora em `_http_get` (ponto único), não
         # aqui — ver o comentário lá sobre por que centralizar.
-        html = _buscar_pagina(base_url, session, token, entidade_id, data_inicio, data_fim, pagina)
+        html = _buscar_pagina(
+            base_url, session, estado, entidade_id, inicio_iso, fim_iso, inicio_br, fim_br, pagina
+        )
         if primeira_pagina:
             total_declarado = _extrair_total_declarado(html)
-            tem_tabela = 'id="datatable"' in html
-            if total_declarado is None and not tem_tabela:
-                # Nem tabela, nem total declarado: ou é mês genuinamente
-                # vazio (comportamento normal — ver `_extrair_linhas`
-                # devolvendo [] abaixo), ou é bloqueio. Sem `#datatable` E
-                # sem o form de busca também presente, é bloqueio.
-                if "busca_avancada" not in html:
-                    raise BloqueioSigpub(
-                        f"{rotulo_entidade} {ano:04d}-{mes:02d}: resposta sem tabela de "
-                        "resultado E sem o formulário de busca — pode ser bloqueio "
-                        "(reCAPTCHA/WAF), não '0 matérias'."
-                    )
+            tem_resultado = 'id="datatable"' in html or "lista-materias" in html
+            if total_declarado is None and not tem_resultado:
+                _conferir_pagina_inicial(html, rotulo_entidade, ano, mes)
             primeira_pagina = False
         linhas = _extrair_linhas(html)
         if not linhas:
@@ -465,6 +639,8 @@ def _buscar_mes(
         if novas == 0:
             break  # página repetiu tudo que já tínhamos — para não entrar em loop
         pagina += 1
+        if total_declarado is not None and len(por_hash) >= total_declarado:
+            break  # já temos o total anunciado: não gasta uma requisição extra de sondagem
 
     coletadas = list(por_hash.values())
     if total_declarado is None:
@@ -507,7 +683,9 @@ def _montar_linha(id_municipio: str, base_url: str, linha_busca: dict, detalhe: 
         # coluna que a tela já sabe mostrar.
         "ementa": titulo or None,
         "texto": (detalhe or {}).get("texto"),
-        "link_fonte": urljoin(base_url, f"load/{linha_busca['hash']}"),  # armadilha 6: nunca a URL resolvida
+        # Layout novo linka `/materia/<hash>`; o antigo, `/load/<hash>`.
+        # `linha_busca["link"]` guarda o href exato que a fonte serviu.
+        "link_fonte": urljoin(base_url, linha_busca.get("link") or f"load/{linha_busca['hash']}"),
         "chave_natural": f"sigpub:{linha_busca['hash']}",
         "raw": {
             "entidade": linha_busca["entidade"],
@@ -518,10 +696,10 @@ def _montar_linha(id_municipio: str, base_url: str, linha_busca: dict, detalhe: 
     }
 
 
-def _buscar_detalhe_de_uma(base_url: str, session: _requests.Session, hash_materia: str) -> dict:
-    resp = _http_get(urljoin(base_url, f"load/{hash_materia}"), session=session)
+def _buscar_detalhe_de_uma(base_url: str, session: _requests.Session, caminho: str) -> dict:
+    resp = _http_get(urljoin(base_url, caminho), session=session)
     if resp.status != 200:
-        print(f"{LOG} AVISO: detalhe de {hash_materia} devolveu HTTP {resp.status} — edicao/texto ficam nulos.")
+        print(f"{LOG} AVISO: detalhe de {caminho} devolveu HTTP {resp.status} — edicao/texto ficam nulos.")
         return {"edicao": None, "pagina": None, "texto": None}
     return _extrair_detalhe(resp.corpo)
 
@@ -592,7 +770,7 @@ def _gravar_atos(client, linhas: list[dict]) -> None:
 def _coletar_entidade(
     base_url: str,
     session: _requests.Session,
-    token: str,
+    estado: dict[str, str | None],
     entidade_id: str,
     rotulo_entidade: str,
     id_municipio: str,
@@ -602,11 +780,15 @@ def _coletar_entidade(
 ) -> list[dict]:
     linhas_busca: list[dict] = []
     for ano, mes in _meses_entre(desde, ate):
-        linhas_busca.extend(_buscar_mes(base_url, session, token, entidade_id, ano, mes, rotulo_entidade))
+        linhas_busca.extend(_buscar_mes(base_url, session, estado, entidade_id, ano, mes, rotulo_entidade))
 
     linhas: list[dict] = []
     for linha_busca in linhas_busca:
-        detalhe = _buscar_detalhe_de_uma(base_url, session, linha_busca["hash"]) if com_detalhe else None
+        if com_detalhe:
+            caminho = linha_busca.get("link") or f"load/{linha_busca['hash']}"
+            detalhe = _buscar_detalhe_de_uma(base_url, session, caminho)
+        else:
+            detalhe = None
         linhas.append(_montar_linha(id_municipio, base_url, linha_busca, detalhe))
     return linhas
 
@@ -621,11 +803,16 @@ def _coletar_entidade(
 def sondar(base_url: str, entidade_id: str, rotulo_entidade: str, desde: tuple[int, int], ate: tuple[int, int], com_detalhe: bool) -> None:
     session = _requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
-    token = _iniciar_sessao(base_url, session)
-    print(f"{LOG} [sondar] sessão iniciada, token obtido ({len(token)} chars).")
+    # Layout novo é o padrão e não precisa de GET de sessão; se a primeira
+    # resposta vier no formato antigo, `_buscar_pagina` troca o estado e
+    # pega o token sozinho (fallback da Fase 1).
+    estado: dict[str, str | None] = {"layout": "novo", "token": None}
+    print(f"{LOG} [sondar] busca iniciada (layout novo, fallback antigo automático).")
+    inicio_coleta = time.monotonic()
     linhas = _coletar_entidade(
-        base_url, session, token, entidade_id, rotulo_entidade, "SONDAGEM-SEM-BANCO", desde, ate, com_detalhe
+        base_url, session, estado, entidade_id, rotulo_entidade, "SONDAGEM-SEM-BANCO", desde, ate, com_detalhe
     )
+    segundos_coleta = time.monotonic() - inicio_coleta
 
     if not linhas:
         print(f"{LOG} [sondar] {rotulo_entidade}: 0 matéria(s) no período — nada a resumir.")
@@ -648,6 +835,11 @@ def sondar(base_url: str, entidade_id: str, rotulo_entidade: str, desde: tuple[i
     if com_detalhe:
         print(f"{LOG} [sondar] edicao extraída (página de detalhe): {com_edicao}/{len(linhas)}")
     print(f"{LOG} [sondar] 100% com link_fonte (sempre construído do hash — sem exceção).")
+    print(
+        f"{LOG} [sondar] requisições HTTP: {_METRICAS['requisicoes']} | "
+        f"bytes UTF-8: {_METRICAS['bytes']}"
+    )
+    print(f"{LOG} [sondar] tempo de coleta: {segundos_coleta:.2f} s")
     print(f"{LOG} [sondar] modo sondagem: NADA foi gravado (sem conexão de banco nesta chamada).")
 
 
@@ -674,14 +866,16 @@ def sync(
 
     session = _requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
-    token = _iniciar_sessao(base_url, session)
-    print(f"{LOG} sessão iniciada, token obtido.")
+    # Mesmo padrão de `sondar`: novo primeiro, antigo só se a resposta vier
+    # no formulário com `_token` (lido da própria página de resultado).
+    estado: dict[str, str | None] = {"layout": "novo", "token": None}
+    print(f"{LOG} busca iniciada (layout novo, fallback antigo automático).")
 
     todas_as_linhas: list[dict] = []
     for parte in sorted(partes_disponiveis):
         entidade_id = entidades_config[parte]
         linhas = _coletar_entidade(
-            base_url, session, token, entidade_id, parte, id_municipio, desde, ate, com_detalhe
+            base_url, session, estado, entidade_id, parte, id_municipio, desde, ate, com_detalhe
         )
         todas_as_linhas.extend(linhas)
 
