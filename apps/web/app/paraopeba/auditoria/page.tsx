@@ -19,6 +19,7 @@ const SINTESE_AJRI = lerSinteseAjri();
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * Dimensoes intrinsecas dos graficos da sintese, lidas do cabecalho dos PNGs
@@ -135,6 +136,8 @@ export default function AuditoriaAjriPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         A auditoria independente do Acordo, documento a documento
       </h1>
+
+        <ResumoRealidadeBox rota="/paraopeba/auditoria" />
 
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         O Acordo Judicial de Reparação Integral de{" "}

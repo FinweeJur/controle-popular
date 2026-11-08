@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -60,6 +61,8 @@ export default async function JurisprudenciaPenal({
 
       <header className="space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência penal</h1>
+
+        <ResumoRealidadeBox rota="/jurisprudencia/penal" />
         <p className="max-w-3xl text-sm opacity-80">
           <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos coletados por âncoras
           penais no TJES e no STF. A maior parte é crime comum — homicídio, tráfico, júri,

@@ -12,6 +12,7 @@ import DiretorioInstituicoesClient, {
 } from "./DiretorioInstituicoesClient";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 const SECOES_PAGINA = [
   { id: "fichas-instituicoes", titulo: "1. Diretório de Instituições" },
@@ -221,6 +222,8 @@ export default function InstituicoesPage() {
           <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
             Em que ponto alguém de fora ainda olha o seu processo
           </h1>
+
+        <ResumoRealidadeBox rota="/judiciario/instituicoes" />
           <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
             Um processo sobe. Começa numa vara, vai ao tribunal do estado e pode terminar em
             Brasília. Em cada degrau existe — ou não — alguém de fora que entra, abre os autos e

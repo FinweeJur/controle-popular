@@ -4,6 +4,7 @@ import Link from "next/link";
 import LabExplorador from "./LabExplorador";
 import { montarCamadasCatalogo, listarCamadasLab } from "./lab-camadas";
 import { resumoBarragens, resumoLicencas, resumoEducacao, resumoEconomia, resumoCongresso, resumoJudiciario, resumoClima, resumoEsg } from "./lab-dados";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Laboratório de Dados — Controle Popular",
@@ -47,6 +48,8 @@ export default function LaboratorioPage() {
           <h1 className="font-display text-2xl font-bold text-text sm:text-3xl">
             Laboratório de Dados
           </h1>
+
+        <ResumoRealidadeBox rota="/laboratorio" />
           <p className="max-w-2xl text-sm text-text-soft">
             {camadas.length} camadas ativáveis — ligue e desligue no painel do
             Seu Nonô, escolha o tipo de gráfico por janela. Cada camada é um

@@ -1,11 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import jurisprudencia from "@/data/resumos-realidade/jurisprudencia.json";
-import {
-  parseResumo,
-  resumoPublicavel,
-  type ResumoRealidade,
-} from "@/lib/resumos-realidade";
+import { RESUMOS } from "@/data/resumos-realidade";
+import { parseResumo, resumoPublicavel } from "@/lib/resumos-realidade";
 
 /**
  * Resumo de realidade no topo da página.
@@ -24,9 +20,8 @@ import {
  * parser está em `lib/resumos-realidade.ts`.
  */
 
-const RESUMOS: Record<string, ResumoRealidade> = {
-  "/jurisprudencia": jurisprudencia as ResumoRealidade,
-};
+const CAIXA =
+  "rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-6";
 
 function comNegrito(texto: string): ReactNode[] {
   return texto.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).map((parte, indice) => {
@@ -65,7 +60,7 @@ export function ResumoRealidadeBox({ rota }: { rota: string }) {
   return (
     <section
       aria-labelledby="resumo-realidade"
-      className="rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-6"
+      className={CAIXA}
     >
       <p className="text-xs uppercase tracking-wide opacity-60">
         Resumo de realidade · fonte em cada afirmação · atualizado em {resumo.geradoEm}

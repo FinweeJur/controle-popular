@@ -14,6 +14,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import PainelEstudosRurais from "./PainelEstudosRurais";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/estudos-rurais` — o que se publica sobre o rural dos vales do
@@ -64,6 +65,8 @@ export default function EstudosRuraisPage() {
         <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
           O que se publica sobre o rural dos vales do Jequitinhonha e Mucuri
         </h1>
+
+        <ResumoRealidadeBox rota="/estudos-rurais" />
         <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
           Notícias, artigos, eventos e publicações de estudos rurais — com o{" "}
           <strong className="text-text">PPGER/UFVJM</strong> (Programa de Pós-Graduação em Estudos
