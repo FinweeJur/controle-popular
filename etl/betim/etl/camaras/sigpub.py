@@ -816,6 +816,14 @@ def sondar(base_url: str, entidade_id: str, rotulo_entidade: str, desde: tuple[i
 
     if not linhas:
         print(f"{LOG} [sondar] {rotulo_entidade}: 0 matéria(s) no período — nada a resumir.")
+        # Métricas também no mês vazio: a Fase de câmaras precisa de
+        # tempo/bytes/requisições por entidade mesmo quando o mês não tem ato.
+        print(
+            f"{LOG} [sondar] requisições HTTP: {_METRICAS['requisicoes']} | "
+            f"bytes UTF-8: {_METRICAS['bytes']}"
+        )
+        print(f"{LOG} [sondar] tempo de coleta: {segundos_coleta:.2f} s")
+        print(f"{LOG} [sondar] modo sondagem: NADA foi gravado (sem conexão de banco nesta chamada).")
         return
 
     por_tipo: dict[str, int] = {}
