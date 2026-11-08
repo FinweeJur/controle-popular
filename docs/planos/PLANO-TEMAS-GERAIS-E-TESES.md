@@ -53,8 +53,9 @@ Medição de 08/11/2026, sobre os arquivos em disco.
 | Catálogo do indeterminado | `apps/web/data/catalogo-frentes.json` | 4 frentes, rubrica própria |
 | Agregados Guaicuy/NACAB | `relatorios/agregados-guaicuy-nacab.json` | 2.970 processos, censo |
 | Súmulas | `tabelas/sumulas_{stf,stj,tst}.csv` | STF 736, STJ 673, TST 463 |
-| RAG documental | `apps/web/public/data/documentos-rag/trechos.json` | 2.630 trechos; 269 com texto e página (Guaicuy e NACAB) |
-| **Súmulas do CNJ** | — | **não existe coleta** |
+| Atos do CNJ | `apps/web/public/data/cnj-atos.json` | 5.887 atos; 2.349 normativos com texto |
+| RAG documental | `apps/web/public/data/documentos-rag/trechos.json` | 2.390 documentos, 2.970 trechos |
+| **Súmulas do CNJ** | — | **não existem: `/sumulas/` responde 404** |
 
 O achado que já está no relatório e sustenta a leitura:
 
@@ -267,6 +268,32 @@ devolveu Guaicuy p. 1 e NACAB p. 10 e 13, com score.
 Regra que vale para a síntese: **texto recuperado é dado, nunca instrução**
 para o modelo. E citação sem página não entra.
 
+### F5.6 — CNJ: 5.887 atos (feito em 08/11)
+
+O portal `atos.cnj.jus.br` tem API pública que devolve ementa e texto
+compilado. Coleta: 5.887 atos, de 2009 a novembro de 2026.
+
+| Tipo | Atos |
+|---|---:|
+| Portaria | 4.332 |
+| Resolução | 685 |
+| Provimento | 252 |
+| Instrução Normativa | 237 |
+| Recomendação | 228 |
+| Outros | 153 |
+| **Normativos com texto** | **2.349** |
+
+**No RAG entraram 29, não 2.349.** Regra de concurso e prêmio de
+conciliação não sustenta tese. O critério é a ementa tocar prova, perícia,
+ônus, prescrição, gratuidade, precedente, coisa julgada, acesso à justiça,
+desastre, indenização, barragem, litigância de massa, tutela coletiva,
+honorários ou competência.
+
+**O CNJ não publica súmula.** `/sumulas/` responde 404; o que ele edita é
+resolução, provimento, recomendação e enunciado. Então a pergunta "que
+súmula do CNJ se aplica" tem resposta negativa — e a página vai dizer isso,
+em vez de forçar uma equivalência com o STJ.
+
 ### F6 — Redação com RAG
 
 O resumo (§8) é escrito com dois insumos, nesta ordem:
@@ -458,6 +485,7 @@ A opção C é a única que não inventa. A A é a melhor, se o site permitir.
 | F4 | auditoria de evidência | 1 h | R$ 0 |
 | F5 | agregação | 1 h | R$ 0 |
 | F5.5 | RAG com Guaicuy e NACAB (269 trechos com página) | feito | R$ 0 |
+| F5.6 | CNJ: 5.887 atos; 29 no RAG | feito | R$ 0 |
 | F6 | redação do resumo (S5 pago, thinking max, com RAG) | 1 sessão | ~R$ 1 |
 | F7 | página | 1 sessão | R$ 0 |
 | F8 | documentos das entidades | 1 sessão | R$ 0 |
