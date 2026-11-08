@@ -87,8 +87,8 @@ describe("deveRenderCanvas — reduced-motion é lei, não enfeite", () => {
     expect(deveRenderCanvas({ ...base, reducedMotion: true })).toBe(false);
   });
 
-  test("celular (pointer: coarse): sem canvas — economia de bateria", () => {
-    expect(deveRenderCanvas({ ...base, pointerCoarse: true })).toBe(false);
+  test("celular (pointer: coarse): canvas LIGADO desde 08/11/2026", () => {
+    expect(deveRenderCanvas({ ...base, pointerCoarse: true })).toBe(true);
   });
 
   test("tema alto contraste: sem decoração nenhuma", () => {

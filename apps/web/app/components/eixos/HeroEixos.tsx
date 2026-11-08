@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { EIXOS, portaDoEixo, type Eixo } from "@/lib/navegacao/mapa";
+﻿import Link from "next/link";
+import { EIXOS, portaDoEixo } from "@/lib/navegacao/mapa";
+import { arteDoEixo } from "@/lib/navegacao/arte-eixos";
 
 /**
  * @file HeroEixos.tsx
@@ -24,55 +25,6 @@ import { EIXOS, portaDoEixo, type Eixo } from "@/lib/navegacao/mapa";
  * basta trocar o `src` aqui.
  */
 
-/** Arte de cada eixo (fonte única do hero). */
-const ARTE: Record<string, { src: string; alt: string }> = {
-  casos: {
-    src: "/images/eixos/nossos-rios-peixes-agua.jpg",
-    alt: "Água de rio com peixes, em aquarela — os desastres que o portal acompanha",
-  },
-  direitos: {
-    src: "/images/eixos/direitos-em-movimento-arara.jpg",
-    alt: "Arara-vermelha sobre rio e floresta, em aquarela — os direitos em movimento",
-  },
-  "meio-ambiente": {
-    src: "/images/eixos/serras-cachoeira-fauna.jpg",
-    alt: "Cachoeira com antas e tamanduá no Cerrado, em aquarela — meio ambiente",
-  },
-  cidades: {
-    src: "/capas/cities-poco-dantas.webp",
-    alt: "Poço Dantas entre casas e serras, em aquarela — as cidades estratégicas",
-  },
-  politica: {
-    src: "/capas/reserva-gemini.webp",
-    alt: "Lagoa cercada por serras e comunidade, em aquarela — a política e o território",
-  },
-  economia: {
-    src: "/images/eixos/terra-e-territorios-ipe-lobo.jpg",
-    alt: "Ipê-amarelo e lobo-guará no Cerrado, em aquarela — economia e território",
-  },
-  justica: {
-    src: "/capas/home-page.webp",
-    alt: "Onça-pintada na capa do portal — a justiça e a força",
-  },
-  internacional: {
-    src: "/capas/terras-arara.webp",
-    alt: "Arara em voo sobre rio e floresta, em aquarela — o olhar internacional",
-  },
-  dados: {
-    src: "/capas/cities-poco-dantas.webp",
-    alt: "Cidade entre serras, em aquarela — os dados abertos do portal",
-  },
-};
-
-function arteDoEixo(eixo: Eixo) {
-  return (
-    ARTE[eixo.slug] ?? {
-      src: "/images/eixos/serras-cachoeira-fauna.jpg",
-      alt: "Cerrado em aquarela",
-    }
-  );
-}
-
 export default function HeroEixos() {
   return (
     <section
@@ -93,7 +45,7 @@ export default function HeroEixos() {
 
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {EIXOS.map((eixo, indice) => {
-          const arte = arteDoEixo(eixo);
+          const arte = arteDoEixo(eixo.slug);
           return (
             <li
               key={eixo.slug}
