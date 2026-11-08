@@ -481,18 +481,22 @@ A opção C é a única que não inventa. A A é a melhor, se o site permitir.
 | F0 | medição por regex | feito | R$ 0 |
 | F1 | rubrica fechada (22 temas, 79 teses) | feito | R$ 0 |
 | F2 | piloto de 19, 95% de evidência | feito | R$ 0 |
-| F3 | lote de 11.710 | 2–4 h | R$ 0 |
-| F4 | auditoria de evidência | 1 h | R$ 0 |
-| F5 | agregação | 1 h | R$ 0 |
+| F3 | lote de 11.338 | feito | R$ 0 |
+| F4 | auditoria de evidência (0 falhas em 23.227) | feito | R$ 0 |
+| F5 | agregação (22.605 achados, 10.066 processos) | feito | R$ 0 |
 | F5.5 | RAG com Guaicuy e NACAB (269 trechos com página) | feito | R$ 0 |
 | F5.6 | CNJ: 5.887 atos; 29 no RAG | feito | R$ 0 |
-| F6 | redação do resumo (S5 pago, thinking max, com RAG) | 1 sessão | ~R$ 1 |
+| F6 | síntese no S5 com thinking alto | feito | R$ 0,35 |
 | F7 | página | 1 sessão | R$ 0 |
 | F8 | documentos das entidades | 1 sessão | R$ 0 |
 
 **Teto de gasto: R$ 20**, reservado só para a síntese. O lote e a auditoria
 são gratuitos; o pago não é fallback de volume. Ao atingir o teto, a chamada
 para e o resultado fica pendente para a rodada seguinte.
+
+Gasto real da síntese: **US$ 0,063 ≈ R$ 0,35** por chamada, com 21.181
+tokens de saída (16.422 de raciocínio). Duas chamadas foram necessárias: a
+primeira truncou em 16.000 tokens, quase todos consumidos pelo thinking.
 
 ## 13. O que não fazer
 
