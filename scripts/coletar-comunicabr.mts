@@ -1,7 +1,7 @@
 /**
  * Coletor do ComunicaBR — indicadores municipais do governo federal.
  *
- * Grava `apps/web/data/comunicabr-<uf>.json` no formato de
+ * Grava `apps/web/public/data/comunicabr-<uf>.json` no formato de
  * `apps/web/lib/comunicabr/arquivo.ts`. Não toca em banco: a coleta inteira
  * são requisições GET sem autenticação e um arquivo.
  *
@@ -90,7 +90,7 @@ const LIMITE = opcao("limite", Number.POSITIVE_INFINITY);
 const RECOMECAR = process.argv.includes("--recomecar");
 const SECO = process.argv.includes("--seco");
 
-const DESTINO = resolve(RAIZ, `apps/web/data/comunicabr-${UF}.json`);
+const DESTINO = resolve(RAIZ, `apps/web/public/data/comunicabr-${UF}.json`);
 
 const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
