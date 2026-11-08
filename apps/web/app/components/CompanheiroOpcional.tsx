@@ -4,14 +4,16 @@
  * CompanheiroOpcional — portão do companheiro (passarinho).
  *
  * Pedido do dono (19/10/2026): o bichinho flutuante NÃO nasce mais sozinho.
- * Só existe se a pessoa quiser, ligando pelo item do dock. Este wrapper
- * guarda a escolha no `localStorage` (`cp_companheiro_ativo`, padrão OFF —
- * só `on` liga) e monta o `CompanheiroFlutuante.tsx` só quando está ligado:
- * desligado, nem o script do bicho nem o rastro dele rodam.
+ * Só existe se a pessoa quiser, ligando pelo cartão "Acessibilidade" do
+ * Seu Nonô. Este wrapper guarda a escolha no `localStorage`
+ * (`cp_companheiro_ativo`, padrão OFF — só `on` liga) e monta o
+ * `CompanheiroFlutuante.tsx` só quando está ligado: desligado, nem o script
+ * do bicho nem o rastro dele rodam.
  *
- * Desligado, o componente não desenha mais botão próprio: quem liga e
- * desliga o bicho agora é o `DockFlutuante.tsx` (pedido do dono,
- * 08/11/2026 — um único lugar para as ações rápidas). Aqui fica só o
+ * Desligado, o componente não desenha botão próprio: quem liga e desliga o
+ * bicho é o cartão do Seu Nonô. O dock de ações rápidas que existiu por
+ * algumas horas em 08/11/2026 foi removido a pedido do dono — nada de botão
+ * flutuante novo na pilha da esquerda. Aqui fica só o
  * PORTÃO: com o bicho ligado monta o flutuante; desligado, monta o menu de
  * bichinhos offline (para a pata do Seu Nonô continuar abrindo o menu sem
  * ligar nada sozinho). A troca viaja pelo evento `cp:companheiro-ativo`
@@ -65,6 +67,6 @@ export default function CompanheiroOpcional() {
   }
 
   // Bicho desligado: só o menu de bichinhos, que a pata do Seu Nonô pede.
-  // Nenhum botão flutuante aqui — o gatilho é o `DockFlutuante`.
+  // Nenhum botão flutuante aqui — o liga/desliga fica no cartão do Seu Nonô.
   return <CompanheiroMenuOffline />;
 }

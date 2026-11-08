@@ -4,7 +4,7 @@ import DicaHover from "@/app/components/DicaHover";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
 import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
-import DockFlutuante from "@/app/components/DockFlutuante";
+import RastroCursorBotao from "@/app/components/RastroCursorBotao";
 import CliqueNegado from "@/app/components/CliqueNegado";
 import ConviteTema from "@/app/components/ConviteTema";
 
@@ -24,6 +24,10 @@ import ConviteTema from "@/app/components/ConviteTema";
  *
  * CADA UM É OPT-IN OU SILENCIOSO: nenhum abre sozinho na cara do leitor.
  * Ver o comentário de cada arquivo antes de mudar o comportamento.
+ *
+ * SEM DOCK (dono, 08/11/2026): o dock de rádio/bicho/rastro durou poucas horas.
+ * A pilha da esquerda volta a ter só o Seu Nonô, a pata e o rádio que já
+ * existiam. Não reintroduza botões flutuantes novos aqui sem pedido explícito.
  */
 export default function WidgetsFlutuantes() {
   return (
@@ -41,12 +45,11 @@ export default function WidgetsFlutuantes() {
       {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (dono,
           19/10/2026): não nasce sozinho. Este componente virou só o PORTÃO
           (monta o bicho quando ligado e o menu offline quando não); o
-          botão que antes ligava/desligava saiu para o DockFlutuante. */}
+          liga/desliga fica no cartão "Acessibilidade" do Seu Nonô. */}
       <CompanheiroOpcional />
-      {/* Dock do canto inferior direito (dono, 08/11/2026): reúne Seu Nonô,
-          rádio, bicho e rastro mágico num lugar só. Substituiu o botão
-          solto do rastro (`RastroCursorBotao`) e o botão do passarinho. */}
-      <DockFlutuante />
+      {/* Interruptor do rastro mágico: quarto item da pilha da esquerda.
+          Só aparece com o ponteiro no Seu Nonô (ou com a trilha ligada). */}
+      <RastroCursorBotao />
       {/* X de negação no clique fora de botões (dono, 19/10/2026): recado
           visual de que o alvo é só um card, sem ação. */}
       <CliqueNegado />

@@ -57,10 +57,10 @@
  *   compositor) — nenhum trabalho novo de JS por quadro;
  * - a trilha agora é OPT-IN (pedido do dono, 19/10/2026): preferência
  *   `cp_rastro_cursor` no `localStorage` (padrão DESLIGADO; só `on` liga),
- *   trocada pelo item de rastro do `DockFlutuante.tsx` (antes pelo botão
- *   solto `RastroCursorBotao.tsx`, desmontado em 08/11/2026), pelo
- *   cartão "Acessibilidade" do Seu Nonô ou por pedido em texto
- *   ("desativar trilha do cursor"). A troca viaja pelo evento
+ *   trocada pelo cartão "Acessibilidade" do Seu Nonô ou por pedido em
+ *   texto ("desativar trilha do cursor"). O dock que existiu por algumas
+ *   horas em 08/11/2026 foi removido a pedido do dono — a pilha da
+ *   esquerda tem só o Seu Nonô. A troca viaja pelo evento
  *   `cp:rastro-cursor` e monta/desmonta a corrente na hora, sem
  *   recarregar a página — desligada, não existe elo nem quadro nenhum
  *   rodando;
@@ -81,8 +81,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Preferência da trilha — pedido do dono (19/10/2026): a trilha é OPT-IN,
- * ligada pelo item de rastro do `DockFlutuante.tsx` (antes pelo botão
- * solto `RastroCursorBotao.tsx`). Antes
+ * ligada pelo cartão "Acessibilidade" do Seu Nonô. Antes
  * (10/10/2026) era "ligada por padrão, o visitante podia desativar". Padrão
  * trocado: só o valor `on` liga.
  *

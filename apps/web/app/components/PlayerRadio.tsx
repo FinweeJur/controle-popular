@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
 import {
   ListMusic,
@@ -29,10 +29,13 @@ import TranscricaoRadio from "@/app/components/TranscricaoRadio";
 import MedidorLiquido from "@/app/components/react-bits/SloshGauge";
 import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
 import { useArrastavel } from "@/lib/usarArrastavel";
+import PilhaBotao from "@/app/components/pilha/PilhaBotao";
+import { usePilhaVisivel } from "@/app/components/pilha/estadoPilha";
 import {
   medirTopoUtil,
   usePosicaoPainel,
   type CaixaAncora,
+  type ResultadoPainel,
 } from "@/lib/posicionar-painel";
 
 /**
@@ -83,6 +86,46 @@ import {
 /** Estação acionada pelo botão do rodapé quando nada está carregado. */
 const ESTACAO_PADRAO = "radio-brasil-de-fato";
 
+/**
+ * Folga horizontal (px) do índice de rádios.
+ *
+ * O painel abre acima do botão; com o rastro mágico como quarto item da
+ * pilha, ele cobria o botão de cima. O dono pediu "um pouco pra direita"
+ * (08/11/2026). A folga só vale quando há espaço — ver `folgaIndice`.
+ */
+const FOLGA_DIREITA_INDICE = 56;
+
+/**
+ * Deslocamento real do índice: a folga só entra quando sobra largura.
+ * No celular o painel ocupa quase a tela e qualquer deslocamento o
+ * empurraria para fora.
+ */
+function folgaDoIndice(posIndice: ResultadoPainel | null): number {
+  if (!posIndice || typeof window === "undefined") return 0;
+  const sobra = window.innerWidth - (posIndice.posicao.x + posIndice.posicao.largura);
+  return sobra >= FOLGA_DIREITA_INDICE ? FOLGA_DIREITA_INDICE : 0;
+}
+
+/** `left`/`top` do índice relativos ao grupo; `visibility` evita flash. */
+function estiloDoIndice(posIndice: ResultadoPainel | null): CSSProperties {
+  if (!posIndice) return { left: 0, top: 0, visibility: "hidden" };
+  return {
+    left: Math.round(
+      posIndice.posicao.x - posIndice.ancora.esq + folgaDoIndice(posIndice),
+    ),
+    top: Math.round(posIndice.posicao.y - posIndice.ancora.topo),
+    maxHeight: Math.round(posIndice.posicao.altura),
+    visibility: "visible",
+  };
+}
+
+/** Ícone do estado do play: torre, play depois da primeira vez, pause tocando. */
+function IconeRadio({ tocando, jaTocou }: { tocando: boolean; jaTocou: boolean }) {
+  if (tocando) return <Pause size={20} aria-hidden="true" />;
+  if (jaTocou) return <Play size={20} aria-hidden="true" />;
+  return <RadioTower size={20} aria-hidden="true" />;
+}
+
 export default function PlayerRadio() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   // Instância do hls.js quando a estação é HLS e o navegador não toca nativo.
@@ -100,6 +143,11 @@ export default function PlayerRadio() {
   // inteiro. O estado é do React e é espelhado no `<audio>` por efeito.
   const [volume, setVolume] = useState(1);
   const [mudo, setMudo] = useState(false);
+
+  // Pilha da esquerda (dono, 08/11/2026): a rádio só aparece com o ponteiro
+  // no Seu Nonô (ou em tela sem hover). Tocando ou com o índice aberto,
+  // fica visível para o pause e o painel continuarem à mão.
+  const pilhaVisivel = usePilhaVisivel(tocando, indiceAberto);
 
   // Arrasto com posição lembrada (pedido do dono, 03/10/2026): o botão é o
   // terceiro círculo da pilha, mas pode ser movido como o FAB do Seu Nonô.
@@ -364,14 +412,17 @@ export default function PlayerRadio() {
 
       <div
         // Geometria da pilha da lateral esquerda (combinada com o
-        // `SeuNono.tsx`, 03/10/2026; régua conferida em 07/10/2026): h-12
-        // em 100..148 px da borda de baixo, `left-5` → centro em x=44, o
-        // mesmo eixo de 56 px da pilha. O max() repete a conta do safe-area
-        // do Seu Nonô para o iPhone não desalinhar os três botões.
+        // `SeuNono.tsx`, 03/10/2026; régua conferida em 08/11/2026): alvo de
+        // 44 px em 108..152 px da borda de baixo (subiu 8 px quando o FAB do
+        // Seu Nonô cresceu para 64 px), `left` pelo eixo comum: centro em
+        // x=44, o mesmo eixo da pilha. O max() repete a conta do safe-area do
+        // Seu Nonô para o iPhone não desalinhar os quatro botões.
         // `z-[45]`: por baixo da pata (`z-[46]`) e do FAB (`z-50`), por
         // cima dos bichinhos (z-40) — um pet passando por trás não pode
         // cobrir o play. A pata encosta no play com 8 px de emenda (dono,
         // 07/10/2026, pediu sobreposição pequena na pilha).
+        // VISÍVEL SÓ NA PILHA (dono, 08/11/2026): com o ponteiro no Seu Nonô
+        // o botão entra; tocando ou com o índice aberto, fica visível.
         ref={grupoRef}
         style={estilo}
         // `left` pelo eixo comum da pilha (`--cp-pilha-centro`, globals.css):
@@ -379,9 +430,14 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className="group fixed bottom-[max(6.25rem,calc(env(safe-area-inset-bottom)_+_5.25rem))] left-[calc(var(--cp-pilha-centro)-1.5rem)] z-[45] flex flex-col items-center print:hidden"
+        className={`group fixed bottom-[max(6.75rem,calc(env(safe-area-inset-bottom)_+_5.75rem))] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-opacity duration-200 motion-reduce:transition-none print:hidden ${
+          pilhaVisivel ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
         data-arrastavel-caixa
         data-nao-plataforma
+        data-cp-pilha
+        inert={!pilhaVisivel}
+        aria-hidden={!pilhaVisivel}
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
         // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
         onMouseEnter={abrirIndice}
@@ -402,10 +458,12 @@ export default function PlayerRadio() {
             a pílula com nome, arrasto e chevron saiu. Ícone do estado
             (14/10/2026; torre com antena em 03/11/2026, pedido do dono):
             torre antes da primeira vez, Pause tocando, Play depois. Nome
-            da estação, volume e lista vivem no índice. */}
-        <button
-          type="button"
+            da estação, volume e lista vivem no índice.
+            Desde 08/11/2026 o nome "Rádio" abre ao lado no hover — junto com
+            a pata e o rastro, o botão só aparece com o ponteiro no Seu Nonô. */}
+        <PilhaBotao
           {...handlers}
+          rotulo="Rádio"
           onDoubleClick={resetar}
           onClick={() => {
             // Gesto foi mover: não tocar a estação por acidente (limiar de
@@ -418,18 +476,9 @@ export default function PlayerRadio() {
           aria-expanded={indiceAberto}
           aria-controls="cp-radio-indice"
           aria-pressed={tocando}
-          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full border border-border bg-surface/95 shadow-lg backdrop-blur transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-            arrastando ? "cursor-grabbing" : "cursor-grab"
-          }`}
-        >
-          {tocando ? (
-            <Pause size={20} aria-hidden="true" className="text-primary" />
-          ) : jaTocou ? (
-            <Play size={20} aria-hidden="true" className="text-primary" />
-          ) : (
-            <RadioTower size={20} aria-hidden="true" className="text-primary" />
-          )}
-        </button>
+          className={arrastando ? "cursor-grabbing" : "cursor-grab"}
+          icone={<IconeRadio tocando={tocando} jaTocou={jaTocou} />}
+        />
 
         {/* Índice expansível: aparece ao passar o mouse/focar no botão. */}
         {indiceAberto && (
@@ -438,16 +487,7 @@ export default function PlayerRadio() {
             id="cp-radio-indice"
             // Posição vinda do utilitário; `visibility` só evita um flash na
             // primeira pintura, enquanto o `useLayoutEffect` ainda não mediu.
-            style={{
-              left: posIndice
-                ? Math.round(posIndice.posicao.x - posIndice.ancora.esq)
-                : 0,
-              top: posIndice
-                ? Math.round(posIndice.posicao.y - posIndice.ancora.topo)
-                : 0,
-              maxHeight: posIndice ? Math.round(posIndice.posicao.altura) : undefined,
-              visibility: posIndice ? "visible" : "hidden",
-            }}
+            style={estiloDoIndice(posIndice)}
             // Duas colunas (06/10/2026): esquerda título+lista, direita o
             // volume. `flex-row` + `overflow-hidden` mantêm o corte da rolagem
             // só na lista.

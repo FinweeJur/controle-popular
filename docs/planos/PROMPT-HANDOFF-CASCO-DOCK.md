@@ -7,6 +7,12 @@
 > **Relacionados:** [PROMPT-ANIMACOES-CONTAGEM-BARRAS.md](PROMPT-ANIMACOES-CONTAGEM-BARRAS.md), [UNIFICACAO-POR-EIXO.md](UNIFICACAO-POR-EIXO.md)
 > **Palavras-chave:** handoff, dock, rastro, sitemap, CodeScene, deploy
 
+> **SUPERSEDIDO EM 08/11/2026:** o dono viu o dock no celular e pediu que
+> ficasse só o FAB do Seu Nonô, que já existia. `DockFlutuante` e
+> `app/components/dock/` foram removidos no mesmo dia; o rádio voltou ao
+> rodapé. O que vale deste prompt são os blocos de sitemap/robots/busca e a
+> régua de verificação. **Não reintroduza o dock** sem pedido explícito.
+
 ## Sumário
 
 - [Como usar](#como-usar)

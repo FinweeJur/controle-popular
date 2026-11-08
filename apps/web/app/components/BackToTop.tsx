@@ -55,12 +55,17 @@ export function BackToTop() {
       onClick={rolarAoTopo}
       aria-label="Voltar ao início da página"
       title="Voltar ao início da página"
-      className="cp-btn-anim fixed right-5 bottom-20 z-40 flex items-center gap-1.5 rounded-full border border-border bg-surface/95 px-3 py-2 text-xs font-semibold text-text shadow-lg backdrop-blur hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      className="group/topo cp-btn-anim fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex min-h-11 items-center justify-end rounded-full border border-border bg-surface/70 text-text-soft opacity-70 shadow-lg backdrop-blur transition-opacity hover:opacity-100 hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 motion-reduce:transition-none"
     >
-      <span aria-hidden="true" className="text-sm font-bold leading-none">
+      <span
+        aria-hidden="true"
+        className="max-w-0 overflow-hidden whitespace-nowrap pl-0 text-xs font-semibold opacity-0 transition-all duration-200 group-hover/topo:max-w-[5rem] group-hover/topo:pl-3 group-hover/topo:opacity-100 group-focus-visible/topo:max-w-[5rem] group-focus-visible/topo:pl-3 group-focus-visible/topo:opacity-100 motion-reduce:transition-none"
+      >
+        Voltar ao topo
+      </span>
+      <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center text-sm font-bold leading-none">
         ↑
       </span>
-      <span>Topo</span>
     </button>
   );
 }
