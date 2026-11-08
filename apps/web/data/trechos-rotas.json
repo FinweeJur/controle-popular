@@ -1,0 +1,473 @@
+{
+ "geradoEm": "2026-11-08T20:26:08.295Z",
+ "rotas": {
+  "/ambiental/barragens": {
+   "pergunta": "ambiental barragens Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental/car": {
+   "pergunta": "ambiental car Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental/conselhos": {
+   "pergunta": "ambiental conselhos Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental/convenios": {
+   "pergunta": "ambiental convenios Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.392,
+     "titulo": "Resolução CNJ nº 127, de 2011-03-15",
+     "pagina": 1,
+     "url": "https://atos.cnj.jus.br/files/resolucao_127_15032011_11102012184854.pdf",
+     "texto": "de regulamentar o pagamento de honorários periciais, na esfera cível, no âmbito da Justiça Estadual de primeiro e segundo graus, quando o responsável pelo pagamento destes é contemplado com a assistência judiciária gratuita; CONSIDERANDO a missão de planejamento estratégico do Poder Judiciário cometida constitucionalmente ao Conselho Nacional de Justiça, nos moldes do art. 103-B, § 4º, I, da Constituição Federal, com o escopo de uniformizar os procedimentos com relação ao tema; RESOLVE: Art. 1º Recomenda-se aos Tribunais que destinem, sob rubrica específica, parte do seu orçamento ao pagamento"
+    }
+   ]
+  },
+  "/ambiental/ecossistema": {
+   "pergunta": "ambiental ecossistema Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental/judiciario": {
+   "pergunta": "ambiental judiciario Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.636,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 41,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 41 realidade de que a Assessoria Técnica não poderia atuar ou oferecer orientações sobre seus processos individuais. Essa situação expôs ainda mais a vulnerabilidade e a dificuldade de acesso dessa população aos órgãos públicos, especialmente ao Judiciário, o que acabou deixando marcas profundas. A desconfiança se instaurou, afetando inclusive as relações interpessoais dentro da classe, que se viu envolta em um clima de incerteza em relação a todos os atores da reparação, tanto públicos quanto privados. Ademais, a distribuição dessas ações em massa ocorre"
+    },
+    {
+     "score": 0.464,
+     "titulo": "Resolução CNJ nº 414, de 2021-09-02",
+     "pagina": 1,
+     "url": "https://atos.cnj.jus.br/files/original125834202109086138b37ad4cf0.pdf",
+     "texto": "à Tortura a ser integrado pelos órgãos do Poder Judiciário (art. 2 o , § 2 o , II) ; CONSIDERANDO o disposto nas Regras Mínimas das Nações Unidas para Proteção dos Jovens Privados de Liberdade (Regras de Havana) , nas Regras Mínimas das Nações Unidas para a Administração da Justiça da Infância e da Juventude (Regras de Beijing – Regra 27) , na Convenção da ONU sobre os Direitos da Criança (art. 37, item ‘a’) e nos Comentários Gerais n o 8 (2006) e 24 (2019) do Comitê da ONU sobre os Direitos das Crianças da ONU ; CONSIDERANDO o disposto na Convenção sobre a Eliminação de Todas as Formas de Dis"
+    }
+   ]
+  },
+  "/ambiental/mariana": {
+   "pergunta": "ambiental mariana Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental": {
+   "pergunta": "ambiental Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/ambiental/tac": {
+   "pergunta": "ambiental tac Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/assembleias": {
+   "pergunta": "assembleias Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/biblioteca": {
+   "pergunta": "biblioteca Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.481,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 13,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 13\nMapa 1 - Região 4\nElaboração: Paula Brasil\nSão municípios relativamente pequenos, com um contingente populacional de\naproximadamente 30 mil habitantes, segundo dados do IBGE (2023). Estão\nlocalizados na mesorregião central mineira, no bioma do Cerrado, e possuem uma\neconomia baseada na prestação de serviços, agricultura e pecuária. Menos de 30%\nda população destes municípios ocupam cargos de trabalho formais; a maior parte\npossui um perfil socioeconômico com fragilidades, ocupando trabalhos exercidos\ninformalmente.8\nO turismo era outro fator prepondera"
+    }
+   ]
+  },
+  "/canada/ambiental": {
+   "pergunta": "canada ambiental Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/canada/contratos": {
+   "pergunta": "canada contratos Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/canada/institucional": {
+   "pergunta": "canada institucional Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/canada/mineracao": {
+   "pergunta": "canada mineracao Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/canada": {
+   "pergunta": "canada Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/concursos": {
+   "pergunta": "concursos Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.481,
+     "titulo": "Resolução CNJ nº 313, de 2020-03-19",
+     "pagina": 2,
+     "url": "https://atos.cnj.jus.br/files/original221425202003195e73eec10a3a2.pdf",
+     "texto": "5º Ficam suspensos os prazos processuais a contar da publicação desta Resolução, até o dia 30 de abril de 2020. Parágrafo único. A suspensão prevista no caput não obsta a prática de ato processual necessário à preservação de direitos e de natureza urgente, respeitado o disposto no artigo 4 o desta Resolução. Art. 6º Os tribunais poderão disciplinar o trabalho remoto de magistrados, servidores e colaboradores para realização de expedientes internos, como elaboração de decisões e sentenças, minutas, sessões virtuais e atividades administrativas. Art. 7º Nos concursos públicos em andamento, no âm"
+    }
+   ]
+  },
+  "/consumo-corporativo": {
+   "pergunta": "consumo corporativo Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/direitos-em-movimento/conselhos": {
+   "pergunta": "direitos em movimento conselhos Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/editais": {
+   "pergunta": "editais Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.463,
+     "titulo": "Resolução Conjunta CNJ nº 10, de 2024-05-29",
+     "pagina": 4,
+     "url": "https://atos.cnj.jus.br/files/original201126202406056660c66e0f44f.pdf",
+     "texto": "órgãos indicados como destinatários devem assumir a responsabilidade pela realização das atividades previstas, e apresentar os documentos que comprovem a aplicação dos bens e recursos recebidos para tais finalidades, sob pena de responsabilização cível, criminal e administrativa, no que couber. Art. 11. Para orientar a destinação de bens e recursos financeiros, o Poder Judiciário e o Ministério Público instituirão e manterão atualizado cadastro de pessoas jurídicas de direito privado sem fins lucrativos, cuja atuação se relacione à promoção de direitos transindividuais. Art. 12. Os tribunais, "
+    }
+   ]
+  },
+  "/eleicoes/2026/gastos-campanha": {
+   "pergunta": "eleicoes 2026 gastos campanha Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/estado-e-economia/acordos-e-licitacoes-internacionais": {
+   "pergunta": "estado e economia acordos e licitacoes internacionais Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/estudos-rurais": {
+   "pergunta": "estudos rurais Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/eua/ambiental": {
+   "pergunta": "eua ambiental Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.501,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 6,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "qual os piores efeitos da degradação ambiental acabam destinados às populações negras ou indígenas. O termo foi usado pela primeira vez por Benjamin Chavis, reverendo norte-americano e assistente de Martin Luther King Jr. no movimento pelos direitos civis nos EUA. Segundo ele, Racismo ambiental é a discriminação racial nas políticas ambientais. É discriminação racial no cumprimento dos regulamentos e leis. É discriminação racial no escolher deliberadamente comunidades de cor para depositar rejeitos tóxicos e instalar indústrias poluidoras. É discriminação racial no sancionar oficialmente a pre"
+    }
+   ]
+  },
+  "/eua/contratos": {
+   "pergunta": "eua contratos Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.335,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 6,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "qual os piores efeitos da degradação ambiental acabam destinados às populações negras ou indígenas. O termo foi usado pela primeira vez por Benjamin Chavis, reverendo norte-americano e assistente de Martin Luther King Jr. no movimento pelos direitos civis nos EUA. Segundo ele, Racismo ambiental é a discriminação racial nas políticas ambientais. É discriminação racial no cumprimento dos regulamentos e leis. É discriminação racial no escolher deliberadamente comunidades de cor para depositar rejeitos tóxicos e instalar indústrias poluidoras. É discriminação racial no sancionar oficialmente a pre"
+    }
+   ]
+  },
+  "/eua/empresas": {
+   "pergunta": "eua empresas Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/eua/institucional": {
+   "pergunta": "eua institucional Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.333,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 6,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "qual os piores efeitos da degradação ambiental acabam destinados às populações negras ou indígenas. O termo foi usado pela primeira vez por Benjamin Chavis, reverendo norte-americano e assistente de Martin Luther King Jr. no movimento pelos direitos civis nos EUA. Segundo ele, Racismo ambiental é a discriminação racial nas políticas ambientais. É discriminação racial no cumprimento dos regulamentos e leis. É discriminação racial no escolher deliberadamente comunidades de cor para depositar rejeitos tóxicos e instalar indústrias poluidoras. É discriminação racial no sancionar oficialmente a pre"
+    }
+   ]
+  },
+  "/eua": {
+   "pergunta": "eua Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.471,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 6,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "qual os piores efeitos da degradação ambiental acabam destinados às populações negras ou indígenas. O termo foi usado pela primeira vez por Benjamin Chavis, reverendo norte-americano e assistente de Martin Luther King Jr. no movimento pelos direitos civis nos EUA. Segundo ele, Racismo ambiental é a discriminação racial nas políticas ambientais. É discriminação racial no cumprimento dos regulamentos e leis. É discriminação racial no escolher deliberadamente comunidades de cor para depositar rejeitos tóxicos e instalar indústrias poluidoras. É discriminação racial no sancionar oficialmente a pre"
+    }
+   ]
+  },
+  "/governo": {
+   "pergunta": "governo Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/guia": {
+   "pergunta": "guia Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/historia": {
+   "pergunta": "historia Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/indice": {
+   "pergunta": "indice Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/instituicoes": {
+   "pergunta": "instituicoes Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/judiciario/contatos": {
+   "pergunta": "judiciario contatos Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.379,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 41,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 41 realidade de que a Assessoria Técnica não poderia atuar ou oferecer orientações sobre seus processos individuais. Essa situação expôs ainda mais a vulnerabilidade e a dificuldade de acesso dessa população aos órgãos públicos, especialmente ao Judiciário, o que acabou deixando marcas profundas. A desconfiança se instaurou, afetando inclusive as relações interpessoais dentro da classe, que se viu envolta em um clima de incerteza em relação a todos os atores da reparação, tanto públicos quanto privados. Ademais, a distribuição dessas ações em massa ocorre"
+    }
+   ]
+  },
+  "/judiciario/instituicoes": {
+   "pergunta": "judiciario instituicoes Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.75,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 41,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 41 realidade de que a Assessoria Técnica não poderia atuar ou oferecer orientações sobre seus processos individuais. Essa situação expôs ainda mais a vulnerabilidade e a dificuldade de acesso dessa população aos órgãos públicos, especialmente ao Judiciário, o que acabou deixando marcas profundas. A desconfiança se instaurou, afetando inclusive as relações interpessoais dentro da classe, que se viu envolta em um clima de incerteza em relação a todos os atores da reparação, tanto públicos quanto privados. Ademais, a distribuição dessas ações em massa ocorre"
+    }
+   ]
+  },
+  "/judiciario/jurisprudencia": {
+   "pergunta": "judiciario jurisprudencia Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.527,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 41,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 41 realidade de que a Assessoria Técnica não poderia atuar ou oferecer orientações sobre seus processos individuais. Essa situação expôs ainda mais a vulnerabilidade e a dificuldade de acesso dessa população aos órgãos públicos, especialmente ao Judiciário, o que acabou deixando marcas profundas. A desconfiança se instaurou, afetando inclusive as relações interpessoais dentro da classe, que se viu envolta em um clima de incerteza em relação a todos os atores da reparação, tanto públicos quanto privados. Ademais, a distribuição dessas ações em massa ocorre"
+    },
+    {
+     "score": 0.512,
+     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
+     "pagina": 1,
+     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+     "texto": "Estudo Jurisprudencial\nComportamento do Tribunal de Justiça\ndo Estado de Minas Gerais perante as\nações individuais ajuizadas por pessoas\natingidas pelo rompimento do\ncomplexo de barragens da Mina\nCórrego do Feijão.\nVersão consolidada com dados atualizados até 28 de março de 2023"
+    }
+   ]
+  },
+  "/judiciario": {
+   "pergunta": "judiciario Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.75,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 41,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 41 realidade de que a Assessoria Técnica não poderia atuar ou oferecer orientações sobre seus processos individuais. Essa situação expôs ainda mais a vulnerabilidade e a dificuldade de acesso dessa população aos órgãos públicos, especialmente ao Judiciário, o que acabou deixando marcas profundas. A desconfiança se instaurou, afetando inclusive as relações interpessoais dentro da classe, que se viu envolta em um clima de incerteza em relação a todos os atores da reparação, tanto públicos quanto privados. Ademais, a distribuição dessas ações em massa ocorre"
+    },
+    {
+     "score": 0.547,
+     "titulo": "Resolução CNJ nº 414, de 2021-09-02",
+     "pagina": 1,
+     "url": "https://atos.cnj.jus.br/files/original125834202109086138b37ad4cf0.pdf",
+     "texto": "à Tortura a ser integrado pelos órgãos do Poder Judiciário (art. 2 o , § 2 o , II) ; CONSIDERANDO o disposto nas Regras Mínimas das Nações Unidas para Proteção dos Jovens Privados de Liberdade (Regras de Havana) , nas Regras Mínimas das Nações Unidas para a Administração da Justiça da Infância e da Juventude (Regras de Beijing – Regra 27) , na Convenção da ONU sobre os Direitos da Criança (art. 37, item ‘a’) e nos Comentários Gerais n o 8 (2006) e 24 (2019) do Comitê da ONU sobre os Direitos das Crianças da ONU ; CONSIDERANDO o disposto na Convenção sobre a Eliminação de Todas as Formas de Dis"
+    }
+   ]
+  },
+  "/judiciario/recomendacoes": {
+   "pergunta": "judiciario recomendacoes Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.517,
+     "titulo": "Resolução CNJ nº 659, de 2025-12-11",
+     "pagina": 1,
+     "url": "https://atos.cnj.jus.br/files/original21215220251212693c8770d7137.pdf",
+     "texto": "atividades investigativas e decisórias, promovendo maior justiça e eficiência nos processos criminais; e IV - fomentar medidas e iniciativas que previnam a repetição de erros judiciais e atenuem suas consequências. Art. 4º O Laboratório Justiça Criminal, Reparação e Não Repetição contará com o apoio da Rede de Inovação do Poder Judiciário (RenovaJud). § 1º Caberá aos Laboratórios de Inovação promover oficinas de inovação voltadas ao aprimoramento das práticas processuais e à mitigação de erros judiciais. § 2º As oficinas resultarão em treinamentos, notas técnicas, recomendações, minutas de ato"
+    },
+    {
+     "score": 0.517,
+     "titulo": "Resolução CNJ nº 317, de 2020-04-30",
+     "pagina": 1,
+     "url": "https://atos.cnj.jus.br/files/original161656202005085eb585f8b31d5.pdf",
+     "texto": "no território nacional e a necessidade de estabelecer medidas práticas para reduzir a transmissibilidade; CONSIDERANDO que a adoção do isolamento social para conter a transmissibilidade do Coronavírus exige que o Poder Judiciário adote alternativas tecnológicas na condução dos processos para solucionar os litígios, de modo a preservar a incolumidade sanitária de todos os que atuam no sistema de justiça; CONSIDERANDO a Resolução CIDH/OEA nº 1, de 10 de abril de2020, que traz recomendações aos Estados-membros para a adoção de medidas de garantia de direitos dos grupos humanos em especial vulnera"
+    }
+   ]
+  },
+  "/jurisprudencia": {
+   "pergunta": "jurisprudencia Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.75,
+     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
+     "pagina": 1,
+     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+     "texto": "Estudo Jurisprudencial\nComportamento do Tribunal de Justiça\ndo Estado de Minas Gerais perante as\nações individuais ajuizadas por pessoas\natingidas pelo rompimento do\ncomplexo de barragens da Mina\nCórrego do Feijão.\nVersão consolidada com dados atualizados até 28 de março de 2023"
+    },
+    {
+     "score": 0.75,
+     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
+     "pagina": 3,
+     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+     "texto": "SUMÁRIO 1. INTRODUÇÃO.......................................................................................................................................... 4 2. NOTA METODOLÓGICA ...................................................................................................................... 5 3. ANÁLISE QUANTITATIVA .............................................................................................................. 7 3.1. Resumo de entendimentos encontrados .......................................................................................... 13 4. ANÁLISE QUALITATIVA: "
+    }
+   ]
+  },
+  "/jurisprudencia/penal": {
+   "pergunta": "jurisprudencia penal Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.442,
+     "titulo": "Recomendação CNJ nº 49, de 2014-04-01",
+     "pagina": 2,
+     "url": "https://atos.cnj.jus.br/files//recomendacao/recomendacao_49_01042014_03042014155230.pdf",
+     "texto": "dia dos fatos, realizarem cursos ou outras atividades fora do estabelecimento de privação de liberdade ou de internação, a fim de que sejam o mais rapidamente possível submetidos a auto de exame de corpo de delito (AECD); f) requisição de cópia do livro da enfermaria do presídio, cadeia pública, hospital de custódia e tratamento psiquiátrico ou unidade de internação contendo o nome dos internos atendidos na data do possível delito; g) submissão do(s) próprio(s) funcionário(s) do estabelecimento penal, hospital de custódia ou unidade de internação a AECD, em especial daqueles apontados como eve"
+    },
+    {
+     "score": 0.442,
+     "titulo": "Resolução CNJ nº 414, de 2021-09-02",
+     "pagina": 4,
+     "url": "https://atos.cnj.jus.br/files/original125834202109086138b37ad4cf0.pdf",
+     "texto": "entre outros; VI – informações de atenção à saúde à pessoa que relatou tortura ou outros tratamentos cruéis, desumanos ou degradantes, oriundas de hospitais gerais, hospitais de custódia, serviços sanitários de estabelecimento penal, de outras unidades de saúde e de unidades socioeducativas; VII – oitiva do agente estatal suspeito; VIII – nos casos ocorridos em estabelecimentos de privação de liberdade, além dos elementos previstos anteriormente, a autoridade judicial observará a presença de registros documentais sobre o ingresso de forças policiais no local em que conste a autorização de ingr"
+    },
+    {
+     "score": 0.431,
+     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
+     "pagina": 1,
+     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+     "texto": "Estudo Jurisprudencial\nComportamento do Tribunal de Justiça\ndo Estado de Minas Gerais perante as\nações individuais ajuizadas por pessoas\natingidas pelo rompimento do\ncomplexo de barragens da Mina\nCórrego do Feijão.\nVersão consolidada com dados atualizados até 28 de março de 2023"
+    },
+    {
+     "score": 0.431,
+     "titulo": "Pesquisa Jurisprudencial NACAB/ADAI 2023 — Brumadinho",
+     "pagina": 3,
+     "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+     "texto": "SUMÁRIO 1. INTRODUÇÃO.......................................................................................................................................... 4 2. NOTA METODOLÓGICA ...................................................................................................................... 5 3. ANÁLISE QUANTITATIVA .............................................................................................................. 7 3.1. Resumo de entendimentos encontrados .......................................................................................... 13 4. ANÁLISE QUALITATIVA: "
+    }
+   ]
+  },
+  "/laboratorio": {
+   "pergunta": "laboratorio Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/mineracao/cavas": {
+   "pergunta": "mineracao cavas Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/noticias": {
+   "pergunta": "noticias Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.598,
+     "titulo": "Recomendação CNJ nº 49, de 2014-04-01",
+     "pagina": 2,
+     "url": "https://atos.cnj.jus.br/files//recomendacao/recomendacao_49_01042014_03042014155230.pdf",
+     "texto": "dia dos fatos, realizarem cursos ou outras atividades fora do estabelecimento de privação de liberdade ou de internação, a fim de que sejam o mais rapidamente possível submetidos a auto de exame de corpo de delito (AECD); f) requisição de cópia do livro da enfermaria do presídio, cadeia pública, hospital de custódia e tratamento psiquiátrico ou unidade de internação contendo o nome dos internos atendidos na data do possível delito; g) submissão do(s) próprio(s) funcionário(s) do estabelecimento penal, hospital de custódia ou unidade de internação a AECD, em especial daqueles apontados como eve"
+    }
+   ]
+  },
+  "/novidades": {
+   "pergunta": "novidades Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/paraopeba/auditoria": {
+   "pergunta": "paraopeba auditoria Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.481,
+     "titulo": "Resolução Conjunta CNJ nº 16, de 2026-06-01",
+     "pagina": 5,
+     "url": "https://atos.cnj.jus.br/files/original222104202606146a2f29501f5b8.pdf",
+     "texto": "com a realização de audiências conjuntas, mesmo que criminais e cíveis, e a adoção de fluxos coordenados de atuação, nos termos da Resolução CNJ nº 350/2020 e da Resolução CNMP nº 287/2024 , para evitar repetição de atos, reduzir revitimização e assegurar coerência probatória. § 1º O acesso e o compartilhamento observarão, em qualquer hipótese, os princípios da proteção integral, finalidade pública, minimização de dados, necessidade e sigilo profissional, vedado o uso para finalidade diversa da declarada/autorizada. § 2º Os órgãos do Ministério Público e do Poder Judiciário assegurarão rastrea"
+    },
+    {
+     "score": 0.481,
+     "titulo": "Provimento CNJ nº 225, de 2026-05-20",
+     "pagina": 5,
+     "url": "https://atos.cnj.jus.br/files/original123126202605216a0efb1e4f593.pdf",
+     "texto": "VII – sincronização incremental de dados e controle de atualização de versões dos registros; VIII – manutenção de trilhas de auditoria aptas à verificação posterior da integridade e da autoria das operações 1.2. Finalidade: o modelo de dados foi concebido para permitir o cruzamento de informações em âmbito nacional, com vistas à identificação de padrões relevantes de repetição, concentração e dispersão territorial de decisões judiciais e de comportamentos associados a litigância abusiva, litigância predatória e eventual abuso de direito por credores, que produzam efeitos sobre a publicidade do"
+    }
+   ]
+  },
+  "/paraopeba/biblioteca": {
+   "pergunta": "paraopeba biblioteca Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.512,
+     "titulo": "Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024)",
+     "pagina": 13,
+     "url": "https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/",
+     "texto": "ACESSO À JUSTIÇA | Instituto Guaicuy | 13\nMapa 1 - Região 4\nElaboração: Paula Brasil\nSão municípios relativamente pequenos, com um contingente populacional de\naproximadamente 30 mil habitantes, segundo dados do IBGE (2023). Estão\nlocalizados na mesorregião central mineira, no bioma do Cerrado, e possuem uma\neconomia baseada na prestação de serviços, agricultura e pecuária. Menos de 30%\nda população destes municípios ocupam cargos de trabalho formais; a maior parte\npossui um perfil socioeconômico com fragilidades, ocupando trabalhos exercidos\ninformalmente.8\nO turismo era outro fator prepondera"
+    }
+   ]
+  },
+  "/paraopeba/correlacao": {
+   "pergunta": "paraopeba correlacao Minas Gerais",
+   "semTexto": false,
+   "trechos": [
+    {
+     "score": 0.396,
+     "titulo": "Provimento CNJ nº 225, de 2026-05-20",
+     "pagina": 2,
+     "url": "https://atos.cnj.jus.br/files/original123126202605216a0efb1e4f593.pdf",
+     "texto": "base de dados da CENPROT em tempo real ou na periodicidade estipulada pela Central, garantindo a completude, atualidade e a fidedignidade das informações. §4º O sistema de inteligência da CENPROT deverá consolidar as informações em âmbito nacional, com vistas à identificação de padrões relevantes de concentração, dispersão territorial e recorrência de demandas, permitindo a análise integrada de impactos sobre a publicidade dos protestos e sobre o ambiente de crédito. §5º A identificação de padrões relevantes deverá observar critérios objetivos de recorrência, concentração, dispersão territoria"
+    }
+   ]
+  },
+  "/paraopeba/documentos": {
+   "pergunta": "paraopeba documentos Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  },
+  "/terra-e-territorios/vales": {
+   "pergunta": "terra e territorios vales Minas Gerais",
+   "semTexto": true,
+   "trechos": []
+  }
+ }
+}

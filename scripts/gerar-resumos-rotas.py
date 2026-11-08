@@ -41,6 +41,7 @@ sys.path.insert(0, str(RAIZ / "scripts"))
 from verificar_resumo import verificar_texto  # noqa: E402
 
 INVENTARIO = RAIZ / "apps" / "web" / "data" / "inventario-subfrentes.json"
+TRECHOS = RAIZ / "apps" / "web" / "data" / "trechos-rotas.json"
 DADOS = RAIZ / "apps" / "web" / "data"
 PUBLICOS = RAIZ / "apps" / "web" / "public" / "data"
 SAIDA = RAIZ / "apps" / "web" / "data" / "resumos-realidade"
@@ -67,8 +68,11 @@ REGRAS INVIOLAVEIS:
 1. Numero so o que estiver no PERFIL. Nao invente, nao arredonde, nao recalcule.
 2. Marque cada paragrafo: [medido — dados da pagina], [inferido] ou
    [nao da para concluir].
-3. Nao cite documento externo nem invente link: o perfil so tem o dado da
-   pagina.
+3. DUAS FONTES, DOIS FORMATOS:
+   a) numero ou fato da propria pagina: [medido — dados da pagina], sem link;
+   b) afirmacao tirada de FONTE EXTERNA: [Nome do documento, p. N](URL#page=N),
+      copiando a URL e a pagina do perfil. So use fonte externa se ela estiver
+      no perfil; se nao estiver, nao afirme.
 4. Nao prometa resultado e nao faca acusacao que o dado nao sustenta.
 5. Proibido: "media", "taxa de sucesso", causa sem contagem.
 6. Nao cite nome de arquivo nem fale de "dossie": fale do dado e do que ele
@@ -87,7 +91,8 @@ FALHAS. Corrija so o que a lista aponta:
 2. paragrafo sem marca: acrescente [medido — dados da pagina], [inferido] ou
    [nao da para concluir];
 3. paragrafo [medido] sem fonte: escreva [medido — dados da pagina];
-4. link ou documento externo: apague, o perfil nao tem fonte externa.
+4. link que nao esta no perfil: apague a afirmacao externa ou troque pela URL
+   do perfil.
 
 Nao acrescente fato novo. Devolva so o texto revisado, em markdown.
 """
@@ -165,12 +170,29 @@ def perfil_util(rota: dict) -> bool:
     return False
 
 
+def anexar_trechos(rota: dict, linhas: list[str]) -> None:
+    """Trechos do RAG da rota, quando existirem."""
+    if not TRECHOS.exists():
+        return
+    dados = json.loads(TRECHOS.read_text(encoding="utf-8")).get("rotas", {})
+    registro = dados.get(rota["rota"])
+    if not registro or registro.get("semTexto"):
+        return
+    linhas.append("\n## FONTES EXTERNAS (use link com página)")
+    for trecho in registro["trechos"][:3]:
+        sufixo = (f"#page={trecho['pagina']}"
+                  if str(trecho["url"]).lower().endswith(".pdf") else "")
+        linhas.append(f"- {trecho['titulo']} — p. {trecho['pagina']} — "
+                      f"link: {trecho['url']}{sufixo} — \"{trecho['texto'][:400]}\"")
+
+
 def montar_perfil(rota: dict) -> str:
     linhas = [f"# Perfil da rota {rota['rota']}", f"Total de registros: {rota['registros']}"]
     for fonte in rota["fontes"]:
         caminho = resolver(fonte)
         if caminho:
             linhas += perfil_fonte(fonte, caminho)
+    anexar_trechos(rota, linhas)
     return "\n".join(linhas)
 
 
