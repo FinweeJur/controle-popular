@@ -27,7 +27,7 @@ import {
   type IdMunicipio,
 } from "@/lib/db/queries/municipios";
 import Moeda from "@/app/components/Moeda";
-import { CountUp } from "@/app/components/CountUp";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import { formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -455,7 +455,7 @@ export default async function HomePage({
                   <>
                     <div className="font-tabular text-[3em] leading-none font-semibold">
                       {populacao.valor_numerico !== null ? (
-                        <CountUp value={populacao.valor_numerico} />
+                        <ContadorAnimado valor={populacao.valor_numerico} />
                       ) : (
                         populacao.valor ?? "—"
                       )}
@@ -483,15 +483,28 @@ export default async function HomePage({
                       <div className="mt-1.5 font-tabular text-[1.6em] leading-none font-semibold">
                         {row.valor_numerico !== null ? (
                           row.unidade === "R$" ? (
-                            <CountUp value={row.valor_numerico} prefix="R$ " decimals={2} />
+                            <ContadorAnimado
+                              valor={row.valor_numerico}
+                              formatar={(n) => `R$ ${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                            />
                           ) : row.unidade === "pontos" ? (
-                            <CountUp value={row.valor_numerico} decimals={1} suffix={` ${row.unidade}`} />
+                            <ContadorAnimado
+                              valor={row.valor_numerico}
+                              formatar={(n) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${row.unidade}`}
+                            />
                           ) : nome === "idh" ? (
-                            <CountUp value={row.valor_numerico} decimals={3} />
+                            <ContadorAnimado
+                              valor={row.valor_numerico}
+                              formatar={(n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
+                            />
                           ) : (
-                            <CountUp
-                              value={Math.round(row.valor_numerico)}
-                              suffix={row.unidade && nome !== "saldo_empregos_caged" ? ` ${row.unidade}` : ""}
+                            <ContadorAnimado
+                              valor={Math.round(row.valor_numerico)}
+                              formatar={(n) =>
+                                `${Math.round(n).toLocaleString("pt-BR")}${
+                                  row.unidade && nome !== "saldo_empregos_caged" ? ` ${row.unidade}` : ""
+                                }`
+                              }
                             />
                           )
                         ) : (
