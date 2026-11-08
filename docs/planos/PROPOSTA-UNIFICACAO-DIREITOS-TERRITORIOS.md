@@ -41,6 +41,37 @@ A proposta anterior (mesmo dia) errava em quatro pontos:
 > **Nada se move. Cria-se a página geral; a específica continua onde está e
 > vira botão dentro dela.**
 
+### Eixo, frente, subfrente e página
+
+A confusão que a pergunta levantou: **a página geral não substitui o eixo — ela
+vira a porta do eixo.** A hierarquia fica com quatro degraus, e cada degrau tem
+um tipo de página:
+
+| Degrau | O que é | Exemplo | Hoje |
+|---|---|---|---|
+| **Eixo** | a área do portal | Direitos | `/direitos` (geral, nova) |
+| **Frente** | um recorte dentro do eixo | Direitos em movimento | `/direitos-em-movimento` (preservada) |
+| **Subfrente** | um tema da frente | Saúde pública | `/direitos-em-movimento/saude-publica` |
+| **Página** | o dado | Auxílio, processo, acórdão | onde já está |
+
+Aplicando ao caso concreto:
+
+- **`/direitos`** é a página **geral do eixo** — o que é, quais direitos
+  aparecem nos casos, quantos acórdãos citam cada um, e os botões para as frentes.
+- **`/direitos-em-movimento`** continua existindo, como **frente** do eixo
+  (serviços, conselhos, denúncia, ajuda). Não é substituída nem redirecionada:
+  ela aparece como botão dentro de `/direitos`, com uma linha dizendo o que há lá.
+- **`/direitos-globais`** e **`/direitos-comparados`** são outras duas frentes do
+  mesmo eixo, também preservadas e listadas como botões.
+
+Ou seja: o eixo ganha porta própria e nome curto na interface; as frentes que já
+existem viram os botões dessa porta. É o mesmo movimento em Brumadinho
+(`/casos/brumadinho` como geral; `/paraopeba/*` como frentes) e em Barragens.
+
+A alternativa — chamar a geral de `/direitos-em-movimento` e renomear só o rótulo
+— preserva a URL, mas mantém jargão no endereço e não resolve o teste das 20
+perguntas. Fica como plano B se você preferir não criar rota nova.
+
 ```
 GERAL (nova)                         ESPECÍFICA (existente, preservada)
 /casos/brumadinho            →  botões para linha-do-tempo, auxílio, execução,
@@ -48,7 +79,8 @@ GERAL (nova)                         ESPECÍFICA (existente, preservada)
                                    análise, auditoria, correlação, biblioteca
 /casos/riodoce               →  botões para processos, índice
 /casos/itatiaiaucu           →  botão para jurisprudência?frente=itatiaiaucu
-/direitos                    →  botões para os 9 eixos já existentes
+/direitos                    →  botões para direitos-em-movimento (11 páginas),
+                                   direitos-globais (10) e direitos-comparados (2)
 /barragens                   →  botões para sigbm, descaracterização, mundo
 /atores/popular              →  botões para MAB, ATIs, memória
 ```
