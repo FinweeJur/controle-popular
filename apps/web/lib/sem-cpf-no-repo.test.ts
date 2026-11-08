@@ -108,6 +108,10 @@ const SINTETICOS = new Set([
   // Falso positivo estrutural: parte inteira do valor total de autos de infracao
   // do IBAMA (2026-10-02) — dinheiro, nao CPF.
   "54852973564",
+  // Falso positivo: numero de processo administrativo do IBAMA
+  // (02022000862/2023-12) na descricao do auto - mod-11 por coincidencia,
+  // protocolo nao CPF (coleta de 2026-11-08).
+  "02022000862",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {
