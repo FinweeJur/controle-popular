@@ -44,15 +44,28 @@
  * distintos). Vão num balde próprio, contadas e declaradas — nunca somadas a
  * um município real nem descartadas em silêncio.
  *
- * Uso: npx tsx scripts/agregar-decisoes-licenciamento.mts
+ * Uso: npx tsx scripts/agregar-decisoes-licenciamento.mts [--bruto <caminho>]
+ * O caminho tambem pode vir de `DECISOES_BRUTO`; sem nenhum dos dois, usa o
+ * bruto historico de `X:/DevCoder/_lote-ambiental/saida/decisoes.json`.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const BRUTO = "X:/DevCoder/_lote-ambiental/saida/decisoes.json";
 const DESTINO = resolve(RAIZ, "etl/betim/dados/decisoes-licenciamento-mg.json");
+
+/** Resolve o bruto de entrada: --bruto <caminho>, --bruto=<caminho> ou a env. */
+function brutoDeEntrada(argv: string[]): string {
+  const i = argv.indexOf("--bruto");
+  if (i !== -1 && argv[i + 1]) return argv[i + 1];
+  const comIgual = argv.find((a) => a.startsWith("--bruto="));
+  if (comIgual) return comIgual.slice("--bruto=".length);
+  if (process.env.DECISOES_BRUTO) return process.env.DECISOES_BRUTO;
+  return "X:/DevCoder/_lote-ambiental/saida/decisoes.json";
+}
+
+const BRUTO = resolve(brutoDeEntrada(process.argv.slice(2)));
 
 /** As que o acervo de licenças concedidas não mostra. */
 const NEGATIVAS = new Set(["Indeferida", "Arquivamento", "Cancelada", "Suspensa", "Licença Suspensa"]);
