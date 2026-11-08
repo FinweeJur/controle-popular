@@ -21,6 +21,7 @@ import {
 } from "./partes";
 import type { TipoGrafico } from "./graficos";
 import { CatalogoIndeterminados } from "./Catalogo";
+import { ResumoRealidadeBox } from "../components/ResumoRealidade";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -106,6 +107,7 @@ export default async function Jurisprudencia({
       </header>
 
       <div className="mx-auto max-w-5xl space-y-10">
+        <ResumoRealidadeBox rota="/jurisprudencia" />
         <Cartoes />
         <FaixaTemas filtros={filtros} />
         <Atalhos tribunal={filtros.tribunal ?? ""} frente={filtros.frente ?? ""} />
