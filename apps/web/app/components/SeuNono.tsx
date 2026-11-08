@@ -656,6 +656,50 @@ type ComandoAcessibilidade = {
 };
 
 /**
+ * Comandos do companheiro (qualquer bicho), fora do `useMemo` da escada.
+ *
+ * O rótulo é GENÉRICO (dono, 08/11/2026): o pet pode ser passarinho, gato ou
+ * outro; "Passarinho" mentia quando o bicho ativo era outro. As frases
+ * antigas ficam como apelido para quem já digitava "tirar o passarinho".
+ * "tirar/desativar/desligar" vêm ANTES de "ativar/ligar" porque a detecção é
+ * `includes` e a frase negativa contém a raiz da positiva.
+ */
+const COMANDOS_COMPANHEIRO: ComandoAcessibilidade[] = [
+  {
+    comando: [
+      "tirar passarinho", "tirar o passarinho", "tirar companheiro",
+      "tirar o companheiro", "tirar bichinho", "tirar o bichinho",
+      "desativar passarinho", "desativar o passarinho", "desativar companheiro",
+      "desativar o companheiro", "desativar bichinho", "desativar o bichinho",
+      "desligar passarinho", "desligar o passarinho", "desligar companheiro",
+      "desligar o companheiro", "desligar bichinho", "desligar o bichinho",
+      "desative o passarinho", "desligue o passarinho", "esconder passarinho",
+      "esconder o passarinho", "esconder o companheiro", "esconder o bichinho",
+    ],
+    label: "Companheiro",
+    mensagem: "Pronto! Companheiro desligado.",
+    acao: () => definirCompanheiroAtivo(false),
+    icone: <span className="text-base">🐾</span>,
+  },
+  {
+    comando: [
+      "ativar passarinho", "ativar o passarinho", "ligar passarinho",
+      "ligar o passarinho", "ative o passarinho", "ligue o passarinho",
+      "mostrar passarinho", "mostrar o passarinho", "quero o passarinho",
+      "chamar o companheiro", "mostrar companheiro", "mostrar o companheiro",
+      "ativar companheiro", "ativar o companheiro", "ligar companheiro",
+      "ligar o companheiro", "quero o companheiro", "chamar o bichinho",
+      "mostrar bichinho", "mostrar o bichinho", "ativar bichinho",
+      "ativar o bichinho", "ligar bichinho", "ligar o bichinho",
+    ],
+    label: "Companheiro",
+    mensagem: "Pronto! Companheiro ativado.",
+    acao: () => definirCompanheiroAtivo(true),
+    icone: <span className="text-base">🐾</span>,
+  },
+];
+
+/**
  * Widget flutuante "Seu Nonô" — assistente do Controle Popular.
  *
  * Funciona como uma escada de respostas pré-curadas:
@@ -992,33 +1036,9 @@ export function SeuNono() {
         acao: () => definirRastroCursor(true),
         icone: <span className="text-base">✨</span>,
       },
-      {
-        // Passarinho (dono, 19/10/2026): "tirar" vem ANTES de "ligar" —
-        // a detecção é `includes` e "tirar o passarinho" contém a raiz de
-        // "ativar". Mesmo contrato do `CompanheiroOpcional`.
-        comando: [
-          "tirar passarinho", "tirar o passarinho", "tirar companheiro",
-          "tirar o companheiro", "desativar passarinho", "desativar o passarinho",
-          "desligar passarinho", "desligar o passarinho", "desative o passarinho",
-          "desligue o passarinho", "esconder passarinho", "esconder o passarinho",
-        ],
-        label: "Passarinho",
-        mensagem: "Pronto! Passarinho desligado.",
-        acao: () => definirCompanheiroAtivo(false),
-        icone: <span className="text-base">🐦</span>,
-      },
-      {
-        comando: [
-          "ativar passarinho", "ativar o passarinho", "ligar passarinho",
-          "ligar o passarinho", "ative o passarinho", "ligue o passarinho",
-          "mostrar passarinho", "mostrar o passarinho", "quero o passarinho",
-          "chamar o companheiro", "mostrar companheiro", "mostrar o companheiro",
-        ],
-        label: "Passarinho",
-        mensagem: "Pronto! Passarinho ativado.",
-        acao: () => definirCompanheiroAtivo(true),
-        icone: <span className="text-base">🐦</span>,
-      },
+      // Companheiro (qualquer bicho): entradas em `COMANDOS_COMPANHEIRO`,
+      // fora do `useMemo`, para não inflar o bloco da escada.
+      ...COMANDOS_COMPANHEIRO,
     ],
     [setTheme]
   );
@@ -1790,7 +1810,7 @@ export function SeuNono() {
                             onChange={() => alternarPetNoChat(p.slug)}
                             className="shrink-0 accent-primary"
                           />
-                          <PetIcone pet={p} altura={22} />
+                          <PetIcone pet={p} altura={32} />
                           <span className="font-medium text-text">{p.nome}</span>
                           <span className="ml-auto text-[0.7rem] text-text-soft">por {p.autor}</span>
                         </label>
@@ -1860,7 +1880,7 @@ export function SeuNono() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-xs font-semibold text-text-soft">
-                        Passarinho:
+                        Companheiro:
                       </span>
                       <CompanheiroToggle />
                     </div>

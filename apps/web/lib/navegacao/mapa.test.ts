@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { caminhoDe, paginasDoEixo, EIXOS } from "./mapa";
+import { caminhoDe, paginasDoEixo, portaDoEixo, EIXOS } from "./mapa";
 
 describe("caminhoDe", () => {
   it("resolve prefixo antigo pela trilha do eixo novo", () => {
@@ -51,5 +51,18 @@ describe("EIXOS", () => {
   it("conta rotas por eixo", () => {
     expect(paginasDoEixo("casos")).toBeGreaterThanOrEqual(20);
     expect(paginasDoEixo("inexistente")).toBe(0);
+  });
+
+  it("porta do eixo proposta cai numa página que existe", () => {
+    // `/casos` e `/direitos` ainda não têm page.tsx; o menu linkava para
+    // elas e o leitor via "página não encontrada" (dono, 08/11/2026).
+    const casos = EIXOS.find((e) => e.slug === "casos");
+    const direitos = EIXOS.find((e) => e.slug === "direitos");
+    expect(casos && portaDoEixo(casos)).toBe("/paraopeba");
+    expect(direitos && portaDoEixo(direitos)).toBe("/direitos-em-movimento");
+
+    for (const eixo of EIXOS) {
+      expect(portaDoEixo(eixo).startsWith("/")).toBe(true);
+    }
   });
 });

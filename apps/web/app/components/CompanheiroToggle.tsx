@@ -1,17 +1,21 @@
 "use client";
 
 /**
- * CompanheiroToggle — botão liga/desliga do companheiro (passarinho).
+ * CompanheiroToggle — botão liga/desliga do companheiro (qualquer bichinho).
  *
- * Papel no portal: ser o controle VISÍVEL do passarinho dentro do Seu
+ * Papel no portal: ser o controle VISÍVEL do companheiro dentro do Seu
  * Nonô, no cartão "Acessibilidade" — pedido do dono em 19/10/2026:
- * dois botões distintos (trilha e passarinho) e o chatbot controlando
+ * dois botões distintos (trilha e bicho) e o chatbot controlando
  * os dois. Reutiliza o contrato do `CompanheiroOpcional.tsx`: chave
  * `cp_companheiro_ativo` (padrão DESLIGADO — só "on" liga), evento
  * `cp:companheiro-ativo` e funções exportadas por ele — nunca
  * reescritos aqui. Assim o estado lido por este botão, pelo botão
- * flutuante do passarinho e pelo `CompanheiroOpcional` é sempre o
+ * flutuante do bicho e pelo `CompanheiroOpcional` é sempre o
  * mesmo: quem muda de um lado, o outro redesenha na hora.
+ *
+ * O RÓTULO É GENÉRICO (dono, 08/11/2026): o companheiro pode ser passarinho,
+ * gato ou qualquer bicho da lista; escrever "Passarinho" mentia quando o pet
+ * ativo era outro.
  *
  * Segue o padrão de `RastroCursorToggle.tsx` (reutilizar, não recriar):
  * botão `aria-pressed`, leitura por `useSyncExternalStore`, snapshot do
@@ -43,14 +47,14 @@ export default function CompanheiroToggle() {
       type="button"
       onClick={() => definirCompanheiroAtivo(!ativo)}
       aria-pressed={ativo}
-      title="Passarinho companheiro — desligue se atrapalhar a leitura"
+      title="Companheiro — desligue se atrapalhar a leitura"
       className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium ${
         ativo
           ? "border-text bg-text text-bg"
           : "border-border bg-transparent text-text-soft hover:bg-surface-2"
       }`}
     >
-      Passarinho
+      Companheiro
     </button>
   );
 }

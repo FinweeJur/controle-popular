@@ -1520,3 +1520,26 @@ html[data-scroll-perto] ::-webkit-scrollbar-thumb,
 [data-cp-slot='2'] {
   bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 8rem);
 }
+
+/* ENTRADA DOS EIXOS NA HOME (dono, 08/11/2026) ------------------------------
+   Animação CSS pura: aparece no celular e no tablet (não depende de hover
+   nem de WebGL) e desliga com prefers-reduced-motion. O atraso de cada
+   card vem inline, para a grade entrar em cascata. */
+@keyframes cp-hero-eixo-entra {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cp-hero-eixo {
+  animation: cp-hero-eixo-entra 0.45s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-hero-eixo {
+    animation: none;
+  }
+}

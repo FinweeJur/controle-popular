@@ -470,15 +470,15 @@ export const EIXOS: Eixo[] = [
     slug: "dados",
     rotulo: "Dados",
     descricao: "Dados abertos, documentação, API e o que o portal tem sobre você.",
-    rota: "/dados",
-    estado: "no-ar",
+    rota: "/dados/populares",
+    estado: "parcial",
     frentes: [
       {
         slug: "abertos",
         rotulo: "Dados abertos",
         descricao: "Catálogo de bases e documentação da API.",
-        rota: "/dados",
-        rotas: ["/dados", "/documentacao"],
+        rota: "/dados/populares",
+        rotas: ["/dados/populares", "/documentacao"],
       },
       {
         slug: "meus-dados",
@@ -493,6 +493,21 @@ export const EIXOS: Eixo[] = [
 
 /** Índice por slug do eixo, para resolver o caminho. */
 const POR_SLUG = new Map(EIXOS.map((eixo) => [eixo.slug, eixo]));
+
+/**
+ * Porta PUBLICADA do eixo — onde o leitor realmente aterrissa.
+ *
+ * `eixo.rota` é a página geral do eixo, que pode ser proposta (`/casos`,
+ * `/direitos`). Link direto para elas dava "página não encontrada" no menu
+ * (dono, 08/11/2026). Para eixo sem porta, vale a rota de entrada da
+ * primeira frente que já está no ar — o leitor cai no conteúdo mais próximo
+ * em vez de numa página de erro.
+ */
+export function portaDoEixo(eixo: Eixo): string {
+  if (eixo.estado !== "proposta") return eixo.rota;
+  const frente = eixo.frentes.find((f) => f.rotas.length > 0);
+  return frente?.rota ?? "/indice";
+}
 
 /** Segmentos que não são eixo de conteúdo: são ferramentas de travessia. */
 export const FERRAMENTAS = new Set([

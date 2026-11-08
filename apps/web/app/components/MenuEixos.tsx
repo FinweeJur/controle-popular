@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EIXOS } from "@/lib/navegacao/mapa";
+import { EIXOS, portaDoEixo } from "@/lib/navegacao/mapa";
 
 /**
  * Porta do mapa de navegação dentro do menu da barra superior.
@@ -33,8 +33,13 @@ export default function MenuEixos({ onFechar }: { onFechar: () => void }) {
         {EIXOS.map((eixo) => (
           <li key={eixo.slug}>
             <Link
-              href={eixo.rota}
+              href={portaDoEixo(eixo)}
               onClick={onFechar}
+              title={
+                eixo.estado === "proposta"
+                  ? `${eixo.rotulo} — porta em construção; abre pela frente publicada`
+                  : eixo.rotulo
+              }
               className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-[0.85em] font-medium text-text transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
             >
               {eixo.rotulo}

@@ -104,7 +104,7 @@ export default function CompanheiroMenuOffline() {
         aria-label="Escolher o bichinho do companheiro"
         data-nao-plataforma
         data-lenis-prevent
-        className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
+        className="fixed z-[70] max-h-[60vh] w-72 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
         style={{
           left: pos ? Math.round(pos.x) : menu.x,
           top: pos ? Math.round(pos.y) : menu.y,
@@ -133,10 +133,10 @@ export default function CompanheiroMenuOffline() {
                 type="button"
                 role="menuitem"
                 onClick={() => escolher(p)}
-                className="flex w-full items-baseline justify-between gap-2 rounded-lg px-2 py-1.5 text-left text-sm hover:bg-surface-2 text-text"
+                className="flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-left text-sm hover:bg-surface-2 text-text"
               >
-                <span className="flex items-center gap-1.5">
-                  <PetIcone pet={p} altura={16} />
+                <span className="flex items-center gap-2">
+                  <PetIcone pet={p} altura={36} />
                   <span>{p.nome}</span>
                 </span>
                 <span className="truncate text-[0.75rem] font-normal text-text-soft">
