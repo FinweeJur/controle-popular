@@ -167,6 +167,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Tema | Documento |
 |---|---|
 | Produto, frentes e público | [PRODUTO.md](docs/01-produto/PRODUTO.md) |
+| Estrutura de navegação e eixos | [UNIFICACAO-POR-EIXO.md](docs/planos/UNIFICACAO-POR-EIXO.md) |
 | Regra editorial | [REGRA-EDITORIAL.md](docs/01-produto/REGRA-EDITORIAL.md) |
 | Estado, fila, bloqueios e dívida | [ESTADO.md](docs/02-estado/ESTADO.md) |
 | Radar de correção, atualização, edição e ampliação | [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |

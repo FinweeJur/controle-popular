@@ -29,7 +29,7 @@ portal (barragens, atores, transparência); agora o eixo é o *assunto que o
 leitor procura*. Barragens virou frente de Meio ambiente; Atores virou frente de
 Justiça e Economia; Transparência virou Dados.
 
-O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 9 eixos, 56 frentes,
+O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 9 eixos, 34 frentes,
 `caminhoDe()` para a trilha e `paginasDoEixo()` para a contagem.
 
 ## Os 9 eixos
@@ -170,18 +170,24 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
 
 ## O que já está no ar (fase 0 e 2)
 
-- **Mapa**: `apps/web/lib/navegacao/mapa.ts` — 9 eixos, 56 frentes, `caminhoDe()`,
-  `paginasDoEixo()`, com 6 testes (`mapa.test.ts`).
+- **Mapa**: `apps/web/lib/navegacao/mapa.ts` — 9 eixos, 34 frentes, `caminhoDe()`
+  e `paginasDoEixo()`, com testes em `mapa.test.ts` (8 casos: trilha, prefixo
+  antigo, porta do eixo, rota fora do mapa, query string, slug único, rota de
+  entrada e contagem por eixo).
 - **Trilha**: `CaminhoSistema` lê o mapa e desenha "Início › Eixo › Frente › Página".
-  Todo nível é link; o último leva `aria-current="page"`.
-- **Piloto da trilha** (3 páginas): `/riodoce`, `/riodoce/processos` e
-  `/paraopeba/linha-do-tempo`. As trilhas escritas à mão nessas páginas saíram.
+  Todo nível é link; o último leva `aria-current="page"`. Está em 8 páginas:
+  `/riodoce`, `/riodoce/processos`, `/paraopeba/linha-do-tempo`, `/paraopeba`,
+  `/jurisprudencia`, `/congresso`, `/empresas` e `/memoria`. As trilhas escritas
+  à mão nessas páginas saíram.
 - **Índice expansível**: `IndiceEixos` na página `/indice`, com "Comece por aqui",
   `<details>` nativo, contagem por eixo e selo **mapa** na frente em destaque
   (Territórios, que abre o Meio ambiente).
+- **Referências**: `apps/web/lib/navegacao/referencias.ts` — 10 links verificados
+  do MAB e do Brasil de Fato, por eixo. Eixo sem cobertura não ganha bloco de
+  enfeite.
 
-Próximas páginas da trilha: `/paraopeba` (hub), `/jurisprudencia`, `/memoria`,
-`/direitos-em-movimento`, `/congresso`, `/empresas` — a ordem é por tráfego.
+Faltam trilha nas portas de eixo ainda propostas (`/casos` e `/direitos`) e nas
+páginas de menor tráfego.
 
 ## Como manter
 
