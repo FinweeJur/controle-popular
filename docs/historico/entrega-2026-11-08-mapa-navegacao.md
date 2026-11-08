@@ -171,14 +171,18 @@ pedido do dono**: a pilha da esquerda mostra só o Seu Nonô, a pata e o rádio
 que já existiam. O dock adicionava três botões novos (rádio, bicho e rastro)
 que disputavam a mesma área do FAB e cobriam a cara do assistente no celular.
 
-O que ficou:
+O que ficou (regra final do dono, 08/11/2026):
 
-- **Seu Nonô** no FAB da pilha da esquerda (64 px), sozinho.
-- **Pata do pet** e **rádio** seguem na mesma pilha, com a emenda de 8 px
-  entre os três — pata e rádio subiram 8 px quando o FAB cresceu.
+- **Seu Nonô** no FAB da pilha da esquerda (64 px), sozinho, parado.
+- **Pata, rádio e rastro mágico** entram quando o ponteiro chega no Seu Nonô
+  (ou em tela sem hover) e cada um abre o nome no hover/foco.
+- Item que fica visível por estar **ligado** (rádio tocando, menu do bicho
+  aberto, trilha ativa) não guarda o lugar antigo: desce e encosta no FAB.
+  Com só o rastro ligado, ele ocupa o primeiro degrau; com rádio e rastro,
+  os dois primeiros.
 - **Rádio** também no rodapé (`BotaoRadio`), como antes do dock.
-- **Bicho e rastro** ligam e desligam no cartão "Acessibilidade" do Seu Nonô
-  e pelos comandos de texto. Nada de botão flutuante novo.
+- **Bicho e rastro** também ligam e desligam no cartão "Acessibilidade" do
+  Seu Nonô e pelos comandos de texto.
 - **Voltar ao topo** discreto no canto inferior direito: só a seta em 70% de
   opacidade; o rótulo "Voltar ao topo" cresce no hover/foco.
 
