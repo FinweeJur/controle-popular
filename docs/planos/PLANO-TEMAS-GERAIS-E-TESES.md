@@ -261,44 +261,49 @@ Página própria `/jurisprudencia/teses`, ligada a partir de
 A cadeia de `tjmg-jurimetria/scripts/provedores.py` já é a combinada em
 04/11/2026:
 
-| Degrau | Modelo | Custo | Contexto |
-|---|---|---|---|
-| 1 | `S5-free` (Maritaca) | R$ 0 | 1 M |
-| 2 | `glm-4.5-flash` (Z.AI) | R$ 0 | curto |
-| 3 | `deepseek-v4.1-flash-free` (OrcaRouter) | R$ 0 | 32 k |
-| 4 | `S5` (Maritaca) | **pago** | 1 M |
-| 5 | `deepseek-v4-flash` | **pago** | 32 k |
+| Degrau | Modelo | Custo | Papel | Medido em 08/11 |
+|---|---|---|---|---|
+| 1 | `S5-free` (Maritaca) | R$ 0 | **motor do volume** | 2,4 s por caso (conc. 4) |
+| 2 | `glm-4.5-flash` (Z.AI) | R$ 0 | reserva do volume | 6,8 s por chamada trivial |
+| 3 | `deepseek-v4.1-flash-free` (OrcaRouter) | R$ 0 | terceira reserva | 32 k de contexto |
+| — | `glm-4.7-flash` (Z.AI) | R$ 0 | **fora do volume** | 36,0 s na mesma chamada |
+| 4 | `S5` (Maritaca) | pago | **só a síntese final** | US$ 0,50 / 2,50 por M |
 
-O dono autorizou a queda para o pago quando o gratuito falhar. Para isso
-funcionar, duas correções são obrigatórias no motor:
+O dono fixou a política em 08/11: **S5-free primeiro**, o grosso no GLM Flash
+gratuito, e o S5 pago só pontual. O `glm-4.7-flash` é gratuito, mas levou
+36 s numa chamada trivial contra 6,8 s do 4.5 — cinco vezes mais lento. Não
+é motor de volume; entra só se o 4.5 cair.
 
-1. `MAXIMO_DEGRAUS = 3` **hoje impede o pago de ser alcançado**: os três
-   primeiros degraus são gratuitos, o contador estoura e a cadeia para antes
-   do degrau 4. Precisa virar parâmetro (`--permitir-pago`) e não teto fixo.
-2. `permitir_pago=True` só pode ser ligado depois de o teto de gasto
-   (`--teto-reais`) ser gravado em `logs/temas-gerais-gasto.json`. Ao
-   atingir o teto, a cadeia para e o caso fica pendente — nunca estoura em
-   silêncio.
+### O lote não usa o pago
 
-Preço do S5 (medido na tabela do provedor em 08/11/2026): **US$ 0,50 por
-milhão de entrada e US$ 2,50 por milhão de saída**. Por caso, com ~2.300
-tokens de entrada e ~300 de saída: **US$ 0,0019 ≈ R$ 0,011**.
+A fila de 11.710 casos roda inteira nos degraus gratuitos. Se os três
+falharem, o caso fica pendente para a rodada seguinte — não sobe para o
+pago. O pago não tem lugar numa tarefa de 11 mil chamadas: a US$ 0,0019 por
+caso daria R$ 110, e o mesmo resultado sai de graça em 2 a 4 horas.
 
-### Custo por cenário
+### O pago só na síntese
 
-| Cenário | Casos | Custo |
-|---|---:|---:|
-| Só gratuito | 10.572 | R$ 0 |
-| 25% cai no pago | 2.643 | ~R$ 28 |
-| 100% cai no pago | 10.572 | ~R$ 110 |
-| Teto proposto | — | **R$ 150** |
+O S5 pago entra uma vez, na redação do resumo (§8), com `thinking` no
+máximo e o dossiê agregado na mão — nunca o corpus. São 8 a 10 chamadas com
+~12 mil tokens de entrada e ~4 mil de saída:
+
+| Item | Valor |
+|---|---:|
+| Chamadas | 10 |
+| Entrada | ~120 mil tokens |
+| Saída | ~40 mil tokens |
+| Custo | US$ 0,16 ≈ **R$ 0,90** |
+| Teto reservado | **R$ 20** |
+
+O teto de R$ 20 cobre 200 chamadas desse porte. Se a síntese precisar de mais
+que isso, o problema é o prompt, não o orçamento.
 
 ### Ritmo
 
-O gratuito tem 60 requisições por minuto. Com concorrência 4 e ~10 s por
-chamada, a vazão medida fica entre 16 e 30 casos por minuto: **6 a 11 horas
-para os 10.572**. O volume é sequencial por natureza; paralelizar mais
-esbarra no limite da oferta gratuita.
+O gratuito roda a 2,4 s por caso com concorrência 4: **~100 casos por
+minuto** na medição curta. O limite documentado do S5-free é 60 RPM, então a
+previsão honesta é 2 a 4 horas para os 11,7 mil. O volume é sequencial por
+natureza; paralelizar mais esbarra no teto da oferta gratuita.
 
 ## 8. O resumo geral das teses — entrega 2
 
@@ -413,15 +418,16 @@ A opção C é a única que não inventa. A A é a melhor, se o site permitir.
 | F0 | medição por regex | feito | R$ 0 |
 | F1 | rubrica fechada (22 temas, 79 teses) | feito | R$ 0 |
 | F2 | piloto de 19, 95% de evidência | feito | R$ 0 |
-| F3 | lote de 11.710 | 2–4 h | R$ 0–150 |
+| F3 | lote de 11.710 | 2–4 h | R$ 0 |
 | F4 | auditoria de evidência | 1 h | R$ 0 |
 | F5 | agregação | 1 h | R$ 0 |
-| F6 | redação do resumo | 1 sessão | R$ 0 |
+| F6 | redação do resumo (S5 pago, thinking max) | 1 sessão | ~R$ 1 |
 | F7 | página | 1 sessão | R$ 0 |
 | F8 | documentos das entidades | 1 sessão | R$ 0 |
 
-**Teto de gasto: R$ 150.** O lote para ao atingir o teto e o restante fica
-pendente para a rodada seguinte.
+**Teto de gasto: R$ 20**, reservado só para a síntese. O lote e a auditoria
+são gratuitos; o pago não é fallback de volume. Ao atingir o teto, a chamada
+para e o resultado fica pendente para a rodada seguinte.
 
 ## 13. O que não fazer
 
