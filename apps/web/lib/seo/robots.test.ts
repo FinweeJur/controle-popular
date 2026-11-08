@@ -58,4 +58,23 @@ describe("public/robots.txt", () => {
       expect(texto, `regra ${regra} sumiu`).toContain(`Disallow: ${regra}`);
     }
   });
+
+  it("bloqueia API crua, área pessoal e casco offline — sem barrar o site público", () => {
+    // Comparação por LINHA, não por substring: `Disallow: /api/painel/` contém
+    // `Disallow: /api/` e faria a checagem passar sem a regra existir.
+    const linhas = texto.split("\n").map((l) => l.trim());
+    for (const regra of ["/api/", "/meus-dados", "/offline"]) {
+      expect(linhas, `regra Disallow: ${regra} sumiu`).toContain(`Disallow: ${regra}`);
+    }
+
+    // O conteúdo que o sitemap anuncia continua liberado: `Allow: /` não pode
+    // virar bloqueio geral por causa da linha nova.
+    expect(linhas).toContain("Allow: /");
+    for (const permitida of ["/indice", "/jurisprudencia", "/ambiental"]) {
+      expect(
+        linhas.some((l) => l === `Disallow: ${permitida}`),
+        `rota pública ${permitida} foi bloqueada`
+      ).toBe(false);
+    }
+  });
 });

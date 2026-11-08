@@ -9,6 +9,9 @@ import { listarProposicoes } from "@/lib/congresso/proposicoes";
 import { listarTribunais } from "@/lib/judiciario/tribunais";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
+import { listarTodasEntidades } from "@/lib/empresas/entidades-dados";
+import { EMPRESAS } from "@/lib/empresas/dados";
+import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import { ROTAS_GLOBAIS, SUFIXOS_CIDADE } from "@/lib/sitemap/rotas-descobertas";
 
 /**
@@ -41,8 +44,22 @@ type ChangeFreq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
  */
 const BUILD_TIME = new Date();
 
+/**
+ * `lastModified` nunca pode ser data futura.
+ *
+ * `BUILD_TIME` é o instante do build e já é passado por definição. O risco
+ * mora nas datas que vêm do banco (`publicadoEm`, `data_ultima_tramitacao`):
+ * uma linha agendada ou uma fonte com relógio adiantado produziria um
+ * `<lastmod>` no futuro, que o buscador trata como sinal inválido. Vale a
+ * data do build quando a origem "vence" o relógio.
+ */
+function naoNoFuturo(data: Date): Date {
+  if (Number.isNaN(data.getTime())) return BUILD_TIME;
+  return data.getTime() > BUILD_TIME.getTime() ? BUILD_TIME : data;
+}
+
 function paraData(v: string | null | undefined): Date {
-  return v ? new Date(v) : BUILD_TIME;
+  return v ? naoNoFuturo(new Date(v)) : BUILD_TIME;
 }
 
 function item(
@@ -51,7 +68,7 @@ function item(
 ): MetadataRoute.Sitemap[number] {
   return {
     url: `${BASE_URL}${path}`,
-    lastModified: opts.lastModified ?? BUILD_TIME,
+    lastModified: naoNoFuturo(opts.lastModified ?? BUILD_TIME),
     changeFrequency: opts.changeFrequency ?? "monthly",
     priority: opts.priority ?? 0.5,
   };
@@ -337,6 +354,43 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
 }
 
 /**
+ * Fichas de empresa (`/empresas/[slug]`).
+ *
+ * O catálogo fixo (`EMPRESAS`) e o catálogo ampliado (`listarTodasEntidades`)
+ * são exatamente as duas fontes do `generateStaticParams` de
+ * `app/empresas/[slug]/page.tsx` — mesma união, sem inventar slug. `Set`
+ * porque Vale/Sigma aparecem nas duas listas.
+ */
+function rotasDeEmpresas(): MetadataRoute.Sitemap {
+  // `Set` sem laço com `if` dentro: o CodeScene media "Bumpy Road" (dois
+  // blocos aninhados) na versão anterior. `filter` deixa uma passada só.
+  const slugs = [
+    ...new Set([
+      ...listarTodasEntidades().map((entidade) => entidade.slug),
+      ...EMPRESAS.map((empresa) => empresa.slug),
+    ]),
+  ].filter((slug) => Boolean(slug));
+  return slugs.map((slug) =>
+    item(`/empresas/${slug}`, { changeFrequency: "monthly", priority: 0.6 })
+  );
+}
+
+/**
+ * Fichas de instituição (`/instituicoes/[sigla]`).
+ *
+ * Fonte única: `obterTodasInstituicoes()`, a mesma chamada do
+ * `generateStaticParams` de `app/instituicoes/[sigla]/page.tsx`.
+ */
+function rotasDeInstituicoes(): MetadataRoute.Sitemap {
+  return obterTodasInstituicoes().map((instituicao) =>
+    item(`/instituicoes/${instituicao.sigla}`, {
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
+}
+
+/**
  * Recortes do painel de serviços essenciais e da Coleção Nossos, anunciados um
  * a um. As URLs nuas dos dois painéis entram pelo inventário descoberto
  * (`lib/sitemap/rotas-descobertas.ts`).
@@ -358,8 +412,16 @@ const ITENS_NOSSOS: MetadataRoute.Sitemap = [
   item("/ambiental/nossos?colecao=territorios", { changeFrequency: "weekly", priority: 0.7 }),
 ];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const urls: MetadataRoute.Sitemap = [
+/**
+ * Lista curada do sitemap: rotas com `changeFrequency`/`priority` decididos a
+ * mão. O inventário descoberto no build entra por fora (`comDescobertas`).
+ *
+ * Extraída de `sitemap()` em 08/11/2026: com as rotas novas (empresas,
+ * instituições, jurisprudência) o corpo passou de 70 linhas e o CodeScene
+ * marcava "Large Method" (83 linhas) e "Bumpy Road Ahead".
+ */
+function rotasFixas(): MetadataRoute.Sitemap {
+  return [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.7 }),
     item("/laboratorio", { changeFrequency: "weekly", priority: 0.8 }),
@@ -415,6 +477,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/paraopeba/vale", { changeFrequency: "daily", priority: 0.8 }),
     item("/paraopeba/entenda", { changeFrequency: "monthly", priority: 0.6 }),
     item("/paraopeba/biblioteca", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/paraopeba/linha-do-tempo", { changeFrequency: "monthly", priority: 0.7 }),
+
+    // Plataforma Rio Doce (caso Fundão)
+    item("/riodoce", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/riodoce/processos", { changeFrequency: "weekly", priority: 0.8 }),
+
+    // Memória das lutas
+    item("/memoria", { changeFrequency: "monthly", priority: 0.6 }),
+
+    // Jurisprudência dos desastres e acervo penal
+    item("/jurisprudencia", { changeFrequency: "weekly", priority: 0.9 }),
+    item("/jurisprudencia/penal", { changeFrequency: "weekly", priority: 0.7 }),
 
     // Função Social da Terra
     item("/funcaosocialterra", { changeFrequency: "weekly", priority: 0.8 }),
@@ -424,20 +498,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/judiciario/inspecoes", { changeFrequency: "weekly", priority: 0.8 }),
     item("/judiciario/recomendacoes", { changeFrequency: "weekly", priority: 0.8 }),
   ];
+}
 
-  // ═══ Descoberta automática (04/10/2026) ═══
-  //
-  // As rotas fixas do disco que NÃO estão nas listas manuais acima entram
-  // aqui com o padrão (`monthly`/0.5). Medido no ar: eram 147 páginas sem
-  // anúncio — `/ambiental/car`, as 27 páginas `/cidades/<uf>`,
-  // `/internacional`, `/assembleias`... A lista acima mantém seus
-  // ajustes de prioridade; esta só preenche o buraco, deduplicando por URL.
-  const jaAnunciadas = new Set(urls.map((u: { url: string }) => u.url));
-  for (const rota of ROTAS_GLOBAIS) {
-    const url = `${BASE_URL}${rota}`;
-    if (jaAnunciadas.has(url)) continue;
-    urls.push(item(rota));
+/**
+ * Completa a lista curada com as rotas fixas do disco que ninguém anunciou.
+ *
+ * Medido em 04/10/2026: eram 147 páginas sem anúncio — `/ambiental/car`, as
+ * 27 páginas `/cidades/<uf>`, `/internacional`, `/assembleias`... A lista
+ * curada mantém seus ajustes de prioridade; esta só preenche o buraco.
+ */
+function comDescobertas(urls: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  const jaAnunciadas = new Set(urls.map((u) => u.url));
+  const descobertas = ROTAS_GLOBAIS.filter(
+    (rota) => !jaAnunciadas.has(`${BASE_URL}${rota}`)
+  ).map((rota) => item(rota));
+  return [...urls, ...descobertas];
+}
+
+/**
+ * Deduplica por URL preservando a entrada de MAIOR prioridade.
+ *
+ * Medido em 08/11/2026: 16 URLs saíam duas vezes porque a lista curada de
+ * Congresso/Judiciário/Notícias repete rotas que o inventário descoberto
+ * (`ROTAS_GLOBAIS`) também anuncia. As duas cópias discordavam em
+ * `changeFrequency`/`priority` (`/congresso` era `daily`/0.8 na manual e
+ * `monthly`/0.5 na descoberta) — sitemap com a mesma URL em duas frequências
+ * é sinal contraditório para o buscador.
+ */
+function deduplicar(urls: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  const porUrl = new Map<string, MetadataRoute.Sitemap[number]>();
+  for (const entrada of urls) {
+    const anterior = porUrl.get(entrada.url);
+    if (!anterior || (entrada.priority ?? 0) > (anterior.priority ?? 0)) {
+      porUrl.set(entrada.url, entrada);
+    }
   }
+  return [...porUrl.values()];
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const urls = comDescobertas(rotasFixas());
 
   const cidades = await listarCidades();
   const porCidade = await Promise.all(cidades.map(rotasDeCidade));
@@ -446,6 +546,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   urls.push(...(await rotasDoCongresso()));
   urls.push(...(await rotasDoJudiciario()));
   urls.push(...rotasDeNoticias());
+  urls.push(...rotasDeEmpresas());
+  urls.push(...rotasDeInstituicoes());
 
-  return urls;
+  return deduplicar(urls);
 }

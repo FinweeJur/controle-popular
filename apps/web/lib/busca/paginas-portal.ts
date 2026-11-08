@@ -25,6 +25,24 @@ export interface PaginaPortalIndexada {
   palavrasChave: string[];
 }
 
+/**
+ * Sinônimos que o leitor digita e o catálogo precisa reconhecer.
+ *
+ * Não há motor de aliases separado: `buscarPaginasPortal` casa a consulta
+ * contra `palavrasChave`, então a sigla entra na entrada da página certa.
+ * Mapa conferido em 08/11/2026 (a saída de cada termo está ao lado):
+ *
+ *   LAI        → /direitos-em-movimento/informacao
+ *   TAC        → /ambiental/tac
+ *   PPP        → /ambiental/ppp
+ *   IDEB       → /direitos-em-movimento/servicos?subfrente=educacao
+ *   CAGED      → /direitos-em-movimento/servicos?subfrente=trabalho-e-renda
+ *   SUS        → /direitos-em-movimento/servicos?subfrente=saude-publica
+ *   COPAM      → /ambiental/copam
+ *   TSX        → /canada
+ *   ESG        → /empresas
+ *   AdaptaBrasil → /ambiental/clima-risco
+ */
 export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
   // ═══ LABORATÓRIO DE DADOS ═══
   {
@@ -97,11 +115,16 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     badgeCor: "var(--cp-eixo-direitos)",
     palavrasChave: ["direitos", "cidadania", "movimento", "defesa", "assistencia", "social"],
   },
+  // Saúde, educação e trabalho apontam para o RECORTE canônico
+  // (`/direitos-em-movimento/servicos?subfrente=...`). As rotas antigas
+  // (`/saude-publica`, `/educacao`, `/trabalho-e-renda`) viraram páginas-ponte
+  // `noindex` em 02/11/2026; mandar o resultado da busca para a ponte faria o
+  // leitor passar por um redirect que o buscador nem deve indexar.
   {
     id: "direitos-saude",
     titulo: "Saúde Pública & SUS",
     descricao: "Unidades básicas de saúde, leitos, repasses da União e fiscalização do atendimento hospitalar.",
-    href: "/direitos-em-movimento/saude-publica",
+    href: "/direitos-em-movimento/servicos?subfrente=saude-publica",
     frente: "geral",
     rotulo: "Saúde · SUS",
     badgeCor: "var(--cp-eixo-direitos)",
@@ -111,7 +134,7 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     id: "direitos-educacao",
     titulo: "Educação & Escolas (IDEB)",
     descricao: "Indicadores escolares, evasão, metas do IDEB e infraestrutura da rede de ensino público.",
-    href: "/direitos-em-movimento/educacao",
+    href: "/direitos-em-movimento/servicos?subfrente=educacao",
     frente: "geral",
     rotulo: "Educação · IDEB",
     badgeCor: "var(--cp-eixo-direitos)",
@@ -136,7 +159,7 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     id: "direitos-trabalho",
     titulo: "Trabalho & Emprego (CAGED)",
     descricao: "Evolução do emprego formal, admissões e demissões no mercado de trabalho municipal e estadual.",
-    href: "/direitos-em-movimento/trabalho-e-renda",
+    href: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
     frente: "geral",
     rotulo: "Trabalho · CAGED",
     badgeCor: "var(--cp-eixo-direitos)",
@@ -198,6 +221,36 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: [
       "violencia policial", "letalidade policial", "mortes por intervencao",
       "agente do estado", "sinesp", "seguranca publica", "mvi",
+    ],
+  },
+  {
+    id: "ambiental-hub",
+    titulo: "Meio Ambiente — Observatório Nacional Socioambiental (ONSA)",
+    descricao:
+      "A porta do eixo Meio ambiente: COPAM e licenciamento de Minas, barragens do país, TACs, normas federais, clima e risco, o Acordo do Rio Doce e a Vale.",
+    href: "/ambiental",
+    frente: "ambiental",
+    rotulo: "Eixo · Meio ambiente",
+    badgeCor: "var(--cp-eixo-terra)",
+    palavrasChave: [
+      "meio ambiente", "ambiente", "onsa", "observatorio socioambiental",
+      "copam", "licenciamento", "tac", "barragens", "car", "clima",
+      "risco climatico", "ibama", "semad", "feam",
+    ],
+  },
+  {
+    id: "ambiental-clima-risco",
+    titulo: "Clima e Risco por Município (AdaptaBrasil)",
+    descricao:
+      "Vulnerabilidade a secas, inundações e deslizamentos em Minas, cruzada com inquéritos e ações penais por crimes ambientais. Fonte: AdaptaBrasil/MCTI e SIRENEJud/CNJ.",
+    href: "/ambiental/clima-risco",
+    frente: "ambiental",
+    rotulo: "Clima · Risco",
+    badgeCor: "var(--cp-alert)",
+    palavrasChave: [
+      "adaptabrasil", "adapta brasil", "mcti", "risco climatico", "clima",
+      "seca", "inundacao", "deslizamento", "encosta", "vulnerabilidade",
+      "crise climatica", "litigio climatico", "sirenejud",
     ],
   },
   {
@@ -371,6 +424,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["biblioteca", "atis", "pericia", "documentos", "relatorios brumadinho", "ufmg"],
   },
   {
+    id: "paraopeba-linha-do-tempo",
+    titulo: "Linha do Tempo do Acordo de Brumadinho",
+    descricao:
+      "Os marcos da reparação do rompimento da barragem B1, de 25 de janeiro de 2019 à confirmação do pagamento de agosto de 2026 — decisões judiciais, respostas da Vale e passos no STF.",
+    href: "/paraopeba/linha-do-tempo",
+    frente: "paraopeba",
+    rotulo: "Brumadinho · Linha do tempo",
+    badgeCor: "var(--cp-secondary)",
+    palavrasChave: [
+      "linha do tempo", "cronologia", "marcos", "brumadinho", "paraopeba",
+      "reparacao", "acordo", "rompimento", "2019", "vale", "stf",
+    ],
+  },
+  {
     id: "barragens-descaracterizacao",
     titulo: "Descaracterização de Barragens a Montante (Lei Mar de Lama)",
     descricao: "Cronograma e fiscalização das barragens em eliminação e monitoramento de estruturas em Nível 3.",
@@ -434,6 +501,49 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: [
       "renuncia fiscal", "gastos tributarios", "desoneracao", "isencao", "incentivo fiscal",
       "receita federal", "dgt", "tributo", "renuncia", "carga tributaria",
+    ],
+  },
+  {
+    id: "judiciario-hub",
+    titulo: "Judiciário — tribunais, varas e instituições",
+    descricao:
+      "A porta do eixo Justiça: composição e vagas dos tribunais, contatos de varas, inspeções do CNJ, presídios, instituições e jurisprudência dos desastres.",
+    href: "/judiciario",
+    frente: "judiciario",
+    rotulo: "Eixo · Justiça",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "judiciario", "justica", "tribunais", "varas", "comarcas", "cnj",
+      "inspecoes", "presidios", "instituicoes", "jurisprudencia",
+    ],
+  },
+  {
+    id: "jurisprudencia-desastres",
+    titulo: "Jurisprudência dos Desastres — acórdãos e valores de condenação",
+    descricao:
+      "Acórdãos do TJMG (Brumadinho, Rio Doce e direitos humanos), do TJES (Fundão) e súmulas do STF, STJ e TST, com recorte por tema de indenização, danos PNAB/PEAB e valores.",
+    href: "/jurisprudencia",
+    frente: "judiciario",
+    rotulo: "Justiça · Jurisprudência",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "jurisprudencia", "acordao", "acordaos", "decisao judicial", "sumula",
+      "tjmg", "tjes", "stf", "stj", "tst", "brumadinho", "rio doce",
+      "fundao", "mariana", "indenizacao", "pnb", "peab", "valor de condenacao",
+    ],
+  },
+  {
+    id: "jurisprudencia-penal",
+    titulo: "Jurisprudência Penal — acervo criminal separado do desastre",
+    descricao:
+      "Acervo penal do portal (TJES e STF) com tribunal, ano, tema, resultado e resumo. Separado da jurisprudência dos desastres, que guarda só a responsabilização criminal do rompimento.",
+    href: "/jurisprudencia/penal",
+    frente: "judiciario",
+    rotulo: "Justiça · Penal",
+    badgeCor: "var(--cp-primary)",
+    palavrasChave: [
+      "jurisprudencia penal", "penal", "crime", "criminal", "homicidio",
+      "trafico", "juri", "tribunal do juri", "tjes", "stf", "processos criminais",
     ],
   },
   {
@@ -565,6 +675,20 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     palavrasChave: ["comunicabr", "governo federal", "bolsa familia", "fundeb", "sus", "bpc", "repasses uniao"],
   },
 
+  {
+    id: "dados-populares",
+    titulo: "Páginas mais vistas do portal",
+    descricao:
+      "Ranking do que o público mais consulta no Controle Popular, com o caminho para cada painel e a data da medição.",
+    href: "/dados/populares",
+    frente: "geral",
+    rotulo: "Dados · Mais vistas",
+    badgeCor: "var(--cp-accent)",
+    palavrasChave: [
+      "mais vistas", "mais acessadas", "ranking", "populares", "paginas",
+      "dados abertos", "audiencia", "acesso",
+    ],
+  },
   {
     id: "estudos-rurais-hub",
     titulo: "Estudos Rurais — Acervo dos Vales do Jequitinhonha e Mucuri",
@@ -716,7 +840,11 @@ export const PAGINAS_PORTAL: PaginaPortalIndexada[] = [
     frente: "geral",
     rotulo: "Índice · Mapa Geral",
     badgeCor: "var(--cp-primary)",
-    palavrasChave: ["indice", "mapa", "todas as paginas", "sumario", "navegacao"],
+    palavrasChave: [
+      "indice", "mapa", "todas as paginas", "sumario", "navegacao",
+      "mapa do site", "eixos", "casos", "direitos", "meio ambiente",
+      "cidades", "politica", "economia", "justica", "internacional", "dados",
+    ],
   },
   {
     id: "documentacao-hub",
