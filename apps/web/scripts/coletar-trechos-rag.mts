@@ -71,7 +71,8 @@ async function coletar(): Promise<void> {
         titulo: item.trecho.titulo,
         orgao: item.trecho.orgao,
         pagina: item.trecho.pagina,
-        url: item.trecho.urlOriginal,
+        // PDF quando existe: a página só faz sentido no PDF, não na página HTML.
+        url: item.trecho.urlPdf || item.trecho.urlOriginal,
         texto: item.trecho.texto.slice(0, 1200),
       })),
     };
