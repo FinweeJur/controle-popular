@@ -5,7 +5,9 @@
  * Duas camadas:
  * 1. metadados/resumos já versionados (`documentos-paraopeba`,
  *    `biblioteca-desastres`, `biblioteca-unificada`, teses e Pro-Brumadinho);
- * 2. texto de PDFs oficiais, quando `--baixar` ou `--cache` é usado.
+ * 2. texto de PDFs oficiais, quando `--baixar` ou `--cache` é usado;
+ * 3. atos normativos do CNJ, que já vêm com texto compilado da API pública
+ *    (`cnj-atos.json`) e entram sem download.
  *
  * O índice guarda trecho + página + URL oficial. PDFs ficam em `.cache/`
  * (gitignored); o repositório recebe só o índice derivado. O R2 entra numa
@@ -273,6 +275,69 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
   };
 }
 
+interface AtoCnj {
+  id: number;
+  tipo: string;
+  numero: number | string;
+  data: string | null;
+  orgao: string | null;
+  ementa: string;
+  normativo: boolean;
+  fonte: string;
+  url: string;
+  pdf: string | null;
+  texto: string;
+}
+
+/** Ato normativo não tem página de PDF: o corte vira página numerada. */
+function paginasDoAto(texto: string): { numero: number; texto: string }[] {
+  const palavras = texto.split(/\s+/).filter(Boolean);
+  const paginas: { numero: number; texto: string }[] = [];
+  const TAMANHO = 600;
+  for (let inicio = 0; inicio < palavras.length; inicio += TAMANHO) {
+    paginas.push({
+      numero: paginas.length + 1,
+      texto: palavras.slice(inicio, inicio + TAMANHO).join(" "),
+    });
+  }
+  return paginas.length ? paginas : [{ numero: 1, texto: "" }];
+}
+
+/**
+ * Atos do CNJ entram pelo texto compilado da API, não por PDF.
+ *
+ * O portal publica 6.009 atos; só os que determinam regra trazem texto
+ * (`normativo`). Aqui eles viram documento citável com URL de detalhe.
+ */
+function adicionarAtosCnj(documentos: DocumentoRagMeta[], trechos: TrechoDocumento[]): number {
+  const arquivo = lerJson<{ atos: AtoCnj[] }>(path.join(APP_ROOT, "public", "data", "cnj-atos.json"));
+  if (!arquivo?.atos) return 0;
+  let incluidos = 0;
+  for (const ato of arquivo.atos) {
+    if (!ato.normativo || !ato.texto) continue;
+    const meta: DocumentoRagMeta = {
+      id: `cnj:${ato.id}`,
+      titulo: `${ato.tipo} CNJ nº ${ato.numero}${ato.data ? `, de ${ato.data}` : ""}`,
+      tipo: "Ato normativo",
+      categoria: "Legislação",
+      tema: "Atos do CNJ",
+      orgao: "Conselho Nacional de Justiça",
+      ano: ato.data ? Number(ato.data.slice(0, 4)) : null,
+      data: ato.data,
+      urlOriginal: ato.url,
+      urlPdf: ato.pdf,
+      resumo: ato.ementa,
+      tags: ["CNJ", ato.tipo],
+      fonte: "atos.cnj.jus.br",
+    };
+    documentos.push(meta);
+    trechos.push(trechoDeMeta(meta));
+    trechos.push(...fatiarDocumento({ ...meta, paginas: paginasDoAto(ato.texto) }));
+    incluidos += 1;
+  }
+  return incluidos;
+}
+
 interface RegrasRobots {
   permitido: (caminho: string) => boolean;
 }
@@ -425,6 +490,8 @@ async function main(): Promise<void> {
   const { documentos, trechos, relatorio } = carregarMetadados();
 
   console.log(`Metadados: ${documentos.length} documentos`);
+  const atosCnj = adicionarAtosCnj(documentos, trechos);
+  console.log(`Atos do CNJ: ${atosCnj} normativos com texto`);
   if (baixar || cache) {
     await processarPdfs(documentos, trechos, relatorio, limite, cache && !baixar, fontesFiltro);
   }
