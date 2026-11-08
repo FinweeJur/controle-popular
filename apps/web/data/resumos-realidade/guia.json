@@ -2,10 +2,10 @@
  "rota": "/guia",
  "geradoEm": "2026-11-08",
  "verificado": true,
- "markdown": "A página lista 996 unidades judiciais. Quase todas — 990 — estão agrupadas num conjunto; o outro conjunto aparece zerado, sem registro algum. [medido — dados da pagina]\n\nDo total com dado, 337 são do TJMG (Justiça Estadual), 42 do TRT3 (Trabalho) e 21 do TRF6 (Federal). O resto não tem tribunal informado. [medido — dados da pagina]\n\nQuanto ao tipo, 383 são Varas. Há ainda 12 Juizados Especiais, 3 Gabinetes, 1 CEJUSC e 1 Secretaria. [medido — dados da pagina]\n\nO horário mais comum é 12h às 18h, em 343 unidades. Outras 41 atendem de 8h às 16h, e 13 de 8h às 18h. Duas abrem das 9h às 19h e uma das 8h às 17h. [medido — dados da pagina]\n\nO dado não diz quantas unidades existem de fato no país, só as que entraram nessa lista. Também não informa se a unidade está aberta, fechada ou em mudança — apenas o horário declarado. E os 6 registros fora dos conjuntos não têm detalhe nenhum. [nao da para concluir]",
  "fontes": [
   "canais-informacao-lai.json",
   "judiciario-unidades-contatos.json"
  ],
- "impressao": "1b99c7bd1c7a51bb"
+ "impressao": "1b99c7bd1c7a51bb",
+ "markdown": "Esta página lista 996 registros de unidades judiciárias. Quase todos estão concentrados em um único conjunto; outro conjunto aparece sem nenhum registro. [medido — dados da pagina]\n\nA maior parte é do Tribunal de Justiça de Minas Gerais: 337 registros. A Justiça do Trabalho tem 42 e a Federal, 21. [medido — dados da pagina]\n\nPor tipo de unidade, 383 são Varas. Há ainda 12 Juizados Especiais, 3 Gabinetes, 1 CEJUSC e 1 Secretaria. [medido — dados da pagina]\n\nO horário mais comum é das 12:00 às 18:00, em 343 registros. Outros 41 atendem das 08:00 às 16:00. [medido — dados da pagina]\n\nO dado não mostra quantas unidades funcionam de fato, nem se o horário informado é seguido na prática. Também não indica tempo de espera ou qualidade do atendimento. [nao da para concluir]"
 }

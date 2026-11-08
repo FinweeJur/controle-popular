@@ -12,15 +12,17 @@ import json
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
-LOG = RAIZ / "logs" / "resumos-rotas.out"
+LOG = RAIZ / "logs" / "resumos-v2.out"
+LOG_ANTIGO = RAIZ / "logs" / "resumos-rotas.out"
 PASTA = RAIZ / "apps" / "web" / "data" / "resumos-realidade"
 TOTAL = 58
 
 
 def linhas_do_log() -> list[str]:
-    if not LOG.exists():
-        return []
-    return LOG.read_text(encoding="utf-8", errors="replace").splitlines()
+    for caminho in (LOG, LOG_ANTIGO):
+        if caminho.exists():
+            return caminho.read_text(encoding="utf-8", errors="replace").splitlines()
+    return []
 
 
 def main() -> int:

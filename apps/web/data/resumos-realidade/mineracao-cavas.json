@@ -2,10 +2,10 @@
  "rota": "/mineracao/cavas",
  "geradoEm": "2026-11-08",
  "verificado": true,
- "markdown": "A página lista 135 registros ligados a cavas de mineração. [medido — dados da pagina]\n\nO maior bloco tem 120 registros. Desses, 84 estão marcados como em operação. [medido — dados da pagina]\n\nOutros 34 aparecem como indício processual. O dado mostra que há um sinal de processo, mas não diz qual é o processo nem em que fase está. [medido — dados da pagina]\n\nHá 2 registros sem cadastro na ANM. É um número pequeno dentro do conjunto, e o dado não informa por que ficaram sem cadastro. [medido — dados da pagina]\n\nUm segundo conjunto aparece com 0 registros. A página não explica o que esse conjunto deveria conter. [medido — dados da pagina]\n\nO que o dado não mede: não dá para saber quantas cavas existem no país, quantas são ilegais ou quantas causam dano ambiental. A página mostra só os registros que ela reúne. [nao da para concluir]",
  "fontes": [
   "cavas-estados-mg.json",
   "cavas-serie-mineracao-mg.json"
  ],
- "impressao": "e2ea91439b57bdad"
+ "impressao": "e2ea91439b57bdad",
+ "markdown": "Esta página reúne 135 registros ligados a cavas de mineração. [medido — dados da pagina] É um retrato do que está cadastrado, não do que existe no território.\n\n[medido — dados da pagina] Do total, 120 registros entram em um conjunto principal. Nele, 84 aparecem como em operação, 34 como indício processual e 2 sem cadastro na ANM.\n\n[medido — dados da pagina] O segundo conjunto aparece com zero registros. A página não informa o que ele deveria conter nem por que está vazio.\n\n[inferido] A diferença entre os dois conjuntos sugere que parte dos registros não foi classificada. A página não diz quais são nem quantos ficaram de fora.\n\n[nao da para concluir] Não é possível saber, só com estes números, se as cavas em operação estão ativas hoje, se os indícios processuais viraram processo ou se as sem cadastro são irregulares.\n\n[medido — dados da pagina] O dado mostra o estado declarado de cada registro. Não mostra fiscalização, resultado de análise nem risco real."
 }

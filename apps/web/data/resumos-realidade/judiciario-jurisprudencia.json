@@ -1,0 +1,10 @@
+{
+ "rota": "/judiciario/jurisprudencia",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "jurisprudencia-buscador-resumo.json"
+ ],
+ "impressao": "a35a087262b97fad",
+ "markdown": "[medido — dados da página] A página informa um único número agregado: 44812 registros associados ao recorte de jurisprudência.\n\n[nao da para concluir] Esse total não permite identificar quais decisões, temas ou períodos estão representados, nem distribuir os registros por qualquer categoria. Não há lista, recorte ou ano disponível na página.\n\n[nao da para concluir] O dado se limita a indicar o volume agregado; qualquer afirmação sobre composição ou alcance exige fonte externa."
+}

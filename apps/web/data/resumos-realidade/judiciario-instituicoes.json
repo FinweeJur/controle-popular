@@ -2,9 +2,9 @@
  "rota": "/judiciario/instituicoes",
  "geradoEm": "2026-11-08",
  "verificado": true,
- "markdown": "Esta página lista 91 instituições do Judiciário cadastradas no portal. [medido — dados da pagina]\n\nA maioria é estadual: 82 registros. As outras 9 são federais. [medido — dados da pagina]\n\nPor região, o Nordeste concentra o maior número, com 27. Depois vêm Norte (21), Centro-Oeste (12), Sudeste (12) e Sul (9). [medido — dados da pagina]\n\nCada registro tem um ícone que indica seu tipo. O mais comum é o escudo (30), seguido pela balança (28) e pelo aperto de mãos (27). Há ainda dois marcos (2), dois martelos (2) e um grupo de pessoas (1). [medido — dados da pagina]\n\nO dado mostra apenas quantas instituições estão cadastradas e como se distribuem. Não mostra o que cada uma faz, nem se estão ativas, nem se respondem a algum pedido. [nao da para concluir]",
  "fontes": [
   "judiciario-instituicoes-detalhe.json"
  ],
- "impressao": "b0eeeda6749b99b9"
+ "impressao": "b0eeeda6749b99b9",
+ "markdown": "Esta página lista 91 instituições do Judiciário cadastradas no portal. [medido — dados da pagina]\n\nA maioria é estadual: 82 registros. As outras 9 são federais. [medido — dados da pagina]\n\nO Nordeste concentra o maior número, com 27 instituições. Em seguida vêm Norte (21), Centro-Oeste (12), Sudeste (12) e Sul (9). [medido — dados da pagina]\n\nUm documento externo citado na página trata de ações individuais nas Regiões 4 e 5 e relata que a Assessoria Técnica não podia atuar ou orientar sobre esses processos, o que aumentou a dificuldade de acesso dessa população ao Judiciário [Dossiê Acesso à Justiça — ações individuais das Regiões 4 e 5 (Guaicuy, 2024), p. 41](https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/#page=41). [medido — dados da pagina]\n\nO dado mostra quantas instituições estão cadastradas e onde elas estão. Não mostra quantas funcionam de fato, nem se atendem bem quem procura. [nao da para concluir]"
 }
