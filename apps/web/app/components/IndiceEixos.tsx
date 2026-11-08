@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import { EIXOS, paginasDoEixo } from "@/lib/navegacao/mapa";
 import { referenciasDoEixo } from "@/lib/navegacao/referencias";
 
@@ -78,7 +79,7 @@ export default function IndiceEixos() {
           Navegue por eixo
         </h2>
         <p className="mt-1 max-w-2xl text-sm text-text-soft">
-          {EIXOS.length} eixos, cada um com as suas frentes. Abra o assunto e chegue na página —
+          <ContadorAnimado valor={EIXOS.length} /> eixos, cada um com as suas frentes. Abra o assunto e chegue na página —
           os nomes são links e a trilha no topo de cada página volta para cá.
         </p>
       </div>
@@ -113,7 +114,7 @@ export default function IndiceEixos() {
                 <span className="flex flex-wrap items-baseline gap-2">
                   <span className="font-display text-base font-semibold">{eixo.rotulo}</span>
                   <span className="text-xs text-text-soft">
-                    {eixo.frentes.length} frente(s) · {paginasDoEixo(eixo.slug)} páginas
+                    <ContadorAnimado valor={eixo.frentes.length} /> frente(s) · <ContadorAnimado valor={paginasDoEixo(eixo.slug)} /> páginas
                   </span>
                   {eixo.estado === "proposta" && (
                     <span className="rounded bg-[var(--cp-border)] px-1.5 py-0.5 text-xs uppercase tracking-wide">
