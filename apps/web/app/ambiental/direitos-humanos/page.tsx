@@ -13,6 +13,7 @@ export const metadata = {
   description:
     "Monitoramento de relatórios temáticos e de país da Comissão Interamericana (CIDH/OEA), Nações Unidas (ONU) e Conselho Nacional dos Direitos Humanos (CNDH) cruzados por território.",
 };
+import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
 
 export default function PaginaDireitosHumanos() {
   const relatorios = listarRelatorios();
@@ -55,6 +56,9 @@ export default function PaginaDireitosHumanos() {
         <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Relatórios Internacionais e Nacionais de Direitos Humanos
         </h1>
+        <div className="mt-5">
+          <TrilhaFrentes atual="/ambiental/direitos-humanos" />
+        </div>
         <p className="mt-3 text-base text-muted sm:text-lg">
           Compêndio de relatórios oficiais da Comissão Interamericana de Direitos Humanos (CIDH),
           da ONU e do Conselho Nacional dos Direitos Humanos (CNDH) cruzados com municípios,
