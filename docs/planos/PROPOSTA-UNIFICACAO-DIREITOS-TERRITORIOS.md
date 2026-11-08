@@ -1,210 +1,193 @@
-# Proposta — unificar direitos, territórios, barragens e atores
+# Proposta — unificar sem perder página nem leitor (v2, revista)
 
 > **Tipo:** PLANO
-> **Domínio:** arquitetura da informação do portal
+> **Domínio:** arquitetura da informação e acessibilidade
 > **Última medição:** 2026-11-08
-> **Leitura estimada:** media (10-15 min)
+> **Leitura estimada:** media (12-18 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [PADRAO-PAGINA-WIKI.md](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md), [PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md](PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md)
-> **Palavras-chave:** unificação, arquitetura da informação, direitos, barragens, atores, redirect, canonicidade
+> **Palavras-chave:** unificação, arquitetura da informação, acessibilidade, breadcrumb, índice, wikipedia, não perder dado
 
 ## Sumário
 
-- [Diagnóstico medido](#diagnóstico-medido)
-- [Os três sintomas](#os-três-sintomas)
-- [Princípio](#princípio)
-- [Arquitetura proposta](#arquitetura-proposta)
-- [Mapa de migração](#mapa-de-migração)
-- [Canonicidade do número](#canonicidade-do-número)
-- [O que não se mexe](#o-que-não-se-mexe)
+- [Revisão crítica da v1](#revisão-crítica-da-v1)
+- [Modelo novo: geral + específica](#modelo-novo-geral--específica)
+- [20 hipóteses de procura](#20-hipóteses-de-procura)
+- [O caminho no sistema](#o-caminho-no-sistema)
+- [Índice expansível](#índice-expansível)
+- [Acessibilidade](#acessibilidade)
+- [Regra de ouro contra perda de dado](#regra-de-ouro-contra-perda-de-dado)
 - [Fases](#fases)
-- [Riscos](#riscos)
 - [Decisões pendentes](#decisões-pendentes)
 
-## Diagnóstico medido
+## Revisão crítica da v1
 
-Contagem de rotas com `page.tsx` no app (08/11/2026). O portal tem **348 páginas**;
-as frentes abaixo somam **76** e se sobrepõem.
+A proposta anterior (mesmo dia) errava em quatro pontos:
 
-| Assunto | Rotas hoje | Páginas | Exemplo de sobreposição |
-|---|---|---:|---|
-| Direitos | `/direitos-em-movimento`, `/direitos-globais`, `/direitos-comparados`, `/ambiental/direitos-humanos`, `/ambiental/direito-critico` | 25 | saúde aparece em três lugares |
-| Brumadinho (Paraopeba) | `/paraopeba/*` | 18 | clipping, notícias e notícias-vale |
-| Rio Doce | `/riodoce/*` | 3 | hub, índice, processos |
-| Itatiaiuçu | só em `/jurisprudencia` | 0 | sem porta própria |
-| Barragens | `/ambiental/barragens*`, `/ambiental/barragens-globais`, `/mineracao/*` | 8 | mesma barragem em duas rotas |
-| Atores | `/instituicoes`, `/empresas/*`, `/estado-e-economia`, `/governo` | 13 | Vale em empresas e em estado-e-economia |
-| Movimentos | `/memoria`, parte de `/direitos-em-movimento` | 2 | MAB em memória e em direitos |
-| Internacional | `/internacional`, `/europa`, `/eua`, `/canada`, `/america-latina`, `/transparencia-internacional`, `/direitos-globais` | 20 | BHP em três rotas |
+1. **308 em massa perde trabalho.** Quem já citou `/paraopeba/auxilio` num
+   relatório, num processo ou numa matéria passa a cair noutra página. O
+   conteúdo não muda de valor por mudar de URL. Redirect só para duplicata real.
+2. **Hub vazio é pior que página específica.** Agregador que só lista links
+   obriga o leitor a mais um clique para chegar ao dado. A página geral tem de
+   **ter o essencial nela** e levar ao resto.
+3. **O leitor não pensa em eixo.** Ele procura "quando cai o auxílio", não
+   "casos > brumadinho > auxílio". A arquitetura tem de ser testada por pergunta,
+   não por organograma.
+4. **Preservar é mais barato que migrar.** 348 páginas, 76 no cluster: renomear
+   tudo custa semanas e cria 404 em link antigo. Criar por cima custa dias e não
+   quebra nada.
 
-## Os três sintomas
+## Modelo novo: geral + específica
 
-1. **O leitor não sabe onde está.** Quem procura "saúde" acha `/direitos-em-movimento/saude-publica`,
-   `/direitos-globais` e `/ambiental/direitos-humanos` — sem saber qual é a porta.
-2. **O número mora em dois lugares.** Barragem, empresa e caso aparecem em rotas
-   diferentes com contagens próprias, atualizadas em datas diferentes. Quando
-   divergem, o portal se contradiz.
-3. **A energia some.** Cada hub novo custa página, dados e manutenção; cinco hubs
-   do mesmo assunto custam cinco vezes e entregam menos.
-
-## Princípio
-
-> **Um assunto, uma porta canônica. Hub agrega; não duplica.**
-
-Três consequências práticas:
-
-- cada número tem **uma página dona**; as outras linkam para ela;
-- hub novo só nasce quando **absorve** rotas existentes, nunca ao lado delas;
-- URL antiga que sai ganha **redirect 308** e a página nova diz o que mudou.
-
-## Arquitetura proposta
-
-Cinco portas, cada uma com um verbo:
+> **Nada se move. Cria-se a página geral; a específica continua onde está e
+> vira botão dentro dela.**
 
 ```
-/casos            → O QUE aconteceu (Rio Doce, Brumadinho, Itatiaiuçu)
-/direitos         → O QUE foi violado (saúde, moradia, água, trabalho, educação…)
-/barragens        → COMO o risco é medido (SIGBM, descaracterização, mundo)
-/atores           → QUEM age (popular, estatal, empresarial, internacional)
-/movimentos       → QUEM resiste (memória, MAB, ATIs)
+GERAL (nova)                         ESPECÍFICA (existente, preservada)
+/casos/brumadinho            →  botões para linha-do-tempo, auxílio, execução,
+                                   documentos, clipping, perícia, quem atua,
+                                   análise, auditoria, correlação, biblioteca
+/casos/riodoce               →  botões para processos, índice
+/casos/itatiaiaucu           →  botão para jurisprudência?frente=itatiaiaucu
+/direitos                    →  botões para os 9 eixos já existentes
+/barragens                   →  botões para sigbm, descaracterização, mundo
+/atores/popular              →  botões para MAB, ATIs, memória
 ```
 
-### `/casos` — o território do desastre
+Cada página geral tem quatro blocos, nesta ordem:
+
+1. **O essencial em uma tela** — o que é, o número principal, a data de corte.
+2. **Números com dono** — cada número linka para a página que o calcula.
+3. **Páginas desta frente** — os botões para as específicas, com uma linha
+   dizendo o que há em cada uma.
+4. **O caminho de volta** — breadcrumb no topo e "ver tudo em Brumadinho".
+
+Assim o leigo resolve na geral o que é simples e acha a específica quando
+precisa do detalhe — sem que ninguém perca a página que já existe.
+
+## 20 hipóteses de procura
+
+Teste feito como leigo, a partir da home. "Falta" é o que hoje atrapalha.
+
+| # | Pergunta do leigo | Porta hoje | Caminho hoje | Falta |
+|---:|---|---|---|---|
+| 1 | "Quando cai o auxílio?" | `/paraopeba/auxilio` | home → Paraopeba → Auxílio (3) | nada; é a página certa |
+| 2 | "Quanto a Vale já pagou?" | `/paraopeba/execucao` | home → Paraopeba → Execução (3) | nome "execução" não é o que ele procura |
+| 3 | "O que é o acordo de 2024?" | `/paraopeba/entenda` | home → Paraopeba → Entenda (3) | "entenda" é vago; falta sinônimo "acordo" |
+| 4 | "Meu processo está onde?" | `/riodoce/processos` | home → Rio Doce → Processos (3) | Brumadinho não tem página equivalente |
+| 5 | "Quem decide o caso?" | `/paraopeba/quem-atua` | home → Paraopeba → Quem atua (3) | não diz o ator por classe |
+| 6 | "O que é o MAB?" | `/memoria` | home → Memória (2) | MAB não tem ficha própria |
+| 7 | "Sou de Mariana, tenho direito?" | `/riodoce` | home → Rio Doce (2) | hub não tem "o que fazer agora" |
+| 8 | "Itatiaiuçu / Serra Azul" | `/jurisprudencia?frente=itatiaiaucu` | home → Jurisprudência → filtro (3) | não há hub; só jurisprudência |
+| 9 | "A barragem perto de mim é segura?" | `/ambiental/barragens` | home → Ambiental → Barragens (3) | falta busca por município em destaque |
+| 10 | "O que é nível de emergência?" | `/ambiental/barragens/sigbm` | 4 cliques | jargão sem explicação na porta |
+| 11 | "A água do rio está boa?" | `/paraopeba` (?) | não há página de água | lacuna real |
+| 12 | "Quem são os atingidos?" | `/paraopeba/quem-atua` | 3 cliques | não separa ATI de movimento |
+| 13 | "Como denunciar?" | `/direitos-em-movimento/denuncia` | home → Direitos → Denúncia (3) | "direitos em movimento" não é termo de leigo |
+| 14 | "Tenho direito à saúde?" | `/direitos-em-movimento/saude-publica` | 3 cliques | concorre com `/ambiental/direitos-humanos` |
+| 15 | "O que é a ADPF 1314?" | `/paraopeba/linha-do-tempo` | 3 cliques, sem verbete | sigla sem explicação |
+| 16 | "A Vale foi condenada criminalmente?" | `/jurisprudencia/penal` | 2 cliques | penal fora da página de desastres (certo), mas sem ponte |
+| 17 | "O que aconteceu em Brumadinho?" | `/paraopeba/entenda` | 3 cliques | falta resumo na porta do hub |
+| 18 | "Quero os documentos oficiais" | `/paraopeba/documentos` | 3 cliques | ok |
+| 19 | "Notícias de hoje" | `/paraopeba/clipping` | 3 cliques | clipping, notícias e notícias-vale confundem |
+| 20 | "Quem é o prefeito / o órgão X" | `/governo`, `/instituicoes` | 2 a 3 cliques | duas portas para a mesma pergunta |
+
+Leitura do teste: **13 das 20** chegam em 3 cliques, mas **7 param em jargão**
+("execução", "entenda", "clipping", "ADPF", "direitos em movimento") e **2 não
+têm página** (água do rio; processo de Brumadinho). A unificação precisa
+resolver jargão e lacuna, não só mover rota.
+
+## O caminho no sistema
+
+Componente único `CaminhoSistema`, com a trilha vinda de um mapa de navegação
+(`lib/navegacao/mapa.ts`), não escrita à mão em cada página:
 
 ```
-/casos                        índice dos três casos, com número e estado de coleta
-/casos/riodoce                hub do Fundão (absorve /riodoce)
-/casos/riodoce/processos      (absorve /riodoce/processos)
-/casos/brumadinho             hub do Córrego do Feijão (absorve /paraopeba)
-/casos/brumadinho/linha-do-tempo
-/casos/brumadinho/auxilio
-/casos/brumadinho/execucao
-/casos/brumadinho/documentos
-/casos/brumadinho/clipping
-/casos/itatiaiaucu            hub novo (7 acórdãos, Serra Azul)
+Início › Casos › Brumadinho › Linha do tempo
 ```
 
-Regra: `/paraopeba` continua existindo como **nome de bacia**, mas o hub de caso
-passa a ser `/casos/brumadinho`; `/paraopeba` redireciona e mantém só as páginas
-de bacia (rio, municípios).
+Regras:
 
-### `/direitos` — o direito violado
+- **todo nível é link**, menos o último, que leva `aria-current="page"`;
+- `<nav aria-label="Você está em">` e `<ol>` — leitor de tela anuncia a posição;
+- nível de eixo e de frente são links para as páginas **gerais** (não para
+  âncoras mortas);
+- página específica mostra a trilha completa: `Início › Casos › Brumadinho › Auxílio`;
+- sem breadcrumb em página de formulário ou de erro.
 
-```
-/direitos                     índice por eixo, com contagem por caso
-/direitos/saude               (absorve /direitos-em-movimento/saude-publica)
-/direitos/moradia
-/direitos/agua-saneamento
-/direitos/trabalho-e-renda
-/direitos/educacao
-/direitos/seguranca-publica
-/direitos/informacao
-/direitos/globais             (absorve /direitos-globais/*)
-/direitos/comparados          (absorve /direitos-comparados)
-```
+Isso responde ao pedido: o nome do eixo, da frente e da subfrente é hiperlink
+até chegar na página, e a volta é um clique em qualquer nível.
 
-Cada eixo diz **em quais casos** o direito aparece e **quantos acórdãos** o
-citam — puxando do catálogo da jurimetria, não de texto novo. É o que liga
-direito a caso sem duplicar página.
+## Índice expansível
 
-### `/barragens` — o risco medido
+`/indice` passa a ser a árvore do portal, com `<details>/<summary>` nativo
+(functiona sem JavaScript e é acessível por teclado):
 
 ```
-/barragens                    índice: quantas, onde, em que nível
-/barragens/sigbm              (absorve /ambiental/barragens/sigbm)
-/barragens/descaracterizacao
-/barragens/mundo              (absorve /ambiental/barragens-globais)
-/barragens/mineracao          (absorve /mineracao)
+▸ Comece por aqui          (as 8 páginas gerais, com selo "visão geral")
+▸ Casos
+   ▸ Brumadinho            (geral)  →  lista as 11 específicas
+   ▸ Rio Doce              (geral)  →  lista as 3
+   ▸ Itatiaiuçu            (geral)
+▸ Direitos                 (geral)  →  9 eixos
+▸ Barragens                (geral)
+▸ Atores                   (geral)  →  popular, estatal, empresarial, internacional
+▸ Movimentos               (geral)
 ```
 
-### `/atores` — quem age
+Regras:
 
-```
-/atores                       índice por classe: popular, estatal, empresarial, internacional
-/atores/popular               MAB, ATIs (AEDAS, NACAB, Guaicuy), comissões
-/atores/estatal               MPMG, DPMG, MPF, AGU, AGE, prefeituras
-/atores/empresarial           Vale, Samarco, BHP, Renova, TÜV SÜD
-/atores/judiciario            TJMG, TJES, STF, STJ
-/atores/[slug]                ficha do ator (absorve /instituicoes/[sigla] e /empresas/[slug])
-```
+- **destaque visual e textual** nas páginas gerais: selo “visão geral” e
+  primeira posição em cada grupo;
+- contagem por ramo (“Brumadinho — 18 páginas”) para o leitor saber o tamanho;
+- o índice não duplica conteúdo: ele **leva**;
+- busca no índice com o mesmo normalizador do resto do portal.
 
-A mesma classificação que já existe nos marcos da linha do tempo
-(`ROTULO_ATOR`) vale aqui — um vocabulário só para o portal inteiro.
+## Acessibilidade
 
-### `/movimentos` — memória e resistência
+O que a unificação precisa garantir, além do que já existe:
 
-```
-/movimentos                   (absorve /memoria)
-/movimentos/[slug]            verbete ou luta
-```
+| Requisito | Como |
+|---|---|
+| Um `<h1>` por página | a página geral não repete o título no hero e no corpo |
+| Ordem de títulos | `h1 → h2 → h3`, sem pular nível |
+| Foco visível | anel de foco herdado; índice e botões com `:focus-visible` |
+| Alvo de toque | botão de página específica com no mínimo 44×44 px |
+| Link descritivo | “Ver o auxílio”, nunca “clique aqui” |
+| Cor não é sinal único | selo de ator tem texto, não só cor |
+| Teclado | `<details>` nativo; sem `div` clicável |
+| Landmarks | `<nav>`, `<main>`, `<footer>`; skip link no topo |
+| Idioma | `lang="pt-BR"` e siglas expandidas na primeira aparição |
 
-## Mapa de migração
+## Regra de ouro contra perda de dado
 
-| Rota atual | Destino | Ação |
-|---|---|---|
-| `/riodoce` | `/casos/riodoce` | 308 + página nova absorve |
-| `/riodoce/processos` | `/casos/riodoce/processos` | 308 |
-| `/paraopeba` | `/casos/brumadinho` | 308 no hub; bacia fica em `/paraopeba/bacia` |
-| `/paraopeba/linha-do-tempo` | `/casos/brumadinho/linha-do-tempo` | 308 |
-| `/paraopeba/auxilio`, `/execucao`, `/documentos`, `/clipping` | `/casos/brumadinho/*` | 308 |
-| `/direitos-em-movimento/*` | `/direitos/*` | 308 por eixo |
-| `/direitos-globais/*` | `/direitos/globais` | 308 |
-| `/direitos-comparados` | `/direitos/comparados` | 308 |
-| `/ambiental/direitos-humanos`, `/ambiental/direito-critico` | `/direitos` (seções) | 308 |
-| `/ambiental/barragens*`, `/ambiental/barragens-globais`, `/mineracao/*` | `/barragens/*` | 308 |
-| `/instituicoes`, `/instituicoes/[sigla]` | `/atores/*` | 308 |
-| `/empresas`, `/empresas/[slug]` | `/atores/empresarial` e `/atores/[slug]` | 308 |
-| `/memoria` | `/movimentos` | 308 |
-| `/estado-e-economia`, `/governo` | `/atores/estatal` (o que for sobre órgão) | avaliar caso a caso |
-
-Nada de redirect em massa de uma vez: cada linha vira um commit com o redirect, a
-página nova e a atualização dos links internos.
-
-## Canonicidade do número
-
-Regra editorial que a migração precisa respeitar:
-
-1. O número tem **dono**: ex. valor do auxílio mora em `/casos/brumadinho/auxilio`.
-2. Quem cita o número **linka** para o dono com rótulo curto ("ver o auxílio").
-3. Página que precisa mostrar o número **puxa do mesmo dado** — nunca digita de novo.
-4. Divergência entre páginas é bug, não estilo.
-
-## O que não se mexe
-
-- `/jurisprudencia` — transversal, já cobre três casos e quatro frentes.
-- `/busca`, `/temas`, `/indice`, `/grafo`, `/painel` — são ferramentas de travessia.
-- `/internacional`, `/europa`, `/eua`, `/canada`, `/america-latina` — o recorte é
-  geográfico e já tem fonte própria; `/direitos/globais` linka, não absorve.
-- `/congresso`, `/assembleias`, `/eleicoes` — outro produto.
+1. **Nenhuma página sai do ar** sem antes ter conteúdo equivalente na geral —
+   e, mesmo assim, só com 308.
+2. **Nenhum dado é reescrito**: a página geral **lê o mesmo dado** da específica.
+3. **Toda página específica ganha um “voltar para a visão geral”** no topo.
+4. **Checklist por migração**: `rg` por link antigo, 308 respondendo, sitemap
+   atualizado, `npm test`, `tsc`, build verde.
+5. **Duplicata real é a única que redireciona** — e a decisão é por comparação
+   de conteúdo, não por nome parecido.
 
 ## Fases
 
-| Fase | O que | Critério de pronto |
+| Fase | Entrega | Critério de pronto |
 |---|---|---|
-| 0 | medir uso (analytics/`busca`) das rotas candidatas | lista com as 10 rotas mais acessadas do cluster |
-| 1 | criar os 5 hubs **como agregadores**, sem mover nada | hub abre, linka para as rotas atuais, zero duplicação de número |
-| 2 | migrar um cluster por vez, com 308 e links internos | `rg` sem link para a rota antiga; 308 respondendo |
-| 3 | limpar rotas vazias, atualizar sitemap e `indice` | build verde, sitemap sem 404 |
-
-## Riscos
-
-- **SEO**: 308 preserva, mas só se a página nova tiver o mesmo conteúdo — migrar
-  conteúdo pela metade perde posição.
-- **Link quebrado interno**: cada migração precisa de `rg` nas rotas antigas.
-- **Duplicação temporária**: enquanto a fase 1 roda, hub e página antiga
-  convivem; o hub não pode repetir número, só linkar.
-- **Custo de manutenção**: cada hub novo é uma página a atualizar; por isso o
-  teto de cinco.
+| 0 | mapa de navegação + breadcrumb em 10 páginas piloto | trilha correta nas 10, teclado ok |
+| 1 | 5 páginas gerais (Casos, Brumadinho, Rio Doce, Direitos, Barragens) | essencial na página, botões para as específicas, zero redirect |
+| 2 | índice expansível com selo “visão geral” | funciona sem JS, contagem por ramo |
+| 3 | resolver os 7 jargões do teste | pergunta do leigo leva ao dado em ≤ 3 cliques |
+| 4 | lacunas (água do rio, processo de Brumadinho) | página publicada ou lacuna declarada |
 
 ## Decisões pendentes
 
-1. `/casos` ou manter `/desastres`? (nome do guarda-chuva)
-2. `/paraopeba` vira bacia ou some? (recomendo manter como bacia)
-3. `/atores` absorve `/empresas` inteiro ou só a ficha da empresa?
-4. `/movimentos` absorve `/memoria` ou a memória continua com nome próprio?
-5. Migrar com 308 desde já, ou só depois de medir uso na fase 0?
+1. As páginas gerais nascem em `/casos`, `/direitos`, `/barragens`, `/atores`?
+2. “Comece por aqui” no índice: 8 páginas ou 5?
+3. Aceita `308` só para duplicata real (recomendo sim)?
+4. Quem mantém o mapa de navegação quando uma página nova entra?
 
 ## Origem / Histórico
 
-- **08/11/2026 — proposta criada.** Nasce da constatação do dono: direitos,
-  Paraopeba, Brumadinho, barragens, ambiental e estatais estão espalhados, e o
-  mesmo assunto aparece em até cinco rotas.
+- **08/11/2026 — v2 revista.** Substitui a migração por redirect em massa pelo
+  modelo “geral + específica”, com teste de 20 hipóteses de leigo, breadcrumb
+  único e índice expansível. Nada sai do ar.
