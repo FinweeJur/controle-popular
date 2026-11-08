@@ -4,6 +4,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import NoticiasClient from "./NoticiasClient";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/noticias", {
   title: "Blog & Relatórios Técnicos — Controle Popular",
@@ -48,6 +49,8 @@ export default function NoticiasPage() {
         <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
           Blog & Estudos de Dados Públicos
         </h1>
+
+        <ResumoRealidadeBox rota="/noticias" />
 
         <p className="text-base text-muted leading-relaxed">
           Publicações técnicas e descritivas fundamentadas em bases de dados abertas do governo federal, tribunais, órgãos ambientais e prefeituras. Todos os números acompanham a identificação da fonte oficial e parâmetros para conferência.

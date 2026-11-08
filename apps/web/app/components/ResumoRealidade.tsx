@@ -1,14 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import jurisprudencia from "@/data/resumos-realidade/jurisprudencia.json";
-import jurisprudenciaPenal from "@/data/resumos-realidade/jurisprudencia-penal.json";
-import mineracaoCavas from "@/data/resumos-realidade/mineracao-cavas.json";
-import concursos from "@/data/resumos-realidade/concursos.json";
-import {
-  parseResumo,
-  resumoPublicavel,
-  type ResumoRealidade,
-} from "@/lib/resumos-realidade";
+import { RESUMOS } from "@/data/resumos-realidade";
+import { parseResumo, resumoPublicavel } from "@/lib/resumos-realidade";
 
 /**
  * Resumo de realidade no topo da página.
@@ -27,14 +20,8 @@ import {
  * parser está em `lib/resumos-realidade.ts`.
  */
 
-const RESUMOS: Record<string, ResumoRealidade> = {
-  "/jurisprudencia": jurisprudencia as ResumoRealidade,
-  // Piloto F2 (08/11/2026): três rotas com dado medido, texto montado só com
-  // número contado no JSON versionado da própria página. Nenhum modelo pago.
-  "/jurisprudencia/penal": jurisprudenciaPenal as ResumoRealidade,
-  "/mineracao/cavas": mineracaoCavas as ResumoRealidade,
-  "/concursos": concursos as ResumoRealidade,
-};
+const CAIXA =
+  "rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-6";
 
 function comNegrito(texto: string): ReactNode[] {
   return texto.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).map((parte, indice) => {
@@ -63,26 +50,29 @@ function comNegrito(texto: string): ReactNode[] {
   });
 }
 
-export function ResumoRealidadeBox({ rota, className = "" }: { rota: string; className?: string }) {
+export function ResumoRealidadeBox({
+  rota,
+  className = "",
+}: {
+  rota: string;
+  className?: string;
+}) {
   const resumo = RESUMOS[rota];
   if (!resumoPublicavel(resumo)) return null;
   const blocos = parseResumo(resumo.markdown);
-  // O primeiro bloco é o título do próprio resumo: vira o cabeçalho da caixa.
-  // Antes ele era descartado e o título era fixo — servia a uma página só e
-  // ficava errado em qualquer outra rota.
-  const titulo = blocos[0]?.tipo === "h2" ? blocos[0].texto : null;
-  const corpo = titulo ? blocos.slice(1) : blocos;
+  // O primeiro bloco é o título do arquivo, não um subtítulo da página.
+  const corpo = blocos[0]?.tipo === "h2" ? blocos.slice(1) : blocos;
 
   return (
     <section
       aria-labelledby="resumo-realidade"
-      className={`rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-6 ${className}`}
+      className={`${CAIXA} ${className}`.trim()}
     >
       <p className="text-xs uppercase tracking-wide opacity-60">
         Resumo de realidade · fonte em cada afirmação · atualizado em {resumo.geradoEm}
       </p>
       <h2 id="resumo-realidade" className="mt-2 font-display text-lg font-semibold">
-        {titulo ? comNegrito(titulo) : "Resumo de realidade"}
+        O que os números dizem sobre quem foi atingido
       </h2>
       <div className="mt-3 space-y-3 text-sm leading-relaxed">
         {corpo.map((bloco, indice) => {

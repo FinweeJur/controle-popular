@@ -8,6 +8,7 @@ import { obterCatalogoMucuri, obterEstatisticasMucuri } from "@/lib/cidades/vale
 import TabelaMunicipiosVales, { type LinhaVale } from "./TabelaMunicipiosVales";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/terra-e-territorios/vales` — catálogo territorial dos Vales do Jequitinhonha
@@ -127,6 +128,8 @@ export default function PaginaVales() {
         <h1 className="mt-2 text-3xl font-bold">
           Vales do Jequitinhonha e do Mucuri: quem é quem no território
         </h1>
+
+        <ResumoRealidadeBox rota="/terra-e-territorios/vales" />
         <ResumoExpandivel
           className="mt-3 max-w-3xl text-sm leading-relaxed text-text-soft"
           texto={

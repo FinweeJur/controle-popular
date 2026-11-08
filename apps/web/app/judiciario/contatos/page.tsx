@@ -6,6 +6,7 @@ import DataColeta from "@/app/components/DataColeta";
 import PainelVarasContatosClient from "./PainelVarasContatosClient";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/judiciario/contatos", {
   title: "Varas, Gabinetes e Balcão Virtual — Guia Nacional · Judiciário",
@@ -78,6 +79,8 @@ export default function PaginaContatosJudiciario() {
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
             Varas, Gabinetes e Balcão Virtual da Justiça
           </h1>
+
+        <ResumoRealidadeBox rota="/judiciario/contatos" />
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
             O cidadão e o advogado têm o direito de saber quem julga sua causa e onde falar diretamente com a vara.
             Reunimos os contatos verificados de 990 unidades judiciárias: e-mail institucional oficial, telefone com DDD,

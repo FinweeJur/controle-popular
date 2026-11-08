@@ -189,6 +189,8 @@ export default function PaginaCavas() {
           Mineração · Minas Gerais · dados de {hoje}
         </p>
         <h1 className="mt-2 text-3xl font-bold">Onde a mineração cresceu em Minas Gerais</h1>
+
+        <ResumoRealidadeBox rota="/mineracao/cavas" />
         <p className="mt-3 max-w-3xl leading-relaxed">
           Este portal olha {fmt(serieDados.cobertura.poligonos)} polígonos de mineração mapeados por
           satélite entre {C.primeiroAno} e {C.ultimoAno} e responde duas perguntas separadas:{" "}

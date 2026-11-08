@@ -1,0 +1,10 @@
+{
+ "rota": "/historia",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "# Perfil da rota /historia\n\n[medido — dados da pagina] A página reúne 354 registros sobre população e terrenos na Minas colonial. São listas de moradores, censos e mapas feitos para contar gente e terra.\n\n[medido — dados da pagina] A maior parte é lista de habitantes: 239 registros trazem esse assunto. Outros aparecem como censo. Há ainda um mapa de população e um conjunto de ordens, ofícios e papéis sobre população e terrenos diamantinos.\n\n[medido — dados da pagina] Os registros se concentram em cinco comarcas. Vila Rica tem 29. Rio das Mortes, 15. Rio das Velhas, 11. Serro do Frio, 6. Paracatu, 3.\n\n[medido — dados da pagina] O título mais comum é \"MAPAS DE POPULAÇÃO\", com 352 registros. Os outros dois têm títulos únicos.\n\n[inferido] A quantidade sugere que a contagem de gente foi feita várias vezes, em lugares diferentes, ao longo do período. O dado não mostra quem contou, nem por quê.\n\n[nao da para concluir] Não dá para saber, só com esta página, se os números de cada comarca somam o total da região. Nem se os censos cobriram toda a população ou só parte dela.",
+ "fontes": [
+  "apm-listas-populacao.json"
+ ],
+ "impressao": "df2073d94dc30b0b"
+}

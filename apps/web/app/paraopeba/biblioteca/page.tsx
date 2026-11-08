@@ -23,6 +23,7 @@ import BibliotecaClient from "./BibliotecaClient";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
 import { metadataEditavel } from "@/lib/edicoes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/paraopeba/biblioteca` — o que as Assessorias Técnicas Independentes
@@ -165,6 +166,8 @@ export default async function BibliotecaPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         O que as assessorias publicaram
       </h1>
+
+        <ResumoRealidadeBox rota="/paraopeba/biblioteca" />
 
       {semColeta ? (
         <p className="mt-4 rounded-2xl border border-border bg-surface p-5 text-sm text-text-soft">

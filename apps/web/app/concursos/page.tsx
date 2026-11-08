@@ -90,6 +90,8 @@ export default function ConcursosPage() {
         <h1 className="font-display text-[clamp(1.8em,4vw,2.5em)] font-bold tracking-tight text-text">
           Concursos Públicos e Seleções Temporárias do Brasil
         </h1>
+
+        <ResumoRealidadeBox rota="/concursos" />
         <p className="max-w-3xl text-sm sm:text-base leading-relaxed text-text-soft">
           Monitoramento auditado de editais de concursos efetivos (art. 37, II da CF/88)
           e processos seletivos simplificados (PSS/REDA/ACT, art. 37, IX da CF/88). Cobertura

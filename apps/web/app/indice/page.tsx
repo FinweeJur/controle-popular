@@ -38,6 +38,7 @@ import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki, type ItemIndice } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100PaginasClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * Hub global de indice do portal: `/indice`.
@@ -516,6 +517,8 @@ function CabecalhoIndice({ itens }: { itens: ItemIndice[] }) {
       />
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
+
+        <ResumoRealidadeBox rota="/indice" />
         <p className="max-w-2xl text-text-soft">
           Tudo o que o portal vigia, organizado do seu jeito: por eixos temáticos, pelo mapa 3D do território, pelo catálogo completo de páginas, por frente, por cidade ou por tema.
         </p>

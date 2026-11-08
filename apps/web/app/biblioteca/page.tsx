@@ -14,6 +14,7 @@ import {
 import BibliotecaGeralClient from "./BibliotecaGeralClient";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Biblioteca Geral e Acervo Acadêmico — Controle Popular",
@@ -88,6 +89,8 @@ export default function BibliotecaGeralPage() {
           <h1 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground">
             Biblioteca Geral & Acervo Acadêmico
           </h1>
+
+        <ResumoRealidadeBox rota="/biblioteca" />
           <p className="mt-2 text-sm sm:text-base text-muted leading-relaxed max-w-4xl">
             Repositório cívico consolidado reunindo documentos oficiais, relatórios corporativos ESG,
             prestação de contas das 91 instituições de justiça dos 27 estados e o catálogo de pesquisas

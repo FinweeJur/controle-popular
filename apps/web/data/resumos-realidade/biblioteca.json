@@ -1,0 +1,11 @@
+{
+ "rota": "/biblioteca",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "biblioteca-teses-atingidos.json",
+  "biblioteca-unificada.json"
+ ],
+ "impressao": "50bdcc0a37bfcc14",
+ "markdown": "A página da biblioteca reúne 882 registros. São dois blocos distintos: um com 424 itens acadêmicos e outro com 458 documentos de empresas, governos e arquivos. [medido — dados da pagina]\n\nNo bloco acadêmico, a maior parte é dissertação (273) e tese (127). O idioma predominante é o português (395 registros). Quase todos estão em acesso aberto (399), e apenas 1 aparece como embargado. [medido — dados da pagina]\n\nNesse mesmo bloco, o campo \"país\" tem 269 registros sem informação prestada pela instituição. Entre os que informam, aparecem Brasil (89), BR (32), brasil (8) e BRASIL (2) — grafias diferentes para o mesmo país. [medido — dados da pagina]\n\nNo outro bloco, a categoria \"Justiça & Controle\" concentra 347 registros. Vêm depois Empresas & ESG (26), Acadêmico & Pesquisa (18) e Internacional & Geopolítica (9). Há títulos de relatórios corporativos, como os da Vale e da Petrobras, e também documentos de arquivos públicos estrangeiros. [medido — dados da pagina]\n\nSobre os links: 117 registros desse bloco não trazem endereço de PDF. Os demais apontam para sites de arquivos nacionais e internacionais. [medido — dados da pagina]\n\nO dado não diz se o conteúdo foi lido, citado ou conferido por alguém. Também não informa quantos registros estão completos ou corretos — só mostra o que está preenchido e o que ficou em branco. [nao da para concluir]"
+}

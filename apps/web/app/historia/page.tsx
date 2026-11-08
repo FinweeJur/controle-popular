@@ -15,6 +15,7 @@ import {
   type AgregadoProtegido,
 } from "@/lib/historia/camadas";
 import TabelaHistoria, { type ColunaHistoria, type LinhaHistoria } from "./TabelaHistoria";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/historia` — Fase F do PLANO-HISTORIA-CAMADAS-GLOBO-3D.md.
@@ -164,6 +165,8 @@ export default function PaginaHistoria() {
           <History className="h-4 w-4" aria-hidden="true" /> História e território
         </p>
         <h1 className="mt-2 text-3xl font-bold">História — capitanias, revoltas e terras</h1>
+
+        <ResumoRealidadeBox rota="/historia" />
         <ResumoExpandivel
           className="mt-3 max-w-3xl text-sm leading-relaxed text-text-soft"
           texto={

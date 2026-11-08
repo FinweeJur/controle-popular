@@ -1,0 +1,10 @@
+{
+ "rota": "/noticias",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página de notícias reúne 204 registros, quase todos assinados pelo ONSA — Observatório Nacional Socioambiental. [medido — dados da pagina]\n\nO grosso do conteúdo é explicativo: 145 registros estão na categoria Explicador. Outros 26 são Investigação Cívica e 22, Relatório Técnico. Divulgação Científica soma 8 e Ferramentas do Portal, 3. [medido — dados da pagina]\n\nQuase tudo trata de estado: 158 registros. Cidades aparecem em 11, ambiental em 10, terra em 6, judiciário em 6 e direitos em 5. [medido — dados da pagina]\n\nOs títulos mais repetidos são sobre credenciamento e chamamento público. Credenciamento SEE/MG: Publicada inabilitação de prestadores de serviços aparece 7 vezes. Chamamento Público SEJUSP/MG: Abertas inscrições para projetos de segurança cidadã aparece 5. [medido — dados da pagina]\n\nO dado mostra o que está publicado e quantas vezes. Não mostra se o leitor leu, se entendeu ou se agiu a partir disso. Também não mede qualidade do conteúdo nem impacto. [nao da para concluir]",
+ "fontes": [
+  "noticias-portal.json"
+ ],
+ "impressao": "153923150e71867b"
+}

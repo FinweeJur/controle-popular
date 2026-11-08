@@ -1,0 +1,10 @@
+{
+ "rota": "/editais",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "[medido — dados da pagina] A página lista 50 editais publicados, com data, modalidade e seção de origem.\n\n[medido — dados da pagina] A maioria (44) está na seção \"Editais e Avisos\". As demais aparecem em secretarias específicas: duas em Governo do Estado, duas em Justiça e Segurança Pública, uma em Saúde e uma em Meio Ambiente.\n\n[medido — dados da pagina] Entre as modalidades, Credenciamento é a mais frequente (11). Depois vêm Pregão Eletrônico (7), Chamamento Público (6), Inabilitação de Credenciamento (5), Processo Seletivo (5) e Resultado de Credenciamento (3).\n\n[medido — dados da pagina] As publicações se concentram em três datas: 18 registros em 12 de setembro de 2026, 18 em 10 de setembro e 14 em 15 de setembro.\n\n[inferido] O volume em poucas datas sugere que os registros foram agrupados por lote de publicação, mas a página não mostra o critério desse agrupamento.\n\n[nao da para concluir] Os números não indicam quais órgãos estão contratando, quanto dinheiro está envolvido nem o que cada edital pede. Também não mostram se algum processo já foi concluído ou cancelado.",
+ "fontes": [
+  "editais-consolidado.json"
+ ],
+ "impressao": "cb34d0ab900726e3"
+}

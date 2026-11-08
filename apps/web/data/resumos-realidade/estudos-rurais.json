@@ -1,0 +1,11 @@
+{
+ "rota": "/estudos-rurais",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página reúne 119 registros ligados a estudos rurais. É uma lista de materiais, não um resumo do que existe sobre o tema. [medido — dados da pagina]\n\nUm primeiro bloco tem 59 registros. Desse total, 39 são artigos e 20 são publicações. A origem desses itens é dividida: 39 vêm do Scopus/DOI e 20 da BDTD/UFVJM. [medido — dados da pagina]\n\nO segundo bloco soma 60 registros. O perfil não detalha a composição desse conjunto. [medido — dados da pagina]\n\nSomando os dois blocos chega-se aos 119 registros da página. O dado mostra volume e procedência, mas não mostra conteúdo. [medido — dados da pagina]\n\nO perfil não informa quais assuntos aparecem nesses registros, nem em que ano foram publicados, nem se algum foi produzido pela própria instituição. Também não diz quantos dos 119 estão disponíveis para leitura gratuita. [nao da para concluir]\n\nQuem procura um tema específico vai precisar abrir os registros um a um. A página organiza, mas não filtra por assunto. [inferido]",
+ "fontes": [
+  "estudos-rurais/estudos-rurais-curados.json",
+  "estudos-rurais/estudos-rurais.json"
+ ],
+ "impressao": "6142345141314bac"
+}

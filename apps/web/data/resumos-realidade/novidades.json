@@ -1,0 +1,11 @@
+{
+ "rota": "/novidades",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "[medido — dados da pagina] A página lista 221 registros, entre explicações, investigações cívicas e relatórios técnicos.\n\n[medido — dados da pagina] A maior parte (204 registros) está reunida em um conjunto que se organiza por categoria: são 145 Explicadores, 26 Investigações Cívicas, 22 Relatórios Técnicos, 8 Divulgações Científicas e 3 Ferramentas do Portal. O mesmo conjunto se agrupa por frente: estado aparece 158 vezes, seguido de cidades (11), ambiental (10), terra (6), judiciario (6) e direitos (5). Quase tudo ali tem a mesma origem: o ONSA — Observatório Nacional Socioambiental responde por 199 registros, e outra grafia do mesmo nome, \"ONSA - Observatorio Nacional Socioambiental\", por 5.\n\n[medido — dados da pagina] Os títulos mais repetidos mostram o tipo de conteúdo: sete registros tratam de credenciamento da SEE/MG com inabilitação de prestadores de serviços; cinco falam de chamamento público da SEJUSP/MG para projetos de segurança cidadã; outros cinco tratam de credenciamento e homologação de cursos técnicos pela SEE/MG. Há ainda quatro sobre inabilitação de prestadores no IPSM e três sobre fomento à pesquisa e bolsas de inovação pela FAPEMIG/CNPq.\n\n[medido — dados da pagina] Um segundo conjunto, com 17 registros, é organizado por data. Os dias com mais entradas são 31 de agosto de 2026 (5 registros) e 30 de agosto de 2026 (4). As frentes desse grupo são cidades (4), operacao (3), paraopeba (3), terras (2), além de Cidades e Central, com uma cada.\n\n[nao da para concluir] Não dá para saber, só com esses números, se os dois conjuntos tratam dos mesmos assuntos ou de conteúdos diferentes. A página não mostra essa ligação.\n\n[nao da para concluir] Também não dá para medir quantos desses registros foram lidos, nem quanto tempo ficaram disponíveis. O dado aqui é apenas a contagem e a organização do que está publicado.",
+ "fontes": [
+  "noticias-portal.json",
+  "novidades.json"
+ ],
+ "impressao": "e0893714624c91ad"
+}

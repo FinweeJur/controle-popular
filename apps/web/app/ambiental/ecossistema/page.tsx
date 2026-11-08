@@ -6,6 +6,7 @@ import {
 } from "@/lib/ambiental/ecossistema-nacional";
 import PainelEcossistema from "./PainelEcossistema";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title:
@@ -58,6 +59,8 @@ export default function PaginaEcossistemaNacional() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Ecossistema Nacional Regulatório, Ambiental e de Concessionárias
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/ecossistema" />
         <p className="mt-3 max-w-4xl text-base text-muted sm:text-lg">
           Radiografia dos órgãos públicos ambientais dos 27 entes federativos, ministérios, autarquias e agências reguladoras (IBAMA, ICMBio, ANA, ANEEL, ANM), além das principais empresas públicas e concessionárias de serviços essenciais de água e luz. Sistemas informatizados, contatos institucionais e canais de ouvidoria auditados.
         </p>

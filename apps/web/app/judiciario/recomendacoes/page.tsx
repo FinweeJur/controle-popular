@@ -5,6 +5,7 @@ import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
 import { obterRecomendacoes, DATA_RECOMENDACOES } from "@/lib/judiciario/recomendacoes";
 import DataColeta from "@/app/components/DataColeta";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Recomendações e Cobranças do CNJ e CNMP | Controle Popular",
@@ -83,6 +84,8 @@ export default function PaginaRecomendacoesJudiciario() {
           <h1 className="mt-3 font-display text-2xl font-bold tracking-tight text-text sm:text-3xl">
             O que o CNJ e o CNMP Mandaram Corrigir
           </h1>
+
+        <ResumoRealidadeBox rota="/judiciario/recomendacoes" />
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-soft">
             Quando os corregedores nacionais inspecionam um tribunal ou Ministério Público, eles
             identificam gavetas cheias de processos parados, falta de defensores, dinheiro de idosos

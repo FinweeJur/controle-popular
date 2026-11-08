@@ -61,6 +61,8 @@ export default async function JurisprudenciaPenal({
 
       <header className="space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência penal</h1>
+
+        <ResumoRealidadeBox rota="/jurisprudencia/penal" />
         <p className="max-w-3xl text-sm opacity-80">
           <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos coletados por âncoras
           penais no TJES e no STF. A maior parte é crime comum — homicídio, tráfico, júri,

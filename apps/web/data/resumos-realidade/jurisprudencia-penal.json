@@ -1,6 +1,11 @@
 {
-  "rota": "/jurisprudencia/penal",
-  "geradoEm": "2026-11-08",
-  "verificado": true,
-  "markdown": "# O acervo penal: 6.182 acórdãos, maioria habeas corpus e resultado negado\n\nA frente penal do acervo tem 6.182 acórdãos: 3.190 do TJES e 2.992 do STF. Não há decisão do TJMG nesta fatia. [medido — contagem do arquivo de casos]\n\nHabeas corpus é o tipo mais frequente: 1.699 decisões (27,5%), somadas as classes HC e Habeas Corpus Criminal. [medido]\n\nO resultado registrado é “negado” em 4.396 casos (71,1%). Em 430 casos (7,0%) o campo de resultado está vazio ou marcado como “não consta”. [medido]\n\nA série é recente: 3.458 casos são de 2026, 1.298 de 2025 e 587 de 2024; o mais antigo é de 1947. [medido]\n\nO campo que identifica quem recorreu está vazio em 2.122 dos 6.182 casos (34,3%); portanto, não dá para concluir, pelo acervo, qual lado venceu na maioria. [não dá para concluir]\n\nFonte: arquivo jurisprudencia-casos.json, gerado em 8 de novembro de 2026, filtro frente = penal. A coleta usa âncoras penais: crime comum da região e crime ligado a desastre entram juntos."
+ "rota": "/jurisprudencia/penal",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página reúne 23.583 registros de jurisprudência na área penal. [medido — dados da pagina]\n\n[medido — dados da pagina] A maior parte — 23.569 registros — está concentrada em um único conjunto. Dentro dele, os dois assuntos mais frequentes são Brumadinho, com 219 registros, e Rio Doce, com 181.\n\n[medido — dados da pagina] Por classe processual, o número mais alto é de Apelação Cível, com 374 registros. Embargos de Declaração-Cv aparecem com 20, e Agravo de Instrumento-Cv com 6.\n\n[medido — dados da pagina] Entre os relatores, Maria Lúcia Cabral Caruso tem 158 registros. Monteiro de Castro aparece com 19, e os demais citados têm entre 1 e 1 registro cada. Há ainda 219 registros sem órgão julgador informado.\n\n[medido — dados da pagina] No polo das partes, \"parcial\" e \"indeterminado\" aparecem com 145 registros cada. \"Empresa\" tem 101, e \"atingido\" tem 9.\n\n[nao da para concluir] O dado não mostra quantos casos foram decididos a favor ou contra nenhuma das partes. Também não indica se esses registros tratam de um mesmo processo repetido ou de decisões distintas.",
+ "fontes": [
+  "jurisprudencia-casos.json",
+  "jurisprudencia-resumo.json"
+ ],
+ "impressao": "9a1ba70d3f238e7d"
 }

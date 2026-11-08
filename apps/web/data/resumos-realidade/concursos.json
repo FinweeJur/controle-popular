@@ -1,6 +1,10 @@
 {
-  "rota": "/concursos",
-  "geradoEm": "2026-11-08",
-  "verificado": true,
-  "markdown": "# 74 certames, 80.250 vagas imediatas e 170.420 de cadastro reserva\n\nO radar reúne 74 certames com dados atualizados em 2 de novembro de 2026: 80.250 vagas imediatas e 170.420 vagas de cadastro reserva. [medido — contagem do arquivo de concursos]\n\nPor esfera, são 36 certames estaduais, 21 municipais e 17 federais. Por Poder: 33 no Executivo, 19 no Judiciário, 10 em tribunais de contas, 6 no Legislativo, 3 no Ministério Público e 3 na Defensoria Pública. [medido — mesma contagem]\n\nSão 65 concursos efetivos, 6 processos seletivos simplificados e 3 contratações temporárias. No recorte de status, 27 estão com inscrições abertas e 13 com edital publicado. [medido]\n\nA maior remuneração inicial registrada é R$ 36.210,00. A base cobre as 27 unidades federativas e o âmbito nacional; Minas Gerais aparece em 13 certames. [medido]\n\nVaga anunciada não é nomeação: o arquivo registra o que o edital oferece, não provimento, posse ou desistência. [não dá para concluir]\n\nFonte: arquivo concursos-publicos.json, campos totalCertames, totalVagasImediatas, totalVagasCadastroReserva, maiorRemuneracao e resumo. A página lê os mesmos campos."
+ "rota": "/concursos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página lista 74 concursos e processos seletivos abertos no país. [medido — dados da pagina]\n\nDo total, 65 são concursos para cargo efetivo — ou seja, a maioria das vagas é para quem busca estabilidade, não contrato temporário. Os outros 9 se dividem entre processo seletivo simplificado (6) e contratação temporária (3). [medido — dados da pagina]\n\nNa divisão por esfera, os estaduais somam 36 registros, os municipais 21 e os federais 17. Isso mostra que há mais editais estaduais do que federais nesta lista. [medido — dados da pagina]\n\nPor poder, o Executivo concentra 33 registros. O Judiciário tem 19, o Tribunal de Contas 10, o Legislativo 6, e Ministério Público e Defensoria Pública aparecem com 3 cada. [medido — dados da pagina]\n\nQuanto à natureza, 65 registros são da Administração Direta. Fundação Pública e Empresa Pública têm 3 cada, Sociedade de Economia Mista 2 e Autarquia 1. [medido — dados da pagina]\n\nO dado mostra quantos editais estão listados e como se distribuem. Não mostra quantas vagas existem, salários, prazos de inscrição nem se algum já foi encerrado. [nao da para concluir]",
+ "fontes": [
+  "concursos-publicos.json"
+ ],
+ "impressao": "408aca7f9dd2605f"
 }

@@ -7,6 +7,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   LinksRelacionados,
 } from "@/app/components/wiki";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/conselhos", {
   title: "Conselhos de Direitos e Colegiados Participativos — Controle Popular",
@@ -58,6 +59,8 @@ export default function PaginaConselhosDireitos() {
         <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
           Conselhos de Direitos & Colegiados Participativos
         </h1>
+
+        <ResumoRealidadeBox rota="/direitos-em-movimento/conselhos" />
 
         <p className="text-base sm:text-lg text-muted leading-relaxed">
           Onde a população decide e fiscaliza diretamente os recursos públicos: conselhos de saúde (CMS/CES), meio ambiente (CODEMAs/COPAM), direitos humanos, conselhos tutelares, comitês de bacias e conselhos de direitos das mulheres em todo o Brasil.
