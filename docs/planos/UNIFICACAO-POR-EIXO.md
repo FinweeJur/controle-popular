@@ -168,6 +168,21 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
 `/jurisprudencia` (dado), `/busca`, `/temas`, `/indice`, `/grafo`, `/painel`,
 `/congresso` (produto próprio), `/eleicoes` e as 68 páginas de município.
 
+## O que já está no ar (fase 0 e 2)
+
+- **Mapa**: `apps/web/lib/navegacao/mapa.ts` — 9 eixos, 56 frentes, `caminhoDe()`,
+  `paginasDoEixo()`, com 6 testes (`mapa.test.ts`).
+- **Trilha**: `CaminhoSistema` lê o mapa e desenha "Início › Eixo › Frente › Página".
+  Todo nível é link; o último leva `aria-current="page"`.
+- **Piloto da trilha** (3 páginas): `/riodoce`, `/riodoce/processos` e
+  `/paraopeba/linha-do-tempo`. As trilhas escritas à mão nessas páginas saíram.
+- **Índice expansível**: `IndiceEixos` na página `/indice`, com "Comece por aqui",
+  `<details>` nativo, contagem por eixo e selo **mapa** na frente em destaque
+  (Territórios, que abre o Meio ambiente).
+
+Próximas páginas da trilha: `/paraopeba` (hub), `/jurisprudencia`, `/memoria`,
+`/direitos-em-movimento`, `/congresso`, `/empresas` — a ordem é por tráfego.
+
 ## Como manter
 
 1. Página nova entra em `EIXOS` com eixo, frente e `rotas`.

@@ -33,6 +33,7 @@ import paginas100 from "@/data/top-100-paginas.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import CapaFrente from "@/app/components/CapaFrente";
+import IndiceEixos from "@/app/components/IndiceEixos";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki, type ItemIndice } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -554,6 +555,10 @@ function SecaoEixosTematicos() {
           ))}
         </div>
       </section>
+
+      {/* Árvore de navegação por eixo: lê o mapa único
+          (`lib/navegacao/mapa.ts`), não uma lista paralela. */}
+      <IndiceEixos />
     </>
   );
 }

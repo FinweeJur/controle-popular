@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 
 /**
  * `/riodoce/processos` — processos-chave da reparação do Rio Doce.
@@ -36,12 +37,7 @@ export const metadata: Metadata = {
 export default function RioDoceProcessos() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
-      <nav className="mb-4 text-[.82em] text-text-soft" aria-label="Trilha">
-        <NextLink href="/riodoce" className="hover:text-primary">
-          Plataforma Rio Doce
-        </NextLink>{" "}
-        · <span className="text-text">Processos</span>
-      </nav>
+      <CaminhoSistema rota="/riodoce/processos" />
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Processos do caso Rio Doce

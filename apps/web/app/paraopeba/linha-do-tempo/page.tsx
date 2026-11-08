@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { MARCOS_PARAOPEBA } from "@/lib/paraopeba";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -29,12 +30,7 @@ export default function LinhaDoTempoPage() {
   // sumia nesta tela.
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
-      <nav className="mb-4 text-[.82em] text-text-soft">
-        <NextLink href="/paraopeba" className="hover:text-primary">
-          Paraopeba
-        </NextLink>{" "}
-        · <span className="text-text">Linha do tempo</span>
-      </nav>
+      <CaminhoSistema rota="/paraopeba/linha-do-tempo" />
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Do rompimento à confirmação de agosto

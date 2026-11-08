@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { COBERTURA_ACORDO_RIO_DOCE } from "@/lib/ambiental/ckan-mg-mariana";
 import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -99,12 +100,7 @@ const EM_CONSTRUCAO = [
 export default function RioDoceHub() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
-      <nav className="mb-4 text-[.82em] text-text-soft" aria-label="Trilha">
-        <NextLink href="/" className="hover:text-primary">
-          Início
-        </NextLink>{" "}
-        · <span className="text-text">Plataforma Rio Doce</span>
-      </nav>
+      <CaminhoSistema rota="/riodoce" />
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Plataforma Rio Doce
