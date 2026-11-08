@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import hashlib
 import json
 import os
 import re
@@ -215,6 +216,18 @@ def slug(rota: str) -> str:
     return re.sub(r"[^a-z0-9-]", "", limpo.lower()) or "home"
 
 
+def impressao_das_fontes(rota: dict) -> str:
+    """Hash de caminho, tamanho e mtime das fontes — muda quando o dado muda."""
+    partes = []
+    for fonte in rota["fontes"]:
+        caminho = resolver(fonte)
+        if not caminho:
+            continue
+        estado = caminho.stat()
+        partes.append(f"{fonte}:{estado.st_size}:{int(estado.st_mtime)}")
+    return hashlib.sha1("|".join(sorted(partes)).encode()).hexdigest()[:16]
+
+
 def gerar(rota: dict) -> tuple[bool, int]:
     perfil = montar_perfil(rota)
     texto = chamar(SISTEMA, perfil)
@@ -229,6 +242,8 @@ def gerar(rota: dict) -> tuple[bool, int]:
                 "rota": rota["rota"],
                 "geradoEm": "2026-11-08",
                 "verificado": True,
+                "fontes": rota["fontes"],
+                "impressao": impressao_das_fontes(rota),
                 "markdown": texto,
             }, ensure_ascii=False, indent=1), encoding="utf-8")
             return True, ciclo
