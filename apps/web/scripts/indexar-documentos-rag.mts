@@ -306,15 +306,24 @@ function paginasDoAto(texto: string): { numero: number; texto: string }[] {
 /**
  * Atos do CNJ entram pelo texto compilado da API, não por PDF.
  *
- * O portal publica 6.009 atos; só os que determinam regra trazem texto
- * (`normativo`). Aqui eles viram documento citável com URL de detalhe.
+ * O portal publica 5.887 atos; 2.349 são normativos com texto. Indexar tudo
+ * encheria o RAG de regra de concurso e prêmio de conciliação. Entram só os
+ * que tocam as teses medidas -- prova, perícia, ônus, prescrição, gratuidade,
+ * precedente, coisa julgada, acesso à justiça, desastre, indenização,
+ * barragem, litigância de massa, tutela coletiva, honorários e competência.
+ * Medido em 08/11: 29 atos, 0,3 MB de texto.
  */
+const CNJ_RELEVANTE =
+  /\bprovas?\b|per[íi]cia|pericial|[ôo]nus da prova|prescri[çc]|gratuidade|precedente|repetitiv|coisa julgada|acesso [àa] justi|desastre|indeniza|repara[çc][ãa]o|barragem|litig[âa]ncia (abusiva|predat|de m)|tutela coletiva|a[çc][ãa]o civil p[úu]blica|honor[áa]rios|custas processuais|compet[êe]ncia da justi/i;
+const CNJ_EXCLUIDO = /pr[êe]mio|dia nacional|semana nacional|concurso|sess[ãa]o|designa/i;
+
 function adicionarAtosCnj(documentos: DocumentoRagMeta[], trechos: TrechoDocumento[]): number {
   const arquivo = lerJson<{ atos: AtoCnj[] }>(path.join(APP_ROOT, "public", "data", "cnj-atos.json"));
   if (!arquivo?.atos) return 0;
   let incluidos = 0;
   for (const ato of arquivo.atos) {
     if (!ato.normativo || !ato.texto) continue;
+    if (!CNJ_RELEVANTE.test(ato.ementa) || CNJ_EXCLUIDO.test(ato.ementa)) continue;
     const meta: DocumentoRagMeta = {
       id: `cnj:${ato.id}`,
       titulo: `${ato.tipo} CNJ nº ${ato.numero}${ato.data ? `, de ${ato.data}` : ""}`,

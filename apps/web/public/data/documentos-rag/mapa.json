@@ -1,6 +1,6 @@
 {
-  "totalDocumentos": 2361,
-  "totalTrechos": 2630,
+  "totalDocumentos": 2390,
+  "totalTrechos": 2970,
   "porCategoria": [
     {
       "slug": "Ambiental & Desastres",
@@ -13,6 +13,10 @@
     {
       "slug": "Justiça & Controle",
       "contagem": 729
+    },
+    {
+      "slug": "Legislação",
+      "contagem": 346
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -47,10 +51,6 @@
       "contagem": 6
     },
     {
-      "slug": "Legislação",
-      "contagem": 6
-    },
-    {
       "slug": "Manual e comunicacao",
       "contagem": 4
     },
@@ -71,6 +71,10 @@
     {
       "slug": "Atingidos por barragens",
       "contagem": 625
+    },
+    {
+      "slug": "Atos do CNJ",
+      "contagem": 340
     },
     {
       "slug": "Instituições de Justiça",
@@ -188,35 +192,35 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 201
+      "contagem": 267
     },
     {
       "slug": "2025",
-      "contagem": 418
+      "contagem": 425
     },
     {
       "slug": "2024",
-      "contagem": 429
+      "contagem": 491
     },
     {
       "slug": "2023",
-      "contagem": 256
+      "contagem": 268
     },
     {
       "slug": "2022",
-      "contagem": 147
+      "contagem": 202
     },
     {
       "slug": "2021",
-      "contagem": 84
+      "contagem": 116
     },
     {
       "slug": "2020",
-      "contagem": 209
+      "contagem": 229
     },
     {
       "slug": "2019",
-      "contagem": 258
+      "contagem": 278
     },
     {
       "slug": "2018",
@@ -228,7 +232,7 @@
     },
     {
       "slug": "2016",
-      "contagem": 28
+      "contagem": 61
     },
     {
       "slug": "2015",
@@ -236,7 +240,7 @@
     },
     {
       "slug": "2014",
-      "contagem": 15
+      "contagem": 27
     },
     {
       "slug": "2013",
@@ -244,15 +248,15 @@
     },
     {
       "slug": "2012",
-      "contagem": 28
+      "contagem": 36
     },
     {
       "slug": "2011",
-      "contagem": 17
+      "contagem": 26
     },
     {
       "slug": "2010",
-      "contagem": 8
+      "contagem": 12
     },
     {
       "slug": "2009",
