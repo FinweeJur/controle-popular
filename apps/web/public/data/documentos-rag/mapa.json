@@ -1,14 +1,14 @@
 {
   "totalDocumentos": 2390,
-  "totalTrechos": 2970,
+  "totalTrechos": 18945,
   "porCategoria": [
+    {
+      "slug": "Acadêmico & Pesquisa",
+      "contagem": 16736
+    },
     {
       "slug": "Ambiental & Desastres",
       "contagem": 934
-    },
-    {
-      "slug": "Acadêmico & Pesquisa",
-      "contagem": 761
     },
     {
       "slug": "Justiça & Controle",
@@ -65,16 +65,24 @@
   ],
   "porTema": [
     {
+      "slug": "Atingidos por barragens — Rio Doce",
+      "contagem": 13304
+    },
+    {
+      "slug": "Atingidos por barragens — Brumadinho",
+      "contagem": 2995
+    },
+    {
       "slug": "Desastres e barragens",
       "contagem": 934
     },
     {
-      "slug": "Atingidos por barragens",
-      "contagem": 625
-    },
-    {
       "slug": "Atos do CNJ",
       "contagem": 340
+    },
+    {
+      "slug": "Atingidos por barragens",
+      "contagem": 301
     },
     {
       "slug": "Instituições de Justiça",
@@ -192,43 +200,43 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 267
+      "contagem": 265
     },
     {
       "slug": "2025",
-      "contagem": 425
+      "contagem": 423
     },
     {
       "slug": "2024",
-      "contagem": 491
+      "contagem": 486
     },
     {
       "slug": "2023",
-      "contagem": 268
+      "contagem": 264
     },
     {
       "slug": "2022",
-      "contagem": 202
+      "contagem": 187
     },
     {
       "slug": "2021",
-      "contagem": 116
+      "contagem": 111
     },
     {
       "slug": "2020",
-      "contagem": 229
+      "contagem": 222
     },
     {
       "slug": "2019",
-      "contagem": 278
+      "contagem": 277
     },
     {
       "slug": "2018",
-      "contagem": 30
+      "contagem": 25
     },
     {
       "slug": "2017",
-      "contagem": 31
+      "contagem": 27
     },
     {
       "slug": "2016",
@@ -264,7 +272,7 @@
     },
     {
       "slug": "2008",
-      "contagem": 9
+      "contagem": 6
     },
     {
       "slug": "2007",
@@ -276,7 +284,7 @@
     },
     {
       "slug": "2005",
-      "contagem": 11
+      "contagem": 9
     },
     {
       "slug": "2004",
