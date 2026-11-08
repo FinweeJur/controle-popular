@@ -98,6 +98,22 @@ Nao acrescente fato novo. Devolva so o texto revisado, em markdown.
 """
 
 
+SISTEMA_AGREGADO = """Voce escreve o resumo de uma pagina cujo dado e so um total
+agregado, sem lista de registros.
+
+REGRAS:
+1. Use apenas o numero do PERFIL. Nao invente, nao arredonde.
+2. Escreva no maximo 3 paragrafos curtos:
+   - o que o numero cobre;
+   - o que ele NAO permite dizer (sem lista, sem recorte, sem ano);
+   - o limite em uma frase.
+3. Marque os paragrafos com [medido — dados da pagina] ou [nao da para concluir].
+4. Nao encha lingua: nao repita o mesmo numero, nao descreva a interface.
+5. Nao cite arquivo, nem "dossie", nem "perfil", nem "rota", nem link externo.
+   Fale da pagina e do dado dela.
+"""
+
+
 def carregar_json(caminho: Path):
     try:
         return json.loads(caminho.read_text(encoding="utf-8"))
@@ -154,20 +170,20 @@ def perfil_fonte(fonte: str, caminho: Path) -> list[str]:
     return linhas
 
 
-def perfil_util(rota: dict) -> bool:
-    """Só gera resumo quando há lista de registros com campo descritivo.
-
-    Rota cujo único dado é um total agregado não rende resumo: o modelo enche
-    linguiça e o texto fica pior que a ausência.
-    """
+def modo_do_perfil(rota: dict) -> str | None:
+    """`lista` quando há registros com campo descritivo; `agregado` quando só total."""
+    tem_agregado = False
     for fonte in rota["fontes"]:
         caminho = resolver(fonte)
         if not caminho:
             continue
-        itens = registros(carregar_json(caminho))
+        dados = carregar_json(caminho)
+        itens = registros(dados)
         if len(itens) >= 10 and isinstance(itens[0], dict) and campos_categoricos(itens):
-            return True
-    return False
+            return "lista"
+        if isinstance(dados, dict) and isinstance(dados.get("total"), int):
+            tem_agregado = True
+    return "agregado" if tem_agregado else None
 
 
 def anexar_trechos(rota: dict, linhas: list[str]) -> None:
@@ -250,9 +266,10 @@ def impressao_das_fontes(rota: dict) -> str:
     return hashlib.sha1("|".join(sorted(partes)).encode()).hexdigest()[:16]
 
 
-def gerar(rota: dict) -> tuple[bool, int]:
+def gerar(rota: dict, modo: str) -> tuple[bool, int]:
     perfil = montar_perfil(rota)
-    texto = chamar(SISTEMA, perfil)
+    sistema = SISTEMA if modo == "lista" else SISTEMA_AGREGADO
+    texto = chamar(sistema, perfil)
     if not texto:
         return False, 0
     for ciclo in range(1, MAX_CICLOS + 1):
@@ -296,13 +313,14 @@ def main() -> int:
     ok = 0
     puladas = 0
     for rota in fila:
-        if not perfil_util(rota):
+        modo = modo_do_perfil(rota)
+        if not modo:
             puladas += 1
             print(f"pula {rota['rota']} | perfil insuficiente")
             continue
-        passou, ciclos = gerar(rota)
+        passou, ciclos = gerar(rota, modo)
         ok += 1 if passou else 0
-        print(f"{'ok ' if passou else 'FALHA'} {rota['rota']} | ciclos {ciclos} | {rota['registros']} registros")
+        print(f"{'ok ' if passou else 'FALHA'} {rota['rota']} | {modo} | ciclos {ciclos} | {rota['registros']} registros")
     print(f"publicados: {ok}/{len(fila) - puladas} | puladas: {puladas}")
     return 0
 
