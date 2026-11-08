@@ -1,0 +1,11 @@
+# O desastre do Fundão e o litoral brasileiro: o que a evidência permite afirmar
+
+A pluma de rejeitos oriunda da ruptura da barragem de Fundão, em 05/11/2015, operada pela Samarco — joint venture de Vale e BHP —, percorreu mais de 650 km até alcançar o Atlântico (Alves, 2022; Fernandes et al., 2016). O evento deixou 19 mortos (Zhouri et al., 2017) e espalhou material ao longo de cerca de 500 km de litoral, do Espírito Santo ao norte fluminense e ao sul baiano (Pinheiro et al., 2025). Para organizar a leitura desse percurso, é útil separar quatro dimensões distintas: a chegada da pluma, a exposição, o efeito biológico e a perda social.
+
+Em Abrolhos, material proveniente do Rio Doce foi identificado e elementos foram incorporados em corais (Francini-Filho et al., 2019; Evangelista et al., 2023), o que não autoriza atribuir todo dano recifal ao rompimento. Na foz capixaba, a contaminação persistente e a desestruturação da pesca apresentam evidência mais direta (Gabriel et al., 2021; Dadalto et al., 2020). No estuário, metais foram registrados até cinco vezes acima dos valores de referência, com perda de organismos associados ao sedimento (De Oliveira Gomes et al., 2017), e estudos posteriores apontam risco ecológico e contaminação crônica (Gabriel et al., 2020; Nascimento et al., 2022).
+
+O biomonitoramento realizado em 300 moradores de Regência, Povoação e Campo Grande indicou exposição elevada a alumínio, arsênio, mercúrio e níquel (Cesila et al., 2021), sem diagnóstico de doença. Na pesca, os registros apontam perda de renda, rotina e identidade (Dadalto et al., 2020), com compensações percebidas como inferiores à renda anterior (Da Costa Oliveira et al., 2020) e recuperação incompleta seis anos depois (Santos et al., 2025).
+
+No Quilombo de Degredo e entre povos indígenas, as perdas culturais descritas não são redutíveis a valor monetário (Lins & Mozine, 2025; Fiorott & Zaneti, 2017). A repactuação assinada em outubro de 2024 evidencia distância entre demanda local e tratamento institucional (Ferreira, 2025).
+
+A evidência disponível é forte para o impacto costeiro capixaba e para a chegada do material a Abrolhos, mas fraca para atribuir todo dano recifal ao rompimento de Fundão.
