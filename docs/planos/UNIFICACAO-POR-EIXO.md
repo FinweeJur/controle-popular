@@ -29,17 +29,16 @@ portal (barragens, atores, transparência); agora o eixo é o *assunto que o
 leitor procura*. Barragens virou frente de Meio ambiente; Atores virou frente de
 Justiça e Economia; Transparência virou Dados.
 
-O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 10 eixos, 56 frentes,
+O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 9 eixos, 56 frentes,
 `caminhoDe()` para a trilha e `paginasDoEixo()` para a contagem.
 
-## Os 10 eixos
+## Os 9 eixos
 
 | Eixo | Frentes | Rotas | Estado da porta |
 |---|---|---:|---|
 | Casos | Brumadinho, Rio Doce, Itatiaiuçu | 21 | proposta |
 | Direitos | Em movimento, Memória, Saúde, Educação, Trabalho, Globais, Comparados | 26 | proposta |
-| Meio ambiente | Barragens, Licenciamento, Fiscalização, Conflitos, Clima | 22 | no ar (`/ambiental`) |
-| Terra e território | Territórios, Função social | 5 | no ar |
+| Meio ambiente | **Territórios e mapa**, Função social, Barragens, Licenciamento, Fiscalização, Conflitos, Clima | 27 | no ar (`/ambiental`) |
 | Cidades | Índice, Município | 2 (+68 municipais) | no ar |
 | Política | Congresso, Assembleias, Governo, Eleições | 15 | no ar |
 | Economia | Empresas, Contas públicas | 13 | no ar |
@@ -65,6 +64,18 @@ O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 10 eixos, 56 frentes,
 - **Juntar**: `/direitos` geral com os eixos (saúde, moradia, água, trabalho,
   educação, segurança, informação) e a contagem de acórdãos por direito.
 - **Preservar**: as 23 rotas de direitos, como frentes.
+
+### Terra entrou em Meio ambiente, com o mapa na frente
+
+Território é a mesma pergunta que barragem: onde o risco está e quem vive ali.
+Manter dois eixos separava o mapa do risco.
+
+- **Fusão**: "Terra e território" virou as duas primeiras frentes de Meio
+  ambiente — **Territórios e mapa** (com `destaque: true`) e Função social.
+- **Destaque**: o mapa do território abre o eixo. A frente aponta para
+  `/terra-e-territorios` e para o globo 3D (`/funcaosocialterra/mapa`).
+- **Ganho**: 9 eixos, e o mapa deixa de ser um canto do portal.
+- **Preservar**: as 5 rotas de terra, intactas.
 
 ### Meio ambiente — já é um eixo, falta a porta de barragens
 
@@ -167,6 +178,8 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
 
 ## Origem / Histórico
 
+- **08/11/2026 — 10 → 9 eixos.** Terra vira Meio ambiente, com o mapa do
+  território em destaque na abertura do eixo.
 - **08/11/2026 — 11 → 10 eixos.** Movimentos vira frente de Direitos:
   memória das lutas é direito em movimento, não eixo separado.
 - **08/11/2026 — 14 → 11 eixos.** Trabalho, Saúde e Educação viram frentes de

@@ -12,13 +12,14 @@
  *
  * Os eixos seguem a lógica de editoria que o leitor já conhece de veículo de
  * movimento popular (inspiração: Brasil de Fato): Direitos, Meio ambiente,
- * Terra, Cidades, Política, Economia, Justiça, Internacional. O portal
- * acrescenta "Casos" (os desastres) e "Dados", que são a razão de existir dele.
+ * Cidades, Política, Economia, Justiça, Internacional. O portal acrescenta
+ * "Casos" (os desastres) e "Dados", que são a razão de existir dele.
  *
  * DECISÕES DE ENXUGAMENTO (08/11/2026): o portal tinha 14 eixos, demais para o
  * leitor escolher. Trabalho, Saúde e Educação viraram frentes de Direitos, e
- * Movimentos também — memória das lutas é direito em movimento, não assunto
- * separado. Restam 10 eixos, sem mover nenhuma página.
+ * Movimentos também — memória das lutas é direito em movimento. Terra entrou em
+ * Meio ambiente, mas com destaque: o mapa do território abre o eixo. Restam 9
+ * eixos, sem mover nenhuma página.
  *
  * REGRA: nada aqui move página. `rotas` lista o que existe hoje; `rota` da frente
  * é a porta que já está no ar. Página nova entra como `estado: "proposta"`.
@@ -38,6 +39,8 @@ export interface Frente {
   rota: string;
   /** Rotas da frente que já estão no ar. */
   rotas: string[];
+  /** Frente que abre o eixo e ganha destaque no índice (ex.: o mapa). */
+  destaque?: boolean;
 }
 
 export interface Eixo {
@@ -193,6 +196,27 @@ export const EIXOS: Eixo[] = [
     estado: "no-ar",
     frentes: [
       {
+        slug: "territorios",
+        rotulo: "Territórios e mapa",
+        descricao: "O mapa do território: nossas serras, nossos rios, os vales e o globo 3D da função social.",
+        rota: "/terra-e-territorios",
+        rotas: [
+          "/terra-e-territorios",
+          "/terra-e-territorios/nossas-serras",
+          "/terra-e-territorios/nossos-rios",
+          "/terra-e-territorios/vales",
+          "/funcaosocialterra/mapa",
+        ],
+        destaque: true,
+      },
+      {
+        slug: "funcao-social",
+        rotulo: "Função social",
+        descricao: "A terra que não cumpre função social.",
+        rota: "/funcaosocialterra",
+        rotas: ["/funcaosocialterra"],
+      },
+      {
         slug: "barragens",
         rotulo: "Barragens",
         descricao: "Cadastro, nível de emergência, descaracterização e panorama mundial.",
@@ -253,34 +277,6 @@ export const EIXOS: Eixo[] = [
           "/ambiental/crise-climatica",
           "/ambiental/litigios-climaticos",
         ],
-      },
-    ],
-  },
-  {
-    slug: "terra",
-    rotulo: "Terra e território",
-    descricao: "Serras, rios, vales, cidades e a função social da terra.",
-    rota: "/terra-e-territorios",
-    estado: "no-ar",
-    frentes: [
-      {
-        slug: "territorios",
-        rotulo: "Territórios",
-        descricao: "Nossas serras, nossos rios e os vales.",
-        rota: "/terra-e-territorios",
-        rotas: [
-          "/terra-e-territorios",
-          "/terra-e-territorios/nossas-serras",
-          "/terra-e-territorios/nossos-rios",
-          "/terra-e-territorios/vales",
-        ],
-      },
-      {
-        slug: "funcao-social",
-        rotulo: "Função social",
-        descricao: "A terra que não cumpre função social.",
-        rota: "/funcaosocialterra",
-        rotas: ["/funcaosocialterra"],
       },
     ],
   },
@@ -536,8 +532,8 @@ const ALIAS: { prefixo: string; eixo: string; frente?: string }[] = [
   { prefixo: "/assembleias", eixo: "politica", frente: "assembleias" },
   { prefixo: "/congresso", eixo: "politica", frente: "congresso" },
   { prefixo: "/eleicoes", eixo: "politica", frente: "eleicoes" },
-  { prefixo: "/terra-e-territorios", eixo: "terra", frente: "territorios" },
-  { prefixo: "/funcaosocialterra", eixo: "terra", frente: "funcao-social" },
+  { prefixo: "/terra-e-territorios", eixo: "meio-ambiente", frente: "territorios" },
+  { prefixo: "/funcaosocialterra", eixo: "meio-ambiente", frente: "funcao-social" },
   { prefixo: "/dados", eixo: "dados", frente: "abertos" },
   { prefixo: "/documentacao", eixo: "dados", frente: "abertos" },
   { prefixo: "/meus-dados", eixo: "dados", frente: "meus-dados" },
