@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 /**
  * @file RastroCursorBotao.tsx
@@ -46,7 +46,7 @@ export default function RastroCursorBotao() {
 
   return (
     <div
-      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] transition-[bottom,opacity] duration-200 motion-reduce:transition-none print:hidden ${
+      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${
         visivel ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       data-cp-slot={indice}

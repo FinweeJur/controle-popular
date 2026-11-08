@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
@@ -425,7 +425,7 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-[bottom,opacity] duration-200 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
+        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
         data-cp-slot={radio.indice}
         data-arrastavel-caixa
         data-nao-plataforma

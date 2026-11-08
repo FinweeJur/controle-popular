@@ -20,6 +20,18 @@ import { ATRIBUTO_PILHA, definirPilhaRevelada } from "@/app/components/pilha/est
 /** Carência da saída: cobre o vão entre os botões da pilha. */
 export const ESPERA_SAIDA_PILHA_MS = 300;
 
+/**
+ * Distância (px) do ponteiro ao FAB do Seu Nonô que já revela a pilha.
+ *
+ * Pedido do dono (08/11/2026): "pode ser pra já aparecer direto... ou com
+ * proximidade de alguns pixels". Sem isto, só o ponteiro EM CIMA do botão
+ * abria a pilha, e a chegada parecia lenta.
+ */
+export const RAIO_PROXIMIDADE_PILHA_PX = 24;
+
+/** Intervalo mínimo entre medições de proximidade (ms): 10 leituras/s. */
+const INTERVALO_MEDICAO_MS = 100;
+
 /** O alvo (ou um ancestral) faz parte da pilha? */
 function dentroDaPilha(alvo: EventTarget | null): boolean {
   return alvo instanceof Element && Boolean(alvo.closest(`[${ATRIBUTO_PILHA}]`));
@@ -46,6 +58,24 @@ export default function useControlePilha(): void {
         timer = null;
         definirPilhaRevelada(false);
       }, ESPERA_SAIDA_PILHA_MS);
+    };
+
+    // Chegada por PROXIMIDADE: não precisa acertar o FAB. Mede a distância
+    // até o botão do Seu Nonô 10x/s (suficiente para o olho) e revela dentro
+    // de `RAIO_PROXIMIDADE_PILHA_PX`.
+    let ultimaMedicao = 0;
+    const aoMover = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return;
+      const agora = performance.now();
+      if (agora - ultimaMedicao < INTERVALO_MEDICAO_MS) return;
+      ultimaMedicao = agora;
+      const caixa = document
+        .querySelector('[aria-label="Abrir assistente Seu Nonô"]')
+        ?.getBoundingClientRect();
+      if (!caixa) return;
+      const dx = Math.max(caixa.left - e.clientX, 0, e.clientX - caixa.right);
+      const dy = Math.max(caixa.top - e.clientY, 0, e.clientY - caixa.bottom);
+      if (Math.hypot(dx, dy) <= RAIO_PROXIMIDADE_PILHA_PX) revelar();
     };
 
     // `pointerover`/`pointerout` borbulham: dá para ouvir na janela e saber
@@ -75,6 +105,7 @@ export default function useControlePilha(): void {
     window.addEventListener("pointerout", aoSair);
     window.addEventListener("focusin", aoFocar);
     window.addEventListener("focusout", aoDesfocar);
+    window.addEventListener("pointermove", aoMover, { passive: true });
 
     return () => {
       cancelarSaida();
@@ -82,6 +113,7 @@ export default function useControlePilha(): void {
       window.removeEventListener("pointerout", aoSair);
       window.removeEventListener("focusin", aoFocar);
       window.removeEventListener("focusout", aoDesfocar);
+      window.removeEventListener("pointermove", aoMover);
     };
   }, []);
 }

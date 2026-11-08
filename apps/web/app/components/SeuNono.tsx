@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 /**
  * @file SeuNono.tsx
@@ -2451,7 +2451,7 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom,opacity] duration-200 motion-reduce:transition-none ${
+        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom] duration-75 motion-reduce:transition-none ${
           pataVisivel ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         data-cp-slot={pata.indice}
