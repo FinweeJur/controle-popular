@@ -12,9 +12,14 @@
  *
  * Os eixos seguem a lógica de editoria que o leitor já conhece de veículo de
  * movimento popular (inspiração: Brasil de Fato): Direitos, Meio ambiente,
- * Movimentos, Terra, Trabalho, Saúde, Educação, Cidades, Política, Economia,
- * Justiça, Internacional. O portal acrescenta "Casos" (os desastres) e "Dados",
- * que são a razão de existir dele.
+ * Movimentos, Terra, Cidades, Política, Economia, Justiça, Internacional. O
+ * portal acrescenta "Casos" (os desastres) e "Dados", que são a razão de existir
+ * dele.
+ *
+ * Trabalho, Saúde e Educação NÃO são eixos próprios (decisão de 08/11/2026):
+ * eram três portas para páginas que já vivem em Direitos, e o portal ficava com
+ * 14 eixos — demais para o leitor. Viraram frentes de Direitos, com o mesmo
+ * endereço canônico.
  *
  * REGRA: nada aqui move página. `rotas` lista o que existe hoje; `rota` da frente
  * é a porta que já está no ar. Página nova entra como `estado: "proposta"`.
@@ -287,57 +292,6 @@ export const EIXOS: Eixo[] = [
         descricao: "A terra que não cumpre função social.",
         rota: "/funcaosocialterra",
         rotas: ["/funcaosocialterra"],
-      },
-    ],
-  },
-  {
-    slug: "trabalho",
-    rotulo: "Trabalho",
-    descricao: "Emprego, renda, rescisão e empregadores autuados.",
-    rota: "/direitos-em-movimento/trabalho-e-renda",
-    estado: "no-ar",
-    frentes: [
-      {
-        slug: "renda",
-        rotulo: "Trabalho e renda",
-        descricao: "O que fazer quando a renda acaba e como consultar o empregador.",
-        rota: "/direitos-em-movimento/trabalho-e-renda",
-        rotas: [
-          "/direitos-em-movimento/trabalho-e-renda",
-          "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "saude",
-    rotulo: "Saúde",
-    descricao: "Atendimento, medicamento, plano de saúde e saúde pública.",
-    rota: "/direitos-em-movimento/saude-publica",
-    estado: "no-ar",
-    frentes: [
-      {
-        slug: "saude-publica",
-        rotulo: "Saúde pública",
-        descricao: "Como pedir atendimento e o que a rede garante.",
-        rota: "/direitos-em-movimento/saude-publica",
-        rotas: ["/direitos-em-movimento/saude-publica"],
-      },
-    ],
-  },
-  {
-    slug: "educacao",
-    rotulo: "Educação",
-    descricao: "Escola, creche e estudante em situação de vulnerabilidade.",
-    rota: "/direitos-em-movimento/educacao",
-    estado: "no-ar",
-    frentes: [
-      {
-        slug: "escola",
-        rotulo: "Escola e creche",
-        descricao: "Vaga, transporte e material.",
-        rota: "/direitos-em-movimento/educacao",
-        rotas: ["/direitos-em-movimento/educacao"],
       },
     ],
   },

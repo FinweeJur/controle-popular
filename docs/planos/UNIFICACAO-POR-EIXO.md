@@ -29,10 +29,10 @@ portal (barragens, atores, transparência); agora o eixo é o *assunto que o
 leitor procura*. Barragens virou frente de Meio ambiente; Atores virou frente de
 Justiça e Economia; Transparência virou Dados.
 
-O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 14 eixos, 60 frentes,
+O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 11 eixos, 57 frentes,
 `caminhoDe()` para a trilha e `paginasDoEixo()` para a contagem.
 
-## Os 14 eixos
+## Os 11 eixos
 
 | Eixo | Frentes | Rotas | Estado da porta |
 |---|---|---:|---|
@@ -41,9 +41,6 @@ O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 14 eixos, 60 frentes,
 | Meio ambiente | Barragens, Licenciamento, Fiscalização, Conflitos, Clima | 22 | no ar (`/ambiental`) |
 | Movimentos | Memória, Direitos em movimento | 6 | proposta |
 | Terra e território | Territórios, Função social | 5 | no ar |
-| Trabalho | Trabalho e renda | 2 | no ar |
-| Saúde | Saúde pública | 1 | no ar |
-| Educação | Escola e creche | 1 | no ar |
 | Cidades | Índice, Município | 2 (+68 municipais) | no ar |
 | Política | Congresso, Assembleias, Governo, Eleições | 15 | no ar |
 | Economia | Empresas, Contas públicas | 13 | no ar |
@@ -86,12 +83,19 @@ O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 14 eixos, 60 frentes,
   agora.
 - **Preservar**: `/memoria` inteira.
 
-### Terra, Trabalho, Saúde, Educação — eixos de uma frente só
+### Por que Trabalho, Saúde e Educação deixaram de ser eixos
 
-- Hoje são subpáginas de `direitos-em-movimento`. Como eixo próprio, ganham
-  porta e nome que o leitor procura ("saúde", "escola"), sem duplicar a página:
-  o endereço canônico continua o atual e o eixo só aponta.
-- **Cuidado**: cross-listing é permitido; página duplicada não.
+Decisão de 08/11/2026: eram três eixos de uma frente só, e cada um abria uma
+porta para uma página que já vivia em Direitos. O portal ficava com 14 eixos —
+demais para o leitor escolher.
+
+- **Fusão**: viraram **frentes de Direitos** (Saúde, Educação, Trabalho), com o
+  mesmo endereço canônico (`/direitos-em-movimento/saude-publica` etc.).
+- **Ganho**: 11 eixos, e "Direitos" passa a ser a resposta para "tenho direito a
+  quê?", com seis frentes (em movimento, saúde, educação, trabalho, globais,
+  comparados).
+- **Custo**: nenhum dado muda; só o índice e a trilha.
+- **Regra mantida**: cross-listing é permitido; página duplicada não.
 
 ### Cidades — o maior volume, nenhuma duplicação
 
@@ -160,6 +164,8 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
 
 ## Origem / Histórico
 
+- **08/11/2026 — 14 → 11 eixos.** Trabalho, Saúde e Educação viram frentes de
+  Direitos: eram portas para páginas que já moravam lá.
 - **08/11/2026 — criado.** Substitui a divisão por produto (barragens, atores,
    transparência) pela divisão por assunto que o leitor procura, inspirada na
    editoria do Brasil de Fato.
