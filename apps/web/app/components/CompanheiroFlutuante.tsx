@@ -468,6 +468,12 @@ export function CompanheiroFlutuante() {
       const salva = salvas[pet.slug];
       const bicho = criarBicho(xNascimento(salva, idx, larg, window.innerWidth));
       if (salva) bicho.pos.y = Math.max(0, salva.y);
+      // Trajeto com variação (dono, 08/11/2026): cada bicho nasce com direção,
+      // velocidade (0,8–1,15×) e primeiro sorteio de virada próprios. A faixa
+      // é estreita de propósito — varia sem virar movimento rápido.
+      bicho.dir = Math.random() < 0.5 ? -1 : 1;
+      bicho.fator = 0.8 + Math.random() * 0.35;
+      bicho.virarAte = performance.now() + 2500 + Math.random() * 4000;
       bichosRef.current.set(pet.slug, bicho);
     });
   }, []);

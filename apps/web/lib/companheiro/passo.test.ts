@@ -38,6 +38,7 @@ import {
   listasIguais,
   parsearPetsSalvos,
   passoBicho,
+  passoTerra,
   suavizar,
   xNascimento,
   type Bicho,
@@ -213,6 +214,8 @@ function clonarBicho(b: Bicho): Bicho {
     estado: { ...b.estado },
     queda: b.queda,
     semCliqueAte: b.semCliqueAte,
+    fator: b.fator,
+    virarAte: b.virarAte,
   };
 }
 
@@ -264,6 +267,8 @@ function bichoCom(campos: Partial<Bicho>): Bicho {
   b.chegouEm = campos.chegouEm ?? b.chegouEm;
   b.alvoEl = campos.alvoEl ?? b.alvoEl;
   b.queda = campos.queda ?? b.queda;
+  b.fator = campos.fator ?? b.fator;
+  b.virarAte = campos.virarAte ?? b.virarAte;
   return b;
 }
 
@@ -594,5 +599,33 @@ describe("listasIguais", () => {
 describe("NOMES_ESTADO × LINHAS_ATLAS", () => {
   it("a ordem é idêntica — o índice da linha do atlas depende dela", () => {
     expect([...NOMES_ESTADO]).toEqual([...LINHAS_ATLAS]);
+  });
+});
+
+describe('trajeto com variação (dono, 08/11/2026)', () => {
+  it('fator de velocidade muda o passo, sem acelerar demais', () => {
+    const ctx = { ...ctxPadrao(), aleatorio: () => 0.9 };
+    const lento = bichoCom({ pos: { x: 300, y: 0 }, dir: 1, fator: 0.8 });
+    const rapido = bichoCom({ pos: { x: 300, y: 0 }, dir: 1, fator: 1.15 });
+    passoTerra(lento, ctx);
+    passoTerra(rapido, ctx);
+    expect(rapido.pos.x > lento.pos.x).toBe(true);
+    // A faixa toda continua abaixo de 40 px/s: nada de movimento rápido.
+    expect(1.15 * VELOCIDADE).toBeLessThan(40);
+  });
+
+  it('virada ocasional respeita o instante marcado e o sorteio', () => {
+    const ctx = { ...ctxPadrao(), aleatorio: () => 0.4 };
+    const b = bichoCom({ pos: { x: 300, y: 0 }, dir: 1, virarAte: 9000 });
+    passoTerra(b, ctx);
+    expect(b.dir).toBe(-1);
+    expect(b.virarAte).toBeGreaterThan(10_000);
+  });
+
+  it('sem virarAte ligado, o teste antigo não consome sorteio de virada', () => {
+    const ctx = { ...ctxPadrao(), aleatorio: () => 0.9 };
+    const b = bichoCom({ pos: { x: 300, y: 0 }, dir: 1 });
+    passoTerra(b, ctx);
+    expect(b.dir).toBe(1);
   });
 });
