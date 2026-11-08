@@ -101,8 +101,10 @@ import {
 } from "@/lib/assistente/escada-determinista";
 import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
 
-/** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor. */
-function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
+/** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor.
+ *  Exportado para o `DockFlutuante` reaproveitar a MESMA cara no botão
+ *  menor do dock, sem segunda cópia do desenho nem do caminho da imagem. */
+export function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img

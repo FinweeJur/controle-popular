@@ -57,14 +57,21 @@
  *   compositor) — nenhum trabalho novo de JS por quadro;
  * - a trilha agora é OPT-IN (pedido do dono, 19/10/2026): preferência
  *   `cp_rastro_cursor` no `localStorage` (padrão DESLIGADO; só `on` liga),
- *   trocada pelo botão mágico flutuante (`RastroCursorBotao.tsx`), pelo
+ *   trocada pelo item de rastro do `DockFlutuante.tsx` (antes pelo botão
+ *   solto `RastroCursorBotao.tsx`, desmontado em 08/11/2026), pelo
  *   cartão "Acessibilidade" do Seu Nonô ou por pedido em texto
  *   ("desativar trilha do cursor"). A troca viaja pelo evento
  *   `cp:rastro-cursor` e monta/desmonta a corrente na hora, sem
  *   recarregar a página — desligada, não existe elo nem quadro nenhum
  *   rodando;
  * - é decorativo: `aria-hidden`, `pointer-events: none`, sem captura de
- *   clique; respeita `prefers-reduced-motion` e não liga em tela de toque.
+ *   clique; respeita `prefers-reduced-motion`;
+ * - no celular/tablet (pedido do dono, 08/11/2026) a trilha acompanha o
+ *   dedo apenas enquanto ele ARRASTA a tela: `pointerdown` de toque arma a
+ *   corrente, o primeiro `pointermove` além de ~10 px acende, e
+ *   `pointerup`/`pointercancel` (o cancelamento é o que o navegador dispara
+ *   quando assume a rolagem) desarmam. Toque parado não acende e nenhum
+ *   `preventDefault` é chamado — a rolagem continua nativa.
  *
  * Cores: usa `--cp-accent` (acompanha o tema) com um brilho suave, no
  * espírito neon da referência.
@@ -74,7 +81,8 @@ import { useEffect, useRef } from "react";
 
 /**
  * Preferência da trilha — pedido do dono (19/10/2026): a trilha é OPT-IN,
- * ligada pelo botão mágico flutuante (`RastroCursorBotao.tsx`). Antes
+ * ligada pelo item de rastro do `DockFlutuante.tsx` (antes pelo botão
+ * solto `RastroCursorBotao.tsx`). Antes
  * (10/10/2026) era "ligada por padrão, o visitante podia desativar". Padrão
  * trocado: só o valor `on` liga.
  *
@@ -86,7 +94,7 @@ export const CHAVE_RASTRO_CURSOR = "cp_rastro_cursor";
 export const EVENTO_RASTRO_CURSOR = "cp:rastro-cursor";
 
 /**
- * Lê a preferência. Ligada por padrão; só `off` desliga. No servidor (SSR)
+ * Lê a preferência. Desligada por padrão; só `on` liga. No servidor (SSR)
  * devolve `true` — a trilha é decoração montada só no cliente, então o
  * valor aqui nunca vaza para o HTML.
  */
@@ -237,6 +245,15 @@ const PX_POR_LETRA = 24;
 const OCIOSO_MS = 1800;
 
 /**
+ * Deslocamento mínimo (px) do dedo desde o `pointerdown` para a trilha
+ * acender no toque (08/11/2026). Abaixo disso é toque parado ou o tremor do
+ * dedo pousado — nada de corrente "nascendo" por engano. Também dá margem
+ * para o navegador decidir se o gesto é rolagem: quando é, ele dispara
+ * `pointercancel` e a corrente nem chega a acender.
+ */
+const LIMIAR_TOQUE_PX = 10;
+
+/**
  * Detecta máquina fraca ANTES de montar a corrente (10/10/2026).
  *
  * Usa o que o navegador expõe sobre o hardware, sem rede nem medição
@@ -270,7 +287,10 @@ export default function RastroCursor() {
     const camada = camadaRef.current;
     if (!camada) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
+    // Tela de toque NÃO bloqueia mais a trilha (08/11/2026): o celular e o
+    // tablet desenham o rastro no arrasto de dedo, tratado em `aoMover`.
+    // O efeito continua barato em quem nunca toca: a camada nasce com
+    // opacidade 0 e nenhum quadro roda até o primeiro movimento.
 
     // Classificação de hardware, uma única vez no mount. O resultado vai
     // para uma classe na camada (o CSS tira o brilho) e para a contagem
@@ -305,6 +325,11 @@ export default function RastroCursor() {
     let deslocamento = 0;
     let quadro = 0;
     let visivel = false;
+    /** Dedo pousado na tela (armado no `pointerdown`, desarmado ao soltar). */
+    let tocando = false;
+    /** Onde o dedo pousou: a régua do LIMIAR_TOQUE_PX. */
+    let toqueX = 0;
+    let toqueY = 0;
 
     /**
      * Cria os elos no centro da tela — no mount (se ligada) e ao religar.
@@ -357,11 +382,37 @@ export default function RastroCursor() {
 
     const aoMover = (e: PointerEvent) => {
       if (!ativo) return;
-      if (e.pointerType === "touch") return;
+      // O toque passou a valer no ARRASTO (08/11/2026): `pointerdown` arma,
+      // mas só o deslocamento acima do limiar acende — toque parado não
+      // desenha nada. Na rolagem o navegador dispara `pointercancel` e
+      // desarma antes da corrente firmar; nada aqui bloqueia o gesto.
+      if (e.pointerType === "touch") {
+        if (!tocando) return;
+        if (Math.hypot(e.clientX - toqueX, e.clientY - toqueY) < LIMIAR_TOQUE_PX) {
+          return;
+        }
+      }
       alvoX = e.clientX;
       alvoY = e.clientY;
       ultimoMovimento = performance.now();
       acordar();
+    };
+
+    /** Arma a trilha no toque; ignora mouse/caneta, que já movem sem clique. */
+    const aoPressionar = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      tocando = true;
+      toqueX = e.clientX;
+      toqueY = e.clientY;
+    };
+
+    /**
+     * Desarma no fim do toque. `pointercancel` é o caso importante: é o que
+     * o navegador dispara quando assume o gesto para rolar a página.
+     */
+    const aoSoltar = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      tocando = false;
     };
 
     /** Cada elo segue o anterior — a física de "cadeia" da trilha. */
@@ -470,10 +521,18 @@ export default function RastroCursor() {
     };
 
     window.addEventListener(EVENTO_RASTRO_CURSOR, aoMudarPreferencia);
+    // Todos passivos (08/11/2026): o handler nunca chama `preventDefault`,
+    // então a rolagem nativa do dedo continua com a fluidez do navegador.
     window.addEventListener("pointermove", aoMover, { passive: true });
+    window.addEventListener("pointerdown", aoPressionar, { passive: true });
+    window.addEventListener("pointerup", aoSoltar, { passive: true });
+    window.addEventListener("pointercancel", aoSoltar, { passive: true });
     if (ativo) montar();
     return () => {
       window.removeEventListener("pointermove", aoMover);
+      window.removeEventListener("pointerdown", aoPressionar);
+      window.removeEventListener("pointerup", aoSoltar);
+      window.removeEventListener("pointercancel", aoSoltar);
       window.removeEventListener(EVENTO_RASTRO_CURSOR, aoMudarPreferencia);
       parar();
       desmontar();

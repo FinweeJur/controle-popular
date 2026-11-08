@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
@@ -65,7 +66,12 @@ export default function ConteudoTrabalho() {
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="CAGED"
+        extenso="Cadastro Geral de Empregados e Desempregados"
+        explicacao="é o registro de admissões e demissões com carteira assinada — daí o saldo de vagas."
+        dica="CAGED é o registro oficial de contratações e demissões com carteira assinada; o saldo é admissões menos desligamentos."
+      />
       <section aria-label="Cadastro de Empregadores" className="rounded-2xl border border-border bg-surface p-6 shadow-xs">
         <h2 className="font-display text-lg font-bold text-foreground">
           Trabalho escravo contemporâneo: a lista suja em CNPJ

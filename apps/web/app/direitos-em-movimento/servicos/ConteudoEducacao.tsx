@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
@@ -76,7 +77,12 @@ export default function ConteudoEducacao() {
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="IDEB"
+        extenso="Índice de Desenvolvimento da Educação Básica"
+        explicacao="é a nota de aprendizado da escola: junta o desempenho na prova com a taxa de aprovação."
+        dica="IDEB é a nota que combina aprendizado na prova e aprovação dos alunos; 6,0 é a meta nacional para os anos iniciais."
+      />
       <section
         aria-labelledby="titulo-grafico-ideb"
         className="rounded-2xl border border-border bg-surface p-6 sm:p-8"

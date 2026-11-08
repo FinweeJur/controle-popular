@@ -4,14 +4,14 @@ import DicaHover from "@/app/components/DicaHover";
 import { SeuNono } from "@/app/components/SeuNono";
 import { PonteCompanheiro } from "@/app/components/PonteCompanheiro";
 import CompanheiroOpcional from "@/app/components/CompanheiroOpcional";
-import RastroCursorBotao from "@/app/components/RastroCursorBotao";
+import DockFlutuante from "@/app/components/DockFlutuante";
 import CliqueNegado from "@/app/components/CliqueNegado";
 import ConviteTema from "@/app/components/ConviteTema";
 
 /**
  * @file Widgets flutuantes do casco — o que aparece por cima de qualquer rota.
  *
- * POR QUE ESTÃO JUNTOS: são oito componentes que o layout monta em TODA página,
+ * POR QUE ESTÃO JUNTOS: são sete componentes que o layout monta em TODA página,
  * cada um com uma decisão de produto própria. Empilhados dentro do componente
  * `RootLayout`, eles faziam dele o maior bloco do arquivo e escondiam a
  * estrutura do documento (head, provider, header, main, footer). Separados,
@@ -39,12 +39,14 @@ export default function WidgetsFlutuantes() {
           NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um no-op. */}
       <PonteCompanheiro />
       {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (dono,
-          19/10/2026): não nasce sozinho; entra só quando a pessoa clica no
-          botão dele. */}
+          19/10/2026): não nasce sozinho. Este componente virou só o PORTÃO
+          (monta o bicho quando ligado e o menu offline quando não); o
+          botão que antes ligava/desligava saiu para o DockFlutuante. */}
       <CompanheiroOpcional />
-      {/* Interruptor flutuante do rastro do mouse: botão mágico que pulsa
-          devagar enquanto a trilha está desligada. A trilha é opt-in. */}
-      <RastroCursorBotao />
+      {/* Dock do canto inferior direito (dono, 08/11/2026): reúne Seu Nonô,
+          rádio, bicho e rastro mágico num lugar só. Substituiu o botão
+          solto do rastro (`RastroCursorBotao`) e o botão do passarinho. */}
+      <DockFlutuante />
       {/* X de negação no clique fora de botões (dono, 19/10/2026): recado
           visual de que o alvo é só um card, sem ação. */}
       <CliqueNegado />

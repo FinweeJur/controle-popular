@@ -4,15 +4,18 @@
  * CompanheiroOpcional — portão do companheiro (passarinho).
  *
  * Pedido do dono (19/10/2026): o bichinho flutuante NÃO nasce mais sozinho.
- * Só existe se a pessoa quiser, clicando no botão. Este wrapper guarda a
- * escolha no `localStorage` (`cp_companheiro_ativo`, padrão OFF — só `on`
- * liga) e monta o `CompanheiroFlutuante.tsx` só quando está ligado:
+ * Só existe se a pessoa quiser, ligando pelo item do dock. Este wrapper
+ * guarda a escolha no `localStorage` (`cp_companheiro_ativo`, padrão OFF —
+ * só `on` liga) e monta o `CompanheiroFlutuante.tsx` só quando está ligado:
  * desligado, nem o script do bicho nem o rastro dele rodam.
  *
- * Desligado, o próprio botão fica no lugar do bicho: mesmo canto inferior
- * esquerdo, mesmo estilo do botão mágico do rastro, para quem quiser
- * religar depois. A troca viaja pelo evento `cp:companheiro-ativo` (mesmo
- * barramento do `cp:rastro-cursor`), sem recarregar a página.
+ * Desligado, o componente não desenha mais botão próprio: quem liga e
+ * desliga o bicho agora é o `DockFlutuante.tsx` (pedido do dono,
+ * 08/11/2026 — um único lugar para as ações rápidas). Aqui fica só o
+ * PORTÃO: com o bicho ligado monta o flutuante; desligado, monta o menu de
+ * bichinhos offline (para a pata do Seu Nonô continuar abrindo o menu sem
+ * ligar nada sozinho). A troca viaja pelo evento `cp:companheiro-ativo`
+ * (mesmo barramento do `cp:rastro-cursor`), sem recarregar a página.
  */
 
 import { useSyncExternalStore } from "react";
@@ -61,29 +64,7 @@ export default function CompanheiroOpcional() {
     return <CompanheiroFlutuante />;
   }
 
-  return (
-    <>
-      {/* Menu de bichinhos que abre com a pata do pet DESLIGADO (bug 4 do
-          dono, 21/10/2026): abrir o menu não liga nada — o passarinho só
-          nasce num clique num bichinho DENTRO do menu. */}
-      <CompanheiroMenuOffline />
-      <button
-        type="button"
-        onClick={() => definirCompanheiroAtivo(true)}
-        title="Passarinho companheiro — clicar para aparecer o bichinho"
-        className="cp-companheiro-botao cursor-pointer select-none rounded-full border border-border bg-surface px-3 py-2 text-xs font-semibold text-text-soft"
-      >
-        <span aria-hidden="true" className="mr-1">🐦</span>
-        Passarinho
-      </button>
-      <style>{`
-        .cp-companheiro-botao {
-          position: fixed;
-          left: 0.75rem;
-          bottom: 0.75rem;
-          z-index: 40;
-        }
-      `}</style>
-    </>
-  );
+  // Bicho desligado: só o menu de bichinhos, que a pata do Seu Nonô pede.
+  // Nenhum botão flutuante aqui — o gatilho é o `DockFlutuante`.
+  return <CompanheiroMenuOffline />;
 }

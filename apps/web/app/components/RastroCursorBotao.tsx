@@ -3,6 +3,11 @@
 /**
  * RastroCursorBotao — botão mágico flutuante que LIGA a trilha do cursor.
  *
+ * ⚠️ NÃO ESTÁ MAIS MONTADO (08/11/2026): o gatilho virou o item de rastro
+ * do `DockFlutuante.tsx`, que lê a MESMA preferência. O arquivo fica como
+ * referência e rollback; se voltar a ser montado junto com o dock, vira
+ * botão duplicado.
+ *
  * Pedido do dono (19/10/2026): a trilha de letras passa a ser opt-in —
  * ninguém ganha a corrente sem pedir. Este botão é o interruptor visível
  * na página inteira: fica discreto no canto inferior direito e, DESLIGADO,

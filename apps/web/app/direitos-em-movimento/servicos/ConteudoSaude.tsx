@@ -1,4 +1,5 @@
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -53,7 +54,12 @@ export default function ConteudoSaude() {
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="SUS"
+        extenso="Sistema Único de Saúde"
+        explicacao="é o sistema público de saúde — o posto, a UPA e o hospital que atendem sem cobrar."
+        dica="SUS é o Sistema Único de Saúde: o atendimento público e gratuito, do posto de saúde ao hospital."
+      />
       <section
         aria-labelledby="titulo-grafico-leitos"
         className="rounded-2xl border border-border bg-surface p-6 sm:p-8"
