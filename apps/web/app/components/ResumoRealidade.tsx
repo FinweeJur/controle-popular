@@ -96,6 +96,42 @@ export function ResumoRealidadeBox({
           return <p key={indice}>{comNegrito(bloco.texto)}</p>;
         })}
       </div>
+
+      {resumo.exemplos?.length ? (
+        <div className="mt-5 space-y-2 border-t border-[var(--cp-border)] pt-4">
+          <h3 className="font-display text-base font-semibold">
+            Ementas que exemplificam as teses
+          </h3>
+          <p className="text-xs opacity-70">
+            Um ou dois processos por tese, com trecho da ementa. O número abre o caso no acervo.
+          </p>
+          {resumo.exemplos.map((grupo) => (
+            <details
+              key={`${grupo.tema}-${grupo.tese}`}
+              className="rounded-lg border border-[var(--cp-border)] px-3 py-2"
+            >
+              <summary className="cursor-pointer text-sm font-medium">
+                {grupo.tese}
+                <span className="ml-2 text-xs font-normal opacity-60">{grupo.tema}</span>
+              </summary>
+              <ul className="mt-2 space-y-3">
+                {grupo.casos.map((caso) => (
+                  <li key={caso.processo} className="text-xs leading-relaxed">
+                    <Link
+                      className="font-mono underline break-all"
+                      href={`/jurisprudencia?q=${encodeURIComponent(caso.processo)}#lista`}
+                    >
+                      {caso.processo}
+                    </Link>
+                    <span className="ml-2 opacity-60">{caso.lado}</span>
+                    <p className="mt-1 whitespace-pre-line opacity-80">{caso.ementa}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
