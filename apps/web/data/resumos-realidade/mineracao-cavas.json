@@ -1,0 +1,11 @@
+{
+ "rota": "/mineracao/cavas",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página lista 135 registros ligados a cavas de mineração. [medido — dados da pagina]\n\nO maior bloco tem 120 registros. Desses, 84 estão marcados como em operação. [medido — dados da pagina]\n\nOutros 34 aparecem como indício processual. O dado mostra que há um sinal de processo, mas não diz qual é o processo nem em que fase está. [medido — dados da pagina]\n\nHá 2 registros sem cadastro na ANM. É um número pequeno dentro do conjunto, e o dado não informa por que ficaram sem cadastro. [medido — dados da pagina]\n\nUm segundo conjunto aparece com 0 registros. A página não explica o que esse conjunto deveria conter. [medido — dados da pagina]\n\nO que o dado não mede: não dá para saber quantas cavas existem no país, quantas são ilegais ou quantas causam dano ambiental. A página mostra só os registros que ela reúne. [nao da para concluir]",
+ "fontes": [
+  "cavas-estados-mg.json",
+  "cavas-serie-mineracao-mg.json"
+ ],
+ "impressao": "e2ea91439b57bdad"
+}

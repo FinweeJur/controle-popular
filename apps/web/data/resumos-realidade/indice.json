@@ -1,0 +1,12 @@
+{
+ "rota": "/indice",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página reúne 321 registros organizados em três blocos, com foco principal em conteúdo explicativo e de monitoramento socioambiental. [medido — dados da pagina]\n\nO maior bloco tem 204 registros. Nele, 145 são da categoria Explicador e 26 de Investigação Cívica. A frente \"estado\" aparece 158 vezes, muito à frente de \"cidades\" (11) e \"ambiental\" (10). O autor mais frequente é o ONSA — Observatório Nacional Socioambiental, com 199 registros. [medido — dados da pagina]\n\nUm segundo bloco tem 17 registros com datas entre 27 e 31 de agosto de 2026, além de dois em 10 de setembro. As frentes mais citadas nesse conjunto são \"cidades\" (4), \"operacao\" (3) e \"paraopeba\" (3). [medido — dados da pagina]\n\nO terceiro bloco tem 100 registros divididos por eixo: Terra e Território lidera com 36, seguido de Estado e Economia (25), Central ONSA & Ferramentas (21) e Direitos em Movimento (18). [medido — dados da pagina]\n\nOs títulos mais repetidos tratam de credenciamentos e chamamentos públicos de órgãos de Minas Gerais, como SEE/MG, SEJUSP/MG e IPSM. Isso indica que parte relevante do acervo acompanha editais e resultados oficiais. [inferido]\n\nO dado não mostra quantos desses registros foram lidos, nem se geraram alguma ação concreta. Também não permite dizer se o volume de publicações aumentou ou caiu ao longo do tempo, porque a página só traz contagens por conjunto, sem série histórica completa. [nao da para concluir]",
+ "fontes": [
+  "noticias-portal.json",
+  "novidades.json",
+  "top-100-paginas.json"
+ ],
+ "impressao": "a13f5a69231ba529"
+}

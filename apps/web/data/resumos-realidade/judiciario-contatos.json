@@ -1,0 +1,11 @@
+{
+ "rota": "/judiciario/contatos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página lista 1.002 registros de contatos do Judiciário. Quase todos — 990 — estão concentrados em um único conjunto; o outro conjunto aparece zerado. [medido — dados da pagina]\n\nO maior bloco é o TJMG, com 337 registros. Na sequência vêm TRT-3, com 42, e TRF-6, com 21. Pelo ramo, são 337 na Justiça Estadual, 42 na Trabalhista e 21 na Federal. [medido — dados da pagina]\n\nPor tipo de unidade, Varas somam 383 registros. Juizados Especiais aparecem 12 vezes, Gabinetes 3, CEJUSC 1 e Secretaria 1. [medido — dados da pagina]\n\nO horário mais repetido é das 12h às 18h, em 343 registros. Depois vêm 08h às 16h (41), 08h às 18h (13), 09h às 19h (2) e 08h às 17h (1). [medido — dados da pagina]\n\nO dado mostra quantos registros existem por tribunal, ramo, tipo e horário. Não mostra se os contatos estão corretos, atualizados ou funcionando — isso não dá para concluir. [nao da para concluir]",
+ "fontes": [
+  "judiciario-contatos-stats.json",
+  "judiciario-unidades-contatos.json"
+ ],
+ "impressao": "5f2b2c4fff3dd6a9"
+}

@@ -1,0 +1,11 @@
+{
+ "rota": "/paraopeba/auditoria",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página reúne 804 registros ligados à auditoria. [medido — dados da pagina] É um volume grande, mas o dado por si só não diz o que foi auditado nem qual foi o resultado. [nao da para concluir]\n\nO maior bloco tem 467 registros. Nele, o tipo mais comum é relatório (328), seguido de nota técnica (72). [medido — dados da pagina]\n\nEntre os instrumentos desse bloco, aparecem acordo-de-reparação (93), monitoramento (72), águas-e-segurança-hídrica (69), estudo-de-risco (69), ações-emergenciais (61) e segurança-das-estruturas (30). São temas diferentes reunidos no mesmo conjunto. [medido — dados da pagina]\n\nPor projeto, os números são: 60612553 (176), 60725868 (130), 60622935 (72) e 60670454 (22). Por disciplina, ZZ (238), CO (69), SH (69), A2 (18) e FS (6). [medido — dados da pagina]\n\nHá ainda um segundo conjunto com 0 registros. [medido — dados da pagina]\n\nO que o dado não mostra: ele não informa se houve irregularidade, não mede gravidade, não aponta responsável e não indica conclusão. Um registro pode ser apenas um documento guardado. O número alto ou baixo não diz, sozinho, se a situação é boa ou ruim. [nao da para concluir]",
+ "fontes": [
+  "auditoria-ajri",
+  "resumo-ajri"
+ ],
+ "impressao": "4d133b563c50655f"
+}

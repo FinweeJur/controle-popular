@@ -1,0 +1,10 @@
+{
+ "rota": "/ambiental/conselhos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "[medido — dados da pagina] A página reúne 710 registros de conselhos ligados a políticas públicas. É um retrato do que existe cadastrado, não do que funciona na prática.\n\n[medido — dados da pagina] A maior parte dos registros está em duas áreas: saúde (124) e meio ambiente (124). Juntas, elas somam quase um terço do total. Criança e adolescente aparece com 95 registros. Direitos humanos (29) e mulher (28) são as menores fatias listadas.\n\n[medido — dados da pagina] Pela esfera de atuação, municipal domina: 287 registros. Estadual tem 108. Federal aparece com apenas 5.\n\n[inferido] Isso sugere que o conselho mais próximo do dia a dia é o municipal. O dado mostra onde estão os registros, mas não diz se esses conselhos se reúnem, decidem ou são ouvidos.\n\n[nao da para concluir] O perfil não mede participação popular, frequência de reuniões nem influência nas decisões. Também não informa se há sobreposição entre categorias — um mesmo conselho pode aparecer em mais de uma área.",
+ "fontes": [
+  "conselhos-direitos.json"
+ ],
+ "impressao": "4d6e606fbc21c149"
+}

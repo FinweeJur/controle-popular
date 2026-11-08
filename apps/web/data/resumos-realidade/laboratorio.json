@@ -1,0 +1,18 @@
+{
+ "rota": "/laboratorio",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "A página reúne 1.349 registros distribuídos em oito conjuntos, mas quase todo o volume está concentrado em dois deles. [medido — dados da pagina]\n\nO maior conjunto tem 990 registros e descreve unidades judiciais: 383 varas, 12 juizados especiais, 3 gabinetes, 1 CEJUSC e 1 secretaria. Os tribunais mais presentes são TJMG (337), TRT3 (42) e TRF6 (21). O horário de atendimento mais citado é 12h às 18h, com 343 registros. [medido — dados da pagina]\n\nOutro conjunto, com 318 registros, aparece apenas como total agregado, sem lista de itens. Não é possível saber o que ele contém a partir da página. [nao da para concluir]\n\nUm terceiro conjunto traz 14 registros ligados a setores como energia, infraestrutura, mineração, tecnologia, saúde e educação, com instrumentos variados — leilões, memorandos e parcerias. Os países líderes aparecem empatados em duplas: Estados Unidos, Alemanha, Brasil e China têm 2 cada; Holanda e Itália, 1 cada. [medido — dados da pagina]\n\nHá ainda um conjunto com 13 registros e três conjuntos com zero. Somados, os conjuntos vazios e o de 13 não chegam a 2% do total. [medido — dados da pagina]\n\nO dado mostra onde estão os registros e o tipo de unidade ou setor descrito. Não mostra quantos desses registros foram consultados, se estão atualizados nem se representam algum resultado prático para quem busca a informação. [inferido]",
+ "fontes": [
+  "barragens-sigbm.json",
+  "educacao-ibge-mg.json",
+  "educacao-inep-mg.json",
+  "esg-update.json",
+  "fornecedores/multinacionais-eua-europa.json",
+  "judiciario-unidades-contatos.json",
+  "legislativo-estaduais/parlamentares-estaduais.json",
+  "negociacoes-parcerias/acordos-licitacoes-internacionais.json",
+  "series-economicas-bcb.json"
+ ],
+ "impressao": "3cef5d8fafdf29ef"
+}
