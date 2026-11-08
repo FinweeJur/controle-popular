@@ -102,7 +102,7 @@ import {
 import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
 import PilhaBotao from "@/app/components/pilha/PilhaBotao";
 import useControlePilha from "@/app/components/pilha/useControlePilha";
-import { usePilhaVisivel } from "@/app/components/pilha/estadoPilha";
+import { useSlotPilha } from "@/app/components/pilha/estadoPilha";
 
 /** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor.
  *  Exportado porque o mesmo desenho aparece no FAB, no cabeçalho do painel
@@ -764,7 +764,8 @@ export function SeuNono() {
   // controle fica AQUI porque este componente está em toda página; os
   // outros dois itens só leem o mesmo estado.
   useControlePilha();
-  const pataVisivel = usePilhaVisivel(menuPetAberto);
+  const pata = useSlotPilha("pata", menuPetAberto);
+  const pataVisivel = pata.visivel;
   useEffect(() => {
     if (!menuPetAberto) return;
     const fechar = () => setMenuPetAberto(false);
@@ -2430,9 +2431,10 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className={`fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_3.5rem)] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-opacity duration-200 motion-reduce:transition-none ${
+        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom,opacity] duration-200 motion-reduce:transition-none ${
           pataVisivel ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
+        data-cp-slot={pata.indice}
         data-arrastavel-caixa
         data-nao-plataforma
         data-cp-pilha

@@ -27,7 +27,7 @@ import {
   lerRastroCursor,
 } from "@/app/components/RastroCursor";
 import PilhaBotao from "@/app/components/pilha/PilhaBotao";
-import { usePilhaVisivel } from "@/app/components/pilha/estadoPilha";
+import { useSlotPilha } from "@/app/components/pilha/estadoPilha";
 
 /** Assina a troca da preferência (mesmo barramento do botão do Seu Nonô). */
 function inscrever(cb: () => void) {
@@ -42,13 +42,14 @@ function snapshotServidor(): boolean {
 
 export default function RastroCursorBotao() {
   const ativo = useSyncExternalStore(inscrever, lerRastroCursor, snapshotServidor);
-  const visivel = usePilhaVisivel(ativo);
+  const { visivel, indice } = useSlotPilha("rastro", ativo);
 
   return (
     <div
-      className={`fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_8rem)] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] transition-opacity duration-200 motion-reduce:transition-none print:hidden ${
+      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] transition-[bottom,opacity] duration-200 motion-reduce:transition-none print:hidden ${
         visivel ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
+      data-cp-slot={indice}
       data-cp-pilha
       inert={!visivel}
       aria-hidden={!visivel}

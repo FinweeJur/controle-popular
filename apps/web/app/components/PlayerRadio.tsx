@@ -30,7 +30,7 @@ import MedidorLiquido from "@/app/components/react-bits/SloshGauge";
 import { useProximidadeLinha } from "@/app/components/react-bits/useProximidadeLinha";
 import { useArrastavel } from "@/lib/usarArrastavel";
 import PilhaBotao from "@/app/components/pilha/PilhaBotao";
-import { usePilhaVisivel } from "@/app/components/pilha/estadoPilha";
+import { classesPilha, useSlotPilha } from "@/app/components/pilha/estadoPilha";
 import {
   medirTopoUtil,
   usePosicaoPainel,
@@ -141,8 +141,8 @@ export default function PlayerRadio() {
 
   // Pilha da esquerda (dono, 08/11/2026): a rádio só aparece com o ponteiro
   // no Seu Nonô (ou em tela sem hover). Tocando ou com o índice aberto,
-  // fica visível para o pause e o painel continuarem à mão.
-  const pilhaVisivel = usePilhaVisivel(tocando, indiceAberto);
+  // fica visível e DESCE para encostar no Seu Nonô (ver `useSlotPilha`).
+  const radio = useSlotPilha("radio", tocando, indiceAberto);
 
   // Arrasto com posição lembrada (pedido do dono, 03/10/2026): o botão é o
   // terceiro círculo da pilha, mas pode ser movido como o FAB do Seu Nonô.
@@ -425,14 +425,13 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className={`group fixed bottom-[max(6.75rem,calc(env(safe-area-inset-bottom)_+_5.75rem))] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-opacity duration-200 motion-reduce:transition-none print:hidden ${
-          pilhaVisivel ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-[bottom,opacity] duration-200 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
+        data-cp-slot={radio.indice}
         data-arrastavel-caixa
         data-nao-plataforma
         data-cp-pilha
-        inert={!pilhaVisivel}
-        aria-hidden={!pilhaVisivel}
+        inert={!radio.visivel}
+        aria-hidden={!radio.visivel}
         // Abre no hover/foco e fecha com atraso de 1,5 s: o vão entre o botão
         // e o painel não some com o índice ao atravessá-lo (ver helpers abaixo).
         onMouseEnter={abrirIndice}

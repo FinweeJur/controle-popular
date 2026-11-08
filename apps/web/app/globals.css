@@ -1504,3 +1504,19 @@ html[data-scroll-perto] ::-webkit-scrollbar-thumb,
     transition: none;
   }
 }
+
+/* DEGRAUS DA PILHA FLUTUANTE (dono, 08/11/2026) -----------------------------
+   Item que fica na tela por estar LIGADO encosta no Seu Nonô: o slot é
+   quantos itens visíveis existem abaixo dele. Slot 0 = 72 px da borda
+   (1rem de margem + 3,5rem); cada degrau soma 36 px (44 px de alvo menos
+   os 8 px de emenda da pilha). O JS só escolhe o slot (useSlotPilha);
+   a régua mora aqui para não repetir a conta em três componentes. */
+[data-cp-slot='0'] {
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 3.5rem);
+}
+[data-cp-slot='1'] {
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 5.75rem);
+}
+[data-cp-slot='2'] {
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 8rem);
+}
