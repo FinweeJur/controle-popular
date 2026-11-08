@@ -67,7 +67,7 @@ import {
  *
  * VOLUME À DIREITA + CASCA (pedido do dono, 06/10/2026): o volume era uma
  * linha no cabeçalho do índice e, com o painel abrindo para cima, o topo
- * passava por trás da navbar (`TopNav` `z-50` fica ACIMA do grupo `z-[45]`)
+ * passava por trás da navbar (`TopNav` `z-50` fica ACIMA do grupo `z-[44]`)
  * — "cortando no topo". Duas correções juntas: (1) o painel virou duas
  * colunas — esquerda com título e lista, direita com o medidor de líquido
  * (SloshGauge, pedido "com essa animação") e o botão de mudo; (2) o
@@ -145,7 +145,8 @@ export default function PlayerRadio() {
   const radio = useSlotPilha("radio", tocando, indiceAberto);
 
   // Arrasto com posição lembrada (pedido do dono, 03/10/2026): o botão é o
-  // terceiro círculo da pilha, mas pode ser movido como o FAB do Seu Nonô.
+  // quarto item da pilha (o de cima desde 08/11/2026), mas pode ser movido
+  // como o FAB do Seu Nonô.
   // A posição persiste em `cp_radio_pos` e o clique continua separado do
   // gesto pelo limiar de 5 px (`foiArrasto`).
   const { estilo, arrastando, foiArrasto, handlers, resetar } =
@@ -176,7 +177,7 @@ export default function PlayerRadio() {
     painelRef: indiceRef,
     medirAncora: medirAncoraIndice,
     // Casca sticky (navbar `z-50`) descontada do topo: o painel fica num
-    // grupo `z-[45]` — abaixo dela por regra de camadas — então ele NÃO
+    // grupo `z-[44]` — abaixo dela por regra de camadas — então ele NÃO
     // sobe por cima: abre abaixo, sem perder a primeira linha atrás da barra
     // (medido 06/10/2026, "volume cortando no topo").
     opcoes: { margemTopo: medirTopoUtil },
@@ -412,10 +413,10 @@ export default function PlayerRadio() {
         // Seu Nonô cresceu para 64 px), `left` pelo eixo comum: centro em
         // x=44, o mesmo eixo da pilha. O max() repete a conta do safe-area do
         // Seu Nonô para o iPhone não desalinhar os quatro botões.
-        // `z-[45]`: por baixo da pata (`z-[46]`) e do FAB (`z-50`), por
-        // cima dos bichinhos (z-40) — um pet passando por trás não pode
-        // cobrir o play. A pata encosta no play com 8 px de emenda (dono,
-        // 07/10/2026, pediu sobreposição pequena na pilha).
+        // `z-[44]`: o rádio é o item de CIMA da pilha (dono, 08/11/2026),
+        // então pinta por baixo do rastro (`z-[45]`), da pata (`z-[46]`) e
+        // do FAB (`z-50`) — a base continua por cima. A pata encosta no play
+        // com 8 px de emenda (dono, 07/10/2026, pediu sobreposição pequena).
         // VISÍVEL SÓ NA PILHA (dono, 08/11/2026): com o ponteiro no Seu Nonô
         // o botão entra; tocando ou com o índice aberto, fica visível.
         ref={grupoRef}
@@ -425,7 +426,7 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] flex flex-col items-center transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
+        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] flex flex-col items-center transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
         data-cp-slot={radio.indice}
         data-arrastavel-caixa
         data-nao-plataforma

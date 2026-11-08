@@ -5,10 +5,12 @@
  * @description Interruptor do rastro mágico na pilha da esquerda.
  *
  * Pedido do dono (19/10/2026): a trilha de letras é opt-in — ninguém ganha a
- * corrente sem pedir. Desde 08/11/2026 este botão é o quarto item da pilha,
- * acima do rádio: fica escondido até o ponteiro chegar no Seu Nonô, abre o
- * nome "Rastro mágico" no hover e continua visível enquanto a trilha está
- * LIGADA, senão não haveria como desligá-la sem caçar o Seu Nonô.
+ * corrente sem pedir. Desde 08/11/2026 este botão é o terceiro item da pilha,
+ * ABAIXO do rádio (dono: rádio no topo): fica escondido até o ponteiro chegar
+ * no Seu Nonô, abre o nome "Rastro mágico" no hover e continua visível
+ * enquanto a trilha está LIGADA, senão não haveria como desligá-la sem caçar
+ * o Seu Nonô. `z-[45]`: pinta por cima do rádio (`z-[44]`) e por baixo da
+ * pata (`z-[46]`) e do FAB (`z-50`).
  *
  * Preferência compartilhada: `cp_rastro_cursor` (padrão DESLIGADO), com as
  * funções exportadas pelo próprio `RastroCursor.tsx` — mesma chave, mesmo
@@ -46,7 +48,7 @@ export default function RastroCursorBotao() {
 
   return (
     <div
-      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${
+      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${
         visivel ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       data-cp-slot={indice}

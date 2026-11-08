@@ -39,12 +39,15 @@ export interface EstadoPilha {
   menuPet: boolean;
   /** Rádio tocando ou com o índice aberto. */
   radioAtivo: boolean;
+  /** Trilha do cursor ligada. */
+  rastroAtivo: boolean;
 }
 
 const ESTADO_INICIAL: EstadoPilha = {
   revelada: false,
   menuPet: false,
   radioAtivo: false,
+  rastroAtivo: false,
 };
 
 let estado: EstadoPilha = ESTADO_INICIAL;
@@ -78,12 +81,18 @@ export function definirRadioAtivo(ativo: boolean): void {
   atualizar({ radioAtivo: ativo });
 }
 
+/** Publica a trilha ligada (chamado pelo `RastroCursorBotao`). */
+export function definirRastroAtivo(ativo: boolean): void {
+  atualizar({ rastroAtivo: ativo });
+}
+
 function atualizar(patch: Partial<EstadoPilha>): void {
   const proximo = { ...estado, ...patch };
   const mudou =
     proximo.revelada !== estado.revelada ||
     proximo.menuPet !== estado.menuPet ||
-    proximo.radioAtivo !== estado.radioAtivo;
+    proximo.radioAtivo !== estado.radioAtivo ||
+    proximo.rastroAtivo !== estado.rastroAtivo;
   if (!mudou) return;
   estado = proximo;
   for (const cb of [...ouvintes]) cb();
@@ -123,8 +132,15 @@ export function useSemHover(): boolean {
   return semHover;
 }
 
-/** Ordem dos degraus, de baixo para cima. */
-const ORDEM_PILHA: SlotPilha[] = ["pata", "radio", "rastro"];
+/** Ordem dos degraus, de baixo para cima (dono, 08/11/2026: rádio no topo). */
+const ORDEM_PILHA: SlotPilha[] = ["pata", "rastro", "radio"];
+
+/** Publica a exceção do item no store (efeito do `useSlotPilha`). */
+function publicarAtivo(slot: SlotPilha, ativo: boolean): void {
+  if (slot === "pata") definirMenuPet(ativo);
+  if (slot === "radio") definirRadioAtivo(ativo);
+  if (slot === "rastro") definirRastroAtivo(ativo);
+}
 
 /**
  * Degrau e visibilidade de um item da pilha.
@@ -146,20 +162,20 @@ export function useSlotPilha(
   const ativoLocal = ativos.some(Boolean);
 
   useEffect(() => {
-    if (slot === "pata") definirMenuPet(ativoLocal);
-    if (slot === "radio") definirRadioAtivo(ativoLocal);
+    publicarAtivo(slot, ativoLocal);
   }, [slot, ativoLocal]);
 
   const base = e.revelada || semHover;
   const visiveis: Record<SlotPilha, boolean> = {
     pata: base || e.menuPet,
+    rastro: base || e.rastroAtivo,
     radio: base || e.radioAtivo,
-    rastro: base || ativoLocal,
   };
   const abaixo = ORDEM_PILHA.slice(0, ORDEM_PILHA.indexOf(slot));
   const indice = abaixo.reduce((n, s) => n + (visiveis[s] ? 1 : 0), 0);
 
-  return { visivel: visiveis[slot], indice };
+  // O item enxerga a própria exceção na hora (o store só a recebe no efeito).
+  return { visivel: base || ativoLocal, indice };
 }
 
 /**
