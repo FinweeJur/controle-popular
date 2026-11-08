@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EIXOS, paginasDoEixo } from "@/lib/navegacao/mapa";
+import { referenciasDoEixo } from "@/lib/navegacao/referencias";
 
 /**
  * Índice expansível por eixo — a árvore do portal.
@@ -29,6 +30,42 @@ const COMECE_AQUI = [
   { rotulo: "Jurisprudência", href: "/jurisprudencia", nota: "acórdãos e catálogo dos desastres" },
   { rotulo: "Barragens", href: "/ambiental/barragens", nota: "quantas, onde e em que nível" },
 ];
+
+/**
+ * Matérias do MAB e do Brasil de Fato sobre o eixo.
+ *
+ * Só aparece quando existe link verificado; eixo sem cobertura não ganha bloco
+ * de enfeite. Abre em aba nova porque é outra casa, não o portal.
+ */
+function ReferenciasDoEixo({ slug }: { slug: string }) {
+  const referencias = referenciasDoEixo(slug);
+  if (referencias.length === 0) return null;
+  return (
+    <div className="mt-3 rounded-md border border-dashed border-border p-3">
+      <p className="text-xs font-semibold uppercase tracking-wide text-text-soft">
+        Leia no movimento
+      </p>
+      <ul className="mt-2 space-y-1.5">
+        {referencias.map((referencia) => (
+          <li key={referencia.url} className="text-sm">
+            <a
+              href={referencia.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-accent hover:underline"
+            >
+              {referencia.titulo} ↗
+            </a>
+            <span className="ml-1 text-xs text-text-soft">
+              {referencia.veiculo}
+              {referencia.nota ? ` · ${referencia.nota}` : ""}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function IndiceEixos() {
   return (
@@ -116,6 +153,8 @@ export default function IndiceEixos() {
                     </li>
                   ))}
               </ul>
+
+              <ReferenciasDoEixo slug={eixo.slug} />
             </details>
           );
         })}
