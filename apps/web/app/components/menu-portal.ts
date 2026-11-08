@@ -173,3 +173,6 @@ for (const secao of SECOES_MENU) {
     (a, b) => Number(Boolean(b.destaque)) - Number(Boolean(a.destaque)),
   );
 }
+// Reexportado aqui para o TopNav importar junto com SECOES_MENU: o arquivo do
+// menu superior está no limite do CodeScene e não pode ganhar linha.
+export { default as MenuEixos } from "./MenuEixos";

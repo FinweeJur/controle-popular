@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { SECOES_MENU } from './menu-portal';
+import { SECOES_MENU, MenuEixos } from './menu-portal';
 import RodapeMenu from './RodapeMenu';
 import { Menu, ChevronDown, Compass, X } from "lucide-react";
 import Link from 'next/link';
@@ -193,8 +193,7 @@ export default function TopNav() {
                     <X size={16} aria-hidden="true" />
                   </button>
                 </div>
-              </div>
-
+              </div><MenuEixos onFechar={fechar} />{/* porta do mapa */}
               {/* Grade de seções pelos 3 Eixos Temáticos + Central */}
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {SECOES_MENU.map((secao) => (
