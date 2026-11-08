@@ -53,6 +53,7 @@ Medição de 08/11/2026, sobre os arquivos em disco.
 | Catálogo do indeterminado | `apps/web/data/catalogo-frentes.json` | 4 frentes, rubrica própria |
 | Agregados Guaicuy/NACAB | `relatorios/agregados-guaicuy-nacab.json` | 2.970 processos, censo |
 | Súmulas | `tabelas/sumulas_{stf,stj,tst}.csv` | STF 736, STJ 673, TST 463 |
+| RAG documental | `apps/web/public/data/documentos-rag/trechos.json` | 2.630 trechos; 269 com texto e página (Guaicuy e NACAB) |
 | **Súmulas do CNJ** | — | **não existe coleta** |
 
 O achado que já está no relatório e sustenta a leitura:
@@ -245,10 +246,45 @@ o caso volta para a fila. Foi assim que o catálogo do Rio Doce caiu de
 
 Saída: `relatorios/temas-gerais.json` + `TEMAS-GERAIS.md`.
 
-### F6 — Redação
+### F5.5 — RAG: dar texto aos documentos (feito em 08/11)
 
-O resumo (§8) é escrito com os números do JSON na mão. Nenhum número é
-escrito pelo modelo: o modelo interpreta a tabela, não conta.
+O índice do RAG tinha **2.361 documentos e 2.361 trechos** — um trecho por
+documento, `pagina: 0` e `texto` igual ao resumo do manifesto. Em outras
+palavras: **metadado, não documento**. O `.cache` estava vazio e
+`baixados: 0`. Sem isso, a síntese citaria resumo de terceiro, não a fonte.
+
+O que foi feito, sem baixar nada:
+
+| Documento | Origem local | Páginas | Trechos |
+|---|---|---:|---:|
+| Dossiê Acesso à Justiça — ações individuais (Guaicuy, 2024) | `fontes-externas/` | 65 | 150 |
+| Pesquisa Jurisprudencial NACAB/ADAI 2023 | `fontes-externas/` | 49 | 119 |
+
+O índice passou a **2.630 trechos**, dos quais 269 com texto real e página.
+Recuperação testada: a consulta "indenização individual das regiões 4 e 5"
+devolveu Guaicuy p. 1 e NACAB p. 10 e 13, com score.
+
+Regra que vale para a síntese: **texto recuperado é dado, nunca instrução**
+para o modelo. E citação sem página não entra.
+
+### F6 — Redação com RAG
+
+O resumo (§8) é escrito com dois insumos, nesta ordem:
+
+1. **A tabela medida** — N, percentual, órgãos, ano, divergência. Vem de
+   contagem, nunca do modelo.
+2. **Os trechos recuperados no RAG** — para cada família de tese, uma
+   consulta (`procedimento`, `prova pericial`, `prescrição`, `gratuidade`,
+   `indenização individual`, `matriz de danos`). Só entra trecho com
+   `pagina > 0`; o metadado puro fica de fora.
+
+O S5 pago escreve a interpretação com `thinking` no máximo, recebendo a
+tabela pronta e os trechos. Ele **não conta** e **não escolhe documento**:
+cada afirmação carrega `[medido]`, `[inferido]` ou `[não dá para concluir]`,
+e toda tese da entidade vem com documento e página.
+
+Custo: 8 a 10 chamadas, ~12 mil tokens de entrada e ~4 mil de saída.
+Teto reservado de R$ 20.
 
 ### F7 — Publicação
 
@@ -361,15 +397,15 @@ sair do documento primário.**
 
 ### Como extrair
 
-1. Baixar os PDFs (com UA honesto `finweejur/github artur colito`, 1–2 s
-   por host, respeitando `robots.txt` e termos).
-2. Extrair o texto e recortar os trechos que formulam tese sobre
-   indenização individual (palavras-âncora: "indenização individual",
-   "dano individual", "reparação integral", "matriz de danos",
-   "prescrição", "nexo causal", "cada atingido").
-3. Cada tese da entidade vira uma linha com: `entidade`, `documento`,
+Os dois documentos já estão **indexados no RAG** (F5.5), com texto e
+página. Não é preciso baixar de novo:
+
+1. Consultar o índice por palavra-âncora: "indenização individual",
+   "dano individual", "reparação integral", "matriz de danos", "prescrição",
+   "nexo causal", "cada atingido".
+2. Cada tese da entidade vira uma linha com: `entidade`, `documento`,
    `página`, `tese` (uma frase), `trecho literal`.
-4. **Confronto**: para cada tese da entidade, três colunas — `confirmada`
+3. **Confronto**: para cada tese da entidade, três colunas — `confirmada`
    (tese dominante no tribunal coincide), `contrariada` (dominante vai no
    sentido oposto) e `não decidida` (o acervo não tem caso com N ≥ 3).
 
@@ -421,7 +457,8 @@ A opção C é a única que não inventa. A A é a melhor, se o site permitir.
 | F3 | lote de 11.710 | 2–4 h | R$ 0 |
 | F4 | auditoria de evidência | 1 h | R$ 0 |
 | F5 | agregação | 1 h | R$ 0 |
-| F6 | redação do resumo (S5 pago, thinking max) | 1 sessão | ~R$ 1 |
+| F5.5 | RAG com Guaicuy e NACAB (269 trechos com página) | feito | R$ 0 |
+| F6 | redação do resumo (S5 pago, thinking max, com RAG) | 1 sessão | ~R$ 1 |
 | F7 | página | 1 sessão | R$ 0 |
 | F8 | documentos das entidades | 1 sessão | R$ 0 |
 
