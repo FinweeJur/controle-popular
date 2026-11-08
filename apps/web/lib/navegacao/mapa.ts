@@ -295,10 +295,13 @@ export const EIXOS: Eixo[] = [
         rotas: ["/cidades"],
       },
       {
+        // A porta é a lista de cidades: `/[municipio]` é rota dinâmica e o Next
+        // não aceita href dinâmico em <Link> no App Router. Quem escolhe a
+        // cidade chega na ficha por lá.
         slug: "municipio",
         rotulo: "Página do município",
         descricao: "A ficha do município, com tudo o que o portal tem sobre ele.",
-        rota: "/[municipio]",
+        rota: "/cidades",
         rotas: ["/[municipio]"],
       },
     ],

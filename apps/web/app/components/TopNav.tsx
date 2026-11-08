@@ -181,7 +181,7 @@ export default function TopNav() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold text-text-soft">
-                    4 Eixos Temáticos • 36+ Subfrentes
+                    9 eixos no mapa • curadoria em 4
                   </span>
                   <button
                     type="button"
