@@ -178,6 +178,9 @@ async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): 
         model: provedor.modelo,
         messages: mensagens,
         temperature: 0.2,
+        // Sabiazinho-4 roda no tier Flex (decisao do dono, 08/11/2026):
+        // 50% mais barato, sujeito a fila.
+        ...(provedor.modelo.startsWith("sabiazinho") ? { service_tier: "flex" } : {}),
       }),
       signal: AbortSignal.timeout(TIMEOUT_MS_PADRAO),
     });
