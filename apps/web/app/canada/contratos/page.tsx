@@ -30,6 +30,7 @@ import {
 import PainelContratosCanada from "./PainelContratosCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Contratos Federais no Canadá & Financiamentos EDC para o Brasil | Controle Popular",
@@ -75,6 +76,8 @@ export default function PaginaContratosCanada() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Compras Públicas no Canadá e Financiamentos da EDC
         </h1>
+
+        <ResumoRealidadeBox rota="/canada/contratos" />
         <p className="mt-2 max-w-4xl text-base text-muted sm:text-lg">
           Mapeamento de subsídios federais canadenses e créditos concedidos a empresas no Brasil.
         </p>

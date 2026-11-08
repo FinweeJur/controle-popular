@@ -19,6 +19,7 @@ import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { obterEstatisticasCar } from "@/lib/ambiental/car";
 import { TOTAL_AUTOS_RECENTES } from "@/lib/ambiental/autos-recentes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * Home da zona /ambiental.
@@ -418,6 +419,7 @@ function montarBlocosFim(dados: DadosAmbiental): Bloco[] {
 function GuiaRapido() {
   return (
     <>
+      <ResumoRealidadeBox rota="/ambiental" />
       {/* ═══ GUIA RÁPIDO — as frentes ambientais em um clique ═══ */}
       <nav
         aria-label="Guia rápido da área ambiental"

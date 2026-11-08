@@ -11,6 +11,7 @@ import type { Cotacao, Noticia, MovimentoSignificativo } from "@/lib/correlacao/
 import vale3Data from "@/data/vale3-cotacoes.json";
 import noticiasValeData from "@/data/noticias-vale.json";
 import sgmlData from "@/data/sgml-cotacoes.json";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/paraopeba/correlacao", {
   title: "Precos x Noticias \u2014 Paraopeba | Controle Popular",
@@ -60,6 +61,8 @@ export default function CorrelacaoPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Precos x Noticias
       </h1>
+
+        <ResumoRealidadeBox rota="/paraopeba/correlacao" />
 
       <div className="mt-6 rounded-xl border border-alert/40 bg-alert/10 p-4 text-sm text-muted">
         Correlacao nao implica causalidade. Movimentos de mercado sao influenciados por multiplos

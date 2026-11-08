@@ -22,6 +22,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { COBERTURA_CONSUMIDORES_RECURSOS } from "@/lib/recursos/dados-consumidores";
 import { converter } from "@/lib/transformacao/unidades";
 import PainelConsumoCorporativoClient from "./PainelConsumoCorporativoClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title:
@@ -75,6 +76,8 @@ export default function ConsumoCorporativoPage() {
           <h1 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground">
             Maiores Consumidores de Água, Energia, Combustível, Empregos e Capital
           </h1>
+
+        <ResumoRealidadeBox rota="/consumo-corporativo" />
           <p className="text-sm sm:text-base text-muted leading-relaxed max-w-4xl">
             Sistematização pública das 50 maiores operações corporativas em Minas Gerais
             e do consumo setorial e empresarial nos 20 países do G20. Compare quanto as

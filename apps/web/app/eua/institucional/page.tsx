@@ -4,6 +4,7 @@ import { COBERTURA_EUA, obterInstitucionalEua } from "@/lib/internacional/dados-
 import SubNavEua from "../components/SubNavEua";
 import PainelInstitucionalEua from "./PainelInstitucionalEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file apps/web/app/eua/institucional/page.tsx
@@ -79,6 +80,8 @@ export default function PaginaInstitucionalEua() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Institucional dos EUA: Cidades, Cortes, Terras e Acesso à Informação
         </h1>
+
+        <ResumoRealidadeBox rota="/eua/institucional" />
         <p className="mt-3 max-w-4xl text-base text-muted sm:text-lg">
           Governança pública americana, processos judiciais de tragédias brasileiras em Nova York
           e guia de como solicitar documentos federais pelo FOIA.

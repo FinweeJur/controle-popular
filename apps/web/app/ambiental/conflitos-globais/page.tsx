@@ -36,6 +36,7 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { Globe2, ShieldAlert, Award, Compass } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata = {
   title: "Conflitos Socioambientais Globais — Atlas de Justiça e Litígios | ONSA",
@@ -84,6 +85,8 @@ export default function PaginaConflitosGlobais() {
         <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
           Conflitos Socioambientais Globais
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/conflitos-globais" />
 
         {/* Resumo da Página com piso text-sm e controle expansível (Regra §5.10) */}
         <div className="mt-3 text-text-soft">

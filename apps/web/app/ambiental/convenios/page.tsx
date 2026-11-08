@@ -37,6 +37,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/convenios", {
   title: "Convênios ambientais de Minas Gerais — Controle Popular · Ambiental",
   description: `Os ${formatNumberBR(COBERTURA_CONVENIOS_AMBIENTAIS.convenios)} convênios de saída da Semad, da Feam, do IEF e do Igam entre ${COBERTURA_CONVENIOS_AMBIENTAIS.anoInicial} e ${COBERTURA_CONVENIOS_AMBIENTAIS.anoFinal}, com valor, objetivo e quanto tempo a mais cada um levou — ${COBERTURA_CONVENIOS_AMBIENTAIS.percentualProrrogados}% foram prorrogados, contra ${COBERTURA_CONVENIOS_AMBIENTAIS.percentualProrrogadosNoEstado}% no Estado inteiro.`,
 });
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 const C = COBERTURA_CONVENIOS_AMBIENTAIS;
 const F = COBERTURA_CONVENIOS_FEDERAIS_MG;
@@ -56,6 +57,8 @@ export default function ConveniosAmbientaisPage() {
         <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
           Os convênios ambientais do Estado, e o tempo a mais que levaram
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/convenios" />
         <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
           A Secretaria de Meio Ambiente, a Feam, o IEF e o Igam repassaram{" "}
           <strong className="text-text">
