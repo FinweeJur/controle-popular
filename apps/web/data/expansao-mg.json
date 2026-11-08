@@ -1,0 +1,7679 @@
+[
+  {
+    "id_municipio": "3100104",
+    "nome": "Abadia dos Dourados",
+    "slug": "abadia-dos-dourados",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100203",
+    "nome": "Abaeté",
+    "slug": "abaete",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100302",
+    "nome": "Abre Campo",
+    "slug": "abre-campo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100401",
+    "nome": "Acaiaca",
+    "slug": "acaiaca",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100500",
+    "nome": "Açucena",
+    "slug": "acucena",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100609",
+    "nome": "Água Boa",
+    "slug": "agua-boa",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100708",
+    "nome": "Água Comprida",
+    "slug": "agua-comprida",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100807",
+    "nome": "Aguanil",
+    "slug": "aguanil",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3100906",
+    "nome": "Águas Formosas",
+    "slug": "aguas-formosas",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101003",
+    "nome": "Águas Vermelhas",
+    "slug": "aguas-vermelhas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101102",
+    "nome": "Aimorés",
+    "slug": "aimores",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101201",
+    "nome": "Aiuruoca",
+    "slug": "aiuruoca",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101300",
+    "nome": "Alagoa",
+    "slug": "alagoa",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101409",
+    "nome": "Albertina",
+    "slug": "albertina",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101508",
+    "nome": "Além Paraíba",
+    "slug": "alem-paraiba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101607",
+    "nome": "Alfenas",
+    "slug": "alfenas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101631",
+    "nome": "Alfredo Vasconcelos",
+    "slug": "alfredo-vasconcelos",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101706",
+    "nome": "Almenara",
+    "slug": "almenara",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101805",
+    "nome": "Alpercata",
+    "slug": "alpercata",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3101904",
+    "nome": "Alpinópolis",
+    "slug": "alpinopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102001",
+    "nome": "Alterosa",
+    "slug": "alterosa",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102050",
+    "nome": "Alto Caparaó",
+    "slug": "alto-caparao",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102100",
+    "nome": "Alto Rio Doce",
+    "slug": "alto-rio-doce",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102209",
+    "nome": "Alvarenga",
+    "slug": "alvarenga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102308",
+    "nome": "Alvinópolis",
+    "slug": "alvinopolis",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102407",
+    "nome": "Alvorada de Minas",
+    "slug": "alvorada-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102506",
+    "nome": "Amparo do Serra",
+    "slug": "amparo-do-serra",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102605",
+    "nome": "Andradas",
+    "slug": "andradas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102704",
+    "nome": "Cachoeira de Pajeú",
+    "slug": "cachoeira-de-pajeu",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102803",
+    "nome": "Andrelândia",
+    "slug": "andrelandia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102852",
+    "nome": "Angelândia",
+    "slug": "angelandia",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3102902",
+    "nome": "Antônio Carlos",
+    "slug": "antonio-carlos",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103009",
+    "nome": "Antônio Dias",
+    "slug": "antonio-dias",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103108",
+    "nome": "Antônio Prado de Minas",
+    "slug": "antonio-prado-de-minas",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103207",
+    "nome": "Araçaí",
+    "slug": "aracai",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103306",
+    "nome": "Aracitaba",
+    "slug": "aracitaba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103405",
+    "nome": "Araçuaí",
+    "slug": "aracuai",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103504",
+    "nome": "Araguari",
+    "slug": "araguari",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103603",
+    "nome": "Arantina",
+    "slug": "arantina",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103702",
+    "nome": "Araponga",
+    "slug": "araponga",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103751",
+    "nome": "Araporã",
+    "slug": "arapora",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103801",
+    "nome": "Arapuá",
+    "slug": "arapua",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3103900",
+    "nome": "Araújos",
+    "slug": "araujos",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104007",
+    "nome": "Araxá",
+    "slug": "araxa",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104106",
+    "nome": "Arceburgo",
+    "slug": "arceburgo",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104205",
+    "nome": "Arcos",
+    "slug": "arcos",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104304",
+    "nome": "Areado",
+    "slug": "areado",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104403",
+    "nome": "Argirita",
+    "slug": "argirita",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104452",
+    "nome": "Aricanduva",
+    "slug": "aricanduva",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104502",
+    "nome": "Arinos",
+    "slug": "arinos",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104601",
+    "nome": "Astolfo Dutra",
+    "slug": "astolfo-dutra",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104700",
+    "nome": "Ataléia",
+    "slug": "ataleia",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104809",
+    "nome": "Augusto de Lima",
+    "slug": "augusto-de-lima",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3104908",
+    "nome": "Baependi",
+    "slug": "baependi",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105004",
+    "nome": "Baldim",
+    "slug": "baldim",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105103",
+    "nome": "Bambuí",
+    "slug": "bambui",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105202",
+    "nome": "Bandeira",
+    "slug": "bandeira",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105301",
+    "nome": "Bandeira do Sul",
+    "slug": "bandeira-do-sul",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105400",
+    "nome": "Barão de Cocais",
+    "slug": "barao-de-cocais",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105509",
+    "nome": "Barão do Monte Alto",
+    "slug": "barao-do-monte-alto",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105608",
+    "nome": "Barbacena",
+    "slug": "barbacena",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105707",
+    "nome": "Barra Longa",
+    "slug": "barra-longa",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3105905",
+    "nome": "Barroso",
+    "slug": "barroso",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106002",
+    "nome": "Bela Vista de Minas",
+    "slug": "bela-vista-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106101",
+    "nome": "Belmiro Braga",
+    "slug": "belmiro-braga",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106200",
+    "nome": "Belo Horizonte",
+    "slug": "bh",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "capital",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106309",
+    "nome": "Belo Oriente",
+    "slug": "belo-oriente",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106408",
+    "nome": "Belo Vale",
+    "slug": "belo-vale",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106507",
+    "nome": "Berilo",
+    "slug": "berilo",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106606",
+    "nome": "Bertópolis",
+    "slug": "bertopolis",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106655",
+    "nome": "Berizal",
+    "slug": "berizal",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106705",
+    "nome": "Betim",
+    "slug": "betim",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106804",
+    "nome": "Bias Fortes",
+    "slug": "bias-fortes",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3106903",
+    "nome": "Bicas",
+    "slug": "bicas",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107000",
+    "nome": "Biquinhas",
+    "slug": "biquinhas",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107109",
+    "nome": "Boa Esperança",
+    "slug": "boa-esperanca",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107208",
+    "nome": "Bocaina de Minas",
+    "slug": "bocaina-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107307",
+    "nome": "Bocaiúva",
+    "slug": "bocaiuva",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107406",
+    "nome": "Bom Despacho",
+    "slug": "bom-despacho",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107505",
+    "nome": "Bom Jardim de Minas",
+    "slug": "bom-jardim-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107604",
+    "nome": "Bom Jesus da Penha",
+    "slug": "bom-jesus-da-penha",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107703",
+    "nome": "Bom Jesus do Amparo",
+    "slug": "bom-jesus-do-amparo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107802",
+    "nome": "Bom Jesus do Galho",
+    "slug": "bom-jesus-do-galho",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3107901",
+    "nome": "Bom Repouso",
+    "slug": "bom-repouso",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108008",
+    "nome": "Bom Sucesso",
+    "slug": "bom-sucesso",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108107",
+    "nome": "Bonfim",
+    "slug": "bonfim",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108206",
+    "nome": "Bonfinópolis de Minas",
+    "slug": "bonfinopolis-de-minas",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108255",
+    "nome": "Bonito de Minas",
+    "slug": "bonito-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108305",
+    "nome": "Borda da Mata",
+    "slug": "borda-da-mata",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108404",
+    "nome": "Botelhos",
+    "slug": "botelhos",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108503",
+    "nome": "Botumirim",
+    "slug": "botumirim",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108552",
+    "nome": "Brasilândia de Minas",
+    "slug": "brasilandia-de-minas",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108602",
+    "nome": "Brasília de Minas",
+    "slug": "brasilia-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108701",
+    "nome": "Brás Pires",
+    "slug": "bras-pires",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108800",
+    "nome": "Braúnas",
+    "slug": "braunas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3108909",
+    "nome": "Brazópolis",
+    "slug": "brazopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109006",
+    "nome": "Brumadinho",
+    "slug": "brumadinho",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109105",
+    "nome": "Bueno Brandão",
+    "slug": "bueno-brandao",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109204",
+    "nome": "Buenópolis",
+    "slug": "buenopolis",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109253",
+    "nome": "Bugre",
+    "slug": "bugre",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109303",
+    "nome": "Buritis",
+    "slug": "buritis",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109402",
+    "nome": "Buritizeiro",
+    "slug": "buritizeiro",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109451",
+    "nome": "Cabeceira Grande",
+    "slug": "cabeceira-grande",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109501",
+    "nome": "Cabo Verde",
+    "slug": "cabo-verde",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109600",
+    "nome": "Cachoeira da Prata",
+    "slug": "cachoeira-da-prata",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109709",
+    "nome": "Cachoeira de Minas",
+    "slug": "cachoeira-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109808",
+    "nome": "Cachoeira Dourada",
+    "slug": "cachoeira-dourada",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3109907",
+    "nome": "Caetanópolis",
+    "slug": "caetanopolis",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110004",
+    "nome": "Caeté",
+    "slug": "caete",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110103",
+    "nome": "Caiana",
+    "slug": "caiana",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110202",
+    "nome": "Cajuri",
+    "slug": "cajuri",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110301",
+    "nome": "Caldas",
+    "slug": "caldas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110400",
+    "nome": "Camacho",
+    "slug": "camacho",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110509",
+    "nome": "Camanducaia",
+    "slug": "camanducaia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110608",
+    "nome": "Cambuí",
+    "slug": "cambui",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110707",
+    "nome": "Cambuquira",
+    "slug": "cambuquira",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110806",
+    "nome": "Campanário",
+    "slug": "campanario",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3110905",
+    "nome": "Campanha",
+    "slug": "campanha",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111002",
+    "nome": "Campestre",
+    "slug": "campestre",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111101",
+    "nome": "Campina Verde",
+    "slug": "campina-verde",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111150",
+    "nome": "Campo Azul",
+    "slug": "campo-azul",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111200",
+    "nome": "Campo Belo",
+    "slug": "campo-belo",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111309",
+    "nome": "Campo do Meio",
+    "slug": "campo-do-meio",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111408",
+    "nome": "Campo Florido",
+    "slug": "campo-florido",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111507",
+    "nome": "Campos Altos",
+    "slug": "campos-altos",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111606",
+    "nome": "Campos Gerais",
+    "slug": "campos-gerais",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111705",
+    "nome": "Canaã",
+    "slug": "canaa",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111804",
+    "nome": "Canápolis",
+    "slug": "canapolis",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3111903",
+    "nome": "Cana Verde",
+    "slug": "cana-verde",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112000",
+    "nome": "Candeias",
+    "slug": "candeias",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112059",
+    "nome": "Cantagalo",
+    "slug": "cantagalo",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112109",
+    "nome": "Caparaó",
+    "slug": "caparao",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112208",
+    "nome": "Capela Nova",
+    "slug": "capela-nova",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112307",
+    "nome": "Capelinha",
+    "slug": "capelinha",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112406",
+    "nome": "Capetinga",
+    "slug": "capetinga",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112505",
+    "nome": "Capim Branco",
+    "slug": "capim-branco",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112604",
+    "nome": "Capinópolis",
+    "slug": "capinopolis",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112653",
+    "nome": "Capitão Andrade",
+    "slug": "capitao-andrade",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112703",
+    "nome": "Capitão Enéas",
+    "slug": "capitao-eneas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112802",
+    "nome": "Capitólio",
+    "slug": "capitolio",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3112901",
+    "nome": "Caputira",
+    "slug": "caputira",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113008",
+    "nome": "Caraí",
+    "slug": "carai",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113107",
+    "nome": "Caranaíba",
+    "slug": "caranaiba",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113206",
+    "nome": "Carandaí",
+    "slug": "carandai",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113305",
+    "nome": "Carangola",
+    "slug": "carangola",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113404",
+    "nome": "Caratinga",
+    "slug": "caratinga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113503",
+    "nome": "Carbonita",
+    "slug": "carbonita",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113602",
+    "nome": "Careaçu",
+    "slug": "careacu",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113701",
+    "nome": "Carlos Chagas",
+    "slug": "carlos-chagas",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113800",
+    "nome": "Carmésia",
+    "slug": "carmesia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3113909",
+    "nome": "Carmo da Cachoeira",
+    "slug": "carmo-da-cachoeira",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114006",
+    "nome": "Carmo da Mata",
+    "slug": "carmo-da-mata",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114105",
+    "nome": "Carmo de Minas",
+    "slug": "carmo-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114204",
+    "nome": "Carmo do Cajuru",
+    "slug": "carmo-do-cajuru",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114303",
+    "nome": "Carmo do Paranaíba",
+    "slug": "carmo-do-paranaiba",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114402",
+    "nome": "Carmo do Rio Claro",
+    "slug": "carmo-do-rio-claro",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114501",
+    "nome": "Carmópolis de Minas",
+    "slug": "carmopolis-de-minas",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114550",
+    "nome": "Carneirinho",
+    "slug": "carneirinho",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114600",
+    "nome": "Carrancas",
+    "slug": "carrancas",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114709",
+    "nome": "Carvalhópolis",
+    "slug": "carvalhopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114808",
+    "nome": "Carvalhos",
+    "slug": "carvalhos",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3114907",
+    "nome": "Casa Grande",
+    "slug": "casa-grande",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115003",
+    "nome": "Cascalho Rico",
+    "slug": "cascalho-rico",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115102",
+    "nome": "Cássia",
+    "slug": "cassia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115201",
+    "nome": "Conceição da Barra de Minas",
+    "slug": "conceicao-da-barra-de-minas",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115300",
+    "nome": "Cataguases",
+    "slug": "cataguases",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115359",
+    "nome": "Catas Altas",
+    "slug": "catas-altas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115409",
+    "nome": "Catas Altas da Noruega",
+    "slug": "catas-altas-da-noruega",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115458",
+    "nome": "Catuji",
+    "slug": "catuji",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115474",
+    "nome": "Catuti",
+    "slug": "catuti",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115508",
+    "nome": "Caxambu",
+    "slug": "caxambu",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115607",
+    "nome": "Cedro do Abaeté",
+    "slug": "cedro-do-abaete",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115706",
+    "nome": "Central de Minas",
+    "slug": "central-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115805",
+    "nome": "Centralina",
+    "slug": "centralina",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3115904",
+    "nome": "Chácara",
+    "slug": "chacara",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116001",
+    "nome": "Chalé",
+    "slug": "chale",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116100",
+    "nome": "Chapada do Norte",
+    "slug": "chapada-do-norte",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116159",
+    "nome": "Chapada Gaúcha",
+    "slug": "chapada-gaucha",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116209",
+    "nome": "Chiador",
+    "slug": "chiador",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116308",
+    "nome": "Cipotânea",
+    "slug": "cipotanea",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116407",
+    "nome": "Claraval",
+    "slug": "claraval",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116506",
+    "nome": "Claro dos Poções",
+    "slug": "claro-dos-pocoes",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116605",
+    "nome": "Cláudio",
+    "slug": "claudio",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116704",
+    "nome": "Coimbra",
+    "slug": "coimbra",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116803",
+    "nome": "Coluna",
+    "slug": "coluna",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3116902",
+    "nome": "Comendador Gomes",
+    "slug": "comendador-gomes",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117009",
+    "nome": "Comercinho",
+    "slug": "comercinho",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117108",
+    "nome": "Conceição da Aparecida",
+    "slug": "conceicao-da-aparecida",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117207",
+    "nome": "Conceição das Pedras",
+    "slug": "conceicao-das-pedras",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117306",
+    "nome": "Conceição das Alagoas",
+    "slug": "conceicao-das-alagoas",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117405",
+    "nome": "Conceição de Ipanema",
+    "slug": "conceicao-de-ipanema",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117504",
+    "nome": "Conceição do Mato Dentro",
+    "slug": "conceicao-do-mato-dentro",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117603",
+    "nome": "Conceição do Pará",
+    "slug": "conceicao-do-para",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117702",
+    "nome": "Conceição do Rio Verde",
+    "slug": "conceicao-do-rio-verde",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117801",
+    "nome": "Conceição dos Ouros",
+    "slug": "conceicao-dos-ouros",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117836",
+    "nome": "Cônego Marinho",
+    "slug": "conego-marinho",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117876",
+    "nome": "Confins",
+    "slug": "confins",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3117900",
+    "nome": "Congonhal",
+    "slug": "congonhal",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118007",
+    "nome": "Congonhas",
+    "slug": "congonhas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118106",
+    "nome": "Congonhas do Norte",
+    "slug": "congonhas-do-norte",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118205",
+    "nome": "Conquista",
+    "slug": "conquista",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118304",
+    "nome": "Conselheiro Lafaiete",
+    "slug": "conselheiro-lafaiete",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118403",
+    "nome": "Conselheiro Pena",
+    "slug": "conselheiro-pena",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118502",
+    "nome": "Consolação",
+    "slug": "consolacao",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118601",
+    "nome": "Contagem",
+    "slug": "contagem",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118700",
+    "nome": "Coqueiral",
+    "slug": "coqueiral",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118809",
+    "nome": "Coração de Jesus",
+    "slug": "coracao-de-jesus",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3118908",
+    "nome": "Cordisburgo",
+    "slug": "cordisburgo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119005",
+    "nome": "Cordislândia",
+    "slug": "cordislandia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119104",
+    "nome": "Corinto",
+    "slug": "corinto",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119203",
+    "nome": "Coroaci",
+    "slug": "coroaci",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119302",
+    "nome": "Coromandel",
+    "slug": "coromandel",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119401",
+    "nome": "Coronel Fabriciano",
+    "slug": "coronel-fabriciano",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119500",
+    "nome": "Coronel Murta",
+    "slug": "coronel-murta",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119609",
+    "nome": "Coronel Pacheco",
+    "slug": "coronel-pacheco",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119708",
+    "nome": "Coronel Xavier Chaves",
+    "slug": "coronel-xavier-chaves",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119807",
+    "nome": "Córrego Danta",
+    "slug": "corrego-danta",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119906",
+    "nome": "Córrego do Bom Jesus",
+    "slug": "corrego-do-bom-jesus",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3119955",
+    "nome": "Córrego Fundo",
+    "slug": "corrego-fundo",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120003",
+    "nome": "Córrego Novo",
+    "slug": "corrego-novo",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120102",
+    "nome": "Couto de Magalhães de Minas",
+    "slug": "couto-de-magalhaes-de-minas",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120151",
+    "nome": "Crisólita",
+    "slug": "crisolita",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120201",
+    "nome": "Cristais",
+    "slug": "cristais",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120300",
+    "nome": "Cristália",
+    "slug": "cristalia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120409",
+    "nome": "Cristiano Otoni",
+    "slug": "cristiano-otoni",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120508",
+    "nome": "Cristina",
+    "slug": "cristina",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120607",
+    "nome": "Crucilândia",
+    "slug": "crucilandia",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120706",
+    "nome": "Cruzeiro da Fortaleza",
+    "slug": "cruzeiro-da-fortaleza",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120805",
+    "nome": "Cruzília",
+    "slug": "cruzilia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120839",
+    "nome": "Cuparaque",
+    "slug": "cuparaque",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120870",
+    "nome": "Curral de Dentro",
+    "slug": "curral-de-dentro",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3120904",
+    "nome": "Curvelo",
+    "slug": "curvelo",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121001",
+    "nome": "Datas",
+    "slug": "datas",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121100",
+    "nome": "Delfim Moreira",
+    "slug": "delfim-moreira",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121209",
+    "nome": "Delfinópolis",
+    "slug": "delfinopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121258",
+    "nome": "Delta",
+    "slug": "delta",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121308",
+    "nome": "Descoberto",
+    "slug": "descoberto",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121407",
+    "nome": "Desterro de Entre Rios",
+    "slug": "desterro-de-entre-rios",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121506",
+    "nome": "Desterro do Melo",
+    "slug": "desterro-do-melo",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121605",
+    "nome": "Diamantina",
+    "slug": "diamantina",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121704",
+    "nome": "Diogo de Vasconcelos",
+    "slug": "diogo-de-vasconcelos",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121803",
+    "nome": "Dionísio",
+    "slug": "dionisio",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3121902",
+    "nome": "Divinésia",
+    "slug": "divinesia",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122009",
+    "nome": "Divino",
+    "slug": "divino",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122108",
+    "nome": "Divino das Laranjeiras",
+    "slug": "divino-das-laranjeiras",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122207",
+    "nome": "Divinolândia de Minas",
+    "slug": "divinolandia-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122306",
+    "nome": "Divinópolis",
+    "slug": "divinopolis",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122355",
+    "nome": "Divisa Alegre",
+    "slug": "divisa-alegre",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122405",
+    "nome": "Divisa Nova",
+    "slug": "divisa-nova",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122454",
+    "nome": "Divisópolis",
+    "slug": "divisopolis",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122470",
+    "nome": "Dom Bosco",
+    "slug": "dom-bosco",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122504",
+    "nome": "Dom Cavati",
+    "slug": "dom-cavati",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122603",
+    "nome": "Dom Joaquim",
+    "slug": "dom-joaquim",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122702",
+    "nome": "Dom Silvério",
+    "slug": "dom-silverio",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122801",
+    "nome": "Dom Viçoso",
+    "slug": "dom-vicoso",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3122900",
+    "nome": "Dona Euzébia",
+    "slug": "dona-euzebia",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123007",
+    "nome": "Dores de Campos",
+    "slug": "dores-de-campos",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123106",
+    "nome": "Dores de Guanhães",
+    "slug": "dores-de-guanhaes",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123205",
+    "nome": "Dores do Indaiá",
+    "slug": "dores-do-indaia",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123304",
+    "nome": "Dores do Turvo",
+    "slug": "dores-do-turvo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123403",
+    "nome": "Doresópolis",
+    "slug": "doresopolis",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123502",
+    "nome": "Douradoquara",
+    "slug": "douradoquara",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123528",
+    "nome": "Durandé",
+    "slug": "durande",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123601",
+    "nome": "Elói Mendes",
+    "slug": "eloi-mendes",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123700",
+    "nome": "Engenheiro Caldas",
+    "slug": "engenheiro-caldas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123809",
+    "nome": "Engenheiro Navarro",
+    "slug": "engenheiro-navarro",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123858",
+    "nome": "Entre Folhas",
+    "slug": "entre-folhas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3123908",
+    "nome": "Entre Rios de Minas",
+    "slug": "entre-rios-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124005",
+    "nome": "Ervália",
+    "slug": "ervalia",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124104",
+    "nome": "Esmeraldas",
+    "slug": "esmeraldas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124203",
+    "nome": "Espera Feliz",
+    "slug": "espera-feliz",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124302",
+    "nome": "Espinosa",
+    "slug": "espinosa",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124401",
+    "nome": "Espírito Santo do Dourado",
+    "slug": "espirito-santo-do-dourado",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124500",
+    "nome": "Estiva",
+    "slug": "estiva",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124609",
+    "nome": "Estrela Dalva",
+    "slug": "estrela-dalva",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124708",
+    "nome": "Estrela do Indaiá",
+    "slug": "estrela-do-indaia",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124807",
+    "nome": "Estrela do Sul",
+    "slug": "estrela-do-sul",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3124906",
+    "nome": "Eugenópolis",
+    "slug": "eugenopolis",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125002",
+    "nome": "Ewbank da Câmara",
+    "slug": "ewbank-da-camara",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125101",
+    "nome": "Extrema",
+    "slug": "extrema",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125200",
+    "nome": "Fama",
+    "slug": "fama",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125309",
+    "nome": "Faria Lemos",
+    "slug": "faria-lemos",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125408",
+    "nome": "Felício dos Santos",
+    "slug": "felicio-dos-santos",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125507",
+    "nome": "São Gonçalo do Rio Preto",
+    "slug": "sao-goncalo-do-rio-preto",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125606",
+    "nome": "Felisburgo",
+    "slug": "felisburgo",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125705",
+    "nome": "Felixlândia",
+    "slug": "felixlandia",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125804",
+    "nome": "Fernandes Tourinho",
+    "slug": "fernandes-tourinho",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125903",
+    "nome": "Ferros",
+    "slug": "ferros",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3125952",
+    "nome": "Fervedouro",
+    "slug": "fervedouro",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126000",
+    "nome": "Florestal",
+    "slug": "florestal",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126109",
+    "nome": "Formiga",
+    "slug": "formiga",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126208",
+    "nome": "Formoso",
+    "slug": "formoso",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126307",
+    "nome": "Fortaleza de Minas",
+    "slug": "fortaleza-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126406",
+    "nome": "Fortuna de Minas",
+    "slug": "fortuna-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126505",
+    "nome": "Francisco Badaró",
+    "slug": "francisco-badaro",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126604",
+    "nome": "Francisco Dumont",
+    "slug": "francisco-dumont",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126703",
+    "nome": "Francisco Sá",
+    "slug": "francisco-sa",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126752",
+    "nome": "Franciscópolis",
+    "slug": "franciscopolis",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126802",
+    "nome": "Frei Gaspar",
+    "slug": "frei-gaspar",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126901",
+    "nome": "Frei Inocêncio",
+    "slug": "frei-inocencio",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3126950",
+    "nome": "Frei Lagonegro",
+    "slug": "frei-lagonegro",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127008",
+    "nome": "Fronteira",
+    "slug": "fronteira",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127057",
+    "nome": "Fronteira dos Vales",
+    "slug": "fronteira-dos-vales",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127073",
+    "nome": "Fruta de Leite",
+    "slug": "fruta-de-leite",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127107",
+    "nome": "Frutal",
+    "slug": "frutal",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127206",
+    "nome": "Funilândia",
+    "slug": "funilandia",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127305",
+    "nome": "Galiléia",
+    "slug": "galileia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127339",
+    "nome": "Gameleiras",
+    "slug": "gameleiras",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127354",
+    "nome": "Glaucilândia",
+    "slug": "glaucilandia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127370",
+    "nome": "Goiabeira",
+    "slug": "goiabeira",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127388",
+    "nome": "Goianá",
+    "slug": "goiana",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127404",
+    "nome": "Gonçalves",
+    "slug": "goncalves",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127503",
+    "nome": "Gonzaga",
+    "slug": "gonzaga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127602",
+    "nome": "Gouveia",
+    "slug": "gouveia",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127701",
+    "nome": "Governador Valadares",
+    "slug": "governador-valadares",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127800",
+    "nome": "Grão Mogol",
+    "slug": "grao-mogol",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3127909",
+    "nome": "Grupiara",
+    "slug": "grupiara",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128006",
+    "nome": "Guanhães",
+    "slug": "guanhaes",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128105",
+    "nome": "Guapé",
+    "slug": "guape",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128204",
+    "nome": "Guaraciaba",
+    "slug": "guaraciaba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128253",
+    "nome": "Guaraciama",
+    "slug": "guaraciama",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128303",
+    "nome": "Guaranésia",
+    "slug": "guaranesia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128402",
+    "nome": "Guarani",
+    "slug": "guarani",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128501",
+    "nome": "Guarará",
+    "slug": "guarara",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128600",
+    "nome": "Guarda-Mor",
+    "slug": "guarda-mor",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128709",
+    "nome": "Guaxupé",
+    "slug": "guaxupe",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128808",
+    "nome": "Guidoval",
+    "slug": "guidoval",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3128907",
+    "nome": "Guimarânia",
+    "slug": "guimarania",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129004",
+    "nome": "Guiricema",
+    "slug": "guiricema",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129103",
+    "nome": "Gurinhatã",
+    "slug": "gurinhata",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129202",
+    "nome": "Heliodora",
+    "slug": "heliodora",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129301",
+    "nome": "Iapu",
+    "slug": "iapu",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129400",
+    "nome": "Ibertioga",
+    "slug": "ibertioga",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129509",
+    "nome": "Ibiá",
+    "slug": "ibia",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129608",
+    "nome": "Ibiaí",
+    "slug": "ibiai",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129657",
+    "nome": "Ibiracatu",
+    "slug": "ibiracatu",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129707",
+    "nome": "Ibiraci",
+    "slug": "ibiraci",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129806",
+    "nome": "Ibirité",
+    "slug": "ibirite",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3129905",
+    "nome": "Ibitiúra de Minas",
+    "slug": "ibitiura-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130002",
+    "nome": "Ibituruna",
+    "slug": "ibituruna",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130051",
+    "nome": "Icaraí de Minas",
+    "slug": "icarai-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130101",
+    "nome": "Igarapé",
+    "slug": "igarape",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130200",
+    "nome": "Igaratinga",
+    "slug": "igaratinga",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130309",
+    "nome": "Iguatama",
+    "slug": "iguatama",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130408",
+    "nome": "Ijaci",
+    "slug": "ijaci",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130507",
+    "nome": "Ilicínea",
+    "slug": "ilicinea",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130556",
+    "nome": "Imbé de Minas",
+    "slug": "imbe-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130606",
+    "nome": "Inconfidentes",
+    "slug": "inconfidentes",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130655",
+    "nome": "Indaiabira",
+    "slug": "indaiabira",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130705",
+    "nome": "Indianópolis",
+    "slug": "indianopolis",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130804",
+    "nome": "Ingaí",
+    "slug": "ingai",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3130903",
+    "nome": "Inhapim",
+    "slug": "inhapim",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131000",
+    "nome": "Inhaúma",
+    "slug": "inhauma",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131109",
+    "nome": "Inimutaba",
+    "slug": "inimutaba",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131158",
+    "nome": "Ipaba",
+    "slug": "ipaba",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131208",
+    "nome": "Ipanema",
+    "slug": "ipanema",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131307",
+    "nome": "Ipatinga",
+    "slug": "ipatinga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131406",
+    "nome": "Ipiaçu",
+    "slug": "ipiacu",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131505",
+    "nome": "Ipuiúna",
+    "slug": "ipuiuna",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131604",
+    "nome": "Iraí de Minas",
+    "slug": "irai-de-minas",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131703",
+    "nome": "Itabira",
+    "slug": "itabira",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131802",
+    "nome": "Itabirinha",
+    "slug": "itabirinha",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3131901",
+    "nome": "Itabirito",
+    "slug": "itabirito",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132008",
+    "nome": "Itacambira",
+    "slug": "itacambira",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132107",
+    "nome": "Itacarambi",
+    "slug": "itacarambi",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132206",
+    "nome": "Itaguara",
+    "slug": "itaguara",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132305",
+    "nome": "Itaipé",
+    "slug": "itaipe",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132404",
+    "nome": "Itajubá",
+    "slug": "itajuba",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132503",
+    "nome": "Itamarandiba",
+    "slug": "itamarandiba",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132602",
+    "nome": "Itamarati de Minas",
+    "slug": "itamarati-de-minas",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132701",
+    "nome": "Itambacuri",
+    "slug": "itambacuri",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132800",
+    "nome": "Itambé do Mato Dentro",
+    "slug": "itambe-do-mato-dentro",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3132909",
+    "nome": "Itamogi",
+    "slug": "itamogi",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133006",
+    "nome": "Itamonte",
+    "slug": "itamonte",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133105",
+    "nome": "Itanhandu",
+    "slug": "itanhandu",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133204",
+    "nome": "Itanhomi",
+    "slug": "itanhomi",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133303",
+    "nome": "Itaobim",
+    "slug": "itaobim",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133402",
+    "nome": "Itapagipe",
+    "slug": "itapagipe",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133501",
+    "nome": "Itapecerica",
+    "slug": "itapecerica",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133600",
+    "nome": "Itapeva",
+    "slug": "itapeva",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133709",
+    "nome": "Itatiaiuçu",
+    "slug": "itatiaiucu",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133758",
+    "nome": "Itaú de Minas",
+    "slug": "itau-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133808",
+    "nome": "Itaúna",
+    "slug": "itauna",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3133907",
+    "nome": "Itaverava",
+    "slug": "itaverava",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134004",
+    "nome": "Itinga",
+    "slug": "itinga",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134103",
+    "nome": "Itueta",
+    "slug": "itueta",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134202",
+    "nome": "Ituiutaba",
+    "slug": "ituiutaba",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134301",
+    "nome": "Itumirim",
+    "slug": "itumirim",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134400",
+    "nome": "Iturama",
+    "slug": "iturama",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134509",
+    "nome": "Itutinga",
+    "slug": "itutinga",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134608",
+    "nome": "Jaboticatubas",
+    "slug": "jaboticatubas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134707",
+    "nome": "Jacinto",
+    "slug": "jacinto",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134806",
+    "nome": "Jacuí",
+    "slug": "jacui",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3134905",
+    "nome": "Jacutinga",
+    "slug": "jacutinga",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135001",
+    "nome": "Jaguaraçu",
+    "slug": "jaguaracu",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135050",
+    "nome": "Jaíba",
+    "slug": "jaiba",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135076",
+    "nome": "Jampruca",
+    "slug": "jampruca",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135100",
+    "nome": "Janaúba",
+    "slug": "janauba",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135209",
+    "nome": "Januária",
+    "slug": "januaria",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135308",
+    "nome": "Japaraíba",
+    "slug": "japaraiba",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135357",
+    "nome": "Japonvar",
+    "slug": "japonvar",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135407",
+    "nome": "Jeceaba",
+    "slug": "jeceaba",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135456",
+    "nome": "Jenipapo de Minas",
+    "slug": "jenipapo-de-minas",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135506",
+    "nome": "Jequeri",
+    "slug": "jequeri",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135605",
+    "nome": "Jequitaí",
+    "slug": "jequitai",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135704",
+    "nome": "Jequitibá",
+    "slug": "jequitiba",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135803",
+    "nome": "Jequitinhonha",
+    "slug": "jequitinhonha",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3135902",
+    "nome": "Jesuânia",
+    "slug": "jesuania",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136009",
+    "nome": "Joaíma",
+    "slug": "joaima",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136108",
+    "nome": "Joanésia",
+    "slug": "joanesia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136207",
+    "nome": "João Monlevade",
+    "slug": "joao-monlevade",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136306",
+    "nome": "João Pinheiro",
+    "slug": "joao-pinheiro",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136405",
+    "nome": "Joaquim Felício",
+    "slug": "joaquim-felicio",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136504",
+    "nome": "Jordânia",
+    "slug": "jordania",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136520",
+    "nome": "José Gonçalves de Minas",
+    "slug": "jose-goncalves-de-minas",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136553",
+    "nome": "José Raydan",
+    "slug": "jose-raydan",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136579",
+    "nome": "Josenópolis",
+    "slug": "josenopolis",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136603",
+    "nome": "Nova União",
+    "slug": "nova-uniao",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136652",
+    "nome": "Juatuba",
+    "slug": "juatuba",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136702",
+    "nome": "Juiz de Fora",
+    "slug": "juiz-de-fora",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136801",
+    "nome": "Juramento",
+    "slug": "juramento",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136900",
+    "nome": "Juruaia",
+    "slug": "juruaia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3136959",
+    "nome": "Juvenília",
+    "slug": "juvenilia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137007",
+    "nome": "Ladainha",
+    "slug": "ladainha",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137106",
+    "nome": "Lagamar",
+    "slug": "lagamar",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137205",
+    "nome": "Lagoa da Prata",
+    "slug": "lagoa-da-prata",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137304",
+    "nome": "Lagoa dos Patos",
+    "slug": "lagoa-dos-patos",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137403",
+    "nome": "Lagoa Dourada",
+    "slug": "lagoa-dourada",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137502",
+    "nome": "Lagoa Formosa",
+    "slug": "lagoa-formosa",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137536",
+    "nome": "Lagoa Grande",
+    "slug": "lagoa-grande",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137601",
+    "nome": "Lagoa Santa",
+    "slug": "lagoa-santa",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137700",
+    "nome": "Lajinha",
+    "slug": "lajinha",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137809",
+    "nome": "Lambari",
+    "slug": "lambari",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3137908",
+    "nome": "Lamim",
+    "slug": "lamim",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138005",
+    "nome": "Laranjal",
+    "slug": "laranjal",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138104",
+    "nome": "Lassance",
+    "slug": "lassance",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138203",
+    "nome": "Lavras",
+    "slug": "lavras",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138302",
+    "nome": "Leandro Ferreira",
+    "slug": "leandro-ferreira",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138351",
+    "nome": "Leme do Prado",
+    "slug": "leme-do-prado",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138401",
+    "nome": "Leopoldina",
+    "slug": "leopoldina",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138500",
+    "nome": "Liberdade",
+    "slug": "liberdade",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138609",
+    "nome": "Lima Duarte",
+    "slug": "lima-duarte",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138625",
+    "nome": "Limeira do Oeste",
+    "slug": "limeira-do-oeste",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138658",
+    "nome": "Lontra",
+    "slug": "lontra",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138674",
+    "nome": "Luisburgo",
+    "slug": "luisburgo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138682",
+    "nome": "Luislândia",
+    "slug": "luislandia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138708",
+    "nome": "Luminárias",
+    "slug": "luminarias",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138807",
+    "nome": "Luz",
+    "slug": "luz",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3138906",
+    "nome": "Machacalis",
+    "slug": "machacalis",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139003",
+    "nome": "Machado",
+    "slug": "machado",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139102",
+    "nome": "Madre de Deus de Minas",
+    "slug": "madre-de-deus-de-minas",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139201",
+    "nome": "Malacacheta",
+    "slug": "malacacheta",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139250",
+    "nome": "Mamonas",
+    "slug": "mamonas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139300",
+    "nome": "Manga",
+    "slug": "manga",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139409",
+    "nome": "Manhuaçu",
+    "slug": "manhuacu",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139508",
+    "nome": "Manhumirim",
+    "slug": "manhumirim",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139607",
+    "nome": "Mantena",
+    "slug": "mantena",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139706",
+    "nome": "Maravilhas",
+    "slug": "maravilhas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139805",
+    "nome": "Mar de Espanha",
+    "slug": "mar-de-espanha",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3139904",
+    "nome": "Maria da Fé",
+    "slug": "maria-da-fe",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140001",
+    "nome": "Mariana",
+    "slug": "mariana",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140100",
+    "nome": "Marilac",
+    "slug": "marilac",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140159",
+    "nome": "Mário Campos",
+    "slug": "mario-campos",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140209",
+    "nome": "Maripá de Minas",
+    "slug": "maripa-de-minas",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140308",
+    "nome": "Marliéria",
+    "slug": "marlieria",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140407",
+    "nome": "Marmelópolis",
+    "slug": "marmelopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140506",
+    "nome": "Martinho Campos",
+    "slug": "martinho-campos",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140530",
+    "nome": "Martins Soares",
+    "slug": "martins-soares",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140555",
+    "nome": "Mata Verde",
+    "slug": "mata-verde",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140605",
+    "nome": "Materlândia",
+    "slug": "materlandia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140704",
+    "nome": "Mateus Leme",
+    "slug": "mateus-leme",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140803",
+    "nome": "Matias Barbosa",
+    "slug": "matias-barbosa",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140852",
+    "nome": "Matias Cardoso",
+    "slug": "matias-cardoso",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3140902",
+    "nome": "Matipó",
+    "slug": "matipo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141009",
+    "nome": "Mato Verde",
+    "slug": "mato-verde",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141108",
+    "nome": "Matozinhos",
+    "slug": "matozinhos",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141207",
+    "nome": "Matutina",
+    "slug": "matutina",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141306",
+    "nome": "Medeiros",
+    "slug": "medeiros",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141405",
+    "nome": "Medina",
+    "slug": "medina",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141504",
+    "nome": "Mendes Pimentel",
+    "slug": "mendes-pimentel",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141603",
+    "nome": "Mercês",
+    "slug": "merces",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141702",
+    "nome": "Mesquita",
+    "slug": "mesquita",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141801",
+    "nome": "Minas Novas",
+    "slug": "minas-novas",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3141900",
+    "nome": "Minduri",
+    "slug": "minduri",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142007",
+    "nome": "Mirabela",
+    "slug": "mirabela",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142106",
+    "nome": "Miradouro",
+    "slug": "miradouro",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142205",
+    "nome": "Miraí",
+    "slug": "mirai",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142254",
+    "nome": "Miravânia",
+    "slug": "miravania",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142304",
+    "nome": "Moeda",
+    "slug": "moeda",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142403",
+    "nome": "Moema",
+    "slug": "moema",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142502",
+    "nome": "Monjolos",
+    "slug": "monjolos",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142601",
+    "nome": "Monsenhor Paulo",
+    "slug": "monsenhor-paulo",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142700",
+    "nome": "Montalvânia",
+    "slug": "montalvania",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142809",
+    "nome": "Monte Alegre de Minas",
+    "slug": "monte-alegre-de-minas",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3142908",
+    "nome": "Monte Azul",
+    "slug": "monte-azul",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143005",
+    "nome": "Monte Belo",
+    "slug": "monte-belo",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143104",
+    "nome": "Monte Carmelo",
+    "slug": "monte-carmelo",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143153",
+    "nome": "Monte Formoso",
+    "slug": "monte-formoso",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143203",
+    "nome": "Monte Santo de Minas",
+    "slug": "monte-santo-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143302",
+    "nome": "Montes Claros",
+    "slug": "montes-claros",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143401",
+    "nome": "Monte Sião",
+    "slug": "monte-siao",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143450",
+    "nome": "Montezuma",
+    "slug": "montezuma",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143500",
+    "nome": "Morada Nova de Minas",
+    "slug": "morada-nova-de-minas",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143609",
+    "nome": "Morro da Garça",
+    "slug": "morro-da-garca",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143708",
+    "nome": "Morro do Pilar",
+    "slug": "morro-do-pilar",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143807",
+    "nome": "Munhoz",
+    "slug": "munhoz",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3143906",
+    "nome": "Muriaé",
+    "slug": "muriae",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144003",
+    "nome": "Mutum",
+    "slug": "mutum",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144102",
+    "nome": "Muzambinho",
+    "slug": "muzambinho",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144201",
+    "nome": "Nacip Raydan",
+    "slug": "nacip-raydan",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144300",
+    "nome": "Nanuque",
+    "slug": "nanuque",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144359",
+    "nome": "Naque",
+    "slug": "naque",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144375",
+    "nome": "Natalândia",
+    "slug": "natalandia",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144409",
+    "nome": "Natércia",
+    "slug": "natercia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144508",
+    "nome": "Nazareno",
+    "slug": "nazareno",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144607",
+    "nome": "Nepomuceno",
+    "slug": "nepomuceno",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144656",
+    "nome": "Ninheira",
+    "slug": "ninheira",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144672",
+    "nome": "Nova Belém",
+    "slug": "nova-belem",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144706",
+    "nome": "Nova Era",
+    "slug": "nova-era",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144805",
+    "nome": "Nova Lima",
+    "slug": "nova-lima",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3144904",
+    "nome": "Nova Módica",
+    "slug": "nova-modica",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145000",
+    "nome": "Nova Ponte",
+    "slug": "nova-ponte",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145059",
+    "nome": "Nova Porteirinha",
+    "slug": "nova-porteirinha",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145109",
+    "nome": "Nova Resende",
+    "slug": "nova-resende",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145208",
+    "nome": "Nova Serrana",
+    "slug": "nova-serrana",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145307",
+    "nome": "Novo Cruzeiro",
+    "slug": "novo-cruzeiro",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145356",
+    "nome": "Novo Oriente de Minas",
+    "slug": "novo-oriente-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145372",
+    "nome": "Novorizonte",
+    "slug": "novorizonte",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145406",
+    "nome": "Olaria",
+    "slug": "olaria",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145455",
+    "nome": "Olhos-d'Água",
+    "slug": "olhos-d-agua",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145505",
+    "nome": "Olímpio Noronha",
+    "slug": "olimpio-noronha",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145604",
+    "nome": "Oliveira",
+    "slug": "oliveira",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145703",
+    "nome": "Oliveira Fortes",
+    "slug": "oliveira-fortes",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145802",
+    "nome": "Onça de Pitangui",
+    "slug": "onca-de-pitangui",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145851",
+    "nome": "Oratórios",
+    "slug": "oratorios",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145877",
+    "nome": "Orizânia",
+    "slug": "orizania",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3145901",
+    "nome": "Ouro Branco",
+    "slug": "ouro-branco",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146008",
+    "nome": "Ouro Fino",
+    "slug": "ouro-fino",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146107",
+    "nome": "Ouro Preto",
+    "slug": "ouro-preto",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146206",
+    "nome": "Ouro Verde de Minas",
+    "slug": "ouro-verde-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146255",
+    "nome": "Padre Carvalho",
+    "slug": "padre-carvalho",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146305",
+    "nome": "Padre Paraíso",
+    "slug": "padre-paraiso",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146404",
+    "nome": "Paineiras",
+    "slug": "paineiras",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146503",
+    "nome": "Pains",
+    "slug": "pains",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146552",
+    "nome": "Pai Pedro",
+    "slug": "pai-pedro",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146602",
+    "nome": "Paiva",
+    "slug": "paiva",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146701",
+    "nome": "Palma",
+    "slug": "palma",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146750",
+    "nome": "Palmópolis",
+    "slug": "palmopolis",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3146909",
+    "nome": "Papagaios",
+    "slug": "papagaios",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147006",
+    "nome": "Paracatu",
+    "slug": "paracatu",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147105",
+    "nome": "Pará de Minas",
+    "slug": "para-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147204",
+    "nome": "Paraguaçu",
+    "slug": "paraguacu",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147303",
+    "nome": "Paraisópolis",
+    "slug": "paraisopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147402",
+    "nome": "Paraopeba",
+    "slug": "paraopeba-mg",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147501",
+    "nome": "Passabém",
+    "slug": "passabem",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147600",
+    "nome": "Passa Quatro",
+    "slug": "passa-quatro",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147709",
+    "nome": "Passa Tempo",
+    "slug": "passa-tempo",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147808",
+    "nome": "Passa Vinte",
+    "slug": "passa-vinte",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147907",
+    "nome": "Passos",
+    "slug": "passos",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3147956",
+    "nome": "Patis",
+    "slug": "patis",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148004",
+    "nome": "Patos de Minas",
+    "slug": "patos-de-minas",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148103",
+    "nome": "Patrocínio",
+    "slug": "patrocinio",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148202",
+    "nome": "Patrocínio do Muriaé",
+    "slug": "patrocinio-do-muriae",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148301",
+    "nome": "Paula Cândido",
+    "slug": "paula-candido",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148400",
+    "nome": "Paulistas",
+    "slug": "paulistas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148509",
+    "nome": "Pavão",
+    "slug": "pavao",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148608",
+    "nome": "Peçanha",
+    "slug": "pecanha",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148707",
+    "nome": "Pedra Azul",
+    "slug": "pedra-azul",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148756",
+    "nome": "Pedra Bonita",
+    "slug": "pedra-bonita",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148806",
+    "nome": "Pedra do Anta",
+    "slug": "pedra-do-anta",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3148905",
+    "nome": "Pedra do Indaiá",
+    "slug": "pedra-do-indaia",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149002",
+    "nome": "Pedra Dourada",
+    "slug": "pedra-dourada",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149101",
+    "nome": "Pedralva",
+    "slug": "pedralva",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149150",
+    "nome": "Pedras de Maria da Cruz",
+    "slug": "pedras-de-maria-da-cruz",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149200",
+    "nome": "Pedrinópolis",
+    "slug": "pedrinopolis",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149309",
+    "nome": "Pedro Leopoldo",
+    "slug": "pedro-leopoldo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149408",
+    "nome": "Pedro Teixeira",
+    "slug": "pedro-teixeira",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149507",
+    "nome": "Pequeri",
+    "slug": "pequeri",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149606",
+    "nome": "Pequi",
+    "slug": "pequi",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149705",
+    "nome": "Perdigão",
+    "slug": "perdigao",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149804",
+    "nome": "Perdizes",
+    "slug": "perdizes",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149903",
+    "nome": "Perdões",
+    "slug": "perdoes",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3149952",
+    "nome": "Periquito",
+    "slug": "periquito",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150000",
+    "nome": "Pescador",
+    "slug": "pescador",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150109",
+    "nome": "Piau",
+    "slug": "piau",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150158",
+    "nome": "Piedade de Caratinga",
+    "slug": "piedade-de-caratinga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150208",
+    "nome": "Piedade de Ponte Nova",
+    "slug": "piedade-de-ponte-nova",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150307",
+    "nome": "Piedade do Rio Grande",
+    "slug": "piedade-do-rio-grande",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150406",
+    "nome": "Piedade dos Gerais",
+    "slug": "piedade-dos-gerais",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150505",
+    "nome": "Pimenta",
+    "slug": "pimenta",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150539",
+    "nome": "Pingo-d'Água",
+    "slug": "pingo-d-agua",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150570",
+    "nome": "Pintópolis",
+    "slug": "pintopolis",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150604",
+    "nome": "Piracema",
+    "slug": "piracema",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150703",
+    "nome": "Pirajuba",
+    "slug": "pirajuba",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150802",
+    "nome": "Piranga",
+    "slug": "piranga",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3150901",
+    "nome": "Piranguçu",
+    "slug": "pirangucu",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151008",
+    "nome": "Piranguinho",
+    "slug": "piranguinho",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151107",
+    "nome": "Pirapetinga",
+    "slug": "pirapetinga",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151206",
+    "nome": "Pirapora",
+    "slug": "pirapora",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151305",
+    "nome": "Piraúba",
+    "slug": "pirauba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151404",
+    "nome": "Pitangui",
+    "slug": "pitangui",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151503",
+    "nome": "Piumhi",
+    "slug": "piumhi",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151602",
+    "nome": "Planura",
+    "slug": "planura",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151701",
+    "nome": "Poço Fundo",
+    "slug": "poco-fundo",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151800",
+    "nome": "Poços de Caldas",
+    "slug": "pocos-de-caldas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3151909",
+    "nome": "Pocrane",
+    "slug": "pocrane",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152006",
+    "nome": "Pompéu",
+    "slug": "pompeu",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152105",
+    "nome": "Ponte Nova",
+    "slug": "ponte-nova",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152131",
+    "nome": "Ponto Chique",
+    "slug": "ponto-chique",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152170",
+    "nome": "Ponto dos Volantes",
+    "slug": "ponto-dos-volantes",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152204",
+    "nome": "Porteirinha",
+    "slug": "porteirinha",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152303",
+    "nome": "Porto Firme",
+    "slug": "porto-firme",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152402",
+    "nome": "Poté",
+    "slug": "pote",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152501",
+    "nome": "Pouso Alegre",
+    "slug": "pouso-alegre",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152600",
+    "nome": "Pouso Alto",
+    "slug": "pouso-alto",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152709",
+    "nome": "Prados",
+    "slug": "prados",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152808",
+    "nome": "Prata",
+    "slug": "prata",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3152907",
+    "nome": "Pratápolis",
+    "slug": "pratapolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153004",
+    "nome": "Pratinha",
+    "slug": "pratinha",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153103",
+    "nome": "Presidente Bernardes",
+    "slug": "presidente-bernardes",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153202",
+    "nome": "Presidente Juscelino",
+    "slug": "presidente-juscelino",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153301",
+    "nome": "Presidente Kubitschek",
+    "slug": "presidente-kubitschek",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153400",
+    "nome": "Presidente Olegário",
+    "slug": "presidente-olegario",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153509",
+    "nome": "Alto Jequitibá",
+    "slug": "alto-jequitiba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153608",
+    "nome": "Prudente de Morais",
+    "slug": "prudente-de-morais",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153707",
+    "nome": "Quartel Geral",
+    "slug": "quartel-geral",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153806",
+    "nome": "Queluzito",
+    "slug": "queluzito",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3153905",
+    "nome": "Raposos",
+    "slug": "raposos",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154002",
+    "nome": "Raul Soares",
+    "slug": "raul-soares",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154101",
+    "nome": "Recreio",
+    "slug": "recreio",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154150",
+    "nome": "Reduto",
+    "slug": "reduto",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154200",
+    "nome": "Resende Costa",
+    "slug": "resende-costa",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154309",
+    "nome": "Resplendor",
+    "slug": "resplendor",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154408",
+    "nome": "Ressaquinha",
+    "slug": "ressaquinha",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154457",
+    "nome": "Riachinho",
+    "slug": "riachinho",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154507",
+    "nome": "Riacho dos Machados",
+    "slug": "riacho-dos-machados",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154606",
+    "nome": "Ribeirão das Neves",
+    "slug": "ribeirao-das-neves",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154705",
+    "nome": "Ribeirão Vermelho",
+    "slug": "ribeirao-vermelho",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154804",
+    "nome": "Rio Acima",
+    "slug": "rio-acima",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3154903",
+    "nome": "Rio Casca",
+    "slug": "rio-casca",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155009",
+    "nome": "Rio Doce",
+    "slug": "rio-doce",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155108",
+    "nome": "Rio do Prado",
+    "slug": "rio-do-prado",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155207",
+    "nome": "Rio Espera",
+    "slug": "rio-espera",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155306",
+    "nome": "Rio Manso",
+    "slug": "rio-manso",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155405",
+    "nome": "Rio Novo",
+    "slug": "rio-novo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155504",
+    "nome": "Rio Paranaíba",
+    "slug": "rio-paranaiba",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155603",
+    "nome": "Rio Pardo de Minas",
+    "slug": "rio-pardo-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155702",
+    "nome": "Rio Piracicaba",
+    "slug": "rio-piracicaba",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155801",
+    "nome": "Rio Pomba",
+    "slug": "rio-pomba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3155900",
+    "nome": "Rio Preto",
+    "slug": "rio-preto",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156007",
+    "nome": "Rio Vermelho",
+    "slug": "rio-vermelho",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156106",
+    "nome": "Ritápolis",
+    "slug": "ritapolis",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156205",
+    "nome": "Rochedo de Minas",
+    "slug": "rochedo-de-minas",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156304",
+    "nome": "Rodeiro",
+    "slug": "rodeiro",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156403",
+    "nome": "Romaria",
+    "slug": "romaria",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156452",
+    "nome": "Rosário da Limeira",
+    "slug": "rosario-da-limeira",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156502",
+    "nome": "Rubelita",
+    "slug": "rubelita",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156601",
+    "nome": "Rubim",
+    "slug": "rubim",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156700",
+    "nome": "Sabará",
+    "slug": "sabara",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156809",
+    "nome": "Sabinópolis",
+    "slug": "sabinopolis",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3156908",
+    "nome": "Sacramento",
+    "slug": "sacramento",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157005",
+    "nome": "Salinas",
+    "slug": "salinas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157104",
+    "nome": "Salto da Divisa",
+    "slug": "salto-da-divisa",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157203",
+    "nome": "Santa Bárbara",
+    "slug": "santa-barbara",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157252",
+    "nome": "Santa Bárbara do Leste",
+    "slug": "santa-barbara-do-leste",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157278",
+    "nome": "Santa Bárbara do Monte Verde",
+    "slug": "santa-barbara-do-monte-verde",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157302",
+    "nome": "Santa Bárbara do Tugúrio",
+    "slug": "santa-barbara-do-tugurio",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157336",
+    "nome": "Santa Cruz de Minas",
+    "slug": "santa-cruz-de-minas",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157377",
+    "nome": "Santa Cruz de Salinas",
+    "slug": "santa-cruz-de-salinas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157401",
+    "nome": "Santa Cruz do Escalvado",
+    "slug": "santa-cruz-do-escalvado",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157500",
+    "nome": "Santa Efigênia de Minas",
+    "slug": "santa-efigenia-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157609",
+    "nome": "Santa Fé de Minas",
+    "slug": "santa-fe-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157658",
+    "nome": "Santa Helena de Minas",
+    "slug": "santa-helena-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157708",
+    "nome": "Santa Juliana",
+    "slug": "santa-juliana",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157807",
+    "nome": "Santa Luzia",
+    "slug": "santa-luzia",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3157906",
+    "nome": "Santa Margarida",
+    "slug": "santa-margarida",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158003",
+    "nome": "Santa Maria de Itabira",
+    "slug": "santa-maria-de-itabira",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158102",
+    "nome": "Santa Maria do Salto",
+    "slug": "santa-maria-do-salto",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158201",
+    "nome": "Santa Maria do Suaçuí",
+    "slug": "santa-maria-do-suacui",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158300",
+    "nome": "Santana da Vargem",
+    "slug": "santana-da-vargem",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158409",
+    "nome": "Santana de Cataguases",
+    "slug": "santana-de-cataguases",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158508",
+    "nome": "Santana de Pirapama",
+    "slug": "santana-de-pirapama",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158607",
+    "nome": "Santana do Deserto",
+    "slug": "santana-do-deserto",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158706",
+    "nome": "Santana do Garambéu",
+    "slug": "santana-do-garambeu",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158805",
+    "nome": "Santana do Jacaré",
+    "slug": "santana-do-jacare",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158904",
+    "nome": "Santana do Manhuaçu",
+    "slug": "santana-do-manhuacu",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3158953",
+    "nome": "Santana do Paraíso",
+    "slug": "santana-do-paraiso",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159001",
+    "nome": "Santana do Riacho",
+    "slug": "santana-do-riacho",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159100",
+    "nome": "Santana dos Montes",
+    "slug": "santana-dos-montes",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159209",
+    "nome": "Santa Rita de Caldas",
+    "slug": "santa-rita-de-caldas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159308",
+    "nome": "Santa Rita de Jacutinga",
+    "slug": "santa-rita-de-jacutinga",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159357",
+    "nome": "Santa Rita de Minas",
+    "slug": "santa-rita-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159407",
+    "nome": "Santa Rita de Ibitipoca",
+    "slug": "santa-rita-de-ibitipoca",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159506",
+    "nome": "Santa Rita do Itueto",
+    "slug": "santa-rita-do-itueto",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159605",
+    "nome": "Santa Rita do Sapucaí",
+    "slug": "santa-rita-do-sapucai",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159704",
+    "nome": "Santa Rosa da Serra",
+    "slug": "santa-rosa-da-serra",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159803",
+    "nome": "Santa Vitória",
+    "slug": "santa-vitoria",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3159902",
+    "nome": "Santo Antônio do Amparo",
+    "slug": "santo-antonio-do-amparo",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160009",
+    "nome": "Santo Antônio do Aventureiro",
+    "slug": "santo-antonio-do-aventureiro",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160108",
+    "nome": "Santo Antônio do Grama",
+    "slug": "santo-antonio-do-grama",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160207",
+    "nome": "Santo Antônio do Itambé",
+    "slug": "santo-antonio-do-itambe",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160306",
+    "nome": "Santo Antônio do Jacinto",
+    "slug": "santo-antonio-do-jacinto",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160405",
+    "nome": "Santo Antônio do Monte",
+    "slug": "santo-antonio-do-monte",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160454",
+    "nome": "Santo Antônio do Retiro",
+    "slug": "santo-antonio-do-retiro",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160504",
+    "nome": "Santo Antônio do Rio Abaixo",
+    "slug": "santo-antonio-do-rio-abaixo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160603",
+    "nome": "Santo Hipólito",
+    "slug": "santo-hipolito",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160702",
+    "nome": "Santos Dumont",
+    "slug": "santos-dumont",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160801",
+    "nome": "São Bento Abade",
+    "slug": "sao-bento-abade",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160900",
+    "nome": "São Brás do Suaçuí",
+    "slug": "sao-bras-do-suacui",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3160959",
+    "nome": "São Domingos das Dores",
+    "slug": "sao-domingos-das-dores",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161007",
+    "nome": "São Domingos do Prata",
+    "slug": "sao-domingos-do-prata",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161056",
+    "nome": "São Félix de Minas",
+    "slug": "sao-felix-de-minas",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161106",
+    "nome": "São Francisco",
+    "slug": "sao-francisco",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161205",
+    "nome": "São Francisco de Paula",
+    "slug": "sao-francisco-de-paula",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161304",
+    "nome": "São Francisco de Sales",
+    "slug": "sao-francisco-de-sales",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161403",
+    "nome": "São Francisco do Glória",
+    "slug": "sao-francisco-do-gloria",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161502",
+    "nome": "São Geraldo",
+    "slug": "sao-geraldo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161601",
+    "nome": "São Geraldo da Piedade",
+    "slug": "sao-geraldo-da-piedade",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161650",
+    "nome": "São Geraldo do Baixio",
+    "slug": "sao-geraldo-do-baixio",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161700",
+    "nome": "São Gonçalo do Abaeté",
+    "slug": "sao-goncalo-do-abaete",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161809",
+    "nome": "São Gonçalo do Pará",
+    "slug": "sao-goncalo-do-para",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3161908",
+    "nome": "São Gonçalo do Rio Abaixo",
+    "slug": "sao-goncalo-do-rio-abaixo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162005",
+    "nome": "São Gonçalo do Sapucaí",
+    "slug": "sao-goncalo-do-sapucai",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162104",
+    "nome": "São Gotardo",
+    "slug": "sao-gotardo",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162203",
+    "nome": "São João Batista do Glória",
+    "slug": "sao-joao-batista-do-gloria",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162252",
+    "nome": "São João da Lagoa",
+    "slug": "sao-joao-da-lagoa",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162302",
+    "nome": "São João da Mata",
+    "slug": "sao-joao-da-mata",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162401",
+    "nome": "São João da Ponte",
+    "slug": "sao-joao-da-ponte",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162450",
+    "nome": "São João das Missões",
+    "slug": "sao-joao-das-missoes",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162500",
+    "nome": "São João del Rei",
+    "slug": "sao-joao-del-rei",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162559",
+    "nome": "São João do Manhuaçu",
+    "slug": "sao-joao-do-manhuacu",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162575",
+    "nome": "São João do Manteninha",
+    "slug": "sao-joao-do-manteninha",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162609",
+    "nome": "São João do Oriente",
+    "slug": "sao-joao-do-oriente",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162658",
+    "nome": "São João do Pacuí",
+    "slug": "sao-joao-do-pacui",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162708",
+    "nome": "São João do Paraíso",
+    "slug": "sao-joao-do-paraiso",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162807",
+    "nome": "São João Evangelista",
+    "slug": "sao-joao-evangelista",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162906",
+    "nome": "São João Nepomuceno",
+    "slug": "sao-joao-nepomuceno",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162922",
+    "nome": "São Joaquim de Bicas",
+    "slug": "sao-joaquim-de-bicas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162948",
+    "nome": "São José da Barra",
+    "slug": "sao-jose-da-barra",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3162955",
+    "nome": "São José da Lapa",
+    "slug": "sao-jose-da-lapa",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163003",
+    "nome": "São José da Safira",
+    "slug": "sao-jose-da-safira",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163102",
+    "nome": "São José da Varginha",
+    "slug": "sao-jose-da-varginha",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163201",
+    "nome": "São José do Alegre",
+    "slug": "sao-jose-do-alegre",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163300",
+    "nome": "São José do Divino",
+    "slug": "sao-jose-do-divino",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163409",
+    "nome": "São José do Goiabal",
+    "slug": "sao-jose-do-goiabal",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163508",
+    "nome": "São José do Jacuri",
+    "slug": "sao-jose-do-jacuri",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163607",
+    "nome": "São José do Mantimento",
+    "slug": "sao-jose-do-mantimento",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163706",
+    "nome": "São Lourenço",
+    "slug": "sao-lourenco",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163805",
+    "nome": "São Miguel do Anta",
+    "slug": "sao-miguel-do-anta",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3163904",
+    "nome": "São Pedro da União",
+    "slug": "sao-pedro-da-uniao",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164001",
+    "nome": "São Pedro dos Ferros",
+    "slug": "sao-pedro-dos-ferros",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164100",
+    "nome": "São Pedro do Suaçuí",
+    "slug": "sao-pedro-do-suacui",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164209",
+    "nome": "São Romão",
+    "slug": "sao-romao",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164308",
+    "nome": "São Roque de Minas",
+    "slug": "sao-roque-de-minas",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164407",
+    "nome": "São Sebastião da Bela Vista",
+    "slug": "sao-sebastiao-da-bela-vista",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164431",
+    "nome": "São Sebastião da Vargem Alegre",
+    "slug": "sao-sebastiao-da-vargem-alegre",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164472",
+    "nome": "São Sebastião do Anta",
+    "slug": "sao-sebastiao-do-anta",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164506",
+    "nome": "São Sebastião do Maranhão",
+    "slug": "sao-sebastiao-do-maranhao",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164605",
+    "nome": "São Sebastião do Oeste",
+    "slug": "sao-sebastiao-do-oeste",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164704",
+    "nome": "São Sebastião do Paraíso",
+    "slug": "sao-sebastiao-do-paraiso",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164803",
+    "nome": "São Sebastião do Rio Preto",
+    "slug": "sao-sebastiao-do-rio-preto",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3164902",
+    "nome": "São Sebastião do Rio Verde",
+    "slug": "sao-sebastiao-do-rio-verde",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165008",
+    "nome": "São Tiago",
+    "slug": "sao-tiago",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165107",
+    "nome": "São Tomás de Aquino",
+    "slug": "sao-tomas-de-aquino",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165206",
+    "nome": "São Tomé das Letras",
+    "slug": "sao-tome-das-letras",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165305",
+    "nome": "São Vicente de Minas",
+    "slug": "sao-vicente-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165404",
+    "nome": "Sapucaí-Mirim",
+    "slug": "sapucai-mirim",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165503",
+    "nome": "Sardoá",
+    "slug": "sardoa",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165537",
+    "nome": "Sarzedo",
+    "slug": "sarzedo",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165552",
+    "nome": "Setubinha",
+    "slug": "setubinha",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165560",
+    "nome": "Sem-Peixe",
+    "slug": "sem-peixe",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165578",
+    "nome": "Senador Amaral",
+    "slug": "senador-amaral",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165602",
+    "nome": "Senador Cortes",
+    "slug": "senador-cortes",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165701",
+    "nome": "Senador Firmino",
+    "slug": "senador-firmino",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165800",
+    "nome": "Senador José Bento",
+    "slug": "senador-jose-bento",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3165909",
+    "nome": "Senador Modestino Gonçalves",
+    "slug": "senador-modestino-goncalves",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166006",
+    "nome": "Senhora de Oliveira",
+    "slug": "senhora-de-oliveira",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166105",
+    "nome": "Senhora do Porto",
+    "slug": "senhora-do-porto",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166204",
+    "nome": "Senhora dos Remédios",
+    "slug": "senhora-dos-remedios",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166303",
+    "nome": "Sericita",
+    "slug": "sericita",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166402",
+    "nome": "Seritinga",
+    "slug": "seritinga",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166501",
+    "nome": "Serra Azul de Minas",
+    "slug": "serra-azul-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166600",
+    "nome": "Serra da Saudade",
+    "slug": "serra-da-saudade",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166709",
+    "nome": "Serra dos Aimorés",
+    "slug": "serra-dos-aimores",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166808",
+    "nome": "Serra do Salitre",
+    "slug": "serra-do-salitre",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166907",
+    "nome": "Serrania",
+    "slug": "serrania",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3166956",
+    "nome": "Serranópolis de Minas",
+    "slug": "serranopolis-de-minas",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167004",
+    "nome": "Serranos",
+    "slug": "serranos",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167103",
+    "nome": "Serro",
+    "slug": "serro",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167202",
+    "nome": "Sete Lagoas",
+    "slug": "sete-lagoas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167301",
+    "nome": "Silveirânia",
+    "slug": "silveirania",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167400",
+    "nome": "Silvianópolis",
+    "slug": "silvianopolis",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167509",
+    "nome": "Simão Pereira",
+    "slug": "simao-pereira",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167608",
+    "nome": "Simonésia",
+    "slug": "simonesia",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167707",
+    "nome": "Sobrália",
+    "slug": "sobralia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167806",
+    "nome": "Soledade de Minas",
+    "slug": "soledade-de-minas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3167905",
+    "nome": "Tabuleiro",
+    "slug": "tabuleiro",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168002",
+    "nome": "Taiobeiras",
+    "slug": "taiobeiras",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168051",
+    "nome": "Taparuba",
+    "slug": "taparuba",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168101",
+    "nome": "Tapira",
+    "slug": "tapira",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168200",
+    "nome": "Tapiraí",
+    "slug": "tapirai",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168309",
+    "nome": "Taquaraçu de Minas",
+    "slug": "taquaracu-de-minas",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168408",
+    "nome": "Tarumirim",
+    "slug": "tarumirim",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168507",
+    "nome": "Teixeiras",
+    "slug": "teixeiras",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168606",
+    "nome": "Teófilo Otoni",
+    "slug": "teofilo-otoni",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168705",
+    "nome": "Timóteo",
+    "slug": "timoteo",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168804",
+    "nome": "Tiradentes",
+    "slug": "tiradentes",
+    "uf": "MG",
+    "regiao": "Campo das Vertentes",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3168903",
+    "nome": "Tiros",
+    "slug": "tiros",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169000",
+    "nome": "Tocantins",
+    "slug": "tocantins",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169059",
+    "nome": "Tocos do Moji",
+    "slug": "tocos-do-moji",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169109",
+    "nome": "Toledo",
+    "slug": "toledo",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169208",
+    "nome": "Tombos",
+    "slug": "tombos",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169307",
+    "nome": "Três Corações",
+    "slug": "tres-coracoes",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169356",
+    "nome": "Três Marias",
+    "slug": "tres-marias",
+    "uf": "MG",
+    "regiao": "Central Mineira",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169406",
+    "nome": "Três Pontas",
+    "slug": "tres-pontas",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169505",
+    "nome": "Tumiritinga",
+    "slug": "tumiritinga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169604",
+    "nome": "Tupaciguara",
+    "slug": "tupaciguara",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169703",
+    "nome": "Turmalina",
+    "slug": "turmalina",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169802",
+    "nome": "Turvolândia",
+    "slug": "turvolandia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3169901",
+    "nome": "Ubá",
+    "slug": "uba",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170008",
+    "nome": "Ubaí",
+    "slug": "ubai",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170057",
+    "nome": "Ubaporanga",
+    "slug": "ubaporanga",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170107",
+    "nome": "Uberaba",
+    "slug": "uberaba",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170206",
+    "nome": "Uberlândia",
+    "slug": "uberlandia",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170305",
+    "nome": "Umburatiba",
+    "slug": "umburatiba",
+    "uf": "MG",
+    "regiao": "Vale do Mucuri",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170404",
+    "nome": "Unaí",
+    "slug": "unai",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170438",
+    "nome": "União de Minas",
+    "slug": "uniao-de-minas",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170479",
+    "nome": "Uruana de Minas",
+    "slug": "uruana-de-minas",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170503",
+    "nome": "Urucânia",
+    "slug": "urucania",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170529",
+    "nome": "Urucuia",
+    "slug": "urucuia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170578",
+    "nome": "Vargem Alegre",
+    "slug": "vargem-alegre",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170602",
+    "nome": "Vargem Bonita",
+    "slug": "vargem-bonita",
+    "uf": "MG",
+    "regiao": "Oeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170651",
+    "nome": "Vargem Grande do Rio Pardo",
+    "slug": "vargem-grande-do-rio-pardo",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170701",
+    "nome": "Varginha",
+    "slug": "varginha",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "polo-interior",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170750",
+    "nome": "Varjão de Minas",
+    "slug": "varjao-de-minas",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170800",
+    "nome": "Várzea da Palma",
+    "slug": "varzea-da-palma",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3170909",
+    "nome": "Varzelândia",
+    "slug": "varzelandia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171006",
+    "nome": "Vazante",
+    "slug": "vazante",
+    "uf": "MG",
+    "regiao": "Noroeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171030",
+    "nome": "Verdelândia",
+    "slug": "verdelandia",
+    "uf": "MG",
+    "regiao": "Norte de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171071",
+    "nome": "Veredinha",
+    "slug": "veredinha",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171105",
+    "nome": "Veríssimo",
+    "slug": "verissimo",
+    "uf": "MG",
+    "regiao": "Triângulo Mineiro/Alto Paranaíba",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171154",
+    "nome": "Vermelho Novo",
+    "slug": "vermelho-novo",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171204",
+    "nome": "Vespasiano",
+    "slug": "vespasiano",
+    "uf": "MG",
+    "regiao": "Metropolitana de Belo Horizonte",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171303",
+    "nome": "Viçosa",
+    "slug": "vicosa",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171402",
+    "nome": "Vieiras",
+    "slug": "vieiras",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171501",
+    "nome": "Mathias Lobato",
+    "slug": "mathias-lobato",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171600",
+    "nome": "Virgem da Lapa",
+    "slug": "virgem-da-lapa",
+    "uf": "MG",
+    "regiao": "Jequitinhonha",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171709",
+    "nome": "Virgínia",
+    "slug": "virginia",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171808",
+    "nome": "Virginópolis",
+    "slug": "virginopolis",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3171907",
+    "nome": "Virgolândia",
+    "slug": "virgolandia",
+    "uf": "MG",
+    "regiao": "Vale do Rio Doce",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3172004",
+    "nome": "Visconde do Rio Branco",
+    "slug": "visconde-do-rio-branco",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3172103",
+    "nome": "Volta Grande",
+    "slug": "volta-grande",
+    "uf": "MG",
+    "regiao": "Zona da Mata",
+    "tipo": "municipio",
+    "ativo": false
+  },
+  {
+    "id_municipio": "3172202",
+    "nome": "Wenceslau Braz",
+    "slug": "wenceslau-braz",
+    "uf": "MG",
+    "regiao": "Sul/Sudoeste de Minas",
+    "tipo": "municipio",
+    "ativo": false
+  }
+]
