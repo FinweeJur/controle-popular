@@ -129,7 +129,7 @@ export default async function DireitosEmMovimentoHub() {
         </p>
       </header>
 
-      {/* Faixa de aquarela do eixo: a arara é a arte própria de Direitos. */}
+      {/* Faixa de aquarela do eixo: o mico-leão da Mata Atlântica. */}
       <ArteEixo slug="direitos" className="mt-6 aspect-[21/8]" prioridade />
 
       {/* SUBFRENTES PRIORITÁRIAS EM DESTAQUE */}

@@ -18,11 +18,10 @@ import { arteDoEixo } from "@/lib/navegacao/arte-eixos";
  * `prefers-reduced-motion` recebe a grade parada (regra do portal: movimento
  * é escolha). O hover só dá um leve zoom na imagem, nunca é o único sinal.
  *
- * ARTES: os arquivos vêm de `public/images/eixos/` (aquarelas da fauna e do
- * Cerrado) e de `public/capas/`. Eixo sem arte própria herda a mais próxima;
- * não há imagem gerada nem arquivo novo nesta entrega. A geração de novas
- * artes está bloqueada por falta de saldo na conta de imagem — quando houver,
- * basta trocar o `src` aqui.
+ * ARTES: os arquivos vêm de `public/images/eixos/` (aquarelas de biomas e
+ * fauna) e de `public/capas/`, pela fonte única
+ * `lib/navegacao/arte-eixos.ts`. Cada eixo tem uma arte diferente; eixo sem
+ * arte própria herda a cachoeira do Cerrado, nunca fica em branco.
  */
 
 export default function HeroEixos() {

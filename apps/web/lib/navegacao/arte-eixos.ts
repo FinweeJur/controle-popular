@@ -4,11 +4,12 @@
  *
  * Fonte única dos caminhos usados na home (`HeroEixos`) e nas páginas de
  * eixo/subfrente (`ArteEixo`). Os arquivos estão em
- * `public/images/eixos/` (fauna e Cerrado) e `public/capas/`.
+ * `public/images/eixos/` (aquarelas de biomas e fauna) e `public/capas/`.
  *
- * Não há imagem gerada nesta entrega: a conta de geração está sem saldo
- * (08/11/2026). Eixo sem arte própria herda a mais próxima; trocar aqui
- * basta quando houver arte nova.
+ * COLEÇÃO (08/11/2026): Pantanal, Caatinga, Mata Atlântica, Amazônia e Pampa
+ * somam-se às quatro aquarelas originais (Cerrado, Águas, Serras e Arara).
+ * Cada um dos 9 eixos usa uma arte DIFERENTE; a coleção de biomas também
+ * alimenta a `GaleriaBiomas`. Trocar aqui basta para mudar a arte.
  */
 
 export interface ArteEixo {
@@ -18,12 +19,12 @@ export interface ArteEixo {
 
 export const ARTE_EIXO: Record<string, ArteEixo> = {
   casos: {
-    src: "/images/eixos/nossos-rios-peixes-agua.jpg",
-    alt: "Água de rio com peixes, em aquarela — os desastres que o portal acompanha",
+    src: "/images/eixos/pantanal-onca-tuiuiu.jpg",
+    alt: "Onça-pintada à beira do rio com tuiuiú e vitórias-régias, em aquarela — os desastres que o portal acompanha",
   },
   direitos: {
-    src: "/images/eixos/direitos-em-movimento-arara.jpg",
-    alt: "Arara-vermelha sobre rio e floresta, em aquarela",
+    src: "/images/eixos/mata-atlantica-mico-leao-bromelias.jpg",
+    alt: "Mico-leão-dourado entre bromélias na Mata Atlântica, em aquarela — a vida que os direitos protegem",
   },
   "meio-ambiente": {
     src: "/images/eixos/serras-cachoeira-fauna.jpg",
@@ -34,27 +35,26 @@ export const ARTE_EIXO: Record<string, ArteEixo> = {
     alt: "Poço Dantas entre casas e serras, em aquarela",
   },
   politica: {
-    src: "/capas/reserva-gemini.webp",
-    alt: "Lagoa cercada por serras e comunidade, em aquarela",
+    src: "/images/eixos/caatinga-tatu-mandacaru.jpg",
+    alt: "Tatu-bola e mandacarus floridos na Caatinga, em aquarela — o sertão e sua política",
   },
   economia: {
-    src: "/images/eixos/terra-e-territorios-ipe-lobo.jpg",
-    alt: "Ipê-amarelo e lobo-guará no Cerrado, em aquarela",
+    src: "/images/eixos/pampa-veado-campeiro-coxilhas.jpg",
+    alt: "Veado-campeiro em coxilhas douradas do Pampa, em aquarela — a economia do campo",
   },
   justica: {
     src: "/capas/home-page.webp",
     alt: "Onça-pintada na capa do portal",
   },
   internacional: {
-    src: "/capas/terras-arara.webp",
-    alt: "Arara em voo sobre rio e floresta, em aquarela",
+    src: "/images/eixos/amazonia-boto-vitoria-regia.jpg",
+    alt: "Boto-cor-de-rosa em igarapé com vitórias-régias, em aquarela — o olhar internacional",
   },
   dados: {
-    src: "/capas/ambiente-rios.webp",
+    src: "/images/eixos/nossos-rios-peixes-agua.jpg",
     alt: "Água do rio com peixes, em aquarela — os dados abertos do portal",
   },
-  // Página de subfrente (não é eixo): a memória das lutas usa o ipê com o
-  // lobo-guará, a mesma arte de "economia e território".
+  // Página de subfrente (não é eixo): a memória das lutas usa o Cerrado.
   memoria: {
     src: "/images/eixos/terra-e-territorios-ipe-lobo.jpg",
     alt: "Ipê-amarelo e lobo-guará no Cerrado, em aquarela — a memória das lutas",
