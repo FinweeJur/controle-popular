@@ -5,6 +5,7 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 import FiltroDH from "./FiltroDH";
+import SecaoAcervoCndh from "./SecaoAcervoCndh";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
@@ -56,14 +57,12 @@ export default function PaginaDireitosHumanos() {
           Relatórios Internacionais e Nacionais de Direitos Humanos
         </h1>
         <p className="mt-3 text-base text-muted sm:text-lg">
-          Compêndio de relatórios oficiais da Comissão Interamericana de Direitos Humanos (CIDH),
-          da ONU e do Conselho Nacional dos Direitos Humanos (CNDH) cruzados com municípios,
-          bacias hidrográficas e conflitos socioambientais brasileiros.
+          Compêndio de relatórios oficiais da Comissão Interamericana de Direitos Humanos (CIDH), da ONU e do Conselho Nacional dos Direitos Humanos (CNDH) cruzados com municípios, bacias hidrográficas e conflitos socioambientais brasileiros.
         </p>
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 2 · Evaristo, Becos da Memória) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos." — Conceição Evaristo, Becos da Memória, 2006
+          &ldquo;A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos.&rdquo; — Conceição Evaristo, Becos da Memória, 2006
         </p>
       </header>
 
@@ -152,6 +151,8 @@ export default function PaginaDireitosHumanos() {
 
         <FiltroDH relatorios={relatorios} />
       </section>
+
+      <SecaoAcervoCndh />
 
       {/* DIÁLOGO ENTRE FRENTES */}
       <PainelDialogo
