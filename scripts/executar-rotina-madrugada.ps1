@@ -39,7 +39,12 @@ npx tsx scripts/agent-tools/linkmender-pr.mts *>> $ArquivoLog
 
 # 4. Executa coletas automatizadas das fontes prioritarias
 Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 4/6. Executando rotina de coletas automatizadas..." | Tee-Object -FilePath $ArquivoLog -Append
-npx tsx scripts/rotina-coletas.mts --listar *>> $ArquivoLog
+# Diarias com coletor proprio. O `--listar` antigo so imprimia o catalogo:
+# nenhuma fonte era coletada e o vigia via tudo envelhecer. Estas duas sao
+# curtas e sem chave (medido 08/11/2026: SIGBM 9,8 s; noticias 14,7 s) e o
+# rotina-coletas publica o dado depois da varredura CPF.
+npx tsx scripts/rotina-coletas.mts --fonte sigbm-barragens *>> $ArquivoLog
+npx tsx scripts/rotina-coletas.mts --fonte noticias-desastres *>> $ArquivoLog
 
 # 5. Varredura obrigatoria de privacidade (Mod-11 CPF)
 Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 5/6. Varredura de privacidade mod-11..." | Tee-Object -FilePath $ArquivoLog -Append
