@@ -50,7 +50,13 @@ function comNegrito(texto: string): ReactNode[] {
   });
 }
 
-export function ResumoRealidadeBox({ rota }: { rota: string }) {
+export function ResumoRealidadeBox({
+  rota,
+  className = "",
+}: {
+  rota: string;
+  className?: string;
+}) {
   const resumo = RESUMOS[rota];
   if (!resumoPublicavel(resumo)) return null;
   const blocos = parseResumo(resumo.markdown);
@@ -60,7 +66,7 @@ export function ResumoRealidadeBox({ rota }: { rota: string }) {
   return (
     <section
       aria-labelledby="resumo-realidade"
-      className={CAIXA}
+      className={`${CAIXA} ${className}`.trim()}
     >
       <p className="text-xs uppercase tracking-wide opacity-60">
         Resumo de realidade · fonte em cada afirmação · atualizado em {resumo.geradoEm}
