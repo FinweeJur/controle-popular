@@ -247,7 +247,11 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
               "23010000448", "23010004001", "23010000286", "23010000871",
               "23010001509",
               # falsos positivos: valores financeiros em USD de demonstracoes financeiras (SEC/HKEX) capturados como 11 digitos — dinheiro, nao CPF
-              "88140000000", "52400000000", "33400000000",}
+              "88140000000", "52400000000", "33400000000",
+              # falso positivo: numero de processo administrativo do IBAMA
+              # (02022000862/2023-12) na descricao do auto - mod-11 por
+              # coincidencia, protocolo nao CPF (coleta 2026-11-08).
+              "02022000862",}
 
 
 def cpf_valido(digitos: str) -> bool:

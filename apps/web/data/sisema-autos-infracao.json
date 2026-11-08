@@ -6,7 +6,7 @@
  "ressalva_fonte": "Dado do painel público do Sisema, sem login. O formato DSR do Power BI não é documentado; a coleta quebra de propósito se ele mudar.",
  "ressalva_titular": "A entidade coletada NÃO traz nome, CPF/CNPJ nem RG — o portal publica o ato, nunca o titular (AGENTS § 5.2).",
  "ressalva_agregado": "Este arquivo é o AGREGADO. O cru (583.644 linhas em 30/09/2026) não é versionado; recupera-se com `python -m etl.apis.sisema_autos_infracao --bruto`.",
- "coletado_em": "2026-09-30T20:01:45.145068+00:00",
+ "coletado_em": "2026-11-08T18:27:24.959880+00:00",
  "paginas": 20,
  "total": 583644,
  "cobertura": {

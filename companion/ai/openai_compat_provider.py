@@ -37,6 +37,24 @@ import httpx
 from ai.base_provider import BaseLLMProvider, Message
 
 
+def montar_payload(escolhido: str, messages: list) -> dict:
+    """Corpo do POST /chat/completions (funcao pura, testavel sem rede).
+
+    Sabiazinho-4 roda no tier Flex (decisao do dono, 08/11/2026): 50% mais
+    barato, sujeito a fila. Outros modelos (DeepSeek etc.) nao recebem o
+    campo — mandar `service_tier` para quem nao o conhece daria erro.
+    """
+    payload = {
+        "model": escolhido,
+        "messages": messages,
+        "max_tokens": 1024,
+        "stream": True,
+    }
+    if escolhido.startswith("sabiazinho"):
+        payload["service_tier"] = "flex"
+    return payload
+
+
 class OpenAICompatProvider(BaseLLMProvider):
     """Provedor para endpoints compativeis com /chat/completions da OpenAI.
 
@@ -100,12 +118,7 @@ class OpenAICompatProvider(BaseLLMProvider):
         else:
             messages.append({"role": "user", "content": user_text})
 
-        payload = {
-            "model": escolhido,
-            "messages": messages,
-            "max_tokens": 1024,
-            "stream": True,
-        }
+        payload = montar_payload(escolhido, messages)
 
         try:
             async with self._client.stream(
