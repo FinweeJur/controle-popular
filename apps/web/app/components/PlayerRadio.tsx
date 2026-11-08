@@ -87,34 +87,29 @@ import {
 const ESTACAO_PADRAO = "radio-brasil-de-fato";
 
 /**
- * Folga horizontal (px) do índice de rádios.
+ * O índice abre AO LADO da coluna, não por cima dela.
  *
- * O painel abre acima do botão; com o rastro mágico como quarto item da
- * pilha, ele cobria o botão de cima. O dono pediu "um pouco pra direita"
- * (08/11/2026). A folga só vale quando há espaço — ver `folgaIndice`.
+ * O painel nasce acima do botão e cobria o rastro mágico, quarto item da
+ * pilha (dono, 08/11/2026: "tem que expandir um pouco pra direita"). A
+ * posição horizontal é fixa à direita da coluna (largura do botão + 8 px);
+ * a largura encolhe para caber na tela. O utilitário segue decidindo só o
+ * lado VERTICAL (acima/abaixo) e o teto de altura.
  */
-const FOLGA_DIREITA_INDICE = 56;
+const ESPACO_COLUNA_PAINEL = 8;
+/** Largura máxima do índice (mesma régua de `23rem` do desenho original). */
+const LARGURA_MAXIMA_INDICE = 368;
 
-/**
- * Deslocamento real do índice: a folga só entra quando sobra largura.
- * No celular o painel ocupa quase a tela e qualquer deslocamento o
- * empurraria para fora.
- */
-function folgaDoIndice(posIndice: ResultadoPainel | null): number {
-  if (!posIndice || typeof window === "undefined") return 0;
-  const sobra = window.innerWidth - (posIndice.posicao.x + posIndice.posicao.largura);
-  return sobra >= FOLGA_DIREITA_INDICE ? FOLGA_DIREITA_INDICE : 0;
-}
-
-/** `left`/`top` do índice relativos ao grupo; `visibility` evita flash. */
 function estiloDoIndice(posIndice: ResultadoPainel | null): CSSProperties {
-  if (!posIndice) return { left: 0, top: 0, visibility: "hidden" };
+  if (!posIndice || typeof window === "undefined") {
+    return { left: 0, top: 0, visibility: "hidden" };
+  }
+  const esquerda = Math.round(posIndice.ancora.larg + ESPACO_COLUNA_PAINEL);
+  const disponivel = window.innerWidth - (posIndice.ancora.esq + esquerda) - 8;
   return {
-    left: Math.round(
-      posIndice.posicao.x - posIndice.ancora.esq + folgaDoIndice(posIndice),
-    ),
+    left: esquerda,
     top: Math.round(posIndice.posicao.y - posIndice.ancora.topo),
     maxHeight: Math.round(posIndice.posicao.altura),
+    width: Math.max(220, Math.min(LARGURA_MAXIMA_INDICE, disponivel)),
     visibility: "visible",
   };
 }
@@ -490,8 +485,9 @@ export default function PlayerRadio() {
             style={estiloDoIndice(posIndice)}
             // Duas colunas (06/10/2026): esquerda título+lista, direita o
             // volume. `flex-row` + `overflow-hidden` mantêm o corte da rolagem
-            // só na lista.
-            className="absolute z-50 flex w-[min(calc(100vw-2rem),23rem)] flex-row overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+            // só na lista. A largura vem de `estiloDoIndice` (inline), para
+            // encolher quando a tela é estreita.
+            className="absolute z-50 flex flex-row overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
           >
             {/* Coluna esquerda: o título fixo e a lista que rola sozinha. */}
             <div className="flex min-w-0 flex-1 flex-col">

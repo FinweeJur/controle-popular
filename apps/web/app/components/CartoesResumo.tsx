@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CountUp } from "./CountUp";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 
 export interface CartaoResumoItem {
   rotulo: string;
@@ -18,20 +18,30 @@ export interface CartoesResumoProps {
 
 function renderValor(val: string | number) {
   if (typeof val === "number") {
-    return <CountUp value={val} />;
+    return <ContadorAnimado valor={val} />;
   }
   const str = String(val).trim();
   const matchPct = /^(\d+(?:[.,]\d+)?)\s*%$/.exec(str);
   if (matchPct) {
     const num = parseFloat(matchPct[1].replace(",", "."));
-    return <CountUp value={num} suffix="%" />;
+    return (
+      <ContadorAnimado
+        valor={num}
+        formatar={(n) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 1 })}%`}
+      />
+    );
   }
   const matchMoney = /^R\$\s*([\d.]+)(?:,(\d+))?$/.exec(str);
   if (matchMoney) {
     const raw = matchMoney[1].replace(/\./g, "") + (matchMoney[2] ? "." + matchMoney[2] : "");
     const num = parseFloat(raw);
     const dec = matchMoney[2] ? matchMoney[2].length : 0;
-    return <CountUp value={num} prefix="R$ " decimals={dec} />;
+    return (
+      <ContadorAnimado
+        valor={num}
+        formatar={(n) => `R$ ${n.toLocaleString("pt-BR", { minimumFractionDigits: dec, maximumFractionDigits: dec })}`}
+      />
+    );
   }
   return val;
 }

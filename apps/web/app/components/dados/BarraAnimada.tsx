@@ -87,6 +87,7 @@ export interface BarraAnimadaSvgProps {
   fill?: string;
   rx?: number;
   duracaoMs?: number;
+  orientacao?: "horizontal" | "vertical";
   className?: string;
 }
 
@@ -98,11 +99,15 @@ export function BarraAnimadaSvg({
   fill,
   rx = 0,
   duracaoMs = 2000,
+  orientacao = "horizontal",
   className = "",
 }: BarraAnimadaSvgProps) {
   const ref = useRef<SVGRectElement>(null);
   const entrou = useEntrouNaTela(ref);
   const escala = entrou ? 1 : 0;
+  const vertical = orientacao === "vertical";
+  const transform = vertical ? `scaleY(${escala})` : `scaleX(${escala})`;
+  const transformOrigin = vertical ? `${x}px ${y + height}px` : `${x}px ${y}px`;
 
   return (
     <rect
@@ -115,8 +120,8 @@ export function BarraAnimadaSvg({
       rx={rx}
       className={className}
       style={{
-        transform: `scaleX(${escala})`,
-        transformOrigin: `${x}px ${y}px`,
+        transform,
+        transformOrigin,
         transition: `transform ${duracaoMs}ms cubic-bezier(0.16, 1, 0.3, 1)`,
         willChange: "transform",
       }}
