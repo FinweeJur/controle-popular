@@ -195,6 +195,8 @@ O piloto usou um wrapper temporario fora do repo, com o formulario atual e os
 parsers antigos apenas para classificacao. A correcao do coletor e pre-requisito
 da Onda 1; sem ela, a expansao coleta zero.
 
+Corrigido na Fase 1: [expansao-fase1-2026-11-08.md](expansao-fase1-2026-11-08.md).
+
 ## 4. Teto de build
 
 ### 4.1 O que foi medido
