@@ -2,9 +2,9 @@
  "rota": "/ambiental/ecossistema",
  "geradoEm": "2026-11-08",
  "verificado": true,
- "markdown": "Esta página lista 73 registros de órgãos e empresas ligados ao meio ambiente no Brasil. [medido — dados da pagina]\n\nO maior grupo é o de Órgão Ambiental Estadual, com 31 registros. [medido — dados da pagina] Isso mostra que a fiscalização ambiental aparece mais na esfera estadual do que nas outras: somando, são 31 registros estaduais contra 15 federais e 27 de concessão ou mista. [medido — dados da pagina]\n\nPor região, Sudeste e Nacional aparecem empatados no topo, com 19 registros cada. Nordeste vem depois, com 14. Norte e Sul têm 8 cada, e Centro-Oeste tem 5. [medido — dados da pagina]\n\nA página não diz o que esses órgãos fazem, nem se funcionam bem. Só mostra quantos são e onde estão. Não dá para concluir, por exemplo, qual região é mais fiscalizada ou qual órgão é mais ativo. [nao da para concluir]",
  "fontes": [
   "ecossistema-ambiental-nacional.json"
  ],
- "impressao": "729a7ce0b67cb7c6"
+ "impressao": "729a7ce0b67cb7c6",
+ "markdown": "Esta página reúne 73 registros de órgãos e empresas ligados ao meio ambiente no Brasil. [medido — dados da pagina]\n\nA maior parte é estadual: 31 registros são de Órgão Ambiental Estadual. Outros 13 são de Concessionária de Água e Saneamento e 10 de Autarquia Federal. [medido — dados da pagina]\n\nPor região, o Sudeste tem 19 registros e o Nacional também aparece com 19. O Nordeste soma 14, o Norte e o Sul têm 8 cada, e o Centro-Oeste tem 5. [medido — dados da pagina]\n\nQuase metade dos registros (27) está na esfera de Concessão / Mista. A esfera Estadual tem 31 e a Federal, 15. [medido — dados da pagina]\n\nO dado mostra quantos registros existem e como se dividem por categoria, esfera e região. Não mostra o que cada órgão faz, nem se atua bem ou mal. Também não permite comparar tamanho ou importância entre eles. [nao da para concluir]"
 }
