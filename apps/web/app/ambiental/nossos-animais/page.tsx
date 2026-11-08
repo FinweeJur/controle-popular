@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import FichaCard from "@/app/components/eixos/FichaCard";
+import GaleriaBiomas from "@/app/components/GaleriaBiomas";
 import { listarFichasPorSubfrente } from "@/lib/eixos/fichas";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
@@ -231,10 +232,10 @@ export default function PaginaNossosAnimais() {
         </p>
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (lote Grande Sertão: Veredas, Cap. 4) */}
-        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          &ldquo;Sertão é onde manda quem é forte, com as astúcias.&rdquo; — João Guimarães Rosa, Grande Sertão: Veredas, 1956
-        </p>
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">&ldquo;Sertão é onde manda quem é forte, com as astúcias.&rdquo; — João Guimarães Rosa, Grande Sertão: Veredas, 1956</p>
       </header>
+
+      <GaleriaBiomas />
 
       <CartoesStatusFauna />
 
