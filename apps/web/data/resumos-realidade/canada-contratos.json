@@ -1,0 +1,14 @@
+{
+ "rota": "/canada/contratos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "canada/ambiental-natureza-ciencia.compact.json",
+  "canada/contratos-open-canada.compact.json",
+  "canada/institucional-canada.compact.json",
+  "canada/mineradoras-tsx-brasil.compact.json",
+  "internacional/canada-geo.compact.json"
+ ],
+ "impressao": "cd63ce6d765ffd1e",
+ "markdown": "# O que os dados de Canada · Contratos mostram\n\nA página reúne 71 registros sobre mineração e meio ambiente no Canadá, organizados em cinco blocos: barragens e rejeitos, economia e subsídios, instituições e leis, empresas com sede no Canadá ligadas a projetos no Brasil, e sedes corporativas. [medido — dados da página]\n\nO maior bloco tem 24 registros de sedes e órgãos: 15 são sedes corporativas, 4 são órgãos reguladores, 4 são minas ou operações e 1 é bolsa de valores. Toronto concentra 9 registros e Vancouver, 6. Em províncias, Ontario tem 12 e British Columbia, 7. [medido — dados da página]\n\nOutro bloco, com 14 registros, cruza sedes no Canadá com estados brasileiros. Minas Gerais aparece 3 vezes, Pará 2. As substâncias citadas incluem ouro (4 registros), cobre e ouro (3), lítio, níquel, cobalto e potássio. [medido — dados da página]\n\nUm terceiro bloco lista 12 registros por categoria: barragens e reparação, emissões e rejeitos, água e biodiversidade, ciência aberta e clima por satélite. Os indicadores vão de volume de rejeitos despejados em 04/08/2014 a emissões verificadas por satélite. [medido — dados da página]\n\nHá ainda 9 registros sobre contratos, subsídios e comércio entre Canadá e Brasil, com identificadores públicos como EDC-BR-DISCLOSURE-2024-2025 e NRCan-CMIF-2025. As categorias incluem subsídio federal, contrato federal e crédito à exportação. [medido — dados da página]\n\nO que a página não mostra: ela lista registros e seus campos, mas não informa valores monetários, datas de assinatura nem resultado de cada contrato ou ação. Também não indica quantos dos 71 registros estão ativos. Para saber o efeito prático de qualquer item, seria preciso abrir o registro individual. [não dá para concluir]"
+}

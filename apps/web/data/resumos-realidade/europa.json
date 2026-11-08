@@ -1,0 +1,11 @@
+{
+ "rota": "/europa",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "cambio-dia.json",
+  "internacional/europa-transnacional.compact.json"
+ ],
+ "impressao": "a7f6562b94952f78",
+ "markdown": "# O que os dados de Europa mostram\n\nA página lista 44 registros ligados à Europa. Desses, 39 estão agrupados em um conjunto com detalhes de país e categoria. Os outros 5 não aparecem em nenhum dos dois conjuntos descritos. [medido — dados da página]\n\nA Alemanha e a Espanha lideram o grupo detalhado, com 6 registros cada. Reino Unido e Itália vêm depois, com 5 cada. França e Holanda têm 4 cada. [medido — dados da página]\n\nNa divisão por assunto, \"Operação Corporativa & Concessão\" concentra 21 registros — mais da metade do grupo detalhado. As demais categorias somam valores menores: Litígio Transnacional (5), Devida Diligência & Regulação (5), Hub Logístico & Comércio (4), Precedente Jurisdicional (2) e Cooperação Judiciária (2). [medido — dados da página]\n\nO dado mostra onde os registros se concentram por país e por tema. Não mostra o que cada registro descreve, nem se houve resultado prático em qualquer um deles. [não dá para concluir]"
+}

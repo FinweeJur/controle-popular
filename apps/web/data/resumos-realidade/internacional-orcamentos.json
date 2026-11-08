@@ -1,0 +1,10 @@
+{
+ "rota": "/internacional/orcamentos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "internacional/orcamentos-comparados.compact.json"
+ ],
+ "impressao": "04b016bd77b0b067",
+ "markdown": "# O que os dados de Internacional · Orcamentos mostram\n\n[medido — dados da página] Esta página reúne 30 registros de orçamentos internacionais ligados ao Brasil, divididos entre Europa, EUA e Canadá.\n\n[medido — dados da página] A Europa aparece com 16 registros, mais que o dobro dos EUA (7) e do Canadá (7). Entre os países, Estados Unidos e Canadá têm 7 cada, a União Europeia tem 7, o Reino Unido tem 3, Alemanha e França têm 2 cada.\n\n[medido — dados da página] Por área, o eixo militar lidera com 7 registros. Clima tem 5; inteligência, hídrico e energético têm 4 cada; econômico tem 3.\n\n[não dá para concluir] O dado mostra onde os registros se concentram, mas não diz quanto dinheiro cada um representa nem qual foi o resultado prático desses orçamentos.\n\n[inferido] A soma dos registros por país passa de 30 porque alguns aparecem em mais de uma classificação — o que sugere sobreposição entre blocos e países, sem detalhamento na página."
+}

@@ -1,0 +1,10 @@
+{
+ "rota": "/desclassificados",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "internacional/desclassificados-g20.compact.json"
+ ],
+ "impressao": "7dcabefd027562cd",
+ "markdown": "# O que os dados de Desclassificados mostram\n\nA página reúne 84 registros de documentos desclassificados, organizados por continente, nível de sigilo original, aliança de inteligência e tipo de documento. [medido — dados da página]\n\nEuropa aparece com 31 registros, seguida por América do Norte (26), Ásia (12), América do Sul (5), Oceania (4) e Eurásia (4). [medido — dados da página]\n\nQuanto ao sigilo original, 33 eram Ultrassecreto, 22 Secreto, 19 Público/Ostensivo, 5 Confidencial e 5 Reservado. [medido — dados da página]\n\nPor aliança de inteligência, o maior grupo é o G20 Soberano, com 33 registros; depois vêm Five Eyes (30), Twelve Eyes (11), Nine Eyes (8) e Fourteen Eyes (2). [medido — dados da página]\n\nSobre a natureza do documento, 59 são Desclassificado Histórico e 25 Relatório Público Contemporâneo. [medido — dados da página]\n\nO dado mostra quantos registros existem e como se distribuem nessas quatro classificações. Não mostra o conteúdo de cada documento, nem quando foram liberados, nem se algum deles teve efeito prático. [não dá para concluir]"
+}

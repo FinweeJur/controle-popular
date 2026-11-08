@@ -111,7 +111,7 @@ def resolver(fonte: str) -> Path | None:
 
 
 def contar(caminho: Path) -> int:
-    """Registros do arquivo: lista direta ou chave conhecida."""
+    """Registros do arquivo: lista direta, chave conhecida ou formato compacto."""
     try:
         dados = json.loads(caminho.read_text(encoding="utf-8"))
     except (ValueError, OSError):
@@ -119,7 +119,9 @@ def contar(caminho: Path) -> int:
     if isinstance(dados, list):
         return len(dados)
     if isinstance(dados, dict):
-        for chave in ("itens", "casos", "atos", "trechos", "documentos", "total"):
+        if isinstance(dados.get("linhas"), list):
+            return len(dados["linhas"])
+        for chave in ("itens", "casos", "atos", "trechos", "documentos", "total", "autos"):
             valor = dados.get(chave)
             if isinstance(valor, list):
                 return len(valor)

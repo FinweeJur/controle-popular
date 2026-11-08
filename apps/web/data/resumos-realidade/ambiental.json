@@ -1,0 +1,11 @@
+{
+ "rota": "/ambiental",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "car-mg.json",
+  "sisema-autos/recentes.json"
+ ],
+ "impressao": "5040110d3d5af903",
+ "markdown": "# O que os dados de Ambiental mostram\n\nA página reúne 36.018 registros ligados à área ambiental, quase todos de um mesmo conjunto. [medido — dados da página]\n\nDesse total, 36.007 registros formam o bloco principal. Outros 14 registros aparecem separados desse grupo. [medido — dados da página]\n\nNo bloco principal, a origem mais citada é a SEMAD, com 398 registros. O IEF aparece com 2. [medido — dados da página]\n\nQuase tudo está em processamento: 397 registros. Dois foram encaminhados para inscrição em dívida ativa e um teve quitação do DAE. [medido — dados da página]\n\nO campo de datas tem 397 registros sem data preenchida. Apenas três têm data: 2026-07-28, 2026-05-07 e 2026-04-08. [medido — dados da página]\n\nO dado mostra volume e origem, mas não mostra resultado. Não dá para concluir quantos casos foram resolvidos, nem quanto tempo cada um levou. [não dá para concluir]"
+}

@@ -1,0 +1,13 @@
+{
+ "rota": "/consumo-corporativo",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "cambio-dia.json",
+  "recursos/g20-consumo-setorial-corporativo.compact.json",
+  "recursos/pegada-hidrica-e-cnae.compact.json",
+  "recursos/top50-mg-consumidores.compact.json"
+ ],
+ "impressao": "48fd261da9fb9126",
+ "markdown": "# O que os dados de Consumo corporativo mostram\n\nA página reúne 84 registros sobre consumo de água, energia e combustível em setores industriais, com detalhamento maior para mineração e siderurgia. [medido — dados da página]\n\nUm bloco de 20 registros lista continentes e setores que mais usam água, como irrigação de soja e cana, mineração de ferro e extração de areias betuminosas. A Ásia aparece 6 vezes nesse conjunto; Europa, 5. [medido — dados da página]\n\nOutro bloco, com 9 registros, traz produtos específicos: minério de ferro, lítio, aço, alumínio, celulose e soja/milho irrigados. Cada um tem um código de atividade econômica associado e destinos de exportação — por exemplo, China com 68% em uma linha e 72% em outra. [medido — dados da página]\n\nO maior bloco, com 50 registros, organiza por categoria de setor: mineração e siderurgia somam 29; celulose, papel e agroindústria, 8. As fontes de água citadas incluem órgãos de Minas Gerais e o sistema nacional de informações sobre recursos hídricos; as de energia, dados abertos do setor elétrico; as de combustível, a agência reguladora de petróleo e plataformas de relatórios empresariais. [medido — dados da página]\n\nOs números mostram onde estão os registros e o que eles descrevem, mas não medem quanto cada setor consome nem comparam eficiência entre eles. [não dá para concluir]"
+}

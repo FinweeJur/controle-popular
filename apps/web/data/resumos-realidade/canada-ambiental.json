@@ -1,0 +1,14 @@
+{
+ "rota": "/canada/ambiental",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "canada/ambiental-natureza-ciencia.compact.json",
+  "canada/contratos-open-canada.compact.json",
+  "canada/institucional-canada.compact.json",
+  "canada/mineradoras-tsx-brasil.compact.json",
+  "internacional/canada-geo.compact.json"
+ ],
+ "impressao": "cd63ce6d765ffd1e",
+ "markdown": "# O que os dados de Canada · Ambiental mostram\n\nA página reúne 71 registros sobre a relação entre mineração no Canadá e impactos ambientais, divididos em quatro blocos: barragens e rejeitos, economia e subsídios, instituições e empresas com sede no Canadá [medido — dados da página].\n\nO primeiro bloco tem 12 registros e cobre temas como o volume de rejeitos despejados em 04/08/2014, emissões de SO₂ controladas e vazão média monitorada em tempo real numa bacia atingida [medido — dados da página]. Outro conjunto, com 9 registros, lista beneficiários de grants federais, contratos e crédito à exportação ligados a projetos de minerais críticos e remediação ambiental [medido — dados da página].\n\nUm terceiro bloco, de 12 registros, trata de frentes institucionais: jurisprudência da Suprema Corte, cidades e províncias, parlamento federal e direitos indígenas [medido — dados da página]. Há ainda 14 registros que ligam sedes canadenses (Vancouver, Toronto) a municípios brasileiros em MG, PA, BA e MT, com substâncias como ouro, cobre, lítio e níquel [medido — dados da página].\n\nO maior bloco, com 24 registros, descreve tipos de entidade — 15 sedes corporativas, 4 órgãos reguladores, 4 minas e 1 bolsa — concentradas em Ontario (12) e British Columbia (7), com 18 listagens na TSX [medido — dados da página].\n\nO dado mostra onde estão os registros e o que eles catalogam. Não mede impacto ambiental real, não compara volumes entre anos e não diz se uma empresa cumpre ou descumpre norma alguma [não dá para concluir]."
+}

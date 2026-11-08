@@ -1,0 +1,14 @@
+{
+ "rota": "/canada/institucional",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "canada/ambiental-natureza-ciencia.compact.json",
+  "canada/contratos-open-canada.compact.json",
+  "canada/institucional-canada.compact.json",
+  "canada/mineradoras-tsx-brasil.compact.json",
+  "internacional/canada-geo.compact.json"
+ ],
+ "impressao": "cd63ce6d765ffd1e",
+ "markdown": "# O que os dados de Canada · Institucional mostram\n\n[medido — dados da página] A página reúne 71 registros sobre a presença institucional do Canadá na mineração — de barragens e emissões a leis, cidades e empresas com sede no país.\n\n[medido — dados da página] A maior parte dos registros (24) descreve sedes corporativas, órgãos reguladores, minas e bolsas de valores. Toronto aparece 9 vezes e Vancouver 6 vezes como cidade dessas organizações; Ontario tem 12 registros e British Columbia, 7. [medido — dados da página] Dessas organizações, 15 são sedes corporativas, 4 são órgãos reguladores, 4 são minas ou operações e 1 é bolsa de valores.\n\n[medido — dados da página] Outro bloco, com 14 registros, liga empresas canadenses a municípios brasileiros. As substâncias citadas incluem ouro (4 registros), cobre e ouro (3), lítio, níquel/cobre/cobalto e potássio. Os estados brasileiros mais presentes são MG (3 registros) e PA (2).\n\n[medido — dados da página] Há ainda 12 registros sobre barragens, emissões, água, ciência aberta e clima. Um deles trata do volume de rejeitos e água despejados em 04/08/2014; outro, de emissões verificadas por satélite em plantas minerárias e metalúrgicas.\n\n[medido — dados da página] Nove registros tratam de subsídios, contratos federais, crédito à exportação e comércio bilateral Canadá–Brasil. Um deles menciona o Fundo Federal de Danos Ambientais, alimentado por multas da lei de pesca e proteção ambiental.\n\nO que o dado não mede: ele mostra quantos registros existem por tema e onde estão as sedes, mas não diz quanto dinheiro foi movimentado, qual foi o impacto ambiental nem se alguma empresa cumpriu a lei. [não dá para concluir] Nada aqui permite afirmar causa, efeito ou resultado — só a contagem do que está catalogado."
+}

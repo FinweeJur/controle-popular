@@ -1,0 +1,11 @@
+{
+ "rota": "/america-latina",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "america-latina/instalacoes-latam.compact.json",
+  "america-latina/mineradoras-latam.compact.json"
+ ],
+ "impressao": "00c5bc321a2227ca",
+ "markdown": "# O que os dados de America latina mostram\n\nA página lista 96 registros ligados à mineração na América Latina. [medido — dados da página]\n\nQuase metade do total (51 registros) está reunida em um mesmo conjunto. Nele, o Brasil aparece com 12 registros, seguido por Chile (9), Peru (8), Argentina (7), México (5) e Colômbia (4). [medido — dados da página]\n\nAinda nesse conjunto, a maioria é de mina ou operação (31). Há também 7 projetos de lítio, 5 sedes corporativas, 5 portos minerários e 3 complexos de beneficiamento. [medido — dados da página]\n\nSobre a situação dessas unidades, 39 estão em operação ativa. Os demais casos incluem 2 sedes corporativas, 2 operações estatais, 1 operação retomada com filtragem, 1 sede estatal e 1 operação subterrânea. [medido — dados da página]\n\nOs outros 45 registros formam um segundo conjunto, mas a página não detalha como ele se divide. [medido — dados da página]\n\nO dado mostra onde estão os registros e o que eles são. Não mostra quanto produzem, quanto faturam nem quem controla cada unidade. [não dá para concluir]"
+}

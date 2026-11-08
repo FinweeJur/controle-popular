@@ -1,0 +1,14 @@
+{
+ "rota": "/eua/institucional",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "eua/ambiental-natureza-eua.compact.json",
+  "eua/contratos-usaspending.compact.json",
+  "eua/empresas-sec.compact.json",
+  "eua/institucional-eua.compact.json",
+  "internacional/eua-geo.compact.json"
+ ],
+ "impressao": "8d731a0259c6ac4a",
+ "markdown": "# O que os dados de Eua · Institucional mostram\n\nA página reúne 73 registros sobre instituições dos Estados Unidos, divididos em cinco blocos que vão de agências ambientais a empresas listadas na bolsa. [medido — dados da página]\n\nO maior bloco tem 29 registros e descreve tipos de entidade: 8 sedes corporativas, 7 fundos de investimento, 6 órgãos reguladores, 6 minas estratégicas e 2 bolsas de valores. [medido — dados da página]\n\nOutro bloco, com 18 registros, trata de empresas que reportam à SEC. Todas as 18 aparecem ligadas a formulários como o Form 10-K; 14 vêm do SEC EDGAR Company Facts. [medido — dados da página]\n\nUm terceiro bloco, com 10 registros, lista frentes institucionais: 4 de Judiciário e Litígios, 2 de Cidades-Polo, 2 de Transparência e LAI, 1 de Congresso e 1 de Função Social da Terra. Entre os nomes estão Nova York, Washington D.C., o Congresso dos EUA e duas ações na corte SDNY envolvendo a Vale. [medido — dados da página]\n\nHá ainda um conjunto de 9 registros ligados a temas ambientais e de fiscalização, com fontes como EPA, USACE, USGS e Climate TRACE, e outro de 7 registros sobre comércio e contratos federais, com agências como GSA, Census Bureau, DOE e USAID. [medido — dados da página]\n\nO dado mostra quantos registros existem e de onde vêm. Não mostra se as instituições cumprem ou deixam de cumprir qualquer regra, nem mede impacto, resultado ou efeito sobre a população. [não dá para concluir]"
+}

@@ -6,8 +6,8 @@
  "fontes": [
   "catalogo-frentes.json",
   "jurisprudencia-casos.json",
-  "jurisprudencia-resumo.json",
-  "resumos-realidade/jurisprudencia.json"
+  "jurisprudencia-resumo.json"
  ],
- "impressao": "8e28feb71252a309"
+ "impressao": "02544584e72ef386",
+ "nota": "Fonte do texto e a analise de temas gerais (temas-gerais.json), nao o acervo da pagina. A impressao cobre os arquivos que a pagina le para o leitor conferir o painel."
 }

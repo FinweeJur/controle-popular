@@ -1,0 +1,14 @@
+{
+ "rota": "/eua/contratos",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "eua/ambiental-natureza-eua.compact.json",
+  "eua/contratos-usaspending.compact.json",
+  "eua/empresas-sec.compact.json",
+  "eua/institucional-eua.compact.json",
+  "internacional/eua-geo.compact.json"
+ ],
+ "impressao": "8d731a0259c6ac4a",
+ "markdown": "# O que os dados de Eua · Contratos mostram\n\nA página reúne 73 registros sobre contratos e fluxos financeiros entre Brasil e Estados Unidos, organizados em cinco blocos que vão de multas ambientais a mineradoras estratégicas. [medido — dados da página]\n\nO maior bloco tem 29 registros e descreve o tipo de entidade envolvida: 8 sedes corporativas, 7 fundos de investimento, 6 órgãos reguladores, 6 minas estratégicas e 2 bolsas de valores. [medido — dados da página]\n\nOutro bloco, com 18 registros, lista empresas que aparecem em formulários da SEC americana — 14 delas no conjunto \"SEC EDGAR Company Facts\". Os tipos societários somam 11 corporações industriais, 4 bancos de investimento e 3 gestoras de recursos. [medido — dados da página]\n\nUm terceiro bloco, com 10 registros, trata de frentes institucionais: 4 ligadas ao Judiciário americano (incluindo duas ações na corte distrital de Nova York envolvendo a Vale), 2 cidades-polo, 2 de transparência via FOIA, 1 do Congresso e 1 sobre terras indígenas federais. [medido — dados da página]\n\nHá ainda um grupo de 9 registros ambientais — 3 deles de multas e fiscalização pela EPA — e um grupo de 7 sobre comércio e assistência federal, com 3 transações classificadas como grant e 2 como contrato federal. [medido — dados da página]\n\nSobre racismo ambiental, documento do Guaicuy registra que o termo foi cunhado por Benjamin Chavis, reverendo norte-americano e assistente de Martin Luther King Jr., para nomear a discriminação racial nas políticas ambientais e no cumprimento dos regulamentos ([Dossiê Acesso à Justiça, p. 6](https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/#page=6)). [medido — dados da página]\n\nO dado não mede quanto dinheiro circulou, quantos contratos foram assinados nem quem foi beneficiado. Ele mostra apenas quantos registros existem por categoria e de onde vêm. [não dá para concluir]"
+}
