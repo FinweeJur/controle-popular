@@ -19,11 +19,25 @@ export interface BlocoResumo {
   texto: string;
 }
 
+export interface ExemploCaso {
+  processo: string;
+  lado: string;
+  ementa: string;
+}
+
+export interface ExemploTese {
+  tema: string;
+  tese: string;
+  casos: ExemploCaso[];
+}
+
 export interface ResumoRealidade {
   rota: string;
   geradoEm: string;
   verificado: boolean;
   markdown: string;
+  /** Ementas que exemplificam as teses citadas, mostradas em sanfona. */
+  exemplos?: ExemploTese[];
 }
 
 const TITULO = /^(#{1,3})\s+(.*)$/;
