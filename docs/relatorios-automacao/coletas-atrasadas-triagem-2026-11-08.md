@@ -90,6 +90,11 @@ PowerShell; nenhuma dependência nova; nenhum dado bruto coletado para o reposit
 
 ## Bloqueios e o que não foi verificado
 
+- **Checkout de produção atrasado**: as tarefas agendadas executam
+  `C:\DevCoder\controle-popular`, que está em `ed06af63` (65 entradas sujas) e **não tem este
+  commit**. Enquanto o checkout não for reconciliado com o `main`, a madrugada de hoje ainda roda
+  o código antigo (`--listar` + `py -3`). Não atualizei a árvore por ela estar suja e fora do
+  escopo desta pendência.
 - **Deploy (R5)**: o conserto exige **uma publicação com `--forcar-deploy`** para regravar
   `logs/ultima-contagem.json` com o patamar novo (690 páginas). É ato de operação/deploy e não
   foi feito nesta triagem. Enquanto isso, o site segue em 01/10.
@@ -104,6 +109,8 @@ PowerShell; nenhuma dependência nova; nenhum dado bruto coletado para o reposit
 
 ## Ordem sugerida
 
+0. Dono/operação: reconciliar `C:\DevCoder\controle-popular` com `origin/main` (árvore suja:
+   65 entradas) para o agendador executar o código novo.
 1. Dono/operação: uma rodada `npx tsx scripts/rotina-local.mts --forcar-deploy` para destravar o site.
 2. Dev: agendar semanal `ibama-licencas-sancoes`, `biblioteca-atis`, `biblioteca-desastres`,
    `cnj-inspecoes`; mensal `salic-rouanet`, `cge-decisoes-lai`, `gtac-semad`, `congresso-mg`
