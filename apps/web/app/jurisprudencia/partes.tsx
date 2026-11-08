@@ -1,4 +1,6 @@
 import Link from "next/link";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
 import {
   CorpoGrafico,
@@ -279,18 +281,22 @@ export function Tabela({
 
 export function Cartoes() {
   const semResumo = CASOS_DESASTRE.filter((caso) => caso.status === "sem_resumo").length;
-  const itens: [string, string, string][] = [
-    ["Itens no acervo", CASOS_DESASTRE.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
-    ["Acórdãos", (CASOS_DESASTRE.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
-    ["Súmulas", contar("sumula").toLocaleString("pt-BR"), "STF, STJ e TST"],
-    ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "entram na lista, sem polo"],
+  const acordaosh = CASOS_DESASTRE.length - contar("sumula");
+  const sumulas = contar("sumula");
+  const itens: [string, number, string][] = [
+    ["Itens no acervo", CASOS_DESASTRE.length, "acórdãos e súmulas"],
+    ["Acórdãos", acordaosh, "TJMG, TJES, STF, STJ"],
+    ["Súmulas", sumulas, "STF, STJ e TST"],
+    ["Sem resumo de mérito", semResumo, "entram na lista, sem polo"],
   ];
   return (
     <section className="grid gap-3 sm:grid-cols-2">
       {itens.map(([rotulo, valor, nota]) => (
         <div key={rotulo} className="rounded-lg border border-[var(--cp-border)] p-4">
           <p className="text-xs uppercase tracking-wide opacity-60">{rotulo}</p>
-          <p className="font-display text-2xl font-bold">{valor}</p>
+          <p className="font-display text-2xl font-bold">
+            <ContadorAnimado valor={valor} />
+          </p>
           <p className="text-xs opacity-60">{nota}</p>
         </div>
       ))}
@@ -316,15 +322,17 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
             <span className="w-12 font-tabular opacity-70">{item.ano}</span>
             <div className="flex h-5 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]">
               {item.partes.map(([polo, n]) => (
-                <span
+                <BarraAnimada
                   key={polo}
-                  title={`${ROTULOS[polo] ?? polo}: ${n}`}
+                  fracao={n / maior}
+                  className={`h-full ${CORES_POLO[polo] ?? "bg-[var(--cp-border)]"}`}
                   style={{ width: `${(100 * n) / maior}%` }}
-                  className={CORES_POLO[polo] ?? "bg-[var(--cp-border)]"}
                 />
               ))}
             </div>
-            <span className="w-16 text-right font-tabular opacity-70">{item.total}</span>
+            <span className="w-16 text-right font-tabular opacity-70">
+              <ContadorAnimado valor={item.total} />
+            </span>
           </div>
         ))}
       </div>
@@ -664,7 +672,9 @@ export function PainelRecorte({
   return (
     <section className="space-y-8" aria-label="Painel do recorte">
       <p className="text-sm opacity-80">
-        <strong>{total.toLocaleString("pt-BR")}</strong>{" "}
+        <strong>
+          <ContadorAnimado valor={total} />
+        </strong>{" "}
         {total === 1 ? "item no recorte" : "itens no recorte"} de{" "}
         {CASOS_DESASTRE.length.toLocaleString("pt-BR")}.
       </p>

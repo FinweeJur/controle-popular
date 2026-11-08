@@ -17,6 +17,9 @@
  * rosca, ≥ 14% da barra), para não virar letra de 4 px.
  */
 
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
+
 /** Paleta com contraste conferido nas duas superfícies (clara e escura). */
 export const PALETA = [
   "var(--cp-primary)",
@@ -106,9 +109,11 @@ export function BarrasHorizontais({ itens, total }: { itens: ItemGrafico[]; tota
               {item.rotulo}
             </span>
             <span className="relative h-5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]">
-              <span
+              <BarraAnimada
+                fracao={item.n / maior}
+                cor={item.cor}
                 className="absolute inset-y-0 left-0 rounded"
-                style={{ width: `${largura}%`, background: item.cor }}
+                style={{ width: `${largura}%` }}
               />
               {fracao >= 0.14 ? (
                 <span className="absolute inset-y-0 left-1 flex items-center text-xs font-semibold text-white">
@@ -117,7 +122,7 @@ export function BarrasHorizontais({ itens, total }: { itens: ItemGrafico[]; tota
               ) : null}
             </span>
             <span className="w-14 shrink-0 text-right font-tabular">
-              {item.n.toLocaleString("pt-BR")}
+              <ContadorAnimado valor={item.n} />
             </span>
             <span className="w-11 shrink-0 text-right font-tabular opacity-60">
               {total ? `${Math.round(100 * fracao)}%` : "—"}
