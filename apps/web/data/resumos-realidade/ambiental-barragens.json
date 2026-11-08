@@ -6,5 +6,5 @@
   "barragens-sigbm.json"
  ],
  "impressao": "3ca4c4f8bcb5e102",
- "markdown": "[medido — dados da pagina] A pagina informa um unico total agregado: 318 registros associados a /ambiental/barragens. Esse numero cobre a contagem de itens do conjunto, sem qualquer detalhamento adicional.\n\n[nao da para concluir] O valor nao permite identificar quais registros sao, quem os produziu, quando foram gerados ou como se distribuem por ano, local ou tipo. Nao ha lista, recorte ou breakdown disponivel na pagina.\n\n[medido — dados da pagina] O limite e que o dado e apenas um total: 318 registros, sem composicao nem serie temporal."
+ "markdown": "## O que os dados de Ambiental · Barragens mostram\n\n[medido — dados da pagina] A pagina informa um unico total agregado: 318 registros associados a /ambiental/barragens. Esse numero cobre a contagem de itens do conjunto, sem qualquer detalhamento adicional.\n\n[nao da para concluir] O valor nao permite identificar quais registros sao, quem os produziu, quando foram gerados ou como se distribuem por ano, local ou tipo. Nao ha lista, recorte ou breakdown disponivel na pagina.\n\n[medido — dados da pagina] O limite e que o dado e apenas um total: 318 registros, sem composicao nem serie temporal."
 }

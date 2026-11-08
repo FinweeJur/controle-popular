@@ -2,7 +2,7 @@
  "rota": "/judiciario/recomendacoes",
  "geradoEm": "2026-11-08",
  "verificado": true,
- "markdown": "A página lista 10 recomendações e determinações de órgãos de controle do Judiciário e do Ministério Público. [medido — dados da pagina]\n\nSão 6 atos do CNJ e 4 do CNMP. [medido — dados da pagina]\n\nOs órgãos citados são variados: TJMG aparece 3 vezes, MPMG 2, e TJSP, TJRJ, MPSP e MPF aparecem 1 vez cada. [medido — dados da pagina]\n\nQuanto ao tipo, 7 são determinações e 3 são recomendações. [medido — dados da pagina]\n\nO dado mostra quem emitiu e para quem, mas não mostra o conteúdo de cada ato, se foi cumprido ou qual foi o resultado. [nao da para concluir]",
+ "markdown": "## O que os dados de Judiciario · Recomendacoes mostram\n\nA página lista 10 recomendações e determinações de órgãos de controle do Judiciário e do Ministério Público. [medido — dados da pagina]\n\nSão 6 atos do CNJ e 4 do CNMP. [medido — dados da pagina]\n\nOs órgãos citados são variados: TJMG aparece 3 vezes, MPMG 2, e TJSP, TJRJ, MPSP e MPF aparecem 1 vez cada. [medido — dados da pagina]\n\nQuanto ao tipo, 7 são determinações e 3 são recomendações. [medido — dados da pagina]\n\nO dado mostra quem emitiu e para quem, mas não mostra o conteúdo de cada ato, se foi cumprido ou qual foi o resultado. [nao da para concluir]",
  "fontes": [
   "judiciario/recomendacoes-cnj-cnmp.json"
  ],

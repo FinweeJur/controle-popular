@@ -60,8 +60,11 @@ export function ResumoRealidadeBox({
   const resumo = RESUMOS[rota];
   if (!resumoPublicavel(resumo)) return null;
   const blocos = parseResumo(resumo.markdown);
-  // O primeiro bloco é o título do arquivo, não um subtítulo da página.
-  const corpo = blocos[0]?.tipo === "h2" ? blocos.slice(1) : blocos;
+  const temTitulo = blocos[0]?.tipo === "h2";
+  const corpo = temTitulo ? blocos.slice(1) : blocos;
+  const titulo = temTitulo
+    ? blocos[0].texto.replace(/\*\*/g, "")
+    : "O que os números dizem sobre quem foi atingido";
 
   return (
     <section
@@ -72,7 +75,7 @@ export function ResumoRealidadeBox({
         Resumo de realidade · fonte em cada afirmação · atualizado em {resumo.geradoEm}
       </p>
       <h2 id="resumo-realidade" className="mt-2 font-display text-lg font-semibold">
-        O que os números dizem sobre quem foi atingido
+        {titulo}
       </h2>
       <div className="mt-3 space-y-3 text-sm leading-relaxed">
         {corpo.map((bloco, indice) => {
