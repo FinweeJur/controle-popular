@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -22,10 +24,30 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 const REFERENCIA = "Referência nacional · Novo CAGED / RAIS";
 
 const INDICADORES = [
-  { rotulo: "Estoque de empregos formais", valor: "46,8 mi", obs: "Carteira assinada ativa (MTE/CAGED)" },
-  { rotulo: "Saldo líquido anual", valor: "+1,48 mi", obs: "Admissões superiores a desligamentos" },
-  { rotulo: "Salário médio de admissão", valor: "R$ 2.140", obs: "Média dos novos postos gerados" },
-  { rotulo: "Contratos públicos monitorados", valor: "R$ 48 bi", obs: "Contratos no PNCP fiscalizados" },
+  {
+    rotulo: "Estoque de empregos formais",
+    valorNumerico: 46.8,
+    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mi`,
+    obs: "Carteira assinada ativa (MTE/CAGED)",
+  },
+  {
+    rotulo: "Saldo líquido anual",
+    valorNumerico: 1.48,
+    formatar: (n: number) => `+${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} mi`,
+    obs: "Admissões superiores a desligamentos",
+  },
+  {
+    rotulo: "Salário médio de admissão",
+    valorNumerico: 2140,
+    formatar: (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")}`,
+    obs: "Média dos novos postos gerados",
+  },
+  {
+    rotulo: "Contratos públicos monitorados",
+    valorNumerico: 48,
+    formatar: (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")} bi`,
+    obs: "Contratos no PNCP fiscalizados",
+  },
 ];
 
 const SETORES = [
@@ -59,7 +81,7 @@ export default function ConteudoTrabalho() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              {item.valor}
+              <ContadorAnimado valor={item.valorNumerico} formatar={item.formatar} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>
@@ -115,14 +137,10 @@ export default function ConteudoTrabalho() {
                 <span className="font-bold text-foreground">{item.saldo} vagas</span>
               </div>
               <div className="h-3 w-full rounded-full bg-surface-2 overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-500"
-                  style={{ width: `${item.pct}%`, backgroundColor: item.cor }}
-                  role="progressbar"
-                  aria-valuenow={item.pct}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-label={`${item.setor}: ${item.saldo} vagas`}
+                <BarraAnimada
+                  fracao={item.pct / 100}
+                  cor={item.cor}
+                  className="h-full rounded-full"
                 />
               </div>
             </div>

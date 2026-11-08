@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -19,10 +21,30 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 const REFERENCIA = "Referência nacional · série do INEP, ciclo 2023";
 
 const INDICADORES = [
-  { rotulo: "Escolas de educação básica", valor: "178.416", obs: "Censo Escolar (INEP)" },
-  { rotulo: "Matrículas totais", valor: "47,3 mi", obs: "Redes municipal, estadual e federal" },
-  { rotulo: "IDEB médio anos iniciais", valor: "5,8", obs: "Meta nacional estipulada: 6,0" },
-  { rotulo: "Escolas com internet banda larga", valor: "88,2%", obs: "Conectividade pedagógica" },
+  {
+    rotulo: "Escolas de educação básica",
+    valorNumerico: 178416,
+    formatar: (n: number) => Math.round(n).toLocaleString("pt-BR"),
+    obs: "Censo Escolar (INEP)",
+  },
+  {
+    rotulo: "Matrículas totais",
+    valorNumerico: 47.3,
+    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mi`,
+    obs: "Redes municipal, estadual e federal",
+  },
+  {
+    rotulo: "IDEB médio anos iniciais",
+    valorNumerico: 5.8,
+    formatar: (n: number) => n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    obs: "Meta nacional estipulada: 6,0",
+  },
+  {
+    rotulo: "Escolas com internet banda larga",
+    valorNumerico: 88.2,
+    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`,
+    obs: "Conectividade pedagógica",
+  },
 ];
 
 const SERIE_IDEB = [
@@ -70,7 +92,7 @@ export default function ConteudoEducacao() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              {item.valor}
+              <ContadorAnimado valor={item.valorNumerico} formatar={item.formatar} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>
@@ -106,11 +128,11 @@ export default function ConteudoEducacao() {
             {SERIE_IDEB.map((ponto) => (
               <div key={ponto.ano} className="flex flex-col items-center gap-2 h-full justify-end">
                 <span className="text-xs font-bold text-foreground">{ponto.nota}</span>
-                <div
+                <BarraAnimada
+                  orientacao="vertical"
+                  style={{ height: ponto.altura }}
+                  cor="var(--cp-eixo-direitos, #c0392b)"
                   className="w-full max-w-[48px] rounded-t-lg transition-all duration-300 hover:opacity-85"
-                  style={{ height: ponto.altura, backgroundColor: "var(--cp-eixo-direitos, #c0392b)" }}
-                  role="img"
-                  aria-label={`Ano ${ponto.ano}: IDEB ${ponto.nota}`}
                 />
                 <span className="text-xs font-medium text-muted">{ponto.ano}</span>
               </div>
