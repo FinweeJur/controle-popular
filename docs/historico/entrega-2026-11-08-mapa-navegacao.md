@@ -83,8 +83,8 @@ link.
 
 | Eixo | Frentes | Porta | Estado |
 |---|---|---|---|
-| Casos | Brumadinho, Rio Doce, Itatiaiuçu (3) | `/casos` (proposta; hoje entra por `/paraopeba` e `/riodoce`) | proposta |
-| Direitos | Em movimento, Saúde, Educação, Trabalho e renda, Memória das lutas, Globais, Comparados (7) | `/direitos` (proposta; hoje entra por `/direitos-em-movimento`) | proposta |
+| Casos | Brumadinho, Rio Doce, Itatiaiuçu (3) | `/casos` | no ar |
+| Direitos | Em movimento, Saúde, Educação, Trabalho e renda, Memória das lutas, Globais, Comparados (7) | `/direitos` | no ar |
 | Meio ambiente | Territórios e mapa (**destaque**), Função social, Barragens, Licenciamento, Fiscalização, Conflitos, Clima e risco (7) | `/ambiental` | no ar |
 | Cidades | Cidades (índice), Página do município (2) | `/cidades` | no ar |
 | Política | Congresso, Assembleias, Governo, Eleições (4) | `/congresso` | no ar |

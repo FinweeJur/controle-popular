@@ -53,16 +53,16 @@ describe("EIXOS", () => {
     expect(paginasDoEixo("inexistente")).toBe(0);
   });
 
-  it("porta do eixo proposta cai numa página que existe", () => {
-    // `/casos` e `/direitos` ainda não têm page.tsx; o menu linkava para
-    // elas e o leitor via "página não encontrada" (dono, 08/11/2026).
-    const casos = EIXOS.find((e) => e.slug === "casos");
-    const direitos = EIXOS.find((e) => e.slug === "direitos");
-    expect(casos && portaDoEixo(casos)).toBe("/paraopeba");
-    expect(direitos && portaDoEixo(direitos)).toBe("/direitos-em-movimento");
-
+  it("porta do eixo aponta para a página publicada", () => {
+    // Todo eixo tem página própria desde 08/11/2026 (`/casos` e `/direitos`
+    // deixaram de ser proposta). A guarda de eixo sem porta continua aqui.
     for (const eixo of EIXOS) {
       expect(portaDoEixo(eixo).startsWith("/")).toBe(true);
+      expect(eixo.estado === "proposta").toBe(false);
     }
+    const casos = EIXOS.find((e) => e.slug === "casos");
+    const direitos = EIXOS.find((e) => e.slug === "direitos");
+    expect(casos && portaDoEixo(casos)).toBe("/casos");
+    expect(direitos && portaDoEixo(direitos)).toBe("/direitos");
   });
 });

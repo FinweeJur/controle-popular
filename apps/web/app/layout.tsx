@@ -259,7 +259,7 @@ export default function RootLayout({
         </noscript>
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="light"
+          defaultTheme="pequi"
           enableSystem={false}
           themes={["pequi", "light", "dark", "high-contrast", "cerrado", "mata-atlantica", "caatinga", "pantanal"]}
         >

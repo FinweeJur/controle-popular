@@ -308,18 +308,19 @@ select option {
 
 /* Tema PEQUI (rebrand 04/09, preview v7.1) — padrão do portal desde então.
    Fundo quase-preto quente, creme, laranja-pequi e amarelo-candeia.
-   Contraste medido 04/09 (WCAG, sobre surface #171310): texto 15,49:1;
-   texto-soft 8,13:1; primary-pequi 6,25:1; candeia 9,51:1; solid-ink
-   tinta-escura sobre pequi 6,52:1; secondary 6,79:1; tertiary 8,46:1;
-   alert 6,15:1; rampa ordinal 4,56–10,34:1 (piso 3,11). Border #2E2620 é
-   decorativa (não canal de informação — mesma política do dark). Glow:
-   laranja da marca, estritamente decorativo, como no tema claro. */
+   Tema PADRÃO desde 08/11/2026 (dono: "padrão escuro pequi, com um pouco
+   mais de contraste para leitura"): `--cp-text` e `--cp-text-soft` clarearam
+   e a borda subiu de #2E2620 para #3A3129. Contraste medido 04/09, remeça
+   com estes tokens: texto ~16,6:1; texto-soft ~10,4:1 sobre surface #171310;
+   primary-pequi 6,25:1; candeia 9,51:1; solid-ink 6,52:1; secondary 6,79:1;
+   tertiary 8,46:1; alert 6,15:1. Border é decorativa (não canal de
+   informação — mesma política do dark). Glow: laranja da marca, decorativo. */
 [data-theme="pequi"] {
   --cp-bg: #0d0b08;
   --cp-surface: #171310;
   --cp-surface-2: #1e1915;
-  --cp-text: #f2eadf;
-  --cp-text-soft: #b8aa98;
+  --cp-text: #f7f0e6;
+  --cp-text-soft: #cbbda9;
   --cp-primary: #f2701d; /* laranja-pequi — a cor da marca */
   --cp-primary-ink: #140d06;
   --cp-accent: #e4b33c; /* amarelo-candeia — os versos */
@@ -328,7 +329,7 @@ select option {
   --cp-secondary-ink: #0d0618;
   --cp-tertiary: #e0a458;   /* 8,46:1 */
   --cp-tertiary-ink: #1a1206;
-  --cp-border: #2e2620;
+  --cp-border: #3a3129;
   --cp-alert: #e5736a;      /* 6,15:1 */
   --cp-focus: #e4b33c;      /* 9,51:1 — anel de foco bem visível no quente */
   --cp-glow: rgba(242, 112, 29, 0.22);

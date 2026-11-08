@@ -75,7 +75,7 @@ export const EIXOS: Eixo[] = [
     descricao:
       "Os desastres que o portal acompanha: Fundão (Rio Doce), Córrego do Feijão (Brumadinho) e Serra Azul (Itatiaiuçu).",
     rota: "/casos",
-    estado: "proposta",
+    estado: "no-ar",
     frentes: [
       {
         slug: "brumadinho",
@@ -127,7 +127,7 @@ export const EIXOS: Eixo[] = [
     descricao:
       "O direito violado e o que fazer: saúde, educação, moradia, água, trabalho, segurança, informação.",
     rota: "/direitos",
-    estado: "proposta",
+    estado: "no-ar",
     frentes: [
       MOVIMENTO,
       {
@@ -507,6 +507,11 @@ export function portaDoEixo(eixo: Eixo): string {
   if (eixo.estado !== "proposta") return eixo.rota;
   const frente = eixo.frentes.find((f) => f.rotas.length > 0);
   return frente?.rota ?? "/indice";
+}
+
+/** Eixo pelo slug (as páginas de porta usam para não repetir a lista). */
+export function eixoDe(slug: string): Eixo | undefined {
+  return POR_SLUG.get(slug);
 }
 
 /** Segmentos que não são eixo de conteúdo: são ferramentas de travessia. */

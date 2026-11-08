@@ -423,6 +423,8 @@ const ITENS_NOSSOS: MetadataRoute.Sitemap = [
 function rotasFixas(): MetadataRoute.Sitemap {
   return [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
+    item("/casos", { changeFrequency: "weekly", priority: 0.9 }),
+    item("/direitos", { changeFrequency: "weekly", priority: 0.9 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.7 }),
     item("/laboratorio", { changeFrequency: "weekly", priority: 0.8 }),
     item("/cidades", { changeFrequency: "daily", priority: 0.9 }),

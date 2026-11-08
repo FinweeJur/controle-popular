@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { formatCurrencyCompactaBR } from "@/lib/betim/format";
 import { useEntrouNaTela } from "./useEntrouNaTela";
 
 /**
@@ -15,9 +16,19 @@ import { useEntrouNaTela } from "./useEntrouNaTela";
  * - requestAnimationFrame nativo sem dependências.
  */
 
+export type FormatoContador = "numero" | "percentual" | "moeda-compacta";
+
 export interface ContadorAnimadoProps {
   valor: number;
+  /**
+   * Função de formatação. Só vale em componente CLIENTE: Server Component
+   * não pode passar função para cá ("Functions cannot be passed directly to
+   * Client Components" — build de 08/11/2026 em `/paraopeba/execucao`).
+   * Em página de servidor, use `formato`.
+   */
   formatar?: (n: number) => string;
+  /** Formatação pronta e serializável, para quem vem do servidor. */
+  formato?: FormatoContador;
   duracaoMs?: number;
   className?: string;
 }
@@ -26,22 +37,35 @@ function formatarPadrao(n: number): string {
   return Math.round(n).toLocaleString("pt-BR");
 }
 
+function formatarPercentual(n: number): string {
+  return `${n.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 1 })}%`;
+}
+
+/** Formatações seguras na fronteira servidor → cliente. */
+const FORMATADORES: Record<FormatoContador, (n: number) => string> = {
+  numero: formatarPadrao,
+  percentual: formatarPercentual,
+  "moeda-compacta": formatCurrencyCompactaBR,
+};
+
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
 export default function ContadorAnimado({
   valor,
-  formatar = formatarPadrao,
+  formatar,
+  formato = "numero",
   duracaoMs = 2000,
   className = "",
 }: ContadorAnimadoProps) {
+  const formatador = formatar ?? FORMATADORES[formato];
   const containerRef = useRef<HTMLSpanElement>(null);
   const entrou = useEntrouNaTela(containerRef);
   const [animando, setAnimando] = useState(false);
   const [progresso, setProgresso] = useState(1);
   const inicioRef = useRef<number | null>(null);
-  const finalFormatado = formatar(valor);
+  const finalFormatado = formatador(valor);
 
   useEffect(() => {
     if (!entrou) return;
@@ -76,7 +100,7 @@ export default function ContadorAnimado({
   }, [entrou, duracaoMs]);
 
   const valorAtual = animando ? progresso * valor : valor;
-  const textoVisual = animando ? formatar(valorAtual) : finalFormatado;
+  const textoVisual = animando ? formatador(valorAtual) : finalFormatado;
 
   return (
     <span ref={containerRef} className={className}>

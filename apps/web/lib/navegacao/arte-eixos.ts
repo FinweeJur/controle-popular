@@ -50,8 +50,8 @@ export const ARTE_EIXO: Record<string, ArteEixo> = {
     alt: "Arara em voo sobre rio e floresta, em aquarela",
   },
   dados: {
-    src: "/capas/cities-poco-dantas.webp",
-    alt: "Cidade entre serras, em aquarela",
+    src: "/capas/ambiente-rios.webp",
+    alt: "Água do rio com peixes, em aquarela — os dados abertos do portal",
   },
   // Página de subfrente (não é eixo): a memória das lutas usa o ipê com o
   // lobo-guará, a mesma arte de "economia e território".

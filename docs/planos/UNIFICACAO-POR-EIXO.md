@@ -36,8 +36,8 @@ O mapa vive em `apps/web/lib/navegacao/mapa.ts`: 9 eixos, 34 frentes,
 
 | Eixo | Frentes | Rotas | Estado da porta |
 |---|---|---:|---|
-| Casos | Brumadinho, Rio Doce, Itatiaiuçu | 21 | proposta |
-| Direitos | Em movimento, Memória, Saúde, Educação, Trabalho, Globais, Comparados | 26 | proposta |
+| Casos | Brumadinho, Rio Doce, Itatiaiuçu | 21 | no ar |
+| Direitos | Em movimento, Memória, Saúde, Educação, Trabalho, Globais, Comparados | 26 | no ar |
 | Meio ambiente | **Territórios e mapa**, Função social, Barragens, Licenciamento, Fiscalização, Conflitos, Clima | 27 | no ar (`/ambiental`) |
 | Cidades | Índice, Município | 2 (+68 municipais) | no ar |
 | Política | Congresso, Assembleias, Governo, Eleições | 15 | no ar |
@@ -186,8 +186,8 @@ Lacuna declarada é informação: enquanto não houver coleta, a página geral d
   do MAB e do Brasil de Fato, por eixo. Eixo sem cobertura não ganha bloco de
   enfeite.
 
-Faltam trilha nas portas de eixo ainda propostas (`/casos` e `/direitos`) e nas
-páginas de menor tráfego.
+Faltam trilha nas páginas de menor tráfego; as portas `/casos` e `/direitos`
+já existem desde 08/11/2026 e usam `CaminhoSistema`.
 
 ## Como manter
 

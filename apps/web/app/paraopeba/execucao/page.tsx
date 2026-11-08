@@ -4,7 +4,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import Moeda from "@/app/components/Moeda";
 import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import BarraAnimada from "@/app/components/dados/BarraAnimada";
-import { formatNumberBR, formatCurrencyCompactaBR } from "@/lib/betim/format";
+import { formatNumberBR } from "@/lib/betim/format";
 import { ZONAS } from "@/lib/zonas";
 import {
   MUNICIPIOS_EXECUCAO_FGV,
@@ -122,7 +122,7 @@ function CartoesExecucao({ executadoTotal }: { executadoTotal: number }) {
         <div key={c.rotulo} className="rounded-2xl border border-border bg-surface p-4">
           <p className="text-[12px] text-text-soft">{c.rotulo}</p>
           <p className="mt-1 font-tabular text-xl font-bold text-text">
-            <ContadorAnimado valor={c.valorNum} formatar={formatCurrencyCompactaBR} />
+            <ContadorAnimado valor={c.valorNum} formato="moeda-compacta" />
           </p>
           <p className="mt-1 text-[12px] text-text-soft">{c.nota}</p>
         </div>
