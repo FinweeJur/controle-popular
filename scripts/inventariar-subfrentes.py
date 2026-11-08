@@ -41,6 +41,9 @@ IMPORTE_LOCAL = re.compile(r"""from\s+["'](@/[^"']+|\.{1,2}/[^"']+)["']""")
 ROTA_GRUPO = re.compile(r"\([^)]*\)")
 WEB = RAIZ / "apps" / "web"
 PROFUNDIDADE = 3
+# Tabelas globais que toda página importa (correção de link, notícias). Não são
+# o dado da página e inflavam a contagem em ~2.500 registros por rota.
+GLOBAIS = {"link-correcoes.json", "noticias-tribunais.json"}
 
 
 def rota_de(caminho: Path) -> str:
@@ -130,7 +133,8 @@ def inventariar() -> list[dict]:
     rotas = []
     for pagina in sorted(APP.rglob("page.tsx")):
         fontes = fontes_da_rota(pagina)
-        arquivos = [(fonte, resolver(fonte)) for fonte in fontes]
+        arquivos = [(fonte, resolver(fonte)) for fonte in fontes
+                    if fonte not in GLOBAIS]
         existentes = [(fonte, caminho) for fonte, caminho in arquivos if caminho]
         registros = sum(contar(caminho) for _, caminho in existentes)
         if registros >= 10:

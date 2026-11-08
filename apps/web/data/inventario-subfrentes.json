@@ -2,9 +2,9 @@
  "geradoEm": "2026-11-08",
  "totalRotas": 348,
  "porClasse": {
-  "tem-dado": 66,
-  "so-descritivo": 42,
-  "sem-dado": 240
+  "tem-dado": 58,
+  "so-descritivo": 45,
+  "sem-dado": 245
  },
  "rotas": [
   {
@@ -842,11 +842,9 @@
    "rota": "/ambiental/estudos",
    "arquivo": "apps/web/app/ambiental/estudos/page.tsx",
    "dinamica": false,
-   "fontes": [
-    "link-correcoes.json"
-   ],
-   "registros": 2517,
-   "classe": "tem-dado"
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
   },
   {
    "rota": "/ambiental/ibama",
@@ -871,10 +869,9 @@
    "arquivo": "apps/web/app/ambiental/judiciario/page.tsx",
    "dinamica": false,
    "fontes": [
-    "link-correcoes.json",
     "sirenejud-mg"
    ],
-   "registros": 2533,
+   "registros": 16,
    "classe": "tem-dado"
   },
   {
@@ -914,21 +911,19 @@
    "arquivo": "apps/web/app/ambiental/litigios-climaticos/page.tsx",
    "dinamica": false,
    "fontes": [
-    "juma-acoes-climaticas.json",
-    "link-correcoes.json"
+    "juma-acoes-climaticas.json"
    ],
-   "registros": 2526,
-   "classe": "tem-dado"
+   "registros": 9,
+   "classe": "so-descritivo"
   },
   {
    "rota": "/ambiental/mariana",
    "arquivo": "apps/web/app/ambiental/mariana/page.tsx",
    "dinamica": false,
    "fontes": [
-    "biblioteca-teses-atingidos.json",
-    "link-correcoes.json"
+    "biblioteca-teses-atingidos.json"
    ],
-   "registros": 2941,
+   "registros": 424,
    "classe": "tem-dado"
   },
   {
@@ -1009,10 +1004,9 @@
    "dinamica": false,
    "fontes": [
     "car-mg.json",
-    "link-correcoes.json",
     "sisema-autos/recentes.json"
    ],
-   "registros": 2530,
+   "registros": 13,
    "classe": "tem-dado"
   },
   {
@@ -1038,10 +1032,9 @@
    "arquivo": "apps/web/app/ambiental/tac/page.tsx",
    "dinamica": false,
    "fontes": [
-    "link-correcoes.json",
     "tac-projetos"
    ],
-   "registros": 2527,
+   "registros": 10,
    "classe": "tem-dado"
   },
   {
@@ -2536,11 +2529,10 @@
    "arquivo": "apps/web/app/judiciario/defensoria/page.tsx",
    "dinamica": false,
    "fontes": [
-    "comarcas-mg",
-    "link-correcoes.json"
+    "comarcas-mg"
    ],
-   "registros": 2518,
-   "classe": "tem-dado"
+   "registros": 1,
+   "classe": "so-descritivo"
   },
   {
    "rota": "/judiciario/indicacoes",
@@ -2581,10 +2573,9 @@
    "arquivo": "apps/web/app/judiciario/instituicoes/page.tsx",
    "dinamica": false,
    "fontes": [
-    "judiciario-instituicoes-detalhe.json",
-    "link-correcoes.json"
+    "judiciario-instituicoes-detalhe.json"
    ],
-   "registros": 2608,
+   "registros": 91,
    "classe": "tem-dado"
   },
   {
@@ -2628,11 +2619,10 @@
    "arquivo": "apps/web/app/judiciario/presidios/page.tsx",
    "dinamica": false,
    "fontes": [
-    "estabelecimentos-mg",
-    "link-correcoes.json"
+    "estabelecimentos-mg"
    ],
-   "registros": 2518,
-   "classe": "tem-dado"
+   "registros": 1,
+   "classe": "so-descritivo"
   },
   {
    "rota": "/judiciario/privacidade",
@@ -2656,11 +2646,9 @@
    "rota": "/judiciario/sirenejud",
    "arquivo": "apps/web/app/judiciario/sirenejud/page.tsx",
    "dinamica": false,
-   "fontes": [
-    "link-correcoes.json"
-   ],
-   "registros": 2517,
-   "classe": "tem-dado"
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
   },
   {
    "rota": "/judiciario/sobre",
@@ -2710,9 +2698,9 @@
     "catalogo-frentes.json",
     "jurisprudencia-casos.json",
     "jurisprudencia-resumo.json",
-    "noticias-tribunais.json"
+    "resumos-realidade/jurisprudencia.json"
    ],
-   "registros": 23628,
+   "registros": 23591,
    "classe": "tem-dado"
   },
   {
@@ -2721,10 +2709,9 @@
    "dinamica": false,
    "fontes": [
     "jurisprudencia-casos.json",
-    "jurisprudencia-resumo.json",
-    "noticias-tribunais.json"
+    "jurisprudencia-resumo.json"
    ],
-   "registros": 23624,
+   "registros": 23583,
    "classe": "tem-dado"
   },
   {
@@ -2869,10 +2856,9 @@
    "dinamica": false,
    "fontes": [
     "auditoria-ajri",
-    "link-correcoes.json",
     "resumo-ajri"
    ],
-   "registros": 3321,
+   "registros": 804,
    "classe": "tem-dado"
   },
   {
@@ -2935,11 +2921,9 @@
    "rota": "/paraopeba/execucao",
    "arquivo": "apps/web/app/paraopeba/execucao/page.tsx",
    "dinamica": false,
-   "fontes": [
-    "link-correcoes.json"
-   ],
-   "registros": 2517,
-   "classe": "tem-dado"
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
   },
   {
    "rota": "/paraopeba/indice",
@@ -2987,11 +2971,9 @@
    "rota": "/paraopeba/pericia",
    "arquivo": "apps/web/app/paraopeba/pericia/page.tsx",
    "dinamica": false,
-   "fontes": [
-    "link-correcoes.json"
-   ],
-   "registros": 2517,
-   "classe": "tem-dado"
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
   },
   {
    "rota": "/paraopeba/quem-atua",
@@ -3083,11 +3065,9 @@
    "rota": "/riodoce",
    "arquivo": "apps/web/app/riodoce/page.tsx",
    "dinamica": false,
-   "fontes": [
-    "link-correcoes.json"
-   ],
-   "registros": 2517,
-   "classe": "tem-dado"
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
   },
   {
    "rota": "/riodoce/processos",
