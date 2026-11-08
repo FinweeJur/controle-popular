@@ -21,7 +21,7 @@ import { sanitizarTextoParaContexto } from "../../seguranca/blindagem-prompt";
 
 const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5-coder:3b";
 
-interface MensagemChat {
+export interface MensagemChat {
   role: "system" | "user" | "assistant";
   content: string;
 }
@@ -163,6 +163,24 @@ async function chamarOllama(mensagens: MensagemChat[], opcoes: OpcoesOllama): Pr
   return conteudo;
 }
 
+/**
+ * Corpo do POST /chat/completions (funcao pura, exportada para teste).
+ *
+ * Sabiazinho-4 roda no tier Flex (decisao do dono, 08/11/2026): 50% mais
+ * barato, sujeito a fila. Outros modelos nao recebem o campo.
+ */
+export function montarCorpoRequisicao(
+  provedor: Pick<ProvedorIa, "modelo">,
+  mensagens: MensagemChat[]
+): Record<string, unknown> {
+  return {
+    model: provedor.modelo,
+    messages: mensagens,
+    temperature: 0.2,
+    ...(provedor.modelo.startsWith("sabiazinho") ? { service_tier: "flex" } : {}),
+  };
+}
+
 async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): Promise<string> {
   const baseUrl = provedor.baseUrl.replace(/\/$/, "");
 
@@ -174,14 +192,7 @@ async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): 
         "Content-Type": "application/json",
         Authorization: `Bearer ${provedor.apiKey}`,
       },
-      body: JSON.stringify({
-        model: provedor.modelo,
-        messages: mensagens,
-        temperature: 0.2,
-        // Sabiazinho-4 roda no tier Flex (decisao do dono, 08/11/2026):
-        // 50% mais barato, sujeito a fila.
-        ...(provedor.modelo.startsWith("sabiazinho") ? { service_tier: "flex" } : {}),
-      }),
+      body: JSON.stringify(montarCorpoRequisicao(provedor, mensagens)),
       signal: AbortSignal.timeout(TIMEOUT_MS_PADRAO),
     });
   } catch (e) {

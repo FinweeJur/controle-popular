@@ -5,8 +5,8 @@
  */
 
 import { describe, expect, it } from "vitest";
-import type { FonteRag } from "./geracao";
-import { montarPromptUsuario } from "./geracao";
+import type { FonteRag, MensagemChat } from "./geracao";
+import { montarCorpoRequisicao, montarPromptUsuario } from "./geracao";
 
 function fonte(texto: string): FonteRag {
   return { indice: 1, texto, score: 0.9, titulo: "Diário Oficial", url: "https://exemplo.gov.br" };
@@ -43,5 +43,27 @@ describe("montarPromptUsuario — blindagem indireta", () => {
   it("não transforma URL não http em link para o modelo", () => {
     const prompt = montarPromptUsuario("teste", [{ ...fonte("x"), url: "javascript:alert(1)" }]);
     expect(prompt).not.toContain("javascript:");
+  });
+});
+
+describe("montarCorpoRequisicao — tier Flex do sabiazinho", () => {
+  const mensagens: MensagemChat[] = [
+    { role: "system", content: "voce e o Seu Nono" },
+    { role: "user", content: "quanto custou a obra?" },
+  ];
+
+  it("sabiazinho manda service_tier=flex no corpo HTTP", () => {
+    const corpo = montarCorpoRequisicao({ modelo: "sabiazinho-4" }, mensagens);
+    expect(corpo).toMatchObject({
+      model: "sabiazinho-4",
+      messages: mensagens,
+      temperature: 0.2,
+      service_tier: "flex",
+    });
+  });
+
+  it("deepseek nao manda service_tier", () => {
+    const corpo = montarCorpoRequisicao({ modelo: "deepseek-v4-flash" }, mensagens);
+    expect(corpo).not.toHaveProperty("service_tier");
   });
 });
