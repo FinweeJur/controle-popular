@@ -1,0 +1,14 @@
+{
+ "rota": "/canada/mineracao",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "canada/ambiental-natureza-ciencia.compact.json",
+  "canada/contratos-open-canada.compact.json",
+  "canada/institucional-canada.compact.json",
+  "canada/mineradoras-tsx-brasil.compact.json",
+  "internacional/canada-geo.compact.json"
+ ],
+ "impressao": "cd63ce6d765ffd1e",
+ "markdown": "# O que os dados de Canada · Mineracao mostram\n\nA página reúne 71 registros sobre mineração no Canadá, organizados em cinco blocos: barragens e rejeitos, economia e subsídios, instituições e leis, empresas com sede no Canadá ligadas a projetos no Brasil, e sedes corporativas. [medido — dados da página]\n\nO bloco de barragens e rejeitos tem 12 registros. Eles cobrem episódios como o despejo de rejeitos e água em 04/08/2014, emissões de SO₂ controladas e vazão monitorada em tempo real numa bacia atingida. [medido — dados da página]\n\nOutro bloco traz 9 registros sobre dinheiro público: quatro são classificados como subsídio ou grant, dois como contrato federal, um como crédito à exportação da EDC para o Brasil e um como comércio bilateral entre Canadá e Brasil medido pelo StatCan. [medido — dados da página]\n\nHá ainda 14 registros que cruzam províncias canadenses com estados brasileiros — Minas Gerais aparece três vezes, Pará duas — e listam substâncias como ouro (quatro registros), cobre e ouro (três) e lítio (um). [medido — dados da página]\n\nO maior bloco, com 24 registros, descreve sedes: 15 são sedes corporativas, 4 órgãos reguladores, 4 minas ou operações e 1 bolsa de valores. Toronto concentra 9 registros e Vancouver, 6. Das empresas listadas em bolsa, 18 estão na TSX, 5 na NYSE e 1 na TSX-V. [medido — dados da página]\n\nO que o dado não mostra: ele lista nomes, cidades e categorias, mas não informa valores em dólares, volume de produção nem se qualquer projeto está ativo, paralisado ou em licenciamento. Também não indica quanto de cada substância saiu do Canadá para o Brasil. [não dá para concluir]"
+}

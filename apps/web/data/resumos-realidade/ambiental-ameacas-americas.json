@@ -1,0 +1,10 @@
+{
+ "rota": "/ambiental/ameacas-americas",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "ambiente/ameacas-americas.compact.json"
+ ],
+ "impressao": "700f4072d2119be1",
+ "markdown": "# O que os dados de Ambiental · Ameacas americas mostram\n\nA página lista 90 registros de ameaças nas Américas, com bichos, comunidades, rios e serras. [medido — dados da página]\n\nQuase todos os registros têm grau de risco alto ou crítico: são 52 críticos e 36 altos. Só 2 aparecem como moderados. [medido — dados da página]\n\nEntre as espécies, o dado mais duro é o do lobo-guará: menos de 300 indivíduos na Mata Atlântica. [medido — dados da página]\n\nOutro número que chama atenção é o das aves: cerca de 560 existentes, sendo mais de 300 em liberdade. [medido — dados da página]\n\nO que a página não mostra é a causa de cada ameaça. Ela aponta o risco e o tamanho da população, mas não explica por que aquele bicho ou aquele rio está em perigo. [não dá para concluir]"
+}

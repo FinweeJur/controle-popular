@@ -1,0 +1,14 @@
+{
+ "rota": "/canada",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "canada/ambiental-natureza-ciencia.compact.json",
+  "canada/contratos-open-canada.compact.json",
+  "canada/institucional-canada.compact.json",
+  "canada/mineradoras-tsx-brasil.compact.json",
+  "internacional/canada-geo.compact.json"
+ ],
+ "impressao": "cd63ce6d765ffd1e",
+ "markdown": "# O que os dados de Canada mostram\n\n[medido — dados da página] A página reúne 71 registros sobre mineração e meio ambiente no Canadá, organizados em cinco blocos: barragens e rejeitos, economia e subsídios, instituições e leis, empresas com sede no Canadá ligadas a projetos no Brasil, e sedes corporativas.\n\n[medido — dados da página] O bloco de barragens e rejeitos tem 12 registros. Um deles mede o volume de rejeitos e água despejados em 04/08/2014; outro acompanha a vazão média monitorada em tempo real na bacia atingida. Os dois tratam de eventos e lugares específicos, não de uma média nacional.\n\n[medido — dados da página] O bloco econômico tem 9 registros, sendo 4 classificados como subsídio ou grant federal. Há ainda um registro de crédito à exportação ligado ao Brasil e um de comércio bilateral entre os dois países.\n\n[medido — dados da página] O bloco institucional tem 12 registros. Quatro são da Suprema Corte via CanLII, três de cidades e províncias via StatCan, e dois do Parlamento federal. Aparecem a lei de transparência do setor extrativo (ESTMA) e a lei de implementação da Declaração da ONU sobre Direitos dos Povos Indígenas.\n\n[medido — dados da página] O bloco de empresas tem 14 registros. Cinco têm sede em Vancouver e seis em Toronto. As substâncias mais citadas são ouro (4 registros) e cobre com ouro (3). Do lado brasileiro, Minas Gerais aparece 3 vezes e Pará 2.\n\n[medido — dados da página] O último bloco tem 24 registros de sedes e órgãos. Quinze são sedes corporativas, quatro são órgãos reguladores e quatro são minas ou operações. Dezoito estão listados na TSX e cinco na NYSE. Ontario concentra 12 e British Columbia 7.\n\n[não dá para concluir] A página lista volumes, datas e locais, mas não informa se esses valores foram verificados por auditoria independente nem se representam o total do setor. Não dá para somar os blocos como se fossem um único indicador."
+}

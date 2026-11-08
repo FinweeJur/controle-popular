@@ -2,8 +2,8 @@
  "geradoEm": "2026-11-08",
  "totalRotas": 348,
  "porClasse": {
-  "tem-dado": 58,
-  "so-descritivo": 45,
+  "tem-dado": 77,
+  "so-descritivo": 26,
   "sem-dado": 245
  },
  "rotas": [
@@ -380,7 +380,7 @@
     "relatorios-direitos-humanos.json",
     "telefonia-municipios-mg.json"
    ],
-   "registros": 1596,
+   "registros": 1666,
    "classe": "tem-dado"
   },
   {
@@ -618,8 +618,8 @@
    "fontes": [
     "ambiente/ameacas-americas.compact.json"
    ],
-   "registros": 9,
-   "classe": "so-descritivo"
+   "registros": 90,
+   "classe": "tem-dado"
   },
   {
    "rota": "/ambiental/autorizacoes",
@@ -636,8 +636,8 @@
    "fontes": [
     "sisema-autos/recentes.json"
    ],
-   "registros": 2,
-   "classe": "so-descritivo"
+   "registros": 36007,
+   "classe": "tem-dado"
   },
   {
    "rota": "/ambiental/barragens/descaracterizacao",
@@ -680,8 +680,8 @@
    "fontes": [
     "ambiente/barragens-mundiais.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 62,
+   "classe": "tem-dado"
   },
   {
    "rota": "/ambiental/capacidade-institucional",
@@ -727,8 +727,8 @@
    "fontes": [
     "ambiente/conflitos-socioambientais.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 55,
+   "classe": "tem-dado"
   },
   {
    "rota": "/ambiental/conselhos",
@@ -1006,7 +1006,7 @@
     "car-mg.json",
     "sisema-autos/recentes.json"
    ],
-   "registros": 13,
+   "registros": 36018,
    "classe": "tem-dado"
   },
   {
@@ -1045,8 +1045,8 @@
     "america-latina/instalacoes-latam.compact.json",
     "america-latina/mineradoras-latam.compact.json"
    ],
-   "registros": 6,
-   "classe": "so-descritivo"
+   "registros": 96,
+   "classe": "tem-dado"
   },
   {
    "rota": "/api",
@@ -1130,7 +1130,7 @@
     "canada/mineradoras-tsx-brasil.compact.json",
     "internacional/canada-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 71,
    "classe": "tem-dado"
   },
   {
@@ -1144,7 +1144,7 @@
     "canada/mineradoras-tsx-brasil.compact.json",
     "internacional/canada-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 71,
    "classe": "tem-dado"
   },
   {
@@ -1158,7 +1158,7 @@
     "canada/mineradoras-tsx-brasil.compact.json",
     "internacional/canada-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 71,
    "classe": "tem-dado"
   },
   {
@@ -1172,7 +1172,7 @@
     "canada/mineradoras-tsx-brasil.compact.json",
     "internacional/canada-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 71,
    "classe": "tem-dado"
   },
   {
@@ -1186,7 +1186,7 @@
     "canada/mineradoras-tsx-brasil.compact.json",
     "internacional/canada-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 71,
    "classe": "tem-dado"
   },
   {
@@ -1629,7 +1629,7 @@
     "recursos/pegada-hidrica-e-cnae.compact.json",
     "recursos/top50-mg-consumidores.compact.json"
    ],
-   "registros": 14,
+   "registros": 84,
    "classe": "tem-dado"
   },
   {
@@ -1663,8 +1663,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/direitos-comparados/indicadores",
@@ -1968,8 +1968,8 @@
     "empresas/conglomerados-holdings.compact.json",
     "empresas/conglomerados-setores.compact.json"
    ],
-   "registros": 9,
-   "classe": "so-descritivo"
+   "registros": 86,
+   "classe": "tem-dado"
   },
   {
    "rota": "/empresas/documentos",
@@ -1994,8 +1994,8 @@
    "fontes": [
     "empresas/fortunas-mundiais.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 1000,
+   "classe": "tem-dado"
   },
   {
    "rota": "/empresas",
@@ -2082,7 +2082,7 @@
     "eua/institucional-eua.compact.json",
     "internacional/eua-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 73,
    "classe": "tem-dado"
   },
   {
@@ -2096,7 +2096,7 @@
     "eua/institucional-eua.compact.json",
     "internacional/eua-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 73,
    "classe": "tem-dado"
   },
   {
@@ -2110,7 +2110,7 @@
     "eua/institucional-eua.compact.json",
     "internacional/eua-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 73,
    "classe": "tem-dado"
   },
   {
@@ -2124,7 +2124,7 @@
     "eua/institucional-eua.compact.json",
     "internacional/eua-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 73,
    "classe": "tem-dado"
   },
   {
@@ -2138,7 +2138,7 @@
     "eua/institucional-eua.compact.json",
     "internacional/eua-geo.compact.json"
    ],
-   "registros": 15,
+   "registros": 73,
    "classe": "tem-dado"
   },
   {
@@ -2165,8 +2165,8 @@
     "cambio-dia.json",
     "internacional/europa-transnacional.compact.json"
    ],
-   "registros": 8,
-   "classe": "so-descritivo"
+   "registros": 44,
+   "classe": "tem-dado"
   },
   {
    "rota": "/funcaosocialterra/alertas",
@@ -2401,8 +2401,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/desclassificados/mapa",
@@ -2411,8 +2411,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/desclassificados",
@@ -2421,8 +2421,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/europa",
@@ -2432,8 +2432,8 @@
     "cambio-dia.json",
     "internacional/europa-transnacional.compact.json"
    ],
-   "registros": 8,
-   "classe": "so-descritivo"
+   "registros": 44,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/inteligencia/mapa",
@@ -2442,8 +2442,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/inteligencia",
@@ -2452,8 +2452,8 @@
    "fontes": [
     "internacional/desclassificados-g20.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 84,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/operacoes-militares/mapa",
@@ -2462,8 +2462,8 @@
    "fontes": [
     "internacional/operacoes-militares.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 48,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/operacoes-militares",
@@ -2472,8 +2472,8 @@
    "fontes": [
     "internacional/operacoes-militares.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 48,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional/orcamentos",
@@ -2482,8 +2482,8 @@
    "fontes": [
     "internacional/orcamentos-comparados.compact.json"
    ],
-   "registros": 3,
-   "classe": "so-descritivo"
+   "registros": 30,
+   "classe": "tem-dado"
   },
   {
    "rota": "/internacional",
@@ -2494,8 +2494,8 @@
     "internacional/indicadores-sociais.compact.json",
     "internacional/terra-territorios-global.compact.json"
    ],
-   "registros": 9,
-   "classe": "so-descritivo"
+   "registros": 25,
+   "classe": "tem-dado"
   },
   {
    "rota": "/judiciario/composicao",
@@ -2697,10 +2697,9 @@
    "fontes": [
     "catalogo-frentes.json",
     "jurisprudencia-casos.json",
-    "jurisprudencia-resumo.json",
-    "resumos-realidade/jurisprudencia.json"
+    "jurisprudencia-resumo.json"
    ],
-   "registros": 23591,
+   "registros": 23587,
    "classe": "tem-dado"
   },
   {

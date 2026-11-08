@@ -1,0 +1,10 @@
+{
+ "rota": "/ambiental/barragens-globais",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "ambiente/barragens-mundiais.compact.json"
+ ],
+ "impressao": "a5955265a890f57f",
+ "markdown": "# O que os dados de Ambiental · Barragens globais mostram\n\nA página lista 62 barragens ao redor do mundo, com informações sobre tipo, continente e situação de cada uma. [medido — dados da página]\n\nQuase metade é hidrelétrica: 26 das 62. As de rejeitos de mineração somam 22, as de abastecimento múltiplo 11 e as de controle de cheias 3. [medido — dados da página]\n\nA maioria está na América do Sul, com 22 registros. América do Norte tem 13, Ásia 10, Europa 9, África 5 e Oceania 3. [medido — dados da página]\n\nSobre a situação: 41 estão em operação, 13 romperam em algum momento do histórico, 7 foram desativadas ou descaracterizadas e 1 está em construção. [medido — dados da página]\n\nO dado não mostra o tamanho, a idade ou o risco de cada barragem, nem se as que romperam causaram vítimas ou danos ambientais. Também não indica se os 62 registros cobrem todas as barragens do mundo ou só uma parte escolhida. [não dá para concluir]"
+}

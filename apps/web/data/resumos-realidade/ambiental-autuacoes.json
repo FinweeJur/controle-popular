@@ -1,0 +1,10 @@
+{
+ "rota": "/ambiental/autuacoes",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "sisema-autos/recentes.json"
+ ],
+ "impressao": "f14a347b597d1e35",
+ "markdown": "# O que os dados de Ambiental · Autuacoes mostram\n\nA página lista 36.007 registros de autuações ambientais no estado. [medido — dados da página]\n\nQuase todos os registros têm origem na SEMAD: 398. O IEF aparece com 2 registros. [medido — dados da página]\n\nSobre a situação dos processos, 397 estão em processamento. Dois foram encaminhados para inscrição em dívida ativa e um teve quitação do DAE. [medido — dados da página]\n\nO campo de data está vazio em 397 registros. Apenas três têm data preenchida: 2026-07-28, 2026-05-07 e 2026-04-08. [medido — dados da página]\n\nO dado não mostra o valor das multas, o tipo de infração nem o resultado final de cada processo. Também não indica quantas autuações viraram cobrança efetiva. [não dá para concluir]"
+}

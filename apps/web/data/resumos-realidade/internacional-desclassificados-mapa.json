@@ -1,0 +1,10 @@
+{
+ "rota": "/internacional/desclassificados/mapa",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "internacional/desclassificados-g20.compact.json"
+ ],
+ "impressao": "7dcabefd027562cd",
+ "markdown": "# O que os dados de Internacional · Desclassificados · Mapa mostram\n\nA página lista 84 documentos desclassificados espalhados por seis continentes. [medido — dados da página]\n\nA Europa concentra o maior bloco, com 31 registros, seguida pela América do Norte, com 26. Ásia tem 12, América do Sul 5, Oceania 4 e Eurásia 4. [medido — dados da página]\n\nQuase metade dos documentos nasceu com o selo mais alto: 33 são ultrassecretos e 22 secretos. Outros 19 constam como públicos ou ostensivos, 5 confidenciais e 5 reservados. [medido — dados da página]\n\nNa origem, 59 vieram de arquivos históricos desclassificados e 25 são relatórios públicos contemporâneos. A maioria está ligada ao G20 Soberano (33) e ao Five Eyes (30); Twelve Eyes soma 11, Nine Eyes 8 e Fourteen Eyes 2. [medido — dados da página]\n\nO dado mostra onde estão os documentos e sob qual classificação foram guardados. Não mostra o conteúdo de cada um, nem se algum chegou a ser lido pelo público depois de liberado. [não dá para concluir]"
+}

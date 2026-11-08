@@ -1,0 +1,10 @@
+{
+ "rota": "/empresas/fortunas",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "empresas/fortunas-mundiais.compact.json"
+ ],
+ "impressao": "27469bd63f6cc02c",
+ "markdown": "# O que os dados de Empresas · Fortunas mostram\n\nA página lista 1.000 registros ligados a fortunas. [medido — dados da página]\n\nDo total, 289 aparecem como pessoa individual e 111 como família. [medido — dados da página]\n\nIsso soma os registros com tipo identificado. Os demais não têm esse campo preenchido na página. [medido — dados da página]\n\nO dado mostra quantos registros existem e como eles se dividem entre pessoa e família. Não mostra valores, origem ou destino desse dinheiro. [não dá para concluir]\n\nTambém não dá para saber se os registros são completos ou se há duplicidade. A página só informa a contagem. [não dá para concluir]"
+}

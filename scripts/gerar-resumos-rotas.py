@@ -130,13 +130,40 @@ def resolver(fonte: str) -> Path | None:
     return None
 
 
+def decodificar_compacto(dados: dict) -> list[dict]:
+    """Formato compacto: `esqueleto` (colunas), `linhas` (arrays) e dicionários.
+
+    Cada célula de coluna dicionarizada guarda o índice do valor. Sem decodificar,
+    `linhas` parece lista de listas e o perfil não acha campo categórico.
+    """
+    colunas = dados.get("esqueleto") or []
+    dicionarios = dados.get("dicionarios") or {}
+    saida = []
+    for linha in dados.get("linhas") or []:
+        registro = {}
+        for indice, coluna in enumerate(colunas):
+            valor = linha[indice] if indice < len(linha) else None
+            dicionario = dicionarios.get(coluna)
+            if (isinstance(valor, int) and isinstance(dicionario, list)
+                    and 0 <= valor < len(dicionario)):
+                valor = dicionario[valor]
+            registro[coluna] = valor
+        saida.append(registro)
+    return saida
+
+
 def registros(dados) -> list:
     if isinstance(dados, list):
         return dados
     if isinstance(dados, dict):
-        for chave in ("itens", "casos", "atos", "trechos", "documentos", "registros"):
+        if isinstance(dados.get("linhas"), list) and dados.get("esqueleto"):
+            return decodificar_compacto(dados)
+        for chave in ("itens", "casos", "atos", "trechos", "documentos", "registros", "autos"):
             if isinstance(dados.get(chave), list):
                 return dados[chave]
+        for valor in dados.values():
+            if isinstance(valor, list) and valor and isinstance(valor[0], dict):
+                return valor
     return []
 
 
@@ -301,11 +328,15 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Gera resumos de realidade por rota.")
     ap.add_argument("--limite", type=int, default=5)
     ap.add_argument("--rota", default="")
+    ap.add_argument("--faltantes", action="store_true",
+                    help="só rotas que ainda não têm resumo publicado")
     opcoes = ap.parse_args()
     inventario = json.loads(INVENTARIO.read_text(encoding="utf-8"))
     fila = [rota for rota in inventario["rotas"]
             if rota["classe"] == "tem-dado" and "[" not in rota["rota"]
             and rota["rota"] != "/jurisprudencia"]
+    if opcoes.faltantes:
+        fila = [rota for rota in fila if not (SAIDA / f"{slug(rota['rota'])}.json").exists()]
     if opcoes.rota:
         fila = [rota for rota in fila if rota["rota"] == opcoes.rota]
     fila.sort(key=lambda rota: -rota["registros"])

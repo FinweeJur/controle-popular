@@ -1,0 +1,10 @@
+{
+ "rota": "/internacional/operacoes-militares/mapa",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "internacional/operacoes-militares.compact.json"
+ ],
+ "impressao": "930b3d6f6c236058",
+ "markdown": "# O que os dados de Internacional · Operacoes militares · Mapa mostram\n\nEsta página lista 48 registros de operações militares internacionais, agrupados por tipo e por região do mundo. [medido — dados da página]\n\nO tipo mais frequente é intervenção militar direta, com 19 registros. Contratos de defesa e armamento somam 10; empresas militares privadas e milícias, 9; deposição de regime ou golpe, 8; e guerra por procuração com apoio a rebeldes, 2. [medido — dados da página]\n\nPor região, o Oriente Médio tem 10 registros. África e América do Sul têm 8 cada; Ásia e Oceania, 7; América Central e Caribe, 6; Europa, 6. [medido — dados da página]\n\nEm 9 registros não há estimativa de baixas. Nos demais, os números aparecem como faixas e referências pontuais — por exemplo, um registro cita cerca de 2,5 a 3 milhões de mortos, militares e civis; outro cita 58.220 militares dos EUA mortos. São valores ligados a casos específicos, não uma soma da lista. [medido — dados da página]\n\nA página indica fontes oficiais para alguns registros, como o Congressional Research Service e os Arquivos Nacionais dos EUA. Isso mostra de onde veio parte do material, mas não cobre todos os 48 itens. [medido — dados da página]\n\nO dado não mede o total de mortes causadas por essas operações, nem permite comparar gravidade entre regiões. Ele conta registros, não vítimas. [não dá para concluir]"
+}

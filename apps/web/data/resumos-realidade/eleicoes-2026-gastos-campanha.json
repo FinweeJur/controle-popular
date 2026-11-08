@@ -1,0 +1,16 @@
+{
+ "rota": "/eleicoes/2026/gastos-campanha",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "eleicoes/gastos-2026/bigtech.json",
+  "eleicoes/gastos-2026/fornecedores.json",
+  "eleicoes/gastos-2026/meta-ads-amostra.json",
+  "eleicoes/gastos-2026/meta.json",
+  "eleicoes/gastos-2026/partidos.json",
+  "eleicoes/gastos-2026/por-partido.json",
+  "eleicoes/gastos-2026/por-uf.json"
+ ],
+ "impressao": "00aae7e7b92a9130",
+ "markdown": "# O que os dados de Eleicoes · 2026 · Gastos campanha mostram\n\nEsta página reúne 149 registros de gastos de campanha ligados a eleições de 2026. [medido — dados da página] Os dados estão divididos em blocos, e nem todos têm o mesmo tipo de informação. [inferido]\n\nUm bloco tem 9 registros de empresas de tecnologia e publicidade: 5 do grupo Meta, 3 do Google e 1 da ByteDance. Aparecem nomes como Facebook Serviços Online do Brasil, Google Brasil Internet e ByteDance Brasil (TikTok). [medido — dados da página]\n\nOutro bloco tem 10 registros com nome de candidato, cargo e estado. Estão listados Flávio Bolsonaro, Lula, Fernando Haddad, Célio Studart, Ciro Gomes e Aécio Neves. Os cargos incluem Deputado Federal (3), Senador (3), Presidente (2) e Governador (2). Os estados aparecem como BR (2), SP (2), CE (2), MG (1), RJ (1) e SC (1). [medido — dados da página]\n\nHá ainda um bloco com 4 registros de origem de recurso: Fundo Especial, Outros Recursos, Fundo Partidário e um sem rótulo. [medido — dados da página]\n\nOs demais blocos somam 40, 30, 30 e 27 registros, mas a página não mostra o que cada um contém. [medido — dados da página]\n\nO dado não permite concluir quanto foi gasto por candidato, por empresa ou por cargo. Também não mostra valores em reais nem comparações entre os blocos. [não dá para concluir]"
+}
