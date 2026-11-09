@@ -120,7 +120,7 @@ def e_do_caso(titulo: str, resumo: str) -> bool:
 
 def caso_de(titulo: str, resumo: str) -> str | None:
     texto = sem_acento(f"{titulo} {resumo}")
-    if "brumadinho" in texto or "corrego do feijao" in texto:
+    if "brumadinho" in texto or "corrego do feijao" in texto or "paraopeba" in texto:
         return "brumadinho"
     if any(
         termo in texto
