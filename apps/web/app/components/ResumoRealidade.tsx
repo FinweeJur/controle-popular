@@ -28,7 +28,7 @@ import {
  */
 
 const CAIXA =
-  "rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-6";
+  "rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-8";
 
 function comNegrito(texto: string): ReactNode[] {
   return texto.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).map((parte, indice) => {
@@ -105,7 +105,7 @@ function Tabela({ linhas }: { linhas: string[][] }) {
         <thead>
           <tr className="border-b border-[var(--cp-border)] text-left">
             {cabecalho.map((celula, coluna) => (
-              <th key={coluna} className="py-2 pr-3 font-semibold">
+              <th key={coluna} className="py-2 pr-3 text-[.72rem] font-semibold uppercase tracking-wide">
                 {comNegrito(celula)}
               </th>
             ))}
@@ -113,9 +113,9 @@ function Tabela({ linhas }: { linhas: string[][] }) {
         </thead>
         <tbody>
           {corpo.map((linha, indice) => (
-            <tr key={indice} className="border-b border-[var(--cp-border)]/50">
+            <tr key={indice} className="border-b border-[var(--cp-border)]/50 odd:bg-[var(--cp-surface-2)]/40">
               {linha.map((celula, coluna) => (
-                <td key={coluna} className="py-2 pr-3 align-top">
+                <td key={coluna} className="py-2.5 pr-3 align-top">
                   <Celula texto={celula} />
                 </td>
               ))}
@@ -129,11 +129,25 @@ function Tabela({ linhas }: { linhas: string[][] }) {
 
 export function Blocos({ blocos }: { blocos: BlocoResumo[] }) {
   return (
-    <div className="mt-3 space-y-3 text-sm leading-relaxed">
+    <div className="mt-5 max-w-[72ch] space-y-5 text-[1.02rem] leading-[1.75]">
       {blocos.map((bloco, indice) => {
-        if (bloco.tipo === "h2" || bloco.tipo === "h3") {
+        const anterior = blocos[indice - 1];
+        if (bloco.tipo === "h2") {
           return (
-            <h3 key={indice} className="font-display text-base font-semibold pt-2">
+            <h2
+              key={indice}
+              className="mt-10 border-t border-[var(--cp-border)] pt-6 font-display text-[clamp(1.35rem,2.8vw,1.6rem)] font-bold leading-tight tracking-tight first:mt-0 first:border-0 first:pt-0"
+            >
+              {comNegrito(bloco.texto)}
+            </h2>
+          );
+        }
+        if (bloco.tipo === "h3") {
+          return (
+            <h3
+              key={indice}
+              className="mt-7 font-display text-[1.12rem] font-semibold leading-snug"
+            >
               {comNegrito(bloco.texto)}
             </h3>
           );
@@ -141,14 +155,63 @@ export function Blocos({ blocos }: { blocos: BlocoResumo[] }) {
         if (bloco.tipo === "tabela" && bloco.linhas?.length) {
           return <Tabela key={indice} linhas={bloco.linhas} />;
         }
+        if (bloco.tipo === "numeros" && bloco.linhas?.length) {
+          return (
+            <div key={indice} className="my-7 grid gap-3 sm:grid-cols-2">
+              {bloco.linhas.map((linha, posicao) => {
+                const [valor, rotulo, detalhe] = linha;
+                return (
+                  <div
+                    key={posicao}
+                    className="rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-4"
+                  >
+                    <p className="font-tabular text-[1.9rem] font-bold leading-none text-[var(--cp-primary)]">
+                      {valor}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold leading-snug text-text">
+                      {rotulo}
+                    </p>
+                    {detalhe ? (
+                      <p className="mt-1 text-xs leading-snug text-text-soft">
+                        {detalhe}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+        if (bloco.tipo === "citacao") {
+          return (
+            <blockquote
+              key={indice}
+              className="my-8 border-l-4 border-[var(--cp-primary)] pl-4 font-display text-[1.28rem] font-medium leading-snug text-text sm:text-[1.4rem]"
+            >
+              {comNegrito(bloco.texto)}
+            </blockquote>
+          );
+        }
         if (bloco.tipo === "li") {
           return (
-            <p key={indice} className="pl-4 -indent-4">
-              · {comNegrito(bloco.texto)}
+            <p key={indice} className="flex gap-3 leading-[1.7]">
+              <span aria-hidden className="mt-[.55em] size-1.5 shrink-0 rounded-full bg-[var(--cp-primary)]" />
+              <span>{comNegrito(bloco.texto)}</span>
             </p>
           );
         }
-        return <p key={indice}>{comNegrito(bloco.texto)}</p>;
+        return (
+          <p
+            key={indice}
+            className={
+              anterior?.tipo === "h2"
+                ? "text-[1.08rem] leading-[1.7]"
+                : "leading-[1.75]"
+            }
+          >
+            {comNegrito(bloco.texto)}
+          </p>
+        );
       })}
     </div>
   );
@@ -181,10 +244,13 @@ export function ResumoRealidadeBox({
       aria-labelledby="resumo-realidade"
       className={`${CAIXA} ${className}`.trim()}
     >
-      <p className="text-xs uppercase tracking-wide opacity-60">
+      <p className="text-[.7rem] font-semibold uppercase tracking-[.18em] text-primary">
         Resumo de realidade · fonte em cada afirmação · atualizado em {resumo.geradoEm}
       </p>
-      <h2 id="resumo-realidade" className="mt-2 font-display text-lg font-semibold">
+      <h2
+        id="resumo-realidade"
+        className="mt-2 font-display text-[clamp(1.45rem,3.2vw,1.9rem)] font-bold leading-tight tracking-tight"
+      >
         {titulo}
       </h2>
       <Blocos blocos={corpo} />
