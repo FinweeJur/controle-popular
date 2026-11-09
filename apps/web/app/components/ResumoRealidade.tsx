@@ -171,6 +171,7 @@ export function ResumoRealidadeBox({
   const blocos = parseResumo(resumo.markdown);
   const temTitulo = blocos[0]?.tipo === "h2";
   const corpo = temTitulo ? blocos.slice(1) : blocos;
+  if (corpo.length === 0) return null;
   const titulo = temTitulo
     ? blocos[0].texto.replace(/\*\*/g, "")
     : "O que os números dizem sobre quem foi atingido";
