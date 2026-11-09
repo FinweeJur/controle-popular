@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { RESUMOS } from "@/data/resumos-realidade";
-import { parseResumo, resumoPublicavel } from "@/lib/resumos-realidade";
+import {
+  parseResumo,
+  resumoPublicavel,
+  type BlocoResumo,
+} from "@/lib/resumos-realidade";
 
 /**
- * Resumo de realidade no topo da página.
+ * Bloco "Resumo de realidade" e o renderizador de markdown mínimo.
  *
  * POR QUE EXISTE
  *
  * O painel técnico responde "quanto"; nem todo leitor quer ler 22 mil
  * acórdãos. O resumo entrega o mesmo dado em linguagem direta, com fonte
- * visível por afirmação.
+ * visível por afirmação — e agora com tabelas de comparação.
  *
  * REGRA DE PUBLICAÇÃO: só renderiza resumo `verificado`. Resumo velho é pior
- * que resumo ausente, então o JSON carrega a data e o verificador é quem
- * autoriza.
+ * que resumo ausente.
  *
- * O texto é markdown mínimo (título, parágrafo, lista, negrito e link). O
- * parser está em `lib/resumos-realidade.ts`.
+ * O markdown aceito é pequeno de propósito: título, parágrafo, lista, negrito,
+ * link e tabela. Não há dependência de renderizador.
  */
 
 const CAIXA =
@@ -50,6 +53,68 @@ function comNegrito(texto: string): ReactNode[] {
   });
 }
 
+function Tabela({ linhas }: { linhas: string[][] }) {
+  const [cabecalho, ...corpo] = linhas;
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse text-xs sm:text-sm">
+        <thead>
+          <tr className="border-b border-[var(--cp-border)] text-left">
+            {cabecalho.map((celula, coluna) => (
+              <th key={coluna} className="py-2 pr-3 font-semibold">
+                {comNegrito(celula)}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {corpo.map((linha, indice) => (
+            <tr key={indice} className="border-b border-[var(--cp-border)]/50">
+              {linha.map((celula, coluna) => (
+                <td key={coluna} className="py-2 pr-3 align-top">
+                  {comNegrito(celula)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function Blocos({ blocos }: { blocos: BlocoResumo[] }) {
+  return (
+    <div className="mt-3 space-y-3 text-sm leading-relaxed">
+      {blocos.map((bloco, indice) => {
+        if (bloco.tipo === "h2" || bloco.tipo === "h3") {
+          return (
+            <h3 key={indice} className="font-display text-base font-semibold pt-2">
+              {comNegrito(bloco.texto)}
+            </h3>
+          );
+        }
+        if (bloco.tipo === "tabela" && bloco.linhas?.length) {
+          return <Tabela key={indice} linhas={bloco.linhas} />;
+        }
+        if (bloco.tipo === "li") {
+          return (
+            <p key={indice} className="pl-4 -indent-4">
+              · {comNegrito(bloco.texto)}
+            </p>
+          );
+        }
+        return <p key={indice}>{comNegrito(bloco.texto)}</p>;
+      })}
+    </div>
+  );
+}
+
+/** Markdown solto, para páginas de análise que já têm o próprio título. */
+export function MarkdownResumo({ markdown }: { markdown: string }) {
+  return <Blocos blocos={parseResumo(markdown)} />;
+}
+
 export function ResumoRealidadeBox({
   rota,
   className = "",
@@ -77,25 +142,7 @@ export function ResumoRealidadeBox({
       <h2 id="resumo-realidade" className="mt-2 font-display text-lg font-semibold">
         {titulo}
       </h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed">
-        {corpo.map((bloco, indice) => {
-          if (bloco.tipo === "h2" || bloco.tipo === "h3") {
-            return (
-              <h3 key={indice} className="font-display text-base font-semibold pt-2">
-                {comNegrito(bloco.texto)}
-              </h3>
-            );
-          }
-          if (bloco.tipo === "li") {
-            return (
-              <p key={indice} className="pl-4 -indent-4">
-                · {comNegrito(bloco.texto)}
-              </p>
-            );
-          }
-          return <p key={indice}>{comNegrito(bloco.texto)}</p>;
-        })}
-      </div>
+      <Blocos blocos={corpo} />
 
       {resumo.exemplos?.length ? (
         <div className="mt-5 space-y-2 border-t border-[var(--cp-border)] pt-4">

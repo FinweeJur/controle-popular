@@ -20,6 +20,7 @@ import {
 } from "@/lib/paraopeba/temas-ati-utils";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import PainelAnalise from "./PainelAnalise";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/paraopeba/analise` — a análise integrada: os 16 eixos da síntese da
@@ -100,6 +101,8 @@ export default async function AnaliseIntegradaPage() {
         importa mais aqui não é onde as três concordam: é{" "}
         <strong className="text-text">onde só uma delas fala</strong>.
       </p>
+
+      <ResumoRealidadeBox rota="/paraopeba/analise" className="mt-6" />
 
       {/* ═══ DECLARAÇÃO — o que este cruzamento é e não é ═══ */}
       <section
