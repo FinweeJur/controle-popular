@@ -140,6 +140,7 @@ export default async function LegislacaoAmbientalIndex() {
       )}
 
       <section className="mt-10">
+        <h2 className="mb-3 font-display text-lg font-bold text-text">Buscar nas leis</h2>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className="text-sm font-medium text-text">Eixo:</span>
           <Link

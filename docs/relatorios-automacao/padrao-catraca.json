@@ -542,5 +542,19 @@
   "indice_wiki",
   "relacionados",
   "fonte"
+ ],
+ "/casos": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
+ ],
+ "/direitos": [
+  "secoes",
+  "indice_wiki",
+  "relacionados",
+  "grafico",
+  "fonte"
  ]
 }

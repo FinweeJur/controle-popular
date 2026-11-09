@@ -1198,5 +1198,29 @@
     "destaque": false,
     "resumo": "Transparência global: resoluções da ONU, dados de saúde da OMS, patrimônio UNESCO e metas do clima.",
     "numero": 100
+  },
+  {
+    "id": "casos",
+    "titulo": "Casos: Brumadinho, Rio Doce e Itatiaiuçu",
+    "href": "/casos",
+    "eixo": "Casos",
+    "subfrenteId": "casos-hub",
+    "subfrente": "Casos",
+    "badge": "Casos",
+    "destaque": true,
+    "resumo": "Porta do eixo Casos: os três desastres acompanhados, com frentes, linha do tempo e reparação.",
+    "numero": 101
+  },
+  {
+    "id": "direitos",
+    "titulo": "Direitos: o direito violado e o que fazer",
+    "href": "/direitos",
+    "eixo": "Direitos",
+    "subfrenteId": "direitos-hub",
+    "subfrente": "Direitos",
+    "badge": "Direitos",
+    "destaque": true,
+    "resumo": "Porta do eixo Direitos: saúde, educação, trabalho, moradia, memória e direitos globais.",
+    "numero": 102
   }
 ]
