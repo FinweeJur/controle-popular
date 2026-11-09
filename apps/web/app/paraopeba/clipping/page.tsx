@@ -9,6 +9,7 @@ import {
   COBERTURA_CLIPPING_IJ,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import dadosMab from "@/data/mab-publicacoes.json";
 import ClippingClient from "./ClippingClient";
 import RadarRecente from "./RadarRecente";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -67,6 +68,18 @@ export default function ClippingPage() {
         {formatNumberBR(COBERTURA_CLIPPING_IJ.total)} publicações das três instituições de justiça que
         assinaram o Acordo — MPMG, MPF e DPMG —, que é o que alcança 2019 e 2021; e{" "}
         {formatNumberBR(COBERTURA_CLIPPING.total)} notícias do clipping geral.
+      </p>
+      <p className="mt-3 text-[.95em]">
+        <NextLink
+          href="/paraopeba/mab"
+          className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+        >
+          Notícias, artigos e notas do MAB
+        </NextLink>{" "}
+        <span className="text-text-soft">
+          — {formatNumberBR((dadosMab as { total: number }).total)} publicações
+          do movimento, com filtro por tipo e caso.
+        </span>
       </p>
       {/* O ponteiro para o Guaicuy saiu da hero em 15/08/2026. Ele dava crédito
           errado logo na abertura: o acervo das assessorias é de TRÊS ATIs
