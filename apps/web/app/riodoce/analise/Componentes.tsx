@@ -11,19 +11,13 @@ import type { ReactNode } from "react";
 
 export type TipoMarca = "medido" | "inferido" | "nao";
 
-const ROTULO_MARCA: Record<TipoMarca, string> = {
-  medido: "medido",
-  inferido: "inferido",
-  nao: "não dá para concluir",
-};
-
-/** Marca epistemológica colada ao fim de uma conclusão. */
-export function Marca({ tipo }: { tipo: TipoMarca }) {
-  return (
-    <span className="ml-1 inline-block rounded border border-border bg-surface-2 px-1 align-baseline text-[12px] font-semibold leading-4 tracking-wide text-text-soft">
-      [{ROTULO_MARCA[tipo]}]
-    </span>
-  );
+/**
+ * O dono pediu, em 09/11/2026, para não exibir as marcas no texto.
+ * O tipo continua existindo porque as seções ainda o declaram; a tela fica
+ * limpa e o dado/fonte segue no corpo da seção.
+ */
+export function Marca(_: { tipo: TipoMarca }) {
+  return null;
 }
 
 export function CabecalhoSecao({
