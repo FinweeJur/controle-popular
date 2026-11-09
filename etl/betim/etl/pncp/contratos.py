@@ -273,7 +273,7 @@ def sync(
         data_final = f"{ano}1231"
         for cnpj in cnpjs:
             chave_unidade = f"{id_municipio}:{cnpj}:{ano}"
-            if ck.unidade_pronta(estado, chave_unidade):
+            if ck.unidade_pronta(estado, chave_unidade, ano_atual=ano_atual):
                 print(
                     f"[etl.pncp.contratos] {chave_unidade} checkpoint=ok, pula"
                 )
@@ -294,7 +294,7 @@ def sync(
             item_ck = estado.get(chave_unidade)
             registros_ano = (
                 int(item_ck.get("registros") or 0)
-                if isinstance(item_ck, dict)
+                if isinstance(item_ck, dict) and item_ck.get("status") == "parcial"
                 else 0
             )
 
@@ -348,8 +348,12 @@ def sync(
                     f"parcial ({registros_ano} reg) gravado e segue.",
                     flush=True,
                 )
-                ck.marcar_ok(
-                    estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
+                ck.marcar_parcela(
+                    estado,
+                    ck.NOME_CONTRATOS,
+                    chave_unidade,
+                    pagina=paginas_gravadas,
+                    registros=registros_ano,
                 )
     print(f"[etl.pncp.contratos] Conclusão da sincronização: total de {total} registros processados")
 

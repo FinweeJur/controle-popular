@@ -115,7 +115,8 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
 
     ═══ TRATAMENTO DE CHECKPOINTS E RETOMADA ═══
     - Chave do Checkpoint: `{id_municipio}:{ano}-{modalidade}`.
-    - Se a unidade já estiver com status "ok", é pulada imediatamente sem gasto de requisições de rede.
+    - Se a unidade já estiver com status "ok", é pulada sem gasto de requisições de rede,
+      exceto no ano corrente, que é sempre relido.
     - Se a unidade tiver sido interrompida, retoma exatamente na página onde parou.
     - Gravação em lotes de 1.000 registros com deduplicação por chave primária (`numero_controle_pncp`).
 
@@ -151,7 +152,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
         for modalidade in MODALIDADES:
             # Chave única de checkpoint identificando o município, ano e modalidade da Lei 14.133
             chave = f"{id_municipio}:{ano}-{modalidade}"
-            if ck.unidade_pronta(estado, chave):
+            if ck.unidade_pronta(estado, chave, ano_atual=ano_atual):
                 print(
                     f"[etl.pncp.licitacoes] {chave} checkpoint=ok, pula",
                     flush=True,
@@ -170,7 +171,7 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
             item_ck = estado.get(chave)
             registros_chave = (
                 int(item_ck.get("registros") or 0)
-                if isinstance(item_ck, dict)
+                if isinstance(item_ck, dict) and item_ck.get("status") == "parcial"
                 else 0
             )
 
