@@ -12,11 +12,13 @@
  * número dentro do dossiê). Aqui só se desenha.
  */
 
-export type TipoBloco = "h2" | "h3" | "p" | "li";
+export type TipoBloco = "h2" | "h3" | "p" | "li" | "tabela";
 
 export interface BlocoResumo {
   tipo: TipoBloco;
   texto: string;
+  /** Linhas da tabela, quando `tipo === "tabela"` (primeira é o cabeçalho). */
+  linhas?: string[][];
 }
 
 export interface ExemploCaso {
@@ -42,17 +44,34 @@ export interface ResumoRealidade {
 
 const TITULO = /^(#{1,3})\s+(.*)$/;
 const ITEM = /^[-*]\s+(.*)$/;
+const SEPARADOR = /^\|?[\s:|-]+\|?$/;
+
+function celulas(linha: string): string[] {
+  return linha.replace(/^\||\|$/g, "").split("|").map((celula) => celula.trim());
+}
 
 /** Converte o markdown mínimo em blocos. Linha vazia separa blocos. */
 export function parseResumo(markdown: string): BlocoResumo[] {
   const blocos: BlocoResumo[] = [];
+  let tabela: string[][] = [];
+  const fecharTabela = () => {
+    if (tabela.length) {
+      blocos.push({ tipo: "tabela", texto: "", linhas: tabela });
+      tabela = [];
+    }
+  };
   for (const linha of (markdown ?? "").split(/\r?\n/)) {
     const texto = linha.trim();
+    if (texto.startsWith("|")) {
+      if (!SEPARADOR.test(texto)) tabela.push(celulas(texto));
+      continue;
+    }
+    fecharTabela();
     if (!texto) continue;
     const titulo = TITULO.exec(texto);
     if (titulo) {
       const nivel = titulo[1].length;
-      blocos.push({ tipo: nivel === 1 ? "h2" : nivel === 2 ? "h3" : "h3", texto: titulo[2] });
+      blocos.push({ tipo: nivel === 1 ? "h2" : "h3", texto: titulo[2] });
       continue;
     }
     const item = ITEM.exec(texto);
@@ -62,6 +81,7 @@ export function parseResumo(markdown: string): BlocoResumo[] {
     }
     blocos.push({ tipo: "p", texto });
   }
+  fecharTabela();
   return blocos;
 }
 

@@ -63,6 +63,7 @@ import resumoLaboratorio from "./laboratorio.json";
 import resumoMineracaoCavas from "./mineracao-cavas.json";
 import resumoNoticias from "./noticias.json";
 import resumoNovidades from "./novidades.json";
+import resumoParaopebaAnalise from "./paraopeba-analise.json";
 import resumoParaopebaAuditoria from "./paraopeba-auditoria.json";
 import resumoParaopebaBiblioteca from "./paraopeba-biblioteca.json";
 import resumoParaopebaCorrelacao from "./paraopeba-correlacao.json";
@@ -125,6 +126,7 @@ export const RESUMOS: Record<string, ResumoRealidade> = {
   "/mineracao/cavas": resumoMineracaoCavas as ResumoRealidade,
   "/noticias": resumoNoticias as ResumoRealidade,
   "/novidades": resumoNovidades as ResumoRealidade,
+  "/paraopeba/analise": resumoParaopebaAnalise as ResumoRealidade,
   "/paraopeba/auditoria": resumoParaopebaAuditoria as ResumoRealidade,
   "/paraopeba/biblioteca": resumoParaopebaBiblioteca as ResumoRealidade,
   "/paraopeba/correlacao": resumoParaopebaCorrelacao as ResumoRealidade,

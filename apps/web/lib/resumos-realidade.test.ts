@@ -9,6 +9,17 @@ describe("parseResumo", () => {
     expect(blocos[2].texto).toBe("item um");
   });
 
+  it("converte tabela markdown em bloco de linhas", () => {
+    const blocos = parseResumo("| Fonte | N |\n|---|---|\n| Guaicuy | 452 |\n| NACAB | 176 |");
+    expect(blocos).toHaveLength(1);
+    expect(blocos[0].tipo).toBe("tabela");
+    expect(blocos[0].linhas).toEqual([
+      ["Fonte", "N"],
+      ["Guaicuy", "452"],
+      ["NACAB", "176"],
+    ]);
+  });
+
   it("trata nível 1 como h2 e nível 2 como h3", () => {
     const blocos = parseResumo("# Um\n## Dois\n### Três");
     expect(blocos.map((bloco) => bloco.tipo)).toEqual(["h2", "h3", "h3"]);
