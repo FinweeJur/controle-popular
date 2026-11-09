@@ -554,6 +554,8 @@ function SecaoPaginasIrmas() {
     { href: "/paraopeba/auditoria", rotulo: "Auditoria independente" },
     { href: "/paraopeba/pericia", rotulo: "Perícia da UFMG" },
     { href: "/paraopeba/analise", rotulo: "Análise integrada" },
+    { href: "/paraopeba/panorama", rotulo: "Panorama de Brumadinho" },
+    { href: "/eixos/casos", rotulo: "Os três casos" },
     { href: "/paraopeba/vale", rotulo: "Ações da Vale" },
     { href: "/paraopeba/vale/documentos", rotulo: "Documentos da Vale na CVM" },
     { href: "/paraopeba/correlacao", rotulo: "Preços × notícias" },
