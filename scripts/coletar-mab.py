@@ -124,7 +124,18 @@ def caso_de(titulo: str, resumo: str) -> str | None:
         return "brumadinho"
     if any(
         termo in texto
-        for termo in ("mariana", "rio doce", "samarco", "fundao", "bento rodrigues")
+        for termo in (
+            "mariana",
+            "rio doce",
+            "samarco",
+            "fundao",
+            "bento rodrigues",
+            "naque",
+            "itatiaucu",
+            "barra longa",
+            "regencia",
+            "abrolhos",
+        )
     ):
         return "mariana"
     return None
