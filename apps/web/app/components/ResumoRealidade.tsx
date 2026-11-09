@@ -81,7 +81,7 @@ function CelulaBarra({ n, fatia }: { n: string; fatia: number }) {
           className="absolute inset-y-0 left-0 flex items-center justify-center"
           style={{ width: `${limite}%` }}
         >
-          <span className="whitespace-nowrap rounded bg-[var(--cp-surface)]/85 px-1.5 text-xs font-semibold leading-5 text-text">
+          <span className="whitespace-nowrap rounded bg-[var(--cp-surface)] px-1.5 text-xs font-semibold leading-5 text-text">
             {n}
           </span>
         </span>
