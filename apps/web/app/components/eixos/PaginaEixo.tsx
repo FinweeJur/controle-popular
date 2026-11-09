@@ -1,24 +1,26 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ArteEixo from "@/app/components/eixos/ArteEixo";
 import { eixoDe } from "@/lib/navegacao/mapa";
+import type { ReactNode } from "react";
 
 /**
  * @file PaginaEixo.tsx
- * @description Porta de um eixo do mapa: título, aquarela, as frentes com
- * link direto para a rota publicada e o rodapé global.
+ * @description Casca das portas de eixo (`/casos` e `/direitos`): trilha,
+ * título, aquarela e o conteúdo em formato wiki que a página compõe.
  *
- * POR QUE EXISTE (dono, 08/11/2026): "quero todo eixo com página própria e
- * publicada". `/casos` e `/direitos` ainda eram proposta e o menu caía em
- * outra frente; agora cada eixo tem porta, montada do MESMO mapa
- * (`lib/navegacao/mapa.ts`) — nenhuma lista paralela para divergir.
- *
- * Wiki do portal: um `<h1>`, trilha única (`CaminhoSistema`), texto do mapa
- * (fonte oficial da navegação) e arte decorativa com `alt`.
+ * O conteúdo (`IndiceWiki`, `SecaoWiki`, `LinksRelacionados`) fica nos
+ * arquivos das páginas — é o padrão wiki do portal e o porteiro de página lê
+ * o `page.tsx`, não o componente escondido.
  */
-export default function PaginaEixo({ slug }: { slug: string }) {
+export default function PaginaEixo({
+  slug,
+  children,
+}: {
+  slug: string;
+  children: ReactNode;
+}) {
   const eixo = eixoDe(slug);
   if (!eixo) notFound();
 
@@ -43,33 +45,9 @@ export default function PaginaEixo({ slug }: { slug: string }) {
 
         <ArteEixo slug={eixo.slug} className="mt-6 aspect-[21/8]" prioridade />
 
-        <section aria-label={`Frentes de ${eixo.rotulo}`} className="mt-8">
-          <h2 className="font-display text-xl font-bold text-text">
-            Frentes do eixo ({eixo.frentes.length})
-          </h2>
-          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-            {eixo.frentes.map((frente) => (
-              <li key={frente.slug}>
-                <Link
-                  href={frente.rota}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-4 shadow-xs transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
-                >
-                  <h3 className="font-display text-lg font-bold text-text group-hover:text-primary">
-                    {frente.rotulo}
-                  </h3>
-                  <p className="mt-1 flex-1 text-sm leading-relaxed text-text-soft">
-                    {frente.descricao}
-                  </p>
-                  <span className="mt-3 text-xs font-semibold text-primary">
-                    Abrir frente →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {children}
 
-        <p className="mt-8 text-xs leading-relaxed text-text-soft">
+        <p className="mt-10 text-xs leading-relaxed text-text-soft">
           Página do eixo montada do mapa de navegação do portal. Cada frente
           abre a rota já publicada; nenhuma página nova inventa dado.
         </p>

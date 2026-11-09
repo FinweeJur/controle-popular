@@ -1,6 +1,6 @@
 # Padrao de pagina (top 100) - auditoria estatica
 
-- Gerado em: 2026-11-08 21:24
+- Gerado em: 2026-11-08 21:31
 - Rotas: 102 | Completas: 4 | Parciais: 94 | Ausentes: 4
 - Gerado por: `scripts/verificar-padrao-pagina.py` (leitura de arquivo, sem browser).
 
@@ -108,8 +108,8 @@
 | `/termos` | estatica | indice_wiki, relacionados |
 | `/dados/populares` | estatica | secoes, indice_wiki, relacionados, grafico, fonte |
 | `/internacional` | estatica | secoes, indice_wiki, relacionados, fonte |
-| `/casos` | estatica | secoes, indice_wiki, relacionados, grafico, fonte |
-| `/direitos` | estatica | secoes, indice_wiki, relacionados, grafico, fonte |
+| `/casos` | estatica | grafico, fonte |
+| `/direitos` | estatica | grafico, fonte |
 
 ## Legenda
 
@@ -225,5 +225,5 @@
 - `/termos` - indice_wiki, relacionados (indice_wiki: sem IndiceWiki; relacionados: 0 bloco(s))
 - `/dados/populares` - secoes, indice_wiki, relacionados, grafico, fonte (secoes: sem SecaoWiki/<h2/SECOES; indice_wiki: sem IndiceWiki; relacionados: 0 bloco(s); grafico: sem svg/grafico; fonte: sem rotulo Fonte)
 - `/internacional` - secoes, indice_wiki, relacionados, fonte (secoes: sem SecaoWiki/<h2/SECOES; indice_wiki: sem IndiceWiki; relacionados: 0 bloco(s); fonte: sem rotulo Fonte)
-- `/casos` - secoes, indice_wiki, relacionados, grafico, fonte (secoes: sem SecaoWiki/<h2/SECOES; indice_wiki: sem IndiceWiki; relacionados: 0 bloco(s); grafico: sem svg/grafico; fonte: sem href http(s))
-- `/direitos` - secoes, indice_wiki, relacionados, grafico, fonte (secoes: sem SecaoWiki/<h2/SECOES; indice_wiki: sem IndiceWiki; relacionados: 0 bloco(s); grafico: sem svg/grafico; fonte: sem href http(s))
+- `/casos` - grafico, fonte (grafico: sem svg/grafico; fonte: sem href http(s))
+- `/direitos` - grafico, fonte (grafico: sem svg/grafico; fonte: sem href http(s))
