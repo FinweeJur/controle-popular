@@ -56,6 +56,16 @@ describe("parseResumo", () => {
     expect(blocos[1].linhas?.[1][0]).toBe("1");
   });
 
+  it("converte bloco de números e citação", () => {
+    const blocos = parseResumo(
+      ":::numeros\n4.515 | Dano moral | 83% dos casos\n:::\n\n> **Frase** de destaque.",
+    );
+    expect(blocos[0].tipo).toBe("numeros");
+    expect(blocos[0].linhas).toEqual([["4.515", "Dano moral", "83% dos casos"]]);
+    expect(blocos[1].tipo).toBe("citacao");
+    expect(blocos[1].texto).toBe("**Frase** de destaque.");
+  });
+
   it("remove marca quebrada em duas linhas", () => {
     const blocos = parseResumo("Fato [medido — tabela\nmedida].");
     expect(blocos[0].texto).toBe("Fato.");

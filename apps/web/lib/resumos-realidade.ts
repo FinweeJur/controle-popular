@@ -12,7 +12,14 @@
  * número dentro do dossiê). Aqui só se desenha.
  */
 
-export type TipoBloco = "h2" | "h3" | "p" | "li" | "tabela";
+export type TipoBloco =
+  | "h2"
+  | "h3"
+  | "p"
+  | "li"
+  | "tabela"
+  | "numeros"
+  | "citacao";
 
 export interface BlocoResumo {
   tipo: TipoBloco;
@@ -85,6 +92,7 @@ function celulas(linha: string): string[] {
 export function parseResumo(markdown: string): BlocoResumo[] {
   const blocos: BlocoResumo[] = [];
   let tabela: string[][] = [];
+  let numeros: string[][] | null = null;
   let paragrafo: string[] = [];
   const fecharTabela = () => {
     if (tabela.length) {
@@ -107,6 +115,34 @@ export function parseResumo(markdown: string): BlocoResumo[] {
     // um fato medido na mesma linha, ele fica e só a marca sai.
     if (INCONCLUSIVO.test(linha) && !TEM_MEDIDO.test(linha)) continue;
     const texto = limparMarcas(linha);
+    if (texto === ":::numeros") {
+      fecharTabela();
+      fecharParagrafo();
+      numeros = [];
+      continue;
+    }
+    if (numeros !== null) {
+      if (texto === ":::") {
+        if (numeros.length) {
+          blocos.push({ tipo: "numeros", texto: "", linhas: numeros });
+        }
+        numeros = null;
+      } else if (texto) {
+        numeros.push(celulas(texto));
+      }
+      continue;
+    }
+    if (texto.startsWith("> ")) {
+      fecharTabela();
+      fecharParagrafo();
+      blocos.push({ tipo: "citacao", texto: texto.slice(2) });
+      continue;
+    }
+    if (texto === "---") {
+      fecharTabela();
+      fecharParagrafo();
+      continue;
+    }
     if (texto.startsWith("|")) {
       fecharParagrafo();
       if (!SEPARADOR.test(texto)) tabela.push(celulas(texto));
@@ -134,6 +170,9 @@ export function parseResumo(markdown: string): BlocoResumo[] {
   }
   fecharTabela();
   fecharParagrafo();
+  if (numeros?.length) {
+    blocos.push({ tipo: "numeros", texto: "", linhas: numeros });
+  }
   return blocos;
 }
 
