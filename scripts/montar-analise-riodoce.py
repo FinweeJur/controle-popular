@@ -91,7 +91,16 @@ Duas decisões mudaram o desenho das vias. Em 2024, o STJ anulou o IRDR do
 TJMG que fixava R$ 2,3 mil por dano moral pela falta d'água, porque o
 julgamento só admitiu manifestação da Samarco. Em 2022, o TRF1 considerou
 ilegal exigir a desistência da ação inglesa para receber o NOVEL — decisão que
-valeu para Naque. [medido — STJ e TRF1]"""
+valeu para Naque. [medido — STJ e TRF1]
+
+As outras instituições confirmam o desenho, não o contador. O [Governo
+Federal](https://www.gov.br/casacivil/pt-br/assuntos/noticias/2026/novembro/governo-do-brasil-chega-aos-dois-anos-do-novo-acordo-do-rio-doce-com-55-projetos-aprovados-e-repasse-de-r-3-7-bilhoes)
+descreve o Acordo de R$ 170 bilhões e os R$ 32 bilhões para indenizações
+individuais; a [DPMG](https://defensoria.mg.def.br/defensoria-publica-realiza-atendimento-para-pessoas-interessadas-em-aderir-a-reabertura-do-pid/)
+explica o PID de R$ 35 mil e a quitação; o [MPMG](https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/onze-anos-apos-tragedia-de-mariana-mpmg-participa-de-homenagens-as-vitimas-e-reafirma-compromisso-com-a-reparacao.shtml)
+registra os 11 anos e o contrato da FGV; o [MPF](https://www.mpf.mp.br/o-mpf/unidades/pr-mg/noticias/acordo-de-mariana-prorrogado-o-prazo-de-adesao-ao-programa-de-indenizacao-para-atingidos-pela-barragem-de-fundao)
+prorrogou o prazo de adesão em 2025. O total de 321 mil indenizações do PID
+aparece só no balanço da Samarco. [medido]"""
 
 
 def montar() -> str:
