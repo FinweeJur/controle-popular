@@ -124,6 +124,22 @@ export function preferirTexto(resultados: ResultadoDocumento[]): ResultadoDocume
  * documento, e o resumo de metadado (página 0) só entra quando não há texto
  * real para a pergunta.
  */
+let cacheTexto: IndiceDocumentos | null | undefined;
+
+/**
+ * Índice só com trechos de texto real (página > 0).
+ *
+ * O resumo de metadado casa pelo título e ocupa as vagas em pergunta com
+ * palavra comum ("Brumadinho"): 2.390 resumos contra 19 mil trechos. A busca
+ * de prova usa este índice; o catálogo completo fica como reserva.
+ */
+function indiceDeTexto(indice: IndiceDocumentos): IndiceDocumentos {
+  if (cacheTexto !== undefined) return cacheTexto ?? indice;
+  const textos = indice.trechos.filter((trecho) => trecho.pagina > 0);
+  cacheTexto = textos.length ? construirIndiceDocumentos(textos) : null;
+  return cacheTexto ?? indice;
+}
+
 export async function buscarDocumentos(
   pergunta: string,
   opcoes: Omit<ConsultaDocumentos, "texto"> = {}
@@ -131,20 +147,19 @@ export async function buscarDocumentos(
   const indice = await carregarIndiceDocumentos().catch(() => null);
   if (!indice) return [];
   const limite = Math.max(1, Math.min(20, opcoes.limite ?? 6));
+  const folga = Math.max(limite * 6, 30);
   const vetor = await pontuarSemantico(pergunta).catch(() => null);
-  const buscar = (folga: number) =>
+  const buscar = (alvo: IndiceDocumentos) =>
     vetor
-      ? misturar({ indice, opcoes, lexico: pontuarTrechos(indice, pergunta), vetor, limite: folga })
-      : consultarDocumentos(indice, { ...opcoes, texto: pergunta, limite: folga });
+      ? misturar({ indice: alvo, opcoes, lexico: pontuarTrechos(alvo, pergunta), vetor, limite: folga })
+      : consultarDocumentos(alvo, { ...opcoes, texto: pergunta, limite: folga });
 
-  // Pool normal; se ele vier só com resumo de metadado, abre pool maior para
-  // que o texto real apareça antes de aceitar o metadado.
-  let candidatos = deduplicar(buscar(Math.max(limite * 6, 30)));
-  if (!candidatos.some((item) => item.trecho.pagina > 0)) {
-    const amplo = deduplicar(buscar(300));
-    if (amplo.some((item) => item.trecho.pagina > 0)) candidatos = amplo;
+  const candidatos = deduplicar(buscar(indiceDeTexto(indice)));
+  if (candidatos.length > 0) {
+    return limitarPorDocumento(preferirTexto(candidatos), limite);
   }
-  return limitarPorDocumento(preferirTexto(candidatos), limite);
+  // Nenhum texto casou: a pergunta pode ser sobre o catálogo, não sobre prova.
+  return limitarPorDocumento(deduplicar(buscar(indice)), limite);
 }
 
 /** Mesmo trecho não volta duas vezes. */
