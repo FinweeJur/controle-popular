@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
@@ -20,29 +20,39 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · série do INEP, ciclo 2023";
 
-const INDICADORES = [
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
   {
     rotulo: "Escolas de educação básica",
     valorNumerico: 178416,
-    formatar: (n: number) => Math.round(n).toLocaleString("pt-BR"),
     obs: "Censo Escolar (INEP)",
   },
   {
     rotulo: "Matrículas totais",
     valorNumerico: 47.3,
-    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mi`,
+    casas: 1,
+    sufixo: " mi",
     obs: "Redes municipal, estadual e federal",
   },
   {
     rotulo: "IDEB médio anos iniciais",
     valorNumerico: 5.8,
-    formatar: (n: number) => n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    casas: 1,
     obs: "Meta nacional estipulada: 6,0",
   },
   {
     rotulo: "Escolas com internet banda larga",
     valorNumerico: 88.2,
-    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`,
+    casas: 1,
+    sufixo: "%",
     obs: "Conectividade pedagógica",
   },
 ];
@@ -92,7 +102,7 @@ export default function ConteudoEducacao() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              <ContadorAnimado valor={item.valorNumerico} formatar={item.formatar} />
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>

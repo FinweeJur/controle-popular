@@ -485,25 +485,27 @@ export default async function HomePage({
                           row.unidade === "R$" ? (
                             <ContadorAnimado
                               valor={row.valor_numerico}
-                              formatar={(n) => `R$ ${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                              casas={2}
+                              prefixo="R$ "
                             />
                           ) : row.unidade === "pontos" ? (
                             <ContadorAnimado
                               valor={row.valor_numerico}
-                              formatar={(n) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${row.unidade}`}
+                              casas={1}
+                              sufixo={` ${row.unidade}`}
                             />
                           ) : nome === "idh" ? (
                             <ContadorAnimado
                               valor={row.valor_numerico}
-                              formatar={(n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
+                              casas={3}
                             />
                           ) : (
                             <ContadorAnimado
                               valor={Math.round(row.valor_numerico)}
-                              formatar={(n) =>
-                                `${Math.round(n).toLocaleString("pt-BR")}${
-                                  row.unidade && nome !== "saldo_empregos_caged" ? ` ${row.unidade}` : ""
-                                }`
+                              sufixo={
+                                row.unidade && nome !== "saldo_empregos_caged"
+                                  ? ` ${row.unidade}`
+                                  : ""
                               }
                             />
                           )

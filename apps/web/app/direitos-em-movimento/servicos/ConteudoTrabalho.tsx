@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
@@ -23,29 +23,42 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · Novo CAGED / RAIS";
 
-const INDICADORES = [
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
   {
     rotulo: "Estoque de empregos formais",
     valorNumerico: 46.8,
-    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mi`,
+    casas: 1,
+    sufixo: " mi",
     obs: "Carteira assinada ativa (MTE/CAGED)",
   },
   {
     rotulo: "Saldo líquido anual",
     valorNumerico: 1.48,
-    formatar: (n: number) => `+${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} mi`,
+    prefixo: "+",
+    casas: 2,
+    sufixo: " mi",
     obs: "Admissões superiores a desligamentos",
   },
   {
     rotulo: "Salário médio de admissão",
     valorNumerico: 2140,
-    formatar: (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")}`,
+    prefixo: "R$ ",
     obs: "Média dos novos postos gerados",
   },
   {
     rotulo: "Contratos públicos monitorados",
     valorNumerico: 48,
-    formatar: (n: number) => `R$ ${Math.round(n).toLocaleString("pt-BR")} bi`,
+    prefixo: "R$ ",
+    sufixo: " bi",
     obs: "Contratos no PNCP fiscalizados",
   },
 ];
@@ -81,7 +94,7 @@ export default function ConteudoTrabalho() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              <ContadorAnimado valor={item.valorNumerico} formatar={item.formatar} />
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>

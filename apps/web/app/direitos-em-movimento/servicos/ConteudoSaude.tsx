@@ -1,4 +1,4 @@
-import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+﻿import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
 import ExplicaSigla from "@/app/components/ExplicaSigla";
 import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import { BarraAnimadaSvg } from "@/app/components/dados/BarraAnimada";
@@ -18,29 +18,39 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · competência divulgada pelo CNES";
 
-const INDICADORES = [
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
   {
     rotulo: "Estabelecimentos CNES",
     valorNumerico: 348210,
-    formatar: (n: number) => Math.round(n).toLocaleString("pt-BR"),
+    
     obs: "Brasil (públicos e conveniados)",
   },
   {
     rotulo: "Leitos SUS ativos",
     valorNumerico: 315420,
-    formatar: (n: number) => Math.round(n).toLocaleString("pt-BR"),
+    
     obs: "72,4% da rede total",
   },
   {
     rotulo: "Razão média de leitos",
     valorNumerico: 1.95,
-    formatar: (n: number) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+    casas: 2,
     obs: "Leitos/mil hab. (referência OMS: 2,5 a 3,0)",
   },
   {
     rotulo: "Internações SUS / ano",
     valorNumerico: 11.4,
-    formatar: (n: number) => `${n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} mi`,
+    casas: 1,
+    sufixo: " mi",
     obs: "AIHs aprovadas e pagas (SIH-SUS)",
   },
 ];
@@ -65,7 +75,7 @@ export default function ConteudoSaude() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              <ContadorAnimado valor={item.valorNumerico} formatar={item.formatar} />
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>

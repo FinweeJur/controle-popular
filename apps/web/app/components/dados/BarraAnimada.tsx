@@ -7,7 +7,7 @@ import { useEntrouNaTela } from "./useEntrouNaTela";
  * @file Barra animada para gráficos HTML e SVG.
  *
  * REGRAS ATENDIDAS:
- * - Crescimento de 0 até o valor final em ~2 segundos;
+ * - Crescimento de 0 até o valor final em ~1,2 segundos;
  * - Anima uma única vez na entrada da tela (useEntrouNaTela);
  * - prefers-reduced-motion exibe a barra final instantaneamente;
  * - SSR e não-JS preservam o tamanho final no HTML;
@@ -42,7 +42,7 @@ export default function BarraAnimada({
   valor,
   maximo,
   orientacao = "horizontal",
-  duracaoMs = 2000,
+  duracaoMs = 1200,
   cor,
   className = "",
   style,
@@ -98,7 +98,7 @@ export function BarraAnimadaSvg({
   height,
   fill,
   rx = 0,
-  duracaoMs = 2000,
+  duracaoMs = 1200,
   orientacao = "horizontal",
   className = "",
 }: BarraAnimadaSvgProps) {
