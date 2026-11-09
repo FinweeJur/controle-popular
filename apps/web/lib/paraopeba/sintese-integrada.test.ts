@@ -10,10 +10,16 @@ const SINTESE_AJRI = lerSinteseAjri();
 import {
   EIXO_PARA_TEMA_AJRI,
   ESTUDO_AUSENTE_DO_ACERVO,
+  TERMOS_RELACIONADOS,
+  coberturaLexicalDoEixo,
+  derivarTermosDoTitulo,
+  fontesQueFalamNoModo,
+  normalizarParaBusca,
   resumoIntegrado,
   sinteseIntegrada,
   temasDoDocumentoCasado,
   temasSemEixo,
+  termosDoEixo,
 } from "./sintese-integrada";
 
 /**
@@ -192,6 +198,96 @@ describe("resumoIntegrado()", () => {
     expect(r.totalEixos).toBe(16);
     expect(r.soAuditoria).toBe(r.soAuditoriaSemPonte + r.soAuditoriaComPonteVazia);
     expect(r.soAuditoriaSemPonte).toBe(7); // os 7 eixos sem TemaAjri nunca têm outra fonte
+  });
+
+  test("as duas réguas têm agregados próprios, medidos do mesmo conjunto", async () => {
+    const eixos = await sinteseIntegrada();
+    const r = resumoIntegrado(eixos);
+    expect(r.comTresFontesLexical).toBe(
+      eixos.filter((e) => e.cobertura.lexical.fontesQueFalam === 3).length
+    );
+    expect(r.soAuditoriaLexical).toBe(
+      eixos.filter((e) => e.cobertura.lexical.fontesQueFalam === 1).length
+    );
+    expect(r.comTresFontesLexical).toBeGreaterThanOrEqual(0);
+    expect(r.soAuditoriaLexical).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe("camada lexical — menção por termo relacionado", () => {
+  test("os 16 títulos têm entrada em TERMOS_RELACIONADOS, com radicais normalizados", () => {
+    const titulos = SINTESE_AJRI.eixos.map((e) => e.titulo);
+    expect(Object.keys(TERMOS_RELACIONADOS).sort()).toEqual([...titulos].sort());
+    expect(termosDoEixo("Fauna")).toEqual(TERMOS_RELACIONADOS.Fauna);
+    for (const [titulo, termos] of Object.entries(TERMOS_RELACIONADOS)) {
+      expect(termos.length, titulo).toBeGreaterThan(0);
+      expect(new Set(termos).size, `${titulo}: termo repetido`).toBe(termos.length);
+      for (const termo of termos) {
+        expect(termo, `${titulo}: termo com acento ou maiúscula`).toBe(normalizarParaBusca(termo));
+        expect(termo, `${titulo}: termo fora do alfabeto de busca`).toMatch(/^[a-z0-9 ]+$/);
+        expect(termo.trim().length, `${titulo}: termo curto demais`).toBeGreaterThan(2);
+      }
+    }
+  });
+
+  test("sem entrada declarada, o termo é derivado do próprio título", () => {
+    const termos = derivarTermosDoTitulo("Eixo inventado sobre dragagem de rejeitos");
+    expect(termos).toContain("inventado");
+    expect(termos).toContain("dragagem");
+    expect(termos).toContain("rejeitos");
+    expect(termos).not.toContain("sobre"); // stopword
+    expect(termos).not.toContain("eixo"); // stopword
+  });
+
+  test("título sem radical utilizável devolve 1/3 e termos vazios — não inventa fonte", () => {
+    const lexical = coberturaLexicalDoEixo("Eixo de 4", [], []);
+    expect(lexical).toEqual({
+      pericia: 0,
+      atis: 0,
+      fontesQueFalam: 1,
+      termos: [],
+      exemplos: [],
+    });
+  });
+
+  test("'Buscas por vítimas' continua 1/3 no tema controlado, mas a menção acha o assunto", async () => {
+    const eixos = await sinteseIntegrada();
+    const eixo = eixos.find((e) => e.titulo === "Buscas por vítimas")!;
+    expect(eixo.cobertura.fontesQueFalam).toBe(1);
+    expect(eixo.cobertura.lexical.fontesQueFalam).toBeGreaterThan(1);
+    expect(eixo.cobertura.lexical.termos).toContain("vitim");
+    expect(eixo.cobertura.lexical.exemplos.length).toBeGreaterThan(0);
+    expect(eixo.cobertura.lexical.exemplos.length).toBeLessThanOrEqual(3);
+  });
+
+  test("lexical.fontesQueFalam é coerente com as contagens e nunca passa de 3", async () => {
+    const eixos = await sinteseIntegrada();
+    for (const e of eixos) {
+      const { pericia, atis, fontesQueFalam, exemplos, termos } = e.cobertura.lexical;
+      expect(fontesQueFalam, e.titulo).toBe(1 + (pericia > 0 ? 1 : 0) + (atis > 0 ? 1 : 0));
+      expect(fontesQueFalam, e.titulo).toBeGreaterThanOrEqual(1);
+      expect(fontesQueFalam, e.titulo).toBeLessThanOrEqual(3);
+      expect(exemplos.length, e.titulo).toBeLessThanOrEqual(3);
+      expect(termos.length, e.titulo).toBeGreaterThan(0);
+    }
+  });
+
+  test("a camada estrita não foi alterada pela lexical", async () => {
+    const eixos = await sinteseIntegrada();
+    const saude = eixos.find((e) => e.titulo === "Saúde humana e risco ecológico")!;
+    expect(saude.cobertura.fontesQueFalam).toBe(3);
+    const agua = eixos.find((e) => e.titulo === "Fornecimento e captação de água")!;
+    expect(agua.cobertura.fontesQueFalam).toBe(2);
+    expect(agua.cobertura.temTemaAjri).toBe(true);
+  });
+
+  test("fontesQueFalamNoModo escolhe a régua sem fundir as duas", async () => {
+    const eixos = await sinteseIntegrada();
+    const eixo = eixos.find((e) => e.titulo === "Buscas por vítimas")!;
+    expect(fontesQueFalamNoModo(eixo.cobertura, "tema")).toBe(eixo.cobertura.fontesQueFalam);
+    expect(fontesQueFalamNoModo(eixo.cobertura, "termo")).toBe(
+      eixo.cobertura.lexical.fontesQueFalam
+    );
   });
 });
 

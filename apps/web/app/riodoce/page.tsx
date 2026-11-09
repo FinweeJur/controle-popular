@@ -7,6 +7,12 @@ import { metadataEditavel } from "@/lib/edicoes";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import CartaoLitigiosTransnacionais from "@/app/components/CartaoLitigiosTransnacionais";
 import PaginasTema from "./PaginasTema";
+import { MARCOS_RIO_DOCE } from "@/lib/riodoce/linha-do-tempo";
+import noticiasDesastres from "@/data/noticias-desastres.json";
+
+const MARIANA_NO_RADAR = (noticiasDesastres.itens as { desastre?: string }[]).filter(
+  (item) => item.desastre === "mariana",
+).length;
 
 /**
  * Hub da Plataforma Rio Doce (`/riodoce`).
@@ -72,22 +78,41 @@ const CARTÕES = [
     href: "/jurisprudencia?tribunal=TJES&estado=ES#lista",
     linkTexto: "Ver a jurisprudência →",
   },
+  {
+    titulo: "Análise integrada do Rio Doce",
+    linha: "Todos os eixos do caso numa página longa",
+    texto:
+      "O que aconteceu, a execução do Acordo em MG, a indenização individual, o litoral, a jurisprudência, os acervos, os processos e os dados espaciais — com tabelas, gráficos e fonte em cada número.",
+    href: "/riodoce/analise",
+    linkTexto: "Ler a análise integrada →",
+  },
+  {
+    titulo: "Clipping do Rio Doce",
+    linha: `${formatNumberBR(MARIANA_NO_RADAR)} notícias no radar de 60 dias`,
+    texto:
+      "Retrato datado da imprensa sobre o caso, com filtro por veículo e por caso. Não é clipping curado: é a varredura automática, com o link como veio do agregador.",
+    href: "/riodoce/clipping",
+    linkTexto: "Ver o clipping →",
+  },
+  {
+    titulo: "Linha do tempo do caso",
+    linha: `${formatNumberBR(MARCOS_RIO_DOCE.length)} marcos com fonte oficial`,
+    texto:
+      "Do rompimento de 05/11/2015 ao balanço do PID em 22/10/2026 — cada data com o link do órgão ou da empresa que a publicou.",
+    href: "/riodoce/linha-do-tempo",
+    linkTexto: "Abrir a linha do tempo →",
+  },
 ] as const;
 
-// Fases ainda sem página própria (F2 dados espaciais, F4 linha do tempo
-// no plano de 12/10). O número da mancha do Fundão é medição real do
-// WFS da SEMAD feita em 12/10/2026 (GetFeature resultType=hits) — dito
-// como medição, com data, não como acervo publicado.
+// Fase ainda sem página própria (F2 dados espaciais no plano de 12/10).
+// O número da mancha do Fundão é medição real do WFS da SEMAD feita em
+// 12/10/2026 (GetFeature resultType=hits) — dito como medição, com data,
+// não como acervo publicado.
 const EM_CONSTRUCAO = [
   {
     titulo: "Dados espaciais da bacia",
     texto:
       "Camadas da bacia no WFS da SEMAD — a mancha de inundação do Fundão foi medida com 1.243 feições em 12/10/2026 (medição, ainda sem página própria).",
-  },
-  {
-    titulo: "Linha do tempo do caso",
-    texto:
-      "Do rompimento de 05/11/2015 ao Novo Acordo homologado pelo STF em 06/11/2024 — cada marco com link à fonte oficial. Em construção.",
   },
 ] as const;
 
