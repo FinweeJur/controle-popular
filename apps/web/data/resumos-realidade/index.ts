@@ -2,8 +2,9 @@
  * Índice dos resumos de realidade publicados.
  *
  * GERADO por `scripts/gerar-indice-resumos.py`. Não edite à mão: a próxima
- * execução sobrescreve. Só entra arquivo com `verificado: true`; resumo
- * vencido continua no disco, mas some do mapa.
+ * execução sobrescreve. Só entra arquivo com `verificado: true` e sem a marca
+ * `inconclusivo: true`; resumo vencido ou só de limite continua no disco, mas
+ * some do mapa.
  */
 
 import type { ResumoRealidade } from "@/lib/resumos-realidade";
@@ -54,9 +55,7 @@ import resumoInternacionalOperacoesMilitares from "./internacional-operacoes-mil
 import resumoInternacionalOrcamentos from "./internacional-orcamentos.json";
 import resumoJudiciarioContatos from "./judiciario-contatos.json";
 import resumoJudiciarioInstituicoes from "./judiciario-instituicoes.json";
-import resumoJudiciarioJurisprudencia from "./judiciario-jurisprudencia.json";
 import resumoJudiciarioRecomendacoes from "./judiciario-recomendacoes.json";
-import resumoJudiciario from "./judiciario.json";
 import resumoJurisprudenciaPenal from "./jurisprudencia-penal.json";
 import resumoJurisprudencia from "./jurisprudencia.json";
 import resumoLaboratorio from "./laboratorio.json";
@@ -66,7 +65,6 @@ import resumoNovidades from "./novidades.json";
 import resumoParaopebaAnalise from "./paraopeba-analise.json";
 import resumoParaopebaAuditoria from "./paraopeba-auditoria.json";
 import resumoParaopebaBiblioteca from "./paraopeba-biblioteca.json";
-import resumoParaopebaCorrelacao from "./paraopeba-correlacao.json";
 import resumoParaopebaDocumentos from "./paraopeba-documentos.json";
 import resumoTerraETerritoriosVales from "./terra-e-territorios-vales.json";
 
@@ -117,9 +115,7 @@ export const RESUMOS: Record<string, ResumoRealidade> = {
   "/internacional/orcamentos": resumoInternacionalOrcamentos as ResumoRealidade,
   "/judiciario/contatos": resumoJudiciarioContatos as ResumoRealidade,
   "/judiciario/instituicoes": resumoJudiciarioInstituicoes as ResumoRealidade,
-  "/judiciario/jurisprudencia": resumoJudiciarioJurisprudencia as ResumoRealidade,
   "/judiciario/recomendacoes": resumoJudiciarioRecomendacoes as ResumoRealidade,
-  "/judiciario": resumoJudiciario as ResumoRealidade,
   "/jurisprudencia/penal": resumoJurisprudenciaPenal as ResumoRealidade,
   "/jurisprudencia": resumoJurisprudencia as ResumoRealidade,
   "/laboratorio": resumoLaboratorio as ResumoRealidade,
@@ -129,7 +125,6 @@ export const RESUMOS: Record<string, ResumoRealidade> = {
   "/paraopeba/analise": resumoParaopebaAnalise as ResumoRealidade,
   "/paraopeba/auditoria": resumoParaopebaAuditoria as ResumoRealidade,
   "/paraopeba/biblioteca": resumoParaopebaBiblioteca as ResumoRealidade,
-  "/paraopeba/correlacao": resumoParaopebaCorrelacao as ResumoRealidade,
   "/paraopeba/documentos": resumoParaopebaDocumentos as ResumoRealidade,
   "/terra-e-territorios/vales": resumoTerraETerritoriosVales as ResumoRealidade,
 };

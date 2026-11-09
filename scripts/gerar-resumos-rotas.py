@@ -304,10 +304,14 @@ def gerar(rota: dict, modo: str) -> tuple[bool, int]:
         if not falhas:
             destino = SAIDA / f"{slug(rota['rota'])}.json"
             destino.parent.mkdir(parents=True, exist_ok=True)
+            # Resumo que só sabe dizer "não dá para concluir" fica no disco
+            # como pendência, mas não entra no índice público.
+            inconclusivo = texto.count("[não dá para concluir]") > texto.count("[medido")
             destino.write_text(json.dumps({
                 "rota": rota["rota"],
                 "geradoEm": "2026-11-08",
                 "verificado": True,
+                **({"inconclusivo": True} if inconclusivo else {}),
                 "fontes": rota["fontes"],
                 "impressao": impressao_das_fontes(rota),
                 "markdown": texto,

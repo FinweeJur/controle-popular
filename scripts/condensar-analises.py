@@ -18,6 +18,8 @@ import os
 import urllib.request
 from pathlib import Path
 
+from tabelas_jurisprudencia import secao_brumadinho
+
 RAIZ = Path(__file__).resolve().parents[1]
 INTEGRADA = Path(r"X:\DevCoder\OpenCode\tjmg-jurimetria\relatorios\ANALISE-INTEGRADA-BRUMADINHO.md")
 LITORAL = RAIZ / "docs" / "pesquisa" / "consensus" / "sintese-02-rio-doce-litoral.md"
@@ -84,13 +86,16 @@ def main() -> int:
     integrada = INTEGRADA.read_text(encoding="utf-8")
     curto = chamar(integrada[:24000])
     if curto:
+        # O texto explica; a tabela de teses é montada por código, para o
+        # número não depender do modelo.
+        markdown = curto.strip() + "\n\n" + secao_brumadinho()
         (RESUMOS / "paraopeba-analise.json").write_text(json.dumps({
             "rota": "/paraopeba/analise",
             "geradoEm": "2026-11-08",
             "verificado": True,
-            "markdown": curto,
+            "markdown": markdown,
         }, ensure_ascii=False, indent=1), encoding="utf-8")
-        print(f"paraopeba/analise: {len(curto)} caracteres")
+        print(f"paraopeba/analise: {len(markdown)} caracteres")
 
     litoral = LITORAL.read_text(encoding="utf-8") if LITORAL.exists() else ""
     if litoral:

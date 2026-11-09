@@ -218,15 +218,20 @@ export default async function AnaliseIntegradaPage() {
                 <span className="w-56 shrink-0 truncate text-right text-[.82em] text-text-soft" title={e.titulo}>
                   {e.titulo}
                 </span>
-                <div className="cp-ord-track h-3.5 flex-1 overflow-hidden">
+                <div className="cp-ord-track relative h-6 flex-1 overflow-hidden">
                   <div
-                    className="h-full rounded-r-[3px]"
+                    className="absolute inset-y-0 left-0 rounded-r-[3px]"
                     style={{
                       width: `${(e.cobertura.fontesQueFalam / 3) * 100}%`,
                       background: COR_FONTE[e.cobertura.fontesQueFalam],
                     }}
                     title={`${e.titulo}: ${e.cobertura.fontesQueFalam}/3 fontes`}
                   />
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="rounded bg-[var(--cp-surface)]/85 px-1.5 text-xs font-semibold leading-5 text-text">
+                      {e.cobertura.fontesQueFalam}
+                    </span>
+                  </span>
                 </div>
                 <span className="w-10 shrink-0 text-[.82em] text-text-soft">
                   {e.cobertura.fontesQueFalam}/3
@@ -262,6 +267,48 @@ export default async function AnaliseIntegradaPage() {
             </span>
           </figcaption>
         </figure>
+
+        {/* Tabela descritiva: a barra mostra a proporção; a tabela diz o que
+            cada fonte efetivamente tem. As duas leem o mesmo conjunto. */}
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full min-w-[620px] border-collapse text-[.9em]">
+            <caption className="sr-only">
+              Cobertura por eixo: quantas fontes falam do tema e quantos documentos cada fonte tem.
+            </caption>
+            <thead>
+              <tr className="border-b border-border text-left text-text">
+                <th className="py-1.5 pr-3 font-medium">Eixo</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Fontes</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Documentos da perícia</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Documentos das ATIs</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Vozes ATI</th>
+                <th className="py-1.5 font-medium">Tema na auditoria</th>
+              </tr>
+            </thead>
+            <tbody className="text-text-soft">
+              {ordenadosParaGrafico.map((e) => (
+                <tr key={e.titulo} className="border-b border-border/60">
+                  <td className="py-1.5 pr-3 font-medium text-text">{e.titulo}</td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {e.cobertura.fontesQueFalam}/3
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.pericia.documentos.length)}
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.atis.documentos.length)}
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.vozAti.length)}
+                  </td>
+                  <td className="py-1.5">
+                    {e.cobertura.temTemaAjri ? "sim" : "não"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* ═══ TEMAS SEM EIXO — o espelho de "quais faltam" ═══ */}

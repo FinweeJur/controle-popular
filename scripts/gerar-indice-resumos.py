@@ -26,8 +26,9 @@ CABECALHO = """/**
  * Índice dos resumos de realidade publicados.
  *
  * GERADO por `scripts/gerar-indice-resumos.py`. Não edite à mão: a próxima
- * execução sobrescreve. Só entra arquivo com `verificado: true`; resumo
- * vencido continua no disco, mas some do mapa.
+ * execução sobrescreve. Só entra arquivo com `verificado: true` e sem a marca
+ * `inconclusivo: true`; resumo vencido ou só de limite continua no disco, mas
+ * some do mapa.
  */
 
 import type { ResumoRealidade } from "@/lib/resumos-realidade";
@@ -43,7 +44,7 @@ def main() -> int:
     resumos = []
     for arquivo in sorted(PASTA.glob("*.json")):
         dados = json.loads(arquivo.read_text(encoding="utf-8"))
-        if dados.get("verificado"):
+        if dados.get("verificado") and not dados.get("inconclusivo"):
             resumos.append((arquivo.stem, dados["rota"]))
     linhas = [CABECALHO]
     for slug, _ in resumos:

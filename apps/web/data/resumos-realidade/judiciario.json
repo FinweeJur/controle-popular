@@ -2,6 +2,8 @@
  "rota": "/judiciario",
  "geradoEm": "2026-11-08",
  "verificado": true,
+ "inconclusivo": true,
+ "motivo": "Só total agregado, sem lista ou recorte que permita compor o número.",
  "fontes": [
   "jurisprudencia-buscador-resumo.json"
  ],

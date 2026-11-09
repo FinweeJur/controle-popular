@@ -22,6 +22,13 @@ describe("parseResumo", () => {
     ]);
   });
 
+  it("junta linhas consecutivas no mesmo parágrafo", () => {
+    const blocos = parseResumo("Primeira linha\nsegunda linha\n\nOutro parágrafo");
+    expect(blocos).toHaveLength(2);
+    expect(blocos[0].texto).toBe("Primeira linha segunda linha");
+    expect(blocos[1].texto).toBe("Outro parágrafo");
+  });
+
   it("trata nível 1 como h2 e nível 2 como h3", () => {
     const blocos = parseResumo("# Um\n## Dois\n### Três");
     expect(blocos.map((bloco) => bloco.tipo)).toEqual(["h2", "h3", "h3"]);
@@ -42,6 +49,15 @@ describe("resumoPublicavel", () => {
   it("exige verificado e texto", () => {
     expect(resumoPublicavel({ rota: "/x", geradoEm: "2026-11-08", verificado: true, markdown: "a" })).toBe(true);
     expect(resumoPublicavel({ rota: "/x", geradoEm: "2026-11-08", verificado: false, markdown: "a" })).toBe(false);
+    expect(
+      resumoPublicavel({
+        rota: "/x",
+        geradoEm: "2026-11-08",
+        verificado: true,
+        inconclusivo: true,
+        markdown: "a",
+      }),
+    ).toBe(false);
     expect(resumoPublicavel({ rota: "/x", geradoEm: "2026-11-08", verificado: true, markdown: "  " })).toBe(false);
     expect(resumoPublicavel(null)).toBe(false);
   });
