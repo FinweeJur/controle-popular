@@ -228,7 +228,7 @@ export default async function AnaliseIntegradaPage() {
                     title={`${e.titulo}: ${e.cobertura.fontesQueFalam}/3 fontes`}
                   />
                   <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="rounded bg-[var(--cp-surface)]/85 px-1.5 text-xs font-semibold leading-5 text-text">
+                    <span className="rounded bg-[var(--cp-surface)] px-1.5 text-xs font-semibold leading-5 text-text">
                       {e.cobertura.fontesQueFalam}
                     </span>
                   </span>
