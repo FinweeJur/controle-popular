@@ -60,7 +60,7 @@
  *   npx tsx scripts/coletar-tac-projetos.mts --seco     # só mede, não grava
  *   npx tsx scripts/coletar-tac-projetos.mts --fonte=CAMINHO/outro.json
  */
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, statSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -78,6 +78,9 @@ const abortar = (msg: string): never => {
 };
 
 if (!existsSync(FONTE)) abortar(`fonte não encontrada: ${FONTE}`);
+
+/** Carimbo de coleta: o mtime da captura — é quando o painel foi lido. */
+const COLETADO_EM = statSync(FONTE).mtime.toISOString();
 
 /** Aceita number ou a string de precisão cheia do Power BI. Recusa o resto. */
 function numero(v: unknown, onde: string): number | null {
@@ -321,6 +324,7 @@ const projetos = new Set(linhas.map((l) => l.projeto)).size;
 const combinacoes = new Set(linhas.map((l) => `${l.projeto}\u0000${l.mineradora}`)).size;
 
 console.log(`[tac-projetos] fonte: ${FONTE}`);
+console.log(`[tac-projetos] coletadoEm: ${COLETADO_EM}`);
 console.log(`[tac-projetos] linhas: ${linhas.length} (${combinacoes} projeto×mineradora × ${anos.length} anos)`);
 console.log(`[tac-projetos] projetos: ${projetos} · mineradoras: ${porMineradora.length} · órgãos: ${new Set(linhas.map((l) => l.orgao)).size}`);
 console.log(`[tac-projetos] anos: ${anos[0]}–${anos[anos.length - 1]} · execução reportada até ${ultimoAnoComExecucao}`);
@@ -381,6 +385,8 @@ export const TAC_PROJETOS: LinhaTacAmbiental[] = ${s(linhas)};
  * servidor, nunca o array (regra de payload: ver docs/ARQUITETURA.md).
  */
 export const COBERTURA_TAC_PROJETOS = {
+  /** Data da captura do painel (mtime do arquivo-fonte): o carimbo da coleta. */
+  coletadoEm: ${s(COLETADO_EM)},
   linhas: ${linhas.length},
   projetos: ${projetos},
   combinacoesProjetoMineradora: ${combinacoes},
