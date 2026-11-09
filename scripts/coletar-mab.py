@@ -79,7 +79,6 @@ TERMOS_CONTEXTO = [
     "barragem",
     "atingid",
     "reparacao",
-    "reparacao",
     "vale",
     "mineracao",
     "rejeito",
@@ -239,7 +238,7 @@ def coletar(
                     "data": post.get("date", "")[:10],
                     "link": post.get("link", ""),
                     "tipo": tipo,
-                    "caso": caso_de(titulo, resumo) if categoria != 2516 else caso_de(titulo, resumo),
+                    "caso": caso_de(titulo, resumo),
                 }
             )
         progresso[str(categoria)] = pagina + 1
