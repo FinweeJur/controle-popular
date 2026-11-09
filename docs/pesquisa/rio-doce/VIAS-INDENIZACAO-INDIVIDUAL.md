@@ -131,6 +131,13 @@ A média por acordo não é comparável entre as linhas: cada via cobre um conju
 diferente de danos. Uma indenização por dano água é, em geral, mais baixa que
 uma por danos gerais, que inclui dano material e moral. [inferido]
 
+O texto de origem traz duas divergências internas: no PIM/Dano Água, o item 4
+diz 270.273 aceites e R$ 304,05 milhões, enquanto a planilha diz 270.372 e
+R$ 305,24 milhões. A tabela acima usa os valores da planilha; a diferença não
+foi explicada pela fonte. Nos acordos de Governador Valadares, a citação do
+TJMG fala em R$ 41,2 milhões e a planilha em R$ 42,2 milhões. [medido — texto
+de origem]
+
 ## O que travou e o que mudou
 
 - **IRDR do dano moral.** O TJMG fixou R$ 2,3 mil por dano moral pela falta
