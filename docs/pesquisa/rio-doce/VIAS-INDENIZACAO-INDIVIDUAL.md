@@ -176,6 +176,33 @@ O dono informou "320 mil pessoas indenizadas" pelo PID; o balanço oficial de
 22/10/2026 traz **mais de 321 mil**. A diferença é de arredondamento e data,
 não de critério. [medido]
 
+## O que cada instituição publica
+
+O total de indenizações do PID só aparece no balanço da Samarco. As outras
+instituições confirmam o desenho, os prazos e os valores do Acordo — não o
+contador de pessoas indenizadas. [medido — páginas citadas]
+
+- **Governo Federal (Casa Civil), 06/11/2026.** O Novo Acordo tem valor global
+  de R$ 170 bilhões: R$ 38 bilhões de investimentos anteriores, R$ 32 bilhões
+  para indenizações individuais e obrigações de fazer, e R$ 100 bilhões para o
+  poder público. Desse total, R$ 49,1 bilhões ficam sob gestão da União; 55
+  projetos foram aprovados e R$ 3,7 bilhões repassados.
+  [medido — Casa Civil](https://www.gov.br/casacivil/pt-br/assuntos/noticias/2026/novembro/governo-do-brasil-chega-aos-dois-anos-do-novo-acordo-do-rio-doce-com-55-projetos-aprovados-e-repasse-de-r-3-7-bilhoes)
+- **DPMG, 07/08/2025 e 01/06/2026.** A Defensoria comunica a reabertura do PID
+  e atende quem quer aderir. Explica que a indenização é de R$ 35 mil, paga em
+  conta individual após homologação, e que aderir implica quitação e
+  desistência de ações. [medido —
+  DPMG](https://defensoria.mg.def.br/defensoria-publica-realiza-atendimento-para-pessoas-interessadas-em-aderir-a-reabertura-do-pid/)
+- **MPMG, 06/11/2026.** Nos 11 anos do rompimento, o MPMG reafirma o
+  compromisso com a reparação e registra o contrato da FGV com a Samarco e as
+  instituições de justiça para viabilizar os pagamentos. [medido —
+  MPMG](https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/onze-anos-apos-tragedia-de-mariana-mpmg-participa-de-homenagens-as-vitimas-e-reafirma-compromisso-com-a-reparacao.shtml)
+- **MPF, 28/05/2025.** O MPF comunica a prorrogação do prazo de adesão ao PID
+  para 04/07/2025, a pedido das instituições de justiça. [medido —
+  MPF](https://www.mpf.mp.br/o-mpf/unidades/pr-mg/noticias/acordo-de-mariana-prorrogado-o-prazo-de-adesao-ao-programa-de-indenizacao-para-atingidos-pela-barragem-de-fundao)
+- **MPF, 06/11/2026.** Nota Técnica Conjunta PFDC/4ª Câmara trata da matriz
+  indenizatória; o documento não foi lido nesta medição. [não dá para concluir]
+
 ## O que este levantamento não resolve
 
 - Não há série mensal pública e consolidada por via; os números têm datas
