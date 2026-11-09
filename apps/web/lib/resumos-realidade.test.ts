@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseResumo, resumoPublicavel } from "./resumos-realidade";
+import { limparMarcas, parseResumo, resumoPublicavel } from "./resumos-realidade";
 
 describe("parseResumo", () => {
   it("converte título, parágrafo e item de lista", () => {
@@ -37,9 +37,23 @@ describe("parseResumo", () => {
     expect(parseResumo("\n\n  \n")).toEqual([]);
   });
 
-  it("preserva a marca de evidência dentro do parágrafo", () => {
+  it("remove todas as marcas de evidência do texto renderizado", () => {
     const blocos = parseResumo("São 4.515 casos [medido — tabela medida].");
-    expect(blocos[0].texto).toContain("[medido — tabela medida]");
+    expect(blocos[0].texto).toBe("São 4.515 casos.");
+  });
+
+  it("remove medido, inferido e não dá para concluir; esvazia o parágrafo inconclusivo", () => {
+    expect(limparMarcas("Texto [inferido].")).toBe("Texto.");
+    expect(limparMarcas("Texto [medido — dados da página].")).toBe("Texto.");
+    expect(limparMarcas("Texto [medido — tabela medida].")).toBe("Texto.");
+    expect(limparMarcas("Texto [medido].")).toBe("Texto.");
+    expect(limparMarcas("Texto [não dá para concluir].")).toBe("Texto.");
+    const blocos = parseResumo(
+      "Fato medido [medido — dados da página].\n\nSó limite [não dá para concluir].\n\n| A | B |\n|---|---|\n| 1 [medido — dados da página] | 2 |",
+    );
+    expect(blocos[0].texto).toBe("Fato medido.");
+    expect(blocos[1].tipo).toBe("tabela");
+    expect(blocos[1].linhas?.[1][0]).toBe("1");
   });
 });
 

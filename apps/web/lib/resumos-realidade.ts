@@ -53,8 +53,32 @@ const TITULO = /^(#{1,3})\s+(.*)$/;
 const ITEM = /^[-*]\s+(.*)$/;
 const SEPARADOR = /^\|?[\s:|-]+\|?$/;
 
+/**
+ * Marcas que o dono pediu para não exibir no resumo (09/11/2026).
+ * O dado continua no JSON, para auditoria; a tela fica limpa.
+ */
+const MARCAS_OCULTAS = [
+  /\s*\[\s*inferido\s*\]/gi,
+  /\s*\[\s*n[ãa]o d[áa] para concluir\s*\]/gi,
+  /\s*\[\s*medido[^\]]*\]/gi,
+];
+
+const INCONCLUSIVO = /\[\s*n[ãa]o d[áa] para concluir\s*\]/i;
+const TEM_MEDIDO = /\[\s*medido/i;
+
+export function limparMarcas(texto: string): string {
+  const limpo = MARCAS_OCULTAS.reduce(
+    (acc, marca) => acc.replace(marca, ""),
+    texto,
+  );
+  return limpo.replace(/\s{2,}/g, " ").trim();
+}
+
 function celulas(linha: string): string[] {
-  return linha.replace(/^\||\|$/g, "").split("|").map((celula) => celula.trim());
+  return linha
+    .replace(/^\||\|$/g, "")
+    .split("|")
+    .map((celula) => limparMarcas(celula));
 }
 
 /** Converte o markdown mínimo em blocos. Linha vazia separa blocos. */
@@ -75,7 +99,10 @@ export function parseResumo(markdown: string): BlocoResumo[] {
     }
   };
   for (const linha of (markdown ?? "").split(/\r?\n/)) {
-    const texto = linha.trim();
+    // Parágrafo que só declara limite não vira afirmação na tela. Se houver
+    // um fato medido na mesma linha, ele fica e só a marca sai.
+    if (INCONCLUSIVO.test(linha) && !TEM_MEDIDO.test(linha)) continue;
+    const texto = limparMarcas(linha);
     if (texto.startsWith("|")) {
       fecharParagrafo();
       if (!SEPARADOR.test(texto)) tabela.push(celulas(texto));
