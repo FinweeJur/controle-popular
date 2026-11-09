@@ -109,6 +109,18 @@ export default function AcordoMarianaPage() {
         Fundão (Samarco / Vale / BHP, 2015), na parte executada pelos órgãos do Governo de Minas Gerais.
       </p>
 
+      <p className="mt-3 text-[.95em] leading-relaxed">
+        <Link
+          href="/ambiental/rio-doce/analise"
+          className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+        >
+          Ler a análise integrada do Rio Doce e do litoral
+        </Link>{" "}
+        <span className="text-text-soft">
+          — o que a literatura documenta sobre a pluma, a pesca e a saúde, com tabelas de teses.
+        </span>
+      </p>
+
       <IndiceWiki itens={SECOES} />
 
       {/* Seção 1: Resumo em Cartões */}
