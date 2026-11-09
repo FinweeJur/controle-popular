@@ -1,0 +1,11 @@
+# Reparação em Brumadinho: o que a evidência documenta
+
+O rompimento da barragem B1 da mina Córrego do Feijão ocorreu em 25 de janeiro de 2019 (Freitas et al., 2019). Os rejeitos alcançaram o rio Paraopeba e comprometeram atividades dependentes das águas (Alcântara et al., 2020). Entre os danos documentados estão insegurança alimentar, vulnerabilidade pesqueira, problemas de abastecimento e sofrimento psicossocial (Lopes et al., 2022; Trovão et al., 2023; Araújo et al., 2022). A insegurança alimentar atingiu 35,1% dos domicílios do Projeto Saúde Brumadinho (Lopes et al., 2022), e a depressão autorreferida apareceu em 22,5% na linha de base, sem atribuição causal ao rompimento (Peixoto et al., 2022).
+
+A resposta jurídica foi mais rápida que em Mariana, mas com limites na distribuição de recursos e na influência das comunidades (Primo et al., 2021). A reparação integral ultrapassa a indenização: envolve participação, responsabilidade e recomposição de condições de vida (Primo et al., 2021). É necessário distinguir a medida adotada do direito recomposto, pois pagamentos, obras e melhora de parâmetros são resultados parciais (Milanez et al., 2021; Fistarol et al., 2026).
+
+No plano jurídico, a responsabilidade civil ambiental é objetiva e solidária, e compensação e reparação são institutos distintos (REsp 896.863) (Martins, 2025; Mirandaprado, 2020). O dano extrapatrimonial coletivo foi reconhecido, sem confundi-lo com perdas materiais (Guedes et al.; Filter & Faccio, 2019). A imprescritibilidade do dano ambiental está firmada (Tema 999, RE 654.833/AC), embora seu alcance sobre pretensões individuais ainda seja discutido (De Melo Pinheiro, 2024). A assistência técnica independente aparece como condição de participação informada (Sandri et al., 2025).
+
+Quanto à força da evidência, há suporte forte para a degradação do Paraopeba; moderado para déficit participativo e danos imateriais; e fraco para a afirmação de "reparação integral concluída".
+
+Os estudos disponíveis permitem afirmar que houve danos documentados e respostas jurídicas e sociais em curso, mas não sustentam afirmar que a reparação esteja concluída. A evidência é limitada quanto ao alcance final das medidas e à sua capacidade de recompor integralmente as condições de vida afetadas.

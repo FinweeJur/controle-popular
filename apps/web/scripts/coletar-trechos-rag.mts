@@ -23,16 +23,11 @@ import { fileURLToPath } from "node:url";
 import { buscarDocumentos } from "../lib/assistente/documentos-rag/carregar";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
-const DESTINO = path.resolve(
-  AQUI,
-  "..",
-  "..",
-  "..",
-  "..",
-  "tjmg-jurimetria",
-  "relatorios",
-  "trechos-rag.json"
-);
+// Caminho absoluto do repo da jurimetria: quatro níveis a partir daqui caem em
+// `.claude/worktrees`, que não é o checkout canônico.
+const DESTINO =
+  process.env.CP_JURIMETRIA ||
+  "X:/DevCoder/OpenCode/tjmg-jurimetria/relatorios/trechos-rag.json";
 
 interface Consulta {
   tema: string;
