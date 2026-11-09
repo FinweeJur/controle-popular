@@ -109,8 +109,8 @@ describe("clipping.ts — parsing de NEWS_DATA (149 itens medidos)", () => {
 });
 
 describe("linha-do-tempo.ts — 17 marcos de MILESTONES + 6 pré-2025 de EDU_TIMELINE", () => {
-  test("tem exatamente 23 marcos — os 17 medidos em MILESTONES mais os 6 que faltavam", () => {
-    expect(MARCOS_PARAOPEBA.length).toBe(23);
+  test("tem exatamente 29 marcos — os 23 medidos até 30/07/2026 mais 6 de 09-10/2026", () => {
+    expect(MARCOS_PARAOPEBA.length).toBe(29);
   });
 
   test("todo marco tem data, título, descrição e cor", () => {
@@ -212,9 +212,9 @@ describe("tipoDeMarco — a régua que agrupa a cor do painel em três tipos", (
       tipos[t] += 1;
       expect(ROTULO_TIPO_MARCO[t], `sem rótulo para ${t}`).toBeTruthy();
     }
-    // Medido em 01/09/2026 contra os 23 marcos: 9 favoráveis, 7 desfavoráveis, 7 neutros.
+    // Medido em 09/11/2026 contra os 29 marcos: 9 favoráveis, 11 desfavoráveis, 9 neutros.
     // Se um marco novo nascer com cor fora da régua, este teste acusa antes da tela.
-    expect(tipos).toEqual({ favoravel: 9, desfavoravel: 7, neutro: 7 });
+    expect(tipos).toEqual({ favoravel: 9, desfavoravel: 11, neutro: 9 });
   });
 });
 

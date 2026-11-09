@@ -387,5 +387,66 @@ export const MARCOS_PARAOPEBA: MarcoParaopeba[] = [
     "fontes": [
       {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"}
     ]
+  },
+  {
+    "data": "2026-09-09",
+    "titulo": "TJMG suspende multa da Vale",
+    "descricao": "O TJMG suspende liminarmente a multa milionária aplicada à Vale sobre a barragem em Brumadinho. A decisão é liminar e não encerra o mérito.",
+    "cor": "#9B1C1C",
+    "atores": ["judiciario", "empresarial"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
+  },
+  {
+    "data": "2026-09-11",
+    "titulo": "Auditoria alerta para novo colapso",
+    "descricao": "Auditoria independente aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho.",
+    "cor": "#9B1C1C",
+    "atores": ["popular", "empresarial"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/"}
+    ]
+  },
+  {
+    "data": "2026-10-08",
+    "titulo": "ANM reduz emergência da B1A",
+    "descricao": "A Agência Nacional de Mineração reduz o nível de emergência da barragem B1A, em Brumadinho, de 2 para 1. O monitoramento continua.",
+    "cor": "#1A5FA8",
+    "atores": ["estatal", "empresarial"],
+    "fontes": [
+      {"rotulo": "ANM", "url": "https://www.gov.br/anm/pt-br"}
+    ]
+  },
+  {
+    "data": "2026-10-22",
+    "titulo": "STJ suspende o NAE",
+    "descricao": "O STJ suspende temporariamente o pagamento do Novo Auxílio Emergencial aos atingidos, até julgar o recurso.",
+    "cor": "#9B1C1C",
+    "atores": ["judiciario", "empresarial"],
+    "fontes": [
+      {"rotulo": "STJ", "url": "https://www.stj.jus.br/"},
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/stj-suspende-temporariamente-pagamento-novo-auxilio-emergencial/"}
+    ]
+  },
+  {
+    "data": "2026-10-29",
+    "titulo": "Vale não deposita novembro",
+    "descricao": "Após a suspensão do STJ, a Vale informa que não vai depositar o auxílio de novembro.",
+    "cor": "#9B1C1C",
+    "atores": ["empresarial"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/vale-nao-vai-depositar-auxilio/"}
+    ]
+  },
+  {
+    "data": "2026-10-30",
+    "titulo": "IJs cobram conselho do Anexo 1.1",
+    "descricao": "As instituições de justiça se manifestam sobre a composição do Conselho Inter-regional do Anexo 1.1.",
+    "cor": "#1A5FA8",
+    "atores": ["estatal", "popular"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/ijs-se-manifestam-sobre-conselho-inter-regional/"}
+    ]
   }
 ];
