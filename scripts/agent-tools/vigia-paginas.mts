@@ -12,11 +12,15 @@
  * no Telegram quando alguma quebra — é a rede que faltava.
  *
  * FONTES DOS ALVOS (fonte canônica: página nova entra sozinha na varredura):
- * 1. `apps/web/data/top-100-paginas.json` — as 100 páginas nobres (campo `href`);
- * 2. `apps/web/lib/eixos/catalogo.ts` — as rotas legadas das subfrentes dos
- *    4 eixos (importadas direto do catálogo, não por regex: o arquivo é a
- *    fonte canônica e qualquer rota nova nasce coberta);
- * 3. as 4 páginas-hub de eixo e a home.
+ * 1. `apps/web/lib/navegacao/mapa.ts` — as portas dos 9 eixos atuais, via
+ *    `portaDoEixo()` (mesma função que o menu usa; eixo novo entra sozinho);
+ * 2. as 4 hubs legadas que continuam no ar (`/terra-e-territorios`,
+ *    `/direitos-em-movimento`, `/estado-e-economia`, `/central`);
+ * 3. `apps/web/lib/eixos/catalogo.ts` — as rotas legadas das subfrentes;
+ * 4. `apps/web/data/top-100-paginas.json` — as 100 páginas nobres (`href`);
+ * 5. `/sitemap.xml` — o índice que os buscadores leem;
+ * 6. `/data/cndh-midia.json` — o catálogo do CNDH que a página de direitos
+ *    humanos busca em runtime (se o arquivo some, a lista não abre).
  *
  * CRITÉRIO: 200 depois de seguir redirect = ok; 4xx/5xx/sem resposta = quebrada.
  * O apex `controlepopular.com.br` devolve 301 para o `www` (o Guara só aceita
@@ -46,6 +50,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { CATALOGO_EIXOS } from "../../apps/web/lib/eixos/catalogo";
+import { EIXOS, portaDoEixo } from "../../apps/web/lib/navegacao/mapa";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ARQUIVO_TOP100 = path.join(RAIZ, "apps", "web", "data", "top-100-paginas.json");
@@ -85,18 +90,27 @@ const USER_AGENT =
   "ControlePopular-Vigia/1.0 (+https://www.controlepopular.com.br; vigilancia de paginas publicas)";
 
 /**
- * Páginas-hub dos 4 eixos. O catálogo (`lib/eixos/catalogo.ts`) guarda a rota
- * legada das SUBFRENTES, não a do eixo inteiro — por isso as 4 rotas-hub
- * ficam declaradas aqui, com o par eixo → hub escrito por extenso.
+ * Portas dos eixos: as 9 do mapa atual (`portaDoEixo`, a MESMA função que o
+ * menu usa — `/casos` e `/direitos` entraram em 08/11/2026) mais as 4 hubs
+ * legadas que continuam no ar. O `Set` evita varredura dupla.
  */
 const ROTAS_HUB_EIXO = [
-  "/terra-e-territorios",
-  "/direitos-em-movimento",
-  "/estado-e-economia",
-  "/central",
+  ...new Set([
+    ...EIXOS.map((eixo) => portaDoEixo(eixo)),
+    "/terra-e-territorios",
+    "/direitos-em-movimento",
+    "/estado-e-economia",
+    "/central",
+  ]),
 ];
 
-export type OrigemAlvo = "home" | "eixo" | "catalogo" | "top-100";
+export type OrigemAlvo =
+  | "home"
+  | "eixo"
+  | "catalogo"
+  | "top-100"
+  | "sitemap"
+  | "dado";
 
 export interface Alvo {
   /** Rota normalizada, com barra inicial e sem barra no fim ("/" é a home). */
@@ -186,9 +200,10 @@ function normalizarRota(href: string): string | null {
 /**
  * Monta a lista de alvos a partir das três fontes canônicas, sem duplicata.
  *
- * Ordem: home → hubs de eixo → rotas legadas do catálogo → top-100. Quem entra
- * depois só completa: página nova no `top-100-paginas.json` ou `rotaLegada`
- * novo no catálogo aparece na próxima varredura sem tocar em código daqui.
+ * Ordem: home → portas dos eixos → rotas legadas do catálogo → top-100 →
+ * sitemap. Quem entra depois só completa: eixo novo no mapa, página nova no
+ * `top-100-paginas.json` ou `rotaLegada` nova no catálogo aparece na próxima
+ * varredura sem tocar em código daqui.
  *
  * @param base URL base do site (sem barra no fim).
  */
@@ -205,6 +220,11 @@ export function montarAlvos(base: string): Alvo[] {
 
   add("/", "home");
   for (const hub of ROTAS_HUB_EIXO) add(hub, "eixo");
+  // O sitemap é a porta dos buscadores: quebrado, o portal some da busca.
+  add("/sitemap.xml", "sitemap");
+  // Dado que a página busca em runtime (catálogo do CNDH): se o JSON some,
+  // `/ambiental/direitos-humanos` abre o acervo e não carrega nada.
+  add("/data/cndh-midia.json", "dado");
 
   // Catálogo canônico dos eixos: 24 rotas legadas únicas nas 4 subfrentes-eixo.
   for (const eixo of Object.values(CATALOGO_EIXOS)) {
