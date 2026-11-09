@@ -21,6 +21,8 @@ import {
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import PainelAnalise from "./PainelAnalise";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { SecaoAuditorias } from "@/app/components/SecaoAuditorias";
+import { MapaSubfrentesParaopeba } from "@/app/components/MapaSubfrentesParaopeba";
 
 /**
  * `/paraopeba/analise` — a análise integrada: os 16 eixos da síntese da
@@ -103,6 +105,8 @@ export default async function AnaliseIntegradaPage() {
       </p>
 
       <ResumoRealidadeBox rota="/paraopeba/analise" className="mt-6" />
+
+      <SecaoAuditorias contexto="analise" />
 
       {/* ═══ DECLARAÇÃO — o que este cruzamento é e não é ═══ */}
       <section
@@ -500,6 +504,8 @@ export default async function AnaliseIntegradaPage() {
           </li>
         </ul>
       </section>
+
+      <MapaSubfrentesParaopeba atual="/paraopeba/analise" />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
