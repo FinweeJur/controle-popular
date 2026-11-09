@@ -92,6 +92,20 @@ const LIMIAR = Math.max(1, Number(ARGS[ARGS.indexOf("--limiar") + 1] ?? 7) || 7)
 const FONTE = "dom-mg";
 const FONTE_NOME = "Diário Oficial Eletrônico de Minas Gerais (Jornal Minas Gerais)";
 
+// O host do Diário Oficial não envia a cadeia intermediária do certificado:
+// sem a loja de CAs do sistema o fetch morre com
+// UNABLE_TO_VERIFY_LEAF_SIGNATURE. O agendador roda via
+// scripts/executar-ts-oculto.ps1, que liga --use-system-ca; aqui só avisamos
+// quem roda à mão — a verificação TLS NUNCA é desligada.
+const CA_DO_SISTEMA = [...process.execArgv, process.env.NODE_OPTIONS ?? ""].some((a) =>
+  a.includes("--use-system-ca")
+);
+if (!CA_DO_SISTEMA) {
+  console.warn(
+    "[radar] AVISO: rode com NODE_OPTIONS=--use-system-ca (ou node --use-system-ca) — sem isso o TLS do jornalminasgerais pode falhar com UNABLE_TO_VERIFY_LEAF_SIGNATURE."
+  );
+}
+
 // ──────────────────────────────────────────────────────────────────────────
 // Detecção determinística: âncoras + termos ponderados + bônus de cabeçalho.
 // Todo o casamento é sobre o texto NORMALIZADO (sem acento, minúsculas) —
