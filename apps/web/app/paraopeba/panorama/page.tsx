@@ -231,7 +231,7 @@ const ROTAS: { href: string; rotulo: string; descricao: string }[] = [
   { href: "/paraopeba/pericia", rotulo: "Perícia da UFMG", descricao: "445 documentos técnicos" },
   { href: "/paraopeba/quem-atua", rotulo: "Quem atua", descricao: "Atores da reparação" },
   { href: "/paraopeba/vale", rotulo: "Ações da Vale", descricao: "A companhia no mercado e nos autos" },
-  { href: "/paraopeba/vale/documentos", rotulo: "Documentos da Vale na CVM", descricao: "Autos regulatorios da companhia" },
+  { href: "/paraopeba/vale/documentos", rotulo: "Documentos da Vale na CVM", descricao: "Autos regulatórios da companhia" },
 ];
 
 const SUMARIO = [
@@ -518,8 +518,8 @@ export default async function PanoramaParaopebaPage() {
         <p className="mt-3 max-w-3xl text-[12px] leading-relaxed text-text-soft">
           <strong className="text-text">“Reservado” não é obra pronta.</strong> A FGV chama
           esta coluna de empenho autorizado: é o dinheiro comprometido com projetos que já
-          têm ordem de início. O avanço físico da obra é{" "}
-          <NaoMedido>outro relatório, que esta página não traz</NaoMedido>. Fonte: FGV —
+          têm ordem de início. O avanço físico da obra é outro dado, que esta página não
+          traz — <NaoMedido>avanço físico das obras</NaoMedido>. Fonte: FGV —
           Projeto Rio Paraopeba, relatório de {REFERENCIA_EXECUCAO_FGV.relatorio} e planilha
           financeira de {REFERENCIA_EXECUCAO_FGV.financeiro}; coleta de{" "}
           {dataBR(REFERENCIA_EXECUCAO_FGV.coletadoEm)}.
@@ -856,17 +856,17 @@ export default async function PanoramaParaopebaPage() {
         <h2 className="font-display text-xl font-bold tracking-tight">O que ficou de fora</h2>
         <ul className="mt-3 max-w-3xl space-y-2 text-[.9em] leading-relaxed text-text-soft">
           <li>
-            <strong className="text-text">Avanço físico das obras:</strong>{" "}
+            <strong className="text-text">Avanço físico das obras</strong> —{" "}
             <NaoMedido>a execução da FGV é desembolso, não obra entregue</NaoMedido>.
           </li>
           <li>
-            <strong className="text-text">Os demais anexos do Acordo:</strong>{" "}
+            <strong className="text-text">Os demais anexos do Acordo</strong> —{" "}
             <NaoMedido>mobilidade, segurança hídrica e reparação socioambiental</NaoMedido>{" "}
             correm sob gestão do Estado e não entram no recorte I.3/I.4.
           </li>
           <li>
-            <strong className="text-text">Indenização individual:</strong>{" "}
-            <NaoMedido>valor por vítima ou por família</NaoMedido> — o total pago soma
+            <strong className="text-text">Indenização individual</strong> —{" "}
+            <NaoMedido>valor por vítima ou por família</NaoMedido>; o total pago soma
             programas diferentes e não vira média.
           </li>
           <li>
