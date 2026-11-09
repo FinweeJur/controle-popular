@@ -24,6 +24,7 @@ const SUBFRENTES = [
   { href: "/paraopeba/biblioteca", rotulo: "Biblioteca das assessorias" },
   { href: "/paraopeba/linha-do-tempo", rotulo: "Linha do tempo" },
   { href: "/paraopeba/clipping", rotulo: "Clipping" },
+  { href: "/paraopeba/mab", rotulo: "MAB — notícias e notas" },
   { href: "/paraopeba/noticias?fonte=bacia", rotulo: "Notícias — bacia" },
   { href: "/paraopeba/noticias?fonte=vale", rotulo: "Notícias — Vale" },
   { href: "/paraopeba/quem-atua", rotulo: "Quem atua" },
