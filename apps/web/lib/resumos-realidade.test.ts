@@ -55,6 +55,11 @@ describe("parseResumo", () => {
     expect(blocos[1].tipo).toBe("tabela");
     expect(blocos[1].linhas?.[1][0]).toBe("1");
   });
+
+  it("remove marca quebrada em duas linhas", () => {
+    const blocos = parseResumo("Fato [medido — tabela\nmedida].");
+    expect(blocos[0].texto).toBe("Fato.");
+  });
 });
 
 describe("resumoPublicavel", () => {
