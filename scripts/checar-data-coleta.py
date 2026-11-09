@@ -16,6 +16,9 @@ que impede o rollback silencioso.
 Exit code com `--catraca`: 1 é REGRESSÃO — rota que a régua gravada tinha
 datada e agora perdeu a data. Dívida nova (rota nunca datada) vira aviso e
 entra na contagem para o dono baixar com o rollout; não trava commit alheio.
+Página-ponte (`PaginaPonte`) não conta como perda: a rota antiga deixou de ter
+dado próprio e a data visível é a do destino — exigir carimbo ali só criaria
+data falsa.
 Sem `--catraca`: só mede e imprime.
 
 Isenções: páginas de banco/ao-vivo (a data nasce na consulta, não no arquivo)
@@ -45,6 +48,10 @@ MARCADORES = re.compile(
     r"dados de |Dados de |gerado em|atualizado em|baixou em|sondado em",
     re.IGNORECASE,
 )
+
+# Página-ponte: rota antiga sem dado próprio, que só redireciona para a nova
+# (import ou JSX de `PaginaPonte`). A data visível pertence ao destino.
+PONTE = re.compile(r"""from\s+["'][^"']*/PaginaPonte["']|<PaginaPonte\b""")
 
 # Camadas cujo dado é arquivo versionado (tem carimbo `geradoEm` no dump).
 CAMADAS_ARQUIVO = {"data-json", "public-assets", "etl"}
@@ -82,14 +89,17 @@ def arquivo_da_rota(rota):
 
 
 def linha_da_rota(rota):
-    """Classifica UMA rota: datada, isenta, sem página ou devendo a data."""
+    """Classifica UMA rota: datada, isenta, ponte, sem página ou devendo a data."""
     if rota in ISENTACOES:
         return {"rota": rota, "estado": "isenta", "motivo": ISENTACOES[rota]}
     pagina = arquivo_da_rota(rota)
     if pagina is None:
         return {"rota": rota, "estado": "sem-pagina", "motivo": "rota dinâmica ou ausente"}
-    tem = bool(MARCADORES.search(pagina.read_text(encoding="utf-8")))
-    estado = "datada" if tem else "falta-data"
+    texto = pagina.read_text(encoding="utf-8")
+    if PONTE.search(texto):
+        return {"rota": rota, "estado": "ponte", "arquivo": str(pagina.relative_to(RAIZ)),
+                "motivo": "página-ponte (data fica no destino)"}
+    estado = "datada" if MARCADORES.search(texto) else "falta-data"
     return {"rota": rota, "estado": estado, "arquivo": str(pagina.relative_to(RAIZ))}
 
 
@@ -120,22 +130,33 @@ def gravar_catraca(resultados, caminho):
 
 
 def comparar_catraca(resultados, caminho):
-    """Regressão = rota que a régua tinha 'datada' e agora não está mais."""
+    """Regressão = rota que a régua tinha 'datada' e agora não está mais.
+
+    Ponte também não é regressão — inclusive quando a rota saiu do registry,
+    caso em que o disco ainda é consultado para que apagar a ponte sem pôr a
+    data de volta continue sendo regressão.
+    """
     arquivo = Path(caminho)
     if not arquivo.exists():
         print(f"::error::catraca ausente ({caminho}); grave com --gravar-catraca")
         return [{"rota": "__catraca__", "regressao": "arquivo de catraca ausente"}]
     base = json.loads(arquivo.read_text(encoding="utf-8"))["estados"]
     agora = {r["rota"]: r["estado"] for r in resultados}
-    return [
-        {"rota": r, "regressao": f"estava datada, agora: {agora.get(r, 'sumiu')}"}
-        for r, estado in base.items()
-        if estado == "datada" and agora.get(r) not in ("datada", "isenta")
-    ]
+    regressoes = []
+    for rota, estado in base.items():
+        if estado != "datada":
+            continue
+        atual = agora.get(rota)
+        if atual in ("datada", "isenta", "ponte"):
+            continue
+        if atual is None and linha_da_rota(rota)["estado"] == "ponte":
+            continue
+        regressoes.append({"rota": rota, "regressao": f"estava datada, agora: {atual or 'sumiu'}"})
+    return regressoes
 
 
 def imprimir_tabela(resultados):
-    marca = {"datada": "OK ", "isenta": "-- ", "falta-data": "!!", "sem-pagina": " ."}
+    marca = {"datada": "OK ", "isenta": "-- ", "ponte": "-> ", "falta-data": "!!", "sem-pagina": " ."}
     for r in sorted(resultados, key=lambda x: (x["estado"], x["rota"])):
         extra = r.get("motivo", r.get("arquivo", ""))
         print(f"[{marca[r['estado']]}] {r['rota']}  {extra}")
