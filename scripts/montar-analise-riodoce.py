@@ -50,15 +50,53 @@ frase catalogada. É por isso que cada afirmação abaixo traz o número e o tex
 citado, e não uma conclusão solta. [medido — tabela medida]"""
 
 FONTE = (
-    "Os números desta página vêm da tabela medida da jurisprudência do TJMG, "
-    "com a rubrica fechada de 22 temas e 79 teses. A lista completa, processo a "
-    "processo, está em [Jurisprudência](/jurisprudencia). [medido]"
+    "Os números de jurisprudência vêm da tabela medida do TJMG, com a rubrica "
+    "fechada de 22 temas e 79 teses; a lista completa, processo a processo, "
+    "está em [Jurisprudência](/jurisprudencia). Os números das vias de "
+    "indenização vêm das fontes citadas em cada linha e têm datas diferentes — "
+    "não formam uma série e não se somam. [medido]"
 )
+
+VIAS_INDENIZACAO = """## As vias de indenização individual
+
+O dano coletivo corre em ação civil pública; o dano individual homogêneo se
+repara por portas separadas, com critérios e valores diferentes. A tabela
+abaixo reúne as principais, com a data de cada número — elas não formam uma
+série e não se somam. [medido — fontes citadas em cada linha]
+
+| Via | Pessoas contempladas | Valor | Média | Data | Fonte |
+|---|---:|---:|---:|---|---|
+| Acordos judiciais — dano água (crianças e adolescentes, GV) | 25.550 acordos | R$ 41,2 mi | R$ 1.644 por acordo | 2017 | TJMG |
+| IRDR dano moral por falta d'água | — | R$ 2,3 mil por pessoa | — | 22/05/2024, anulado | [STJ](https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/21052024-Anulado-julgamento-que-fixou-indenizacao-de-R--2-3-mil-para-vitimas-da-falta-de-agua-apos-tragedia-de-Mariana.aspx) |
+| PIM / Dano Água | 320.179 atendidos; 270.372 aceitaram | R$ 305,24 mi | R$ 1.125 por acordo | 30/05/2022 | Renova |
+| PIM Danos Gerais | 10.970 aceitaram | R$ 1.896,52 mi | R$ 176.240 por família | 11/2024 | Renova |
+| NOVEL | 95,7 mil atingidos | R$ 10 bi | R$ 104 mil por atingido | 07/2023 | [Agência Brasil](https://agenciabrasil.ebc.com.br/geral/noticia/2023-09/caso-samarco-sistema-indenizatorio-criado-em-2020-fecha-em-10-dias) |
+| NOVEL Infraestrutura | — | +50% sobre o laudo AECOM | — | 08/02/2023 | [TRF6](https://sjmg.trf6.jus.br/caso-samarco-justica-federal-homologa-novel-infraestrutura/) |
+| Acordos extrajudiciais — Mariana (FNE) | 838 pagos de 852 aceitos | — | — | 16/08/2025 | [Portal Reparação](https://www.reparacaobaciariodoce.com/reparacao-em-numeros/) |
+| Ação inglesa | 600 mil atingidos | — | — | — | Pogust Goodhead |
+| PID | **321 mil indenizações** | R$ 35 mil por pessoa | — | 22/10/2026 | [Samarco](https://www.samarco.com/perto-de-completar-dois-anos-novo-acordo-do-rio-doce-transforma-compromissos-em-entregas-concretas-para-as-pessoas-e-os-territorios/) |
+
+A média por acordo não é comparável entre as linhas: cada via cobre um conjunto
+diferente de danos. Uma indenização por dano água é, em geral, mais baixa que
+uma por danos gerais, que inclui dano material e moral. [inferido]
+
+O PID é a medida reparatória final do Novo Acordo: paga R$ 35 mil por pessoa
+elegível, em parcela única, e exige quitação e desistência de ação judicial no
+Brasil e no exterior. O balanço da Samarco de 22/10/2026 registra mais de 321
+mil indenizações pelo programa — o dono informou 320 mil, e a diferença é de
+arredondamento e data. O mesmo balanço soma 648 mil pessoas indenizadas ou
+auxiliadas desde 2015 e R$ 36,6 bilhões pagos. [medido — Samarco, 22/10/2026]
+
+Duas decisões mudaram o desenho das vias. Em 2024, o STJ anulou o IRDR do
+TJMG que fixava R$ 2,3 mil por dano moral pela falta d'água, porque o
+julgamento só admitiu manifestação da Samarco. Em 2022, o TRF1 considerou
+ilegal exigir a desistência da ação inglesa para receber o NOVEL — decisão que
+valeu para Naque. [medido — STJ e TRF1]"""
 
 
 def montar() -> str:
     sintese = SINTESE.read_text(encoding="utf-8").strip()
-    return "\n\n".join([sintese, COMO_LER, secao_riodoce(), FONTE]) + "\n"
+    return "\n\n".join([sintese, COMO_LER, secao_riodoce(), VIAS_INDENIZACAO, FONTE]) + "\n"
 
 
 def main() -> int:
