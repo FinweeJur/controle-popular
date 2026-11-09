@@ -18,8 +18,8 @@
 | Item | Estado |
 |---|---|
 | Inventário das rotas | 348 rotas; 58 com dado próprio |
-| Resumos publicados e verificados | **27** |
-| Bloco renderizado | 27 páginas, logo após o `<h1>` |
+| Resumos publicados e verificados | **58** — 3 inconclusivos fora do ar (P6) |
+| Bloco renderizado | 58 páginas, logo após o `<h1>` |
 | Índice do componente | `data/resumos-realidade/index.ts` gerado |
 | Vigia de resumo vencido | `checar-resumos-vencidos.py` derruba `verificado` |
 | Verificador | `verificar_resumo.py` — número, marca e fonte |
@@ -49,6 +49,23 @@ Falta `npm run build` local e conferência visual em 390 px.
 ### P5 — deploy
 Merge na `main`, push e publicação só depois de P4.
 O deploy é manual e continua exigindo ordem do dono.
+
+### P6 — resumos inconclusivos: fora do ar até ter recorte
+
+Três rotas só tinham total agregado e um texto que dizia, três vezes, que nada
+se conclui. Resumo assim não ajuda o leitor: fica no disco como pendência e
+não entra no índice público. Marcadas com `inconclusivo: true`.
+
+| Rota | O que a página tem | O que falta para publicar |
+|---|---|---|
+| `/judiciario` | total de 44.812 registros | perfil por tribunal, ano e tipo; ou resumo escrito a partir de `listarTribunais()` |
+| `/judiciario/jurisprudencia` | o mesmo total agregado | recorte por tribunal, tema e período, com contagem por decisão |
+| `/paraopeba/correlacao` | 1.174 registros, sendo 1.168 em um conjunto | lista ou recorte por ano, tipo e origem que componha os 1.168 |
+
+Correção planejada: montar perfil com os arquivos secundários da própria rota
+(como já é feito em `/judiciario/tribunais` e `/judiciario/numeros`) e só
+regerar quando houver pelo menos um recorte além do total. Até lá, a página
+mostra o dado na tela, sem o bloco de resumo.
 
 ## Regra que não muda
 

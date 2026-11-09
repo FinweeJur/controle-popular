@@ -21,6 +21,10 @@ import {
  *
  * O markdown aceito é pequeno de propósito: título, parágrafo, lista, negrito,
  * link e tabela. Não há dependência de renderizador.
+ *
+ * BARRA NA TABELA: a célula `N=4.176;88%` vira barra proporcional com o N
+ * centralizado dentro dela. O número fica na barra porque é ele que o leitor
+ * procura; o percentual, ao lado.
  */
 
 const CAIXA =
@@ -53,6 +57,46 @@ function comNegrito(texto: string): ReactNode[] {
   });
 }
 
+const BARRA = /^N=([\d.]+);(\d{1,3})%$/;
+
+/**
+ * Célula de tabela em barra: `N=4.176;88%` vira barra proporcional com o N
+ * centralizado DENTRO dela e o percentual fora. O N é o que o leitor procura
+ * primeiro; por isso ele fica na barra, não na coluna ao lado.
+ */
+function CelulaBarra({ n, fatia }: { n: string; fatia: number }) {
+  const limite = Math.min(100, Math.max(0, fatia));
+  return (
+    <span className="flex min-w-[9rem] items-center gap-2">
+      <span
+        className="relative block h-6 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]"
+        role="img"
+        aria-label={`${n} achados, ${limite}% do tema`}
+      >
+        <span
+          className="absolute inset-y-0 left-0 rounded bg-[var(--cp-primary)]"
+          style={{ width: `${limite}%` }}
+        />
+        <span
+          className="absolute inset-y-0 left-0 flex items-center justify-center"
+          style={{ width: `${limite}%` }}
+        >
+          <span className="whitespace-nowrap rounded bg-[var(--cp-surface)]/85 px-1.5 text-xs font-semibold leading-5 text-text">
+            {n}
+          </span>
+        </span>
+      </span>
+      <span className="shrink-0 text-xs tabular-nums opacity-70">{limite}%</span>
+    </span>
+  );
+}
+
+function Celula({ texto }: { texto: string }) {
+  const barra = BARRA.exec(texto);
+  if (barra) return <CelulaBarra n={barra[1]} fatia={Number(barra[2])} />;
+  return <>{comNegrito(texto)}</>;
+}
+
 function Tabela({ linhas }: { linhas: string[][] }) {
   const [cabecalho, ...corpo] = linhas;
   return (
@@ -72,7 +116,7 @@ function Tabela({ linhas }: { linhas: string[][] }) {
             <tr key={indice} className="border-b border-[var(--cp-border)]/50">
               {linha.map((celula, coluna) => (
                 <td key={coluna} className="py-2 pr-3 align-top">
-                  {comNegrito(celula)}
+                  <Celula texto={celula} />
                 </td>
               ))}
             </tr>
