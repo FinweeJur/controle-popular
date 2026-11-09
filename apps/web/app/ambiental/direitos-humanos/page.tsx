@@ -6,6 +6,7 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 import FiltroDH from "./FiltroDH";
 import SecaoAcervoCndh from "./SecaoAcervoCndh";
+import CartaoPerguntasRota from "@/app/components/seu-nono/CartaoPerguntasRota";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 
@@ -68,7 +69,7 @@ export default function PaginaDireitosHumanos() {
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
           &ldquo;A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos.&rdquo; — Conceição Evaristo, Becos da Memória, 2006
         </p>
-      </header>
+      </header><CartaoPerguntasRota />
 
       {/* CARTÕES DE TOPO */}
       <section aria-label="Indicadores dos relatórios" className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ArteEixo from "@/app/components/eixos/ArteEixo";
+import CartaoPerguntasRota from "@/app/components/seu-nono/CartaoPerguntasRota";
 import { eixoDe } from "@/lib/navegacao/mapa";
 import type { ReactNode } from "react";
 
@@ -44,6 +45,8 @@ export default function PaginaEixo({
         </header>
 
         <ArteEixo slug={eixo.slug} className="mt-6 aspect-[21/8]" prioridade />
+
+        <CartaoPerguntasRota />
 
         {children}
 

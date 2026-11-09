@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
 import ArteEixo from "@/app/components/eixos/ArteEixo";
+import CartaoPerguntasRota from "@/app/components/seu-nono/CartaoPerguntasRota";
 import Link from "next/link";
 import { History, BookOpen, ExternalLink, CalendarDays } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -167,7 +168,7 @@ export default function MemoriaPage() {
       </header>
 
       {/* Aquarela da subfrente: ipê e lobo-guará para a memória das lutas. */}
-      <ArteEixo slug="memoria" className="mt-6 aspect-[21/8]" />
+      <ArteEixo slug="memoria" className="mt-6 aspect-[21/8]" /><CartaoPerguntasRota />
 
       {/* Ponte para a frente de história: as mesmas lutas, agora no mapa.
           Pedido do dev (30/09/2026): as camadas históricas têm página própria. */}
