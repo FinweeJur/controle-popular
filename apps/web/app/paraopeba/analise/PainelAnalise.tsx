@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import type { AtiBiblioteca, ItemBiblioteca } from "@/lib/paraopeba/biblioteca";
 import { temasAjriSaoInferidos } from "@/lib/paraopeba/temas-ati-utils";
-import type { EixoIntegrado } from "@/lib/paraopeba/sintese-integrada";
+import type { EixoIntegrado, ModoCruzamento } from "@/lib/paraopeba/sintese-integrada";
 import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
 
 /**
@@ -61,6 +61,16 @@ const COLUNAS_CSV_PAINEL_ANALISE: ColunaCsv<EixoIntegrado>[] = [
     chave: "cobertura",
     rotulo: "Fontes Que Falam",
     formatar: (c) => c.fontesQueFalam,
+  },
+  {
+    chave: "cobertura",
+    rotulo: "Mencao Relacionada Fontes",
+    formatar: (c) => c.lexical.fontesQueFalam,
+  },
+  {
+    chave: "cobertura",
+    rotulo: "Mencao Relacionada Termos",
+    formatar: (c) => c.lexical.termos.join(" | "),
   },
   {
     chave: "pericia",
@@ -122,16 +132,28 @@ const ORD_COR: Record<number, string> = {
 export default function PainelAnalise({
   eixos,
   atiLabel,
+  modoCruzamento,
 }: {
   eixos: EixoIntegrado[];
   /** Rótulo por sigla de ATI — vem do componente de servidor (ver cabeçalho). */
   atiLabel: Record<AtiBiblioteca, string>;
+  /** Régua escolhida na página; o painel mostra o número ativo e o outro ao lado. */
+  modoCruzamento: ModoCruzamento;
 }) {
   const [busca, setBusca] = useState("");
   const [cobertura, setCobertura] = useState<FiltroCobertura>("todas");
   const [ordenacao, setOrdenacao] = useState<Ordenacao>("fontes-asc");
   const [macroAti, setMacroAti] = useState<string>("todas");
   const [tagAti, setTagAti] = useState<string>("todas");
+
+  const contagem = useCallback(
+    (e: EixoIntegrado) =>
+      modoCruzamento === "tema"
+        ? e.cobertura.fontesQueFalam
+        : e.cobertura.lexical.fontesQueFalam,
+    [modoCruzamento]
+  );
+  const modoRotulo = modoCruzamento === "tema" ? "Tema controlado" : "Menção relacionada";
 
   const todosDocsAti = useMemo(() => eixos.flatMap((e) => e.atis.documentos), [eixos]);
   const macrosAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => [i.macro_categoria]), [todosDocsAti]);
@@ -153,8 +175,8 @@ export default function PainelAnalise({
       }))
       .filter((e) => {
         if (cobertura === "lacuna" && e.cobertura.quaisFaltam.length === 0) return false;
-        if (cobertura === "tres-fontes" && e.cobertura.fontesQueFalam !== 3) return false;
-        if (cobertura === "so-auditoria" && e.cobertura.fontesQueFalam !== 1) return false;
+        if (cobertura === "tres-fontes" && contagem(e) !== 3) return false;
+        if (cobertura === "so-auditoria" && contagem(e) !== 1) return false;
         if (!termo) return true;
         return (
           normalizar(e.titulo).includes(termo) || normalizar(e.auditoria.estadoGeral).includes(termo)
@@ -163,9 +185,9 @@ export default function PainelAnalise({
     lista = [...lista].sort((a, b) => {
       switch (ordenacao) {
         case "fontes-desc":
-          return b.cobertura.fontesQueFalam - a.cobertura.fontesQueFalam || a.titulo.localeCompare(b.titulo, "pt");
+          return contagem(b) - contagem(a) || a.titulo.localeCompare(b.titulo, "pt");
         case "fontes-asc":
-          return a.cobertura.fontesQueFalam - b.cobertura.fontesQueFalam || a.titulo.localeCompare(b.titulo, "pt");
+          return contagem(a) - contagem(b) || a.titulo.localeCompare(b.titulo, "pt");
         case "ati-desc":
           return b.atis.documentos.length - a.atis.documentos.length || a.titulo.localeCompare(b.titulo, "pt");
         case "pericia-desc":
@@ -178,7 +200,7 @@ export default function PainelAnalise({
       }
     });
     return lista;
-  }, [eixos, busca, cobertura, ordenacao, macroAti, tagAti]);
+  }, [eixos, busca, cobertura, ordenacao, macroAti, tagAti, contagem]);
 
   function exportar() {
     const hoje = new Date().toISOString().slice(0, 10);
@@ -201,7 +223,7 @@ export default function PainelAnalise({
           />
         </label>
         <label>
-          <span className="block text-[.82em] font-medium text-text-soft">Cobertura</span>
+          <span className="block text-[.82em] font-medium text-text-soft">Cobertura (régua ativa)</span>
           <select
             value={cobertura}
             onChange={(e) => setCobertura(e.target.value as FiltroCobertura)}
@@ -209,8 +231,8 @@ export default function PainelAnalise({
           >
             <option value="todas">Todos os eixos</option>
             <option value="lacuna">Só com alguma fonte faltando</option>
-            <option value="tres-fontes">Só as três fontes falam</option>
-            <option value="so-auditoria">Só a auditoria fala — é pauta</option>
+            <option value="tres-fontes">Só as três fontes falam na régua ativa</option>
+            <option value="so-auditoria">Só a auditoria fala na régua ativa — é pauta</option>
           </select>
         </label>
         <label>
@@ -220,8 +242,8 @@ export default function PainelAnalise({
             onChange={(e) => setOrdenacao(e.target.value as Ordenacao)}
             className="mt-1 rounded-md border border-border bg-surface px-3 py-2 text-[.92em]"
           >
-            <option value="fontes-asc">Nº de fontes, menos cobertas primeiro</option>
-            <option value="fontes-desc">Nº de fontes, mais cobertas primeiro</option>
+            <option value="fontes-asc">Nº de fontes na régua ativa, menos primeiro</option>
+            <option value="fontes-desc">Nº de fontes na régua ativa, mais primeiro</option>
             <option value="ati-desc">Documentos de ATI, mais primeiro</option>
             <option value="pericia-desc">Documentos de perícia, mais primeiro</option>
             <option value="titulo">Título do eixo, A–Z</option>
@@ -289,18 +311,27 @@ export default function PainelAnalise({
         </button>
       </div>
 
+      <p className="mt-2 max-w-2xl text-[.82em] leading-relaxed text-text-soft">
+        Régua ativa: <strong className="text-text">{modoRotulo}</strong>. A marca{" "}
+        <strong className="text-text">Menção</strong> é leitura lexical, não tema controlado: procura
+        radicais no título, resumo e temas, e não prova que a fonte trata do assunto — só evita
+        dizer &quot;ninguém falou&quot; quando o vocabulário não bateu. O CSV traz as duas colunas.
+      </p>
+
       {filtrados.length === 0 ? (
         <p className="mt-6 rounded-xl border border-border bg-surface px-4 py-6 text-center text-[.92em] text-text-soft">
           Nenhum eixo com esses filtros. Vazio aqui é resposta — não quer dizer que a busca falhou.
         </p>
       ) : (
         <ul className="mt-4 space-y-3">
-          {filtrados.map((eixo) => (
+          {filtrados.map((eixo) => {
+            const fontesAtivas = contagem(eixo);
+            return (
             <li key={eixo.titulo} className="rounded-xl border border-border bg-surface">
               <details className="group">
                 <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 px-4 py-3">
                   <span className="font-semibold text-text">{eixo.titulo}</span>
-                  <span className="flex items-center gap-2 text-[.82em] text-text-soft">
+                  <span className="flex flex-wrap items-center gap-2 text-[.82em] text-text-soft">
                     <span
                       className="inline-flex h-2.5 w-14 overflow-hidden rounded-full border border-border/60"
                       aria-hidden
@@ -311,12 +342,24 @@ export default function PainelAnalise({
                           className="h-full flex-1"
                           style={{
                             background:
-                              n <= eixo.cobertura.fontesQueFalam ? ORD_COR[eixo.cobertura.fontesQueFalam] : "var(--color-chart-track)",
+                              n <= fontesAtivas ? ORD_COR[fontesAtivas] : "var(--color-chart-track)",
                           }}
                         />
                       ))}
                     </span>
-                    {eixo.cobertura.fontesQueFalam}/3 fontes
+                    {fontesAtivas}/3 fontes
+                    <span
+                      className="rounded-md border border-border px-2 py-0.5"
+                      title="Tema controlado (TemaAjri) — a régua estrita"
+                    >
+                      tema {eixo.cobertura.fontesQueFalam}/3
+                    </span>
+                    <span
+                      className="rounded-md border border-border px-2 py-0.5"
+                      title="Menção por termo relacionado — leitura lexical, não tema controlado"
+                    >
+                      menção {eixo.cobertura.lexical.fontesQueFalam}/3
+                    </span>
                     {eixo.cobertura.quaisFaltam.length > 0 && (
                       <span className="rounded-md border border-border px-2 py-0.5">lacuna</span>
                     )}
@@ -329,6 +372,27 @@ export default function PainelAnalise({
                       <strong className="text-text">Falta:</strong> {eixo.cobertura.quaisFaltam.join("; ")}.
                     </p>
                   )}
+
+                  <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-[.9em]">
+                    <p>
+                      <strong className="text-text">Menção relacionada:</strong>{" "}
+                      {formatNumberBR(eixo.cobertura.lexical.pericia)} documento
+                      {eixo.cobertura.lexical.pericia === 1 ? "" : "s"} da perícia e{" "}
+                      {formatNumberBR(eixo.cobertura.lexical.atis)} item
+                      {eixo.cobertura.lexical.atis === 1 ? "" : "s"} das ATIs contêm ao menos um
+                      radical do eixo.
+                    </p>
+                    {eixo.cobertura.lexical.termos.length > 0 && (
+                      <p className="mt-1 text-text-soft/80">
+                        Termos: {eixo.cobertura.lexical.termos.join(" · ")}
+                      </p>
+                    )}
+                    {eixo.cobertura.lexical.exemplos.length > 0 && (
+                      <p className="mt-1 text-text-soft/80">
+                        Exemplos: {eixo.cobertura.lexical.exemplos.join("; ")}
+                      </p>
+                    )}
+                  </div>
 
                   {/* ═══ VOZ 1 — AUDITORIA (AECOM) ═══ */}
                   <div>
@@ -479,7 +543,8 @@ export default function PainelAnalise({
                 </div>
               </details>
             </li>
-          ))}
+            );
+          })}
         </ul>
       )}
     </div>

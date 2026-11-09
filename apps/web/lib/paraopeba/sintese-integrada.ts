@@ -12,6 +12,7 @@ import {
 } from "./estudo-e-noticia";
 import { type EstudoPericiaComTema } from "./pericia-ufmg";
 import {
+  lerAcervoPericia,
   lerEstudosPericiaComTema,
   lerResultadosPericia,
 } from "./acervos-dados";
@@ -202,6 +203,216 @@ export const EIXO_PARA_TEMA_AJRI: Record<string, TemaAjri[]> = {
 const TEMAS_MAPEADOS = new Set<TemaAjri>(Object.values(EIXO_PARA_TEMA_AJRI).flat());
 
 /**
+ * ═══ SEGUNDA CAMADA: MENÇÃO POR TERMO RELACIONADO (LEXICAL) ═══
+ *
+ * A camada estrita (`EIXO_PARA_TEMA_AJRI`) só enxerga documento que carrega o
+ * MESMO `TemaAjri` do eixo. Quando a perícia ou a ATI tratam do assunto com
+ * outro vocabulário, o eixo parece vazio — e a página diria "só a auditoria
+ * fala" sobre um assunto que as outras duas discutem com outras palavras.
+ *
+ * Esta camada é ADICIONAL e declaradamente aproximada: procura radicais
+ * (minúsculos, sem acento) no título/resumo/temas/tags do acervo inteiro.
+ * Ela NÃO prova que a fonte trata do tema — só evita a conclusão errada de
+ * "ninguém falou" quando o vocabulário não bateu. Por isso a tela mostra as
+ * duas réguas separadas, com rótulos diferentes.
+ *
+ * Sem entrada para um título, `termosDoEixo` deriva do próprio título
+ * (palavras com mais de 4 letras, fora as stopwords) — nunca inventa termo
+ * que não esteja escrito no eixo.
+ */
+export const TERMOS_RELACIONADOS: Record<string, string[]> = {
+  "Fornecimento e captação de água": ["abastec", "captac", "potavel", "hidric", "agua"],
+  Fauna: ["fauna", "peixe", "pesca", "ictiofauna"],
+  "Flora e vegetação": ["flora", "veget", "floresta", "bioma"],
+  "Saúde humana e risco ecológico": ["saude", "risco", "ecolog", "aliment", "contamin", "toxic"],
+  "Manejo e remoção de rejeitos": ["rejeit", "drag", "sediment", "barragem"],
+  "Buscas por vítimas": ["vitim", "desaparecid", "busca por corpo", "busca por vitima"],
+  "Inspeções de campo e monitoramento técnico": [
+    "inspec",
+    "monitor",
+    "barragem",
+    "estrutur",
+    "seguranc",
+  ],
+  "Qualidade da água do rio Paraopeba e sedimentos": [
+    "qualidade da agua",
+    "qualidade das aguas",
+    "sediment",
+    "turbidez",
+    "agua",
+  ],
+  "Pendências em aberto e recorrentes": ["pendenc", "em aberto", "aguard"],
+  "Análises numéricas e estatísticas agregadas": [
+    "analis",
+    "estatistic",
+    "indicador",
+    "metodolog",
+  ],
+  "Recomendações da AECOM": ["recomend"],
+  "Desafios estruturais": ["desafio", "governanc", "consultor", "impasse", "infraestrutura"],
+  "Atrasos e descumprimentos de prazo": ["atras", "prazo", "descumpr", "cronogram"],
+  "Avanços e conclusões positivas": ["avanc", "conclus", "satisfatori", "positiv"],
+  "Regularização fundiária, desapropriação e liberação de áreas": [
+    "regulariz",
+    "fundiari",
+    "desapropri",
+    "reassent",
+    "moradia",
+    "indeniz",
+    "liberacao de area",
+  ],
+  "Participação social: atingidos, lideranças e povos e comunidades tradicionais": [
+    "particip",
+    "comit",
+    "conselh",
+    "atingid",
+    "lideranc",
+    "tradicion",
+    "comunidad",
+  ],
+};
+
+const STOPWORDS_DO_TITULO = new Set([
+  "para",
+  "como",
+  "pelo",
+  "pela",
+  "dos",
+  "das",
+  "nos",
+  "nas",
+  "com",
+  "sem",
+  "sobre",
+  "entre",
+  "eixo",
+  "eixos",
+  "outros",
+  "outras",
+]);
+
+/** Minúsculo e sem acento — a mesma normalização para termo e para texto. */
+export function normalizarParaBusca(texto: string): string {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+/** Fallback de `TERMOS_RELACIONADOS`: palavras do próprio título. */
+export function derivarTermosDoTitulo(titulo: string): string[] {
+  const palavras = normalizarParaBusca(titulo)
+    .split(/[^a-z0-9]+/)
+    .filter((p) => p.length > 4 && !STOPWORDS_DO_TITULO.has(p));
+  return [...new Set(palavras)];
+}
+
+/** Termos do eixo: os declarados acima ou, na falta, derivados do título. */
+export function termosDoEixo(titulo: string): string[] {
+  const declarados = TERMOS_RELACIONADOS[titulo];
+  if (declarados && declarados.length > 0) return declarados;
+  return derivarTermosDoTitulo(titulo);
+}
+
+/** Documento da perícia como texto buscável — nome, seção, temas e citações. */
+function textoDoEstudoPericia(doc: EstudoPericiaComTema): string {
+  return normalizarParaBusca(
+    [doc.nomeArquivo, doc.secao, doc.temas.join(" "), (doc.citadoEm ?? []).join(" ")].join(" ")
+  );
+}
+
+/** Item da biblioteca como texto buscável — título, resumo, temas e tags. */
+function textoDoItemAti(item: ItemBiblioteca): string {
+  return normalizarParaBusca(
+    [item.titulo, item.resumo ?? "", item.temas.join(" "), item.tags.join(" ")].join(" ")
+  );
+}
+
+/** Nome de arquivo legível, só para o exemplo na tela. */
+function tituloExemploPericia(nomeArquivo: string): string {
+  let nome = nomeArquivo;
+  try {
+    nome = decodeURIComponent(nomeArquivo);
+  } catch {
+    // mantém como veio — mesma tolerância de temas-acervo.ts
+  }
+  return nome
+    .replace(/\.pdf$/i, "")
+    .replace(/^\d+[._]\s*/, "")
+    .replace(/[_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * RegExp de radical: casa no INÍCIO de uma palavra (para "agua" não casar
+ * dentro de "aguardar", que é o falso positivo mais comum do corpus).
+ */
+function matcherDoTermo(termo: string): RegExp {
+  const escapado = termo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const sufixo = termo === "agua" ? "(?!rd)" : "";
+  return new RegExp(`(?:^|[^a-z0-9])${escapado}${sufixo}`);
+}
+
+export interface CoberturaLexical {
+  /** Documentos distintos da perícia com ao menos um termo relacionado. */
+  pericia: number;
+  /** Itens distintos da biblioteca das ATIs com ao menos um termo. */
+  atis: number;
+  /** 1 (só a auditoria) a 3 — a auditoria sempre conta, como na régua estrita. */
+  fontesQueFalam: number;
+  /** Termos aplicados; vazio quando o eixo não tem radical utilizável. */
+  termos: string[];
+  /** Até 3 títulos de exemplo, para o leitor conferir o casamento. */
+  exemplos: string[];
+}
+
+/**
+ * Mede a menção lexical do eixo no ACERVO INTEIRO, não só nos documentos que
+ * já casaram por tema. Documento entra uma vez só, mesmo que case vários
+ * termos.
+ */
+export function coberturaLexicalDoEixo(
+  titulo: string,
+  itensAti: ItemBiblioteca[],
+  acervoPericia: EstudoPericiaComTema[]
+): CoberturaLexical {
+  const termos = termosDoEixo(titulo);
+  if (termos.length === 0) {
+    return { pericia: 0, atis: 0, fontesQueFalam: 1, termos: [], exemplos: [] };
+  }
+
+  const matchers = termos.map(matcherDoTermo);
+  const exemplos: string[] = [];
+  const vistos = new Set<string>();
+  const conta = (texto: string, exemplo: string): number => {
+    if (!matchers.some((re) => re.test(texto))) return 0;
+    if (exemplos.length < 3 && !vistos.has(exemplo)) {
+      vistos.add(exemplo);
+      exemplos.push(exemplo);
+    }
+    return 1;
+  };
+
+  const pericia = acervoPericia.reduce(
+    (total, doc) => total + conta(textoDoEstudoPericia(doc), tituloExemploPericia(doc.nomeArquivo)),
+    0
+  );
+  const atis = itensAti.reduce(
+    (total, item) => total + conta(textoDoItemAti(item), item.titulo),
+    0
+  );
+
+  return {
+    pericia,
+    atis,
+    fontesQueFalam: 1 + (pericia > 0 ? 1 : 0) + (atis > 0 ? 1 : 0),
+    termos,
+    exemplos,
+  };
+}
+
+/**
  * De qual acervo veio o documento de um `DocumentoCasado`, resolvendo os
  * `TemaAjri` reais.
  */
@@ -230,6 +441,23 @@ export interface CoberturaEixo {
    * mais falou" (é pauta).
    */
   quaisFaltam: string[];
+  /**
+   * Segunda régua, ADICIONAL e aproximada: menção por radical no acervo
+   * inteiro. Não substitui `fontesQueFalam` — as duas aparecem separadas na
+   * tela. Ver `TERMOS_RELACIONADOS` e o cabeçalho da camada lexical.
+   */
+  lexical: CoberturaLexical;
+}
+
+/** As duas réguas que a página oferece, e que nunca se misturam. */
+export type ModoCruzamento = "tema" | "termo";
+
+/** Contagem da régua escolhida — usada pelo gráfico, pela tabela e pelo resumo. */
+export function fontesQueFalamNoModo(
+  cobertura: CoberturaEixo,
+  modo: ModoCruzamento
+): number {
+  return modo === "tema" ? cobertura.fontesQueFalam : cobertura.lexical.fontesQueFalam;
 }
 
 export interface EixoIntegrado {
@@ -245,7 +473,15 @@ export interface EixoIntegrado {
   cobertura: CoberturaEixo;
 }
 
-function coberturaDoEixo(temasAjri: TemaAjri[], docsPericia: number, docsAti: number): CoberturaEixo {
+function coberturaDoEixo(
+  titulo: string,
+  temasAjri: TemaAjri[],
+  docsPericia: number,
+  docsAti: number,
+  itensAti: ItemBiblioteca[],
+  acervoPericia: EstudoPericiaComTema[]
+): CoberturaEixo {
+  const lexical = coberturaLexicalDoEixo(titulo, itensAti, acervoPericia);
   if (temasAjri.length === 0) {
     return {
       temTemaAjri: false,
@@ -253,6 +489,7 @@ function coberturaDoEixo(temasAjri: TemaAjri[], docsPericia: number, docsAti: nu
       quaisFaltam: [
         "perícia (UFMG) e ATIs — este eixo não tem TemaAjri equivalente no vocabulário de 25 temas da própria auditoria (ver EIXO_PARA_TEMA_AJRI); não é possível cruzar por tema, o que é diferente de dizer que as outras fontes não tratam do assunto",
       ],
+      lexical,
     };
   }
   const faltam: string[] = [];
@@ -262,6 +499,7 @@ function coberturaDoEixo(temasAjri: TemaAjri[], docsPericia: number, docsAti: nu
     temTemaAjri: true,
     fontesQueFalam: 1 + (docsPericia > 0 ? 1 : 0) + (docsAti > 0 ? 1 : 0),
     quaisFaltam: faltam,
+    lexical,
   };
 }
 
@@ -278,6 +516,10 @@ export async function sinteseIntegrada(): Promise<EixoIntegrado[]> {
   const itensAti = await bibliotecaAti();
   const sinteseAjri = lerSinteseAjri();
   const estudosPericiaComTema = lerEstudosPericiaComTema();
+  // A régua lexical olha o acervo INTEIRO da perícia (445), não só os 21
+  // documentos que já declaram tema; senão repetiria o recorte da camada
+  // estrita que ela existe para contornar.
+  const acervoPericia = lerAcervoPericia();
 
   return sinteseAjri.eixos.map((eixo) => {
     const temasAjri = EIXO_PARA_TEMA_AJRI[eixo.titulo] ?? [];
@@ -309,7 +551,14 @@ export async function sinteseIntegrada(): Promise<EixoIntegrado[]> {
       pericia: { documentos: documentosPericia },
       atis: { documentos: documentosAti },
       vozAti,
-      cobertura: coberturaDoEixo(temasAjri, documentosPericia.length, documentosAti.length),
+      cobertura: coberturaDoEixo(
+        eixo.titulo,
+        temasAjri,
+        documentosPericia.length,
+        documentosAti.length,
+        itensAti,
+        acervoPericia
+      ),
     };
   });
 }
@@ -324,6 +573,9 @@ export interface ResumoIntegrado {
    *  estrutural) vs. quantos são ponte-que-existe-mas-ninguém-usou. */
   soAuditoriaSemPonte: number;
   soAuditoriaComPonteVazia: number;
+  /** Mesma conta pela régua lexical (menção por termo relacionado). */
+  comTresFontesLexical: number;
+  soAuditoriaLexical: number;
 }
 
 /** Agregado para os cartões de topo — nunca dígite estes números, meça. */
@@ -335,6 +587,8 @@ export function resumoIntegrado(eixos: EixoIntegrado[]): ResumoIntegrado {
     soAuditoria: soAuditoria.length,
     soAuditoriaSemPonte: soAuditoria.filter((e) => !e.cobertura.temTemaAjri).length,
     soAuditoriaComPonteVazia: soAuditoria.filter((e) => e.cobertura.temTemaAjri).length,
+    comTresFontesLexical: eixos.filter((e) => e.cobertura.lexical.fontesQueFalam === 3).length,
+    soAuditoriaLexical: eixos.filter((e) => e.cobertura.lexical.fontesQueFalam === 1).length,
   };
 }
 
