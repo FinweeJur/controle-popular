@@ -1,10 +1,10 @@
 {
   "totalDocumentos": 2390,
-  "totalTrechos": 18945,
+  "totalTrechos": 21575,
   "porCategoria": [
     {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 16736
+      "contagem": 19366
     },
     {
       "slug": "Ambiental & Desastres",
@@ -73,6 +73,10 @@
       "contagem": 2995
     },
     {
+      "slug": "Desastres de barragem — artigos",
+      "contagem": 2691
+    },
+    {
       "slug": "Desastres e barragens",
       "contagem": 934
     },
@@ -93,10 +97,6 @@
       "contagem": 182
     },
     {
-      "slug": "Evidência científica sobre barragens",
-      "contagem": 118
-    },
-    {
       "slug": "infraestrutura",
       "contagem": 114
     },
@@ -107,6 +107,10 @@
     {
       "slug": "socioeconômico",
       "contagem": 94
+    },
+    {
+      "slug": "Evidência científica sobre barragens",
+      "contagem": 57
     },
     {
       "slug": "meio ambiente",
@@ -200,35 +204,35 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 265
+      "contagem": 259
     },
     {
       "slug": "2025",
-      "contagem": 423
+      "contagem": 413
     },
     {
       "slug": "2024",
-      "contagem": 486
+      "contagem": 478
     },
     {
       "slug": "2023",
-      "contagem": 264
+      "contagem": 256
     },
     {
       "slug": "2022",
-      "contagem": 187
+      "contagem": 179
     },
     {
       "slug": "2021",
-      "contagem": 111
+      "contagem": 105
     },
     {
       "slug": "2020",
-      "contagem": 222
+      "contagem": 216
     },
     {
       "slug": "2019",
-      "contagem": 277
+      "contagem": 272
     },
     {
       "slug": "2018",
@@ -236,11 +240,11 @@
     },
     {
       "slug": "2017",
-      "contagem": 27
+      "contagem": 24
     },
     {
       "slug": "2016",
-      "contagem": 61
+      "contagem": 60
     },
     {
       "slug": "2015",
