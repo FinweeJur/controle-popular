@@ -28,7 +28,7 @@ import type { ConsultaDocumentos, IndiceDocumentos, MapaDocumentos, ResultadoDoc
 const ARQUIVO = "trechos.json";
 const PESO_VETOR = 0.7;
 const PESO_LEXICO = 0.3;
-const MAX_POR_DOCUMENTO = 2;
+const MAX_POR_DOCUMENTO = 1;
 
 interface ArquivoTrechos {
   geradoEm?: string;
@@ -110,10 +110,36 @@ function misturar(m: Mistura): ResultadoDocumento[] {
   return limitarPorDocumento(candidatos, m.limite);
 }
 
+/** O texto real vence o resumo de metadado quando os dois aparecem. */
+export function preferirTexto(resultados: ResultadoDocumento[]): ResultadoDocumento[] {
+  const temTexto = resultados.some((resultado) => resultado.trecho.pagina > 0);
+  return temTexto ? resultados.filter((resultado) => resultado.trecho.pagina > 0) : resultados;
+}
+
 /**
- * Busca trechos; ausÃªncia de Ã­ndice ou erro devolve lista vazia.
- * Com embeddings disponÃ­veis, usa hÃ­brido; sem eles, cai no lÃ©xico.
+ * Busca trechos; ausência de índice ou erro devolve lista vazia.
+ * Com embeddings disponíveis, usa híbrido; sem eles, cai no léxico.
+ *
+ * Duas regras de relevância: no máximo MAX_POR_DOCUMENTO trechos do mesmo
+ * documento, e o resumo de metadado (página 0) só entra quando não há texto
+ * real para a pergunta.
  */
+let cacheTexto: IndiceDocumentos | null | undefined;
+
+/**
+ * Índice só com trechos de texto real (página > 0).
+ *
+ * O resumo de metadado casa pelo título e ocupa as vagas em pergunta com
+ * palavra comum ("Brumadinho"): 2.390 resumos contra 19 mil trechos. A busca
+ * de prova usa este índice; o catálogo completo fica como reserva.
+ */
+function indiceDeTexto(indice: IndiceDocumentos): IndiceDocumentos {
+  if (cacheTexto !== undefined) return cacheTexto ?? indice;
+  const textos = indice.trechos.filter((trecho) => trecho.pagina > 0);
+  cacheTexto = textos.length ? construirIndiceDocumentos(textos) : null;
+  return cacheTexto ?? indice;
+}
+
 export async function buscarDocumentos(
   pergunta: string,
   opcoes: Omit<ConsultaDocumentos, "texto"> = {}
@@ -121,10 +147,29 @@ export async function buscarDocumentos(
   const indice = await carregarIndiceDocumentos().catch(() => null);
   if (!indice) return [];
   const limite = Math.max(1, Math.min(20, opcoes.limite ?? 6));
+  const folga = Math.max(limite * 6, 30);
   const vetor = await pontuarSemantico(pergunta).catch(() => null);
-  if (!vetor) return consultarDocumentos(indice, { ...opcoes, texto: pergunta, limite });
-  const lexico = pontuarTrechos(indice, pergunta);
-  return misturar({ indice, opcoes, lexico, vetor, limite });
+  const buscar = (alvo: IndiceDocumentos) =>
+    vetor
+      ? misturar({ indice: alvo, opcoes, lexico: pontuarTrechos(alvo, pergunta), vetor, limite: folga })
+      : consultarDocumentos(alvo, { ...opcoes, texto: pergunta, limite: folga });
+
+  const candidatos = deduplicar(buscar(indiceDeTexto(indice)));
+  if (candidatos.length > 0) {
+    return limitarPorDocumento(preferirTexto(candidatos), limite);
+  }
+  // Nenhum texto casou: a pergunta pode ser sobre o catálogo, não sobre prova.
+  return limitarPorDocumento(deduplicar(buscar(indice)), limite);
+}
+
+/** Mesmo trecho não volta duas vezes. */
+function deduplicar(resultados: ResultadoDocumento[]): ResultadoDocumento[] {
+  const vistos = new Set<string>();
+  return resultados.filter((resultado) => {
+    if (vistos.has(resultado.trecho.id)) return false;
+    vistos.add(resultado.trecho.id);
+    return true;
+  });
 }
 
 /** Mapa de cobertura para diagnÃ³stico e prompt; `null` sem Ã­ndice. */

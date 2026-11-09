@@ -45,6 +45,7 @@ interface Relatorio {
 interface ItemGenerico {
   id?: string;
   titulo?: string;
+  processo?: string;
   tipo?: string;
   categoria?: string;
   macro_categoria?: string;
@@ -109,7 +110,9 @@ function itemParaMeta(
     orgao: string;
   }
 ): DocumentoRagMeta | null {
-  const titulo = item.titulo?.trim();
+  const base = (item.titulo ?? "").replace(/^\d{6,}-/, "").trim();
+  // Título genérico ("Decisão", "Documentos Comprobatórios") ganha o processo.
+  const titulo = base.length <= 30 && item.processo ? `${base} — ${item.processo}` : base;
   const url = urlDe(item);
   if (!titulo || !url) return null;
   const resumo = textoDe(item);

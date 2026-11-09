@@ -1,14 +1,14 @@
 {
-  "totalDocumentos": 2390,
-  "totalTrechos": 18945,
+  "totalDocumentos": 2386,
+  "totalTrechos": 21571,
   "porCategoria": [
     {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 16736
+      "contagem": 19364
     },
     {
       "slug": "Ambiental & Desastres",
-      "contagem": 934
+      "contagem": 936
     },
     {
       "slug": "Justiça & Controle",
@@ -16,7 +16,7 @@
     },
     {
       "slug": "Legislação",
-      "contagem": 346
+      "contagem": 343
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -55,10 +55,6 @@
       "contagem": 4
     },
     {
-      "slug": "Memória & Direitos Humanos",
-      "contagem": 1
-    },
-    {
       "slug": "Relatorio ambiental",
       "contagem": 1
     }
@@ -73,8 +69,12 @@
       "contagem": 2995
     },
     {
+      "slug": "Desastres de barragem — artigos",
+      "contagem": 2666
+    },
+    {
       "slug": "Desastres e barragens",
-      "contagem": 934
+      "contagem": 936
     },
     {
       "slug": "Atos do CNJ",
@@ -82,7 +82,7 @@
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 301
+      "contagem": 299
     },
     {
       "slug": "Instituições de Justiça",
@@ -91,10 +91,6 @@
     {
       "slug": "trâmites processuais",
       "contagem": 182
-    },
-    {
-      "slug": "Evidência científica sobre barragens",
-      "contagem": 118
     },
     {
       "slug": "infraestrutura",
@@ -107,6 +103,10 @@
     {
       "slug": "socioeconômico",
       "contagem": 94
+    },
+    {
+      "slug": "Evidência científica sobre barragens",
+      "contagem": 82
     },
     {
       "slug": "meio ambiente",
@@ -123,10 +123,6 @@
     {
       "slug": "Descolonização & Conflitos",
       "contagem": 7
-    },
-    {
-      "slug": "Cidades",
-      "contagem": 6
     },
     {
       "slug": "Pesquisa & Transnacional Aberta",
@@ -147,6 +143,10 @@
     {
       "slug": "Sigma & Lítio",
       "contagem": 5
+    },
+    {
+      "slug": "Cidades",
+      "contagem": 3
     },
     {
       "slug": "Protocolo de Consulta Prévia",
@@ -189,10 +189,6 @@
       "contagem": 1
     },
     {
-      "slug": "Mística e linha do tempo",
-      "contagem": 1
-    },
-    {
       "slug": "saúde da população",
       "contagem": 1
     }
@@ -200,35 +196,35 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 265
+      "contagem": 263
     },
     {
       "slug": "2025",
-      "contagem": 423
+      "contagem": 416
     },
     {
       "slug": "2024",
-      "contagem": 486
+      "contagem": 484
     },
     {
       "slug": "2023",
-      "contagem": 264
+      "contagem": 261
     },
     {
       "slug": "2022",
-      "contagem": 187
+      "contagem": 180
     },
     {
       "slug": "2021",
-      "contagem": 111
+      "contagem": 108
     },
     {
       "slug": "2020",
-      "contagem": 222
+      "contagem": 217
     },
     {
       "slug": "2019",
-      "contagem": 277
+      "contagem": 272
     },
     {
       "slug": "2018",
@@ -236,7 +232,7 @@
     },
     {
       "slug": "2017",
-      "contagem": 27
+      "contagem": 26
     },
     {
       "slug": "2016",
