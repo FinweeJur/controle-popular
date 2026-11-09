@@ -13,7 +13,14 @@ name: ETL betim
 #                                 caixa disponível/balanço, legislação
 #                                 ambiental das 5 fontes — ALMG/SEMAD/SIAM
 #                                 (estaduais) e MMA/CNDH (nacionais)
-#                                 (+ almg emendas once built)
+#                                 (+ almg emendas once built) e CAP — autos de
+#                                 infração da SEMAD, um passo por município já
+#                                 na tabela (BH, Diamantina, Araçuaí, Betim,
+#                                 Itinga)
+#   0 4 * * 0          weekly    — decisões de licenciamento ambiental de MG
+#                                 (domingo 01:00 local; grid de ~2.178 páginas
+#                                 leva ~91 min, então vai antes da madrugada do
+#                                 build) + o agregador do bruto
 #   0 11 1 1,4,7,10 * quarterly — IBGE malha/hierarquia geográfica, feriados
 #                                 nacionais (BrasilAPI), IDH/pobreza (PNUD/ADH,
 #                                 só muda em ano de Censo mas sem cadência
@@ -58,6 +65,10 @@ on:
     - cron: '0 8 * * *'
     - cron: '0 9 * * 1'
     - cron: '0 10 1 * *'
+    # Domingo 04:00 UTC = 01:00 local (GMT-3). Não é desvio de fuso: é a única
+    # janela antes da madrugada de build (03:30) em que o grid de decisões de
+    # licenciamento cabe — 2.178 páginas × ~2,5 s ≈ 91 min.
+    - cron: '0 4 * * 0'
     - cron: '0 11 1 1,4,7,10 *'
   workflow_dispatch:
 
@@ -347,6 +358,38 @@ jobs:
         continue-on-error: true
         run: python -m etl.apis.legislacao_cndh
 
+      # CAP — autos de infração ambiental ESTADUAIS (SEMAD-MG), mensal por
+      # desenho e até 09/11/2026 fora de toda cadência: a última rodada, em
+      # 10/08/2026, foi manual. Um passo por município já presente em
+      # `cap_autos_infracao` (o refresh do módulo é por cidade), e não um laço:
+      # HTTP 500 numa cidade não pode impedir as outras quatro. BH é a mais
+      # cara (~536 páginas × 4 recortes ≈ 2.144 requisições, ~15 min).
+      # `continue-on-error` em todos + a guarda de redução do próprio módulo.
+      - name: 'CAP autos de infração — Belo Horizonte (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.cap_autos_infracao --id-municipio 3106200
+
+      - name: 'CAP autos de infração — Diamantina (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.cap_autos_infracao --id-municipio 3121605
+
+      - name: 'CAP autos de infração — Araçuaí (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.cap_autos_infracao --id-municipio 3103405
+
+      - name: 'CAP autos de infração — Betim (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.cap_autos_infracao --id-municipio 3106705
+
+      - name: 'CAP autos de infração — Itinga (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.cap_autos_infracao --id-municipio 3134004
+
       # DEPOIS dos cinco acima, e a ordem é o passo: este módulo não bate em
       # fonte externa nenhuma — lê `ementa`/`indexacao` das linhas que já estão
       # na tabela e deriva `temas`. Rodar antes dos coletores classificaria o
@@ -400,3 +443,21 @@ jobs:
         run: python -m etl.apis.pntp --id-municipio $ID_MUNICIPIO
 
       # TODO once etl.apis.datajud exists (CNJ process lookups for councilors): quarterly step here
+
+      # ─── Licenciamento ambiental MG — decisões (semanal, domingo 01:00 BRT) ───
+      # O coletor é manual desde sempre; o publicado é o agregado de 21/08/2026.
+      # O grid tem 2.178 páginas e ~91 min, então vai no domingo 01:00 local,
+      # antes da madrugada de build. O bruto (38 MB) fica fora do repo, em
+      # ~/.cache; só o agregador escreve `etl/betim/dados/decisoes-licenciamento-mg.json`.
+      - name: 'Licenciamento MG — decisões, fase grid (weekly, domingo)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 4 * * 0'
+        continue-on-error: true
+        run: python -m etl.apis.ambiental_decisoes --fase grid --saida "$HOME/.cache/controle-popular/decisoes-licenciamento.json"
+
+      # Sem `continue-on-error` de propósito: o agregador aborta se a rodada
+      # perdeu página, e rodada truncada tem de aparecer vermelha em vez de
+      # publicar base incompleta. Se o coletor falhou, o bruto anterior é
+      # republicado com o `coletadoEm` dele — o carimbo não mente.
+      - name: 'Licenciamento MG — agregar o bruto (weekly, depois do coletor)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 4 * * 0'
+        run: cd ../.. && npx tsx scripts/agregar-decisoes-licenciamento.mts --bruto "$HOME/.cache/controle-popular/decisoes-licenciamento.json"
