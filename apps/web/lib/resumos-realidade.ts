@@ -94,7 +94,11 @@ export function parseResumo(markdown: string): BlocoResumo[] {
   };
   const fecharParagrafo = () => {
     if (paragrafo.length) {
-      blocos.push({ tipo: "p", texto: paragrafo.join(" ") });
+      const cru = paragrafo.join(" ");
+      const texto = limparMarcas(cru);
+      if (texto && !(INCONCLUSIVO.test(cru) && !TEM_MEDIDO.test(cru))) {
+        blocos.push({ tipo: "p", texto });
+      }
       paragrafo = [];
     }
   };
