@@ -1,14 +1,14 @@
 {
-  "totalDocumentos": 2390,
-  "totalTrechos": 21575,
+  "totalDocumentos": 2386,
+  "totalTrechos": 21571,
   "porCategoria": [
     {
       "slug": "Acadêmico & Pesquisa",
-      "contagem": 19366
+      "contagem": 19364
     },
     {
       "slug": "Ambiental & Desastres",
-      "contagem": 934
+      "contagem": 936
     },
     {
       "slug": "Justiça & Controle",
@@ -16,7 +16,7 @@
     },
     {
       "slug": "Legislação",
-      "contagem": 346
+      "contagem": 343
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -55,10 +55,6 @@
       "contagem": 4
     },
     {
-      "slug": "Memória & Direitos Humanos",
-      "contagem": 1
-    },
-    {
       "slug": "Relatorio ambiental",
       "contagem": 1
     }
@@ -74,11 +70,11 @@
     },
     {
       "slug": "Desastres de barragem — artigos",
-      "contagem": 2691
+      "contagem": 2666
     },
     {
       "slug": "Desastres e barragens",
-      "contagem": 934
+      "contagem": 936
     },
     {
       "slug": "Atos do CNJ",
@@ -86,7 +82,7 @@
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 301
+      "contagem": 299
     },
     {
       "slug": "Instituições de Justiça",
@@ -110,7 +106,7 @@
     },
     {
       "slug": "Evidência científica sobre barragens",
-      "contagem": 57
+      "contagem": 82
     },
     {
       "slug": "meio ambiente",
@@ -127,10 +123,6 @@
     {
       "slug": "Descolonização & Conflitos",
       "contagem": 7
-    },
-    {
-      "slug": "Cidades",
-      "contagem": 6
     },
     {
       "slug": "Pesquisa & Transnacional Aberta",
@@ -151,6 +143,10 @@
     {
       "slug": "Sigma & Lítio",
       "contagem": 5
+    },
+    {
+      "slug": "Cidades",
+      "contagem": 3
     },
     {
       "slug": "Protocolo de Consulta Prévia",
@@ -193,10 +189,6 @@
       "contagem": 1
     },
     {
-      "slug": "Mística e linha do tempo",
-      "contagem": 1
-    },
-    {
       "slug": "saúde da população",
       "contagem": 1
     }
@@ -204,31 +196,31 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 259
+      "contagem": 263
     },
     {
       "slug": "2025",
-      "contagem": 413
+      "contagem": 416
     },
     {
       "slug": "2024",
-      "contagem": 478
+      "contagem": 484
     },
     {
       "slug": "2023",
-      "contagem": 256
+      "contagem": 261
     },
     {
       "slug": "2022",
-      "contagem": 179
+      "contagem": 180
     },
     {
       "slug": "2021",
-      "contagem": 105
+      "contagem": 108
     },
     {
       "slug": "2020",
-      "contagem": 216
+      "contagem": 217
     },
     {
       "slug": "2019",
@@ -240,11 +232,11 @@
     },
     {
       "slug": "2017",
-      "contagem": 24
+      "contagem": 26
     },
     {
       "slug": "2016",
-      "contagem": 60
+      "contagem": 61
     },
     {
       "slug": "2015",

@@ -131,14 +131,20 @@ export async function buscarDocumentos(
   const indice = await carregarIndiceDocumentos().catch(() => null);
   if (!indice) return [];
   const limite = Math.max(1, Math.min(20, opcoes.limite ?? 6));
-  // Pool maior: o resumo de metadado costuma pontuar alto e, sem folga, ocupa
-  // todas as vagas antes de o texto real aparecer.
-  const folga = Math.max(limite * 6, 30);
   const vetor = await pontuarSemantico(pergunta).catch(() => null);
-  const candidatos = vetor
-    ? misturar({ indice, opcoes, lexico: pontuarTrechos(indice, pergunta), vetor, limite: folga })
-    : consultarDocumentos(indice, { ...opcoes, texto: pergunta, limite: folga });
-  return limitarPorDocumento(deduplicar(preferirTexto(candidatos)), limite);
+  const buscar = (folga: number) =>
+    vetor
+      ? misturar({ indice, opcoes, lexico: pontuarTrechos(indice, pergunta), vetor, limite: folga })
+      : consultarDocumentos(indice, { ...opcoes, texto: pergunta, limite: folga });
+
+  // Pool normal; se ele vier só com resumo de metadado, abre pool maior para
+  // que o texto real apareça antes de aceitar o metadado.
+  let candidatos = deduplicar(buscar(Math.max(limite * 6, 30)));
+  if (!candidatos.some((item) => item.trecho.pagina > 0)) {
+    const amplo = deduplicar(buscar(300));
+    if (amplo.some((item) => item.trecho.pagina > 0)) candidatos = amplo;
+  }
+  return limitarPorDocumento(preferirTexto(candidatos), limite);
 }
 
 /** Mesmo trecho não volta duas vezes. */
