@@ -13,6 +13,7 @@ import { listarTodasEntidades } from "@/lib/empresas/entidades-dados";
 import { EMPRESAS } from "@/lib/empresas/dados";
 import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import { ROTAS_GLOBAIS, SUFIXOS_CIDADE } from "@/lib/sitemap/rotas-descobertas";
+import { EXCLUIR_SUFIXO } from "@/lib/sitemap/descoberta";
 
 /**
  * ESTÁTICO DE PROPÓSITO: o sitemap é gerado no BUILD (lê o banco para listar
@@ -156,7 +157,6 @@ const ROTAS_CIDADE: {
   { sufixo: "/prefeitura/contratos", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/cultura", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/despesas", changeFrequency: "weekly" },
-  { sufixo: "/prefeitura/diarias", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/licitacoes", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/obras", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/servidores", changeFrequency: "weekly" },
@@ -180,11 +180,16 @@ const ROTAS_CIDADE: {
  * `monthly`/`0.5` — pior que prioridade baixa é a URL nem aparecer.
  */
 const SUFIXOS_EFETIVOS: typeof ROTAS_CIDADE = (() => {
-  const naManual = new Set(ROTAS_CIDADE.map((r) => r.sufixo));
-  const descobertos = SUFIXOS_CIDADE.filter((s) => !naManual.has(s)).map(
-    (sufixo) => ({ sufixo })
-  );
-  return [...ROTAS_CIDADE, ...descobertos];
+  // A lista manual nasceu antes das exclusoes e nao as respeitava: uma ponte
+  // `noindex` (`/prefeitura/diarias`) continuava anunciada em toda cidade. O
+  // filtro vale para as duas listas, senao a manual segue sendo a porta dos
+  // fundos das exclusoes documentadas em `descoberta.ts`.
+  const manuais = ROTAS_CIDADE.filter((r) => !EXCLUIR_SUFIXO[r.sufixo]);
+  const naManual = new Set(manuais.map((r) => r.sufixo));
+  const descobertos = SUFIXOS_CIDADE.filter(
+    (s) => !naManual.has(s) && !EXCLUIR_SUFIXO[s]
+  ).map((sufixo) => ({ sufixo }));
+  return [...manuais, ...descobertos];
 })();
 
 async function rotasDeCidade(cidade: Cidade): Promise<MetadataRoute.Sitemap> {
