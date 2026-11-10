@@ -135,7 +135,14 @@ describe("arquivos de data/resumos-realidade", () => {
       expect(resumo.geradoEm).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(Number.isNaN(Date.parse(`${resumo.geradoEm}T00:00:00Z`))).toBe(false);
       expect(resumo.verificado).toBe(true);
-      expect(resumoPublicavel(resumo)).toBe(true);
+      // Arquivo inconclusivo fica no disco como pendência medida e fora do ar
+      // (P6 em docs/02-estado/PENDENCIAS-RESUMOS.md): público só sem a marca.
+      if (resumo.inconclusivo) {
+        expect(resumo.motivo?.trim().length ?? 0).toBeGreaterThan(0);
+        expect(resumoPublicavel(resumo)).toBe(false);
+      } else {
+        expect(resumoPublicavel(resumo)).toBe(true);
+      }
       const blocos = parseResumo(resumo.markdown);
       expect(blocos[0]?.tipo).toBe("h2");
       expect(blocos[0].texto.trim().length).toBeGreaterThan(10);
@@ -143,15 +150,25 @@ describe("arquivos de data/resumos-realidade", () => {
   );
 });
 
+/**
+ * Parágrafos do markdown de origem. A marca tem de ser conferida aqui, antes do
+ * parse: desde f6c22c58 (09/11/2026) o renderizador apaga `[medido]`,
+ * `[inferido]` e `[não dá para concluir]` da tela, por decisão do dono.
+ */
+function paragrafosCrus(markdown: string): string[] {
+  return markdown
+    .split(/\r?\n\s*\r?\n/)
+    .map((paragrafo) => paragrafo.trim())
+    .filter((paragrafo) => paragrafo && !/^(#|\||:::|-|>)/.test(paragrafo));
+}
+
 describe("piloto F2 — concursos, jurisprudência penal e cavas", () => {
   it.each(ROTAS_PILOTO)("%s tem no máximo 6 parágrafos, todos com marca", (rota) => {
     const { resumo } = RESUMOS_DO_DISCO.find((r) => r.resumo.rota === rota)!;
-    const paragrafos = parseResumo(resumo.markdown)
-      .slice(1)
-      .filter((bloco) => bloco.tipo === "p");
+    const paragrafos = paragrafosCrus(resumo.markdown);
     expect(paragrafos.length).toBeLessThanOrEqual(6);
     for (const paragrafo of paragrafos) {
-      const marcado = MARCA.test(paragrafo.texto) || paragrafo.texto.startsWith("Fonte:");
+      const marcado = MARCA.test(paragrafo) || paragrafo.startsWith("Fonte:");
       expect(marcado).toBe(true);
     }
   });
