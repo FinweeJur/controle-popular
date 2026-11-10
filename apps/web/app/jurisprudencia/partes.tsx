@@ -8,8 +8,8 @@ import {
   TIPOS_GRAFICO,
   type TipoGrafico,
 } from "./graficos";
-import { NOMES_FRENTE, NOMES_TIPO } from "./rotulos";
-import casosJson from "@/data/jurisprudencia-casos.json";
+import { NOMES_FRENTE, NOMES_POLO, NOMES_TIPO } from "./rotulos";
+import { ACERVO_JURISPRUDENCIA as casosJson } from "@/lib/jurisprudencia-acervo";
 import resumoJson from "@/data/jurisprudencia-resumo.json";
 import noticiasJson from "@/data/noticias-tribunais.json";
 import {
@@ -132,6 +132,7 @@ export function Grafico({
   nota,
   limite = 10,
   tipo = "barras",
+  nomes,
 }: {
   titulo: string;
   dados: [string, number][];
@@ -139,10 +140,16 @@ export function Grafico({
   nota?: string;
   limite?: number;
   tipo?: TipoGrafico;
+  /** Rótulos específicos da dimensão; sem isso, usa o mapa genérico. */
+  nomes?: Record<string, string>;
 }) {
   // Rosca e blocos não se leem com dez fatias: nesses dois, o limite cai.
   const teto = tipo === "barras" ? limite : 6;
-  const itens = prepararItens(dados, teto, (chave) => ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave);
+  const itens = prepararItens(
+    dados,
+    teto,
+    (chave) => nomes?.[chave] ?? ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave
+  );
   return (
     <section className="mx-auto w-full max-w-3xl space-y-2">
       <h2 className="font-display text-lg font-semibold">{titulo}</h2>
@@ -315,7 +322,7 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
   const maior = Math.max(...anos.map((item) => item.total), 1);
   return (
     <section className="mx-auto w-full max-w-3xl space-y-3">
-      <h2 className="font-display text-xl font-semibold">Brumadinho: polo por ano</h2>
+      <h2 className="font-display text-xl font-semibold">Quem venceu em cada ano</h2>
       <div className="max-w-md space-y-2">
         {anos.map((item) => (
           <div key={item.ano} className="flex items-center gap-3 text-sm">
@@ -337,7 +344,8 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
         ))}
       </div>
       <p className="text-xs opacity-70">
-        Cada barra é um ano; os segmentos são o polo vencedor. N = {casos.length}.
+        Cada barra é um ano; cada segmento é o polo vencedor — empresa (ré),
+        atingido (autor), MP (acusação) ou réu (defesa). N = {casos.length}.
       </p>
     </section>
   );
@@ -387,11 +395,11 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
         </select>
       </label>
       <label className="flex flex-col gap-1 text-sm">
-        <span className="opacity-70">Polo</span>
+        <span className="opacity-70">Polo vencedor</span>
         <select name="polo" defaultValue={filtros.polo} className={campo}>
           <option value="">Todos</option>
           {contagemPor(CASOS_DESASTRE, "polo").map(([polo]) => (
-            <option key={polo} value={polo}>{ROTULOS[polo] ?? polo}</option>
+            <option key={polo} value={polo}>{NOMES_POLO[polo] ?? ROTULOS[polo] ?? polo}</option>
           ))}
         </select>
       </label>
@@ -435,7 +443,7 @@ export function Formulario({ filtros }: { filtros: Filtros }) {
   );
 }
 
-const COLUNAS = ["Processo", "Tribunal/Ano", "Polo/Resultado", "Temas", ""];
+const COLUNAS = ["Processo", "Tribunal/Ano", "Polo vencedor", "Temas", ""];
 
 export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
   return (
@@ -463,6 +471,11 @@ export function TabelaCasos({ itens }: { itens: CasoJurisprudencia[] }) {
           </tbody>
         </table>
       </div>
+      <p className="mt-2 text-xs leading-snug opacity-70">
+        <strong>Polo vencedor</strong> é quem ganhou a decisão, não quem entrou
+        com o processo. “Empresa (ré)” venceu quando o recurso do atingido foi
+        negado; “Atingido (autor)” venceu quando o recurso da empresa foi negado.
+      </p>
       {/* Celular: cartão empilhado, nada de tabela de 9 colunas rolando. */}
       <ul className="space-y-3 md:hidden">
         {itens.map((caso) => (
@@ -695,7 +708,8 @@ export function PainelRecorte({
           dados={contagemPor(casos, "polo")}
           total={total}
           tipo={tipo}
-          nota={`Polo só existe onde o resumo de mérito foi classificado: ${comPolo.toLocaleString("pt-BR")} itens.`}
+          nomes={NOMES_POLO}
+          nota={`Polo vencedor é quem ganhou a decisão, não quem processou. Só existe onde o resumo de mérito foi classificado: ${comPolo.toLocaleString("pt-BR")} itens.`}
         />
         <Grafico titulo="Por ano da decisão" dados={porAno} total={total} tipo={tipo} />
         <Grafico
