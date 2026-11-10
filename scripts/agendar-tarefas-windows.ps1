@@ -65,7 +65,16 @@ $RadarCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidd
 & schtasks.exe /Create /TN "ControlePopular_RadarEditais" /TR $RadarCmd /SC DAILY /ST 04:20 /F | Out-Null
 if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
 
-# ─── Publicacao do radar (docs/planos/RADAR-EDITAIS-DIARIOS.md) ─────────────
+# ─── Consolidado e publicacao do radar (docs/planos/RADAR-EDITAIS-DIARIOS.md) ─────────────
+# Diario, 04:45. Consolida os pendentes do radar em
+# apps/web/data/editais-consolidado.json, o dado da pagina /editais. Roda
+# antes da publicacao (04:50), que move os pendentes para processados/.
+# O arquivo ficou congelado em 16/09/2026 porque nenhum script o escrevia.
+Write-Host "Registrando CONSOLIDADO DE EDITAIS (diario, 04:45)..." -ForegroundColor Cyan
+$ConsolidaCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File $P\executar-ts-oculto.ps1 -Script consolidar-radar-editais.mts -Argumentos '--commit' -LogRelativo rotina-radar-consolidado.log"
+& schtasks.exe /Create /TN "ControlePopular_RadarConsolidado" /TR $ConsolidaCmd /SC DAILY /ST 04:45 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
 # Diario, 04:50. Converte os pendentes do radar em posts do blog, roda os
 # guardas de dado pessoal, COMMITA e faz push (arvore suja travaria o
 # autodeploy das 05:50). Publicacao automatica por decisao do dono (10/09/2026).
