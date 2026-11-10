@@ -3,15 +3,48 @@
 import { useEffect, useState } from "react";
 import type { ItemIndice } from "./IndiceWiki";
 
-interface MiniSumarioLateralProps {
-  itens: ItemIndice[];
-}
-
 /**
  * Mini-navegação lateral flutuante (Scroll-Spy / Mini-Sumário) para páginas longas.
  * Aparece na lateral direita em telas maiores após rolar 350px.
- * Destaca o capítulo ativo e fornece botões rápidos para subir ao topo ou descer até o fim.
+ * Destaca o capítulo ativo e, abaixo da lista, oferece duas setas pequenas:
+ * ↑ volta ao topo e ↓ vai à próxima seção. Só a seta aparece; o rótulo
+ * ("Topo" / "Próxima seção") entra no hover e no foco pelo teclado.
  */
+/** Respeita a preferência de reduzir movimento do sistema. */
+function comportamento(): ScrollBehavior {
+  if (typeof window === "undefined") return "auto";
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+}
+
+function BotaoSeta({
+  rotulo,
+  seta,
+  onClick,
+}: {
+  rotulo: string;
+  seta: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={rotulo}
+      className="group/seta relative flex h-7 w-7 items-center justify-center rounded-md text-xs font-bold text-text-soft transition-colors hover:bg-surface-2 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus motion-reduce:transition-none"
+    >
+      <span aria-hidden="true">{seta}</span>
+      {/* Rótulo à esquerda da seta: o widget fica colado na borda direita. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-full top-1/2 mr-2 -translate-y-1/2 whitespace-nowrap rounded-md border border-border bg-surface px-2 py-1 text-xs font-semibold text-text opacity-0 shadow-md transition-opacity group-hover/seta:opacity-100 group-focus-visible/seta:opacity-100 motion-reduce:transition-none"
+      >
+        {rotulo}
+      </span>
+    </button>
+  );
+}
 function ItemSumario({
   item,
   ativo,
@@ -22,8 +55,7 @@ function ItemSumario({
   ativo: boolean;
   expandido: boolean;
   onIr: (id: string) => void;
-}) {
-  return (
+}) {  return (
     <li className="flex justify-end">
       <button
         type="button"
@@ -90,22 +122,37 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
   function rolarPara(id: string) {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.scrollIntoView({ behavior: comportamento(), block: "start" });
     }
   }
 
   function rolarFim() {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: "smooth",
+      behavior: comportamento(),
     });
   }
 
   function rolarTopo() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: comportamento(),
     });
+    // Mesmo destino de foco do botão flutuante antigo: quem usa teclado
+    // continua no conteúdo, não no começo do documento.
+    const principal = document.getElementById("conteudo-principal");
+    if (principal) principal.focus({ preventScroll: true });
+  }
+
+  /** ↓ vai à próxima seção; na última, encerra no fim da página. */
+  function proximaSecao() {
+    const indice = itens.findIndex((item) => item.id === ativo);
+    const alvo = indice === -1 ? itens[0] : itens[indice + 1];
+    if (alvo) {
+      rolarPara(alvo.id);
+      return;
+    }
+    rolarFim();
   }
 
   return (
@@ -132,26 +179,6 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
           }`}
         >
           <span>{expandido ? "Capítulos da página" : "Capítulos"}</span>
-          <div className="flex gap-1">
-            <button
-              type="button"
-              onClick={rolarTopo}
-              title="Subir tudo"
-              aria-label="Subir tudo para o topo"
-              className="rounded p-0.5 hover:bg-surface-2 hover:text-primary"
-            >
-              ↑
-            </button>
-            <button
-              type="button"
-              onClick={rolarFim}
-              title="Descer tudo"
-              aria-label="Descer tudo até o fim da página"
-              className="rounded p-0.5 hover:bg-surface-2 hover:text-primary"
-            >
-              ↓
-            </button>
-          </div>
         </div>
 
         <ol className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto py-1 text-xs">
@@ -165,6 +192,14 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
             />
           ))}
         </ol>
+
+        {/* Par de setas do rodapé: uma volta ao topo, a outra avança uma seção.
+            Ficam sempre visíveis, inclusive com o widget recolhido, e o rótulo
+            só aparece no hover/foco para não ocupar a lateral. */}
+        <div className="mt-1 flex items-center justify-end gap-1 border-t border-border/60 pt-1">
+          <BotaoSeta rotulo="Topo" seta="↑" onClick={rolarTopo} />
+          <BotaoSeta rotulo="Próxima seção" seta="↓" onClick={proximaSecao} />
+        </div>
       </div>
     </nav>
   );

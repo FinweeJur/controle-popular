@@ -450,7 +450,9 @@ O padrão completo está em
 - **Marcas:** `[medido]`, `[inferido]` e `[não dá para concluir]` ficam no
   JSON, não na tela. Parágrafo que só declara limite não é renderizado.
 - **Sumário lateral:** reutilizar `MiniSumarioLateral` /
-  `CapitulosFlutuantes`; IDs reais e `scroll-mt-24`.
+  `CapitulosFlutuantes`; IDs reais e `scroll-mt-24`. Abaixo da lista, duas
+  setas só com símbolo: ↑ **Topo** e ↓ **Próxima seção**, com o rótulo no
+  hover e no foco; em tela larga elas substituem o `BackToTop`.
 
 A verificação é visual em 390 px e no desktop, além de `tsc` e da suíte.
 

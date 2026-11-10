@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
  * Botão acessível de retorno ao topo da página ("Back to Top").
  * Exibido quando a rolagem vertical ultrapassa 400px.
  * Respeita preferências de redução de movimento e suporta navegação por teclado.
+ *
+ * Só aparece abaixo de `xl`: em tela larga, o par de setas do
+ * `MiniSumarioLateral` (↑ Topo / ↓ Próxima seção) assume o papel. Dois
+ * controles de topo na mesma tela confundiam e disputavam o canto direito.
  */
 export function BackToTop() {
   const [visivel, setVisivel] = useState(false);
@@ -55,7 +59,7 @@ export function BackToTop() {
       onClick={rolarAoTopo}
       aria-label="Voltar ao início da página"
       title="Voltar ao início da página"
-      className="group/topo cp-btn-anim fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex min-h-11 items-center justify-end rounded-full border border-border bg-surface/70 text-text-soft opacity-70 shadow-lg backdrop-blur transition-opacity hover:opacity-100 hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 motion-reduce:transition-none"
+      className="group/topo cp-btn-anim fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex min-h-11 items-center justify-end rounded-full border border-border bg-surface/70 text-text-soft opacity-70 shadow-lg backdrop-blur transition-opacity hover:opacity-100 hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 motion-reduce:transition-none xl:hidden"
     >
       <span
         aria-hidden="true"

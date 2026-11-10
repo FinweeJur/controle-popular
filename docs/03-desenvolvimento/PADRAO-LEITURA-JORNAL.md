@@ -134,6 +134,24 @@ Página longa usa o recurso que já existe: `MiniSumarioLateral` (ou
   salto parar abaixo da navbar.
 - Não crie um segundo componente de sumário: reuse o existente.
 
+### Setas de topo e de próxima seção
+
+Abaixo da lista ficam **duas setas pequenas**, sempre visíveis, só com o
+símbolo:
+
+| Seta | Ação | Rótulo no hover e no foco |
+|---|---|---|
+| ↑ | volta ao topo e devolve o foco a `#conteudo-principal` | **Topo** |
+| ↓ | vai à próxima seção; na última, encerra no fim da página | **Próxima seção** |
+
+- O rótulo aparece à esquerda da seta, para não sair da tela.
+- A seta tem 28 px e o rótulo usa `text-xs` (12 px), nunca menor.
+- O movimento respeita `prefers-reduced-motion`.
+- Em tela larga, esse par substitui o botão flutuante `BackToTop`, que fica
+  restrito a `xl:hidden`. Dois controles de topo na mesma tela confundem.
+- Vale para todo o site: o `CapitulosFlutuantes` monta o widget no layout
+  raiz, então toda página com dois ou mais `h2` recebe o par.
+
 ## Checklist
 
 - [ ] H1 único e lede de até 4 linhas.
