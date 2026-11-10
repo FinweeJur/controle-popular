@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # etl/betim
 
+from etl.pncp import checkpoint as ck  # noqa: E402
 from etl.pncp.fila import (  # noqa: E402
     chaves_ibge,
     cidade_completa,
@@ -13,6 +14,37 @@ from etl.pncp.fila import (  # noqa: E402
     resumo_ibge,
 )
 from etl.pncp.manifesto import montar_manifesto  # noqa: E402
+
+
+def test_unidade_pronta_ano_anterior_pula_e_ano_corrente_rele():
+    estado = {
+        "3106705:123:2024": {"status": "ok", "registros": 10},
+        "3106705:123:2026": {"status": "ok", "registros": 10},
+    }
+    assert ck.unidade_pronta(estado, "3106705:123:2024", ano_atual=2026)
+    assert not ck.unidade_pronta(estado, "3106705:123:2026", ano_atual=2026)
+
+
+def test_unidade_pronta_parcial_nunca_esta_pronta():
+    estado = {"3106705:123:2024": {"status": "parcial", "pagina": 3}}
+    assert not ck.unidade_pronta(estado, "3106705:123:2024", ano_atual=2026)
+
+
+def test_unidade_pronta_chave_sem_ano_mantem_comportamento_antigo():
+    estado = {"3106705:123": {"status": "ok"}}
+    assert ck.unidade_pronta(estado, "3106705:123", ano_atual=2026)
+
+
+def test_registros_parciais_so_conta_unidade_parcial():
+    estado = {
+        "parcial": {"status": "parcial", "registros": 42},
+        "ok": {"status": "ok", "registros": 99},
+        "vazio": {"status": "parcial"},
+    }
+    assert ck.registros_parciais(estado, "parcial") == 42
+    assert ck.registros_parciais(estado, "ok") == 0
+    assert ck.registros_parciais(estado, "vazio") == 0
+    assert ck.registros_parciais(estado, "ausente") == 0
 
 
 def test_chaves_ibge_namespace():
