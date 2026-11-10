@@ -121,6 +121,11 @@ function IconeRadio({ tocando, jaTocou }: { tocando: boolean; jaTocou: boolean }
   return <RadioTower size={20} aria-hidden="true" />;
 }
 
+/** Palavra de estado do item da pilha (o rótulo mostra "Rádio · tocando"). */
+function estadoDoRadio(tocando: boolean): string | undefined {
+  return tocando ? "tocando" : undefined;
+}
+
 export default function PlayerRadio() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   // Instância do hls.js quando a estação é HLS e o navegador não toca nativo.
@@ -460,7 +465,7 @@ export default function PlayerRadio() {
           {...handlers}
           rotulo="Rádio"
           ativo={tocando}
-          estado={tocando ? "tocando" : undefined}
+          estado={estadoDoRadio(tocando)}
           onDoubleClick={resetar}
           onClick={() => {
             // Gesto foi mover: não tocar a estação por acidente (limiar de
