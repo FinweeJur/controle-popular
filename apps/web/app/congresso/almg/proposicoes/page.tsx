@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listerAlmgProposicoes } from "@/lib/congresso/almg-queries";
 import type { ProposicaoAlmg } from "@/lib/congresso/almg";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/almg/proposicoes", {
   title: "Proposições Estaduais ALMG — Assembleia de MG | Controle Popular",
   description:
     "Todas as proposições legislativas de MG com análise garantista de direitos. Projetos de lei, PECs e complementares da ALMG.",
-};
+});
 
 function TabelaAlmg({ dados }: { dados: ProposicaoAlmg[] }) {
   return (

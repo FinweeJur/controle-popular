@@ -5,6 +5,7 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { totaisHome } from "@/lib/db/queries/congresso";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Home. Renderiza normalmente mesmo sem Supabase configurado — é o que
@@ -12,11 +13,11 @@ import { totaisHome } from "@/lib/db/queries/congresso";
  * regra que vale em produção: fonte de dados ausente vira estado vazio
  * honesto, nunca erro.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso", {
   title: "O que o Congresso Nacional está decidindo — Controle Popular",
   description:
     "Monitoramento de projetos de lei federais: proposições, votações, bancadas e análise de direitos. Acompanhe o Congresso Nacional com dados oficiais.",
-};
+});
 
 export default async function Home() {
   const { proposicoes: totalProposicoes, analises: totalAnalises } = await totaisHome();

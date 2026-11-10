@@ -7,12 +7,13 @@ import { DISPOSITIVOS } from "@/lib/direitos-globais/dispositivos";
 import { PAISES_AMERICA_LATINA } from "@/lib/direitos-globais/dados";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
 import TabelaAmericaLatinaInterativa from "../componentes/TabelaAmericaLatinaInterativa";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/america-latina", {
   title: "América Latina e Sistema Interamericano | Direitos Globais | Controle Popular",
   description:
     "Comparação dos 20 países da América Latina, 84 dispositivos conferidos cobrindo o catálogo completo de 24 temas prioritários, CIDH, Corte IDH e 402 sentenças.",
-};
+});
 
 interface SubRegiaoCardProps {
   title: string;

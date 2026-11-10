@@ -4,12 +4,13 @@ import Link from "next/link";
 import { Globe, Users, Map, Scale, Shield } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import DataColeta from "@/app/components/DataColeta";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais", {
   title: "Direitos Globais | Controle Popular",
   description:
     "Comparação de direitos entre países: América Latina, África, Ásia, Europa, América do Norte e Oceania, com constituições, tratados, cortes e órgãos da ONU.",
-};
+});
 
 /**
  * Card de continente para o comparador global.

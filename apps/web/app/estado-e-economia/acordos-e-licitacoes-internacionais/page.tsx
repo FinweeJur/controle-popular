@@ -7,13 +7,14 @@ import {
   obterAcordosELicitacoesInternacionais,
 } from "@/lib/negociacoes/acordos-internacionais";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia/acordos-e-licitacoes-internacionais", {
   title:
     "Acordos, Parcerias e Licitações Internacionais (Brasil, EUA e Europa) | Controle Popular",
   description:
     "Monitoramento de acordos bilaterais, memorandos de entendimento (MoUs), leilões do BNDES/PPI e licitações abertas em 7 setores (construção civil, tecnologia, saúde, educação, infraestrutura, energia e mineração) com pronunciamentos oficiais e contrapartidas.",
-};
+});
 
 export default function AcordosELicitacoesInternacionaisPage() {
   const base = obterBaseNegociacoes();

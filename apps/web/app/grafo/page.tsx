@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import ArvoreObsidianGrafo from "@/app/laboratorio/arvore/ArvoreObsidianGrafo";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/grafo` — o mapa de conexões do portal, em primeiro plano.
@@ -17,11 +18,11 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * `lib/assistente/arvore-galhos.ts`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/grafo", {
   title: "Mapa de conexões — explore as ligações entre as páginas | Controle Popular",
   description:
     "Grafo interativo estilo Obsidian: veja como os eixos, as cidades, as instituições e os territórios do Controle Popular se conectam. Arraste, aplique zoom e navegue por cada nó.",
-};
+});
 
 export default function GrafoPage() {
   return (

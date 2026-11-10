@@ -6,13 +6,14 @@ import {
   obterBaseFornecedores,
   obterFornecedoresMultinacionais,
 } from "@/lib/fornecedores/calculos-multinacionais";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia/fornecedores-multinacionais", {
   title:
     "Fornecedores Multinacionais dos Órgãos Públicos (EUA e Europa) | Controle Popular",
   description:
     "Investigação cívica dos contratos públicos com conglomerados dos EUA e Europa (Microsoft, Oracle, Saab, Airbus, AECOM, Pfizer, SAP, Alstom, Caterpillar): valores em R$ e US$, proporção do lucro global na SEC, vigência, condições e contrapartidas tecnológicas.",
-};
+});
 
 export default function FornecedoresMultinacionaisPage() {
   const base = obterBaseFornecedores();

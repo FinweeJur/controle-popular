@@ -8,6 +8,7 @@ import {
 import type { CidadeComparavel } from "@/lib/comparador/cidades";
 import TermoGlossario from "@/app/components/TermoGlossario";
 import CompararClient from "./CompararClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/comparar` — comparador de cidades.
@@ -20,11 +21,11 @@ import CompararClient from "./CompararClient";
  * build. A data do acervo viaja colada ao número na tela.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/comparar", {
   title: "Comparar cidades — população, PIB e repasses lado a lado | Controle Popular",
   description:
     "Compare duas cidades do portal: população, PIB, PIB por habitante, repasses federais, saúde e escolas, com o valor por habitante para igualar tamanhos diferentes.",
-};
+});
 
 /** Formata AAAA-MM-DD… em dd/mm/aaaa. */
 function formatarData(iso: string | null): string | null {

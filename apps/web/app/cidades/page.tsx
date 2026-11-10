@@ -25,12 +25,13 @@ import {
 import { CAMADAS_MEMORIA } from "@/lib/memoria";
 import TabelaCidadesClient from "./TabelaCidadesClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/cidades", {
   title: "Plano de Expansão Nacional — 203 Cidades Estratégicas | Controle Popular",
   description:
     "Mapa mestre das 27 capitais de estado e 176 polos regionais do interior atendidos pelo Controle Popular com códigos IBGE e DATASUS.",
-};
+});
 
 const SECOES_CIDADES = [
   { id: "status-totais", titulo: "1. Totais da Expansão" },

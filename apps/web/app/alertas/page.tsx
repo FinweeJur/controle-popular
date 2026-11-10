@@ -15,12 +15,13 @@ import Link from "next/link";
 import CentralAlertasClient from "./CentralAlertasClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import { Bell, Send, MessageSquare, Mail } from "lucide-react";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/alertas", {
   title: "Central de Alertas e Notificações Cidadãs | Controle Popular",
   description:
     "Receba e planeje alertas automáticos no Telegram, E-mail e WhatsApp sobre contratos municipais, projetos de lei, convênios, clima e reparações.",
-};
+});
 
 export default function PaginaCentralAlertas() {
   return (

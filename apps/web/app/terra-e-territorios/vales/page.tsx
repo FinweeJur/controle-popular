@@ -9,6 +9,7 @@ import TabelaMunicipiosVales, { type LinhaVale } from "./TabelaMunicipiosVales";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/terra-e-territorios/vales` — catálogo territorial dos Vales do Jequitinhonha
@@ -98,13 +99,13 @@ const TOTAIS = {
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/terra-e-territorios/vales", {
   title: "Vales do Jequitinhonha e do Mucuri — 82 municípios | Controle Popular",
   description:
     `${fmt(TOTAIS.municipios)} municípios dos Vales do Jequitinhonha e do Mucuri (MG): ` +
     `${TOTAIS.litio} com lítio mapeado, ${fmt(TOTAIS.tradicionais)} com comunidades tradicionais e ` +
     `${TOTAIS.indigenas} com terra Maxakali — com link oficial de conferência em cada linha.`,
-};
+});
 
 function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?: string }) {
   return (

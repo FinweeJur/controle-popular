@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { metadataEditavel } from "@/lib/edicoes";
 import NextLink from "next/link";
 import dados from "@/data/noticias-desastres.json";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
@@ -112,11 +113,11 @@ function contagemDoRecorte(n: number, pagina: number, totalPaginas: number): str
   return ` · página ${formatNumberBR(pagina)} de ${formatNumberBR(totalPaginas)}`;
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/riodoce/clipping", {
   title: "Clipping do Rio Doce — retrato de 60 dias | Controle Popular",
   description:
     "Retrato de 60 dias do radar de notícias sobre Mariana/Fundão e Brumadinho: título, data, veículo e link. Varredura automática, sem curadoria e sem atualização sozinha.",
-};
+});
 
 export default async function ClippingRioDocePage({ searchParams }: Props) {
   const params = await searchParams;

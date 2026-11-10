@@ -5,6 +5,7 @@ import SubNavEua from "../components/SubNavEua";
 import PainelContratosEua from "./PainelContratosEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/eua/contratos/page.tsx
@@ -25,11 +26,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * - Frases curtas de até 13 palavras na interface para leitura direta.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eua/contratos", {
   title: "Compras Federais USAspending e Balança Comercial EUA-Brasil | Controle Popular",
   description:
     "Auditoria de compras federais dos EUA no USAspending.gov ($750B) e balança comercial bilateral com o Brasil no US Census Bureau CTY 3510 ($85.2B).",
-};
+});
 
 export default function PaginaContratosEua() {
   const contratos = obterContratosEua();

@@ -37,12 +37,13 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { Globe2, ShieldAlert, Award, Compass } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/conflitos-globais", {
   title: "Conflitos Socioambientais Globais — Atlas de Justiça e Litígios | ONSA",
   description:
     "Monitoramento de 55 casos emblemáticos de conflitos ecológicos globais nas Américas, África, Ásia, Europa e Oceania: mineração, petróleo, lítio, agronegócio e defesa de povos originários a partir do EJAtlas e cortes internacionais.",
-};
+});
 
 export default function PaginaConflitosGlobais() {
   const conflitos = obterConflitosGlobais();

@@ -20,12 +20,13 @@ import {
   type LinkRelacionado,
 } from "@/app/components/wiki";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/canada", {
   title: "Canadá: Transparência Pública, Mineradoras TSX & Conexões com o Brasil | Controle Popular",
   description:
     "Acervo oficial de transparência do Canadá e conexão transnacional com o Brasil: 12 mineradoras na Bolsa de Toronto (TSX), inventário de emissões NPRI, compras públicas e territórios das Primeiras Nações.",
-};
+});
 
 const PAGINAS_RELACIONADAS_CANADA: ItemPaginaRelacionada[] = [
   {

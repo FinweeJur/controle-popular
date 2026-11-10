@@ -4,6 +4,7 @@ import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 import { MiniSumarioLateral } from "@/app/components/wiki/MiniSumarioLateral";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -21,11 +22,11 @@ import { MiniSumarioLateral } from "@/app/components/wiki/MiniSumarioLateral";
  *   responsabilização.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/jurisprudencia/penal", {
   title: "Jurisprudência penal — Controle Popular",
   description:
     "Acervo penal do portal: TJES e STF, com tribunal, ano, tema, resultado e resumo. Separado da jurisprudência dos desastres, que mantém só os casos de responsabilização criminal do rompimento.",
-};
+});
 
 function textoDoParam(valor: string | string[] | undefined): string {
   return (Array.isArray(valor) ? valor[0] : valor) ?? "";

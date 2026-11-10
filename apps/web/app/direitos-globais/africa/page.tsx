@@ -11,12 +11,13 @@ import TabelaAfricaInterativa from "../componentes/TabelaAfricaInterativa";
 import TabelaCasosAfricaInterativa from "../componentes/TabelaCasosAfricaInterativa";
 import { DISPOSITIVOS_AFRICA } from "@/lib/direitos-globais/africa/dispositivos";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/africa", {
   title: "África e Corte Africana | Direitos Globais | Controle Popular",
   description:
     "Comparação dos 54 países africanos, tratados da União Africana, sentenças da Corte Africana e da Comissão (ACHPR), com foco central nos Direitos dos Povos.",
-};
+});
 
 function StatusBadge({ status }: { status: string }) {
   if (status === "cumprido" || status === "ratificado") {

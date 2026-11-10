@@ -5,6 +5,7 @@ import FonteRodape from "@/app/judiciario/components/FonteRodape";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import resumo from "@/data/jurisprudencia-buscador-resumo.json";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/judiciario/jurisprudencia` — o buscador de decisões sobre barragens,
@@ -22,11 +23,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * lógica de busca para divergir da primeira.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/jurisprudencia", {
   title: "Jurisprudência de barragens e direitos humanos — TJMG e TJES | Controle Popular",
   description:
     "Busque decisões do TJMG e do TJES sobre Brumadinho, Rio Doce, Fundão, mineração e direitos humanos: ementa, inteiro teor, polo e categoria.",
-};
+});
 
 const CATEGORIAS = [
   { chave: "A" as const, rotulo: "A — barragens e mineração" },

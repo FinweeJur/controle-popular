@@ -5,6 +5,7 @@ import SubNavEua from "../components/SubNavEua";
 import PainelInstitucionalEua from "./PainelInstitucionalEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/eua/institucional/page.tsx
@@ -27,11 +28,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * - Frases curtas de até 13 palavras na interface para máxima clareza e acessibilidade.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eua/institucional", {
   title: "Institucional dos EUA: Cidades FIPS, Congresso, Corte de NY e FOIA | Controle Popular",
   description:
     "Estrutura institucional dos EUA: cidades-polo Nova York e Washington D.C., 119º Congresso, caso civil de Brumadinho na corte SDNY, reservas indígenas BIA e guia de pedido FOIA.",
-};
+});
 
 export default function PaginaInstitucionalEua() {
   const institucional = obterInstitucionalEua();

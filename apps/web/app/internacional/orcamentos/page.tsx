@@ -39,13 +39,14 @@ import {
 } from "@/lib/internacional/dados-orcamentos";
 import PainelOrcamentosClient from "./PainelOrcamentosClient";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional/orcamentos", {
   title:
     "Orçamentos de EUA, Canadá e Europa: Militar, Inteligência, Economia, Tecnologia, Água, Energia e Clima | Controle Popular",
   description:
     "Auditoria e comparativo cívico dos orçamentos de Defesa, Inteligência, Economia, P&D, Água, Energia e Crise Climática de Estados Unidos, Canadá e Europa com fontes oficiais diretas.",
-};
+});
 
 const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
   {

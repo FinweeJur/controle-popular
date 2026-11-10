@@ -6,6 +6,7 @@ import { PainelFacetas } from "@/app/components/PainelFacetas";
 import CabecalhoObservatorio from "./CabecalhoObservatorio";
 import EmpresasClient from "./EmpresasClient";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file `/empresas` — Observatório de Grandes Empresas & Fundos.
@@ -41,11 +42,11 @@ interface Props {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas", {
   title: "Observatório de Grandes Empresas & Fundos de Investimento — Controle Popular",
   description:
     "Monitoramento cívico das 130 maiores empresas e fundos atuantes no Brasil: ações na B3 e NYSE, transparência, ESG, direitos humanos, licenciamentos ambientais, contratos no PNCP e TACs.",
-};
+});
 
 export default async function EmpresasIndexPage({ searchParams }: Props) {
   const params = await searchParams;

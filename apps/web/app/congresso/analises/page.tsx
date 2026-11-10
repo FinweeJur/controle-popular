@@ -14,6 +14,7 @@ import {
   RodapePainel,
   Trilha,
 } from "./partes";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file `/congresso/analises` — painel de facetas das proposições federais
@@ -52,11 +53,11 @@ interface Props {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/analises", {
   title: "Análises de direitos no Congresso — o que amplia e o que restringe | Controle Popular",
   description:
     "Painel único das proposições federais com análise de direitos concluída: filtre por sentido (amplia ou restringe) e por tema, com o dispositivo legal e o trecho que fundamentam cada rótulo.",
-};
+});
 
 export default async function AnalisesPage({ searchParams }: Props) {
   const params = await searchParams;

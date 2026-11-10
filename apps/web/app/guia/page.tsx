@@ -7,6 +7,7 @@ import { montarGuia } from "@/lib/guia/contatos";
 import TermoGlossario from "@/app/components/TermoGlossario";
 import GuiaClient from "./GuiaClient";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/guia` — guia de contatos públicos.
@@ -20,11 +21,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * Contatos municipais seguem em `/[municipio]/contatos`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/guia", {
   title: "Guia de contatos públicos — órgãos, ouvidorias e Justiça | Controle Popular",
   description:
     "Busque telefone, e-mail e canal de ouvidoria de órgãos públicos, prefeituras, câmaras e unidades da Justiça num só lugar, com filtro por origem e UF e exportação em planilha.",
-};
+});
 
 export default function GuiaPage() {
   const contatos = montarGuia(

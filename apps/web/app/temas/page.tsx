@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import TemasClient from "./TemasClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/temas` — acompanhar temas do portal.
@@ -11,11 +12,11 @@ import TemasClient from "./TemasClient";
  * no `localStorage`. Lógica pura em `lib/temas/temas.ts`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/temas", {
   title: "Acompanhar temas — guarde seus assuntos | Controle Popular",
   description:
     "Marque os temas do portal que você quer acompanhar (cidades, Congresso, Judiciário, meio ambiente, Paraopeba e mais). A lista fica no seu aparelho, sem cadastro, e você escolhe receber avisos pelo Telegram ou e-mail.",
-};
+});
 
 export default function TemasPage() {
   return (

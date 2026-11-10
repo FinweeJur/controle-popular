@@ -34,12 +34,13 @@ import {
   Eye,
 } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional/inteligencia/mapa", {
   title: "Mapa Global de Inteligência & Documentos Desclassificados | Controle Popular",
   description:
     "Geolocalização interativa dos relatórios e dossiês de inteligência do G20, FBI, NSA, CIA e Twelve Eyes com links diretos para os relatórios oficiais e PDFs.",
-};
+});
 
 export default function PaginaMapaInteligenciaG20() {
   const documentos = obterDocumentosDesclassificados();

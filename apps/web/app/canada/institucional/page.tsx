@@ -33,12 +33,13 @@ import PainelInstitucionalCanada from "./PainelInstitucionalCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/canada/institucional", {
   title: "Institucional Canadá: Cidades SGC, Parlamento, CanLII & Ouvidoria CORE | Controle Popular",
   description:
     "Cidades-polo (Toronto, Sudbury), jurisprudência da Suprema Corte no CanLII sobre mineração no exterior, Primeiras Nações e canais cívicos da Ouvidoria CORE e ATIP.",
-};
+});
 
 export default function PaginaInstitucionalCanada() {
   const institucional = obterInstitucionalCanada();

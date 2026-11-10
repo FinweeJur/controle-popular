@@ -20,6 +20,7 @@ import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import { obterEstatisticasCar } from "@/lib/ambiental/car";
 import { TOTAL_AUTOS_RECENTES } from "@/lib/ambiental/autos-recentes";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Home da zona /ambiental.
@@ -41,11 +42,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental", {
   title: "Meio Ambiente — Observatório Nacional Socioambiental (ONSA) — Controle Popular",
   description:
     "O Observatório Nacional Socioambiental: COPAM e licenciamento de Minas, barragens do país inteiro, normas federais, processos ambientais na Justiça, o Acordo do Rio Doce e a Vale.",
-};
+});
 
 
 /** Um bloco do grid de frentes da zona ambiental. */

@@ -1,0 +1,850 @@
+{
+  "/": {
+    "titulo": "Controle Popular: dado público com fonte",
+    "descricao": "Barragens, reparação, orçamento e Justiça em Minas e no Brasil, com link para a fonte oficial."
+  },
+  "/indice": {
+    "titulo": "Índice do Controle Popular",
+    "descricao": "Todas as frentes, cidades e temas do portal num mapa só."
+  },
+  "/central": {
+    "titulo": "Central: busca, dados e ferramentas",
+    "descricao": "Busca no acervo, comparador, radar de editais, biblioteca e IA livre num hub só."
+  },
+  "/alertas": {
+    "titulo": "Alertas de contrato, clima e reparação",
+    "descricao": "Receba aviso no Telegram, e-mail ou WhatsApp sobre contrato, lei, clima e reparação."
+  },
+  "/busca": {
+    "titulo": "Busca no acervo do portal",
+    "descricao": "Tema, palavra, território, tipo e período em cinco frentes do Controle Popular."
+  },
+  "/assistente": {
+    "titulo": "Assistente de navegação do portal",
+    "descricao": "Diga o que procura e ele leva à página certa. Funciona sem rede e sem IA."
+  },
+  "/comparar": {
+    "titulo": "Comparar cidades lado a lado",
+    "descricao": "População, PIB, repasses, saúde e escolas de duas cidades, com valor por habitante."
+  },
+  "/recapitular": {
+    "titulo": "Recapitular sua cidade",
+    "descricao": "População, PIB, repasses e escolas com fonte e data, pronto para copiar."
+  },
+  "/grafo": {
+    "titulo": "Mapa de conexões do portal",
+    "descricao": "Como os eixos, as cidades, as instituições e os territórios se ligam, nó a nó."
+  },
+  "/laboratorio": {
+    "titulo": "Laboratório de dados públicos",
+    "descricao": "Camadas de barragem, licenciamento, salário, licitação, educação e economia."
+  },
+  "/laboratorio/arvore": {
+    "titulo": "Árvore de conexões cívicas",
+    "descricao": "Grafo que liga os quatro eixos, as cidades, as instituições e os territórios."
+  },
+  "/temas": {
+    "titulo": "Acompanhar temas",
+    "descricao": "Marque seus assuntos e receba aviso no Telegram ou e-mail. A lista fica no seu aparelho."
+  },
+  "/pasta": {
+    "titulo": "Pasta de dossiê",
+    "descricao": "Junte páginas, tabelas e leis e exporte em planilha ou impressão, sem cadastro."
+  },
+  "/meus-dados": {
+    "titulo": "Meus dados e privacidade",
+    "descricao": "O que o portal guarda sobre você e como pedir correção."
+  },
+  "/novidades": {
+    "titulo": "Novidades do portal",
+    "descricao": "Últimas atualizações: dado novo, coleta nova e funcionalidade nova."
+  },
+  "/historico": {
+    "titulo": "Linha do tempo do portal",
+    "descricao": "O que o Controle Popular abriu mês a mês: frentes, conteúdo e ferramenta."
+  },
+  "/sobre": {
+    "titulo": "Sobre o Controle Popular",
+    "descricao": "O que é o portal, como cada dado chega e por que está em revisão."
+  },
+  "/termos": {
+    "titulo": "Termos de uso e origem dos dados",
+    "descricao": "Base legal, licença, o que é mascarado e como pedir correção ou remoção."
+  },
+  "/dados": {
+    "titulo": "Dados abertos do portal",
+    "descricao": "Baixe as bases, veja a metodologia e reutilize com fonte."
+  },
+  "/dados/populares": {
+    "titulo": "Páginas mais vistas",
+    "descricao": "Ranking de visualizações das principais páginas de Cidades, Congresso e Judiciário."
+  },
+  "/dados/comunicabr": {
+    "titulo": "ComunicaBR nas cidades de Minas",
+    "descricao": "O que o governo federal declara por município e quantos indicadores vieram sem valor."
+  },
+  "/imprensa": {
+    "titulo": "Sala de imprensa e dados",
+    "descricao": "Números-chave auditados, rotas públicas e contato para jornalista e pesquisador."
+  },
+  "/politica-de-ia": {
+    "titulo": "Política de uso de IA",
+    "descricao": "Onde a IA atua, o que ela extrai e o que o código calcula. O que ela nunca faz."
+  },
+  "/glossario": {
+    "titulo": "Glossário do dinheiro público",
+    "descricao": "Licitação, empenho, TAC, LAI e barragem a montante em português comum, com fonte."
+  },
+  "/guia": {
+    "titulo": "Guia de contatos públicos",
+    "descricao": "Telefone, e-mail e ouvidoria de órgão, prefeitura, câmara e unidade da Justiça."
+  },
+  "/modelos": {
+    "titulo": "Modelos prontos para pedir e cobrar",
+    "descricao": "Pedido de LAI, recurso de negativa, notícia de fato ao MP e tarifa social."
+  },
+  "/aprender": {
+    "titulo": "Aprender: dinheiro público em lições",
+    "descricao": "LAI, licitação, ICMS, CAR e barragem a montante explicados em minutos, com fonte."
+  },
+  "/educacao": {
+    "titulo": "Educação: escola, IDEB e pesquisa",
+    "descricao": "Censo Escolar, IDEB, grupos do CNPq, periódicos abertos e editais de intercâmbio."
+  },
+  "/universidades": {
+    "titulo": "Universidades: grupos e extensão",
+    "descricao": "Grupo de pesquisa e projeto de extensão por tema, estado, período e contato."
+  },
+  "/biblioteca": {
+    "titulo": "Biblioteca geral e acervo acadêmico",
+    "descricao": "Documento público, relatório corporativo, ata de justiça e artigo sobre mineração."
+  },
+  "/periodicos": {
+    "titulo": "Periódicos abertos no mundo",
+    "descricao": "Revistas de acesso aberto com submissão contínua, tema, prazo, idioma e DOI."
+  },
+  "/radio": {
+    "titulo": "Rádios públicas e comunitárias",
+    "descricao": "Diretório de estações do Brasil e do mundo, com cidade, tipo e link."
+  },
+  "/concursos": {
+    "titulo": "Concursos e seleções temporárias",
+    "descricao": "Certames públicos no Brasil por UF e poder, com busca e exportação em CSV."
+  },
+  "/indicadores": {
+    "titulo": "Painel de indicadores cívicos",
+    "descricao": "Saúde, educação, desenvolvimento humano e conselhos nos estados e municípios."
+  },
+  "/documentacao": {
+    "titulo": "Documentação técnica do portal",
+    "descricao": "Arquitetura, fontes, coleta, API pública e princípios editoriais, aberta a todos."
+  },
+  "/documentacao/api-publica": {
+    "titulo": "API pública em JSON",
+    "descricao": "Municípios, editais e Paraopeba em endpoints abertos, sem chave e sem autenticação."
+  },
+  "/documentacao/arquitetura": {
+    "titulo": "Arquitetura do portal",
+    "descricao": "Como o site é construído: Next.js, banco Postgres, teto de bundle e regra de payload."
+  },
+  "/documentacao/editorial": {
+    "titulo": "Princípios editoriais",
+    "descricao": "Dupla verificação, dado pessoal, lacuna como informação e resumo assistido por IA."
+  },
+  "/documentacao/fontes-e-coletas": {
+    "titulo": "Fontes e coletas",
+    "descricao": "Quais APIs e diários oficiais são coletados, com que frequência e sob qual política."
+  },
+  "/editais": {
+    "titulo": "Editais e chamamentos de Minas",
+    "descricao": "Radar diário do Diário Oficial de MG, com busca, filtro por órgão e download em CSV."
+  },
+  "/eixos/casos": {
+    "titulo": "Três desastres, três acervos",
+    "descricao": "Brumadinho, Rio Doce e Itatiaiuçu: acórdãos, documentos e notícias."
+  },
+  "/noticias": {
+    "titulo": "Blog e relatórios técnicos",
+    "descricao": "Análise de compra pública, orçamento municipal, processo legislativo e dado ambiental."
+  },
+  "/memoria": {
+    "titulo": "Memória das lutas populares",
+    "descricao": "Fatos, revoltas e resistências, com a fonte citada em cada um."
+  },
+  "/historia": {
+    "titulo": "História de Minas: terra e revolta",
+    "descricao": "Capitanias de 1534, revoltas com lugar identificado e fazendas tombadas no estado."
+  },
+  "/mineracao/cavas": {
+    "titulo": "Onde a mineração cresceu em Minas",
+    "descricao": "Os polígonos de mineração do estado e o avanço medido sobre o território."
+  },
+  "/mineracao/ilegal": {
+    "titulo": "Mineração e comunidades tradicionais",
+    "descricao": "Terra indígena e território quilombola sob pressão da mineração em Minas."
+  },
+  "/governo": {
+    "titulo": "Prometeu e cumpriu? Planos de governo",
+    "descricao": "O plano registrado no TSE cruzado com a execução real de secretarias e ministérios."
+  },
+  "/instituicoes": {
+    "titulo": "Instituições e secretarias do país",
+    "descricao": "Ministérios, secretarias, Congresso, tribunais, MP e Defensoria, com contato."
+  },
+  "/terra-e-territorios": {
+    "titulo": "Terra e Territórios: soberania e bioma",
+    "descricao": "Cidades, bacia, licenciamento, terra indígena e defesa dos biomas."
+  },
+  "/terra-e-territorios/nossas-serras": {
+    "titulo": "Nossas Serras",
+    "descricao": "Topo de morro, patrimônio geológico, unidade de conservação e mineração."
+  },
+  "/terra-e-territorios/nossos-rios": {
+    "titulo": "Nossos Rios e Bacias",
+    "descricao": "Monitoramento da água, bacia atingida e saneamento, com foco na reparação."
+  },
+  "/terra-e-territorios/vales": {
+    "titulo": "Vales do Jequitinhonha e do Mucuri",
+    "descricao": "Os municípios dos dois vales: lítio, comunidade tradicional e o povo Maxakali."
+  },
+  "/funcaosocialterra": {
+    "titulo": "Função social da terra em Minas",
+    "descricao": "Terra indígena, barragem, mineração e CFEM no mapa 3D, com alerta de sobreposição."
+  },
+  "/funcaosocialterra/alertas": {
+    "titulo": "Alertas de sobreposição de território",
+    "descricao": "Mineração sobre terra indígena, mancha de barragem e norma que mexe em área protegida."
+  },
+  "/funcaosocialterra/indice": {
+    "titulo": "Índice da função social da terra",
+    "descricao": "Alertas, mapa de camadas e território num mapa só."
+  },
+  "/funcaosocialterra/mapa": {
+    "titulo": "Mapa 3D da função social da terra",
+    "descricao": "Vazio cadastral, terra pública certificada, assentamento e quilombo, camada por camada."
+  },
+  "/estudos-rurais": {
+    "titulo": "Estudos rurais dos vales de Minas",
+    "descricao": "Pesquisa sobre Jequitinhonha e Mucuri, com busca, filtro e download em CSV."
+  },
+  "/cidades": {
+    "titulo": "Cidades: gasto, contrato e serviço",
+    "descricao": "O que cada prefeitura gasta, com quem contrata e como o serviço chega."
+  },
+  "/ambiental": {
+    "titulo": "Meio Ambiente: o observatório socioambiental",
+    "descricao": "COPAM, licenciamento, barragem do país, legislação, processo na Justiça e o Rio Doce."
+  },
+  "/ambiental/indice": {
+    "titulo": "Índice do Meio Ambiente",
+    "descricao": "COPAM, licenciamento, barragens, legislação, patrimônio, estudos, Mariana e a Vale."
+  },
+  "/ambiental/barragens": {
+    "titulo": "Barragens de Minas: risco e emergência",
+    "descricao": "FEAM, SNISB e SIGBM num só lugar: estabilidade, nível de emergência e categoria de risco."
+  },
+  "/ambiental/barragens-globais": {
+    "titulo": "Grandes barragens do mundo",
+    "descricao": "Rejeitos, hidrelétricas e reservatórios em acervo global: ICOLD, USACE e ANM."
+  },
+  "/ambiental/barragens/descaracterizacao": {
+    "titulo": "Barragens a montante em descaracterização",
+    "descricao": "As barragens que o MPMG acompanha, o rejeito de cada uma e o que já foi descaracterizado."
+  },
+  "/ambiental/licenciamento": {
+    "titulo": "Licenciamento ambiental em Minas",
+    "descricao": "Todo empreendimento com licença deferida, por município, setor, modalidade e classe."
+  },
+  "/ambiental/decisoes": {
+    "titulo": "Licenciamento negado em Minas",
+    "descricao": "Indeferimento, arquivamento e cancelamento que o acervo de licença concedida não mostra."
+  },
+  "/ambiental/autuacoes": {
+    "titulo": "Autos de infração ambiental em Minas",
+    "descricao": "Busque por município, ano, situação e valor. O autuado não é identificado."
+  },
+  "/ambiental/licencas": {
+    "titulo": "Licenças, outorgas e infrações",
+    "descricao": "Um feed só, do IBAMA e da ANA a 15 órgãos estaduais, com filtro, resumo e CSV."
+  },
+  "/ambiental/condicionantes": {
+    "titulo": "Condicionantes de barragem: cumpriu?",
+    "descricao": "O que a licença e o TAC mandaram fazer em Irapé e Setúbal, com o status da evidência."
+  },
+  "/ambiental/convenios": {
+    "titulo": "Convênios ambientais de Minas",
+    "descricao": "O que Semad, Feam, IEF e Igam repassaram, por quanto tempo e quantos foram prorrogados."
+  },
+  "/ambiental/copam": {
+    "titulo": "Reuniões do COPAM, item a item",
+    "descricao": "A pauta de cada reunião do conselho ambiental de MG, o município e o resultado da decisão."
+  },
+  "/ambiental/tac": {
+    "titulo": "TACs ambientais: promessa e execução",
+    "descricao": "Quanto cada mineradora prometeu em termo de ajustamento, para qual órgão e quanto executou."
+  },
+  "/ambiental/estudos": {
+    "titulo": "Estudos de impacto e audiência pública",
+    "descricao": "Cada EIA/RIMA ligado a audiência em Minas, com o link que o Estado publicou."
+  },
+  "/ambiental/legislacao": {
+    "titulo": "Legislação ambiental e precedentes",
+    "descricao": "Normas de MG e federais, tratados e decisões, filtráveis por esfera e tema de proteção."
+  },
+  "/ambiental/judiciario": {
+    "titulo": "Processos ambientais na Justiça de MG",
+    "descricao": "Contagem, situação e tempo de tramitação por município, a partir do SIRENEJud do CNJ."
+  },
+  "/ambiental/litigios-climaticos": {
+    "titulo": "Litigância climática no Brasil",
+    "descricao": "Ações da base JUMA, processos ambientais do SIRENEJud e teses do TJMG sobre barragens."
+  },
+  "/ambiental/patrimonio-cultural": {
+    "titulo": "Patrimônio tombado em Minas",
+    "descricao": "Imóvel, conjunto e centro histórico protegido pelo Iepha, por município e categoria."
+  },
+  "/ambiental/crise-climatica": {
+    "titulo": "Crise climática: emissões e metas",
+    "descricao": "Emissões do G20, maiores instalações poluidoras, anomalias do Copernicus e metas das NDCs."
+  },
+  "/ambiental/clima-risco": {
+    "titulo": "Clima e risco: quem está exposto",
+    "descricao": "População em área de risco, chuva, seca, queimada e saneamento, com fonte oficial."
+  },
+  "/ambiental/car": {
+    "titulo": "Cadastro Ambiental Rural em Minas",
+    "descricao": "Os imóveis do CAR sob o IEF: espera pela análise, setor, porte e consulta oficial."
+  },
+  "/ambiental/ibama": {
+    "titulo": "IBAMA em Minas: licença e multa",
+    "descricao": "Licenciamento federal, auto de infração e julgamento de penalidade no estado."
+  },
+  "/ambiental/mariana": {
+    "titulo": "Acordo de Mariana: execução em MG",
+    "descricao": "Quanto o Governo de Minas empenhou, iniciativa por iniciativa, no Acordo do Rio Doce."
+  },
+  "/ambiental/rio-doce/analise": {
+    "titulo": "Rio Doce: a chegada ao litoral",
+    "descricao": "A pluma de rejeito, o dano ambiental, a saúde, a pesca e os limites da reparação."
+  },
+  "/ambiental/conflitos-globais": {
+    "titulo": "Conflitos socioambientais no mundo",
+    "descricao": "Mineração, petróleo, lítio e agronegócio em 55 casos, do EJAtlas às cortes internacionais."
+  },
+  "/ambiental/ameacas-americas": {
+    "titulo": "Ameaças ambientais nas Américas",
+    "descricao": "90 ameaças críticas: espécie, bacia, serra e território tradicional protegido."
+  },
+  "/ambiental/capacidade-institucional": {
+    "titulo": "Quem fiscaliza o meio ambiente em MG",
+    "descricao": "Efetivo, orçamento e processo por analista no IEF, Igam, Feam, Iepha e Ibama."
+  },
+  "/ambiental/ecossistema": {
+    "titulo": "Quem regula o meio ambiente no Brasil",
+    "descricao": "As 27 agências estaduais, os ministérios, as agências reguladoras e as concessionárias."
+  },
+  "/ambiental/conselhos": {
+    "titulo": "Conselhos de bacia e de direitos",
+    "descricao": "Comitê, CODEMA e conselho tutelar com contato, ata e canal de fiscalização."
+  },
+  "/ambiental/direitos-humanos": {
+    "titulo": "Direitos humanos: CIDH, ONU e CNDH",
+    "descricao": "Relatório temático e de país cruzado por território, com link para o documento."
+  },
+  "/ambiental/crimes-socioambientais": {
+    "titulo": "Crimes socioambientais: Mariana e Brumadinho",
+    "descricao": "Perícia, TAC, relatório da Fiocruz e plano comunitário das duas bacias."
+  },
+  "/ambiental/nossa-gente": {
+    "titulo": "Nossa gente: povos e atingidos",
+    "descricao": "Quilombola, pescador artesanal, geraizeiro e atingido por barragem em foco."
+  },
+  "/ambiental/nossos": {
+    "titulo": "Nossos rios, serras e territórios",
+    "descricao": "Água, relevo, cerrado e gente: os lugares que o observatório acompanha."
+  },
+  "/ambiental/nossos-animais": {
+    "titulo": "Nossos animais: fauna ameaçada",
+    "descricao": "Espécie em risco, corredor de fauna, atropelamento e fiscalização."
+  },
+  "/ambiental/autorizacoes": {
+    "titulo": "Imóveis da União em Minas Gerais",
+    "descricao": "Destinação, classe, proprietário e área de cada imóvel federal, com fonte na SPU."
+  },
+  "/ambiental/decisoes-lai": {
+    "titulo": "Recursos de LAI negados em Minas",
+    "descricao": "As decisões da CGE-MG sobre pedido de informação negado por órgão estadual."
+  },
+  "/ambiental/ppp": {
+    "titulo": "Concessões e PPPs de Minas",
+    "descricao": "Contrato do Estado que cita concessão ou parceria, com valor, vigência e concessionária."
+  },
+  "/direitos-em-movimento": {
+    "titulo": "Direitos em movimento: onde buscar",
+    "descricao": "Que lei protege, onde pedir ajuda, como pedir informação e como denunciar."
+  },
+  "/direitos-em-movimento/ajuda": {
+    "titulo": "Onde buscar ajuda",
+    "descricao": "Defensoria, Ministério Público, delegacia especializada e clínica jurídica gratuita."
+  },
+  "/direitos-em-movimento/denuncia": {
+    "titulo": "Como denunciar uma violação",
+    "descricao": "Passo a passo guiado: o documento nasce no seu navegador e não vai para servidor."
+  },
+  "/direitos-em-movimento/informacao": {
+    "titulo": "Canais de acesso à informação",
+    "descricao": "E-mail, telefone e e-SIC de prefeitura, câmara, órgão federal e concessionária."
+  },
+  "/direitos-em-movimento/conselhos": {
+    "titulo": "Conselhos de direitos e colegiados",
+    "descricao": "Saúde, direitos humanos, mulher, juventude, tutelar e CODEMA, com contato."
+  },
+  "/direitos-em-movimento/seguranca-publica": {
+    "titulo": "Mortes por intervenção policial",
+    "descricao": "Quantas pessoas morreram por ação de agente do Estado no Brasil, por estado."
+  },
+  "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores": {
+    "titulo": "Cadastro de empregadores",
+    "descricao": "Empresa autuada por trabalho escravo na lista do MTE, com link para a fonte."
+  },
+  "/direitos-em-movimento/saude-publica": {
+    "titulo": "Saúde pública: SUS em números",
+    "descricao": "Leitos, internações e cobertura por município."
+  },
+  "/direitos-em-movimento/educacao": {
+    "titulo": "Educação: escolas, matrículas e IDEB",
+    "descricao": "Infraestrutura e aprendizado em cada município."
+  },
+  "/direitos-em-movimento/trabalho-e-renda": {
+    "titulo": "Trabalho e renda: CAGED e RAIS",
+    "descricao": "Emprego formal, salário e contratação pública."
+  },
+  "/direitos-comparados": {
+    "titulo": "Direitos comparados entre estados",
+    "descricao": "Indicadores de direitos fundamentais e o índice de educação, pesquisa e extensão."
+  },
+  "/direitos-globais": {
+    "titulo": "Direitos no mundo, país por país",
+    "descricao": "Constituição, tratado, corte regional e órgão da ONU comparados em seis regiões."
+  },
+  "/direitos-globais/onu": {
+    "titulo": "ONU: comitês e revisão periódica",
+    "descricao": "Recomendação dos comitês de tratado e da UPR, com link para o documento."
+  },
+  "/direitos-globais/africa": {
+    "titulo": "África e a Corte Africana",
+    "descricao": "Tratado da União Africana, sentença da Corte e o foco nos direitos dos povos."
+  },
+  "/direitos-globais/america-latina": {
+    "titulo": "América Latina e o sistema interamericano",
+    "descricao": "Constituição do continente, a CIDH e a Corte IDH, com o texto de cada tratado."
+  },
+  "/direitos-globais/america-latina/cidh": {
+    "titulo": "CIDH e Corte Interamericana",
+    "descricao": "Quais tratados cada país ratificou e o que uma condenação obriga."
+  },
+  "/direitos-globais/america-do-norte": {
+    "titulo": "EUA e Canadá: direitos comparados",
+    "descricao": "Bill of Rights, Carta Canadense e a seção 35 sobre povos indígenas."
+  },
+  "/direitos-globais/europa": {
+    "titulo": "Europa e o Conselho da Europa",
+    "descricao": "Constituição europeia, lei de devida diligência e tutela ambiental."
+  },
+  "/direitos-globais/asia": {
+    "titulo": "Ásia: direitos fundamentais",
+    "descricao": "Constituições por sub-região, a ausência de corte regional e o controle da ONU."
+  },
+  "/direitos-globais/oceania": {
+    "titulo": "Oceania: povos e clima",
+    "descricao": "Direito dos povos originários, terra consuetudinária e emergência climática."
+  },
+  "/estado-e-economia": {
+    "titulo": "Estado e Economia: contas e poder",
+    "descricao": "Orçamento, compra no PNCP, gasto do Judiciário e votação no Congresso."
+  },
+  "/estado-e-economia/orcamento": {
+    "titulo": "Orçamento público: dotação e execução",
+    "descricao": "Execução financeira, transferência federal e indicadores do Banco Central."
+  },
+  "/estado-e-economia/judiciario": {
+    "titulo": "Judiciário: composição e gasto",
+    "descricao": "Tribunal superior e regional, vaga, inspeção do CNJ e processo do SIRENEJud."
+  },
+  "/estado-e-economia/renuncia-fiscal": {
+    "titulo": "Renúncia fiscal: o que não se arrecada",
+    "descricao": "Gasto tributário por ano-base, com o valor e a fonte oficial de cada renúncia."
+  },
+  "/estado-e-economia/acordos-e-licitacoes-internacionais": {
+    "titulo": "Acordos e licitações internacionais",
+    "descricao": "Memorando, leilão do BNDES e licitação aberta em sete setores, com contrapartida."
+  },
+  "/estado-e-economia/fornecedores-multinacionais": {
+    "titulo": "Multinacional que vende ao poder público",
+    "descricao": "Contrato com Microsoft, Oracle, Airbus, Pfizer e outras, com valor e vigência."
+  },
+  "/empresas": {
+    "titulo": "Empresas: sócios, contratos e mineração",
+    "descricao": "Grandes grupos, fornecedores e o rastro corporativo da mineração."
+  },
+  "/empresas/conglomerados": {
+    "titulo": "Monopólios, holdings e cartéis",
+    "descricao": "Rede de controle societário, Big Three, ABCD dos grãos, Big Mining e índice HHI."
+  },
+  "/empresas/documentos": {
+    "titulo": "Relatórios ESG e prestação de contas",
+    "descricao": "Relatório de sustentabilidade, demonstração na CVM e SEC e inventário de carbono."
+  },
+  "/empresas/executivos": {
+    "titulo": "CEOs, diretores e conselheiros",
+    "descricao": "Governança, remuneração, diretoria entrelaçada e a porta giratória público-privada."
+  },
+  "/empresas/fortunas": {
+    "titulo": "As mil maiores fortunas do mundo",
+    "descricao": "Quem são, de que setor, quanto rendem por mês e o equivalente na linha da pobreza."
+  },
+  "/consumo-corporativo": {
+    "titulo": "Quem consome a água e a energia",
+    "descricao": "Os maiores consumidores corporativos de água, luz, combustível, emprego e capital."
+  },
+  "/congresso": {
+    "titulo": "Congresso: o que está sendo decidido",
+    "descricao": "Proposição, votação, bancada e análise de direitos, com dado oficial da Câmara."
+  },
+  "/congresso/indice": {
+    "titulo": "Índice do Congresso Nacional",
+    "descricao": "Parlamentares, comissões, proposições, votações e agenda num mapa só."
+  },
+  "/congresso/parlamentares": {
+    "titulo": "Deputados federais em exercício",
+    "descricao": "Presença em plenário, coerência de voto com direitos e proposição de autoria."
+  },
+  "/congresso/proposicoes": {
+    "titulo": "Proposições federais",
+    "descricao": "Busque projeto de lei por tema, palavra-chave e classificação de direitos."
+  },
+  "/congresso/votacoes": {
+    "titulo": "Votações da Câmara",
+    "descricao": "Como cada parlamentar votou, votação por votação."
+  },
+  "/congresso/comissoes": {
+    "titulo": "Comissões da Câmara",
+    "descricao": "Onde cada proposição está parada e o que ela amplia ou restringe em direitos."
+  },
+  "/congresso/bancadas": {
+    "titulo": "Bancadas e frentes na Câmara",
+    "descricao": "Frente parlamentar, bloco, federação e partido, com quantos deputados cada um reúne."
+  },
+  "/congresso/agenda": {
+    "titulo": "Agenda da Câmara: audiências e reuniões",
+    "descricao": "O que está marcado, onde, com quem e o link para o registro oficial."
+  },
+  "/congresso/analises": {
+    "titulo": "O que amplia e o que restringe direitos",
+    "descricao": "Proposição federal com análise concluída, filtro por sentido e tema, e o dispositivo."
+  },
+  "/congresso/cota-parlamentar": {
+    "titulo": "Cota parlamentar (CEAP)",
+    "descricao": "Gasto de gabinete de todos os deputados federais, valor reembolsado e fornecedor."
+  },
+  "/congresso/financiamento-eleitoral": {
+    "titulo": "Quem financiou a campanha de 2022 em MG",
+    "descricao": "Empresa que recebeu das campanhas mineiras, com valor e candidato."
+  },
+  "/congresso/almg": {
+    "titulo": "Assembleia de MG: proposições",
+    "descricao": "Projeto da ALMG com análise de ampliação ou restrição de direitos fundamentais."
+  },
+  "/congresso/almg/proposicoes": {
+    "titulo": "Proposições da ALMG",
+    "descricao": "Projeto de lei, PEC e complementar de MG, com a análise garantista de cada um."
+  },
+  "/congresso/metodologia": {
+    "titulo": "Como classificamos uma proposição",
+    "descricao": "A taxonomia de direitos, os mecanismos e o cálculo do score, declarados e auditáveis."
+  },
+  "/eleicoes": {
+    "titulo": "Eleições: financiamento e resultado",
+    "descricao": "Quem financiou, quem votou e o que mudou."
+  },
+  "/eleicoes/2026/gastos-campanha": {
+    "titulo": "Gastos de campanha 2026",
+    "descricao": "Receita, despesa, gasto digital e custo por voto, com link para a fonte do TSE."
+  },
+  "/eleicoes/2026/locais-votacao-alterados": {
+    "titulo": "Locais de votação alterados em 2026",
+    "descricao": "Onde conferir oficialmente a seção eleitoral mudada: TSE, dado aberto e TRE."
+  },
+  "/eleicoes/2026/transporte-gratuito": {
+    "titulo": "Transporte grátis na eleição de 2026",
+    "descricao": "O que cada estado e TRE publicou sobre gratuidade e transporte especial no pleito."
+  },
+  "/assembleias": {
+    "titulo": "Assembleias legislativas estaduais",
+    "descricao": "Proposição, comissão e produtividade das 27 Assembleias, com dado aberto."
+  },
+  "/judiciario": {
+    "titulo": "Judiciário: quem ocupa e quando vaga",
+    "descricao": "Quem indicou cada ministro, quando a cadeira vaga e como o Poder é fiscalizado."
+  },
+  "/judiciario/indice": {
+    "titulo": "Índice do Judiciário",
+    "descricao": "Tribunais, números, presídios, inspeções e correições num mapa só."
+  },
+  "/judiciario/composicao": {
+    "titulo": "Composição dos tribunais",
+    "descricao": "Quem ocupa cada cadeira, a aposentadoria aos 75 anos e a indicação ao Senado."
+  },
+  "/judiciario/tribunais": {
+    "titulo": "Tribunais: quem ocupa e quando vaga",
+    "descricao": "Composição, indicações, salários e aposentadorias do Judiciário."
+  },
+  "/judiciario/numeros": {
+    "titulo": "Quanto demora um processo no TJMG",
+    "descricao": "Congestionamento, acervo e tempo até a baixa na série 2009–2025 do CNJ."
+  },
+  "/judiciario/sirenejud": {
+    "titulo": "Processos ambientais no Brasil",
+    "descricao": "Contagem por UF, tribunal, classe e assunto no SIRENEJud do CNJ, com série anual."
+  },
+  "/judiciario/presidios": {
+    "titulo": "Quem fiscaliza a prisão em Minas",
+    "descricao": "Estabelecimento penal e inspeção judicial registrada no CNIEP, por ramo."
+  },
+  "/judiciario/defensoria": {
+    "titulo": "Tem Defensoria na sua comarca?",
+    "descricao": "Quais comarcas de Minas têm atendimento, quais não têm e o ritmo de expansão."
+  },
+  "/judiciario/inspecoes": {
+    "titulo": "Inspeções do CNJ",
+    "descricao": "Relatório da Corregedoria Nacional sobre os tribunais e o déficit da Defensoria."
+  },
+  "/judiciario/correicoes-trabalhistas": {
+    "titulo": "Quem fiscaliza a Justiça do Trabalho",
+    "descricao": "A Corregedoria-Geral do TST e a correição sobre o TRT da 3ª Região, em Minas."
+  },
+  "/judiciario/recomendacoes": {
+    "titulo": "Recomendações do CNJ e do CNMP",
+    "descricao": "As determinações das inspeções sobre tribunais e promotorias, em linguagem simples."
+  },
+  "/judiciario/contatos": {
+    "titulo": "Varas, gabinetes e Balcão Virtual",
+    "descricao": "E-mail, telefone, endereço e titular de vara e gabinete, com link do Balcão Virtual."
+  },
+  "/judiciario/jurisprudencia": {
+    "titulo": "Jurisprudência de barragem e direitos",
+    "descricao": "Decisão do TJMG e do TJES com ementa, inteiro teor, polo e categoria."
+  },
+  "/judiciario/instituicoes": {
+    "titulo": "Quem fiscaliza a Justiça",
+    "descricao": "O mapa da fiscalização externa de varas, tribunais, presídios e Defensoria."
+  },
+  "/judiciario/metodologia": {
+    "titulo": "Metodologia do Judiciário",
+    "descricao": "A regra dos 75 anos, a origem de cada cadeira e o cálculo do poder de indicação."
+  },
+  "/judiciario/privacidade": {
+    "titulo": "Privacidade no Judiciário",
+    "descricao": "O que o app coleta, por quê e com que base legal, sem CPF nem endereço."
+  },
+  "/judiciario/sobre": {
+    "titulo": "Por que este app existe",
+    "descricao": "Mapear quem ocupa, quem indicou e quando vaga cada cadeira do Judiciário."
+  },
+  "/jurisprudencia": {
+    "titulo": "Jurisprudência dos desastres: o que o TJ decide",
+    "descricao": "Acórdãos do TJMG e TJES, teses e valores, com link para a fonte oficial."
+  },
+  "/jurisprudencia/penal": {
+    "titulo": "Jurisprudência penal: TJES e STF",
+    "descricao": "6.182 processos penais separados do acervo dos desastres."
+  },
+  "/paraopeba": {
+    "titulo": "Brumadinho: reparação, auxílio e execução",
+    "descricao": "O que a Vale pagou, quem recebeu e o que os tribunais decidiram no caso B1."
+  },
+  "/paraopeba/panorama": {
+    "titulo": "Brumadinho em uma página",
+    "descricao": "Execução, auxílio, auditoria, documentos, notícias e jurisprudência do caso."
+  },
+  "/paraopeba/entenda": {
+    "titulo": "Entenda o caso Brumadinho",
+    "descricao": "Os termos e as perguntas da reparação explicados em linguagem comum."
+  },
+  "/paraopeba/analise": {
+    "titulo": "Brumadinho: auditoria, perícia e ATIs",
+    "descricao": "O que cada fonte mede no mesmo eixo e onde só uma delas fala."
+  },
+  "/paraopeba/auxilio": {
+    "titulo": "Auxílio emergencial de Brumadinho",
+    "descricao": "Quem recebe, quanto, por quanto tempo e o que o STJ decidiu."
+  },
+  "/paraopeba/execucao": {
+    "titulo": "Execução do Acordo de Brumadinho",
+    "descricao": "Município a município, projeto a projeto, o que foi pago pela FGV."
+  },
+  "/paraopeba/auditoria": {
+    "titulo": "Auditoria socioambiental de Brumadinho",
+    "descricao": "467 documentos da AECOM sobre a execução do Acordo."
+  },
+  "/paraopeba/pericia": {
+    "titulo": "Perícia da UFMG sobre a Barragem I",
+    "descricao": "O que a perícia mediu, os documentos de resultado e o acervo completo de arquivos."
+  },
+  "/paraopeba/documentos": {
+    "titulo": "Documentos do processo de Brumadinho",
+    "descricao": "Autos que citam município da bacia, com link para o original e citação da fonte."
+  },
+  "/paraopeba/biblioteca": {
+    "titulo": "Biblioteca do Paraopeba",
+    "descricao": "Publicação das assessorias técnicas e documento oficial do Acordo, com link ao original."
+  },
+  "/paraopeba/clipping": {
+    "titulo": "Clipping de Brumadinho e do Paraopeba",
+    "descricao": "Material das ATIs, do Ministério Público e notícia da reparação, com data e autor."
+  },
+  "/paraopeba/mab": {
+    "titulo": "MAB: notícias, artigos e notas",
+    "descricao": "975 publicações do movimento sobre Brumadinho, Mariana e outros desastres."
+  },
+  "/paraopeba/correlacao": {
+    "titulo": "Preço da Vale e notícia: há correlação?",
+    "descricao": "Movimento de VALE3 e SGML comparado às notícias sobre a Vale e a mineração."
+  },
+  "/paraopeba/vale": {
+    "titulo": "VALE3: o preço antes e depois",
+    "descricao": "O fechamento na B3 de 2015 a 2026, com Fundão, Brumadinho e o Acordo marcados."
+  },
+  "/paraopeba/vale/documentos": {
+    "titulo": "Documentos da Vale na CVM",
+    "descricao": "ITRs, DFPs e formulário de referência protocolados entre 2015 e 2025."
+  },
+  "/paraopeba/linha-do-tempo": {
+    "titulo": "Linha do tempo de Brumadinho",
+    "descricao": "29 marcos, do rompimento ao auxílio suspenso em 2026, com fonte."
+  },
+  "/paraopeba/quem-atua": {
+    "titulo": "Quem atua na reparação",
+    "descricao": "Do Judiciário às três assessorias técnicas que atendem quem foi atingido."
+  },
+  "/itatiaiaucu": {
+    "titulo": "Itatiaiuçu: Serra Azul e reparação",
+    "descricao": "Sete acórdãos, a busca no TJMG e o acordo extrajudicial do caso."
+  },
+  "/riodoce": {
+    "titulo": "Rio Doce: PID, reparação e processos",
+    "descricao": "A repactuação, as indenizações e a execução do Acordo de Mariana."
+  },
+  "/riodoce/indice": {
+    "titulo": "Índice da Plataforma Rio Doce",
+    "descricao": "Visão geral, processos, Acordo de Mariana e jurisprudência dos desastres."
+  },
+  "/riodoce/analise": {
+    "titulo": "Rio Doce: a análise integrada",
+    "descricao": "Execução, PID, litoral, jurisprudência e acervos numa página."
+  },
+  "/riodoce/processos": {
+    "titulo": "Processos do Rio Doce no DataJud",
+    "descricao": "Os processos-chave da reparação com a movimentação consultada ao vivo no CNJ."
+  },
+  "/riodoce/clipping": {
+    "titulo": "Clipping do Rio Doce",
+    "descricao": "60 dias de notícia sobre Mariana e Brumadinho, com título, data, veículo e link."
+  },
+  "/riodoce/linha-do-tempo": {
+    "titulo": "Linha do tempo do Rio Doce",
+    "descricao": "14 marcos, do rompimento ao balanço do PID em 2026, com fonte."
+  },
+  "/internacional": {
+    "titulo": "Transparência internacional comparada",
+    "descricao": "Brasil e potência do G8 e G20 em IDH, gasto social, comércio de minério e direitos."
+  },
+  "/internacional/orcamentos": {
+    "titulo": "Orçamentos de defesa e clima",
+    "descricao": "EUA, Canadá e Europa em defesa, inteligência, água, energia e crise climática."
+  },
+  "/internacional/inteligencia": {
+    "titulo": "Inteligência e documentos desclassificados",
+    "descricao": "Relatório de CIA, FBI, NSA e G20, com busca, tema, pessoa e data."
+  },
+  "/internacional/inteligencia/mapa": {
+    "titulo": "Mapa da inteligência desclassificada",
+    "descricao": "Onde cada relatório e dossiê foi produzido, com link para o PDF oficial."
+  },
+  "/internacional/operacoes-militares": {
+    "titulo": "Operações militares, golpes e mercenários",
+    "descricao": "Intervenção armada, deposição de regime e mega-contrato de defesa."
+  },
+  "/internacional/operacoes-militares/mapa": {
+    "titulo": "Mapa de operações militares",
+    "descricao": "Intervenção, golpe, PMC e contrato bélico geolocalizados."
+  },
+  "/eua": {
+    "titulo": "EUA: SEC, barragens e comércio",
+    "descricao": "Balanço na SEC, inventário de barragem, compra federal e ação em Nova York."
+  },
+  "/eua/institucional": {
+    "titulo": "Instituições dos EUA",
+    "descricao": "Congresso, corte de Nova York, caso de Brumadinho e o guia de pedido FOIA."
+  },
+  "/eua/empresas": {
+    "titulo": "Empresas e fundos dos EUA",
+    "descricao": "BlackRock, Vanguard, Alcoa e Vale ADR na SEC EDGAR, com o que têm no Brasil."
+  },
+  "/eua/ambiental": {
+    "titulo": "Meio ambiente nos EUA",
+    "descricao": "Barragem do NID, multa da EPA, área Superfund e emissão do Climate TRACE."
+  },
+  "/eua/contratos": {
+    "titulo": "Compras federais dos EUA",
+    "descricao": "Gasto no USAspending e a balança comercial entre EUA e Brasil."
+  },
+  "/canada": {
+    "titulo": "Canadá: transparência e mineração",
+    "descricao": "Mineradora na Bolsa de Toronto, emissão NPRI, compra pública e Primeiras Nações."
+  },
+  "/canada/mineracao": {
+    "titulo": "Mineradoras canadenses no Brasil",
+    "descricao": "Empresa da TSX e TSX-V operando aqui, de Sigma Lithium a Lundin Mining."
+  },
+  "/canada/ambiental": {
+    "titulo": "Meio ambiente no Canadá",
+    "descricao": "Emissão NPRI, o colapso de Mount Polley comparado a Mariana e o Climate TRACE."
+  },
+  "/canada/contratos": {
+    "titulo": "Contratos e crédito à exportação no Canadá",
+    "descricao": "Compra pública do governo canadense e financiamento da EDC para o Brasil."
+  },
+  "/canada/institucional": {
+    "titulo": "Instituições canadenses",
+    "descricao": "Cidades-polo, Parlamento, Suprema Corte no CanLII e canais de ouvidoria."
+  },
+  "/europa": {
+    "titulo": "Europa: litígio e devida diligência",
+    "descricao": "BHP em Londres, Braskem em Roterdã, a lei alemã e a concessão europeia no Brasil."
+  },
+  "/europa/legislacao-transnacionais": {
+    "titulo": "Leis que alcançam a matriz no exterior",
+    "descricao": "Reino Unido, Holanda, Alemanha, França, UE e mais: o que permite responsabilizar."
+  },
+  "/europa/litigios-transnacionais": {
+    "titulo": "Mariana e Brumadinho na Europa",
+    "descricao": "A ação contra a BHP em Londres, contra a TÜV SÜD em Munique e as conexões holandesas."
+  },
+  "/america-latina": {
+    "titulo": "Mineração na América Latina",
+    "descricao": "Instalação estratégica em 9 países, georreferenciada, do lítio ao ferro."
+  },
+  "/transparencia-internacional": {
+    "titulo": "Transparência internacional e EUA-Brasil",
+    "descricao": "Repasse estrangeiro, projeto da USAID e investimento de fundo norte-americano."
+  },
+  "/recursos/estados": {
+    "titulo": "Recursos públicos dos 27 estados",
+    "descricao": "Outorga de água, tarifa de energia, combustível, PPP e emenda parlamentar."
+  },
+  "/tecnologia": {
+    "titulo": "Tecnologia e IA livre",
+    "descricao": "Guia do AppLivre, catálogo de software aberto e uso soberano de IA para direitos."
+  }
+}

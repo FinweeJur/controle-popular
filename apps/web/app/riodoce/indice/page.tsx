@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file Índice da Plataforma Rio Doce.
@@ -37,11 +38,11 @@ const topicos: Topico[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/riodoce/indice", {
   title: "Índice — Plataforma Rio Doce — Controle Popular",
   description:
     "Navegue pela Plataforma Rio Doce: visão geral, processos, Acordo de Mariana e jurisprudência dos desastres.",
-};
+});
 
 export default function IndiceRioDoce() {
   return (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ModelosClient from "./ModelosClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/modelos` — modelos prontos de requerimentos e comunicações.
@@ -14,11 +15,11 @@ import ModelosClient from "./ModelosClient";
  * social). A lógica e os textos moram em `lib/modelos/textos.ts`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/modelos", {
   title: "Modelos prontos para pedir informação e defender direitos | Controle Popular",
   description:
     "Textos prontos para copiar: pedido de acesso à informação (LAI), recurso de negativa, notícia de fato ao Ministério Público, tarifa social e compras públicas. Com base legal e canal oficial.",
-};
+});
 
 export default function ModelosPage() {
   return (

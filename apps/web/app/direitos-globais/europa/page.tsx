@@ -7,12 +7,13 @@ import { PAISES_EUROPA } from "@/lib/direitos-globais/europa/paises";
 import { DISPOSITIVOS_EUROPA } from "@/lib/direitos-globais/europa/dispositivos";
 import TabelaEuropaInterativa from "../componentes/TabelaEuropaInterativa";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/europa", {
   title: "Europa e Conselho da Europa | Direitos Globais | Controle Popular",
   description:
     "Comparação dos 44 países europeus, dispositivos constitucionais da Leva 1, legislação de responsabilização de empresas transnacionais e tutela ambiental.",
-};
+});
 
 function ResumoEuropa() {
   const totalPaises = PAISES_EUROPA.length;

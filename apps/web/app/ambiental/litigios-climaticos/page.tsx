@@ -9,12 +9,13 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/litigios-climaticos", {
   title: "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | Meio Ambiente (ONSA)",
   description:
     "Ações climáticas da base JUMA (PUC-Rio/LACLIMA), 322 mil processos ambientais do SIRENEJud (CNJ) e teses de jurisprudência do TJMG sobre barragens e direitos dos atingidos.",
-};
+});
 
 export default function PaginaLitigiosClimaticos() {
   const acoesJuma = listarAcoesClimaticasJuma();

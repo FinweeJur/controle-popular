@@ -4,6 +4,7 @@ import FichaCard from "@/app/components/eixos/FichaCard";
 import { listarFichasPorSubfrente } from "@/lib/eixos/fichas";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
 interface EspecieFauna {
   id: string;
@@ -72,11 +73,11 @@ const ESPECIES_CATALOGO: EspecieFauna[] = [
   },
 ];
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/nossos-animais", {
   title: "Nossos Animais — Fauna, Corredores Ecológicos e Proteção da Vida Silvestre | Meio Ambiente (ONSA)",
   description:
     "Monitoramento cívico de espécies ameaçadas, corredores de fauna, atropelamentos e fiscalização no Observatório Nacional Socioambiental.",
-};
+});
 
 /** Os três cartões de topo: números de referência das fontes, não medição do portal. */
 function CartoesStatusFauna() {

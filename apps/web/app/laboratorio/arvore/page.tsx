@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import ArvoreObsidianGrafo from "./ArvoreObsidianGrafo";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/laboratorio/arvore", {
   title: "Árvore de Conexões Cívicas — Laboratório de Dados",
   description:
     "Visualização interativa em grafo estilo Obsidian: explore as relações entre os 4 eixos temáticos, 199 cidades, instituições e territórios do Controle Popular.",
-};
+});
 
 export default function ArvoreGrafoPage() {
   return (
