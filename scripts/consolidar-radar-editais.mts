@@ -8,29 +8,22 @@
  * publicador grava noticias-portal.json (blog); o consolidado tinha ficado
  * congelado em 16/09/2026.
  *
- * O QUE FAZ, sem LLM e sem publicar nada:
- * 1. lê os pendentes de apps/web/data/radar-editais/pendentes/ (mesmo
- *    diretório do radar; não move nem apaga nada);
- * 2. converte cada pendente em ItemEdital com o extrator determinístico
- *    (processarTrechoEdital) — os campos batem com os que a página consome;
- * 3. deduplica por id, slug e (dataPublicacao + título normalizado) contra o
- *    acervo existente e entre os próprios pendentes;
- * 4. grava { total, atualizadoEm, itens } no mesmo formato do arquivo atual
- *    (JSON.stringify(..., null, 1) + "\n"), mais novo primeiro.
- *
- * Quem publica no blog continua sendo o publicar-radar-editais.mts; este
- * script só alimenta a página /editais.
+ * O QUE FAZ, sem LLM: lê os pendentes, converte com o extrator determinístico,
+ * deduplica por id/slug/data+título e grava { total, atualizadoEm, itens } no
+ * formato do arquivo atual. Com `--commit`, faz commit+push só desse arquivo
+ * para o build das 05:50 levá-lo ao ar.
  *
  * USO
  *   npx tsx scripts/consolidar-radar-editais.mts                  # grava
  *   npx tsx scripts/consolidar-radar-editais.mts --seco           # só relata
+ *   npx tsx scripts/consolidar-radar-editais.mts --commit         # grava e publica
  *   npx tsx scripts/consolidar-radar-editais.mts --saida <arquivo>  # grava em outro arquivo
  *   npx tsx scripts/consolidar-radar-editais.mts --pendentes <dir>  # usa outra pasta de pendentes
  */
 
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { processarTrechoEdital } from "./radar-editais-extrator.mts";
 
@@ -40,6 +33,8 @@ const CONSOLIDADO_PADRAO = path.join(RAIZ, "apps", "web", "data", "editais-conso
 
 const ARGS = process.argv.slice(2);
 const SO_MEDIR = ARGS.includes("--seco");
+/** `--commit`: publica o consolidado (commit + push), como o publicar-radar. */
+const COMMIT = ARGS.includes("--commit");
 
 function valorDaFlag(flag: string): string | null {
   const i = ARGS.indexOf(flag);
@@ -171,7 +166,61 @@ function rodarGuarda(): void {
   console.log("[consolidar-editais] guarda de dado pessoal passou");
 }
 
+/**
+ * Publica o consolidado com commit + push por pathspec, igual ao
+ * `publicar-radar-editais.mts`: sem isso a árvore fica suja e o autodeploy das
+ * 05:50 aborta — a página /editais continuaria no dado velho.
+ *
+ * O revert protege cada passo por conta própria: `git rebase --abort` sem
+ * rebase em andamento é o caso normal quando a falha veio antes do rebase.
+ */
+function publicarConsolidado(): void {
+  const rel = path.relative(RAIZ, CONSOLIDADO);
+  const msg = `radar: consolidado da pagina /editais atualizado\n\nPublicacao automatica do radar de editais a partir do Diario Oficial.\n\nCo-Authored-By: opencode\n`;
+  const msgFile = path.join(RAIZ, "logs", `consolidar-msg-${Date.now()}.txt`);
+  try {
+    fs.mkdirSync(path.dirname(msgFile), { recursive: true });
+    fs.writeFileSync(msgFile, msg, "utf-8");
+    execFileSync("git", ["add", rel], { cwd: RAIZ });
+    execFileSync("git", ["commit", "--only", rel, "-F", msgFile], { cwd: RAIZ });
+    execFileSync("git", ["fetch", "origin", "--quiet"], { cwd: RAIZ });
+    execFileSync("git", ["rebase", "origin/main"], { cwd: RAIZ });
+    execFileSync("git", ["push", "origin", "HEAD:main"], { cwd: RAIZ });
+    console.log("[consolidar-editais] commit + push feitos; o build das 05:50 publica no ar.");
+  } catch (err) {
+    console.error(
+      "[consolidar-editais] commit/push falhou:",
+      err instanceof Error ? err.message : err
+    );
+    try {
+      execFileSync("git", ["rebase", "--abort"], { cwd: RAIZ, stdio: "ignore" });
+    } catch {
+      // sem rebase em andamento — esperado.
+    }
+    try {
+      execFileSync("git", ["checkout", "--", rel], { cwd: RAIZ });
+    } catch (erroRevert) {
+      console.error(
+        "[consolidar-editais] FALHA ao reverter o consolidado:",
+        erroRevert instanceof Error ? erroRevert.message : erroRevert
+      );
+    }
+    process.exitCode = 1;
+  } finally {
+    try {
+      fs.unlinkSync(msgFile);
+    } catch {
+      // arquivo de mensagem já removido
+    }
+  }
+}
+
 function main(): void {
+  if (SO_MEDIR && COMMIT) {
+    console.error("[consolidar-editais] --seco e --commit são incompatíveis: nada foi gravado.");
+    process.exitCode = 2;
+    return;
+  }
   const acervo = lerAcervo();
   const pendentes = lerPendentes();
   console.log(
@@ -229,6 +278,7 @@ function main(): void {
   console.log(
     `[consolidar-editais] +${novos.length} item(ns), ${duplicados} duplicado(s); total=${saida.total}; atualizadoEm=${saida.atualizadoEm}; gravado em ${CONSOLIDADO}`
   );
+  if (COMMIT) publicarConsolidado();
 }
 
 main();
