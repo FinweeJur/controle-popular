@@ -70,15 +70,21 @@ def requisitar(url: str) -> tuple[str, int | None, str]:
         return "falha", None, ""
 
 
+def _linha_rota(rota: str) -> tuple[str, int]:
+    """Linha da tabela e 1 critico quando a rota nao responde 200."""
+    status, codigo, _ = requisitar(ORIGEM + rota)
+    if status == "ok" and codigo == 200:
+        return f"| {rota} | OK | {codigo} |", 0
+    return f"| {rota} | CRITICO | {codigo or '-'} |", 1
+
+
 def conferir_rotas() -> tuple[list[str], int]:
     linhas = ["| Rota | Status | HTTP |", "|---|---|---|"]
     criticos = 0
     for rota in ROTAS_CHAVE:
-        status, codigo, _ = requisitar(ORIGEM + rota)
-        classe = "OK" if status == "ok" and codigo == 200 else "CRITICO"
-        if classe == "CRITICO":
-            criticos += 1
-        linhas.append(f"| {rota} | {classe} | {codigo or '-'} |")
+        linha, critico = _linha_rota(rota)
+        linhas.append(linha)
+        criticos += critico
         time.sleep(INTERVALO_S)
     return linhas, criticos
 
@@ -102,26 +108,44 @@ def conferir_dados() -> tuple[list[str], int, int]:
     return linhas, criticos, avisos
 
 
-def conferir_seo() -> tuple[list[str], int, int]:
-    linhas = ["| Item SEO | Status | Detalhe |", "|---|---|---|"]
-    criticos = 0
-    avisos = 0
+def _linha_robots() -> tuple[str, int]:
+    """Linha do robots.txt e 1 critico se faltar 200 ou a linha Sitemap."""
     status, codigo, corpo = requisitar(ORIGEM + "/robots.txt")
     if status != "ok" or codigo != 200 or "Sitemap:" not in corpo:
-        linhas.append("| robots.txt | CRITICO | sem 200 ou sem Sitemap: |")
-        criticos += 1
-    else:
-        linhas.append("| robots.txt | OK | declara Sitemap |")
-    time.sleep(INTERVALO_S)
+        return "| robots.txt | CRITICO | sem 200 ou sem Sitemap: |", 1
+    return "| robots.txt | OK | declara Sitemap |", 0
 
+
+def _linha_sitemap() -> tuple[str, int]:
+    """Linha do sitemap.xml e 1 critico se faltar 200 ou o XML."""
     status, codigo, corpo = requisitar(ORIGEM + "/sitemap.xml")
     if status != "ok" or codigo != 200 or not corpo.lstrip().startswith("<?xml"):
-        linhas.append("| sitemap.xml | CRITICO | sem 200 ou sem xml |")
-        criticos += 1
-    else:
-        linhas.append("| sitemap.xml | OK | xml serve |")
+        return "| sitemap.xml | CRITICO | sem 200 ou sem xml |", 1
+    return "| sitemap.xml | OK | xml serve |", 0
+
+
+def conferir_seo() -> tuple[list[str], int, int]:
+    linhas = ["| Item SEO | Status | Detalhe |", "|---|---|---|"]
+    linha, criticos = _linha_robots()
+    linhas.append(linha)
     time.sleep(INTERVALO_S)
-    return linhas, criticos, avisos
+    linha, critico = _linha_sitemap()
+    linhas.append(linha)
+    criticos += critico
+    time.sleep(INTERVALO_S)
+    return linhas, criticos, 0
+
+
+def _linha_componente(rota: str) -> tuple[str, int, int]:
+    """Linha da tabela e contadores (criticos, avisos) de uma rota."""
+    status, codigo, corpo = requisitar(ORIGEM + rota)
+    if status != "ok" or codigo != 200 or not corpo.strip():
+        return f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |", 1, 0
+    if not re.search(r"<title>[^<]+</title>", corpo):
+        return f"| title | {rota} | CRITICO | <title> vazio ou ausente |", 1, 0
+    if 'name="description"' not in corpo and "name='description'" not in corpo:
+        return f"| description | {rota} | AVISO | meta description ausente |", 0, 1
+    return f"| title+description | {rota} | OK | |", 0, 0
 
 
 def conferir_componentes() -> tuple[list[str], int, int]:
@@ -129,22 +153,10 @@ def conferir_componentes() -> tuple[list[str], int, int]:
     criticos = 0
     avisos = 0
     for rota in ROTAS_CHAVE[:6]:
-        status, codigo, corpo = requisitar(ORIGEM + rota)
-        if status != "ok" or codigo != 200 or not corpo.strip():
-            linhas.append(f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |")
-            criticos += 1
-            time.sleep(INTERVALO_S)
-            continue
-        tem_title = bool(re.search(r"<title>[^<]+</title>", corpo))
-        tem_desc = 'name="description"' in corpo or "name='description'" in corpo
-        if not tem_title:
-            linhas.append(f"| title | {rota} | CRITICO | <title> vazio ou ausente |")
-            criticos += 1
-        elif not tem_desc:
-            linhas.append(f"| description | {rota} | AVISO | meta description ausente |")
-            avisos += 1
-        else:
-            linhas.append(f"| title+description | {rota} | OK | |")
+        linha, critico, aviso = _linha_componente(rota)
+        linhas.append(linha)
+        criticos += critico
+        avisos += aviso
         time.sleep(INTERVALO_S)
     return linhas, criticos, avisos
 
