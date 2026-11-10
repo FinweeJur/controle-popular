@@ -130,6 +130,11 @@ def _sanitizar_numeric(val: any) -> float | None:
         return None
 
 
+def _nome_ou_valor(valor: any) -> any:
+    """Nome legível quando o campo vem como `{id, nome}`; senão, o valor cru."""
+    return valor.get("nome") if isinstance(valor, dict) else valor
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict:
     """Mapeia e normaliza o payload JSON bruto da API do PNCP para as colunas da tabela `contratos`.
 
@@ -166,7 +171,7 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "orgao_nome": orgao.get("razaoSocial"),
         "unidade_nome": unidade.get("nomeUnidade"),
         "categoria": raw.get("categoriaProcesso", {}).get("nome") if isinstance(raw.get("categoriaProcesso"), dict) else raw.get("tipoContrato"),
-        "tipo": raw.get("tipoContrato", {}).get("nome") if isinstance(raw.get("tipoContrato"), dict) else raw.get("tipoContrato"),
+        "tipo": _nome_ou_valor(raw.get("tipoContrato")),
         "objeto": raw.get("objetoContrato"),
         "fornecedor_cnpj": raw.get("niFornecedor"),
         "fornecedor_nome": raw.get("nomeRazaoSocialFornecedor"),
@@ -185,6 +190,159 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "raw": raw,
         "temas": classificar_contrato(unidade.get("nomeUnidade"), raw.get("objetoContrato")),
     }
+
+
+def _fonte_conflita(cidade: dict, permitir_fonte_dupla: bool) -> bool:
+    """True quando a cidade declara fonte própria e o override não foi pedido."""
+    fonte_propria = cidade["fontes"].get("contratos_fonte")
+    if not fonte_propria or permitir_fonte_dupla:
+        return False
+    return fonte_propria != "pncp"
+
+
+def _validar_fonte(cidade: dict, permitir_fonte_dupla: bool) -> None:
+    """Aborta quando a cidade declara outra fonte canônica de contratos."""
+    if not _fonte_conflita(cidade, permitir_fonte_dupla):
+        return
+    fonte_propria = cidade["fontes"].get("contratos_fonte")
+    raise RuntimeError(
+        f"{cidade['nome']} declara `fontes.contratos_fonte = {fonte_propria!r}`; "
+        "rodar o PNCP por cima duplicaria os contratos. Use o módulo dessa "
+        "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
+    )
+
+
+def _cnpj_prefeitura(cidade: dict, id_municipio: str) -> str:
+    """CNPJ principal da prefeitura, com erro claro quando o cadastro está vazio."""
+    principal = cidade["cnpj_prefeitura"]
+    if not principal:
+        raise RuntimeError(
+            f"municipios.cnpj_prefeitura vazio para id_municipio={id_municipio}."
+        )
+    return principal
+
+
+def _resolver_cnpjs(
+    cidade: dict, id_municipio: str, cnpj_orgao: str | None
+) -> list[str]:
+    """CNPJs de órgãos a varrer: override, cadastro municipal ou prefeitura."""
+    if cnpj_orgao is not None:
+        return [cnpj_orgao]
+    cnpjs = [str(c) for c in (cidade["fontes"].get("cnpjs_orgao") or []) if c]
+    if cnpjs:
+        return cnpjs
+    principal = _cnpj_prefeitura(cidade, id_municipio)
+    print(
+        "[etl.pncp.contratos] AVISO: usando só o CNPJ da prefeitura. "
+        "Numa capital isso subconta — rode `python -m etl.pncp.orgaos "
+        f"--id-municipio {id_municipio} --gravar` primeiro."
+    )
+    return [principal]
+
+
+def _gravar_lote(client, rows_by_pncp: dict[str, dict]) -> int:
+    """Persiste um lote de contratos no banco com tratamento de colunas opcionais."""
+    rows = list(rows_by_pncp.values())
+    for i in range(0, len(rows), 1000):
+        upsert_com_colunas_opcionais(
+            client,
+            "contratos",
+            rows[i : i + 1000],
+            ["temas"],
+            on_conflict="numero_controle_pncp",
+        )
+    return len(rows)
+
+
+def _acumular_pagina(
+    rows_lote: dict[str, dict],
+    vistos: set[str],
+    registros_brutos: list[dict],
+    id_municipio: str,
+) -> None:
+    """Mapeia e deduplica uma página dentro do lote do ano."""
+    for raw in registros_brutos:
+        row = _map_row(raw, id_municipio)
+        chave = row["numero_controle_pncp"]
+        if not chave or chave in vistos:
+            continue
+        vistos.add(chave)
+        rows_lote[chave] = row
+
+
+def _sync_unidade(
+    client,
+    estado: dict,
+    unidade: tuple[str, str, int],
+    ano_atual: int,
+) -> int:
+    """Sincroniza um (município, CNPJ, ano) e devolve os registros do ano."""
+    id_municipio, cnpj, ano = unidade
+    chave_unidade = f"{id_municipio}:{cnpj}:{ano}"
+    if ck.unidade_pronta(estado, chave_unidade, ano_atual=ano_atual):
+        print(f"[etl.pncp.contratos] {chave_unidade} checkpoint=ok, pula")
+        return 0
+
+    pagina_inicio = ck.pagina_retomar(estado, chave_unidade)
+    if pagina_inicio > 1:
+        print(
+            f"[etl.pncp.contratos] {chave_unidade} retoma na página "
+            f"{pagina_inicio}",
+            flush=True,
+        )
+
+    # Deduplicação no lote do mesmo ano: evita erro "cannot affect row a second time" do Postgres
+    vistos_no_ano: set[str] = set()
+    rows_lote: dict[str, dict] = {}
+    paginas_gravadas = pagina_inicio - 1
+    registros_ano = ck.registros_parciais(estado, chave_unidade)
+
+    try:
+        for pagina, registros_brutos in iter_contratos(
+            cnpj, f"{ano}0101", f"{ano}1231", pagina_inicio=pagina_inicio
+        ):
+            _acumular_pagina(rows_lote, vistos_no_ano, registros_brutos, id_municipio)
+
+            # Gravação incremental por página para resiliência a quedas de conexão
+            n = _gravar_lote(client, rows_lote)
+            registros_ano += n
+            rows_lote = {}
+            paginas_gravadas = max(paginas_gravadas, pagina)
+            ck.marcar_parcela(
+                estado,
+                ck.NOME_CONTRATOS,
+                chave_unidade,
+                pagina=paginas_gravadas,
+                registros=registros_ano,
+            )
+            print(
+                f"[etl.pncp.contratos] {chave_unidade} p={pagina} "
+                f"lote={n} acumulado={registros_ano}",
+                flush=True,
+            )
+
+        # Persiste eventuais registros residuais e marca conclusão no checkpoint
+        registros_ano += _gravar_lote(client, rows_lote)
+        ck.marcar_ok(
+            estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
+        )
+        print(f"[etl.pncp.contratos] {chave_unidade} registros={registros_ano}")
+    except Exception as e:
+        # Falhas de gateway salvam o parcial e seguem; a unidade volta na próxima rodada
+        registros_ano += _gravar_lote(client, rows_lote)
+        print(
+            f"[etl.pncp.contratos] AVISO: {chave_unidade} interrompida por erro na API ({type(e).__name__}: {e}); "
+            f"parcial ({registros_ano} reg) gravado e segue.",
+            flush=True,
+        )
+        ck.marcar_parcela(
+            estado,
+            ck.NOME_CONTRATOS,
+            chave_unidade,
+            pagina=paginas_gravadas,
+            registros=registros_ano,
+        )
+    return registros_ano
 
 
 def sync(
@@ -221,136 +379,19 @@ def sync(
     """
     client = get_db()
     cidade = carregar_municipio(id_municipio)
-
-    # 1. Validação de fonte canônica de dados para evitar duplicações no banco
-    fonte_propria = cidade["fontes"].get("contratos_fonte")
-    if fonte_propria and fonte_propria != "pncp" and not permitir_fonte_dupla:
-        raise RuntimeError(
-            f"{cidade['nome']} declara `fontes.contratos_fonte = {fonte_propria!r}`; "
-            "rodar o PNCP por cima duplicaria os contratos. Use o módulo dessa "
-            "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
-        )
-
-    # 2. Resolução da lista de CNPJs municipais a serem consultados
-    if cnpj_orgao is not None:
-        cnpjs = [cnpj_orgao]
-    else:
-        cnpjs = [str(c) for c in (cidade["fontes"].get("cnpjs_orgao") or []) if c]
-        if not cnpjs:
-            principal = cidade["cnpj_prefeitura"]
-            if not principal:
-                raise RuntimeError(
-                    f"municipios.cnpj_prefeitura vazio para id_municipio={id_municipio}."
-                )
-            cnpjs = [principal]
-            print(
-                "[etl.pncp.contratos] AVISO: usando só o CNPJ da prefeitura. "
-                "Numa capital isso subconta — rode `python -m etl.pncp.orgaos "
-                f"--id-municipio {id_municipio} --gravar` primeiro."
-            )
+    _validar_fonte(cidade, permitir_fonte_dupla)
+    cnpjs = _resolver_cnpjs(cidade, id_municipio, cnpj_orgao)
     print(f"[etl.pncp.contratos] {len(cnpjs)} CNPJ(s) de órgão mapeados para varredura")
     ano_atual = dt.date.today().year
     total = 0
     estado = ck.carregar(ck.NOME_CONTRATOS)
 
-    def _gravar_lote(rows_by_pncp: dict[str, dict]) -> int:
-        """Persiste um lote de contratos no banco com tratamento de colunas opcionais."""
-        rows = list(rows_by_pncp.values())
-        if rows:
-            for i in range(0, len(rows), 1000):
-                upsert_com_colunas_opcionais(
-                    client,
-                    "contratos",
-                    rows[i : i + 1000],
-                    ["temas"],
-                    on_conflict="numero_controle_pncp",
-                )
-        return len(rows)
-
-    # 3. Laço de varredura ano a ano, CNPJ a CNPJ
+    # Laço de varredura ano a ano, CNPJ a CNPJ
     for ano in range(ano_inicio, ano_atual + 1):
-        data_inicial = f"{ano}0101"
-        data_final = f"{ano}1231"
         for cnpj in cnpjs:
-            chave_unidade = f"{id_municipio}:{cnpj}:{ano}"
-            if ck.unidade_pronta(estado, chave_unidade):
-                print(
-                    f"[etl.pncp.contratos] {chave_unidade} checkpoint=ok, pula"
-                )
-                continue
-
-            pagina_inicio = ck.pagina_retomar(estado, chave_unidade)
-            if pagina_inicio > 1:
-                print(
-                    f"[etl.pncp.contratos] {chave_unidade} retoma na página "
-                    f"{pagina_inicio}",
-                    flush=True,
-                )
-
-            # Deduplicação no lote do mesmo ano: evita erro "cannot affect row a second time" do Postgres
-            vistos_no_ano: set[str] = set()
-            rows_lote: dict[str, dict] = {}
-            paginas_gravadas = pagina_inicio - 1
-            item_ck = estado.get(chave_unidade)
-            registros_ano = (
-                int(item_ck.get("registros") or 0)
-                if isinstance(item_ck, dict)
-                else 0
+            total += _sync_unidade(
+                client, estado, (id_municipio, cnpj, ano), ano_atual
             )
-
-            try:
-                for pagina, registros_brutos in iter_contratos(
-                    cnpj, data_inicial, data_final, pagina_inicio=pagina_inicio
-                ):
-                    for raw in registros_brutos:
-                        row = _map_row(raw, id_municipio)
-                        chave = row["numero_controle_pncp"]
-                        if not chave or chave in vistos_no_ano:
-                            continue
-                        vistos_no_ano.add(chave)
-                        rows_lote[chave] = row
-
-                    # Gravação incremental por página para resiliência a quedas de conexão
-                    n = _gravar_lote(rows_lote)
-                    registros_ano += n
-                    rows_lote = {}
-                    paginas_gravadas = max(paginas_gravadas, pagina)
-                    ck.marcar_parcela(
-                        estado,
-                        ck.NOME_CONTRATOS,
-                        chave_unidade,
-                        pagina=paginas_gravadas,
-                        registros=registros_ano,
-                    )
-                    print(
-                        f"[etl.pncp.contratos] {chave_unidade} p={pagina} "
-                        f"lote={n} acumulado={registros_ano}",
-                        flush=True,
-                    )
-
-                # Persiste eventuais registros residuais e marca conclusão no checkpoint
-                n = _gravar_lote(rows_lote)
-                registros_ano += n
-                ck.marcar_ok(
-                    estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
-                )
-                print(
-                    f"[etl.pncp.contratos] {chave_unidade} registros={registros_ano}"
-                )
-                total += registros_ano
-            except Exception as e:
-                # Falhas de gateway ou instabilidades temporárias do PNCP salvam o parcial e seguem
-                n = _gravar_lote(rows_lote)
-                registros_ano += n
-                total += registros_ano
-                print(
-                    f"[etl.pncp.contratos] AVISO: {chave_unidade} interrompida por erro na API ({type(e).__name__}: {e}); "
-                    f"parcial ({registros_ano} reg) gravado e segue.",
-                    flush=True,
-                )
-                ck.marcar_ok(
-                    estado, ck.NOME_CONTRATOS, chave_unidade, registros=registros_ano
-                )
     print(f"[etl.pncp.contratos] Conclusão da sincronização: total de {total} registros processados")
 
 

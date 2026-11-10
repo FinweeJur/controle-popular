@@ -1,5 +1,23 @@
 # Plano — /jurisprudência: método, estatística, tabelas e temas
 
+> **Tipo:** PLANO
+> **Domínio:** jurisprudência (produto e método)
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-PAGINA-JURISPRUDENCIA.md](PLANO-PAGINA-JURISPRUDENCIA.md), [PLANO-CLASSIFICACAO-GLM-02-11.md](PLANO-CLASSIFICACAO-GLM-02-11.md)
+> **Palavras-chave:** jurisprudência, estatística, tabelas, temas, método, página pública
+
+## Sumário
+
+- [1. O que a página faz hoje](#1-o-que-a-página-faz-hoje)
+- [2. Correção 1 — o método não é o NACAB](#2-correção-1--o-método-não-é-o-nacab)
+- [3. Correção 2 — mais estatística, com gráfico de barra](#3-correção-2--mais-estatística-com-gráfico-de-barra)
+- [4. Correção 3 — tabela estreita](#4-correção-3--tabela-estreita)
+- [5. Correção 4 — painel único com seletor de tema](#5-correção-4--painel-único-com-seletor-de-tema)
+- [6. Estado das tarefas (atualizado 02/11/2026)](#6-estado-das-tarefas-atualizado-02112026)
+- [7. Ordem de execução](#7-ordem-de-execução)
+- [8. O que não fazer](#8-o-que-não-fazer)
+
 Criado: 2026-11-02. Status: proposta, aguardando aprovação do dono.
 Escopo: `apps/web/app/jurisprudencia/` (page.tsx, partes.tsx), rotas novas de
 tema e `apps/web/lib/jurisprudencia.ts`.
