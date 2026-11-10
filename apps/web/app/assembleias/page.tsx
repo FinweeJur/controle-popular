@@ -25,12 +25,13 @@ import {
   obterMetricasNacionaisAssembleias,
 } from "@/lib/assembleias/dados";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/assembleias", {
   title: "Assembleias Legislativas dos Estados | Controle Popular",
   description:
     "Auditoria cívica, proposições de lei, comissões, rankings de produtividade e dados das 27 Assembleias Legislativas estaduais brasileiras.",
-};
+});
 
 export default function AssembleiasPage() {
   const assembleias = listarTodasAssembleias();

@@ -5,6 +5,7 @@ import SubNavEua from "../components/SubNavEua";
 import PainelEmpresasSec from "./PainelEmpresasSec";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/eua/empresas/page.tsx
@@ -24,11 +25,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * - Cumpre a regra de frases curtas de até 13 palavras na interface.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eua/empresas", {
   title: "Empresas e Fundos dos EUA na SEC EDGAR | Controle Popular",
   description:
     "Radiografia de corporações industriais e gestoras de fundos globais registradas na SEC EDGAR com investimentos no Brasil (BlackRock, Vanguard, Alcoa, Vale ADR, Mosaic).",
-};
+});
 
 export default function PaginaEmpresasEua() {
   const empresas = obterEmpresasSecEua();

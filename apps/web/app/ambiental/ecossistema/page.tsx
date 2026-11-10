@@ -7,13 +7,14 @@ import {
 import PainelEcossistema from "./PainelEcossistema";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/ecossistema", {
   title:
     "Ecossistema Regulatório, Ambiental e Concessionárias do Brasil — 27 Estados, Ministérios e Autarquias | ONSA",
   description:
     "Mapeamento consolidado das 27 Secretarias e Agências Estaduais de Meio Ambiente (OEMAs), Ministérios Federais, Agências Reguladoras (IBAMA, ICMBio, ANA, ANEEL, ANM) e principais concessionárias de água e energia elétrica.",
-};
+});
 
 export default function PaginaEcossistemaNacional() {
   const instituicoes = obterTodasInstituicoes();

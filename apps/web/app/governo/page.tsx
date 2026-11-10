@@ -5,12 +5,13 @@ import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import { listarMandatos } from "@/lib/gestao/dados";
 import PainelGovernoHubClient from "./PainelGovernoHubClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/governo", {
   title: "Governos e Planos de Campanha — Prometeu? Cumpriu? | Controle Popular",
   description:
     "Cruzamento transparente entre planos de governo registrados no TSE e a execução real por secretarias estaduais e ministérios federais.",
-};
+});
 
 const SECOES_GOVERNO = [
   { id: "resumo-gestao", titulo: "1. Indicadores de Cumprimento" },

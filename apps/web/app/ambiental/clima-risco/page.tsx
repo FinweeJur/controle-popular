@@ -23,12 +23,13 @@ import BlocoPovoGente, { type DadosImpactoPovoGente } from "@/app/ambiental/comp
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/clima-risco", {
   title: "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | Meio Ambiente (ONSA)",
   description:
     "Painel de vulnerabilidade climática, população exposta em áreas de risco (BATER), monitoramento pluviométrico, queimadas e saneamento básico.",
-};
+});
 
 export default function PaginaBasesClimaRisco() {
   const fontes = listarFontesClimaRisco();

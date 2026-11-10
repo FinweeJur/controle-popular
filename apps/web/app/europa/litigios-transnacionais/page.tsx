@@ -38,12 +38,13 @@ import ListaFontes from "./components/ListaFontes";
 import Posicionamentos from "./components/Posicionamentos";
 import ResumoGeral from "./components/ResumoGeral";
 import SituacaoAtual from "./components/SituacaoAtual";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/europa/litigios-transnacionais", {
   title: "Litígios transnacionais de Mariana e Brumadinho na Europa | Controle Popular",
   description:
     "Ação contra a BHP no High Court de Londres ([2025] EWHC 3001), ação contra a TÜV SÜD em Munique, conexões holandesas, linha do tempo, clipping e ADPF 1178 — com fonte oficial e data de coleta.",
-};
+});
 
 const SECOES = [
   { id: "visao-geral", titulo: "1. Visão geral" },

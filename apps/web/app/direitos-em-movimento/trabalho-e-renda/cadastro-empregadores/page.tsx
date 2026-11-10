@@ -3,6 +3,7 @@ import Link from "next/link";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { obterCadastroEmpregadores } from "@/lib/server-only/dados-cadastro-empregadores";
 import TabelaCadastroEmpregadores from "./TabelaCadastroEmpregadores";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores`
@@ -34,13 +35,13 @@ import TabelaCadastroEmpregadores from "./TabelaCadastroEmpregadores";
 const acervo = obterCadastroEmpregadores();
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores", {
   title: "Cadastro de Empregadores (trabalho escravo) — Controle Popular",
   description:
     `${fmt(acervo.total_registros)} empregadores pessoa jurídica no Cadastro de Empregadores do MTE ` +
     `(${acervo.total_empresas} empresas, ${acervo.total_ufs} UFs, ${fmt(acervo.trabalhadores_envolvidos_total)} trabalhadores ` +
     `envolvidos), com CNPJ, ato administrativo e link para conferir contratos públicos.`,
-};
+});
 
 function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?: string }) {
   return (

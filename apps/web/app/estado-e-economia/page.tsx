@@ -11,12 +11,13 @@ import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
 import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia", {
   title: 'Estado e Economia — Eixo 3 | Controle Popular',
   description:
     'Transparência institucional, orçamento público, compras no PNCP, controle de gastos do Judiciário e votações no Congresso.',
-};
+});
 
 /**
  * Cartão de destaque do eixo Estado e Economia: brilho de borda + ímã.

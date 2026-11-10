@@ -7,6 +7,7 @@ import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { resumoRecentes } from "@/lib/ambiental/autos-recentes";
 import BuscaAutos from "./BuscaAutos";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * /ambiental/autuacoes — autos de infração ambiental de MG, janela 2024–2026.
@@ -22,11 +23,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  * outro período: os dois recortes nunca se somam.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/autuacoes", {
   title: "Autos de infração ambiental em Minas Gerais (2024–2026) | Controle Popular",
   description:
     "Busque os autos de infração ambiental de Minas Gerais por município, ano, situação e valor. Número do auto, data, órgão e valor lavrado, sem nome de autuado.",
-};
+});
 
 export default function AutosSemadPage() {
   const resumo = resumoRecentes();

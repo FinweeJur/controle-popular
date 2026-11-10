@@ -9,6 +9,7 @@ import {
   ResumoTratados,
   VoltarParaAmericaLatina,
 } from "./Cidh";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Sistema interamericano de direitos humanos.
@@ -20,11 +21,11 @@ import {
  * José. Condenações ainda não entram: a Corte bloqueia coleta automatizada.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/america-latina/cidh", {
   title: "CIDH e Corte IDH | Direitos Globais",
   description:
     "Comissão e Corte Interamericana: quais tratados cada país ratificou e o que uma condenação obriga, com texto oficial.",
-};
+});
 
 export default function PaginaCidh() {
   return (

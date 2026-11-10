@@ -4,6 +4,7 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
 interface ComunidadeGrupo {
   id: string;
@@ -72,11 +73,11 @@ const COMUNIDADES_CATALOGO: ComunidadeGrupo[] = [
   },
 ];
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/nossa-gente", {
   title: "Nossa Gente — Povos Tradicionais, Pescadores e Atingidos | Meio Ambiente (ONSA)",
   description:
     "Espaço de visibilidade para comunidades quilombolas, pescadores artesanais, geraizeiros e atingidos por barragens no Observatório Nacional Socioambiental.",
-};
+});
 
 export default function PaginaNossaGente() {
   const gerarCsv = () => {

@@ -42,8 +42,9 @@ import {
   DADOS_RECURSOS_27_ESTADOS,
 } from "@/lib/recursos/dados-recursos-27-estados";
 import PainelRecursosEstadosClient from "./PainelRecursosEstadosClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/recursos/estados", {
   title:
     "Recursos Públicos dos 27 Estados: Água, Energia, Combustível, PPPs e Emendas — Controle Popular",
   description:
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     description:
       "Radiografia cívica dos 27 estados brasileiros nas 5 vertentes estratégicas de recursos e gastos públicos com dados da ANA, ANEEL, PNCP, BNDES e Assembleias Legislativas.",
   },
-};
+});
 
 const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
   {

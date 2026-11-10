@@ -9,6 +9,7 @@ import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/ambiental/ameacas-americas/page.tsx
@@ -36,11 +37,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  *   assistente cívico Seu Nonô com orações curtas e exportação CSV/impressão).
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/ameacas-americas", {
   title: "Ameaças Ambientais nas Américas — Espécies, Rios, Serras e Povos | Controle Popular · ONSA",
   description:
     "Raio-x cívico de 90 ameaças socioambientais críticas nas Américas: 32 espécies da fauna, 16 bacias fluviais, 16 serras e 26 territórios tradicionais protegidos.",
-};
+});
 
 export default function PaginaAmeacasAmericas() {
   const ameacas = obterTodasAmeacas();

@@ -10,12 +10,13 @@ import { obterSeriesEconomicas } from '@/lib/series-economicas';
 import Link from 'next/link';
 import { Globe, ArrowRight } from 'lucide-react';
 import TabelaSeriesBcbClient from './TabelaSeriesBcbClient';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia/orcamento", {
   title: 'Orçamento Público — Eixo Estado e Economia | Controle Popular',
   description:
     'Fiscalização de dotações orçamentárias, execução financeira, transferências federais (Transferegov) e indicadores macroeconômicos (BCB).',
-};
+});
 
 export default function OrcamentoPage() {
   const fichas = listarFichasPorSubfrente('orcamento');

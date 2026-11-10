@@ -7,12 +7,13 @@ import { PAISES_OCEANIA } from "@/lib/direitos-globais/oceania/paises";
 import { getDispositivosOceania } from "@/lib/direitos-globais/oceania/dispositivos";
 import TabelaOceaniaInterativa from "../componentes/TabelaOceaniaInterativa";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/oceania", {
   title: "Oceania e Ilhas do Pacífico | Direitos Globais | Controle Popular",
   description:
     "Comparação dos 14 países da Oceania, direitos dos povos originários, terras consuetudinárias tradicionais e soberania permanente face à emergência climática.",
-};
+});
 
 function ResumoOceania() {
   const totalPaises = PAISES_OCEANIA.length;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
+import { metadataEditavel } from "@/lib/edicoes";
 
 const tópicos: Topico[] = [
   {
@@ -65,11 +66,11 @@ const tópicos: Topico[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/indice", {
   title: "Índice — Judiciario — Controle Popular",
   description:
     "Navegue pelos dados do Poder Judiciário: tribunais, números, presídios, inspeções e correicoes.",
-};
+});
 
 export default function ÍndiceJudiciario() {
   return (

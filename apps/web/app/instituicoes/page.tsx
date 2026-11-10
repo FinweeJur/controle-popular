@@ -6,12 +6,13 @@ import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import PainelInstituicoesClient from "./PainelInstituicoesClient";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/instituicoes", {
   title: "Instituições e Secretarias de Todas as Esferas — Organograma, Contatos e Ouvidoria | Controle Popular",
   description:
     "Catálogo unificado dos órgãos públicos do Brasil: Ministérios federais, Secretarias estaduais e municipais, Congresso, Assembleias, Câmaras, Tribunais, Ministério Público e Defensoria.",
-};
+});
 
 const SECOES_INSTITUICOES = [
   { id: "resumo-esferas", titulo: "1. Panorama por Poder" },

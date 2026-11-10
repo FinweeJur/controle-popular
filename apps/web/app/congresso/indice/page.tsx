@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
+import { metadataEditavel } from "@/lib/edicoes";
 
 const tópicos: Topico[] = [
   {
@@ -51,11 +52,11 @@ const tópicos: Topico[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/indice", {
   title: "Índice — Congresso Nacional — Controle Popular",
   description:
     "Navegue pelos dados do Congresso Nacional: parlamentares, comissões, proposições, votações e agenda.",
-};
+});
 
 export default function ÍndiceCongresso() {
   return (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
+import { metadataEditavel } from "@/lib/edicoes";
 
 const tópicos: Topico[] = [
   {
@@ -20,11 +21,11 @@ const tópicos: Topico[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra/indice", {
   title: "Índice — Função social da terra — Controle Popular",
   description:
     "Navegue pelos dados da função social da terra: alertas, mapa de camadas e territorio.",
-};
+});
 
 export default function ÍndiceFuncaoSocialTerra() {
   return (

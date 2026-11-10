@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { metadataEditavel } from "@/lib/edicoes";
 import NextLink from "next/link";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import casosJson from "@/data/jurisprudencia-casos.json";
+import { ACERVO_JURISPRUDENCIA as casosJson } from "@/lib/jurisprudencia-acervo";
 import mabJson from "@/data/mab-publicacoes.json";
 import radarJson from "@/data/noticias-desastres.json";
 
@@ -111,11 +112,11 @@ const ANOS_TEXTO = Object.entries(ANOS)
 
 const RADAR_DATA = RADAR.gerado_em?.slice(0, 10) ?? "";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/itatiaiaucu", {
   title: "Itatiaiuçu — Serra Azul, PAEBM e os acórdãos | Controle Popular",
   description:
     "O caso de Itatiaiuçu em um só lugar: os acórdãos do TJMG sobre o plano de emergência da barragem Serra Azul, a publicação do MAB e o que ainda falta medir.",
-};
+});
 
 /** Trecho da ementa em até 220 caracteres, cortado em palavra inteira. */
 function trechoDaEmenta(texto: string, limite = 220): string {

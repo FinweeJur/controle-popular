@@ -15,12 +15,13 @@ import BibliotecaGeralClient from "./BibliotecaGeralClient";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/biblioteca", {
   title: "Biblioteca Geral e Acervo Acadêmico — Controle Popular",
   description:
     "Acervo unificado de documentos públicos, relatórios corporativos ESG, atas de órgãos de justiça dos 27 estados e produção acadêmica (artigos SciELO, teses de doutorado e dissertações) sobre Vale, Sigma Lithium, consulta prévia, barragens e transparência.",
-};
+});
 
 /** Fatia `unificada` das teses (dono, 14/10/2026): o que não tem caso próprio
     (nem Mariana/Fundão, nem Brumadinho/B1, nem Jequitinhonha) mora AQUI — nada é

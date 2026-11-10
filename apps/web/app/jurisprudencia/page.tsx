@@ -24,6 +24,7 @@ import { CatalogoIndeterminados } from "./Catalogo";
 import { ResumoRealidadeBox } from "../components/ResumoRealidade";
 import { TrilhaFrentes } from "../components/TrilhaFrentes";
 import { TeseTema1280 } from "./TeseTema1280";
+import { metadataEditavel } from "@/lib/edicoes";
 import { MiniSumarioLateral } from "../components/wiki/MiniSumarioLateral";
 
 /**
@@ -42,11 +43,11 @@ import { MiniSumarioLateral } from "../components/wiki/MiniSumarioLateral";
  * em `RodapeMetodo` — ambos em `partes.tsx`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/jurisprudencia", {
   title: "Jurisprudência dos desastres — Controle Popular",
   description:
     "Painel da jurisprudência dos desastres: acórdãos do TJMG (Brumadinho, Rio Doce e direitos humanos), do TJES (Fundão) e súmulas do STF, STJ e TST, com recorte por tema de indenização, danos PNAB/PEAB e valores.",
-};
+});
 
 const SECOES_JURIS = [
   { id: "resumo-realidade", titulo: "Resumo de realidade" },

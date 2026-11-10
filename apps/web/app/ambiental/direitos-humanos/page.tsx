@@ -9,12 +9,13 @@ import SecaoAcervoCndh from "./SecaoAcervoCndh";
 import CartaoPerguntasRota from "@/app/components/seu-nono/CartaoPerguntasRota";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/direitos-humanos", {
   title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | Meio Ambiente (ONSA)",
   description:
     "Monitoramento de relatórios temáticos e de país da Comissão Interamericana (CIDH/OEA), Nações Unidas (ONU) e Conselho Nacional dos Direitos Humanos (CNDH) cruzados por território.",
-};
+});
 import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
 
 export default function PaginaDireitosHumanos() {

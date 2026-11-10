@@ -12,6 +12,7 @@ import {
 } from "@/lib/universidades";
 import PainelUniversidades from "./PainelUniversidades";
 import ContatosInstituicoes from "./ContatosInstituicoes";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/universidades` — índice de pesquisa e extensão universitária.
@@ -29,12 +30,12 @@ import ContatosInstituicoes from "./ContatosInstituicoes";
  * painel deixa de ser suficiente e a lista passa a ser fatiada (AGENTS §5.1).
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/universidades", {
   title:
     "Universidades: grupos de estudo, pesquisa e extensão por tema e estado | Controle Popular",
   description:
     "Lista de grupos de estudo e pesquisa e de projetos de extensão das universidades brasileiras, com contatos, líderes, área, estado, período e cruzamento por tema, local e data. Cada registro traz a fonte oficial.",
-};
+});
 
 const RESUMO = resumirUniversidades();
 const fmt = (n: number) => n.toLocaleString("pt-BR");

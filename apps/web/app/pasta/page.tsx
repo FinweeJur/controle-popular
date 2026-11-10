@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import PastaClient from "./PastaClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/pasta` — o dossiê do leitor, montado página a página.
@@ -11,11 +12,11 @@ import PastaClient from "./PastaClient";
  * sem cadastro e sem servidor. A lógica pura mora em `lib/pasta/itens.ts`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/pasta", {
   title: "Minha pasta de dossiê | Controle Popular",
   description:
     "Junta páginas, tabelas e leis do portal numa pasta e exporta tudo de uma vez em planilha ou impressão. Sem cadastro: a pasta fica no seu aparelho.",
-};
+});
 
 export default function PastaPage() {
   return (

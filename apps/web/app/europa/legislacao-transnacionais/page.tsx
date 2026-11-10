@@ -9,6 +9,7 @@ import {
   type StatusLegal,
 } from "@/lib/europa-litigios/legislacao";
 import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Legislação e precedentes que permitem responsabilizar transnacionais.
@@ -18,11 +19,11 @@ import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
  * diligência devida e relatório/penal.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/europa/legislacao-transnacionais", {
   title: "Legislação transnacional | Controle Popular",
   description:
     "Resumo didático e tabelas sobre as leis e precedentes que permitem responsabilizar multinacionais por danos no exterior: Reino Unido, Holanda, Alemanha, França, UE, Suíça, Noruega, EUA, Canadá e Austrália.",
-};
+});
 
 const TOTAL = LEGISLACAO.length;
 const PAISES = [...new Set(LEGISLACAO.map((i) => i.pais))];

@@ -4,6 +4,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { BookOpen, Globe, CheckCircle, ShieldCheck, Sparkles, Layers } from "lucide-react";
 import PainelPeriodicos from "./PainelPeriodicos";
 import dadosSumario from "@/data/periodicos-sumario.json";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * /periodicos — Sistematização Mundial de Periódicos Abertos de Submissão Contínua
@@ -25,11 +26,11 @@ import dadosSumario from "@/data/periodicos-sumario.json";
  *   - Regra 5.16: fonte mínima de 12 px em todo o texto de interface.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/periodicos", {
   title: "Periódicos Abertos de Submissão Contínua no Mundo — Controle Popular",
   description:
     "Catálogo auditado de periódicos científicos de acesso aberto com submissão em fluxo contínuo e publicação contínua em 141 países. Dados de tema, gratuidade (sem APC), DOI, prazos, formas de envio e idiomas.",
-};
+});
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 

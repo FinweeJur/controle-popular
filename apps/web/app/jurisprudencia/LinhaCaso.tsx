@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import type { CasoJurisprudencia } from "@/lib/jurisprudencia";
-import { linkFonteOficial } from "@/lib/jurisprudencia-fonte";
-import { NOMES_FRENTE, NOMES_TIPO, merito } from "./rotulos";
+import { analisarEmenta } from "@/lib/jurisprudencia-ementa";
+import { linkFonteOficial, type FonteOficial } from "@/lib/jurisprudencia-fonte";
+import { NOMES_FRENTE, NOMES_TIPO, explicarPolo, merito } from "./rotulos";
 
 /**
  * @file Linha (desktop) e cartão (celular) da lista de jurisprudência.
@@ -75,6 +76,21 @@ function linkInteiro(caso: CasoJurisprudencia): string | null {
   return link.startsWith("/api/inteiro-teor") ? link : null;
 }
 
+/**
+ * Rótulo do link para a fonte quando a ementa é só um trecho.
+ *
+ * "Ler o acórdão" só vale quando o destino é o acórdão naquele processo;
+ * quando é a busca oficial, o rótulo diz "Buscar o processo" — o TJMG exige
+ * código antes de pesquisar e a URL não leva o número. Prometer o acórdão
+ * ali seria o mesmo erro que a linha "Fonte:" já evita.
+ */
+function rotuloFonteDaEmenta(caso: CasoJurisprudencia, fonte: FonteOficial): string | null {
+  const tribunal = caso.tribunal || "tribunal";
+  if (fonte.tipo === "acordao") return `Ler o acórdão no ${tribunal}`;
+  if (fonte.tipo === "busca") return `Buscar o processo no ${tribunal}`;
+  return null;
+}
+
 /** Rótulo do gatilho conforme o que está aberto. */
 function rotuloGatilho(aberto: "resumo" | "inteiro" | null, qual: "resumo" | "inteiro"): string {
   if (aberto !== qual) return qual === "resumo" ? "ver mais" : "ver inteiro teor";
@@ -116,10 +132,12 @@ function LinhaFonteOficial({ caso }: { caso: CasoJurisprudencia }) {
 
 function Detalhe({ caso, comFonte = true }: { caso: CasoJurisprudencia; comFonte?: boolean }) {
   const resumo = resumoDe(caso);
-  const ementa = ementaDe(caso);
-  // A ementa vem do gerador com teto de 12.000 caracteres; só marca corte
-  // quando o texto bate no teto.
-  const cortada = ementa.length >= 12000 ? " […]" : "";
+  // A ementa vem recortada de dois jeitos: ~500 caracteres pela fonte ou
+  // 12.000 pelo gerador. O helper decide se o texto é inteiro ou trecho;
+  // olhar só o teto de 12.000 deixava 4.970 trechos passarem como "Ementa:".
+  const analise = analisarEmenta(ementaDe(caso));
+  const fonte = linkFonteOficial(caso);
+  const rotuloFonte = analise.truncada ? rotuloFonteDaEmenta(caso, fonte) : null;
   const ficha = fichaDe(caso);
   return (
     <div className="max-h-[60vh] space-y-3 overflow-y-auto overscroll-contain pr-1 text-sm leading-relaxed">
@@ -130,14 +148,43 @@ function Detalhe({ caso, comFonte = true }: { caso: CasoJurisprudencia; comFonte
           {resumo}
         </p>
       ) : null}
-      {ementa ? (
-        <p>
-          <span className="font-semibold">Ementa: </span>
-          {ementa}
-          {cortada}
-        </p>
+      {analise.texto ? (
+        <div>
+          <p>
+            <span className="font-semibold">
+              {analise.truncada ? "Trecho da ementa: " : "Ementa: "}
+            </span>
+            {analise.texto}
+            {analise.motivo === "limite-gerador" ? "…" : null}
+          </p>
+          {analise.truncada ? (
+            <div className="mt-1 space-y-1">
+              <p className="text-xs leading-snug opacity-70">
+                Trecho de {analise.caracteres.toLocaleString("pt-BR")} caracteres. O texto
+                integral está no acórdão.
+              </p>
+              {/* O link do acórdão/busca substitui a linha "Fonte:" abaixo:
+                  os dois apontariam para a mesma URL. No celular (`comFonte`
+                  falso) a linha "Fonte:" já está fora da sanfona. */}
+              {comFonte && rotuloFonte && fonte.tipo !== "indisponivel" ? (
+                <p className="text-xs">
+                  <a
+                    className="font-semibold text-primary underline"
+                    href={fonte.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={fonte.titulo}
+                  >
+                    {rotuloFonte}
+                    <span aria-hidden="true"> ↗</span>
+                  </a>
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
       ) : null}
-      {comFonte ? <LinhaFonteOficial caso={caso} /> : null}
+      {comFonte && !rotuloFonte ? <LinhaFonteOficial caso={caso} /> : null}
     </div>
   );
 }
@@ -243,9 +290,13 @@ function BotaoCopiar({ caso }: { caso: CasoJurisprudencia }) {
 
   const semPrefixo = (texto: string, prefixo: string) =>
     texto.replace(new RegExp(`^${prefixo}:\\s*`, "i"), "").trim();
+  // Copiar um trecho rotulado de "Ementa:" levaria a mesma confusão da tela
+  // para o laudo. O rótulo acompanha o que está na sanfona.
+  const analise = analisarEmenta(ementaDe(caso));
+  const rotuloEmenta = analise.truncada ? "Trecho da ementa" : "Ementa";
   const texto = [
     resumoDe(caso) ? `Resumo: ${semPrefixo(resumoDe(caso), "resumo")}` : "",
-    ementaDe(caso) ? `Ementa: ${semPrefixo(ementaDe(caso), "ementa")}` : "",
+    analise.texto ? `${rotuloEmenta}: ${semPrefixo(analise.texto, "ementa")}` : "",
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -323,7 +374,9 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
         <td className="w-[7rem] whitespace-nowrap px-2 py-2">
           {caso.tribunal}/{caso.estado} · {caso.ano || "—"}
         </td>
-        <td className="w-[9rem] px-2 py-2">{merito(caso)}</td>
+        <td className="w-[10.5rem] px-2 py-2" title={explicarPolo(caso)}>
+          {merito(caso)}
+        </td>
         <td className="px-2 py-2">
           {temasDe(caso) ? <span>{temasDe(caso)}</span> : null}
           <ResumoCurto caso={caso} />
@@ -361,6 +414,9 @@ export function CartaoCaso({ caso }: { caso: CasoJurisprudencia }) {
         {NOMES_FRENTE[caso.frente] ?? caso.frente}
       </p>
       <p>{merito(caso)}</p>
+      {explicarPolo(caso) ? (
+        <p className="text-xs opacity-70">{explicarPolo(caso)}</p>
+      ) : null}
       {temasDe(caso) ? <p className="text-xs opacity-80">{temasDe(caso)}</p> : null}
       <ResumoCurto caso={caso} />
       <LinhaFonteOficial caso={caso} />

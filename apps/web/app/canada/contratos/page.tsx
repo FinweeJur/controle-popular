@@ -31,12 +31,13 @@ import PainelContratosCanada from "./PainelContratosCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/canada/contratos", {
   title: "Contratos Federais no Canadá & Financiamentos EDC para o Brasil | Controle Popular",
   description:
     "Transparência de compras públicas do portal Open Government Canada (CKAN), subsídios e créditos à exportação concedidos pela estatal EDC para o Brasil.",
-};
+});
 
 export default function PaginaContratosCanada() {
   const contratos = obterContratosCanada();

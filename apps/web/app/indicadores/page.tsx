@@ -6,6 +6,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import PainelIndicadoresClient, {
   RegiaoResumo,
 } from "./componentes/PainelIndicadoresClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/indicadores/page.tsx
@@ -26,7 +27,7 @@ import PainelIndicadoresClient, {
  *   - QUALIDADES-DA-INFORMACAO item 6: exportação em CSV com BOM UTF-8 e ';'.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/indicadores", {
   title: "Painel Nacional de Indicadores Cívicos | Controle Popular",
   description:
     "Dashboard unificado de indicadores oficiais dos 27 estados e 5.571 municípios: saúde pública (SUS), educação básica (IDEB), desenvolvimento humano, conselhos municipais e comparador global.",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     "PNCP",
     "Direitos Comparados",
   ],
-};
+});
 
 interface IndicadorRegiaoRaw {
   ufs: string[];

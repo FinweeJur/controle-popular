@@ -25,8 +25,9 @@ import { obterFortunasMundiais, COBERTURA_FORTUNAS } from "@/lib/empresas/dados-
 import PainelFortunasClient from "./PainelFortunasClient";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas/fortunas", {
   title: "1.000 Maiores Fortunas Mundiais — Concentração de Riqueza e Equivalência Social",
   description:
     "Mapeamento auditável das 1.000 maiores fortunas do planeta por pessoa e dinastias familiares. Setores de atuação, rendimento mensal aproximado e equivalência com a linha de extrema pobreza do Banco Mundial.",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Controle Popular",
     type: "website",
   },
-};
+});
 
 export default function PaginaFortunasMundiais() {
   const fortunas = obterFortunasMundiais();

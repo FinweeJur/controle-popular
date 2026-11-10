@@ -23,13 +23,14 @@ import { COBERTURA_CONSUMIDORES_RECURSOS } from "@/lib/recursos/dados-consumidor
 import { converter } from "@/lib/transformacao/unidades";
 import PainelConsumoCorporativoClient from "./PainelConsumoCorporativoClient";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/consumo-corporativo", {
   title:
     "Maiores Consumidores de Água, Energia, Combustível, Empregos e Capital (MG e G20) — Controle Popular",
   description:
     "Ranking auditável dos 50 maiores consumidores corporativos de água, energia elétrica, combustível, empregos formais e capital em Minas Gerais e nos 20 países do G20, com gráficos Donut, pegada hídrica e comparativo de tarifas empresa vs. cidadão.",
-};
+});
 
 export default function ConsumoCorporativoPage() {
   const cob = COBERTURA_CONSUMIDORES_RECURSOS;

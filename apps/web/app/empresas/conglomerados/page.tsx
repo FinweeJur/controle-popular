@@ -35,12 +35,13 @@ import PainelConglomeradosClient from "./PainelConglomeradosClient";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas/conglomerados", {
   title: "Redes de Monopólios, Holdings e Cartéis no Brasil | Controle Popular",
   description:
     "Auditoria cívica das redes de controle societário, holdings globais (Big Three), oligopólio de grãos ABCD, Big Mining, Big Oil e índices HHI de concentração econômica no Brasil.",
-};
+});
 
 export default function PaginaConglomerados() {
   const nos = obterNosConglomerados();

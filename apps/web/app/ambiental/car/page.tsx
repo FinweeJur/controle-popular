@@ -44,13 +44,14 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { converter } from "@/lib/transformacao/unidades";
 import TabelaCar, { type ImovelCar } from "./TabelaCar";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { metadataEditavel } from "@/lib/edicoes";
 
 // Descrição sai do dado: obterEstatisticasCar() lê car-mg.json (IEF/SEMAD/SICAR,
 // extração 20/08/2026) — o número viaja com a medição, não se digita à mão.
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/car", {
   title: "Cadastro Ambiental Rural (CAR) em Minas Gerais — IEF e CAR 2.0 | Meio Ambiente (ONSA)",
   description: `Radiografia dos 1,16 milhão de imóveis do CAR em Minas Gerais sob gestão do IEF/MG nas 14 URFBios: tempo médio de espera de ${formatNumberBR(obterEstatisticasCar().tempoMedioAnaliseDias)} dias (~4,3 anos), análise por setor, porte e consulta oficial auditada.`,
-};
+});
 
 /**
  * Ordena as URFBios por tempo de análise decrescente — helper de módulo

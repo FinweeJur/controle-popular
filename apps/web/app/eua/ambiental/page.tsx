@@ -4,6 +4,7 @@ import { COBERTURA_EUA, obterAmbientalEua } from "@/lib/internacional/dados-eua"
 import SubNavEua from "../components/SubNavEua";
 import PainelAmbientalEua from "./PainelAmbientalEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/eua/ambiental/page.tsx
@@ -25,11 +26,11 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * - Frases curtas de até 13 palavras na interface para leitura acessível.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eua/ambiental", {
   title: "Meio Ambiente nos EUA: Barragens NID, EPA ECHO e Superfund | Controle Popular",
   description:
     "Inventário de 91k barragens do National Inventory of Dams (15.600 High Hazard), multas da EPA ECHO, áreas contaminadas Superfund CERCLA e emissões do Climate TRACE.",
-};
+});
 
 export default function PaginaAmbientalEua() {
   const ambiental = obterAmbientalEua();

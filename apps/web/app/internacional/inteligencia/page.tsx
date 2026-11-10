@@ -29,12 +29,13 @@ import SecaoPaginasRelacionadas, {
 } from "@/app/components/SecaoPaginasRelacionadas";
 import { Shield, FileText, Globe2, Eye, LockOpen, MapPin } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional/inteligencia", {
   title: "Central de Inteligência & Documentos Desclassificados | Controle Popular",
   description:
     "Acervo cívico unificado de relatórios de inteligência, segurança cibernética e dossiês desclassificados do G20, FBI, NSA, CIA e Twelve Eyes: busca, temas, pessoas, datas e links oficiais canônicos.",
-};
+});
 
 const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
   {

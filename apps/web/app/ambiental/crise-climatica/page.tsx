@@ -6,6 +6,7 @@ import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelCriseClimaticaClient from "./PainelCriseClimaticaClient";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file apps/web/app/ambiental/crise-climatica/page.tsx
@@ -33,12 +34,12 @@ import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas"
  * - Toda a interatividade e visualização vetorial delegada ao PainelCriseClimaticaClient.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/crise-climatica", {
   title:
     "Crise Climática Global — Emissões do G20, Superpoluidores, Copernicus e Metas NDCs | Meio Ambiente (ONSA)",
   description:
     "Painel analítico do Observatório Nacional Socioambiental (ONSA): inventário de emissões do G20 (Climate TRACE/IPCC), as 20 maiores instalações industriais poluidoras mundiais, anomalias extremas Copernicus ECMWF/WMO e metas setoriais das NDCs.",
-};
+});
 
 export default function PaginaCriseClimatica() {
   const cob = COBERTURA_CRISE_CLIMATICA;

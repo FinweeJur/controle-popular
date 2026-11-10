@@ -28,12 +28,13 @@ import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/canada/mineracao", {
   title: "Mineradoras Canadenses no Brasil (TSX/TSX-V) & Barragens ANM | Controle Popular",
   description:
     "Mapeamento de 12 mineradoras listadas na Bolsa de Toronto (TSX) operando no Brasil: Sigma Lithium, Vale Base Metals, Belo Sun, Ero, Equinox, Aura e Lundin Mining.",
-};
+});
 
 export default function PaginaMineracaoCanada() {
   const mineradoras = obterMineradorasCanada();

@@ -3,12 +3,13 @@ import Link from "next/link";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import TabelaEstatica from "@/app/[municipio]/components/TabelaEstatica";
 import entidadesEua from "@/data/setores-estrategicos/catalogo-top10-eua-empresas-e-fundos.json";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/transparencia-internacional", {
   title: "Transparência Internacional & Investimentos EUA-Brasil — Controle Popular",
   description:
     "Observatório de transparência sobre repasses públicos estrangeiros, projetos da USAID, dados do US Census Bureau API e investimentos de fundos norte-americanos no Brasil.",
-};
+});
 
 export default function TransparenciaInternacionalPage() {
   const usCensusData: any[] = [];

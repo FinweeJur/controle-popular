@@ -4,12 +4,13 @@ import { obterCatalogoDocumentos } from "@/lib/empresas/empresas-documentos";
 import { dataDoAcervo } from "@/lib/fontes/dataDoArquivo";
 import DataColeta from "@/app/components/DataColeta";
 import BibliotecaEmpresasClient from "./BibliotecaEmpresasClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas/documentos", {
   title: "Biblioteca de Documentos Estratégicos, Relatórios ESG e Prestação de Contas — Controle Popular",
   description:
     "Acervo público de relatórios de sustentabilidade (GRI/SASB), demonstrações financeiras (CVM/SEC), inventários de carbono e relatórios de direitos humanos das maiores corporações e fundos atuantes no Brasil.",
-};
+});
 
 export default function DocumentosEmpresasPage() {
   const catalogo = obterCatalogoDocumentos();

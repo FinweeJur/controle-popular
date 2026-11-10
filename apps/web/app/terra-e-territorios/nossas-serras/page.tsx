@@ -6,12 +6,13 @@ import FichaCard from '@/app/components/eixos/FichaCard';
 import RelacaoSuggestions from '@/app/components/eixos/RelacaoSuggestions';
 import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
 import AvisoReferenciaTerritorio from '../AvisoReferencia';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/terra-e-territorios/nossas-serras", {
   title: 'Nossas Serras — Eixo Terra e Territórios | Controle Popular',
   description:
     'Preservação de topos de morro, patrimônio geológico, Unidades de Conservação e contenção da expansão minerária predatória.',
-};
+});
 
 export default function NossasSerrasPage() {
   const fichas = listarFichasPorSubfrente('nossas-serras');
