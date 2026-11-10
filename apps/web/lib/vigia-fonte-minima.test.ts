@@ -15,5 +15,5 @@ describe("Vigia de Tipografia — Tamanho Mínimo de Fonte (§5.16)", () => {
       encoding: "utf-8",
     });
     expect(saida).toContain("Nenhuma fonte menor que 12px encontrada no portal");
-  });
+  }, 120_000); // sozinho roda em ~6 s; sob a suíte cheia (312 arquivos em paralelo) passa dos 30 s padrão
 });

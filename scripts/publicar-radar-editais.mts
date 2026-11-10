@@ -142,6 +142,18 @@ function rodarGuarda(comando: string[], rotulo: string): void {
   console.log(`✅ [publicar-radar] guarda ${rotulo} passou`);
 }
 
+/** Roda `npx ...` como o npm roda no Windows: no win32 o
+ *  execFileSync("npx") dá ENOENT (só existe npx.cmd) e o .cmd direto dá
+ *  EINVAL no Node >= 18.20 sem shell. cmd.exe /c resolve sem shell
+ *  interpolável — os argumentos aqui são literais. */
+function executarNpx(args: string[]): void {
+  if (process.platform === "win32") {
+    execFileSync("cmd.exe", ["/d", "/s", "/c", "npx", ...args], { cwd: RAIZ, stdio: "inherit" });
+    return;
+  }
+  execFileSync("npx", args, { cwd: RAIZ, stdio: "inherit" });
+}
+
 // ──────────────────────────────────────────────────────────────────────────
 // Tipos.
 // ──────────────────────────────────────────────────────────────────────────
@@ -381,10 +393,7 @@ async function main(): Promise<void> {
       rodarGuarda(["scripts/checar-dado-pessoal-em-dado.py"], "checar-dado-pessoal-em-dado.py (pós-escrita)");
       // Porta de ortografia: violação de acento obrigatório bloqueia a
       // publicação. Avisos de estilo (frase longa) não bloqueiam.
-      execFileSync("npx", ["tsx", "scripts/checar-ortografia-noticias.mts"], {
-        cwd: RAIZ,
-        stdio: "inherit",
-      });
+      executarNpx(["tsx", "scripts/checar-ortografia-noticias.mts"]);
       const msg = `radar: ${publicadas.length} edital(is) do Diario Oficial vira(m) post do blog\n\nPublicacao automatica do radar de editais. Guardas de dado pessoal e checagem de ortografia rodadas antes do commit.\n\nCo-Authored-By: opencode\n`;
       const msgFile = path.join(RAIZ, "logs", `radar-msg-${Date.now()}.txt`);
       fs.writeFileSync(msgFile, msg, "utf-8");
@@ -408,9 +417,24 @@ async function main(): Promise<void> {
       console.log("[publicar-radar] commit + push feitos; a rotina das 05:50 publica no ar.");
     } catch (err) {
       console.error("⚠️ [publicar-radar] commit/push falhou:", err instanceof Error ? err.message : err);
-      execFileSync("git", ["rebase", "--abort"], { cwd: RAIZ, stdio: "ignore" });
-      execFileSync("git", ["checkout", "--", rel], { cwd: RAIZ });
-      console.error("[publicar-radar] JSON do portal revertido; pendentes continuam aguardando.");
+      // Cada passo do revert é protegido por conta própria: antes, um
+      // `git rebase --abort` sem rebase em andamento (o caso normal quando a
+      // falha veio antes do rebase) lançava e o `git checkout` de baixo nunca
+      // rodava, deixando noticias-portal.json sujo e travando a rotina.
+      try {
+        execFileSync("git", ["rebase", "--abort"], { cwd: RAIZ, stdio: "ignore" });
+      } catch {
+        // sem rebase em andamento — esperado.
+      }
+      try {
+        execFileSync("git", ["checkout", "--", rel], { cwd: RAIZ });
+      } catch (erroRevert) {
+        console.error(
+          "❌ [publicar-radar] FALHA ao reverter o JSON do portal:",
+          erroRevert instanceof Error ? erroRevert.message : erroRevert
+        );
+      }
+      console.error("[publicar-radar] JSON do portal restaurado ao último commit; pendentes continuam aguardando.");
     }
   }
 

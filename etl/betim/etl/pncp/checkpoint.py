@@ -19,7 +19,7 @@ Formato (um nível por unidade de trabalho):
 
 status:
   parcial — unidade em andamento; retomar da `pagina` seguinte
-  ok      — unidade completa; pular na próxima rodada
+  ok      — unidade completa; pular, exceto no ano corrente (relido)
 """
 from __future__ import annotations
 
@@ -61,9 +61,42 @@ def salvar(nome: str, estado: dict[str, Any]) -> None:
     os.replace(tmp, path)
 
 
-def unidade_pronta(estado: dict[str, Any], chave: str) -> bool:
+def _ano_da_chave(chave: str) -> int | None:
+    """Ano embutido na chave (`...:2026` ou `...:2026-6`), se reconhecível."""
+    trecho = chave.rsplit(":", 1)[-1].split("-", 1)[0]
+    if len(trecho) != 4 or not trecho.isdigit():
+        return None
+    return int(trecho)
+
+
+def unidade_pronta(
+    estado: dict[str, Any], chave: str, *, ano_atual: int | None = None
+) -> bool:
+    """Unidade marcada `ok` pode ser pulada nesta rodada?
+
+    `ok` de ano passado vale para sempre; `ok` do ano corrente não, porque o
+    PNCP publica durante o ano inteiro. Chave sem ano legível mantém o
+    comportamento antigo (pula).
+    """
     item = estado.get(chave)
-    return isinstance(item, dict) and item.get("status") == "ok"
+    if not (isinstance(item, dict) and item.get("status") == "ok"):
+        return False
+    ano = _ano_da_chave(chave)
+    if ano is None:
+        return True
+    if ano_atual is None:
+        import datetime as dt
+
+        ano_atual = dt.date.today().year
+    return ano < ano_atual
+
+
+def registros_parciais(estado: dict[str, Any], chave: str) -> int:
+    """Registros já gravados de uma unidade parcial (0 se não houver)."""
+    item = estado.get(chave)
+    if not isinstance(item, dict) or item.get("status") != "parcial":
+        return 0
+    return int(item.get("registros") or 0)
 
 
 def marcar_parcela(

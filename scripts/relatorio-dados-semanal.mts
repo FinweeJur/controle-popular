@@ -14,9 +14,10 @@
  * frequencia: diaria 3, semanal 10, mensal 40; estatica e editorial (isenta,
  * nao e coleta automatica).
  *
- * Honestidade: arquivo sem carimbo usa mtime e aparece como `sem-carimbo`,
- * nunca como verde. Arquivo/tabela ausente vira `ausente`, sem crash. Banco
- * fora do ar vira `sem-conexao`, sem crash.
+ * Honestidade: arquivo sem carimbo vira `sem-carimbo`, nunca verde nem "fresco"
+ * por mtime (mtime muda a cada checkout e mentiria). Acervo em array sem
+ * cabecalho (blog) tira o carimbo do item mais novo. Arquivo/tabela ausente vira
+ * `ausente`, sem crash. Banco fora do ar vira `sem-conexao`, sem crash.
  *
  * Uso:
  *   npx tsx scripts/relatorio-dados-semanal.mts [--json] [--sem-telegram] [--self-test]
@@ -79,8 +80,8 @@ interface FonteArquivo {
   volumeCampos?: string[];
   /** Rotulo extra do volume, ex.: totalNegativas vira "(9.554 negativas)". */
   volumeExtra?: { campo: string; rotulo: string };
-  /** Sem carimbo no JSON: usa mtime e rotula sem-carimbo. */
-  usarMtime?: boolean;
+  /** Acervo em array sem cabecalho: carimbo = maior data entre os itens. */
+  carimboDeItens?: string[];
 }
 
 interface FonteBanco {
@@ -157,8 +158,8 @@ const FONTES_ARQUIVO: FonteArquivo[] = [
     rota: "/ambiental/tac",
     frequencia: "mensal",
     arquivo: "etl/betim/dados/tac-projetos-bundle.json",
+    caminhoCarimbo: "COBERTURA_TAC_PROJETOS.coletadoEm",
     volumeCampos: ["COBERTURA_TAC_PROJETOS.projetos"],
-    usarMtime: true,
   },
   {
     id: "editais",
@@ -201,9 +202,11 @@ const FONTES_ARQUIVO: FonteArquivo[] = [
     categoria: "Noticias",
     nome: "Noticias do portal",
     rota: "/noticias",
-    frequencia: "diaria",
+    // Blog: nao e coleta automatica (editorial), mas o carimbo vem do post
+    // mais novo — assim a data aparece honesta e o atraso nao fica escondido.
+    frequencia: "estatica",
     arquivo: "apps/web/data/noticias-portal.json",
-    usarMtime: true,
+    carimboDeItens: ["publicadoEm", "atualizadoEm"],
   },
   {
     id: "linha-do-tempo",
@@ -257,7 +260,8 @@ const FONTES_BANCO: FonteBanco[] = [
     categoria: "Ambiental",
     nome: "Autos de infracao CAP",
     rota: "/ambiental/autuacoes",
-    frequencia: "semanal",
+    // ETL mensal por desenho (etl/betim/etl/apis/cap_autos_infracao.py): teto 40.
+    frequencia: "mensal",
     tabela: "cap_autos_infracao",
     colunaData: "data_lavratura",
   },
@@ -323,6 +327,27 @@ function volumeExtraDe(dados: unknown, fonte: FonteArquivo): string | null {
   return n === null ? null : `${n.toLocaleString("pt-BR")} ${fonte.volumeExtra.rotulo}`;
 }
 
+/** Maior data entre os itens de um array (blog nao tem cabecalho com carimbo). */
+function carimboDosItens(dados: unknown, campos: string[]): string | null {
+  if (!Array.isArray(dados)) return null;
+  let maior: string | null = null;
+  let maiorMs = -Infinity;
+  for (const item of dados) {
+    if (item === null || typeof item !== "object") continue;
+    for (const campo of campos) {
+      const valor = (item as Record<string, unknown>)[campo];
+      if (typeof valor !== "string") continue;
+      const ms = Date.parse(valor);
+      if (Number.isNaN(ms)) continue;
+      if (ms > maiorMs) {
+        maiorMs = ms;
+        maior = valor;
+      }
+    }
+  }
+  return maior;
+}
+
 /**
  * NUCLEO PURO do julgamento: dado o carimbo, a frequencia e o agora, devolve
  * lag e status. Separado do disco e do banco para o autoteste exercitar a
@@ -373,23 +398,11 @@ function avaliarArquivo(fonte: FonteArquivo): Linha {
     ? typeof carimboBruto === "string" && !Number.isNaN(Date.parse(carimboBruto))
       ? carimboBruto
       : null
-    : dataDoAcervo(dados);
+    : fonte.carimboDeItens
+      ? carimboDosItens(dados, fonte.carimboDeItens)
+      : dataDoAcervo(dados);
   const volume = volumeDe(dados, fonte);
 
-  if (!carimbo && fonte.usarMtime) {
-    const mtime = fs.statSync(caminho).mtime.toISOString();
-    const { lagDias } = avaliar(mtime, fonte.frequencia, AGORA);
-    return {
-      ...base,
-      coletado: mtime,
-      dataDado: null,
-      volume,
-      volumeDetalhe: volumeExtraDe(dados, fonte),
-      lagDias,
-      status: "sem-carimbo",
-      motivo: "sem carimbo no JSON; mtime usado como referencia",
-    };
-  }
   const { lagDias, status } = avaliar(carimbo, fonte.frequencia, AGORA);
   return {
     ...base,
@@ -641,11 +654,25 @@ function selfTest(): number {
     const { status } = avaliar(caso.carimbo, caso.frequencia, AGORA);
     if (status !== caso.status) falhas.push(`${caso.nome}: esperado ${caso.status}, veio ${status}`);
   }
+
+  // Mutacoes de 09/11/2026: cadencia do CAP, carimbo do TAC e blog editorial.
+  const cap = FONTES_BANCO.find((f) => f.id === "multas-cap");
+  if (cap?.frequencia !== "mensal") falhas.push(`multas-cap: esperado mensal, veio ${cap?.frequencia}`);
+  const tac = FONTES_ARQUIVO.find((f) => f.id === "tacs-projetos");
+  if (tac?.caminhoCarimbo !== "COBERTURA_TAC_PROJETOS.coletadoEm") falhas.push("tacs-projetos sem caminhoCarimbo");
+  const noticias = FONTES_ARQUIVO.find((f) => f.id === "noticias-portal");
+  if (noticias?.frequencia !== "estatica") falhas.push(`noticias-portal: esperado estatica, veio ${noticias?.frequencia}`);
+  const itens = [{ publicadoEm: "2026-01-02T00:00:00Z" }, { atualizadoEm: "2026-03-04T00:00:00Z" }];
+  if (carimboDosItens(itens, ["publicadoEm", "atualizadoEm"]) !== "2026-03-04T00:00:00Z") {
+    falhas.push("carimboDosItens nao pegou a maior data");
+  }
+  if (carimboDosItens([], ["publicadoEm"]) !== null) falhas.push("carimboDosItens de lista vazia devia ser null");
+
   if (falhas.length > 0) {
     console.log(`SELFTEST=falhou ${falhas.join(" | ")}`);
     return 1;
   }
-  console.log("SELFTEST=ok CASOS=4");
+  console.log("SELFTEST=ok CASOS=9");
   return 0;
 }
 
