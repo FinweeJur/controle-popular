@@ -1,5 +1,73 @@
 [
  {
+  "slug": "stj-tema-1280-desastre-ambiental-acidente-de-consumo",
+  "titulo": "STJ: desastre ambiental é acidente de consumo e o prazo é de 5 anos",
+  "subtitulo": "A 2ª Seção equiparou atingidos a consumidores e afastou o prazo de três anos do Código Civil. A tese vale como precedente repetitivo.",
+  "resumo": "Danos individuais de desastre ambiental ligado a atividade potencialmente poluidora são acidente de consumo, com prazo de cinco anos do CDC. A decisão veio de um caso de Mariana e foi fixada como Tema 1.280.",
+  "categoria": "Explicador",
+  "frente": "judiciario",
+  "subfrente": "STJ — Tema 1.280",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir do acórdão do STJ, auditado pelo ONSA.",
+  "publicadoEm": "2026-11-10T12:00:00Z",
+  "atualizadoEm": "2026-11-10T12:00:00Z",
+  "tempoLeituraMin": 4,
+  "palavrasChave": [
+   "STJ",
+   "Tema 1.280",
+   "desastre ambiental",
+   "consumidor",
+   "prescrição",
+   "CDC",
+   "Mariana",
+   "Brumadinho"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. STJ: desastre ambiental é acidente de consumo e o prazo é de 5 anos. Controle Popular, nov. 2026.",
+  "citacaoBibtex": "@article{onsa2026stj1280,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {STJ: desastre ambiental é acidente de consumo e o prazo é de 5 anos},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/stj-tema-1280-desastre-ambiental-acidente-de-consumo}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "STJ — REsp 2124701/MG",
+    "url": "https://processo.stj.jus.br/processo/pesquisa/?aplicacao=processos.ea&tipoPesquisa=tipoPesquisaGenerica&termo=REsp%202124701"
+   },
+   {
+    "nome": "Código de Defesa do Consumidor (Lei 8.078/1990)",
+    "url": "https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm"
+   },
+   {
+    "nome": "Acórdão em PDF",
+    "url": "/docs/jurisprudencia/stj-resp-2124701.pdf"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Prazo do CDC",
+    "valor": "5 anos"
+   },
+   {
+    "rotulo": "Prazo afastado (CC)",
+    "valor": "3 anos"
+   },
+   {
+    "rotulo": "Votação",
+    "valor": "unânime"
+   },
+   {
+    "rotulo": "Tema repetitivo",
+    "valor": "1.280"
+   }
+  ],
+  "recomendacaoVerificar": "Leia o [acórdão em PDF](/docs/jurisprudencia/stj-resp-2124701.pdf) e o recorte em [Jurisprudência](/jurisprudencia).",
+  "paragrafos": [
+   "A 2ª Seção do Superior Tribunal de Justiça (STJ) decidiu, por unanimidade, que danos individuais causados por desastre ambiental ligado a atividade empresarial potencialmente poluidora são acidente de consumo. A tese foi fixada no [REsp 2124701/MG](https://processo.stj.jus.br/processo/pesquisa/?aplicacao=processos.ea&tipoPesquisa=tipoPesquisaGenerica&termo=REsp%202124701), julgado em 15/10/2026 e publicado em 22/10/2026.",
+   "O caso chegou ao STJ depois que a Justiça de Minas aplicou o [Código de Defesa do Consumidor](https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm) a uma ação indenizatória individual. A Vale recorreu, defendendo o prazo de três anos do Código Civil. A 2ª Seção negou o recurso.",
+   "A tese aprovada diz: “Em danos individuais oriundos de desastre ambiental vinculado a atividade empresarial potencialmente poluidora, configura-se acidente de consumo, com equiparação das vítimas a consumidores (art. 17 do CDC). O prazo prescricional é o quinquenal do art. 27 do CDC, afastando-se a regra do art. 206, § 3º, V, do CC.”",
+   "Na prática, o prazo para pedir indenização passa a ser de cinco anos, e não de três. A decisão foi tomada sob o rito dos recursos repetitivos (Tema 1.280), o que orienta tribunais e partes em casos semelhantes.",
+   "O que a decisão não faz: não reconhece automaticamente o direito à indenização. Ela resolve o prazo; o mérito continua exigindo prova do dano e do nexo causal entre o rompimento e o prejuízo de cada pessoa.",
+   "Para quem acompanha Mariana e Brumadinho, o efeito é direto: ações individuais que discutem danos do desastre ganham uma janela maior e um enquadramento jurídico uniforme. O precedente não substitui a prova, mas retira uma objeção processual que podia encerrar casos antes do exame do mérito.",
+   "O acórdão está disponível no [PDF](/docs/jurisprudencia/stj-resp-2124701.pdf) e no recorte de [Jurisprudência](/jurisprudencia) do portal."
+  ]
+ },
+ {
   "slug": "biblioteca-documentos-barragens-vale",
   "titulo": "Biblioteca reúne 458 documentos oficiais sobre barragens e a Vale",
   "subtitulo": "São atas, laudos, teses e relatórios corporativos, todos com link para a fonte.",
@@ -12164,21 +12232,21 @@
     "rotulo": "Big tech (Meta, Google, ByteDance)",
     "valor": "R$ 272,4 milhões"
    },
-    {
-     "rotulo": "Candidaturas analisadas",
-     "valor": "19.724"
-    }
+   {
+    "rotulo": "Candidaturas analisadas",
+    "valor": "19.724"
+   }
   ],
-   "recomendacaoVerificar": "Veja tabelas, análises por partido e por estado, filtros e CSV na [página de gastos de campanha](/eleicoes/2026/gastos-campanha). Os dados vêm do [TSE — Dados Abertos](https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026).",
+  "recomendacaoVerificar": "Veja tabelas, análises por partido e por estado, filtros e CSV na [página de gastos de campanha](/eleicoes/2026/gastos-campanha). Os dados vêm do [TSE — Dados Abertos](https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026).",
   "paragrafos": [
-    "O dinheiro da eleição de 2026 aparece em um só lugar. A prestação de contas ao TSE soma R$ 6,5 bilhões em receita. São 19.724 candidaturas nos seis cargos disputados. Desses, 18.851 tiveram voto contado e 873 são vedadas ou retiradas.",
+   "O dinheiro da eleição de 2026 aparece em um só lugar. A prestação de contas ao TSE soma R$ 6,5 bilhões em receita. São 19.724 candidaturas nos seis cargos disputados. Desses, 18.851 tiveram voto contado e 873 são vedadas ou retiradas.",
    "O dado é parcial, com selo na página. As contas definitivas valem até 03/11/2026. O segundo turno de 25/10 ainda muda votos.",
    "A publicidade digital contratada soma R$ 405,0 milhões. Os materiais impressos somam R$ 1,08 bilhão contratado. A mobilização de rua chega a R$ 575,5 milhões.",
-    "Meta, Google e ByteDance recebem R$ 272,4 milhões no total. Quase todo o valor vai para a Meta. O Google não anuncia conteúdo político no Brasil desde 01/05/2024.",
-    "O desdobramento da Meta por plataforma vem da descrição da despesa. Ele separa Facebook, Instagram e WhatsApp. X e Kwai não aparecem nesta coleta.",
+   "Meta, Google e ByteDance recebem R$ 272,4 milhões no total. Quase todo o valor vai para a Meta. O Google não anuncia conteúdo político no Brasil desde 01/05/2024.",
+   "O desdobramento da Meta por plataforma vem da descrição da despesa. Ele separa Facebook, Instagram e WhatsApp. X e Kwai não aparecem nesta coleta.",
    "O custo por voto usa a mediana entre os eleitos. No Senado, a mediana é de R$ 1,39 por voto. Para deputado federal, a mediana chega a R$ 9,61.",
    "Cada linha leva de volta à fonte oficial do TSE. Baixe em CSV o que estiver filtrado na tela. Veja também os fornecedores de 2022 em [fornecedores de campanha](/congresso/financiamento-eleitoral).",
-    "Nova leitura chega após 03/11/2026, quando as contas fecham. A página [de gastos de campanha](/eleicoes/2026/gastos-campanha) reúne tabelas, gráficos e filtros. Filtre por cargo, UF (MG inclusive) ou partido. Veja também as análises por partido e por estado."
+   "Nova leitura chega após 03/11/2026, quando as contas fecham. A página [de gastos de campanha](/eleicoes/2026/gastos-campanha) reúne tabelas, gráficos e filtros. Filtre por cargo, UF (MG inclusive) ou partido. Veja também as análises por partido e por estado."
   ]
  }
 ]
