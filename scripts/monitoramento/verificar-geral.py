@@ -70,15 +70,21 @@ def requisitar(url: str) -> tuple[str, int | None, str]:
         return "falha", None, ""
 
 
+def _linha_rota(rota: str) -> tuple[str, int]:
+    """Linha da tabela e 1 critico quando a rota nao responde 200."""
+    status, codigo, _ = requisitar(ORIGEM + rota)
+    if status == "ok" and codigo == 200:
+        return f"| {rota} | OK | {codigo} |", 0
+    return f"| {rota} | CRITICO | {codigo or '-'} |", 1
+
+
 def conferir_rotas() -> tuple[list[str], int]:
     linhas = ["| Rota | Status | HTTP |", "|---|---|---|"]
     criticos = 0
     for rota in ROTAS_CHAVE:
-        status, codigo, _ = requisitar(ORIGEM + rota)
-        classe = "OK" if status == "ok" and codigo == 200 else "CRITICO"
-        if classe == "CRITICO":
-            criticos += 1
-        linhas.append(f"| {rota} | {classe} | {codigo or '-'} |")
+        linha, critico = _linha_rota(rota)
+        linhas.append(linha)
+        criticos += critico
         time.sleep(INTERVALO_S)
     return linhas, criticos
 
@@ -102,26 +108,50 @@ def conferir_dados() -> tuple[list[str], int, int]:
     return linhas, criticos, avisos
 
 
+def _linha_robots() -> tuple[str, int]:
+    """Linha do robots.txt e 1 critico se faltar 200 ou a linha Sitemap."""
+    status, codigo, corpo = requisitar(ORIGEM + "/robots.txt")
+    if status != "ok" or codigo != 200:
+        return "| robots.txt | CRITICO | sem 200 ou sem Sitemap: |", 1
+    if "Sitemap:" not in corpo:
+        return "| robots.txt | CRITICO | sem 200 ou sem Sitemap: |", 1
+    return "| robots.txt | OK | declara Sitemap |", 0
+
+
+def _linha_sitemap() -> tuple[str, int]:
+    """Linha do sitemap.xml e 1 critico se faltar 200 ou o XML."""
+    status, codigo, corpo = requisitar(ORIGEM + "/sitemap.xml")
+    if status != "ok" or codigo != 200:
+        return "| sitemap.xml | CRITICO | sem 200 ou sem xml |", 1
+    if not corpo.lstrip().startswith("<?xml"):
+        return "| sitemap.xml | CRITICO | sem 200 ou sem xml |", 1
+    return "| sitemap.xml | OK | xml serve |", 0
+
+
 def conferir_seo() -> tuple[list[str], int, int]:
     linhas = ["| Item SEO | Status | Detalhe |", "|---|---|---|"]
-    criticos = 0
-    avisos = 0
-    status, codigo, corpo = requisitar(ORIGEM + "/robots.txt")
-    if status != "ok" or codigo != 200 or "Sitemap:" not in corpo:
-        linhas.append("| robots.txt | CRITICO | sem 200 ou sem Sitemap: |")
-        criticos += 1
-    else:
-        linhas.append("| robots.txt | OK | declara Sitemap |")
+    linha, criticos = _linha_robots()
+    linhas.append(linha)
     time.sleep(INTERVALO_S)
+    linha, critico = _linha_sitemap()
+    linhas.append(linha)
+    criticos += critico
+    time.sleep(INTERVALO_S)
+    return linhas, criticos, 0
 
-    status, codigo, corpo = requisitar(ORIGEM + "/sitemap.xml")
-    if status != "ok" or codigo != 200 or not corpo.lstrip().startswith("<?xml"):
-        linhas.append("| sitemap.xml | CRITICO | sem 200 ou sem xml |")
-        criticos += 1
-    else:
-        linhas.append("| sitemap.xml | OK | xml serve |")
-    time.sleep(INTERVALO_S)
-    return linhas, criticos, avisos
+
+def _linha_componente(rota: str) -> tuple[str, int, int]:
+    """Linha da tabela e contadores (criticos, avisos) de uma rota."""
+    status, codigo, corpo = requisitar(ORIGEM + rota)
+    if status != "ok" or codigo != 200:
+        return f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |", 1, 0
+    if not corpo.strip():
+        return f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |", 1, 0
+    if not re.search(r"<title>[^<]+</title>", corpo):
+        return f"| title | {rota} | CRITICO | <title> vazio ou ausente |", 1, 0
+    if 'name="description"' not in corpo and "name='description'" not in corpo:
+        return f"| description | {rota} | AVISO | meta description ausente |", 0, 1
+    return f"| title+description | {rota} | OK | |", 0, 0
 
 
 def conferir_componentes() -> tuple[list[str], int, int]:
@@ -129,24 +159,58 @@ def conferir_componentes() -> tuple[list[str], int, int]:
     criticos = 0
     avisos = 0
     for rota in ROTAS_CHAVE[:6]:
-        status, codigo, corpo = requisitar(ORIGEM + rota)
-        if status != "ok" or codigo != 200 or not corpo.strip():
-            linhas.append(f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |")
-            criticos += 1
-            time.sleep(INTERVALO_S)
-            continue
-        tem_title = bool(re.search(r"<title>[^<]+</title>", corpo))
-        tem_desc = 'name="description"' in corpo or "name='description'" in corpo
-        if not tem_title:
-            linhas.append(f"| title | {rota} | CRITICO | <title> vazio ou ausente |")
-            criticos += 1
-        elif not tem_desc:
-            linhas.append(f"| description | {rota} | AVISO | meta description ausente |")
-            avisos += 1
-        else:
-            linhas.append(f"| title+description | {rota} | OK | |")
+        linha, critico, aviso = _linha_componente(rota)
+        linhas.append(linha)
+        criticos += critico
+        avisos += aviso
         time.sleep(INTERVALO_S)
     return linhas, criticos, avisos
+
+
+def gravar_log(linhas: list[str], criticos: int, avisos: int, agora: datetime) -> None:
+    """Regrava docs/02-estado/AUDITORIA-GERAL.md com o cabecalho exigido.
+
+    O validador de documentacao pede metadados e "## Sumario" em todo .md de
+    docs/. Como este log e reescrito a cada rodada, o cabecalho nasce aqui --
+    senao o monitoramento reabre o CI vermelho.
+    """
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    resumo_linha = (
+        f"- {agora:%d/%m/%Y %H:%M} BRT - {criticos} criticos; {avisos} avisos."
+    )
+    historico: list[str] = []
+    if LOG.exists():
+        atual = LOG.read_text(encoding="utf-8")
+        if "## Historico de resumos" in atual:
+            resto = atual.split("## Historico de resumos", 1)[1]
+            historico = [l.rstrip() for l in resto.strip().splitlines() if l.strip()]
+    if resumo_linha not in historico:
+        historico.insert(0, resumo_linha)
+    cabecalho = (
+        "# Auditoria geral do portal\n\n"
+        "> **Tipo:** RELATÓRIO\n"
+        "> **Domínio:** operação (monitoramento do portal)\n"
+        f"> **Última medição:** {agora:%Y-%m-%d}\n"
+        "> **Leitura estimada:** curta (até 5 min)\n"
+        "> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)\n"
+        "> **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal\n\n"
+        "## Sumário\n\n"
+        "- [Rotas](#rotas)\n"
+        "- [Dados versionados](#dados-versionados)\n"
+        "- [SEO](#seo)\n"
+        "- [Componentes (title/description)](#componentes-titledescription)\n"
+        "- [Historico de resumos](#historico-de-resumos)\n\n"
+        "Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.\n\n"
+        "<!-- ULTIMA RODADA -->\n\n"
+    )
+    conteudo = (
+        cabecalho
+        + "\n".join(linhas).rstrip()
+        + "\n\n## Historico de resumos\n\n"
+        + "\n".join(historico)
+        + "\n"
+    )
+    LOG.write_text(conteudo, encoding="utf-8")
 
 
 def principal() -> int:
@@ -191,33 +255,7 @@ def principal() -> int:
     )
 
     if args.atualizar_log:
-        LOG.parent.mkdir(parents=True, exist_ok=True)
-        resumo_linha = (
-            f"- {agora:%d/%m/%Y %H:%M} BRT - {criticos} criticos; {avisos} avisos."
-        )
-        historico: list[str] = []
-        if LOG.exists():
-            atual = LOG.read_text(encoding="utf-8")
-            if "## Historico de resumos" in atual:
-                resto = atual.split("## Historico de resumos", 1)[1]
-                historico = [l.rstrip() for l in resto.strip().splitlines() if l.strip()]
-            if "<!-- ULTIMA RODADA -->" in atual:
-                bloco = atual.split("<!-- ULTIMA RODADA -->", 1)[1]
-                if "## Historico de resumos" in bloco:
-                    bloco = bloco.split("## Historico de resumos", 1)[0]
-                rodada_anterior = bloco.strip()
-        if resumo_linha not in historico:
-            historico.insert(0, resumo_linha)
-        conteudo = (
-            "# Auditoria geral do portal\n\n"
-            "Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.\n\n"
-            "<!-- ULTIMA RODADA -->\n\n"
-            + "\n".join(linhas).rstrip()
-            + "\n\n## Historico de resumos\n\n"
-            + "\n".join(historico)
-            + "\n"
-        )
-        LOG.write_text(conteudo, encoding="utf-8")
+        gravar_log(linhas, criticos, avisos, agora)
 
     print(resumo)
     return 0 if criticos == 0 else 1

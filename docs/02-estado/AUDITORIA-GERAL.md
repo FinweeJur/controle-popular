@@ -1,10 +1,25 @@
 # Auditoria geral do portal
 
+> **Tipo:** RELATÓRIO
+> **Domínio:** operação (monitoramento do portal)
+> **Última medição:** 2026-11-09
+> **Leitura estimada:** curta (até 5 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)
+> **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal
+
+## Sumário
+
+- [Rotas](#rotas)
+- [Dados versionados](#dados-versionados)
+- [SEO](#seo)
+- [Componentes (title/description)](#componentes-titledescription)
+- [Historico de resumos](#historico-de-resumos)
+
 Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 08/11/2026 13:26 BRT |
+| 09/11/2026 17:16 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -90,6 +105,8 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/esg-update.json | OK |
 | data/evidencias-cientificas-brumadinho.json | OK |
 | data/evidencias-cientificas-rio-doce-costeiro.json | OK |
+| data/expansao-fontes-mg.json | OK |
+| data/expansao-mg.json | OK |
 | data/fepam-rs-licencas.json | OK |
 | data/fontes-27-estados.json | OK |
 | data/iat-pr-licencas.json | OK |
@@ -105,6 +122,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/inema-ba-licencas.json | OK |
 | data/instituicoes-todas-esferas.json | OK |
 | data/inteiro-teor.json | OK |
+| data/inventario-subfrentes.json | OK |
 | data/iphan-bens-tombados.json | OK |
 | data/judiciario-contatos-stats.json | OK |
 | data/judiciario-designacoes.json | OK |
@@ -116,6 +134,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/jurisprudencia-casos.json | OK |
 | data/jurisprudencia-resumo.json | OK |
 | data/link-correcoes.json | OK |
+| data/mab-publicacoes.json | OK |
 | data/matriz-tramitacao-27-assembleias.json | OK |
 | data/mpf-grandes-casos.json | OK |
 | data/mpmg-coerdoce.json | OK |
@@ -220,6 +239,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/tarifa-social-por-uf.json | OK |
 | data/telefonia-municipios-mg.json | OK |
 | data/top-100-paginas.json | OK |
+| data/trechos-rotas.json | OK |
 | data/vale-sigma-lithium.json | OK |
 | data/vale3-cotacoes.json | OK |
 | data/vales-jequitinhonha.json | OK |
@@ -242,12 +262,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 196 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 201 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 09/11/2026 17:16 BRT - 0 criticos; 0 avisos.
 - 08/11/2026 13:26 BRT - 0 criticos; 0 avisos.
 - 07/11/2026 12:58 BRT - 0 criticos; 0 avisos.
 - 06/11/2026 14:00 BRT - 0 criticos; 0 avisos.

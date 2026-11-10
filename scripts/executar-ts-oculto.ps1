@@ -19,13 +19,20 @@
 param(
   [Parameter(Mandatory = $true)]
   [string]$Script,
-  [string]$LogRelativo
+  [string]$LogRelativo,
+  [string]$Argumentos = ""
 )
 $ErrorActionPreference = "Continue"
 $Raiz = Resolve-Path (Join-Path $PSScriptRoot "..")
 Set-Location $Raiz
+# CA do sistema no Node: o host do Diario Oficial de MG nao envia a cadeia
+# intermediaria e o fetch morre com UNABLE_TO_VERIFY_LEAF_SIGNATURE. A flag
+# --use-system-ca usa a loja de CAs do Windows; a verificacao TLS continua
+# ligada (nunca usar NODE_TLS_REJECT_UNAUTHORIZED=0). Testado no Node 22.
+# Regra deste arquivo: SEM acentos.
+$env:NODE_OPTIONS = "--use-system-ca"
 if ($LogRelativo) {
-  cmd.exe /c "npx tsx scripts\$Script >> docs\relatorios-automacao\logs\$LogRelativo 2>&1"
+  cmd.exe /c "npx tsx scripts\$Script $Argumentos >> docs\relatorios-automacao\logs\$LogRelativo 2>&1"
 } else {
-  cmd.exe /c "npx tsx scripts\$Script"
+  cmd.exe /c "npx tsx scripts\$Script $Argumentos"
 }

@@ -88,6 +88,17 @@ describe("rotas-descobertas (inventario do sitemap)", () => {
     expect(vazou, `excluida no descoberta.ts, mas presente: ${vazou.join(", ")}`).toEqual([]);
   });
 
+  it("a lista manual de cidades também respeita EXCLUIR_SUFIXO", () => {
+    const texto = readFileSync(join(DIR_APP, "sitemap.ts"), "utf-8");
+    const vazou = Object.keys(EXCLUIR_SUFIXO).filter((s) =>
+      texto.includes(`sufixo: "${s}"`)
+    );
+    expect(
+      vazou,
+      `sufixo excluído de propósito na lista manual de sitemap.ts: ${vazou.join(", ")}`
+    ).toEqual([]);
+  });
+
   it("cada exclusão tem motivo escrito", () => {
     for (const [mapa, rotulo] of [
       [EXCLUIR, "EXCLUIR"],

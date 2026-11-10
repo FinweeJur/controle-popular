@@ -1,5 +1,21 @@
 # Plano — transparência de MP, DP e Judiciário além do dinheiro
 
+> **Tipo:** PLANO
+> **Domínio:** justiça
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-PAGINA-JURISPRUDENCIA.md](PLANO-PAGINA-JURISPRUDENCIA.md)
+> **Palavras-chave:** transparência, ministério público, defensoria, judiciário, produtividade, acervo, controle disciplinar, ouvidoria, LAI, acesso à informação
+
+## Sumário
+
+- [0. Como retomar](#0-como-retomar)
+- [1. O que já existe, e que este plano NÃO refaz](#1-o-que-já-existe-e-que-este-plano-não-refaz)
+- [2. As quatro frentes sondadas](#2-as-quatro-frentes-sondadas)
+- [3. Princípios que decidem o que entra](#3-princípios-que-decidem-o-que-entra)
+- [4. O que já se sabe que NÃO vai dar](#4-o-que-já-se-sabe-que-não-vai-dar)
+- [5. Progresso](#5-progresso)
+
 > **Aberto em 2026-08-22.** A pergunta que originou: *"além da parte financeira
 > de MP, DP e TJ, o que podemos fazer sobre transparência?"*
 >
