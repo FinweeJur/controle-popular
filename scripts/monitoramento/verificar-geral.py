@@ -111,7 +111,9 @@ def conferir_dados() -> tuple[list[str], int, int]:
 def _linha_robots() -> tuple[str, int]:
     """Linha do robots.txt e 1 critico se faltar 200 ou a linha Sitemap."""
     status, codigo, corpo = requisitar(ORIGEM + "/robots.txt")
-    if status != "ok" or codigo != 200 or "Sitemap:" not in corpo:
+    if status != "ok" or codigo != 200:
+        return "| robots.txt | CRITICO | sem 200 ou sem Sitemap: |", 1
+    if "Sitemap:" not in corpo:
         return "| robots.txt | CRITICO | sem 200 ou sem Sitemap: |", 1
     return "| robots.txt | OK | declara Sitemap |", 0
 
@@ -119,7 +121,9 @@ def _linha_robots() -> tuple[str, int]:
 def _linha_sitemap() -> tuple[str, int]:
     """Linha do sitemap.xml e 1 critico se faltar 200 ou o XML."""
     status, codigo, corpo = requisitar(ORIGEM + "/sitemap.xml")
-    if status != "ok" or codigo != 200 or not corpo.lstrip().startswith("<?xml"):
+    if status != "ok" or codigo != 200:
+        return "| sitemap.xml | CRITICO | sem 200 ou sem xml |", 1
+    if not corpo.lstrip().startswith("<?xml"):
         return "| sitemap.xml | CRITICO | sem 200 ou sem xml |", 1
     return "| sitemap.xml | OK | xml serve |", 0
 
@@ -139,7 +143,9 @@ def conferir_seo() -> tuple[list[str], int, int]:
 def _linha_componente(rota: str) -> tuple[str, int, int]:
     """Linha da tabela e contadores (criticos, avisos) de uma rota."""
     status, codigo, corpo = requisitar(ORIGEM + rota)
-    if status != "ok" or codigo != 200 or not corpo.strip():
+    if status != "ok" or codigo != 200:
+        return f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |", 1, 0
+    if not corpo.strip():
         return f"| html | {rota} | CRITICO | sem 200 ou HTML vazio |", 1, 0
     if not re.search(r"<title>[^<]+</title>", corpo):
         return f"| title | {rota} | CRITICO | <title> vazio ou ausente |", 1, 0
