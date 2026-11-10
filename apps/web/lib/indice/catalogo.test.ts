@@ -10,7 +10,7 @@
  *     cidade; risco de barragem é alerta, não picareta);
  *  3. EQUIVALÊNCIA com a cadeia antiga de `if`: `iconeLegado` abaixo é uma
  *     cópia CONGELADA da função que existia no componente até 08/10/2026, e
- *     as duas saídas são comparadas nas 100 páginas reais do JSON e em
+ *     as duas saídas são comparadas nas 102 páginas reais do JSON e em
  *     casos sintéticos. Se a tabela mudar de escolha, o teste acusa;
  *  4. Estilo do cartão por eixo (cores Tailwind) e sua ordem;
  *  5. Casos-limite do filtro: termo vazio, só espaço, "Central" por
@@ -52,7 +52,8 @@ import {
 } from "./catalogo";
 import paginasTop100 from "../../data/top-100-paginas.json";
 
-/** As 100 páginas versionadas — o dado real que a tela publica. */
+/** As páginas versionadas — o dado real que a tela publica. 102 desde
+ * 95c95991 (/casos e /direitos); o nome comercial "100 Páginas" não muda. */
 const reais = paginasTop100 as unknown as PaginaCatalogo[];
 
 /** Monta uma página de teste a partir dos campos que interessam; o resto vem
@@ -391,15 +392,15 @@ describe("precedência da tabela (a ordem do array é a ordem do if antigo)", ()
 });
 
 describe("equivalência com a cadeia antiga", () => {
-  it("escolhe o MESMO ícone nas 100 páginas reais do catálogo", () => {
-    expect(reais).toHaveLength(100);
+  it("escolhe o MESMO ícone nas 102 páginas reais do catálogo", () => {
+    expect(reais).toHaveLength(102);
     const divergencias = reais
       .filter((p) => obterIconeTema(p) !== iconeLegado(p))
       .map((p) => `#${p.numero} ${p.id}`);
     expect(divergencias).toEqual([]);
   });
 
-  it("as 100 páginas reais exercitam boa parte da tabela (a prova não é trivial)", () => {
+  it("as 102 páginas reais exercitam boa parte da tabela (a prova não é trivial)", () => {
     const exercitadas = new Set(reais.map((p) => obterRegraIcone(p).nome));
     expect(exercitadas.size).toBeGreaterThanOrEqual(10);
   });
@@ -443,8 +444,8 @@ describe("filtragem do catálogo", () => {
   const semFiltro = { termo: "", eixoAtivo: "Todos", apenasDestaques: false };
 
   it("termo vazio devolve o catálogo inteiro, na ordem original", () => {
-    expect(filtrarPaginas(reais, semFiltro)).toHaveLength(100);
-    expect(filtrarPaginas(reais, { ...semFiltro, termo: "   " })).toHaveLength(100);
+    expect(filtrarPaginas(reais, semFiltro)).toHaveLength(102);
+    expect(filtrarPaginas(reais, { ...semFiltro, termo: "   " })).toHaveLength(102);
     expect(filtrarPaginas(reais, semFiltro).map((p) => p.numero)).toEqual(reais.map((p) => p.numero));
   });
 
