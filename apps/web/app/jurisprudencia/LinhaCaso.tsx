@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import type { CasoJurisprudencia } from "@/lib/jurisprudencia";
+import { linkFonteOficial } from "@/lib/jurisprudencia-fonte";
 import { NOMES_FRENTE, NOMES_TIPO, merito } from "./rotulos";
 
 /**
@@ -22,6 +23,17 @@ import { NOMES_FRENTE, NOMES_TIPO, merito } from "./rotulos";
  * Por que cliente: a sanfona precisa de estado e ocupa a linha inteira
  * (`colSpan`), o que não dá para fazer com `<details>` dentro da célula. O
  * componente recebe **um caso**, então o JSON grande continua no servidor.
+ *
+ * LINK DO ACÓRDÃO ≠ BUSCA PELO NÚMERO
+ *
+ * O número do processo só vira link quando existe `link` externo do tribunal:
+ * aí o clique abre o acórdão daquele processo. Quando o `link` é a rota
+ * interna `/api/inteiro-teor` ou está vazio, o número fica como texto e a
+ * linha "Fonte:" oferece a **busca oficial** do tribunal — um formulário, não
+ * a decisão. O rótulo diz "Buscar no TJMG", nunca "Ver no TJMG": o TJMG exige
+ * código antes de pesquisar, e uma URL montada com o número prometeria um
+ * resultado que não existe. Sem link e sem busca cadastrada, a tela diz
+ * "fonte oficial não informada" em vez de inventar destino.
  */
 
 const LIMITE_CURTO = 320;
@@ -69,7 +81,40 @@ function rotuloGatilho(aberto: "resumo" | "inteiro" | null, qual: "resumo" | "in
   return qual === "resumo" ? "ver menos" : "fechar inteiro teor";
 }
 
-function Detalhe({ caso }: { caso: CasoJurisprudencia }) {
+/**
+ * Linha "Fonte:" — o caminho para conferir a decisão na origem.
+ *
+ * Quando só existe a busca oficial, o texto é "Buscar no TJMG" e o `title`
+ * avisa que o número não vai junto. Quando não há nem isso, a tela admite a
+ * lacuna; nunca um link para outro processo.
+ */
+function LinhaFonteOficial({ caso }: { caso: CasoJurisprudencia }) {
+  const fonte = linkFonteOficial(caso);
+  if (fonte.tipo === "indisponivel") {
+    return (
+      <p className="text-xs opacity-70" title={fonte.titulo}>
+        {fonte.rotulo}
+      </p>
+    );
+  }
+  return (
+    <p className="text-xs">
+      <span className="opacity-70">Fonte: </span>
+      <a
+        className="font-semibold text-primary underline"
+        href={fonte.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={fonte.titulo}
+      >
+        {fonte.rotulo}
+        <span aria-hidden="true"> ↗</span>
+      </a>
+    </p>
+  );
+}
+
+function Detalhe({ caso, comFonte = true }: { caso: CasoJurisprudencia; comFonte?: boolean }) {
   const resumo = resumoDe(caso);
   const ementa = ementaDe(caso);
   // A ementa vem do gerador com teto de 12.000 caracteres; só marca corte
@@ -92,15 +137,24 @@ function Detalhe({ caso }: { caso: CasoJurisprudencia }) {
           {cortada}
         </p>
       ) : null}
+      {comFonte ? <LinhaFonteOficial caso={caso} /> : null}
     </div>
   );
 }
 
 function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
-  // Link interno de inteiro teor não é o tribunal: mostra só o número.
-  if (!caso.link || caso.link.startsWith("/api/")) return <>{caso.processo}</>;
+  const fonte = linkFonteOficial(caso);
+  // Só o link do acórdão justifica linkar o número. A busca oficial abre um
+  // formulário vazio; linkar o número ali faria busca passar por fonte.
+  if (fonte.tipo !== "acordao") return <>{caso.processo}</>;
   return (
-    <a className="underline" href={caso.link} target="_blank" rel="noopener noreferrer">
+    <a
+      className="underline"
+      href={fonte.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={fonte.titulo}
+    >
       {caso.processo}
     </a>
   );
@@ -155,6 +209,7 @@ function InteiroTeorPainel({ caso }: { caso: CasoJurisprudencia }) {
           baixar .txt
         </a>
       </div>
+      <LinhaFonteOficial caso={caso} />
       {estado === "carregando" ? <p className="text-sm opacity-70">carregando…</p> : null}
       {estado === "erro" ? (
         <p className="text-sm opacity-70">
@@ -308,9 +363,10 @@ export function CartaoCaso({ caso }: { caso: CasoJurisprudencia }) {
       <p>{merito(caso)}</p>
       {temasDe(caso) ? <p className="text-xs opacity-80">{temasDe(caso)}</p> : null}
       <ResumoCurto caso={caso} />
+      <LinhaFonteOficial caso={caso} />
       {aberto ? (
         <div className="rounded bg-[var(--cp-surface-2)] p-2">
-          {aberto === "inteiro" ? <InteiroTeorPainel caso={caso} /> : <Detalhe caso={caso} />}
+          {aberto === "inteiro" ? <InteiroTeorPainel caso={caso} /> : <Detalhe caso={caso} comFonte={false} />}
         </div>
       ) : null}
       <Acoes caso={caso} aberto={aberto} onToggle={alternar} classe="flex flex-wrap gap-3 pt-1" />
