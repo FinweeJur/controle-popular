@@ -31,7 +31,8 @@ const NOMES_PROPIOS = new Set([
   "Goiás", "Horizonte", "Jequitinhonha", "Justiça", "Lithium", "Mariana",
   "Minas", "Mount", "Médio", "Nacional", "Oficial", "Polley", "Portal",
   "Públicas", "Rio", "S.A", "Selic", "Sino-Brasileiro", "TACs", "Toronto",
-  "USAspending", "União", "Vale", "R$",
+  "USAspending", "União", "Vale", "R$", "João", "Pessoa", "Lenir", "Correia",
+  "Itatiaiuçu",
 ]);
 
 /** Sigla: tudo maiúsculo, com dígito, barra ou ponto (CNES, DETRAN-MG, S.A). */

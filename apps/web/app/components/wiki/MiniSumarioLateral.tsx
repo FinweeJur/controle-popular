@@ -144,12 +144,19 @@ export function MiniSumarioLateral({ itens }: { itens: ItemIndice[] }) {
     if (principal) principal.focus({ preventScroll: true });
   }
 
-  /** ↓ vai à próxima seção; na última, encerra no fim da página. */
+  /**
+   * ↓ vai à próxima seção que ainda está abaixo da dobra.
+   *
+   * Não usa o item "ativo" do scroll-spy: entre dois títulos ele fica vazio e
+   * a seta voltaria para a primeira seção. A régua é a posição na tela.
+   */
   function proximaSecao() {
-    const indice = itens.findIndex((item) => item.id === ativo);
-    const alvo = indice === -1 ? itens[0] : itens[indice + 1];
-    if (alvo) {
-      rolarPara(alvo.id);
+    const abaixo = itens.find((item) => {
+      const el = document.getElementById(item.id);
+      return el ? el.getBoundingClientRect().top > 120 : false;
+    });
+    if (abaixo) {
+      rolarPara(abaixo.id);
       return;
     }
     rolarFim();
