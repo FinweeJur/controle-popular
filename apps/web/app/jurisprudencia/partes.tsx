@@ -316,7 +316,7 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
   return (
     <section className="mx-auto w-full max-w-3xl space-y-3">
       <h2 className="font-display text-xl font-semibold">Brumadinho: polo por ano</h2>
-      <div className="mx-auto max-w-md space-y-2">
+      <div className="max-w-md space-y-2">
         {anos.map((item) => (
           <div key={item.ano} className="flex items-center gap-3 text-sm">
             <span className="w-12 shrink-0 font-tabular opacity-70">{item.ano}</span>
