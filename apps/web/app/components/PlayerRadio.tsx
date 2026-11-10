@@ -426,7 +426,7 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] flex flex-col items-center transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
+        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] flex flex-col items-center print:hidden ${classesPilha(radio.visivel)}`}
         data-cp-slot={radio.indice}
         data-arrastavel-caixa
         data-nao-plataforma
@@ -459,6 +459,8 @@ export default function PlayerRadio() {
         <PilhaBotao
           {...handlers}
           rotulo="Rádio"
+          ativo={tocando}
+          estado={tocando ? "tocando" : undefined}
           onDoubleClick={resetar}
           onClick={() => {
             // Gesto foi mover: não tocar a estação por acidente (limiar de
@@ -467,10 +469,8 @@ export default function PlayerRadio() {
             void tocar(idAtual ?? ESTACAO_PADRAO);
           }}
           aria-label={rotulo}
-          title={`${rotulo} — arraste para mover; clique duplo volta ao canto; o índice abre ao passar o mouse`}
           aria-expanded={indiceAberto}
           aria-controls="cp-radio-indice"
-          aria-pressed={tocando}
           className={arrastando ? "cursor-grabbing" : "cursor-grab"}
           icone={<IconeRadio tocando={tocando} jaTocou={jaTocou} />}
         />

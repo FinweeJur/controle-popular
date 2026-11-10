@@ -48,7 +48,7 @@ export default function RastroCursorBotao() {
 
   return (
     <div
-      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${
+      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] print:hidden ${
         visivel ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       data-cp-slot={indice}
@@ -58,9 +58,9 @@ export default function RastroCursorBotao() {
     >
       <PilhaBotao
         rotulo="Rastro mágico"
-        aria-pressed={ativo}
+        ativo={ativo}
+        estado={ativo ? "ligado" : undefined}
         onClick={() => definirRastroCursor(!ativo)}
-        title="Rastro mágico do mouse — liga e desliga a trilha de letras"
         icone={<Sparkles size={20} aria-hidden="true" />}
       />
     </div>

@@ -1544,3 +1544,5 @@ html[data-scroll-perto] ::-webkit-scrollbar-thumb,
     animation: none;
   }
 }
+
+/* cache-bust 10/11: regras de slot da pilha no fim do arquivo. */

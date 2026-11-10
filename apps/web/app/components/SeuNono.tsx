@@ -2419,13 +2419,19 @@ export function SeuNono() {
               setAberto(true);
               if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
             }}
-            title="Arraste para mover; clique duplo volta ao canto"
-            className={`flex h-16 w-16 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            data-cp-sem-dica
+            className={`group/fab relative flex h-16 w-16 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
               arrastando ? "cursor-grabbing" : "cursor-grab"
             }`}
             aria-label="Abrir assistente Seu Nonô"
           >
             <AvatarSeuNono size={64} className="h-full w-full rounded-full" />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-full top-1/2 ml-2 -translate-x-1 -translate-y-1/2 whitespace-nowrap rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-text opacity-0 shadow-lg transition-all duration-200 group-hover/fab:translate-x-0 group-hover/fab:opacity-100 group-focus-visible/fab:translate-x-0 group-focus-visible/fab:opacity-100 motion-reduce:transition-none"
+            >
+              Abrir o Seu Nonô
+            </span>
           </button>
         </div>
       )}
@@ -2451,7 +2457,7 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom] duration-75 motion-reduce:transition-none ${
+        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] ${
           pataVisivel ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         data-cp-slot={pata.indice}
@@ -2486,7 +2492,7 @@ export function SeuNono() {
           }}
           aria-expanded={menuPetAberto}
           aria-label="Trocar o bichinho do companheiro"
-          title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
+          estado={menuPetAberto ? "menu aberto" : undefined}
           className={arrastandoPata ? "cursor-grabbing" : "cursor-grab"}
           icone={<PawPrint size={20} aria-hidden="true" />}
         />

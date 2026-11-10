@@ -319,7 +319,7 @@ export function CatalogoIndeterminados() {
     return null;
   }
   return (
-    <section className="space-y-6" id="catalogo">
+    <section className="scroll-mt-24 space-y-6" id="catalogo">
       <header className="space-y-3">
         <h2 className="font-display text-xl font-semibold">O que os acórdãos decidem</h2>
         <p className="max-w-3xl text-sm opacity-80">
