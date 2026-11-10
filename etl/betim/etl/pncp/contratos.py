@@ -130,6 +130,11 @@ def _sanitizar_numeric(val: any) -> float | None:
         return None
 
 
+def _nome_ou_valor(valor: any) -> any:
+    """Nome legível quando o campo vem como `{id, nome}`; senão, o valor cru."""
+    return valor.get("nome") if isinstance(valor, dict) else valor
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict:
     """Mapeia e normaliza o payload JSON bruto da API do PNCP para as colunas da tabela `contratos`.
 
@@ -166,7 +171,7 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "orgao_nome": orgao.get("razaoSocial"),
         "unidade_nome": unidade.get("nomeUnidade"),
         "categoria": raw.get("categoriaProcesso", {}).get("nome") if isinstance(raw.get("categoriaProcesso"), dict) else raw.get("tipoContrato"),
-        "tipo": raw.get("tipoContrato", {}).get("nome") if isinstance(raw.get("tipoContrato"), dict) else raw.get("tipoContrato"),
+        "tipo": _nome_ou_valor(raw.get("tipoContrato")),
         "objeto": raw.get("objetoContrato"),
         "fornecedor_cnpj": raw.get("niFornecedor"),
         "fornecedor_nome": raw.get("nomeRazaoSocialFornecedor"),
@@ -187,15 +192,34 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
     }
 
 
+def _fonte_conflita(cidade: dict, permitir_fonte_dupla: bool) -> bool:
+    """True quando a cidade declara fonte própria e o override não foi pedido."""
+    fonte_propria = cidade["fontes"].get("contratos_fonte")
+    if not fonte_propria or permitir_fonte_dupla:
+        return False
+    return fonte_propria != "pncp"
+
+
 def _validar_fonte(cidade: dict, permitir_fonte_dupla: bool) -> None:
     """Aborta quando a cidade declara outra fonte canônica de contratos."""
+    if not _fonte_conflita(cidade, permitir_fonte_dupla):
+        return
     fonte_propria = cidade["fontes"].get("contratos_fonte")
-    if fonte_propria and fonte_propria != "pncp" and not permitir_fonte_dupla:
+    raise RuntimeError(
+        f"{cidade['nome']} declara `fontes.contratos_fonte = {fonte_propria!r}`; "
+        "rodar o PNCP por cima duplicaria os contratos. Use o módulo dessa "
+        "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
+    )
+
+
+def _cnpj_prefeitura(cidade: dict, id_municipio: str) -> str:
+    """CNPJ principal da prefeitura, com erro claro quando o cadastro está vazio."""
+    principal = cidade["cnpj_prefeitura"]
+    if not principal:
         raise RuntimeError(
-            f"{cidade['nome']} declara `fontes.contratos_fonte = {fonte_propria!r}`; "
-            "rodar o PNCP por cima duplicaria os contratos. Use o módulo dessa "
-            "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
+            f"municipios.cnpj_prefeitura vazio para id_municipio={id_municipio}."
         )
+    return principal
 
 
 def _resolver_cnpjs(
@@ -207,11 +231,7 @@ def _resolver_cnpjs(
     cnpjs = [str(c) for c in (cidade["fontes"].get("cnpjs_orgao") or []) if c]
     if cnpjs:
         return cnpjs
-    principal = cidade["cnpj_prefeitura"]
-    if not principal:
-        raise RuntimeError(
-            f"municipios.cnpj_prefeitura vazio para id_municipio={id_municipio}."
-        )
+    principal = _cnpj_prefeitura(cidade, id_municipio)
     print(
         "[etl.pncp.contratos] AVISO: usando só o CNPJ da prefeitura. "
         "Numa capital isso subconta — rode `python -m etl.pncp.orgaos "
