@@ -1,5 +1,22 @@
 # Plano — /educacao: Hub Unificado de Educação, Pesquisa e Mobilidade Acadêmica (PowerBI Cívico)
 
+> **Tipo:** PLANO
+> **Domínio:** educação (produto e dados acadêmicos)
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](/docs/02-estado/ESTADO.md)
+> **Palavras-chave:** educação, universidades, pesquisa, powerbi, hub, mobilidade acadêmica
+
+## Sumário
+
+- [1. Diagnóstico Medido da Dispersão Atual](#1-diagnóstico-medido-da-dispersão-atual)
+- [2. Princípio da Solução: Hub Unificado com Ferramentas e Tópicos Próprios](#2-princípio-da-solução-hub-unificado-com-ferramentas-e-tópicos-próprios)
+- [3. Design Visual: PowerBI Cívico Nativo do Site](#3-design-visual-powerbi-cívico-nativo-do-site)
+- [4. Estrutura dos 6 Tópicos Próprios no Hub Unificado](#4-estrutura-dos-6-tópicos-próprios-no-hub-unificado)
+- [5. Arquitetura de Código e Componentização](#5-arquitetura-de-código-e-componentização)
+- [6. Ambiente e Worktree de Desenvolvimento](#6-ambiente-e-worktree-de-desenvolvimento)
+- [7. Critérios de Aceite e Verificação](#7-critérios-de-aceite-e-verificação)
+
 > **Tipo:** PLANO DE UNIFICAÇÃO E PRODUTO  
 > **Data:** 02/11/2026.  
 > **Status:** Proposta detalhada, aguardando aprovação do dono.  

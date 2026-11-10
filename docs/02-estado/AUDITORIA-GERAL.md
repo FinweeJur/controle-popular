@@ -1,5 +1,20 @@
 # Auditoria geral do portal
 
+> **Tipo:** RELATÓRIO
+> **Domínio:** operação (monitoramento do portal)
+> **Última medição:** 2026-11-09
+> **Leitura estimada:** curta (até 5 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)
+> **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal
+
+## Sumário
+
+- [Rotas](#rotas)
+- [Dados versionados](#dados-versionados)
+- [SEO](#seo)
+- [Componentes (title/description)](#componentes-titledescription)
+- [Historico de resumos](#historico-de-resumos)
+
 Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->

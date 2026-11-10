@@ -1,5 +1,24 @@
 # Relatório de Fontes e Lacunas - Expansão do Índice de Universidades
 
+> **Tipo:** RELATÓRIO
+> **Domínio:** educação (universidades, coleta de dados)
+> **Última medição:** 2026-10-31
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](02-estado/ESTADO.md)
+> **Palavras-chave:** universidades, educação, fontes, lacunas, coleta, 21 estados
+
+## Sumário
+
+- Resumo Executivo
+- Objetivos Alcançados
+- Fontes Utilizadas
+- Lacunas Identificadas
+- Estatísticas por Estado
+- Tecnologias e Ferramentas
+- Próximos Passos
+- Recomendações
+- Contato
+
 > **Nota de 31/10/2026:** este relatório descreve a expansão para 21 estados
 > feita em outra linha de trabalho. O índice publicado nesta branch cobre
 > cinco estados (MG, BA, RJ, RS, SP), com 1.414 grupos e 170 projetos; a

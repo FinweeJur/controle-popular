@@ -1,5 +1,26 @@
 # Prompt — classificar o penal com rubrica própria (Antigravity)
 
+> **Tipo:** PROMPT
+> **Domínio:** jurisprudência (frente penal)
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-CLASSIFICACAO-GLM-02-11.md](PLANO-CLASSIFICACAO-GLM-02-11.md)
+> **Palavras-chave:** prompt, antigravity, penal, classificação, polo, rubrica
+
+## Sumário
+
+- [0. Papel e objetivo](#0-papel-e-objetivo)
+- [1. Por que isso está sendo delegado (e o erro que não pode repetir)](#1-por-que-isso-está-sendo-delegado-e-o-erro-que-não-pode-repetir)
+- [2. Onde está tudo](#2-onde-está-tudo)
+- [3. Preparo](#3-preparo)
+- [4. Tarefa A — classificar](#4-tarefa-a--classificar)
+- [5. Tarefa B — tese penal (se ainda faltar)](#5-tarefa-b--tese-penal-se-ainda-faltar)
+- [6. A rubrica (não invente outra)](#6-a-rubrica-não-invente-outra)
+- [7. Regras que não se negociam](#7-regras-que-não-se-negociam)
+- [8. Entrega](#8-entrega)
+- [9. Critérios de aceite](#9-critérios-de-aceite)
+- [10. Como o desktop aplica o que você entregar](#10-como-o-desktop-aplica-o-que-você-entregar)
+
 Cole daqui até o fim numa sessão nova. É autossuficiente: não precisa deste
 histórico.
 

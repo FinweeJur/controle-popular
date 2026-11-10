@@ -1,5 +1,26 @@
 # Prompt — polo das decisões pendentes do Rio Doce (Antigravity)
 
+> **Tipo:** PROMPT
+> **Domínio:** jurisprudência (Rio Doce, TJMG)
+> **Última medição:** 2026-11-03
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-JURISPRUDENCIA-02-11.md](PLANO-JURISPRUDENCIA-02-11.md)
+> **Palavras-chave:** prompt, antigravity, rio doce, tjmg, polo vencedor, classificação
+
+## Sumário
+
+- [0. Papel](#0-papel)
+- [1. Onde está tudo](#1-onde-está-tudo)
+- [2. Formato de saída (exato)](#2-formato-de-saída-exato)
+- [3. Vocabulário fechado](#3-vocabulário-fechado)
+- [4. As regras que não se negoceiam](#4-as-regras-que-não-se-negoceiam)
+- [5. Erro que já aconteceu e não pode repetir](#5-erro-que-já-aconteceu-e-não-pode-repetir)
+- [6. Como trabalhar](#6-como-trabalhar)
+- [7. O que NÃO fazer](#7-o-que-não-fazer)
+- [8. Entrega](#8-entrega)
+- [9. Critérios de aceite](#9-critérios-de-aceite)
+- [10. Como o desktop usa o que você entregar](#10-como-o-desktop-usa-o-que-você-entregar)
+
 Cole daqui até o fim numa sessão nova. É autossuficiente.
 
 ---

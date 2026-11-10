@@ -1,5 +1,19 @@
 # Plano — página `/jurisprudencia`
 
+> **Tipo:** PLANO
+> **Domínio:** jurisprudência (página pública)
+> **Última medição:** 2026-10-29
+> **Leitura estimada:** curta (até 5 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-JURISPRUDENCIA-02-11.md](PLANO-JURISPRUDENCIA-02-11.md)
+> **Palavras-chave:** jurisprudência, página, acervo, resumo, metodologia
+
+## Sumário
+
+- [O que a v1 entrega](#o-que-a-v1-entrega)
+- [Regras de qualidade aplicadas](#regras-de-qualidade-aplicadas)
+- [Fase 2 (quando o dono pedir)](#fase-2-quando-o-dono-pedir)
+- [Dependências](#dependências)
+
 **Estado:** primeira versão no ar (commit `e3afc7d7`). Página server-side,
 sem cliente, lendo `apps/web/data/jurisprudencia-resumo.json`.
 

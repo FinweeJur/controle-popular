@@ -1,5 +1,20 @@
 # Pedido de acesso à API do Pangea/BNP
 
+> **Tipo:** DOCUMENTO
+> **Domínio:** fontes (CNJ, PDPJ-Br, jurisprudência)
+> **Última medição:** 2026-10-31
+> **Leitura estimada:** curta (até 5 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [FONTES.md](FONTES.md)
+> **Palavras-chave:** pedido, API, BNP, Pangea, precedentes, CNJ, PDPJ, LAI, LGPD
+
+## Sumário
+
+- [Para quem](#para-quem)
+- [Assunto](#assunto)
+- [Texto](#texto)
+- [Versão curta para Fala.BR](#versão-curta-para-falabr)
+- [O que fazer com a resposta](#o-que-fazer-com-a-resposta)
+
 > Rascunho para envio ao CNJ / PDPJ-Br. Base: Resolução CNJ nº 444/2022,
 > Portaria CNJ nº 116/2022, Lei nº 12.527/2011 (LAI), Lei nº 13.709/2018
 > (LGPD) e Resolução CNJ nº 363/2021.
