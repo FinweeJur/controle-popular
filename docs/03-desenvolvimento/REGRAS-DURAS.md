@@ -429,6 +429,31 @@ A regra nasce desse episódio.
 pública, chamada a modelo gratuito e execução local. Deploy continua exigindo
 ordem explícita (§5.7.1).
 
+## 5.18. Leitura de jornal e conforto visual
+
+**Regra do dono, 09–10/11/2026.** Página longa não é bloco de texto. A
+diagramação tem de ajudar o leitor a achar o número, a data e a frase que
+respondem — sem atravessar a tela com o olho.
+
+O padrão completo está em
+[PADRAO-LEITURA-JORNAL.md](PADRAO-LEITURA-JORNAL.md). O resumo:
+
+- **Hierarquia:** H1 único; lede de até 4 linhas; H2 com fio e respiro; H3 só
+  quando divide assunto; parágrafo de até ~6 linhas; largura de 72ch;
+  entrelinha 1,75.
+- **Destaques:** cartões `:::numeros` para 2–4 valores; citação `>` para uma
+  frase-síntese; tabela com cabeçalho em caixa alta e linhas zebradas.
+- **Conforto de número:** rótulo, barra e valor formam um grupo curto e
+  centralizado. O valor não pode ficar no canto oposto ao rótulo.
+- **Gráfico de barras:** largura máxima de ~48 rem, centralizado; N visível;
+  barra proporcional ao maior item; sem barra de ponta a ponta.
+- **Marcas:** `[medido]`, `[inferido]` e `[não dá para concluir]` ficam no
+  JSON, não na tela. Parágrafo que só declara limite não é renderizado.
+- **Sumário lateral:** reutilizar `MiniSumarioLateral` /
+  `CapitulosFlutuantes`; IDs reais e `scroll-mt-24`.
+
+A verificação é visual em 390 px e no desktop, além de `tsc` e da suíte.
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

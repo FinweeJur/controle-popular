@@ -127,7 +127,11 @@ O helper de seção é `SecaoWiki.tsx`, no mesmo diretório.
   o requisito é só ter ≥ 2 headings. As 100 rotas do catálogo cobertas
   sem editar página a página. A montagem manual antiga
   (`<MiniSumarioLateral itens={SECOES} />`) pode ser removida de quem
-  ainda usa.
+  ainda usa, mas continua válida quando a página precisa de uma lista
+  curada de seções — é o caso de `/jurisprudencia` e `/jurisprudencia/penal`.
+- ✅ Cada alvo precisa de `id` real e `scroll-mt-24`; o padrão visual e a
+  distância rótulo–valor estão em
+  [PADRAO-LEITURA-JORNAL.md](PADRAO-LEITURA-JORNAL.md).
 
 ## 5. Sumário ao final da página (IndicePagina)
 

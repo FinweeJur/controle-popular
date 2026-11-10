@@ -144,7 +144,7 @@ export function Grafico({
   const teto = tipo === "barras" ? limite : 6;
   const itens = prepararItens(dados, teto, (chave) => ROTULOS[chave] ?? NOMES_PNAB[chave] ?? chave);
   return (
-    <section className="space-y-2">
+    <section className="mx-auto w-full max-w-3xl space-y-2">
       <h2 className="font-display text-lg font-semibold">{titulo}</h2>
       <CorpoGrafico tipo={tipo} itens={itens} total={total} />
       {nota ? <p className="text-xs opacity-70">{nota}</p> : null}
@@ -314,13 +314,13 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
   const anos = poloPorAno(casos);
   const maior = Math.max(...anos.map((item) => item.total), 1);
   return (
-    <section className="space-y-3">
+    <section className="mx-auto w-full max-w-3xl space-y-3">
       <h2 className="font-display text-xl font-semibold">Brumadinho: polo por ano</h2>
-      <div className="space-y-2">
+      <div className="max-w-md space-y-2">
         {anos.map((item) => (
           <div key={item.ano} className="flex items-center gap-3 text-sm">
-            <span className="w-12 font-tabular opacity-70">{item.ano}</span>
-            <div className="flex h-5 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]">
+            <span className="w-12 shrink-0 font-tabular opacity-70">{item.ano}</span>
+            <div className="flex h-5 w-full max-w-56 overflow-hidden rounded bg-[var(--cp-surface-2)]">
               {item.partes.map(([polo, n]) => (
                 <BarraAnimada
                   key={polo}
@@ -330,7 +330,7 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
                 />
               ))}
             </div>
-            <span className="w-16 text-right font-tabular opacity-70">
+            <span className="shrink-0 font-tabular opacity-70">
               <ContadorAnimado valor={item.total} />
             </span>
           </div>

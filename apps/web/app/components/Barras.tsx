@@ -40,16 +40,24 @@ export function Barras({
   return (
     <section className="space-y-2">
       <h2 className="font-display text-lg font-semibold">{titulo}</h2>
-      <ul className="space-y-1.5">
+      {/*
+        Bloco curto e centralizado: barra com teto de 13 rem (6 rem no celular)
+        e o N logo ao lado, para o olho não atravessar a tela entre o rótulo e o
+        número.
+      */}
+      <ul className="mx-auto w-full max-w-sm space-y-1.5 sm:max-w-xl">
         {itens.map(([chave, n]) => {
           const rotulo = rotulos[chave] ?? chave;
           return (
-            <li key={chave} className="flex items-center gap-2 text-sm">
-              <span className="w-[8.5rem] shrink-0 truncate" title={rotulo}>
+            <li
+              key={chave}
+              className="grid grid-cols-[minmax(0,1fr)_minmax(3rem,6rem)_max-content] items-center gap-x-2 text-sm sm:grid-cols-[minmax(0,9rem)_minmax(0,13rem)_max-content]"
+            >
+              <span className="min-w-0 truncate" title={rotulo}>
                 {rotulo}
               </span>
               <span
-                className="h-2.5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]"
+                className="h-2.5 w-full overflow-hidden rounded bg-[var(--cp-surface-2)]"
                 role="img"
                 aria-label={`${rotulo}: ${n} de ${total}`}
               >
@@ -58,9 +66,11 @@ export function Barras({
                   style={{ width: `${(100 * n) / maior}%` }}
                 />
               </span>
-              <span className="w-14 shrink-0 text-right font-tabular">{n.toLocaleString("pt-BR")}</span>
-              <span className="w-11 shrink-0 text-right font-tabular opacity-60">
-                {total ? `${Math.round((100 * n) / total)}%` : "—"}
+              <span className="justify-self-end whitespace-nowrap font-tabular">
+                {n.toLocaleString("pt-BR")}
+                <span className="ml-1.5 text-xs opacity-60">
+                  {total ? `${Math.round((100 * n) / total)}%` : "—"}
+                </span>
               </span>
             </li>
           );

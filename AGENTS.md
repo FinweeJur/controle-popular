@@ -116,6 +116,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
 | [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |
 | [5.17](docs/03-desenvolvimento/REGRAS-DURAS.md#517-custo-só-com-autorização-prévia-do-dono) | Nenhum gasto sem autorização prévia: calcule o custo, peça o "sim", só então dispare o lote pago. |
+| [5.18](docs/03-desenvolvimento/REGRAS-DURAS.md#518-leitura-de-jornal-e-conforto-visual) | Página longa com hierarquia de jornal: parágrafos curtos, destaques, rótulo e valor próximos, barra curta e centralizada. |
 
 ## Verificação mínima
 
