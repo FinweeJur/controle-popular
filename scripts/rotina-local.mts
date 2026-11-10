@@ -121,9 +121,9 @@ const argv = process.argv.slice(2);
 // barato, falhar quieto custa um site publicado errado.
 const BANDEIRAS = new Set([
   "--listar", "--so-build", "--so-etl", "--sem-deploy", "--forcar-deploy",
-  "--dispatch", "--workflow", "--job",
+  "--dispatch", "--workflow", "--job", "--hoje",
 ]);
-const COM_VALOR = new Set(["--workflow", "--job"]);
+const COM_VALOR = new Set(["--workflow", "--job", "--hoje"]);
 for (let i = 0; i < argv.length; i++) {
   const a = argv[i];
   if (COM_VALOR.has(argv[i - 1])) continue; // é o valor do anterior
@@ -184,6 +184,26 @@ const SO_WORKFLOW = (() => {
 const SO_JOB = (() => {
   const i = argv.indexOf("--job");
   return i >= 0 ? argv[i + 1] : null;
+})();
+
+/**
+ * `--hoje YYYY-MM-DD` ensaia a cadência de outra data, só com `--listar`.
+ *
+ * Sem isso, provar que um cron novo dispara exigiria esperar o dia certo (ou
+ * mexer no relógio da máquina). O modo é restrito a `--listar` de propósito:
+ * data falsa que chega ao ETL executaria a rodada errada.
+ */
+const HOJE = (() => {
+  const i = argv.indexOf("--hoje");
+  if (i < 0) return null;
+  const valor = argv[i + 1];
+  if (!SO_LISTAR) {
+    throw new Error("--hoje só vale com --listar (não move a rodada real)");
+  }
+  if (!valor || !/^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+    throw new Error(`--hoje inválido: ${valor ?? "(vazio)"} — use YYYY-MM-DD`);
+  }
+  return new Date(`${valor}T12:00:00Z`);
 })();
 
 // ───────────────────────────── registro em disco ─────────────────────────────
@@ -582,14 +602,17 @@ function contagemAnterior(): number | null {
 // ───────────────────────────── principal ─────────────────────────────
 
 async function principal() {
-  const hoje = new Date();
+  const hoje = HOJE ?? new Date();
   registrar(`rotina local — ${hoje.toISOString()}`);
   registrar(`log: ${ARQUIVO_LOG}`);
 
   const envEtl = lerDotenv(path.join(RAIZ, "etl", "betim", ".env"));
   const envWeb = lerDotenv(path.join(WEB, ".env.local"));
-  exigirBancoLocal(envEtl.DATABASE_URL, "etl/betim/.env");
-  exigirBancoLocal(envWeb.DATABASE_URL, "apps/web/.env.local");
+  // `--listar` é só leitura da agenda: não precisa de banco para responder.
+  if (!SO_LISTAR) {
+    exigirBancoLocal(envEtl.DATABASE_URL, "etl/betim/.env");
+    exigirBancoLocal(envWeb.DATABASE_URL, "apps/web/.env.local");
+  }
 
   // ── ETL ──────────────────────────────────────────────────────────
   let falhas = 0;
