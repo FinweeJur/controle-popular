@@ -1,31 +1,35 @@
-"use client";
+﻿"use client";
 
 /**
- * RastroCursorBotao — botão mágico flutuante que LIGA a trilha do cursor.
+ * @file RastroCursorBotao.tsx
+ * @description Interruptor do rastro mágico na pilha da esquerda.
  *
- * Pedido do dono (19/10/2026): a trilha de letras passa a ser opt-in —
- * ninguém ganha a corrente sem pedir. Este botão é o interruptor visível
- * na página inteira: fica discreto no canto inferior direito e, DESLIGADO,
- * pulsa bem devagar com um brilho suave (o tal "meio mágico"). Clicou,
- * liga a trilha na hora (evento `cp:rastro-cursor`, montada pelo
- * `RastroCursor.tsx`); clicou de novo, desliga — e o pulso volta.
+ * Pedido do dono (19/10/2026): a trilha de letras é opt-in — ninguém ganha a
+ * corrente sem pedir. Desde 08/11/2026 este botão é o terceiro item da pilha,
+ * ABAIXO do rádio (dono: rádio no topo): fica escondido até o ponteiro chegar
+ * no Seu Nonô, abre o nome "Rastro mágico" no hover e continua visível
+ * enquanto a trilha está LIGADA, senão não haveria como desligá-la sem caçar
+ * o Seu Nonô. `z-[45]`: pinta por cima do rádio (`z-[44]`) e por baixo da
+ * pata (`z-[46]`) e do FAB (`z-50`).
  *
- * Preferência compartilhada: `cp_rastro_cursor` (agora padrão DESLIGADO),
- * com as funções exportadas pelo próprio `RastroCursor.tsx` — mesma chave,
- * mesmo evento, nunca reescritos aqui. O botão do cartão Acessibilidade do
- * Seu Nonô (`RastroCursorToggle.tsx`) mostra o mesmo estado: os dois lêm
- * a mesma fonte via `useSyncExternalStore`.
+ * Preferência compartilhada: `cp_rastro_cursor` (padrão DESLIGADO), com as
+ * funções exportadas pelo próprio `RastroCursor.tsx` — mesma chave, mesmo
+ * evento, nunca reescritos aqui. O cartão "Acessibilidade" do Seu Nonô
+ * mostra o mesmo estado.
  *
- * O pulso é CSS puro (keyframes ~3,5 s, ease-in-out) e some com
- * `prefers-reduced-motion` — decoração, sem custo de JS por quadro.
+ * Cor nunca é o único sinal: o botão usa `aria-pressed` e o pulso sai quando
+ * ligado.
  */
 
 import { useSyncExternalStore } from "react";
+import { Sparkles } from "lucide-react";
 import {
   EVENTO_RASTRO_CURSOR,
   definirRastroCursor,
   lerRastroCursor,
 } from "@/app/components/RastroCursor";
+import PilhaBotao from "@/app/components/pilha/PilhaBotao";
+import { useSlotPilha } from "@/app/components/pilha/estadoPilha";
 
 /** Assina a troca da preferência (mesmo barramento do botão do Seu Nonô). */
 function inscrever(cb: () => void) {
@@ -40,41 +44,25 @@ function snapshotServidor(): boolean {
 
 export default function RastroCursorBotao() {
   const ativo = useSyncExternalStore(inscrever, lerRastroCursor, snapshotServidor);
+  const { visivel, indice } = useSlotPilha("rastro", ativo);
 
   return (
-    <button
-      type="button"
-      onClick={() => definirRastroCursor(!ativo)}
-      aria-pressed={ativo}
-      title="Rastro mágico do mouse — liga e desliga a trilha de letras"
-      className={`cp-rastro-botao cursor-pointer select-none rounded-full border px-3 py-2 text-xs font-semibold ${
-        ativo
-          ? "border-text bg-text text-bg"
-          : "border-border bg-surface text-text-soft"
+    <div
+      className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[45] transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${
+        visivel ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
+      data-cp-slot={indice}
+      data-cp-pilha
+      inert={!visivel}
+      aria-hidden={!visivel}
     >
-      <span aria-hidden="true" className="mr-1">✨</span>
-      Rastro mágico
-      <style>{`
-        .cp-rastro-botao {
-          position: fixed;
-          right: 0.75rem;
-          bottom: 0.75rem;
-          z-index: 40;
-        }
-        /* Pulso bem devagar: a sombra cresce 3,5 s e volta. Só no estado
-           DESLIGADO (é o convite); ligado, o botão fica quieto. */
-        .cp-rastro-botao[aria-pressed="false"] {
-          animation: cp-pulso-magico 3.5s ease-in-out infinite;
-        }
-        @keyframes cp-pulso-magico {
-          0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cp-primary, var(--primary, #f2701d)) 0%, transparent); }
-          50% { box-shadow: 0 0 18px 4px color-mix(in srgb, var(--cp-primary, var(--primary, #f2701d)) 55%, transparent); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .cp-rastro-botao[aria-pressed="false"] { animation: none; }
-        }
-      `}</style>
-    </button>
+      <PilhaBotao
+        rotulo="Rastro mágico"
+        aria-pressed={ativo}
+        onClick={() => definirRastroCursor(!ativo)}
+        title="Rastro mágico do mouse — liga e desliga a trilha de letras"
+        icone={<Sparkles size={20} aria-hidden="true" />}
+      />
+    </div>
   );
 }

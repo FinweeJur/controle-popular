@@ -1,0 +1,90 @@
+/*
+ * Estilos da LinhaDoTempo genérica (e o contrato visual do ScrollStar nela).
+ *
+ * O trilho é a borda esquerda do contêiner — a estrela desce POR ELE, não
+ * sobre um traço desenhado à parte. Tokens do portal (`--cp-*`), nunca hex
+ * solto. Texto de interface nunca abaixo de 12 px (regra 5.16): o menor corpo
+ * aqui é 14 px.
+ */
+
+.linha-do-tempo {
+  position: relative;
+  padding-left: 1.9rem;
+  border-left: 1px solid var(--cp-border);
+}
+
+/* O <ol> herdaria list-style do browser; o trilho já é a marca da lista. */
+.linha-do-tempo__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Desktop: coluna fixa de 5,5rem para o marco + conteúdo elástico.
+ * `minmax(0, 1fr)` evita a rolagem lateral de palavra longa (armadilha
+ * `min-w-0` do portal). Abaixo de 640 px vira coluna única (regra 5.14 —
+ * o celular é a régua).
+ */
+.linha-do-tempo__item {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.linha-do-tempo__item:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 639.98px) {
+  .linha-do-tempo__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.linha-do-tempo__marco {
+  font-family: var(--font-tabular, ui-monospace, monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cp-primary);
+}
+
+.linha-do-tempo__conteudo {
+  min-width: 0; /* parceiro do minmax(0,1fr): nada de estourar o trilho */
+}
+
+.linha-do-tempo__titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cp-text);
+}
+
+/* Título que é link para a página da frente (dono, 03/11/2026): herda o
+   corpo do título, entrega a cor primária no hover e um "→" discreto. */
+.linha-do-tempo__titulo-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.linha-do-tempo__titulo-link::after {
+  content: " →";
+  color: var(--cp-primary);
+}
+
+.linha-do-tempo__titulo-link:hover,
+.linha-do-tempo__titulo-link:focus-visible {
+  color: var(--cp-primary);
+  text-decoration: underline;
+}
+
+.linha-do-tempo__texto {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cp-text-soft);
+}

@@ -4,6 +4,7 @@ import { Sparkles } from "lucide-react";
 import novidades from "@/data/novidades.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const dynamic = "force-static";
 
@@ -85,6 +86,8 @@ export default function NovidadesPage() {
         <Sparkles size={28} className="text-primary" aria-hidden="true" />
         Novidades do portal
       </h1>
+
+        <ResumoRealidadeBox rota="/novidades" />
 
       <p className="mt-3 max-w-2xl text-[1.02em] leading-relaxed text-text-soft">
         Ultimas atualizacoes de dados, coletas, funcionalidades e melhorias

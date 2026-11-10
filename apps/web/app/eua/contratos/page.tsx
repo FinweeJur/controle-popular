@@ -4,6 +4,7 @@ import { COBERTURA_EUA, obterContratosEua } from "@/lib/internacional/dados-eua"
 import SubNavEua from "../components/SubNavEua";
 import PainelContratosEua from "./PainelContratosEua";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file apps/web/app/eua/contratos/page.tsx
@@ -74,6 +75,8 @@ export default function PaginaContratosEua() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Compras Federais nos EUA e Comércio Exterior Bilateral
         </h1>
+
+        <ResumoRealidadeBox rota="/eua/contratos" />
         <p className="mt-3 max-w-4xl text-base text-muted sm:text-lg">
           Auditoria de contratos públicos no USAspending e fluxo comercial
           entre os portos americanos e as cadeias produtivas do Brasil.

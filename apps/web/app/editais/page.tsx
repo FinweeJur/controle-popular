@@ -13,6 +13,7 @@ import DataColeta from "@/app/components/DataColeta";
 import PainelEditais from "./PainelEditais";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { DatasetJsonLd } from "@/app/components/DatasetJsonLd";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/editais", {
   title: "Editais e Chamamentos Públicos de Minas Gerais — Controle Popular",
@@ -48,6 +49,8 @@ export default function EditaisPage() {
         <h1 className="font-display text-[clamp(1.8em,4vw,2.5em)] font-bold tracking-tight text-text">
           Editais, Chamamentos e Licitações Públicas de Minas Gerais
         </h1>
+
+        <ResumoRealidadeBox rota="/editais" />
         <p className="max-w-3xl text-[1.05em] leading-relaxed text-text-soft">
           Monitoramento contínuo das publicações do Diário Oficial Eletrônico do Estado (Jornal Minas Gerais).
           Identificamos chamamentos públicos, credenciamentos em saúde e educação, editais de conselhos civis,

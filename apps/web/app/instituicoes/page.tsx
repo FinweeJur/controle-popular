@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
 import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import PainelInstituicoesClient from "./PainelInstituicoesClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Instituições e Secretarias de Todas as Esferas — Organograma, Contatos e Ouvidoria | Controle Popular",
@@ -71,6 +72,8 @@ export default function InstituicoesHubPage() {
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
             Quem comanda, quanto gasta e como falar
           </h1>
+
+        <ResumoRealidadeBox rota="/instituicoes" />
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-soft sm:text-base">
             O cidadão não precisa adivinhar para onde vai o seu imposto ou qual telefone atende a sua demanda.
             Reunimos em fichas públicas padronizadas os órgãos do Executivo, Legislativo, Judiciário e Sistema de Justiça:

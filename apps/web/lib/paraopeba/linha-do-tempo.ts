@@ -50,7 +50,42 @@ export interface MarcoParaopeba {
    *  (desfavorável) ou azul (neutro/procedimental). Mantida como veio: é
    *  leitura editorial de quem montou o painel, não recalculada aqui. */
   cor: string;
+  /** Quem age no fato, por classe de ator (ver `ROTULO_ATOR`). */
+  atores: AtorMarco[];
+  /** Fontes logo depois do fato: botão pequeno, link direto ao órgão ou à
+   *  página do portal que documenta o número. Nunca URL inventada. */
+  fontes: FonteMarco[];
 }
+
+/**
+ * Classe do ator que age no marco. A separação é editorial e responde a uma
+ * pergunta do dono (08/11/2026): quem falou ou agiu aqui — o movimento popular,
+ * o Estado, o Judiciário ou a empresa? `internacional` fica para o litígio
+ * fora do Brasil (Reino Unido, Alemanha, Holanda).
+ */
+export type AtorMarco = "popular" | "estatal" | "judiciario" | "empresarial" | "internacional";
+
+export interface FonteMarco {
+  rotulo: string;
+  url: string;
+}
+
+export const ROTULO_ATOR: Record<AtorMarco, string> = {
+  popular: "Atingidos e movimento popular",
+  estatal: "Estado e instituições de justiça",
+  judiciario: "Judiciário",
+  empresarial: "Empresa",
+  internacional: "Fora do Brasil",
+};
+
+/** Cor do selo por classe de ator, para o olho separar sem ler. */
+export const COR_ATOR: Record<AtorMarco, string> = {
+  popular: "#2D6A4F",
+  estatal: "#1A5FA8",
+  judiciario: "#5B3FA8",
+  empresarial: "#9B1C1C",
+  internacional: "#8B5E00",
+};
 
 /**
  * Leitura editorial de uma cor do painel-fonte, em três tipos:
@@ -116,140 +151,302 @@ export const MARCOS_PARAOPEBA: MarcoParaopeba[] = [
     "data": "2019-01-25",
     "titulo": "Rompimento da barragem B1",
     "descricao": "A barragem B1 da Mina Córrego do Feijão, em Brumadinho/MG, rompe às 12h28. A lama de rejeitos desce pelo vale, destrói o refeitório da Vale e percorre cerca de 9km pelo ribeirão Ferro-Carvão até o Rio Paraopeba. São 272 vidas perdidas — a maioria funcionários da própria Vale.",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["empresarial"],
+    "fontes": [
+      {"rotulo": "Entenda o caso", "url": "/paraopeba/entenda"},
+      {"rotulo": "Vale", "url": "https://www.vale.com/"}
+    ]
   },
   {
     // Painel diz "Abr/2019"; o dia vem de `clipping-ij.ts` (`d01`).
     "data": "2019-04-05",
     "titulo": "DPMG firma Termo de Compromisso com a Vale",
     "descricao": "Em apenas 70 dias após o rompimento, a Defensoria Pública de MG celebra com a Vale um Termo de Compromisso para reparação extrajudicial de danos morais e materiais às vítimas — modelo inédito no Brasil.",
-    "cor": "#8B5E00"
+    "cor": "#8B5E00",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "DPMG", "url": "https://defensoria.mg.def.br/"}
+    ]
   },
   {
     "data": "2020-01",
     "titulo": "MPMG denuncia 16 réus por 270 homicídios",
     "descricao": "O MPMG oferece denúncia criminal contra 11 funcionários da Vale e 5 da Tüv Süd (empresa alemã certificadora de barragens) por 270 homicídios qualificados e crimes ambientais. A ação penal é aceita pela Justiça de Brumadinho.",
-    "cor": "#1A5FA8"
+    "cor": "#1A5FA8",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "MPMG", "url": "https://www.mpmg.mp.br/"}
+    ]
   },
   {
     "data": "2021-02-04",
     "titulo": "Acordo Judicial de Reparação — R$ 37,6 bilhões",
     "descricao": "MPMG, MPF, DPMG e Governo de Minas assinam com a Vale o maior acordo de reparação de um desastre ambiental da história brasileira, no valor global de R$ 37,6 bilhões. O acordo cria o Programa de Transferência de Renda (PTR), gerido pela FGV.",
-    "cor": "#2D6A4F"
+    "cor": "#2D6A4F",
+    "atores": ["estatal",  "empresarial"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"},
+      {"rotulo": "Execução no portal", "url": "/paraopeba/execucao"}
+    ]
   },
   {
     "data": "2021-11",
     "titulo": "FGV assume a gestão do PTR",
     "descricao": "A FGV é nomeada para operacionalizar o PTR, que passa a atender mais de 130 mil beneficiários na Bacia do Paraopeba e Represa de Três Marias. A gestão independente foi exigida pelos atingidos após críticas ao modelo anterior.",
-    "cor": "#2D6A4F"
+    "cor": "#2D6A4F",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "Execução no portal", "url": "/paraopeba/execucao"}
+    ]
   },
   {
     "data": "2024-11",
     "titulo": "IJs anunciam corte de 50% do PTR",
     "descricao": "MPMG, MPF e DPMG comunicam que os pagamentos serão reduzidos em 50% a partir de março de 2025 e encerrados em outubro de 2025, alegando esgotamento dos recursos previstos no Acordo. Mais de 160 mil famílias ficam sob risco.",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"},
+      {"rotulo": "MPMG", "url": "https://www.mpmg.mp.br/"}
+    ]
   },
   // ── A partir daqui, os 17 de `MILESTONES` que já existiam.
   {
     "data": "2025-03-14",
     "titulo": "ACP protocolada",
     "descricao": "Ação Civil Pública proposta pelas associações parceiras do MAB após o corte de 50% do auxílio",
-    "cor": "#7C4DBC"
+    "cor": "#7C4DBC",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "MPMG", "url": "https://www.mpmg.mp.br/"},
+      {"rotulo": "Quem atua", "url": "/paraopeba/quem-atua"}
+    ]
   },
   {
     "data": "2025-03-28",
     "titulo": "1ª liminar (juiz Murilo)",
     "descricao": "Juiz Murilo Abreu concede tutela de urgência determinando à Vale manter o auxílio nos moldes anteriores ao corte",
-    "cor": "#1A5FA8"
+    "cor": "#1A5FA8",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
   },
   {
     "data": "2025-05-21",
     "titulo": "Liminar suspensa",
     "descricao": "Desembargadora convocada Maria Dolores suspende a decisão de 1ª instância. Auxílio voltou ao valor cortado",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
   },
   {
     "data": "2025-10-01",
     "titulo": "Encerramento PTR",
     "descricao": "Programa de Transferência de Renda é encerrado. Mais de 160 mil pessoas ficam sem auxílio",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"}
+    ]
   },
   {
     "data": "2025-11-13",
     "titulo": "TJMG restaura auxílio",
     "descricao": "Desembargador André Leite Praça retoma a decisão de 1ª instância: Vale obrigada a pagar o Novo Auxílio Emergencial",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"},
+      {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"}
+    ]
   },
   {
     "data": "2025-12-17",
     "titulo": "1º pagamento Novo AE",
     "descricao": "FGV realiza o primeiro pagamento do Novo Auxílio Emergencial: R$ 123,9 milhões para cerca de 160 mil pessoas",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"}
+    ]
   },
   {
     "data": "2026-03-05",
     "titulo": "TJMG confirma (2ª inst.)",
     "descricao": "19ª Câmara Cível rejeita recurso da Vale por unanimidade e mantém o Novo Auxílio Emergencial na segunda instância",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
   },
   {
     "data": "2026-04-08",
     "titulo": "ADPF 1314 no STF",
     "descricao": "Ibram protocola no STF ação questionando a constitucionalidade da PNAB. Relatoria do min. Gilmar Mendes",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "STF", "url": "https://portal.stf.jus.br/"}
+    ]
   },
   {
     "data": "2026-04-24",
     "titulo": "Presidente TJMG nega Vale",
     "descricao": "Presidente Corrêa Júnior rejeita dois recursos da Vale, mantendo todas as decisões sobre o Novo Auxílio",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["judiciario",  "empresarial"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"},
+      {"rotulo": "Vale", "url": "https://www.vale.com/"}
+    ]
   },
   {
     "data": "2026-05-07",
     "titulo": "AGU defende NAE no STF",
     "descricao": "AGU (Contencioso) pede ao STF que rejeite a ação do Ibram e defenda a aplicabilidade da PNAB ao caso Brumadinho",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "AGU", "url": "https://www.gov.br/agu/pt-br"},
+      {"rotulo": "STF", "url": "https://portal.stf.jus.br/"}
+    ]
   },
   {
     "data": "2026-05-13",
     "titulo": "TJMG explica ao STF",
     "descricao": "Desembargador Leite Praça presta esclarecimentos ao STF sobre as decisões do TJMG, rebatendo argumento da retroatividade",
-    "cor": "#1A5FA8"
+    "cor": "#1A5FA8",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "STF", "url": "https://portal.stf.jus.br/"},
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
   },
   {
     "data": "2026-05-14",
     "titulo": "Divergência na AGU",
     "descricao": "AGU, pela sua Consultoria-Geral e em nome da Presidência da República, envia ao STF posição contrária ao NAE, gerando contradição interna no governo",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "AGU", "url": "https://www.gov.br/agu/pt-br"}
+    ]
   },
   {
     "data": "2026-06-11",
     "titulo": "IAC 18 no STJ — voto dividido",
     "descricao": "STJ julga se o Termo DPMG-Vale é título executivo para ações individuais. Relator vota contra as vítimas; ministra Nancy Andrighi diverge. Julgamento suspenso",
-    "cor": "#1A5FA8"
+    "cor": "#1A5FA8",
+    "atores": ["judiciario"],
+    "fontes": [
+      {"rotulo": "STJ", "url": "https://www.stj.jus.br/"}
+    ]
   },
   {
     "data": "2026-06-22",
     "titulo": "MPF encerra 1º semestre de oitivas",
     "descricao": "MPF conclui a primeira etapa da fase de instrução criminal no TRF6. Procuradores reafirmam busca pela punição dos responsáveis pelas 270 mortes",
-    "cor": "#1A5FA8"
+    "cor": "#1A5FA8",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "MPF", "url": "https://www.mpf.mp.br/"}
+    ]
   },
   {
     "data": "2026-07-11",
     "titulo": "PGR pede cassação do NAE",
     "descricao": "Procurador-geral Paulo Gonet opina pela procedência total da ação do Ibram, defendendo a cassação das decisões do TJMG — parecer contrário aos atingidos",
-    "cor": "#9B1C1C"
+    "cor": "#9B1C1C",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "MPF", "url": "https://www.mpf.mp.br/"},
+      {"rotulo": "STF", "url": "https://portal.stf.jus.br/"}
+    ]
   },
   {
     "data": "2026-07-21",
     "titulo": "MAB protesta em BH",
     "descricao": "Centenas de atingidos protestam contra o parecer da PGR e cobram julgamento da ADPF 1314 pelo plenário do STF, não por decisão monocrática",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["popular"],
+    "fontes": [
+      {"rotulo": "MAB", "url": "https://mab.org.br/"}
+    ]
   },
   {
     "data": "2026-07-30",
     "titulo": "Auxílio de agosto confirmado",
     "descricao": "NAE de agosto/2026 é garantido (parcelas de R$ 202,62 a R$ 1.621). Futuro do programa continua dependente da decisão do STF",
-    "cor": "#3A6B10"
+    "cor": "#3A6B10",
+    "atores": ["estatal"],
+    "fontes": [
+      {"rotulo": "Auxílio no portal", "url": "/paraopeba/auxilio"}
+    ]
+  },
+  {
+    "data": "2026-09-09",
+    "titulo": "TJMG suspende multa da Vale",
+    "descricao": "O TJMG suspende liminarmente a multa milionária aplicada à Vale sobre a barragem em Brumadinho. A decisão é liminar e não encerra o mérito.",
+    "cor": "#9B1C1C",
+    "atores": ["judiciario", "empresarial"],
+    "fontes": [
+      {"rotulo": "TJMG", "url": "https://www.tjmg.jus.br/"}
+    ]
+  },
+  {
+    "data": "2026-09-11",
+    "titulo": "Auditoria alerta para novo colapso",
+    "descricao": "Auditoria independente aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho.",
+    "cor": "#9B1C1C",
+    "atores": ["popular", "empresarial"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/"}
+    ]
+  },
+  {
+    "data": "2026-10-08",
+    "titulo": "ANM reduz emergência da B1A",
+    "descricao": "A Agência Nacional de Mineração reduz o nível de emergência da barragem B1A, em Brumadinho, de 2 para 1. O monitoramento continua.",
+    "cor": "#1A5FA8",
+    "atores": ["estatal", "empresarial"],
+    "fontes": [
+      {"rotulo": "ANM", "url": "https://www.gov.br/anm/pt-br"}
+    ]
+  },
+  {
+    "data": "2026-10-22",
+    "titulo": "STJ suspende o NAE",
+    "descricao": "O STJ suspende temporariamente o pagamento do Novo Auxílio Emergencial aos atingidos, até julgar o recurso.",
+    "cor": "#9B1C1C",
+    "atores": ["judiciario", "empresarial"],
+    "fontes": [
+      {"rotulo": "STJ", "url": "https://www.stj.jus.br/"},
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/stj-suspende-temporariamente-pagamento-novo-auxilio-emergencial/"}
+    ]
+  },
+  {
+    "data": "2026-10-29",
+    "titulo": "Vale não deposita novembro",
+    "descricao": "Após a suspensão do STJ, a Vale informa que não vai depositar o auxílio de novembro.",
+    "cor": "#9B1C1C",
+    "atores": ["empresarial"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/vale-nao-vai-depositar-auxilio/"}
+    ]
+  },
+  {
+    "data": "2026-10-30",
+    "titulo": "IJs cobram conselho do Anexo 1.1",
+    "descricao": "As instituições de justiça se manifestam sobre a composição do Conselho Inter-regional do Anexo 1.1.",
+    "cor": "#1A5FA8",
+    "atores": ["estatal", "popular"],
+    "fontes": [
+      {"rotulo": "Guaicuy", "url": "https://guaicuy.org.br/ijs-se-manifestam-sobre-conselho-inter-regional/"}
+    ]
   }
 ];

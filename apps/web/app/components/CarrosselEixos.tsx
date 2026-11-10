@@ -406,13 +406,19 @@ interface ControlesCarrosselProps {
  * Pílula de controles do carrossel — régua do dono (01/11/2026):
  * - fica no eixo do cartão do centro (o palco é centrado na seção);
  * - os três marcadores ocupam esquerda/centro/direita, com vão largo entre
- *   eles (gap-5 no celular, gap-9 daí para cima) e assento de largura fixa
+ *   eles (gap-4 no celular, gap-6 daí para cima) e assento de largura fixa
  *   (`h-6 w-6`): trocar de eixo não move os vizinhos;
  * - a pausa é pequena e fica colada à direita da pílula, fora do fluxo
  *   (`absolute left-full`), então não empurra a pílula do centro nem
  *   estoura a linha quando o texto está no A+ máximo.
  * Cada botão para o próprio `click` para o cartão de trás não receber o
  * toque (o palco escuta clique nos cartões para trazê-los ao centro).
+ *
+ * INDICADOR DE POSIÇÃO (dono, 08/11/2026): os marcadores eram bolinhas
+ * anônimas — davam o estado, não a contagem. Agora cada um mostra o número
+ * do eixo e a linha "Eixo N de M" embaixo diz quantos cartões existem. É o
+ * mesmo padrão de carrossel acessível do Tailwind (grupo de botões com
+ * `aria-current` e rótulo "N de M"), sem dependência nova.
  */
 function ControlesCarrossel({
   eixos,
@@ -426,7 +432,7 @@ function ControlesCarrossel({
   const botaoSeta =
     'flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-foreground transition-colors hover:bg-surface';
   return (
-    <div className="mt-3 flex w-full items-center justify-center">
+    <div className="mt-3 flex w-full flex-col items-center">
       <div className="relative flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-1.5 py-1 shadow-xs">
         <button
           type="button"
@@ -441,7 +447,11 @@ function ControlesCarrossel({
           <ChevronLeft className="h-4 w-4" />
         </button>
 
-        <div className="flex items-center justify-between gap-5 px-1.5 sm:gap-9">
+        <div
+          className="flex items-center justify-between gap-4 px-1.5 sm:gap-6"
+          role="group"
+          aria-label={`Posições do carrossel: ${eixos.length} eixos`}
+        >
           {eixos.map((item, i) => {
             const atual = ativo === i;
             return (
@@ -452,16 +462,21 @@ function ControlesCarrossel({
                   e.stopPropagation();
                   aoMarcador(i);
                 }}
-                aria-label={`Selecionar ${item.title}`}
+                aria-label={`Ir para o eixo ${i + 1} de ${eixos.length}: ${item.title}`}
                 aria-current={atual ? 'true' : undefined}
-                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0"
+                title={`${i + 1} de ${eixos.length} — ${item.title}`}
+                className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border text-xs font-bold transition-colors ${
+                  atual
+                    ? 'text-white shadow-xs'
+                    : 'border-border bg-transparent text-text-soft hover:border-primary hover:text-primary'
+                }`}
+                style={
+                  atual
+                    ? { backgroundColor: item.corVar, borderColor: item.corVar }
+                    : undefined
+                }
               >
-                <span
-                  className={`block h-2 rounded-full transition-all duration-300 ${
-                    atual ? 'w-6' : 'w-2 bg-muted hover:bg-foreground/50'
-                  }`}
-                  style={atual ? { backgroundColor: item.corVar } : undefined}
-                />
+                {i + 1}
               </button>
             );
           })}
@@ -495,6 +510,12 @@ function ControlesCarrossel({
           )}
         </button>
       </div>
+      {/* Contador visível (dono, 08/11/2026): o leitor precisa ver QUANTOS
+          cartões existem, não só qual está ativo. Os marcadores numerados
+          (1, 2, 3) e esta linha respondem à mesma pergunta. */}
+      <p className="mt-1 text-xs font-medium text-text-soft" aria-live="polite">
+        Eixo {ativo + 1} de {eixos.length}
+      </p>
     </div>
   );
 }

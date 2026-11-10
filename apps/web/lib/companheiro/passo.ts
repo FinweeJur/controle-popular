@@ -112,6 +112,13 @@ export interface Bicho {
   estado: { nome: NomeEstado; inicio: number };
   queda: number; // velocidade da queda livre px/s (0 = no chão/superfície)
   semCliqueAte: number; // suppressor de clique pós-arrasto
+  /** Multiplicador de velocidade do passeio (0,8–1,15): cada bicho tem o seu. */
+  fator: number;
+  /**
+   * Instante do próximo sorteio de virada no passeio. `0` = desligado
+   * (testes e bichos antigos); o componente liga ao criar o bicho.
+   */
+  virarAte: number;
 }
 
 /** Cria um bicho parado no chão na posição dada. */
@@ -127,6 +134,8 @@ export function criarBicho(x: number): Bicho {
     estado: { nome: "idle", inicio: 0 },
     queda: 0,
     semCliqueAte: 0,
+    fator: 1,
+    virarAte: 0,
   };
 }
 
@@ -316,7 +325,8 @@ function passoPasseio(
   b.queda = 0;
   b.pos.y = sob;
   if (c.agora < b.pausaAte) return "waiting"; // pausa do passeio: olha em volta
-  b.pos.x += b.dir * VELOCIDADE * c.dt;
+  talvezVirar(b, c);
+  b.pos.x += b.dir * VELOCIDADE * b.fator * c.dt;
   virarNasBordas(b, c);
   const degrau = acharDegrau(b, c);
   if (degrau) return iniciarSalto(b, degrau, c);
@@ -338,6 +348,18 @@ function virarNasBordas(b: Bicho, c: ContextoChao): void {
     b.pos.x = maxX;
     b.dir = -1;
   }
+}
+
+/**
+ * Virada ocasional no passeio (4–9 s): sem isto todo bicho anda a MESMA
+ * linha reta de ponta a ponta (dono, 08/11/2026). O sorteio é raro e a
+ * velocidade continua baixa — nada de movimento rápido. `virarAte = 0`
+ * desliga (padrão dos testes e de bichos antigos).
+ */
+function talvezVirar(b: Bicho, c: ContextoChao): void {
+  if (b.virarAte <= 0 || c.agora < b.virarAte) return;
+  if (c.aleatorio() < 0.5) b.dir = b.dir === 1 ? -1 : 1;
+  b.virarAte = c.agora + 4000 + c.aleatorio() * 5000;
 }
 
 /** Degrau mais alto alcançável à frente do pé, ou `null`. */

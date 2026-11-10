@@ -80,7 +80,28 @@ describe("buscarPaginasPortal", () => {
     expect(resTransporte[0].href).toBe("/eleicoes/2026/transporte-gratuito");
   });
 
-  it("tolera acentos e caixa alta", () => {
+  it("acha as siglas que o leitor digita (LAI, TAC, PPP, IDEB, CAGED, SUS, COPAM, TSX, ESG, AdaptaBrasil)", () => {
+    // Regressão da rodada de 08/11/2026: sigla sem alias devolve vazio e o
+    // leitor conclui que o portal não tem o assunto.
+    const esperado: [string, string][] = [
+      ["LAI", "/direitos-em-movimento/informacao"],
+      ["TAC", "/ambiental/tac"],
+      ["PPP", "/ambiental/ppp"],
+      ["IDEB", "/direitos-em-movimento/servicos?subfrente=educacao"],
+      ["CAGED", "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda"],
+      ["SUS", "/direitos-em-movimento/servicos?subfrente=saude-publica"],
+      ["COPAM", "/ambiental/copam"],
+      ["TSX", "/canada"],
+      ["ESG", "/empresas"],
+      ["AdaptaBrasil", "/ambiental/clima-risco"],
+    ];
+    for (const [termo, href] of esperado) {
+      const achados = buscarPaginasPortal(termo, 3).map((p) => p.href);
+      expect(achados, `"${termo}" não levou a ${href}`).toContain(href);
+    }
+  });
+
+  it("toleriza acentos e caixa alta", () => {
     const res = buscarPaginasPortal("ORÇAMENTO");
     expect(res.length).toBeGreaterThan(0);
     expect(res.some((p) => p.href.includes("orcamento") || p.descricao.toLowerCase().includes("orcamento"))).toBe(true);

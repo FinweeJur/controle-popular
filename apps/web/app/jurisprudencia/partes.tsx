@@ -1,4 +1,6 @@
 import Link from "next/link";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { CartaoCaso, LinhaCaso } from "./LinhaCaso";
 import {
   CorpoGrafico,
@@ -70,29 +72,18 @@ export const resumo = resumoJson as Resumo;
 export const CASOS = (casosJson as ArquivoCasos).casos;
 
 /**
- * Fronteira entre o acervo penal e o acervo de desastres (01/11/2026).
+ * Fronteira entre o acervo penal e o acervo de desastres (04/11/2026).
  *
- * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras
- * de desastre, mas a maioria é crime comum da região — homicídio, tráfico,
- * júri — e não responsabilização criminal do rompimento. O dono pediu página
- * própria para o penal e a saída desses casos da lista de desastres.
+ * O frente `penal` reúne 6.182 processos (TJES e STF) coletados por âncoras de
+ * desastre, mas a maioria é crime comum da região — homicídio, tráfico, júri — e
+ * não responsabilização criminal do rompimento.
  *
- * Exceção mantida: processo penal que CITA o desastre fica nas duas listas,
- * porque ali o crime é o objeto da responsabilização.
+ * Até 04/11 a página de desastres ainda trazia 239 desses casos, com a desculpa
+ * de que citavam o desastre. O dono cortou: penal tem página própria e não
+ * aparece nesta. Processo penal do desastre continua acessível em
+ * `/jurisprudencia/penal`, onde o recorte é o crime, não a indenização.
  */
-const TERMOS_DESASTRE =
-  /barragem|rompimento|samarco|vale\s?s\.?a|brumadinho|mariana|fund[ãa]o|rio doce|atingid/i;
-
-export function penalDeDesastre(caso: CasoJurisprudencia): boolean {
-  if (caso.frente !== "penal") return false;
-  const texto = [caso.ementa, caso.resumo, (caso.temas || []).join(" ")].join(" ");
-  return TERMOS_DESASTRE.test(texto);
-}
-
-/** Acervo da página de desastres: tudo, menos o penal que não é do desastre. */
-export const CASOS_DESASTRE = CASOS.filter(
-  (caso) => caso.frente !== "penal" || penalDeDesastre(caso),
-);
+export const CASOS_DESASTRE = CASOS.filter((caso) => caso.frente !== "penal");
 
 const NOMES_TRIBUNAL: Record<string, string> = {
   TJMG: "TJMG (MG)",
@@ -290,18 +281,22 @@ export function Tabela({
 
 export function Cartoes() {
   const semResumo = CASOS_DESASTRE.filter((caso) => caso.status === "sem_resumo").length;
-  const itens: [string, string, string][] = [
-    ["Itens no acervo", CASOS_DESASTRE.length.toLocaleString("pt-BR"), "acórdãos e súmulas"],
-    ["Acórdãos", (CASOS_DESASTRE.length - contar("sumula")).toLocaleString("pt-BR"), "TJMG, TJES, STF, STJ"],
-    ["Súmulas", contar("sumula").toLocaleString("pt-BR"), "STF, STJ e TST"],
-    ["Sem resumo de mérito", semResumo.toLocaleString("pt-BR"), "entram na lista, sem polo"],
+  const acordaosh = CASOS_DESASTRE.length - contar("sumula");
+  const sumulas = contar("sumula");
+  const itens: [string, number, string][] = [
+    ["Itens no acervo", CASOS_DESASTRE.length, "acórdãos e súmulas"],
+    ["Acórdãos", acordaosh, "TJMG, TJES, STF, STJ"],
+    ["Súmulas", sumulas, "STF, STJ e TST"],
+    ["Sem resumo de mérito", semResumo, "entram na lista, sem polo"],
   ];
   return (
     <section className="grid gap-3 sm:grid-cols-2">
       {itens.map(([rotulo, valor, nota]) => (
         <div key={rotulo} className="rounded-lg border border-[var(--cp-border)] p-4">
           <p className="text-xs uppercase tracking-wide opacity-60">{rotulo}</p>
-          <p className="font-display text-2xl font-bold">{valor}</p>
+          <p className="font-display text-2xl font-bold">
+            <ContadorAnimado valor={valor} />
+          </p>
           <p className="text-xs opacity-60">{nota}</p>
         </div>
       ))}
@@ -327,15 +322,17 @@ export function GraficoPoloAno({ casos }: { casos: CasoJurisprudencia[] }) {
             <span className="w-12 font-tabular opacity-70">{item.ano}</span>
             <div className="flex h-5 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]">
               {item.partes.map(([polo, n]) => (
-                <span
+                <BarraAnimada
                   key={polo}
-                  title={`${ROTULOS[polo] ?? polo}: ${n}`}
+                  fracao={n / maior}
+                  className={`h-full ${CORES_POLO[polo] ?? "bg-[var(--cp-border)]"}`}
                   style={{ width: `${(100 * n) / maior}%` }}
-                  className={CORES_POLO[polo] ?? "bg-[var(--cp-border)]"}
                 />
               ))}
             </div>
-            <span className="w-16 text-right font-tabular opacity-70">{item.total}</span>
+            <span className="w-16 text-right font-tabular opacity-70">
+              <ContadorAnimado valor={item.total} />
+            </span>
           </div>
         ))}
       </div>
@@ -675,7 +672,9 @@ export function PainelRecorte({
   return (
     <section className="space-y-8" aria-label="Painel do recorte">
       <p className="text-sm opacity-80">
-        <strong>{total.toLocaleString("pt-BR")}</strong>{" "}
+        <strong>
+          <ContadorAnimado valor={total} />
+        </strong>{" "}
         {total === 1 ? "item no recorte" : "itens no recorte"} de{" "}
         {CASOS_DESASTRE.length.toLocaleString("pt-BR")}.
       </p>

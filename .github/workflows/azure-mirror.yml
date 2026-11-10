@@ -80,7 +80,21 @@ jobs:
         run: |
           if az containerapp show -g "$GRUPO" -n "$APP" -o none 2>/dev/null; then
             echo "Atualizando app existente"
-            az containerapp update -g "$GRUPO" -n "$APP" --image "$IMAGEM" -o none
+            # RECURSOS E ESCALA EM TODA RODADA (medido 04/11/2026): uma sessão
+            # anterior cortou o app para 0,25 CPU / 0,5 GiB mantendo o
+            # NODE_OPTIONS=768 da linha 102 — o heap do V8 passava da memória
+            # do contêiner e o Azure matava a réplica com código 137 a cada
+            # ~20 min (loop de reinício na revisão que atendia). Pior: com
+            # minReplicas 0 e NENHUMA regra de gatilho, a revisão nova nascia
+            # sem réplica e o smoke achava 503 até o rollback automático.
+            # O `--scale-rule-http-concurrency` liga o HTTP scaler: o app
+            # acorda do zero com a primeira requisição, sem subir o custo
+            # mínimo de 0 réplica.
+            az containerapp update -g "$GRUPO" -n "$APP" --image "$IMAGEM" \
+              --cpu 0.5 --memory 1.0Gi \
+              --min-replicas 0 --max-replicas 1 \
+              --scale-rule-name http --scale-rule-type http \
+              --scale-rule-http-concurrency 50 -o none
           else
             echo "Criando app"
             az containerapp create -g "$GRUPO" -n "$APP" \
@@ -88,6 +102,8 @@ jobs:
               --image "$IMAGEM" \
               --target-port 3000 --ingress external \
               --min-replicas 0 --max-replicas 1 \
+              --scale-rule-name http --scale-rule-type http \
+              --scale-rule-http-concurrency 50 \
               --cpu 0.5 --memory 1.0Gi \
               -o none
           fi
@@ -302,7 +318,7 @@ jobs:
 
           falhou=0
           [ "$pronto" = "1" ] || falhou=1
-          for caminho in / /jurisprudencia /ambiental/direitos-humanos; do
+          for caminho in / /jurisprudencia /jurisprudencia/index.html /judiciario/jurisprudencia /ambiental/direitos-humanos; do
             codigo=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$BASE$caminho" || echo 000)
             echo "$codigo $caminho"
             [ "$codigo" = "200" ] || falhou=1

@@ -1,4 +1,7 @@
-import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+﻿import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import { BarraAnimadaSvg } from "@/app/components/dados/BarraAnimada";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -15,15 +18,41 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · competência divulgada pelo CNES";
 
-const INDICADORES = [
-  { rotulo: "Estabelecimentos CNES", valor: "348.210", obs: "Brasil (públicos e conveniados)" },
-  { rotulo: "Leitos SUS ativos", valor: "315.420", obs: "72,4% da rede total" },
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
+  {
+    rotulo: "Estabelecimentos CNES",
+    valorNumerico: 348210,
+    
+    obs: "Brasil (públicos e conveniados)",
+  },
+  {
+    rotulo: "Leitos SUS ativos",
+    valorNumerico: 315420,
+    
+    obs: "72,4% da rede total",
+  },
   {
     rotulo: "Razão média de leitos",
-    valor: "1,95",
+    valorNumerico: 1.95,
+    casas: 2,
     obs: "Leitos/mil hab. (referência OMS: 2,5 a 3,0)",
   },
-  { rotulo: "Internações SUS / ano", valor: "11,4 mi", obs: "AIHs aprovadas e pagas (SIH-SUS)" },
+  {
+    rotulo: "Internações SUS / ano",
+    valorNumerico: 11.4,
+    casas: 1,
+    sufixo: " mi",
+    obs: "AIHs aprovadas e pagas (SIH-SUS)",
+  },
 ];
 
 export default function ConteudoSaude() {
@@ -46,14 +75,19 @@ export default function ConteudoSaude() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              {item.valor}
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="SUS"
+        extenso="Sistema Único de Saúde"
+        explicacao="é o sistema público de saúde — o posto, a UPA e o hospital que atendem sem cobrar."
+        dica="SUS é o Sistema Único de Saúde: o atendimento público e gratuito, do posto de saúde ao hospital."
+      />
       <section
         aria-labelledby="titulo-grafico-leitos"
         className="rounded-2xl border border-border bg-surface p-6 sm:p-8"
@@ -80,8 +114,8 @@ export default function ConteudoSaude() {
             role="img"
             aria-label="Gráfico de barras: 72,4% leitos SUS, 27,6% leitos privados"
           >
-            <rect x="0" y="0" width="72.4" height="8" fill="var(--cp-eixo-direitos, #c0392b)" />
-            <rect x="72.4" y="0" width="27.6" height="8" fill="var(--cp-secondary, #6d28d9)" />
+            <BarraAnimadaSvg x={0} y={0} width={72.4} height={8} fill="var(--cp-eixo-direitos, #c0392b)" />
+            <BarraAnimadaSvg x={72.4} y={0} width={27.6} height={8} fill="var(--cp-secondary, #6d28d9)" />
           </svg>
           <div className="flex flex-wrap items-center justify-between gap-4 mt-2 text-xs">
             <div className="flex items-center gap-2">

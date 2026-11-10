@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Moeda from "@/app/components/Moeda";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { formatNumberBR } from "@/lib/betim/format";
 import { ZONAS } from "@/lib/zonas";
 import {
@@ -86,11 +88,46 @@ function Barra({ valor }: { valor: number }) {
       className="inline-block h-2 w-full overflow-hidden rounded-full bg-chart-track align-middle"
       aria-hidden="true"
     >
-      <span
+      <BarraAnimada
+        fracao={valor / 100}
         className="block h-full rounded-full bg-accent"
         style={{ width: `${valor.toFixed(1)}%` }}
       />
     </span>
+  );
+}
+
+function CartoesExecucao({ executadoTotal }: { executadoTotal: number }) {
+  const cards = [
+    {
+      rotulo: "Acordo atualizado nos 26 municípios",
+      valorNum: TOTAL_EXECUCAO_FGV.acordoAtual,
+      nota: "corrigido pelo IPCA desde 04/02/2021",
+    },
+    {
+      rotulo: "Reservado em projetos autorizados",
+      valorNum: TOTAL_EXECUCAO_FGV.empenhosAutorizados,
+      nota: `${pct(percentual(TOTAL_EXECUCAO_FGV.empenhosAutorizados, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
+    },
+    {
+      rotulo: "Efetivamente pago",
+      valorNum: executadoTotal,
+      nota: `${pct(percentual(executadoTotal, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
+    },
+  ];
+
+  return (
+    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      {cards.map((c) => (
+        <div key={c.rotulo} className="rounded-2xl border border-border bg-surface p-4">
+          <p className="text-[12px] text-text-soft">{c.rotulo}</p>
+          <p className="mt-1 font-tabular text-xl font-bold text-text">
+            <ContadorAnimado valor={c.valorNum} formato="moeda-compacta" />
+          </p>
+          <p className="mt-1 text-[12px] text-text-soft">{c.nota}</p>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -143,31 +180,7 @@ export default function ExecucaoParaopebaPage() {
         </p>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        {[
-          {
-            rotulo: "Acordo atualizado nos 26 municípios",
-            valor: (<Moeda value={TOTAL_EXECUCAO_FGV.acordoAtual} />),
-            nota: "corrigido pelo IPCA desde 04/02/2021",
-          },
-          {
-            rotulo: "Reservado em projetos autorizados",
-            valor: (<Moeda value={TOTAL_EXECUCAO_FGV.empenhosAutorizados} />),
-            nota: `${pct(percentual(TOTAL_EXECUCAO_FGV.empenhosAutorizados, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
-          },
-          {
-            rotulo: "Efetivamente pago",
-            valor: (<Moeda value={executadoTotal} />),
-            nota: `${pct(percentual(executadoTotal, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
-          },
-        ].map((c) => (
-          <div key={c.rotulo} className="rounded-2xl border border-border bg-surface p-4">
-            <p className="text-[12px] text-text-soft">{c.rotulo}</p>
-            <p className="mt-1 font-tabular text-xl font-bold text-text">{c.valor}</p>
-            <p className="mt-1 text-[12px] text-text-soft">{c.nota}</p>
-          </div>
-        ))}
-      </div>
+      <CartoesExecucao executadoTotal={executadoTotal} />
 
       <p className="mt-3 text-[.85em] text-text-soft">
         <strong className="text-text">&ldquo;Pago&rdquo; é desembolso, não obra pronta.</strong>{" "}

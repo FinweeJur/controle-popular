@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import Link from "@/lib/congresso/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import HeaderFrenteBrasilComS from "@/app/components/HeaderFrenteBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import { totaisHome } from "@/lib/db/queries/congresso";
 
 /**
@@ -22,6 +24,8 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
+      <CaminhoSistema rota="/congresso" />
+
       <HeaderFrenteBrasilComS
         etiqueta="PODER LEGISLATIVO FEDERAL"
         titulo="O que o Congresso está decidindo sobre os seus direitos"
@@ -57,13 +61,21 @@ export default async function Home() {
         <section className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-[var(--cp-border)] p-6">
             <p className="font-tabular text-3xl font-semibold">
-              {totalProposicoes?.toLocaleString("pt-BR") ?? "—"}
+              {totalProposicoes !== null ? (
+                <ContadorAnimado valor={totalProposicoes} />
+              ) : (
+                "—"
+              )}
             </p>
             <p className="opacity-70">proposições acompanhadas</p>
           </div>
           <div className="rounded-lg border border-[var(--cp-border)] p-6">
             <p className="font-tabular text-3xl font-semibold">
-              {totalAnalises?.toLocaleString("pt-BR") ?? "—"}
+              {totalAnalises !== null ? (
+                <ContadorAnimado valor={totalAnalises} />
+              ) : (
+                "—"
+              )}
             </p>
             <p className="opacity-70">com análise de direitos concluída</p>
           </div>

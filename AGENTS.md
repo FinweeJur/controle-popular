@@ -115,6 +115,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.14](docs/03-desenvolvimento/REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado) | O celular é a régua: 390 px, sem rolagem lateral falsa, `<main>` com `w-full`. |
 | [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
 | [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |
+| [5.17](docs/03-desenvolvimento/REGRAS-DURAS.md#517-custo-só-com-autorização-prévia-do-dono) | Nenhum gasto sem autorização prévia: calcule o custo, peça o "sim", só então dispare o lote pago. |
 
 ## Verificação mínima
 
@@ -166,6 +167,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Tema | Documento |
 |---|---|
 | Produto, frentes e público | [PRODUTO.md](docs/01-produto/PRODUTO.md) |
+| Estrutura de navegação e eixos | [UNIFICACAO-POR-EIXO.md](docs/planos/UNIFICACAO-POR-EIXO.md) |
 | Regra editorial | [REGRA-EDITORIAL.md](docs/01-produto/REGRA-EDITORIAL.md) |
 | Estado, fila, bloqueios e dívida | [ESTADO.md](docs/02-estado/ESTADO.md) |
 | Radar de correção, atualização, edição e ampliação | [RADAR-HOTSPOTS.md](docs/02-estado/RADAR-HOTSPOTS.md) |

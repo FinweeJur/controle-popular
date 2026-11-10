@@ -41,9 +41,10 @@ function ehCurto(caso: CasoJurisprudencia): boolean {
 }
 
 function temasDe(caso: CasoJurisprudencia): string {
-  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90) || "—";
+  // Sem tema e sem assunto, o campo fica vazio: travessão não informa nada.
+  const texto = caso.temas.slice(0, 2).join(", ") || caso.assunto.slice(0, 90);
   const resto = caso.temas.length > 2 ? ` +${caso.temas.length - 2}` : "";
-  return `${texto}${resto}`;
+  return `${texto}${resto}`.trim();
 }
 
 function temMaisTexto(caso: CasoJurisprudencia): boolean {
@@ -108,9 +109,10 @@ function CelulaProcesso({ caso }: { caso: CasoJurisprudencia }) {
 function ResumoCurto({ caso }: { caso: CasoJurisprudencia }) {
   const texto = resumoDe(caso) || (caso.tipo === "sumula" ? ementaDe(caso) : "");
   if (!texto) return null;
-  return (
-    <p className="mt-1 line-clamp-2 text-xs leading-snug text-text-soft">{texto}</p>
-  );
+  // Sem clamp: o resumo do acervo tem mediana de 321 caracteres, e cortar em duas
+  // linhas escondia justamente o desfecho. Quem quiser o texto inteiro usa o
+  // "ver mais"; aqui o resumo aparece por completo, quebrando linha.
+  return <p className="mt-1 text-xs leading-snug text-text-soft">{texto}</p>;
 }
 
 /**
@@ -268,7 +270,7 @@ export function LinhaCaso({ caso }: { caso: CasoJurisprudencia }) {
         </td>
         <td className="w-[9rem] px-2 py-2">{merito(caso)}</td>
         <td className="px-2 py-2">
-          <span>{temasDe(caso)}</span>
+          {temasDe(caso) ? <span>{temasDe(caso)}</span> : null}
           <ResumoCurto caso={caso} />
         </td>
         <td className="w-[7.5rem] px-2 py-2 text-right">
@@ -304,7 +306,7 @@ export function CartaoCaso({ caso }: { caso: CasoJurisprudencia }) {
         {NOMES_FRENTE[caso.frente] ?? caso.frente}
       </p>
       <p>{merito(caso)}</p>
-      <p className="text-xs opacity-80">{temasDe(caso)}</p>
+      {temasDe(caso) ? <p className="text-xs opacity-80">{temasDe(caso)}</p> : null}
       <ResumoCurto caso={caso} />
       {aberto ? (
         <div className="rounded bg-[var(--cp-surface-2)] p-2">

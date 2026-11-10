@@ -45,6 +45,7 @@ export const EXCLUIR: Record<string, string> = {
   "/notificacoes": "redirect para /alertas",
   "/assistente-ia-lab": "laboratorio interno, nao publicado",
   "/status": "pagina de servico, noindex",
+  "/meus-dados": "area pessoal (dados locais do leitor), bloqueada no robots.txt",
   "/direitos-em-movimento/saude-publica": "ponte de URL antiga, noindex",
   "/direitos-em-movimento/educacao": "ponte de URL antiga, noindex",
   "/direitos-em-movimento/trabalho-e-renda": "ponte de URL antiga, noindex",

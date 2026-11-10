@@ -1,0 +1,11 @@
+{
+ "rota": "/mineracao/cavas",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "cavas-estados-mg.json",
+  "cavas-serie-mineracao-mg.json"
+ ],
+ "impressao": "e2ea91439b57bdad",
+ "markdown": "# O que os dados de Mineracao · Cavas mostram\n\nEsta página reúne 135 registros ligados a cavas de mineração. [medido — dados da página] É um retrato do que está cadastrado, não do que existe no território.\n\n[medido — dados da página] Do total, 120 registros entram em um conjunto principal. Nele, 84 aparecem como em operação, 34 como indício processual e 2 sem cadastro na ANM.\n\n[medido — dados da página] O segundo conjunto aparece com zero registros. A página não informa o que ele deveria conter nem por que está vazio.\n\n[inferido] A diferença entre os dois conjuntos sugere que parte dos registros não foi classificada. A página não diz quais são nem quantos ficaram de fora.\n\n[não dá para concluir] Não é possível saber, só com estes números, se as cavas em operação estão ativas hoje, se os indícios processuais viraram processo ou se as sem cadastro são irregulares.\n\n[medido — dados da página] O dado mostra o estado declarado de cada registro. Não mostra fiscalização, resultado de análise nem risco real."
+}

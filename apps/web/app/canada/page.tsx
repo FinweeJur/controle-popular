@@ -19,6 +19,7 @@ import {
   SecaoWiki,
   type LinkRelacionado,
 } from "@/app/components/wiki";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Canadá: Transparência Pública, Mineradoras TSX & Conexões com o Brasil | Controle Popular",
@@ -114,6 +115,8 @@ export default function PaginaHubCanada() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Canadá: Transparência Pública e Conexão Mineral Transnacional
         </h1>
+
+        <ResumoRealidadeBox rota="/canada" />
         <p className="mt-3 max-w-4xl text-base text-muted sm:text-lg">
           Mapeamento das mineradoras canadenses listadas na Bolsa de Toronto com operações ativas e
           processos na ANM no Brasil (Vale do Lítio, Xingu, Pará e Minas Gerais), além de dados

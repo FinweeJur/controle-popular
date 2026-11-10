@@ -11,7 +11,7 @@ import ConviteTema from "@/app/components/ConviteTema";
 /**
  * @file Widgets flutuantes do casco — o que aparece por cima de qualquer rota.
  *
- * POR QUE ESTÃO JUNTOS: são oito componentes que o layout monta em TODA página,
+ * POR QUE ESTÃO JUNTOS: são sete componentes que o layout monta em TODA página,
  * cada um com uma decisão de produto própria. Empilhados dentro do componente
  * `RootLayout`, eles faziam dele o maior bloco do arquivo e escondiam a
  * estrutura do documento (head, provider, header, main, footer). Separados,
@@ -24,6 +24,10 @@ import ConviteTema from "@/app/components/ConviteTema";
  *
  * CADA UM É OPT-IN OU SILENCIOSO: nenhum abre sozinho na cara do leitor.
  * Ver o comentário de cada arquivo antes de mudar o comportamento.
+ *
+ * SEM DOCK (dono, 08/11/2026): o dock de rádio/bicho/rastro durou poucas horas.
+ * A pilha da esquerda volta a ter só o Seu Nonô, a pata e o rádio que já
+ * existiam. Não reintroduza botões flutuantes novos aqui sem pedido explícito.
  */
 export default function WidgetsFlutuantes() {
   return (
@@ -39,11 +43,12 @@ export default function WidgetsFlutuantes() {
           NEXT_PUBLIC_COMPANHEIRO_PONTE=1; sem a variável, é um no-op. */}
       <PonteCompanheiro />
       {/* Companheiro Seu Nonô — passarinho flutuante. OPT-IN (dono,
-          19/10/2026): não nasce sozinho; entra só quando a pessoa clica no
-          botão dele. */}
+          19/10/2026): não nasce sozinho. Este componente virou só o PORTÃO
+          (monta o bicho quando ligado e o menu offline quando não); o
+          liga/desliga fica no cartão "Acessibilidade" do Seu Nonô. */}
       <CompanheiroOpcional />
-      {/* Interruptor flutuante do rastro do mouse: botão mágico que pulsa
-          devagar enquanto a trilha está desligada. A trilha é opt-in. */}
+      {/* Interruptor do rastro mágico: quarto item da pilha da esquerda.
+          Só aparece com o ponteiro no Seu Nonô (ou com a trilha ligada). */}
       <RastroCursorBotao />
       {/* X de negação no clique fora de botões (dono, 19/10/2026): recado
           visual de que o alvo é só um card, sem ação. */}

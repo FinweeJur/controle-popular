@@ -5,7 +5,9 @@
  * Duas camadas:
  * 1. metadados/resumos já versionados (`documentos-paraopeba`,
  *    `biblioteca-desastres`, `biblioteca-unificada`, teses e Pro-Brumadinho);
- * 2. texto de PDFs oficiais, quando `--baixar` ou `--cache` é usado.
+ * 2. texto de PDFs oficiais, quando `--baixar` ou `--cache` é usado;
+ * 3. atos normativos do CNJ, que já vêm com texto compilado da API pública
+ *    (`cnj-atos.json`) e entram sem download.
  *
  * O índice guarda trecho + página + URL oficial. PDFs ficam em `.cache/`
  * (gitignored); o repositório recebe só o índice derivado. O R2 entra numa
@@ -43,6 +45,7 @@ interface Relatorio {
 interface ItemGenerico {
   id?: string;
   titulo?: string;
+  processo?: string;
   tipo?: string;
   categoria?: string;
   macro_categoria?: string;
@@ -107,7 +110,9 @@ function itemParaMeta(
     orgao: string;
   }
 ): DocumentoRagMeta | null {
-  const titulo = item.titulo?.trim();
+  const base = (item.titulo ?? "").replace(/^\d{6,}-/, "").trim();
+  // Título genérico ("Decisão", "Documentos Comprobatórios") ganha o processo.
+  const titulo = base.length <= 30 && item.processo ? `${base} — ${item.processo}` : base;
   const url = urlDe(item);
   if (!titulo || !url) return null;
   const resumo = textoDe(item);
@@ -238,6 +243,23 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
     );
   }
 
+  const evidencias = lerJson<ArquivoItens>(path.join(APP_ROOT, "data", "biblioteca-evidencias-cientificas.json"));
+  if (evidencias?.itens) {
+    adicionarMetadados(
+      evidencias.itens,
+      documentos,
+      trechos,
+      {
+        prefixo: "evidencia",
+        fonte: "biblioteca-evidencias",
+        categoria: "Acadêmico & Pesquisa",
+        tema: "Evidência científica sobre barragens",
+        orgao: "Periódico acadêmico",
+      },
+      urlsVistas
+    );
+  }
+
   const proBrumadinho = lerJson<ArquivoItens>(path.join(APP_ROOT, "public", "data", "biblioteca-pro-brumadinho.json"));
   if (proBrumadinho?.itens) {
     adicionarMetadados(
@@ -254,6 +276,78 @@ function carregarMetadados(): { documentos: DocumentoRagMeta[]; trechos: TrechoD
     trechos,
     relatorio: { metadados: documentos.length, baixados: 0, reaproveitados: 0, pulados: 0, falhas: 0, semTexto: 0, semTextoIds: [] },
   };
+}
+
+interface AtoCnj {
+  id: number;
+  tipo: string;
+  numero: number | string;
+  data: string | null;
+  orgao: string | null;
+  ementa: string;
+  normativo: boolean;
+  fonte: string;
+  url: string;
+  pdf: string | null;
+  texto: string;
+}
+
+/** Ato normativo não tem página de PDF: o corte vira página numerada. */
+function paginasDoAto(texto: string): { numero: number; texto: string }[] {
+  const palavras = texto.split(/\s+/).filter(Boolean);
+  const paginas: { numero: number; texto: string }[] = [];
+  const TAMANHO = 600;
+  for (let inicio = 0; inicio < palavras.length; inicio += TAMANHO) {
+    paginas.push({
+      numero: paginas.length + 1,
+      texto: palavras.slice(inicio, inicio + TAMANHO).join(" "),
+    });
+  }
+  return paginas.length ? paginas : [{ numero: 1, texto: "" }];
+}
+
+/**
+ * Atos do CNJ entram pelo texto compilado da API, não por PDF.
+ *
+ * O portal publica 5.887 atos; 2.349 são normativos com texto. Indexar tudo
+ * encheria o RAG de regra de concurso e prêmio de conciliação. Entram só os
+ * que tocam as teses medidas -- prova, perícia, ônus, prescrição, gratuidade,
+ * precedente, coisa julgada, acesso à justiça, desastre, indenização,
+ * barragem, litigância de massa, tutela coletiva, honorários e competência.
+ * Medido em 08/11: 29 atos, 0,3 MB de texto.
+ */
+const CNJ_RELEVANTE =
+  /\bprovas?\b|per[íi]cia|pericial|[ôo]nus da prova|prescri[çc]|gratuidade|precedente|repetitiv|coisa julgada|acesso [àa] justi|desastre|indeniza|repara[çc][ãa]o|barragem|litig[âa]ncia (abusiva|predat|de m)|tutela coletiva|a[çc][ãa]o civil p[úu]blica|honor[áa]rios|custas processuais|compet[êe]ncia da justi/i;
+const CNJ_EXCLUIDO = /pr[êe]mio|dia nacional|semana nacional|concurso|sess[ãa]o|designa/i;
+
+function adicionarAtosCnj(documentos: DocumentoRagMeta[], trechos: TrechoDocumento[]): number {
+  const arquivo = lerJson<{ atos: AtoCnj[] }>(path.join(APP_ROOT, "public", "data", "cnj-atos.json"));
+  if (!arquivo?.atos) return 0;
+  let incluidos = 0;
+  for (const ato of arquivo.atos) {
+    if (!ato.normativo || !ato.texto) continue;
+    if (!CNJ_RELEVANTE.test(ato.ementa) || CNJ_EXCLUIDO.test(ato.ementa)) continue;
+    const meta: DocumentoRagMeta = {
+      id: `cnj:${ato.id}`,
+      titulo: `${ato.tipo} CNJ nº ${ato.numero}${ato.data ? `, de ${ato.data}` : ""}`,
+      tipo: "Ato normativo",
+      categoria: "Legislação",
+      tema: "Atos do CNJ",
+      orgao: "Conselho Nacional de Justiça",
+      ano: ato.data ? Number(ato.data.slice(0, 4)) : null,
+      data: ato.data,
+      urlOriginal: ato.url,
+      urlPdf: ato.pdf,
+      resumo: ato.ementa,
+      tags: ["CNJ", ato.tipo],
+      fonte: "atos.cnj.jus.br",
+    };
+    documentos.push(meta);
+    trechos.push(trechoDeMeta(meta));
+    trechos.push(...fatiarDocumento({ ...meta, paginas: paginasDoAto(ato.texto) }));
+    incluidos += 1;
+  }
+  return incluidos;
 }
 
 interface RegrasRobots {
@@ -408,6 +502,8 @@ async function main(): Promise<void> {
   const { documentos, trechos, relatorio } = carregarMetadados();
 
   console.log(`Metadados: ${documentos.length} documentos`);
+  const atosCnj = adicionarAtosCnj(documentos, trechos);
+  console.log(`Atos do CNJ: ${atosCnj} normativos com texto`);
   if (baixar || cache) {
     await processarPdfs(documentos, trechos, relatorio, limite, cache && !baixar, fontesFiltro);
   }

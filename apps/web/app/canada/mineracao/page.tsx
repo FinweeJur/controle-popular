@@ -27,6 +27,7 @@ import PainelMineracaoCanada from "./PainelMineracaoCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Mineradoras Canadenses no Brasil (TSX/TSX-V) & Barragens ANM | Controle Popular",
@@ -72,6 +73,8 @@ export default function PaginaMineracaoCanada() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Mineradoras Canadenses da TSX Operando no Brasil
         </h1>
+
+        <ResumoRealidadeBox rota="/canada/mineracao" />
         <p className="mt-2 max-w-4xl text-base text-muted sm:text-lg">
           Cruzamento entre empresas listadas na Bolsa de Toronto e direitos minerários na ANM.
         </p>

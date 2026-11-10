@@ -6,6 +6,7 @@ import {
   obterBaseNegociacoes,
   obterAcordosELicitacoesInternacionais,
 } from "@/lib/negociacoes/acordos-internacionais";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title:
@@ -63,6 +64,8 @@ export default function AcordosELicitacoesInternacionaisPage() {
             <h1 className="font-display text-2xl font-bold tracking-tight text-text sm:text-3xl">
               Acordos, Parcerias e Licitações Internacionais
             </h1>
+
+        <ResumoRealidadeBox rota="/estado-e-economia/acordos-e-licitacoes-internacionais" />
             <p className="mt-2 text-sm text-text-soft leading-relaxed max-w-4xl">
               Rastreamento contínuo de acordos bilaterais em negociação, memorandos
               de entendimento (MoUs), leilões da B3/BNDES e editais abertos disputados

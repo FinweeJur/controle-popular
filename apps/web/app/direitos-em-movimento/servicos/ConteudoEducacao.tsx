@@ -1,5 +1,8 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -17,11 +20,41 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · série do INEP, ciclo 2023";
 
-const INDICADORES = [
-  { rotulo: "Escolas de educação básica", valor: "178.416", obs: "Censo Escolar (INEP)" },
-  { rotulo: "Matrículas totais", valor: "47,3 mi", obs: "Redes municipal, estadual e federal" },
-  { rotulo: "IDEB médio anos iniciais", valor: "5,8", obs: "Meta nacional estipulada: 6,0" },
-  { rotulo: "Escolas com internet banda larga", valor: "88,2%", obs: "Conectividade pedagógica" },
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
+  {
+    rotulo: "Escolas de educação básica",
+    valorNumerico: 178416,
+    obs: "Censo Escolar (INEP)",
+  },
+  {
+    rotulo: "Matrículas totais",
+    valorNumerico: 47.3,
+    casas: 1,
+    sufixo: " mi",
+    obs: "Redes municipal, estadual e federal",
+  },
+  {
+    rotulo: "IDEB médio anos iniciais",
+    valorNumerico: 5.8,
+    casas: 1,
+    obs: "Meta nacional estipulada: 6,0",
+  },
+  {
+    rotulo: "Escolas com internet banda larga",
+    valorNumerico: 88.2,
+    casas: 1,
+    sufixo: "%",
+    obs: "Conectividade pedagógica",
+  },
 ];
 
 const SERIE_IDEB = [
@@ -69,14 +102,19 @@ export default function ConteudoEducacao() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              {item.valor}
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="IDEB"
+        extenso="Índice de Desenvolvimento da Educação Básica"
+        explicacao="é a nota de aprendizado da escola: junta o desempenho na prova com a taxa de aprovação."
+        dica="IDEB é a nota que combina aprendizado na prova e aprovação dos alunos; 6,0 é a meta nacional para os anos iniciais."
+      />
       <section
         aria-labelledby="titulo-grafico-ideb"
         className="rounded-2xl border border-border bg-surface p-6 sm:p-8"
@@ -100,11 +138,11 @@ export default function ConteudoEducacao() {
             {SERIE_IDEB.map((ponto) => (
               <div key={ponto.ano} className="flex flex-col items-center gap-2 h-full justify-end">
                 <span className="text-xs font-bold text-foreground">{ponto.nota}</span>
-                <div
+                <BarraAnimada
+                  orientacao="vertical"
+                  style={{ height: ponto.altura }}
+                  cor="var(--cp-eixo-direitos, #c0392b)"
                   className="w-full max-w-[48px] rounded-t-lg transition-all duration-300 hover:opacity-85"
-                  style={{ height: ponto.altura, backgroundColor: "var(--cp-eixo-direitos, #c0392b)" }}
-                  role="img"
-                  aria-label={`Ano ${ponto.ano}: IDEB ${ponto.nota}`}
                 />
                 <span className="text-xs font-medium text-muted">{ponto.ano}</span>
               </div>

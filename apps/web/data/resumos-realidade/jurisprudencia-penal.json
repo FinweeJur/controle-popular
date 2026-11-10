@@ -1,0 +1,11 @@
+{
+ "rota": "/jurisprudencia/penal",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "jurisprudencia-casos.json",
+  "jurisprudencia-resumo.json"
+ ],
+ "impressao": "9a1ba70d3f238e7d",
+ "markdown": "# O que a jurisprudência penal mostra\n\nA página reúne 23.583 registros de jurisprudência na área penal, quase todos ligados a dois casos: Brumadinho e Rio Doce. [medido — dados da página]\n\nO maior bloco tem 23.569 registros. Nele, o termo \"brumadinho\" aparece em 219 frentes e \"riodoce\" em 181. [medido — dados da página]\n\nA classe processual mais frequente é Apelação Cível, com 374 registros. Embargos de Declaração-Cv somam 20 e Agravo de Instrumento-Cv, 6. [medido — dados da página]\n\nEntre os relatores, Maria Lúcia Cabral Caruso concentra 158 registros. Monteiro de Castro tem 19; Claret de Moraes, Adriano de Mesquita Carneiro e João Ecyr Mota Ferreira aparecem com 1 cada. [medido — dados da página]\n\nNo polo da ação, 145 registros são classificados como \"parcial\", 145 como \"indeterminado\", 101 como \"empresa\" e 9 como \"atingido\". [medido — dados da página]\n\nO dado mostra quantos registros existem e como se distribuem por tema, classe e relator. Não mostra o resultado dos julgamentos, nem quanto tempo duraram, nem se houve reparação às pessoas atingidas. [não dá para concluir]"
+}

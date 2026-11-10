@@ -7,6 +7,7 @@ import { citacaoPorId } from "@/lib/citacoes";
 import FiltroConselhos from "./FiltroConselhos";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata = {
   title: "Conselhos Sociais, Bacias e Meio Ambiente | Meio Ambiente (ONSA)",
@@ -56,6 +57,8 @@ export default function PaginaConselhosSociais() {
         <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Conselhos Sociais, Comitês de Bacia e Controle Popular
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/conselhos" />
         <p className="mt-3 text-base text-muted sm:text-lg">
           Onde a população decide e fiscaliza diretamente: comitês de rios, conselhos municipais
           de meio ambiente (CODEMAs), conselhos tutelares, saúde e colegiados de povos tradicionais.

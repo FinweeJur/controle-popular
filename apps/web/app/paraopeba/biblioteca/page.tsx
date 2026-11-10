@@ -23,6 +23,9 @@ import BibliotecaClient from "./BibliotecaClient";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
 import { metadataEditavel } from "@/lib/edicoes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { SecaoAuditorias } from "@/app/components/SecaoAuditorias";
+import { MapaSubfrentesParaopeba } from "@/app/components/MapaSubfrentesParaopeba";
 
 /**
  * `/paraopeba/biblioteca` — o que as Assessorias Técnicas Independentes
@@ -165,6 +168,10 @@ export default async function BibliotecaPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         O que as assessorias publicaram
       </h1>
+
+        <ResumoRealidadeBox rota="/paraopeba/biblioteca" />
+
+      <SecaoAuditorias contexto="biblioteca" />
 
       {semColeta ? (
         <p className="mt-4 rounded-2xl border border-border bg-surface p-5 text-sm text-text-soft">
@@ -339,6 +346,8 @@ export default async function BibliotecaPage() {
           <SecaoFonteEeMetodoPB fontesPB={fontesPB} coberturaPB={coberturaPB} />
         </section>
       )}
+
+      <MapaSubfrentesParaopeba atual="/paraopeba/biblioteca" />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />

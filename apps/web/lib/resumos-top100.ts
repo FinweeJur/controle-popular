@@ -63,6 +63,7 @@ export const RESUMOS_TOP100: Record<string, string> = {
   "/judiciario": "Visão geral de tribunais de justiça, cortes superiores e tribunais de contas com dados de composição e remuneração.",
   "/judiciario/composicao": "Painel da composição: tribunais acompanhados, próximas vagas por aposentadoria aos 75 anos e indicações ao Senado, com a fonte de cada bloco.",
   "/judiciario/sirenejud": "Base de dados geográfica do CNJ de ações civis públicas ambientais, embargos judiciais e crimes contra a flora.",
+  "/judiciario/jurisprudencia": "Buscador de decisões do TJMG e do TJES sobre Brumadinho, Rio Doce, Fundão, mineração e direitos humanos, com ementa e inteiro teor.",
   "/judiciario/recomendacoes": "Relatórios de correições e inspeções do CNJ em comarcas mineiras sobre morosidade processual e conduta.",
   "/congresso": "Atuação legislativa federal: proposições classificadas por direito violado, bancadas temáticas e comissões.",
   "/congresso/proposicoes": "Projetos de lei de impacto social, tramitação em tempo real, autores, relatores e alertas de risco aos direitos.",

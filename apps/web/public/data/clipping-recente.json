@@ -1,0 +1,127 @@
+{
+ "geradoEm": "2026-11-09",
+ "periodo": { "de": "2026-09-09", "ate": "2026-10-31" },
+ "nota": "Complemento do clipping curado. Resumos são síntese do título; o texto integral está no link. Itens de 08-11/2026 não passaram pela curadoria original do painel.",
+ "itens": [
+  {
+   "id": 1001,
+   "titulo": "Instituições de Justiça se manifestam sobre composição do Conselho Inter-regional do Anexo 1.1",
+   "resumo": "As instituições de justiça signatárias se manifestam sobre a composição do Conselho Inter-regional do Anexo 1.1.",
+   "data": "2026-10-30",
+   "portal": "Guaicuy",
+   "tipo": "assessoria",
+   "url": "https://guaicuy.org.br/ijs-se-manifestam-sobre-conselho-inter-regional/",
+   "tags": ["Anexo 1.1", "participação", "instituições de justiça"]
+  },
+  {
+   "id": 1002,
+   "titulo": "Vale diz que não vai depositar auxílio de novembro",
+   "resumo": "Após a suspensão do STJ, a Vale informa que não vai depositar o auxílio de novembro aos atingidos.",
+   "data": "2026-10-29",
+   "portal": "Guaicuy",
+   "tipo": "assessoria",
+   "url": "https://guaicuy.org.br/vale-nao-vai-depositar-auxilio/",
+   "tags": ["auxílio emergencial", "Vale", "STJ"]
+  },
+  {
+   "id": 1003,
+   "titulo": "STJ suspende saque de novo auxílio em Brumadinho até julgar recurso",
+   "resumo": "A decisão do STJ suspende o saque do novo auxílio emergencial até o julgamento do recurso.",
+   "data": "2026-10-29",
+   "portal": "STJ",
+   "tipo": "institucional",
+   "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQVElRZnFHQ0M3azl0bFprVmRBd2hpR0l6V2NfV09PMU5zTWJFSHdfOFhyRXQ0UGpjSzlPOWQ4eVlxLU5lYmpjS0NKM2FnN0s1QWQ0bEJSemJWc2xIc3p1RHgzUmE4VXYwYkVrUVJfUVpnd0t6UHl",
+   "tags": ["auxílio emergencial", "STJ", "decisão"]
+  },
+  {
+   "id": 1004,
+   "titulo": "STJ suspende temporariamente o pagamento do Novo Auxílio Emergencial",
+   "resumo": "O STJ suspende temporariamente o pagamento do NAE aos atingidos da Bacia do Paraopeba.",
+   "data": "2026-10-22",
+   "portal": "Guaicuy",
+   "tipo": "assessoria",
+   "url": "https://guaicuy.org.br/stj-suspende-temporariamente-pagamento-novo-auxilio-emergencial/",
+   "tags": ["auxílio emergencial", "STJ"]
+  },
+  {
+   "id": 1005,
+   "titulo": "Por Onde Anda a Reparação? STJ suspende pagamento do Auxílio Emergencial",
+   "resumo": "Boletim da ADAI sobre a suspensão do auxílio e as primeiras linhas de microcrédito do Anexo I.1.",
+   "data": "2026-10-23",
+   "portal": "ADAI",
+   "tipo": "assessoria",
+   "url": "https://adaibrasil.org.br/por-onde-anda-a-reparacao-23-10-2026/",
+   "tags": ["auxílio emergencial", "microcrédito", "Anexo I.1"]
+  },
+  {
+   "id": 1006,
+   "titulo": "Primeiras linhas de microcrédito do Anexo I.1 são lançadas na Região 2",
+   "resumo": "A Entidade Gestora do Anexo I.1 lança as primeiras linhas de crédito e microcrédito na Região 2.",
+   "data": "2026-10-21",
+   "portal": "ADAI",
+   "tipo": "assessoria",
+   "url": "https://adaibrasil.org.br/linhas-de-microcredito-do-anexo-i-1-sao-lancadas-na-regiao-2/",
+   "tags": ["microcrédito", "Anexo I.1", "Região 2"]
+  },
+  {
+   "id": 1007,
+   "titulo": "Instituições de Justiça se manifestam sobre pagamento a conselheiros do Anexo 1.1",
+   "resumo": "As instituições de justiça se manifestam sobre o pagamento a conselheiros e conselheiras do Anexo 1.1.",
+   "data": "2026-10-16",
+   "portal": "Guaicuy",
+   "tipo": "assessoria",
+   "url": "https://guaicuy.org.br/ijs-pagamento-conselheiros-anexo-1-1/",
+   "tags": ["Anexo 1.1", "conselheiros", "instituições de justiça"]
+  },
+  {
+   "id": 1008,
+   "titulo": "Barragem B1A, em Brumadinho, tem nível de emergência reduzido de 2 para 1",
+   "resumo": "A ANM reduz o nível de emergência da barragem B1A de 2 para 1; o monitoramento continua.",
+   "data": "2026-10-08",
+   "portal": "ANM",
+   "tipo": "institucional",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQRUxXUHpaNk02WHFzNGNEMmQ4Z2pWS3ZqT2E2U3dxcHg3d2pWU0UzSldnYmF2YW1uRVJXWFFIb3J1TUNXRHZRMVF0YjNuTTl6LWJjT0wyUDFqd0hFdG5yejEwUnU0anhsUmg5SFdsMVRqLWE4eHp",
+   "tags": ["barragem B1A", "ANM", "emergência"]
+  },
+  {
+   "id": 1009,
+   "titulo": "Auditoria aponta problemas em estruturas da Vale que podem levar a novo colapso em Brumadinho",
+   "resumo": "Auditoria independente aponta problemas em estruturas da Vale com risco de novo colapso.",
+   "data": "2026-09-11",
+   "portal": "Guaicuy",
+   "tipo": "assessoria",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBpakk3VVJlc21ndUhIOTVqYjQwb253cW93XzFYTndyVVpMNmhIcXBBR2p4TGd3MWZIZktkZXAtaXFodGlPeml3UWJNWnU3dHRkelVxS2ZHZkNiSkxDMVFGcjl3WDdOcFlUTzZCOA",
+   "tags": ["auditoria", "estruturas", "risco"]
+  },
+  {
+   "id": 1010,
+   "titulo": "TJMG suspende liminarmente multa milionária aplicada à Vale sobre barragem em Brumadinho",
+   "resumo": "O TJMG suspende liminarmente a multa milionária aplicada à Vale sobre a barragem.",
+   "data": "2026-09-09",
+   "portal": "Folha de Brumadinho",
+   "tipo": "imprensa",
+   "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdTBsd3lxeTVLVXBGcjJxSTlDZTRzSHR3TUNmM2lIQnBMMTRlSllncGxhc2RzOWN3SUhtWDJ2N3NkWko0T2NhR3VHMzRUM2tmVlJpaHBzYnVsYm5aZWF0UEZmWVdlQUhKRnF1ZkpNcjJia1VfX1V",
+   "tags": ["TJMG", "multa", "Vale"]
+  },
+  {
+   "id": 1011,
+   "titulo": "NOTA | Atingidos da Bacia do Paraopeba em luta pela continuidade do Auxílio Emergencial",
+   "resumo": "Nota do MAB pela continuidade do auxílio emergencial aos atingidos da Bacia do Paraopeba.",
+   "data": "2026-10-29",
+   "portal": "MAB",
+   "tipo": "movimento",
+   "url": "https://mab.org.br/2026/10/29/nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial/",
+   "tags": ["auxílio emergencial", "MAB", "mobilização"]
+  },
+  {
+   "id": 1012,
+   "titulo": "Memorial Brumadinho lança websérie 'Ainda é Agora' em Belo Horizonte",
+   "resumo": "O Memorial Brumadinho lança a websérie \"Ainda é Agora\", em Belo Horizonte.",
+   "data": "2026-10-30",
+   "portal": "Diário do Comércio",
+   "tipo": "imprensa",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1ZYkE5VGZxc0xjWnVwNzVTeXdncWJOOUZqa1N2aTBfemU3OHF5UU8zemN2eDRUdzgwQ1U5bjFXcERYYXZRV01vSTdmeDhPS2VlUGVXbWZ2bkxfNGJBMUluNlBZcUpQanJTOEVpdlZZbmJ4a0c2ZDlrZ204Vjg",
+   "tags": ["memória", "Memorial Brumadinho", "cultura"]
+  }
+ ]
+}

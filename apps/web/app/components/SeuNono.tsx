@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 /**
  * @file SeuNono.tsx
@@ -100,9 +100,14 @@ import {
   type ResultadoEscada,
 } from "@/lib/assistente/escada-determinista";
 import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
+import PilhaBotao from "@/app/components/pilha/PilhaBotao";
+import useControlePilha from "@/app/components/pilha/useControlePilha";
+import { useSlotPilha } from "@/app/components/pilha/estadoPilha";
 
-/** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor. */
-function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
+/** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor.
+ *  Exportado porque o mesmo desenho aparece no FAB, no cabeçalho do painel
+ *  e nos cartões do assistente; um caminho de imagem só. */
+export function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -121,8 +126,8 @@ function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className
   );
 }
 
-/** Lado do FAB do Seu Nonô (`h-14 w-14`), a âncora do reposicionamento. */
-const LADO_FAB = 56;
+/** Lado do FAB do Seu Nonô (`h-16 w-16`), a âncora do reposicionamento. */
+const LADO_FAB = 64;
 
 interface DadoResumido {
   total?: number;
@@ -651,6 +656,50 @@ type ComandoAcessibilidade = {
 };
 
 /**
+ * Comandos do companheiro (qualquer bicho), fora do `useMemo` da escada.
+ *
+ * O rótulo é GENÉRICO (dono, 08/11/2026): o pet pode ser passarinho, gato ou
+ * outro; "Passarinho" mentia quando o bicho ativo era outro. As frases
+ * antigas ficam como apelido para quem já digitava "tirar o passarinho".
+ * "tirar/desativar/desligar" vêm ANTES de "ativar/ligar" porque a detecção é
+ * `includes` e a frase negativa contém a raiz da positiva.
+ */
+const COMANDOS_COMPANHEIRO: ComandoAcessibilidade[] = [
+  {
+    comando: [
+      "tirar passarinho", "tirar o passarinho", "tirar companheiro",
+      "tirar o companheiro", "tirar bichinho", "tirar o bichinho",
+      "desativar passarinho", "desativar o passarinho", "desativar companheiro",
+      "desativar o companheiro", "desativar bichinho", "desativar o bichinho",
+      "desligar passarinho", "desligar o passarinho", "desligar companheiro",
+      "desligar o companheiro", "desligar bichinho", "desligar o bichinho",
+      "desative o passarinho", "desligue o passarinho", "esconder passarinho",
+      "esconder o passarinho", "esconder o companheiro", "esconder o bichinho",
+    ],
+    label: "Companheiro",
+    mensagem: "Pronto! Companheiro desligado.",
+    acao: () => definirCompanheiroAtivo(false),
+    icone: <span className="text-base">🐾</span>,
+  },
+  {
+    comando: [
+      "ativar passarinho", "ativar o passarinho", "ligar passarinho",
+      "ligar o passarinho", "ative o passarinho", "ligue o passarinho",
+      "mostrar passarinho", "mostrar o passarinho", "quero o passarinho",
+      "chamar o companheiro", "mostrar companheiro", "mostrar o companheiro",
+      "ativar companheiro", "ativar o companheiro", "ligar companheiro",
+      "ligar o companheiro", "quero o companheiro", "chamar o bichinho",
+      "mostrar bichinho", "mostrar o bichinho", "ativar bichinho",
+      "ativar o bichinho", "ligar bichinho", "ligar o bichinho",
+    ],
+    label: "Companheiro",
+    mensagem: "Pronto! Companheiro ativado.",
+    acao: () => definirCompanheiroAtivo(true),
+    icone: <span className="text-base">🐾</span>,
+  },
+];
+
+/**
  * Widget flutuante "Seu Nonô" — assistente do Controle Popular.
  *
  * Funciona como uma escada de respostas pré-curadas:
@@ -753,6 +802,14 @@ export function SeuNono() {
   // O passarinho NÃO liga aqui: quem liga é o clique num bichinho dentro do
   // menu (`CompanheiroFlutuante` ligado, `CompanheiroMenuOffline` desligado).
   const [menuPetAberto, setMenuPetAberto] = useState(false);
+
+  // Pilha da esquerda (dono, 08/11/2026): parado só aparece o Seu Nonô. A
+  // pata, o rádio e o rastro entram quando o ponteiro chega no FAB. O
+  // controle fica AQUI porque este componente está em toda página; os
+  // outros dois itens só leem o mesmo estado.
+  useControlePilha();
+  const pata = useSlotPilha("pata", menuPetAberto);
+  const pataVisivel = pata.visivel;
   useEffect(() => {
     if (!menuPetAberto) return;
     const fechar = () => setMenuPetAberto(false);
@@ -979,33 +1036,9 @@ export function SeuNono() {
         acao: () => definirRastroCursor(true),
         icone: <span className="text-base">✨</span>,
       },
-      {
-        // Passarinho (dono, 19/10/2026): "tirar" vem ANTES de "ligar" —
-        // a detecção é `includes` e "tirar o passarinho" contém a raiz de
-        // "ativar". Mesmo contrato do `CompanheiroOpcional`.
-        comando: [
-          "tirar passarinho", "tirar o passarinho", "tirar companheiro",
-          "tirar o companheiro", "desativar passarinho", "desativar o passarinho",
-          "desligar passarinho", "desligar o passarinho", "desative o passarinho",
-          "desligue o passarinho", "esconder passarinho", "esconder o passarinho",
-        ],
-        label: "Passarinho",
-        mensagem: "Pronto! Passarinho desligado.",
-        acao: () => definirCompanheiroAtivo(false),
-        icone: <span className="text-base">🐦</span>,
-      },
-      {
-        comando: [
-          "ativar passarinho", "ativar o passarinho", "ligar passarinho",
-          "ligar o passarinho", "ative o passarinho", "ligue o passarinho",
-          "mostrar passarinho", "mostrar o passarinho", "quero o passarinho",
-          "chamar o companheiro", "mostrar companheiro", "mostrar o companheiro",
-        ],
-        label: "Passarinho",
-        mensagem: "Pronto! Passarinho ativado.",
-        acao: () => definirCompanheiroAtivo(true),
-        icone: <span className="text-base">🐦</span>,
-      },
+      // Companheiro (qualquer bicho): entradas em `COMANDOS_COMPANHEIRO`,
+      // fora do `useMemo`, para não inflar o bloco da escada.
+      ...COMANDOS_COMPANHEIRO,
     ],
     [setTheme]
   );
@@ -1431,10 +1464,12 @@ export function SeuNono() {
       ref={nonoRef}
       style={telaCheia ? undefined : estilo}
       // Eixo comum da pilha (`--cp-pilha-centro`): centro em 44 px; o FAB tem
-      // 56 px, então `left` = eixo - 28 px. Ver a régua em globals.css.
-      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-[calc(var(--cp-pilha-centro)-1.75rem)] z-50 flex flex-col items-start"
+      // 64 px, então `left` = eixo - 32 px. Ver a régua em globals.css.
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-[calc(var(--cp-pilha-centro)-2rem)] z-50 flex flex-col items-start"
       data-arrastavel-caixa
       data-nao-plataforma
+      data-cp-nono-fab
+      data-cp-pilha
     >
       {aberto && (
         <div
@@ -1775,7 +1810,7 @@ export function SeuNono() {
                             onChange={() => alternarPetNoChat(p.slug)}
                             className="shrink-0 accent-primary"
                           />
-                          <PetIcone pet={p} altura={22} />
+                          <PetIcone pet={p} altura={32} />
                           <span className="font-medium text-text">{p.nome}</span>
                           <span className="ml-auto text-[0.7rem] text-text-soft">por {p.autor}</span>
                         </label>
@@ -1845,7 +1880,7 @@ export function SeuNono() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-xs font-semibold text-text-soft">
-                        Passarinho:
+                        Companheiro:
                       </span>
                       <CompanheiroToggle />
                     </div>
@@ -2363,15 +2398,17 @@ export function SeuNono() {
       {/* Três botões redondos em coluna na lateral esquerda, de baixo para
           cima: Seu Nonô (FAB), pata do pet e rádio — pedido do dono
           (03/10/2026), que a pata estava TAPANDO o botão da rádio.
-          Régua combinada com `PlayerRadio.tsx`: FAB 16..72 px da borda;
-          pata 64..108; rádio 100..148. Emenda de 8 px em cima e embaixo
-          (07/10/2026: era 16 px, dono pediu "pouca sobreposição").
+          Régua combinada com `PlayerRadio.tsx`: FAB 16..80 px da borda (64 px
+          desde 08/11/2026); pata 72..116; rádio 108..156. Emenda de 8 px em
+          cima e embaixo (07/10/2026: era 16 px, dono pediu "pouca
+          sobreposição"). Mexer no tamanho de um exige refazer esta conta nos
+          três — a pata e o rádio subiram 8 px quando o FAB cresceu.
           Quem pinta por cima é o `z-index`, não a ordem do DOM: pata
           `z-[46]` < FAB `z-50` — o FAB fica com a cara inteira por cima
           (07/10/2026). A pata e o FAB somem quando o painel abre (só o
           painel importa então); o rádio fica. */}
       {!aberto && (
-        <div className="flex w-14 flex-col items-center">
+        <div className="flex w-16 flex-col items-center">
           {/* A pata do pet morava AQUI e saiu: ganhou caixa arrastável própria
               logo abaixo do invólucro (ver o bloco "PATA DO PET"). */}
           <button
@@ -2383,12 +2420,12 @@ export function SeuNono() {
               if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
             }}
             title="Arraste para mover; clique duplo volta ao canto"
-            className={`flex h-14 w-14 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            className={`flex h-16 w-16 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
               arrastando ? "cursor-grabbing" : "cursor-grab"
             }`}
             aria-label="Abrir assistente Seu Nonô"
           >
-            <AvatarSeuNono size={56} className="h-full w-full rounded-full" />
+            <AvatarSeuNono size={64} className="h-full w-full rounded-full" />
           </button>
         </div>
       )}
@@ -2397,9 +2434,13 @@ export function SeuNono() {
     {/* ═══ PATA DO PET — caixa arrastável PRÓPRIA ═══
         Fica FORA do invólucro do assistente de propósito: dentro dele, o
         `transform` de arrasto do Seu Nonô levava a pata junto (dono,
-        06/10/2026: "deixar cada um separado"). A posição reproduz o lugar de
-        antes na pilha — FAB em 16..72 px da borda de baixo, pata em 64..108 —
+        06/10/2026: "deixar cada um separado"). A posição reproduz o lugar
+        na pilha — FAB em 16..80 px da borda de baixo, pata em 72..116 —,
         então o visual não muda; só o arrasto é que é independente.
+        VISÍVEL SÓ NA PILHA (dono, 08/11/2026): parado, o canto mostra só o
+        Seu Nonô; a pata entra quando o ponteiro chega no FAB, e o nome abre
+        no hover dela. `menuPetAberto` mantém a pata visível enquanto o menu
+        está aberto, senão não haveria como fechá-lo.
         `z-[46]` (07/10/2026): a pata saiu de `z-50` — com o mesmo valor do
         FAB e vindo DEPOIS no DOM, ela pinta por cima da cara do assistente
         (dono: "o Seu Nonô tem que ficar por cima"). O novo degrau fica entre
@@ -2410,14 +2451,20 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_3rem)] left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46]"
+        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom] duration-75 motion-reduce:transition-none ${
+          pataVisivel ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        data-cp-slot={pata.indice}
         data-arrastavel-caixa
         data-nao-plataforma
+        data-cp-pilha
+        inert={!pataVisivel}
+        aria-hidden={!pataVisivel}
       >
-        <button
+        <PilhaBotao
           {...handlersPata}
+          rotulo="Bicho companheiro"
           onDoubleClick={resetarPata}
-          type="button"
           onClick={(e) => {
             // Gesto foi arrasto: não abre o menu por acidente.
             if (foiArrastoPata()) return;
@@ -2438,14 +2485,11 @@ export function SeuNono() {
             );
           }}
           aria-expanded={menuPetAberto}
-          title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
           aria-label="Trocar o bichinho do companheiro"
-          className={`flex h-11 w-11 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-            arrastandoPata ? "cursor-grabbing" : "cursor-grab"
-          }`}
-        >
-          <PawPrint size={20} className="text-primary" aria-hidden="true" />
-        </button>
+          title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
+          className={arrastandoPata ? "cursor-grabbing" : "cursor-grab"}
+          icone={<PawPrint size={20} aria-hidden="true" />}
+        />
       </div>
     )}
     </>

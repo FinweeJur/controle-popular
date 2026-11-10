@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -60,10 +61,20 @@ export default async function JurisprudenciaPenal({
 
       <header className="space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência penal</h1>
+
+        <ResumoRealidadeBox rota="/jurisprudencia/penal" />
         <p className="max-w-3xl text-sm opacity-80">
-          <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos penais do TJES e do STF,
-          coletados nas regiões atingidas. A maior parte é crime comum — homicídio, tráfico,
-          júri, violência doméstica — e não responsabilização criminal do rompimento.
+          <strong>{totalPenal.toLocaleString("pt-BR")}</strong> processos coletados por âncoras
+          penais no TJES e no STF. A maior parte é crime comum — homicídio, tráfico, júri,
+          violência doméstica — e não responsabilização criminal do rompimento.
+        </p>
+        <p className="max-w-3xl text-sm opacity-80">
+          A âncora de coleta não separa classe processual, então o acervo também traz{" "}
+          <strong>1.260 ações cíveis</strong> (apelação cível, agravo de instrumento, recurso
+          inominado) e <strong>1.473 recursos constitucionais</strong> (ARE, RE, reclamação, ADI)
+          que citam os mesmos temas. Eles ficam aqui para não sumirem do mapa, e a classificação
+          de polo os marca como <em>indeterminado</em>, porque matéria cível não tem acusação e
+          defesa.
         </p>
         <p className="max-w-3xl text-sm opacity-80">
           Os casos que citam o desastre continuam também em{" "}
@@ -71,6 +82,9 @@ export default async function JurisprudenciaPenal({
           porque ali o crime é o objeto da responsabilização.
         </p>
       </header>
+
+      {/* Resumo de realidade (F2): números contados no próprio JSON da página. */}
+      <ResumoRealidadeBox rota="/jurisprudencia/penal" />
 
       <section className="space-y-4" id="lista">
         <div className="flex flex-wrap items-center gap-3 text-sm">

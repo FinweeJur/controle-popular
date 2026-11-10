@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart3, GraduationCap } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
 
 /**
  * Principal hub do módulo de Direitos Comparados.
@@ -45,16 +46,19 @@ export default function PaginaDireitosComparados() {
         <p className="mt-3 text-lg text-text-soft">
           Análise comparativa de indicadores sociais, produção científica e impacto das instituições de ensino no desenvolvimento dos direitos fundamentais no Brasil.
         </p>
+        <div className="mt-5">
+          <TrilhaFrentes atual="/direitos-comparados" />
+        </div>
       </header>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {/* Comparador de Indicadores */}
+        {/* Painel Nacional de Indicadores Cívicos */}
         <Card
           icon={<BarChart3 className="h-8 w-8" />}
-          title="Comparador de Indicadores"
-          description="Compare dados de desenvolvimento humano, educação, saúde, justiça, trabalho e finanças entre estados e municípios."
-          href="/direitos-comparados/indicadores"
-          keywords={["IDH", "Educação", "Saúde", "Justiça", "Trabalho", "Finanças"]}
+          title="Painel Nacional de Indicadores Cívicos"
+          description="Dashboard unificado com dados de saúde pública (SUS), educação básica (IDEB), desenvolvimento humano, finanças, conselhos e comparador internacional."
+          href="/indicadores"
+          keywords={["Saúde SUS", "Educação IDEB", "IDH", "Trabalho", "27 Estados", "Global"]}
         />
 
         {/* Educação, pesquisa e extensão */}

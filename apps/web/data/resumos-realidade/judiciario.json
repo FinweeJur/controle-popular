@@ -1,0 +1,12 @@
+{
+ "rota": "/judiciario",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "inconclusivo": true,
+ "motivo": "Só total agregado, sem lista ou recorte que permita compor o número.",
+ "fontes": [
+  "jurisprudencia-buscador-resumo.json"
+ ],
+ "impressao": "a35a087262b97fad",
+ "markdown": "# O que os dados de Judiciario mostram\n\n[medido — dados da página] A página informa um único total agregado: 44.812 registros associados ao recorte apresentado.\n\n[não dá para concluir] Esse número não permite identificar quais registros são esses, nem distribuí-los por ano, tipo, local ou qualquer outra categoria. Não há lista, recorte ou detalhamento que sustente afirmações sobre composição ou tendência.\n\n[não dá para concluir] O dado se limita a um total: sem os itens que o formam, não se conclui nada além da existência dessa quantidade."
+}

@@ -1,0 +1,3196 @@
+{
+ "geradoEm": "2026-11-08",
+ "totalRotas": 348,
+ "porClasse": {
+  "tem-dado": 77,
+  "so-descritivo": 26,
+  "sem-dado": 245
+ },
+ "rotas": [
+  {
+   "rota": "/[municipio]/admin",
+   "arquivo": "apps/web/app/[municipio]/admin/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/agro",
+   "arquivo": "apps/web/app/[municipio]/agro/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/anuncie",
+   "arquivo": "apps/web/app/[municipio]/anuncie/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/assistente",
+   "arquivo": "apps/web/app/[municipio]/assistente/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/camara/comissoes",
+   "arquivo": "apps/web/app/[municipio]/camara/comissoes/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/camara/legislacao",
+   "arquivo": "apps/web/app/[municipio]/camara/legislacao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/camara",
+   "arquivo": "apps/web/app/[municipio]/camara/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/camara/proposicoes",
+   "arquivo": "apps/web/app/[municipio]/camara/proposicoes/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/camara/votacoes",
+   "arquivo": "apps/web/app/[municipio]/camara/votacoes/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/citrolandia",
+   "arquivo": "apps/web/app/[municipio]/citrolandia/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/clima",
+   "arquivo": "apps/web/app/[municipio]/clima/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/coleta-lixo",
+   "arquivo": "apps/web/app/[municipio]/coleta-lixo/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/compra-e-venda",
+   "arquivo": "apps/web/app/[municipio]/compra-e-venda/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/contatos",
+   "arquivo": "apps/web/app/[municipio]/contatos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/convenios",
+   "arquivo": "apps/web/app/[municipio]/convenios/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/dados",
+   "arquivo": "apps/web/app/[municipio]/dados/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/defesa-civil",
+   "arquivo": "apps/web/app/[municipio]/defesa-civil/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/economia",
+   "arquivo": "apps/web/app/[municipio]/economia/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/educacao",
+   "arquivo": "apps/web/app/[municipio]/educacao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/emendas",
+   "arquivo": "apps/web/app/[municipio]/emendas/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/gestao",
+   "arquivo": "apps/web/app/[municipio]/gestao/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "gestao/gestao-aracuai.json",
+    "gestao/gestao-betim.json",
+    "gestao/gestao-bh.json",
+    "gestao/gestao-brumadinho.json",
+    "gestao/gestao-capitais.json",
+    "gestao/gestao-polos.json",
+    "gestao/governo-ac.json",
+    "gestao/governo-al.json",
+    "gestao/governo-am.json",
+    "gestao/governo-ap.json",
+    "gestao/governo-ba.json",
+    "gestao/governo-ce.json",
+    "gestao/governo-df.json",
+    "gestao/governo-es.json",
+    "gestao/governo-go.json",
+    "gestao/governo-ma.json",
+    "gestao/governo-mg.json",
+    "gestao/governo-ms.json",
+    "gestao/governo-mt.json",
+    "gestao/governo-pa.json",
+    "gestao/governo-pb.json",
+    "gestao/governo-pe.json",
+    "gestao/governo-pi.json",
+    "gestao/governo-pr.json",
+    "gestao/governo-rj.json",
+    "gestao/governo-rn.json",
+    "gestao/governo-ro.json",
+    "gestao/governo-rr.json",
+    "gestao/governo-rs.json",
+    "gestao/governo-sc.json",
+    "gestao/governo-se.json",
+    "gestao/governo-sp.json",
+    "gestao/governo-to.json",
+    "gestao/governo-uniao.json",
+    "instituicoes-todas-esferas.json",
+    "noticias-portal.json"
+   ],
+   "registros": 927,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/[municipio]/grupos-economicos",
+   "arquivo": "apps/web/app/[municipio]/grupos-economicos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/historico",
+   "arquivo": "apps/web/app/[municipio]/historico/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/indice",
+   "arquivo": "apps/web/app/[municipio]/indice/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/infraestrutura",
+   "arquivo": "apps/web/app/[municipio]/infraestrutura/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "telefonia-municipios-mg.json"
+   ],
+   "registros": 853,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/[municipio]/interesses",
+   "arquivo": "apps/web/app/[municipio]/interesses/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/legislacao/alertas",
+   "arquivo": "apps/web/app/[municipio]/legislacao/alertas/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/legislacao/bons-exemplos",
+   "arquivo": "apps/web/app/[municipio]/legislacao/bons-exemplos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/legislacao",
+   "arquivo": "apps/web/app/[municipio]/legislacao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/links-uteis-mg",
+   "arquivo": "apps/web/app/[municipio]/links-uteis-mg/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/meio-ambiente/autuacoes",
+   "arquivo": "apps/web/app/[municipio]/meio-ambiente/autuacoes/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/meio-ambiente/barragens",
+   "arquivo": "apps/web/app/[municipio]/meio-ambiente/barragens/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/meio-ambiente",
+   "arquivo": "apps/web/app/[municipio]/meio-ambiente/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/meio-ambiente/paraopeba",
+   "arquivo": "apps/web/app/[municipio]/meio-ambiente/paraopeba/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/metodologia",
+   "arquivo": "apps/web/app/[municipio]/metodologia/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/mineracao",
+   "arquivo": "apps/web/app/[municipio]/mineracao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/nota-betim",
+   "arquivo": "apps/web/app/[municipio]/nota-betim/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/nota-transparencia",
+   "arquivo": "apps/web/app/[municipio]/nota-transparencia/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/noticias/[slug]",
+   "arquivo": "apps/web/app/[municipio]/noticias/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/noticias",
+   "arquivo": "apps/web/app/[municipio]/noticias/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]",
+   "arquivo": "apps/web/app/[municipio]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "canais-informacao-lai.json",
+    "conselhos-direitos.json",
+    "juma-acoes-climaticas.json",
+    "recursos/g20-consumo-setorial-corporativo.compact.json",
+    "recursos/pegada-hidrica-e-cnae.compact.json",
+    "recursos/top50-mg-consumidores.compact.json",
+    "relatorios-direitos-humanos.json",
+    "telefonia-municipios-mg.json"
+   ],
+   "registros": 1666,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/[municipio]/painel-do-cidadao",
+   "arquivo": "apps/web/app/[municipio]/painel-do-cidadao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/plantao-farmacias",
+   "arquivo": "apps/web/app/[municipio]/plantao-farmacias/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/postos-combustivel",
+   "arquivo": "apps/web/app/[municipio]/postos-combustivel/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/contratos",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/contratos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/cultura",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/cultura/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/despesas",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/despesas/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/diarias",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/diarias/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/diario",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/diario/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "diario-atos-municipios.json"
+   ],
+   "registros": 6,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/fornecedores",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/fornecedores/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/legislacao",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/legislacao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/licitacoes",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/licitacoes/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/obras",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/obras/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/prefeitura",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "diario-atos-municipios.json"
+   ],
+   "registros": 6,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/[municipio]/prefeitura/servidores",
+   "arquivo": "apps/web/app/[municipio]/prefeitura/servidores/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/privacidade",
+   "arquivo": "apps/web/app/[municipio]/privacidade/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/rede-de-protecao",
+   "arquivo": "apps/web/app/[municipio]/rede-de-protecao/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/saude",
+   "arquivo": "apps/web/app/[municipio]/saude/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/seguranca",
+   "arquivo": "apps/web/app/[municipio]/seguranca/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/servicos",
+   "arquivo": "apps/web/app/[municipio]/servicos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/sobre",
+   "arquivo": "apps/web/app/[municipio]/sobre/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/social",
+   "arquivo": "apps/web/app/[municipio]/social/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/supermercados-farmacias",
+   "arquivo": "apps/web/app/[municipio]/supermercados-farmacias/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/terras/cruzamentos",
+   "arquivo": "apps/web/app/[municipio]/terras/cruzamentos/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/terras",
+   "arquivo": "apps/web/app/[municipio]/terras/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/vereadores/[slug]",
+   "arquivo": "apps/web/app/[municipio]/vereadores/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/zap",
+   "arquivo": "apps/web/app/[municipio]/zap/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/[municipio]/zap-betim",
+   "arquivo": "apps/web/app/[municipio]/zap-betim/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/alertas",
+   "arquivo": "apps/web/app/alertas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/ameacas-americas",
+   "arquivo": "apps/web/app/ambiental/ameacas-americas/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ambiente/ameacas-americas.compact.json"
+   ],
+   "registros": 90,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/autorizacoes",
+   "arquivo": "apps/web/app/ambiental/autorizacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/autuacoes",
+   "arquivo": "apps/web/app/ambiental/autuacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "sisema-autos/recentes.json"
+   ],
+   "registros": 36007,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/barragens/descaracterizacao",
+   "arquivo": "apps/web/app/ambiental/barragens/descaracterizacao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/barragens/municipio/[idIbge]",
+   "arquivo": "apps/web/app/ambiental/barragens/municipio/[idIbge]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/barragens",
+   "arquivo": "apps/web/app/ambiental/barragens/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "barragens-sigbm.json"
+   ],
+   "registros": 318,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/barragens/sigbm",
+   "arquivo": "apps/web/app/ambiental/barragens/sigbm/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/barragens-globais",
+   "arquivo": "apps/web/app/ambiental/barragens-globais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ambiente/barragens-mundiais.compact.json"
+   ],
+   "registros": 62,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/capacidade-institucional",
+   "arquivo": "apps/web/app/ambiental/capacidade-institucional/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "orgaos-capacidade-ambiental.json"
+   ],
+   "registros": 2,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/car",
+   "arquivo": "apps/web/app/ambiental/car/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json",
+    "car-mg.json"
+   ],
+   "registros": 16,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/clima-risco",
+   "arquivo": "apps/web/app/ambiental/clima-risco/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/condicionantes",
+   "arquivo": "apps/web/app/ambiental/condicionantes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/conflitos-globais",
+   "arquivo": "apps/web/app/ambiental/conflitos-globais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ambiente/conflitos-socioambientais.compact.json"
+   ],
+   "registros": 55,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/conselhos",
+   "arquivo": "apps/web/app/ambiental/conselhos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "conselhos-direitos.json"
+   ],
+   "registros": 710,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/convenios",
+   "arquivo": "apps/web/app/ambiental/convenios/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "convenios-ambientais-mg"
+   ],
+   "registros": 870,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/copam/municipio/[idIbge]",
+   "arquivo": "apps/web/app/ambiental/copam/municipio/[idIbge]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/copam",
+   "arquivo": "apps/web/app/ambiental/copam/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/copam/reuniao/[idFonte]",
+   "arquivo": "apps/web/app/ambiental/copam/reuniao/[idFonte]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/crimes-socioambientais",
+   "arquivo": "apps/web/app/ambiental/crimes-socioambientais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/crise-climatica",
+   "arquivo": "apps/web/app/ambiental/crise-climatica/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "clima/crise-climatica-global.compact.json"
+   ],
+   "registros": 5,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/decisoes",
+   "arquivo": "apps/web/app/ambiental/decisoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/decisoes-lai",
+   "arquivo": "apps/web/app/ambiental/decisoes-lai/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "decisoes-cge"
+   ],
+   "registros": 1,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/direito-critico",
+   "arquivo": "apps/web/app/ambiental/direito-critico/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/direitos-humanos",
+   "arquivo": "apps/web/app/ambiental/direitos-humanos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "relatorios-direitos-humanos.json"
+   ],
+   "registros": 9,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/ecossistema",
+   "arquivo": "apps/web/app/ambiental/ecossistema/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ecossistema-ambiental-nacional.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/estudos",
+   "arquivo": "apps/web/app/ambiental/estudos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/ibama",
+   "arquivo": "apps/web/app/ambiental/ibama/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ibama-mg.json"
+   ],
+   "registros": 8,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/indice",
+   "arquivo": "apps/web/app/ambiental/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/judiciario",
+   "arquivo": "apps/web/app/ambiental/judiciario/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "sirenejud-mg"
+   ],
+   "registros": 16,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/legislacao",
+   "arquivo": "apps/web/app/ambiental/legislacao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/licencas",
+   "arquivo": "apps/web/app/ambiental/licencas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/licenciamento/municipio/[idIbge]",
+   "arquivo": "apps/web/app/ambiental/licenciamento/municipio/[idIbge]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/licenciamento",
+   "arquivo": "apps/web/app/ambiental/licenciamento/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/litigios-climaticos",
+   "arquivo": "apps/web/app/ambiental/litigios-climaticos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "juma-acoes-climaticas.json"
+   ],
+   "registros": 9,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/mariana",
+   "arquivo": "apps/web/app/ambiental/mariana/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "biblioteca-teses-atingidos.json"
+   ],
+   "registros": 424,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/nossa-gente",
+   "arquivo": "apps/web/app/ambiental/nossa-gente/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossas-serras/[slug]",
+   "arquivo": "apps/web/app/ambiental/nossas-serras/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossas-serras",
+   "arquivo": "apps/web/app/ambiental/nossas-serras/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos",
+   "arquivo": "apps/web/app/ambiental/nossos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos-animais",
+   "arquivo": "apps/web/app/ambiental/nossos-animais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos-rios/[slug]",
+   "arquivo": "apps/web/app/ambiental/nossos-rios/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos-rios",
+   "arquivo": "apps/web/app/ambiental/nossos-rios/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos-territorios/[slug]",
+   "arquivo": "apps/web/app/ambiental/nossos-territorios/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/nossos-territorios",
+   "arquivo": "apps/web/app/ambiental/nossos-territorios/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental",
+   "arquivo": "apps/web/app/ambiental/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "car-mg.json",
+    "sisema-autos/recentes.json"
+   ],
+   "registros": 36018,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/ambiental/patrimonio-cultural",
+   "arquivo": "apps/web/app/ambiental/patrimonio-cultural/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/ambiental/ppp",
+   "arquivo": "apps/web/app/ambiental/ppp/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "ppp-mg.json"
+   ],
+   "registros": 2,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/ambiental/tac",
+   "arquivo": "apps/web/app/ambiental/tac/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "tac-projetos"
+   ],
+   "registros": 10,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/america-latina",
+   "arquivo": "apps/web/app/america-latina/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "america-latina/instalacoes-latam.compact.json",
+    "america-latina/mineradoras-latam.compact.json"
+   ],
+   "registros": 96,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/api",
+   "arquivo": "apps/web/app/api/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/aprender",
+   "arquivo": "apps/web/app/aprender/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/assembleias/[uf]",
+   "arquivo": "apps/web/app/assembleias/[uf]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "assembleias-estaduais.json"
+   ],
+   "registros": 27,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/assembleias",
+   "arquivo": "apps/web/app/assembleias/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "assembleias-estaduais.json"
+   ],
+   "registros": 27,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/assistente",
+   "arquivo": "apps/web/app/assistente/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/assistente-ia-lab",
+   "arquivo": "apps/web/app/assistente-ia-lab/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/biblioteca",
+   "arquivo": "apps/web/app/biblioteca/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "biblioteca-teses-atingidos.json",
+    "biblioteca-unificada.json"
+   ],
+   "registros": 882,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/busca",
+   "arquivo": "apps/web/app/busca/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/canada/ambiental",
+   "arquivo": "apps/web/app/canada/ambiental/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canada/ambiental-natureza-ciencia.compact.json",
+    "canada/contratos-open-canada.compact.json",
+    "canada/institucional-canada.compact.json",
+    "canada/mineradoras-tsx-brasil.compact.json",
+    "internacional/canada-geo.compact.json"
+   ],
+   "registros": 71,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/canada/contratos",
+   "arquivo": "apps/web/app/canada/contratos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canada/ambiental-natureza-ciencia.compact.json",
+    "canada/contratos-open-canada.compact.json",
+    "canada/institucional-canada.compact.json",
+    "canada/mineradoras-tsx-brasil.compact.json",
+    "internacional/canada-geo.compact.json"
+   ],
+   "registros": 71,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/canada/institucional",
+   "arquivo": "apps/web/app/canada/institucional/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canada/ambiental-natureza-ciencia.compact.json",
+    "canada/contratos-open-canada.compact.json",
+    "canada/institucional-canada.compact.json",
+    "canada/mineradoras-tsx-brasil.compact.json",
+    "internacional/canada-geo.compact.json"
+   ],
+   "registros": 71,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/canada/mineracao",
+   "arquivo": "apps/web/app/canada/mineracao/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canada/ambiental-natureza-ciencia.compact.json",
+    "canada/contratos-open-canada.compact.json",
+    "canada/institucional-canada.compact.json",
+    "canada/mineradoras-tsx-brasil.compact.json",
+    "internacional/canada-geo.compact.json"
+   ],
+   "registros": 71,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/canada",
+   "arquivo": "apps/web/app/canada/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canada/ambiental-natureza-ciencia.compact.json",
+    "canada/contratos-open-canada.compact.json",
+    "canada/institucional-canada.compact.json",
+    "canada/mineradoras-tsx-brasil.compact.json",
+    "internacional/canada-geo.compact.json"
+   ],
+   "registros": 71,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/central",
+   "arquivo": "apps/web/app/central/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ac",
+   "arquivo": "apps/web/app/cidades/ac/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/al",
+   "arquivo": "apps/web/app/cidades/al/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/am",
+   "arquivo": "apps/web/app/cidades/am/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ap",
+   "arquivo": "apps/web/app/cidades/ap/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ba",
+   "arquivo": "apps/web/app/cidades/ba/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ce",
+   "arquivo": "apps/web/app/cidades/ce/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/df",
+   "arquivo": "apps/web/app/cidades/df/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/es",
+   "arquivo": "apps/web/app/cidades/es/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/go",
+   "arquivo": "apps/web/app/cidades/go/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ma",
+   "arquivo": "apps/web/app/cidades/ma/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/mg",
+   "arquivo": "apps/web/app/cidades/mg/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ms",
+   "arquivo": "apps/web/app/cidades/ms/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/mt",
+   "arquivo": "apps/web/app/cidades/mt/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/pa",
+   "arquivo": "apps/web/app/cidades/pa/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades",
+   "arquivo": "apps/web/app/cidades/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/pb",
+   "arquivo": "apps/web/app/cidades/pb/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/pe",
+   "arquivo": "apps/web/app/cidades/pe/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/pi",
+   "arquivo": "apps/web/app/cidades/pi/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/pr",
+   "arquivo": "apps/web/app/cidades/pr/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/rj",
+   "arquivo": "apps/web/app/cidades/rj/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/rn",
+   "arquivo": "apps/web/app/cidades/rn/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/ro",
+   "arquivo": "apps/web/app/cidades/ro/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/rr",
+   "arquivo": "apps/web/app/cidades/rr/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/rs",
+   "arquivo": "apps/web/app/cidades/rs/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/sc",
+   "arquivo": "apps/web/app/cidades/sc/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/se",
+   "arquivo": "apps/web/app/cidades/se/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/sp",
+   "arquivo": "apps/web/app/cidades/sp/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/cidades/to",
+   "arquivo": "apps/web/app/cidades/to/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/comparar",
+   "arquivo": "apps/web/app/comparar/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json"
+   ],
+   "registros": 5,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/concursos",
+   "arquivo": "apps/web/app/concursos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "concursos-publicos.json"
+   ],
+   "registros": 74,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/congresso/[uf]",
+   "arquivo": "apps/web/app/congresso/[uf]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/agenda",
+   "arquivo": "apps/web/app/congresso/agenda/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/alertas",
+   "arquivo": "apps/web/app/congresso/alertas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/almg",
+   "arquivo": "apps/web/app/congresso/almg/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/almg/proposicoes",
+   "arquivo": "apps/web/app/congresso/almg/proposicoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/analises",
+   "arquivo": "apps/web/app/congresso/analises/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/bancadas/[id]",
+   "arquivo": "apps/web/app/congresso/bancadas/[id]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/bancadas",
+   "arquivo": "apps/web/app/congresso/bancadas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/bons-exemplos",
+   "arquivo": "apps/web/app/congresso/bons-exemplos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/comissoes/[sigla]",
+   "arquivo": "apps/web/app/congresso/comissoes/[sigla]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/comissoes",
+   "arquivo": "apps/web/app/congresso/comissoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/cota-parlamentar",
+   "arquivo": "apps/web/app/congresso/cota-parlamentar/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json"
+   ],
+   "registros": 5,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/congresso/financiamento-eleitoral",
+   "arquivo": "apps/web/app/congresso/financiamento-eleitoral/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/indice",
+   "arquivo": "apps/web/app/congresso/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/metodologia",
+   "arquivo": "apps/web/app/congresso/metodologia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso",
+   "arquivo": "apps/web/app/congresso/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/parlamentares/[id]",
+   "arquivo": "apps/web/app/congresso/parlamentares/[id]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/parlamentares",
+   "arquivo": "apps/web/app/congresso/parlamentares/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/proposicoes/[id]/oficio",
+   "arquivo": "apps/web/app/congresso/proposicoes/[id]/oficio/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/proposicoes/[id]",
+   "arquivo": "apps/web/app/congresso/proposicoes/[id]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/proposicoes",
+   "arquivo": "apps/web/app/congresso/proposicoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/congresso/votacoes",
+   "arquivo": "apps/web/app/congresso/votacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/consumo-corporativo",
+   "arquivo": "apps/web/app/consumo-corporativo/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json",
+    "recursos/g20-consumo-setorial-corporativo.compact.json",
+    "recursos/pegada-hidrica-e-cnae.compact.json",
+    "recursos/top50-mg-consumidores.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/dados/comunicabr/[codigo]",
+   "arquivo": "apps/web/app/dados/comunicabr/[codigo]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/dados/comunicabr",
+   "arquivo": "apps/web/app/dados/comunicabr/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/dados/populares",
+   "arquivo": "apps/web/app/dados/populares/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/desclassificados",
+   "arquivo": "apps/web/app/desclassificados/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/direitos-comparados/indicadores",
+   "arquivo": "apps/web/app/direitos-comparados/indicadores/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-comparados",
+   "arquivo": "apps/web/app/direitos-comparados/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/ajuda",
+   "arquivo": "apps/web/app/direitos-em-movimento/ajuda/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/conselhos",
+   "arquivo": "apps/web/app/direitos-em-movimento/conselhos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "conselhos-direitos.json"
+   ],
+   "registros": 710,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/denuncia",
+   "arquivo": "apps/web/app/direitos-em-movimento/denuncia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/educacao",
+   "arquivo": "apps/web/app/direitos-em-movimento/educacao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/informacao",
+   "arquivo": "apps/web/app/direitos-em-movimento/informacao/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canais-informacao-lai.json"
+   ],
+   "registros": 6,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/direitos-em-movimento",
+   "arquivo": "apps/web/app/direitos-em-movimento/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/saude-publica",
+   "arquivo": "apps/web/app/direitos-em-movimento/saude-publica/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/seguranca-publica",
+   "arquivo": "apps/web/app/direitos-em-movimento/seguranca-publica/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/servicos",
+   "arquivo": "apps/web/app/direitos-em-movimento/servicos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores",
+   "arquivo": "apps/web/app/direitos-em-movimento/trabalho-e-renda/cadastro-empregadores/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-em-movimento/trabalho-e-renda",
+   "arquivo": "apps/web/app/direitos-em-movimento/trabalho-e-renda/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/[continente]",
+   "arquivo": "apps/web/app/direitos-globais/[continente]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/africa",
+   "arquivo": "apps/web/app/direitos-globais/africa/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/america-do-norte",
+   "arquivo": "apps/web/app/direitos-globais/america-do-norte/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/america-latina/cidh",
+   "arquivo": "apps/web/app/direitos-globais/america-latina/cidh/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/america-latina",
+   "arquivo": "apps/web/app/direitos-globais/america-latina/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/asia",
+   "arquivo": "apps/web/app/direitos-globais/asia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/europa",
+   "arquivo": "apps/web/app/direitos-globais/europa/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/oceania",
+   "arquivo": "apps/web/app/direitos-globais/oceania/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais/onu",
+   "arquivo": "apps/web/app/direitos-globais/onu/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/direitos-globais",
+   "arquivo": "apps/web/app/direitos-globais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/documentacao/api-publica",
+   "arquivo": "apps/web/app/documentacao/api-publica/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/documentacao/arquitetura",
+   "arquivo": "apps/web/app/documentacao/arquitetura/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/documentacao/editorial",
+   "arquivo": "apps/web/app/documentacao/editorial/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/documentacao/fontes-e-coletas",
+   "arquivo": "apps/web/app/documentacao/fontes-e-coletas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/documentacao",
+   "arquivo": "apps/web/app/documentacao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/editais",
+   "arquivo": "apps/web/app/editais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "editais-consolidado.json"
+   ],
+   "registros": 50,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/educacao",
+   "arquivo": "apps/web/app/educacao/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "educacao-inep-mg.json",
+    "educacao-periodicos.json"
+   ],
+   "registros": 7,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/eleicoes/2026/gastos-campanha",
+   "arquivo": "apps/web/app/eleicoes/2026/gastos-campanha/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eleicoes/gastos-2026/bigtech.json",
+    "eleicoes/gastos-2026/fornecedores.json",
+    "eleicoes/gastos-2026/meta-ads-amostra.json",
+    "eleicoes/gastos-2026/meta.json",
+    "eleicoes/gastos-2026/partidos.json",
+    "eleicoes/gastos-2026/por-partido.json",
+    "eleicoes/gastos-2026/por-uf.json"
+   ],
+   "registros": 149,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eleicoes/2026/locais-votacao-alterados",
+   "arquivo": "apps/web/app/eleicoes/2026/locais-votacao-alterados/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/eleicoes/2026/transporte-gratuito",
+   "arquivo": "apps/web/app/eleicoes/2026/transporte-gratuito/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eleicoes/2026/transporte-gratuito-2026.json"
+   ],
+   "registros": 7,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/empresas/[slug]",
+   "arquivo": "apps/web/app/empresas/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "biblioteca-unificada.json"
+   ],
+   "registros": 458,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/empresas/conglomerados",
+   "arquivo": "apps/web/app/empresas/conglomerados/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "empresas/conglomerados-arestas.compact.json",
+    "empresas/conglomerados-holdings.compact.json",
+    "empresas/conglomerados-setores.compact.json"
+   ],
+   "registros": 86,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/empresas/documentos",
+   "arquivo": "apps/web/app/empresas/documentos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/empresas/executivos",
+   "arquivo": "apps/web/app/empresas/executivos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/empresas/fortunas",
+   "arquivo": "apps/web/app/empresas/fortunas/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "empresas/fortunas-mundiais.compact.json"
+   ],
+   "registros": 1000,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/empresas",
+   "arquivo": "apps/web/app/empresas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/estado-e-economia/acordos-e-licitacoes-internacionais",
+   "arquivo": "apps/web/app/estado-e-economia/acordos-e-licitacoes-internacionais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "fornecedores/multinacionais-eua-europa.json",
+    "negociacoes-parcerias/acordos-licitacoes-internacionais.json"
+   ],
+   "registros": 15,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/estado-e-economia/fornecedores-multinacionais",
+   "arquivo": "apps/web/app/estado-e-economia/fornecedores-multinacionais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "fornecedores/multinacionais-eua-europa.json"
+   ],
+   "registros": 2,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/estado-e-economia/judiciario",
+   "arquivo": "apps/web/app/estado-e-economia/judiciario/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/estado-e-economia/orcamento",
+   "arquivo": "apps/web/app/estado-e-economia/orcamento/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "series-economicas-bcb.json"
+   ],
+   "registros": 5,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/estado-e-economia",
+   "arquivo": "apps/web/app/estado-e-economia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/estado-e-economia/renuncia-fiscal",
+   "arquivo": "apps/web/app/estado-e-economia/renuncia-fiscal/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/estudos-rurais",
+   "arquivo": "apps/web/app/estudos-rurais/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "estudos-rurais/estudos-rurais-curados.json",
+    "estudos-rurais/estudos-rurais.json"
+   ],
+   "registros": 119,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eua/ambiental",
+   "arquivo": "apps/web/app/eua/ambiental/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eua/ambiental-natureza-eua.compact.json",
+    "eua/contratos-usaspending.compact.json",
+    "eua/empresas-sec.compact.json",
+    "eua/institucional-eua.compact.json",
+    "internacional/eua-geo.compact.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eua/contratos",
+   "arquivo": "apps/web/app/eua/contratos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eua/ambiental-natureza-eua.compact.json",
+    "eua/contratos-usaspending.compact.json",
+    "eua/empresas-sec.compact.json",
+    "eua/institucional-eua.compact.json",
+    "internacional/eua-geo.compact.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eua/empresas",
+   "arquivo": "apps/web/app/eua/empresas/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eua/ambiental-natureza-eua.compact.json",
+    "eua/contratos-usaspending.compact.json",
+    "eua/empresas-sec.compact.json",
+    "eua/institucional-eua.compact.json",
+    "internacional/eua-geo.compact.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eua/institucional",
+   "arquivo": "apps/web/app/eua/institucional/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eua/ambiental-natureza-eua.compact.json",
+    "eua/contratos-usaspending.compact.json",
+    "eua/empresas-sec.compact.json",
+    "eua/institucional-eua.compact.json",
+    "internacional/eua-geo.compact.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/eua",
+   "arquivo": "apps/web/app/eua/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "eua/ambiental-natureza-eua.compact.json",
+    "eua/contratos-usaspending.compact.json",
+    "eua/empresas-sec.compact.json",
+    "eua/institucional-eua.compact.json",
+    "internacional/eua-geo.compact.json"
+   ],
+   "registros": 73,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/europa/legislacao-transnacionais",
+   "arquivo": "apps/web/app/europa/legislacao-transnacionais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/europa/litigios-transnacionais",
+   "arquivo": "apps/web/app/europa/litigios-transnacionais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/europa",
+   "arquivo": "apps/web/app/europa/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json",
+    "internacional/europa-transnacional.compact.json"
+   ],
+   "registros": 44,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/funcaosocialterra/alertas",
+   "arquivo": "apps/web/app/funcaosocialterra/alertas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/funcaosocialterra/indice",
+   "arquivo": "apps/web/app/funcaosocialterra/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/funcaosocialterra/mapa",
+   "arquivo": "apps/web/app/funcaosocialterra/mapa/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/funcaosocialterra",
+   "arquivo": "apps/web/app/funcaosocialterra/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/glossario",
+   "arquivo": "apps/web/app/glossario/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/governo/[uf]/legislativo",
+   "arquivo": "apps/web/app/governo/[uf]/legislativo/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "fornecedores/multinacionais-eua-europa.json",
+    "legislativo-estaduais/parlamentares-estaduais.json"
+   ],
+   "registros": 4,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/governo/[uf]",
+   "arquivo": "apps/web/app/governo/[uf]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "gestao/gestao-aracuai.json",
+    "gestao/gestao-betim.json",
+    "gestao/gestao-bh.json",
+    "gestao/gestao-brumadinho.json",
+    "gestao/gestao-capitais.json",
+    "gestao/gestao-polos.json",
+    "gestao/governo-ac.json",
+    "gestao/governo-al.json",
+    "gestao/governo-am.json",
+    "gestao/governo-ap.json",
+    "gestao/governo-ba.json",
+    "gestao/governo-ce.json",
+    "gestao/governo-df.json",
+    "gestao/governo-es.json",
+    "gestao/governo-go.json",
+    "gestao/governo-ma.json",
+    "gestao/governo-mg.json",
+    "gestao/governo-ms.json",
+    "gestao/governo-mt.json",
+    "gestao/governo-pa.json",
+    "gestao/governo-pb.json",
+    "gestao/governo-pe.json",
+    "gestao/governo-pi.json",
+    "gestao/governo-pr.json",
+    "gestao/governo-rj.json",
+    "gestao/governo-rn.json",
+    "gestao/governo-ro.json",
+    "gestao/governo-rr.json",
+    "gestao/governo-rs.json",
+    "gestao/governo-sc.json",
+    "gestao/governo-se.json",
+    "gestao/governo-sp.json",
+    "gestao/governo-to.json",
+    "gestao/governo-uniao.json",
+    "instituicoes-todas-esferas.json",
+    "noticias-portal.json"
+   ],
+   "registros": 927,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/governo",
+   "arquivo": "apps/web/app/governo/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "gestao/gestao-aracuai.json",
+    "gestao/gestao-betim.json",
+    "gestao/gestao-bh.json",
+    "gestao/gestao-brumadinho.json",
+    "gestao/gestao-capitais.json",
+    "gestao/gestao-polos.json",
+    "gestao/governo-ac.json",
+    "gestao/governo-al.json",
+    "gestao/governo-am.json",
+    "gestao/governo-ap.json",
+    "gestao/governo-ba.json",
+    "gestao/governo-ce.json",
+    "gestao/governo-df.json",
+    "gestao/governo-es.json",
+    "gestao/governo-go.json",
+    "gestao/governo-ma.json",
+    "gestao/governo-mg.json",
+    "gestao/governo-ms.json",
+    "gestao/governo-mt.json",
+    "gestao/governo-pa.json",
+    "gestao/governo-pb.json",
+    "gestao/governo-pe.json",
+    "gestao/governo-pi.json",
+    "gestao/governo-pr.json",
+    "gestao/governo-rj.json",
+    "gestao/governo-rn.json",
+    "gestao/governo-ro.json",
+    "gestao/governo-rr.json",
+    "gestao/governo-rs.json",
+    "gestao/governo-sc.json",
+    "gestao/governo-se.json",
+    "gestao/governo-sp.json",
+    "gestao/governo-to.json",
+    "gestao/governo-uniao.json"
+   ],
+   "registros": 704,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/grafo",
+   "arquivo": "apps/web/app/grafo/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/guia",
+   "arquivo": "apps/web/app/guia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "canais-informacao-lai.json",
+    "judiciario-unidades-contatos.json"
+   ],
+   "registros": 996,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/historia",
+   "arquivo": "apps/web/app/historia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "apm-listas-populacao.json"
+   ],
+   "registros": 354,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/historico",
+   "arquivo": "apps/web/app/historico/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/imprensa",
+   "arquivo": "apps/web/app/imprensa/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/indicadores",
+   "arquivo": "apps/web/app/indicadores/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/indice",
+   "arquivo": "apps/web/app/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "noticias-portal.json",
+    "novidades.json",
+    "top-100-paginas.json"
+   ],
+   "registros": 321,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/instituicoes/[sigla]",
+   "arquivo": "apps/web/app/instituicoes/[sigla]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "instituicoes-todas-esferas.json",
+    "noticias-portal.json"
+   ],
+   "registros": 223,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/instituicoes",
+   "arquivo": "apps/web/app/instituicoes/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "instituicoes-todas-esferas.json",
+    "noticias-portal.json"
+   ],
+   "registros": 223,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/inteligencia",
+   "arquivo": "apps/web/app/inteligencia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/desclassificados/mapa",
+   "arquivo": "apps/web/app/internacional/desclassificados/mapa/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/desclassificados",
+   "arquivo": "apps/web/app/internacional/desclassificados/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/europa",
+   "arquivo": "apps/web/app/internacional/europa/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json",
+    "internacional/europa-transnacional.compact.json"
+   ],
+   "registros": 44,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/inteligencia/mapa",
+   "arquivo": "apps/web/app/internacional/inteligencia/mapa/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/inteligencia",
+   "arquivo": "apps/web/app/internacional/inteligencia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/desclassificados-g20.compact.json"
+   ],
+   "registros": 84,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/operacoes-militares/mapa",
+   "arquivo": "apps/web/app/internacional/operacoes-militares/mapa/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/operacoes-militares.compact.json"
+   ],
+   "registros": 48,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/operacoes-militares",
+   "arquivo": "apps/web/app/internacional/operacoes-militares/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/operacoes-militares.compact.json"
+   ],
+   "registros": 48,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional/orcamentos",
+   "arquivo": "apps/web/app/internacional/orcamentos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/orcamentos-comparados.compact.json"
+   ],
+   "registros": 30,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/internacional",
+   "arquivo": "apps/web/app/internacional/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "internacional/comercio-commodities.compact.json",
+    "internacional/indicadores-sociais.compact.json",
+    "internacional/terra-territorios-global.compact.json"
+   ],
+   "registros": 25,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/composicao",
+   "arquivo": "apps/web/app/judiciario/composicao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/contatos",
+   "arquivo": "apps/web/app/judiciario/contatos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "judiciario-contatos-stats.json",
+    "judiciario-unidades-contatos.json"
+   ],
+   "registros": 1002,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/correicoes-trabalhistas",
+   "arquivo": "apps/web/app/judiciario/correicoes-trabalhistas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/defensoria",
+   "arquivo": "apps/web/app/judiciario/defensoria/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "comarcas-mg"
+   ],
+   "registros": 1,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/judiciario/indicacoes",
+   "arquivo": "apps/web/app/judiciario/indicacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/indice",
+   "arquivo": "apps/web/app/judiciario/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/inspecoes",
+   "arquivo": "apps/web/app/judiciario/inspecoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/instituicoes/[sigla]",
+   "arquivo": "apps/web/app/judiciario/instituicoes/[sigla]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "judiciario-instituicoes-detalhe.json"
+   ],
+   "registros": 91,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/instituicoes",
+   "arquivo": "apps/web/app/judiciario/instituicoes/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "judiciario-instituicoes-detalhe.json"
+   ],
+   "registros": 91,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/jurisprudencia",
+   "arquivo": "apps/web/app/judiciario/jurisprudencia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "jurisprudencia-buscador-resumo.json"
+   ],
+   "registros": 44812,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/metodologia",
+   "arquivo": "apps/web/app/judiciario/metodologia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/numeros",
+   "arquivo": "apps/web/app/judiciario/numeros/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario",
+   "arquivo": "apps/web/app/judiciario/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "jurisprudencia-buscador-resumo.json"
+   ],
+   "registros": 44812,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/presidios",
+   "arquivo": "apps/web/app/judiciario/presidios/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "estabelecimentos-mg"
+   ],
+   "registros": 1,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/judiciario/privacidade",
+   "arquivo": "apps/web/app/judiciario/privacidade/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/recomendacoes",
+   "arquivo": "apps/web/app/judiciario/recomendacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "judiciario/recomendacoes-cnj-cnmp.json"
+   ],
+   "registros": 10,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/judiciario/sirenejud",
+   "arquivo": "apps/web/app/judiciario/sirenejud/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/sobre",
+   "arquivo": "apps/web/app/judiciario/sobre/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/tribunais/[sigla]",
+   "arquivo": "apps/web/app/judiciario/tribunais/[sigla]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/tribunais",
+   "arquivo": "apps/web/app/judiciario/tribunais/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/vagas",
+   "arquivo": "apps/web/app/judiciario/vagas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/judiciario/varas",
+   "arquivo": "apps/web/app/judiciario/varas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/jurisprudencia",
+   "arquivo": "apps/web/app/jurisprudencia/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "catalogo-frentes.json",
+    "jurisprudencia-casos.json",
+    "jurisprudencia-resumo.json"
+   ],
+   "registros": 23587,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/jurisprudencia/penal",
+   "arquivo": "apps/web/app/jurisprudencia/penal/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "jurisprudencia-casos.json",
+    "jurisprudencia-resumo.json"
+   ],
+   "registros": 23583,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/laboratorio/arvore",
+   "arquivo": "apps/web/app/laboratorio/arvore/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/laboratorio",
+   "arquivo": "apps/web/app/laboratorio/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "barragens-sigbm.json",
+    "educacao-ibge-mg.json",
+    "educacao-inep-mg.json",
+    "esg-update.json",
+    "fornecedores/multinacionais-eua-europa.json",
+    "judiciario-unidades-contatos.json",
+    "legislativo-estaduais/parlamentares-estaduais.json",
+    "negociacoes-parcerias/acordos-licitacoes-internacionais.json",
+    "series-economicas-bcb.json"
+   ],
+   "registros": 1349,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/memoria",
+   "arquivo": "apps/web/app/memoria/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/meus-dados",
+   "arquivo": "apps/web/app/meus-dados/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/mineracao/cavas",
+   "arquivo": "apps/web/app/mineracao/cavas/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cavas-estados-mg.json",
+    "cavas-serie-mineracao-mg.json"
+   ],
+   "registros": 135,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/mineracao/ilegal",
+   "arquivo": "apps/web/app/mineracao/ilegal/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "comunidades-tradicionais-mineracao-mg.json"
+   ],
+   "registros": 7,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/modelos",
+   "arquivo": "apps/web/app/modelos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/noticias/[slug]",
+   "arquivo": "apps/web/app/noticias/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [
+    "noticias-portal.json"
+   ],
+   "registros": 204,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/noticias",
+   "arquivo": "apps/web/app/noticias/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "noticias-portal.json"
+   ],
+   "registros": 204,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/notificacoes",
+   "arquivo": "apps/web/app/notificacoes/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/novidades",
+   "arquivo": "apps/web/app/novidades/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "noticias-portal.json",
+    "novidades.json"
+   ],
+   "registros": 221,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/offline",
+   "arquivo": "apps/web/app/offline/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/",
+   "arquivo": "apps/web/app/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "bases-portal.json"
+   ],
+   "registros": 7,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/paraopeba/analise",
+   "arquivo": "apps/web/app/paraopeba/analise/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/auditoria",
+   "arquivo": "apps/web/app/paraopeba/auditoria/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "auditoria-ajri",
+    "resumo-ajri"
+   ],
+   "registros": 804,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/paraopeba/auxilio",
+   "arquivo": "apps/web/app/paraopeba/auxilio/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/biblioteca",
+   "arquivo": "apps/web/app/paraopeba/biblioteca/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "biblioteca-teses-atingidos.json"
+   ],
+   "registros": 424,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/paraopeba/clipping",
+   "arquivo": "apps/web/app/paraopeba/clipping/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/correlacao",
+   "arquivo": "apps/web/app/paraopeba/correlacao/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "noticias-vale.json",
+    "sgml-cotacoes.json",
+    "vale3-cotacoes.json"
+   ],
+   "registros": 1174,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/paraopeba/documentos",
+   "arquivo": "apps/web/app/paraopeba/documentos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "documentos-paraopeba"
+   ],
+   "registros": 471,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/paraopeba/entenda",
+   "arquivo": "apps/web/app/paraopeba/entenda/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/execucao",
+   "arquivo": "apps/web/app/paraopeba/execucao/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/indice",
+   "arquivo": "apps/web/app/paraopeba/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/linha-do-tempo",
+   "arquivo": "apps/web/app/paraopeba/linha-do-tempo/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/noticias",
+   "arquivo": "apps/web/app/paraopeba/noticias/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "noticias-vale.json"
+   ],
+   "registros": 3,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/paraopeba/noticias-vale",
+   "arquivo": "apps/web/app/paraopeba/noticias-vale/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba",
+   "arquivo": "apps/web/app/paraopeba/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/pericia",
+   "arquivo": "apps/web/app/paraopeba/pericia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/quem-atua",
+   "arquivo": "apps/web/app/paraopeba/quem-atua/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/vale/documentos",
+   "arquivo": "apps/web/app/paraopeba/vale/documentos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/paraopeba/vale",
+   "arquivo": "apps/web/app/paraopeba/vale/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "vale3-cotacoes.json"
+   ],
+   "registros": 3,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/pasta",
+   "arquivo": "apps/web/app/pasta/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/periodicos",
+   "arquivo": "apps/web/app/periodicos/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "periodicos-sumario.json"
+   ],
+   "registros": 4,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/politica-de-ia",
+   "arquivo": "apps/web/app/politica-de-ia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/radio",
+   "arquivo": "apps/web/app/radio/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/recapitular",
+   "arquivo": "apps/web/app/recapitular/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "cambio-dia.json"
+   ],
+   "registros": 5,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/recursos/estados",
+   "arquivo": "apps/web/app/recursos/estados/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/riodoce/indice",
+   "arquivo": "apps/web/app/riodoce/indice/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/riodoce",
+   "arquivo": "apps/web/app/riodoce/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/riodoce/processos",
+   "arquivo": "apps/web/app/riodoce/processos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/sobre",
+   "arquivo": "apps/web/app/sobre/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/status",
+   "arquivo": "apps/web/app/status/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/tecnologia",
+   "arquivo": "apps/web/app/tecnologia/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/temas",
+   "arquivo": "apps/web/app/temas/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/termos",
+   "arquivo": "apps/web/app/termos/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios/cidades/[slug]",
+   "arquivo": "apps/web/app/terra-e-territorios/cidades/[slug]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios/cidades",
+   "arquivo": "apps/web/app/terra-e-territorios/cidades/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios/nossas-serras",
+   "arquivo": "apps/web/app/terra-e-territorios/nossas-serras/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios/nossos-rios",
+   "arquivo": "apps/web/app/terra-e-territorios/nossos-rios/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios",
+   "arquivo": "apps/web/app/terra-e-territorios/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/terra-e-territorios/vales",
+   "arquivo": "apps/web/app/terra-e-territorios/vales/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "biblioteca-teses-atingidos.json"
+   ],
+   "registros": 424,
+   "classe": "tem-dado"
+  },
+  {
+   "rota": "/transparencia-internacional",
+   "arquivo": "apps/web/app/transparencia-internacional/page.tsx",
+   "dinamica": false,
+   "fontes": [
+    "setores-estrategicos/catalogo-top10-eua-empresas-e-fundos.json"
+   ],
+   "registros": 7,
+   "classe": "so-descritivo"
+  },
+  {
+   "rota": "/universidades/[sigla]",
+   "arquivo": "apps/web/app/universidades/[sigla]/page.tsx",
+   "dinamica": true,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  },
+  {
+   "rota": "/universidades",
+   "arquivo": "apps/web/app/universidades/page.tsx",
+   "dinamica": false,
+   "fontes": [],
+   "registros": 0,
+   "classe": "sem-dado"
+  }
+ ]
+}

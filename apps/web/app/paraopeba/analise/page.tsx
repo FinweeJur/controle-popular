@@ -8,10 +8,12 @@ import {
   obterCasamentosEstudoNoticia,
 } from "@/lib/paraopeba/estudo-e-noticia";
 import {
+  fontesQueFalamNoModo,
   obterEstudoAusenteDoAcervo,
   resumoIntegrado,
   sinteseIntegrada,
   temasSemEixo,
+  type ModoCruzamento,
 } from "@/lib/paraopeba/sintese-integrada";
 import { bibliotecaAti } from "@/lib/paraopeba/biblioteca";
 import {
@@ -20,6 +22,9 @@ import {
 } from "@/lib/paraopeba/temas-ati-utils";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import PainelAnalise from "./PainelAnalise";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { SecaoAuditorias } from "@/app/components/SecaoAuditorias";
+import { MapaSubfrentesParaopeba } from "@/app/components/MapaSubfrentesParaopeba";
 
 /**
  * `/paraopeba/analise` — a análise integrada: os 16 eixos da síntese da
@@ -43,7 +48,31 @@ import PainelAnalise from "./PainelAnalise";
  * medida contra os três acervos reais a cada build.
  */
 
-export const dynamic = "force-static";
+/**
+ * A régua ativa vive na URL (`?cruzamento=tema|termo`) para o recorte ser
+ * compartilhável e o link voltar ao mesmo estado. Por isso a página NÃO usa
+ * `dynamic = "force-static"`: nesse modo o Next entrega `searchParams` vazio.
+ */
+interface Props {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+const MODOS: Record<ModoCruzamento, { rotulo: string; resumo: string }> = {
+  tema: {
+    rotulo: "Tema controlado",
+    resumo:
+      "o documento só conta se carrega o mesmo TemaAjri do eixo — é a régua estrita do resto do portal.",
+  },
+  termo: {
+    rotulo: "Menção relacionada",
+    resumo:
+      "o documento conta se título, resumo, temas ou tags contêm um radical do eixo — é leitura lexical, não tema controlado.",
+  },
+};
+
+function hrefCruzamento(modo: ModoCruzamento): string {
+  return `/paraopeba/analise?cruzamento=${modo}`;
+}
 
 export const metadata: Metadata = metadataEditavel("/paraopeba/analise", {
   title: "Análise integrada — Paraopeba | Controle Popular",
@@ -51,7 +80,10 @@ export const metadata: Metadata = metadataEditavel("/paraopeba/analise", {
     "Os 16 eixos da síntese da auditoria AECOM cruzados com o que a perícia judicial da UFMG mediu e o que as Assessorias Técnicas Independentes publicaram sobre o mesmo assunto — com o que falta em cada eixo e o que nenhuma das três fontes ainda respondeu.",
 });
 
-export default async function AnaliseIntegradaPage() {
+export default async function AnaliseIntegradaPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const modo: ModoCruzamento = params.cruzamento === "tema" ? "tema" : "termo";
+  const modoAtivo = MODOS[modo];
   const eixos = await sinteseIntegrada();
   const resumo = resumoIntegrado(eixos);
   const orfaos = await temasSemEixo();
@@ -67,9 +99,17 @@ export default async function AnaliseIntegradaPage() {
     (c) => c.forca !== "nula" && !idsComVoz.has(c.noticia.id)
   );
 
+  const contagem = (e: (typeof eixos)[number]) =>
+    fontesQueFalamNoModo(e.cobertura, modo);
   const ordenadosParaGrafico = [...eixos].sort(
-    (a, b) => a.cobertura.fontesQueFalam - b.cobertura.fontesQueFalam || a.titulo.localeCompare(b.titulo, "pt")
+    (a, b) => contagem(a) - contagem(b) || a.titulo.localeCompare(b.titulo, "pt")
   );
+  const comTresFontesAtivo = eixos.filter((e) => contagem(e) === 3).length;
+  const soAuditoriaAtivo = eixos.filter((e) => contagem(e) === 1).length;
+  const comTresFontesOutro =
+    modo === "tema" ? resumo.comTresFontesLexical : resumo.comTresFontes;
+  const soAuditoriaOutro =
+    modo === "tema" ? resumo.soAuditoriaLexical : resumo.soAuditoria;
 
   const COR_FONTE: Record<number, string> = {
     1: "var(--color-ord-1)",
@@ -96,10 +136,16 @@ export default async function AnaliseIntegradaPage() {
         Esta página cruza cada um deles com o que a{" "}
         <strong className="text-text">perícia judicial da UFMG</strong> mediu e com o que a{" "}
         <strong className="text-text">biblioteca das Assessorias Técnicas Independentes</strong>{" "}
-        publicou sobre o mesmo assunto — por tema controlado, nunca por palavra parecida. O que
-        importa mais aqui não é onde as três concordam: é{" "}
+        publicou sobre o mesmo assunto. São duas réguas separadas:{" "}
+        <strong className="text-text">tema controlado</strong> (a estrita) e{" "}
+        <strong className="text-text">menção por termo relacionado</strong> (leitura lexical
+        aproximada). O que importa mais aqui não é onde as três concordam: é{" "}
         <strong className="text-text">onde só uma delas fala</strong>.
       </p>
+
+      <ResumoRealidadeBox rota="/paraopeba/analise" className="mt-6" />
+
+      <SecaoAuditorias contexto="analise" />
 
       {/* ═══ DECLARAÇÃO — o que este cruzamento é e não é ═══ */}
       <section
@@ -130,13 +176,45 @@ export default async function AnaliseIntegradaPage() {
             afirmar que a perícia e as ATIs não tratam do assunto.
           </li>
           <li>
-            <strong className="text-text">O cruzamento é por TemaAjri, nunca por palavra em
-            comum.</strong> Um documento só entra num eixo quando carrega o mesmo tema controlado que
-            o eixo — a mesma régua que <code className="rounded bg-surface px-1 py-0.5 text-[.85em]">temas-ati.ts</code> e{" "}
+            <strong className="text-text">A régua estrita é por TemaAjri, nunca por palavra em
+            comum.</strong> Um documento entra no eixo controlado só quando carrega o mesmo tema
+            que o eixo — a mesma régua que <code className="rounded bg-surface px-1 py-0.5 text-[.85em]">temas-ati.ts</code> e{" "}
             <code className="rounded bg-surface px-1 py-0.5 text-[.85em]">temas-acervo.ts</code> já
-            aplicam ao resto do portal.
+            aplicam ao resto do portal. A camada lexical aparece ao lado, separada e rotulada.
           </li>
         </ul>
+        <p className="mt-4 border-t border-border pt-3 text-[.92em] leading-relaxed text-text-soft">
+          <strong className="text-text">Duas réguas, nunca uma só.</strong> Tema controlado é a
+          régua estrita; menção relacionada procura radicais no título/resumo/temas. A segunda não
+          prova que a fonte trata do tema — só evita dizer &quot;ninguém falou&quot; quando o
+          vocabulário não bateu.
+        </p>
+      </section>
+
+      {/* ═══ A RÉGUA ATIVA — fica na URL, não em estado de cliente ═══ */}
+      <section aria-labelledby="regua-analise" className="mt-6">
+        <h2 id="regua-analise" className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+          Régua do cruzamento
+        </h2>
+        <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Régua do cruzamento">
+          {(["tema", "termo"] as const).map((opcao) => (
+            <NextLink
+              key={opcao}
+              href={hrefCruzamento(opcao)}
+              aria-current={modo === opcao ? "page" : undefined}
+              className={`rounded-md border px-3 py-2 text-[.88em] font-medium ${
+                modo === opcao
+                  ? "border-primary bg-surface-2 text-text"
+                  : "border-border bg-surface text-text-soft hover:border-primary hover:text-text"
+              }`}
+            >
+              {MODOS[opcao].rotulo}
+            </NextLink>
+          ))}
+        </div>
+        <p className="mt-2 max-w-2xl text-[.85em] leading-relaxed text-text-soft">
+          <strong className="text-text">{modoAtivo.rotulo}:</strong> {modoAtivo.resumo}
+        </p>
       </section>
 
       {/* ═══ OS NÚMEROS DE TOPO ═══ */}
@@ -158,7 +236,11 @@ export default async function AnaliseIntegradaPage() {
               Cobertos pelas três fontes
             </p>
             <p className="mt-1 font-display text-2xl font-bold text-text">
-              {formatNumberBR(resumo.comTresFontes)}
+              {formatNumberBR(comTresFontesAtivo)}
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              régua: {modoAtivo.rotulo.toLowerCase()} · {formatNumberBR(comTresFontesOutro)} na
+              outra régua
             </p>
           </div>
           <div className="rounded-xl border border-border bg-surface px-4 py-4">
@@ -166,12 +248,18 @@ export default async function AnaliseIntegradaPage() {
               Só a auditoria fala — é pauta
             </p>
             <p className="mt-1 font-display text-2xl font-bold text-text">
-              {formatNumberBR(resumo.soAuditoria)}
+              {formatNumberBR(soAuditoriaAtivo)}
             </p>
             <p className="mt-1 text-[.86em] text-text-soft">
-              {formatNumberBR(resumo.soAuditoriaComPonteVazia)} com ponte mas sem uso ·{" "}
-              {formatNumberBR(resumo.soAuditoriaSemPonte)} sem ponte
+              régua: {modoAtivo.rotulo.toLowerCase()} · {formatNumberBR(soAuditoriaOutro)} na outra
+              régua
             </p>
+            {modo === "tema" && (
+              <p className="mt-1 text-[.86em] text-text-soft">
+                {formatNumberBR(resumo.soAuditoriaComPonteVazia)} com ponte mas sem uso ·{" "}
+                {formatNumberBR(resumo.soAuditoriaSemPonte)} sem ponte
+              </p>
+            )}
           </div>
           <div className="rounded-xl border border-border bg-surface px-4 py-4">
             <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
@@ -191,8 +279,9 @@ export default async function AnaliseIntegradaPage() {
           Cobertura por eixo, menos fontes primeiro
         </h2>
         <p className="mt-2 max-w-2xl text-[.92em] leading-relaxed text-text-soft">
-          A auditoria sempre conta — é ela que define os 16 eixos. A barra mostra quantas das outras
-          duas fontes (perícia, ATIs) também falam do mesmo eixo, por tema controlado.
+          A barra usa a régua ativa: <strong className="text-text">{modoAtivo.rotulo}</strong> —{" "}
+          {modoAtivo.resumo} A auditoria sempre conta; a barra mostra quantas das outras duas fontes
+          (perícia, ATIs) também entram pela régua escolhida.
         </p>
 
         <figure className="mt-5">
@@ -202,37 +291,50 @@ export default async function AnaliseIntegradaPage() {
             {ordenadosParaGrafico
               .map(
                 (e) =>
-                  `${e.titulo}: ${e.cobertura.fontesQueFalam} de 3 fontes${
-                    e.cobertura.temTemaAjri ? "" : " (sem tema equivalente na auditoria)"
+                  `${e.titulo}: ${fontesQueFalamNoModo(e.cobertura, modo)} de 3 fontes pela régua ${modoAtivo.rotulo}${
+                    modo === "tema" && !e.cobertura.temTemaAjri
+                      ? " (sem tema equivalente na auditoria)"
+                      : ""
                   }.`
               )
               .join(" ")}
           </div>
 
           <div aria-hidden className="space-y-2">
-            {ordenadosParaGrafico.map((e) => (
-              <div key={e.titulo} className="flex items-center gap-3">
-                <span className="w-56 shrink-0 truncate text-right text-[.82em] text-text-soft" title={e.titulo}>
-                  {e.titulo}
-                </span>
-                <div className="cp-ord-track h-3.5 flex-1 overflow-hidden">
-                  <div
-                    className="h-full rounded-r-[3px]"
-                    style={{
-                      width: `${(e.cobertura.fontesQueFalam / 3) * 100}%`,
-                      background: COR_FONTE[e.cobertura.fontesQueFalam],
-                    }}
-                    title={`${e.titulo}: ${e.cobertura.fontesQueFalam}/3 fontes`}
-                  />
+            {ordenadosParaGrafico.map((e) => {
+              const fontes = fontesQueFalamNoModo(e.cobertura, modo);
+              return (
+                <div key={e.titulo} className="flex items-center gap-3">
+                  <span className="w-56 shrink-0 truncate text-right text-[.82em] text-text-soft" title={e.titulo}>
+                    {e.titulo}
+                  </span>
+                  <div className="cp-ord-track relative h-6 flex-1 overflow-hidden">
+                    <div
+                      className="absolute inset-y-0 left-0 rounded-r-[3px]"
+                      style={{
+                        width: `${(fontes / 3) * 100}%`,
+                        background: COR_FONTE[fontes],
+                      }}
+                      title={`${e.titulo}: ${fontes}/3 fontes (${modoAtivo.rotulo})`}
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="rounded bg-[var(--cp-surface)] px-1.5 text-xs font-semibold leading-5 text-text">
+                        {fontes}
+                      </span>
+                    </span>
+                  </div>
+                  <span className="w-10 shrink-0 text-[.82em] text-text-soft">
+                    {fontes}/3
+                  </span>
                 </div>
-                <span className="w-10 shrink-0 text-[.82em] text-text-soft">
-                  {e.cobertura.fontesQueFalam}/3
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <figcaption className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[.85em] text-text-soft">
+            <span className="w-full">
+              Régua ativa: <strong className="text-text">{modoAtivo.rotulo}</strong>.
+            </span>
             <span className="flex items-center gap-1.5">
               <span
                 aria-hidden
@@ -259,6 +361,59 @@ export default async function AnaliseIntegradaPage() {
             </span>
           </figcaption>
         </figure>
+
+        {/* Tabela descritiva: a barra mostra a proporção; a tabela diz o que
+            cada fonte efetivamente tem. As duas leem o mesmo conjunto. */}
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full min-w-[620px] border-collapse text-[.9em]">
+            <caption className="sr-only">
+              Cobertura por eixo: quantas fontes falam pela régua estrita e pela menção lexical, e
+              quantos documentos cada fonte tem na régua estrita.
+            </caption>
+            <thead>
+              <tr className="border-b border-border text-left text-text">
+                <th className="py-1.5 pr-3 font-medium">Eixo</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Fontes (tema)</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Menção (termo)</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Documentos da perícia</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Documentos das ATIs</th>
+                <th className="py-1.5 pr-3 text-right font-medium">Vozes ATI</th>
+                <th className="py-1.5 font-medium">Tema na auditoria</th>
+              </tr>
+            </thead>
+            <tbody className="text-text-soft">
+              {ordenadosParaGrafico.map((e) => (
+                <tr key={e.titulo} className="border-b border-border/60">
+                  <td className="py-1.5 pr-3 font-medium text-text">{e.titulo}</td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {e.cobertura.fontesQueFalam}/3
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {e.cobertura.lexical.fontesQueFalam}/3
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.pericia.documentos.length)}
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.atis.documentos.length)}
+                  </td>
+                  <td className="py-1.5 pr-3 text-right tabular-nums">
+                    {formatNumberBR(e.vozAti.length)}
+                  </td>
+                  <td className="py-1.5">
+                    {e.cobertura.temTemaAjri ? "sim" : "não"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 max-w-2xl text-[.82em] leading-relaxed text-text-soft">
+          <strong className="text-text">Menção</strong> é leitura lexical: procura radicais de
+          termos relacionados no título, resumo e temas do acervo inteiro. Não é tema controlado e
+          não prova que a fonte trata do assunto — só evita dizer &quot;ninguém falou&quot; quando o
+          vocabulário não bateu.
+        </p>
       </section>
 
       {/* ═══ TEMAS SEM EIXO — o espelho de "quais faltam" ═══ */}
@@ -356,10 +511,11 @@ export default async function AnaliseIntegradaPage() {
         <p className="mt-2 max-w-2xl text-[.92em] leading-relaxed text-text-soft">
           Abra cada eixo para ver as quatro vozes separadas: o que a auditoria concluiu, o que a
           perícia mediu, o que as ATIs publicaram e — quando existe — o que a própria ATI escreveu
-          sobre um estudo específico.
+          sobre um estudo específico. A contagem de fontes segue a régua escolhida acima; ao lado
+          dela aparecem sempre os dois números, tema e menção.
         </p>
         <div className="mt-5">
-          <PainelAnalise eixos={eixos} atiLabel={ATI_BIBLIOTECA_LABEL} />
+          <PainelAnalise eixos={eixos} atiLabel={ATI_BIBLIOTECA_LABEL} modoCruzamento={modo} />
         </div>
       </section>
 
@@ -450,6 +606,8 @@ export default async function AnaliseIntegradaPage() {
           </li>
         </ul>
       </section>
+
+      <MapaSubfrentesParaopeba atual="/paraopeba/analise" />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />

@@ -542,5 +542,13 @@
   "indice_wiki",
   "relacionados",
   "fonte"
+ ],
+ "/casos": [
+  "grafico",
+  "fonte"
+ ],
+ "/direitos": [
+  "grafico",
+  "fonte"
  ]
 }

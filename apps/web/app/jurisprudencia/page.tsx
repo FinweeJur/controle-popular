@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import {
   Atalhos,
@@ -19,6 +20,9 @@ import {
   TabelaCasos,
 } from "./partes";
 import type { TipoGrafico } from "./graficos";
+import { CatalogoIndeterminados } from "./Catalogo";
+import { ResumoRealidadeBox } from "../components/ResumoRealidade";
+import { TrilhaFrentes } from "../components/TrilhaFrentes";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -78,6 +82,10 @@ export default async function Jurisprudencia({
 
   return (
     <div className="w-full space-y-10 px-4 py-10">
+      <div className="mx-auto max-w-5xl">
+        <CaminhoSistema rota="/jurisprudencia" />
+      </div>
+
       <header className="mx-auto max-w-5xl space-y-3">
         <h1 className="font-display text-3xl font-bold">Jurisprudência dos desastres</h1>
         <p className="max-w-3xl text-sm opacity-80">
@@ -91,7 +99,7 @@ export default async function Jurisprudencia({
           <Link className="underline" href="/jurisprudencia/penal">
             página própria
           </Link>
-          ; aqui só aparecem os processos penais que citam o desastre.
+          ; nesta página não aparece nenhum processo penal.
         </p>
         <p className="text-xs opacity-70">
           Brumadinho — coleta: {resumo.coleta} · publicação: {resumo.publicacao} · fonte:{" "}
@@ -100,12 +108,16 @@ export default async function Jurisprudencia({
       </header>
 
       <div className="mx-auto max-w-5xl space-y-10">
+        <ResumoRealidadeBox rota="/jurisprudencia" />
+        <TrilhaFrentes atual="/jurisprudencia" />
         <Cartoes />
         <FaixaTemas filtros={filtros} />
         <Atalhos tribunal={filtros.tribunal ?? ""} frente={filtros.frente ?? ""} />
 
         <SeletorGrafico filtros={filtros} tipo={tipoGrafico} />
         <PainelRecorte casos={visiveis} tipo={tipoGrafico} />
+
+        <CatalogoIndeterminados />
 
         <section className="space-y-4" id="lista">
           <h2 className="font-display text-xl font-semibold">Lista</h2>

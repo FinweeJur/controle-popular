@@ -16,7 +16,10 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { TagChip } from "@/app/components/TagChip";
+import ScrollStar from "@/app/components/ScrollStar";
+import "@/app/components/LinhaDoTempo.css";
 import { ROTULO_TIPO, TIPOS_ORDEM } from "@/lib/memoria/rotulos";
+import { anoDoPeriodo } from "@/lib/memoria/periodo";
 import type { TipoLuta } from "@/lib/memoria/tipos";
 
 export interface FonteVitrine {
@@ -49,7 +52,7 @@ export default function VitrineLutas({ verbetes }: { verbetes: VerbeteVitrine[] 
 
   const filtrados = useMemo(() => {
     const alvo = normalizar(busca);
-    return verbetes.filter((v) => {
+    const lista = verbetes.filter((v) => {
       if (tipos.size > 0 && !v.tipo.some((t) => tipos.has(t))) return false;
       if (alvo) {
         const texto = normalizar(`${v.titulo} ${v.resumo} ${v.lugar ?? ""} ${v.ambito}`);
@@ -57,6 +60,9 @@ export default function VitrineLutas({ verbetes }: { verbetes: VerbeteVitrine[] 
       }
       return true;
     });
+    // ORDEM CRONOLÓGICA (dono, 08/11/2026): a vitrine chegava agrupada por
+    // camada (país, região, UF) e o leitor perdia a sequência dos fatos.
+    return [...lista].sort((a, b) => anoDoPeriodo(a.periodo) - anoDoPeriodo(b.periodo));
   }, [verbetes, busca, tipos]);
 
   const alternarTipo = (t: TipoLuta) => {
@@ -108,53 +114,58 @@ export default function VitrineLutas({ verbetes }: { verbetes: VerbeteVitrine[] 
           Nenhuma luta corresponde a “{busca}”.
         </p>
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {filtrados.map((v, i) => (
-            <li
-              key={`${v.titulo}-${i}`}
-              className="flex flex-col rounded-2xl border border-border bg-surface p-4 shadow-sm"
-            >
-              <span className="text-[.75em] font-semibold uppercase tracking-wide text-primary">
-                {v.ambito}
-                {v.lugar ? ` · ${v.lugar}` : ""}
-              </span>
-              <h3 className="mt-1 font-display text-[1.05em] font-semibold text-text">
-                {v.titulo}
-                {v.periodo ? (
-                  <span className="ml-2 text-[.75em] font-normal text-muted">{v.periodo}</span>
-                ) : null}
-              </h3>
-              <p className="mt-1 flex-1 text-[.92em] text-text-soft">{v.resumo}</p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {v.tipo.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[.7em] text-text-soft"
-                  >
-                    {ROTULO_TIPO[t]}
+        // LINHA DO TEMPO (dono, 08/11/2026): a vitrine vira timeline vertical
+        // com a estrela que desce no scroll (`ScrollStar`), a mesma régua de
+        // `/memoria` e `/historico`. O período vai no marco à esquerda; no
+        // celular a coluna vira uma só (regra 5.14).
+        <div className="linha-do-tempo">
+          <ol className="linha-do-tempo__lista">
+            {filtrados.map((v, i) => (
+              <li key={`${v.titulo}-${i}`} className="linha-do-tempo__item">
+                <span className="linha-do-tempo__marco">
+                  {v.periodo || "sem data"}
+                </span>
+                <div className="linha-do-tempo__conteudo">
+                  <span className="text-[.75em] font-semibold uppercase tracking-wide text-primary">
+                    {v.ambito}
+                    {v.lugar ? ` · ${v.lugar}` : ""}
                   </span>
-                ))}
-              </div>
-              {v.fonte.length > 0 ? (
-                <p className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/60 pt-2 text-[12px]">
-                  <span className="font-semibold text-text">Fonte:</span>
-                  {v.fonte.map((f) => (
-                    <a
-                      key={f.url}
-                      href={f.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={`${f.titulo} — ${f.orgao}, ${f.ano}`}
-                      className="rounded-md border border-border px-2 py-0.5 font-semibold text-primary hover:border-primary hover:bg-primary/5"
-                    >
-                      {f.orgao} ({f.ano})
-                    </a>
-                  ))}
-                </p>
-              ) : null}
-            </li>
-          ))}
-        </ul>
+                  <h3 className="linha-do-tempo__titulo mt-1">{v.titulo}</h3>
+                  <p className="linha-do-tempo__texto">{v.resumo}</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {v.tipo.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[0.75rem] text-text-soft"
+                      >
+                        {ROTULO_TIPO[t]}
+                      </span>
+                    ))}
+                  </div>
+                  {v.fonte.length > 0 ? (
+                    <p className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/60 pt-2 text-[12px]">
+                      <span className="font-semibold text-text">Fonte:</span>
+                      {v.fonte.map((f) => (
+                        <a
+                          key={f.url}
+                          href={f.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`${f.titulo} — ${f.orgao}, ${f.ano}`}
+                          className="rounded-md border border-border px-2 py-0.5 font-semibold text-primary hover:border-primary hover:bg-primary/5"
+                        >
+                          {f.orgao} ({f.ano})
+                        </a>
+                      ))}
+                    </p>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ol>
+          {/* A estrela percorre o trilho da borda esquerda de `.linha-do-tempo`. */}
+          <ScrollStar />
+        </div>
       )}
     </div>
   );

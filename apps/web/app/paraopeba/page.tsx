@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 // Data do dado publicada no hub: o carimbo `gerado_em` de `biblioteca-ati.json`,
 // exposto por `coberturaBiblioteca()` — único acervo do hub com carimbo no arquivo.
@@ -545,6 +546,7 @@ function SecaoPaginasIrmas() {
     { href: "/paraopeba/quem-atua", rotulo: "Quem atua" },
     { href: "/paraopeba/linha-do-tempo", rotulo: "Linha do tempo" },
     { href: "/paraopeba/clipping", rotulo: "Clipping" },
+    { href: "/paraopeba/mab", rotulo: "MAB — notícias e notas" },
     { href: "/paraopeba/noticias?fonte=bacia", rotulo: "Notícias — bacia" },
     { href: "/paraopeba/noticias?fonte=vale", rotulo: "Notícias — Vale" },
     { href: "/paraopeba/documentos", rotulo: "Documentos do processo" },
@@ -552,6 +554,8 @@ function SecaoPaginasIrmas() {
     { href: "/paraopeba/auditoria", rotulo: "Auditoria independente" },
     { href: "/paraopeba/pericia", rotulo: "Perícia da UFMG" },
     { href: "/paraopeba/analise", rotulo: "Análise integrada" },
+    { href: "/paraopeba/panorama", rotulo: "Panorama de Brumadinho" },
+    { href: "/eixos/casos", rotulo: "Os três casos" },
     { href: "/paraopeba/vale", rotulo: "Ações da Vale" },
     { href: "/paraopeba/vale/documentos", rotulo: "Documentos da Vale na CVM" },
     { href: "/paraopeba/correlacao", rotulo: "Preços × notícias" },
@@ -600,6 +604,8 @@ export default async function ParaopebaHome() {
   // no hub desta frente.
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+      <CaminhoSistema rota="/paraopeba" />
+
       <HeaderFrenteBrasilComS
         etiqueta={ZONA.etiqueta}
         titulo={ZONA.titulo}

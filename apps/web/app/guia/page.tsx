@@ -6,6 +6,7 @@ import { obterTodasUnidadesJudiciarias } from "@/lib/judiciario/contatos";
 import { montarGuia } from "@/lib/guia/contatos";
 import TermoGlossario from "@/app/components/TermoGlossario";
 import GuiaClient from "./GuiaClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * Página `/guia` — guia de contatos públicos.
@@ -52,6 +53,8 @@ export default function GuiaPage() {
         <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Guia de contatos públicos
         </h1>
+
+        <ResumoRealidadeBox rota="/guia" />
         <p className="text-base leading-relaxed text-muted sm:text-lg">
           Telefone, e-mail e canal de ouvidoria de prefeituras, câmaras, órgãos
           federais e unidades da Justiça num só lugar. Busque, filtre e baixe em

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { MARCOS_PARAOPEBA } from "@/lib/paraopeba";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -29,12 +30,7 @@ export default function LinhaDoTempoPage() {
   // sumia nesta tela.
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
-      <nav className="mb-4 text-[.82em] text-text-soft">
-        <NextLink href="/paraopeba" className="hover:text-primary">
-          Paraopeba
-        </NextLink>{" "}
-        · <span className="text-text">Linha do tempo</span>
-      </nav>
+      <CaminhoSistema rota="/paraopeba/linha-do-tempo" />
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Do rompimento à confirmação de agosto
@@ -51,6 +47,30 @@ export default function LinhaDoTempoPage() {
       </p>
 
       <LinhaDoTempo />
+
+      {/* O caso não termina no Brasil: a ação contra a BHP corre na Inglaterra e
+          a discussão sobre a certificadora, na Alemanha. Fica aqui, logo depois
+          dos marcos nacionais, com a fonte de cada frente na página própria. */}
+      <section
+        aria-labelledby="fora-do-brasil"
+        className="mt-10 rounded-lg border border-border bg-surface p-5"
+      >
+        <h2 id="fora-do-brasil" className="font-display text-lg font-semibold">
+          Os mesmos casos fora do Brasil
+        </h2>
+        <p className="mt-1 text-sm text-text-soft">
+          Mariana e Brumadinho também são discutidos fora do país: a ação contra a BHP na
+          Inglaterra (julgamento em Londres), a discussão sobre a certificadora TÜV SÜD na
+          Alemanha e os processos na Holanda. Cada frente está na página de litígios
+          transnacionais, com número de processo e fonte oficial.
+        </p>
+        <NextLink
+          href="/europa/litigios-transnacionais"
+          className="mt-3 inline-block rounded-md border border-border px-3 py-1.5 text-sm font-medium text-text-soft transition-colors hover:border-current hover:text-text"
+        >
+          Ver os litígios transnacionais →
+        </NextLink>
+      </section>
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />

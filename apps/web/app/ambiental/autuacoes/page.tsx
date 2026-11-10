@@ -6,6 +6,7 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { resumoRecentes } from "@/lib/ambiental/autos-recentes";
 import BuscaAutos from "./BuscaAutos";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * /ambiental/autuacoes — autos de infração ambiental de MG, janela 2024–2026.
@@ -58,6 +59,8 @@ export default function AutosSemadPage() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Autos de infração ambiental em Minas Gerais
         </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/autuacoes" />
         <p className="max-w-3xl text-base text-text-soft">
           Os autos lavrados pela fiscalização estadual entre <strong>2024 e 2026</strong>:
           busque por município, ano, situação do processo ou faixa de valor e abra os

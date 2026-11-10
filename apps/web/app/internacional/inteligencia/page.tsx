@@ -28,6 +28,7 @@ import SecaoPaginasRelacionadas, {
   type ItemPaginaRelacionada,
 } from "@/app/components/SecaoPaginasRelacionadas";
 import { Shield, FileText, Globe2, Eye, LockOpen, MapPin } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Central de Inteligência & Documentos Desclassificados | Controle Popular",
@@ -131,6 +132,8 @@ export default function PaginaInteligenciaG20() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Central de Inteligência & Documentos Desclassificados
         </h1>
+
+        <ResumoRealidadeBox rota="/internacional/inteligencia" />
         <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
           Consulte relatórios de inteligência, avaliações cibernéticas, telegramas diplomáticos, diretrizes de segurança
           e dossiês desclassificados dos Estados Unidos (CIA, FBI, NSA) e potências da aliança Twelve Eyes. Acesse fontes primárias,

@@ -24,6 +24,7 @@ import {
   listarTodasAssembleias,
   obterMetricasNacionaisAssembleias,
 } from "@/lib/assembleias/dados";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Assembleias Legislativas dos Estados | Controle Popular",
@@ -59,6 +60,8 @@ export default function AssembleiasPage() {
               <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground">
                 Assembleias Legislativas do Brasil
               </h1>
+
+        <ResumoRealidadeBox rota="/assembleias" />
 
               {/* Piso `text-sm` da regra § 5.10: no celular o texto do resumo
                   não pode cair para 12px (`text-xs`), que é barreira de leitura

@@ -87,18 +87,55 @@ Não é obrigatório para a entrega: a classificação é a prioridade.
 
 ## 6. A rubrica (não invente outra)
 
+A rubrica viva está em `SISTEMA_PENAL`, dentro de `scripts/classificar_polo.py`.
+Se o arquivo da sua cópia estiver velho (`git pull` antes), a versão atual é a
+**v2**, que obriga três passos — e ela existe porque a v1 errava a polaridade:
+
+> Medição de 02/11/2026: a v1 lia "provido" e respondia `mp` sem olhar **quem
+> recorreu**. Casos reais: HC com "ordem concedida" saiu `mp`; apelação do MP
+> desprovida saiu `mp`; mandado de segurança concedido à defesa saiu `mp`.
+> Cerca de 5% das linhas criminais ficaram com o vencedor invertido.
+
 ```
-polo: 'mp' (a acusacao venceu: condenacao, recurso do MP provido, denuncia
-recebida); 'reu' (a defesa venceu: absolvicao, trancamento, recurso da defesa
-provido); 'parcial' (resultado misto); 'indeterminado' (o texto nao permite).
+PASSO 1 - QUEM PEDIU:
+  HC, mandado de seguranca criminal, revisao criminal, agravo em execucao:
+    em regra quem pede e a DEFESA (paciente, impetrante, reu).
+  apelacao, recurso especial, agravo: veja quem e o recorrente; se o texto
+    nao disser, responda 'indeterminado'.
+
+PASSO 2 - O QUE ACONTECEU com o pedido de quem pediu.
+
+PASSO 3 - QUEM VENCEU:
+  defesa pediu e foi acolhido (ordem concedida, seguranca concedida, revisao
+    procedente, absolvicao, trancamento, pena reduzida) -> 'reu'
+  defesa pediu e foi rejeitado (ordem denegada, HC nao conhecido, revisao
+    improcedente, recurso da defesa desprovido) -> 'mp'
+  MP pediu e foi acolhido (recurso do MP provido, denuncia recebida) -> 'mp'
+  MP pediu e foi rejeitado (recurso do MP desprovido, absolvicao mantida) -> 'reu'
+  acolhimento so parcial -> 'parcial'
+  texto insuficiente ou materia nao criminal -> 'indeterminado' com motivo
+
+ATENCAO: 'provido' e 'desprovido' NAO dizem quem venceu.
+TRAVA FINAL: tributo, cobranca, execucao fiscal, consumidor ou contrato civil
+  -> 'indeterminado', mesmo com 'provido'/'desprovido' no texto.
+
 resultado: 'provido', 'negado', 'parcialmente provido', 'parcial', 'desprovido'
 ou 'nao consta' -- o que aconteceu com o recurso.
 confianca: alta, media ou baixa.
-motivo: 1 frase curta dizendo o que no texto sustentou a escolha.
+motivo: 1 frase curta dizendo QUEM PEDIU e O QUE ACONTECEU com o pedido.
 ```
 
 Regra de ouro: **na dúvida, `indeterminado` com motivo**. Não invente
 condenação onde a ementa só delimitou competência.
+
+Antes de entregar, rode a auditoria determinística:
+
+```powershell
+& $py -X utf8 scripts\auditar_polo_penal.py
+```
+
+Ela cruza o verbo da decisão com o polo e mostra a taxa de contradição. Na v1
+dava ~5% (`mp x defesa`); na v2 o esperado é abaixo de 2%.
 
 ## 7. Regras que não se negociam
 

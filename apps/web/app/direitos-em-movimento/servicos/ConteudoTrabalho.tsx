@@ -1,5 +1,8 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import ExplicaSigla from "@/app/components/ExplicaSigla";
 import CruzamentosEducativos from "@/app/components/eixos/CruzamentosEducativos";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
+import BarraAnimada from "@/app/components/dados/BarraAnimada";
 import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador";
 
 /**
@@ -20,11 +23,44 @@ import { calcularCruzamentosMunicipais } from "@/lib/cruzamentos/correlacionador
 
 const REFERENCIA = "Referência nacional · Novo CAGED / RAIS";
 
-const INDICADORES = [
-  { rotulo: "Estoque de empregos formais", valor: "46,8 mi", obs: "Carteira assinada ativa (MTE/CAGED)" },
-  { rotulo: "Saldo líquido anual", valor: "+1,48 mi", obs: "Admissões superiores a desligamentos" },
-  { rotulo: "Salário médio de admissão", valor: "R$ 2.140", obs: "Média dos novos postos gerados" },
-  { rotulo: "Contratos públicos monitorados", valor: "R$ 48 bi", obs: "Contratos no PNCP fiscalizados" },
+interface IndicadorFormatavel {
+  rotulo: string;
+  valorNumerico: number;
+  casas?: number;
+  prefixo?: string;
+  sufixo?: string;
+  obs: string;
+}
+
+const INDICADORES: IndicadorFormatavel[] = [
+  {
+    rotulo: "Estoque de empregos formais",
+    valorNumerico: 46.8,
+    casas: 1,
+    sufixo: " mi",
+    obs: "Carteira assinada ativa (MTE/CAGED)",
+  },
+  {
+    rotulo: "Saldo líquido anual",
+    valorNumerico: 1.48,
+    prefixo: "+",
+    casas: 2,
+    sufixo: " mi",
+    obs: "Admissões superiores a desligamentos",
+  },
+  {
+    rotulo: "Salário médio de admissão",
+    valorNumerico: 2140,
+    prefixo: "R$ ",
+    obs: "Média dos novos postos gerados",
+  },
+  {
+    rotulo: "Contratos públicos monitorados",
+    valorNumerico: 48,
+    prefixo: "R$ ",
+    sufixo: " bi",
+    obs: "Contratos no PNCP fiscalizados",
+  },
 ];
 
 const SETORES = [
@@ -58,14 +94,19 @@ export default function ConteudoTrabalho() {
               {item.rotulo}
             </span>
             <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-              {item.valor}
+              <ContadorAnimado valor={item.valorNumerico} casas={item.casas} prefixo={item.prefixo} sufixo={item.sufixo} />
             </span>
             <span className="text-xs text-muted block mt-1">{item.obs}</span>
           </div>
         ))}
       </section>
       <p className="text-xs text-muted">{REFERENCIA}</p>
-
+      <ExplicaSigla
+        sigla="CAGED"
+        extenso="Cadastro Geral de Empregados e Desempregados"
+        explicacao="é o registro de admissões e demissões com carteira assinada — daí o saldo de vagas."
+        dica="CAGED é o registro oficial de contratações e demissões com carteira assinada; o saldo é admissões menos desligamentos."
+      />
       <section aria-label="Cadastro de Empregadores" className="rounded-2xl border border-border bg-surface p-6 shadow-xs">
         <h2 className="font-display text-lg font-bold text-foreground">
           Trabalho escravo contemporâneo: a lista suja em CNPJ
@@ -109,14 +150,10 @@ export default function ConteudoTrabalho() {
                 <span className="font-bold text-foreground">{item.saldo} vagas</span>
               </div>
               <div className="h-3 w-full rounded-full bg-surface-2 overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-500"
-                  style={{ width: `${item.pct}%`, backgroundColor: item.cor }}
-                  role="progressbar"
-                  aria-valuenow={item.pct}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-label={`${item.setor}: ${item.saldo} vagas`}
+                <BarraAnimada
+                  fracao={item.pct / 100}
+                  cor={item.cor}
+                  className="h-full rounded-full"
                 />
               </div>
             </div>

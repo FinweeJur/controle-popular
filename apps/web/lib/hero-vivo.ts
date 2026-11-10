@@ -74,7 +74,13 @@ export const FUNDO_TOKEN = "--cp-bg";
 export interface CondicoesAbertura {
   /** `prefers-reduced-motion: reduce` — reduzir movimento é lei (AGENTS). */
   reducedMotion: boolean;
-  /** `pointer: coarse` (celular/tablet) — sem WebGL, economiza bateria. */
+  /**
+   * `pointer: coarse` (celular/tablet).
+   *
+   * NÃO bloqueia mais o canvas (dono, 08/11/2026): o efeito "não estava
+   * renderizando no tablet/celular" e ele pediu o fundo vivo também no dedo.
+   * O campo fica no contrato porque as telas ainda o medem — só não decide.
+   */
   pointerCoarse: boolean;
   /** Tema alto contraste — sem decoração, só texto com tokens (regra 19/09). */
   temaAltoContraste: boolean;
@@ -82,12 +88,13 @@ export interface CondicoesAbertura {
 
 /**
  * O canvas Vanta só existe para quem pode e quer ver animação:
- * mouse/touch fino, sem redução de movimento, fora do alto contraste.
- * Todo o resto recebe o fundo estático do tema + o nome da página — que
+ * sem redução de movimento e fora do alto contraste. O ponteiro grosso
+ * (celular/tablet) NÃO desliga mais — pedido do dono em 08/11/2026.
+ * Quem não pode recebe o fundo estático do tema + o nome da página — que
  * é HTML do servidor, visível mesmo se o JS falhar.
  */
 export function deveRenderCanvas(c: CondicoesAbertura): boolean {
-  return !c.reducedMotion && !c.pointerCoarse && !c.temaAltoContraste;
+  return !c.reducedMotion && !c.temaAltoContraste;
 }
 
 /** Cores já normalizadas (hex) para alimentar as opções do Vanta. */

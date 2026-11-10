@@ -4,7 +4,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 02/11/2026 16:53 BRT |
+| 09/11/2026 17:16 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -45,12 +45,14 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/bases-clima-risco.json | OK |
 | data/bases-portal.json | OK |
 | data/biblioteca-desastres-unificada.json | OK |
+| data/biblioteca-evidencias-cientificas.json | OK |
 | data/biblioteca-teses-atingidos.json | OK |
 | data/biblioteca-unificada.json | OK |
 | data/cambio-dia.json | OK |
 | data/canais-informacao-lai.json | OK |
 | data/car-mg.json | OK |
 | data/catalogo-bases-dados.json | OK |
+| data/catalogo-frentes.json | OK |
 | data/cavas-calibracao-manifesto.json | OK |
 | data/cavas-estados-mg.json | OK |
 | data/cavas-evidencias-mg.json | OK |
@@ -86,6 +88,10 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/educacao-periodicos.json | OK |
 | data/empresas-documentos.json | OK |
 | data/esg-update.json | OK |
+| data/evidencias-cientificas-brumadinho.json | OK |
+| data/evidencias-cientificas-rio-doce-costeiro.json | OK |
+| data/expansao-fontes-mg.json | OK |
+| data/expansao-mg.json | OK |
 | data/fepam-rs-licencas.json | OK |
 | data/fontes-27-estados.json | OK |
 | data/iat-pr-licencas.json | OK |
@@ -101,6 +107,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/inema-ba-licencas.json | OK |
 | data/instituicoes-todas-esferas.json | OK |
 | data/inteiro-teor.json | OK |
+| data/inventario-subfrentes.json | OK |
 | data/iphan-bens-tombados.json | OK |
 | data/judiciario-contatos-stats.json | OK |
 | data/judiciario-designacoes.json | OK |
@@ -108,9 +115,11 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/judiciario-remuneracoes.json | OK |
 | data/judiciario-unidades-contatos.json | OK |
 | data/juma-acoes-climaticas.json | OK |
+| data/jurisprudencia-buscador-resumo.json | OK |
 | data/jurisprudencia-casos.json | OK |
 | data/jurisprudencia-resumo.json | OK |
 | data/link-correcoes.json | OK |
+| data/mab-publicacoes.json | OK |
 | data/matriz-tramitacao-27-assembleias.json | OK |
 | data/mpf-grandes-casos.json | OK |
 | data/mpmg-coerdoce.json | OK |
@@ -215,6 +224,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/tarifa-social-por-uf.json | OK |
 | data/telefonia-municipios-mg.json | OK |
 | data/top-100-paginas.json | OK |
+| data/trechos-rotas.json | OK |
 | data/vale-sigma-lithium.json | OK |
 | data/vale3-cotacoes.json | OK |
 | data/vales-jequitinhonha.json | OK |
@@ -237,12 +247,19 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 191 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 201 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 09/11/2026 17:16 BRT - 0 criticos; 0 avisos.
+- 08/11/2026 13:26 BRT - 0 criticos; 0 avisos.
+- 07/11/2026 12:58 BRT - 0 criticos; 0 avisos.
+- 06/11/2026 14:00 BRT - 0 criticos; 0 avisos.
+- 05/11/2026 14:44 BRT - 0 criticos; 0 avisos.
+- 04/11/2026 14:38 BRT - 0 criticos; 0 avisos.
+- 03/11/2026 14:26 BRT - 0 criticos; 0 avisos.
 - 02/11/2026 16:53 BRT - 0 criticos; 0 avisos.
 - 01/11/2026 13:30 BRT - 0 criticos; 0 avisos.
 - 31/10/2026 12:32 BRT - 0 criticos; 0 avisos.

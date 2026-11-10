@@ -8,6 +8,7 @@ import {
   type ItemLegislacao,
   type StatusLegal,
 } from "@/lib/europa-litigios/legislacao";
+import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
 
 /**
  * Legislação e precedentes que permitem responsabilizar transnacionais.
@@ -217,6 +218,9 @@ export default function PaginaLegislacao() {
       id="conteudo-principal"
       className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6"
     >
+      <div className="mb-6">
+        <TrilhaFrentes atual="/europa/legislacao-transnacionais" />
+      </div>
       <nav
         aria-label="Navegação estrutural"
         className="mb-6 flex flex-wrap items-center gap-2 text-xs text-text-soft"

@@ -1,0 +1,14 @@
+{
+ "rota": "/eua/empresas",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "eua/ambiental-natureza-eua.compact.json",
+  "eua/contratos-usaspending.compact.json",
+  "eua/empresas-sec.compact.json",
+  "eua/institucional-eua.compact.json",
+  "internacional/eua-geo.compact.json"
+ ],
+ "impressao": "8d731a0259c6ac4a",
+ "markdown": "# O que os dados de Eua · Empresas mostram\n\nA página reúne 73 registros sobre empresas e órgãos públicos dos Estados Unidos, organizados em cinco blocos. [medido — dados da página]\n\nO maior bloco tem 29 registros de entidades: 8 sedes corporativas, 7 fundos de investimento, 6 órgãos reguladores, 6 minas estratégicas e 2 bolsas de valores. [medido — dados da página]\n\nOutro bloco traz 18 registros de empresas que aparecem em formulários da SEC, como 10-K e 8-K. A fonte é o SEC EDGAR: 14 registros vêm de Company Facts, 2 de Submissions e 1 mistura as duas. [medido — dados da página]\n\nHá ainda 10 registros ligados a frentes como Judiciário e litígios (4), cidades-polo (2) e transparência via FOIA (2). Entre os nomes estão Nova York, Washington D.C., o Congresso dos EUA e dois processos contra a Vale na corte SDNY. [medido — dados da página]\n\nUm bloco de 9 registros trata de multas e fiscalização ambiental, barragens, áreas contaminadas e emissões. As fontes incluem EPA, USACE, USGS e Climate TRACE. [medido — dados da página]\n\nO último bloco, com 7 registros, cobre contratos federais, comércio bilateral e assistência externa, com recipientes que vão de fornecedores federais a comunidades tradicionais e indígenas. [medido — dados da página]\n\nO dado mostra quantos registros existem e de onde vêm. Não mostra quanto dinheiro cada empresa movimenta, nem se alguma multa foi aplicada, nem qual o resultado dos processos. [não dá para concluir]"
+}

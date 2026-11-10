@@ -1,10 +1,9 @@
 import React from "react";
+import { BarraAnimadaSvg } from "@/app/components/dados/BarraAnimada";
 
 /**
- * Gráfico de barras em SVG nativo — sem biblioteca de gráfico externa (teto de
- * payload e acessibilidade). O desenho é `aria-hidden`; o texto equivalente
- * vem de `descricaoAcessivel`, que o chamador passa por extenso — cor nunca é
- * o único canal. Parte da regra das seis qualidades do [AGENTS § 8](/AGENTS.md).
+ * Gráfico de barras em SVG nativo — sem biblioteca de gráfico externa.
+ * O desenho é animado via BarraAnimadaSvg com transform scaleX/scaleY.
  */
 export interface ItemGraficoBarras {
   rotulo: string;
@@ -26,155 +25,123 @@ export interface GraficoBarrasSvgProps {
   prefixo?: string;
 }
 
-export default function GraficoBarrasSvg({
-  itens,
-  titulo,
-  subtitulo,
-  descricaoAcessivel,
-  corPadrao = "var(--color-primary, #10b981)",
-  orientacao = "horizontal",
-  altura,
-  largura = 700,
-  unidade = "",
-  prefixo = "",
-}: GraficoBarrasSvgProps) {
-  if (!itens || itens.length === 0) {
-    return (
-      <div className="rounded-xl border border-dashed border-border p-6 text-center text-sm text-text-soft">
-        Nenhum dado para exibir no gráfico de barras.
+interface RenderProps {
+  itens: ItemGraficoBarras[];
+  titulo: string;
+  subtitulo?: string;
+  descricaoAcessivel?: string;
+  corPadrao: string;
+  altura?: number;
+  largura: number;
+  unidade: string;
+  prefixo: string;
+  maxVal: number;
+}
+
+function BarrasHorizontaisSvg(p: RenderProps) {
+  const alturaCalc = p.altura || Math.max(160, p.itens.length * 36 + 40);
+  const margemEsq = 140;
+  const margemDir = 60;
+  const margemTopo = 20;
+  const plotLargura = p.largura - margemEsq - margemDir;
+  const alturaBarra = 18;
+  const espacamento = (alturaCalc - margemTopo - 20) / p.itens.length;
+
+  return (
+    <figure className="w-full">
+      {p.titulo && <h3 className="font-display text-base font-semibold text-text">{p.titulo}</h3>}
+      {p.subtitulo && <p className="mb-3 text-xs text-text-soft">{p.subtitulo}</p>}
+      <div className="overflow-x-auto">
+        <svg
+          viewBox={`0 0 ${p.largura} ${alturaCalc}`}
+          role="img"
+          aria-label={p.descricaoAcessivel || `${p.titulo}. Total de ${p.itens.length} categorias.`}
+          className="h-auto w-full min-w-[320px]"
+        >
+          {p.itens.map((item, i) => {
+            const y = margemTopo + i * espacamento;
+            const w = Math.max(2, (item.valor / p.maxVal) * plotLargura);
+            const cor = item.cor || p.corPadrao;
+            return (
+              <g key={item.rotulo + i}>
+                <text
+                  x={margemEsq - 10}
+                  y={y + alturaBarra / 2 + 4}
+                  textAnchor="end"
+                  fontSize={13}
+                  fill="currentColor"
+                  className="text-text-soft truncate"
+                >
+                  {item.rotulo.length > 20 ? `${item.rotulo.slice(0, 18)}…` : item.rotulo}
+                </text>
+                <BarraAnimadaSvg
+                  x={margemEsq}
+                  y={y}
+                  width={w}
+                  height={alturaBarra}
+                  rx={4}
+                  fill={cor}
+                  className="opacity-85"
+                />
+                <text
+                  x={margemEsq + w + 8}
+                  y={y + alturaBarra / 2 + 4}
+                  textAnchor="start"
+                  fontSize={13}
+                  fontWeight="bold"
+                  fill="currentColor"
+                  className="font-tabular text-text"
+                >
+                  {p.prefixo}{item.valor.toLocaleString("pt-BR")}{p.unidade}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
       </div>
-    );
-  }
+    </figure>
+  );
+}
 
-  const valores = itens.map((i) => i.valor);
-  const maxVal = Math.max(...valores, 1);
-
-  if (orientacao === "horizontal") {
-    const alturaCalculada = altura || Math.max(160, itens.length * 36 + 40);
-    const margemEsq = 140;
-    const margemDir = 60;
-    const margemTopo = 20;
-    const plotLargura = largura - margemEsq - margemDir;
-    const alturaBarra = 18;
-    const espacamento = (alturaCalculada - margemTopo - 20) / itens.length;
-
-    return (
-      <figure className="w-full">
-        {titulo && <h3 className="font-display text-base font-semibold text-text">{titulo}</h3>}
-        {subtitulo && <p className="mb-3 text-xs text-text-soft">{subtitulo}</p>}
-
-        <div className="overflow-x-auto">
-          <svg
-            viewBox={`0 0 ${largura} ${alturaCalculada}`}
-            role="img"
-            aria-label={descricaoAcessivel || `${titulo}. Total de ${itens.length} categorias.`}
-            className="h-auto w-full min-w-[320px]"
-          >
-            {itens.map((item, i) => {
-              const y = margemTopo + i * espacamento;
-              const w = Math.max(2, (item.valor / maxVal) * plotLargura);
-              const cor = item.cor || corPadrao;
-
-              return (
-                <g key={item.rotulo + i}>
-                  <text
-                    x={margemEsq - 10}
-                    y={y + alturaBarra / 2 + 4}
-                    textAnchor="end"
-                    fontSize={13}
-                    fill="currentColor"
-                    className="text-text-soft truncate"
-                  >
-                    {item.rotulo.length > 20 ? `${item.rotulo.slice(0, 18)}…` : item.rotulo}
-                  </text>
-                  <rect
-                    x={margemEsq}
-                    y={y}
-                    width={w}
-                    height={alturaBarra}
-                    rx={4}
-                    fill={cor}
-                    opacity={0.85}
-                  />
-                  <text
-                    x={margemEsq + w + 8}
-                    y={y + alturaBarra / 2 + 4}
-                    textAnchor="start"
-                    fontSize={13}
-                    fontWeight="bold"
-                    fill="currentColor"
-                    className="font-tabular text-text"
-                  >
-                    {prefixo}
-                    {item.valor.toLocaleString("pt-BR")}
-                    {unidade}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-
-        {/* Tabela alternativa para leitores de tela */}
-        <div className="sr-only overflow-x-auto">
-          <table>
-            <caption>{titulo}</caption>
-            <thead>
-              <tr>
-                <th scope="col">Categoria</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {itens.map((i) => (
-                <tr key={i.rotulo}>
-                  <td>{i.rotulo}</td>
-                  <td>
-                    {prefixo}
-                    {i.valor.toLocaleString("pt-BR")}
-                    {unidade}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </figure>
-    );
-  }
-
-  // Orientação vertical
-  const alturaVertical = altura || 240;
+function BarrasVerticaisSvg(p: RenderProps) {
+  const alturaVert = p.altura || 240;
   const margemEsq = 50;
   const margemDir = 20;
   const margemTopo = 25;
   const margemBaixo = 40;
-  const plotLargura = largura - margemEsq - margemDir;
-  const plotAltura = alturaVertical - margemTopo - margemBaixo;
-  const larguraBarra = Math.min(40, (plotLargura / itens.length) * 0.65);
-  const passo = plotLargura / itens.length;
+  const plotLargura = p.largura - margemEsq - margemDir;
+  const plotAltura = alturaVert - margemTopo - margemBaixo;
+  const larguraBarra = Math.min(40, (plotLargura / p.itens.length) * 0.65);
+  const passo = plotLargura / p.itens.length;
 
   return (
     <figure className="w-full">
-      {titulo && <h3 className="font-display text-base font-semibold text-text">{titulo}</h3>}
-      {subtitulo && <p className="mb-3 text-xs text-text-soft">{subtitulo}</p>}
-
+      {p.titulo && <h3 className="font-display text-base font-semibold text-text">{p.titulo}</h3>}
+      {p.subtitulo && <p className="mb-3 text-xs text-text-soft">{p.subtitulo}</p>}
       <div className="overflow-x-auto">
         <svg
-          viewBox={`0 0 ${largura} ${alturaVertical}`}
+          viewBox={`0 0 ${p.largura} ${alturaVert}`}
           role="img"
-          aria-label={descricaoAcessivel || `${titulo}. Total de ${itens.length} itens.`}
+          aria-label={p.descricaoAcessivel || `${p.titulo}. Total de ${p.itens.length} itens.`}
           className="h-auto w-full min-w-[320px]"
         >
-          {itens.map((item, i) => {
-            const h = (item.valor / maxVal) * plotAltura;
+          {p.itens.map((item, i) => {
+            const h = (item.valor / p.maxVal) * plotAltura;
             const x = margemEsq + i * passo + (passo - larguraBarra) / 2;
             const y = margemTopo + plotAltura - h;
-            const cor = item.cor || corPadrao;
-
+            const cor = item.cor || p.corPadrao;
             return (
               <g key={item.rotulo + i}>
-                <rect x={x} y={y} width={larguraBarra} height={h} rx={4} fill={cor} opacity={0.85} />
+                <BarraAnimadaSvg
+                  x={x}
+                  y={y}
+                  width={larguraBarra}
+                  height={h}
+                  rx={4}
+                  fill={cor}
+                  orientacao="vertical"
+                  className="opacity-85"
+                />
                 <text
                   x={x + larguraBarra / 2}
                   y={y - 6}
@@ -184,13 +151,11 @@ export default function GraficoBarrasSvg({
                   fill="currentColor"
                   className="font-tabular text-text"
                 >
-                  {prefixo}
-                  {item.valor.toLocaleString("pt-BR")}
-                  {unidade}
+                  {p.prefixo}{item.valor.toLocaleString("pt-BR")}{p.unidade}
                 </text>
                 <text
                   x={x + larguraBarra / 2}
-                  y={alturaVertical - 15}
+                  y={alturaVert - 15}
                   textAnchor="middle"
                   fontSize={12}
                   fill="currentColor"
@@ -203,31 +168,48 @@ export default function GraficoBarrasSvg({
           })}
         </svg>
       </div>
-
-      <div className="sr-only overflow-x-auto">
-        <table>
-          <caption>{titulo}</caption>
-          <thead>
-            <tr>
-              <th scope="col">Categoria</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {itens.map((i) => (
-              <tr key={i.rotulo}>
-                <td>{i.rotulo}</td>
-                <td>
-                  {prefixo}
-                  {i.valor.toLocaleString("pt-BR")}
-                  {unidade}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </figure>
   );
 }
 
+export default function GraficoBarrasSvg(props: GraficoBarrasSvgProps) {
+  const {
+    itens,
+    titulo,
+    subtitulo,
+    descricaoAcessivel,
+    corPadrao = "var(--color-primary, #10b981)",
+    orientacao = "horizontal",
+    altura,
+    largura = 700,
+    unidade = "",
+    prefixo = "",
+  } = props;
+
+  if (!itens || itens.length === 0) {
+    return (
+      <div className="rounded-xl border border-dashed border-border p-6 text-center text-sm text-text-soft">
+        Nenhum dado para exibir no gráfico de barras.
+      </div>
+    );
+  }
+
+  const maxVal = Math.max(...itens.map((i) => i.valor), 1);
+  const renderProps: RenderProps = {
+    itens,
+    titulo,
+    subtitulo,
+    descricaoAcessivel,
+    corPadrao,
+    altura,
+    largura,
+    unidade,
+    prefixo,
+    maxVal,
+  };
+
+  if (orientacao === "vertical") {
+    return <BarrasVerticaisSvg {...renderProps} />;
+  }
+  return <BarrasHorizontaisSvg {...renderProps} />;
+}

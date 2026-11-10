@@ -125,7 +125,11 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47
               # falso positivo estrutural: parte inteira do valor total de autos de infracao do IBAMA (2026-10-02) — dinheiro, nao CPF
               "54852973564",
               "05042570640", "23010001762", "16201000968", "23010000103",
-              "93015091999", "99059511999", "16201001425", "16153332668"}
+              "93015091999", "99059511999", "16201001425", "16153332668",
+              # falso positivo: numero de processo administrativo do IBAMA
+              # (02022000862/2023-12) na descricao do auto - mod-11 por
+              # coincidencia, protocolo nao CPF (coleta 2026-11-08).
+              "02022000862"}
 
 
 def cpf_valido(digitos: str) -> bool:

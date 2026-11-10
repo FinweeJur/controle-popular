@@ -31,6 +31,15 @@ import {
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PYTHON = process.env.RADAR_PYTHON ?? "py";
 const PYTHON_ARGS = process.env.RADAR_PYTHON ? [] : ["-3"];
+// Os coletores TS chamam modulos de etl/betim, que importam pandas/requests.
+// O `py -3` do sistema nao tem esses pacotes (medido 08/11/2026: SIGBM morria
+// com ModuleNotFoundError: pandas). Quando o venv existe, ele e o Python
+// dos filhos TS; os coletores .py e a varredura CPF seguem no `py -3`, que e
+// o interpretador que a rotina local valida.
+const VENV_PYTHON = path.join(RAIZ, "etl", "betim", ".venv", "Scripts", "python.exe");
+const AMBIENTE_TS = fs.existsSync(VENV_PYTHON)
+  ? { ...process.env, RADAR_PYTHON: VENV_PYTHON }
+  : process.env;
 
 // ── Notificação Telegram ─────────────────────────────────────────────────────
 // Lê TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID de scripts/.env (gitignored).
@@ -188,6 +197,7 @@ function executarPasso(slug: string, seco = false): boolean {
       stdio: "inherit",
       shell: true,
       encoding: "utf-8",
+      env: AMBIENTE_TS,
     });
   } else {
     const caminhoScript = path.join(RAIZ, config.comando);
@@ -289,7 +299,7 @@ function registrarQuarentena(slug: string, sucesso: boolean): void {
  * chamado quando ela passou. Dado que falha na varredura fica na
  * arvore para humanos olharem — nao vai para repositorio publico.
  */
-function publicarDadosColetados(escopo: string): boolean {
+function publicarDadosColetados(escopo: string, slugsDaRodada: string[] = Object.keys(MAPA_SCRIPTS)): boolean {
   // FLORESTA NOVA (15/10/2026): o fluxo antigo (`git add` + `commit --only`
   // + rebase NA ARVORE LOCAL) morreu quando a main local deixou de ser
   // confiavel — varias sessoes dividem o mesmo checkout, a arvore esta
@@ -300,7 +310,7 @@ function publicarDadosColetados(escopo: string): boolean {
   // rodada sabe escrever (caminhoArquivo do registry para os slugs do
   // MAPA), commit e push la. A arvore local nao e tocada por git nenhum.
   const alvos = [...new Set(
-    Object.keys(MAPA_SCRIPTS)
+    slugsDaRodada
       .map((slug) => REGISTRY_FONTES[slug]?.caminhoArquivo)
       .filter((c): c is string => Boolean(c)),
   )];
@@ -429,7 +439,7 @@ function main() {
     const safe = ok ? varrerDadoPessoal() : false;
     // Portao: publica dado coletado so depois da varredura CPF passar, e
     // nunca em modo-seco (que por definicao nao gravou nada novo).
-    if (safe && !seco) publicarDadosColetados(slug);
+    if (safe && !seco) publicarDadosColetados(slug, [slug]);
     const duracao = Math.round((Date.now() - inicioRodada) / 1000);
     notificarTelegram(formatarMensagemTelegram(slug, ok ? 1 : 0, ok ? 0 : 1, safe, duracao));
     process.exit(ok ? 0 : 1);
@@ -442,15 +452,17 @@ function main() {
     console.log(`\nExecutando rodada para a frente '${frente}' (${fontes.length} fontes mapeadas)...`);
     let erros = 0;
     let sucesso = 0;
+    const rodadas: string[] = [];
     for (const f of fontes) {
       if (MAPA_SCRIPTS[f.slug]) {
         if (fontePuladaPorQuarentena(f.slug)) continue;
         const ok = executarPasso(f.slug, seco);
+        rodadas.push(f.slug);
         if (ok) sucesso++; else erros++;
       }
     }
     const safe = varrerDadoPessoal();
-    if (safe && !seco) publicarDadosColetados(`frente:${frente}`);
+    if (safe && !seco) publicarDadosColetados(`frente:${frente}`, rodadas);
     const duracao = Math.round((Date.now() - inicioRodada) / 1000);
     console.log(`\nFinalizado com ${erros} erro(s).`);
     notificarTelegram(formatarMensagemTelegram(`frente:${frente}`, sucesso, erros, safe, duracao));

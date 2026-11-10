@@ -399,6 +399,36 @@ proibidos:
 rg "text-\[(9|10|11)px\]" apps/web/app apps/web/lib
 ```
 
+## 5.17. Custo só com autorização prévia do dono
+
+**Regra do dono, 02/11/2026.** Nenhum agente gasta dinheiro sem perguntar
+antes. Vale para lote pago (Batch API do sabiazinho-4, Maritaca, OpenAI,
+Anthropic), API paga por token, GPU alugada, deploy que consome cota e
+qualquer serviço com cobrança por uso.
+
+O procedimento é sempre o mesmo:
+
+1. **Calcule o custo** antes de enviar — tokens de entrada e saída, número de
+   chamadas, preço unitário do provedor.
+2. **Peça autorização** ao dono, em uma mensagem curta: o que vai rodar,
+   quantos itens, quanto custa e quanto tempo leva.
+3. **Só dispare depois do "sim".** Silêncio não é autorização.
+4. **Registre a autorização** no cabeçalho do script ou no plano: data, custo
+   estimado e quem autorizou.
+
+O padrão continua sendo **custo zero**: modelo grátis (GLM-4.5-flash), Ollama
+local (§5.12) ou processamento determinístico. O lote pago é exceção
+autorizada, não atalho para quando o grátis está lento.
+
+**O que aconteceu em 02/11/2026:** 1.864 casos penais foram enviados ao
+sabiazinho-4 (~R$ 5) para revisar a polaridade do polo, sem avisar antes. O
+envio era tecnicamente defensável, mas a decisão de gastar não era do agente.
+A regra nasce desse episódio.
+
+**Não é gasto** e não precisa de autorização: commit, push, leitura de fonte
+pública, chamada a modelo gratuito e execução local. Deploy continua exigindo
+ordem explícita (§5.7.1).
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

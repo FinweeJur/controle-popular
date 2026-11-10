@@ -1,6 +1,7 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import ScrollStar from "@/app/components/ScrollStar";
 import {
   CAMADAS_MEMORIA,
   REGIAO_POR_UF,
@@ -148,13 +149,18 @@ export default async function HistoricoPage({
         </div>
       </div>
 
-      <ol className="mt-8 space-y-2 border-l-2 border-border/70">
-        {blocos.flatMap((b) =>
-          b.verbetes.map((v, i) => (
-            <Marco key={`${b.rotulo}-${v.titulo}-${i}`} verbete={v} rotulo={b.rotulo} />
-          ))
-        )}
-      </ol>
+      {/* Wrapper relativo da estrela: o eixo é o `border-l-2` do <ol>, com o
+          centro do traço a 1 px da borda esquerda. */}
+      <div className="relative mt-8">
+        <ol className="space-y-2 border-l-2 border-border/70">
+          {blocos.flatMap((b) =>
+            b.verbetes.map((v, i) => (
+              <Marco key={`${b.rotulo}-${v.titulo}-${i}`} verbete={v} rotulo={b.rotulo} />
+            ))
+          )}
+        </ol>
+        <ScrollStar eixo={1} />
+      </div>
 
       <p className="mt-8 text-sm text-text-soft">
         Quer a história inteira das lutas, dia a dia?{" "}

@@ -1,22 +1,22 @@
 {
-  "totalDocumentos": 2243,
-  "totalTrechos": 2471,
+  "totalDocumentos": 2386,
+  "totalTrechos": 21571,
   "porCategoria": [
     {
+      "slug": "Acadêmico & Pesquisa",
+      "contagem": 19364
+    },
+    {
       "slug": "Ambiental & Desastres",
-      "contagem": 935
+      "contagem": 936
     },
     {
       "slug": "Justiça & Controle",
       "contagem": 729
     },
     {
-      "slug": "Acadêmico & Pesquisa",
-      "contagem": 373
-    },
-    {
-      "slug": "Memória & Direitos Humanos",
-      "contagem": 229
+      "slug": "Legislação",
+      "contagem": 343
     },
     {
       "slug": "Internacional & Geopolítica",
@@ -51,10 +51,6 @@
       "contagem": 6
     },
     {
-      "slug": "Legislação",
-      "contagem": 6
-    },
-    {
       "slug": "Manual e comunicacao",
       "contagem": 4
     },
@@ -65,20 +61,32 @@
   ],
   "porTema": [
     {
+      "slug": "Atingidos por barragens — Rio Doce",
+      "contagem": 13304
+    },
+    {
+      "slug": "Atingidos por barragens — Brumadinho",
+      "contagem": 2995
+    },
+    {
+      "slug": "Desastres de barragem — artigos",
+      "contagem": 2666
+    },
+    {
       "slug": "Desastres e barragens",
-      "contagem": 935
+      "contagem": 936
+    },
+    {
+      "slug": "Atos do CNJ",
+      "contagem": 340
     },
     {
       "slug": "Atingidos por barragens",
-      "contagem": 355
+      "contagem": 299
     },
     {
       "slug": "Instituições de Justiça",
       "contagem": 296
-    },
-    {
-      "slug": "Mística e linha do tempo",
-      "contagem": 229
     },
     {
       "slug": "trâmites processuais",
@@ -97,6 +105,10 @@
       "contagem": 94
     },
     {
+      "slug": "Evidência científica sobre barragens",
+      "contagem": 82
+    },
+    {
       "slug": "meio ambiente",
       "contagem": 45
     },
@@ -111,10 +123,6 @@
     {
       "slug": "Descolonização & Conflitos",
       "contagem": 7
-    },
-    {
-      "slug": "Cidades",
-      "contagem": 6
     },
     {
       "slug": "Pesquisa & Transnacional Aberta",
@@ -135,6 +143,10 @@
     {
       "slug": "Sigma & Lítio",
       "contagem": 5
+    },
+    {
+      "slug": "Cidades",
+      "contagem": 3
     },
     {
       "slug": "Protocolo de Consulta Prévia",
@@ -184,39 +196,39 @@
   "porAno": [
     {
       "slug": "2026",
-      "contagem": 195
+      "contagem": 263
     },
     {
       "slug": "2025",
-      "contagem": 403
+      "contagem": 416
     },
     {
       "slug": "2024",
-      "contagem": 418
+      "contagem": 484
     },
     {
       "slug": "2023",
-      "contagem": 239
+      "contagem": 261
     },
     {
       "slug": "2022",
-      "contagem": 134
+      "contagem": 180
     },
     {
       "slug": "2021",
-      "contagem": 66
+      "contagem": 108
     },
     {
       "slug": "2020",
-      "contagem": 192
+      "contagem": 217
     },
     {
       "slug": "2019",
-      "contagem": 247
+      "contagem": 272
     },
     {
       "slug": "2018",
-      "contagem": 30
+      "contagem": 25
     },
     {
       "slug": "2017",
@@ -224,7 +236,7 @@
     },
     {
       "slug": "2016",
-      "contagem": 25
+      "contagem": 61
     },
     {
       "slug": "2015",
@@ -232,7 +244,7 @@
     },
     {
       "slug": "2014",
-      "contagem": 15
+      "contagem": 27
     },
     {
       "slug": "2013",
@@ -240,15 +252,15 @@
     },
     {
       "slug": "2012",
-      "contagem": 28
+      "contagem": 36
     },
     {
       "slug": "2011",
-      "contagem": 17
+      "contagem": 26
     },
     {
       "slug": "2010",
-      "contagem": 7
+      "contagem": 12
     },
     {
       "slug": "2009",
@@ -256,7 +268,7 @@
     },
     {
       "slug": "2008",
-      "contagem": 9
+      "contagem": 6
     },
     {
       "slug": "2007",
@@ -268,7 +280,7 @@
     },
     {
       "slug": "2005",
-      "contagem": 11
+      "contagem": 9
     },
     {
       "slug": "2004",

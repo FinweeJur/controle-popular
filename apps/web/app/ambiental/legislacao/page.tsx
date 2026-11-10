@@ -19,6 +19,7 @@ import { compactar } from "@/lib/ambiental/payload-compacto";
 import Link from "@/lib/ambiental/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
@@ -112,6 +113,9 @@ export default async function LegislacaoAmbientalIndex() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+      <div className="mb-6">
+        <TrilhaFrentes atual="/ambiental/legislacao" />
+      </div>
       <CabecalhoLegislacao
         totalGeral={totalGeral}
         contagem={contagemEstadual}
@@ -136,6 +140,7 @@ export default async function LegislacaoAmbientalIndex() {
       )}
 
       <section className="mt-10">
+        <h2 className="mb-3 font-display text-lg font-bold text-text">Buscar nas leis</h2>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className="text-sm font-medium text-text">Eixo:</span>
           <Link

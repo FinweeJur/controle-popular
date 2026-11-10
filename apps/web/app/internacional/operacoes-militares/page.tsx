@@ -36,6 +36,7 @@ import {
   FileText,
   DollarSign,
 } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Operações Militares, Golpes de Estado, PMCs e Contratos de Defesa | Controle Popular",
@@ -125,6 +126,8 @@ export default function PaginaOperacoesMilitares() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
           Operações Militares, Conflitos, PMCs e Contratos de Defesa
         </h1>
+
+        <ResumoRealidadeBox rota="/internacional/operacoes-militares" />
         <p className="mt-3 max-w-4xl text-sm leading-relaxed text-text-soft sm:text-base">
           Consulte o registro documentado de intervenções militares, golpes de Estado,
           operações de empresas militares privadas (Blackwater, Wagner, DynCorp) e mega-contratos

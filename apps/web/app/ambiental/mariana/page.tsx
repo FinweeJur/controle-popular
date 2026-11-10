@@ -14,6 +14,7 @@ import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import TesesSanfona from "@/app/components/TesesSanfona";
 import { tesesPorDestino } from "@/lib/biblioteca/teses";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/mariana", {
   title: "Acordo do Rio Doce (Mariana) — Execução em MG | Controle Popular",
@@ -101,9 +102,23 @@ export default function AcordoMarianaPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Acordo de Reparação do Rio Doce (Mariana)
       </h1>
+
+        <ResumoRealidadeBox rota="/ambiental/mariana" />
       <p className="mt-2 max-w-3xl text-[1.02em] text-text-soft">
         Execução financeira dos recursos do Acordo Judicial de Reparação do rompimento da barragem de
         Fundão (Samarco / Vale / BHP, 2015), na parte executada pelos órgãos do Governo de Minas Gerais.
+      </p>
+
+      <p className="mt-3 text-[.95em] leading-relaxed">
+        <Link
+          href="/ambiental/rio-doce/analise"
+          className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+        >
+          Ler a análise integrada do Rio Doce e do litoral
+        </Link>{" "}
+        <span className="text-text-soft">
+          — o que a literatura documenta sobre a pluma, a pesca e a saúde, com tabelas de teses.
+        </span>
       </p>
 
       <IndiceWiki itens={SECOES} />

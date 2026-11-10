@@ -30,6 +30,7 @@ import {
 import PainelAmericaLatina from "./PainelAmericaLatina";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { Globe2, ArrowRight } from "lucide-react";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title:
@@ -82,6 +83,8 @@ export default function PaginaAmericaLatina() {
         <h1 className="text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
           Mineração Transnacional na América Latina
         </h1>
+
+        <ResumoRealidadeBox rota="/america-latina" />
 
         <p className="mt-3 text-base text-text-soft max-w-4xl leading-relaxed">
           Mapeamento geoespacial e regulatório de 51 instalações estratégicas de

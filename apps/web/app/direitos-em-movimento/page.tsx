@@ -9,6 +9,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import AberturaHero from "@/app/components/abertura/AberturaHero";
+import ArteEixo from "@/app/components/eixos/ArteEixo";
 import BorderGlow from "@/app/components/react-bits/BorderGlow";
 import Magnet from "@/app/components/react-bits/Magnet";
 import { CAMADAS_MEMORIA, fontesPrimarias, verbeteValido } from "@/lib/memoria";
@@ -124,11 +125,12 @@ export default async function DireitosEmMovimentoHub() {
         {/* h2, não h1: o h1 único da página vive na abertura viva acima. */}
         <h2 className="font-display text-3xl font-bold sm:text-4xl">Direitos em Movimento</h2>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Quatro perguntas, quatro portas: que lei protege isso, onde buscar ajuda, como pedir
-          informação e como denunciar. Você não precisa saber em que parte do site está — só o
-          que aconteceu. A cidade só é perguntada na porta que realmente depende dela.
+          Quatro perguntas, quatro portas: que lei protege isso, onde buscar ajuda, como pedir informação e como denunciar. Você não precisa saber em que parte do site está — só o que aconteceu. A cidade só é perguntada na porta que realmente depende dela.
         </p>
       </header>
+
+      {/* Faixa de aquarela do eixo: o mico-leão da Mata Atlântica. */}
+      <ArteEixo slug="direitos" className="mt-6 aspect-[21/8]" prioridade />
 
       {/* SUBFRENTES PRIORITÁRIAS EM DESTAQUE */}
       <section aria-label="Subfrentes prioritárias" className="mt-8 rounded-2xl border-2 border-amber-500/30 bg-amber-500/5 p-6">

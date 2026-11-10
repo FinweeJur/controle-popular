@@ -1,0 +1,10 @@
+{
+ "rota": "/ambiental/mariana",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "# O que os dados de Ambiental · Mariana mostram\n\nA página reúne 424 registros sobre a pauta ambiental ligados à rota de Mariana. São trabalhos acadêmicos: 273 dissertações e 127 teses. [medido — dados da página]\n\nQuase tudo está em português: 395 registros. Há 4 em inglês e 1 marcado como por||pt. [medido — dados da página]\n\nSobre o acesso, 399 registros estão abertos e 1 tem embargo. [medido — dados da página]\n\nO país aparece de formas diferentes. Em 269 registros não foi informado pela instituição. Outros 89 dizem Brasil, 32 dizem BR, 8 dizem brasil e 2 dizem BRASIL. [medido — dados da página]\n\nO dado mostra quantos registros existem e como estão classificados. Não mostra o conteúdo de cada trabalho, nem se ele trata diretamente do desastre, nem a data de cada um. [não dá para concluir]",
+ "fontes": [
+  "biblioteca-teses-atingidos.json"
+ ],
+ "impressao": "b16c904dc5999a1b"
+}

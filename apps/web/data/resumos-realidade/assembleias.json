@@ -1,0 +1,10 @@
+{
+ "rota": "/assembleias",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "markdown": "# O que os dados de Assembleias mostram\n\nEsta página lista 27 assembleias registradas no país. [medido — dados da página]\n\nO Nordeste concentra o maior número: 9 das 27. Na sequência vêm Norte (7), Sudeste (4), Centro-Oeste (4) e Sul (3). [medido — dados da página]\n\nSomando as cinco regiões, chega-se aos 27 registros. Não há registro sem região informada. [medido — dados da página]\n\nO dado mostra apenas onde estão essas 27 assembleias. Ele não diz quantas existem em cada estado, nem quando foram criadas, nem quem participa delas. [não dá para concluir]\n\nTambém não é possível saber, por estes números, se uma região tem mais assembleias do que outra por motivo específico. A página só traz a contagem por região. [não dá para concluir]",
+ "fontes": [
+  "assembleias-estaduais.json"
+ ],
+ "impressao": "393103cdc3852a35"
+}

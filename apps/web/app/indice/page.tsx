@@ -33,10 +33,12 @@ import paginas100 from "@/data/top-100-paginas.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import CapaFrente from "@/app/components/CapaFrente";
+import IndiceEixos from "@/app/components/IndiceEixos";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki, type ItemIndice } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100PaginasClient";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * Hub global de indice do portal: `/indice`.
@@ -515,6 +517,8 @@ function CabecalhoIndice({ itens }: { itens: ItemIndice[] }) {
       />
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
+
+        <ResumoRealidadeBox rota="/indice" />
         <p className="max-w-2xl text-text-soft">
           Tudo o que o portal vigia, organizado do seu jeito: por eixos temáticos, pelo mapa 3D do território, pelo catálogo completo de páginas, por frente, por cidade ou por tema.
         </p>
@@ -554,6 +558,10 @@ function SecaoEixosTematicos() {
           ))}
         </div>
       </section>
+
+      {/* Árvore de navegação por eixo: lê o mapa único
+          (`lib/navegacao/mapa.ts`), não uma lista paralela. */}
+      <IndiceEixos />
     </>
   );
 }

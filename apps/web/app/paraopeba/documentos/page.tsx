@@ -5,6 +5,7 @@ import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba/documentos";
 import { formatNumberBR } from "@/lib/betim/format";
 import DocumentosClient from "./DocumentosClient";
 import { metadataEditavel } from "@/lib/edicoes";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 /**
  * `/paraopeba/documentos` — documentos do processo judicial da reparação
@@ -49,6 +50,8 @@ export default function DocumentosPage() {
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Documentos do processo que citam cada município
       </h1>
+
+        <ResumoRealidadeBox rota="/paraopeba/documentos" />
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         O processo judicial da reparação tem {formatNumberBR(c.totalAcervo)} documentos
         indexados pela Plataforma Brumadinho UFMG. Só {formatNumberBR(c.comLocalPreenchido)}{" "}

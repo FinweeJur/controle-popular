@@ -1,10 +1,10 @@
 {
-  "geradoEm": "2026-10-16T08:31:27.755Z",
+  "geradoEm": "2026-11-06T08:31:48.035Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 14,
+  "aprovados": 13,
   "alertas": 0,
-  "falhas": 0,
+  "falhas": 1,
   "itens": [
     {
       "categoria": "seguranca",
@@ -62,9 +62,9 @@
     },
     {
       "categoria": "cloudflare",
-      "item": "Teto de 25 MiB do Cloudflare Workers",
-      "status": "APROVADO",
-      "detalhes": "Todos os 201 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "item": "Limite de 25 MiB: jurisprudencia-casos.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 56.92 MiB, excedendo o teto do Cloudflare."
     },
     {
       "categoria": "privacidade",

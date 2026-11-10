@@ -30,6 +30,7 @@ import {
 import PainelAmbientalCanada from "./PainelAmbientalCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
 
 export const metadata: Metadata = {
   title: "Meio Ambiente Canadá: Emissões NPRI, Desastre de Mount Polley & Clima | Controle Popular",
@@ -75,6 +76,8 @@ export default function PaginaAmbientalCanada() {
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Meio Ambiente no Canadá: Emissões, Rejeitos e Lições Geotécnicas
         </h1>
+
+        <ResumoRealidadeBox rota="/canada/ambiental" />
         <p className="mt-2 max-w-4xl text-base text-muted sm:text-lg">
           Inventário de poluentes do ECCC, emissões industriais e o desastre de Mount Polley em 2014.
         </p>

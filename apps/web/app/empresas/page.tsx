@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { listarTodasEntidades } from "@/lib/empresas/entidades-dados";
 import { contarPorSetor, hrefSetor, setorDe } from "@/lib/empresas/facetas-setor";
 import { PainelFacetas } from "@/app/components/PainelFacetas";
@@ -57,7 +58,9 @@ export default async function EmpresasIndexPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-8">
-      {/* Trilha, título e as quatro portas para os acervos irmãos. */}
+      <CaminhoSistema rota="/empresas" />
+
+      {/* Título e as quatro portas para os acervos irmãos. */}
       <CabecalhoObservatorio />
 
       {/* Faixa de facetas por setor: LINK com estado na URL, render no servidor.

@@ -122,6 +122,11 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/judiciario/contatos",
     motivo: "duplicava o catalogo de contatos; canonical ja apontava para la (02/11/2026)",
   },
+  {
+    de: "/direitos-comparados/indicadores",
+    para: "/indicadores",
+    motivo: "unificado ao painel geral de indicadores civicos e regionais (02/11/2026)",
+  },
 ];
 
 

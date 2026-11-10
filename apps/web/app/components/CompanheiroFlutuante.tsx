@@ -468,6 +468,12 @@ export function CompanheiroFlutuante() {
       const salva = salvas[pet.slug];
       const bicho = criarBicho(xNascimento(salva, idx, larg, window.innerWidth));
       if (salva) bicho.pos.y = Math.max(0, salva.y);
+      // Trajeto com variação (dono, 08/11/2026): cada bicho nasce com direção,
+      // velocidade (0,8–1,15×) e primeiro sorteio de virada próprios. A faixa
+      // é estreita de propósito — varia sem virar movimento rápido.
+      bicho.dir = Math.random() < 0.5 ? -1 : 1;
+      bicho.fator = 0.8 + Math.random() * 0.35;
+      bicho.virarAte = performance.now() + 2500 + Math.random() * 4000;
       bichosRef.current.set(pet.slug, bicho);
     });
   }, []);
@@ -1338,8 +1344,8 @@ export function CompanheiroFlutuante() {
           UI flutuante não é chão dos bichos.
 
           - 1 min (`troca`): botão que abre o menu de troca/tirar bichinhos;
-          - 5 min (`frida`): o PÁSSARO PADRÃO cita Frida Kahlo. A arte é sempre
-            a do pássaro padrão, mesmo com outro bicho ativo (a fala é dele);
+          - 5 min (`frida`): o companheiro ATIVO cita Frida Kahlo. A arte é a
+            do bicho que está na tela; sem bicho escolhido, o aviso não sai.
           - 50 min (`alongar`): o companheiro ativo lembra de alongar.
 
           Os dois últimos são avisos temporizados (`role="status"` +
@@ -1351,18 +1357,18 @@ export function CompanheiroFlutuante() {
           onClick={abrirMenuPeloBalao}
           data-cp-dica-companheiro=""
           data-nao-plataforma
-          aria-label="Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui"
+          aria-label="Se quiser tirar o companheiro ou adicionar outros bichinhos, clique aqui"
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
           className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),13rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm transition-colors hover:bg-surface-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {pets[0] ? <PetIcone pet={pets[0]} altura={16} /> : null}
           <span className="text-xs font-medium leading-snug text-text">
-            Se quiser tirar o pássaro ou adicionar outros companheiros, clique aqui
+            Se quiser tirar o companheiro ou adicionar outros bichinhos, clique aqui
           </span>
         </button>
       )}
 
-      {dicaAtiva === "frida" && (
+      {dicaAtiva === "frida" && pets[0] && (
         <div
           data-cp-dica-frida=""
           data-nao-plataforma
@@ -1371,7 +1377,7 @@ export function CompanheiroFlutuante() {
           style={dicaBase !== null ? { bottom: dicaBase } : undefined}
           className="cp-painel-entra fixed bottom-[max(11rem,calc(env(safe-area-inset-bottom)_+_10rem))] left-4 z-[55] flex w-[min(calc(100vw-2rem),14rem)] items-start gap-1.5 rounded-xl border border-border/70 bg-surface/85 p-3 text-left shadow-md backdrop-blur-sm"
         >
-          <PetIcone pet={PET_INICIAL} altura={16} />
+          <PetIcone pet={pets[0]} altura={16} />
           <span className="text-xs font-medium leading-snug text-text">
             {TEXTO_DICA_FRIDA}
           </span>
@@ -1483,7 +1489,7 @@ export function CompanheiroFlutuante() {
             // respeita contêineres marcados — sem isto, a roda não rola a
             // lista (mesmo caso do índice do rádio, 06/10/2026).
             data-lenis-prevent
-            className="fixed z-[70] max-h-[60vh] w-60 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
+            className="fixed z-[70] max-h-[60vh] w-72 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 shadow-lg"
             style={{
               left: posMenu ? Math.round(posMenu.posicao.x) : menu.x,
               top: posMenu ? Math.round(posMenu.posicao.y) : menu.y,
@@ -1529,18 +1535,18 @@ export function CompanheiroFlutuante() {
                       role="menuitemcheckbox"
                       aria-checked={marcado}
                       onClick={() => alternarPet(p)}
-                      className={`flex w-full items-baseline justify-between gap-2 rounded-lg px-2 py-1.5 text-left text-sm hover:bg-surface-2 ${
+                      className={`flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-left text-sm hover:bg-surface-2 ${
                         marcado ? "font-semibold text-primary" : "text-text"
                       }`}
                     >
-                      <span className="flex items-center gap-1.5">
+                      <span className="flex items-center gap-2">
                         <span
                           aria-hidden="true"
                           className="inline-block w-3 shrink-0 text-center"
                         >
                           {marcado ? "✓" : ""}
                         </span>
-                        <PetIcone pet={p} altura={16} />
+                        <PetIcone pet={p} altura={36} />
                         <span>{p.nome}</span>
                       </span>
                       <span className="truncate text-[0.75rem] font-normal text-text-soft">

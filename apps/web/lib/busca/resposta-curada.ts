@@ -368,7 +368,7 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     ],
     resposta:
       "O painel de Saúde Pública monitora a capacidade instalada do SUS em Minas Gerais com dados do CNES/DATASUS: leitos clínicos, UTIs, postos de atendimento e taxa de internações por município.",
-    linkPrincipal: { href: "/direitos-em-movimento/saude-publica", texto: "Ver Painel de Saúde Pública (SUS)" },
+    linkPrincipal: { href: "/direitos-em-movimento/servicos?subfrente=saude-publica", texto: "Ver Painel de Saúde Pública (SUS)" },
     linksAdicionais: [
       { href: "/direitos-em-movimento/ajuda", texto: "Onde Buscar Ajuda" },
       { href: "/cidades", texto: "Ver Cidades Estratégicas" },
@@ -388,7 +388,7 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     ],
     resposta:
       "A seção de Educação Básica compila dados do INEP/MEC sobre infraestrutura escolar, notas do IDEB, distorção idade-série e repasses do Fundeb para cada comarca de Minas Gerais.",
-    linkPrincipal: { href: "/direitos-em-movimento/educacao", texto: "Ver Indicadores de Educação (IDEB)" },
+    linkPrincipal: { href: "/direitos-em-movimento/servicos?subfrente=educacao", texto: "Ver Indicadores de Educação (IDEB)" },
     linksAdicionais: [{ href: "/direitos-em-movimento/conselhos", texto: "Ver Conselhos Municipais" }],
   },
 
@@ -404,7 +404,7 @@ export const PERGUNTAS_ESPECIAIS: PerguntaEspecial[] = [
     ],
     resposta:
       "O painel de Trabalho e Renda monitora o saldo de empregos formais do Novo CAGED e dados da RAIS por setor econômico em Minas Gerais.",
-    linkPrincipal: { href: "/direitos-em-movimento/trabalho-e-renda", texto: "Ver Painel de Trabalho e Renda" },
+    linkPrincipal: { href: "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda", texto: "Ver Painel de Trabalho e Renda" },
     linksAdicionais: [{ href: "/empresas", texto: "Ver Grandes Empresas & Fornecedores" }],
   },
 

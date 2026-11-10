@@ -15,6 +15,7 @@
  *   /notificacoes — redirect para /alertas
  *   /assistente-ia-lab — laboratorio interno, nao publicado
  *   /status — pagina de servico, noindex
+ *   /meus-dados — area pessoal (dados locais do leitor), bloqueada no robots.txt
  *   /direitos-em-movimento/saude-publica — ponte de URL antiga, noindex
  *   /direitos-em-movimento/educacao — ponte de URL antiga, noindex
  *   /direitos-em-movimento/trabalho-e-renda — ponte de URL antiga, noindex
@@ -84,6 +85,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/ambiental/nossos-animais",
   "/ambiental/patrimonio-cultural",
   "/ambiental/ppp",
+  "/ambiental/rio-doce/analise",
   "/ambiental/tac",
   "/america-latina",
   "/aprender",
@@ -96,6 +98,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/canada/contratos",
   "/canada/institucional",
   "/canada/mineracao",
+  "/casos",
   "/central",
   "/cidades",
   "/cidades/ac",
@@ -145,6 +148,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/dados/comunicabr",
   "/dados/populares",
   "/desclassificados",
+  "/direitos",
   "/direitos-comparados",
   "/direitos-comparados/indicadores",
   "/direitos-em-movimento",
@@ -170,6 +174,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/documentacao/fontes-e-coletas",
   "/editais",
   "/educacao",
+  "/eixos/casos",
   "/eleicoes/2026/gastos-campanha",
   "/eleicoes/2026/locais-votacao-alterados",
   "/eleicoes/2026/transporte-gratuito",
@@ -217,6 +222,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/internacional/operacoes-militares",
   "/internacional/operacoes-militares/mapa",
   "/internacional/orcamentos",
+  "/itatiaiaucu",
   "/judiciario",
   "/judiciario/composicao",
   "/judiciario/contatos",
@@ -225,6 +231,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/judiciario/indice",
   "/judiciario/inspecoes",
   "/judiciario/instituicoes",
+  "/judiciario/jurisprudencia",
   "/judiciario/metodologia",
   "/judiciario/numeros",
   "/judiciario/presidios",
@@ -237,7 +244,6 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/laboratorio",
   "/laboratorio/arvore",
   "/memoria",
-  "/meus-dados",
   "/mineracao/cavas",
   "/mineracao/ilegal",
   "/modelos",
@@ -254,6 +260,8 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/paraopeba/entenda",
   "/paraopeba/execucao",
   "/paraopeba/linha-do-tempo",
+  "/paraopeba/mab",
+  "/paraopeba/panorama",
   "/paraopeba/pericia",
   "/paraopeba/quem-atua",
   "/paraopeba/vale",
@@ -265,7 +273,10 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/recapitular",
   "/recursos/estados",
   "/riodoce",
+  "/riodoce/analise",
+  "/riodoce/clipping",
   "/riodoce/indice",
+  "/riodoce/linha-do-tempo",
   "/riodoce/processos",
   "/sobre",
   "/tecnologia",

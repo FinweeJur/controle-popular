@@ -9,6 +9,9 @@ import {
   COBERTURA_CLIPPING_IJ,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import dadosMab from "@/data/mab-publicacoes.json";
+import clipRecente from "@/public/data/clipping-recente.json";
+import type { NoticiaClipping } from "@/lib/paraopeba/clipping";
 import ClippingClient from "./ClippingClient";
 import RadarRecente from "./RadarRecente";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -39,6 +42,64 @@ export const metadata: Metadata = metadataEditavel("/paraopeba/clipping", {
   description: `${formatNumberBR(COBERTURA_CLIPPING_ATI.total)} materiais das assessorias técnicas independentes, ${formatNumberBR(COBERTURA_CLIPPING_IJ.total)} publicações do MPMG, MPF e DPMG e ${formatNumberBR(COBERTURA_CLIPPING.total)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_IJ.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
 });
 
+const ROTULO_RECENTE: Record<string, string> = {
+  institucional: "Institucional",
+  imprensa: "Imprensa",
+  assessoria: "Assessoria",
+  movimento: "Movimento",
+};
+
+const ITENS_RECENTES = (clipRecente as { itens: NoticiaClipping[] }).itens;
+const PERIODO_RECENTE = (clipRecente as { periodo: { de: string; ate: string } }).periodo;
+
+/** Complemento do clipping, posterior ao fechamento do acervo curado. */
+function SecaoComplemento() {
+  return (
+    <section
+      aria-labelledby="complemento-clipping"
+      className="mt-12 border-t border-border pt-8"
+    >
+      <h2
+        id="complemento-clipping"
+        className="font-display text-[clamp(1.15em,2.4vw,1.45em)] font-bold tracking-tight"
+      >
+        O que saiu depois do acervo
+      </h2>
+      <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+        Complemento de {formatDateBR(PERIODO_RECENTE.de)} a{" "}
+        {formatDateBR(PERIODO_RECENTE.ate)} — {formatNumberBR(ITENS_RECENTES.length)}{" "}
+        itens. Os resumos deste bloco são síntese do título, não texto da fonte;
+        o texto integral está no link. É a atualização que o acervo curado,
+        fechado em 30/07/2026, não tinha.
+      </p>
+      <ol className="mt-4 space-y-3">
+        {ITENS_RECENTES.map((item) => (
+          <li key={item.id} className="rounded-2xl border border-border bg-surface p-4">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-text-soft">
+              <span className="rounded-full bg-surface-2 px-2 py-0.5 font-semibold text-text">
+                {ROTULO_RECENTE[item.tipo] ?? item.tipo}
+              </span>
+              <span>{item.portal}</span>
+              <time dateTime={item.data}>{formatDateBR(item.data)}</time>
+            </div>
+            <h3 className="mt-2 font-display text-base font-semibold leading-snug">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted underline-offset-2 hover:text-primary"
+              >
+                {item.titulo}
+              </a>
+            </h3>
+            <p className="mt-1 text-sm text-text-soft">{item.resumo}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 export default function ClippingPage() {
   // ⟲ 13/08, revisão de onboarding: era `<div>` — `OuvirPagina.tsx` só lê
   // `document.querySelector("main")`, e as cinco páginas de /paraopeba
@@ -68,6 +129,23 @@ export default function ClippingPage() {
         assinaram o Acordo — MPMG, MPF e DPMG —, que é o que alcança 2019 e 2021; e{" "}
         {formatNumberBR(COBERTURA_CLIPPING.total)} notícias do clipping geral.
       </p>
+      <p className="mt-2 text-[.92em] text-text-soft">
+        O acervo curado fecha em {formatDateBR(PERIODO_CLIPPING.ate)}. O
+        complemento abaixo chega a {formatDateBR(PERIODO_RECENTE.ate)} e cobre
+        o que saiu depois do fechamento.
+      </p>
+      <p className="mt-3 text-[.95em]">
+        <NextLink
+          href="/paraopeba/mab"
+          className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+        >
+          Notícias, artigos e notas do MAB
+        </NextLink>{" "}
+        <span className="text-text-soft">
+          — {formatNumberBR((dadosMab as { total: number }).total)} publicações
+          do movimento, com filtro por tipo e caso.
+        </span>
+      </p>
       {/* O ponteiro para o Guaicuy saiu da hero em 15/08/2026. Ele dava crédito
           errado logo na abertura: o acervo das assessorias é de TRÊS ATIs
           (Guaicuy 22, NACAB 12, AEDAS 12), e nomear uma delas no primeiro
@@ -75,6 +153,8 @@ export default function ClippingPage() {
           continua onde ele é exato — no `source`/`ati` de cada material. */}
 
       <ClippingClient />
+
+      <SecaoComplemento />
 
       {/* Varredura automática, depois dos acervos com autoria. Ver RadarRecente. */}
       <RadarRecente />

@@ -18,9 +18,11 @@
  * - NADA DE TEXTO INVISÍVEL: o nome é HTML do servidor, visível sem JS.
  *   Sem `opacity: 0` pré-hidratação — se o JS falhar, a página inteira
  *   continua legível (mesma regra do HeroNarrative).
- * - MOVIMENTO É ESCOLHA: `prefers-reduced-motion`, `pointer: coarse`
- *   (celular) e tema alto contraste recebem a versão estática — fundo do
- *   tema + nome com contorno, sem canvas, sem brilho animado, sem magnet.
+ * - MOVIMENTO É ESCOLHA: `prefers-reduced-motion` e tema alto contraste
+ *   recebem a versão estática — fundo do tema + nome com contorno, sem
+ *   canvas. Celular e tablet TAMBÉM recebem o fundo vivo desde 08/11/2026
+ *   (antes o `pointer: coarse` desligava o efeito e o dono via a abertura
+ *   parada no tablet/celular).
  * - FORA DA TELA, EFEITO MORTO: IntersectionObserver destrói o canvas
  *   quando a abertura sai da tela (o leitor está no conteúdo) e o recria
  *   se voltar. GPU não queima de graça.
@@ -140,7 +142,7 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
   // sem isso, o carregamento ficava em CASCATA (canvas → three → efeito)
   // e o fundo demorava segundos para nascer no dev (medido 05/10/2026).
   // A promessa é memoizada: o `ligar` do canvas recebe o mesmo objeto já
-  // em andamento. Reduced-motion/coarse/alto contraste: não carrega nada.
+  // em andamento. Reduced-motion/alto contraste: não carrega nada.
   // `semEfeito` (mapa `home: null`, dono 06/10/2026): sem canvas não há
   // three a aquecer — se algum dia a home montar hero de novo, ela não
   // paga os 600 KB. Hoje a home nem monta este componente.
@@ -195,10 +197,7 @@ export default function AberturaHero({ paginaId, titulo }: AberturaHeroProps) {
       <div ref={conteudoRef} className="relative z-10 px-4 text-center">
         <h1
           className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-6xl lg:text-7xl"
-          style={{
-            color: "var(--cp-primary)",
-            textShadow: CONTORNO_TEXTO,
-          }}
+          style={{ color: "var(--cp-primary)", textShadow: CONTORNO_TEXTO, wordSpacing: "0.14em" }}
         >
           <ShinyText texto={titulo} />
         </h1>

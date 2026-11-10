@@ -1,0 +1,11 @@
+{
+ "rota": "/estado-e-economia/acordos-e-licitacoes-internacionais",
+ "geradoEm": "2026-11-08",
+ "verificado": true,
+ "fontes": [
+  "fornecedores/multinacionais-eua-europa.json",
+  "negociacoes-parcerias/acordos-licitacoes-internacionais.json"
+ ],
+ "impressao": "e478137b5b87ba41",
+ "markdown": "# O que os dados de Estado e economia · Acordos e licitacoes internacionais mostram\n\n[medido — dados da página] Esta página lista 15 registros ligados a acordos e licitações internacionais. Dá para ver quem participa, de que setor e em que fase está cada registro. O que não dá é dizer se esses acordos viraram obra, contrato ou investimento efetivo.\n\n[medido — dados da página] Do total, 13 registros estão agrupados por setor. Energia e infraestrutura aparecem com 3 cada; mineração e tecnologia, com 2 cada; saúde e educação, com 1 cada.\n\n[medido — dados da página] Os rótulos mais específicos mostram dois registros em Mineração & Minerais Críticos, dois em Energia & Transição Verde, um em Infraestrutura & Rodovias, um em Saúde & Biotecnologia, um em Tecnologia & Nuvem e um em Educação & Ciência.\n\n[medido — dados da página] Quanto ao tipo de instrumento, há dois Leilão em Vigor / Edital Aberto, um Acordo Bilateral / Memorando de Entendimento, um Memorando de Entendimento (MoU) / Parceria Estratégica, uma Parceria para o Desenvolvimento Produtivo (PDP) / Edital Aberto, uma Declaração de Investimento / Parceria Público-Privada e um Acordo Bilateral de Cooperação Científica.\n\n[medido — dados da página] Sobre o país líder: Estados Unidos, Alemanha, Brasil e China aparecem com 2 cada; Holanda e Itália, com 1 cada. Há ainda um conjunto sem nenhum registro.\n\n[não dá para concluir] A página não informa valor, data de assinatura, prazo nem status de execução. Também não permite saber se os países listados são origem do capital, sede da empresa contratada ou apenas parte signatária. Sem esses dados, não se mede resultado — só se vê o que foi registrado."
+}

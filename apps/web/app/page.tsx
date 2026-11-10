@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import NextLink from "next/link";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
@@ -14,6 +14,7 @@ import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
 import CardCarousel from "@/app/components/CarrosselEixos";
+import HeroEixos from "@/app/components/eixos/HeroEixos";
 import MisticaDoDia from "@/app/components/MisticaDoDia";
 import DiasImportantes from "@/app/components/DiasImportantes";
 import { citacaoPorId } from "@/lib/citacoes";
@@ -108,7 +109,7 @@ export default async function Hub() {
 
       <header className="space-y-4">
         <AtalhosHome />
-        <EixosTematicos />
+        <HeroEixos />
       </header>
 
       {/* Sanfona das frentes (etapa 4 PLANO-TEMA-PEQUI, previa v7.1):
@@ -281,78 +282,6 @@ function AtalhosHome({ }) {
               Transporte grátis nas Eleições 2026 →
             </NextLink>
           </Magnet>
-        </div>
-    </>
-  );
-}
-
-/**
- * Grade dos 4 eixos tematicos — a arquitetura civica atual do portal.
- */
-function EixosTematicos({ }) {
-  return (
-    <>
-
-        {/* ═══ OS 4 EIXOS TEMÁTICOS (ARQUITETURA CÍVICA ATUAL) ═══ */}
-        <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-muted">
-              Navegação por Eixos Temáticos
-            </span>
-            <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-semibold text-muted border border-border">
-              4 Eixos • 36+ Subfrentes
-            </span>
-          </div>
-          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-            <Magnet forca={0.08} className="h-full">
-            <NextLink
-              href="/terra-e-territorios"
-              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-emerald-500/40 hover:bg-surface-2"
-            >
-              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-terra, #1b6348)' }} />
-              <div>
-                <div className="font-bold text-foreground">1. Terra e Território</div>
-                <div className="text-xs font-normal text-muted">203 Cidades, Bacias, Serras, Clima</div>
-              </div>
-            </NextLink>
-            </Magnet>
-            <Magnet forca={0.08} className="h-full">
-            <NextLink
-              href="/direitos-em-movimento"
-              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-alert/40 hover:bg-surface-2"
-            >
-              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-direitos, #c0392b)' }} />
-              <div>
-                <div className="font-bold text-foreground">2. Direitos em Movimento</div>
-                <div className="text-xs font-normal text-muted">SUS, IDEB, Emprego, LAI, Ajuda</div>
-              </div>
-            </NextLink>
-            </Magnet>
-            <Magnet forca={0.08} className="h-full">
-            <NextLink
-              href="/estado-e-economia"
-              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-sky-500/40 hover:bg-surface-2"
-            >
-              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-estado, #1e3a8a)' }} />
-              <div>
-                <div className="font-bold text-foreground">3. Estado e Economia</div>
-                <div className="text-xs font-normal text-muted">Orçamento, 27 ALs, Judiciário, ESG</div>
-              </div>
-            </NextLink>
-            </Magnet>
-            <Magnet forca={0.08} className="h-full">
-            <NextLink
-              href="/central"
-              className="flex h-full items-center gap-2.5 rounded-xl border border-border bg-surface-2 p-3 text-xs font-semibold text-foreground transition-all hover:border-primary/40 hover:bg-surface-2"
-            >
-              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-primary, #b45309)' }} />
-              <div>
-                <div className="font-bold text-foreground">4. Central ONSA e Ferramentas</div>
-                <div className="text-xs font-normal text-muted">Editais, 24k Docs, Rádios, Seu Nonô</div>
-              </div>
-            </NextLink>
-            </Magnet>
-          </div>
         </div>
     </>
   );

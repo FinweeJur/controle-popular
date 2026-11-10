@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import CaminhoSistema from "@/app/components/CaminhoSistema";
+import ArteEixo from "@/app/components/eixos/ArteEixo";
+import CartaoPerguntasRota from "@/app/components/seu-nono/CartaoPerguntasRota";
 import Link from "next/link";
 import { History, BookOpen, ExternalLink, CalendarDays } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -94,12 +97,7 @@ export default function MemoriaPage() {
       tabIndex={-1}
       className="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-6 lg:px-8"
     >
-      <nav aria-label="Trilha de navegação" className="text-xs text-muted">
-        <Link href="/" className="transition hover:text-primary">
-          Início
-        </Link>{" "}
-        · <span className="font-semibold text-foreground">Linha do Tempo das Lutas</span>
-      </nav>
+      <CaminhoSistema rota="/memoria" />
 
       <header className="space-y-4 rounded-3xl border border-border bg-surface p-6 shadow-xs sm:p-8">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
@@ -169,12 +167,12 @@ export default function MemoriaPage() {
         </p>
       </header>
 
+      {/* Aquarela da subfrente: ipê e lobo-guará para a memória das lutas. */}
+      <ArteEixo slug="memoria" className="mt-6 aspect-[21/8]" /><CartaoPerguntasRota />
+
       {/* Ponte para a frente de história: as mesmas lutas, agora no mapa.
           Pedido do dev (30/09/2026): as camadas históricas têm página própria. */}
-      <Link
-        href="/historia"
-        className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-border bg-surface-2 p-4 transition hover:border-primary"
-      >
+      <Link href="/historia" className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-border bg-surface-2 p-4 transition hover:border-primary">
         <span className="text-sm">
           <strong className="font-semibold">Ver estas lutas no mapa:</strong> capitanias de 1534,
           revoltas com lugar identificado, fazendas tombadas e terras públicas do Império.
