@@ -120,16 +120,30 @@ function lerResumosDoDisco(): { arquivo: string; resumo: ResumoRealidade }[] {
 }
 
 const RESUMOS_DO_DISCO = lerResumosDoDisco();
+/** Só o que o índice publica: rascunho inconclusivo fica no disco, fora do ar. */
+const RESUMOS_PUBLICADOS = RESUMOS_DO_DISCO.filter(({ resumo }) =>
+  resumoPublicavel(resumo),
+);
 
 describe("arquivos de data/resumos-realidade", () => {
   it("existe pelo menos um resumo publicado", () => {
-    expect(RESUMOS_DO_DISCO.length).toBeGreaterThan(0);
+    expect(RESUMOS_PUBLICADOS.length).toBeGreaterThan(0);
   });
 
-  it.each(RESUMOS_DO_DISCO.map(({ arquivo }) => arquivo))(
+  it("arquivo fora do índice é rascunho inconclusivo, não resumo quebrado", () => {
+    const fora = RESUMOS_DO_DISCO.filter(({ resumo }) => !resumoPublicavel(resumo));
+    for (const { arquivo, resumo } of fora) {
+      expect(
+        resumo.inconclusivo,
+        `${arquivo} está fora do índice sem inconclusivo: true`,
+      ).toBe(true);
+    }
+  });
+
+  it.each(RESUMOS_PUBLICADOS.map(({ arquivo }) => arquivo))(
     "%s respeita o contrato e o nome da rota",
     (arquivo) => {
-      const { resumo } = RESUMOS_DO_DISCO.find((r) => r.arquivo === arquivo)!;
+      const { resumo } = RESUMOS_PUBLICADOS.find((r) => r.arquivo === arquivo)!;
       expect(resumo.rota).toMatch(/^\/[a-z0-9/-]+$/);
       expect(arquivo).toBe(`${resumo.rota.slice(1).replaceAll("/", "-")}.json`);
       expect(resumo.geradoEm).toMatch(/^\d{4}-\d{2}-\d{2}$/);
@@ -146,12 +160,20 @@ describe("arquivos de data/resumos-realidade", () => {
 describe("piloto F2 — concursos, jurisprudência penal e cavas", () => {
   it.each(ROTAS_PILOTO)("%s tem no máximo 6 parágrafos, todos com marca", (rota) => {
     const { resumo } = RESUMOS_DO_DISCO.find((r) => r.resumo.rota === rota)!;
-    const paragrafos = parseResumo(resumo.markdown)
-      .slice(1)
-      .filter((bloco) => bloco.tipo === "p");
+    const paragrafos = resumo.markdown
+      .split(/\r?\n\s*\r?\n/)
+      .map((bloco) => bloco.trim())
+      .filter(
+        (bloco) =>
+          bloco &&
+          !bloco.startsWith("#") &&
+          !bloco.startsWith("|") &&
+          !bloco.startsWith(">") &&
+          !bloco.startsWith(":::"),
+      );
     expect(paragrafos.length).toBeLessThanOrEqual(6);
     for (const paragrafo of paragrafos) {
-      const marcado = MARCA.test(paragrafo.texto) || paragrafo.texto.startsWith("Fonte:");
+      const marcado = MARCA.test(paragrafo) || paragrafo.startsWith("Fonte:");
       expect(marcado).toBe(true);
     }
   });
