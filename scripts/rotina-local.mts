@@ -37,6 +37,7 @@
  *   npx tsx scripts/rotina-local.mts --so-build     # pula o ETL
  *   npx tsx scripts/rotina-local.mts --listar       # só mostra o que rodaria
  *   npx tsx scripts/rotina-local.mts --worker       # deploy do Worker (fallback) em vez do túnel
+ *   npx tsx scripts/rotina-local.mts --simular-paginas 697  # testa a guarda, sem build/deploy
  *
  * Publicar (passo deploy) tem dois modos:
  *   - TÚNEL (padrão): reinicia o `next start` na porta 3000 desta máquina — é o
@@ -92,16 +93,12 @@ const ORDEM = [
 // Piso de páginas abaixo do qual o deploy é abortado.
 //
 // 21 é o número medido de um build SEM banco (só as rotas que não consultam
-// nada). O saudável, medido em 05/10/2026 no worktree pub-tunel com banco
-// local de pé e 12 cidades ativas, é 621 rotas prerenderizadas (611 com 6
-// cidades — mesma medição nos logs de 03, 04, 05 e 10/10). O piso era 1000,
-// calibrado no regime antigo em que a zona [municipio] era pré-renderizada no
-// build (1.471 com banco); desde a troca para on-demand (paramsDasCidades
-// devolve [] fora do alvo export) TODO build saudável fica abaixo dele e a
-// rotina abortava em toda rodada. 300 fica 14× acima do build sem banco e 2×
-// abaixo do saudável: ainda pega "o Postgres não subiu", sem abortar build
-// bom. A erosão entre rodadas continua sendo vigiada por QUEDA_MAXIMA.
-const PISO_PAGINAS = 300;
+// nada). O build saudável medido em 09/11/2026, com a zona Cidades on-demand,
+// é 697 páginas (690 na rotina daquela manhã). O piso era 300, herdado da
+// medição de 05/10/2026 (621 rotas no regime antigo); 600 fica logo abaixo do
+// patamar atual e 28× acima do build sem banco. A erosão entre rodadas
+// continua vigiada por QUEDA_MAXIMA (20%).
+const PISO_PAGINAS = 600;
 
 // Queda relativa que exige confirmação. O piso pega o desastre; isto pega a
 // erosão — uma tabela que esvaziou derruba centenas de páginas sem chegar
@@ -121,9 +118,9 @@ const argv = process.argv.slice(2);
 // barato, falhar quieto custa um site publicado errado.
 const BANDEIRAS = new Set([
   "--listar", "--so-build", "--so-etl", "--sem-deploy", "--forcar-deploy",
-  "--dispatch", "--workflow", "--job",
+  "--dispatch", "--workflow", "--job", "--simular-paginas",
 ]);
-const COM_VALOR = new Set(["--workflow", "--job"]);
+const COM_VALOR = new Set(["--workflow", "--job", "--simular-paginas"]);
 for (let i = 0; i < argv.length; i++) {
   const a = argv[i];
   if (COM_VALOR.has(argv[i - 1])) continue; // é o valor do anterior
@@ -146,6 +143,22 @@ const SEM_DEPLOY = args.has("--sem-deploy") || SO_ETL;
 const FORCAR_DEPLOY = args.has("--forcar-deploy");
 /** `--worker`: deploy do Worker (fallback). Sem ele, o padrão é túnel. */
 const MODO_WORKER = args.has("--worker");
+
+/**
+ * `--simular-paginas N`: roda só a guarda de contagem, sem ETL, build ou
+ * deploy. Existe para o teste seco da calibragem (697 passa; 100 aborta).
+ */
+const SIMULAR_PAGINAS = (() => {
+  const i = argv.indexOf("--simular-paginas");
+  if (i < 0) return null;
+  const bruto = argv[i + 1];
+  const n = Number(bruto);
+  if (!Number.isInteger(n) || n < 0) {
+    console.error(`--simular-paginas precisa de inteiro >= 0 (recebi: ${bruto ?? "nada"})`);
+    process.exit(2);
+  }
+  return n;
+})();
 
 /**
  * `--dispatch` roda TODOS os passos do workflow, ignorando a cadência do dia.
@@ -581,10 +594,46 @@ function contagemAnterior(): number | null {
 
 // ───────────────────────────── principal ─────────────────────────────
 
+/**
+ * A trava que dá razão a este arquivo: recusa build abaixo do piso ou com
+ * queda maior que QUEDA_MAXIMA contra a contagem anterior. Devolve false
+ * quando o chamador deve abortar; a mensagem sai no log humano.
+ */
+function aprovarContagem(paginas: number, antes: number | null): boolean {
+  if (paginas < PISO_PAGINAS) {
+    registrar(
+      `ABORTADO: ${paginas} páginas, abaixo do piso de ${PISO_PAGINAS}. ` +
+        `Isto é build sem banco (21 é o número medido), não é o código. ` +
+        `O deploy publicaria um site em branco por cima de um site correto.`
+    );
+    return false;
+  }
+  if (antes && paginas < antes * (1 - QUEDA_MAXIMA) && !FORCAR_DEPLOY) {
+    registrar(
+      `ABORTADO: ${paginas} páginas contra ${antes} da última rodada — queda de ` +
+        `${(((antes - paginas) / antes) * 100).toFixed(1)}%. Uma tabela pode ter esvaziado. ` +
+        `Se a queda for esperada, rode de novo com --forcar-deploy.`
+    );
+    return false;
+  }
+  return true;
+}
+
 async function principal() {
   const hoje = new Date();
   registrar(`rotina local — ${hoje.toISOString()}`);
   registrar(`log: ${ARQUIVO_LOG}`);
+
+  if (SIMULAR_PAGINAS !== null) {
+    const antes = contagemAnterior();
+    registrar(`simulação: ${SIMULAR_PAGINAS} páginas (última: ${antes ?? "-"})`);
+    if (!aprovarContagem(SIMULAR_PAGINAS, antes)) {
+      process.exitCode = 1;
+      return;
+    }
+    registrar("simulação: passaria pela guarda");
+    return;
+  }
 
   const envEtl = lerDotenv(path.join(RAIZ, "etl", "betim", ".env"));
   const envWeb = lerDotenv(path.join(WEB, ".env.local"));
@@ -686,21 +735,7 @@ async function principal() {
   registrar(`build: ${paginas} páginas pré-renderizadas${antes ? ` (última: ${antes})` : ""}`);
 
   // A trava que dá razão a este arquivo.
-  if (paginas < PISO_PAGINAS) {
-    registrar(
-      `ABORTADO: ${paginas} páginas, abaixo do piso de ${PISO_PAGINAS}. ` +
-        `Isto é build sem banco (21 é o número medido), não é o código. ` +
-        `O deploy publicaria um site em branco por cima de um site correto.`
-    );
-    process.exitCode = 1;
-    return;
-  }
-  if (antes && paginas < antes * (1 - QUEDA_MAXIMA) && !FORCAR_DEPLOY) {
-    registrar(
-      `ABORTADO: ${paginas} páginas contra ${antes} da última rodada — queda de ` +
-        `${(((antes - paginas) / antes) * 100).toFixed(1)}%. Uma tabela pode ter esvaziado. ` +
-        `Se a queda for esperada, rode de novo com --forcar-deploy.`
-    );
+  if (!aprovarContagem(paginas, antes)) {
     process.exitCode = 1;
     return;
   }
