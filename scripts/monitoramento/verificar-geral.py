@@ -149,6 +149,52 @@ def conferir_componentes() -> tuple[list[str], int, int]:
     return linhas, criticos, avisos
 
 
+def gravar_log(linhas: list[str], criticos: int, avisos: int, agora: datetime) -> None:
+    """Regrava docs/02-estado/AUDITORIA-GERAL.md com o cabecalho exigido.
+
+    O validador de documentacao pede metadados e "## Sumario" em todo .md de
+    docs/. Como este log e reescrito a cada rodada, o cabecalho nasce aqui --
+    senao o monitoramento reabre o CI vermelho.
+    """
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    resumo_linha = (
+        f"- {agora:%d/%m/%Y %H:%M} BRT - {criticos} criticos; {avisos} avisos."
+    )
+    historico: list[str] = []
+    if LOG.exists():
+        atual = LOG.read_text(encoding="utf-8")
+        if "## Historico de resumos" in atual:
+            resto = atual.split("## Historico de resumos", 1)[1]
+            historico = [l.rstrip() for l in resto.strip().splitlines() if l.strip()]
+    if resumo_linha not in historico:
+        historico.insert(0, resumo_linha)
+    cabecalho = (
+        "# Auditoria geral do portal\n\n"
+        "> **Tipo:** RELATÓRIO\n"
+        "> **Domínio:** operação (monitoramento do portal)\n"
+        f"> **Última medição:** {agora:%Y-%m-%d}\n"
+        "> **Leitura estimada:** curta (até 5 min)\n"
+        "> **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)\n"
+        "> **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal\n\n"
+        "## Sumário\n\n"
+        "- [Rotas](#rotas)\n"
+        "- [Dados versionados](#dados-versionados)\n"
+        "- [SEO](#seo)\n"
+        "- [Componentes (title/description)](#componentes-titledescription)\n"
+        "- [Historico de resumos](#historico-de-resumos)\n\n"
+        "Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.\n\n"
+        "<!-- ULTIMA RODADA -->\n\n"
+    )
+    conteudo = (
+        cabecalho
+        + "\n".join(linhas).rstrip()
+        + "\n\n## Historico de resumos\n\n"
+        + "\n".join(historico)
+        + "\n"
+    )
+    LOG.write_text(conteudo, encoding="utf-8")
+
+
 def principal() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--atualizar-log", action="store_true")
@@ -191,33 +237,7 @@ def principal() -> int:
     )
 
     if args.atualizar_log:
-        LOG.parent.mkdir(parents=True, exist_ok=True)
-        resumo_linha = (
-            f"- {agora:%d/%m/%Y %H:%M} BRT - {criticos} criticos; {avisos} avisos."
-        )
-        historico: list[str] = []
-        if LOG.exists():
-            atual = LOG.read_text(encoding="utf-8")
-            if "## Historico de resumos" in atual:
-                resto = atual.split("## Historico de resumos", 1)[1]
-                historico = [l.rstrip() for l in resto.strip().splitlines() if l.strip()]
-            if "<!-- ULTIMA RODADA -->" in atual:
-                bloco = atual.split("<!-- ULTIMA RODADA -->", 1)[1]
-                if "## Historico de resumos" in bloco:
-                    bloco = bloco.split("## Historico de resumos", 1)[0]
-                rodada_anterior = bloco.strip()
-        if resumo_linha not in historico:
-            historico.insert(0, resumo_linha)
-        conteudo = (
-            "# Auditoria geral do portal\n\n"
-            "Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.\n\n"
-            "<!-- ULTIMA RODADA -->\n\n"
-            + "\n".join(linhas).rstrip()
-            + "\n\n## Historico de resumos\n\n"
-            + "\n".join(historico)
-            + "\n"
-        )
-        LOG.write_text(conteudo, encoding="utf-8")
+        gravar_log(linhas, criticos, avisos, agora)
 
     print(resumo)
     return 0 if criticos == 0 else 1
