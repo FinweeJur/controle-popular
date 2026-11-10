@@ -1,5 +1,23 @@
 # Plano — classificar polo e resultado com GLM, junto do resumo
 
+> **Tipo:** PLANO
+> **Domínio:** jurisprudência (classificação assistida por IA)
+> **Última medição:** 2026-11-02
+> **Leitura estimada:** média (5-15 min)
+> **Relacionados:** [AGENTS.md](/AGENTS.md), [PLANO-JURISPRUDENCIA-02-11.md](PLANO-JURISPRUDENCIA-02-11.md)
+> **Palavras-chave:** jurisprudência, glm, classificação, polo vencedor, resultado do recurso, resumo, custo
+
+## Sumário
+
+- [1. O tamanho do problema (medido em 02/11/2026)](#1-o-tamanho-do-problema-medido-em-02112026)
+- [2. O que já existe e serve](#2-o-que-já-existe-e-serve)
+- [3. Arquitetura proposta](#3-arquitetura-proposta)
+- [4. Rubrica do polo (fechada)](#4-rubrica-do-polo-fechada)
+- [5. Custo e ritmo](#5-custo-e-ritmo)
+- [6. Coordenação com o home-pc](#6-coordenação-com-o-home-pc)
+- [7. Critérios de aceite](#7-critérios-de-aceite)
+- [8. O que não fazer](#8-o-que-não-fazer)
+
 Criado: 2026-11-02. Status: aprovado pelo dono ("vamos rodar glm-4 pra além de
 resumir categorizar melhor"), coordenação com o home-pc em aberto.
 
