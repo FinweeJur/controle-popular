@@ -107,6 +107,122 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
     }
 
 
+def _gravar(client, rows_by_pncp: dict[str, dict]) -> int:
+    """Persiste o lote de licitações no Postgres em blocos de até 1.000 registros."""
+    rows = list(rows_by_pncp.values())
+    for i in range(0, len(rows), 1000):
+        client.table("licitacoes").upsert(
+            rows[i : i + 1000], on_conflict="numero_controle_pncp"
+        ).execute()
+    return len(rows)
+
+
+def _mapear_pagina(
+    registros_brutos: list[dict],
+    id_municipio: str,
+    incluir_outras_esferas: bool,
+) -> tuple[dict[str, dict], int]:
+    """Mapeia uma página e aplica o filtro de esfera; devolve (lote, descartados)."""
+    rows_by_pncp: dict[str, dict] = {}
+    descartados = 0
+    for raw in registros_brutos:
+        # Aplica o filtro estrito de esfera para isolar despesas genuinamente municipais
+        esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
+        if not incluir_outras_esferas and esfera != "M":
+            descartados += 1
+            continue
+        row = _map_row(raw, id_municipio)
+        rows_by_pncp[row["numero_controle_pncp"]] = row
+    return rows_by_pncp, descartados
+
+
+def _avisar_interrupcao(ano: int, modalidade: int, erro: Exception) -> None:
+    """Avisa que a API interrompeu a modalidade e o parcial foi gravado."""
+    print(
+        f"[etl.pncp.licitacoes] AVISO: ano={ano} modalidade={modalidade} "
+        f"interrompida ({type(erro).__name__}); parcial gravado e segue. "
+        f"Re-rode para completar.",
+        flush=True,
+    )
+
+
+def _avisar_residual(ano: int, modalidade: int, erro: Exception) -> None:
+    """Avisa que o lote residual da modalidade não pôde ser gravado."""
+    print(
+        f"[etl.pncp.licitacoes] AVISO: erro ao gravar lote residual de ano={ano} "
+        f"modalidade={modalidade} ({type(erro).__name__}): {erro}",
+        flush=True,
+    )
+
+
+def _sync_modalidade(
+    client,
+    estado: dict,
+    alvo: tuple[str, int, int, bool],
+    ano_atual: int,
+) -> tuple[int, int, list[str]]:
+    """Sincroniza um (município, ano, modalidade).
+
+    Devolve (registros gravados, descartados por esfera, nomes dos erros).
+    """
+    id_municipio, ano, modalidade, incluir_outras_esferas = alvo
+    chave = f"{id_municipio}:{ano}-{modalidade}"
+    if ck.unidade_pronta(estado, chave, ano_atual=ano_atual):
+        print(f"[etl.pncp.licitacoes] {chave} checkpoint=ok, pula", flush=True)
+        return 0, 0, []
+
+    pagina_inicio = ck.pagina_retomar(estado, chave)
+    if pagina_inicio > 1:
+        print(f"[etl.pncp.licitacoes] {chave} retoma na página {pagina_inicio}",
+              flush=True)
+
+    rows_by_pncp: dict[str, dict] = {}
+    paginas_gravadas = pagina_inicio - 1
+    registros_chave = ck.registros_parciais(estado, chave)
+    descartados = 0
+    erros: list[str] = []
+
+    try:
+        for pagina, registros_brutos in iter_contratacoes(
+            id_municipio, f"{ano}0101", f"{ano}1231", modalidade,
+            pagina_inicio=pagina_inicio,
+        ):
+            novos, descartados_pagina = _mapear_pagina(
+                registros_brutos, id_municipio, incluir_outras_esferas
+            )
+            descartados += descartados_pagina
+            rows_by_pncp.update(novos)
+
+            # Gravação por página: minimiza perda de dados em caso de queda de conexão
+            n = _gravar(client, rows_by_pncp)
+            registros_chave += n
+            rows_by_pncp = {}
+            paginas_gravadas = max(paginas_gravadas, pagina)
+            ck.marcar_parcela(
+                estado, ck.NOME_LICITACOES, chave,
+                pagina=paginas_gravadas, registros=registros_chave,
+            )
+            print(
+                f"[etl.pncp.licitacoes] {chave} p={pagina} "
+                f"lote={n} acumulado={registros_chave}",
+                flush=True,
+            )
+    except Exception as e:
+        # Falhas de gateway HTTP 500 do PNCP registram o parcial coletado e prosseguem
+        erros.append(type(e).__name__)
+        _avisar_interrupcao(ano, modalidade, e)
+
+    # Grava eventuais registros residuais da modalidade
+    try:
+        registros_chave += _gravar(client, rows_by_pncp)
+    except Exception as e:
+        erros.append(type(e).__name__)
+        _avisar_residual(ano, modalidade, e)
+    if not erros:
+        ck.marcar_ok(estado, ck.NOME_LICITACOES, chave, registros=registros_chave)
+    return registros_chave, descartados, erros
+
+
 def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = False):
     """Executa a sincronização sistemática das licitações do município no PNCP.
 
@@ -137,107 +253,15 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
     # Lista de tuplas (ano, modalidade, tipo_erro) que falharam por indisponibilidade transitória do PNCP
     incompletos: list[tuple[int, int, str]] = []
 
-    def _gravar(rows_by_pncp: dict[str, dict]) -> int:
-        """Persiste o lote de licitações no Postgres em blocos de até 1.000 registros."""
-        rows = list(rows_by_pncp.values())
-        for i in range(0, len(rows), 1000):
-            client.table("licitacoes").upsert(
-                rows[i : i + 1000], on_conflict="numero_controle_pncp"
-            ).execute()
-        return len(rows)
-
     for ano in range(ano_inicio, ano_atual + 1):
-        data_inicial = f"{ano}0101"
-        data_final = f"{ano}1231"
         for modalidade in MODALIDADES:
-            # Chave única de checkpoint identificando o município, ano e modalidade da Lei 14.133
-            chave = f"{id_municipio}:{ano}-{modalidade}"
-            if ck.unidade_pronta(estado, chave, ano_atual=ano_atual):
-                print(
-                    f"[etl.pncp.licitacoes] {chave} checkpoint=ok, pula",
-                    flush=True,
-                )
-                continue
-
-            pagina_inicio = ck.pagina_retomar(estado, chave)
-            if pagina_inicio > 1:
-                print(
-                    f"[etl.pncp.licitacoes] {chave} retoma na página {pagina_inicio}",
-                    flush=True,
-                )
-
-            rows_by_pncp: dict[str, dict] = {}
-            paginas_gravadas = pagina_inicio - 1
-            item_ck = estado.get(chave)
-            registros_chave = (
-                int(item_ck.get("registros") or 0)
-                if isinstance(item_ck, dict) and item_ck.get("status") == "parcial"
-                else 0
+            alvo = (id_municipio, ano, modalidade, incluir_outras_esferas)
+            registros, descartados_mod, erros = _sync_modalidade(
+                client, estado, alvo, ano_atual
             )
-
-            try:
-                for pagina, registros_brutos in iter_contratacoes(
-                    id_municipio,
-                    data_inicial,
-                    data_final,
-                    modalidade,
-                    pagina_inicio=pagina_inicio,
-                ):
-                    for raw in registros_brutos:
-                        # Aplica o filtro estrito de esfera para isolar despesas genuinamente municipais
-                        esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
-                        if not incluir_outras_esferas and esfera != "M":
-                            descartados += 1
-                            continue
-                        row = _map_row(raw, id_municipio)
-                        rows_by_pncp[row["numero_controle_pncp"]] = row
-
-                    # Gravação por página: minimiza perda de dados em caso de queda de conexão
-                    n = _gravar(rows_by_pncp)
-                    registros_chave += n
-                    rows_by_pncp = {}
-                    paginas_gravadas = max(paginas_gravadas, pagina)
-                    ck.marcar_parcela(
-                        estado,
-                        ck.NOME_LICITACOES,
-                        chave,
-                        pagina=paginas_gravadas,
-                        registros=registros_chave,
-                    )
-                    print(
-                        f"[etl.pncp.licitacoes] {chave} p={pagina} "
-                        f"lote={n} acumulado={registros_chave}",
-                        flush=True,
-                    )
-            except Exception as e:
-                # Falhas de gateway HTTP 500 do PNCP registram o parcial coletado e prosseguem
-                incompletos.append((ano, modalidade, type(e).__name__))
-                print(
-                    f"[etl.pncp.licitacoes] AVISO: ano={ano} modalidade={modalidade} "
-                    f"interrompida ({type(e).__name__}); parcial gravado e segue. "
-                    f"Re-rode para completar.",
-                    flush=True,
-                )
-
-            # Grava eventuais registros residuais da modalidade
-            try:
-                n = _gravar(rows_by_pncp)
-                registros_chave += n
-            except Exception as e:
-                incompletos.append((ano, modalidade, type(e).__name__))
-                print(
-                    f"[etl.pncp.licitacoes] AVISO: erro ao gravar lote residual de ano={ano} "
-                    f"modalidade={modalidade} ({type(e).__name__}): {e}",
-                    flush=True,
-                )
-            if not any(a == ano and m == modalidade for a, m, _ in incompletos):
-                ck.marcar_ok(
-                    estado,
-                    ck.NOME_LICITACOES,
-                    chave,
-                    registros=registros_chave,
-                )
-            total += registros_chave
+            total += registros
+            descartados += descartados_mod
+            incompletos.extend((ano, modalidade, nome) for nome in erros)
             time.sleep(INTER_REQUEST_SLEEP)
         print(f"[etl.pncp.licitacoes] ano={ano} acumulado={total}", flush=True)
 

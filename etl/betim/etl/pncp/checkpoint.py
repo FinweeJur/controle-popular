@@ -91,6 +91,14 @@ def unidade_pronta(
     return ano < ano_atual
 
 
+def registros_parciais(estado: dict[str, Any], chave: str) -> int:
+    """Registros já gravados de uma unidade parcial (0 se não houver)."""
+    item = estado.get(chave)
+    if not isinstance(item, dict) or item.get("status") != "parcial":
+        return 0
+    return int(item.get("registros") or 0)
+
+
 def marcar_parcela(
     estado: dict[str, Any],
     nome: str,
