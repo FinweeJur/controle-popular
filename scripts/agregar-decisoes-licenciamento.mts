@@ -160,6 +160,17 @@ function contar(linhas: Decisao[], chave: (d: Decisao) => string | null, teto?: 
 const bruto = JSON.parse(readFileSync(BRUTO, "utf8"));
 const todas: Decisao[] = bruto.decisoes ?? [];
 
+// Rodada com página perdida é rodada TRUNCADA: as perdidas não são aleatórias,
+// são as que estouraram o retry. O piso de 40 mil não pega isso — perder 500
+// páginas ainda deixa 40 mil linhas e publicaria um recorte enviesado no lugar
+// do acervo. Aborta antes de gravar, como o piso.
+const perdidas = Array.isArray(bruto.paginas_perdidas) ? bruto.paginas_perdidas : [];
+if (perdidas.length > 0) {
+  throw new Error(
+    `${perdidas.length} página(s) perdidas na coleta (${perdidas.slice(0, 20).join(", ")}) — rodada truncada, nada gravado.`,
+  );
+}
+
 if (todas.length < 40_000) {
   throw new Error(`só ${todas.length} decisões — o bruto tinha 43.444. Abortando antes de gravar.`);
 }
@@ -184,7 +195,7 @@ const semMunicipio = todas.filter((d) => !d.municipio_nome || d.municipio_nome =
 
 const agregado = {
   fonte: bruto.fonte ?? "sistemas.meioambiente.mg.gov.br/licenciamento — consulta de decisões",
-  geradoEm: bruto.gerado_em ?? null,
+  geradoEm: bruto.gerado_em ?? bruto.coletado_em ?? null,
   agregadoEm: new Date().toISOString().slice(0, 10),
   total: todas.length,
   observacao:
