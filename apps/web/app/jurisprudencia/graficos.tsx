@@ -74,7 +74,7 @@ export function prepararItens(
 
 function Legenda({ itens, total }: { itens: ItemGrafico[]; total: number }) {
   return (
-    <ul className="space-y-1 text-sm">
+    <ul className="mx-auto w-full max-w-sm space-y-1 text-sm">
       {itens.map((item) => (
         <li key={item.chave} className="flex items-center gap-2">
           <span
@@ -86,7 +86,7 @@ function Legenda({ itens, total }: { itens: ItemGrafico[]; total: number }) {
             {item.rotulo}
           </span>
           <span className="shrink-0 font-tabular">{item.n.toLocaleString("pt-BR")}</span>
-          <span className="w-11 shrink-0 text-right font-tabular opacity-60">
+          <span className="w-9 shrink-0 text-right text-xs font-tabular opacity-60">
             {total ? `${Math.round((100 * item.n) / total)}%` : "—"}
           </span>
         </li>
@@ -95,20 +95,35 @@ function Legenda({ itens, total }: { itens: ItemGrafico[]; total: number }) {
   );
 }
 
-/** Barras horizontais: percentual dentro, rótulo e número ao lado. */
+/**
+ * Barras horizontais: bloco curto e centralizado.
+ *
+ * Antes a barra era `flex-1` e esticava até a borda da coluna: o rótulo ficava
+ * num canto e o N no outro, com 300 px de cor entre os dois. Aqui a barra tem
+ * teto de 13 rem (6 rem no celular), o rótulo tem teto de 9 rem e o valor fica
+ * logo ao lado da barra — o olho percorre pouco para juntar sujeito, proporção
+ * e número. No celular a linha encolhe em vez de empurrar o N para o canto.
+ */
 export function BarrasHorizontais({ itens, total }: { itens: ItemGrafico[]; total: number }) {
   const maior = Math.max(...itens.map((item) => item.n), 1);
   return (
-    <ul className="space-y-1.5">
+    <ul className="mx-auto w-full max-w-sm space-y-1.5 sm:max-w-xl">
       {itens.map((item) => {
         const fracao = total ? item.n / total : 0;
         const largura = (100 * item.n) / maior;
         return (
-          <li key={item.chave} className="flex items-center gap-2 text-sm">
-            <span className="w-[8.5rem] shrink-0 truncate" title={item.rotulo}>
+          <li
+            key={item.chave}
+            className="grid grid-cols-[minmax(0,1fr)_minmax(3rem,6rem)_max-content] items-center gap-x-2 text-sm sm:grid-cols-[minmax(0,9rem)_minmax(0,13rem)_max-content]"
+          >
+            <span className="min-w-0 truncate" title={item.rotulo}>
               {item.rotulo}
             </span>
-            <span className="relative h-5 min-w-0 flex-1 overflow-hidden rounded bg-[var(--cp-surface-2)]">
+            <span
+              className="relative h-5 w-full overflow-hidden rounded bg-[var(--cp-surface-2)]"
+              role="img"
+              aria-label={`${item.rotulo}: ${item.n} de ${total}`}
+            >
               <BarraAnimada
                 fracao={item.n / maior}
                 cor={item.cor}
@@ -121,11 +136,11 @@ export function BarrasHorizontais({ itens, total }: { itens: ItemGrafico[]; tota
                 </span>
               ) : null}
             </span>
-            <span className="w-14 shrink-0 text-right font-tabular">
+            <span className="justify-self-end whitespace-nowrap font-tabular">
               <ContadorAnimado valor={item.n} />
-            </span>
-            <span className="w-11 shrink-0 text-right font-tabular opacity-60">
-              {total ? `${Math.round(100 * fracao)}%` : "—"}
+              <span className="ml-1.5 text-xs opacity-60">
+                {total ? `${Math.round(100 * fracao)}%` : "—"}
+              </span>
             </span>
           </li>
         );
