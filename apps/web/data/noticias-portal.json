@@ -1,4 +1,82 @@
 [
+{
+ "slug": "renap-30-encontro-lenir-correia-joao-pessoa",
+ "titulo": "Encontro da RENAP em João Pessoa debate a prisão de Lenir Correia",
+ "subtitulo": "O 30º Encontro Nacional da RENAP leva o nome da advogada presa em Rondônia e reúne IPDMS e RENAJU na UFPB, de 11 a 14 de novembro.",
+ "resumo": "Advogada popular presa preventivamente em Rondônia desde novembro de 2025, Lenir Correia dá nome ao 30º Encontro da RENAP, que reúne três redes na UFPB.",
+ "categoria": "Explicador",
+ "frente": "direitos",
+ "subfrente": "Advocacia popular — RENAP",
+ "autor": "ONSA — Observatório Nacional Socioambiental",
+ "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir do site oficial do encontro e da nota pública da RENAP, auditado pelo ONSA.",
+ "publicadoEm": "2026-11-10T18:00:00Z",
+ "atualizadoEm": "2026-11-10T18:00:00Z",
+ "tempoLeituraMin": 4,
+ "palavrasChave": [
+  "RENAP",
+  "Lenir Correia",
+  "advocacia popular",
+  "IPDMS",
+  "RENAJU",
+  "João Pessoa",
+  "prisão preventiva",
+  "direitos humanos"
+ ],
+ "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Encontro da RENAP em João Pessoa debate a prisão de Lenir Correia. Controle Popular, nov. 2026.",
+ "citacaoBibtex": "@article{onsa2026renap30,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Encontro da RENAP em João Pessoa debate a prisão de Lenir Correia},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/renap-30-encontro-lenir-correia-joao-pessoa}\n}",
+ "fontesOficiais": [
+  {
+   "nome": "30º Encontro Nacional da RENAP — site oficial",
+   "url": "https://encontrolenirlivre.pages.dev"
+  },
+  {
+   "nome": "Nota pública da RENAP sobre a prisão de Lenir Correia",
+   "url": "https://www.renap.org.br/post/nota-p%C3%BAblica-opera%C3%A7%C3%A3o-engodo-pela-imediata-revoga%C3%A7%C3%A3o-da-pris%C3%A3o-da-advogada-popular-lenir-correia"
+  },
+  {
+   "nome": "A Nova Democracia — reportagem sobre a Operação Godos",
+   "url": "https://anovademocracia.com.br/godos-lenir-correia-luta-pela-terra-abrapo/"
+  },
+  {
+   "nome": "XI Seminário Nacional do IPDMS",
+   "url": "https://ipdms.org.br/xi-sn-ipdms/"
+  },
+  {
+   "nome": "SIGEventos/UFPB — inscrições do encontro",
+   "url": "https://sigeventos.ufpb.br/eventos/public/evento/SNIPDMS"
+  }
+ ],
+ "metricas": [
+  {
+   "rotulo": "Dias de encontro",
+   "valor": "4"
+  },
+  {
+   "rotulo": "Redes reunidas",
+   "valor": "3"
+  },
+  {
+   "rotulo": "Trabalhos aprovados",
+   "valor": "142"
+  },
+  {
+   "rotulo": "Atividades na grade",
+   "valor": "82"
+  }
+ ],
+ "recomendacaoVerificar": "Leia o [site oficial do encontro](https://encontrolenirlivre.pages.dev) e a [nota pública da RENAP](https://www.renap.org.br/post/nota-p%C3%BAblica-opera%C3%A7%C3%A3o-engodo-pela-imediata-revoga%C3%A7%C3%A3o-da-pris%C3%A3o-da-advogada-popular-lenir-correia). O caso também aparece na [reportagem da A Nova Democracia](https://anovademocracia.com.br/godos-lenir-correia-luta-pela-terra-abrapo/).",
+ "paragrafos": [
+  "O 30º Encontro Nacional da Rede Nacional de Advogadas e Advogados Populares (RENAP) acontece de 11 a 14 de novembro de 2026 no campus I da Universidade Federal da Paraíba, em João Pessoa. O encontro corre junto ao XI Seminário Nacional Direitos, Pesquisa e Movimentos Sociais (IPDMS) e ao 20º Encontro Nacional da Rede Nacional de Assessoria Jurídica Universitária (RENAJU). O tema deste ano é Lenir Correia Livre.",
+  "Lenir Correia Coelho é advogada popular em Rondônia e atua na defesa de camponesas, camponeses, indígenas e quilombolas na luta pela terra. Em novembro de 2025, foi presa preventivamente na Operação Godos, do Grupo de Atuação Especial de Combate ao Crime Organizado (GAECO) do Ministério Público de Rondônia.",
+  "Segundo a Associação Brasileira de Advogados Populares (ABRAPO), nenhuma testemunha ou suposta vítima relaciona Lenir a qualquer crime. O processo corre sob segredo de justiça e ela segue presa sem sentença. A informação é da [reportagem da A Nova Democracia](https://anovademocracia.com.br/godos-lenir-correia-luta-pela-terra-abrapo/), de 24 de agosto de 2026, que tem como base a denúncia da ABRAPO.",
+  "A prisão não é o primeiro episódio. Em 2021, na Operação Canaã, policiais invadiram a casa da advogada e apreenderam agendas, celular e computador com dados de clientes. A linha do tempo está no [site oficial do encontro](https://encontrolenirlivre.pages.dev).",
+  "Em março de 2026, o Tribunal Popular contra os Crimes do Latifúndio, instância da sociedade civil e não uma corte estatal, reconheceu Lenir como prisioneira política e exigiu sua libertação. Em agosto, a ABRAPO denunciou que o sigilo da Operação Godos blinda a perseguição e a criminalização da luta pela terra.",
+  "As exigências divulgadas pela ABRAPO são quatro: revogação imediata da prisão preventiva e libertação de Lenir; levantamento do segredo de justiça; apuração da responsabilidade dos agentes públicos pela perseguição; e fim da criminalização do movimento camponês e da advocacia popular em Rondônia.",
+  "A programação do encontro tem 82 atividades na grade, sendo 43 do IPDMS, 26 da RENAP, 4 da RENAJU, 4 conjuntas e 5 culturais. São 142 trabalhos aprovados em 12 grupos de discussão. As inscrições se encerraram em 6 de novembro; a participação nas atividades segue a organização de cada rede.",
+  "Para a RENAP, o caso de Lenir é a face mais visível de uma ofensiva contra quem defende movimentos sociais. A rede nasceu em 1995 e chega ao 30º encontro nacional como articulação descentralizada de advogadas, advogados e estudantes. O encontro de João Pessoa é o primeiro depois da prisão.",
+  "Quem quiser acompanhar pode consultar a [nota pública da RENAP](https://www.renap.org.br/post/nota-p%C3%BAblica-opera%C3%A7%C3%A3o-engodo-pela-imediata-revoga%C3%A7%C3%A3o-da-pris%C3%A3o-da-advogada-popular-lenir-correia), a [programação oficial](https://ipdms.org.br/xi-sn-ipdms/) e a [página de inscrições no SIGEventos](https://sigeventos.ufpb.br/eventos/public/evento/SNIPDMS). O portal mantém a página de [direitos em movimento](/direitos-em-movimento) e o acervo de [jurisprudência](/jurisprudencia) para quem precisa do caminho jurídico."
+ ]
+},
  {
   "slug": "stj-tema-1280-desastre-ambiental-acidente-de-consumo",
   "titulo": "STJ: desastre ambiental é acidente de consumo e o prazo é de 5 anos",
