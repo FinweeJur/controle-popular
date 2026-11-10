@@ -3,6 +3,7 @@ import Link from "next/link";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { MiniSumarioLateral } from "@/app/components/wiki/MiniSumarioLateral";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -83,7 +84,7 @@ export default async function JurisprudenciaPenal({
         </p>
       </header>
 
-      <section className="space-y-4" id="lista">
+      <section className="scroll-mt-24 space-y-4" id="lista">
         <div className="flex flex-wrap items-center gap-3 text-sm">
           <Link className="underline" href="/jurisprudencia/penal#lista">Todos</Link>
           <Link className="underline" href="/jurisprudencia/penal?tribunal=TJES#lista">TJES</Link>
@@ -95,6 +96,12 @@ export default async function JurisprudenciaPenal({
         <TabelaCasos itens={pagina.itens} />
         <Paginacao pagina={pagina} filtros={filtros} base="/jurisprudencia/penal" />
       </section>
+      <MiniSumarioLateral
+        itens={[
+          { id: "resumo-realidade", titulo: "Resumo de realidade" },
+          { id: "lista", titulo: "Lista de casos" },
+        ]}
+      />
     </div>
   );
 }

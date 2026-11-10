@@ -24,6 +24,7 @@ import { CatalogoIndeterminados } from "./Catalogo";
 import { ResumoRealidadeBox } from "../components/ResumoRealidade";
 import { TrilhaFrentes } from "../components/TrilhaFrentes";
 import { TeseTema1280 } from "./TeseTema1280";
+import { MiniSumarioLateral } from "../components/wiki/MiniSumarioLateral";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -46,6 +47,21 @@ export const metadata: Metadata = {
   description:
     "Painel da jurisprudência dos desastres: acórdãos do TJMG (Brumadinho, Rio Doce e direitos humanos), do TJES (Fundão) e súmulas do STF, STJ e TST, com recorte por tema de indenização, danos PNAB/PEAB e valores.",
 };
+
+const SECOES_JURIS = [
+  { id: "resumo-realidade", titulo: "Resumo de realidade" },
+  { id: "tema-1280", titulo: "Tema 1.280/STJ" },
+  { id: "cartoes", titulo: "Números do acervo" },
+  { id: "temas", titulo: "Recorte por tema" },
+  { id: "grafico", titulo: "Como ver" },
+  { id: "painel", titulo: "Painel" },
+  { id: "catalogo", titulo: "Catálogo" },
+  { id: "lista", titulo: "Lista de casos" },
+  { id: "sumulas", titulo: "Súmulas" },
+  { id: "legislacao", titulo: "Normas" },
+  { id: "noticias", titulo: "Notícias" },
+  { id: "metodo", titulo: "Como ler" },
+];
 
 export default async function Jurisprudencia({
   searchParams,
@@ -121,7 +137,7 @@ export default async function Jurisprudencia({
 
         <CatalogoIndeterminados />
 
-        <section className="space-y-4" id="lista">
+        <section className="scroll-mt-24 space-y-4" id="lista">
           <h2 className="font-display text-xl font-semibold">Lista</h2>
           <Formulario filtros={filtros} />
           <Paginacao pagina={pagina} filtros={filtros} />
@@ -134,6 +150,7 @@ export default async function Jurisprudencia({
         <Notas semResumo={semResumo} />
         <RodapeMetodo />
       </div>
+      <MiniSumarioLateral itens={SECOES_JURIS} />
     </div>
   );
 }

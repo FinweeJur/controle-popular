@@ -161,7 +161,7 @@ export function Grafico({
  */
 export function SeletorGrafico({ filtros, tipo }: { filtros: Filtros; tipo: TipoGrafico }) {
   return (
-    <nav className="flex flex-wrap items-center gap-2 text-sm" aria-label="Tipo de gráfico">
+    <nav id="grafico" className="flex scroll-mt-24 flex-wrap items-center gap-2 text-sm" aria-label="Tipo de gráfico">
       <span className="opacity-70">Como ver:</span>
       {TIPOS_GRAFICO.map((opcao) => (
         <Link
@@ -210,7 +210,7 @@ export function FaixaTemas({ filtros }: { filtros: Filtros }) {
         : "border-[var(--cp-border)] hover:border-[var(--cp-primary)]"
     }`;
   return (
-    <nav className="space-y-2" aria-label="Recorte por tema de indenização">
+    <nav id="temas" className="space-y-2 scroll-mt-24" aria-label="Recorte por tema de indenização">
       <h2 className="font-display text-lg font-semibold">Recorte por tema</h2>
       <ul className="flex flex-wrap gap-2">
         <li>
@@ -290,7 +290,7 @@ export function Cartoes() {
     ["Sem resumo de mérito", semResumo, "entram na lista, sem polo"],
   ];
   return (
-    <section className="grid gap-3 sm:grid-cols-2">
+    <section id="cartoes" className="grid scroll-mt-24 gap-3 sm:grid-cols-2">
       {itens.map(([rotulo, valor, nota]) => (
         <div key={rotulo} className="rounded-lg border border-[var(--cp-border)] p-4">
           <p className="text-xs uppercase tracking-wide opacity-60">{rotulo}</p>
@@ -552,7 +552,7 @@ export function Atalhos({ tribunal, frente }: { tribunal: string; frente: string
   const ativo = "rounded-lg border-2 border-[var(--cp-primary)] bg-[var(--cp-primary)]/10 p-4";
   const inativo = "rounded-lg border border-[var(--cp-border)] p-4 hover:border-[var(--cp-primary)]";
   return (
-    <section className="space-y-3">
+    <section id="atalhos" className="scroll-mt-24 space-y-3">
       <h2 className="font-display text-xl font-semibold">Recortes por frente</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {RECORTES.map((recorte) => (
@@ -578,7 +578,7 @@ export function Atalhos({ tribunal, frente }: { tribunal: string; frente: string
 
 export function BotoesLegislacao() {
   return (
-    <section className="space-y-3">
+    <section id="legislacao" className="scroll-mt-24 space-y-3">
       <h2 className="font-display text-xl font-semibold">Normas e direito crítico</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         <Link className="rounded-lg border border-[var(--cp-border)] p-4 hover:border-[var(--cp-primary)]" href="/ambiental/legislacao">
@@ -607,19 +607,21 @@ export function SumulasPorTribunal() {
     return mapa;
   }, {});
   return (
-    <Tabela
-      titulo="Súmulas por tribunal"
-      dados={dados}
-      total={contar("sumula")}
-      nota="STF 736, STJ 673 e TST 463 — enunciados vigentes baixados da fonte oficial."
-    />
+    <div id="sumulas" className="scroll-mt-24">
+      <Tabela
+        titulo="Súmulas por tribunal"
+        dados={dados}
+        total={contar("sumula")}
+        nota="STF 736, STJ 673 e TST 463 — enunciados vigentes baixados da fonte oficial."
+      />
+    </div>
   );
 }
 
 export function NoticiasTribunais() {
   const itens = NOTICIAS.slice(0, 12);
   return (
-    <section className="space-y-3">
+    <section id="noticias" className="scroll-mt-24 space-y-3">
       <h2 className="font-display text-xl font-semibold">Notícias oficiais dos tribunais</h2>
       <p className="text-sm opacity-70">
         Direitos humanos, meio ambiente, Brumadinho, Rio Doce e povos tradicionais, direto
@@ -670,7 +672,7 @@ export function PainelRecorte({
   const faixas = faixasDeValor(casos);
   const porAno = [...contagemPor(casos, "ano")].sort((a, b) => a[0].localeCompare(b[0]));
   return (
-    <section className="space-y-8" aria-label="Painel do recorte">
+    <section id="painel" className="scroll-mt-24 space-y-8" aria-label="Painel do recorte">
       <p className="text-sm opacity-80">
         <strong>
           <ContadorAnimado valor={total} />
@@ -796,7 +798,7 @@ export function RodapeMetodo() {
 
 export function Notas({ semResumo }: { semResumo: number }) {
   return (
-    <section className="space-y-2 rounded-lg border border-[var(--cp-border)] p-4 text-sm">
+    <section id="metodo" className="scroll-mt-24 space-y-2 rounded-lg border border-[var(--cp-border)] p-4 text-sm">
       <h2 className="font-display text-lg font-semibold">Como ler e o que não afirmar</h2>
       <ul className="list-disc space-y-1 pl-5 opacity-80">
         <li>

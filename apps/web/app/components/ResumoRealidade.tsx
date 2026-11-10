@@ -249,7 +249,7 @@ export function ResumoRealidadeBox({
       </p>
       <h2
         id="resumo-realidade"
-        className="mt-2 font-display text-[clamp(1.45rem,3.2vw,1.9rem)] font-bold leading-tight tracking-tight"
+        className="mt-2 scroll-mt-24 font-display text-[clamp(1.45rem,3.2vw,1.9rem)] font-bold leading-tight tracking-tight"
       >
         {titulo}
       </h2>

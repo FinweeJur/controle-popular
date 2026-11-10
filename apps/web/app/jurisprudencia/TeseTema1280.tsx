@@ -19,7 +19,7 @@ export function TeseTema1280() {
   return (
     <section
       aria-labelledby="tema-1280"
-      className="rounded-2xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-7"
+      className="scroll-mt-24 rounded-2xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-5 sm:p-7"
     >
       <p className="text-[.7rem] font-semibold uppercase tracking-[.18em] text-primary">
         Tese nova · Tema 1.280/STJ
