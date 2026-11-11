@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-11-06T08:31:48.035Z",
+  "geradoEm": "2026-11-10T08:32:13.174Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 14,
-  "aprovados": 13,
-  "alertas": 0,
+  "aprovados": 12,
+  "alertas": 1,
   "falhas": 1,
   "itens": [
     {
@@ -64,7 +64,7 @@
       "categoria": "cloudflare",
       "item": "Limite de 25 MiB: jurisprudencia-casos.json",
       "status": "FALHA",
-      "detalhes": "Arquivo possui 56.92 MiB, excedendo o teto do Cloudflare."
+      "detalhes": "Arquivo possui 57.03 MiB, excedendo o teto do Cloudflare."
     },
     {
       "categoria": "privacidade",
@@ -75,8 +75,8 @@
     {
       "categoria": "qualidade_dados",
       "item": "5 Regras de Qualidade: sigbm",
-      "status": "APROVADO",
-      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+      "status": "ALERTA",
+      "detalhes": "Possível ausência de componente obrigatório: Gráfico, Cartões de Topo, Ressalva Editorial."
     },
     {
       "categoria": "qualidade_dados",
