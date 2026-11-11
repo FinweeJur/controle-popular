@@ -178,4 +178,25 @@ describe("route /api/chatbot — 200 com degradação, nunca 500", () => {
     expect(corpo.motivoDegradacao).toBeTruthy();
     expect(corpo.resposta).not.toMatch(/\d/);
   }, 20_000);
+
+  it("responde contagem de jurisprudência sem chamar modelo", async () => {
+    const { responderPedidoChatbot } = await import("../chatbot-http");
+
+    const req = new Request("https://www.controlepopular.com.br/api/chatbot", {
+      method: "POST",
+      headers: { "content-type": "application/json", "cf-connecting-ip": "203.0.113.78" },
+      body: JSON.stringify({
+        pergunta: "Quantos casos favoráveis a dano moral aos atingidos do Rio Doce?",
+      }),
+    });
+
+    const resp = await responderPedidoChatbot(req);
+    expect(resp.status).toBe(200);
+
+    const corpo = (await resp.json()) as RespostaRag;
+    expect(corpo.modelo).toBe("contagem-jurisprudencia");
+    expect(corpo.textoGeradoPorModelo).toBe(false);
+    expect(corpo.resposta).toContain("203");
+    expect(corpo.fontes[0]?.rota).toContain("frente=riodoce");
+  }, 20_000);
 });

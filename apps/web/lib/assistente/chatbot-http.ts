@@ -7,6 +7,7 @@ import {
   type RespostaRag,
 } from "./embeddings/rag";
 import { perguntaComRepasses } from "./acervo";
+import { responderJurisprudencia } from "./jurisprudencia-escada";
 import { sanitizarEntradaUsuario } from "../seguranca/blindagem-prompt";
 import { ipDoCliente } from "../rate-limit-ip";
 
@@ -121,6 +122,35 @@ export async function responderPedidoChatbot(req: Request): Promise<Response> {
     );
   }
   pergunta = diagnostico.textoSanitizado;
+
+  // Contagem de jurisprudência ANTES de qualquer modelo. O widget já tem o
+  // degrau determinístico no cliente, mas Telegram, companheiro e qualquer
+  // outro cliente que bata direto em `/api/chatbot` recebiam "não encontrei
+  // esse número" para um dado que o portal tem. A resposta sai do acervo,
+  // com a data e o link, e não custa token.
+  const jurisprudencia = responderJurisprudencia(pergunta);
+  if (jurisprudencia) {
+    const resposta: RespostaRag = {
+      resposta: jurisprudencia.texto,
+      fontes: [
+        {
+          indice: 1,
+          texto: jurisprudencia.texto,
+          score: 1,
+          titulo: `Jurisprudência: ${jurisprudencia.frenteNome}${
+            jurisprudencia.tema ? ` · ${jurisprudencia.tema}` : ""
+          }`,
+          rota: jurisprudencia.link,
+        },
+      ],
+      modelo: "contagem-jurisprudencia",
+      data: new Date().toISOString().slice(0, 10),
+      ressalva: true,
+      textoGeradoPorModelo: false,
+      verificacao: "ok",
+    };
+    return NextResponse.json(resposta);
+  }
 
   // Dado direto por município: se a pergunta cita uma das 853 cidades de MG,
   // perguntaComRepasses() injeta no texto enviado ao RAG os repasses federais
