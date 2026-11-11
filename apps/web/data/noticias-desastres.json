@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-08T18:30:55.979889+00:00",
+ "gerado_em": "2026-11-11T02:19:47.105357+00:00",
  "janela_dias": 45,
  "buscas": [
   {
@@ -54,10 +54,145 @@
  "lacuna_conhecida": "Noticia diz que algo foi noticiado, na data em que foi - nao e fato oficial. O vinculo de uma noticia ao caso Mariana ou Brumadinho e inferido por termo de lugar no titulo; item sem vinculo claro fica sem rotulo de desastre em vez de chutar.",
  "itens": [
   {
-   "titulo": "Acordo do Rio Doce soma R$ 3,7 bilhões e 55 projetos aprovados - IstoÉ",
+   "titulo": "Prefeitura de Brumadinho leva ao STF pedido para restabelecer auxílio emergencial - Portal da Cidade - Brumadinho / MG",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOSVU0bDFMeHJyckozU2dCd0FuRDA3ZWE2UW96dEQyM3JmT05LTFgyV2lQb0R6TURwd1FUaG5hUVN0UzVKbFZTZlhfNDJ4REJDZjFRcFJrMHN6XzFlTlR3d011cGhPcHQxOF9lR2g2Tzc3TTVJUnA3ZXJEbG5FeF9lSE5SYklqXy1OLWIxWHU0Z1ZrSkYxNUd3d1kza0w5UlFXY2NCYVJqeElJMEdpam9jdnhfOGVHQ2pnRkVUcnR3YmNjZmdOR3dna2pKSjNYTk9WNm1KS2s1OA?oc=5",
+   "veiculo": "Portal da Cidade - Brumadinho / MG",
+   "resumo": "Prefeitura de Brumadinho leva ao STF pedido para restabelecer auxílio emergencial Portal da Cidade - Brumadinho / MG",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T22:17:00+00:00"
+  },
+  {
+   "titulo": "STJ mantém suspensão de saques de novo auxílio a vítimas de Brumadinho - JOTA Info",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQOFlqdXpCX1llYTU2by1MTThTajR2Q3lwc1dRU1dOVDdTX09qVTZhRU84MVpFb0dNVXRXVzhiSDR0UmxNZlFKbnVYWjMzblhlajczUEJ0NVRfWEtKbDE1a0dRdHE3Z0xQVXFUYkQ2LVlDd1BlTnBmTWxqc0IxQkt3Sk8wOFhfUTFjM2R3SW1wRThXcGhrRzBLbEFtT2lnMGRKUUE?oc=5",
+   "veiculo": "JOTA Info",
+   "resumo": "STJ mantém suspensão de saques de novo auxílio a vítimas de Brumadinho JOTA Info",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T21:46:53+00:00"
+  },
+  {
+   "titulo": "STJ referenda suspensão de saque de auxílio a atingidos por Brumadinho - Migalhas",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPaHRGZlZUVnZVNnZEWkVoMFhDZFF4a0FsaHppYmRERFE2S0VIMDdtaDdqUFozcVV5YzVIb25RSUJ4cEVPYkd1RkVtYkYwczJJRkRrdDVtcHhzUmphXzdqMWhCRGx3UTlybi1Ma2daNG9rWjBFMkVZeVdKTHJLSXBPbXBmZlFxS0dYcDZ1ODVEU2xlSVpXM253eEVzZEc3dVJlVnV5WUhySHRGTkhPTXFXS1FKcw?oc=5",
+   "veiculo": "Migalhas",
+   "resumo": "STJ referenda suspensão de saque de auxílio a atingidos por Brumadinho Migalhas",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T19:41:30+00:00"
+  },
+  {
+   "titulo": "Entrevista | Sônia Guajajara aponta a luta legislativa como chave para blindar direitos indígenas e ambientais",
+   "link": "https://mab.org.br/2026/11/10/entrevista-sonia-guajajara-aponta-a-luta-legislativa-como-chave-para-blindar-direitos-indigenas-e-ambientais/?utm_source=rss&utm_medium=rss&utm_campaign=entrevista-sonia-guajajara-aponta-a-luta-legislativa-como-chave-para-blindar-direitos-indigenas-e-ambientais",
+   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
+   "resumo": "Em entrevista ao MAB, a deputada federal e ex-ministra faz um balanço das demarcações e ações em saúde, destacando o desafio de transformar políticas de governo em garantias constitucionais permanentes O post Entrevista | Sônia Guajajara aponta a luta legislativa como chave para blindar direitos indígenas e ambientais apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
+   "tema": "MAB — notas e notícias",
+   "desastre": null,
+   "data": "2026-11-10T19:03:03+00:00"
+  },
+  {
+   "titulo": "Brumadinho e associações cobram manutenção dos depósitos do Novo Auxílio Emergencial - Portal da Cidade - Brumadinho / MG",
+   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOdHFHTlZ6NGRjMVR4UTExMTJsbEItLXRwN1J2cFIxaDdzTWsxWUlLUkF5aFFwczVRQ1F2dTR5VjZaNEt4NnVCYm5WR1VyZUtTMFozX2x2V3lsWmExUmhXd0hzZ1h0ZFpfeFA3eXV6QnpxUnRJNDVPdWlLaFdmcXJUd0d5SEFTVlZaeWo2NU1ncW5qRENmdjdOREJvMGl0VEEtajdMVGRTTnA5V0djeFRaYzFpSDhTM04tTC1ybHFsajlKR2w2LUdsYzctMms3YWsxX2xuT2VzR3dIZzg?oc=5",
+   "veiculo": "Portal da Cidade - Brumadinho / MG",
+   "resumo": "Brumadinho e associações cobram manutenção dos depósitos do Novo Auxílio Emergencial Portal da Cidade - Brumadinho / MG",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T19:00:00+00:00"
+  },
+  {
+   "titulo": "Brumadinho, associações de pessoas atingidas e FGV se manifestam sobre suspensão do Novo Auxílio Emergencial - Instituto Guaicuy",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQc1k5RUY0WlEtM19Xd0lZNnlUSkZ1RlprWVlwSVlCM1VxVVM2V1BKaTJJWHRDUXlidDNPZmV0d1Z3MzdIbDZNZUM3Vm5CaTF1Slc5MUNEY2w1dFQxMjFUa0pQTXZ2X1pndl9uY1JTbTE0SHl3Y2t4MmthNUt1QmtFR2FHUlJxN2VRQXZzVEt4RFhpUnhYV1NVWFpqaw?oc=5",
+   "veiculo": "Instituto Guaicuy",
+   "resumo": "Brumadinho, associações de pessoas atingidas e FGV se manifestam sobre suspensão do Novo Auxílio Emergencial Instituto Guaicuy",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T16:37:34+00:00"
+  },
+  {
+   "titulo": "Auxílio à população de Brumadinho (MG) é suspenso e prefeito pede apoio da CNM - Confederação Nacional de Municípios",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxORWRZYkpmYWl5RGotWFptaFFTUFdMNkR0OWFNSmxTeFdOYUQ3c0h0c1djaFAycmxFLTJ3RWUxOUp3dHh1UG1CaURLQ0lrSDJXbDNESkE3aDhsOUUzWDZOX3ZYX0dCYS1aVGJDcmR4VkhXRFNVd1hVczRuUm9ZQmE0X2JRWThJTV9udUZSaTc5V2NzVzh4QmpPUE1tWnNoamRxbnNMN2dUSzdkZUVEZDJSYmVQSzRQUlk?oc=5",
+   "veiculo": "Confederação Nacional de Municípios",
+   "resumo": "Auxílio à população de Brumadinho (MG) é suspenso e prefeito pede apoio da CNM Confederação Nacional de Municípios",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T15:42:05+00:00"
+  },
+  {
+   "titulo": "MAB participa da COP31 na Turquia e reforça articulação internacional dos atingidos",
+   "link": "https://mab.org.br/2026/11/10/mab-participa-da-cop31-na-turquia-e-reforca-articulacao-internacional-dos-atingidos/?utm_source=rss&utm_medium=rss&utm_campaign=mab-participa-da-cop31-na-turquia-e-reforca-articulacao-internacional-dos-atingidos",
+   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
+   "resumo": "Delegação do Movimento estará na Cúpula Climática dos Povos e nas atividades da conferência oficial, pautando o debate sobre transição energética justa e popular, financiamento climático e direitos das populações atingidas O post MAB participa da COP31 na Turquia e reforça articulação internacional dos atingidos apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
+   "tema": "MAB — notas e notícias",
+   "desastre": null,
+   "data": "2026-11-10T15:18:37+00:00"
+  },
+  {
+   "titulo": "Balanço 2023-2026: Acordos de Brumadinho e do Rio Doce promovem reparação e mudança de realidade nas comunidades atingidas - Agência Minas",
+   "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPVGNTTU1IRGwzOFV4cmZJTV9NRU1HRVNWcE9Gbk9tZXhuV21uNFlySkNlR0txY2hDTi1WZUJBOEZJWWJDbnFmZWFTV3lVbTBMTmxYNDh1ZTRDTjc5NW9jM1RKVWtFNllXZGpXNzZtS1B6bWprTkNvOWtNQXB5TVpCNUNMV1RIY21QN0ZmMzJ1N3c4ZlZseG85SUdxQ1Y2ZzRURFZtWVpzOUhCbnllc1RmTTVzNkNoNTZBb1ZRQURZRktWU2E4eHkwMy1abTl6TWxiLTZyRjVOVkx4NExrY05lZk1udnVDRkh6OXFjVzkwcWxhSmF3dnEw?oc=5",
+   "veiculo": "Agência Minas",
+   "resumo": "Balanço 2023-2026: Acordos de Brumadinho e do Rio Doce promovem reparação e mudança de realidade nas comunidades atingidas Agência Minas",
+   "tema": "Novo Acordo do Rio Doce",
+   "desastre": null,
+   "data": "2026-11-10T14:03:09+00:00"
+  },
+  {
+   "titulo": "Manifestação em Mário Campos cobra continuidade do auxílio emergencial aos atingidos - Portal da Cidade - Brumadinho / MG",
+   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNY1BuR2p6Nm1wT0dGX2ZBSW9vdFRKSnlWcXlJLVpzQVNtbkRGdG1nSmR2V2oyd29sQk9nTG4xN2N1aW9sUUk0OV85VWsyTEFOT1NiY2pic3p4ejJyeEdGQWtiQjVta2JtQlpjUHRHam0xVXg5dkdJMVdCcUtoZC00c21LQTZVaUE5dmdCVFhsN256Xzh0R2FXSEpvOFA3dk9qSEMtaFJ4OXYxV0RybXJ4cnFLMDdNRW5mTnlhbVZlNmFRck1xaU12bmw3VEIzUUdVUEZ4czJNZi1zczQ?oc=5",
+   "veiculo": "Portal da Cidade - Brumadinho / MG",
+   "resumo": "Manifestação em Mário Campos cobra continuidade do auxílio emergencial aos atingidos Portal da Cidade - Brumadinho / MG",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-10T13:30:00+00:00"
+  },
+  {
+   "titulo": "Acordo do Rio Doce: recursos vão impulsionar agricultura familiar no ES - A Gazeta",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNYWs4cWdMVTBOYzBzd3d6R29hNjUyd1JIWGl0T3QxNDNESWs1MHowSTVRSFNBNHpJWE0yaGdTR1pVM2ljUTRuVVRXWmluOGwxTUFFdzdhWUNQTFNJZnNlNVhVRnBibnM5SlpJTGhqbkxWT3gtN1RjVHU4YTJ4cXBTcmlfbFE1NXJqbU5oQkVKOE9aV0hmbDVaYXVRYWNuSXRVd25fSFdmc0FUNkktN2xV?oc=5",
+   "veiculo": "A Gazeta",
+   "resumo": "Acordo do Rio Doce: recursos vão impulsionar agricultura familiar no ES A Gazeta",
+   "tema": "Novo Acordo do Rio Doce",
+   "desastre": "mariana",
+   "data": "2026-11-10T12:28:00+00:00"
+  },
+  {
+   "titulo": "Tecendo resistência: Arpilleras conectam Mariana, Brumadinho e a crise climática",
+   "link": "https://mab.org.br/2026/11/09/tecendo-resistencia-arpilleras-conectam-mariana-brumadinho-e-a-crise-climatica/?utm_source=rss&utm_medium=rss&utm_campaign=tecendo-resistencia-arpilleras-conectam-mariana-brumadinho-e-a-crise-climatica",
+   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
+   "resumo": "Exposição no Memorial da América Latina apresenta a impunidade das mineradoras à crise climática e celebra o protagonismo político e artístico das mulheres atingidas através da técnica têxtil das arpilleras O post Tecendo resistência: Arpilleras conectam Mariana, Brumadinho e a crise climática apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
+   "tema": "MAB — notas e notícias",
+   "desastre": null,
+   "data": "2026-11-09T23:17:38+00:00"
+  },
+  {
+   "titulo": "Motoristas terão novo desvio na BR-040 em Paraopeba a partir desta quarta-feira (11); veja os trechos em obras - Mega Cidade",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNZXZsbXFwRUhnOWUzQ3R4WlMxU3JCR0FxRmdvdklrX3ZLY0RGZXVteVJQMHRJVVplOU1SMnpodTVua2s3ZmJtcTgxS09jWXFpZWh4YnBFQkhTeDZ1MWFVeUZDbDExWjU4c1M4TEpGN0NsZEpTeUhKTDZwZ3A5eUwtdHozb0EzaG9UT2dCdXdGSS1KVDNXY2p0a2dfRC1Jb29SemhBME1rcjhPU2paMjVUNldiRzhtdFRsdFdLdDBia3ZzN2QzZkZ1WGhNNENrUW5OWnlsX3JmTElvVHlFVUdENWVR?oc=5",
+   "veiculo": "Mega Cidade",
+   "resumo": "Motoristas terão novo desvio na BR-040 em Paraopeba a partir desta quarta-feira (11); veja os trechos em obras Mega Cidade",
+   "tema": "Bacia do Paraopeba",
+   "desastre": "brumadinho",
+   "data": "2026-11-09T20:37:00+00:00"
+  },
+  {
+   "titulo": "Obras na BR-040 alteram desvio de trânsito em Paraopeba para instalação de balança inteligente - Sete Lagoas .com.br",
+   "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPQXdZX3pGRjVRb2ZycTYtRjEwMHZJWFVYS3NCeDNGRnl4M1FNaDZ2RGNRbGc0bG5lOU00V0F6bWRBMkFObkJJUDFGU29FczJDXzg1UmJTb0VsYjhyUkpkMjhTTWJNQVoxRi14MzRLMFYtUUloX0Nha1laZko5Z09TLXVwTTFEVnF4T0xIMHVTTlR4cnFXakdKblVoTUxGNkppcTdYSlA0bGlvemo4YTdrQU5ZRlRKMU42V0dOU21kamxpTDZacXVDQ2FicDhmX0xKeXQ1S2JKRXhyRzZocmJtYUFGby1hWVZVLVE?oc=5",
+   "veiculo": "Sete Lagoas .com.br",
+   "resumo": "Obras na BR-040 alteram desvio de trânsito em Paraopeba para instalação de balança inteligente Sete Lagoas .com.br",
+   "tema": "Bacia do Paraopeba",
+   "desastre": "brumadinho",
+   "data": "2026-11-09T20:06:00+00:00"
+  },
+  {
+   "titulo": "Acordo do Rio Doce soma R$ 1,2 bilhão em ações no Espírito Santo - Vitória News",
+   "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOdHpxUUtGNzJvX2pEMG5jWjZrN3FPN1pPZ0draVFNMEpfNXI0XzhOMUtoeGQyRHAxQWtaYlB1cHBldmt3SHhiMldJS1VQMmFTU1R3dEZXVDFVUlRIVTktVml2SVFVVFp0MFU3WDNXTk15b1BwWl9oVnF2TTBXRlVIM083NGd1MHA1U1ZCem1KWi1fb1k?oc=5",
+   "veiculo": "Vitória News",
+   "resumo": "Acordo do Rio Doce soma R$ 1,2 bilhão em ações no Espírito Santo Vitória News",
+   "tema": "Novo Acordo do Rio Doce",
+   "desastre": "mariana",
+   "data": "2026-11-09T14:57:19+00:00"
+  },
+  {
+   "titulo": "Acordo do Rio Doce completa dois anos com R$ 3,7 bilhões repassados - IstoÉ",
    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9rQUhtRHBWNHdUamVNTWRYN2VMaENmZzY5V2dnRTU4SGhGQWdDTDllc3RzV2lBSl9KbXlnWTkwSk5wdVVjMmtKYjBFMlh1dmoyN0ZKeXIxbnRVZVFpYTE4bnBmT2N2UEhGWlN0amxmcExlMkItV09iMQ?oc=5",
    "veiculo": "IstoÉ",
-   "resumo": "Acordo do Rio Doce soma R$ 3,7 bilhões e 55 projetos aprovados IstoÉ",
+   "resumo": "Acordo do Rio Doce completa dois anos com R$ 3,7 bilhões repassados IstoÉ",
    "tema": "Novo Acordo do Rio Doce",
    "desastre": "mariana",
    "data": "2026-11-08T17:33:29+00:00"
@@ -81,6 +216,15 @@
    "data": "2026-11-08T05:49:02+00:00"
   },
   {
+   "titulo": "Bienal de Arquitetura premia projeto que cuida de Brumadinho - TV Sim Brasil",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQUXByblpFMUFKc3VkaTZzQXdQMERTVGs4cmlxRnJxeE1SdTBES1pGTm1kMUFmdzFWM1NQdEtmbXIyckZnMzZuMmlYS2c1anpFekZsWTNPdUV1R2k4akg3ZHo0bUVJdkZyc3lLQVluUUVUUTdLbHJSTlZTczlyNnpPU3lIZ2ltS1JPSUZOdnR3bGl2b1AxUlF5S082SFZjZzc1QUtYSnQ0MGgyaWUx?oc=5",
+   "veiculo": "TV Sim Brasil",
+   "resumo": "Bienal de Arquitetura premia projeto que cuida de Brumadinho TV Sim Brasil",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-07T03:17:35+00:00"
+  },
+  {
    "titulo": "Bienal de Arquitetura premia projeto que mira vida pós-tragédia em Brumadinho - Folha de S.Paulo",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOb2N1aWNCa2Vuc0k5dGxRLW5WN3FORUJPYWVrNFJMbzI5MUJzTG5PREtjdk9QVGxCQlNuMVNCOHRNZ1lQRU5zNDlqdFREZ1NKN0RqY21NVjcyMXhjV09mYS1RTmlGYzdVU3E4em5zQVJzNFdmbXFobDZyRVdrT1J2UGd1M3NSVmhjc1BQZE1aYXJXaVJ1MW43aldIbUtIWTBsd09nNHF5UjRDNm14S1ZNODdQVkJvUC1LRUI0UV9uWVlIVWwyOHVvVmM2Yw?oc=5",
    "veiculo": "Folha de S.Paulo",
@@ -97,15 +241,6 @@
    "tema": "Brumadinho — caso Vale",
    "desastre": "brumadinho",
    "data": "2026-11-07T01:53:58+00:00"
-  },
-  {
-   "titulo": "Novo Acordo do Rio Doce completa dois anos de atuação junto às comunidades quilombolas - Agência Gov",
-   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQYWIzcHBoRjZEOVFrU2ZfcjFhNjhGekttYmNjUjFCLS1mQm1CcjZwS0g3bFExWnE2SDJlcWp4czR5WGdVT1hiU3NZZmFHMjZkbElTZ0RDYXgwYTl0ZkZqbFVfR1cxTXZwcW96MXhJYk1ESVFZREpRa2hyamppVjBlZUNoelE4S056Ry1GSnFuVTR6cTBLaGZOSFJ5MTNWaW9BMzdmbEMtaTkzSzAwLXJIQXFjQUhsMTZiUEFIUXdndVJBR0xxb0t3d2JIY0Y?oc=5",
-   "veiculo": "Agência Gov",
-   "resumo": "Novo Acordo do Rio Doce completa dois anos de atuação junto às comunidades quilombolas Agência Gov",
-   "tema": "Novo Acordo do Rio Doce",
-   "desastre": "mariana",
-   "data": "2026-11-07T01:37:00+00:00"
   },
   {
    "titulo": "Pescadores capturam peixes com tumores, deformidades e anomalias 11 anos após desastre de Mariana - Estadão",
@@ -171,10 +306,10 @@
    "data": "2026-11-06T19:34:50+00:00"
   },
   {
-   "titulo": "Em dois anos, Novo Acordo do Rio Doce destinou R$ 3,7 bi para reparação de atingidos — Secretaria-Geral - GOV.BR",
+   "titulo": "Em dois anos, Novo Acordo do Rio Doce destinou R$ 3,7 bi para reparação de atingidos — Secretaria-Geral - Governo Federal",
    "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQUmdENi1ReGwyQmV3T3lGMGVBckpLUks5VHdGTnJWNzh6bjVtblctU2RRb1MxRlZVV0c1RGlCM2M0U2F3ZEJiaEZTUzd0bGM3eTNyclRLXzRYYXI4RVg5Vnd5NzlwZGU4dFlTSVlSTi1Mb0Y0REhqV21XbU01b0t5MVFwejRNZUZ6Q1AxZmFCQms0TDlUV3RKUVpab2gtY0VfLU5zME1fWUQxUkVPYnp0WTJoaTFGcXZPTHRyZjkyMXBaOUg1ZUZnY3lmZVoySGJGek82RWJTclZUdWFVTU1F?oc=5",
-   "veiculo": "GOV.BR",
-   "resumo": "Em dois anos, Novo Acordo do Rio Doce destinou R$ 3,7 bi para reparação de atingidos — Secretaria-Geral GOV.BR",
+   "veiculo": "Governo Federal",
+   "resumo": "Em dois anos, Novo Acordo do Rio Doce destinou R$ 3,7 bi para reparação de atingidos — Secretaria-Geral Governo Federal",
    "tema": "Novo Acordo do Rio Doce",
    "desastre": "mariana",
    "data": "2026-11-06T19:07:53+00:00"
@@ -225,22 +360,13 @@
    "data": "2026-11-06T14:23:00+00:00"
   },
   {
-   "titulo": "Governo do Brasil chega aos dois anos do Novo Acordo do Rio Doce com 55 projetos aprovados e repasse de R$ 3,7 bilhões - Governo Federal",
-   "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxPWjk5alowNGxmZ3lhM1hSdWdmUFhSYnN5V3dFZGpxek44STBKTDJBWWtzMm55SWNFUUxEZ18tbFZLRTg2bHhncmJkN0NCRGhEdjNaaEZyY3B1ZlRtb2JRX19sUmFRVGZlU0lSeXc0OE9zSXpXejBaYUV0c3pBVkQ4RUtldklCNGVVZFpHc19VQnE3Vi05NFd2cHgxVHdkVlYxQXVSWVdtQUlxM0dMb1pBNDR5ODNYdW5vOU9EeUtpQmxma1hySy1pYmZtRGJJSFdxYjI4dWo4eE9LbFM1bHN0cEY5Rk90eHZ0OGxiTVllcFhteUJ6a2t3ZnB6M2xTRkF0bzZ0NVV2OE1GbklJN05YbEhB?oc=5",
-   "veiculo": "Governo Federal",
-   "resumo": "Governo do Brasil chega aos dois anos do Novo Acordo do Rio Doce com 55 projetos aprovados e repasse de R$ 3,7 bilhões Governo Federal",
+   "titulo": "Novo Acordo do Rio Doce completa dois anos com 55 projetos aprovados e repasse de R$ 3,7 bi - Agência Gov",
+   "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPMUpzWFFNV0lUMEdqS3I0TDdldG1SM3FJZkpxSjRRS1NySWdDcFAxYms1Q1NEaEJaZUhMQnFJOTRhQ3pYemY5MmNCWDZMbG5xZi1ZcXpzR3FtMHAyT1hPUURxSmlwV2VfX0k0SzQzMUZPRzVic2RRMkhBY2xTRGY1WTdGR2J0dkNBaWdNMlFBbWRfbWozWW1wbzNzY19aX3FKMF9vVTY4WWtZTC14NGJnZWVFQ0lwN0Rrc0VnOWw4aTNEVGJsZlpwRFNnekxHdlN0d2ZPdi1xZGlSU2wyWTk2UVM4Q252VDlZOGN0X1htR3duaFc3RHc?oc=5",
+   "veiculo": "Agência Gov",
+   "resumo": "Novo Acordo do Rio Doce completa dois anos com 55 projetos aprovados e repasse de R$ 3,7 bi Agência Gov",
    "tema": "Novo Acordo do Rio Doce",
    "desastre": "mariana",
    "data": "2026-11-06T13:44:00+00:00"
-  },
-  {
-   "titulo": "Moradores temem desapropriação em Bento Rodrigues depois de 11 anos da tragédia em Mariana - ES Hoje",
-   "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1JaTZZRDA5SFRSWUtfc1RreU5tZnBQcG5Ld3NJZ1VteEV2cVZzN0RMUGdHUWlGNlcyT295OGpjNHh6QTFLMzRfSWJkaGcyVHhORFhVclJxOTl3Vmx3aUloVk90cUlnblVEWnVoV19n?oc=5",
-   "veiculo": "ES Hoje",
-   "resumo": "Moradores temem desapropriação em Bento Rodrigues depois de 11 anos da tragédia em Mariana ES Hoje",
-   "tema": "Samarco — caso Mariana",
-   "desastre": "mariana",
-   "data": "2026-11-06T12:01:03+00:00"
   },
   {
    "titulo": "Prefeitura de Brumadinho afirma ser o único município na ação pela continuidade do auxílio - Portal da Cidade - Brumadinho / MG",
@@ -297,13 +423,13 @@
    "data": "2026-11-05T22:00:12+00:00"
   },
   {
-   "titulo": "Justiça inglesa confirma quando começará julgamento das indenizações pelo desastre de Mariana - ES Fala",
-   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVGIxUko4b0xTQkdQWmE0d0M0bUpXU1h4QnVMWHlJYV9aaldUYmhBSlhTWjNkb05NMTBrdFRuMl9VdDMxTHN3UVByMkd0SXZYVlJWSGoyOGRZUXd0cVBULTliRkVwQi1la2ZCb1R1amxGUFoybms4MVBMeGo4RS1NdDYycEpMTnNXbjc0LUg5b1l2aTlZT1JxNXdRYjdNTlFXWEQ3MjhIbXZOWkFjc0d1Mg?oc=5",
-   "veiculo": "ES Fala",
-   "resumo": "Justiça inglesa confirma quando começará julgamento das indenizações pelo desastre de Mariana ES Fala",
-   "tema": "Rio Doce — indenização",
+   "titulo": "11 anos após tragédia de Mariana; peixes deformados ainda preocupam no ES - Folha do ES",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQaV9IY2s3d1FNSWZJcUc3OXNZMzVEOVF0MGYwSTUtMVNzY09UNVRGTVZzN1NuUnFzUjZ6N0U2dEFxdDNIb0hHN1BmcTE0N19wYlZYbUlxTF9EcGJib05nVDc1ZW95amU3Y0k4cGlLSUdUai1NNjA3b3kxYVg0aGU4VmRyLTgtc2pqUWM1SlJZZHc5TVFDOHJwcC0tS0wzdjg?oc=5",
+   "veiculo": "Folha do ES",
+   "resumo": "11 anos após tragédia de Mariana; peixes deformados ainda preocupam no ES Folha do ES",
+   "tema": "Samarco — caso Mariana",
    "desastre": "mariana",
-   "data": "2026-11-05T20:21:32+00:00"
+   "data": "2026-11-05T20:17:47+00:00"
   },
   {
    "titulo": "Mariana (MG): rompimento de barragem completa 11 anos; veja status das reparações - Diário do Estado",
@@ -396,22 +522,22 @@
    "data": "2026-11-05T17:47:20+00:00"
   },
   {
-   "titulo": "Desastre de Mariana - Diocese de Valadares",
-   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQZWRHazh2RVp0UWhZTWg1QkctUC1LRmRDU2tiTm1ybExtZGwta2tWSXpCVG14X0VsbFlSV29mRTZKMlVCZTJNTE9ncEYtYVQ3U1otYWZKQVpDLUpqaWJIaTNfUDZ2bF8xc2xwR3hCU1pKZEkySjNKSjhWZU5ReXdwVThHcXRhWHpfWEpLZnJfWGo?oc=5",
-   "veiculo": "Diocese de Valadares",
-   "resumo": "Desastre de Mariana Diocese de Valadares",
+   "titulo": "Após 11 Anos do crime de Mariana, atingidos denunciam novo apagamento e falta de transparência em reparações - Jornal Voz Ativa",
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPS3BkeE9rVXlHM3ZwVHdKLWpRQ3dQcTcwZ3lnQTlwMGhqOVM5N0lXM1BDdDl6OUlEWTJ4R25Hc2JXcnh2SFpTUzM2dC1yUUp4SkRIVU1DenpYOUJtZllSdnZ2Y3BYaWRqV3NGRy1QT005YjVJY0lsYktGaFJSdmFhT1lfc29DcU5GQk5WOGNEd0pCTFpsTnZEQU9sd2tIMl9TSmd4TEgxWWZ5ZHlUNTJGazdzSTRSQWc1RnlDRDVyV0xHYzBWb0l3amV3WngyY1BaZnU5LTUzOXY4NjJi?oc=5",
+   "veiculo": "Jornal Voz Ativa",
+   "resumo": "Após 11 Anos do crime de Mariana, atingidos denunciam novo apagamento e falta de transparência em reparações Jornal Voz Ativa",
    "tema": "Samarco — caso Mariana",
    "desastre": "mariana",
-   "data": "2026-11-05T14:39:54+00:00"
+   "data": "2026-11-05T17:05:14+00:00"
   },
   {
-   "titulo": "Tragédia de Mariana completa 11 anos, e famílias ainda cobram justiça e reparação - Por Dentro de Tudo",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMElSNjJaQUtJTmstdEszSkdKYS0ySUFJbkJhbWZZSVFCMDBrT3ptWFVndFhEZkdka1JueG95NWlBcjRpYkNVZUNsYTBwbVM1YVlreWhJcGpOdFA5ODFvWUJ3MHdyR2xaYW1PMWVuZzVZN2VUaldQNUI2d1RRZGdsRzFQb2Z6bm9aMGc4bXp3X05ZeXJKSTB0c283N0JZU3hQbzliMFdObjFnVGw0b05TaV9n?oc=5",
-   "veiculo": "Por Dentro de Tudo",
-   "resumo": "Tragédia de Mariana completa 11 anos, e famílias ainda cobram justiça e reparação Por Dentro de Tudo",
-   "tema": "Samarco — caso Mariana",
-   "desastre": "mariana",
-   "data": "2026-11-05T13:30:00+00:00"
+   "titulo": "Fornecimento de água pode ficar prejudicado por falta de energia - Folha de Brumadinho",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZnptb1J4WVJvMmFscnYtdHctQkJCeUZEcUxxY1FHSFkzdVdJcDJXM0xMZWo1UkUyMTdpLUZ5bWZMT1kxQW93ZUVjOWd0TW1xVmNURWpWSWc1TG9acTZjX2Q1QkZCQmZ4eThsX0d5NHFlX3N3dl9LVTVtRFQ2Y2ZTcXkzN0tMYjNJTFZadEplTHNDNFNrNDd5MUhza0pwcmdVekVmTk8wdnlXZ0NNUS02Q0VVMm04by1oTXJWeW5R?oc=5",
+   "veiculo": "Folha de Brumadinho",
+   "resumo": "Fornecimento de água pode ficar prejudicado por falta de energia Folha de Brumadinho",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-05T15:09:36+00:00"
   },
   {
    "titulo": "Restauração de capela resgata fé e história 11 anos após tragédia em Mariana - Santa Portal",
@@ -423,20 +549,11 @@
    "data": "2026-11-05T11:22:24+00:00"
   },
   {
-   "titulo": "Tragédia de Mariana completa 11 anos, e atingidos cobram Cleitinho - PAIPEE -",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTHVfTzJMTlZyRUNTcXZ2WHVoYUJ2ZWV5WmVKc0pROFNmME9fNl9ZSFFjMGZsenFiQy1EQ0lJN3dtX2diRWJGRnJQS1laX1pZRWwtbW1YVHl2aGRxVjNaTDRsNzZIZm9xeTNROVdxeXNTNzlmUEdvZ2MzVl80eU5QV1RDek8teW96MFc2akc1U2F6MXNoMWNXR3ZfRkdPR3lC?oc=5",
-   "veiculo": "PAIPEE -",
-   "resumo": "Tragédia de Mariana completa 11 anos, e atingidos cobram Cleitinho PAIPEE -",
-   "tema": "Novo Acordo do Rio Doce",
-   "desastre": "mariana",
-   "data": "2026-11-05T07:28:29+00:00"
-  },
-  {
    "titulo": "Tragédia de Mariana completa 11 anos e atingidos fazem cobrança a Cleitinho - Metrópoles",
    "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOR2tuQlU0QmJ3TG9CR1hiamQ1Rk9uVmxIOVFxSzhWc3AxQW5xdVl0SWlXX1VEdURBNS1MYW9ydmVVM3dlZHNlRjYtdFowS1NhU3QydUl5a3ZQcGsyUlhiMF9EZFdtNGg3MVRiblhiVFdoVWlXNzJfY2EwWE1lb1RERWt5aXowNTQwcVIxa2F4cThhVmMtNERvYnF6amxidEo4WGNlbU9VZWxocVdaMkJxY2NuZUZZUQ?oc=5",
    "veiculo": "Metrópoles",
    "resumo": "Tragédia de Mariana completa 11 anos e atingidos fazem cobrança a Cleitinho Metrópoles",
-   "tema": "Novo Acordo do Rio Doce",
+   "tema": "Samarco — caso Mariana",
    "desastre": "mariana",
    "data": "2026-11-05T05:08:00+00:00"
   },
@@ -468,15 +585,6 @@
    "data": "2026-11-03T22:18:36+00:00"
   },
   {
-   "titulo": "11 anos do crime de Mariana: atingidos realizam jornada por soberania, reparação e direitos - MAB - Movimento dos Atingidos por Barragens",
-   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOU2FLSzAwSkJqTTY5MDktM0RmZUNfd3FjcGVLOTFkMmlKYTNYdGF2dXZSYi1kUHNHZ19mTW44YlVGMU1DREJqRGpxSnJxejlRb3pUMUpzWHlIS3JYcDZ5cUFWTWVFakdlanFiYW12NDRsajY2Q0VIaS1fcFhGRzVrYnZmdS1nNzlHTGFkeHBwT2xrTWN5LWlSYmRTWDFKYklaV2JxaXJXWjNXbmtWWmJXb0VNbGF4T3FncXJoUg?oc=5",
-   "veiculo": "MAB - Movimento dos Atingidos por Barragens",
-   "resumo": "11 anos do crime de Mariana: atingidos realizam jornada por soberania, reparação e direitos MAB - Movimento dos Atingidos por Barragens",
-   "tema": "Samarco — caso Mariana",
-   "desastre": "mariana",
-   "data": "2026-11-03T21:06:53+00:00"
-  },
-  {
    "titulo": "Missão Josué de Castro compõe aliança entre campo e cidade para alimentar a população",
    "link": "https://mab.org.br/2026/11/03/missao-josue-de-castro-compoe-alianca-entre-campo-e-cidade-para-alimentar-a-populacao/?utm_source=rss&utm_medium=rss&utm_campaign=missao-josue-de-castro-compoe-alianca-entre-campo-e-cidade-para-alimentar-a-populacao",
    "veiculo": "MAB — Movimento dos Atingidos por Barragens",
@@ -495,13 +603,13 @@
    "data": "2026-11-03T19:07:19+00:00"
   },
   {
-   "titulo": "FLAMa-MG prepara programação no marco dos 11 anos do desastre-crime da barragem de Fundão - Agência Primaz",
-   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOSHQ4azNGNXRfV28wdWxDLXlXMG9fOFpyaGlsdGtJMjdKN2xWUWVub2s4VXlaaTIySzNjeXJPRGc4WEFySXJRT0dQUlU4MnJGNlk5MmJoeWxjQTBLSXR1ampNT21oQ0FDbjNoOUVwODJqY0gwS0NxTVU1TGtyeXNlYnNNSWFvTDM3d2pjTWU2dFdhMjdTRFlabXZEZlA3MThJWmU4VTNLWXNlQ1lranBsQWlsVGFHSzlzMFNNYzBRQldUeEdY?oc=5",
-   "veiculo": "Agência Primaz",
-   "resumo": "FLAMa-MG prepara programação no marco dos 11 anos do desastre-crime da barragem de Fundão Agência Primaz",
-   "tema": "Samarco — caso Mariana",
-   "desastre": "mariana",
-   "data": "2026-11-03T14:49:58+00:00"
+   "titulo": "PGR rebate Gilmar e defende multa de R$ 86 milhões à Vale por Brumadinho; STF retoma julgamento - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdkpHVDVtTVBWclRVSWNvaXpVcGN4YmhBMXlsb0xLUkM4eURtbFV0em0xeUdZRk9KZDRCTVBuQWdEalFUOE41bGh2Zm5vOUw0MlNqUGh1T0pGWEFRMnhaUDlDNzgycm9YTWJRWlg5Z3dQOG1oLThMbnB6WlZzbG9yOHl2N0ZjXzk0RmRMaXVlcGpsdw?oc=5",
+   "veiculo": "O Fator",
+   "resumo": "PGR rebate Gilmar e defende multa de R$ 86 milhões à Vale por Brumadinho; STF retoma julgamento O Fator",
+   "tema": "Brumadinho — caso Vale",
+   "desastre": "brumadinho",
+   "data": "2026-11-03T16:49:00+00:00"
   },
   {
    "titulo": "STJ suspende saque de novo auxílio a atingidos em Brumadinho - www.correiodamanha.com.br",
@@ -517,16 +625,7 @@
    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQeU9kbzdKY1N1MTVzSkhsLTJSeTZSX05lN2huWGU3bFQ2bUxmbDJERWswUkhfXy0wUjk0RXhQNGhlSVpQSjUzZG1NbXpwWFU4OS05XzFmT0ZCT1ZHN29USU1oeGRUSGxuSkx5cmo1d2xHaFlPcWprWEptZUdCaGFTOUVZZXdFSzl4ck00aTNYTGJIOGlkQVE1cHlSOFlMRmZWYy03T3FEbUdCRmZqZFh4V09NOGVQakVvdkxaa2g5cw?oc=5",
    "veiculo": "R7",
    "resumo": "STJ suspende saque de novo auxílio a vítimas de Brumadinho após recurso da Vale R7",
-   "tema": "Brumadinho — caso Vale",
-   "desastre": "brumadinho",
-   "data": "2026-10-31T07:00:00+00:00"
-  },
-  {
-   "titulo": "Acordo de Brumadinho: prazo para projetos de saneamento é ampliado - Metrópoles",
-   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUUVIblE3RUlZMzlaWHlQajJtUEY1WERoeDJSelRocUo0YnpwZXFaRWphZjJCdVlodUtiUzZLWUtZd1Rwc0Rqd3dJM1RfMjZya2FRQnJZYzE5X2ZaX21zMWlLV3hqLWtlTlBaanVsX2Y0bTNEaUU5NEo2SlhaejZzd2NGOXRxNnNJdXk4cmppUGpiNGxfLTZoUDJrX3cwVWNsUzFBU2phVjc?oc=5",
-   "veiculo": "Metrópoles",
-   "resumo": "Acordo de Brumadinho: prazo para projetos de saneamento é ampliado Metrópoles",
-   "tema": "Brumadinho — caso Vale",
+   "tema": "Auxílio emergencial",
    "desastre": "brumadinho",
    "data": "2026-10-31T07:00:00+00:00"
   },
@@ -547,15 +646,6 @@
    "tema": "MAB — notas e notícias",
    "desastre": null,
    "data": "2026-10-30T14:38:57+00:00"
-  },
-  {
-   "titulo": "Acordo de Brumadinho: Governo de Minas amplia prazo de submissão de projetos do Programa de Saneamento da Bacia do Paraopeba - Agência Minas",
-   "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNS3E3LTZaWkUydTdkZGZELV83SUFORE4zdTQtRmo2cTJkc2lfS1VFa3l4SEVpaE03UUZWdmdVZWd5UGtsVDdBeW9ORDgxT2JtOFBhNjFOQTZhMmNEQXhRR2tqTFpraVBTMGpCQ1ZKVjVDdTFsY0gxOVAyMGw1SmQ0YnZTQlBrbjdOUVZhbVgxd2xTOWl3UkdyYi1xOG1MUlRZaW9LV2JzQ0laWWwtRjBCdkdiR0J0bF80QnZBOXFlWHkwd3NYaFE5VnMyVFZkVTVWTWNfeDZ5Y1I2LVB6QTh2Q1MxekNfSURYQlJDSC1DdEd1RDhNM01BbTlB?oc=5",
-   "veiculo": "Agência Minas",
-   "resumo": "Acordo de Brumadinho: Governo de Minas amplia prazo de submissão de projetos do Programa de Saneamento da Bacia do Paraopeba Agência Minas",
-   "tema": "Brumadinho — caso Vale",
-   "desastre": "brumadinho",
-   "data": "2026-10-29T20:44:36+00:00"
   },
   {
    "titulo": "NOTA | Atingidos da Bacia do Paraopeba em luta pela continuidade do Auxílio Emergencial",
@@ -585,19 +675,19 @@
    "data": "2026-10-29T07:00:00+00:00"
   },
   {
-   "titulo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWlhna1h1cHcwVldoWFJhUjJRWkJfcTFsLS04dldWRldnWVludV9xTnNub1JqZ1NBclVEbl9HY1cwTXdlSkF3aHhKdmtXdFhZd0N2YnlKMXdFY1ZVejdTb2xlWnlabGJ6RTJhX2RLTGxjOHZlYTZ2dkNNWjE0WGxYdXhMZDVQM05Ya2dHSllXUDFjZVNCbUlEVWt6RXBISW9xeEY1dUh3?oc=5",
-   "veiculo": "O Fator",
-   "resumo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos O Fator",
-   "tema": "Brumadinho — caso Vale",
-   "desastre": "brumadinho",
-   "data": "2026-10-29T07:00:00+00:00"
-  },
-  {
    "titulo": "Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho - Consultor Jurídico",
    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNV9zV3NTSGZrY2hOZ2ZUZ0FIWmhjeVZULWxmXzM2TTAySXdob2Y0V2tQVDVZOHhyYU5KbEtVeUpFTFlCS0pHTTZldHlQWkhMdjFWOUFieHhsTGFmRE92bEZSSjdhYk5YT1dIZWtCMVZrN1lBZ2JmTVgwMFpPcFlJdng0d1gtRzduYU9Id1JkdWZCenB3WnUwM3VBT05nQ1R2V01uRXYzMl9NelpJZnlv?oc=5",
    "veiculo": "Consultor Jurídico",
    "resumo": "Ministra do STJ suspende novo auxílio emergencial a atingidos de Brumadinho Consultor Jurídico",
+   "tema": "Auxílio emergencial",
+   "desastre": "brumadinho",
+   "data": "2026-10-29T07:00:00+00:00"
+  },
+  {
+   "titulo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos - O Fator",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWlhna1h1cHcwVldoWFJhUjJRWkJfcTFsLS04dldWRldnWVludV9xTnNub1JqZ1NBclVEbl9HY1cwTXdlSkF3aHhKdmtXdFhZd0N2YnlKMXdFY1ZVejdTb2xlWnlabGJ6RTJhX2RLTGxjOHZlYTZ2dkNNWjE0WGxYdXhMZDVQM05Ya2dHSllXUDFjZVNCbUlEVWt6RXBISW9xeEY1dUh3?oc=5",
+   "veiculo": "O Fator",
+   "resumo": "Prefeitura de Brumadinho recorre ao STJ para liberar auxílio da Vale aos atingidos O Fator",
    "tema": "Auxílio emergencial",
    "desastre": "brumadinho",
    "data": "2026-10-29T07:00:00+00:00"
@@ -610,33 +700,6 @@
    "tema": "MAB — notas e notícias",
    "desastre": null,
    "data": "2026-10-28T19:39:55+00:00"
-  },
-  {
-   "titulo": "Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho - O Fator",
-   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNU0hrbThpd2YwNjR2ekxtZ3VSWWdaNTR1SUYtZDZSSDFEb3J3cjN6akx4elRWb0ZoeFBsb2dYREwxWnc3TUxWT0EwU0lpVUhjRFhpN09BOXJRWlQ5ZXAwc0p3dmZWOUsyenp5RzVzSVJkSjBkUjFQR2R0d2xRTGNhcURDOWV0czBwZ1VuSQ?oc=5",
-   "veiculo": "O Fator",
-   "resumo": "Ibram usa decisão do STJ para reforçar pedido a Gilmar contra auxílio da Vale em Brumadinho O Fator",
-   "tema": "Auxílio emergencial",
-   "desastre": "brumadinho",
-   "data": "2026-10-26T07:00:00+00:00"
-  },
-  {
-   "titulo": "Nota | Estamos de pé, com a cabeça erguida. COM A FORÇA DO POVO!",
-   "link": "https://mab.org.br/2026/10/25/nota-estamos-de-pe-com-a-cabeca-erguida-com-a-forca-do-povo/?utm_source=rss&utm_medium=rss&utm_campaign=nota-estamos-de-pe-com-a-cabeca-erguida-com-a-forca-do-povo",
-   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
-   "resumo": "A vitória de Lula nas urnas renova a esperança e fortalece a mobilização popular; nossa luta por democracia, soberania e justiça social continua O post Nota | Estamos de pé, com a cabeça erguida. COM A FORÇA DO POVO! apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
-   "tema": "MAB — notas e notícias",
-   "desastre": null,
-   "data": "2026-10-26T00:12:26+00:00"
-  },
-  {
-   "titulo": "ARTIGO | O Nordeste não cabe num roteiro",
-   "link": "https://mab.org.br/2026/10/24/artigo-o-nordeste-nao-cabe-num-roteiro/?utm_source=rss&utm_medium=rss&utm_campaign=artigo-o-nordeste-nao-cabe-num-roteiro",
-   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
-   "resumo": "Entre conquistas sociais, ampliação de direitos e resistência popular, a história recente do Nordeste ajuda a explicar por que a região mantém sua identificação com projetos políticos de esquerda, apesar das ofensivas e dos discursos preconceituosos da extrema direita O post ARTIGO | O Nordeste não cabe num roteiro apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
-   "tema": "MAB — notas e notícias",
-   "desastre": null,
-   "data": "2026-10-24T11:37:13+00:00"
   },
   {
    "titulo": "Perto de completar dois anos, Novo Acordo do Rio Doce transforma compromissos em entregas concretas para as pessoas e os territórios - Samarco Mineração",
@@ -693,15 +756,6 @@
    "data": "2026-10-19T07:00:00+00:00"
   },
   {
-   "titulo": "Atingidos no Rio Madeira já sentem os efeitos do El Niño agravado pela crise climática",
-   "link": "https://mab.org.br/2026/10/16/atingidos-no-rio-madeira-ja-sentem-os-efeitos-do-el-nino-agravado-pela-crise-climatica/?utm_source=rss&utm_medium=rss&utm_campaign=atingidos-no-rio-madeira-ja-sentem-os-efeitos-do-el-nino-agravado-pela-crise-climatica",
-   "veiculo": "MAB — Movimento dos Atingidos por Barragens",
-   "resumo": "Estiagem já atinge quase 23 mil pessoas em 85 localidades das regiões do Alto, Médio e Baixo Madeira, em Porto Velho (RO) O post Atingidos no Rio Madeira já sentem os efeitos do El Niño agravado pela crise climática apareceu primeiro em MAB - Movimento dos Atingidos por Barragens.",
-   "tema": "MAB — notas e notícias",
-   "desastre": null,
-   "data": "2026-10-16T20:41:14+00:00"
-  },
-  {
    "titulo": "Novo acordo do Rio Doce: instituições divulgam novo cronograma para escolha de representantes de povos tradicionais na gestão social da reparação - Ministério Público Federal",
    "link": "https://news.google.com/rss/articles/CBMiogJBVV95cUxNdjE2WDF1RG5rS3RmNHNGVTJFSFkzOEhxRnA0RFc1aEJwYjZGV2NXOW0zSnNUZkV2QlFhM2trTzBOZ05DeG9tUkJWZHh6QzRBVjljSFBkOUdtNDRKNktzXzJlOW11SXI5ZkdCTkVMZzgteFRFbFMwZjBFUDB1eW10TzN6bUYtYm9mNl8wcUc5QlJLSTlJVVFCbmVkUzhtQWF6TVo2VDlWTXJPRnJjdERXc0RaTXlJZWZFcEMxS0xYMmxLV0ZBMkZKM3dXUExka2NDYzFGV0NXemZQWnZQeXZvdms5cVFySFV2Sk5QeWxDVzNXeDBSbXVvTnVobEJ6MTRqZldUVkJrdDl4Y2FjRGxVSjZXQWxTQUJfeWZReW1QckVRUQ?oc=5",
    "veiculo": "Ministério Público Federal",
@@ -718,33 +772,6 @@
    "tema": "Novo Acordo do Rio Doce",
    "desastre": "mariana",
    "data": "2026-10-07T07:00:00+00:00"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5",
-   "veiculo": "Portal MG",
-   "resumo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 Portal MG",
-   "tema": "Brumadinho — caso Vale",
-   "desastre": "brumadinho",
-   "data": "2026-10-02T07:00:00+00:00"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Compensação socioambiental dos danos já conhecidos - Anexo II.2 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOb1VISmRxWFUxVXJVZWF4ZHc1M0k1UlRncU12YWJRU3FuUVZKajZKbHQ5MUVGRGRhUjJjWElRRWFRT2xObTZORmtNdkpPODh3cUJ4WFMzdWxXVy1RQVhZRmNvV0pKOTVKZ1lscERtdWVjRTZnYTJsWF9aX3F6VTg0MmpaMXFtbHN0Zi02eDFKckx0enNmY0tQNlV3?oc=5",
-   "veiculo": "Portal MG",
-   "resumo": "Reparação Brumadinho | Compensação socioambiental dos danos já conhecidos - Anexo II.2 Portal MG",
-   "tema": "Brumadinho — caso Vale",
-   "desastre": "brumadinho",
-   "data": "2026-10-02T07:00:00+00:00"
-  },
-  {
-   "titulo": "Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 - Portal MG",
-   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOYTkwVHV4UmEyS3RlOGtCTXFsS0xsZV9rWXBQOHE5YWw2ZGVBZGdzajRUN0EtREZ0Q3NDckFqSHN0ai1aN1BnaTFUbzdtUFQ4ODFjLUVtajhBbHRwVERtRHZHUElrNC1RbTFFN2oyRDM4Vi1OWnVfbTF6TzR6WWVjYTRSQWRYWi1uUTlIZUtUZDJXYjRHRXdpSXZ2VnBpV1hESW9Wa0FKWQ?oc=5",
-   "veiculo": "Portal MG",
-   "resumo": "Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 Portal MG",
-   "tema": "Vale — acordo de Brumadinho",
-   "desastre": "brumadinho",
-   "data": "2026-10-02T07:00:00+00:00"
   },
   {
    "titulo": "Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG",
