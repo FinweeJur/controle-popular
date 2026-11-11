@@ -22,7 +22,7 @@ import { responderComoCompanheiro } from "@/lib/companheiro/responder";
 import type { PedidoCompanheiro } from "@/lib/companheiro/contrato";
 import { obterSessao, publicarEvento } from "@/lib/companheiro/sessao";
 import { criarLimite } from "@/lib/companheiro/limite";
-import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
+import { IaIndisponivel } from "@/lib/assistente/embeddings/provedores";
 import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 
@@ -89,7 +89,7 @@ export async function POST(
     });
     return NextResponse.json(resposta);
   } catch (e) {
-    if (e instanceof OllamaIndisponivel) {
+    if (e instanceof IaIndisponivel) {
       return NextResponse.json(
         {
           erro: "A IA do assistente nao esta disponivel agora. Use os menus de respostas prontas ou tente em instantes.",

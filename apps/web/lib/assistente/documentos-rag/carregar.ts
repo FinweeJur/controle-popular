@@ -1,16 +1,16 @@
 ﻿/**
- * Carregador do Ã­ndice documental gerado fora do request.
+ * Carregador do índice documental gerado fora do request.
  *
- * O JSON fica em `public/data/documentos-rag/trechos.json`; o arquivo Ã©
- * derivado dos PDFs, nÃ£o fonte. Se ele nÃ£o existir, o RAG documental degrada
- * para vazio e o Seu NonÃ´ continua respondendo com os cartÃµes curados â€”
- * ausÃªncia de Ã­ndice nÃ£o pode derrubar o assistente.
+ * O JSON fica em `public/data/documentos-rag/trechos.json`; o arquivo é
+ * derivado dos PDFs, não fonte. Se ele não existir, o RAG documental degrada
+ * para vazio e o Seu Nonô continua respondendo com os cartões curados —
+ * ausência de índice não pode derrubar o assistente.
  *
- * Busca hÃ­brida (01/11/2026): o lÃ©xico sozinho dava recall@3 de 48,3% no
- * gabarito de 30 perguntas â€” pergunta reescrita nÃ£o achava o documento.
- * Agora a nota final Ã© `0,7 Ã— cosseno + 0,3 Ã— lÃ©xico normalizado`. Se o
- * arquivo de embeddings faltar (ou o modelo nÃ£o bater), volta ao lÃ©xico puro
- * sem quebrar: degradaÃ§Ã£o, nÃ£o erro.
+ * Busca híbrida (01/11/2026): o léxico sozinho dava recall@3 de 48,3% no
+ * gabarito de 30 perguntas — pergunta reescrita não achava o documento.
+ * Agora a nota final é `0,7 Ã— cosseno + 0,3 Ã— léxico normalizado`. Se o
+ * arquivo de embeddings faltar (ou o modelo não bater), volta ao léxico puro
+ * sem quebrar: degradação, não erro.
  */
 
 import { readFileSync } from "node:fs";
@@ -54,7 +54,7 @@ function lerArquivo(): IndiceDocumentos | null {
       const trechos = Array.isArray(bruto.trechos) ? bruto.trechos : [];
       return construirIndiceDocumentos(trechos);
     } catch {
-      // tenta o prÃ³ximo caminho; no fim devolve null
+      // tenta o próximo caminho; no fim devolve null
     }
   }
   return null;
@@ -68,6 +68,29 @@ export async function carregarIndiceDocumentos(): Promise<IndiceDocumentos | nul
     return indice;
   });
   return emVoo;
+}
+
+/**
+ * O índice documental já está em memória?
+ *
+ * Medido em 10/11/2026: a primeira construção do índice custa dezenas de
+ * segundos de CPU (44 MB de `trechos.json`, ~21 mil trechos, e um segundo
+ * índice só com texto). Isso não cabe no orçamento de ~25 s de
+ * `/api/chatbot` e, pior, é trabalho SÍNCRONO — nenhum `AbortSignal` corta.
+ * O RAG do chatbot consulta documentos só quando este predicado é `true`.
+ */
+export function indiceDocumentosPronto(): boolean {
+  return cache !== undefined && cache !== null;
+}
+
+/**
+ * Aquece o índice fora do caminho da requisição. Idempotente. O build é
+ * síncrono depois da leitura, então roda uma única vez por processo — quem
+ * chama deve fazê-lo depois de responder ao leitor, nunca antes.
+ */
+export function aquecerIndiceDocumentos(): void {
+  if (indiceDocumentosPronto() || emVoo) return;
+  void carregarIndiceDocumentos().catch(() => undefined);
 }
 
 interface Mistura {
@@ -172,7 +195,7 @@ function deduplicar(resultados: ResultadoDocumento[]): ResultadoDocumento[] {
   });
 }
 
-/** Mapa de cobertura para diagnÃ³stico e prompt; `null` sem Ã­ndice. */
+/** Mapa de cobertura para diagnóstico e prompt; `null` sem índice. */
 export async function mapaDocumentos(): Promise<MapaDocumentos | null> {
   const indice = await carregarIndiceDocumentos().catch(() => null);
   return indice ? construirMapaDocumentos(indice) : null;

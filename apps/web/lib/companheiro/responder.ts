@@ -81,8 +81,8 @@ function galhosDoRag(fontes: { titulo?: string; url?: string; rota?: string }[])
  * Caminho completo: escada determinista primeiro; se ela nao cobrir a
  * pergunta, vai para o RAG. Devolve o contrato do companheiro pronto.
  *
- * Pode lancar `OllamaIndisponivel` (de `responderComRag`) quando nao ha
- * provedor remoto, nem embeddings, nem Ollama — a rota traduz isso em 503.
+ * Sem provedor remoto o RAG devolve a resposta degradada honesta (com as
+ * fontes, `textoGeradoPorModelo: false`) — nao ha mais Ollama no caminho.
  */
 export async function responderComoCompanheiro(
   pedido: PedidoCompanheiro

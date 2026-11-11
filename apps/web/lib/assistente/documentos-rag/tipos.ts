@@ -81,9 +81,14 @@ export interface MapaDocumentos {
 export interface IndiceDocumentos {
   documentos: readonly DocumentoRagMeta[];
   trechos: readonly TrechoDocumento[];
-  porTermo: ReadonlyMap<string, readonly string[]>;
+  /**
+   * `Set` e não array de propósito: `trecho.id` dentro de um array de 21 mil
+   * ids custa O(n) por termo, em 21 mil trechos — medido em 10/11/2026 como
+   * ~57 s por consulta, o que impedia o `/api/chatbot` de responder em 25 s.
+   */
+  porTermo: ReadonlyMap<string, ReadonlySet<string>>;
   idf: ReadonlyMap<string, number>;
-  porCategoria: ReadonlyMap<string, readonly string[]>;
-  porTema: ReadonlyMap<string, readonly string[]>;
-  porAno: ReadonlyMap<string, readonly string[]>;
+  porCategoria: ReadonlyMap<string, ReadonlySet<string>>;
+  porTema: ReadonlyMap<string, ReadonlySet<string>>;
+  porAno: ReadonlyMap<string, ReadonlySet<string>>;
 }

@@ -87,8 +87,8 @@ export default function PainelClient({
 
   /** Provedor de IA ativo no degrau 3 do assistente (degraus 0-2 nao usam modelo). */
   type ConfigIa = {
-    provedorAtivo?: "deepseek" | "maritaca" | "ling";
-    provedores?: { id: "deepseek" | "maritaca" | "ling"; rotulo: string; modelo: string; chaveConfigurada: boolean }[];
+    provedorAtivo?: "glm" | "maritaca" | "deepseek" | "ling";
+    provedores?: { id: "glm" | "maritaca" | "deepseek" | "ling"; rotulo: string; modelo: string; chaveConfigurada: boolean }[];
     erro?: string;
   };
   const [configIa, setConfigIa] = useState<ConfigIa | null>(null);
@@ -202,7 +202,7 @@ export default function PainelClient({
   }
 
   /** Troca o provedor de IA ativo; o outro vira fallback automatico. */
-  async function salvarProvedorIa(provedor: "deepseek" | "maritaca" | "ling") {
+  async function salvarProvedorIa(provedor: "glm" | "maritaca" | "deepseek" | "ling") {
     setSalvandoIa(true);
     setAviso(null);
     try {
@@ -220,7 +220,7 @@ export default function PainelClient({
         return;
       }
       setConfigIa(corpo);
-      setAviso({ tipo: "ok", texto: "Provedor ativo alterado — o outro fica de fallback automático." });
+      setAviso({ tipo: "ok", texto: "Provedor ativo alterado — os demais ficam de fallback automático." });
     } catch (e) {
       setAviso({ tipo: "erro", texto: `Erro de rede: ${(e as Error).message}` });
     } finally {
@@ -551,8 +551,8 @@ export default function PainelClient({
           Os degraus 0–2 (navegação e respostas determinísticas) <strong className="text-text">não usam
           modelo nenhum</strong> — seguem servidos localmente, sem custo. O degrau 3, acionado só quando os
           anteriores devolvem vazio, usa o provedor ativo abaixo; se ele falhar, os demais respondem como
-          fallback automático na ordem DeepSeek → Maritaca → Ling. As chaves ficam no <code className="text-text">.env.local</code> desta
-          máquina (<code>AI_API_KEY_DEEPSEEK</code> / <code>AI_API_KEY_MARITACA</code> / <code>AI_API_KEY_LING</code>) — aqui só se
+          fallback automático na ordem GLM (grátis) → Maritaca → DeepSeek → Ling. As chaves ficam no <code className="text-text">.env.local</code> desta
+          máquina (<code>ZAI_API_KEY</code> / <code>AI_API_KEY_MARITACA</code> / <code>AI_API_KEY_DEEPSEEK</code> / <code>AI_API_KEY_LING</code>) — aqui só se
           escolhe a ordem.
         </p>
         {configIa?.erro ? (
@@ -593,8 +593,8 @@ export default function PainelClient({
         </div>
         <p className="mt-3 text-xs text-text-soft">
           Trocar o provedor não exige rebuild — a configuração é lida a cada resposta. A vetorização
-          (embeddings) é separada e continua local/sem modelo: nenhum dos dois provedores publica
-          endpoint de embeddings.
+          (embeddings) é separada e usa <code className="text-text">EMBED_API_KEY</code> (SiliconFlow);
+          sem essa chave a busca do acervo roda em modo lexical, sem Ollama.
         </p>
       </section>
 
