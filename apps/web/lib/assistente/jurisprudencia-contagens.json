@@ -1,0 +1,516 @@
+{
+ "geradoEm": "2026-11-08",
+ "fonte": "Acervo de jurisprudência do Controle Popular (TJMG, TJES, STF, STJ e TST)",
+ "frentes": {
+  "riodoce": {
+   "total": 5361,
+   "porPolo": {
+    "parcial": 667,
+    "indeterminado": 695,
+    "empresa": 2950,
+    "atingido": 1049
+   },
+   "porResultado": {
+    "parcial": 350,
+    "nao consta": 129,
+    "indeterminado": 341,
+    "negado": 2732,
+    "provido": 1356,
+    "outro": 46,
+    "parcialmente provido": 293,
+    "negado, parcialmente provido": 2,
+    "desprovido": 78,
+    "negado, provado": 1,
+    "nao provido": 1,
+    "rejeitado": 1,
+    "procedente": 4,
+    "provido, parcialmente provido": 2,
+    "deserto": 3,
+    "improvido": 9,
+    "nao conhecido": 3,
+    "conhecidos e nao providos": 1,
+    "nao providos": 1,
+    "prejudicado": 4,
+    "nao consta (extinto)": 1,
+    "negado e parcialmente provido": 1,
+    "provido parcialmente": 1,
+    "provido e parcialmente provido": 1
+   },
+   "temas": {
+    "dano moral": {
+     "rotulo": "dano moral",
+     "total": 203,
+     "porPolo": {
+      "empresa": 148,
+      "indeterminado": 8,
+      "parcial": 33,
+      "atingido": 14
+     },
+     "porResultado": {
+      "negado": 133,
+      "outro": 3,
+      "parcial": 33,
+      "indeterminado": 5,
+      "provido": 29
+     }
+    },
+    "dano material": {
+     "rotulo": "dano material",
+     "total": 66,
+     "porPolo": {
+      "parcial": 8,
+      "indeterminado": 1,
+      "empresa": 57
+     },
+     "porResultado": {
+      "parcial": 8,
+      "indeterminado": 1,
+      "negado": 56,
+      "provido": 1
+     }
+    },
+    "auxilio emergencial": {
+     "rotulo": "auxilio financeiro emergencial",
+     "total": 74,
+     "porPolo": {
+      "empresa": 41,
+      "parcial": 10,
+      "indeterminado": 6,
+      "atingido": 17
+     },
+     "porResultado": {
+      "negado": 47,
+      "parcial": 10,
+      "indeterminado": 6,
+      "provido": 11
+     }
+    },
+    "prescricao": {
+     "rotulo": "prescricao",
+     "total": 303,
+     "porPolo": {
+      "indeterminado": 89,
+      "empresa": 124,
+      "parcial": 57,
+      "atingido": 33
+     },
+     "porResultado": {
+      "indeterminado": 86,
+      "negado": 108,
+      "parcial": 57,
+      "provido": 50,
+      "outro": 2
+     }
+    },
+    "onus sucumbenciais": {
+     "rotulo": "onus sucumbenciais",
+     "total": 58,
+     "porPolo": {
+      "empresa": 5,
+      "indeterminado": 3,
+      "atingido": 48,
+      "parcial": 2
+     },
+     "porResultado": {
+      "negado": 53,
+      "indeterminado": 2,
+      "provido": 1,
+      "parcial": 2
+     }
+    },
+    "legitimidade": {
+     "rotulo": "legitimidade passiva ad causam",
+     "total": 55,
+     "porPolo": {
+      "empresa": 1,
+      "parcial": 1,
+      "atingido": 53
+     },
+     "porResultado": {
+      "provido": 54,
+      "parcial": 1
+     }
+    },
+    "pericia": {
+     "rotulo": "prova pericial",
+     "total": 12,
+     "porPolo": {
+      "indeterminado": 6,
+      "parcial": 3,
+      "atingido": 1,
+      "empresa": 2
+     },
+     "porResultado": {
+      "indeterminado": 5,
+      "parcial": 3,
+      "outro": 1,
+      "provido": 3
+     }
+    },
+    "nexo causal": {
+     "rotulo": "nexo causal",
+     "total": 17,
+     "porPolo": {
+      "parcial": 3,
+      "empresa": 12,
+      "indeterminado": 2
+     },
+     "porResultado": {
+      "parcial": 3,
+      "provido": 4,
+      "negado": 8,
+      "indeterminado": 2
+     }
+    },
+    "coisa julgada": {
+     "rotulo": "coisa julgada",
+     "total": 7,
+     "porPolo": {
+      "empresa": 4,
+      "indeterminado": 1,
+      "atingido": 2
+     },
+     "porResultado": {
+      "negado": 5,
+      "indeterminado": 1,
+      "provido": 1
+     }
+    },
+    "lucros cessantes": {
+     "rotulo": "lucros cessantes",
+     "total": 71,
+     "porPolo": {
+      "parcial": 25,
+      "empresa": 36,
+      "atingido": 4,
+      "indeterminado": 6
+     },
+     "porResultado": {
+      "parcial": 25,
+      "negado": 28,
+      "provido": 12,
+      "indeterminado": 6
+     }
+    },
+    "dano ambiental": {
+     "rotulo": "dano ambiental",
+     "total": 109,
+     "porPolo": {
+      "empresa": 27,
+      "parcial": 11,
+      "indeterminado": 3,
+      "atingido": 68
+     },
+     "porResultado": {
+      "negado": 22,
+      "parcial": 11,
+      "provido": 74,
+      "indeterminado": 2
+     }
+    },
+    "onus da prova": {
+     "rotulo": "onus da prova",
+     "total": 78,
+     "porPolo": {
+      "empresa": 29,
+      "indeterminado": 3,
+      "atingido": 3,
+      "parcial": 43
+     },
+     "porResultado": {
+      "negado": 22,
+      "indeterminado": 3,
+      "provido": 10,
+      "parcial": 43
+     }
+    },
+    "pesca": {
+     "rotulo": "pesca amadora",
+     "total": 64,
+     "porPolo": {
+      "empresa": 62,
+      "parcial": 1,
+      "atingido": 1
+     },
+     "porResultado": {
+      "negado": 56,
+      "provido": 7,
+      "parcial": 1
+     }
+    },
+    "prova testemunhal": {
+     "rotulo": "prova testemunhal",
+     "total": 10,
+     "porPolo": {
+      "atingido": 3,
+      "indeterminado": 3,
+      "empresa": 4
+     },
+     "porResultado": {
+      "provido": 3,
+      "indeterminado": 3,
+      "negado": 4
+     }
+    },
+    "responsabilidade civil": {
+     "rotulo": "responsabilidade civil",
+     "total": 116,
+     "porPolo": {
+      "parcial": 18,
+      "empresa": 64,
+      "indeterminado": 16,
+      "atingido": 18
+     },
+     "porResultado": {
+      "parcial": 18,
+      "negado": 52,
+      "provido": 30,
+      "indeterminado": 14,
+      "outro": 2
+     }
+    }
+   }
+  },
+  "brumadinho": {
+   "total": 7774,
+   "porPolo": {
+    "indeterminado": 2901,
+    "empresa": 1572,
+    "atingido": 853,
+    "parcial": 2448
+   },
+   "porResultado": {
+    "parcial": 2708,
+    "provido": 1539,
+    "indeterminado": 1035,
+    "negado": 2492
+   },
+   "temas": {
+    "dano moral": {
+     "rotulo": "dano moral",
+     "total": 1504,
+     "porPolo": {
+      "parcial": 134,
+      "indeterminado": 264,
+      "atingido": 364,
+      "empresa": 742
+     },
+     "porResultado": {
+      "parcial": 150,
+      "negado": 790,
+      "indeterminado": 136,
+      "provido": 428
+     }
+    },
+    "dano material": {
+     "rotulo": "dano material",
+     "total": 288,
+     "porPolo": {
+      "indeterminado": 48,
+      "atingido": 54,
+      "empresa": 169,
+      "parcial": 17
+     },
+     "porResultado": {
+      "negado": 90,
+      "indeterminado": 20,
+      "provido": 160,
+      "parcial": 18
+     }
+    },
+    "auxilio emergencial": {
+     "rotulo": "auxilio emergencial",
+     "total": 414,
+     "porPolo": {
+      "indeterminado": 68,
+      "empresa": 143,
+      "atingido": 143,
+      "parcial": 60
+     },
+     "porResultado": {
+      "indeterminado": 34,
+      "negado": 161,
+      "parcial": 66,
+      "provido": 153
+     }
+    },
+    "coisa julgada": {
+     "rotulo": "coisa julgada",
+     "total": 561,
+     "porPolo": {
+      "indeterminado": 112,
+      "parcial": 45,
+      "empresa": 242,
+      "atingido": 162
+     },
+     "porResultado": {
+      "negado": 284,
+      "parcial": 52,
+      "indeterminado": 41,
+      "provido": 184
+     }
+    },
+    "tap": {
+     "rotulo": "tap",
+     "total": 558,
+     "porPolo": {
+      "parcial": 63,
+      "indeterminado": 61,
+      "atingido": 159,
+      "empresa": 275
+     },
+     "porResultado": {
+      "parcial": 70,
+      "indeterminado": 31,
+      "negado": 294,
+      "provido": 163
+     }
+    },
+    "litigancia predatoria": {
+     "rotulo": "litigancia predatoria",
+     "total": 61,
+     "porPolo": {
+      "empresa": 57,
+      "indeterminado": 3,
+      "atingido": 1
+     },
+     "porResultado": {
+      "negado": 57,
+      "indeterminado": 3,
+      "provido": 1
+     }
+    },
+    "residencia": {
+     "rotulo": "residencia",
+     "total": 285,
+     "porPolo": {
+      "parcial": 31,
+      "indeterminado": 39,
+      "atingido": 114,
+      "empresa": 101
+     },
+     "porResultado": {
+      "parcial": 34,
+      "indeterminado": 19,
+      "negado": 132,
+      "provido": 100
+     }
+    },
+    "documentacao": {
+     "rotulo": "documentacao",
+     "total": 409,
+     "porPolo": {
+      "parcial": 35,
+      "indeterminado": 58,
+      "empresa": 163,
+      "atingido": 153
+     },
+     "porResultado": {
+      "parcial": 39,
+      "indeterminado": 26,
+      "negado": 174,
+      "provido": 170
+     }
+    },
+    "pesca": {
+     "rotulo": "pesca",
+     "total": 63,
+     "porPolo": {
+      "empresa": 15,
+      "indeterminado": 6,
+      "atingido": 42
+     },
+     "porResultado": {
+      "provido": 53,
+      "negado": 10
+     }
+    },
+    "ptr": {
+     "rotulo": "ptr",
+     "total": 35,
+     "porPolo": {
+      "atingido": 8,
+      "indeterminado": 7,
+      "empresa": 10,
+      "parcial": 10
+     },
+     "porResultado": {
+      "negado": 11,
+      "indeterminado": 5,
+      "provido": 7,
+      "parcial": 12
+     }
+    }
+   }
+  },
+  "itatiaiaucu": {
+   "total": 7,
+   "porPolo": {
+    "empresa": 7
+   },
+   "porResultado": {
+    "negado": 7
+   },
+   "temas": {}
+  },
+  "dh": {
+   "total": 2373,
+   "porPolo": {
+    "indeterminado": 2373
+   },
+   "porResultado": {
+    "negado": 994,
+    "provido": 497,
+    "parcialmente provido": 259,
+    "provido em parte": 1,
+    "nao consta": 621,
+    "absolvicao": 1
+   },
+   "temas": {}
+  },
+  "penal": {
+   "total": 6182,
+   "porPolo": {
+    "indeterminado": 2525,
+    "mp": 3374,
+    "reu": 267,
+    "parcial": 16
+   },
+   "porResultado": {
+    "negado": 4396,
+    "parcialmente provido": 604,
+    "nao consta": 430,
+    "desprovidos": 3,
+    "desprovido": 102,
+    "provido": 626,
+    "primeiro recurso parcialmente provido, segundo desprovido": 1,
+    "provido; parcialmente provido": 1,
+    "improvido": 1,
+    "prejudicado": 3,
+    "procedente": 2,
+    "parcial": 13
+   },
+   "temas": {
+    "prova testemunhal": {
+     "rotulo": "prova testemunhal",
+     "total": 1789,
+     "porPolo": {
+      "reu": 86,
+      "indeterminado": 669,
+      "mp": 1033,
+      "parcial": 1
+     },
+     "porResultado": {
+      "desprovidos": 2,
+      "desprovido": 12,
+      "parcialmente provido": 90,
+      "nao consta": 103,
+      "negado": 1371,
+      "provido": 209,
+      "parcial": 2
+     }
+    }
+   }
+  }
+ }
+}
