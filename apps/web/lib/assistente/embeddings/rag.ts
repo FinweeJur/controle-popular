@@ -21,26 +21,56 @@
  *   re-tentativa com instrução mais estrita; o rótulo `verificacao`
  *   ("ok" | "parcial" | "falhou") viaja na resposta para a UI mostrar.
  *
- * O provedor de geracao é escolhido automaticamente por `geracao.ts`:
- * API remota (DeepSeek/Maritaca) se `AI_API_KEY_*` estiver configurada;
- * Ollama local como fallback. Quando o fallback é Ollama, a disponibilidade
- * é checada antes e o erro sai amigável quando o servidor não está de pé.
+ * ═══ OLLAMA FORA + ORÇAMENTO DE TEMPO (10/11/2026) ═══
+ *
+ * `POST /api/chatbot` ficou mais de 44 s pendurado com `/api/saude` de pé
+ * (medido duas vezes): o container do Azure não alcança o Ollama em
+ * `172.18.176.1:11434`, e cada tentativa de vetorização/geração gastava
+ * 30-60 s. Decisão:
+ *
+ * - O caminho do chatbot NÃO importa `ollama.ts`. Sem `EMBED_API_KEY` a
+ *   busca do acervo degrada para LEXICAL (`soLexical`), que é CPU e custa
+ *   milissegundos; a geração usa os provedores remotos de `provedores.ts`
+ *   (GLM grátis -> Maritaca -> DeepSeek -> Ling).
+ * - A recuperação tem orçamento próprio (`TIMEOUT_BUSCA_MS`); se estourar,
+ *   o ranking é refeito só-lexical, sem rede.
+ * - A geração tem timeout por provedor (`geracao.ts`, 15 s padrão,
+ *   sobrescrevível) e o caminho inteiro tem teto (`ORCAMENTO_RAG_MS`). Se
+ *   falhar ou estourar, a resposta é `responderSemModelo`: 200, ressalva,
+ *   as fontes encontradas e a frase honesta de que o texto não foi gerado.
+ *
+ * O teto público do endpoint (`ORCAMENTO_CHATBOT_MS`) é aplicado de novo no
+ * route — defesa em profundidade: nenhuma espera de rede passa de ~25 s.
  */
 
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { montarAcervo, frenteDaRota, type AcervoFonte } from "../acervo";
 import { verificarCitacao, rotuloVerificacao } from "../verificador-citacao";
-import { vetorizar, vetorizarLote, ollamaDisponivel, OllamaIndisponivel } from "./ollama";
 import { temChaveEmbed, vetorizarRemoto, vetorizarLoteRemoto, EMBED_MODEL_PADRAO } from "./remoto";
 import { similaridadeCosseno, similaridadeLexical, tokensDe } from "./similaridade";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
-import { temChaveRemota } from "./provedores";
-import { buscarDocumentos } from "../documentos-rag/carregar";
+import { buscarDocumentos, indiceDocumentosPronto, aquecerIndiceDocumentos } from "../documentos-rag/carregar";
 import { urlDoTrecho } from "../documentos-rag/indice";
 import type { ResultadoDocumento } from "../documentos-rag/tipos";
 
 export type { RespostaRag, FonteRag };
+
+/**
+ * Teto do endpoint `/api/chatbot`, do começo ao JSON: ~25 s. Env
+ * `CHATBOT_ORCAMENTO_MS` ajusta sem deploy (usada nos testes de degradação).
+ */
+export const ORCAMENTO_CHATBOT_MS = inteiroPositivo(process.env.CHATBOT_ORCAMENTO_MS, 25_000);
+/** Teto interno do pipeline RAG — 4 s de folga para parse e serialização. */
+const ORCAMENTO_RAG_MS = inteiroPositivo(process.env.RAG_ORCAMENTO_MS, 21_000);
+/** Orçamento da recuperação (acervo + documentos): rede de embedding. */
+const TIMEOUT_BUSCA_MS = 8_000;
+
+/** Env numérica positiva; qualquer outro valor cai no padrão. */
+function inteiroPositivo(bruto: string | undefined, padrao: number): number {
+  const valor = Number(bruto);
+  return Number.isFinite(valor) && valor >= 500 ? valor : padrao;
+}
 
 const TOP_K_PADRAO = 3;
 /** Abaixo disso o top-1 é ruído — abstém (regra "não sei honesto"). */
@@ -64,6 +94,28 @@ const MAX_TENTATIVAS = 2;
 /** Trechos documentais entram depois dos cartões curados; o limite evita prompt gigante. */
 const TOP_K_DOCUMENTOS = 3;
 const MAX_FONTES = 6;
+/**
+ * Atraso do aquecimento do índice documental (44 MB, ~21 mil trechos) depois
+ * do primeiro pedido. Medido em 10/11/2026: a construção custa dezenas de
+ * segundos de CPU SÍNCRONA — tempo que nenhum timeout corta e que, no meio
+ * de uma requisição, derrubava o orçamento de 25 s do chatbot. O chatbot
+ * responde sem documentos até o índice estar quente; depois, cada consulta
+ * custa ~200 ms.
+ */
+const AQUECIMENTO_DOCUMENTOS_MS = 60_000;
+
+let aquecimentoAgendado = false;
+
+/** Agenda o aquecimento UMA vez, longe do caminho da requisição. */
+function agendarAquecimentoDocumentos(): void {
+  if (aquecimentoAgendado) return;
+  aquecimentoAgendado = true;
+  const timer = setTimeout(() => aquecerIndiceDocumentos(), AQUECIMENTO_DOCUMENTOS_MS) as unknown as {
+    unref?: () => void;
+  };
+  // Não segura o processo (testes e `next start` encerram normalmente).
+  timer.unref?.();
+}
 
 export interface OpcoesRag {
   topK?: number;
@@ -77,10 +129,12 @@ export interface OpcoesRag {
   /** Pergunta pura para buscar DOCUMENTOS. O cartão pode usar a pergunta
    *  enriquecida com repasses; o texto extra não deve diluir o retrieval. */
   perguntaBusca?: string;
-  /** Timeout da GERAÇÃO, em ms — o padrão de `geracao.ts` é 60 s; suba para
-   *  modelos 7B em máquina lenta (medido em 31/08: 3B passou de 60 s com o
-   *  servidor carregado). */
+  /** Timeout da GERAÇÃO, em ms, por provedor. Padrão de `geracao.ts` (15 s). */
   timeoutMs?: number;
+  /** Teto de tempo do pipeline inteiro, em ms (padrão `ORCAMENTO_RAG_MS`). */
+  orcamentoMs?: number;
+  /** Teto da recuperação (embedding da pergunta + documentos). */
+  timeoutBuscaMs?: number;
 }
 
 interface IndiceAcervo {
@@ -158,23 +212,27 @@ const TIMEOUT_INDEXACAO_MS = 180_000;
 /** Só para teste: esquece o índice entre casos (mesmo padrão de documentos.ts). */
 export function esquecerIndiceAcervo(): void {
   indiceEmMemoria = null;
+  indiceLexicalMemo = null;
 }
 
 /**
- * Vetoriza UM texto: API remota (SiliconFlow) se `EMBED_API_KEY` existir,
- * senão Ollama local. No Guara Starter o Ollama não cabe (256 MB de teto,
- * medido 23/09) — lá só o caminho remoto funciona; no home-pc o Ollama
- * continua de graça.
+ * Vetoriza UM texto pela API remota (SiliconFlow). Sem `EMBED_API_KEY` não
+ * existe vetorização no caminho do chatbot: o Ollama local saiu (o container
+ * do Azure não o alcança) e a busca degrada para lexical.
  */
 async function vetorizarTexto(texto: string, timeoutMs?: number): Promise<number[]> {
-  if (temChaveEmbed()) return vetorizarRemoto(texto, { timeoutMs });
-  return vetorizar(texto, { timeoutMs });
+  if (!temChaveEmbed()) {
+    throw new Error("Sem EMBED_API_KEY: busca do acervo em modo lexical");
+  }
+  return vetorizarRemoto(texto, { timeoutMs });
 }
 
 /** Mesma escolha para lote (indexação do acervo). */
 async function vetorizarTextos(textos: string[], timeoutMs?: number): Promise<number[][]> {
-  if (temChaveEmbed()) return vetorizarLoteRemoto(textos, { timeoutMs });
-  return vetorizarLote(textos, { timeoutMs });
+  if (!temChaveEmbed()) {
+    throw new Error("Sem EMBED_API_KEY: indexação vetorial indisponível");
+  }
+  return vetorizarLoteRemoto(textos, { timeoutMs });
 }
 
 async function indexarAcervo(): Promise<IndiceAcervo> {
@@ -189,39 +247,43 @@ async function indexarAcervo(): Promise<IndiceAcervo> {
   const vetores: number[][] = [];
   for (let i = 0; i < textos.length; i += LOTE_EMBED) {
     const lote = textos.slice(i, i + LOTE_EMBED);
-    // ORDEM preservada por lote — contrato do Ollama e da API OpenAI-compat;
-    // concatenar por lote mantém o índice alinhado às fontes.
+    // ORDEM preservada por lote — contrato da API OpenAI-compat; concatenar
+    // por lote mantém o índice alinhado às fontes.
     vetores.push(...(await vetorizarTextos(lote, TIMEOUT_INDEXACAO_MS)));
   }
   indiceEmMemoria = { fontes, vetores, pesoToken: construirPesoToken(fontes) };
   return indiceEmMemoria;
 }
 
-/** Índice só-lexical: quando o Ollama (embeddings) está fora e há chave
- *  remota de geração, o RAG degrada em vez de faltar — ranqueia por
- *  similaridade lexical (Jaccard) e deixa o provedor remoto gerar. O
- *  cosseno entra valendo zero; o score híbrido despenca para o lexical.
- *  Pior que a busca vetorial, mas melhor do que devolver 503 com as
- *  chaves de geração vivas — e é transparente ao leitor (nenhum dado
- *  inventado: a abstenção continua valendo pelo mesmo limiar). */
+/** Índice só-lexical, em cache: `montarAcervo()` custa CPU e não muda entre
+ *  requisições. É o caminho padrão quando não há `EMBED_API_KEY` e também o
+ *  plano B quando a vetorização estoura o orçamento. */
+let indiceLexicalMemo: IndiceAcervo | null = null;
 
+function indiceLexical(): IndiceAcervo {
+  if (indiceLexicalMemo) return indiceLexicalMemo;
+  const fontes = montarAcervo();
+  indiceLexicalMemo = {
+    fontes,
+    vetores: fontes.map(() => [] as number[]),
+    pesoToken: construirPesoToken(fontes),
+  };
+  return indiceLexicalMemo;
+}
+
+/**
+ * Índice para a busca: vetorial quando há `EMBED_API_KEY`, lexical em todo o
+ * resto (sem chave, erro ou modelo que não bate). O score no modo lexical
+ * usa só o Jaccard, na mesma escala 0–1, então o limiar de abstenção segue
+ * valendo — nenhum dado é inventado, e o leitor vê as fontes mesmo assim.
+ */
 async function indiceOuLexical(): Promise<{ indice: IndiceAcervo; soLexical: boolean }> {
   if (indiceEmMemoria) return { indice: indiceEmMemoria, soLexical: false };
-  if (!temChaveEmbed() && !(await ollamaDisponivel())) {
-    const fontes = montarAcervo();
-    return {
-      indice: { fontes, vetores: fontes.map(() => []), pesoToken: construirPesoToken(fontes) },
-      soLexical: true,
-    };
-  }
+  if (!temChaveEmbed()) return { indice: indiceLexical(), soLexical: true };
   try {
     return { indice: await indexarAcervo(), soLexical: false };
   } catch {
-    const fontes = montarAcervo();
-    return {
-      indice: { fontes, vetores: fontes.map(() => []), pesoToken: construirPesoToken(fontes) },
-      soLexical: true,
-    };
+    return { indice: indiceLexical(), soLexical: true };
   }
 }
 
@@ -312,19 +374,41 @@ function pontuarFonte(
   return { fonte, cosseno, lexical, score };
 }
 
+/** Opções da busca no acervo. */
+export interface OpcoesBusca {
+  /** Timeout da vetorização da pergunta (rede). */
+  timeoutVetorizacaoMs?: number;
+  /** Força o ranking só-lexical — caminho de resgate quando o vetorial
+   *  estourou o orçamento. Não toca a rede. */
+  soLexical?: boolean;
+}
+
 /** Rankeia o acervo por cosseno ⊕ lexical (ou só lexical, sem embeddings),
  *  do mais para o menos parecido. Considera rota/página atual como boost de relevância. */
 export async function buscarNoAcervo(
   pergunta: string,
   topK?: number,
   limiar?: number,
-  pathname?: string
+  pathname?: string,
+  opcoesBusca: OpcoesBusca = {}
 ): Promise<{ melhores: ResultadoBusca[]; abstem: boolean }> {
-  const { indice, soLexical } = await indiceOuLexical();
-  // Só-lexical não chama `vetorizar`: sem provedor de embedding (Ollama ou
-  // API remota) não há embedding da pergunta, e `similaridadeCosseno` com
-  // vetores vazios seria ruído.
-  const vetorPergunta = soLexical ? [] : await vetorizarTexto(pergunta);
+  const base = opcoesBusca.soLexical
+    ? { indice: indiceLexical(), soLexical: true }
+    : await indiceOuLexical();
+  const { indice } = base;
+  let soLexical = base.soLexical;
+
+  // Sem embeddings não há vetor da pergunta, e `similaridadeCosseno` com
+  // vetores vazios seria ruído. Se a vetorização falhar ou estourar, a
+  // busca CONTINUA em modo lexical — degradação, nunca erro para o leitor.
+  let vetorPergunta: number[] = [];
+  if (!soLexical) {
+    try {
+      vetorPergunta = await vetorizarTexto(pergunta, opcoesBusca.timeoutVetorizacaoMs);
+    } catch {
+      soLexical = true;
+    }
+  }
   const frenteRotaAtual = pathname ? frenteDaRota(pathname) : "";
 
   const contexto: ContextoPontuacao = {
@@ -407,32 +491,138 @@ async function gerarComVerificacao(
   return resposta;
 }
 
+/** Prazo do orçamento estourado — distinto de falha do provedor de IA. */
+export class PrazoEsgotado extends Error {
+  constructor(mensagem: string) {
+    super(mensagem);
+    this.name = "PrazoEsgotado";
+  }
+}
+
+/**
+ * Corrida com prazo: resolve/rejeita com `promessa`, ou rejeita com
+ * `PrazoEsgotado` quando `ms` vence. O timer é sempre limpo, e a rejeição
+ * tardia da promessa original tem handler — não vira `unhandledRejection`.
+ */
+export function comPrazo<T>(promessa: Promise<T>, ms: number, rotulo = "operacao"): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(
+      () => reject(new PrazoEsgotado(`${rotulo} passou do prazo de ${Math.max(1, ms)} ms`)),
+      Math.max(1, ms)
+    );
+    promessa.then(
+      (valor) => {
+        clearTimeout(timer);
+        resolve(valor);
+      },
+      (erro) => {
+        clearTimeout(timer);
+        reject(erro);
+      }
+    );
+  });
+}
+
+/**
+ * Resposta honesta quando o modelo NÃO gerou o texto.
+ *
+ * Não afirma número, data nem conclusão: só diz o que aconteceu e devolve as
+ * fontes que existirem, cada uma com título e link. `textoGeradoPorModelo:
+ * false` é o campo que a UI (e a auditoria) usam para não anunciar "texto
+ * gerado por IA" num texto que não foi.
+ *
+ * Exportada para teste — é o coração da degradação, não um detalhe do route.
+ */
+export function responderSemModelo(
+  fontes: FonteRag[] = [],
+  motivo = "geracao-indisponivel"
+): RespostaRag {
+  return {
+    resposta:
+      fontes.length > 0
+        ? "Não consegui gerar o texto agora. As fontes que encontrei estão abaixo."
+        : "Não consegui gerar o texto agora e não encontrei fonte no acervo para esta pergunta.",
+    fontes,
+    modelo: "sem-modelo",
+    data: new Date().toISOString().slice(0, 10),
+    ressalva: true,
+    textoGeradoPorModelo: false,
+    motivoDegradacao: motivo,
+  };
+}
+
 /**
  * Responde uma pergunta sobre o acervo do portal. Quando a pergunta não é
  * coberta pelos degraus 0–2 (navegação, busca, composição determinística),
  * o RAG tenta responder a partir do acervo indexado — e abstém se não achar.
+ *
+ * NUNCA depende de Ollama: sem `EMBED_API_KEY` a busca é lexical; a geração
+ * usa os provedores remotos (GLM grátis -> Maritaca -> DeepSeek -> Ling).
+ *
+ * Orçamento: `timeoutBuscaMs` para a recuperação e `orcamentoMs` para o
+ * pipeline inteiro. Geração fora do ar ou prazo estourado devolve
+ * `responderSemModelo(fontes)` — 200, com as fontes e a frase honesta — em
+ * vez de erro. Só o caminho de busca nunca lança: qualquer falha vira
+ * ranking lexical.
  */
 export async function responderComRag(
   pergunta: string,
   opcoes: OpcoesRag = {}
 ): Promise<RespostaRag> {
-  // Sem chave de geração E sem embeddings remotos, precisamos do Ollama
-  // local (geração + vetorização). Com chave remota de geração mas sem
-  // Ollama nem `EMBED_API_KEY`, o índice degrada para lexical em vez de
-  // 503 (ramo de `indiceOuLexical`).
-  if (!temChaveRemota() && !temChaveEmbed() && !(await ollamaDisponivel())) {
-    throw new OllamaIndisponivel("Ollama nao esta disponivel em http://172.18.176.1:11434");
-  }
+  const inicio = Date.now();
+  const orcamentoMs = opcoes.orcamentoMs ?? ORCAMENTO_RAG_MS;
+  const restanteMs = () => Math.max(200, orcamentoMs - (Date.now() - inicio));
 
   const perguntaDocumentos = opcoes.perguntaBusca?.trim() || pergunta;
-  const [{ melhores, abstem }, documentos] = await Promise.all([
-    buscarNoAcervo(pergunta, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname),
-    buscarDocumentos(perguntaDocumentos, { limite: TOP_K_DOCUMENTOS }).catch(() => []),
-  ]);
+  const timeoutBusca = Math.min(opcoes.timeoutBuscaMs ?? TIMEOUT_BUSCA_MS, restanteMs());
 
-  const fontesAcervo = abstem
+  // Documentos só com o índice JÁ quente: construir do zero custa dezenas de
+  // segundos de CPU síncrona (ver AQUECIMENTO_DOCUMENTOS_MS). Frio, o
+  // chatbot responde com os cartões curados e agenda o aquecimento.
+  const documentosProntos = indiceDocumentosPronto();
+  if (!documentosProntos) agendarAquecimentoDocumentos();
+
+  // 1. Recuperação com prazo. Se o caminho vetorial (ou o índice documental)
+  //    estourar, o resgate é só-lexical: CPU pura, entrega fontes de verdade.
+  let busca: Awaited<ReturnType<typeof buscarNoAcervo>> = { melhores: [], abstem: true };
+  let documentos: ResultadoDocumento[] = [];
+  try {
+    const [acervo, docs] = await comPrazo(
+      Promise.all([
+        buscarNoAcervo(pergunta, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname, {
+          timeoutVetorizacaoMs: timeoutBusca,
+        }),
+        documentosProntos
+          ? buscarDocumentos(perguntaDocumentos, { limite: TOP_K_DOCUMENTOS }).catch(
+              () => [] as ResultadoDocumento[]
+            )
+          : Promise.resolve([] as ResultadoDocumento[]),
+      ]),
+      timeoutBusca,
+      "busca no acervo"
+    );
+    busca = acervo;
+    documentos = docs;
+  } catch (e) {
+    console.warn(
+      `[rag] busca estourou ${timeoutBusca} ms; seguindo só-lexical: ${e instanceof Error ? e.message : String(e)}`
+    );
+    try {
+      busca = await buscarNoAcervo(
+        pergunta,
+        opcoes.topK,
+        opcoes.limiarAbstencao,
+        opcoes.pathname,
+        { soLexical: true }
+      );
+    } catch {
+      busca = { melhores: [], abstem: true };
+    }
+  }
+
+  const fontesAcervo = busca.abstem
     ? []
-    : melhores.map((r, i) => converterFonte(r.fonte, r.score, i + 1));
+    : busca.melhores.map((r, i) => converterFonte(r.fonte, r.score, i + 1));
   const documentosRelevantes = documentos.filter((d) => d.score >= 0.12);
   const fontesDocumentos = documentosRelevantes.map((d, i) =>
     converterDocumento(d, fontesAcervo.length + i + 1)
@@ -442,7 +632,22 @@ export async function responderComRag(
   if (fontes.length === 0) {
     // Sem fonte, sem modelo: a resposta honesta sai instantânea e gratuita.
     return gerarRespostaRag(pergunta, [], { modelo: opcoes.modeloChat });
+  }  // 2. Geração com prazo. Falha de provedor, falta de chave ou estouro do
+  //    orçamento degradam com as fontes — nunca 500, nunca texto inventado.
+  const timeoutGeracao = opcoes.timeoutMs;
+  try {
+    return await comPrazo(
+      gerarComVerificacao(pergunta, fontes, opcoes.modeloChat, timeoutGeracao),
+      restanteMs(),
+      "geracao da resposta"
+    );
+  } catch (e) {
+    console.warn(
+      `[rag] sem modelo; devolvendo fontes: ${e instanceof Error ? e.message : String(e)}`
+    );
+    return responderSemModelo(
+      fontes,
+      e instanceof PrazoEsgotado ? "orcamento-esgotado" : "geracao-falhou"
+    );
   }
-
-  return gerarComVerificacao(pergunta, fontes, opcoes.modeloChat, opcoes.timeoutMs);
 }

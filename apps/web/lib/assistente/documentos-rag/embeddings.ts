@@ -14,13 +14,27 @@
  * Regra de segurança: se o `modelo` do arquivo não bate com o embedder em uso,
  * o arquivo é ignorado. Comparar vetores de espaços diferentes produz
  * similaridade falsa, e similaridade falsa vira citação errada.
+ *
+ * ═══ SEM OLLAMA (10/11/2026) ═══
+ *
+ * A pontuação semântica daqui também saiu do Ollama local: o container do
+ * Azure não alcança `172.18.176.1:11434` e a espera de 20 s derrubava o
+ * endpoint do chatbot. Sem `EMBED_API_KEY` não há vetor da consulta e a
+ * busca documental cai no lexical — degradação, nunca erro. O arquivo de
+ * vetores gerado no home-pc com `nomic-embed-text` só é usado quando o
+ * modelo em uso coincide; com a API remota (bge-m3) ele é ignorado.
  */
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { vetorizar } from "../embeddings/ollama";
+import { temChaveEmbed, vetorizarRemoto, EMBED_MODEL_PADRAO } from "../embeddings/remoto";
 
 const CAMINHO = path.join(process.cwd(), "data", "documentos-rag-embeddings.json");
-const MODELO_PADRAO = process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text";
+
+/** Modelo de embedding em uso — `null` quando não há vetorização configurada. */
+function modeloDeUso(): string | null {
+  if (!temChaveEmbed()) return null;
+  return process.env.EMBED_MODEL || EMBED_MODEL_PADRAO;
+}
 
 interface ArquivoEmbeddings {
   modelo: string;
@@ -58,9 +72,11 @@ function norma(vetor: Int8Array): number {
 export async function carregarIndiceVetorial(): Promise<IndiceVetorial | null> {
   if (tentouCarregar) return cache;
   tentouCarregar = true;
+  const modelo = modeloDeUso();
+  if (!modelo) return null;
   try {
     const bruto = JSON.parse(await readFile(CAMINHO, "utf8")) as ArquivoEmbeddings;
-    if (!bruto?.trechos || bruto.modelo !== MODELO_PADRAO) return null;
+    if (!bruto?.trechos || bruto.modelo !== modelo) return null;
     const vetores = new Map<string, Int8Array>();
     const normas = new Map<string, number>();
     for (const [id, base64] of Object.entries(bruto.trechos)) {
@@ -98,7 +114,7 @@ export async function pontuarSemantico(pergunta: string): Promise<Map<string, nu
   if (!indice) return null;
   let consulta: number[];
   try {
-    consulta = await vetorizar(pergunta, { modelo: indice.modelo, timeoutMs: 20_000 });
+    consulta = await vetorizarRemoto(pergunta, { modelo: indice.modelo, timeoutMs: 12_000 });
   } catch {
     return null;
   }

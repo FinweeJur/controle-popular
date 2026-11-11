@@ -70,6 +70,29 @@ export async function carregarIndiceDocumentos(): Promise<IndiceDocumentos | nul
   return emVoo;
 }
 
+/**
+ * O índice documental já está em memória?
+ *
+ * Medido em 10/11/2026: a primeira construção do índice custa dezenas de
+ * segundos de CPU (44 MB de `trechos.json`, ~21 mil trechos, e um segundo
+ * índice só com texto). Isso não cabe no orçamento de ~25 s de
+ * `/api/chatbot` e, pior, é trabalho SÍNCRONO — nenhum `AbortSignal` corta.
+ * O RAG do chatbot consulta documentos só quando este predicado é `true`.
+ */
+export function indiceDocumentosPronto(): boolean {
+  return cache !== undefined && cache !== null;
+}
+
+/**
+ * Aquece o índice fora do caminho da requisição. Idempotente. O build é
+ * síncrono depois da leitura, então roda uma única vez por processo — quem
+ * chama deve fazê-lo depois de responder ao leitor, nunca antes.
+ */
+export function aquecerIndiceDocumentos(): void {
+  if (indiceDocumentosPronto() || emVoo) return;
+  void carregarIndiceDocumentos().catch(() => undefined);
+}
+
 interface Mistura {
   indice: IndiceDocumentos;
   opcoes: Omit<ConsultaDocumentos, "texto">;
