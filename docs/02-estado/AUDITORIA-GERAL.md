@@ -2,7 +2,7 @@
 
 > **Tipo:** RELATÓRIO
 > **Domínio:** operação (monitoramento do portal)
-> **Última medição:** 2026-11-10
+> **Última medição:** 2026-11-11
 > **Leitura estimada:** curta (até 5 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)
 > **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal
@@ -19,7 +19,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 10/11/2026 14:22 BRT |
+| 11/11/2026 14:33 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -270,6 +270,7 @@ Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap
 
 ## Historico de resumos
 
+- 11/11/2026 14:33 BRT - 0 criticos; 0 avisos.
 - 10/11/2026 14:22 BRT - 0 criticos; 0 avisos.
 - 09/11/2026 17:16 BRT - 0 criticos; 0 avisos.
 - 08/11/2026 13:26 BRT - 0 criticos; 0 avisos.
