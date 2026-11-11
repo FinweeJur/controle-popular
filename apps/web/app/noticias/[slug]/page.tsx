@@ -243,6 +243,36 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
         paragrafos={noticia.paragrafos}
       />
 
+      {/* ÁUDIO ORIGINAL ANEXADO (documento bruto, não a leitura TTS) */}
+      {noticia.audio ? (
+        <figure className="mb-8 rounded-2xl border border-border bg-surface p-4 sm:p-5">
+          <figcaption className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+            {noticia.audio.descricao ?? "Áudio original"}
+            {noticia.audio.duracao ? ` · ${noticia.audio.duracao}` : ""}
+          </figcaption>
+          <audio
+            controls
+            preload="metadata"
+            src={noticia.audio.arquivo}
+            className="w-full"
+          >
+            Seu navegador não reproduz áudio. Baixe o arquivo em{" "}
+            <a href={noticia.audio.arquivo}>{noticia.audio.arquivo}</a>.
+          </audio>
+          {noticia.audio.transcricao ? (
+            <p className="mt-2 text-xs text-muted">
+              <a
+                href={noticia.audio.transcricao}
+                className="font-medium text-primary underline underline-offset-2"
+              >
+                Transcrição integral
+              </a>{" "}
+              — feita por modelo local (faster-whisper), revisada antes de publicar.
+            </p>
+          ) : null}
+        </figure>
+      ) : null}
+
       {/* PAINEL DE DADOS E MÉTRICAS CHAVE */}
       <section aria-label="Indicadores principais" className="mb-8 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs">
         <h2 className="text-xs font-bold uppercase tracking-wider text-muted mb-3 flex items-center gap-1.5">

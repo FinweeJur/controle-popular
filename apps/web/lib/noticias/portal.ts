@@ -50,6 +50,22 @@ export interface NoticiaPortal {
   paragrafos: string[];
   /** Tabela comparativa opcional, exibida ao fim do corpo do artigo. */
   tabela?: TabelaNoticia;
+  /**
+   * Áudio original anexado ao post (audiência, sessão, entrevista).
+   *
+   * `arquivo` é o caminho em `public/` (ex.: `/audio/sessao.mp3`). O player
+   * aparece depois do cabeçalho, separado do leitor TTS: um é o documento
+   * bruto, o outro é a leitura sintetizada do texto.
+   */
+  audio?: {
+    arquivo: string;
+    /** Duração no formato "15 min 43 s", medida com ffprobe. */
+    duracao?: string;
+    /** Transcrição integral em `public/`, quando existir. */
+    transcricao?: string;
+    /** Legenda curta do que é o áudio. */
+    descricao?: string;
+  };
 }
 
 /**

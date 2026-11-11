@@ -1,5 +1,87 @@
 [
 {
+ "slug": "oab-mg-onze-anos-mariana-reparacao-saude",
+ "titulo": "Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado",
+ "subtitulo": "Em entrevista à Rádio OAB-MG, Wagner Dias Ferreira e Artur Colito falam do dano que não termina, do avanço do lítio e do auxílio cortado em Brumadinho.",
+ "resumo": "Comissão de Direitos Humanos da OAB-MG cobra reparação em saúde 11 anos depois de Mariana, aponta crime continuado e critica o corte do auxílio em Brumadinho.",
+ "categoria": "Explicador",
+ "frente": "direitos",
+ "subfrente": "Direitos humanos — OAB-MG",
+ "autor": "ONSA — Observatório Nacional Socioambiental",
+ "declaracaoIa": "Transcrição feita por modelo local (faster-whisper) e texto elaborado com assistência de Inteligência Artificial a partir do áudio, auditado pelo ONSA.",
+ "publicadoEm": "2026-11-11T20:00:00Z",
+ "atualizadoEm": "2026-11-11T20:00:00Z",
+ "tempoLeituraMin": 6,
+ "palavrasChave": [
+  "OAB-MG",
+  "Mariana",
+  "Brumadinho",
+  "direitos humanos",
+  "reparação",
+  "mineração",
+  "lítio",
+  "PNAB",
+  "auxílio emergencial"
+ ],
+ "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado. Controle Popular, nov. 2026.",
+ "citacaoBibtex": "@article{onsa2026oabmgmariana,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/oab-mg-onze-anos-mariana-reparacao-saude}\n}",
+ "fontesOficiais": [
+  {
+   "nome": "Áudio original da entrevista (Rádio OAB-MG)",
+   "url": "/audio/comissao-direitos-humanos.mp3"
+  },
+  {
+   "nome": "Transcrição integral",
+   "url": "/docs/comissao-direitos-humanos/transcricao.txt"
+  },
+  {
+   "nome": "OAB Minas Gerais",
+   "url": "https://www.oabmg.org.br/"
+  },
+  {
+   "nome": "Brumadinho — auxílio emergencial no portal",
+   "url": "/paraopeba/auxilio"
+  }
+ ],
+ "metricas": [
+  {
+   "rotulo": "Anos do rompimento",
+   "valor": "11"
+  },
+  {
+   "rotulo": "Duração do áudio",
+   "valor": "15 min 43 s"
+  },
+  {
+   "rotulo": "Auxílio cortado",
+   "valor": "~160 mil pessoas"
+  },
+  {
+   "rotulo": "Painel da OAB",
+   "valor": "12/11, 15h30"
+  }
+ ],
+ "recomendacaoVerificar": "Ouça o áudio completo acima e confira os dados de reparação em [Brumadinho](/paraopeba/auxilio), o painel de [barragens](/ambiental/barragens) e o acervo de [jurisprudência](/jurisprudencia).",
+ "audio": {
+  "arquivo": "/audio/comissao-direitos-humanos.mp3",
+  "duracao": "15 min 43 s",
+  "transcricao": "/docs/comissao-direitos-humanos/transcricao.txt",
+  "descricao": "Entrevista na Rádio OAB-MG — Comissão de Direitos Humanos"
+ },
+ "paragrafos": [
+  "A Rádio OAB-MG recebeu o presidente da Comissão de Direitos Humanos da OAB-MG, Wagner Dias Ferreira, e o membro consultor da Comissão Nacional de Direitos Humanos do Conselho Federal da OAB, Artur Colito. A conversa foi gravada durante a conferência da advocacia mineira, no mês em que o rompimento da barragem de Fundão completou 11 anos.",
+  "Wagner abriu o balanço com o que chama de quadro de extrema vulnerabilidade em Minas Gerais: mineração, negligência política, sistema carcerário sem perspectiva de recuperação e letalidade policial crescente. Para ele, a preocupação com direitos humanos precisa encontrar caminhos para restaurar um mínimo de normalidade que o estado não tem conseguido.",
+  "A frente nova da comissão é o lítio. A pedido do Conselho Nacional de Direitos Humanos, a OAB-MG passou a acompanhar famílias afetadas pela mineração do mineral. “A fome de minerar esses materiais tem causado violação de direitos humanos a muitas famílias que ficam no entorno”, disse Wagner.",
+  "Artur Colito discutiu o nome do que aconteceu em Mariana. O debate acadêmico distingue desastre de crime, mas, para ele, os dois se aplicam: ninguém apertou um botão para romper a barragem, e houve negligência e omissão. A responsabilidade civil das empresas já foi reconhecida; a criminal ainda está em apuração.",
+  "O que ele chama de crime continuado é o dano que não para. Onze anos depois, não há água de qualidade no Rio Doce nem tratamento de saúde adequado; em Brumadinho, os estudos para diagnosticar os efeitos na saúde estão começando. “Se você tem uma pneumonia, não vai se tratar daqui a 11 anos”, comparou.",
+  "O alcance passou do epicentro. Além de Mariana, o Rio Doce chegou ao litoral do Espírito Santo e ao sul da Bahia, onde pescadores ficaram quase uma década sem reconhecimento, segundo os entrevistados.",
+  "Moradia e modo de vida entram na conta. Reassentamentos seguem inconclusos, casas racham com o trânsito de caminhões e faltou laudo técnico prévio, dizem. A reparação, para eles, considerou pouco as tradições das comunidades e o dano à saúde mental de quem teve a rotina alterada de uma vez.",
+  "O que existe de proteção veio dos movimentos. A Política Nacional de Direitos das Populações Atingidas por Barragens (PNAB) e a política estadual são citadas como conquista da organização popular. Para os entrevistados, a resposta ao acordo que não escuta a comunidade é a comunidade organizada — e a criminalização de defensores de direitos humanos cresceu no estado.",
+  "Brumadinho segue na pauta. O auxílio emergencial de cerca de 160 mil pessoas foi cortado, e a aplicação da política nacional no caso está em discussão no STJ e no STF. “É importantíssimo que a advocacia se mantenha atualizada e possa contribuir com esses movimentos populares”, disse Colito.",
+  "No encerramento, Wagner convidou para o painel da Comissão de Direitos Humanos em 12 de novembro, às 15h30, no palco Voz e Valor, sobre direitos humanos, democracia e emancipação das comunidades. Em Belo Horizonte, o MAB organiza ato na Assembleia Legislativa pelos 11 anos, com pauta de reparação e direitos."
+ ]
+},
+{
  "slug": "renap-30-encontro-lenir-correia-joao-pessoa",
  "titulo": "Encontro da RENAP em João Pessoa debate a prisão de Lenir Correia",
  "subtitulo": "O 30º Encontro Nacional da RENAP leva o nome da advogada presa em Rondônia e reúne IPDMS e RENAJU na UFPB, de 11 a 14 de novembro.",
@@ -222,79 +304,6 @@
    "A ressalva importa porque polo vencedor é leitura do dispositivo. Um recurso negado pode significar prescrição, prova insuficiente ou questão processual. O número não diz que a empresa ganhou no mérito. O portal também não afirma isso.",
    "A composição do acervo também pesa. O TJMG responde por 13.023 dos 23.569 casos, e o TJES por 5.682. O STF soma 3.728 registros, o STJ 673 e o TST 463. O polo é retrato dessas fontes, não de todos os tribunais do país.",
    "O caminho para conferir é a página de [Jurisprudência](/jurisprudencia). O filtro permite escolher polo vencedor e tribunal. Cada opção mostra a contagem ao lado. O leitor pode refazer a conta em vez de aceitar o resumo."
-  ]
- },
- {
-  "slug": "ementas-truncadas-tjmg-o-que-o-portal-corrigiu",
-  "titulo": "4.971 ementas truncadas: o que o portal recuperou e o que falta",
-  "subtitulo": "21% do acervo traz só o começo da ementa. O portal recuperou 84 textos em PDF e avisa o leitor. Restam 4.885 casos sem link.",
-  "resumo": "Em 4.971 dos 23.569 casos a ementa publicada é um trecho. O portal recuperou 84 textos completos em PDF. Também passou a avisar quando o texto está cortado.",
-  "categoria": "Relatório Técnico",
-  "frente": "judiciario",
-  "subfrente": "Transparência do acervo",
-  "autor": "ONSA — Observatório Nacional Socioambiental",
-  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir da medição do acervo de jurisprudência do portal, auditado pelo ONSA.",
-  "publicadoEm": "2026-11-10T19:00:00Z",
-  "atualizadoEm": "2026-11-10T19:00:00Z",
-  "tempoLeituraMin": 4,
-  "palavrasChave": [
-   "ementa",
-   "truncamento",
-   "TJMG",
-   "transparência",
-   "acervo",
-   "jurisprudência",
-   "PDF",
-   "Tema 1.280"
-  ],
-  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. 4.971 ementas truncadas: o que o portal recuperou e o que falta. Controle Popular, nov. 2026.",
-  "citacaoBibtex": "@article{onsa2026ementastruncadas,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {4.971 ementas truncadas: o que o portal recuperou e o que falta},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/ementas-truncadas-tjmg-o-que-o-portal-corrigiu}\n}",
-  "fontesOficiais": [
-   {
-    "nome": "Jurisprudência — painel e lista do acervo",
-    "url": "/jurisprudencia"
-   },
-   {
-    "nome": "TJMG — Consulta de jurisprudência",
-    "url": "https://www5.tjmg.jus.br/jurisprudencia/"
-   },
-   {
-    "nome": "STJ — REsp 2124701/MG (Tema 1.280)",
-    "url": "https://processo.stj.jus.br/processo/pesquisa/?aplicacao=processos.ea&tipoPesquisa=tipoPesquisaGenerica&termo=REsp%202124701"
-   },
-   {
-    "nome": "Tema 1.280 — post do portal",
-    "url": "/noticias/stj-tema-1280-desastre-ambiental-acidente-de-consumo"
-   }
-  ],
-  "metricas": [
-   {
-    "rotulo": "Ementas truncadas",
-    "valor": "4.971"
-   },
-   {
-    "rotulo": "Recuperadas em PDF",
-    "valor": "84"
-   },
-   {
-    "rotulo": "Ganho médio",
-    "valor": "+1.277 caracteres"
-   },
-   {
-    "rotulo": "Sem link do acórdão",
-    "valor": "4.885"
-   }
-  ],
-  "recomendacaoVerificar": "Abra a [Jurisprudência](/jurisprudencia) e procure o aviso “Trecho da ementa” na lista. O post do [Tema 1.280](/noticias/stj-tema-1280-desastre-ambiental-acidente-de-consumo) mostra o que muda quando o texto inteiro está disponível.",
-  "paragrafos": [
-   "O acervo de jurisprudência do portal tem 23.569 casos. Em 4.971 deles, a ementa publicada é um trecho. O corte de 499 ou 500 caracteres vem da fonte oficial. A fonte entrega o começo da ementa e para.",
-   "O padrão aparece no tamanho. São 4.305 ementas com exatamente 500 caracteres. Outras 665 têm 499, e uma tem 2.000. O corte em 499 ou 500 é o limite da fonte. O de 2.000 é outra coisa, e passava despercebido.",
-   "Durante muito tempo a tela chamava tudo de “Ementa”. Quem lia tinha a impressão de que o acórdão terminava ali. O prejuízo é concreto. Uma tese pode estar resumida nos primeiros 500 caracteres. O dispositivo e as ressalvas ficam de fora.",
-   "O primeiro conserto foi o rótulo. A tela passou a dizer “Trecho da ementa” quando detecta corte. A detecção olha três sinais. O primeiro são as reticências no fim do texto. O segundo é o tamanho entre 480 e 520 caracteres sem pontuação final. O terceiro é o teto de 12.000 caracteres do gerador.",
-   "Depois veio a recuperação. Apenas 86 das 4.971 ementas truncadas tinham link para o acórdão. Dessas, 84 foram baixadas em PDF. O texto completo entrou no arquivo ementas-completas.json do portal. O ganho médio foi de 1.277 caracteres por ementa.",
-   "O que continua em aberto é o maior bloco. São 4.885 ementas truncadas sem link do acórdão. O TJMG não oferece busca anônima por número de processo. Sem o número e sem sessão autenticada, não há caminho automático.",
-   "Sobra ainda a truncatura silenciosa. Entre 3.971 ementas curtas, uma estava cortada sem reticências. Também não tinha o tamanho padrão de 499 ou 500. É o tipo de corte que a regra de tamanho não pega. O texto parece completo porque nada nele avisa que acabou.",
-   "O caso ajuda a entender por que o Tema 1.280 exige cuidado. A tese fixada em repetitivo não substitui o texto do acórdão. O que vale é o que está no inteiro teor. O post sobre o [Tema 1.280](/noticias/stj-tema-1280-desastre-ambiental-acidente-de-consumo) explica a tese. A [Jurisprudência](/jurisprudencia) mostra caso a caso o que está completo. E o que é trecho."
   ]
  },
  {
