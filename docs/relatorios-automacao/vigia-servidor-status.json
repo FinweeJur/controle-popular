@@ -1,549 +1,589 @@
 {
-  "atualizadoEm": "2026-11-11T02:20:08.454Z",
+  "atualizadoEm": "2026-11-12T02:05:08.004Z",
   "producaoUrl": "https://controlepopular.com.br/",
   "producaoOk": true,
   "producaoStatus": 301,
-  "latenciaMs": 306,
+  "latenciaMs": 235,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-11-11T02:20:08.447Z",
-    "totalBasesVerificadas": 940,
+    "atualizadoEm": "2026-11-12T02:05:07.998Z",
+    "totalBasesVerificadas": 958,
     "basesVazias": [],
     "basesCorrompidas": [],
     "basesEstagnadas": [
       {
         "arquivo": "apps/web/data/bases-clima-risco.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/canais-informacao-lai.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/cidades-dados-completos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/cnes-estabelecimentos-3106705.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/cnj-inspecoes-defensoria.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/congresso-ceap-mg.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/congresso-ceap-nacional.json",
-        "diasSemAtualizar": 70
+        "diasSemAtualizar": 71
       },
       {
         "arquivo": "apps/web/data/congresso-mg.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/conselhos/conselhos-analise.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/conselhos-direitos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/cvm-vale.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/decisoes-cge-lai.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/diario-atos-municipios.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/dpu-comite-tematico.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/edicoes.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/educacao-ibge-mg.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/educacao-inep-mg.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/analise-amb.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/analise-teste.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/analise1.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/esg-analyses.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-esg-climate-pdf.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-esg-ghg-pdf.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-natureza-pdf.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg/pdfs-download-log.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/esg-update.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/estudos-rurais/estudos-rurais.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-aracuai.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-betim.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-bh.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-brumadinho.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-capitais.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-polos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-ba.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-ce.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-df.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-es.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-mg.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pa.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pe.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pr.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-rj.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-rs.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-sc.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-sp.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/governo-uniao.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/gestao/manifesto-r2-planos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/ia-config.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/instituicoes-todas-esferas.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/judiciario/recomendacoes-cnj-cnmp.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/judiciario-remuneracoes.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/judiciario-unidades-contatos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/juma-acoes-climaticas.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/mpf-grandes-casos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/mpmg-coerdoce.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/mpmg-nucard.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/municipios-ac.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ac.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-al.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-al.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-am.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-am.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ap.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ap.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ba.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ba.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-brasil.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-brasil.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ce.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ce.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-df.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-df.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-es.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-es.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-go.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-go.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ma.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ma.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-mg.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ms.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ms.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-mt.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-mt.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pa.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pa.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pb.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pb.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pe.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pe.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pi.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pi.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pr.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-pr.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rj.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rj.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rn.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rn.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ro.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-ro.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rr.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rr.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rs.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-rs.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-sc.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-sc.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-se.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-se.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-sp.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-sp.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-to.compact.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/municipios-to.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/novidades.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/pedido-build.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3103405.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3106200.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3106705.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3121605.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3134004.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3205309.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3550308.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-4106902.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/pib-municipal-4314902.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/polos-interior-ibge.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-098ff6cb.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-1e8d96b1.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-21a475f1.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-62daa83e.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-70dd3d52.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8921f10d.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8ad9041f.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8f5eac97.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-b561676b.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-d879d0ee.json",
+        "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/rouanet-mg-incentivadores.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/rouanet-mg-projetos.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/sgml-cotacoes.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/sigma-lithium-scraped.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/sinesp-vde-2026.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/socios-vale.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/vale-sigma-lithium.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       },
       {
         "arquivo": "apps/web/data/vale3-cotacoes.json",
-        "diasSemAtualizar": 63
+        "diasSemAtualizar": 64
       }
     ],
     "etlsComFalha": [],
     "etlsPendentes": [],
     "statusGeral": "ALERTA",
     "resumoLinhas": [
-      "Bases verificadas: 940 arquivos JSON",
+      "Bases verificadas: 958 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
-      "Bases com estagnação (>60d): 131",
+      "Bases com estagnação (>60d): 141",
       "Fontes/ETLs com status adverso: 0"
     ]
   },
@@ -553,9 +593,9 @@
     "ok": 103,
     "falhas": [],
     "siteInteiroFora": false,
-    "inicioEm": "2026-11-11T02:15:07.799Z",
-    "terminoEm": "2026-11-11T02:17:53.261Z",
-    "duracaoMs": 165462
+    "inicioEm": "2026-11-12T01:55:07.801Z",
+    "terminoEm": "2026-11-12T01:57:52.405Z",
+    "duracaoMs": 164604
   },
   "erro": null
 }

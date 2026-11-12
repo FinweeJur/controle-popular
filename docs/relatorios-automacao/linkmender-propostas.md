@@ -1,18 +1,18 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-11-10T07:05:37.561Z
-- Duracao total: 26.3 min
+- Gerado em: 2026-11-11T07:05:39.762Z
+- Duracao total: 25.8 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 1257
-- OK: 1093
-- QUEBRADOS: 26
-- REDIRECTS: 56
-- INCONSISTENTES: 82
+- OK: 1095
+- QUEBRADOS: 25
+- REDIRECTS: 58
+- INCONSISTENTES: 79
 - Propostas geradas: 17
-- Links sem proposta: 65
+- Links sem proposta: 66
 
 ## Links quebrados e redirecionados
 
@@ -22,12 +22,13 @@
 | https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf | REDIRECT | 200 | https://postboxapp.cloud/ |
-| https://achpr.org/sessions/concludingobservation?id=101 | REDIRECT | 200 | https://postboxapp.cloud/ |
+| https://achpr.org/sessions/concludingobservation?id=101 | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/sessions/concludingobservation?id=103 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/concludingobservation?id=107 | REDIRECT | 200 | https://au.int/en |
+| https://achpr.org/sessions/concludingobservation?id=107 | REDIRECT | 200 | https://postboxapp.cloud/ |
 | https://achpr.org/sessions/concludingobservation?id=110 | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/sessions/concludingobservation?id=96 | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/sessions/resolutions?id=492 | REDIRECT | 200 | https://postboxapp.cloud/ |
+| https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
 | https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa | QUEBRADO | 404 | https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa |
 | https://cnuc.mma.gov.br/ | QUEBRADO | 404 | https://cnuc.mma.gov.br/ |
 | https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
@@ -43,7 +44,6 @@
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
-| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://propp.ufop.br/ | REDIRECT | 200 | https://propp.ufop.br/pt-br |
@@ -64,7 +64,6 @@
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf |
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf |
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf |
 | https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html | REDIRECT | 200 | https://www.almg.gov.br/comunicacao/noticias/arquivos/acervo/2006/06/Not_590862.html |
 | https://www.ana.gov.br/ | REDIRECT | 403 | https://www.gov.br/ana |
 | https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
@@ -94,6 +93,8 @@
 | https://www.uesc.br/propp/ | REDIRECT | 200 | https://www.uesc.br/404/ |
 | https://www.ufba.br/ | REDIRECT | 200 | https://ufba.br/ |
 | https://www.ufcspa.edu.br/ | REDIRECT | 200 | https://ufcspa.edu.br/ |
+| https://www.ufrb.edu.br/ | REDIRECT | 200 | https://ufrb.edu.br/portal/ |
+| https://www.ufrgs.br/ | REDIRECT | 200 | https://www.ufrgs.br/site/ |
 | https://www.ufu.br/proex | REDIRECT | 200 | https://proexc.ufu.br/institucional |
 | https://www.un.org/pt/observances/indigenous-day | QUEBRADO | 404 | https://www.un.org/pt/observances/indigenous-day |
 | https://www.unesp.br/ | REDIRECT | 200 | https://www2.unesp.br/ |
@@ -114,7 +115,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/congresso/almg/page.tsx
 
-### 2. https://sistemas.anatel.gov.br
+### 2. https://api.salic.cultura.gov.br
+
+```diff
+- href="https://api.salic.cultura.gov.br"
++ href="https://api.salic.cultura.gov.br/docs"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
+
+### 3. https://sistemas.anatel.gov.br
 
 ```diff
 - href="https://sistemas.anatel.gov.br"
@@ -125,7 +137,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
 
-### 3. https://cnuc.mma.gov.br/
+### 4. https://cnuc.mma.gov.br/
 
 ```diff
 - href="https://cnuc.mma.gov.br/"
@@ -136,7 +148,7 @@ Confianca: media
 Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
 Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
 
-### 4. https://www.ana.gov.br/
+### 5. https://www.ana.gov.br/
 
 ```diff
 - href="https://www.ana.gov.br/"
@@ -146,17 +158,6 @@ Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
 Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
 Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
-
-### 5. https://pncp.gov.br/
-
-```diff
-- href="https://pncp.gov.br/"
-+ href="https://www.gov.br/pncp/pt-br"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/[municipio]/interesses/page.tsx
 
 ### 6. https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html
 
@@ -301,7 +302,6 @@ Origem: registry
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
 - https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf (404) — dominio nao governamental — correcao manual
@@ -342,10 +342,12 @@ Origem: registry
 - https://www.ufba.br/ (200) — dominio nao governamental — correcao manual
 - https://www.uesc.br/propp/ (200) — dominio nao governamental — correcao manual
 - https://www.uesb.br/ppg/ (200) — dominio nao governamental — correcao manual
+- https://www.ufrb.edu.br/ (200) — dominio nao governamental — correcao manual
 - https://propp.ufop.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ufu.br/proex (200) — dominio nao governamental — correcao manual
 - https://www.uenf.br/ (200) — dominio nao governamental — correcao manual
 - https://www.puc-rio.br/pesquisa/ (404) — dominio nao governamental — correcao manual
+- https://www.ufrgs.br/ (200) — dominio nao governamental — correcao manual
 - https://unipampa.edu.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ufcspa.edu.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ifrs.edu.br/ (200) — dominio nao governamental — correcao manual
@@ -361,7 +363,6 @@ Origem: registry
 ## Inconsistentes (nao verificados, sem proposta)
 
 - https://aichr.org/ (307) — status HTTP 307 (nem ok, nem quebrado, nem redirect)
-- https://api.salic.cultura.gov.br (rede) — erro de rede: This operation was aborted
 - https://asean.org/asean-human-rights-declaration/ (307) — status HTTP 307 (nem ok, nem quebrado, nem redirect)
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
 - https://certificacao.incra.gov.br (rede) — erro de rede: fetch failed
@@ -378,6 +379,7 @@ Origem: registry
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
+- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/ (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/prpgi (rede) — erro de rede: fetch failed
 - https://portal.ifrj.edu.br/ (rede) — erro de rede: This operation was aborted
@@ -387,7 +389,6 @@ Origem: registry
 - https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
 - https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
-- https://pr2.ufrj.br/ (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
 - https://propg.ufabc.edu.br/ (rede) — erro de rede: fetch failed
 - https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
 - https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
@@ -395,6 +396,7 @@ Origem: registry
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sigmine.anm.gov.br/ (rede) — erro de rede: fetch failed
 - https://unimontes.br/ (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (rede) — erro de rede: This operation was aborted
 - https://www.cefet-rj.br/ (rede) — erro de rede: This operation was aborted
 - https://www.cefetmg.br/ (rede) — erro de rede: fetch failed
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
@@ -435,11 +437,8 @@ Origem: registry
 - https://www.ufmg.br/proex/ (rede) — erro de rede: This operation was aborted
 - https://www.ufmg.br/prpq (rede) — erro de rede: This operation was aborted
 - https://www.ufmg.br/prpq/grupos-de-pesquisa/ (rede) — erro de rede: This operation was aborted
-- https://www.ufrb.edu.br/ (rede) — erro de rede: This operation was aborted
-- https://www.ufrgs.br/ (rede) — erro de rede: This operation was aborted
-- https://www.ufrgs.br/propesq1/propesq/grupos-de-pesquisa (rede) — erro de rede: This operation was aborted
 - https://x (rede) — erro de rede: fetch failed
-- https://x.gov.br (rede) — erro de rede: fetch failed
+- https://x.gov.br (rede) — erro de rede: This operation was aborted
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
