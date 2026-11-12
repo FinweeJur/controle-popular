@@ -1,47 +1,47 @@
 {
-  "atualizadoEm": "2026-11-12T02:05:08.004Z",
+  "atualizadoEm": "2026-11-12T21:10:13.839Z",
   "producaoUrl": "https://controlepopular.com.br/",
-  "producaoOk": true,
-  "producaoStatus": 301,
-  "latenciaMs": 235,
+  "producaoOk": false,
+  "producaoStatus": 0,
+  "latenciaMs": 76,
   "localOk": true,
   "saudeBasesETL": {
-    "atualizadoEm": "2026-11-12T02:05:07.998Z",
-    "totalBasesVerificadas": 958,
+    "atualizadoEm": "2026-11-12T21:10:13.835Z",
+    "totalBasesVerificadas": 987,
     "basesVazias": [],
     "basesCorrompidas": [],
     "basesEstagnadas": [
       {
         "arquivo": "apps/web/data/bases-clima-risco.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/canais-informacao-lai.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/cidades-dados-completos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/cnes-estabelecimentos-3106705.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/cnj-inspecoes-defensoria.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/congresso-ceap-mg.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/congresso-ceap-nacional.json",
-        "diasSemAtualizar": 71
+        "diasSemAtualizar": 72
       },
       {
         "arquivo": "apps/web/data/congresso-mg.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/conselhos/conselhos-analise.json",
@@ -49,195 +49,195 @@
       },
       {
         "arquivo": "apps/web/data/conselhos-direitos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/cvm-vale.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/decisoes-cge-lai.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/diario-atos-municipios.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/dpu-comite-tematico.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/edicoes.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/educacao-ibge-mg.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/educacao-inep-mg.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/analise-amb.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/analise-teste.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/analise1.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/esg-analyses.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-esg-climate-pdf.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-esg-ghg-pdf.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/meta/vale-natureza-pdf.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg/pdfs-download-log.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/esg-update.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/estudos-rurais/estudos-rurais.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-aracuai.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-betim.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-bh.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-brumadinho.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-capitais.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/gestao-polos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-ba.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-ce.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-df.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-es.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-mg.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pa.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pe.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-pr.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-rj.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-rs.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-sc.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-sp.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/governo-uniao.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/gestao/manifesto-r2-planos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/ia-config.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/instituicoes-todas-esferas.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/judiciario/recomendacoes-cnj-cnmp.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/judiciario-remuneracoes.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/judiciario-unidades-contatos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/juma-acoes-climaticas.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/mpf-grandes-casos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/mpmg-coerdoce.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/mpmg-nucard.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/municipios-ac.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ac.json",
@@ -245,7 +245,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-al.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-al.json",
@@ -253,7 +253,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-am.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-am.json",
@@ -261,7 +261,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-ap.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ap.json",
@@ -269,7 +269,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-ba.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ba.json",
@@ -277,7 +277,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-brasil.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-brasil.json",
@@ -285,7 +285,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-ce.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ce.json",
@@ -293,7 +293,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-df.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-df.json",
@@ -301,7 +301,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-es.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-es.json",
@@ -309,7 +309,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-go.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-go.json",
@@ -317,7 +317,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-ma.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ma.json",
@@ -325,11 +325,11 @@
       },
       {
         "arquivo": "apps/web/data/municipios-mg.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ms.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ms.json",
@@ -337,7 +337,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-mt.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-mt.json",
@@ -345,7 +345,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-pa.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-pa.json",
@@ -353,7 +353,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-pb.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-pb.json",
@@ -361,7 +361,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-pe.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-pe.json",
@@ -369,7 +369,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-pi.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-pi.json",
@@ -377,7 +377,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-pr.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-pr.json",
@@ -385,7 +385,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-rj.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-rj.json",
@@ -393,7 +393,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-rn.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-rn.json",
@@ -401,7 +401,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-ro.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-ro.json",
@@ -409,7 +409,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-rr.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-rr.json",
@@ -417,7 +417,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-rs.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-rs.json",
@@ -425,7 +425,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-sc.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-sc.json",
@@ -433,7 +433,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-se.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-se.json",
@@ -441,7 +441,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-sp.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-sp.json",
@@ -449,7 +449,7 @@
       },
       {
         "arquivo": "apps/web/data/municipios-to.compact.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/municipios-to.json",
@@ -457,145 +457,590 @@
       },
       {
         "arquivo": "apps/web/data/novidades.json",
-        "diasSemAtualizar": 62
+        "diasSemAtualizar": 63
       },
       {
         "arquivo": "apps/web/data/pedido-build.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3103405.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3106200.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3106705.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3121605.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3134004.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3205309.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-3550308.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-4106902.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/pib-municipal-4314902.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/polos-interior-ibge.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-053ce5e6.json",
+        "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-098ff6cb.json",
+        "diasSemAtualizar": 62
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-11ca6591.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-15c93c22.json",
+        "diasSemAtualizar": 61
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-1bdd1b81.json",
         "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-1e8d96b1.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-21a475f1.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-62daa83e.json",
+        "diasSemAtualizar": 62
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-6dd38991.json",
         "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-70dd3d52.json",
+        "diasSemAtualizar": 62
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-83d6f44f.json",
         "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8921f10d.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8ad9041f.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-8f5eac97.json",
-        "diasSemAtualizar": 61
+        "diasSemAtualizar": 62
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-b561676b.json",
+        "diasSemAtualizar": 62
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-c392a59e.json",
         "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-d879d0ee.json",
+        "diasSemAtualizar": 62
+      },
+      {
+        "arquivo": "apps/web/data/radar-editais/processados/2026-09-10-dda5a7a2.json",
         "diasSemAtualizar": 61
       },
       {
         "arquivo": "apps/web/data/rouanet-mg-incentivadores.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/rouanet-mg-projetos.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/sgml-cotacoes.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/sigma-lithium-scraped.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/sinesp-vde-2026.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/socios-vale.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/vale-sigma-lithium.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       },
       {
         "arquivo": "apps/web/data/vale3-cotacoes.json",
-        "diasSemAtualizar": 64
+        "diasSemAtualizar": 65
       }
     ],
     "etlsComFalha": [],
     "etlsPendentes": [],
     "statusGeral": "ALERTA",
     "resumoLinhas": [
-      "Bases verificadas: 958 arquivos JSON",
+      "Bases verificadas: 987 arquivos JSON",
       "Bases vazias ou zeradas: 0",
       "Bases corrompidas: 0",
-      "Bases com estagnação (>60d): 141",
+      "Bases com estagnação (>60d): 149",
       "Fontes/ETLs com status adverso: 0"
     ]
   },
   "paginas": {
     "base": "https://www.controlepopular.com.br",
     "total": 103,
-    "ok": 103,
-    "falhas": [],
-    "siteInteiroFora": false,
-    "inicioEm": "2026-11-12T01:55:07.801Z",
-    "terminoEm": "2026-11-12T01:57:52.405Z",
-    "duracaoMs": 164604
+    "ok": 0,
+    "falhas": [
+      {
+        "rota": "/",
+        "status": 0
+      },
+      {
+        "rota": "/casos",
+        "status": 0
+      },
+      {
+        "rota": "/direitos",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental",
+        "status": 0
+      },
+      {
+        "rota": "/cidades",
+        "status": 0
+      },
+      {
+        "rota": "/congresso",
+        "status": 0
+      },
+      {
+        "rota": "/estado-e-economia",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario",
+        "status": 0
+      },
+      {
+        "rota": "/internacional",
+        "status": 0
+      },
+      {
+        "rota": "/dados/populares",
+        "status": 0
+      },
+      {
+        "rota": "/terra-e-territorios",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento",
+        "status": 0
+      },
+      {
+        "rota": "/central",
+        "status": 0
+      },
+      {
+        "rota": "/sitemap.xml",
+        "status": 0
+      },
+      {
+        "rota": "/data/cndh-midia.json",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/ajuda",
+        "status": 0
+      },
+      {
+        "rota": "/funcaosocialterra",
+        "status": 0
+      },
+      {
+        "rota": "/paraopeba",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/clima-risco",
+        "status": 0
+      },
+      {
+        "rota": "/governo",
+        "status": 0
+      },
+      {
+        "rota": "/empresas",
+        "status": 0
+      },
+      {
+        "rota": "/dados/comunicabr",
+        "status": 0
+      },
+      {
+        "rota": "/busca",
+        "status": 0
+      },
+      {
+        "rota": "/laboratorio",
+        "status": 0
+      },
+      {
+        "rota": "/editais",
+        "status": 0
+      },
+      {
+        "rota": "/biblioteca",
+        "status": 0
+      },
+      {
+        "rota": "/noticias",
+        "status": 0
+      },
+      {
+        "rota": "/tecnologia",
+        "status": 0
+      },
+      {
+        "rota": "/documentacao",
+        "status": 0
+      },
+      {
+        "rota": "/alertas",
+        "status": 0
+      },
+      {
+        "rota": "/estudos-rurais",
+        "status": 0
+      },
+      {
+        "rota": "/imprensa",
+        "status": 0
+      },
+      {
+        "rota": "/sobre",
+        "status": 0
+      },
+      {
+        "rota": "/termos",
+        "status": 0
+      },
+      {
+        "rota": "/funcaosocialterra/mapa",
+        "status": 0
+      },
+      {
+        "rota": "/funcaosocialterra/alertas",
+        "status": 0
+      },
+      {
+        "rota": "/cidades/mg",
+        "status": 0
+      },
+      {
+        "rota": "/betim",
+        "status": 0
+      },
+      {
+        "rota": "/bh",
+        "status": 0
+      },
+      {
+        "rota": "/sp",
+        "status": 0
+      },
+      {
+        "rota": "/brumadinho",
+        "status": 0
+      },
+      {
+        "rota": "/mariana",
+        "status": 0
+      },
+      {
+        "rota": "/aracuai",
+        "status": 0
+      },
+      {
+        "rota": "/diamantina",
+        "status": 0
+      },
+      {
+        "rota": "/itinga",
+        "status": 0
+      },
+      {
+        "rota": "/governador-valadares",
+        "status": 0
+      },
+      {
+        "rota": "/uberlandia",
+        "status": 0
+      },
+      {
+        "rota": "/juiz-de-fora",
+        "status": 0
+      },
+      {
+        "rota": "/terra-e-territorios/vales",
+        "status": 0
+      },
+      {
+        "rota": "/terra-e-territorios/nossos-rios",
+        "status": 0
+      },
+      {
+        "rota": "/terra-e-territorios/nossas-serras",
+        "status": 0
+      },
+      {
+        "rota": "/paraopeba/execucao",
+        "status": 0
+      },
+      {
+        "rota": "/paraopeba/biblioteca",
+        "status": 0
+      },
+      {
+        "rota": "/paraopeba/linha-do-tempo",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/mariana",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/barragens",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/barragens/descaracterizacao",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/licenciamento",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/copam",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/tac",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/car",
+        "status": 0
+      },
+      {
+        "rota": "/mineracao/cavas",
+        "status": 0
+      },
+      {
+        "rota": "/canada",
+        "status": 0
+      },
+      {
+        "rota": "/america-latina",
+        "status": 0
+      },
+      {
+        "rota": "/memoria",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/legislacao",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/servicos?subfrente=saude-publica",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/servicos?subfrente=educacao",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/servicos?subfrente=trabalho-e-renda",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/conselhos",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/informacao",
+        "status": 0
+      },
+      {
+        "rota": "/direitos-em-movimento/denuncia",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/decisoes-lai",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/direitos-humanos",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/conselhos",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/capacidade-institucional",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/ecossistema",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/patrimonio-cultural",
+        "status": 0
+      },
+      {
+        "rota": "/recursos/estados",
+        "status": 0
+      },
+      {
+        "rota": "/estado-e-economia/orcamento",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario/instituicoes",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario/contatos",
+        "status": 0
+      },
+      {
+        "rota": "/assembleias",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/contratos",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario/composicao",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario/sirenejud",
+        "status": 0
+      },
+      {
+        "rota": "/judiciario/recomendacoes",
+        "status": 0
+      },
+      {
+        "rota": "/congresso/proposicoes",
+        "status": 0
+      },
+      {
+        "rota": "/congresso/votacoes",
+        "status": 0
+      },
+      {
+        "rota": "/congresso/parlamentares?uf=MG",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/convenios",
+        "status": 0
+      },
+      {
+        "rota": "/ambiental/ppp",
+        "status": 0
+      },
+      {
+        "rota": "/empresas/fortunas",
+        "status": 0
+      },
+      {
+        "rota": "/empresas/conglomerados",
+        "status": 0
+      },
+      {
+        "rota": "/empresas/executivos",
+        "status": 0
+      },
+      {
+        "rota": "/eua",
+        "status": 0
+      },
+      {
+        "rota": "/europa",
+        "status": 0
+      },
+      {
+        "rota": "/internacional/inteligencia",
+        "status": 0
+      },
+      {
+        "rota": "/laboratorio/arvore",
+        "status": 0
+      },
+      {
+        "rota": "/assistente",
+        "status": 0
+      },
+      {
+        "rota": "/indice",
+        "status": 0
+      },
+      {
+        "rota": "/radio",
+        "status": 0
+      },
+      {
+        "rota": "/api",
+        "status": 0
+      }
+    ],
+    "siteInteiroFora": true,
+    "inicioEm": "2026-11-12T21:05:13.330Z",
+    "terminoEm": "2026-11-12T21:07:18.148Z",
+    "duracaoMs": 124818
   },
-  "erro": null
+  "erro": "getaddrinfo ENOTFOUND controlepopular.com.br"
 }

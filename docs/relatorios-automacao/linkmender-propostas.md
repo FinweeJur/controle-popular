@@ -1,17 +1,17 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-11-11T07:05:39.762Z
-- Duracao total: 25.8 min
+- Gerado em: 2026-11-12T07:05:05.831Z
+- Duracao total: 25.9 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 1257
-- OK: 1095
-- QUEBRADOS: 25
+- OK: 1089
+- QUEBRADOS: 26
 - REDIRECTS: 58
-- INCONSISTENTES: 79
-- Propostas geradas: 17
+- INCONSISTENTES: 84
+- Propostas geradas: 18
 - Links sem proposta: 66
 
 ## Links quebrados e redirecionados
@@ -20,14 +20,14 @@
 |---|---|---|---|
 | https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf | REDIRECT | 200 | https://au.int/en |
+| https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf | REDIRECT | 200 | https://postboxapp.cloud/ |
 | https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf | REDIRECT | 200 | https://postboxapp.cloud/ |
 | https://achpr.org/sessions/concludingobservation?id=101 | REDIRECT | 200 | https://au.int/en |
 | https://achpr.org/sessions/concludingobservation?id=103 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/concludingobservation?id=107 | REDIRECT | 200 | https://postboxapp.cloud/ |
-| https://achpr.org/sessions/concludingobservation?id=110 | REDIRECT | 200 | https://au.int/en |
+| https://achpr.org/sessions/concludingobservation?id=107 | REDIRECT | 200 | https://au.int/en |
+| https://achpr.org/sessions/concludingobservation?id=110 | REDIRECT | 200 | https://postboxapp.cloud/ |
 | https://achpr.org/sessions/concludingobservation?id=96 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/resolutions?id=492 | REDIRECT | 200 | https://postboxapp.cloud/ |
+| https://achpr.org/sessions/resolutions?id=492 | REDIRECT | 200 | https://au.int/en |
 | https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
 | https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa | QUEBRADO | 404 | https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa |
 | https://cnuc.mma.gov.br/ | QUEBRADO | 404 | https://cnuc.mma.gov.br/ |
@@ -44,6 +44,7 @@
 | https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
 | https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
 | https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
+| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
 | https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
 | https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
 | https://propp.ufop.br/ | REDIRECT | 200 | https://propp.ufop.br/pt-br |
@@ -64,6 +65,7 @@
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf |
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf |
 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf |
+| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf |
 | https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html | REDIRECT | 200 | https://www.almg.gov.br/comunicacao/noticias/arquivos/acervo/2006/06/Not_590862.html |
 | https://www.ana.gov.br/ | REDIRECT | 403 | https://www.gov.br/ana |
 | https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
@@ -94,7 +96,6 @@
 | https://www.ufba.br/ | REDIRECT | 200 | https://ufba.br/ |
 | https://www.ufcspa.edu.br/ | REDIRECT | 200 | https://ufcspa.edu.br/ |
 | https://www.ufrb.edu.br/ | REDIRECT | 200 | https://ufrb.edu.br/portal/ |
-| https://www.ufrgs.br/ | REDIRECT | 200 | https://www.ufrgs.br/site/ |
 | https://www.ufu.br/proex | REDIRECT | 200 | https://proexc.ufu.br/institucional |
 | https://www.un.org/pt/observances/indigenous-day | QUEBRADO | 404 | https://www.un.org/pt/observances/indigenous-day |
 | https://www.unesp.br/ | REDIRECT | 200 | https://www2.unesp.br/ |
@@ -159,7 +160,18 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
 Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
 
-### 6. https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html
+### 6. https://pncp.gov.br/
+
+```diff
+- href="https://pncp.gov.br/"
++ href="https://www.gov.br/pncp/pt-br"
+```
+
+Confianca: alta
+Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
+Origem: apps/web/app/[municipio]/interesses/page.tsx
+
+### 7. https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html
 
 ```diff
 - href="https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html"
@@ -170,7 +182,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/ambiental/publicacoes-barragens.ts
 
-### 7. https://falabr.cgu.gov.br
+### 8. https://falabr.cgu.gov.br
 
 ```diff
 - href="https://falabr.cgu.gov.br"
@@ -181,7 +193,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 8. https://www.cnmp.mp.br
+### 9. https://www.cnmp.mp.br
 
 ```diff
 - href="https://www.cnmp.mp.br"
@@ -192,7 +204,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 9. https://www.tjmg.jus.br
+### 10. https://www.tjmg.jus.br
 
 ```diff
 - href="https://www.tjmg.jus.br"
@@ -203,7 +215,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 10. https://www.mpmg.mp.br
+### 11. https://www.mpmg.mp.br
 
 ```diff
 - href="https://www.mpmg.mp.br"
@@ -214,7 +226,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 11. https://portal.trt3.jus.br
+### 12. https://portal.trt3.jus.br
 
 ```diff
 - href="https://portal.trt3.jus.br"
@@ -225,7 +237,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 12. https://www.trf6.jus.br
+### 13. https://www.trf6.jus.br
 
 ```diff
 - href="https://www.trf6.jus.br"
@@ -236,7 +248,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/glossario/termos.ts
 
-### 13. https://revendedoresapi.anp.gov.br/swagger/index.html
+### 14. https://revendedoresapi.anp.gov.br/swagger/index.html
 
 ```diff
 - href="https://revendedoresapi.anp.gov.br/swagger/index.html"
@@ -247,7 +259,7 @@ Confianca: media
 Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
 Origem: apps/web/lib/linkmender/busca.test.ts
 
-### 14. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
+### 15. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
 
 ```diff
 - href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
@@ -258,7 +270,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/memoria/camadas.ts
 
-### 15. https://www.mpmg.mp.br/
+### 16. https://www.mpmg.mp.br/
 
 ```diff
 - href="https://www.mpmg.mp.br/"
@@ -269,7 +281,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: apps/web/lib/riodoce/linha-do-tempo.ts
 
-### 16. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
+### 17. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos"
@@ -280,7 +292,7 @@ Confianca: alta
 Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
 Origem: registry
 
-### 17. https://www.mpf.mp.br/atuacao/grandes-casos
+### 18. https://www.mpf.mp.br/atuacao/grandes-casos
 
 ```diff
 - href="https://www.mpf.mp.br/atuacao/grandes-casos"
@@ -302,6 +314,7 @@ Origem: registry
 - https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
 - https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
 - https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf (404) — dominio nao governamental — correcao manual
 - https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf (404) — dominio nao governamental — correcao manual
@@ -347,7 +360,6 @@ Origem: registry
 - https://www.ufu.br/proex (200) — dominio nao governamental — correcao manual
 - https://www.uenf.br/ (200) — dominio nao governamental — correcao manual
 - https://www.puc-rio.br/pesquisa/ (404) — dominio nao governamental — correcao manual
-- https://www.ufrgs.br/ (200) — dominio nao governamental — correcao manual
 - https://unipampa.edu.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ufcspa.edu.br/ (200) — dominio nao governamental — correcao manual
 - https://www.ifrs.edu.br/ (200) — dominio nao governamental — correcao manual
@@ -375,11 +387,14 @@ Origem: registry
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
 - https://exemplo.test/p1 (rede) — erro de rede: fetch failed
+- https://g1.globo.com/al/alagoas/arquivo/noticia/2024/07/26/justica-da-holanda-condena-braskem-pelo-afundamento-do-solo-em-maceio-e-determina-pagamento-de-indenizacao.ghtml (rede) — erro de rede: This operation was aborted
+- https://g1.globo.com/al/alagoas/noticia/2026/06/17/justica-aceita-denuncia-contra-braskem-por-afundamento-em-maceio.ghtml (rede) — erro de rede: This operation was aborted
+- https://g1.globo.com/al/alagoas/noticia/2026/06/19/investigacao-da-pf-aponta-que-braskem-sabia-de-risco-de-afundamento-em-maceio-desde-1988.ghtml (rede) — erro de rede: This operation was aborted
+- https://g1.globo.com/mg/minas-gerais/noticia/2025/11/14/bhp-acionista-da-samarco-e-parcialmente-condenada-pela-justica-inglesa-em-processo-sobre-rompimento-de-barragem-em-mariana.ghtml (rede) — erro de rede: This operation was aborted
 - https://geo.anm.gov.br/ (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
-- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/ (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/prpgi (rede) — erro de rede: fetch failed
 - https://portal.ifrj.edu.br/ (rede) — erro de rede: This operation was aborted
@@ -396,13 +411,13 @@ Origem: registry
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
 - https://sigmine.anm.gov.br/ (rede) — erro de rede: fetch failed
 - https://unimontes.br/ (rede) — erro de rede: fetch failed
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (rede) — erro de rede: This operation was aborted
 - https://www.cefet-rj.br/ (rede) — erro de rede: This operation was aborted
 - https://www.cefetmg.br/ (rede) — erro de rede: fetch failed
 - https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
 - https://www.controlepopular.tech/ (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://www.controlepopular.tech/api/saude (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://www.dippg.cefet-rj.br/index.php/pt/grupos-de-pesquisa (rede) — erro de rede: This operation was aborted
+- https://www.ifsudestemg.edu.br/ (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
@@ -430,15 +445,17 @@ Origem: registry
 - https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
-- https://www.pr2.uerj.br/ (rede) — erro de rede: This operation was aborted
+- https://www.pr2.uerj.br/ (rede) — erro de rede: fetch failed
 - https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
 - https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
 - https://www.uefs.br/ (rede) — erro de rede: This operation was aborted
 - https://www.ufmg.br/proex/ (rede) — erro de rede: This operation was aborted
 - https://www.ufmg.br/prpq (rede) — erro de rede: This operation was aborted
 - https://www.ufmg.br/prpq/grupos-de-pesquisa/ (rede) — erro de rede: This operation was aborted
+- https://www.ufrgs.br/ (rede) — erro de rede: This operation was aborted
+- https://www.unesco.org/pt/days/mother-language (rede) — erro de rede: This operation was aborted
 - https://x (rede) — erro de rede: fetch failed
-- https://x.gov.br (rede) — erro de rede: This operation was aborted
+- https://x.gov.br (rede) — erro de rede: fetch failed
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed
 - https://y.gov.br (rede) — erro de rede: fetch failed
 
