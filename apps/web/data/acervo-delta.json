@@ -1,42 +1,20 @@
 {
-  "geradoEm": "2026-11-10T16:25:48.510Z",
+  "geradoEm": "2026-11-11T18:40:33.437Z",
   "totalPecas": 5764,
-  "baselineSha": "b3fbdd4026a93a4e",
+  "baselineSha": "f9350f22803369d8",
   "rebuild": false,
   "novos": [
     {
-      "id": "blog:renap-30-encontro-lenir-correia-joao-pessoa",
+      "id": "blog:oab-mg-onze-anos-mariana-reparacao-saude",
       "frente": "geral",
-      "rota": "/noticias/renap-30-encontro-lenir-correia-joao-pessoa",
-      "titulo": "Encontro da RENAP em João Pessoa debate a prisão de Lenir Correia",
-      "fonteUrl": "/noticias/renap-30-encontro-lenir-correia-joao-pessoa",
-      "texto": "Advogada popular presa preventivamente em Rondônia desde novembro de 2025, Lenir Correia dá nome ao 30º Encontro da RENAP, que reúne três redes na UFPB.\nO 30º Encontro Nacional da Rede Nacional de Advogadas e Advogados Populares (RENAP) acontece de 11 a 14 de novembro de 2026 no campus I da Universidade Federal da Paraíba, em João Pessoa. O encontro corre junto ao XI Seminário Nacional Direitos, Pesquisa e Movimentos Sociais (IPDMS) e ao 20º Encontro Nacional da Rede Nacional de Assessoria Jurídica Universitária (RENAJU). O tema deste ano é Lenir Correia Livre.\nLenir Correia Coelho é advogada popular em Rondônia e atua na defesa de camponesas, camponeses, indígenas e quilombolas na luta pela terra. Em novembro de 2025, foi presa preventivamente na Operação Godos, do Grupo de Atuação Especial de Combate ao Crime Organizado (GAECO) do Ministério Público de Rondônia."
-    },
-    {
-      "id": "blog:tjmg-atingido-barragem-consumidor-por-equiparacao",
-      "frente": "geral",
-      "rota": "/noticias/tjmg-atingido-barragem-consumidor-por-equiparacao",
-      "titulo": "TJMG reconhece atingido de Itatiaiuçu como consumidor por equiparação",
-      "fonteUrl": "/noticias/tjmg-atingido-barragem-consumidor-por-equiparacao",
-      "texto": "Sete agravos do TJMG tratam atingidos da barragem Serra Azul como consumidores equiparados. A tese alonga o prazo para pedir indenização, mas não fixa valor.\nSete acórdãos do TJMG tratam atingidos da barragem Serra Azul, em Itatiaiuçu. O gatilho foi o acionamento do plano de emergência da barragem (PAEBM). São seis decisões de 2026 e uma de 2025.\nO recorte é estreito e homogêneo. São sete agravos de instrumento, todos da comarca de Itaúna. Em todos, o resultado registrado é “negado”: o recurso foi desprovido. As ementas têm entre 1.584 e 1.658 caracteres. Todas trazem o link do acórdão no TJMG."
-    },
-    {
-      "id": "blog:tjmg-quem-vence-processos-de-desastre",
-      "frente": "geral",
-      "rota": "/noticias/tjmg-quem-vence-processos-de-desastre",
-      "titulo": "Empresa lidera os polos vencedores, mas 6.121 casos ficam indeterminados",
-      "fonteUrl": "/noticias/tjmg-quem-vence-processos-de-desastre",
-      "texto": "O campo polo do acervo aponta o vencedor da decisão. A empresa lidera com 4.529 casos. Outros 6.121 seguem indeterminados, e 4.245 não têm polo.\nO campo polo do acervo registra quem venceu a decisão. Não registra quem entrou com o processo. A confusão é comum, porque a palavra sugere lado da ação. A tela avisa: “Polo vencedor — quem ganhou a decisão, não quem entrou”.\nDos 23.569 casos, 4.529 têm a empresa como polo vencedor. Outros 6.121 estão como indeterminado. O Ministério Público aparece em 3.374. O resultado parcial soma 3.131, e o atingido, 1.902. O réu aparece em 267 casos."
-    },
-    {
-      "id": "blog:ementas-truncadas-tjmg-o-que-o-portal-corrigiu",
-      "frente": "geral",
-      "rota": "/noticias/ementas-truncadas-tjmg-o-que-o-portal-corrigiu",
-      "titulo": "4.971 ementas truncadas: o que o portal recuperou e o que falta",
-      "fonteUrl": "/noticias/ementas-truncadas-tjmg-o-que-o-portal-corrigiu",
-      "texto": "Em 4.971 dos 23.569 casos a ementa publicada é um trecho. O portal recuperou 84 textos completos em PDF. Também passou a avisar quando o texto está cortado.\nO acervo de jurisprudência do portal tem 23.569 casos. Em 4.971 deles, a ementa publicada é um trecho. O corte de 499 ou 500 caracteres vem da fonte oficial. A fonte entrega o começo da ementa e para.\nO padrão aparece no tamanho. São 4.305 ementas com exatamente 500 caracteres. Outras 665 têm 499, e uma tem 2.000. O corte em 499 ou 500 é o limite da fonte. O de 2.000 é outra coisa, e passava despercebido."
+      "rota": "/noticias/oab-mg-onze-anos-mariana-reparacao-saude",
+      "titulo": "Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado",
+      "fonteUrl": "/noticias/oab-mg-onze-anos-mariana-reparacao-saude",
+      "texto": "Comissão de Direitos Humanos da OAB-MG cobra reparação em saúde 11 anos depois de Mariana, aponta crime continuado e critica o corte do auxílio em Brumadinho.\nA Rádio OAB-MG recebeu o presidente da Comissão de Direitos Humanos da OAB-MG, Wagner Dias Ferreira, e o membro consultor da Comissão Nacional de Direitos Humanos do Conselho Federal da OAB, Artur Colito. A conversa foi gravada durante a conferência da advocacia mineira, no mês em que o rompimento da barragem de Fundão completou 11 anos.\nWagner abriu o balanço com o que chama de quadro de extrema vulnerabilidade em Minas Gerais: mineração, negligência política, sistema carcerário sem perspectiva de recuperação e letalidade policial crescente. Para ele, a preocupação com direitos humanos precisa encontrar caminhos para restaurar um mínimo de normalidade que o estado não tem conseguido."
     }
   ],
   "modificados": [],
-  "removidos": []
+  "removidos": [
+    "blog:ementas-truncadas-tjmg-o-que-o-portal-corrigiu"
+  ]
 }
