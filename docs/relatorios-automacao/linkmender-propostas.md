@@ -1,423 +1,1185 @@
 # LinkMender — Propostas de Correcao de Links
 
-- Gerado em: 2026-11-12T07:05:05.831Z
-- Duracao total: 25.9 min
+- Gerado em: 2026-11-13T06:54:37.919Z
+- Duracao total: 9.4 min
 - Pausa entre requisicoes: 400ms
 
 ## Resumo
 
 - Total de URLs unicas testadas: 1257
-- OK: 1089
-- QUEBRADOS: 26
-- REDIRECTS: 58
-- INCONSISTENTES: 84
-- Propostas geradas: 18
-- Links sem proposta: 66
+- OK: 0
+- QUEBRADOS: 0
+- REDIRECTS: 0
+- INCONSISTENTES: 1257
+- Propostas geradas: 0
+- Links sem proposta: 0
 
 ## Links quebrados e redirecionados
 
 | URL | classe | status | finalUrl |
 |---|---|---|---|
-| https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf | REDIRECT | 200 | https://postboxapp.cloud/ |
-| https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf | REDIRECT | 200 | https://postboxapp.cloud/ |
-| https://achpr.org/sessions/concludingobservation?id=101 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/concludingobservation?id=103 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/concludingobservation?id=107 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/concludingobservation?id=110 | REDIRECT | 200 | https://postboxapp.cloud/ |
-| https://achpr.org/sessions/concludingobservation?id=96 | REDIRECT | 200 | https://au.int/en |
-| https://achpr.org/sessions/resolutions?id=492 | REDIRECT | 200 | https://au.int/en |
-| https://api.salic.cultura.gov.br | REDIRECT | 200 | https://api.salic.cultura.gov.br/docs |
-| https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa | QUEBRADO | 404 | https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa |
-| https://cnuc.mma.gov.br/ | QUEBRADO | 404 | https://cnuc.mma.gov.br/ |
-| https://controlepopular.com.br | REDIRECT | 200 | https://www.controlepopular.com.br/ |
-| https://controlepopular.com.br/ambiental/crimes-socioambientais | REDIRECT | 200 | https://www.controlepopular.com.br/ambiental/crimes-socioambientais |
-| https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng | REDIRECT | 200 | https://www.international.gc.ca/trade-commerce/ncp-pcn/index.aspx?lang=eng |
-| https://dadosabertos.almg.gov.br | REDIRECT | 200 | http://dadosabertos.almg.gov.br/documentacao/index |
-| https://drive.google.com/exemplo | QUEBRADO | 404 | https://drive.google.com/exemplo |
-| https://exemplo.org/a | QUEBRADO | 404 | https://exemplo.org/a |
-| https://falabr.cgu.gov.br | REDIRECT | 200 | https://falabr.cgu.gov.br/web/home |
-| https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md | QUEBRADO | 404 | https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md |
-| https://github.com/FinweeJur/tjmg-jurimetria/blob/master/relatorios/RELATORIO-GUAICUY-NACAB.md | QUEBRADO | 404 | https://github.com/FinweeJur/tjmg-jurimetria/blob/master/relatorios/RELATORIO-GUAICUY-NACAB.md |
-| https://legis.senado.leg.br/dadosabertos | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
-| https://legis.senado.leg.br/dadosabertos/ | REDIRECT | 200 | https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html |
-| https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada | REDIRECT | 200 | https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada |
-| https://news.google.com/ | REDIRECT | 200 | https://news.google.com/home?hl=en-US&gl=US&ceid=US:en |
-| https://pncp.gov.br/ | REDIRECT | 200 | https://www.gov.br/pncp/pt-br |
-| https://portal.trt3.jus.br | REDIRECT | 200 | https://portal.trt3.jus.br/internet |
-| https://projetorioparaopeba.fgv.br | REDIRECT | 200 | https://www18.fgv.br/projetorioparaopeba/ |
-| https://propp.ufop.br/ | REDIRECT | 200 | https://propp.ufop.br/pt-br |
-| https://pt.wikipedia.org/ | REDIRECT | 200 | https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal |
-| https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena | QUEBRADO | 404 | https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena |
-| https://pt.wikipedia.org/wiki/Jacinto_Canek | QUEBRADO | 404 | https://pt.wikipedia.org/wiki/Jacinto_Canek |
-| https://revendedoresapi.anp.gov.br/swagger/index.html | QUEBRADO | 404 | https://revendedoresapi.anp.gov.br/swagger/index.html |
-| https://sistemas.anatel.gov.br | REDIRECT | 200 | https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp |
-| https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ | REDIRECT | 200 | https://site.ucdb.br/ |
-| https://transparencia.fundacaorenova.org/inicio | REDIRECT | 200 | https://transparencia.fundacaorenova.org/ |
-| https://unipampa.edu.br/ | REDIRECT | 200 | https://unipampa.edu.br/portal/ |
-| https://wmo.int/about-wmo/world-meteorological-day | REDIRECT | 200 | https://wmo.int/events-and-meetings/world-met-day |
-| https://www.aedasmg.org | REDIRECT | 200 | https://aedasmg.org/ |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf |
-| https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf | QUEBRADO | 404 | https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf |
-| https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html | REDIRECT | 200 | https://www.almg.gov.br/comunicacao/noticias/arquivos/acervo/2006/06/Not_590862.html |
-| https://www.ana.gov.br/ | REDIRECT | 403 | https://www.gov.br/ana |
-| https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ | REDIRECT | 200 | https://www.b3.com.br/pt_br/redirecionamento/pagina-nao-encontrada/ |
-| https://www.braskem.com.br/detalhe-noticias-alagoas/braskem-reafirma-compromisso-com-maceio-e-destaca-relevancia-estrategica-de-alagoas-para-o-futuro-da-companhia | QUEBRADO | 404 | https://www.braskem.com.br/detalhe-noticias-alagoas/braskem-reafirma-compromisso-com-maceio-e-destaca-relevancia-estrategica-de-alagoas-para-o-futuro-da-companhia |
-| https://www.cnmp.mp.br | REDIRECT | 200 | https://www.cnmp.mp.br/portal/ |
-| https://www.constituteproject.org/constitution/Federated_States_of_Micronesia_1990 | QUEBRADO | 404 | https://www.constituteproject.org/constitution/Federated_States_of_Micronesia_1990 |
-| https://www.constituteproject.org/constitution/Mexico_2021?lang=es | QUEBRADO | 404 | https://www.constituteproject.org/constitution/Mexico_2021?lang=es |
-| https://www.constituteproject.org/constitution/Palau_1981 | QUEBRADO | 404 | https://www.constituteproject.org/constitution/Palau_1981 |
-| https://www.constituteproject.org/constitution/Tonga_2016 | QUEBRADO | 404 | https://www.constituteproject.org/constitution/Tonga_2016 |
-| https://www.constituteproject.org/constitution/Viet_Nam_2013?lang=en | QUEBRADO | 404 | https://www.constituteproject.org/constitution/Viet_Nam_2013?lang=en |
-| https://www.cptnacional.org.br/ | REDIRECT | 200 | https://cptnacional.org.br/ |
-| https://www.fundacaorenova.org | REDIRECT | 200 | https://www.reparacaobaciariodoce.com/ |
-| https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 | REDIRECT | 200 | https://ojs.ifch.unicamp.br/index.php/rhs/article/download/231/217/0 |
-| https://www.ifrs.edu.br/ | REDIRECT | 200 | https://ifrs.edu.br/ |
-| https://www.mpf.mp.br/atuacao/grandes-casos | REDIRECT | 200 | https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque |
-| https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos | REDIRECT | 200 | https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque/caso-samarco/documentos |
-| https://www.mpmg.mp.br | REDIRECT | 200 | https://www.mpmg.mp.br/portal/ |
-| https://www.mpmg.mp.br/ | REDIRECT | 200 | https://www.mpmg.mp.br/portal/ |
-| https://www.prp.unicamp.br/ | REDIRECT | 200 | https://prp.unicamp.br/ |
-| https://www.puc-rio.br/pesquisa/ | QUEBRADO | 404 | https://www.puc-rio.br/pesquisa/ |
-| https://www.revistas.usp.br/revhistoria/article/view/89008 | REDIRECT | 200 | https://revistas.usp.br/revhistoria/pt_BR/article/view/89008 |
-| https://www.samarco.com/ | REDIRECT | 200 | https://www.samarco.com/home |
-| https://www.tjmg.jus.br | REDIRECT | 200 | https://www.tjmg.jus.br/portal-tjmg/ |
-| https://www.trf6.jus.br | REDIRECT | 200 | https://portal.trf6.jus.br/ |
-| https://www.uenf.br/ | REDIRECT | 200 | https://uenf.br/portal/ |
-| https://www.uesb.br/ppg/ | REDIRECT | 200 | https://www.uesb.br/wp-content/uploads/2018/05/PPG.pdf |
-| https://www.uesc.br/propp/ | REDIRECT | 200 | https://www.uesc.br/404/ |
-| https://www.ufba.br/ | REDIRECT | 200 | https://ufba.br/ |
-| https://www.ufcspa.edu.br/ | REDIRECT | 200 | https://ufcspa.edu.br/ |
-| https://www.ufrb.edu.br/ | REDIRECT | 200 | https://ufrb.edu.br/portal/ |
-| https://www.ufu.br/proex | REDIRECT | 200 | https://proexc.ufu.br/institucional |
-| https://www.un.org/pt/observances/indigenous-day | QUEBRADO | 404 | https://www.un.org/pt/observances/indigenous-day |
-| https://www.unesp.br/ | REDIRECT | 200 | https://www2.unesp.br/ |
-| https://www.usp.br/ | REDIRECT | 200 | https://www5.usp.br/ |
-| https://www.waitangitribunal.govt.nz/treaty-of-waitangi/translation-of-te-tiriti/ | QUEBRADO | 404 | https://www.waitangitribunal.govt.nz/treaty-of-waitangi/translation-of-te-tiriti |
-| https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia | REDIRECT | 200 | https://www2.camara.leg.br/acl_users/credentials_cookie_auth/require_login?came_from=https%3A//www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia |
 
 ## Propostas com diff
 
-### 1. https://dadosabertos.almg.gov.br
-
-```diff
-- href="https://dadosabertos.almg.gov.br"
-+ href="http://dadosabertos.almg.gov.br/documentacao/index"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/congresso/almg/page.tsx
-
-### 2. https://api.salic.cultura.gov.br
-
-```diff
-- href="https://api.salic.cultura.gov.br"
-+ href="https://api.salic.cultura.gov.br/docs"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
-
-### 3. https://sistemas.anatel.gov.br
-
-```diff
-- href="https://sistemas.anatel.gov.br"
-+ href="https://sistemas.anatel.gov.br/sis/SistemasInterativos.asp"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/documentacao/fontes-e-coletas/page.tsx
-
-### 4. https://cnuc.mma.gov.br/
-
-```diff
-- href="https://cnuc.mma.gov.br/"
-+ href="https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/areas-protegidas/plataforma-cnuc-1"
-```
-
-Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 403
-Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
-
-### 5. https://www.ana.gov.br/
-
-```diff
-- href="https://www.ana.gov.br/"
-+ href="https://www.gov.br/ana"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 403 na sondagem
-Origem: apps/web/app/terra-e-territorios/AvisoReferencia.tsx
-
-### 6. https://pncp.gov.br/
-
-```diff
-- href="https://pncp.gov.br/"
-+ href="https://www.gov.br/pncp/pt-br"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/app/[municipio]/interesses/page.tsx
-
-### 7. https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html
-
-```diff
-- href="https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html"
-+ href="https://www.almg.gov.br/comunicacao/noticias/arquivos/acervo/2006/06/Not_590862.html"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/ambiental/publicacoes-barragens.ts
-
-### 8. https://falabr.cgu.gov.br
-
-```diff
-- href="https://falabr.cgu.gov.br"
-+ href="https://falabr.cgu.gov.br/web/home"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 9. https://www.cnmp.mp.br
-
-```diff
-- href="https://www.cnmp.mp.br"
-+ href="https://www.cnmp.mp.br/portal/"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 10. https://www.tjmg.jus.br
-
-```diff
-- href="https://www.tjmg.jus.br"
-+ href="https://www.tjmg.jus.br/portal-tjmg/"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 11. https://www.mpmg.mp.br
-
-```diff
-- href="https://www.mpmg.mp.br"
-+ href="https://www.mpmg.mp.br/portal/"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 12. https://portal.trt3.jus.br
-
-```diff
-- href="https://portal.trt3.jus.br"
-+ href="https://portal.trt3.jus.br/internet"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 13. https://www.trf6.jus.br
-
-```diff
-- href="https://www.trf6.jus.br"
-+ href="https://portal.trf6.jus.br/"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/glossario/termos.ts
-
-### 14. https://revendedoresapi.anp.gov.br/swagger/index.html
-
-```diff
-- href="https://revendedoresapi.anp.gov.br/swagger/index.html"
-+ href="https://revendedoresapi.anp.gov.br/swagger/v1/swagger.json"
-```
-
-Confianca: media
-Justificativa: URL atualizada encontrada em busca no DuckDuckGo no mesmo dominio governamental; verificada HTTP 200
-Origem: apps/web/lib/linkmender/busca.test.ts
-
-### 15. https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada
-
-```diff
-- href="https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
-+ href="https://multi.rio/index.php/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/memoria/camadas.ts
-
-### 16. https://www.mpmg.mp.br/
-
-```diff
-- href="https://www.mpmg.mp.br/"
-+ href="https://www.mpmg.mp.br/portal/"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: apps/web/lib/riodoce/linha-do-tempo.ts
-
-### 17. https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos
-
-```diff
-- href="https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos"
-+ href="https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque/caso-samarco/documentos"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: registry
-
-### 18. https://www.mpf.mp.br/atuacao/grandes-casos
-
-```diff
-- href="https://www.mpf.mp.br/atuacao/grandes-casos"
-+ href="https://www.mpf.mp.br/atuacao/como-e-a-atuacao-do-mpf/casos-de-destaque"
-```
-
-Confianca: alta
-Justificativa: Servidor respondeu redirect para este endereco, que respondeu HTTP 200 na sondagem
-Origem: registry
+Nenhuma proposta gerada nesta execucao.
 
 ## Quebrados e redirecionados sem proposta
 
-- https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng (200) — dominio nao governamental — correcao manual
-- https://www.fundacaorenova.org (200) — dominio nao governamental — correcao manual
-- https://controlepopular.com.br (200) — dominio nao governamental — correcao manual
-- https://legis.senado.leg.br/dadosabertos (200) — dominio nao governamental — correcao manual
-- https://github.com/FinweeJur/tjmg-jurimetria/blob/master/relatorios/RELATORIO-GUAICUY-NACAB.md (404) — dominio nao governamental — correcao manual
-- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (200) — dominio nao governamental — correcao manual
-- https://transparencia.fundacaorenova.org/inicio (200) — dominio nao governamental — correcao manual
-- https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (404) — dominio nao governamental — correcao manual
-- https://drive.google.com/exemplo (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf (404) — dominio nao governamental — correcao manual
-- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf (404) — dominio nao governamental — correcao manual
-- https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf (200) — dominio nao governamental — correcao manual
-- https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf (200) — dominio nao governamental — correcao manual
-- https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf (200) — dominio nao governamental — correcao manual
-- https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/concludingobservation?id=107 (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/concludingobservation?id=96 (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/concludingobservation?id=101 (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/concludingobservation?id=103 (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/resolutions?id=492 (200) — dominio nao governamental — correcao manual
-- https://achpr.org/sessions/concludingobservation?id=110 (200) — dominio nao governamental — correcao manual
-- https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa (404) — dominio nao governamental — correcao manual
-- https://www.constituteproject.org/constitution/Viet_Nam_2013?lang=en (404) — dominio nao governamental — correcao manual
-- https://www.constituteproject.org/constitution/Mexico_2021?lang=es (404) — dominio nao governamental — correcao manual
-- https://www.waitangitribunal.govt.nz/treaty-of-waitangi/translation-of-te-tiriti/ (404) — dominio nao governamental — correcao manual
-- https://www.constituteproject.org/constitution/Palau_1981 (404) — dominio nao governamental — correcao manual
-- https://www.constituteproject.org/constitution/Tonga_2016 (404) — dominio nao governamental — correcao manual
-- https://www.constituteproject.org/constitution/Federated_States_of_Micronesia_1990 (404) — dominio nao governamental — correcao manual
-- https://exemplo.org/a (404) — dominio nao governamental — correcao manual
-- https://www.braskem.com.br/detalhe-noticias-alagoas/braskem-reafirma-compromisso-com-maceio-e-destaca-relevancia-estrategica-de-alagoas-para-o-futuro-da-companhia (404) — dominio nao governamental — correcao manual
-- https://www.cptnacional.org.br/ (200) — dominio nao governamental — correcao manual
-- https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 (200) — dominio nao governamental — correcao manual
-- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia (200) — dominio nao governamental — correcao manual
-- https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ (200) — dominio nao governamental — correcao manual
-- https://www.revistas.usp.br/revhistoria/article/view/89008 (200) — dominio nao governamental — correcao manual
-- https://wmo.int/about-wmo/world-meteorological-day (200) — dominio nao governamental — correcao manual
-- https://www.un.org/pt/observances/indigenous-day (404) — dominio nao governamental — correcao manual
-- https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena (404) — dominio nao governamental — correcao manual
-- https://pt.wikipedia.org/wiki/Jacinto_Canek (404) — dominio nao governamental — correcao manual
-- https://pt.wikipedia.org/ (200) — dominio nao governamental — correcao manual
-- https://www.samarco.com/ (200) — dominio nao governamental — correcao manual
-- https://www.ufba.br/ (200) — dominio nao governamental — correcao manual
-- https://www.uesc.br/propp/ (200) — dominio nao governamental — correcao manual
-- https://www.uesb.br/ppg/ (200) — dominio nao governamental — correcao manual
-- https://www.ufrb.edu.br/ (200) — dominio nao governamental — correcao manual
-- https://propp.ufop.br/ (200) — dominio nao governamental — correcao manual
-- https://www.ufu.br/proex (200) — dominio nao governamental — correcao manual
-- https://www.uenf.br/ (200) — dominio nao governamental — correcao manual
-- https://www.puc-rio.br/pesquisa/ (404) — dominio nao governamental — correcao manual
-- https://unipampa.edu.br/ (200) — dominio nao governamental — correcao manual
-- https://www.ufcspa.edu.br/ (200) — dominio nao governamental — correcao manual
-- https://www.ifrs.edu.br/ (200) — dominio nao governamental — correcao manual
-- https://www.usp.br/ (200) — dominio nao governamental — correcao manual
-- https://www.prp.unicamp.br/ (200) — dominio nao governamental — correcao manual
-- https://www.unesp.br/ (200) — dominio nao governamental — correcao manual
-- https://legis.senado.leg.br/dadosabertos/ (200) — dominio nao governamental — correcao manual
-- https://projetorioparaopeba.fgv.br (200) — dominio nao governamental — correcao manual
-- https://www.aedasmg.org (200) — dominio nao governamental — correcao manual
-- https://controlepopular.com.br/ambiental/crimes-socioambientais (200) — dominio nao governamental — correcao manual
-- https://news.google.com/ (200) — dominio nao governamental — correcao manual
+Nenhum link sem proposta nesta execucao.
 
 ## Inconsistentes (nao verificados, sem proposta)
 
-- https://aichr.org/ (307) — status HTTP 307 (nem ok, nem quebrado, nem redirect)
-- https://asean.org/asean-human-rights-declaration/ (307) — status HTTP 307 (nem ok, nem quebrado, nem redirect)
+- http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx (rede) — erro de rede: fetch failed
+- https://achpr.org/public/Document/file/English/achpr18_74_92_eng.pdf (rede) — erro de rede: fetch failed
+- https://achpr.org/public/Document/file/English/achpr29_155_96_eng.pdf (rede) — erro de rede: fetch failed
+- https://achpr.org/public/Document/file/English/achpr33_227_99_eng.pdf (rede) — erro de rede: fetch failed
+- https://achpr.org/public/Document/file/English/achpr46_276_03_eng.pdf (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/concludingobservation?id=101 (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/concludingobservation?id=103 (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/concludingobservation?id=107 (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/concludingobservation?id=110 (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/concludingobservation?id=96 (rede) — erro de rede: fetch failed
+- https://achpr.org/sessions/resolutions?id=492 (rede) — erro de rede: fetch failed
+- https://aedasmg.org/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-0425/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-0524/ (rede) — erro de rede: fetch failed
+- https://aedasmg.org/documento/informes-aecom-1225/ (rede) — erro de rede: fetch failed
+- https://agenciapara.com.br/noticia/80132/governo-do-para-garante-transporte-intermunicipal-gratuito-no-segundo-turno-das-eleicoes (rede) — erro de rede: fetch failed
+- https://aichr.org/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/01/1o-de-janeiro-de-1994-revolucao-zapatista-em-chiapas-mexico/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/02/2-de-janeiro-de-1975-assassinato-sumario-de-siraj-sikder-pelo-aparelho-de-repressao-do-estado-bengali/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/03/3-de-janeiro-de-1961-inicio-da-revolta-camponesa-da-baixa-de-cassange-em-angola/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/04/4-de-janeiro-de-1923-lenin-registra-que-stalin-nao-deveria-ser-secretario-geral-do-pcus/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/05/5-de-janeiro-de-1968-alexander-dubcek-chega-ao-poder-na-tchecoslovaquia-e-se-inicia-a-primavera-de-praga/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/06/6-de-janeiro-de-1835-inicio-da-revolta-dos-cabanos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/07/7-de-janeiro-de-1919-inicio-da-semana-tragica-em-buenos-aires/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/08/8-de-janeiro-de-1959-fidel-castro-entre-em-la-habana/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/09/9-de-janeiro-de-1920-nascimento-de-joao-cabral-de-melo-neto/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/10/10-de-janeiro-de-1981-inicio-da-revolucao-salvadorenha/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/11/11-de-janeiro-de-1929-assassinato-de-julio-antonio-mella-martir-da-revolucao-latino-americana/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/12/12-de-janeiro-de-2010-perdemos-daniel-bensaid/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/13/13-de-janeiro-de-1898-emile-zola-publica-jaccuse-e-abre-publicamente-o-caso-dreyfus/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/15/15-de-janeiro-de-1919-assassinato-de-rosa-luxemburgo-e-karl-liebknecht/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/16/16-de-janeiro-de-1997-assassinato-de-jose-alves-dos-santos-e-vanderlei-das-neves-martires-da-luta-pela-reforma-agraria-no-brasil/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/17/17-de-janeiro-de-1976-assassinato-de-manoel-fiel-filho-pela-ditadura-empresarial-militar/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/18/18-de-janeiro-de-1934-greves-gerais-insurrecionais-formam-o-soviete-da-marinha-grande/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/19/19-de-janeiro-de-1944-nascimento-de-helenira-resende-a-preta-martir-da-revolucao-brasileira/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/20/20-de-janeiro-de-1973-assassinato-de-amilcar-cabral-agronomo-educador-e-poeta-maior-da-libertacao-cabo-verdiana-e-guineense/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/21/21-de-janeiro-de-2017-chacina-deixa-25-mortos-e-24-feridos-na-grande-belem/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/22/22-de-janeiro-de-1891-nasce-antonio-gramsci/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/24/23-de-janeiro-de-1937-17-militantes-comunistas-sao-condenados-no-caso-do-centro-trotskista-anti-sovietico-episodio-marcante-da-perseguicao-stalinista-pelos-processos-de-mo/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/24/24-de-janeiro-de-1835-inicio-da-revolta-dos-males/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/25/25-de-janeiro-de-2019-praticas-predatorias-da-vale-s-a-ensejam-no-rompimento-da-barragem-da-mina-do-feijao-em-brumadinho-mg/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/26/26-de-janeiro-de-1944-nascimento-de-angela-davis/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/29/29-de-janeiro-de-1852-revolta-do-ronco-da-abelha-triunfa/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/30/30-de-janeiro-de-1956-bombardeio-da-casa-de-martin-luther-king-jr-por-decorrencia-do-boicote-dos-onibus-de-montgomery/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/01/31/31-01-1891-revolta-inaugura-as-lutas-pela-instauracao-da-republica-em-portugal/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/01/01-02-1932-execucao-de-farabundo-marti-lider-revolucionario-e-comunista-salvadorenho/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/02/02-02-1997-morre-chico-science/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/03/3-de-fevereiro-de-1953-massacre-de-batepa-em-sao-tome-e-principe/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/04/4-de-fevereiro-de-1794-abolida-a-escravidao-nas-colonias-francesas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/05/5-de-fevereiro-de-1944-nasce-henfil-cartunista-da-esperanca/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/06/6-de-fevereiro-de-1932-nascimento-de-camilo-cienfuegos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/07/7-de-fevereiro-de-1756-assassinato-de-sepe-tiaraju-martir-guarani/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/08/8-de-fevereiro-de-1911-nascimento-de-lelia-abramo-artista-revolucionaria/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/09/9-de-fevereiro-de-1600-giordano-bruno-e-condenado-pelo-tribunal-da-santa-inquisicao/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/02/10/10-de-fevereiro-de-1898-nasce-bertold-brecht/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/05/5-de-marco-de-1909-nascimento-de-patativa-do-assare/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/06/6-de-marco-de-1817-inicio-da-revolucao-pernambucana/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/07/7-de-marco-de-1936-nascimento-de-georges-perec/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/08/08-de-marco-de-1917-um-dia-de-luta-de-insurgencia-a-ecoar-por-todos-os-anos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/09/9-de-marco-de-1954-nascimento-de-bobby-sands/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/10/10-de-marco-de-1906-ocorre-a-catastrofe-de-courrieres-maior-acidente-de-trabalho-da-europa/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/11/11-de-marco-de-1975-e-frustrada-em-portugal-a-tentativa-contrarrevolucionaria-de-golpe-militar-conduzida-por-spinola/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/12/12-de-marco-de-2011-a-geracao-a-rasca-sai-as-ruas-em-portugal/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/13/13-de-marco-de-1964-realiza-se-o-comicio-da-central-do-brasil/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/14/14-de-marco-de-2018-o-dia-que-marielle-franco-virou-semente/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/15/15-de-marco-de-1938-nikolai-bukharin-e-assassinado-como-consequencia-dos-processos-de-moscou/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/16/16-de-marco-de-1931-nasce-augusto-boal-criador-do-teatro-do-oprimido/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/17/17-de-marco-de-1923-jose-carlos-mariategui-retorna-ao-peru-apos-longo-periodo-de-exilio-por-perseguicoes-do-governo-augusto-leguia/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/18/18-de-marco-de-1871-inicio-da-comuna-de-paris/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/19/19-de-marco-de-1849-inicia-se-a-insurreicao-do-queimado/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/20/20-de-marco-de-1921-conselhos-operarios-se-articulam-no-ruhr-em-resposta-ao-golpe-de-kapp/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/21/21-de-marco-de-1960-massacre-de-sharpeville/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/22/22-de-marco-de-1968-constitui-se-o-germen-da-insurreicao-estudantil-de-1968-o-mouvement-du-22-mars/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/23/23-de-marco-de-1980-dom-oscar-romero-profere-discurso-em-defesa-do-povo-salvadorenho-ato-que-levara-ao-seu-assassinato/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/24/24-de-marco-de-1989-acidente-do-exxon-valdez/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/25/25-de-marco-de-1931-prisao-dos-meninos-de-scottsboro/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/26/26-de-marco-de-1815-independencia-do-uruguai/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/27/27-de-marco-de-1977-primeiro-mitin-da-cnt-apos-a-ditadura-franquista/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/28/28-de-marco-de-1988-massacre-do-capacete-e-a-politica-de-morte-do-extrativismo-para-com-os-tikuna/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/29/29-de-marco-de-1947-insurreicao-malgaxe/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/30/30-de-marco-de-1976-greves-e-levantes-irrompem-contra-o-jugo-assassino-israelita-em-data-rememorada-como-dia-da-terra/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/03/31/31-de-marco-de-1871-nascimento-de-alexandra-kollontai/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/01/1o-de-abril-de-1964-golpe-empresarial-militar-no-brasil/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/02/2-de-abril-de-2019-assassinato-de-paul-mcauley/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/03/3-de-abril-de-1959-levante-armado-do-cerro-tute/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/04/4-de-abril-de-1931-revolta-da-madeira-dia-de-luta-contra-a-ditadura-salazarista-e-contra-o-aumento-dos-precos-dos-bens-de-vida-dxs-trabalhadorxs-da-ilha/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/05/5-de-abril-de-1945-revolta-de-texel/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/06/6-de-abril-de-2008-germen-da-revolucao-egipcia-irrompe-com-um-chamado-a-greve/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/07/7-de-abril-de-1926-morre-giovanni-amendola-jornalista-e-politico-espancado-por-gangues-fascistas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/08/8-de-abril-de-2013-margareth-tatcher-morre-e-com-ela-se-vai-sua-moribunda-politica-de-morte/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/09/9-de-abril-de-1952-tem-inicio-a-revolucao-nacional-boliviana/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/10/10-de-abril-de-1919-emboscado-emiliano-zapata-e-assassinado/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/11/11-de-abril-de-1919-e-criada-a-organizacao-internacional-do-trabalho/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/12/12-de-abril-de-1927-massacre-de-xangai/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/13/13-de-abril-de-1885-nasce-gyorgy-lukacs/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/14/14-de-abril-de-1976-assassinato-de-zuzu-angel/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/15/15-de-abril-de-1920-inicia-se-o-periplo-de-sacco-e-vanzetti/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/16/16-de-abril-de-1917-lenin-chega-a-russia-depois-de-seu-exilio-na-suica/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/17/17-de-abril-de-1996-massacre-de-eldorado-dos-carajas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/18/18-de-abril-de-1955-tem-inicio-a-conferencia-de-bandung-marco-de-articulacao-dos-paises-nao-alinhados/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/19/19-de-abril-de-1923-nascimento-de-lygia-fagundes-telles/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/20/20-de-abril-de-1961-fracassa-a-invasao-a-baia-dos-porcos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/22/22-de-abril-de-2016-e-assinado-o-acordo-de-paris/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/23/23-de-abril-de-1942-assassinato-de-olga-benario-prestes/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/24/24-de-abril-de-1916-revolta-da-pascoa/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/25/25-de-abril-de-1974-irrompe-a-revolucao-dos-cravos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/26/26-de-abril-de-1933-nascimento-de-filiberto-ojeda-rios-fundador-e-lider-dos-macheteros/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/27/27-de-abril-de-1972-morte-de-kwame-nkrumah-artifice-da-libertacao-de-gana/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/28/28-de-abril-de-1945-benito-mussolini-e-assassinado/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/29/29-de-abril-de-1992-rebeliao-do-povo-oprimido-de-los-angeles/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/04/30/30-de-abril-de-1977-as-madres-de-la-plaza-de-mayo-fazem-sua-primeira-marcha/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/01/1o-de-maio-de-1912-no-dia-do-trabalhador-e-da-trabalhadora-nasceu-azis-simao/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/02/2-de-maio-de-1968-irrompe-o-maio-frances/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/03/3-de-maio-de-1937-comecam-as-jornadas-de-maio-em-barcelona-marco-decisivo-da-contrarrevolucao-espanhola/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/04/4-de-maio-de-1886-revolta-de-haymarket/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/05/5-de-maio-de-2010-inflamam-se-as-lutas-contra-a-austeridade-na-grecia/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/06/6-de-maio-de-1967-o-povo-de-hong-kong-se-coloca-contra-o-jugo-imperial-britanico/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/07/7-de-maio-de-1954-o-povo-vietnamita-derrota-os-franceses-em-dien-bien-phu-expulsa-os-da-indochina-e-sela-seu-primeiro-grande-trunfo-contra-o-imperialismo-no-sec-xx/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/08/8-de-maio-de-1945-termina-triunfante-o-levante-de-praga/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/09/9-de-maio-de-1969-primeira-acao-de-luta-armada-de-carlos-lamarca/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/10/10-de-maio-de-1933-inicia-a-bucherverbrennung-processo-espetacular-de-queima-de-livros-pelos-nazistas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/11/11-de-maio-de-1938-derrota-do-golpe-integralista/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/12/12-de-maio-de-1927-sob-a-lideranca-de-augusto-cesar-sandino-o-povo-nicaraguense-se-coloca-em-luta-contra-a-ocupacao-estadunidense/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/13/13-de-maio-de-1888-abolicao-da-escravatura-legal-no-brasil/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/14/14-de-maio-de-1968-a-industria-sud-aviation-e-ocupada/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/15/15-de-maio-de-2019-greve-geral-da-educacao-mostra-forcas-e-contem-a-aprovacao-de-contrarreforma-previdenciaria-de-bolsonaro/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/16/16-de-maio-de-2001-o-povo-de-salvador-se-coloca-nas-ruas-contra-acm-e-e-duramente-reprimido/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/17/17-de-maio-de-2008-perdemos-zelia-gattai/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/18/18-de-maio-de-1980-revolta-de-gwangju/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/19/19-de-maio-de-1890-nascimento-de-ho-chi-minh/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/20/20-de-maio-de-1934-nascimento-de-pepe-mujica/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/21/21-de-maio-de-1969-inicio-do-rosariazo/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/22/22-de-maio-de-1959-revolta-das-barcas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/23/23-de-maio-de-1863-fundada-a-associacao-geral-dos-trabalhadores-alemaes/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/24/24-de-maio-de-1941-nascimento-de-bob-dylan/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/25/25-de-maio-de-1809-revolucao-de-chuquisaca/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/26/26-de-maio-de-1824-greve-feminina-de-pawtucket-a-mae-de-todas-as-greves/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/27/27-de-maio-de-1797-execucao-de-gracchus-babeuf-nosso-igual/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/28/28-de-maio-de-1871-147-communards-sao-fuzilados-no-mur-des-federes/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/29/29-de-maio-de-1969-inicia-se-o-cordobazo/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/30/30-de-maio-de-1431-execucao-de-joana-darc/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/05/31/31-de-maio-de-1968-trabalhadorxs-de-daccar-senegal-iniciam-uma-grande-greve-geral/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/01/1o-de-junho-de-1649-agustin-sumuroy-inicia-a-insurreicao-filipina-contra-a-colonizacao-espanhola/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/02/2-de-junho-de-1843-nos-engenhos-de-acana-e-concepcion-levantam-se-escravizadas-e-escravizados-contra-sua-dura-exploracao/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/03/3-de-junho-de-1896-nascimento-de-isaac-puente-amestoy-medico-revolucionario/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/04/4-de-junho-de-1989-massacre-da-praca-da-paz-celestial/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/05/5-de-junho-de-2009-massacre-de-bagua/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/06/6-de-junho-de-1832-finda-derrotada-a-rebeliao-de-junho/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/07/7-de-junho-de-1896-nasce-imre-nagy-martir-da-revolucao-hungara/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/08/8-de-junho-de-1929-assassinato-de-gonzalo-bravo-perez/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/09/9-de-junho-de-2019-com-mais-de-um-milhao-de-pessoas-nas-ruas-o-povo-de-hong-kong-se-coloca-contra-a-lei-de-extradicao/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/12/10-de-junho-de-1971-halconazo/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/12/11-de-junho-de-1963-negras-e-negros-estadunidenses-arrancam-o-civil-rights-act/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/12/12-de-junho-de-2014-inicia-se-a-copa-do-mundo-de-2014-no-brasil-sob-forte-marca-da-repressao/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/13/13-de-junho-de-1381-liderados-por-wat-tyler-camponeses-em-revolta-queimam-o-palacio-savoy/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/14/14-de-junho-de-1928-nasce-ernesto-guevara/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/15/15-de-junho-de-1918-inicia-se-o-movimento-que-ensejou-a-reforma-universitaria-de-cordoba/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/16/16-de-junho-de-1975-levante-de-soweto/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/17/17-de-junho-de-2013-as-jornadas-de-junho-tornam-se-massivas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/18/18-de-junho-de-1953-com-o-triunfo-da-luta-revolucionaria-e-proclamada-a-republica-do-egito/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/06/19/19-de-junho-de-1764-nasce-jose-gervasio-artigas-heroi-uruguaio-libertador-da-america/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/01/1o-de-agosto-de-1902-explode-a-mina-de-carvao-do-monte-klemba/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/02/2-de-agosto-de-1953-no-marco-da-revolucao-boliviana-tem-inicio-a-reforma-agraria-e-institui-se-o-dia-do-indio/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/03/3-de-agosto-de-1977-como-resposta-a-explosao-da-mina-de-chipanga-3-irrompe-uma-rebeliao-popular/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/04/4-de-agosto-de-1919-tropas-romenas-ocupam-budapeste-e-colocam-fim-a-resistencia-comunista-constituida-com-a-republica-dos-conselhos/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/05/5-de-agosto-de-1895-perdemos-friedrich-engels/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/06/6-de-agosto-de-1960-fidel-e-raul-castro-anunciam-a-lei-851-que-nacionaliza-as-propriedades-de-empresas-estadunidenses-em-cuba/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/07/07-de-agosto-de-2006-foi-promulgada-a-lei-maria-da-penha/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/09/8-de-agosto-de-1942-inicia-se-o-movimento-quit-india/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/09/9-de-agosto-de-1925-nascia-francisco-rene-santucho-intelectual-e-militante-revolucionario-argentino/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/10/10-de-agosto-de-1792-no-bojo-da-revolucao-francesa-uma-jornada-insurrecional-coloca-fim-a-monarquia/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/13/11-de-agosto-de-1979-o-rompimento-da-barragem-de-machchu-ii-india-vitima-mais-de-15-mil-pessoas/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/21/21-de-agosto-de-1940-perdemos-o-maior-dos-inquietos-e-profeta-deutscher-que-nos-perdoe-da-liberdade-leon-trotsky-assassinado-por-mercader-lacaio-de-stalin/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/22/22-de-agosto-de-1978-e-conduzida-a-operacao-chanchera-que-leva-as-forcas-sandinistas-a-tomarem-o-palacio-legislativo-nicaraguense/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/2020/08/23/23-de-agosto-de-1927-sacco-e-vanzetti-sao-executados/ (rede) — erro de rede: fetch failed
+- https://aosquevirao.home.blog/category/calendario-insurgente/ (rede) — erro de rede: fetch failed
+- https://api-dom.pbh.gov.br/ (rede) — erro de rede: fetch failed
+- https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search (rede) — erro de rede: fetch failed
+- https://api-publica.transferegov.gestao.gov.br (rede) — erro de rede: fetch failed
+- https://api.salic.cultura.gov.br (rede) — erro de rede: fetch failed
+- https://apiboficial.org/atl-2025/ (rede) — erro de rede: fetch failed
+- https://apiboficial.org/atl2021/ (rede) — erro de rede: fetch failed
+- https://apiboficial.org/atl2022/ (rede) — erro de rede: fetch failed
+- https://apiboficial.org/atl2023/ (rede) — erro de rede: fetch failed
+- https://apiboficial.org/atl2024/ (rede) — erro de rede: fetch failed
+- https://apiboficial.org/historicoatl/ (rede) — erro de rede: fetch failed
+- https://app.pr2.ufrj.br/grupoDePesquisa (rede) — erro de rede: fetch failed
+- https://applivre.pages.dev (rede) — erro de rede: fetch failed
+- https://asean.org/asean-human-rights-declaration/ (rede) — erro de rede: fetch failed
 - https://atip-aiprp.apps.gc.ca/atip/welcome.do?lang=en (rede) — erro de rede: fetch failed
+- https://atlas.fgv.br/verbetes/guerra-de-canudos (rede) — erro de rede: fetch failed
+- https://atlas.fgv.br/verbetes/guerra-do-contestado (rede) — erro de rede: fetch failed
+- https://atlas.fgv.br/verbetes/revolta-da-vacina (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/african-charter-democracy-elections-and-governance (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/african-charter-human-and-peoples-rights (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/african-charter-rights-and-welfare-child (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/african-union-convention-protection-and-assistance-internally-displaced-persons-africa (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/african-youth-charter (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-establishment-african-court-human-and (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-older-persons-africa (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-persons-disabilities-africa (rede) — erro de rede: fetch failed
+- https://au.int/en/treaties/protocol-african-charter-human-and-peoples-rights-rights-women-africa (rede) — erro de rede: fetch failed
+- https://auniao.pb.gov.br/servicos/copy_of_jornal-a-uniao/dec-30 (rede) — erro de rede: fetch failed
+- https://backup.controlepopular.com.br/ (rede) — erro de rede: fetch failed
+- https://backup.controlepopular.com.br/api/saude (rede) — erro de rede: fetch failed
+- https://barragens.mpmg.mp.br/ (rede) — erro de rede: fetch failed
+- https://basedosdados.org/ (rede) — erro de rede: fetch failed
+- https://betim.mg.gov.br/ (rede) — erro de rede: fetch failed
+- https://brasil.io/dataset/socios-brasil/socios/ (rede) — erro de rede: fetch failed
+- https://brasilpopular.org/ (rede) — erro de rede: fetch failed
+- https://caselaw.nationalarchives.gov.uk/search?query=Municipio+de+Mariana (rede) — erro de rede: fetch failed
 - https://certificacao.incra.gov.br (rede) — erro de rede: fetch failed
+- https://cnes.datasus.gov.br/ (rede) — erro de rede: fetch failed
+- https://cnuc.mma.gov.br/ (rede) — erro de rede: fetch failed
 - https://cnv.memoriasreveladas.gov.br/ (rede) — erro de rede: fetch failed
+- https://codigonaobinario.org/ (rede) — erro de rede: fetch failed
 - https://comunicabr.com.br (rede) — erro de rede: fetch failed
+- https://comunicabr.presidencia.gov.br/api/v1/municipios/31 (rede) — erro de rede: fetch failed
+- https://conflitosambientaismg.lcc.ufmg.br/producao-academica/606-2 (rede) — erro de rede: fetch failed
+- https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2006.pdf (rede) — erro de rede: fetch failed
+- https://conflitosambientaismg.lcc.ufmg.br/wp-content/uploads/2014/05/Relat%C3%B3rio-sobre-qualidade-da-%C3%A1gua-a-jusante-da-UHE-Irap%C3%A9-2011.pdf (rede) — erro de rede: fetch failed
+- https://consulta.car.gov.br/ (rede) — erro de rede: fetch failed
+- https://controlepopular.com.br (rede) — erro de rede: fetch failed
+- https://controlepopular.com.br/ambiental/crimes-socioambientais (rede) — erro de rede: fetch failed
+- https://core-ombuds.canada.ca/core_ombuds-ocre_ombuds/complaint-plainte.aspx?lang=eng (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_227_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_228_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_232_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_233_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_234_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_236_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_237_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_238_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_239_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_240_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_241_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_242_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_244_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_245_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_248_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_252_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_281_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_282_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_296_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_445_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_455_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_470_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_485_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_487_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_504_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_506_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_511_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_523_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_526_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_527_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_532_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_536_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_537_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_547_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_556_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_557_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_561_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_563_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_564_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_565_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_566_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_567_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_569_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_570_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_576_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_577_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_578_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_579_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_580_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_586_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_588_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_589_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_590_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_591_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_592_esp.pdf (rede) — erro de rede: fetch failed
+- https://corteidh.or.cr/docs/casos/articulos/seriec_596_esp.pdf (rede) — erro de rede: fetch failed
+- https://cpisp.org.br/bau-aracuai-mg/ (rede) — erro de rede: fetch failed
+- https://csr.ufmg.br/car20_mg/ (rede) — erro de rede: fetch failed
+- https://dados.gov.br/dados/conjuntos-dados/licencas-ambientais (rede) — erro de rede: fetch failed
+- https://dados.gov.br/dados/conjuntos-dados/sistema-nacional-de-informacoes-de-seguranca-publica (rede) — erro de rede: fetch failed
+- https://dados.mg.gov.br/dataset/convenios-saida (rede) — erro de rede: fetch failed
+- https://dados.mg.gov.br/dataset/crimes-violentos (rede) — erro de rede: fetch failed
+- https://dados.mg.gov.br/dataset/portal_mariana (rede) — erro de rede: fetch failed
+- https://dados.mma.gov.br (rede) — erro de rede: fetch failed
+- https://dadosabertos.almg.gov.br (rede) — erro de rede: fetch failed
 - https://dadosabertos.anm.gov.br (rede) — erro de rede: fetch failed
 - https://dadosabertos.anm.gov.br/ (rede) — erro de rede: fetch failed
+- https://dadosabertos.camara.leg.br (rede) — erro de rede: fetch failed
+- https://dadosabertos.camara.leg.br/ (rede) — erro de rede: fetch failed
+- https://dadosabertos.tse.jus.br/dataset/eleitorado-2026 (rede) — erro de rede: fetch failed
+- https://datajud-wiki.cnj.jus.br/ (rede) — erro de rede: fetch failed
+- https://datasus.saude.gov.br/ (rede) — erro de rede: fetch failed
+- https://defensoria.mg.def.br (rede) — erro de rede: fetch failed
+- https://defensoria.mg.def.br/ (rede) — erro de rede: fetch failed
+- https://defensoria.mg.def.br/defensoria-publica-realiza-atendimento-para-pessoas-interessadas-em-aderir-a-reabertura-do-pid/ (rede) — erro de rede: fetch failed
+- https://diariodocomercio.com.br/legislacao/vale-samarco-audiencia-holanda-mariana/ (rede) — erro de rede: fetch failed
+- https://direitoshumanos.dpu.def.br/comite-tematico-especializado-rio-doce-brumadinho/ (rede) — erro de rede: fetch failed
+- https://divulgacandcontas.tse.jus.br (rede) — erro de rede: fetch failed
+- https://divulgacandcontas.tse.jus.br/ (rede) — erro de rede: fetch failed
+- https://drive.google.com/exemplo (rede) — erro de rede: fetch failed
+- https://ecosistemas.meioambiente.mg.gov.br/gtac/ (rede) — erro de rede: fetch failed
 - https://exemplo.com/direto (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br (rede) — erro de rede: fetch failed
 - https://exemplo.gov.br/nao-deveria-aparecer.pdf (rede) — erro de rede: fetch failed
+- https://exemplo.org (rede) — erro de rede: fetch failed
 - https://exemplo.org.br/documento (rede) — erro de rede: fetch failed
+- https://exemplo.org/a (rede) — erro de rede: fetch failed
 - https://exemplo.test/p1 (rede) — erro de rede: fetch failed
-- https://g1.globo.com/al/alagoas/arquivo/noticia/2024/07/26/justica-da-holanda-condena-braskem-pelo-afundamento-do-solo-em-maceio-e-determina-pagamento-de-indenizacao.ghtml (rede) — erro de rede: This operation was aborted
-- https://g1.globo.com/al/alagoas/noticia/2026/06/17/justica-aceita-denuncia-contra-braskem-por-afundamento-em-maceio.ghtml (rede) — erro de rede: This operation was aborted
-- https://g1.globo.com/al/alagoas/noticia/2026/06/19/investigacao-da-pf-aponta-que-braskem-sabia-de-risco-de-afundamento-em-maceio-desde-1988.ghtml (rede) — erro de rede: This operation was aborted
-- https://g1.globo.com/mg/minas-gerais/noticia/2025/11/14/bhp-acionista-da-samarco-e-parcialmente-condenada-pela-justica-inglesa-em-processo-sobre-rompimento-de-barragem-em-mariana.ghtml (rede) — erro de rede: This operation was aborted
+- https://falabr.cgu.gov.br (rede) — erro de rede: fetch failed
+- https://feam.br/documents/d/feam/lista-de-barragens-2024-xlsx (rede) — erro de rede: fetch failed
+- https://forumseguranca.org.br/publicacoes/anuario-brasileiro-de-seguranca-publica/ (rede) — erro de rede: fetch failed
+- https://g1.globo.com/al/alagoas/arquivo/noticia/2024/07/26/justica-da-holanda-condena-braskem-pelo-afundamento-do-solo-em-maceio-e-determina-pagamento-de-indenizacao.ghtml (rede) — erro de rede: fetch failed
+- https://g1.globo.com/al/alagoas/noticia/2026/06/17/justica-aceita-denuncia-contra-braskem-por-afundamento-em-maceio.ghtml (rede) — erro de rede: fetch failed
+- https://g1.globo.com/al/alagoas/noticia/2026/06/19/investigacao-da-pf-aponta-que-braskem-sabia-de-risco-de-afundamento-em-maceio-desde-1988.ghtml (rede) — erro de rede: fetch failed
+- https://g1.globo.com/mg/minas-gerais/noticia/2025/11/14/bhp-acionista-da-samarco-e-parcialmente-condenada-pela-justica-inglesa-em-processo-sobre-rompimento-de-barragem-em-mariana.ghtml (rede) — erro de rede: fetch failed
+- https://g1.globo.com/politica/noticia/2026/10/21/lula-envia-ao-congresso-nesta-quarta-pec-que-preve-tarifa-zero-para-onibus-aos-finais-de-semana.ghtml (rede) — erro de rede: fetch failed
 - https://geo.anm.gov.br/ (rede) — erro de rede: fetch failed
+- https://geopresidios.cnj.jus.br (rede) — erro de rede: fetch failed
 - https://geoserver.funai.gov.br/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities (rede) — erro de rede: fetch failed
+- https://geoserver.meioambiente.mg.gov.br/IDE/ows (rede) — erro de rede: fetch failed
+- https://github.com/FinweeJur (rede) — erro de rede: fetch failed
+- https://github.com/FinweeJur/controle-popular (rede) — erro de rede: fetch failed
+- https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md (rede) — erro de rede: fetch failed
+- https://github.com/FinweeJur/controle-popular/issues (rede) — erro de rede: fetch failed
+- https://github.com/FinweeJur/tjmg-jurimetria/blob/master/relatorios/RELATORIO-GUAICUY-NACAB.md (rede) — erro de rede: fetch failed
+- https://guaicuy.org.br/ (rede) — erro de rede: fetch failed
+- https://guaicuy.org.br/biblioteca/ (rede) — erro de rede: fetch failed
+- https://guaicuy.org.br/biblioteca/publicacoes/cinco-anos-do-desastre-crime-da-vale/ (rede) — erro de rede: fetch failed
+- https://guaicuy.org.br/biblioteca/publicacoes/dossie-acesso-a-justica/ (rede) — erro de rede: fetch failed
+- https://guiaufvjm.pages.dev (rede) — erro de rede: fetch failed
 - https://ibge.gov.br (rede) — erro de rede: fetch failed
+- https://iftm.edu.br/ (rede) — erro de rede: fetch failed
+- https://info.dengue.mat.br/ (rede) — erro de rede: fetch failed
+- https://jornalnortecapixaba.com.br/samarco-se-manifesta-sobre-acao-na-justica-da-holanda-por-desastre-de-mariana/ (rede) — erro de rede: fetch failed
+- https://laws-lois.justice.gc.ca/eng/const/page-12.html (rede) — erro de rede: fetch failed
+- https://laws-lois.justice.gc.ca/eng/const/page-13.html (rede) — erro de rede: fetch failed
+- https://legis.senado.leg.br/dadosabertos (rede) — erro de rede: fetch failed
+- https://legis.senado.leg.br/dadosabertos/ (rede) — erro de rede: fetch failed
+- https://levante.org.br/ (rede) — erro de rede: fetch failed
+- https://linktr.ee/arturcolito (rede) — erro de rede: fetch failed
+- https://mab.org.br/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/2026/10/16/atingidos-no-rio-madeira-ja-sentem-os-efeitos-do-el-nino-agravado-pela-crise-climatica/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/2026/10/28/mpmg-declara-aedas-para-assessoria-tecnica-a-comunidades-atingidas-do-vale-do-jequitinhonha/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/2026/10/29/nota-atingidos-da-bacia-do-paraopeba-em-luta-pela-continuidade-do-auxilio-emergencial/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/2026/10/30/mab-participa-de-jornada-internacional-em-genebra-pelo-avanco-do-tratado-dos-povos-na-onu/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/linha-do-tempo/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/5o-encontro-nacional-e-ii-encontro-internacional-de-atingidos/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/6o-encontro-nacional-dos-atingidos-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/7-encontro-nacional-do-mab/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/8o-encontro-nacional-do-mab/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/fundacao-do-mar-movimiento-de-afectados-por-represas/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/i-congresso-nacional-dos-atingidos-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/i-encontro-das-mulheres-atingidas-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/i-encontro-internacional-de-atingidos-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/i-encontro-nacional-de-trabalhadores-atingidos-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/ii-congresso-nacional-do-mab/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/iii-congresso-nacional-do-mab/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/iii-encontro-internacional-dos-atingidos-por-barragens/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/iv-congresso-do-mab/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/iv-encontro-internacional-de-atingidos/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/jornada-de-lutas-e-tempo-de-avancar/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/marcha-nacional-aguas-pela-vida/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/pela-primeira-vez-fomos-reconhecidos-enquanto-atingidos-por-um-presidente/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/preparacao-do-i-encontro-internacional-de-atingidos/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/rompimento-da-barragem-de-fundao-em-mariana-mg/ (rede) — erro de rede: fetch failed
+- https://mab.org.br/timeline/sancao-da-pnab-lei-no-14-755/ (rede) — erro de rede: fetch failed
+- https://memorialbrumadinho.org.br/memorial-brumadinho/sobre/ (rede) — erro de rede: fetch failed
+- https://memorialdaresistenciasp.org.br/ (rede) — erro de rede: fetch failed
+- https://mst.org.br/ (rede) — erro de rede: fetch failed
+- https://multirio.rio.rj.gov.br/index.php/estude/historia-do-brasil/brasil-monarquico/91-per%C3%ADodo-regencial/8943-revoltas-no-norte-a-cabanagem,-a-balaiada-e-a-sabinada (rede) — erro de rede: fetch failed
+- https://museudainconfidencia.museus.gov.br/ (rede) — erro de rede: fetch failed
+- https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf (rede) — erro de rede: fetch failed
 - https://nao-deve-entrar.com/x (rede) — erro de rede: fetch failed
+- https://news.google.com/ (rede) — erro de rede: fetch failed
+- https://noticias.stf.jus.br/postsnoticias/stf-confirma-que-municipios-devem-apresentar-contratos-com-escritorios-de-advocacia-no-exterior/ (rede) — erro de rede: fetch failed
+- https://noticias.stf.jus.br/postsnoticias/stf-determina-que-municipios-apresentem-contratos-com-escritorios-de-advocacia-em-outros-paises/ (rede) — erro de rede: fetch failed
+- https://open-meteo.com/ (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Guarani_Kaiow%C3%A1 (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Mura (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Waimiri_Atroari (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Waj%C3%A3pi (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Xavante (rede) — erro de rede: fetch failed
+- https://pib.socioambiental.org/pt/Povo:Yanomami (rede) — erro de rede: fetch failed
+- https://pncp.gov.br/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/brumadinho-dam-collapse-claim-progresses-following-three-days-hearing-in-munich/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/cases/mariana-dam-disaster-netherlands/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/caso-brumadinho-avanca-na-alemanha-com-inicio-de-audiencias-em-munique/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/court-of-appeal-shuts-down-bhps-attempt-to-overturn-mariana-liability-judgment/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/high-court-confirms-pgmbm-remains-solicitor-for-mariana-case-claimants/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/high-court-judge-determines-there-are-to-be-reasonable-grounds-to-allege-that-bhp-is-guilty-of-criminal-contempt/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/high-court-refuses-bhp-permission-to-appeal/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/high-court-rules-bhp-liable-for-dam-disaster-in-landmark-case/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/important-update-on-the-mariana-case-in-england-hearing-held-on-2-and-3-july-2025/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/justica-inglesa-declara-bhp-culpada-pelo-desastre-de-mariana/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/pogust-goodhead-defeats-bhp-bid-to-block-deposition-of-former-renova-chief/ (rede) — erro de rede: fetch failed
+- https://pogustgoodhead.com/vitimas-do-rompimento-da-barragem-de-mariana-cobram-justica/ (rede) — erro de rede: fetch failed
+- https://portal.auditoriasocioambiental.com.br (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/ (rede) — erro de rede: fetch failed
 - https://portal.ifba.edu.br/prpgi (rede) — erro de rede: fetch failed
-- https://portal.ifrj.edu.br/ (rede) — erro de rede: This operation was aborted
-- https://portal.ifrj.edu.br/proppi (rede) — erro de rede: This operation was aborted
-- https://portal.uneb.br/ (rede) — erro de rede: This operation was aborted
-- https://portal.uneb.br/ppg (rede) — erro de rede: This operation was aborted
-- https://portaldatransparencia.gov.br (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
-- https://portaldatransparencia.gov.br/beneficios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
-- https://portaldatransparencia.gov.br/convenios (405) — status HTTP 405 (nem ok, nem quebrado, nem redirect)
+- https://portal.ifrj.edu.br/ (rede) — erro de rede: fetch failed
+- https://portal.ifrj.edu.br/proppi (rede) — erro de rede: fetch failed
+- https://portal.stf.jus.br/ (rede) — erro de rede: fetch failed
+- https://portal.stf.jus.br/processos/detalhe.asp?incidente=6952622 (rede) — erro de rede: fetch failed
+- https://portal.trt3.jus.br (rede) — erro de rede: fetch failed
+- https://portal.ufvjm.edu.br (rede) — erro de rede: fetch failed
+- https://portal.ufvjm.edu.br/proexc (rede) — erro de rede: fetch failed
+- https://portal.ufvjm.edu.br/prppg (rede) — erro de rede: fetch failed
+- https://portal.ufvjm.edu.br/prppg/pesquisa/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://portal.uneb.br/ (rede) — erro de rede: fetch failed
+- https://portal.uneb.br/ppg (rede) — erro de rede: fetch failed
+- https://portaldatransparencia.gov.br (rede) — erro de rede: fetch failed
+- https://portaldatransparencia.gov.br/beneficios (rede) — erro de rede: fetch failed
+- https://portaldatransparencia.gov.br/convenios (rede) — erro de rede: fetch failed
+- https://ppg.ufv.br/ (rede) — erro de rede: fetch failed
+- https://ppg.ufv.br/pesquisa/projetos-de-pesquisa/ (rede) — erro de rede: fetch failed
+- https://pr2.ufrj.br/ (rede) — erro de rede: fetch failed
+- https://prd.s3.cnj.jus.br/sirenejud/vw_sirenejud.parquet (rede) — erro de rede: fetch failed
+- https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/controladoria/2018/documentos/Legisla%C3%A7%C3%A3o/Lei_Organica_do_Municipio.pdf (rede) — erro de rede: fetch failed
+- https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/meio-ambiente/lei11181-atual.pdf (rede) — erro de rede: fetch failed
+- https://projetorioparaopeba.fgv.br (rede) — erro de rede: fetch failed
+- https://propci.ufba.br/ (rede) — erro de rede: fetch failed
+- https://prope.unesp.br/ (rede) — erro de rede: fetch failed
+- https://propesp.furg.br/pt/pesquisa/grupos-de-pesquisa/catalogo (rede) — erro de rede: fetch failed
 - https://propg.ufabc.edu.br/ (rede) — erro de rede: fetch failed
+- https://propp.ufop.br/ (rede) — erro de rede: fetch failed
+- https://propp.ufop.br/pt-br/cadastro-de-grupos-de-pesquisa-cnpq (rede) — erro de rede: fetch failed
+- https://propp.ufu.br/ (rede) — erro de rede: fetch failed
+- https://propp.ufu.br/procedimento/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://prp.ifsp.edu.br/ (rede) — erro de rede: fetch failed
+- https://prp.ifsp.edu.br/index.php/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://prpi.usp.br/ (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/ (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Bartolina_Sisa (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Dia_da_Resist%C3%AAncia_Ind%C3%ADgena (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/H%C3%A9lder_C%C3%A2mara (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Inconfid%C3%AAncia_Mineira (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Inti_Raymi (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Jacinto_Canek (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Massacre_de_Acteal (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/T%C3%BApac_Amaru_I (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/T%C3%BApac_Amaru_II (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/T%C3%BApac_Katari (rede) — erro de rede: fetch failed
+- https://pt.wikipedia.org/wiki/Teste (rede) — erro de rede: fetch failed
 - https://qualquer.gov.br/x (rede) — erro de rede: fetch failed
 - https://quemfoiquem.org.br/criterios (rede) — erro de rede: fetch failed
-- https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (500) — status HTTP 500 (nem ok, nem quebrado, nem redirect)
+- https://radardatransparencia.atricon.org.br/ (rede) — erro de rede: fetch failed
+- https://regionais.betim.digital/regional/citrolandia (rede) — erro de rede: fetch failed
+- https://revendedoresapi.anp.gov.br/swagger/index.html (rede) — erro de rede: fetch failed
+- https://revistamineracao.com.br/2025/11/14/bhp-vale-posicionam-decisao-tribunal-de-londres-desastre-mariana-mg/ (rede) — erro de rede: fetch failed
+- https://salic.cultura.gov.br (rede) — erro de rede: fetch failed
+- https://salic.cultura.gov.br/ (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/docs/localidades (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/29/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/43/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v1/localidades/estados/MG/municipios (rede) — erro de rede: fetch failed
+- https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93 (rede) — erro de rede: fetch failed
+- https://servicos.ibama.gov.br (rede) — erro de rede: fetch failed
 - https://siam.meioambiente.mg.gov.br/licencas/processo-1024-2024 (rede) — erro de rede: fetch failed
+- https://siconfi.tesouro.gov.br/ (rede) — erro de rede: fetch failed
+- https://sidra.ibge.gov.br/pesquisa/pam/tabelas (rede) — erro de rede: fetch failed
+- https://sidra.ibge.gov.br/pesquisa/ppm/quadros/brasil/2024 (rede) — erro de rede: fetch failed
+- https://siexc.ufvjm.edu.br/ (rede) — erro de rede: fetch failed
+- https://sig.tse.jus.br/ords/dwapr/r/seai/sig-eleicao/home (rede) — erro de rede: fetch failed
 - https://sigmine.anm.gov.br/ (rede) — erro de rede: fetch failed
+- https://sirenejud.cnj.jus.br/ (rede) — erro de rede: fetch failed
+- https://sistemas.anatel.gov.br (rede) — erro de rede: fetch failed
+- https://sistemas.anatel.gov.br/se/public/view/b/licenciamento.php (rede) — erro de rede: fetch failed
+- https://sistemas.anm.gov.br/arrecadacao/extra/Relatorios/arrecadacao_cfem_substancia.aspx (rede) — erro de rede: fetch failed
+- https://sistemas.anm.gov.br/SCM/Extra/site/admin/pesquisarProcessos.aspx (rede) — erro de rede: fetch failed
+- https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-licenca (rede) — erro de rede: fetch failed
+- https://sistemas.tjes.jus.br/consulta-jurisprudencia/ (rede) — erro de rede: fetch failed
+- https://site.ucdb.br/santos-do-dia/protomartires-do-brasil/223/ (rede) — erro de rede: fetch failed
+- https://sjmg.trf6.jus.br/caso-samarco-justica-federal-homologa-novel-infraestrutura/ (rede) — erro de rede: fetch failed
+- https://t.me/ControlePopularBOT (rede) — erro de rede: fetch failed
+- https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CCPR%2fC%2fRUS%2fCO%2f8&Lang=en (rede) — erro de rede: fetch failed
+- https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CEDAW%2fC%2fIND%2fCO%2f4-5&Lang=en (rede) — erro de rede: fetch failed
+- https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CERD%2fC%2fJPN%2fCO%2f10-11&Lang=en (rede) — erro de rede: fetch failed
+- https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=CMW%2fC%2fPHL%2fCO%2f3&Lang=en (rede) — erro de rede: fetch failed
+- https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=E%2fC.12%2fCHN%2fCO%2f3&Lang=en (rede) — erro de rede: fetch failed
+- https://transparencia.fundacaorenova.org/inicio (rede) — erro de rede: fetch failed
+- https://tuvalu-legislation.tv/ (rede) — erro de rede: fetch failed
+- https://ufba.br/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://ufcspa.edu.br/pesquisa-e-inovacao/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://ufrj.br/ (rede) — erro de rede: fetch failed
 - https://unimontes.br/ (rede) — erro de rede: fetch failed
-- https://www.cefet-rj.br/ (rede) — erro de rede: This operation was aborted
+- https://unipampa.edu.br/ (rede) — erro de rede: fetch failed
+- https://vale.com/en/sustainability (rede) — erro de rede: fetch failed
+- https://wmo.int/about-wmo/world-meteorological-day (rede) — erro de rede: fetch failed
+- https://www.acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx (rede) — erro de rede: fetch failed
+- https://www.aedasmg.org (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/249/5f4501249911e289659341.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/501/676/5f4501676d654523910302.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/503/48a/5f450348ae2b8193855598.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/23b/5f450523bc784606213759.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/a91/5f4505a91ee59419088612.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/505/cb1/5f4505cb19dd8818817281.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/506/177/5f4506177eeef980145291.pdf (rede) — erro de rede: fetch failed
+- https://www.african-court.org/cpmt/storage/app/uploads/public/5f4/62f/f10/5f462ff104df5366479075.pdf (rede) — erro de rede: fetch failed
+- https://www.almg.gov.br/acompanhe/noticias/arquivos/2006/06/Not_590862.html (rede) — erro de rede: fetch failed
+- https://www.almg.gov.br/comunicacao/noticias/arquivos/Impactos-socioambientais-da-Barragem-de-Setubal-pautam-audiencia-publica/ (rede) — erro de rede: fetch failed
+- https://www.ana.gov.br/ (rede) — erro de rede: fetch failed
+- https://www.aph.gov.au/About_Parliament/Senate/Powers_practice_n_procedures/Constitution (rede) — erro de rede: fetch failed
+- https://www.aracuai.mg.gov.br/transparencia/legislacao?category=60 (rede) — erro de rede: fetch failed
+- https://www.aracuai.mg.gov.br/transparencia/legislacao?category=65 (rede) — erro de rede: fetch failed
+- https://www.b3.com.br (rede) — erro de rede: fetch failed
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/series-historicas/ (rede) — erro de rede: fetch failed
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/mercado-a-vista/series-historicas/ (rede) — erro de rede: fetch failed
+- https://www.ba.gov.br/comunicacao/noticias/2026-10/384592/governo-da-bahia-amplia-periodo-de-transporte-gratuito-para-eleitores-no (rede) — erro de rede: fetch failed
+- https://www.bbc.com/news/articles/c8034v2e3l3o (rede) — erro de rede: fetch failed
+- https://www.betim.mg.gov.br/publicos/leiorganicadebetim_21084838.pdf (rede) — erro de rede: fetch failed
+- https://www.bhp.com/news/media-centre/releases/2025/11/update-united-kingdom-group-action (rede) — erro de rede: fetch failed
+- https://www.brasilcoms.com.br/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2016/04/18/ato-em-governador-valadares-mg-denuncia-descaso-da-samarco-com-atingidos/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2022/01/26/moradores-de-comunidade-em-betim-mg-realizam-caminhada-em-defesa-do-rio-paraopeba/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2024/11/20/massacre-de-felisburgo-que-assassinou-cinco-militantes-do-mst-completa-20-anos-sem-justica/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2025/01/25/estudo-detecta-presenca-de-metais-na-urina-de-criancas-em-brumadinho/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/07/06/moradores-de-diamantina-mg-lutam-para-manter-parque-do-biribiri-publico/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/09/16/sigma-segue-operando-no-jequitinhonha-mg-mesmo-apos-justica-paralisar-lavra-dizem-moradores/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/11/04/filha-do-rio-leva-as-telas-perdas-culturais-do-crime-da-samarco-em-mariana-mg-pelo-olhar-de-uma-menina/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/11/05/11-anos-apos-o-crime-da-vale-em-mariana-mg-atingidos-cobram-direitos-e-temem-apagamento/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/11/05/governo-define-27-minerais-estrategicos-para-impulsionar-a-industrializacao-do-brasil/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/2026/11/06/espetaculo-zona-de-sacrificio-chega-a-nova-lima-mg-e-debate-os-impactos-da-mineracao/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/especiais/especiais-mineracao-na-africa-do-sul-o-que-sobra-para-o-povo-sul-africano/ (rede) — erro de rede: fetch failed
+- https://www.brasildefato.com.br/politica-de-uso-de-inteligencias-artificiais/ (rede) — erro de rede: fetch failed
+- https://www.braskem.com.br/detalhe-noticias-alagoas/braskem-reafirma-compromisso-com-maceio-e-destaca-relevancia-estrategica-de-alagoas-para-o-futuro-da-companhia (rede) — erro de rede: fetch failed
+- https://www.business-humanrights.org/en/latest-news/netherlands-38-billion-class-action-lawsuit-filed-against-vale-and-samarco-in-dutch-court-over-mariana-dam-collapse/ (rede) — erro de rede: fetch failed
+- https://www.business-humanrights.org/en/latest-news/netherlands-brazilian-victims-of-macei%C3%B3-sinking-appeal-ruling-that-found-liable-but-cleared-its-european-subsidiaries/ (rede) — erro de rede: fetch failed
+- https://www.car.gov.br/ (rede) — erro de rede: fetch failed
+- https://www.cefet-rj.br/ (rede) — erro de rede: fetch failed
 - https://www.cefetmg.br/ (rede) — erro de rede: fetch failed
-- https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: This operation was aborted
-- https://www.controlepopular.tech/ (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
-- https://www.controlepopular.tech/api/saude (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
-- https://www.dippg.cefet-rj.br/index.php/pt/grupos-de-pesquisa (rede) — erro de rede: This operation was aborted
-- https://www.ifsudestemg.edu.br/ (503) — status HTTP 503 (nem ok, nem quebrado, nem redirect)
+- https://www.cgti.org.br/publicacoes/wp-content/uploads/2016/04/FERRAMENTAS-DE-GESTA%CC%83O-DE-PROJETOS-APLICADAS-AO-GERENCIAMENTO-DE-RISCOS-SO%CC%81CIO-AMBIENTAIS-NA-IMPLANTAC%CC%A7A%CC%83O-DE-PROJETOS-DE-GERAC%CC%A7A%CC%83O-HIDRA%CC%81ULICA-A-EXPERIE%CC%82NCIA-DA-CEMIG.pdf (rede) — erro de rede: fetch failed
+- https://www.cmbh.mg.gov.br/atividade-legislativa/pesquisar-legislacao/lei/11181/2019 (rede) — erro de rede: fetch failed
+- https://www.cnj.jus.br (rede) — erro de rede: fetch failed
+- https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2 (rede) — erro de rede: fetch failed
+- https://www.cnj.jus.br/inspecoes-correicoes/ (rede) — erro de rede: fetch failed
+- https://www.cnj.jus.br/programas-e-acoes/sirenejud/ (rede) — erro de rede: fetch failed
+- https://www.cnj.jus.br/sistemas/datajud/ (rede) — erro de rede: fetch failed
+- https://www.cnmp.mp.br (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/ (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Angola_2010?lang=pt (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Argentina_1994?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Australia_1985 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Bolivia_2009?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Chile_2021?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/China_2018?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Colombia_2015?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Costa_Rica_2020?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Cuba_2019?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Dominican_Republic_2015?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Ecuador_2021?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/El_Salvador_2014?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Federated_States_of_Micronesia_1990 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Fiji_2013 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/France_2008 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/German_Federal_Republic_2014 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Ghana_1996?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Guatemala_1993?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Haiti_2012?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Honduras_2013?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/India_2016?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Indonesia_2002?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Ireland_2019 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Italy_2020 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Japan_1946?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Kenya_2010?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Kiribati_2013 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Marshall_Islands_1995 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Mexico_2015?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Mexico_2021?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Mozambique_2007?lang=pt (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Nauru_2015 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Netherlands_2008 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Nicaragua_2014?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Nigeria_2011?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Norway_2014 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Palau_1981 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Panama_2004?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Papua_New_Guinea_2016 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Paraguay_2011?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Peru_2023?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Philippines_1987?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Poland_1997 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Portugal_2005 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Republic_of_Korea_1987?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Russia_2014?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Samoa_2017 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Senegal_2016?lang=fr (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Solomon_Islands_2018 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/South_Africa_2012?lang=en (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Spain_2011 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Sweden_2012 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Switzerland_2014 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Tonga_2016 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/United_States_of_America_1992 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Uruguay_2004?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Vanuatu_1983 (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Venezuela_2009?lang=es (rede) — erro de rede: fetch failed
+- https://www.constituteproject.org/constitution/Viet_Nam_2013?lang=en (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br/ (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br/api/saude (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br/betim (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br/empresas/fortunas (rede) — erro de rede: fetch failed
+- https://www.controlepopular.com.br/indice (rede) — erro de rede: fetch failed
+- https://www.controlepopular.tech/ (rede) — erro de rede: fetch failed
+- https://www.controlepopular.tech/api/saude (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/ (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_04_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_05_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_06_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_100_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_101_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_103_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_105_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_106_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_107_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_109_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_110_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_111_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_112_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_114_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_115_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_117_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_119_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_120_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_121_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_125_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_126_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_127_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_129_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_130_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_132_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_133_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_134_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_135_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_136_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_137_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_138_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_140_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_141_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_144_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_146_esp2.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_147_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_148_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_149_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_150_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_151_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_152_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_153_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_154_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_155_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_158_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_160_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_161_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_162_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_163_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_164_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_165_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_166_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_167_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_168_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_170_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_171_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_177_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_179_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_180_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_182_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_184_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_186_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_187_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_19_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_190_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_191_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_192_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_193_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_194_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_195_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_196_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_197_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_198_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_20_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_200_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_202_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_203_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_205_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_206_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_207_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_209_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_211_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_212_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_213_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_214_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_215_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_216_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_217_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_218_esp2.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_219_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_22_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_220_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_221_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_223_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_226_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_229_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_231_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_246_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_247_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_249_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_250_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_251_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_253_esp1.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_255_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_256_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_257_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_258_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_259_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_26_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_260_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_261_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_265_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_266_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_267_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_268_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_269_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_270_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_271_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_272_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_273_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_274_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_275_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_277_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_279_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_283_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_284_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_285_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_286_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_287_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_288_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_289_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_292_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_293_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_297_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_298_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_299_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_30_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_300_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_301_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_302_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_303_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_304_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_305_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_306_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_307_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_308_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_310_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_311_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_312_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_314_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_315_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_316_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_318_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_319_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_325_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_326_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_327_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_328_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_329_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_33_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_330_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_331_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_332_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_333_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_334_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_338_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_339_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_34_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_340_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_341_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_342_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_344_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_346_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_348_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_349_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_35_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_350_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_351_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_352_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_353_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_354_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_355_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_356_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_359_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_36_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_360_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_361_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_362_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_363_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_364_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_368_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_369_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_37_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_370_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_371_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_372_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_373_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_374_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_375_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_376_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_377_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_38_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_380_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_382_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_383_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_384_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_385_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_386_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_387_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_388_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_390_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_391_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_392_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_393_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_394_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_395_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_396_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_397_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_398_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_399_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_400_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_401_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_402_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_403_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_404_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_405_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_406_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_407_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_408_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_409_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_410_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_411_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_412_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_415_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_416_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_417_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_419_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_421_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_422_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_423_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_424_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_425_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_426_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_429_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_430_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_431_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_432_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_434_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_435_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_436_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_437_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_438_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_439_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_440_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_441_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_442_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_443_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_444_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_446_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_447_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_448_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_449_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_450_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_451_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_452_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_453_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_454_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_462_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_463_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_464_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_465_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_466_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_467_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_468_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_469_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_471_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_473_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_474_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_475_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_477_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_481_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_482_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_483_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_484_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_486_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_488_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_489_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_490_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_491_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_492_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_493_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_494_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_495_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_496_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_497_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_503_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_505_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_507_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_508_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_509_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_510_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_514_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_516_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_517_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_518_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_519_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_52_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_521_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_522_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_525_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_529_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_530_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_531_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_533_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_534_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_538_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_539_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_540_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_541_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_543_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_545_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_546_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_548_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_549_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_550_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_552_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_553_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_56_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_568_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_571_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_58_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_63_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_64_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_68_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_69_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_70_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_71_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_72_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_73_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_74_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_75_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_79_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_90_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_97_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/Seriec_98_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.corteidh.or.cr/docs/casos/articulos/seriec_99_esp.pdf (rede) — erro de rede: fetch failed
+- https://www.cptnacional.org.br/ (rede) — erro de rede: fetch failed
+- https://www.diamantina.mg.gov.br/arquivos/lei-org--nica-do-munic--pio-de-diamantina_20020813.pdf (rede) — erro de rede: fetch failed
+- https://www.diamantina.mg.gov.br/imgeditor/file/lei-complementar-n-103-plano-diretor-vigente_22015600.pdf (rede) — erro de rede: fetch failed
+- https://www.diap.org.br (rede) — erro de rede: fetch failed
+- https://www.diariomunicipal.com.br/amm-mg/ (rede) — erro de rede: fetch failed
+- https://www.dieese.org.br/ (rede) — erro de rede: fetch failed
+- https://www.dippg.cefet-rj.br/index.php/pt/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://www.dw.com/en/uk-court-rules-bhp-responsible-for-2015-mariana-dam-collapse/a-74748147 (rede) — erro de rede: fetch failed
+- https://www.estado.rs.gov.br/segundo-turno-das-eleicoes-tera-gratuidade-no-transporte-intermunicipal-de-longo-curso (rede) — erro de rede: fetch failed
+- https://www.fao.org/world-bee-day/en (rede) — erro de rede: fetch failed
+- https://www.fundacaorenova.org (rede) — erro de rede: fetch failed
+- https://www.fundobrasil.org.br (rede) — erro de rede: fetch failed
+- https://www.furg.br/ (rede) — erro de rede: fetch failed
+- https://www.gov.br/acessoainformacao/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/ana/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social (rede) — erro de rede: fetch failed
+- https://www.gov.br/anm/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/anm/pt-br/assuntos/dados-abertos (rede) — erro de rede: fetch failed
+- https://www.gov.br/anp/doc/relatorio.pdf (rede) — erro de rede: fetch failed
+- https://www.gov.br/anp/paineis-dinamicos/api-revendedores (rede) — erro de rede: fetch failed
+- https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf (rede) — erro de rede: fetch failed
+- https://www.gov.br/anp/vivo.pdf (rede) — erro de rede: fetch failed
+- https://www.gov.br/casacivil/pt-br/assuntos/noticias/2026/novembro/governo-do-brasil-chega-aos-dois-anos-do-novo-acordo-do-rio-doce-com-55-projetos-aprovados-e-repasse-de-r-3-7-bilhoes (rede) — erro de rede: fetch failed
+- https://www.gov.br/cgu/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/cgu/pt-br/assuntos/transparencia-publica/lai (rede) — erro de rede: fetch failed
+- https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa (rede) — erro de rede: fetch failed
+- https://www.gov.br/cvm/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/funai/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/ibama/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/ibama/pt-br/assuntos/meio-ambiente/areas-protegidas/icmbio (rede) — erro de rede: fetch failed
+- https://www.gov.br/inep (rede) — erro de rede: fetch failed
+- https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb (rede) — erro de rede: fetch failed
+- https://www.gov.br/mds/pt-br/acoes-e-programas/cadastro-unico (rede) — erro de rede: fetch failed
+- https://www.gov.br/mma (rede) — erro de rede: fetch failed
+- https://www.gov.br/mma/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/mre/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/palmares/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/palmares/pt-br/assuntos/noticias/130-anos-da-abolicao-da-escravidao-fundacao-palmares-atua-para-promover-mobilidade-social-dos-afro-brasileiros (rede) — erro de rede: fetch failed
+- https://www.gov.br/palmares/pt-br/assuntos/noticias/zumbi-heroi-nacional (rede) — erro de rede: fetch failed
+- https://www.gov.br/palmares/pt-br/departamentos/protecao-preservacao-e-articulacao/certificacao-quilombola (rede) — erro de rede: fetch failed
+- https://www.gov.br/palmares/pt-br/departamentos/protecao-preservacao-e-articulacao/serra-da-barriga-1/parque-memorial-quilombo-dos-palmares (rede) — erro de rede: fetch failed
+- https://www.gov.br/pncp/pt-br (rede) — erro de rede: fetch failed
+- https://www.gov.br/saude (rede) — erro de rede: fetch failed
+- https://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr (rede) — erro de rede: fetch failed
+- https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho (rede) — erro de rede: fetch failed
+- https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/novo-caged (rede) — erro de rede: fetch failed
+- https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/rais (rede) — erro de rede: fetch failed
+- https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-Senatran/frota-de-veiculos-2025 (rede) — erro de rede: fetch failed
+- https://www.gov.br/turismo/pt-br/assuntos/noticias/rio-branco-de-seringal-a-capital-do-acre (rede) — erro de rede: fetch failed
+- https://www.headliner.nl/item/miljardenclaim-na-braziliaanse-dambreuk-voor-nederlandse-rechter-telegraaf-2104026 (rede) — erro de rede: fetch failed
+- https://www.ibge.gov.br (rede) — erro de rede: fetch failed
+- https://www.ibge.gov.br/ (rede) — erro de rede: fetch failed
+- https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html (rede) — erro de rede: fetch failed
+- https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html (rede) — erro de rede: fetch failed
+- https://www.ifch.unicamp.br/ojs/index.php/rhs/article/viewFile/231/217 (rede) — erro de rede: fetch failed
+- https://www.ifmg.edu.br/portal (rede) — erro de rede: fetch failed
+- https://www.ifnmg.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.ifrs.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.ifsp.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.ifsudestemg.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.legislation.gov.uk/aep/Edw1cc1929/25/29/section/XXIX (rede) — erro de rede: fetch failed
+- https://www.legislation.gov.uk/ukpga/1998/42/section/6 (rede) — erro de rede: fetch failed
+- https://www.legislation.gov.uk/ukpga/2008/27/section/1 (rede) — erro de rede: fetch failed
+- https://www.legislation.govt.nz/act/public/1990/0109/latest/DLM224792.html (rede) — erro de rede: fetch failed
+- https://www.legislation.govt.nz/act/public/1990/0109/latest/DLM224810.html (rede) — erro de rede: fetch failed
+- https://www.mg.gov.br/pro-brumadinho (rede) — erro de rede: fetch failed
+- https://www.moneytimes.com.br/vale-vale3-estima-provisao-de-us-500-milhoes-por-rompimento-em-mariana-apos-decisao-da-justica-inglesa-lmrs/ (rede) — erro de rede: fetch failed
+- https://www.mpf.mp.br/ (rede) — erro de rede: fetch failed
+- https://www.mpf.mp.br/atuacao/grandes-casos (rede) — erro de rede: fetch failed
+- https://www.mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos (rede) — erro de rede: fetch failed
+- https://www.mpf.mp.br/o-mpf/unidades/pr-al/noticias/caso-braskem-mpf-e-mp-al-cobram-transparencia-e-avancos-nas-obras-de-reparacao-em-maceio (rede) — erro de rede: fetch failed
+- https://www.mpf.mp.br/o-mpf/unidades/pr-mg/noticias/acordo-de-mariana-prorrogado-o-prazo-de-adesao-ao-programa-de-indenizacao-para-atingidos-pela-barragem-de-fundao (rede) — erro de rede: fetch failed
+- https://www.mpmg.mp.br (rede) — erro de rede: fetch failed
+- https://www.mpmg.mp.br/ (rede) — erro de rede: fetch failed
+- https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/ (rede) — erro de rede: fetch failed
+- https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/ (rede) — erro de rede: fetch failed
+- https://www.oas.org/dil/esp/tratados_B-32_Convencion_Americana_sobre_Derechos_Humanos_firmas.htm (rede) — erro de rede: fetch failed
+- https://www.oas.org/dil/esp/tratados_b-32_convencion_americana_sobre_derechos_humanos.htm (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/audiencias/ (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_11.755_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_12.926_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.071_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.105_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.342_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.455_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.469_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/AR_13.506_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/BR_12.242_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/CO_12.434_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/CR_12.542_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/GT_13.726_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/HN_13.645_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_13.660_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_13.926_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_14.500_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_14.677_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_14.679_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/NI_14.746_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/PE_13.572_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/PY_12.686_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/VE_12.582_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/VE_14.142_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2024/VE_14.174_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_12.905_NdeREs.pdf (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_12.928_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_13.063_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_13.068_NdeREs.pdf (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_13.072_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_13.448_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/AR_13.577_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/BR_12.859_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/BR_13.754_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/CL_13.406_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/CL_13.858_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/CL_13.859_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/CL_14.487_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/CL_14.576_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/EC_12.764_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/EC_12.802_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/EC_13.167_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/EC_13.196_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/EC_13.730_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/ES_13.932_NdeREs.pdf (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/GT_13.049_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/GT_13.524_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/GT_14.364_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/NI_14.282_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/PA_13.017-B_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/PE_11.602%20B_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/PE_12.815_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/SV_12.787_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/SV_13.337_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/SV_13.938_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/VE_13.311_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/VE_13.821_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2025/VE_14.050_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/AR_13.040_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/AR_13.070_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/AR_13.118_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/CO_12.930_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/CO_13.811_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/EC_12.785_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/EC_12.883_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/EC_13.203_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/EC_13.870_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/GT_13.159_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/GT_13.550_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/GT_14.317_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/GT_14.408_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/HO_13.033_NdeREs.pdf (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/MX_13.170_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_11.831_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_12.811_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_13.304_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_13.413_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_13.624_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PE_13.707_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/PY_14.817_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/SV_13.725_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/SV_14.621_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/VE_13.313_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/VE_14.267_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/VE_14.452_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/VE_14.477_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/Corte/2026/VE_14.775_NdeREs.PDF (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/cidh/decisiones/pc/demandas.asp (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/sla/ddi/tratados_multilaterales_interamericanos_A-69_discriminacion_intolerancia_firmas.asp (rede) — erro de rede: fetch failed
+- https://www.oas.org/es/sla/ddi/tratados_multilaterales_interamericanos_A-70_derechos_humanos_personas_mayores_firmas.asp (rede) — erro de rede: fetch failed
+- https://www.oas.org/juridico/spanish/firmas/a-51.html (rede) — erro de rede: fetch failed
+- https://www.oas.org/juridico/spanish/firmas/a-52.html (rede) — erro de rede: fetch failed
+- https://www.oas.org/juridico/spanish/firmas/a-60.html (rede) — erro de rede: fetch failed
+- https://www.oas.org/juridico/spanish/firmas/a-61.html (rede) — erro de rede: fetch failed
+- https://www.oas.org/juridico/spanish/firmas/a-65.html (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/cn-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/in-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/jp-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/ph-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/ru-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/hr-bodies/upr/vn-index (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/cat (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/ccpr (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/ced (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/cedaw (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/cescr (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/cmw (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/crc (rede) — erro de rede: fetch failed
+- https://www.ohchr.org/en/treaty-bodies/crpd (rede) — erro de rede: fetch failed
+- https://www.openstreetmap.org/ (rede) — erro de rede: fetch failed
+- https://www.otempo.com.br/politica/2026/7/9/justica-da-holanda-analisa-nesta-quinta-feira-se-julga-acao-de-vitimas-de-mariana-contra-samarco (rede) — erro de rede: fetch failed
+- https://www.pi.gov.br/piaui-assegura-transporte-intermunicipal-gratuito-para-eleitores-no-2o-turno-conforme-legislacao-eleitoral (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11079.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm (rede) — erro de rede: fetch failed
@@ -446,14 +1208,80 @@ Origem: registry
 - https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm (rede) — erro de rede: fetch failed
 - https://www.planalto.gov.br/ccivil_03/leis/lim/LIM3353.htm (rede) — erro de rede: fetch failed
 - https://www.pr2.uerj.br/ (rede) — erro de rede: fetch failed
-- https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: This operation was aborted
-- https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: This operation was aborted
-- https://www.uefs.br/ (rede) — erro de rede: This operation was aborted
-- https://www.ufmg.br/proex/ (rede) — erro de rede: This operation was aborted
-- https://www.ufmg.br/prpq (rede) — erro de rede: This operation was aborted
-- https://www.ufmg.br/prpq/grupos-de-pesquisa/ (rede) — erro de rede: This operation was aborted
-- https://www.ufrgs.br/ (rede) — erro de rede: This operation was aborted
-- https://www.unesco.org/pt/days/mother-language (rede) — erro de rede: This operation was aborted
+- https://www.prp.unicamp.br/ (rede) — erro de rede: fetch failed
+- https://www.puc-rio.br/ (rede) — erro de rede: fetch failed
+- https://www.puc-rio.br/pesquisa/ (rede) — erro de rede: fetch failed
+- https://www.reparacaobaciariodoce.com/reparacao-em-numeros/ (rede) — erro de rede: fetch failed
+- https://www.revistas.usp.br/revhistoria/article/view/89008 (rede) — erro de rede: fetch failed
+- https://www.samarco.com/ (rede) — erro de rede: fetch failed
+- https://www.samarco.com/perto-de-completar-dois-anos-novo-acordo-do-rio-doce-transforma-compromissos-em-entregas-concretas-para-as-pessoas-e-os-territorios/ (rede) — erro de rede: fetch failed
+- https://www.samarco.com/pid-alcanca-mais-de-300-mil-acordos-assinados/ (rede) — erro de rede: fetch failed
+- https://www.se.gov.br/noticias/Governo/sergipe_celebra_200_anos_de_emancipacao_politica (rede) — erro de rede: fetch failed
+- https://www.sec.gov/edgar (rede) — erro de rede: fetch failed
+- https://www.sec.gov/edgar/searchedgar/companysearch (rede) — erro de rede: fetch failed
+- https://www.serra.es.gov.br/noticias/insurreicao-de-queimado-completa-176-anos-nesta-quarta-feira-19 (rede) — erro de rede: fetch failed
+- https://www.snirh.gov.br/snisb/ (rede) — erro de rede: fetch failed
+- https://www.solicitorsjournal.com/sjarticle/municipio-de-mariana-v-bhp-court-of-appeal-refuses-permission-to-appeal-liability-findings (rede) — erro de rede: fetch failed
+- https://www.sptrans.com.br/domingao-tarifa-zero/ (rede) — erro de rede: fetch failed
+- https://www.ssp.sp.gov.br/estatistica/dados-mensais (rede) — erro de rede: fetch failed
+- https://www.stf.jus.br/arquivo/cms/publicacaoBOInternet/anexo/link_download/casos_relevantes/pt/ADPF_1013.pdf (rede) — erro de rede: fetch failed
+- https://www.tjmg.jus.br (rede) — erro de rede: fetch failed
+- https://www.tre-al.jus.br/comunicacao/noticias/2026/Outubro/tre-al-garante-transporte-gratuito-de-eleitores-em-todo-o-estado-e-alerta-para-proibicao-do-servico-por-candidatos-e-partidos (rede) — erro de rede: fetch failed
+- https://www.tre-am.jus.br/comunicacao/noticias/2026/Outubro/tre-am-esclarece-atuacao-no-transporte-de-eleitores-em-areas-indigenas-e-de-dificil-acesso (rede) — erro de rede: fetch failed
+- https://www.tre-rs.jus.br/comunicacao/noticias/2026/Outubro/transporte-de-eleitores-saiba-o-que-e-permitido-e-o-que-e-proibido (rede) — erro de rede: fetch failed
+- https://www.tre-sc.jus.br/comunicacao/noticias/2026/Outubro/entenda-como-funcionara-o-transporte-publico-gratuito-no-dia-das-eleicoes-em-santa-catarina (rede) — erro de rede: fetch failed
+- https://www.trf6.jus.br (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br/ (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br/eleicoes/eleicoes-2026 (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br/legislacao/compilada/res/2026/resolucao-no-23-751-de-26-de-fevereiro-de-2026 (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br/legislacao/compilada/res/2026/resolucao-no-23-753-de-26-de-fevereiro-de-2026?texto=compilado (rede) — erro de rede: fetch failed
+- https://www.tse.jus.br/legislacao/compilada/res/2026/resolucao-no-23-780-de-15-de-outubro-de-2026 (rede) — erro de rede: fetch failed
+- https://www.uefs.br/ (rede) — erro de rede: fetch failed
+- https://www.uemg.br/ (rede) — erro de rede: fetch failed
+- https://www.uenf.br/ (rede) — erro de rede: fetch failed
+- https://www.uerj.br/ (rede) — erro de rede: fetch failed
+- https://www.uesb.br/ (rede) — erro de rede: fetch failed
+- https://www.uesb.br/ppg/ (rede) — erro de rede: fetch failed
+- https://www.uesc.br/ (rede) — erro de rede: fetch failed
+- https://www.uesc.br/propp/ (rede) — erro de rede: fetch failed
+- https://www.ufabc.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.ufba.br/ (rede) — erro de rede: fetch failed
+- https://www.ufcspa.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.uff.br/ (rede) — erro de rede: fetch failed
+- https://www.uff.br/proppi/ (rede) — erro de rede: fetch failed
+- https://www.ufmg.br/proex/ (rede) — erro de rede: fetch failed
+- https://www.ufmg.br/prpq (rede) — erro de rede: fetch failed
+- https://www.ufmg.br/prpq/grupos-de-pesquisa/ (rede) — erro de rede: fetch failed
+- https://www.ufrb.edu.br/ (rede) — erro de rede: fetch failed
+- https://www.ufrgs.br/ (rede) — erro de rede: fetch failed
+- https://www.ufrgs.br/propesq1/propesq/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://www.ufscar.br/ (rede) — erro de rede: fetch failed
+- https://www.ufsm.br/ (rede) — erro de rede: fetch failed
+- https://www.ufsm.br/pro-reitorias/prpgp/grupos-de-pesquisa (rede) — erro de rede: fetch failed
+- https://www.ufu.br/proex (rede) — erro de rede: fetch failed
+- https://www.un.org/en/about-us/universal-declaration-of-human-rights (rede) — erro de rede: fetch failed
+- https://www.un.org/en/events/mandeladay/ (rede) — erro de rede: fetch failed
+- https://www.un.org/pt/observances/indigenous-day (rede) — erro de rede: fetch failed
+- https://www.unesco.org/pt/days/mother-language (rede) — erro de rede: fetch failed
+- https://www.unesp.br/ (rede) — erro de rede: fetch failed
+- https://www.unicamp.br/ (rede) — erro de rede: fetch failed
+- https://www.unirio.br/ (rede) — erro de rede: fetch failed
+- https://www.unirio.br/propgpi (rede) — erro de rede: fetch failed
+- https://www.usp.br/ (rede) — erro de rede: fetch failed
+- https://www.waitangitribunal.govt.nz/treaty-of-waitangi/translation-of-te-tiriti/ (rede) — erro de rede: fetch failed
+- https://www.wikidata.org/wiki/Q123 (rede) — erro de rede: fetch failed
+- https://www12.senado.leg.br/noticias/materias/2008/09/22/ha-20-anos-era-aprovada-a-redacao-final-da-constituicao-de-1988 (rede) — erro de rede: fetch failed
+- https://www12.senado.leg.br/noticias/materias/2016/07/01/ha-100-anos-o-fim-da-sangrenta-guerra-do-contestado (rede) — erro de rede: fetch failed
+- https://www18.fgv.br/projetorioparaopeba/ (rede) — erro de rede: fetch failed
+- https://www18.fgv.br/projetorioparaopeba/acompanhamento-saldo-municipios.html (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/25-anos-da-constituicao-de-1988/constituinte-1987-1988 (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/50-anos-de-brasilia (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/lei-da-anistia (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/diretas-ja (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html (rede) — erro de rede: fetch failed
+- https://www2.camara.leg.br/legin/fed/lei/1900-1909/lei-1261-31-outubro-1904-584180-publicacaooriginal-106938-pl.html (rede) — erro de rede: fetch failed
+- https://www5.tjmg.jus.br/jurisprudencia/ (rede) — erro de rede: fetch failed
 - https://x (rede) — erro de rede: fetch failed
 - https://x.gov.br (rede) — erro de rede: fetch failed
 - https://x.gov.br/transparencia (rede) — erro de rede: fetch failed

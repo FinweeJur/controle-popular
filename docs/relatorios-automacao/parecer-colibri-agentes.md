@@ -1,6 +1,6 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
-**Data da Execução:** 12/11/2026, 05:32:07  
+**Data da Execução:** 13/11/2026, 05:35:00  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Motor Determinístico Offline
 
@@ -8,8 +8,8 @@
 
 ## 1. Síntese Executiva
 
-- **Disponibilidade das Fontes Públicas (PicoClaw):** 88.1% (37 de 42 fontes operacionais).
-- **Postura de Segurança & Conformidade (Hermes Agent):** 12 itens aprovados, 1 alertas, 1 falhas críticas.
+- **Disponibilidade das Fontes Públicas (PicoClaw):** 0.0% (0 de 42 fontes operacionais).
+- **Postura de Segurança & Conformidade (Hermes Agent):** 8 itens aprovados, 2 alertas, 1 falhas críticas.
 - **Proteção de Dados Pessoais (LGPD / Mod-11):** 100% de conformidade, zero CPFs identificados nos acervos publicados.
 - **Limites de Infraestrutura (Cloudflare Workers):** Nenhum arquivo excede o teto de 25 MiB.
 
@@ -22,10 +22,7 @@
 | SEGURANCA | CSP Report-Only | **APROVADO** | CSP está configurado em modo Report-Only conforme política de observação. |
 | SEGURANCA | Headers de Proteção Básica (HSTS/Nosniff/Frame) | **APROVADO** | HSTS, X-Content-Type-Options e X-Frame-Options devidamente declarados. |
 | SEGURANCA | Espelhamento public/_headers | **APROVADO** | public/_headers configurado para garantir proteção nos Static Assets do Worker. |
-| SEGURANCA | Produção: Content-Security-Policy | **APROVADO** | Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://scripts.simpleanalyticscdn.com; worker-src 'self' ... |
-| SEGURANCA | Produção: Strict-Transport-Security | **APROVADO** | Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains; preload |
-| SEGURANCA | Produção: X-Frame-Options | **APROVADO** | Header retornado por https://controlepopular.com.br: SAMEORIGIN |
-| SEGURANCA | Produção: X-Content-Type-Options | **APROVADO** | Header retornado por https://controlepopular.com.br: nosniff |
+| SEGURANCA | Sondagem de Produção (headers reais) | **ALERTA** | Não foi possível conectar a https://controlepopular.com.br nesta máquina para sondar os headers reais de produção (fetch failed). A auditoria de código local foi executada normalmente; reexecute de uma máquina com acesso à rede. |
 | SEGURANCA | Varredura Estática de Segredos | **APROVADO** | Nenhum token ou chave de credencial identificado nos arquivos críticos. |
 | SEGURANCA | Supply Chain & Modelos de IA | **APROVADO** | Zero formatos binários (.pickle/.joblib) e zero tokens expostos nos arquivos auditados. |
 | CLOUDFLARE | Limite de 25 MiB: jurisprudencia-casos.json | **FALHA** | Arquivo possui 57.03 MiB, excedendo o teto do Cloudflare. |
