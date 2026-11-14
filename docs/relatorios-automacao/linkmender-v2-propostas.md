@@ -1,7 +1,7 @@
 # LinkMender v2 — Auditoria de Links e Validação de Conteúdo
 
-- Data da auditoria: 2026-11-13T09:50:32.711Z
-- Duração da rodada: 10550.8 s
+- Data da auditoria: 2026-11-14T09:50:22.803Z
+- Duração da rodada: 10540.6 s
 - Pausa configurada entre requisições: 300ms
 
 ## Resumo Consolidado
