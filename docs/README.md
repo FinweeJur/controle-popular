@@ -81,7 +81,7 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (11):**
+- **Planos ativos (12):**
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
   [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),
@@ -92,7 +92,9 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   [`PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md`](planos/PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md)
   (com o prompt de delegação em
   [`PROMPT-DELEGACAO-BRUMADINHO.md`](planos/PROMPT-DELEGACAO-BRUMADINHO.md)) e
-  [`CADERNO-ATIS-PROCESSO-COLETIVO.md`](planos/CADERNO-ATIS-PROCESSO-COLETIVO.md).
+  [`CADERNO-ATIS-PROCESSO-COLETIVO.md`](planos/CADERNO-ATIS-PROCESSO-COLETIVO.md) e
+  [`PLANO-AUTARQUIAS-INCRA-ANM.md`](planos/PLANO-AUTARQUIAS-INCRA-ANM.md)
+  (mapeamento e ETL das autarquias federais, começando por INCRA e ANM).
   A estrutura de navegação está em
   [`UNIFICACAO-POR-EIXO.md`](planos/UNIFICACAO-POR-EIXO.md) e
   [`PROPOSTA-UNIFICACAO-DIREITOS-TERRITORIOS.md`](planos/PROPOSTA-UNIFICACAO-DIREITOS-TERRITORIOS.md).
