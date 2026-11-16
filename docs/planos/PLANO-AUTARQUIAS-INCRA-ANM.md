@@ -2,7 +2,7 @@
 
 > **Tipo:** PLANO
 > **Domínio:** federal (autarquias) — INCRA e ANM na primeira onda
-> **Última medição:** 2026-11-11
+> **Última medição:** 2026-11-16 (banco) e 2026-11-11 (fontes)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [FONTES.md](../06-fontes/FONTES.md), [COLETA-ETICA.md](../06-fontes/COLETA-ETICA.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [QUALIDADES-DA-INFORMACAO.md](../04-arquitetura/QUALIDADES-DA-INFORMACAO.md), [REGRAS-DURAS.md](../03-desenvolvimento/REGRAS-DURAS.md), [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md)
 > **Palavras-chave:** incra, anm, autarquias, etl, atos, portarias, relatorios, documentos, produtos, atividades, assentamentos, mineracao, cfem, scm, sigbm, sigmine, tah, sople, protocolo-digital, anmlegis, dou, dados-abertos, cobertura-por-uf
@@ -22,8 +22,9 @@
 - [Fases de execução](#fases-de-execução)
 - [Verificação e portões](#verificação-e-portões)
 - [Riscos e armadilhas medidas](#riscos-e-armadilhas-medidas)
+- [Navegador automatizado — quando ajuda e quando é burla](#navegador-automatizado--quando-ajuda-e-quando-é-burla)
 - [Expansão para todas as autarquias federais](#expansão-para-todas-as-autarquias-federais)
-- [Decisões pendentes do dono](#decisões-pendentes-do-dono)
+- [Decisões do dono](#decisões-do-dono)
 - [Origem / Histórico](#origem--histórico)
 
 ## Propósito
@@ -192,6 +193,42 @@ etl/autarquias/
 O bruto **não entra no Git**. Só entra o derivado pequeno e o agregado.
 Medido: os arquivos grandes da ANM somam ~1,4 GB. O repositório não é
 depósito de CSV.
+
+### Banco — medido em 16/11/2026
+
+Medição por conexão de leitura ao Postgres do app `controle-popular`
+(`DATABASE_URL` de `apps/web/.env.local`; a credencial não foi impressa nem
+copiada para nenhum arquivo):
+
+| Medida | Valor |
+|---|---|
+| Banco inteiro | **537 MB** (562.611.487 bytes) |
+| Teto do plano `essential-0` | **1 GB** — 4.000 tabelas, 20 conexões |
+| Livre | **~487 MB** |
+| Tabelas de usuário | 134 |
+| Versão | PostgreSQL 18.4 |
+
+As cinco maiores tabelas já ocupam 337 MB: `licitacoes` (183 MB),
+`servidores` (58 MB), `cap_autos_infracao` (37 MB), `contratos` (33 MB) e
+`presencas_plenario` (24 MB).
+
+O que cabe nos 487 MB livres:
+
+| Carga | Estimativa no banco | Cabe? |
+|---|---|---|
+| SCM (311.646 linhas, 72 MB de CSV) | ~150–250 MB com índices | ✅ sim |
+| CFEM autuação (21.030 linhas, 3 MB) | < 20 MB | ✅ sim |
+| PD/Protocolo (952.955 linhas) | ~300–400 MB | ⚠️ não junto com o SCM |
+| CFEM arrecadação + distribuição cheias (560 MB de CSV) | ~1,2–1,6 GB | ⛔ não |
+
+**Conclusão medida:** a primeira rodada cabe. SCM + CFEM autuação somam
+~270 MB e levam o banco a ~810 MB de 1 GB (79%). CFEM cheia e PD entram só
+como agregado, ou depois de subir de plano.
+
+⚠️ O preço do `essential-1` (10 GB) **não foi verificado**: a chave
+`HEROKU_API_KEY` do `.env.local` foi recusada pela API da Heroku em
+16/11/2026 e a página de preço é renderizada por JavaScript. Custo só se
+confirma no painel.
 
 ## Contrato de dados
 
@@ -451,6 +488,32 @@ medido, datado e linkado, sem inventar causalidade.
 | `/autarquias/[orgao]/[uf]` | recorte estadual com os mesmos cartões | 27 UFs |
 | `/autarquias/atos` | busca de atos por órgão, ano, tipo, número | ANMlegis + DOU (escopo atual) |
 
+### Onde a frente encaixa nos eixos (para a decisão de rota)
+
+Os quatro eixos do portal, como estão em
+[PRODUTO.md](../01-produto/PRODUTO.md):
+
+| Eixo | Hub | Cobre |
+|---|---|---|
+| **1. Terra e Território** | `/terra-e-territorios` | mineração, barragens, cavas, bacias, terras indígenas e quilombolas, CAR, clima |
+| **2. Direitos em Movimento** | `/direitos-em-movimento` | saúde, educação, trabalho, conselhos, **LAI e transparência**, denúncia, acesso à justiça |
+| **3. Estado e Economia** | `/estado-e-economia` | orçamento, compras e PNCP, concessões, convênios, repasses, Congresso, Assembleias, Judiciário, empresas |
+
+Eixo 4 é a Central ONSA (ferramentas), sem conteúdo temático.
+
+O problema medido: **esta frente atravessa três eixos ao mesmo tempo**.
+
+| Conteúdo | Eixo natural |
+|---|---|
+| títulos minerários, CFEM, barragens, produção mineral | 1 — Terra e Território |
+| assentamentos, titulações, acervo fundiário do INCRA | 1 — Terra e Território |
+| relatório de gestão, compras SICOP, dívida ativa, atos normativos | 3 — Estado e Economia |
+| pedidos de LAI, lacunas declaradas, canal de acesso à informação | 2 — Direitos em Movimento |
+
+Pendurar a frente num eixo só esconde dois terços dela. Um hub `/autarquias`
+com cartões que apontam para os eixos mantém a navegação atual e dá um lugar
+único para o leitor cobrar cobertura.
+
 ### As oito qualidades, aplicadas
 
 1. **Linkável** — cada título tem `urlRegistro`; ato tem URL do ANMlegis ou
@@ -515,12 +578,16 @@ Ordem por valor e por risco:
 **Antes de carregar**, medir o armazenamento disponível no Heroku. Se não
 couber, entra primeiro o agregado e o banco fica só com SCM + CFEM autuação.
 
+✅ Mediado em 16/11/2026: 537 MB usados de 1 GB, ~487 MB livres. SCM + CFEM
+autuação cabem (~270 MB). Detalhe na seção "Banco — medido".
+
 ### Fase 3 — ANM, atos e relatórios (1–2 dias)
 
 - ANMlegis: busca por tipo/ano, URL canônica por ato, ementa.
 - SEI: índice de publicações (título, data, unidade, link).
 - Relatórios de gestão, CGU, auditoria 2017–2019, ouvidoria: PDF com hash e
-  link; espelho em R2 só se o dono autorizar.
+  link **e cópia em R2** (decisão do dono, 16/11) — medir o volume antes do
+  primeiro upload.
 - **Saída:** `/autarquias/atos` com dado real.
 
 ### Fase 4 — INCRA (2–3 dias + prazo de LAI)
@@ -584,10 +651,55 @@ Portões específicos deste plano:
 | TAH sem UF | cabeçalho sem UF/município | junção por processo; sem junção vira lacuna |
 | Arquivo gigante no repo | ~1,4 GB no total; 296 MB num só CSV | agregado no repo, bruto fora |
 | Bundle do Worker | teto de 3 MiB gzip por rota | paginação no servidor (§5.1) |
-| Banco pequeno | teto do `essential-0` não medido | medir antes da carga; priorizar agregado |
-| Power BI sem export | 2 painéis embutidos | não raspar; registrar como lacuna ou pedir CSV |
+| Banco pequeno | medido 16/11: 537 MB de 1 GB, 487 MB livres | SCM + CFEM autuação cabem; CFEM cheia e PD só como agregado |
+| Power BI sem export | 2 painéis embutidos | decisão do dono: usar só via lícita (CSV/API) e o resto virar LAI |
+| Espelho de PDF em R2 | decisão do dono: link + cópia | cópia perene; medir o volume antes do primeiro upload |
 | Fonte muda de layout | ANM publica diariamente | hash do arquivo + comparação de colunas |
 | Hora de coleta ausente | 8ª qualidade | `geradoEm` na escrita, nunca digitado |
+
+## Navegador automatizado — quando ajuda e quando é burla
+
+Pergunta do dono em 16/11/2026: "pelo navegador do opencode ou Playwright não
+tem como coletar?". **Tem** — o repositório já roda Chromium do Playwright em
+rotinas (ver [OPERACAO.md](../05-operacao/OPERACAO.md)). Mas capacidade técnica
+não muda a regra do site. São três casos diferentes, e só dois são legítimos.
+
+| Caso | Navegador resolve? | Por quê |
+|---|---|---|
+| Página **liberada** por `robots.txt`, mas com HTML montado por JavaScript | ✅ sim | a lista só existe depois do JS; a requisição simples não vê o dado |
+| Página com **paginação por link/JS** e sem login | ✅ sim | navegar é o uso normal da página |
+| Área **autenticada** (login, sessão, certificado) | ⛔ não | a regra proíbe contornar login; o dado vira pedido de LAI |
+| `robots.txt` com **`Disallow`** ou bloqueio anti-bot | ⛔ não | passar por challenge com navegador real é exatamente "burlar" |
+| Host **fora do ar** (DNS, timeout, 503) | ⛔ não | navegador não conserta rede nem servidor caído |
+
+### Onde o navegador entra de verdade neste plano
+
+- **ANMlegis** (`anmlegis.datalegis.net`) — app JavaScript; a lista de atos não
+  vem no HTML cru. `robots.txt` libera nosso caso (bloqueia só GPTBot,
+  Google-Extended, CCBot e DataForSeoBot).
+- **SEI/ANM** (`sei.anm.gov.br`) — `User-agent: *` / `Disallow:` vazio. A
+  paginação é por link; navegador com UA honesto resolve.
+- **Portal do INCRA** (`www.gov.br/incra/...`) — páginas liberadas; só as de
+  publicações e transparência precisam de navegador.
+
+Em todos: UA honesto também no navegador (`finweejur/github artur colito`),
+sem login, 1–2 s entre navegações, checkpoint e fora da CI.
+
+### Onde o navegador NÃO entra
+
+- **DOU.** `Disallow: /` medido. O navegador não transforma proibição em
+  permissão. Continua valendo só a exceção já registrada no cabeçalho do
+  coletor: termos exatos, 2 s, fora da CI, escopo mínimo.
+- **Power BI embutido.** O painel é publicado por `app.powerbi.com` com token,
+  no formato que o órgão escolheu. Extrair a tabela por trás do visual é
+  contornar o formato de publicação. Decisão do dono (16/11): pegar o que
+  existe por via lícita — CSV, API, portal de dados abertos — e o resto pedir
+  por LAI.
+- **INCRA bloqueado.** `painel`, `acervofundiario` e `sigef` não responderam
+  (DNS e timeout), e `sncr.serpro.gov.br` deu 403. Não é filtro de bot: é host
+  fora de alcance. A ação é remedir de outra rede, não trocar de ferramenta.
+- **`sistemas.anm.gov.br/arrecadacao`.** 403 ao UA honesto. O CSV em massa da
+  pasta CFEM entrega o mesmo dado sem contorno.
 
 ## Expansão para todas as autarquias federais
 
@@ -627,28 +739,40 @@ O plano vale para qualquer autarquia porque as **cinco classes** e o
 - Não se publica "todos os órgãos" num só gráfico sem dizer o que falta.
 - Não se transforma ausência de dado em zero.
 
-## Decisões pendentes do dono
+## Decisões do dono
 
-1. **Onde a frente mora.** Hub novo `/autarquias` ou pendurar em "Terra e
-   Territórios" (eixo 2) e "Estado e Economia" (eixo 3)? A rota nova é mais
-   honesta para 30+ órgãos; pendurar reaproveita a navegação.
-2. **DOU.** Manter a exceção atual (termos exatos, escopo reduzido, fora da
-   CI) ou congelar a coleta nova até revisão? Sem essa resposta, os atos do
-   INCRA ficam sem fonte canônica.
+Registradas em 16/11/2026. Cada uma muda algo concreto no plano.
+
+### Resolvidas
+
+| # | Decisão | Efeito no plano |
+|---|---|---|
+| 4 | Medir o banco antes de carregar e reportar o custo | ✅ medido: **537 MB de 1 GB**, 487 MB livres. SCM + CFEM autuação cabem (~270 MB). Preço do upgrade não verificado |
+| 5 | Nome de titular **pessoa física aparece** na tela | CNPJ e nome entram; **CPF nunca**. Vale a regra editorial: estar na base não é condenação, e requerimento não é autorização de lavra |
+| 6 | Power BI: usar só por via lícita, o resto vai para LAI | CSV, API e dados abertos primeiro; painel embutido não se raspa. O que faltar entra no pedido de LAI da ANM |
+| 7 | Relatórios e auditorias: **link + cópia** | PDF espelhado em R2 além do link oficial, para não depender do site do órgão. Medir volume antes do primeiro upload |
+
+### Abertas
+
+1. **Onde a frente mora.** Hub `/autarquias` (recomendado — a frente atravessa
+   os eixos 1, 2 e 3) ou pendurar em Terra e Territórios (eixo 1) e Estado e
+   Economia (eixo 3)? Detalhe na seção "Onde a frente encaixa nos eixos".
+2. **DOU.** A exceção registrada hoje: `www.in.gov.br/robots.txt` responde
+   `Disallow: /`; o dono autorizou coletar a **busca pública** com termos
+   exatos, pausa de 2 s, UA honesto e fora da CI — está no cabeçalho de
+   `scripts/coletar-dou.py`. Pergunta: manter essa exceção para os atos das
+   autarquias ou congelar a coleta nova? Sem resposta, ato do INCRA fica sem
+   fonte; o da ANM entra pelo ANMlegis.
 3. **INCRA por LAI.** Autorizar os dois pedidos (territorial e fundiário) e
-   apontar quem protocola. Sem isso, a Fase 4 entrega só o que a página diz.
-4. **Banco.** Autorizar a medição de armazenamento do Heroku e, se couber,
-   a carga de SCM + CFEM. Se não couber, o plano segue só com agregado.
-5. **Nome de pessoa física.** CNPJ entra; CPF não. Nome de titular PF no
-   registro minerário é dado público — confirmar se aparece na tela ou fica
-   só no bastidor.
-6. **Power BI.** Pedir CSV/LAI ou registrar a lacuna? Raspar painel embutido
-   não está no plano.
-7. **Espelho em R2.** Só link (custo zero) ou espelho dos PDFs de relatório
-   de gestão e auditoria (perene, custo de storage)?
+   dizer quem protocola. Sem isso, a Fase 4 entrega só o que a página diz.
 
 ## Origem / Histórico
 
+- **16/11/2026 — decisões do dono.** Banco medido (537 MB de 1 GB, 487 MB
+  livres); nome de titular PF aparece na tela com CPF descartado; Power BI só
+  por via lícita, o resto vai para LAI; relatórios e auditorias ficam com link
+  e cópia em R2. Seguem abertas a rota da frente, o escopo do DOU e a
+  autorização dos dois LAIs do INCRA.
 - **16/11/2026 — plano escrito.** Pedido do dono: mapear e estruturar ETL de
   atividades, produtos, relatórios, documentos e portarias do INCRA e da ANM
   em todos os estados, com análise posterior pelas regras do repositório.
