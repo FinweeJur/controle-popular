@@ -12557,7 +12557,7 @@
   ]
  },
 {
- "slug": "uemg-pss-2027-ituiutaba-diamantina-83-vagas",
+ "slug": "uemg-abre-83-vagas-para-professor",
  "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
  "subtitulo": "São 73 vagas em Ituiutaba e 10 em Diamantina, com titulação mínima de especialista. A inscrição é gratuita e vai de 19 a 26 de novembro.",
  "resumo": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.",
@@ -12582,7 +12582,7 @@
   "Minas Gerais"
  ],
  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina. Controle Popular, nov. 2026.",
- "citacaoBibtex": "@article{onsa2026uemgpss2027,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas}\n}",
+ "citacaoBibtex": "@article{onsa2026uemgpss2027,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/uemg-abre-83-vagas-para-professor}\n}",
  "fontesOficiais": [
   {
    "nome": "Edital 43/2026 — UEMG Ituiutaba (PDF)",
@@ -12681,21 +12681,21 @@
   }
  },
  "essencial": [
-  "83 vagas: 73 em Ituiutaba e 10 em Diamantina.",
   "Salário de R$ 1.573,43 a R$ 5.875,83, conforme titulação e jornada.",
   "Inscrição gratuita, de 19 a 26/11, em duas etapas.",
   "Contrato de até 24 meses, com INSS e 13º proporcional."
  ],
  "olho": {
-  "texto": "A contratação temporária justifica-se pela necessidade temporária de excepcional interesse público.",
-  "fonte": "Editais 43/2026 e 47/2026, abertura"
+  "texto": "73 vagas em Ituiutaba. 10 em Diamantina. 83 no total.",
+  "fonte": "Editais 43/2026 e 47/2026, item 1.2",
+  "citacao": false
  },
  "tabelas": [
   {
    "titulo": "Vagas por área, localização, salário e titulação mínima",
    "colunas": [
-    "Localização",
-    "Área de competência",
+    "Polo",
+    "Área",
     "Vagas"
    ],
    "linhas": [

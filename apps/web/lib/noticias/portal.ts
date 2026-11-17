@@ -80,7 +80,7 @@ export interface NoticiaPortal {
    * Olho do texto (pull quote), com a fonte colada. Usa a barra lateral e a
    * fonte de display do padrão de /jurisprudencia.
    */
-  olho?: { texto: string; fonte?: string };
+  olho?: { texto: string; fonte?: string; citacao?: boolean };
   /**
    * Áudio original anexado ao post (audiência, sessão, entrevista).
    *

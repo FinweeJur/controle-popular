@@ -1,4 +1,5 @@
 import TextoComLinks from "./TextoComLinks";
+import TabelaInterativa from "./TabelaInterativa";
 import type { TabelaNoticia } from "@/lib/noticias/portal";
 
 /**
@@ -29,31 +30,7 @@ export default function SecaoTabelas({
           <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3">
             {t.titulo}
           </h3>
-          <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
-            <table className="w-full text-left text-sm border-collapse">
-              <caption className="sr-only">{t.titulo}</caption>
-              <thead className="bg-surface-2 text-xs font-semibold text-muted uppercase border-b border-border">
-                <tr>
-                  {t.colunas.map((c) => (
-                    <th key={c} scope="col" className="whitespace-nowrap px-3 py-2.5">
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/60">
-                {t.linhas.map((linha, i) => (
-                  <tr key={i} className="align-top transition hover:bg-surface-2/50">
-                    {linha.map((celula, j) => (
-                      <td key={j} className="px-3 py-2.5 text-foreground/90">
-                        <TextoComLinks texto={celula} />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TabelaInterativa titulo={t.titulo} colunas={t.colunas} linhas={t.linhas} />
           {t.nota && (
             <p className="mt-2 text-xs text-muted">
               <TextoComLinks texto={t.nota} />
