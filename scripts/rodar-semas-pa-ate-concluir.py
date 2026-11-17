@@ -17,15 +17,47 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 CHECKPOINT = RAIZ / "scripts" / ".cache" / "semas-pa" / "checkpoint.json"
+TRAVA = RAIZ / "scripts" / ".cache" / "semas-pa" / "rodando.lock"
 CMD = [sys.executable, "scripts/coletar-semas-pa-licencas.py", "--empreendimentos"]
 ESPERA_S = 120
+
+
+def _pid_vivo(pid: int) -> bool:
+    """True se o processo existe.
+
+    NÃO use `os.kill(pid, 0)` aqui: no Windows o Python repassa isso para
+    `TerminateProcess`, ou seja, checar a vida MATARIA o coletor que já está
+    rodando. `OpenProcess` só pergunta."""
+    import ctypes
+    PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+    h = ctypes.windll.kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+    if not h:
+        return False
+    ctypes.windll.kernel32.CloseHandle(h)
+    return True
+
+
+def _outra_instancia() -> bool:
+    """Trava de instância: o agendador pode disparar de novo antes de a
+    anterior terminar, e dois coletores no mesmo host furam o ritmo de 3 s."""
+    try:
+        pid = int(TRAVA.read_text(encoding="utf-8").split()[0])
+    except Exception:
+        return False
+    if _pid_vivo(pid):
+        print(f"[supervisor] já roda no PID {pid} — esta instância sai")
+        return True
+    TRAVA.unlink(missing_ok=True)  # trava órfã de execução que morreu
+    return False
 
 
 def concluido() -> bool:
@@ -45,8 +77,16 @@ def main() -> None:
         if concluido():
             print(f"[supervisor] catálogo completo na tentativa {tentativa - 1}")
             return
+        if _outra_instancia():
+            return
+        TRAVA.parent.mkdir(parents=True, exist_ok=True)
+        TRAVA.write_text(f"{os.getpid()} {datetime.now(timezone.utc).isoformat()}",
+                         encoding="utf-8")
         print(f"[supervisor] tentativa {tentativa}/{args.tentativas}", flush=True)
-        codigo = subprocess.run(CMD, cwd=RAIZ).returncode
+        try:
+            codigo = subprocess.run(CMD, cwd=RAIZ).returncode
+        finally:
+            TRAVA.unlink(missing_ok=True)
         if concluido():
             print("[supervisor] catálogo completo")
             return
