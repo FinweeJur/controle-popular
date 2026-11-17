@@ -2,7 +2,7 @@
 
 > **Tipo:** GUIA
 > **Domínio:** global (padrão de dados de toda página de acervo)
-> **Última medição:** 2026-10-18
+> **Última medição:** 2026-11-17
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [REGRA-EDITORIAL.md](../01-produto/REGRA-EDITORIAL.md), [PADRAO-PAGINA-WIKI.md](../03-desenvolvimento/PADRAO-PAGINA-WIKI.md), [PLANO-DATA-DO-DADO.md](/docs/historico/planos/PLANO-DATA-DO-DADO.md)
 > **Palavras-chave:** qualidades, dados, fonte-oficial, busca, filtro, ordenacao, resumo, chatbot, csv, impressao, responsivo, data-de-coleta
@@ -71,6 +71,10 @@ Essa regra não dispensa:
   pré-renderizado com banco de pé. "Página vazia" ≠ "código faltando".
 - **a régua do celular precede as demais (§5.14):** nenhuma das oito qualidades
   vale se a coluna não é legível e a página não cabe numa tela de 390 px.
+- **post de serviço entra na mesma régua:** a tabela do post é filtrável e
+  ordenável (qualidades 2 e 3), o número animado entrega o valor final no HTML
+  (4) e a data de consulta da fonte fica no corpo (8). O padrão está em
+  [PADRAO-POST-BLOG.md](../03-desenvolvimento/PADRAO-POST-BLOG.md).
 
 ## Origem / Histórico
 
