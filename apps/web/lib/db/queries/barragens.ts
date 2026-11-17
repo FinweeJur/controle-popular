@@ -1,7 +1,7 @@
 import { asc, desc, eq, sql } from "drizzle-orm";
 import { comBancoReserva } from "@/lib/db/reserva";
 import { num } from "@/lib/db/num";
-import { feam_barragens, ref_municipios_mg, snisb_barragens } from "@/lib/db/schema";
+import { feam_barragens, ref_municipios, snisb_barragens } from "@/lib/db/schema";
 import { extrairTagsDeCampos } from "@/lib/tags";
 import { REGRAS_TAGS_BARRAGENS } from "@/lib/ambiental/tags-barragens";
 
@@ -120,7 +120,7 @@ export async function listarBarragensFeamMg(): Promise<BarragemFeamMg[]> {
       const linhas = await db
         .select({
           idIbge: feam_barragens.id_municipio,
-          municipio: ref_municipios_mg.nome,
+          municipio: ref_municipios.nome,
           nome: feam_barragens.nome,
           empreendedor: feam_barragens.empreendedor,
           atividade: feam_barragens.atividade,
@@ -135,8 +135,8 @@ export async function listarBarragensFeamMg(): Promise<BarragemFeamMg[]> {
           alturaM: num(feam_barragens.altura_m),
         })
         .from(feam_barragens)
-        .innerJoin(ref_municipios_mg, eq(feam_barragens.id_municipio, ref_municipios_mg.id_ibge))
-        .orderBy(desc(feam_barragens.nivel_emergencia), asc(ref_municipios_mg.nome), asc(feam_barragens.nome));
+        .innerJoin(ref_municipios, eq(feam_barragens.id_municipio, ref_municipios.id_ibge))
+        .orderBy(desc(feam_barragens.nivel_emergencia), asc(ref_municipios.nome), asc(feam_barragens.nome));
       return linhas.map((b) => ({
         ...b,
         tags: extrairTagsDeCampos(
@@ -189,7 +189,7 @@ export async function listarMunicipiosComBarragens(): Promise<MunicipioComBarrag
           .from(snisb_barragens)
           .where(sql`${snisb_barragens.id_municipio} like '31%'`)
           .groupBy(snisb_barragens.id_municipio),
-        db.select({ idIbge: ref_municipios_mg.id_ibge, nome: ref_municipios_mg.nome }).from(ref_municipios_mg),
+        db.select({ idIbge: ref_municipios.id_ibge, nome: ref_municipios.nome }).from(ref_municipios),
       ]);
 
       const nomePorId = new Map(nomes.map((n) => [n.idIbge, n.nome]));

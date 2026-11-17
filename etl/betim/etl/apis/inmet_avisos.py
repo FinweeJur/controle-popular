@@ -76,7 +76,7 @@ _UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 # Prefixo do código IBGE por UF — é assim que se separa "os municípios deste
 # aviso que ficam em MG" sem depender do nome (que vem grafado com sufixo
 # " - UF" e acento, e casá-lo por texto seria reinventar
-# `resolver_municipio_mg` para um dado que já traz o código).
+# `resolver_municipio` para um dado que já traz o código).
 PREFIXO_IBGE_UF = {
     "RO": "11", "AC": "12", "AM": "13", "RR": "14", "PA": "15", "AP": "16", "TO": "17",
     "MA": "21", "PI": "22", "CE": "23", "RN": "24", "PB": "25", "PE": "26", "AL": "27",

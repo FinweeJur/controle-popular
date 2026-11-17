@@ -84,7 +84,7 @@ escolher o que mostrar; o banco não pode escolher não ter a decomposição.
    mas o padrão desta rodada é só o presente.
 
 4. **`geocod_ibge` vem como texto de 7 dígitos**, já no formato de
-   `ref_municipios_mg.id_ibge` — não precisa de `LPAD` (diferente do
+   `ref_municipios.id_ibge` — não precisa de `LPAD` (diferente do
    `codibge` numérico dos pluviômetros do CEMADEN, §3 do plano).
 
 Uso:

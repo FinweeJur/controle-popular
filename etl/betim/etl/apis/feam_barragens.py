@@ -68,7 +68,7 @@ caminho aberto.
 
 8. **NÃO HÁ CÓDIGO IBGE.** Só `MUNICÍPIO` por nome (59 municípios distintos nas
    249 linhas). Mesma lacuna do SNISB, mesmo tratamento: casamento normalizado
-   contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg` — migration
+   contra `ref_municipios` (`etl.common.resolver_municipio` — migration
    `0057_ref_municipios_mg.sql`), e `--sondar` sem `--nome-municipio` lista o
    que a fonte conhece.
 
@@ -77,10 +77,10 @@ caminho aberto.
 Até aqui `sync(id_municipio)` exigia que a cidade estivesse em `municipios` (6
 linhas — as do portal): `carregar_municipio` abortava para qualquer outra, e
 era ESSE abort — não a FK desta tabela — que travava a cobertura em 4 das 249
-barragens. A migration `0057` soltou a FK de `municipios` e criou
-`ref_municipios_mg` (as ~853 cidades de MG); este módulo casa CADA linha da
-planilha pelo próprio nome que a FEAM grafa, sem depender de `municipios` em
-nada. `sync()` não recebe mais `--id-municipio`: processa a planilha inteira
+barragens. A migration `0057` soltou a FK de `municipios` e criou o catálogo
+de município (então as ~853 cidades de MG; nacional, com coluna `uf`, desde
+a `0092`); este módulo casa CADA linha da planilha pelo próprio nome que a
+FEAM grafa, sem depender de `municipios` em nada. `sync()` não recebe mais `--id-municipio`: processa a planilha inteira
 numa rodada só, porque a fonte já é estadual (um XLSX só, sem filtro por
 cidade) — pedir a cidade por fora sempre foi um filtro aplicado DEPOIS do
 download completo, nunca uma economia de rede.
@@ -114,7 +114,7 @@ SNISB/ANM 320) — ver a nota na migration `0049`.
 
 `feam_barragens` — uma linha por (município, nome da barragem), para as
 linhas cujo município a fonte grafa casou com confiança contra
-`ref_municipios_mg` (ver `resolver_municipio_mg`). Refresh total por
+`ref_municipios` (ver `resolver_municipio`). Refresh total por
 município resolvido, com o guarda de redução de `refresh_completo_seguro`
 (`ao_reduzir="skip"`: uma cidade com redução não aborta as outras ~centenas
 da mesma rodada).
@@ -135,7 +135,7 @@ from decimal import Decimal, InvalidOperation
 import openpyxl
 import requests
 
-from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio
 
 LOG = "[etl.apis.feam_barragens]"
 
@@ -300,7 +300,7 @@ def _conferir_total(linhas: list[list], declarado: int | None) -> None:
 
 def _parse(linha: list) -> dict:
     """Sem `id_municipio` — quem chama resolve o município (por nome, contra
-    `ref_municipios_mg`) e preenche essa chave depois, só nas linhas que
+    `ref_municipios`) e preenche essa chave depois, só nas linhas que
     casaram com confiança."""
     return {
         "id_sigibar": _txt(linha[C_SIGIBAR]),   # armadilha 4: TEXTO, não número
@@ -341,7 +341,7 @@ def coletar(nome_municipio: str) -> list[dict]:
 
 def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]]:
     """As 249 linhas da planilha, cada uma com `id_municipio` RESOLVIDO
-    contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg`).
+    contra `ref_municipios` (`etl.common.resolver_municipio`).
 
     Devolve `(linhas_casadas, sem_match)`. `sem_match` é
     `[(nome_da_fonte, quantidade_de_barragens), ...]` — as linhas que não
@@ -355,7 +355,7 @@ def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]
     sem_match: dict[str, int] = {}
     for l in linhas:
         nome_fonte = _txt(l[C_MUNICIPIO])
-        resolvido = resolver_municipio_mg(client, nome_fonte)
+        resolvido = resolver_municipio(client, nome_fonte, uf="MG")
         if resolvido is None:
             sem_match[nome_fonte or "(sem município)"] = sem_match.get(nome_fonte or "(sem município)", 0) + 1
             continue
@@ -370,7 +370,7 @@ def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]
 
 
 def sondar(nome_municipio: str | None) -> None:
-    """Sem gravar e sem ler `municipios`/`ref_municipios_mg` — funciona com
+    """Sem gravar e sem ler `municipios`/`ref_municipios` — funciona com
     o banco fora do ar."""
     sessao = _sessao()
     linhas, declarado = _linhas_brutas(_baixar(sessao))
@@ -407,7 +407,7 @@ def sync(*, permitir_reducao: bool) -> None:
     """Sincroniza a planilha INTEIRA (249 barragens, MG inteira) — a fonte é
     um XLSX estadual único, então não há por-cidade para pedir."""
     client = get_db()
-    print(f"{LOG} baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
+    print(f"{LOG} baixando e resolvendo município de cada barragem contra ref_municipios...")
     linhas, sem_match = coletar_e_resolver_estado(client)
     if sem_match:
         total_sem_match = sum(n for _, n in sem_match)

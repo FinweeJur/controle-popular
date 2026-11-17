@@ -47,7 +47,7 @@ As outras frentes:
 | EIA-RIMA | `etl/betim/dados/ambiental-estudos.json` — 1.016 audiências, 2.439 linhas, 359 municípios | só SISEMA-MG |
 | Acordos (TAC) | GTAC-MG — 2.002 termos, 392 municípios | só MG |
 | Barragens de mineração | `apps/web/data/barragens-sigbm.json` | **nacional desde 17/11** (908 em 21 UF); a tela é de MG |
-| Barragens, todos os usos | SNISB no Heroku | catálogo só MG |
+| Barragens, todos os usos | SNISB no Heroku | **catálogo nacional desde 17/11** (migration `0092`, 5.571 municípios); falta rodar `--uf` nas 26 |
 | Licenciamento por município | 19.713 linhas em 831/853 cidades | só MG |
 
 O mapeamento dos 27 órgãos já existe desde 17/09/2026 em
@@ -60,7 +60,7 @@ vivo** e escrever o coletor.
 | # | O que | Ganho | Dependência |
 |---|---|---|---|
 | 1.1 | SIGBM/ANM: tirar o filtro de UF do `etl/betim/etl/apis/sigbm_anm.py` | ✅ **feito em 17/11**: 908 barragens, 21 UF, 183 municípios. MG segue com 318 e 59 municípios — os números da tela não mudaram | nenhuma |
-| 1.2 | SNISB: rodar `--uf` nas 26 UF restantes | catálogo nacional de barragens | ⛔ **bloqueada**: `ref_municipios_mg` tem 853 cidades de MG + São Paulo (grandfather da migration `0057`). Publicar fora de MG exige uma `ref_municipios` nacional |
+| 1.2 | SNISB: rodar `--uf` nas 26 UF restantes | catálogo nacional de barragens | ✅ **destravada em 17/11**: `ref_municipios` nacional (5.571 cidades, coluna `uf`, migration `0092`). Falta a rodada, que é de madrugada |
 | 1.3 | ANA outorgas: paginar até o fim | outorga federal por UF | hoje corta em 50.000 |
 | 1.4 | Re-rodar as 18 fontes de licença | dado de 17/09 → atual | roda na madrugada |
 
@@ -140,6 +140,10 @@ EIA-RIMA por UF. A segunda depende da Onda 1.2 para o SNISB.
 
 - Barragens: contar UF em `apps/web/data/barragens-sigbm.json` — `total`,
   `por_uf` e `municipios` são gravados pelo coletor.
+- Catálogo de município: `select count(*), count(distinct uf) from
+  ref_municipios` deve dar **5.571 e 27**; `select count(*) from ref_municipios
+  where uf is null` deve dar **0** (a migration `0092` termina em
+  `set not null`).
 - Licenças: `apps/web/data/*licencas*.json`, campos `gerado_em` e `truncado`.
 - EIA-RIMA: `etl/betim/dados/ambiental-estudos.json`, `resumo.audiencias` e
   `resumo.linhas`.
@@ -154,3 +158,8 @@ EIA-RIMA por UF. A segunda depende da Onda 1.2 para o SNISB.
   A Onda 2 aproveita o mapeamento de
   [relatorio-mapeamento-27-estados.md](../relatorio-mapeamento-27-estados.md),
   de 17/09/2026.
+- **17/11/2026 — `ref_municipios` nacional.** `0057` criou a tabela com as 853
+  de MG; `0092_ref_municipios_nacional.sql` renomeia para `ref_municipios`,
+  acrescenta `uf` e insere as 5.571 cidades do IBGE (27 UF). O recorte por UF
+  passou a ser obrigatório em `etl.common.resolver_municipio` — sem ele, um
+  "Bom Jesus" de MG casaria com o homônimo de PI ou de RN.

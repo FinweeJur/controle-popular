@@ -62,24 +62,22 @@ Até aqui `sync(id_municipio)` exigia a cidade em `municipios` (6 linhas — as
 do portal): `carregar_municipio` abortava para qualquer outra, e era ESSE
 abort — não a FK desta tabela — que travava a cobertura em 52 das 2.212
 barragens de MG. A migration `0057_ref_municipios_mg.sql` soltou a FK de
-`municipios` e criou `ref_municipios_mg` (as ~853 cidades de MG + as cidades
-do portal fora de MG, como São Paulo, que já tinham dado gravado). `sync()`
-não recebe mais `--id-municipio`: recebe `--uf` (default `MG`, o alvo desta
-mudança) e resolve o `id_municipio` de CADA barragem pelo nome que a própria
-ANA grafa (`ING_NM_MUNICIPIO`), contra `ref_municipios_mg`.
+`municipios` e criou o catálogo de município (na época, as ~853 cidades de MG
++ as cidades do portal fora de MG, como São Paulo, que já tinham dado
+gravado). `sync()` não recebe mais `--id-municipio`: recebe `--uf` (default
+`MG`, o alvo desta mudança) e resolve o `id_municipio` de CADA barragem pelo
+nome que a própria ANA grafa (`ING_NM_MUNICIPIO`), contra `ref_municipios`.
 
-O SNISB é nacional (armadilha 5), mas o catálogo novo só cobre MG (+ o
-grandfather de São Paulo) — rodar `--uf` diferente de `MG`/`SP` resolve
-poucas ou nenhuma barragem hoje, e o módulo AVISA em vez de fingir sucesso.
-Ampliar o catálogo para as 5.570 cidades do Brasil é decisão de escopo maior
-que esta migration, deliberadamente fora dela (ver o commit desta mudança).
+O SNISB é nacional (armadilha 5). O catálogo também é, desde 17/11/2026
+(migration `0092_ref_municipios_nacional.sql`: 5.571 cidades, 27 UF, com
+coluna `uf`), então `--uf` roda em qualquer estado.
 
 ═══ O QUE ESTE MÓDULO ESCREVE ═══
 
 `snisb_barragens` — uma linha por (município, barragem), chave natural
 `codigo_snisb` (BAR_CD_SNISB, da própria ANA), para as linhas cujo município
-casou com confiança contra `ref_municipios_mg`
-(`etl.common.resolver_municipio_mg`). Refresh total por município resolvido,
+casou com confiança contra `ref_municipios` dentro da UF
+(`etl.common.resolver_municipio`). Refresh total por município resolvido,
 com o guarda de redução de `refresh_completo_seguro` (`ao_reduzir="skip"`:
 uma cidade com redução não aborta as outras da mesma rodada).
 
@@ -98,7 +96,7 @@ from decimal import Decimal
 
 import requests
 
-from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio
 
 LOG = "[etl.apis.snisb_barragens]"
 
@@ -107,10 +105,11 @@ TIMEOUT = 60
 PAGE_SIZE = 1000
 _UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 
-# `ref_municipios_mg` (migration 0057) só cobre MG (+ grandfather de cidade
-# do portal fora de MG) — é a UF que esta mudança destrava, por isso é o
-# padrão. Ver a nota "DE 'UMA CIDADE POR VEZ' PARA 'UMA UF INTEIRA'" no topo
-# do módulo antes de rodar com outra UF.
+# `ref_municipios` (migration 0092) cobre as 5.571 cidades do Brasil desde
+# 17/11/2026 — qualquer UF resolve. Antes dela a tabela era só MG
+# (`ref_municipios_mg`, migration 0057) e esta rodada não publicava fora do
+# estado. Ver a nota "DE 'UMA CIDADE POR VEZ' PARA 'UMA UF INTEIRA'" no topo
+# do módulo.
 UF_PADRAO = "MG"
 
 CAMPOS = [
@@ -195,8 +194,8 @@ def _pertence_ao_municipio(linha: dict, nome_municipio: str) -> bool:
 
 def _parse_barragem(linha: dict) -> dict:
     """Sem `id_municipio` — quem chama resolve o município (por nome, contra
-    `ref_municipios_mg`) e preenche essa chave depois, só nas linhas que
-    casaram com confiança."""
+    `ref_municipios` dentro da UF) e preenche essa chave depois, só nas linhas
+    que casaram com confiança."""
     return {
         "codigo_snisb": linha.get("BAR_CD_SNISB"),
         "nome": _vazio_para_none(linha.get("BAR_NM_NOME")),
@@ -236,7 +235,8 @@ def coletar(uf: str, nome_municipio: str) -> list[dict]:
 
 def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, int]]]:
     """Todas as barragens do SNISB na UF, cada uma com `id_municipio`
-    RESOLVIDO contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg`).
+    RESOLVIDO contra `ref_municipios` (`etl.common.resolver_municipio`),
+    dentro da UF.
 
     Devolve `(linhas_casadas, sem_match)` — mesmo contrato de
     `etl.apis.feam_barragens.coletar_e_resolver_estado`. As linhas que não
@@ -248,7 +248,7 @@ def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, 
     sem_match: dict[str, int] = {}
     for linha in todas:
         nome_fonte = linha.get("ING_NM_MUNICIPIO")
-        resolvido = resolver_municipio_mg(client, nome_fonte)
+        resolvido = resolver_municipio(client, nome_fonte, uf=uf)
         if resolvido is None:
             chave = nome_fonte or "(sem município)"
             sem_match[chave] = sem_match.get(chave, 0) + 1
@@ -264,7 +264,7 @@ def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, 
 
 
 def sondar(uf: str, nome_municipio: str | None) -> None:
-    """Sem tocar em `municipios`/`ref_municipios_mg` nem gravar (funciona
+    """Sem tocar em `municipios`/`ref_municipios` nem gravar (funciona
     com o banco fora do ar). Sem `--nome-municipio`, lista os município da
     UF para conferência manual — é o mesmo espírito da armadilha 6."""
     sessao = _sessao()
@@ -296,11 +296,11 @@ def sync(uf: str, *, permitir_reducao: bool) -> None:
     """Sincroniza a UF INTEIRA — a fonte já filtra server-side por UF, então
     não há por-cidade para pedir (mesma razão de `feam_barragens.sync`)."""
     if uf != "MG":
-        print(f"{LOG} AVISO: ref_municipios_mg cobre MG (+ grandfather de cidade do "
-              f"portal fora de MG) — rodar --uf {uf} tende a resolver poucas ou "
-              f"nenhuma barragem. Ver a nota no topo do módulo.")
+        print(f"{LOG} AVISO: esta rodada grava fora de MG, o que só passou a valer "
+              f"com a ref_municipios nacional (migration 0092). Confira se a UF "
+              f"existe no catálogo antes de publicar.")
     client = get_db()
-    print(f"{LOG} UF={uf}: baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
+    print(f"{LOG} UF={uf}: baixando e resolvendo município de cada barragem contra ref_municipios...")
     linhas, sem_match = coletar_e_resolver_uf(client, uf)
     if sem_match:
         total_sem_match = sum(n for _, n in sem_match)
