@@ -404,6 +404,78 @@ Varredor `scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
 EIA/RIMA publicado não é aprovação — a ata só registra que houve audiência.
 Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica`.
 
+## MPPA-PA — TAC do Conselho Superior (uma tabela HTML por ano)
+
+Medido em 17/11/2026. Coletor: `scripts/coletar-mppa-pa-tacs.py` →
+`apps/web/data/mppa-pa-tacs.json`. Sondagem completa em
+`docs/historico/descobertas/ambiental-PA-mppa-tac.md`.
+
+O acervo de TAC do Ministério Público do Estado do Pará é **tabela por ano**,
+publicada por força da Resolução nº 002/2018 do Conselho Superior:
+`https://www2.mppa.mp.br/areas/institucional/conselho/tacs-de-{ano}.htm`
+(2013–2026, páginas de 94.177 B a 159.666 B). ⚠️ **2019 só existe no host
+`www` e sem o `-de`**: `https://www.mppa.mp.br/areas/institucional/conselho/tacs-2019.htm`
+— no `www2` esse ano dá 404.
+
+📊 **422 TAC** de 14 páginas-ano, depois de remover 29 linhas duplicadas (a
+fonte publica 26 cópias do mesmo termo na página de 2018, e às vezes o mesmo TAC
+duas vezes, uma com link e outra "SIGILOSO"). **105 (25%)** têm promotoria de
+Meio Ambiente/Ambiental no nome do órgão — recorte por texto, não por campo.
+
+| ano | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| TAC | 1 | 11 | 2 | 5 | 7 | 45 | 90 | 21 | 20 | 33 | 25 | 93 | 39 | 30 |
+
+**O que a fonte não tem:** filtro por município, paginação, export e API (o
+iframe `simpacervo/explorer.jsf` devolve 404 e só planta cookie de sessão). A
+tabela tem 4 colunas — Procedimento, Data, Órgão de execução, Partes — e é o
+**nome da promotoria** o único lugar onde aparece município. Não há tema, valor,
+status de cumprimento nem data de publicação. `robots.txt` dos dois hosts: 404,
+nada bloqueado; sem login e sem CAPTCHA.
+
+Cada linha traz procedimento (quatro padrões de numeração na mesma coluna),
+data, órgão de execução, `ambiental`, `sigiloso` (33 linhas marcadas
+"SIGILOSO" na fonte, sem link), `aditivo`/retificação (82), e as URLs de
+íntegra (372) e extrato (373). Os PDFs **não** são baixados (íntegra medida em
+1.843.177 B, extrato em 71.068 B); ⚠️ o caminho do PDF é `../../../data/files/…`
+e resolve para a **raiz do host**, não para `/areas/…` — concatenar errado dá
+404 de 790 B.
+
+**Checkpoint:** cada página-ano validada fica em `scripts/.cache/mppa-pa/` e a
+rodada retoma de onde parou; página em cache não se baixa de novo.
+
+**Dado pessoal:** a coluna "Partes" traz **nome de pessoa física** junto do CNPJ
+da empresa (medido: "… LTDA (Maurício Paracampos Junior)") — ela é **descartada
+inteira**, e a saída não tem nome de parte nem CNPJ. CPF nunca é gravado:
+0 linha redigida nesta rodada, e run de 12–13 dígitos (protocolo do MPPA, ex.
+"SIMP n.º 004837-040/2018") **não** é tratado como CPF. Varredor
+`scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
+
+**Ressalva editorial:** TAC firmado não é sentença nem confissão: o compromisso
+vale entre as partes e pode ter sido cumprido, aditado ou extinto, e o MPPA não
+publica esse status. Consulta oficial: `https://www.mppa.mp.br/tacs.htm`.
+
+## SEMAS-PA — portal Sydle (`consulta-geral`, `consulta-mapa`, `atos-autorizativos`): API fechada, fora de alcance
+
+Sondado em 17/11/2026, 21 `GET` sem navegador, UA `finweejur/github artur colito`.
+Sondagem completa em `docs/historico/descobertas/ambiental-PA-sydia-api.md`.
+
+`portal-servicos-sistemas.semas.pa.gov.br` é SPA **Sydle ONE 8.38.10**. A API
+interna é `/api/1/www/{pacote}/{Classe}/{metodo}` — a forma foi lida no JS
+(`ui-api/chunk-TLCMRSG7.js`), não chutada. **Toda rota de dado exige
+autenticação:** sem token, `401 {"error":"authentication_error"}` (32 B); com o
+Bearer que o HTML entrega a qualquer visitante, `401 invalid_token` — o token
+embutido está vencido e a SPA o renova por caminho de login. Renovação não foi
+automatizada (regra: não contornar autenticação). robots.txt publica **dois
+blocos contraditórios** para `User-agent: *` (`Allow: /` no topo, `Disallow: /`
+no fim).
+
+**Não há coletor e não há número a publicar** — zero registro acessível, então
+também não há contagem, campo, filtro por município nem paginação medidos.
+Escrever coletor aqui geraria JSON vazio com cara de sucesso. Para o Pará
+seguem valendo só duas portas: SIMLAM Público (empreendimentos com município e
+CNPJ) e a API do Portal da Transparência Ambiental (audiências, EIA e RIMA).
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.

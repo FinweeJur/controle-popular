@@ -61,6 +61,12 @@ COLETORES = {
         "arquivo": "semas-pa-estudos.json",
         "desc": "SEMAS-PA audiências/EIA/RIMA (API JSON, 175 docs)",
     },
+    "mppa-pa-tacs": {
+        "cmd": ["python", "scripts/coletar-mppa-pa-tacs.py"],
+        "timeout_s": 30 * 60,  # 30 min
+        "arquivo": "mppa-pa-tacs.json",
+        "desc": "MPPA TAC do Pará (15 páginas-ano, 422 termos)",
+    },
     "ana": {
         "cmd": ["python", "scripts/coletar-ana-outorgas.py", "--limit", "0"],
         "timeout_s": 6 * 3600,  # 6h
