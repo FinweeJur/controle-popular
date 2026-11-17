@@ -1,18 +1,18 @@
 {
-  "geradoEm": "2026-11-17T19:49:27.045Z",
+  "geradoEm": "2026-11-17T20:22:56.261Z",
   "totalPecas": 5765,
-  "baselineSha": "6df3295a304b5585",
+  "baselineSha": "679e5a69be7151f6",
   "rebuild": false,
-  "novos": [
+  "novos": [],
+  "modificados": [
     {
       "id": "blog:uemg-pss-2027-ituiutaba-diamantina-83-vagas",
       "frente": "geral",
       "rota": "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
       "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
       "fonteUrl": "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
-      "texto": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.\nA Universidade do Estado de Minas Gerais (UEMG) abriu processo seletivo simplificado para 2027. A seleção contrata professores temporários. São dois editais com inscrições no mesmo período. O 43/2026 é de Ituiutaba, com 73 vagas. O 47/2026 é de Diamantina, com 10 vagas. As inscrições vão de 19 a 26 de novembro de 2026.\nNão é concurso público. O contrato é temporário e dura no máximo 24 meses. A seleção tem uma etapa única. É a análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos."
+      "texto": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.\nA Universidade do Estado de Minas Gerais (UEMG) abriu processo seletivo simplificado para 2027. A seleção contrata professores temporários. São dois editais com inscrições no mesmo período. O [edital 43/2026](https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba) é de Ituiutaba, com 73 vagas. O [edital 47/2026](https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29882:edital-n-47-2026-unidade-diamantina) é de Diamantina, com 10 vagas. As inscrições vão de 19 a 26 de novembro de 2026. Os PDFs foram consultados em 17 de novembro de 2026.\nNão é concurso público. O contrato é temporário e dura no máximo 24 meses. A seleção tem uma etapa única. É a análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos."
     }
   ],
-  "modificados": [],
   "removidos": []
 }
