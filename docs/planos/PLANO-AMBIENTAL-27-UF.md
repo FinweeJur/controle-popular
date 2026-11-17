@@ -69,6 +69,29 @@ Zero em AC, CE, DF, ES, PE e RR é ausência na fonte, não falha de coleta.
 
 ## Onda 2 — reconhecimento das 12 UF sem coletor
 
+### Pará primeiro (ordem do dono, 17/11/2026)
+
+O que o PA já tem medido: 712 barragens do SNISB em 84 municípios, 120 de
+mineração no SIGBM, e **141 linhas de amostra** de licenciamento quando o
+SIMLAM publica **115.980 empreendimentos** — ou seja, 0,1%.
+
+O coletor `scripts/coletar-semas-pa-licencas.py` já fala com o SIMLAM sem
+login e tem checkpoint por página (`.cache/semas-pa/`). A conta do custo é
+do host, não do código: 115.980 detalhes + 11.598 páginas, a 3 s por
+requisição (o cabeçalho do script marca o SIMLAM como sensível), dão **~106 h
+de relógio — 4,4 dias**. Não paraleliza: dois workers furariam o ritmo de
+1 requisição por host.
+
+Rodada completa disparada em 17/11 (`--limit 0`, log em `logs/semas-pa-full.log`,
+PID guardado no histórico). Ela **acumula**: cada página fechada vale ~10
+empreendimentos e fica no checkpoint, então uma noite já rende mais que a
+amostra de setembro. O JSON final só é escrito no fim; até lá o site continua
+com a amostra de 141 linhas, que não é apagada.
+
+Pendente do dono: baixar a pausa de 3 s para 2 s (dentro da regra do repo de
+1–2 s) encurta a rodada para ~71 h. Não foi feito sem ordem — o 3 s está
+escrito no cabeçalho do coletor como decisão medida.
+
 Ordem de prioridade: **PA → RJ → PE → CE → AM → AL → RN → PB → SE → TO → AC → AP → RR**.
 
 > **17/11/2026 — o dono puxou o PA para a frente de todos.** O Pará não está
