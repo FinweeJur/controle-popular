@@ -44,6 +44,10 @@ alter table ref_municipios_mg rename to ref_municipios;
 
 alter index ref_municipios_mg_nome_trgm_idx rename to ref_municipios_nome_trgm_idx;
 
+-- O nome da PK também carrega o "mg" e é o que aparece em qualquer erro de
+-- chave duplicada daqui em diante; renomear com a tabela, não depois.
+alter index ref_municipios_mg_pkey rename to ref_municipios_pkey;
+
 alter table ref_municipios add column uf text;
 
 -- ═══ 2. as 5571 cidades do IBGE ═══

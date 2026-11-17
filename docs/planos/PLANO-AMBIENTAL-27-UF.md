@@ -163,3 +163,6 @@ EIA-RIMA por UF. A segunda depende da Onda 1.2 para o SNISB.
   acrescenta `uf` e insere as 5.571 cidades do IBGE (27 UF). O recorte por UF
   passou a ser obrigatório em `etl.common.resolver_municipio` — sem ele, um
   "Bom Jesus" de MG casaria com o homônimo de PI ou de RN.
+  Aplicada no banco local em 17/11 (5.571 linhas, 27 UF, 0 sem UF; as 5 FKs
+  seguiram a tabela). **Pendente no Heroku**: a `DATABASE_URL` do `.env` é a
+  local e é a única que o repositório conhece.
