@@ -82,11 +82,22 @@ requisição (o cabeçalho do script marca o SIMLAM como sensível), dão **~106
 de relógio — 4,4 dias**. Não paraleliza: dois workers furariam o ritmo de
 1 requisição por host.
 
-Rodada completa disparada em 17/11 (`--limit 0`, log em `logs/semas-pa-full.log`,
-PID guardado no histórico). Ela **acumula**: cada página fechada vale ~10
-empreendimentos e fica no checkpoint, então uma noite já rende mais que a
-amostra de setembro. O JSON final só é escrito no fim; até lá o site continua
-com a amostra de 141 linhas, que não é apagada.
+Rodada completa disparada em 17/11 (`--empreendimentos`, log em
+`logs/semas-pa-supervisor.log`). Ela **acumula**: cada página fechada vale 10
+empreendimentos e fica no checkpoint (`scripts/.cache/semas-pa/lista/`), então
+uma noite já rende mais que a amostra de setembro. O JSON final só é escrito
+no fim; até lá o site continua com a amostra de 141 linhas, que não é apagada.
+
+Quem garante a noite é `scripts/rodar-semas-pa-ate-concluir.py`: pergunta ao
+`checkpoint.json` se o catálogo fechou e, se não, chama o coletor de novo (ele
+retoma do primeiro chunk faltando). Sem supervisor, um 500 de EventValidation
+no meio matava a rodada e o resto da noite ficava sem coleta. O custo de
+reiniciar é reandar o pager até a página salva (1 requisição por página, ~4 s
+cada): reiniciar na página 1.000 custa ~1 h antes de dado novo.
+
+A rotina noturna (`scripts/rodar-coleta-full.py`) passou a rodar o modo por
+empreendimento, não o de processo: `--limit 0` custa ~106 h e nunca fecha numa
+noite.
 
 Pendente do dono: baixar a pausa de 3 s para 2 s (dentro da regra do repo de
 1–2 s) encurta a rodada para ~71 h. Não foi feito sem ordem — o 3 s está

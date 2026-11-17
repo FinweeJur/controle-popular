@@ -44,11 +44,22 @@ COLETORES = {
         "arquivo": "semad-go-licencas.json",
         "desc": "SEMAD-GO (GeoNode WFS, ~3.745 regs)",
     },
-    "semas-pa": {
-        "cmd": ["python", "scripts/coletar-semas-pa-licencas.py", "--limit", "0"],
-        "timeout_s": 12 * 3600,  # 12h
-        "arquivo": "semas-pa-licencas.json",
-        "desc": "SEMAS-PA (ASP.NET, ~114k regs, lento)",
+    # 17/11/2026: o modo por processo (`--limit 0`, ~106 h de relógio por causa
+    # de 1 GET de detalhe por empreendimento) não caberia nunca numa noite e
+    # deixaria a UF pela metade. A rotina agora roda o modo por empreendimento,
+    # que lê só a lista e sai em ~14 h, com checkpoint por página. O modo
+    # completo só se rodar sozinho, em janela de vários dias.
+    "semas-pa-empreendimentos": {
+        "cmd": ["python", "scripts/coletar-semas-pa-licencas.py", "--empreendimentos"],
+        "timeout_s": 16 * 3600,  # 16h
+        "arquivo": "semas-pa-empreendimentos.json",
+        "desc": "SEMAS-PA empreendimentos (SIMLAM, 115.980, checkpoint)",
+    },
+    "semas-pa-estudos": {
+        "cmd": ["python", "scripts/coletar-semas-pa-estudos.py"],
+        "timeout_s": 20 * 60,  # 20 min
+        "arquivo": "semas-pa-estudos.json",
+        "desc": "SEMAS-PA audiências/EIA/RIMA (API JSON, 175 docs)",
     },
     "ana": {
         "cmd": ["python", "scripts/coletar-ana-outorgas.py", "--limit", "0"],
