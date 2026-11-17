@@ -1,18 +1,20 @@
 {
-  "geradoEm": "2026-11-17T22:57:33.412Z",
+  "geradoEm": "2026-11-17T23:50:44.737Z",
   "totalPecas": 5765,
-  "baselineSha": "69666504ded1a44d",
+  "baselineSha": "d60c06248706a130",
   "rebuild": false,
-  "novos": [],
-  "modificados": [
+  "novos": [
     {
-      "id": "blog:uemg-pss-2027-ituiutaba-diamantina-83-vagas",
+      "id": "blog:uemg-abre-83-vagas-para-professor",
       "frente": "geral",
-      "rota": "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
+      "rota": "/noticias/uemg-abre-83-vagas-para-professor",
       "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
-      "fonteUrl": "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
+      "fonteUrl": "/noticias/uemg-abre-83-vagas-para-professor",
       "texto": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.\nA Universidade do Estado de Minas Gerais (UEMG) abriu 83 vagas de professor temporário. São 73 em Ituiutaba e 10 em Diamantina. A inscrição é gratuita. Vai de 19 a 26 de novembro de 2026. Os PDFs foram consultados em 17 de novembro de 2026.\nNão é concurso público. O contrato dura até 24 meses. A seleção tem uma etapa: análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos."
     }
   ],
-  "removidos": []
+  "modificados": [],
+  "removidos": [
+    "blog:uemg-pss-2027-ituiutaba-diamantina-83-vagas"
+  ]
 }
