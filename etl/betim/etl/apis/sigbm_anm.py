@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 r"""etl.apis.sigbm_anm — barragens de mineração do **SIGBM/ANM**, dump CSV
-aberto, filtrado para Minas Gerais.
+aberto, para TODO o Brasil (era filtrado para Minas Gerais até 17/11/2026).
 
 Fonte: `https://dadosabertos.anm.gov.br/SIGBM/Barragens.csv` — download direto
 (~3,4 MB, 124 colunas, 909 barragens no Brasil em 30/08/2026), sem chave, sem
@@ -19,6 +19,11 @@ descaracterização) para o mesmo universo que a FEAM cobre por outro caminho.
 Os três números seguem sem reconciliação (FEAM 249 × WFS IDE 259 × SIGBM 320 —
 ver a nota da migration `0049_snisb_barragens.sql`); este módulo não tenta
 resolver, grava o que o SIGBM diz.
+
+⚠️ **O JSON é NACIONAL desde 17/11/2026.** A tela `/ambiental/barragens` é de
+Minas e filtra a UF em `lib/ambiental/barragens-sigbm.ts` — o recorte saiu do
+coletor para o dado poder servir as outras UF sem nova coleta. Comparar fonte
+diferente (FEAM, SNISB) continua proibido: cada uma cobre um universo.
 
 ═══ AS ARMADILHAS MEDIDAS AO VIVO (2026-08-30) ═══
 
@@ -61,9 +66,10 @@ resolver, grava o que o SIGBM diz.
       "url_fonte": "https://dadosabertos.anm.gov.br/SIGBM/Barragens.csv",
       "ultima_atualizacao": "2026-08-27",   # Last-Modified do arquivo na coleta
       "coletado_em": "2026-08-30",
-      "total": 320,                          # barragens em MG
+      "total": 909,                          # barragens no Brasil (era MG até 17/11/2026)
       "total_brasil": 909,
-      "municipios": 76,
+      "por_uf": {"MG": 320, ...},            # contagem por UF, para a tela não somar fonte
+      "municipios": 400,                     # distintos no Brasil, por UF + nome
       "barragens": [ { "id", "nome", "empreendedor", "uf", "municipio",
                        "situacao", "nivel_emergencia", "categoria_risco",
                        "dano_potencial", "fase_descaracterizacao",
@@ -99,7 +105,6 @@ URL_CSV = "https://dadosabertos.anm.gov.br/SIGBM/Barragens.csv"
 UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 FONTE = "ANM — SIGBM (dados abertos)"
 ENCODING = "cp1252"  # armadilha 1: o arquivo NÃO é UTF-8
-UF_ALVO = "MG"
 PAUSA_SEGUNDOS = 2  # leve, por deferência ao servidor público
 
 # As colunas essenciais do portal, por NOME exato do cabeçalho (armadilha 5:
@@ -197,14 +202,14 @@ def _extrair(df: pd.DataFrame) -> list[dict]:
             "colunas essenciais ausentes do CSV: %s; colunas reais: %s"
             % (faltando, sorted(df.columns)))
 
-    mg = df[df["UF"].str.strip().str.upper() == UF_ALVO].copy()
+    todas = df.copy()
     linhas = []
-    for _, r in mg.iterrows():
+    for _, r in todas.iterrows():
         linhas.append({
             "id": _txt(r["ID"]),
             "nome": _txt(r["Nome"]),
             "empreendedor": _txt(r["Empreendedor"]),
-            "uf": UF_ALVO,
+            "uf": (_txt(r["UF"]) or "").strip().upper(),
             "municipio": _txt(r["Município"]),
             "situacao": _txt(r["Situação Operacional"]),
             "nivel_emergencia": _txt(r["Nível de Emergência"]),
@@ -214,7 +219,7 @@ def _extrair(df: pd.DataFrame) -> list[dict]:
                                              "Descaracterização"]),
             "data_finalizacao_dce": _data_iso(r["Data da Finalização da DCE"]),
         })
-    linhas.sort(key=lambda b: ((b["municipio"] or "").upper(),
+    linhas.sort(key=lambda b: (b["uf"], (b["municipio"] or "").upper(),
                                (b["nome"] or "").upper()))
     return linhas
 
@@ -245,8 +250,9 @@ def main():
     time.sleep(PAUSA_SEGUNDOS)
 
     barragens = _extrair(df)
-    municipios = len({b["municipio"] for b in barragens})
-    print("barragens em MG: %d, em %d municípios" % (len(barragens), municipios))
+    municipios = len({(b["uf"], b["municipio"]) for b in barragens})
+    print("barragens no Brasil: %d, em %d UF, %d municípios" % (
+        len(barragens), len({b["uf"] for b in barragens}), municipios))
 
     ultima = None
     if info["last_modified"]:
@@ -266,6 +272,8 @@ def main():
         "coletado_em": datetime.date.today().isoformat(),
         "total": len(barragens),
         "total_brasil": total_brasil,
+        "por_uf": {uf: sum(1 for b in barragens if b["uf"] == uf)
+                   for uf in sorted({b["uf"] for b in barragens})},
         "municipios": municipios,
         "barragens": barragens,
     })

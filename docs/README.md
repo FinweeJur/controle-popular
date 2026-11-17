@@ -81,8 +81,9 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (11):**
+- **Planos ativos (12):**
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
+  [`PLANO-AMBIENTAL-27-UF.md`](planos/PLANO-AMBIENTAL-27-UF.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
   [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),
   [`PLANO-CAVAS-MVP.md`](planos/PLANO-CAVAS-MVP.md),
