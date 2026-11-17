@@ -47,7 +47,7 @@ As outras frentes:
 | EIA-RIMA | `etl/betim/dados/ambiental-estudos.json` — 1.016 audiências, 2.439 linhas, 359 municípios | só SISEMA-MG |
 | Acordos (TAC) | GTAC-MG — 2.002 termos, 392 municípios | só MG |
 | Barragens de mineração | `apps/web/data/barragens-sigbm.json` | **nacional desde 17/11** (908 em 21 UF); a tela é de MG |
-| Barragens, todos os usos | SNISB no Heroku | **catálogo nacional desde 17/11** (migration `0092`, 5.571 municípios); falta rodar `--uf` nas 26 |
+| Barragens, todos os usos | `snisb_barragens` no banco | **28.159 barragens em 27 UF e 3.562 municípios** desde 17/11 (rodada `--uf` nas 27). MG segue com 2.212 em 443 — a tela filtra pelo prefixo `31`, então o número publicado não mudou |
 | Licenciamento por município | 19.713 linhas em 831/853 cidades | só MG |
 
 O mapeamento dos 27 órgãos já existe desde 17/09/2026 em
@@ -60,7 +60,7 @@ vivo** e escrever o coletor.
 | # | O que | Ganho | Dependência |
 |---|---|---|---|
 | 1.1 | SIGBM/ANM: tirar o filtro de UF do `etl/betim/etl/apis/sigbm_anm.py` | ✅ **feito em 17/11**: 908 barragens, 21 UF, 183 municípios. MG segue com 318 e 59 municípios — os números da tela não mudaram | nenhuma |
-| 1.2 | SNISB: rodar `--uf` nas 26 UF restantes | catálogo nacional de barragens | ✅ **destravada em 17/11**: `ref_municipios` nacional (5.571 cidades, coluna `uf`, migration `0092`). Falta a rodada, que é de madrugada |
+| 1.2 | SNISB: rodar `--uf` nas 26 UF restantes | catálogo nacional de barragens | ✅ **feito em 17/11**: 28.159 barragens, 27 UF, 3.562 municípios, 0 sem município casado. MG segue 2.212/443. SP parou no 33º município por código repetido na fonte (Cajobi, 2488) — a coleta agora colapsa a repetição e conta; RN tinha 3 grafias antigas (Açu, Arês, Augusto Severo) que viraram alias |
 | 1.3 | ANA outorgas: paginar até o fim | outorga federal por UF | hoje corta em 50.000 |
 | 1.4 | Re-rodar as 18 fontes de licença | dado de 17/09 → atual | roda na madrugada |
 
@@ -69,7 +69,15 @@ Zero em AC, CE, DF, ES, PE e RR é ausência na fonte, não falha de coleta.
 
 ## Onda 2 — reconhecimento das 12 UF sem coletor
 
-Ordem de prioridade: **RJ → PE → CE → AM → AL → RN → PB → SE → TO → AC → AP → RR**.
+Ordem de prioridade: **PA → RJ → PE → CE → AM → AL → RN → PB → SE → TO → AC → AP → RR**.
+
+> **17/11/2026 — o dono puxou o PA para a frente de todos.** O Pará não está
+> entre as 12 UF sem coletor (INEMA-BA e SEMAS-PA já têm 141 linhas cada), mas
+> tem 712 barragens do SNISB em 84 municípios, 120 de mineração no SIGBM e é o segundo maior
+> estado em área e em pressão de licenciamento. Ordem: completar o que é
+> barragem (feito), reconhecer SEMAS-PA, EIA-RIMA e MPPA, e só então voltar
+> para a fila acima.
+
 
 Cada ficha responde 6 perguntas, e é isso que decide se vira coletor:
 

@@ -163,9 +163,9 @@ def nome_para_fonte_externa(nome: str) -> str:
 # pares reais das fontes ("BELO HORIZONTE - MG" -> "Belo Horizonte" bate
 # 0.83; municípios sem relação nenhuma medidos abaixo de 0.35) — ver a nota
 # na migration `0057_ref_municipios_mg.sql`.
-LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
+LIMIAR_SIMILARIDADE_MUNICIPIO = 0.6
 
-# Grafi as de município que JÁ EXISTIRAM e mudaram de nome, ou que as fontes
+# Grafias de município que JÁ EXISTIRAM e mudaram de nome, ou que as fontes
 # publicam com a escrita antiga. Vira-e-vira de `ref_municipios`: o
 # catálogo guarda o nome OFICIAL do IBGE, e a fonte publica o que o órgão
 # digita — as duas coisas nem sempre são a mesma palavra.
@@ -180,8 +180,15 @@ LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
 # A chave é o nome JÁ NORMALIZADO (sem acento, maiúsculo), e o valor também:
 # os dois lados passam por `_normalizar_nome_municipio` antes de virar
 # lookup no catálogo. Grafias novas entram na migration 0057, não aqui.
-ALIAS_MUNICIPIO_MG: dict[str, str] = {
-    "BRASOPOLIS": "BRAZOPOLIS",
+#
+# O mapa é nacional desde 17/11/2026 (era `..._MG`, quando o catálogo era só
+# de MG): alvo ambíguo entre UFs não é problema, porque o lookup logo abaixo
+# é `(uf, nome)`. Cada entrada diz a UF entre parênteses.
+ALIAS_MUNICIPIO: dict[str, str] = {
+    "BRASOPOLIS": "BRAZOPOLIS",   # MG, ex-nome de Brazópolis
+    "ACU": "ASSU",                # RN, grafia antiga de Assú (IBGE 2400208)
+    "ARES": "AREZ",               # RN, grafia antiga de Arez (IBGE 2401206)
+    "AUGUSTO SEVERO": "CAMPO GRANDE",  # RN, Lei 10.501/2019 (IBGE 2401305)
 }
 
 _cache_catalogo_municipios: dict[tuple[str, str], dict] | None = None
@@ -230,7 +237,7 @@ def resolver_municipio(
     nome_fonte: str | None,
     *,
     uf: str,
-    limiar: float = LIMIAR_SIMILARIDADE_MUNICIPIO_MG,
+    limiar: float = LIMIAR_SIMILARIDADE_MUNICIPIO,
 ) -> dict | None:
     """Casa `nome_fonte` (grafia CRUA da fonte — ex. `MUNICÍPIO` da FEAM,
     `ING_NM_MUNICIPIO` do SNISB) contra `ref_municipios.nome`, DENTRO da UF.
@@ -248,7 +255,7 @@ def resolver_municipio(
 
     Três passos, nesta ordem:
 
-      0. Alias de nome antigo (`ALIAS_MUNICIPIO_MG`) — "Brasópolis" é hoje
+      0. Alias de nome antigo (`ALIAS_MUNICIPIO`) — "Brasópolis" é hoje
          "Brazópolis", e a similaridade sozinha perde (0.5714 < 0.6).
       1. Igualdade normalizada (sem acento, maiúsculo, sem sufixo " - UF") —
          cobre a maioria: "BELO HORIZONTE - MG" == "Belo Horizonte".
@@ -272,12 +279,12 @@ def resolver_municipio(
 
     uf = uf.strip().upper()
     alvo = _normalizar_nome_municipio(nome_fonte)
-    # Passo 0 — nome antigo (ver `ALIAS_MUNICIPIO_MG`): a grafia mudou na
+    # Passo 0 — nome antigo (ver `ALIAS_MUNICIPIO`): a grafia mudou na
     # fonte, não no catálogo, e a similaridade perde por 0.03 (medido em
     # 18/10/2026: "Brasópolis" -> "Brazópolis" = 0.5714 < 0.6). Renomear aqui
     # em vez de abrir um `if` extra: o lookup do passo 1 é o mesmo, e a
     # complexidade ciclomática da função fica onde estava.
-    alvo = ALIAS_MUNICIPIO_MG.get(alvo, alvo)
+    alvo = ALIAS_MUNICIPIO.get(alvo, alvo)
     catalogo = _catalogo_municipios(client)
     exato = catalogo.get((uf, alvo))
     if exato:

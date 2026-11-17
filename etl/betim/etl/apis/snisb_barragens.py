@@ -238,14 +238,20 @@ def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, 
     RESOLVIDO contra `ref_municipios` (`etl.common.resolver_municipio`),
     dentro da UF.
 
-    Devolve `(linhas_casadas, sem_match)` — mesmo contrato de
-    `etl.apis.feam_barragens.coletar_e_resolver_estado`. As linhas que não
-    bateram com confiança NÃO entram em `linhas_casadas`."""
+    Devolve `(linhas_casadas, sem_match, repetidas)` — as duas primeiras
+    como em `etl.apis.feam_barragens.coletar_e_resolver_estado`. As linhas
+    que não bateram com confiança NÃO entram em `linhas_casadas`."""
     sessao = _sessao()
     todas = _consultar_uf(sessao, uf)
 
-    casadas: list[dict] = []
+    # A chave única da tabela é `(id_municipio, codigo_snisb)`, mas a fonte
+    # não é: em SP o município de Cajobi traz o código 2488 em duas linhas
+    # (mesma barragem FORTALEZA, empreendedor diferente). Inserir as duas
+    # viola a restrição e aborta a UF inteira no meio — medido em 17/11/2026,
+    # a rodada de SP parou no 33º município. Fica a primeira linha.
+    casadas: dict[tuple[str, object], dict] = {}
     sem_match: dict[str, int] = {}
+    repetidas = 0
     for linha in todas:
         nome_fonte = linha.get("ING_NM_MUNICIPIO")
         resolvido = resolver_municipio(client, nome_fonte, uf=uf)
@@ -255,9 +261,13 @@ def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, 
             continue
         registro = _parse_barragem(linha)
         registro["id_municipio"] = resolvido["id_ibge"]
-        casadas.append(registro)
+        chave_unica = (registro["id_municipio"], registro["codigo_snisb"])
+        if chave_unica in casadas:
+            repetidas += 1
+            continue
+        casadas[chave_unica] = registro
 
-    return casadas, sorted(sem_match.items(), key=lambda kv: -kv[1])
+    return list(casadas.values()), sorted(sem_match.items(), key=lambda kv: -kv[1]), repetidas
 
 
 # ─────────────────────────────── sondar ────────────────────────────────
@@ -301,7 +311,10 @@ def sync(uf: str, *, permitir_reducao: bool) -> None:
               f"existe no catálogo antes de publicar.")
     client = get_db()
     print(f"{LOG} UF={uf}: baixando e resolvendo município de cada barragem contra ref_municipios...")
-    linhas, sem_match = coletar_e_resolver_uf(client, uf)
+    linhas, sem_match, repetidas = coletar_e_resolver_uf(client, uf)
+    if repetidas:
+        print(f"{LOG} {repetidas} linha(s) com código SNISB repetido no mesmo "
+              f"município — só a primeira foi gravada (a tabela tem chave única)")
     if sem_match:
         total_sem_match = sum(n for _, n in sem_match)
         print(f"{LOG} {total_sem_match} barragem(ns) em {len(sem_match)} nome(s) de município "
