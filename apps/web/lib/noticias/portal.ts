@@ -67,8 +67,20 @@ export interface NoticiaPortal {
   paragrafos: string[];
   /** Tabela comparativa opcional, exibida ao fim do corpo do artigo. */
   tabela?: TabelaNoticia;
+  /** Várias tabelas opcionais, na ordem em que aparecem (ex.: vagas por área). */
+  tabelas?: TabelaNoticia[];
   /** Gráfico de barras opcional, exibido antes da tabela. */
   grafico?: GraficoNoticia;
+  /**
+   * Resumo de serviço em frases curtas, exibido logo depois do lead.
+   * É o "o essencial" do post: 3 a 5 linhas que respondem ao leitor apressado.
+   */
+  essencial?: string[];
+  /**
+   * Olho do texto (pull quote), com a fonte colada. Usa a barra lateral e a
+   * fonte de display do padrão de /jurisprudencia.
+   */
+  olho?: { texto: string; fonte?: string };
   /**
    * Áudio original anexado ao post (audiência, sessão, entrevista).
    *

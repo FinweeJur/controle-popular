@@ -35,7 +35,7 @@ export default function GraficoBarrasArtigo({ grafico }: { grafico?: GraficoNoti
 
   return (
     <section aria-label={grafico.titulo} className="my-8">
-      <h3 className="font-display text-lg font-bold text-foreground mb-3">{grafico.titulo}</h3>
+      <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3">{grafico.titulo}</h3>
       <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
         <ul className="w-full space-y-3">
           {grafico.itens.map((item) => {
