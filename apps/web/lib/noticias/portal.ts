@@ -28,6 +28,23 @@ export interface TabelaNoticia {
   fonte?: FonteOficialNoticia;
 }
 
+/**
+ * Gráfico de barras opcional do artigo. Série curta e já publicada no texto,
+ * usada quando a comparação de valores importa mais que a leitura corrida
+ * (ex.: remuneração por titulação e jornada). O padrão do portal manda a
+ * legenda dentro da barra e o valor exato ao lado; o componente que desenha
+ * é `GraficoBarrasArtigo`.
+ */
+export interface GraficoNoticia {
+  titulo: string;
+  /** Rótulos e valores da série; a barra é proporcional ao maior valor. */
+  itens: { rotulo: string; valor: number }[];
+  /** Explicação curta da escala, exibida abaixo do desenho. */
+  nota?: string;
+  /** Fonte oficial da série. */
+  fonte?: FonteOficialNoticia;
+}
+
 export interface NoticiaPortal {
   slug: string;
   titulo: string;
@@ -50,6 +67,8 @@ export interface NoticiaPortal {
   paragrafos: string[];
   /** Tabela comparativa opcional, exibida ao fim do corpo do artigo. */
   tabela?: TabelaNoticia;
+  /** Gráfico de barras opcional, exibido antes da tabela. */
+  grafico?: GraficoNoticia;
   /**
    * Áudio original anexado ao post (audiência, sessão, entrevista).
    *

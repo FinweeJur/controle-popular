@@ -6,7 +6,6 @@ import {
   Clock,
   ExternalLink,
   ArrowLeft,
-  Database,
   Building,
   CheckCircle2,
   Sparkles,
@@ -19,6 +18,8 @@ import {
 } from "@/lib/noticias/portal";
 import CitarArtigoClient from "./CitarArtigoClient";
 import LeitorAudioArtigoClient from "./LeitorAudioArtigoClient";
+import SecaoMetricas from "./SecaoMetricas";
+import GraficoBarrasArtigo from "./GraficoBarrasArtigo";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 interface Props {
@@ -153,7 +154,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
     <main
       id="conteudo-principal"
       tabIndex={-1}
-      className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14"
+      className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-14"
     >
       {/* SCHEMA.ORG JSON-LD */}
       <script
@@ -274,20 +275,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
       ) : null}
 
       {/* PAINEL DE DADOS E MÉTRICAS CHAVE */}
-      <section aria-label="Indicadores principais" className="mb-8 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-muted mb-3 flex items-center gap-1.5">
-          <Database size={13} className="text-primary" />
-          <span>Indicadores & Dados Chave Documentados</span>
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {noticia.metricas.map((m) => (
-            <div key={m.rotulo} className="rounded-xl bg-surface-2 p-3.5 border border-border/50">
-              <p className="text-xs font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
-              <p className="mt-1 font-display text-xl sm:text-2xl font-bold text-foreground">{m.valor}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SecaoMetricas metricas={noticia.metricas} />
 
       {/* CORPO DO ARTIGO COM HIPERLINKS */}
       <article className="prose prose-neutral dark:prose-invert max-w-none space-y-5 text-base sm:text-lg text-foreground/90 leading-relaxed font-serif">
@@ -295,6 +283,9 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
           <p key={idx}>{renderTextoComLinks(p)}</p>
         ))}
       </article>
+
+      {/* GRÁFICO DE BARRAS (opcional) — o componente devolve null sem série */}
+      <GraficoBarrasArtigo grafico={noticia.grafico} />
 
       {/* TABELA COMPARATIVA (opcional) — ex.: tarifa social por estado */}
       {noticia.tabela && (

@@ -12652,6 +12652,40 @@
   "Dúvidas sobre o edital vão para duvidas.pssdocente@uemg.br. Recursos contra indeferimento de inscrição vão para recursos.pssdocente@uemg.br. O recurso contra a nota usa formulário no próprio sistema. Não existe taxa de inscrição. Desconfie de qualquer cobrança em nome da UEMG.",
   "A UEMG publicou 11 editais de PSS para 2027. Eles vão do 37 ao 47. Cada unidade tem o seu calendário. A lista oficial está na página de editais 2027 da universidade. Outros certames estão no [radar de concursos](/concursos) e no [radar de editais](/editais)."
  ],
+ "grafico": {
+  "titulo": "Como a remuneração mensal muda com titulação e jornada",
+  "itens": [
+   {
+    "rotulo": "Especialista · 20 h",
+    "valor": 1573.43
+   },
+   {
+    "rotulo": "Especialista · 30 h",
+    "valor": 2360.14
+   },
+   {
+    "rotulo": "Mestre · 20 h",
+    "valor": 2669.05
+   },
+   {
+    "rotulo": "Mestre · 30 h",
+    "valor": 4003.57
+   },
+   {
+    "rotulo": "Doutor · 20 h",
+    "valor": 3947.22
+   },
+   {
+    "rotulo": "Doutor · 30 h",
+    "valor": 5875.83
+   }
+  ],
+  "nota": "A barra compara o total mensal de cada faixa. O percentual dentro da barra é a fração do maior total, doutor em 30 horas. Os valores são os mesmos da tabela abaixo; onde as parcelas divergem do total, a nota da tabela explica.",
+  "fonte": {
+   "nome": "Edital 43/2026 — UEMG Ituiutaba, item 13.1 (tabela idêntica no edital 47/2026)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba"
+  }
+ },
  "tabela": {
   "titulo": "Remuneração mensal por titulação e jornada",
   "colunas": [
