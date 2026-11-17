@@ -145,9 +145,9 @@ def main() -> None:
     por_ano: dict[str, float] = {}
     por_usina: dict[str, float] = {}
     # Valores monetários entram como NÚMERO, não como a string brasileira da
-    # fonte: "153921,86885008001" tem 11 dígitos válidos por mod-11 na parte
-    # decimal e o varredor de CPF do repo (com razão) barrava o arquivo. O
-    # dado não muda de significado; some só a formatação.
+    # fonte: a parte decimal às vezes tem 11 dígitos e passa no mod-11, então o
+    # varredor de CPF do repo (com razão) barrava o arquivo inteiro. O dado não
+    # muda de significado; some só a formatação.
     for r in linhas:
         for campo in [k for k in r if k.startswith("Vlr")]:
             r[campo] = _num(r[campo])
