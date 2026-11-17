@@ -360,6 +360,50 @@ Existe um `POST /resolveocaptcha` no mesmo domínio, mas ele guarda outro fluxo 
 
 Dois achados do cadastro: **72 dos 150 termos marcados "Vigente" têm data de vencimento anterior à coleta** — a base discordando de si mesma (pode ser aditivo não lançado; não é prova de descumprimento). E **1.119 dos 2.002 não têm data de vencimento**, o que os deixa fora de qualquer conta de prazo — incluí-los em denominador de percentual seria mentir. Há ainda 1 registro com vencimento anterior à assinatura (id 23895), com as datas trocadas na fonte.
 
+## SEMAS-PA — audiências públicas, EIA e RIMA do Pará (API do portal da transparência)
+
+Medido em 17/11/2026. Coletor: `scripts/coletar-semas-pa-estudos.py` →
+`apps/web/data/semas-pa-estudos.json`. Sondagem completa em
+`docs/historico/descobertas/ambiental-PA-eia-rima.md`.
+
+**A SEMAS-PA não tem página de audiências por ano** (`www.semas.pa.gov.br`
+devolve a home na busca interna, sitemap 404, e "audi" não aparece em Editais,
+Serviços nem Sistemas). O acervo está na API da SPA do Portal da Transparência
+Ambiental: `GET https://portaldatransparencia.semas.pa.gov.br/portal-da-transparencia-api/api/v1/documentos?id_tipo_arquivo={id}&page={n}`
+(status 200 sem cookie, token ou CAPTCHA; `x-ratelimit-limit: 60`), e o PDF em
+`.../documentos/download/{id}`.
+
+📊 **175 documentos**, e o universo inteiro do endpoint é 5.128 documentos
+(257 páginas) — este coletor pega só os três tipos de estudo ambiental:
+
+| tipo | documentos | PDF na fonte | anos |
+|---|---:|---:|---|
+| Audiência pública (ata, dentro de "Relatórios") | 25 | 127,5 MB | 2019–2026 |
+| RIMA — Relatório de Impactos Ambientais | 78 | ~2,0 GiB | 2008–2026 |
+| EIA — Estudos de Impacto Ambiental | 72 | ~2,2 GiB | 2006–2026 |
+
+⚠️ **Não existe tipo "Audiências Públicas"**: a audiência vem como **ata**
+dentro do tipo genérico "Relatórios", identificada pelo campo `data_audiencia`
+(presente em 25/25). E ⚠️ **`id_tipo_arquivo` é número interno** (3, 5, 6 em
+17/11/2026) e pode ser renumerado: o coletor confere o **nome** do tipo em cada
+item, procura o id certo em 1..120 se houver renumeração e aborta se não achar —
+nunca grava dado de outro tipo.
+
+**O que a fonte não tem:** `numero_processo` (0/25 nas audiências) e
+`numero_licenca`. O vínculo audiência ↔ EIA/RIMA só sai por CNPJ + município +
+tipologia, então o coletor **não** cria esse vínculo. Cada linha traz município,
+empreendimento, CNPJ, tipologia, atividade, data e URL direta do PDF; os ~4,5 GiB
+de EIA+RIMA **não** são baixados (só 1 amostra por tipo, conferida por magic
+`%PDF-`).
+
+**Dado pessoal:** `cpf_cnpj` de 14 dígitos (CNPJ) é preservado; run de 11 dígitos
+válido por mod-11 vira `null` + `doc_redigido: 1` (1 documento nesta rodada).
+Varredor `scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
+
+**Ressalva editorial:** audiência publicada **não** é licença concedida, e
+EIA/RIMA publicado não é aprovação — a ata só registra que houve audiência.
+Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica`.
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.

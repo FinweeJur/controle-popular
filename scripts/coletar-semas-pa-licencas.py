@@ -200,11 +200,18 @@ RE_11D = re.compile(r"\d[\d .\-/]{7,24}\d")
 
 
 def _cpf_valido(dig: str) -> bool:
+    """Mod-11 com os pesos CERTOS: 10..2 no primeiro dígito, 11..2 no segundo.
+
+    A versão anterior usava `range(n, 0, -1)` (9..1 e 10..1) e por isso dava
+    False em CPF real — ou seja, o varredor nunca apagava nada e a privacidade
+    dependia de sorte. Achado em 17/11/2026 por outro coletor do mesmo repo,
+    que comparou com `scripts/checar-dado-pessoal-em-dado.py`."""
     if not dig.isdigit() or len(dig) != 11 or len(set(dig)) == 1:
         return False
-    for n in (9, 10):
-        s = sum(int(x) * w for x, w in zip(dig[:n], range(n, 0, -1)))
-        if (s * 10) % 11 % 10 != int(dig[n]):
+    for ate, pos in ((9, 9), (10, 10)):
+        soma = sum(int(dig[i]) * (ate + 1 - i) for i in range(ate))
+        resto = (soma * 10) % 11
+        if (0 if resto == 10 else resto) != int(dig[pos]):
             return False
     return True
 
@@ -253,12 +260,9 @@ RE_ROW_PROC = re.compile(
 RE_PROP = re.compile(
     r'gvProprietarios_ctl\d+_fitTipo"\s+title="([^"]*)"[\s\S]{0,400}?'
     r'fitNome"\s+title="([^"]*)"')
-RE_PAGER_LINK = re.compile(
+RE_PAGER_ITEM = re.compile(
     r"__doPostBack\(&#39;ctl00\$baseBody\$dgListagem\$ctl14\$ctl(\d+)&#39;,&#39;&#39;\)"
-    r'">(\d{1,4})</a>')
-RE_PAGER_ELLIPSIS = re.compile(
-    r"__doPostBack\(&#39;ctl00\$baseBody\$dgListagem\$ctl14\$ctl(\d+)&#39;,&#39;&#39;\)"
-    r'">\.\.\.</a>')
+    r'">([^<]{1,10})</a>')
 
 TIPO_REDUZIDO = [
     ("licenciamento", "licenca"),
@@ -342,16 +346,28 @@ def _contar() -> int:
     return int(m.group(1)) if m else 0
 
 
-def _contem_link_proxima(txt: str) -> "str | None":
-    """Target do postback para (página atual + 1) do pager customizado."""
-    atual = re.search(r'<span>(\d{1,4})</span>&nbsp;', txt)  # página corrente do pager
-    if not atual:
-        return None
-    alvo = str(int(atual.group(1)) + 1)
-    for m in RE_PAGER_LINK.finditer(txt):
-        if m.group(2) == alvo:
-            return f"ctl00$baseBody$dgListagem$ctl14$ctl{m.group(1)}"
-    return None  # endereçou a última página do window -> pode haver '...'; checa __doPost de '...'
+def _alvo_proxima(txt: str, pagina: int) -> "str | None":
+    """Target do postback para a página `pagina + 1` do pager customizado.
+
+    `pagina` é o NOSSO contador, não o que a tela diz. A versão anterior lia a
+    página corrente de `<span>N</span>` e, quando o alvo saía da janela, clicava
+    no `...` sem saber para onde ia: em 17/11/2026 isso entrou num ciclo de 10
+    páginas (chunks 10, 21, 32 traziam as mesmas linhas) e 67 páginas renderam
+    199 empreendimentos únicos.
+
+    O pager medido ao vivo mostra uma janela de 10 páginas: na página 10 vem
+    `1..9, <span>10</span>, ...` e o `...` leva à 11; na 20, `... 11..19, <span>
+    20</span>, ...` e o `...` da DIREITA leva à 21. Por isso: número `pagina+1`
+    na tela é alvo exato; sem ele, o ÚLTIMO `...` do documento é o avanço
+    (o primeiro é o retrocesso); sem nenhum, é o fim do catálogo."""
+    itens = [{"target": f"ctl00$baseBody$dgListagem$ctl14$ctl{m.group(1)}",
+              "texto": m.group(2).strip()}
+             for m in RE_PAGER_ITEM.finditer(txt)]
+    for it in itens:
+        if it["texto"] == str(pagina + 1):
+            return it["target"]
+    reticencias = [it for it in itens if it["texto"] == "..."]
+    return reticencias[-1]["target"] if reticencias else None
 
 
 # ---------------------------------------------------------------------------
@@ -429,15 +445,10 @@ def _coletar(limite: int, ckpt: dict) -> "tuple[list[dict], bool]":
                   f"{len(chunk_regs)} registros ({len(registros):,} no total)", flush=True)
         if alvo is not None and len(registros) >= alvo:
             break
-        prox = _contem_link_proxima(txt)
+        prox = _alvo_proxima(txt, pagina)
         if prox is None:
-            m_fim = RE_PAGER_ELLIPSIS.search(txt)
-            if m_fim:
-                prox = f"ctl00$baseBody$dgListagem$ctl14$ctl{m_fim.group(1)}"
-                print("    [i] pager saltou de janela (linha '...'), seguindo")
-            else:
-                concluiu = True  # fim do catálogo
-                break
+            concluiu = True  # fim do catálogo
+            break
         txt = _post_simples(prox)
         pagina += 1
     return registros if alvo is None else registros[:alvo], concluiu
@@ -471,6 +482,11 @@ def _ler_lista(txt: str) -> "list[dict]":
         for campo, rx in RE_CELULA.items():
             m = re.search(rx, bloco, re.S)
             valor = unescape(m.group(1)).strip() if m else ""
+            if campo == "razao_social" and valor:
+                limpo = _apagar_cpf_em_texto(valor)
+                if limpo != valor:
+                    reg["doc_redigido"] = 1
+                valor = limpo
             reg[campo] = valor or None
         linhas.append(reg)
     return linhas
@@ -486,6 +502,7 @@ def _coletar_empreendimentos(ckpt: dict) -> "tuple[list[dict], bool]":
     txt = _post_simples("ctl00$baseBody$btnPesquisa")
     pagina = 1
     concluiu = False
+    vistos: set[tuple] = set()  # ciclo de páginas já custou 67 requisições em 17/11
     sub = CACHE / "lista"
     sub.mkdir(parents=True, exist_ok=True)
     while True:
@@ -501,16 +518,19 @@ def _coletar_empreendimentos(ckpt: dict) -> "tuple[list[dict], bool]":
             if pagina % 50 == 1:
                 print(f"    página {pagina:,}: {len(por_id) + len(linhas):,} "
                       f"empreendimentos", flush=True)
+        chave = tuple(sorted(r["id_simlam"] for r in linhas))
+        if chave in vistos:
+            raise RuntimeError(
+                f"pager voltou para uma página já vista (página {pagina}, "
+                f"empreendimento {linhas[0]['id_simlam'] if linhas else '-'}): "
+                f"rodada abortada para não gravar catálogo repetido como completo")
+        vistos.add(chave)
         for reg in linhas:
             por_id.setdefault(reg["id_simlam"], reg)
-        prox = _contem_link_proxima(txt)
+        prox = _alvo_proxima(txt, pagina)
         if prox is None:
-            m_fim = RE_PAGER_ELLIPSIS.search(txt)
-            if m_fim:
-                prox = f"ctl00$baseBody$dgListagem$ctl14$ctl{m_fim.group(1)}"
-            else:
-                concluiu = True
-                break
+            concluiu = True
+            break
         txt = _post_simples(prox)
         pagina += 1
     return list(por_id.values()), concluiu
