@@ -63,6 +63,18 @@ import { processarTrechoEdital } from "./radar-editais-extrator.mts";
 
 const SO_MEDIR = process.argv.includes("--seco");
 
+/**
+ * DESATIVADO em 18/11/2026. Certames agora vivem em `/editais`, consolidados
+ * por `consolidar-radar-editais.mts`: um post por publicação repetia o mesmo
+ * ato no blog, no JSON e na busca. `--legado` reabre o caminho antigo.
+ */
+if (!process.argv.includes("--legado")) {
+  console.log(
+    "[publicar-radar] desativado: certames vivem em /editais e sao consolidados por consolidar-radar-editais.mts. Use --legado so para reproduzir o comportamento antigo."
+  );
+  process.exit(0);
+}
+
 // ──────────────────────────────────────────────────────────────────────────
 // Telegram (padrão de enviar-relatorio-telegram.mts — nunca imprime segredo).
 // ──────────────────────────────────────────────────────────────────────────

@@ -33,6 +33,7 @@ import os
 import re
 import sys
 import urllib.request
+from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -281,6 +282,14 @@ def slug(rota: str) -> str:
     return re.sub(r"[^a-z0-9-]", "", limpo.lower()) or "home"
 
 
+def com_titulo(rota: str, texto: str) -> str:
+    """O contrato do resumo exige o H1; o modelo às vezes começa no parágrafo."""
+    if texto.lstrip().startswith("#"):
+        return texto
+    nome = rota.strip("/").split("/")[-1].replace("-", " ").title()
+    return f"# O que os dados de {nome} mostram\n\n{texto.lstrip()}"
+
+
 def impressao_das_fontes(rota: dict) -> str:
     """Hash de caminho, tamanho e mtime das fontes — muda quando o dado muda."""
     partes = []
@@ -309,12 +318,12 @@ def gerar(rota: dict, modo: str) -> tuple[bool, int]:
             inconclusivo = texto.count("[não dá para concluir]") > texto.count("[medido")
             destino.write_text(json.dumps({
                 "rota": rota["rota"],
-                "geradoEm": "2026-11-08",
+                "geradoEm": date.today().isoformat(),
                 "verificado": True,
                 **({"inconclusivo": True} if inconclusivo else {}),
                 "fontes": rota["fontes"],
                 "impressao": impressao_das_fontes(rota),
-                "markdown": texto,
+                "markdown": com_titulo(rota["rota"], texto),
             }, ensure_ascii=False, indent=1), encoding="utf-8")
             return True, ciclo
         entrada = f"{perfil}\n\nTEXTO A CORRIGIR:\n{texto}\n\nFALHAS A CORRIGIR:\n" + \
