@@ -1628,3 +1628,13 @@ summary:focus-visible .cp-sanfona-seta {
     animation: none;
   }
 }
+
+/* <main> é item de flex-col no body: com `min-width: auto` (padrão), uma
+   tabela larga dentro de `overflow-x-auto` estica a PÁGINA e cria rolagem
+   lateral no celular — medido em 18/11/2026 na /paraopeba/auditoria (main de
+   452 px num viewport de 422). `min-width: 0` devolve o encolhimento ao item;
+   o scroll interno da tabela continua funcionando. */
+main {
+  min-width: 0;
+}
+
