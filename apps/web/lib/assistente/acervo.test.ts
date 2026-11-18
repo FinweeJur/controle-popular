@@ -93,6 +93,12 @@ describe("montarAcervo -- pedaços conhecidos das três fontes", () => {
     expect(f.texto.toLowerCase()).toContain("caged");
   });
 
+  it("post de serviço leva salário e titulação no pedaço do blog", () => {
+    const f = achar(montarAcervo(), "blog:uemg-abre-83-vagas-para-professor");
+    expect(f.texto).toContain("1.573,43");
+    expect(f.texto).toMatch(/titulação mínima/i);
+  });
+
   it("sugestão contextual vira pedaço com a frente derivada da rota", () => {
     const acervo = montarAcervo();
     const f = acervo.find((x) => x.id.startsWith("contexto:") && x.rota.startsWith("/congresso"));

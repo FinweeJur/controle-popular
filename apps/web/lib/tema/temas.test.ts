@@ -34,13 +34,13 @@ const RAIZ = blocos(":root");
 
 /** Qual token do CSS cada swatch deve reproduzir. */
 const TOKENS: Record<string, [string, string]> = {
-  pequi: ["--cp-primary", "--cp-accent"],
+  pequi: ["--cp-primary", "--cp-bg"],
   cerrado: ["--cp-primary", "--cp-secondary"],
   "mata-atlantica": ["--cp-primary", "--cp-accent"],
   caatinga: ["--cp-primary", "--cp-secondary"],
   pantanal: ["--cp-primary", "--cp-secondary"],
-  light: ["--cp-primary", "--cp-accent"],
-  dark: ["--cp-primary", "--cp-accent"],
+  light: ["--cp-primary", "--cp-bg"],
+  dark: ["--cp-primary", "--cp-bg"],
 };
 
 describe("swatches do menu de temas", () => {

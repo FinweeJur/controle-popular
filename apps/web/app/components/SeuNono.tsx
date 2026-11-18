@@ -6,11 +6,12 @@
  * 
  * Papel no portal:
  * Guia o cidadão por frentes temáticas (Cidades, Congresso, Judiciário, Meio Ambiente, Paraopeba),
- * respostas pré-curadas, sugestões contextuais da rota atual e degraus determinísticos da Regra de Escada.
+ * respostas pré-curadas, sugestões contextuais da rota atual e a IA do RAG.
  * Oferece modo widget flutuante e modo tela cheia expansível com histórico de turnos e painel de fontes.
  * 
  * Regras e decisões:
- * - Regra de Escada: intercepta termos diretos (Laboratório, Cidades, Empresas, Respostas Curadas) antes da IA.
+ * - Regra de Escada: a pergunta digitada vai à IA; a resposta curada só entra
+ *   por clique explícito na sugestão (não rouba o Enter).
  * - Efeito Typewriter: animação de digitação progressiva suave (~16ms) com cursor pulsante ▋ e fases de status.
  * - Acessibilidade: botão 'Pular animação', clique no cartão para aceleração e atalhos de alto contraste e fontes.
  * - Citação direta e auditável: marcadores [n] com deep links para fontes oficiais primárias.
@@ -29,8 +30,8 @@
  *   exige conferir as três (o comentário de cada uma traz a régua em px).
  * - Barra de busca fixa (pedido do dono, 03/10/2026): a janelinha abre com
  *   `SeuNonoBusca` no rodapé, não com o botão "Perguntar à IA". Digitar sugere
- *   páginas do portal e respostas pré-curadas (expandindo para cima); só o
- *   Enter SEM correspondência aciona a IA. Os níveis por baixo não mudaram.
+ *   páginas do portal e respostas pré-curadas (expandindo para cima); o
+ *   Enter sempre pergunta à IA. A curadoria só responde no clique do item.
  */
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
@@ -95,10 +96,7 @@ import {
   BotaoPularAnimacao,
   type StatusTypewriter,
 } from "./EfeitoTypewriter";
-import {
-  avaliarEscadaDeterminista,
-  type ResultadoEscada,
-} from "@/lib/assistente/escada-determinista";
+import type { ResultadoEscada } from "@/lib/assistente/escada-determinista";
 import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
 import PilhaBotao from "@/app/components/pilha/PilhaBotao";
 import useControlePilha from "@/app/components/pilha/useControlePilha";
@@ -708,9 +706,10 @@ const COMANDOS_COMPANHEIRO: ComandoAcessibilidade[] = [
  * 3) escolha a pergunta;
  * 4) vê a resposta com link para a página certa.
  *
- * No último degrau, a IA (RAG sobre o acervo do portal, `/api/chatbot`)
- * responde com citação `[n]` da fonte e ressalva visível. A IA é oferecida
- * sempre — o backend degrada com honestidade se não houver provedor.
+ * A pergunta digitada vai à IA (RAG sobre o acervo do portal, `/api/chatbot`)
+ * e responde com citação `[n]` da fonte e ressalva visível. A curadoria do
+ * menu continua disponível, mas só responde por clique explícito. O backend
+ * degrada com honestidade se não houver provedor.
  *
  * Expansível para TELA CHEIA (padrão NotebookLM): botão de expandir no
  * cabeçalho; em tela cheia, conversa com histórico à esquerda e painel de
@@ -1346,25 +1345,10 @@ export function SeuNono() {
     setNivel("ia");
     setStatusChat("consultando");
 
-    // 1. Degraus Determinísticos (Regra de Escada — Revelação Imediata)
-    const degrau = avaliarEscadaDeterminista(trimmed, pathname ?? undefined);
-    if (degrau) {
-      setResultadoEscada(degrau);
-      setStatusChat("pronto");
-      setCarregando(false);
-      setTurnosIa((turnos) => [
-        ...turnos,
-        {
-          pergunta: trimmed,
-          resposta: degrau.texto,
-          fontes: [],
-          escada: degrau,
-        },
-      ]);
-      return;
-    }
-
-    // 2. Chamada à API RAG
+    // A pergunta digitada vai direto ao RAG. O degrau determinístico continua
+    // nas SUGESTÕES da barra (clique explícito em resposta pré-curada), mas
+    // não pode responder no lugar da IA: era o que fazia o leitor receber
+    // sempre a mesma resposta curada e nunca o texto gerado.
     try {
       const resp = await fetch("/api/chatbot", {
         method: "POST",
@@ -2347,9 +2331,9 @@ export function SeuNono() {
           </div>
 
           {/* Rodapé: barra de busca FIXA do Seu Nonô (pedido do dono,
-              03/10/2026). É o novo degrau de entrada — enquanto a pessoa
-              digita, as sugestões sobem acima da barra (páginas do portal e
-              respostas pré-curadas); Enter sem correspondência aciona a IA. */}
+              03/10/2026). Enquanto a pessoa digita, as sugestões sobem acima
+              da barra (páginas e respostas pré-curadas). Enter sempre pergunta
+              à IA; sugestão só responde/navega com clique ou setas. */}
           <div className="shrink-0 border-t border-border bg-surface-2 px-3 py-2">
             <SeuNonoBusca
               pathname={pathname}
@@ -2358,8 +2342,8 @@ export function SeuNono() {
               aoEnviarIa={executarPerguntaIa}
               aoEscolherCuradoria={aoEscolherCuradoria}
             />
-            <p className="mt-1 text-center text-[.65rem] text-text-soft">
-              {nivel === "frentes" && "Digite para navegar no portal ou perguntar à IA"}
+            <p className="mt-1 text-center text-xs text-text-soft">
+              {nivel === "frentes" && "Digite para perguntar à IA; ↑↓ e Enter abrem uma sugestão"}
               {nivel === "categorias" && "Passo 2: tema"}
               {nivel === "perguntas" && "Passo 3: pergunta"}
               {nivel === "resposta" && "Resposta pré-curada"}
