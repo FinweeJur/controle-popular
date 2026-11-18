@@ -404,6 +404,77 @@ Varredor `scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
 EIA/RIMA publicado não é aprovação — a ata só registra que houve audiência.
 Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica`.
 
+## INEA-RJ — EIA/RIMA por ano e audiências públicas do Rio (HTML, uma página por ano)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-inea-rj-estudos.py` →
+`apps/web/data/inea-rj-estudos.json`. Sondagem de partida no plano
+[PLANO-AMBIENTAL-27-UF.md](../planos/PLANO-AMBIENTAL-27-UF.md), seção
+"RJ — sondado ao vivo em 17/11/2026".
+
+**O INEA não tem API nem busca para estudo ambiental.** A lista é HTML
+institucional: `GET https://www.inea.rj.gov.br/eia-rima-AAAA/` (uma página por
+ano) e `https://www.inea.rj.gov.br/audiencias-publicas/` (lista única, sem
+paginação). `robots.txt` veda só `/wp-admin/` — `Disallow: /wp-admin/`,
+`Allow: /wp-admin/admin-ajax.php` (lido 18/11/2026). O SELCA
+(`portallicenciamento.inea.rj.gov.br`), que teria o processo, é login de
+requerente com reCAPTCHA: fora de alcance.
+
+📊 **136 documentos**: 130 das 19 páginas-ano (2007–2025) + 6 de audiências.
+
+| tipo | documentos | o que é |
+|---|---:|---|
+| `eia` | 14 | estudo de impacto ambiental declarado no título ou no nome do arquivo |
+| `rima` | 12 | relatório de impacto ambiental |
+| `eia_rima` | 14 | volume único ou "EIA/RIMA" no título |
+| `outro` | 90 | arquivo da lista cujo nome não diz EIA nem RIMA (o acervo antigo é `.7z` sem rótulo) |
+| `audiencia` | 6 | edital ou ata da página de audiências |
+
+Formatos: **85 `.7z`**, 35 `.pdf`, 8 `.zip`, 2 `.rar` e 6 no Google Drive.
+Nada disso é baixado (centenas de MB por estudo): a linha traz a URL direta e
+só 1 amostra por formato é conferida pelo magic number (`%PDF-`, `PK`,
+`Rar!`, `7z¼¯'`, e a página `/view` do Drive).
+
+⚠️ **Quatro armadilhas medidas, todas silenciosas:**
+
+1. **2026 responde 404** (a página-mãe foi atualizada em 04/2024 e o ano
+   corrente ficou sem página). O coletor para no primeiro 404 e não pede 2027
+   em diante; quando a página de 2026 aparecer, ela entra sozinha.
+2. **2022 existe e a página-mãe NÃO linka.** Quem seguisse só os links da mãe
+   perderia 5 documentos. Por isso o laço vai de 2007 até o maior ano linkado,
+   e não apenas nos anos linkados.
+3. **2021 inteiro está no Google Drive** (`/file/d/<id>/view`), com href sem
+   extensão — o filtro por `.pdf` zerava o ano. Dos 6 links do Drive
+   conferidos, **2 respondem 404**: link morto da fonte, a mesma praga medida
+   em MG (27% dos EIA/RIMA não abrem).
+4. **href com espaço cru** (`...E_07_203.110_2005 Itaipava ...7z`): o navegador
+   codifica, o `urllib` recusa. O coletor grava a URL com `%20`/`%C3%A9` e o
+   resto igual.
+
+E uma exceção de ética registrada no cabeçalho do módulo: **403 num arquivo
+isolado** (um `.rar` de 2011, Apache "You don't have permission") não aborta a
+rodada, porque o mesmo host seguiu servindo o resto no mesmo minuto — vira
+dado (`erro: HTTP 403`). 429 e 403 na **página** param tudo.
+
+**Município não é publicado.** Sai do título + do parágrafo de descrição, com o
+dicionário das 92 cidades do RJ (o mesmo de
+`supabase/betim/migrations/0092_ref_municipios_nacional.sql`): (1) "município
+de X"; (2) "X/RJ"; (3) o único nome de município do texto. **79 identificados,
+57 `null`** (31 cidades). `municipio_base` diz de qual regra saiu. Casos que
+ficam `null` de propósito: "entre os municípios de Macaé e Casimiro de Abreu"
+(dois), "Rio de Janeiro" sozinho (cidade e estado, exige padrão explícito) e
+nome coloquial fora do dicionário ("Búzios" em vez de "Armação dos Búzios").
+Ambíguo vira `null`, nunca chute.
+
+**Dado pessoal:** nenhum CPF entra — todo campo de texto passa pelo varredor
+mod-11 do repo (CPF válido vira `[CPF redigido]`); o esperado aqui é nome de
+empreendimento. Varredor `--extra` passa limpo.
+
+**Ressalva editorial:** EIA/RIMA publicado **não** é licença aprovada, e
+edital/ata de audiência **não** é licença concedida — a fonte publica o estudo
+apresentado e o registro de que houve audiência. O INEA não publica número de
+licença nesta lista, e vínculo audiência ↔ estudo não é publicado. Consulta
+oficial: `https://www.inea.rj.gov.br/publicacoes/consulta-eia-rima/`.
+
 ## MPPA-PA — TAC do Conselho Superior (uma tabela HTML por ano)
 
 Medido em 17/11/2026. Coletor: `scripts/coletar-mppa-pa-tacs.py` →
