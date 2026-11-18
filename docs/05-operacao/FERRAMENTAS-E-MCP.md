@@ -11,6 +11,7 @@
 
 - [Ferramentas de CLI](#ferramentas-de-cli)
 - [CodeScene MCP (medido em 09/10/2026)](#codescene-mcp-medido-em-09102026)
+- [MCP do Controle Popular](#mcp-do-controle-popular)
 
 ## Ferramentas de CLI
 
@@ -80,6 +81,21 @@ Anotações:
   [PENDENCIAS-07-10.md](/docs/historico/planos/PENDENCIAS-07-10.md) e
   [HOTSPOTSCODESCENE-08-10.md](/docs/historico/planos/HOTSPOTSCODESCENE-08-10.md).
 
+## MCP do Controle Popular
+
+Servidor MCP local, **somente leitura**, que expõe o acervo público a agentes de
+IA: `buscar_editais`, `listar_barragens` e `abrir_fonte`. Roda por `stdio`, lê
+só arquivo de `apps/web/data/`, não acessa rede e não escreve. Código em
+`scripts/mcp-cp/`; guia completo, registro no cliente e limites em
+[MCP-CP.md](MCP-CP.md).
+
+```bash
+cd scripts/mcp-cp && npm install && npm run build && node dist/index.js
+```
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §10 em 18/10/2026, sem perda de texto.
+
+- **18/11/2026 — MCP do Controle Popular.** Guia próprio em
+  [MCP-CP.md](MCP-CP.md).
