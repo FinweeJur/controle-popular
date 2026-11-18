@@ -44,6 +44,16 @@ O `_manifest.json` de cada conjunto guarda **URL de origem, bytes, SHA-256 e
 data do download** por arquivo. É o que permite provar que o bruto é o que o
 ONS publicou.
 
+## Estado medido (18/11/2026)
+
+- **4.851 de 4.852** arquivos Parquet, **4,2 GB** no Drive.
+- Uma falha é **do ONS**: `balanco_dessem_geral/BALANCO_DESSEM_GERAL_2026_05_30.parquet`
+  responde **404** no S3 — o catálogo aponta para arquivo inexistente. Não é
+  problema do coletor; fica registrado e será tentado de novo na rotina.
+- O tamanho declarado no CKAN às vezes está errado (para mais ou para menos).
+  O manifesto grava **bytes reais + SHA-256**, que valem mais que o campo
+  `size` do catálogo.
+
 ## Como rodar
 
 ```bash
