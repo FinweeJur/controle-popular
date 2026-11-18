@@ -47,7 +47,7 @@ As outras frentes:
 | EIA-RIMA | `etl/betim/dados/ambiental-estudos.json` — 1.016 audiências, 2.439 linhas, 359 municípios | só SISEMA-MG |
 | Acordos (TAC) | GTAC-MG — 2.002 termos, 392 municípios | só MG |
 | Barragens de mineração | `apps/web/data/barragens-sigbm.json` | **nacional desde 17/11** (908 em 21 UF); a tela é de MG |
-| Barragens, todos os usos | `snisb_barragens` no banco | **28.159 barragens em 27 UF e 3.562 municípios** desde 17/11 (rodada `--uf` nas 27). MG segue com 2.212 em 443 — a tela filtra pelo prefixo `31`, então o número publicado não mudou |
+| Barragens, todos os usos | `snisb_barragens` no banco | **28.167 barragens em 27 UF e 3.563 municípios** em produção desde 18/11 (rodada `--uf` nas 27 contra o Heroku). MG subiu para 2.273 em 445 — a fonte atualizou depois da rodada local; a tela filtra pelo prefixo `31` |
 | Licenciamento por município | 19.713 linhas em 831/853 cidades | só MG |
 
 O mapeamento dos 27 órgãos já existe desde 17/09/2026 em

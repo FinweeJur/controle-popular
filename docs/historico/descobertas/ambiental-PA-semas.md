@@ -145,6 +145,25 @@ Allow: /
 
 ## 8. Veredito
 
+> **18/11/2026 — o acesso público fechou.** Medido ao vivo: `ListarProcessos.aspx` e
+> `VisualizarEmpreendimento.aspx?id=...` agora devolvem **404**, e `index.aspx` /
+> `ListarEmpreendimento.aspx` devolvem a página **"Acesso ao Sistema"** (login, 10.098 B),
+> não mais a grade com "Foram encontrados 115.980 registros". O coletor parou na
+> página **1.393 de 11.598** com **13.778 empreendimentos em 300 grafias de
+> município** (144 existem no PA), já salvos no checkpoint e publicados como
+> **parcial** em `semas-pa-empreendimentos.json` (`truncado: true`, total da fonte
+> `null` com nota).
+>
+> Das 13.778 linhas, **13.080 (94,9%)** casam por nome exato com os 144 municípios
+> do PA. As que não casam são de dois tipos: nome **truncado pela própria fonte**
+> ("São Sebastião da Bo…", "Santa Maria das Bar…") e empreendedor de **outra UF**
+> (São Paulo 31, Rio 18, Brasília 15, BH 10). Não é erro do coletor; é o campo.
+>
+> A tarefa `CP-SIMLAM-PA` continua de hora em hora por 1–2 requisições: se o
+> portal reabrir, ela retoma do checkpoint sozinha. Enquanto estiver fechado, o
+> coletor aborta com mensagem clara em vez de gravar catálogo vazio.
+
+
 **Vira coletor agora — mas só do catálogo de empreendimentos por município. Licença fica impossível.**
 
 O que justifica o "agora":
