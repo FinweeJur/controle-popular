@@ -29,7 +29,9 @@
  * diferença — arredondamento, medido em `cfem.test.ts`.
  */
 
-import bruto from "../../data/anm-cfem.json";
+import { lerDadoDeArquivo } from "./dado-de-arquivo";
+
+const bruto = lerDadoDeArquivo<ArquivoCfem>("anm-cfem.json");
 
 export interface ResumoEnte {
   total: number;

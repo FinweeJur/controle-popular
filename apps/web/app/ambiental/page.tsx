@@ -101,6 +101,36 @@ function montarBlocosInicio(dados: DadosAmbiental): Bloco[] {
   const { estatisticasCar, sirenejud } = dados;
   return [
     {
+      titulo: "Pará — os cinco acervos ambientais abertos",
+      linha: "175 estudos e audiências · 422 TACs · R$ 2,83 bi de CFURH · 712 barragens do SNISB · 120 do SIGBM",
+      texto:
+        "O Pará publica dado ambiental em cinco lugares que não conversam entre si. A página mede cada acervo separado, com a data da coleta, e diz o que cobre e o que não cobre — inclusive o catálogo do SIMLAM, que parou em 12% quando o acesso público fechou.",
+      fase: "NOVO",
+      href: "/ambiental/para",
+      pronta: true,
+      linkTexto: "Ver o Pará →",
+    },
+    {
+      titulo: "Mineração — CFEM por município",
+      linha: "R$ 48,26 bi repassados desde 2007, em 4.026 municípios de 27 UF",
+      texto:
+        "Quanto a mineração pagou ao município, ano a ano, pela ANM: ranking por UF, os municípios que mais receberam e a concentração calculada. Repasse não é aplicação — a página diz isso na cara.",
+      fase: "NOVO",
+      href: "/ambiental/mineracao",
+      pronta: true,
+      linkTexto: "Ver a CFEM →",
+    },
+    {
+      titulo: "Terra — terras indígenas e assentamentos",
+      linha: "667 terras indígenas (125,4 Mha) e 9.964 assentamentos (140,9 Mha)",
+      texto:
+        "As duas bases federais de terra por estado, com o Pará em destaque. Os hectares nunca são somados num total único: são cadastros de finalidades diferentes. A página também marca as áreas impossíveis que a fonte do INCRA publicou.",
+      fase: "NOVO",
+      href: "/ambiental/fundiario",
+      pronta: true,
+      linkTexto: "Ver o fundiário →",
+    },
+    {
       titulo: "Cadastro Ambiental Rural (CAR / IEF MG)",
       linha: `${formatNumberBR(estatisticasCar.totalImoveis)} imóveis nas 14 URFBios — tempo médio de espera de ${formatNumberBR(estatisticasCar.tempoMedioAnaliseDias)} dias`,
       texto:

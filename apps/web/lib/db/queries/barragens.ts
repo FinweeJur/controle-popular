@@ -88,6 +88,89 @@ export async function contarBarragensMg(): Promise<ContagemBarragensMg> {
   );
 }
 
+/** Cobertura do SNISB em UMA UF — o agregado que página de estado fora de MG
+ *  precisa e a de MG não tem. */
+export interface CoberturaSnisbUf {
+  total: number;
+  municipios: number;
+  /** Linhas com `nivel_perigo` vazio. A fonte quase nunca preenche. */
+  semNivelPerigo: number;
+  porCategoriaRisco: { valor: string; total: number }[];
+  porMunicipio: { idIbge: string; nome: string; total: number }[];
+}
+
+const COBERTURA_SNISB_VAZIA: CoberturaSnisbUf = {
+  total: 0,
+  municipios: 0,
+  semNivelPerigo: 0,
+  porCategoriaRisco: [],
+  porMunicipio: [],
+};
+
+/**
+ * SNISB de uma UF, em agregados: quantas barragens, em quantos municípios,
+ * como se distribuem por categoria de risco e por município.
+ *
+ * A UF entra como PREFIXO do código IBGE (`"31"` MG, `"15"` PA) porque é o
+ * que a tabela publica — a mesma régua do `like '31%'` de
+ * `contarBarragensMg`. Parametrizado em vez de copiado: a página do Pará
+ * precisa exatamente desta conta, e duas cópias do SQL divergiriam na
+ * primeira correção.
+ *
+ * `porMunicipio` sai ordenado do maior para o menor; `nome` cai no código
+ * IBGE quando `ref_municipios` não tem a linha (o join é `left` de
+ * propósito: perder a barragem por causa do nome seria pior que mostrar
+ * o código).
+ */
+export async function coberturaSnisbUf(prefixoIbge: string): Promise<CoberturaSnisbUf> {
+  return comBancoReserva(
+    async (db) => {
+      const escopo = sql`${snisb_barragens.id_municipio} like ${`${prefixoIbge}%`}`;
+
+      const [geral] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          municipios: sql<number>`count(distinct ${snisb_barragens.id_municipio})::int`,
+          semNivelPerigo: sql<number>`count(*) filter (where ${snisb_barragens.nivel_perigo} is null or ${snisb_barragens.nivel_perigo} = '')::int`,
+        })
+        .from(snisb_barragens)
+        .where(escopo);
+
+      const [risco, municipios] = await Promise.all([
+        db
+          .select({
+            valor: sql<string>`coalesce(${snisb_barragens.categoria_risco}, 'Sem informação')`,
+            total: sql<number>`count(*)::int`,
+          })
+          .from(snisb_barragens)
+          .where(escopo)
+          .groupBy(sql`coalesce(${snisb_barragens.categoria_risco}, 'Sem informação')`)
+          .orderBy(sql`count(*) desc`),
+        db
+          .select({
+            idIbge: snisb_barragens.id_municipio,
+            nome: ref_municipios.nome,
+            total: sql<number>`count(*)::int`,
+          })
+          .from(snisb_barragens)
+          .leftJoin(ref_municipios, eq(snisb_barragens.id_municipio, ref_municipios.id_ibge))
+          .where(escopo)
+          .groupBy(snisb_barragens.id_municipio, ref_municipios.nome)
+          .orderBy(sql`count(*) desc`),
+      ]);
+
+      return {
+        total: geral?.total ?? 0,
+        municipios: geral?.municipios ?? 0,
+        semNivelPerigo: geral?.semNivelPerigo ?? 0,
+        porCategoriaRisco: risco,
+        porMunicipio: municipios.map((m) => ({ ...m, nome: m.nome ?? m.idIbge })),
+      };
+    },
+    { vazio: (r) => r.total === 0, padrao: COBERTURA_SNISB_VAZIA, rotulo: "barragens" }
+  );
+}
+
 export interface BarragemFeamMg {
   idIbge: string;
   municipio: string;
