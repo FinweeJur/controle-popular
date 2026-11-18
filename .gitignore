@@ -108,6 +108,12 @@ apps/web/data/ons/*.csv
 apps/web/data/ons/*.xlsx
 apps/web/data/ons/*.parquet
 
+# PNTP/Atricon (scripts/coletar-pntp.py): os quatro ZIPs anuais somam ~830 MB e
+# a planilha de dentro deles nao e versionada. O cache vive na pasta temporaria
+# (%TEMP%\cp-pntp); o que o repositorio recebe e so o JSON de
+# apps/web/data/pntp/. Regra aqui como cinto de seguranca.
+apps/web/data/pntp/*.xlsx
+
 # HTML bruto da pagina do repasse do Acordo de Brumadinho
 # (scripts/coletar-repasse-brumadinho-mg.mts): 347 KB de uma requisicao, mantido
 # em disco so para nao repedir os MESMOS bytes a um servico publico a cada

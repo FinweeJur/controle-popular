@@ -693,6 +693,7 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 | [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
 | [`FONTES-RIO-DOCE.md`](FONTES-RIO-DOCE.md) | Plataforma Rio Doce: DataJud, WFS da SEMAD, Fundação Renova e CKAN MG (Fase 0, 12/10/2026) |
 | [`ENERGIA-CONTRATOS.md`](ENERGIA-CONTRATOS.md) | energia elétrica: SIGA/ANEEL, leilões, tarifas, PLD/CMO, PIS/COFINS e ICMS (fase 2, 18/11/2026) |
+| [`PNTP-ATRICON.md`](PNTP-ATRICON.md) | PNTP/Atricon: índice de transparência por ente, recorte de MG 2022–2025 e resumo nacional (18/11/2026) |
 
 ## Condicionantes — piloto Irapé e Setúbal (descoberta 23/09 + downloads)
 
