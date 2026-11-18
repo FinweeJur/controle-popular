@@ -640,6 +640,39 @@ saída em `apps/web/data/funai-terras-indigenas.json`.
   dígitos crus disparam o varredor de CPF do repositório, e a sigla da CR
   identifica a mesma unidade.
 
+## DNIT — malha rodoviária federal por estado (GeoServer WFS, camada `vw_snv_rod`)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-dnit-rodovias.py`,
+saída em `apps/web/data/dnit-rodovias.json` (961 KB).
+
+- **URL:** `https://servicos.dnit.gov.br/dnitgeo/geoserver/ows` — WFS aberto,
+  sem chave, 73 camadas; é o mesmo serviço por trás do VGeo em
+  `https://servicos.dnit.gov.br/vgeo/`. `robots.txt` do host: **404** (sem
+  declaração) → liberado por padrão, UA honesto `finweejur/github artur colito`.
+- **A camada é HISTÓRICO.** `numberMatched` diz **343.892** no país, mas isso é
+  linha de versão do SNV (`Versao_SNV`, `dt_ini`), não trecho: o trecho
+  `307BAC0020` do Acre ocupa 45 linhas, e os 3.111 registros do AC são **87
+  trechos**. O coletor fica com a versão mais recente de cada `Codigo_SNV`:
+  **8.655 trechos, 27 UFs, 169 rodovias, 129.035,5 km de eixo** (144.745,3 km
+  somando a extensão trecho a trecho).
+- **`startIndex` exige `sortBy=id_snv`.** A camada é *view* sem chave: paginar
+  sem ordenação devolve `IOException: Cannot do natural order without a primary
+  key` — XML com status **200** (WFS 1.0.0) ou **400** (2.0.0). Com
+  `sortBy=id_snv` a paginação é estável (MG: 5 páginas, 43.615 linhas).
+- **Sem geometria.** 3 feições com `MultiLineString` medem 138.376 B; a malha
+  inteira passaria de 10 GB. O arquivo traz atributos (rodovia, km inicial/final,
+  UF, superfície, administração, extensão, versão) e **sem** bbox — bbox exige a
+  geometria que não cabe.
+- **A camada não tem município.** `Local_Inicio`/`Local_Fim` são pontos de
+  referência ("ENTR PA-370", "URUARÁ"), não município.
+- **Trecho se sobrepõe a trecho** da mesma rodovia: PA/BR-163 soma 2.540,9 km
+  sobre 2.000,0 km de eixo; MG/BR-040, 960,8 km sobre 831,2 km. Por isso o
+  arquivo publica `km` (soma declarada) e `km_eixo` (união), e nenhum dos dois é
+  a extensão oficial da rodovia.
+- **Superfície (`Superficie_Federal`) vem nula** em parte dos trechos, e o texto
+  de `Administracao` muda entre versões ("Adm Estadual" → "Estadual"). Nulo não
+  significa "sem pavimento".
+
 ## INCRA — projetos de assentamento do país inteiro (CSV do SIPRA)
 
 Medido em 18/11/2026. Coletor: `scripts/coletar-incra-assentamentos.py`,
