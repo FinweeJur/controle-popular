@@ -1,0 +1,4 @@
+# Dependências e saída de build deste pacote (não são fonte).
+node_modules/
+dist/
+*.tsbuildinfo

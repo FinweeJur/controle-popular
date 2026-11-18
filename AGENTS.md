@@ -190,6 +190,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Revisão de código | [REVISAO-CODIGO.md](docs/04-arquitetura/REVISAO-CODIGO.md) |
 | Operação, build e deploy | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | [FERRAMENTAS-E-MCP.md](docs/05-operacao/FERRAMENTAS-E-MCP.md) |
+| Servidor MCP do acervo (leitura para agentes) | [MCP-CP.md](docs/05-operacao/MCP-CP.md) |
 | Fontes e coleta | [FONTES.md](docs/06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md) |
 | Edição sem código | [EDICAO.md](docs/07-edicao/EDICAO.md) |

@@ -61,6 +61,7 @@ automáticamente pelos agentes de código.
 | Manual de RAG, LLM, avaliação e agentes locais | MANUAL-RAG-E-LLM | [`03-desenvolvimento/MANUAL-RAG-E-LLM.md`](03-desenvolvimento/MANUAL-RAG-E-LLM.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
+| Servidor MCP do acervo (leitura para agentes) | MCP-CP | [`05-operacao/MCP-CP.md`](05-operacao/MCP-CP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
 | Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
