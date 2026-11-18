@@ -125,7 +125,15 @@ Cada ficha responde 6 perguntas, e é isso que decide se vira coletor:
 Pela experiência das 15 UF já feitas, a expectativa é cerca de 8 viáveis e 4
 travados.
 
-### RJ — sondado ao vivo em 17/11/2026
+### RJ - sondado ao vivo em 17/11/2026
+
+> **18/11/2026 — EIA-RIMA do RJ coletado.** `scripts/coletar-inea-rj-estudos.py` →
+> `apps/web/data/inea-rj-estudos.json`: **136 documentos** (2007–2025 + 6 audiências),
+> `truncado: false`, checkpoint por página-ano. Duas coisas que a sondagem não tinha
+> visto: **2022 existe e a página-mãe não linka** (5 documentos) e **2021 inteiro está
+> no Google Drive** (2 dos 6 links mortos). Município só sai do nome do empreendimento:
+> 79 de 136 identificados, 57 `null` por ambiguidade — não houve chute. O licenciamento
+> do SELCA segue fora de alcance (login + reCAPTCHA).
 
 | Item | Achado |
 |---|---|
