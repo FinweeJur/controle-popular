@@ -228,7 +228,7 @@ Quanto do parque está disponível e quanto tempo fica parado. É o que explica 
 | [Indicadores de Disponibilidade de Função Geração para o SIN – Base Mensal](https://dados.ons.org.br/dataset/ind-disponibilidade-geracao-sin) | `ind-disponibilidade-geracao-sin` | CSV, JSON, PARQUET, PDF, XLSX | 51 | 0,2 | 0,0 | 18/11/2026 |
 
 
-### Institucional (1 conjuntos, 0,0 MB declarados)
+### Institucional (1 conjunto, 0,0 MB declarados)
 
 Metadado do próprio portal, não série de operação.
 
