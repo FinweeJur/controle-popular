@@ -172,6 +172,7 @@ Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doaco
 | Terras indígenas | WFS FUNAI (EPSG:4674) | 16 polígonos em MG (15 TIs; Xacriabá em 2 fases); 2 na bacia do Paraopeba (Katurama, São Joaquim de Bicas; Caxixé, Pompéu, em fase *Delimitada*). **Paginar por UF — GetFeature sem filtro dá 403 do nginx**; mostrar todas as fases (direito originário, CF 231; Convenção 169); filtro por fase é decisão do usuário |
 | Processos minerários | SIGMINE/ANM, zip diário (exige UA de navegador) | 54.916 polígonos em MG; só 7.083 (12,9%) autorizam extrair, 3.184 (5,8%) são Concessão de Lavra. Publicar como "minas em operação" (7.083) + "interesse minerário" separadas; nunca somar nem chamar o conjunto de empreendimentos; CFEM não localiza mina |
 | Barragens de mineração | SIGBM/ANM, dump CSV aberto (dadosabertos.anm.gov.br, CC-BY, atualização diária) | 909 barragens no Brasil, 320 em MG (59 municípios) em 30/08/2026; 124 colunas, cp1252, sem API de consulta. Coletor `etl.apis.sigbm_anm` → `apps/web/data/barragens-sigbm.json`. Vocabulário: `Nível de Alerta` ≠ `Emergência Nivel 1..3`; situação Ativa/Inativa/Em Construção/Em Descaracterização. Não reconcilia com FEAM (249) nem WFS IDE (259) — cadastros sem identificador comum |
+| CFEM — repasse por município | CFEM/CFEM_Distribuicao.csv, dump CSV aberto (dadosabertos.anm.gov.br, CC-BY, atualização diária) | 2.239.128 linhas, 317 MB, série 2007–2026, medido 18/11/2026: 4.026 municípios com repasse, R$ 45,67 bi a municípios e R$ 2,59 bi a estados (sem linha de União no arquivo). PA: 100 municípios, R$ 17,79 bi somados. Coletor `scripts/coletar-anm-cfem.py` → `apps/web/data/anm-cfem.json`, agregado por município/ano. cp1252, vírgula decimal, chave `CodigoEnte` (IBGE de 7 dígitos) — filtrar por código, nunca por nome. Repasse ≠ arrecadação ≠ aplicação; valor nominal |
 | ZAS | FEAM/IDE-Sisema (geoserver já usado) | ZAS real (156) + mancha de inundação (156); a ZAS é trecho do **vale à jusante** (Res. ANM 95/2022; piso 10 km ou 30 min de onda), não círculo — o círculo de 8 km superestima até 127× e erra a direção. 8 km é outra coisa (raio de TI, Portaria Interministerial 60/2015): não fundir. 103 barragens sem mancha → "sem mancha ≠ sem risco"; 24 ZAS na bacia; `status_pae` na etiqueta; PAE textual só via LAI |
 | Quilombolas | INCRA WFS (22 feições MG, só GML, eixo lat,lon; "vedado uso comercial") + Palmares (lista CC-BY desatualizada 05/07/2022, não usada) | 13/14 feições antigas casaram por geometria; 13 territórios INCRA fora das camadas atuais (decisão pendente p/ Pimentel); sobreposições reais com lavra de granito: maior no Baú, Araçuaí (551,3 ha, GRANSENA) |
 | PCTs não indígenas/quilombolas | **Não existe base com poligonal** | Lacuna declarada; o mapa deve dizer que não os representa |
@@ -403,6 +404,64 @@ Varredor `scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
 **Ressalva editorial:** audiência publicada **não** é licença concedida, e
 EIA/RIMA publicado não é aprovação — a ata só registra que houve audiência.
 Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica`.
+
+## SEMACE-CE — licenciamento e fiscalização ambiental do Ceará (API aberta, sem CAPTCHA)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-semace-ce.py` →
+`apps/web/data/semace-ce.json`. Sondagem completa em
+`docs/historico/descobertas/ambiental-PE-CE-licenciamento.md`.
+
+**A SEMACE publica o acervo em API REST, não em página.** O portal
+`https://servicos.semace.ce.gov.br/consultaProcesso` é uma casca React; o dado
+está em `SemaceMobileWS/webService/` (caminho revelado pelo `bundle.js`):
+
+| rota | método | acervo medido |
+|---|---|---:|
+| `consultaProcesso/processos` | POST | **205.820 processos** de licenciamento |
+| `fiscalizacao/findProcessosFiscalizacao` | POST | **17.974 autos** de fiscalização |
+| `consultaProcesso/infofilters` | GET | 184 municípios, 402 atividades, 125 tipos de licença |
+| `consultaProcesso/downloadListArquivo` | POST | XLS de 16 colunas (export do mesmo acervo) |
+
+Sem login, sem CAPTCHA e sem `robots.txt` (`servicos.semace.ce.gov.br/robots.txt`
+→ 404; o portal `www.semace.ce.gov.br` responde 404 e hoje nem fecha o TLS).
+Não achei termo de uso que proíba acesso automatizado; ainda assim o coletor
+usa UA honesto, 2 s entre requisições e lotes de 1.000.
+
+⚠️ **Duas armadilhas de protocolo.** `Content-Type` tem de ser `text/plain`
+(com `application/json` o servidor devolve **415**), e o `filter` não aceita
+objeto vazio nem parcial: `{"filter":{}}` devolve **500**. Vai o objeto de 19
+chaves que o app monta (`digital: "ambos"`, `unidadesConservacoes: ""`, etc.).
+A fiscalização tem o seu, com 9 chaves.
+
+⚠️ **O XLS não é o caminho.** `downloadListArquivo` aceita só `{filter, limit}`
+e o app manda `limit: totalRegistro` — o acervo inteiro numa requisição só, que
+é exatamente o pedido que estoura o gateway (5.000 já deu **504** uma vez). A
+rota JSON gêmea aceita `pagina` (0-based) e traz mais campos. `fiscalizacao/downloadListArquivo`
+está 500/504 desde a sondagem.
+
+⚠️ **A fonte cai inteira, e o coletor sabe disso.** Em 18/11/2026, das 16h40 às
+17h, TODA chamada ao `SemaceMobileWS` devolveu `504 Gateway Time-out` em 30 s —
+inclusive `infofilters`, que é lookup estático — enquanto o HTML do portal
+seguia em 200. Não é payload: é backend. Por isso o checkpoint é por lote e há
+disjuntor: **3 falhas seguidas param a rota naquela rodada** (insistir nos 200
+lotes restantes seria 1h40 martelando servidor quebrado) e os lotes que faltam
+ficam registrados. Re-rodar retoma de onde parou; lote em cache nunca é
+rebaixado.
+
+⚠️ **Filtro por município não funciona** (`cidadeId: [1122]` → 500;
+`cidade: "Abaiara"` → 0 registro). O recorte municipal é feito do nosso lado,
+pelo campo `cidade`; o de-para com código IBGE está em `infofilters`.
+
+**Dado pessoal.** As duas rotas devolvem `cpfCnpj`, `interessado` (licenciamento)
+e `cliente` (fiscalização) em texto claro. O coletor não grava CPF: run de 11
+dígitos vira `null` + `doc_redigido: 1`, só CNPJ de 14 dígitos é mantido, e os
+campos de nome de pessoa física **nem entram na linha**. Varredor
+`scripts/checar-dado-pessoal-em-dado.py --extra apps/web/data/semace-ce.json`
+roda limpo.
+
+**Ressalva editorial:** processo em análise ou com licença emitida **não** é
+licença em vigor; auto de fiscalização **não** é condenação — cabe defesa e o
+julgamento pode arquivar. O JSON publica os números da fonte sem juízo nosso.
 
 ## INEA-RJ — EIA/RIMA por ano e audiências públicas do Rio (HTML, uma página por ano)
 
