@@ -99,6 +99,15 @@ apps/web/.tmp-salic/
 # docs/FONTES-AUDITORIA-AJRI.md.
 .tmp-fontes/
 
+# Bruto dos dados abertos do ONS (scripts/coletar-ons-energia.py). O coletor
+# baixa o CSV anual em pasta temporaria e apaga no fim; o que fica versionado
+# e so o JSON mensal agregado em apps/web/data/ons/. A regra aqui e cinto de
+# seguranca para quem rodar com --bruto-dir apontando para dentro do repo:
+# 27 anos de balanco horario somam ~122 MB.
+apps/web/data/ons/*.csv
+apps/web/data/ons/*.xlsx
+apps/web/data/ons/*.parquet
+
 # HTML bruto da pagina do repasse do Acordo de Brumadinho
 # (scripts/coletar-repasse-brumadinho-mg.mts): 347 KB de uma requisicao, mantido
 # em disco so para nao repedir os MESMOS bytes a um servico publico a cada
