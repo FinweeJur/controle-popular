@@ -70,6 +70,12 @@ RE_CPF = r"\b[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}\b|\b[0-9]{11}\b"
 # varredura daquele padrÃ£o morre em silÃªncio para quem sÃ³ olha o exit code. A
 # primeira versÃ£o deste arquivo usava os dois. Filtro que precisaria de
 # lookahead se faz em Python, depois â€” ver `achar_segredo`.
+# Trechos que provam placeholder. Vira em 18/11/2026, quando a varredura
+# passou a casar so o trecho (-o) e a distincao "isto e exemplo" deixou
+# de existir na linha inteira.
+SINTETICOS_SEGREDO = ("nao-pode-vazar", "senha-falsa", "changeme",
+                      "example", "placeholder", "xxxx")
+
 SEGREDOS = [
     (r"\bsk-[A-Za-z0-9_-]{20,}", "chave de API estilo OpenAI"),
     (r"\bgh[pousr]_[A-Za-z0-9]{30,}", "token do GitHub"),
@@ -77,7 +83,7 @@ SEGREDOS = [
     (r"\bAIza[0-9A-Za-z_-]{35}", "chave de API do Google"),
     (r"\bxox[baprs]-[0-9A-Za-z-]{10,}", "token do Slack"),
     (r"BEGIN [A-Z ]*PRIVATE KEY", "chave privada"),
-    (r"postgres(ql)?://[^:/@ ]+:[^@ ]{4,}@", "string de conexÃ£o com senha"),
+    (r"postgres(ql)?://[^:/@ ]+:[^@ ]{4,}@[^ \"'`]*", "string de conexÃ£o com senha"),
     # âŸ² 13/08: SEXTA TRAVA CEGA DO DIA, e esta era sobre segredo â€” a matÃ©ria
     # deste script. Um agente commitou `Authorization: APIKey <base64>` do
     # DataJud num .md e a varredura passou VERDE. O alcance estava certo
@@ -190,7 +196,10 @@ def achar_cpf(staged: bool) -> list[tuple[str, str]]:
 def achar_segredo(staged: bool) -> list[tuple[str, str, str]]:
     achados = []
     for padrao, rotulo in SEGREDOS:
-        for linha in _git_grep(padrao, staged):
+        # -o aqui pelo mesmo motivo do CPF: arquivo de dado numa linha so
+        # (12,8 MB) imprime a linha inteira a cada acerto e estoura a
+        # memoria. Os padroes de segredo casam o proprio token.
+        for linha in _git_grep(padrao, staged, apenas_match=True):
             partes = linha.split(":", 2)
             if len(partes) < 3:
                 continue
@@ -201,6 +210,9 @@ def achar_segredo(staged: bool) -> list[tuple[str, str, str]]:
                          conteudo):
                 continue
             if rotulo.startswith("string de") and RE_HOST_LOCAL.search(conteudo):
+                continue
+            # Placeholder escrito a mao em doc/teste nao e credencial.
+            if any(m in conteudo.lower() for m in SINTETICOS_SEGREDO):
                 continue
             achados.append((f"{partes[0]}:{partes[1]}", rotulo,
                             conteudo.strip()[:100]))
