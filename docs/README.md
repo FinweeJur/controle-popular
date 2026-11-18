@@ -72,6 +72,7 @@ automáticamente pelos agentes de código.
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
 | Energia: contratos, outorgas, leilões e impostos | ENERGIA-CONTRATOS | [`06-fontes/ENERGIA-CONTRATOS.md`](06-fontes/ENERGIA-CONTRATOS.md) |
+| Transparência pública: índice PNTP por ente | PNTP-ATRICON | [`06-fontes/PNTP-ATRICON.md`](06-fontes/PNTP-ATRICON.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
 | Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
