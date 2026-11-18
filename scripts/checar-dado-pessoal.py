@@ -150,13 +150,16 @@ def cpf_valido(digitos: str) -> bool:
     return dv(9) == int(digitos[9]) and dv(10) == int(digitos[10])
 
 
-def _git_grep(padrao: str, staged: bool) -> list[str]:
+def _git_grep(padrao: str, staged: bool, apenas_match: bool = False) -> list[str]:
     escopo = ["--cached"] if staged else []
     # `-e` antes do padrÃ£o: sem ele, um padrÃ£o que comeÃ§a com `-` (como o de
     # chave privada) Ã© lido pelo git como OPÃ‡ÃƒO, e a varredura morre com
     # "unknown option" em vez de procurar.
-    cmd = ["git", "grep", "-nIE", *escopo, "-e", padrao,
-           "--", *EXTENSOES, *EXCLUIR]
+    # -o: sai so o trecho que casou. Sem isso, JSON de dado numa linha so
+    # (ana-outorgas.json, 12,8 MB) imprime a linha inteira a cada acerto e
+    # estourou a memoria do hook em 18/11/2026.
+    cmd = ["git", "grep", "-nIE", *(["-o"] if apenas_match else []), *escopo,
+           "-e", padrao, "--", *EXTENSOES, *EXCLUIR]
     r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
                        errors="replace")
     # `git grep` sai com 1 quando nÃ£o casa nada â€” Ã© o caso bom.
@@ -170,7 +173,7 @@ def _git_grep(padrao: str, staged: bool) -> list[str]:
 def achar_cpf(staged: bool) -> list[tuple[str, str]]:
     """(linha do git grep, o CPF achado) â€” sÃ³ os que passam no mod-11."""
     achados = []
-    for linha in _git_grep(RE_CPF, staged):
+    for linha in _git_grep(RE_CPF, staged, apenas_match=True):
         # `arquivo:numero:conteudo` â€” o conteÃºdo pode ter `:`, entÃ£o split(2).
         partes = linha.split(":", 2)
         if len(partes) < 3:
