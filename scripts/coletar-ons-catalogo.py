@@ -208,6 +208,9 @@ def main(argv: list[str] | None = None) -> int:
     args.saida.write_text(
         json.dumps(documento, ensure_ascii=False, indent=1) + "\n",
         encoding="utf-8",
+        # LF explícito: o git normaliza na entrada, e o tamanho medido tem de
+        # ser o do arquivo versionado, não o do Windows com CRLF.
+        newline="\n",
     )
 
     tamanho_kb = args.saida.stat().st_size / 1024

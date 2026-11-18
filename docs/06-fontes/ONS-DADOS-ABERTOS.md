@@ -280,13 +280,13 @@ usa 1 MB = 1.048.576 bytes, como o Windows mostra.
 
 | Conjunto | Arquivos CSV | Bruto baixado | JSON gerado | Registros | Janela |
 |---|---|---|---|---|---|
-| `carga-energia` | 27 | 1,4 MB | 295,5 KB | 1292 | 2000-01 a 2026-11 |
-| `balanco-energia-subsistema` | 27 | 118,0 MB | 758,9 KB | 1615 | 2000-01 a 2026-11 |
-| `ear-diario-por-subsistema` | 27 | 1,7 MB | 409,1 KB | 1292 | 2000-01 a 2026-11 |
-| **Total** | **81** | **121,1 MB** | **1.463,4 KB** | **4199** | — |
+| `carga-energia` | 27 | 1,4 MB | 294,2 KB | 1292 | 2000-01 a 2026-11 |
+| `balanco-energia-subsistema` | 27 | 118,0 MB | 757,3 KB | 1615 | 2000-01 a 2026-11 |
+| `ear-diario-por-subsistema` | 27 | 1,7 MB | 407,8 KB | 1292 | 2000-01 a 2026-11 |
+| **Total** | **81** | **121,1 MB** | **1.459,3 KB** | **4199** | — |
 
-Cada JSON fica **abaixo de 1 MB** (o maior é o balanço, com 758,9 KB)
-e os três juntos somam 1.463,4 KB. O teto é conferido por
+Cada JSON fica **abaixo de 1 MB** (o maior é o balanço, com 757,3 KB)
+e os três juntos somam 1.459,3 KB. O teto é conferido por
 `apps/web/lib/ons/ons.test.ts` (regra dura 5.1: coleção grande não vai
 como prop de componente de cliente).
 
@@ -354,7 +354,7 @@ rastro não é auditável.
 
 - **2026-11-18 — fase 1 do eixo de energia.** Catálogo dos 88 conjuntos,
   três séries mensais (carga, balanço por fonte, EAR) e testes. Bruto
-  medido: 121,1 MB baixados, 1.463,4 KB versionados. A decisão de
+  medido: 121,1 MB baixados, 1.459,3 KB versionados. A decisão de
   coletar pela API está registrada (exceção à regra geral de `robots.txt`,
   por ordem do dono).
 

@@ -447,7 +447,9 @@ def gravar(destino: Path, meta: dict, registros: list[dict]) -> int:
     cabecalho = json.dumps(meta, ensure_ascii=False, indent=1).rstrip()
     corpo = ",\n".join(json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in registros)
     texto = f'{cabecalho[:-1].rstrip()},\n "registros": [\n{corpo}\n ]\n}}\n'
-    destino.write_text(texto, encoding="utf-8")
+    # LF explícito: o git normaliza na entrada, e o tamanho medido tem de ser
+    # o do arquivo versionado, não o do Windows com CRLF.
+    destino.write_text(texto, encoding="utf-8", newline="\n")
     return destino.stat().st_size
 
 
