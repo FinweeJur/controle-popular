@@ -354,6 +354,16 @@ function rotasDeNoticias(): MetadataRoute.Sitemap {
         priority: 0.8,
       })
     );
+    // Post com áudio publicado ganha a página de transcrição no índice.
+    if (n.audio?.transcricao?.startsWith("/noticias/")) {
+      urls.push(
+        item(n.audio.transcricao, {
+          lastModified: paraData(n.publicadoEm),
+          changeFrequency: "monthly",
+          priority: 0.5,
+        })
+      );
+    }
   }
   return urls;
 }
