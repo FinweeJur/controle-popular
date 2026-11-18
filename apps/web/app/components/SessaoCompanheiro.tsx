@@ -31,6 +31,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Cable, Check, Copy, ExternalLink, X } from "lucide-react";
 import type { RespostaCompanheiro } from "@/lib/companheiro/contrato";
+import { navegarInterno } from "@/lib/navegacao/navegar";
 
 interface TurnoRecebido {
   pergunta?: string;
@@ -91,7 +92,8 @@ export function SessaoCompanheiro() {
           if (ehExterno(alvo.href)) {
             window.open(alvo.href, "_blank", "noopener,noreferrer");
           } else {
-            window.location.assign(alvo.href);
+            // Client-side: preserva a casca, o pet e o áudio do rádio.
+            navegarInterno(alvo.href);
           }
         }
       } catch {

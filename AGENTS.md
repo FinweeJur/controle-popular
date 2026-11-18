@@ -111,7 +111,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.10](docs/03-desenvolvimento/REGRAS-DURAS.md#510-fonte-mínima-da-descrição-da-página) | Descrição sob o `<h1>` nunca menor que `text-sm`; longa usa “Ver + Texto”. |
 | [5.11](docs/03-desenvolvimento/REGRAS-DURAS.md#511-o-webhook-do-bot-do-telegram-aponta-para-o-portal-só) | Webhook do bot público só em `https://www.controlepopular.com.br/api/telegram`. |
 | [5.12](docs/03-desenvolvimento/REGRAS-DURAS.md#512-ollama-local-confira-hardware-e-modelos-delegue-o-repetitivo-poupe-token) | Confira hardware e modelo antes de usar Ollama; delegue o repetitivo, não o julgamento. |
-| [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link`; a casca e o rádio não podem desmontar. |
+| [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link` (nunca `window.location`); a casca, o pet e o rádio não podem desmontar. Rádio publica Media Session (nome, origem, play/pause) e lembra a estação. |
 | [5.14](docs/03-desenvolvimento/REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado) | O celular é a régua: 390 px, sem rolagem lateral falsa, `<main>` com `w-full`. |
 | [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
 | [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |

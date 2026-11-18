@@ -283,19 +283,33 @@ Vale para todo agente:
 
 ## 5.13. Casca persistente: link interno navega no cliente, nunca recarrega
 
-**Regra do dono, 03/10/2026.** A barra superior, a faixa de desenvolvimento,
-o rodapé, o assistente Seu Nonô, o companheiro (pet) e o player de rádio
-moram no layout raiz e NÃO podem desmontar na navegação. O `<audio>` do
-rádio e o estado do pet só sobrevivem se a troca de página for client-side.
+**Regra do dono, 03/10/2026** (ampliada em 18/11/2026). A barra superior, a
+faixa de desenvolvimento, o rodapé, o assistente Seu Nonô, o companheiro (pet)
+e o player de rádio moram no layout raiz e NÃO podem desmontar na navegação.
+O `<audio>` do rádio e o estado do pet só sobrevivem se a troca de página for
+client-side.
 
 - Todo link para PÁGINA interna usa `next/link` — inclusive os de `href`
   dinâmico (navbar, rodapé, cartões), que a regra `no-html-link-for-pages`
   do ESLint não enxerga;
+- **Nunca `window.location.href`/`assign` para rota interna.** Isso recarrega
+  o documento e mata o áudio. Em componente de cliente que navega por código
+  (busca, assistente, pet), use `useRouter().push` — foi a causa medida em
+  18/11/2026 (`BuscaGlobal`, `BuscaUniversal`, `SeuNono`,
+  `SessaoCompanheiro`);
 - `<a href>` cru fica só para externo, `mailto:`/`tel:`, âncora pura (`#`),
   arquivo (`.pdf`, `.json`, imagens…) e `/api/...`;
 - A rede de segurança é o `InterceptadorLinks` (`app/components/`), montado
   no layout raiz: captura o clique em qualquer `<a>` interno de página e o
   entrega ao router;
+- **Media Session:** enquanto a rádio toca, `PlayerRadio` publica título (a
+  estação), artista (Controle Popular · rádio ao vivo), álbum (cidade/UF ou
+  país + categoria) e a arte do portal, com handlers de play/pause. É o que
+  faz aparecer o controle na barra de notificação do celular/tablet e no
+  painel de mídia do navegador. Metadados em `lib/radio/mediasession.ts`;
+- **Estação lembrada:** a última rádio fica em `localStorage`
+  (`cp_radio_estacao`); depois de um reload o botão volta naquela estação e
+  um toque retoma, sem autoplay (o navegador bloqueia áudio sem gesto);
 - Verificação: `scripts/verificar-radio-navegacao.py` (Playwright) percorre
   eixos, subfrentes e o top-100 clicando e confere se o áudio segue vivo.
 
