@@ -5,13 +5,13 @@ import { useTheme } from "next-themes";
 import { ChevronDown } from "lucide-react";
 
 export const THEMES = [
-  { value: "pequi", label: "Pequi", emoji: "🌰", cor: "#f2701d", cor2: "#e4b33c", desc: "Padrão (Candeia quente)" },
+  { value: "pequi", label: "Pequi", emoji: "🌰", cor: "#f2701d", cor2: "#0d0b08", desc: "Laranja & preto" },
   { value: "cerrado", label: "Cerrado", emoji: "🌾", cor: "#c97b5a", cor2: "#ffc300", desc: "Terracota & ipê" },
   { value: "mata-atlantica", label: "Mata Atlântica", emoji: "🌿", cor: "#3a6b35", cor2: "#ffd700", desc: "Verde-serra & dourado" },
   { value: "caatinga", label: "Caatinga", emoji: "🌵", cor: "#d97724", cor2: "#eab308", desc: "Âmbar & sol do sertão" },
   { value: "pantanal", label: "Pantanal", emoji: "💧", cor: "#0284c7", cor2: "#f59e0b", desc: "Azul-águas & tuiuiú" },
-  { value: "light", label: "Claro", emoji: "☀️", cor: "#12467b", cor2: "#0e8f6e", desc: "Fundo branco clássico" },
-  { value: "dark", label: "Escuro", emoji: "🌙", cor: "#4a90d9", cor2: "#2fbf9a", desc: "Azul-noite profundo" },
+  { value: "light", label: "Claro", emoji: "☀️", cor: "#12467b", cor2: "#f7f8fa", desc: "Azul & branco" },
+  { value: "dark", label: "Escuro", emoji: "🌙", cor: "#4a90d9", cor2: "#0b1220", desc: "Azul-noite & grafite" },
   { value: "high-contrast", label: "Alto contraste", emoji: "◐", cor: "#000000", cor2: "#ffffff", desc: "Preto & branco puro" },
 ] as const;
 
@@ -154,7 +154,7 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
         <div
           role="listbox"
           aria-label="Opções de temas e biomas do portal"
-          className="absolute right-0 z-50 mt-1.5 w-[min(18rem,calc(100vw-2rem))] rounded-xl border border-border bg-surface p-1.5 shadow-xl backdrop-blur-md"
+          className="absolute right-0 z-50 mt-1.5 w-[min(24rem,calc(100vw-2rem))] rounded-xl border border-border bg-surface p-1.5 shadow-xl backdrop-blur-md"
         >
           <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-text-soft border-b border-border/60 mb-1">
             Biomas & Temas Visuais
@@ -172,13 +172,13 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
                     setTheme(t.value);
                     setAberto(false);
                   }}
-                  className={`flex w-full flex-col gap-0.5 rounded-lg px-2.5 py-2 text-left text-xs transition-colors duration-100 ${
+                  className={`flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-left text-xs transition-colors duration-100 ${
                     ativo
                       ? "bg-primary/15 font-semibold text-primary"
                       : "text-text hover:bg-surface-2"
                   }`}
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex shrink-0 items-center gap-2">
                     <span className="flex shrink-0 gap-1" aria-hidden="true">
                       <span
                         className="inline-block h-2.5 w-2.5 rounded-full ring-1 ring-border"
@@ -192,7 +192,9 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
                     <span aria-hidden="true">{t.emoji}</span>
                     <span className="font-medium">{t.label}</span>
                   </span>
-                  <span className="text-xs leading-snug text-text-soft">{t.desc}</span>
+                  <span className="shrink-0 whitespace-nowrap text-right text-xs text-text-soft">
+                    {t.desc}
+                  </span>
                 </button>
               );
             })}

@@ -573,7 +573,11 @@ export async function responderComRag(
   const orcamentoMs = opcoes.orcamentoMs ?? ORCAMENTO_RAG_MS;
   const restanteMs = () => Math.max(200, orcamentoMs - (Date.now() - inicio));
 
-  const perguntaDocumentos = opcoes.perguntaBusca?.trim() || pergunta;
+  // A busca usa a pergunta ORIGINAL do leitor, não o texto enriquecido com
+  // repasses (`pergunta`): os dados injetados servem à geração, mas como termo
+  // de busca diluem o assunto e enterram o post certo. Medido em 18/11/2026:
+  // a pergunta da UEMG em Ituiutaba trazia repasses e o RAG citava repasses.
+  const perguntaBusca = opcoes.perguntaBusca?.trim() || pergunta;
   const timeoutBusca = Math.min(opcoes.timeoutBuscaMs ?? TIMEOUT_BUSCA_MS, restanteMs());
 
   // Documentos só com o índice JÁ quente: construir do zero custa dezenas de
@@ -589,11 +593,11 @@ export async function responderComRag(
   try {
     const [acervo, docs] = await comPrazo(
       Promise.all([
-        buscarNoAcervo(pergunta, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname, {
+        buscarNoAcervo(perguntaBusca, opcoes.topK, opcoes.limiarAbstencao, opcoes.pathname, {
           timeoutVetorizacaoMs: timeoutBusca,
         }),
         documentosProntos
-          ? buscarDocumentos(perguntaDocumentos, { limite: TOP_K_DOCUMENTOS }).catch(
+          ? buscarDocumentos(perguntaBusca, { limite: TOP_K_DOCUMENTOS }).catch(
               () => [] as ResultadoDocumento[]
             )
           : Promise.resolve([] as ResultadoDocumento[]),
@@ -609,7 +613,7 @@ export async function responderComRag(
     );
     try {
       busca = await buscarNoAcervo(
-        pergunta,
+        perguntaBusca,
         opcoes.topK,
         opcoes.limiarAbstencao,
         opcoes.pathname,
