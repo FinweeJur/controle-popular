@@ -28,6 +28,23 @@ export interface TabelaNoticia {
   fonte?: FonteOficialNoticia;
 }
 
+/**
+ * Gráfico de barras opcional do artigo. Série curta e já publicada no texto,
+ * usada quando a comparação de valores importa mais que a leitura corrida
+ * (ex.: remuneração por titulação e jornada). O padrão do portal manda a
+ * legenda dentro da barra e o valor exato ao lado; o componente que desenha
+ * é `GraficoBarrasArtigo`.
+ */
+export interface GraficoNoticia {
+  titulo: string;
+  /** Rótulos e valores da série; a barra é proporcional ao maior valor. */
+  itens: { rotulo: string; valor: number }[];
+  /** Explicação curta da escala, exibida abaixo do desenho. */
+  nota?: string;
+  /** Fonte oficial da série. */
+  fonte?: FonteOficialNoticia;
+}
+
 export interface NoticiaPortal {
   slug: string;
   titulo: string;
@@ -50,6 +67,20 @@ export interface NoticiaPortal {
   paragrafos: string[];
   /** Tabela comparativa opcional, exibida ao fim do corpo do artigo. */
   tabela?: TabelaNoticia;
+  /** Várias tabelas opcionais, na ordem em que aparecem (ex.: vagas por área). */
+  tabelas?: TabelaNoticia[];
+  /** Gráfico de barras opcional, exibido antes da tabela. */
+  grafico?: GraficoNoticia;
+  /**
+   * Resumo de serviço em frases curtas, exibido logo depois do lead.
+   * É o "o essencial" do post: 3 a 5 linhas que respondem ao leitor apressado.
+   */
+  essencial?: string[];
+  /**
+   * Olho do texto (pull quote), com a fonte colada. Usa a barra lateral e a
+   * fonte de display do padrão de /jurisprudencia.
+   */
+  olho?: { texto: string; fonte?: string; citacao?: boolean };
   /**
    * Áudio original anexado ao post (audiência, sessão, entrevista).
    *

@@ -6,7 +6,6 @@ import {
   Clock,
   ExternalLink,
   ArrowLeft,
-  Database,
   Building,
   CheckCircle2,
   Sparkles,
@@ -19,7 +18,14 @@ import {
 } from "@/lib/noticias/portal";
 import CitarArtigoClient from "./CitarArtigoClient";
 import LeitorAudioArtigoClient from "./LeitorAudioArtigoClient";
+import OutrosRelatorios from "./OutrosRelatorios";
 import TranscricaoAcordeao from "./TranscricaoAcordeao";
+import SecaoMetricas from "./SecaoMetricas";
+import GraficoBarrasArtigo from "./GraficoBarrasArtigo";
+import SecaoTabelas from "./SecaoTabelas";
+import TextoComLinks from "./TextoComLinks";
+import ResumoEssencial from "./ResumoEssencial";
+import OlhoArtigo from "./OlhoArtigo";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 interface Props {
@@ -81,62 +87,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/**
- * Renderiza texto com hiperlinks em sintaxe markdown `[rotulo](url)`.
- * Garante que links internos naveguem pelo Next.js e links externos abram em nova aba com rel de segurança.
- *
- * Link interno vai em `<Link>`, não em `<a>` (regra do dono 03/10/2026,
- * AGENTS 5.13): `<a>` cru força reload do documento e desmonta a casca —
- * o áudio do rádio e o estado do pet morrem no meio da leitura. Medido em
- * 03/10/2026 no teste Playwright. O `InterceptadorLinks` é a rede de
- * segurança, mas a regra vale desde a origem.
- */
-function renderTextoComLinks(texto: string) {
-  const partes = [];
-  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let lastIndex = 0;
-  let match;
-
-  while ((match = regex.exec(texto)) !== null) {
-    if (match.index > lastIndex) {
-      partes.push(texto.substring(lastIndex, match.index));
-    }
-    const rotulo = match[1];
-    const url = match[2];
-    const isExterno = url.startsWith("http");
-
-    partes.push(
-      isExterno ? (
-        <a
-          key={`${match.index}-${url}`}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-primary hover:underline underline-offset-2"
-        >
-          {rotulo}
-          <span className="text-xs ml-0.5">↗</span>
-        </a>
-      ) : (
-        <Link
-          key={`${match.index}-${url}`}
-          href={url}
-          className="font-medium text-primary hover:underline underline-offset-2"
-        >
-          {rotulo}
-        </Link>
-      )
-    );
-    lastIndex = regex.lastIndex;
-  }
-
-  if (lastIndex < texto.length) {
-    partes.push(texto.substring(lastIndex));
-  }
-
-  return partes.length > 0 ? partes : texto;
-}
-
 export default async function PaginaNoticiaIndividual({ params }: Props) {
   const { slug } = await params;
   const noticia = obterNoticiaPorSlug(slug);
@@ -146,6 +96,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
   }
 
   const jsonLd = gerarJsonLdNoticia(noticia);
+  const [lead = "", ...corpo] = noticia.paragrafos;
   const outrasNoticias = listarNoticiasPortal()
     .filter((n) => n.slug !== noticia.slug)
     .slice(0, 3);
@@ -154,7 +105,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
     <main
       id="conteudo-principal"
       tabIndex={-1}
-      className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14"
+      className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-14"
     >
       {/* SCHEMA.ORG JSON-LD */}
       <script
@@ -192,11 +143,11 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
           </span>
         </div>
 
-        <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+        <h1 className="font-display text-3xl sm:text-4xl lg:text-[2.9rem] font-extrabold tracking-tight text-foreground leading-[1.08]">
           {noticia.titulo}
         </h1>
 
-        <p className="text-base sm:text-lg text-muted leading-relaxed font-serif">
+        <p className="text-lg sm:text-xl text-muted leading-relaxed font-serif">
           {noticia.subtitulo}
         </p>
 
@@ -276,77 +227,35 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
       ) : null}
 
       {/* PAINEL DE DADOS E MÉTRICAS CHAVE */}
-      <section aria-label="Indicadores principais" className="mb-8 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-muted mb-3 flex items-center gap-1.5">
-          <Database size={13} className="text-primary" />
-          <span>Indicadores & Dados Chave Documentados</span>
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {noticia.metricas.map((m) => (
-            <div key={m.rotulo} className="rounded-xl bg-surface-2 p-3.5 border border-border/50">
-              <p className="text-xs font-medium text-muted uppercase tracking-wider">{m.rotulo}</p>
-              <p className="mt-1 font-display text-xl sm:text-2xl font-bold text-foreground">{m.valor}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SecaoMetricas metricas={noticia.metricas} />
+
+      {/* LEAD EM CORPO MAIOR — o primeiro parágrafo carrega a matéria */}
+      <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground">
+        <TextoComLinks texto={lead} />
+      </p>
+
+      {/* RESUMO DE SERVIÇO — 15 segundos antes do detalhe */}
+      <ResumoEssencial itens={noticia.essencial} />
 
       {/* CORPO DO ARTIGO COM HIPERLINKS */}
       <article className="prose prose-neutral dark:prose-invert max-w-none space-y-5 text-base sm:text-lg text-foreground/90 leading-relaxed font-serif">
-        {noticia.paragrafos.map((p, idx) => (
-          <p key={idx}>{renderTextoComLinks(p)}</p>
+        {corpo.map((p, idx) => (
+          <p key={idx}>
+            <TextoComLinks texto={p} />
+          </p>
         ))}
       </article>
 
-      {/* TABELA COMPARATIVA (opcional) — ex.: tarifa social por estado */}
-      {noticia.tabela && (
-        <section aria-label={noticia.tabela.titulo} className="my-8">
-          <h3 className="font-display text-lg font-bold text-foreground mb-3">
-            {noticia.tabela.titulo}
-          </h3>
-          <div className="w-full max-w-full min-w-0 overflow-x-auto rounded-2xl border border-border bg-surface shadow-xs">
-            <table className="w-full text-left text-sm border-collapse">
-              <caption className="sr-only">{noticia.tabela.titulo}</caption>
-              <thead className="bg-surface-2 text-xs font-semibold text-muted uppercase border-b border-border">
-                <tr>
-                  {noticia.tabela.colunas.map((c) => (
-                    <th key={c} scope="col" className="whitespace-nowrap px-3 py-2.5">
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/60">
-                {noticia.tabela.linhas.map((linha, i) => (
-                  <tr key={i} className="align-top transition hover:bg-surface-2/50">
-                    {linha.map((celula, j) => (
-                      <td key={j} className="px-3 py-2.5 text-foreground/90">
-                        {renderTextoComLinks(celula)}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {noticia.tabela.nota && (
-            <p className="mt-2 text-xs text-muted">{renderTextoComLinks(noticia.tabela.nota)}</p>
-          )}
-          {noticia.tabela.fonte && (
-            <p className="mt-1 text-xs text-muted">
-              Fonte:{" "}
-              <a
-                href={noticia.tabela.fonte.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                {noticia.tabela.fonte.nome} ↗
-              </a>
-            </p>
-          )}
-        </section>
-      )}
+      {/* OLHO DO TEXTO — pull quote com fonte colada */}
+      <OlhoArtigo olho={noticia.olho} />
+
+      {/* TABELAS — vagas por área (e a legada, quando existir) */}
+      <SecaoTabelas tabelas={noticia.tabelas} />
+
+      {/* GRÁFICO DE BARRAS (opcional) — o componente devolve null sem série */}
+      <GraficoBarrasArtigo grafico={noticia.grafico} />
+
+      <SecaoTabelas tabela={noticia.tabela} />
 
       {/* RECOMENDAÇÃO PARA VERIFICAR ESTE DADO */}
       {noticia.recomendacaoVerificar && (
@@ -358,7 +267,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
             </h3>
           </div>
           <div className="text-xs sm:text-sm text-muted leading-relaxed">
-            {renderTextoComLinks(noticia.recomendacaoVerificar)}
+            <TextoComLinks texto={noticia.recomendacaoVerificar} />
           </div>
         </section>
       )}
@@ -411,30 +320,7 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
       </div>
 
       {/* OUTRAS REPORTAGENS RELACIONADAS */}
-      <section aria-label="Outros relatórios do observatório" className="my-12 pt-8 border-t border-border">
-        <h3 className="font-display text-lg font-bold text-foreground mb-4">
-          Outros Relatórios & Publicações do Observatório
-        </h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {outrasNoticias.map((outra) => (
-            <Link
-              key={outra.slug}
-              href={`/noticias/${outra.slug}`}
-              className="group rounded-xl border border-border bg-surface p-4 transition-all hover:border-primary/50"
-            >
-              <span className="text-xs font-semibold text-primary block mb-1">
-                {outra.categoria}
-              </span>
-              <h4 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                {outra.titulo}
-              </h4>
-              <p className="mt-1 text-xs text-muted line-clamp-2">
-                {outra.resumo}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <OutrosRelatorios noticias={outrasNoticias} />
 
       {/* TRANSCRIÇÃO REVISADA — sanfona no fim do post */}
       <TranscricaoAcordeao slug={noticia.slug} />

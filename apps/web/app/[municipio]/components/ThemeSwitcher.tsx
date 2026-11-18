@@ -5,14 +5,14 @@ import { useTheme } from "next-themes";
 import { ChevronDown } from "lucide-react";
 
 export const THEMES = [
-  { value: "pequi", label: "Pequi", emoji: "🌰", cor: "#f2701d", desc: "Padrão (Candeia quente)" },
-  { value: "cerrado", label: "Cerrado", emoji: "🌾", cor: "#c97b5a", desc: "Terracota & ipê" },
-  { value: "mata-atlantica", label: "Mata Atlântica", emoji: "🌿", cor: "#3a6b35", desc: "Verde-serra & dourado" },
-  { value: "caatinga", label: "Caatinga", emoji: "🌵", cor: "#d97724", desc: "Âmbar & sol do sertão" },
-  { value: "pantanal", label: "Pantanal", emoji: "💧", cor: "#0284c7", desc: "Azul-águas & tuiuiú" },
-  { value: "light", label: "Claro", emoji: "☀️", cor: "#ffffff", desc: "Fundo branco clássico" },
-  { value: "dark", label: "Escuro", emoji: "🌙", cor: "#0f172a", desc: "Azul-noite profundo" },
-  { value: "high-contrast", label: "Alto contraste", emoji: "◐", cor: "#000000", desc: "Preto & branco puro" },
+  { value: "pequi", label: "Pequi", emoji: "🌰", cor: "#f2701d", cor2: "#e4b33c", desc: "Padrão (Candeia quente)" },
+  { value: "cerrado", label: "Cerrado", emoji: "🌾", cor: "#c97b5a", cor2: "#ffc300", desc: "Terracota & ipê" },
+  { value: "mata-atlantica", label: "Mata Atlântica", emoji: "🌿", cor: "#3a6b35", cor2: "#ffd700", desc: "Verde-serra & dourado" },
+  { value: "caatinga", label: "Caatinga", emoji: "🌵", cor: "#d97724", cor2: "#eab308", desc: "Âmbar & sol do sertão" },
+  { value: "pantanal", label: "Pantanal", emoji: "💧", cor: "#0284c7", cor2: "#f59e0b", desc: "Azul-águas & tuiuiú" },
+  { value: "light", label: "Claro", emoji: "☀️", cor: "#12467b", cor2: "#0e8f6e", desc: "Fundo branco clássico" },
+  { value: "dark", label: "Escuro", emoji: "🌙", cor: "#4a90d9", cor2: "#2fbf9a", desc: "Azul-noite profundo" },
+  { value: "high-contrast", label: "Alto contraste", emoji: "◐", cor: "#000000", cor2: "#ffffff", desc: "Preto & branco puro" },
 ] as const;
 
 const emptySubscribe = () => () => {};
@@ -49,11 +49,16 @@ function TemasInline({
                 : "border-border bg-surface text-text hover:border-primary hover:text-primary"
             }`}
           >
-            <span
-              className="inline-block h-2.5 w-2.5 rounded-full border border-black/20 shrink-0"
-              style={{ backgroundColor: t.cor }}
-              aria-hidden="true"
-            />
+            <span className="flex shrink-0 gap-1" aria-hidden="true">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full ring-1 ring-border"
+                style={{ backgroundColor: t.cor }}
+              />
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full ring-1 ring-border"
+                style={{ backgroundColor: t.cor2 }}
+              />
+            </span>
             <span aria-hidden="true">{t.emoji}</span>
             {t.label}
           </button>
@@ -149,12 +154,12 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
         <div
           role="listbox"
           aria-label="Opções de temas e biomas do portal"
-          className="absolute right-0 z-50 mt-1.5 w-60 rounded-xl border border-border bg-surface p-1.5 shadow-xl backdrop-blur-md"
+          className="absolute right-0 z-50 mt-1.5 w-[min(18rem,calc(100vw-2rem))] rounded-xl border border-border bg-surface p-1.5 shadow-xl backdrop-blur-md"
         >
-          <div className="px-2 py-1 text-[0.9em] font-bold uppercase tracking-wider text-text-soft border-b border-border/60 mb-1">
+          <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-text-soft border-b border-border/60 mb-1">
             Biomas & Temas Visuais
           </div>
-          <div className="max-h-72 space-y-0.5 overflow-y-auto">
+          <div className="max-h-[min(70vh,26rem)] space-y-0.5 overflow-y-auto overscroll-contain">
             {THEMES.map((t) => {
               const ativo = theme === t.value;
               return (
@@ -167,24 +172,27 @@ export default function ThemeSwitcher({ inline = false }: { inline?: boolean }) 
                     setTheme(t.value);
                     setAberto(false);
                   }}
-                  className={`flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-left text-xs transition-colors duration-100 ${
+                  className={`flex w-full flex-col gap-0.5 rounded-lg px-2.5 py-2 text-left text-xs transition-colors duration-100 ${
                     ativo
                       ? "bg-primary/15 font-semibold text-primary"
                       : "text-text hover:bg-surface-2"
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="inline-block h-2.5 w-2.5 rounded-full border border-black/20 shrink-0"
-                      style={{ backgroundColor: t.cor }}
-                      aria-hidden="true"
-                    />
-                    <span>{t.emoji}</span>
-                    <span>{t.label}</span>
-                  </div>
-                  <span className="text-[0.9em] text-text-soft truncate max-w-[85px]">
-                    {t.desc}
+                  <span className="flex items-center gap-2">
+                    <span className="flex shrink-0 gap-1" aria-hidden="true">
+                      <span
+                        className="inline-block h-2.5 w-2.5 rounded-full ring-1 ring-border"
+                        style={{ backgroundColor: t.cor }}
+                      />
+                      <span
+                        className="inline-block h-2.5 w-2.5 rounded-full ring-1 ring-border"
+                        style={{ backgroundColor: t.cor2 }}
+                      />
+                    </span>
+                    <span aria-hidden="true">{t.emoji}</span>
+                    <span className="font-medium">{t.label}</span>
                   </span>
+                  <span className="text-xs leading-snug text-text-soft">{t.desc}</span>
                 </button>
               );
             })}

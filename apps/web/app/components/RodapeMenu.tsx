@@ -37,7 +37,7 @@ export default function RodapeMenu({ onFechar }: { onFechar: () => void }) {
                   De `md` para cima a própria barra já mostra as três. */}
               <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/70 pt-3 md:hidden">
                 <span className="text-xs font-semibold text-text-soft">Preferências:</span>
-                <ThemeSwitcher />
+                <ThemeSwitcher inline />
                 <FontSizeControl />
                 <CvdToggle />
               </div>

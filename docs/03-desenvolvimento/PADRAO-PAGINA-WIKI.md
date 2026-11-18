@@ -2,7 +2,7 @@
 
 > **Tipo:** DESENVOLVIMENTO
 > **Domínio:** global
-> **Última medição:** 2026-10-13
+> **Última medição:** 2026-11-17
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [DESENVOLVIMENTO.md](DESENVOLVIMENTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [PADRAO-VISUAL.md](../04-arquitetura/PADRAO-VISUAL.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** pagina wiki, IndiceWiki, SecaoWiki, MiniSumarioLateral, LinksRelacionados, ResumoExpandivel, IndicePagina, ancoras, top-100, next/link, acessibilidade, oito qualidades
@@ -37,6 +37,8 @@ Cada item aponta o componente pronto: **não recrie o que já existe**.
 
 Regras duras de commit, dado pessoal e publicação continuam no
 [`AGENTS.md`](/AGENTS.md). Visual e tabelas: [PADRAO-VISUAL.md](../04-arquitetura/PADRAO-VISUAL.md).
+Post de serviço no blog (edital, concurso, prazo) tem padrão próprio:
+[PADRAO-POST-BLOG.md](PADRAO-POST-BLOG.md).
 
 ## Esqueleto da página
 

@@ -3,7 +3,7 @@
 > Lido automaticamente por opencode e por outros agentes de terminal.
 > **A regra mora no documento linkado; aqui fica o resumo e o caminho.**
 > Os links são caminhos do repositório no GitHub.
-> **Última medição:** 21/10/2026.
+> **Última medição:** 17/11/2026.
 
 **Palavras-chave:** agente, mapa, regras, commit, worktree, CPF, deploy,
 robots, user-agent, pesquisa, qualidades, SEO, acessibilidade, Ollama.
@@ -32,7 +32,7 @@ robots, user-agent, pesquisa, qualidades, SEO, acessibilidade, Ollama.
 | o texto completo de cada regra dura | [REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md) |
 | verificar antes de entregar | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | coletar ou pesquisar na internet | [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md) |
-| criar ou revisar página | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| criar ou revisar página ou post | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) e [PADRAO-POST-BLOG.md](docs/03-desenvolvimento/PADRAO-POST-BLOG.md) |
 | publicar, buildar, operar | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
 | consultar uma fonte ou coletor | [FONTES.md](docs/06-fontes/FONTES.md) |
 | fugir de um erro que já custou tempo | [ARMADILHAS.md](ARMADILHAS.md) |
@@ -117,6 +117,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |
 | [5.17](docs/03-desenvolvimento/REGRAS-DURAS.md#517-custo-só-com-autorização-prévia-do-dono) | Nenhum gasto sem autorização prévia: calcule o custo, peça o "sim", só então dispare o lote pago. |
 | [5.18](docs/03-desenvolvimento/REGRAS-DURAS.md#518-leitura-de-jornal-e-conforto-visual) | Página longa com hierarquia de jornal: parágrafos curtos, destaques, rótulo e valor próximos, barra curta e centralizada, e setas Topo/Próxima seção no sumário lateral. |
+| [5.19](docs/03-desenvolvimento/REGRAS-DURAS.md#519-post-de-serviço-no-blog-segue-o-padrão) | Post de serviço no blog segue o [PADRAO-POST-BLOG](docs/03-desenvolvimento/PADRAO-POST-BLOG.md): slug legível, lead, “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela filtrável/ordenável. |
 
 ## Verificação mínima
 
@@ -125,6 +126,7 @@ Todo commit, em segundos:
 ```bash
 npx tsc --noEmit                              # em apps/web
 npx vitest run lib/sem-cpf-no-repo.test.ts    # CPF não pode vazar
+npx vitest run lib/noticias                     # se mexeu em post do blog
 npx eslint <arquivos do diff>                 # só o que mudou
 rg "text-\[(9|10|11)px\]" apps/web/app        # fonte mínima 12 px
 python scripts/validar-documentacao.py        # se mexeu em docs/
@@ -178,6 +180,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Regras duras completas | [REGRAS-DURAS.md](docs/03-desenvolvimento/REGRAS-DURAS.md) |
 | Verificação e entrega | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Padrão de página wiki | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| Padrão de post de serviço no blog | [PADRAO-POST-BLOG.md](docs/03-desenvolvimento/PADRAO-POST-BLOG.md) |
 | Glossário | [GLOSSARIO-DEV.md](docs/03-desenvolvimento/GLOSSARIO-DEV.md) |
 | Arquitetura e payload | [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md) |
 | Oito qualidades da informação | [QUALIDADES-DA-INFORMACAO.md](docs/04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
@@ -198,4 +201,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 - **18/10/2026 — pesquisa na internet ganha regra própria:** UA honesto
   `finweejur/github artur colito`, leitura de termos, `robots.txt`, `/docs`,
   respeito aos limites e uso ético.
+- **17/11/2026 — post de serviço ganha padrão (5.19):** slug legível, lead,
+  “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela
+  filtrável/ordenável. Documento: [PADRAO-POST-BLOG.md](docs/03-desenvolvimento/PADRAO-POST-BLOG.md).
 - Histórico de incidentes: [docs/historico/](docs/historico/).

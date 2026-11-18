@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-10-21
+> **Última medição:** 2026-11-17
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -41,6 +41,7 @@ automáticamente pelos agentes de código.
 | Antes do primeiro commit — worktree, commit, push | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
 | Texto completo de cada regra dura | **REGRAS-DURAS** | [`03-desenvolvimento/REGRAS-DURAS.md`](03-desenvolvimento/REGRAS-DURAS.md) |
 | Criar página nova ou revisar o padrão wiki | **PADRAO-PAGINA-WIKI** | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| Escrever post de serviço no blog (edital, concurso, prazo) | **PADRAO-POST-BLOG** | [`03-desenvolvimento/PADRAO-POST-BLOG.md`](03-desenvolvimento/PADRAO-POST-BLOG.md) |
 | Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
 | Checkout canônico, worktree e arquivamento | **CHECKOUT-CANONICO** | [`03-desenvolvimento/CHECKOUT-CANONICO.md`](03-desenvolvimento/CHECKOUT-CANONICO.md) |
 | Prompt para sessão nova | **PROMPT-SESSAO-NOVA** | [`03-desenvolvimento/PROMPT-SESSAO-NOVA.md`](03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
@@ -81,7 +82,8 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (12):**
+- **Planos e handoffs:** a pasta [`planos/`](planos/) tem 42 arquivos (planos,
+  handoffs e prompts); a lista abaixo é a porta de entrada, não o inventário.
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
   [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),

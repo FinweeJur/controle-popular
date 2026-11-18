@@ -456,6 +456,23 @@ O padrão completo está em
 
 A verificação é visual em 390 px e no desktop, além de `tsc` e da suíte.
 
+## 5.19. Post de serviço no blog segue o padrão
+
+**Regra do dono, 17/11/2026.** Post que responde pergunta prática (edital,
+concurso, PSS, benefício) não é bloco de texto: tem slug legível, lead maior,
+“O essencial”, olho com fonte, contador animado nos valores, gráfico de barras
+com legenda dentro e tabela filtrável/ordenável.
+
+O padrão completo, com componentes e verificação, está em
+[PADRAO-POST-BLOG.md](PADRAO-POST-BLOG.md). O resumo:
+
+- slug curto e legível; renomear depois de publicar exige 301 + ponte;
+- corpo de 10 a 12 parágrafos; frase de até 13 palavras;
+- animar só número simples (inteiro, decimal, %, moeda), com valor final no SSR;
+- uma tabela por assunto; valor uniforme vai na nota, não repetido por linha;
+- tabela com busca sem acento, faceta, ordenação e `aria-sort`;
+- no celular, a tabela cabe ou rola dentro do quadro.
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

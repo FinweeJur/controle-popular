@@ -12555,5 +12555,352 @@
    "Cada linha leva de volta à fonte oficial do TSE. Baixe em CSV o que estiver filtrado na tela. Veja também os fornecedores de 2022 em [fornecedores de campanha](/congresso/financiamento-eleitoral).",
    "Nova leitura chega após 03/11/2026, quando as contas fecham. A página [de gastos de campanha](/eleicoes/2026/gastos-campanha) reúne tabelas, gráficos e filtros. Filtre por cargo, UF (MG inclusive) ou partido. Veja também as análises por partido e por estado."
   ]
- }
+ },
+{
+ "slug": "uemg-abre-83-vagas-para-professor",
+ "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
+ "subtitulo": "São 73 vagas em Ituiutaba e 10 em Diamantina, com titulação mínima de especialista. A inscrição é gratuita e vai de 19 a 26 de novembro.",
+ "resumo": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.",
+ "categoria": "Explicador",
+ "frente": "estado",
+ "subfrente": "UEMG — PSS 2027",
+ "autor": "ONSA — Observatório Nacional Socioambiental",
+ "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir dos editais oficiais 43/2026 e 47/2026 da UEMG e das retificações publicadas em 16/11/2026, conferido contra os PDFs originais pelo ONSA.",
+ "publicadoEm": "2026-11-17T19:30:00Z",
+ "atualizadoEm": "2026-11-17T21:40:00Z",
+ "tempoLeituraMin": 5,
+ "palavrasChave": [
+  "UEMG",
+  "PSS 2027",
+  "Ituiutaba",
+  "Diamantina",
+  "professor temporário",
+  "processo seletivo simplificado",
+  "edital 43/2026",
+  "edital 47/2026",
+  "salário de professor",
+  "Minas Gerais"
+ ],
+ "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina. Controle Popular, nov. 2026.",
+ "citacaoBibtex": "@article{onsa2026uemgpss2027,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/uemg-abre-83-vagas-para-professor}\n}",
+ "fontesOficiais": [
+  {
+   "nome": "Edital 43/2026 — UEMG Ituiutaba (PDF)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba"
+  },
+  {
+   "nome": "Retificação nº 1 do edital 43/2026 (PDF)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29926:retificacao-n-1"
+  },
+  {
+   "nome": "Edital 47/2026 — UEMG Diamantina (PDF)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29882:edital-n-47-2026-unidade-diamantina"
+  },
+  {
+   "nome": "Retificação nº 1 do edital 47/2026 (PDF)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29930:retificacao-01"
+  },
+  {
+   "nome": "UEMG — Processo Seletivo Simplificado (página oficial)",
+   "url": "https://uemg.br/gestao/recrutamento-e-selecao/pss"
+  },
+  {
+   "nome": "Sistema de inscrição do PSS",
+   "url": "https://pss.uemg.br/auth/login"
+  },
+  {
+   "nome": "UEMG — lista de editais do PSS 2027",
+   "url": "https://www.uemg.br/component/phocadownload/category/5145-editais-2027"
+  }
+ ],
+ "metricas": [
+  {
+   "rotulo": "Vagas em Ituiutaba",
+   "valor": "73"
+  },
+  {
+   "rotulo": "Vagas em Diamantina",
+   "valor": "10"
+  },
+  {
+   "rotulo": "Reservadas a PCD",
+   "valor": "9"
+  },
+  {
+   "rotulo": "Inscrições",
+   "valor": "19 a 26/11"
+  }
+ ],
+ "recomendacaoVerificar": "Leia os quatro PDFs oficiais: [edital 43/2026](https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba), [retificação nº 1 do 43](https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29926:retificacao-n-1), [edital 47/2026](https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29882:edital-n-47-2026-unidade-diamantina) e [retificação nº 1 do 47](https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29930:retificacao-01). O quadro de vagas está no item 1.1 e a remuneração no item 13.1. Na linha de doutor com 20 horas, as parcelas somam R$ 3.917,22, mas o total impresso é R$ 3.947,22. Peça a confirmação pelo e-mail duvidas.pssdocente@uemg.br.",
+ "paragrafos": [
+  "A Universidade do Estado de Minas Gerais (UEMG) abriu 83 vagas de professor temporário. São 73 em Ituiutaba e 10 em Diamantina. A inscrição é gratuita. Vai de 19 a 26 de novembro de 2026. Os PDFs foram consultados em 17 de novembro de 2026.",
+  "Não é concurso público. O contrato dura até 24 meses. A seleção tem uma etapa: análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos.",
+  "Ituiutaba concentra 73 vagas em 37 áreas de competência. Direito é a maior, com 8 vagas. Psicologia tem 6. A tabela abaixo traz a contagem de cada área.",
+  "Em Diamantina, as 10 vagas são de Direito. Duas exigem OAB ativa. Todas têm jornada de 30 horas. A lei reserva 10% das vagas a pessoas com deficiência. São 8 em Ituiutaba e 1 em Diamantina.",
+  "A titulação mínima é especialização. Mestrado e doutorado também valem, e pesam mais na análise. O título e a graduação precisam ser na área da vaga.",
+  "Psicologia exige CRP ativo. As vagas de Direito com OAB exigem registro na Ordem. A retificação de 16 de novembro permite apresentar o registro só na contratação.",
+  "O salário vai de R$ 1.573,43 a R$ 5.875,83. O valor depende da titulação e da jornada. O gráfico abaixo mostra as seis faixas. No doutorado, as parcelas não fecham com o total. A nota do gráfico explica.",
+  "A inscrição tem duas etapas. Primeiro, o formulário em pss.uemg.br. Depois, a validação presencial do comprovante na unidade. Cada candidato pode disputar até duas vagas.",
+  "O prazo termina às 17h de 26 de novembro, no horário de Brasília. Recurso tem dois dias úteis. O resultado sai no site da UEMG e no Diário Oficial. A lista vale um ano, prorrogável.",
+  "Quem for classificado manifesta interesse por e-mail em dois dias úteis. Ituiutaba usa rh.ituiutaba@uemg.br; Diamantina, rh.diamantina@uemg.br. O contrato não dá férias regulamentares, dedicação exclusiva nem carreira. Tem INSS, 13º proporcional e opção pelo IPSEMG.",
+  "Para assumir, o candidato atende aos requisitos do item 12.1. E passa pela perícia da SCPMSO. A documentação do anexo II é entregue dois dias úteis após a perícia. O contrato é assinado no SEI.",
+  "Dúvidas vão para duvidas.pssdocente@uemg.br. Recursos contra indeferimento, para recursos.pssdocente@uemg.br. Não há taxa. A UEMG publicou 11 editais de PSS para 2027. A lista está na página da universidade. Outros certames estão no [radar de concursos](/concursos) e no [radar de editais](/editais)."
+ ],
+ "grafico": {
+  "titulo": "Como a remuneração mensal muda com titulação e jornada",
+  "itens": [
+   {
+    "rotulo": "Especialista · 20 h",
+    "valor": 1573.43
+   },
+   {
+    "rotulo": "Especialista · 30 h",
+    "valor": 2360.14
+   },
+   {
+    "rotulo": "Mestre · 20 h",
+    "valor": 2669.05
+   },
+   {
+    "rotulo": "Mestre · 30 h",
+    "valor": 4003.57
+   },
+   {
+    "rotulo": "Doutor · 20 h",
+    "valor": 3947.22
+   },
+   {
+    "rotulo": "Doutor · 30 h",
+    "valor": 5875.83
+   }
+  ],
+  "nota": "A barra compara o total mensal de cada faixa. O percentual dentro da barra é a fração do maior total, doutor em 30 horas. Os valores são os mesmos da tabela abaixo; onde as parcelas divergem do total, a nota da tabela explica.",
+  "fonte": {
+   "nome": "Edital 43/2026 — UEMG Ituiutaba, item 13.1 (tabela idêntica no edital 47/2026)",
+   "url": "https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba"
+  }
+ },
+ "essencial": [
+  "Salário de R$ 1.573,43 a R$ 5.875,83, conforme titulação e jornada.",
+  "Inscrição gratuita, de 19 a 26/11, em duas etapas.",
+  "Contrato de até 24 meses, com INSS e 13º proporcional."
+ ],
+ "olho": {
+  "texto": "73 vagas em Ituiutaba. 10 em Diamantina. 83 no total.",
+  "fonte": "Editais 43/2026 e 47/2026, item 1.2",
+  "citacao": false
+ },
+ "tabelas": [
+  {
+   "titulo": "Vagas por área, localização, salário e titulação mínima",
+   "colunas": [
+    "Polo",
+    "Área",
+    "Vagas"
+   ],
+   "linhas": [
+    [
+     "Ituiutaba",
+     "Direito",
+     "8"
+    ],
+    [
+     "Ituiutaba",
+     "Direito - OAB ativo",
+     "6"
+    ],
+    [
+     "Ituiutaba",
+     "Psicologia - CRP ativo",
+     "6"
+    ],
+    [
+     "Ituiutaba",
+     "Matemática",
+     "5"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Biológicas",
+     "4"
+    ],
+    [
+     "Ituiutaba",
+     "Educação Física",
+     "4"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Agronômica / Engenharia Agrícola",
+     "3"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Elétrica / Engenharia de Energia",
+     "3"
+    ],
+    [
+     "Ituiutaba",
+     "Computação / Engenharia de Software",
+     "3"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Sociais / Ciência Política / Direito",
+     "2"
+    ],
+    [
+     "Ituiutaba",
+     "Computação",
+     "2"
+    ],
+    [
+     "Ituiutaba",
+     "Física",
+     "2"
+    ],
+    [
+     "Ituiutaba",
+     "Administração / Ciências Contábeis",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Administração / Ciências Contábeis / Engenharia Agronômica",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Administração / Economia / Ciências Contábeis / Engenharia Agronômica",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Biotecnologia / Ciências Biológicas",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Biológicas: Ensino de Ciências e Biologia",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Sociais / Direito",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Sociais / Geografia",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Ciências Sociais / Pedagogia / Ciências Biológicas",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Computação / Engenharia de Software / Engenharia de Controle e Automação",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Computação / Engenharia de Telecomunicações",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Computação / Engenharia Elétrica / Engenharia Eletrônica",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Computação / Administração / Engenharia de Software",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Agronômica / Ciências Biológicas",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Elétrica / Engenharia Eletrônica / Engenharia de Controle ou Automação / Computação",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Elétrica / Engenharia Eletrônica / Engenharia de Energia / Engenharia de Controle e Automação",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Elétrica / Engenharia Eletrônica / Engenharia de Energia / Engenharia de Controle e Automação / Computação",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Mecânica",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Pedagogia",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Estatística",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Gestão Ambiental / Ciências Biológicas / Engenharia Ambiental",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Letras",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Letras Libras",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Química",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Zootecnia / Produção Animal",
+     "1"
+    ],
+    [
+     "Ituiutaba",
+     "Engenharia Elétrica / Engenharia de Computação / Engenharia Eletrônica / Engenharia de Controle e Automação / Ciência da Computação",
+     "1"
+    ],
+    [
+     "Diamantina",
+     "Direito",
+     "8"
+    ],
+    [
+     "Diamantina",
+     "Direito - OAB ativo",
+     "2"
+    ]
+   ],
+   "nota": "Vagas por área conforme o item 1.2 de cada edital. Titulação mínima: especialização em todas as áreas. O salário depende da titulação e da jornada: de R$ 1.573,43 (especialista, 20 h) a R$ 5.875,83 (doutor, 30 h). As 9 vagas reservadas a pessoa com deficiência estão nos cartões acima. Em Diamantina, os dados vêm do [edital 47/2026](https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29882:edital-n-47-2026-unidade-diamantina).",
+   "fonte": {
+    "nome": "Edital 43/2026 — UEMG Ituiutaba, item 1.2",
+    "url": "https://www.uemg.br/component/phocadownload/category/5286-edital-n-43-2026-unidade-ituiutaba?download=29878:edital-n-43-2026-unidade-ituiutaba"
+   }
+  }
+ ]
+}
 ]

@@ -248,6 +248,7 @@ export const ROTAS_GLOBAIS: readonly string[] = [
   "/mineracao/ilegal",
   "/modelos",
   "/noticias",
+  "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
   "/novidades",
   "/paraopeba",
   "/paraopeba/analise",

@@ -1,20 +1,20 @@
 {
-  "geradoEm": "2026-11-11T18:40:33.437Z",
-  "totalPecas": 5764,
-  "baselineSha": "f9350f22803369d8",
+  "geradoEm": "2026-11-17T23:50:44.737Z",
+  "totalPecas": 5765,
+  "baselineSha": "d60c06248706a130",
   "rebuild": false,
   "novos": [
     {
-      "id": "blog:oab-mg-onze-anos-mariana-reparacao-saude",
+      "id": "blog:uemg-abre-83-vagas-para-professor",
       "frente": "geral",
-      "rota": "/noticias/oab-mg-onze-anos-mariana-reparacao-saude",
-      "titulo": "Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado",
-      "fonteUrl": "/noticias/oab-mg-onze-anos-mariana-reparacao-saude",
-      "texto": "Comissão de Direitos Humanos da OAB-MG cobra reparação em saúde 11 anos depois de Mariana, aponta crime continuado e critica o corte do auxílio em Brumadinho.\nA Rádio OAB-MG recebeu o presidente da Comissão de Direitos Humanos da OAB-MG, Wagner Dias Ferreira, e o membro consultor da Comissão Nacional de Direitos Humanos do Conselho Federal da OAB, Artur Colito. A conversa foi gravada durante a conferência da advocacia mineira, no mês em que o rompimento da barragem de Fundão completou 11 anos.\nWagner abriu o balanço com o que chama de quadro de extrema vulnerabilidade em Minas Gerais: mineração, negligência política, sistema carcerário sem perspectiva de recuperação e letalidade policial crescente. Para ele, a preocupação com direitos humanos precisa encontrar caminhos para restaurar um mínimo de normalidade que o estado não tem conseguido."
+      "rota": "/noticias/uemg-abre-83-vagas-para-professor",
+      "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
+      "fonteUrl": "/noticias/uemg-abre-83-vagas-para-professor",
+      "texto": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.\nA Universidade do Estado de Minas Gerais (UEMG) abriu 83 vagas de professor temporário. São 73 em Ituiutaba e 10 em Diamantina. A inscrição é gratuita. Vai de 19 a 26 de novembro de 2026. Os PDFs foram consultados em 17 de novembro de 2026.\nNão é concurso público. O contrato dura até 24 meses. A seleção tem uma etapa: análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos."
     }
   ],
   "modificados": [],
   "removidos": [
-    "blog:ementas-truncadas-tjmg-o-que-o-portal-corrigiu"
+    "blog:uemg-pss-2027-ituiutaba-diamantina-83-vagas"
   ]
 }
