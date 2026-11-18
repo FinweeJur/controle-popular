@@ -144,18 +144,23 @@ def checar_enter_sem_match(page: Page, base: str) -> tuple[bool, str]:
 
 
 def checar_enter_com_sugestao(page: Page, base: str) -> tuple[bool, str]:
-    """7. Com sugestao de pagina, Enter pergunta e NAO navega."""
+    """7. Com sugestao de pagina, Enter pergunta a IA e NAO navega."""
     abrir_widget(page, base)
     digitar(page, TERMO_COM_PAGINA)
     page.wait_for_selector(SELETOR_SUGESTOES, timeout=8000)
     antes = page.locator(SELETOR_SUGESTAO).count()
     url_antes = page.url
     page.locator(SELETOR_BARRA).first.press("Enter")
-    page.wait_for_timeout(1200)
+    try:
+        page.wait_for_selector(f"text={TEXTO_STATUS_IA}", timeout=6000)
+        status = True
+    except Exception:
+        status = False
+    page.wait_for_timeout(800)
     url_depois = page.url
     depois = page.locator(SELETOR_SUGESTAO).count()
-    ok = antes > 0 and url_antes == url_depois and depois == 0
-    return ok, f"sugestoes={antes}, url={url_antes} -> {url_depois}"
+    ok = antes > 0 and url_antes == url_depois and depois == 0 and status
+    return ok, f"sugestoes={antes}, status_ia={status}, url={url_antes} -> {url_depois}"
 
 
 def executar(args: argparse.Namespace) -> int:
