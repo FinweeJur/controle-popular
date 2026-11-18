@@ -72,6 +72,26 @@ export interface SeuNonoBuscaProps {
 }
 
 /**
+ * A barra só aceita pergunta com texto e sem carregamento em curso.
+ */
+function podeEnviar(limpo: string, desabilitado: boolean): boolean {
+  if (!limpo) return false;
+  if (desabilitado) return false;
+  return true;
+}
+
+/**
+ * Índice que o leitor escolheu com as setas; `null` quando não escolheu.
+ * É a diferença entre "Enter navega" (escolha explícita) e "Enter pergunta".
+ */
+function itemEscolhido(mostrar: boolean, total: number, ativo: number): number | null {
+  if (!mostrar) return null;
+  if (total <= 0) return null;
+  if (ativo < 0) return null;
+  return ativo;
+}
+
+/**
  * Barra fixa do Seu Nonô com sugestões em tempo real expandindo para cima.
  */
 export function SeuNonoBusca({
@@ -161,18 +181,21 @@ export function SeuNonoBusca({
     setAtivo(-1);
   }
 
-  /** Enter: aciona a sugestão destacada (ou a primeira); sem lista, chama a IA. */
+  /**
+   * Enter: pergunta à IA. A navegação só acontece quando o leitor escolheu um
+   * item com as setas (`ativoClamp >= 0`) ou clicou nele. Antes, qualquer
+   * sugestão fazia o Enter pular para a primeira página e a IA nunca rodava.
+   */
   function enviar() {
     const limpo = termo.trim();
-    if (!limpo) return;
-    if (total > 0) {
-      ativar(ativoClamp >= 0 ? ativoClamp : 0);
-      return;
-    }
+    if (!podeEnviar(limpo, desabilitado)) return;
+    const escolhido = itemEscolhido(mostrar, total, ativoClamp);
+    if (escolhido !== null) return ativar(escolhido);
     aoEnviarIa(limpo);
     setTermo("");
     setTermoDebounced("");
     setAberto(false);
+    setAtivo(-1);
   }
 
   function aoTeclar(e: KeyboardEvent<HTMLInputElement>) {
