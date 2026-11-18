@@ -63,6 +63,7 @@ automáticamente pelos agentes de código.
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
+| Diário municipal e CNPJ (fontes provadas) | QUERIDO-DIARIO-E-CNPJ | [`06-fontes/QUERIDO-DIARIO-E-CNPJ.md`](06-fontes/QUERIDO-DIARIO-E-CNPJ.md) |
 | Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
 | Verificação em camadas | VERIFICACAO-E-ENTREGA | [`03-desenvolvimento/VERIFICACAO-E-ENTREGA.md`](03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Conformidade e responsividade mobile | CONFORMIDADE-MOBILE | [`03-desenvolvimento/CONFORMIDADE-MOBILE.md`](03-desenvolvimento/CONFORMIDADE-MOBILE.md) |
