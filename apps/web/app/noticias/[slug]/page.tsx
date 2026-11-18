@@ -19,6 +19,7 @@ import {
 } from "@/lib/noticias/portal";
 import CitarArtigoClient from "./CitarArtigoClient";
 import LeitorAudioArtigoClient from "./LeitorAudioArtigoClient";
+import TranscricaoAcordeao from "./TranscricaoAcordeao";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
 interface Props {
@@ -265,9 +266,10 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
                 href={noticia.audio.transcricao}
                 className="font-medium text-primary underline underline-offset-2"
               >
-                Transcrição integral
+                Ver a transcrição revisada
               </a>{" "}
-              — feita por modelo local (faster-whisper), revisada antes de publicar.
+              — o texto está no fim do post, em sanfona; o .txt automático fica
+              nas fontes oficiais.
             </p>
           ) : null}
         </figure>
@@ -433,6 +435,9 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
           ))}
         </div>
       </section>
+
+      {/* TRANSCRIÇÃO REVISADA — sanfona no fim do post */}
+      <TranscricaoAcordeao slug={noticia.slug} />
 
       {/* RODAPÉ GLOBAL */}
       <div className="mt-14">

@@ -31,7 +31,7 @@
    "url": "/audio/comissao-direitos-humanos.mp3"
   },
   {
-   "nome": "Transcrição integral",
+   "nome": "Transcrição automática (.txt)",
    "url": "/docs/comissao-direitos-humanos/transcricao.txt"
   },
   {
@@ -65,7 +65,7 @@
  "audio": {
   "arquivo": "/audio/comissao-direitos-humanos.mp3",
   "duracao": "15 min 43 s",
-  "transcricao": "/noticias/oab-mg-onze-anos-mariana-reparacao-saude/transcricao",
+  "transcricao": "#transcricao",
   "descricao": "Entrevista na Rádio OAB-MG — Comissão de Direitos Humanos"
  },
  "paragrafos": [

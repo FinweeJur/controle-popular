@@ -1,1170 +1,227 @@
 {
- "slug": "oab-mg-onze-anos-mariana-reparacao-saude",
- "audio": "/audio/comissao-direitos-humanos.mp3",
- "duracao": "15 min 43 s",
- "modelo": "faster-whisper medium (int8, CPU)",
- "geradoEm": "2026-11-11",
- "arquivoTexto": "/docs/comissao-direitos-humanos/transcricao.txt",
- "segmentos": [
-  {
-   "t": "00:00:31",
-   "id": "t-00-00-31",
-   "texto": "da OAB-MG, a nossa rádio, da OAB-MG-CA-MG, a nossa caixa de assistência da Advocacia"
-  },
-  {
-   "t": "00:00:36",
-   "id": "t-00-00-36",
-   "texto": "Mineira."
-  },
-  {
-   "t": "00:00:37",
-   "id": "t-00-00-37",
-   "texto": "Teremos a nossa última entrevista do dia aqui na nossa rádio, que está ao vivo o"
-  },
-  {
-   "t": "00:00:43",
-   "id": "t-00-00-43",
-   "texto": "tempo todo aqui na nossa conferência."
-  },
-  {
-   "t": "00:00:45",
-   "id": "t-00-00-45",
-   "texto": "E hoje a gente recebe o presidente da Comissão de Direitos Humanos da OAB-MG, Doutor Wagner"
-  },
-  {
-   "t": "00:00:51",
-   "id": "t-00-00-51",
-   "texto": "Dias Ferreira, e também recebemos o membro consultor da Comissão Nacional de Direitos"
-  },
-  {
-   "t": "00:00:58",
-   "id": "t-00-00-58",
-   "texto": "Humanos do Conselho Federal, o Arthur Polito."
-  },
-  {
-   "t": "00:01:00",
-   "id": "t-00-01-00",
-   "texto": "É um prazer recebê-los aqui."
-  },
-  {
-   "t": "00:01:02",
-   "id": "t-00-01-02",
-   "texto": "Eu vou começar conversando com você, presidente, Doutor Wagner, faça aí as honras da casa"
-  },
-  {
-   "t": "00:01:07",
-   "id": "t-00-01-07",
-   "texto": "para começar o nosso bate-papo."
-  },
-  {
-   "t": "00:01:09",
-   "id": "t-00-01-09",
-   "texto": "Olha uma alegria para nós, podemos falar aqui na rádio da OAB e num dia importante"
-  },
-  {
-   "t": "00:01:16",
-   "id": "t-00-01-16",
-   "texto": "como é o dia de hoje, um marco temporal do acidente ocorrido em Mariana e que"
-  },
-  {
-   "t": "00:01:24",
-   "id": "t-00-01-24",
-   "texto": "fez tanto mal à sociedade mineira naquele período."
-  },
-  {
-   "t": "00:01:29",
-   "id": "t-00-01-29",
-   "texto": "Lembrando que..."
-  },
-  {
-   "t": "00:01:30",
-   "id": "t-00-01-30",
-   "texto": "Já se passaram 11 anos, né, no exato 5 de novembro, né?"
-  },
-  {
-   "t": "00:01:33",
-   "id": "t-00-01-33",
-   "texto": "Minas Gerais é um país que pelo nome aprendeu a ser constituída nesse ambiente de mineração."
-  },
-  {
-   "t": "00:01:41",
-   "id": "t-00-01-41",
-   "texto": "Mas esses últimos incidentes que ocorreram no Estado mostram o quadro de extrema vulnerabilidade"
-  },
-  {
-   "t": "00:01:52",
-   "id": "t-00-01-52",
-   "texto": "que o nosso povo em Minas Gerais tem sofrido com a mineração, com negligências"
-  },
-  {
-   "t": "00:01:57",
-   "id": "t-00-01-57",
-   "texto": "políticas, um sistema carcerário absolutamente falido e impossibilitado de qualquer possibilidade"
-  },
-  {
-   "t": "00:02:04",
-   "id": "t-00-02-04",
-   "texto": "de recuperação dos encarcerados para retornarem à sociedade em condições normais."
-  },
-  {
-   "t": "00:02:12",
-   "id": "t-00-02-12",
-   "texto": "Uma polícia que vem numa crescente de letalidade nas suas ações, absurda,"
-  },
-  {
-   "t": "00:02:20",
-   "id": "t-00-02-20",
-   "texto": "e em alguns lugares de Minas, a polícia militar fardada atuando como grupo de"
-  },
-  {
-   "t": "00:02:25",
-   "id": "t-00-02-25",
-   "texto": "Então assim, a preocupação com os direitos humanos, ela precisa ir encontrando caminhos"
-  },
-  {
-   "t": "00:02:37",
-   "id": "t-00-02-37",
-   "texto": "para restaurar um mínimo de normalidade que o nosso Estado não tem conseguido."
-  },
-  {
-   "t": "00:02:41",
-   "id": "t-00-02-41",
-   "texto": "Qual que é o maior desafio, presidente, que você tem enfrentado hoje à frente da"
-  },
-  {
-   "t": "00:02:46",
-   "id": "t-00-02-46",
-   "texto": "Comissão de Direitos Humanos da AB Minas Gerais?"
-  },
-  {
-   "t": "00:02:49",
-   "id": "t-00-02-49",
-   "texto": "Nós fomos demandados pelo Conselho Nacional de Direitos Humanos para acompanhar famílias"
-  },
-  {
-   "t": "00:02:53",
-   "id": "t-00-02-53",
-   "texto": "que estão sendo afetadas pela mineração do lítio."
-  },
-  {
-   "t": "00:02:56",
-   "id": "t-00-02-56",
-   "texto": "Minas Gerais é um estado que tem acesso a muitos minerais raros e a fome de minerar"
-  },
-  {
-   "t": "00:03:03",
-   "id": "t-00-03-03",
-   "texto": "esses materiais tem causado violação de direitos humanos a muitas famílias que"
-  },
-  {
-   "t": "00:03:10",
-   "id": "t-00-03-10",
-   "texto": "ficam no entorno ou na área próxima dessa mineração."
-  },
-  {
-   "t": "00:03:14",
-   "id": "t-00-03-14",
-   "texto": "Então hoje, além da violência policial e do cárcere extremamente violador, esse"
-  },
-  {
-   "t": "00:03:22",
-   "id": "t-00-03-22",
-   "texto": "da afetação da mineração a famílias que moram no entorno é provavelmente o ponto"
-  },
-  {
-   "t": "00:03:28",
-   "id": "t-00-03-28",
-   "texto": "mais importante que precisa ser enfrentado em Minas Gerais."
-  },
-  {
-   "t": "00:03:33",
-   "id": "t-00-03-33",
-   "texto": "E a Comissão ela tem atuado junto com outras entidades, instituições, Ministério Público,"
-  },
-  {
-   "t": "00:03:37",
-   "id": "t-00-03-37",
-   "texto": "como é que tem tido parcerias para fortalecer essa mobilização e esse enfrentamento?"
-  },
-  {
-   "t": "00:03:43",
-   "id": "t-00-03-43",
-   "texto": "Todo tipo de atuação de direitos humanos exige uma rede."
-  },
-  {
-   "t": "00:03:47",
-   "id": "t-00-03-47",
-   "texto": "Não é possível você falar em direitos humanos e trabalhar sem estar ancorado"
-  },
-  {
-   "t": "00:03:51",
-   "id": "t-00-03-51",
-   "texto": "com as comunidades, sem estar ancorado com outras instituições porque ninguém vai"
-  },
-  {
-   "t": "00:03:57",
-   "id": "t-00-03-57",
-   "texto": "vencer a batalha para superar as violações de direitos humanos sozinhos."
-  },
-  {
-   "t": "00:04:02",
-   "id": "t-00-04-02",
-   "texto": "Importantíssimo, trazendo aqui para a nossa roda de conversa o Arthur Colito lá do"
-  },
-  {
-   "t": "00:04:06",
-   "id": "t-00-04-06",
-   "texto": "Conselho Federal que também trabalha com os afetados."
-  },
-  {
-   "t": "00:04:09",
-   "id": "t-00-04-09",
-   "texto": "Arthur, como esse trabalho que vocês vêm desenvolvendo e esse marco dessa data, 5"
-  },
-  {
-   "t": "00:04:13",
-   "id": "t-00-04-13",
-   "texto": "de novembro, há 11 anos que essa tragédia aconteceu, a gente chama de desastre de"
-  },
-  {
-   "t": "00:04:19",
-   "id": "t-00-04-19",
-   "texto": "acidente, de negligência, qual que é o nome que vocês usam, Real?"
-  },
-  {
-   "t": "00:04:23",
-   "id": "t-00-04-23",
-   "texto": "Olha, na academia se discute o conceito de desastre e crime, porque apesar de ter tido"
-  },
-  {
-   "t": "00:04:30",
-   "id": "t-00-04-30",
-   "texto": "um conceito, uma caracterização também de um acidente, de fato ninguém apertou"
-  },
-  {
-   "t": "00:04:35",
-   "id": "t-00-04-35",
-   "texto": "um botão para explodir a barragem, mas houve um crime no sentido de que houve"
-  },
-  {
-   "t": "00:04:38",
-   "id": "t-00-04-38",
-   "texto": "uma negligência, uma omissão, claro, a responsabilização criminal ainda está"
-  },
-  {
-   "t": "00:04:43",
-   "id": "t-00-04-43",
-   "texto": "sendo apurada em ambos os casos, em 11 anos né Arthur, muito tempo né, doutores?"
-  },
-  {
-   "t": "00:04:48",
-   "id": "t-00-04-48",
-   "texto": "Mas apesar disso, na questão civil, já foi condenado as empresas a repararem todos"
-  },
-  {
-   "t": "00:04:53",
-   "id": "t-00-04-53",
-   "texto": "os danos, então não há uma discussão em relação à culpa, a responsabilidade"
-  },
-  {
-   "t": "00:04:58",
-   "id": "t-00-04-58",
-   "texto": "objetiva da empresa poluidora pelo dano socioambiental causado, e as"
-  },
-  {
-   "t": "00:05:04",
-   "id": "t-00-05-04",
-   "texto": "famílias atingidas reivindicam principalmente a forma de tratar como"
-  },
-  {
-   "t": "00:05:08",
-   "id": "t-00-05-08",
-   "texto": "crime, e não só um crime que aconteceu 11 anos atrás, parece que é isso, ou"
-  },
-  {
-   "t": "00:05:12",
-   "id": "t-00-05-12",
-   "texto": "7 anos atrás de Brumadinho, mas um crime continuado, porque o crime se"
-  },
-  {
-   "t": "00:05:16",
-   "id": "t-00-05-16",
-   "texto": "renova, o crime tem passado pela vida das pessoas atingidas que agora estão sentindo,"
-  },
-  {
-   "t": "00:05:20",
-   "id": "t-00-05-20",
-   "texto": "por exemplo, o impacto na saúde, da contaminação, já que até hoje a gente"
-  },
-  {
-   "t": "00:05:25",
-   "id": "t-00-05-25",
-   "texto": "não tem acesso à água de qualidade no Rio Doce, a gente não tem, por"
-  },
-  {
-   "t": "00:05:29",
-   "id": "t-00-05-29",
-   "texto": "exemplo, tratamento para saúde adequado, está começando a ter essas"
-  },
-  {
-   "t": "00:05:33",
-   "id": "t-00-05-33",
-   "texto": "iniciativas ali no caso do Rio Doce, já no caso Brumadinho estão começando a"
-  },
-  {
-   "t": "00:05:38",
-   "id": "t-00-05-38",
-   "texto": "fazer os estudos para então diagnosticar, imagina se você tem uma"
-  },
-  {
-   "t": "00:05:41",
-   "id": "t-00-05-41",
-   "texto": "pneumonia, você vai se tratar daqui a 11 anos, daqui a 7 anos, não dá"
-  },
-  {
-   "t": "00:05:46",
-   "id": "t-00-05-46",
-   "texto": "para nem chamar de solução, então é um pouco isso que tem sido o estágio atual"
-  },
-  {
-   "t": "00:05:50",
-   "id": "t-00-05-50",
-   "texto": "da reparação aqui no estado, que é muito grave ainda, infelizmente."
-  },
-  {
-   "t": "00:05:54",
-   "id": "t-00-05-54",
-   "texto": "Entendo, e qual que é o maior desafio, fazer a mesma pergunta que eu fiz para o"
-  },
-  {
-   "t": "00:05:57",
-   "id": "t-00-05-57",
-   "texto": "presidente Wagner, que você, à frente desse órgão aí da Comissão Nacional"
-  },
-  {
-   "t": "00:06:02",
-   "id": "t-00-06-02",
-   "texto": "no Conselho Federal, tem encontrado também, uniram forças, mas há muito"
-  },
-  {
-   "t": "00:06:06",
-   "id": "t-00-06-06",
-   "texto": "além do que avançar, o que você está encontrando de maior entrave, e"
-  },
-  {
-   "t": "00:06:10",
-   "id": "t-00-06-10",
-   "texto": "qual é a solução, o caminho, solução, acho que isso é um processo, não dá"
-  },
-  {
-   "t": "00:06:15",
-   "id": "t-00-06-15",
-   "texto": "um grande desafio frente a esses grandes crimes socioambientais, foi também"
-  },
-  {
-   "t": "00:06:22",
-   "id": "t-00-06-22",
-   "texto": "essa interlocução e articulação entre os vários atores do sistema de"
-  },
-  {
-   "t": "00:06:25",
-   "id": "t-00-06-25",
-   "texto": "justiça, então a gente tem juízes envolvidos, tem promotores, tem"
-  },
-  {
-   "t": "00:06:29",
-   "id": "t-00-06-29",
-   "texto": "defensores públicos, tem advocacia geral do estado, você vai ter as"
-  },
-  {
-   "t": "00:06:33",
-   "id": "t-00-06-33",
-   "texto": "prefeituras, vai ter centenas de comunidades atingidas, tem governos"
-  },
-  {
-   "t": "00:06:38",
-   "id": "t-00-06-38",
-   "texto": "de outros estados também como Espírito Santo, né? Sim, é o caso do"
-  },
-  {
-   "t": "00:06:42",
-   "id": "t-00-06-42",
-   "texto": "Rio Doce, né? Ele aconteceu ali, teve o epicentro, né? Que foi Mariana, mas se"
-  },
-  {
-   "t": "00:06:46",
-   "id": "t-00-06-46",
-   "texto": "estendeu por todo o Rio Doce, chegando ao litoral Capixaba, que foi bem"
-  },
-  {
-   "t": "00:06:49",
-   "id": "t-00-06-49",
-   "texto": "atingido, mas também o litoral sul da Bahia, como está sendo reconhecido"
-  },
-  {
-   "t": "00:06:53",
-   "id": "t-00-06-53",
-   "texto": "agora, principalmente região de Abrólios, que também foi atingida,"
-  },
-  {
-   "t": "00:06:56",
-   "id": "t-00-06-56",
-   "texto": "principalmente pescadores, entre outras categorias profissionais, que"
-  },
-  {
-   "t": "00:07:00",
-   "id": "t-00-07-00",
-   "texto": "sofreram graves danos também, mas passaram por todo, quase uma"
-  },
-  {
-   "t": "00:07:03",
-   "id": "t-00-07-03",
-   "texto": "década, sem serem reconhecidos. Demorou 11 anos, né? Para chegar a"
-  },
-  {
-   "t": "00:07:07",
-   "id": "t-00-07-07",
-   "texto": "Bahia, por exemplo, é um estado que eu não tinha conhecimento, que"
-  },
-  {
-   "t": "00:07:10",
-   "id": "t-00-07-10",
-   "texto": "também foi reconhecido posteriormente, né, Artur? Sim, foi reconhecida, mas infelizmente"
-  },
-  {
-   "t": "00:07:14",
-   "id": "t-00-07-14",
-   "texto": "ainda enfrenta vários desafios no acesso à justiça. A reparação vai chegar bem depois, né?"
-  },
-  {
-   "t": "00:07:18",
-   "id": "t-00-07-18",
-   "texto": "Sim, indenização, por exemplo, não conseguiram acessar, entre outras"
-  },
-  {
-   "t": "00:07:22",
-   "id": "t-00-07-22",
-   "texto": "políticas de saúde, né? E a luta atualmente, principalmente por moradia,"
-  },
-  {
-   "t": "00:07:28",
-   "id": "t-00-07-28",
-   "texto": "então teve pessoas que realmente a lama levou a casa das pessoas, ou que"
-  },
-  {
-   "t": "00:07:32",
-   "id": "t-00-07-32",
-   "texto": "pelas diversas obras, por tudo que vem acontecendo, até pela própria"
-  },
-  {
-   "t": "00:07:35",
-   "id": "t-00-07-35",
-   "texto": "reparação, começa a passar caminhão, dia e noite ali, em estradas"
-  },
-  {
-   "t": "00:07:40",
-   "id": "t-00-07-40",
-   "texto": "rurais, as casas próximas não estavam preparadas para isso, não houve um"
-  },
-  {
-   "t": "00:07:43",
-   "id": "t-00-07-43",
-   "texto": "laudo técnico prévio para avaliar a situação dessas casas, então tem casas"
-  },
-  {
-   "t": "00:07:47",
-   "id": "t-00-07-47",
-   "texto": "rachando na cabeça das pessoas, literalmente, até hoje os reacentamentos"
-  },
-  {
-   "t": "00:07:51",
-   "id": "t-00-07-51",
-   "texto": "não foram concluídos, de quem perdeu a mesma casa, de quem a lama"
-  },
-  {
-   "t": "00:07:55",
-   "id": "t-00-07-55",
-   "texto": "levou, então o modo de vida, as tradições das comunidades não foram"
-  },
-  {
-   "t": "00:08:00",
-   "id": "t-00-08-00",
-   "texto": "tão bem consideradas nessas formas de reacentamento, a questão da água"
-  },
-  {
-   "t": "00:08:03",
-   "id": "t-00-08-03",
-   "texto": "de qualidade, que eu já falei aqui, até hoje no acesso. Sem contar o dano mental, porque, pensa, você mora"
-  },
-  {
-   "t": "00:08:07",
-   "id": "t-00-08-07",
-   "texto": "num local que é tranquilo, que não tem trânsito de caminhão, aí aquilo"
-  },
-  {
-   "t": "00:08:11",
-   "id": "t-00-08-11",
-   "texto": "começa do dia para a noite, você não tem nenhuma forma, a sua vida mudou"
-  },
-  {
-   "t": "00:08:18",
-   "id": "t-00-08-18",
-   "texto": "completamente, então você pode ter esse dano mental, esse dano na sua"
-  },
-  {
-   "t": "00:08:23",
-   "id": "t-00-08-23",
-   "texto": "saúde mental, vai ser a média e longo prazo, porque mudou"
-  },
-  {
-   "t": "00:08:26",
-   "id": "t-00-08-26",
-   "texto": "completamente o estilo de vida que as pessoas tinham naquela localidade,"
-  },
-  {
-   "t": "00:08:29",
-   "id": "t-00-08-29",
-   "texto": "isso também demora muito para ser reconhecido, né, doutores? E é uma"
-  },
-  {
-   "t": "00:08:33",
-   "id": "t-00-08-33",
-   "texto": "alteração no modo de vida coletivo, e do meio ambiente principalmente, os"
-  },
-  {
-   "t": "00:08:38",
-   "id": "t-00-08-38",
-   "texto": "animais dali, daquele ambiente, eles tem um barulho que incomoda, eles vão"
-  },
-  {
-   "t": "00:08:42",
-   "id": "t-00-08-42",
-   "texto": "procurar outro habitat, né, normal, e isso não se mensura. E esse impacto"
-  },
-  {
-   "t": "00:08:47",
-   "id": "t-00-08-47",
-   "texto": "ecológico, ambiental, ele é gravíssimo de uma reparação, né, que tem que"
-  },
-  {
-   "t": "00:08:52",
-   "id": "t-00-08-52",
-   "texto": "ser longa, porque até você conseguir realmente tirar todos os regentos, tirar as"
-  },
-  {
-   "t": "00:08:57",
-   "id": "t-00-08-57",
-   "texto": "margens que foram também contaminadas pelas enchentes de regentos que"
-  },
-  {
-   "t": "00:08:59",
-   "id": "t-00-08-59",
-   "texto": "acontecendo depois, que estendeu a contaminação para outros locais, os"
-  },
-  {
-   "t": "00:09:04",
-   "id": "t-00-09-04",
-   "texto": "impactos ali também, né, na biota aquática, animal, enfim, e é muito"
-  },
-  {
-   "t": "00:09:08",
-   "id": "t-00-09-08",
-   "texto": "importante isso da questão da saúde que você trouxe, né, porque tem desde o"
-  },
-  {
-   "t": "00:09:12",
-   "id": "t-00-09-12",
-   "texto": "dano mais grave ali que são os familiares de vítimas fatais, né, que"
-  },
-  {
-   "t": "00:09:15",
-   "id": "t-00-09-15",
-   "texto": "logicamente, assim, é um dano que não tem como a gente medir, né, e de"
-  },
-  {
-   "t": "00:09:20",
-   "id": "t-00-09-20",
-   "texto": "fato como reparar, porque ali a gente perdeu uma vida, né, e isso não tem"
-  },
-  {
-   "t": "00:09:24",
-   "id": "t-00-09-24",
-   "texto": "um marco que fica pro restante, mas as comunidades também, né, tem o seu"
-  },
-  {
-   "t": "00:09:28",
-   "id": "t-00-09-28",
-   "texto": "direito à saúde e principalmente a questão psíquica também, né, que"
-  },
-  {
-   "t": "00:09:31",
-   "id": "t-00-09-31",
-   "texto": "precisa ser enfrentada e hoje a gente tem também marcos legais que não"
-  },
-  {
-   "t": "00:09:36",
-   "id": "t-00-09-36",
-   "texto": "existiam antes esses crimes para proteger e reconhecer tanto esses danos"
-  },
-  {
-   "t": "00:09:39",
-   "id": "t-00-09-39",
-   "texto": "que são comuns em roubimentos ou acidentes relacionados a barragens, mas"
-  },
-  {
-   "t": "00:09:44",
-   "id": "t-00-09-44",
-   "texto": "também os direitos que advém disso, como por exemplo, a mitigação, né,"
-  },
-  {
-   "t": "00:09:47",
-   "id": "t-00-09-47",
-   "texto": "então hoje a gente tem a política estadual dos direitos por barragens, que"
-  },
-  {
-   "t": "00:09:50",
-   "id": "t-00-09-50",
-   "texto": "é a PNAB, e também a política nacional dos direitos por barragens,"
-  },
-  {
-   "t": "00:09:53",
-   "id": "t-00-09-53",
-   "texto": "que é a PNAB, que foram conquistas através dos movimentos sociais, que"
-  },
-  {
-   "t": "00:09:58",
-   "id": "t-00-09-58",
-   "texto": "reconhece o direito à saúde e aí a solução que vem apresentando, né,"
-  },
-  {
-   "t": "00:10:01",
-   "id": "t-00-10-01",
-   "texto": "também um pouco frente a essa dificuldade de articulação com o sistema"
-  },
-  {
-   "t": "00:10:05",
-   "id": "t-00-10-05",
-   "texto": "de justiça, que muitas vezes tende, né, a fazer acordos que às vezes"
-  },
-  {
-   "t": "00:10:09",
-   "id": "t-00-10-09",
-   "texto": "não consegue contemplar, ouvir, fazer uma escuta das comunidades,"
-  },
-  {
-   "t": "00:10:12",
-   "id": "t-00-10-12",
-   "texto": "levar isso, levar as pessoas para mesa de negociação, que seria até"
-  },
-  {
-   "t": "00:10:16",
-   "id": "t-00-10-16",
-   "texto": "mais avançado, mas eles até mesmo levar as pautas das pessoas para"
-  },
-  {
-   "t": "00:10:19",
-   "id": "t-00-10-19",
-   "texto": "mesa de negociação e é justamente o movimento popular organizado,"
-  },
-  {
-   "t": "00:10:24",
-   "id": "t-00-10-24",
-   "texto": "que é uma forma de resposta para isso, então as comunidades"
-  },
-  {
-   "t": "00:10:26",
-   "id": "t-00-10-26",
-   "texto": "continuarem depois de 11 anos cobrando nas ruas, nas redes, das instituições"
-  },
-  {
-   "t": "00:10:32",
-   "id": "t-00-10-32",
-   "texto": "públicas, por melhores respostas, por agilidade, por um devido"
-  },
-  {
-   "t": "00:10:37",
-   "id": "t-00-10-37",
-   "texto": "processo legal, né, por um processo que realmente avança e não"
-  },
-  {
-   "t": "00:10:40",
-   "id": "t-00-10-40",
-   "texto": "fique ali. Inclusão de novos atores, né, como você também colocou,"
-  },
-  {
-   "t": "00:10:43",
-   "id": "t-00-10-43",
-   "texto": "é realmente uma força popular muito grande, né? Sim, então 11"
-  },
-  {
-   "t": "00:10:47",
-   "id": "t-00-10-47",
-   "texto": "anos é muito tempo para não desistir. Então uma articulação"
-  },
-  {
-   "t": "00:10:51",
-   "id": "t-00-10-51",
-   "texto": "que a Comissão tem feito também é com os movimentos populares,"
-  },
-  {
-   "t": "00:10:54",
-   "id": "t-00-10-54",
-   "texto": "né, em especial amanhã, a gente está aqui durante conferência, mas para quem"
-  },
-  {
-   "t": "00:10:58",
-   "id": "t-00-10-58",
-   "texto": "estiver em Belo Horizonte fica o convite também, que está tendo uma"
-  },
-  {
-   "t": "00:11:00",
-   "id": "t-00-11-00",
-   "texto": "série de manifestações, uma série de mobilizações nesse marco"
-  },
-  {
-   "t": "00:11:04",
-   "id": "t-00-11-04",
-   "texto": "dos 11 anos, então amanhã em Belo Horizonte vai ter um encontro"
-  },
-  {
-   "t": "00:11:07",
-   "id": "t-00-11-07",
-   "texto": "atingidos e atingidas na base do Rio 12, do Rio 12, 11 anos de"
-  },
-  {
-   "t": "00:11:11",
-   "id": "t-00-11-11",
-   "texto": "luta por soberania, reparação e direitos na Assembleia Legislativa"
-  },
-  {
-   "t": "00:11:14",
-   "id": "t-00-11-14",
-   "texto": "de Minas Gerais, organizado pelo MAB, que é o governo dos atingidos"
-  },
-  {
-   "t": "00:11:17",
-   "id": "t-00-11-17",
-   "texto": "por barragens, que vai estar trazendo ali uma pauta de reivindicação"
-  },
-  {
-   "t": "00:11:20",
-   "id": "t-00-11-20",
-   "texto": "dos atingidos do Rio 12, mas também do caso Brumadinho para"
-  },
-  {
-   "t": "00:11:23",
-   "id": "t-00-11-23",
-   "texto": "o governo federal, estamos tentando dialogar com o governo de"
-  },
-  {
-   "t": "00:11:27",
-   "id": "t-00-11-27",
-   "texto": "transição também do governo estadual, que ainda não trouxe"
-  },
-  {
-   "t": "00:11:29",
-   "id": "t-00-11-29",
-   "texto": "uma resposta, o Ministério Público de Minas Gerais estará"
-  },
-  {
-   "t": "00:11:32",
-   "id": "t-00-11-32",
-   "texto": "presente também, o núcleo de casos estruturais que foi"
-  },
-  {
-   "t": "00:11:36",
-   "id": "t-00-11-36",
-   "texto": "criado pelo Tribunal de Atingidos de Minas Gerais"
-  },
-  {
-   "t": "00:11:38",
-   "id": "t-00-11-38",
-   "texto": "recentemente também irá receber os atingidos, a Defensoria"
-  },
-  {
-   "t": "00:11:41",
-   "id": "t-00-11-41",
-   "texto": "Pública de Minas Gerais também irá receber os atingidos"
-  },
-  {
-   "t": "00:11:44",
-   "id": "t-00-11-44",
-   "texto": "através da Ovidoria Geral junto também aos defensores"
-  },
-  {
-   "t": "00:11:47",
-   "id": "t-00-11-47",
-   "texto": "responsáveis pelo caso, então teremos uma série de"
-  },
-  {
-   "t": "00:11:49",
-   "id": "t-00-11-49",
-   "texto": "mobilizações com centenas de atingidos que é mais um"
-  },
-  {
-   "t": "00:11:52",
-   "id": "t-00-11-52",
-   "texto": "marco para mostrar também o que às vezes fica invisibilizado,"
-  },
-  {
-   "t": "00:11:56",
-   "id": "t-00-11-56",
-   "texto": "que é toda essa constante mobilização das pessoas e"
-  },
-  {
-   "t": "00:11:59",
-   "id": "t-00-11-59",
-   "texto": "luta por direitos, que acontece no dia a dia, então foram"
-  },
-  {
-   "t": "00:12:03",
-   "id": "t-00-12-03",
-   "texto": "milhares de reuniões, de formações de educação"
-  },
-  {
-   "t": "00:12:06",
-   "id": "t-00-12-06",
-   "texto": "jurídica, para as pessoas também acessarem, entenderem"
-  },
-  {
-   "t": "00:12:08",
-   "id": "t-00-12-08",
-   "texto": "quais são os seus direitos para poderem então reivindicá-los"
-  },
-  {
-   "t": "00:12:11",
-   "id": "t-00-12-11",
-   "texto": "perante quem tem o dever de fazer essa obrigação"
-  },
-  {
-   "t": "00:12:13",
-   "id": "t-00-12-13",
-   "texto": "acontecer no dia a dia das pessoas, até essas"
-  },
-  {
-   "t": "00:12:17",
-   "id": "t-00-12-17",
-   "texto": "manifestações, ocupações de ferrovias, ocupações"
-  },
-  {
-   "t": "00:12:21",
-   "id": "t-00-12-21",
-   "texto": "da própria sede da empresa, enfim, uma série de ações"
-  },
-  {
-   "t": "00:12:24",
-   "id": "t-00-12-24",
-   "texto": "que vão no limite do direito à manifestação muitas vezes,"
-  },
-  {
-   "t": "00:12:27",
-   "id": "t-00-12-27",
-   "texto": "isso inclusive tem gerado uma série de criminalização"
-  },
-  {
-   "t": "00:12:31",
-   "id": "t-00-12-31",
-   "texto": "de defensores de direitos humanos no estado e a inclusão"
-  },
-  {
-   "t": "00:12:33",
-   "id": "t-00-12-33",
-   "texto": "de diversas pessoas atingidas hoje no programa de"
-  },
-  {
-   "t": "00:12:36",
-   "id": "t-00-12-36",
-   "texto": "proteção a defensores de direitos humanos, comunicadores"
-  },
-  {
-   "t": "00:12:38",
-   "id": "t-00-12-38",
-   "texto": "ambientalistas, frente a essa repressão não só"
-  },
-  {
-   "t": "00:12:41",
-   "id": "t-00-12-41",
-   "texto": "estatal, mas também empresarial, infelizmente."
-  },
-  {
-   "t": "00:12:45",
-   "id": "t-00-12-45",
-   "texto": "Sim, eu gostaria que você falasse, Dr. Wagner, partindo"
-  },
-  {
-   "t": "00:12:48",
-   "id": "t-00-12-48",
-   "texto": "aqui para o encerramento do nosso bate-papo, sobre a"
-  },
-  {
-   "t": "00:12:51",
-   "id": "t-00-12-51",
-   "texto": "participação de vocês amanhã aqui na conferência."
-  },
-  {
-   "t": "00:12:54",
-   "id": "t-00-12-54",
-   "texto": "Eu queria aproveitar a oportunidade de convidar"
-  },
-  {
-   "t": "00:12:58",
-   "id": "t-00-12-58",
-   "texto": "todos, amanhã a Comissão de Direitos Humanos"
-  },
-  {
-   "t": "00:13:01",
-   "id": "t-00-13-01",
-   "texto": "vai protagonizar um painel às 15h30 no palco"
-  },
-  {
-   "t": "00:13:04",
-   "id": "t-00-13-04",
-   "texto": "Voz e Valor, onde nós vamos falar sobre direitos"
-  },
-  {
-   "t": "00:13:07",
-   "id": "t-00-13-07",
-   "texto": "humanos, democracia e principalmente sobre a"
-  },
-  {
-   "t": "00:13:11",
-   "id": "t-00-13-11",
-   "texto": "necessidade da emancipação das comunidades, das"
-  },
-  {
-   "t": "00:13:16",
-   "id": "t-00-13-16",
-   "texto": "instituições que apoiam as comunidades, entendendo"
-  },
-  {
-   "t": "00:13:20",
-   "id": "t-00-13-20",
-   "texto": "essa emancipação e essa organização popular como"
-  },
-  {
-   "t": "00:13:23",
-   "id": "t-00-13-23",
-   "texto": "um mecanismo fundamental para proteger a democracia"
-  },
-  {
-   "t": "00:13:26",
-   "id": "t-00-13-26",
-   "texto": "do nosso país."
-  },
-  {
-   "t": "00:13:27",
-   "id": "t-00-13-27",
-   "texto": "Ótimo, e um recado para a Divocacia, doutores?"
-  },
-  {
-   "t": "00:13:30",
-   "id": "t-00-13-30",
-   "texto": "Sim, eu só queria também poder deixar um último"
-  },
-  {
-   "t": "00:13:32",
-   "id": "t-00-13-32",
-   "texto": "recado mais específico sobre a pauta também de"
-  },
-  {
-   "t": "00:13:35",
-   "id": "t-00-13-35",
-   "texto": "Brumadinho, que aconteceu recentemente, que está"
-  },
-  {
-   "t": "00:13:37",
-   "id": "t-00-13-37",
-   "texto": "tendo uma discussão no Superior Tribunal de Justiça"
-  },
-  {
-   "t": "00:13:40",
-   "id": "t-00-13-40",
-   "texto": "e também no Supremo Tribunal Federal em relação"
-  },
-  {
-   "t": "00:13:43",
-   "id": "t-00-13-43",
-   "texto": "à aplicação dessa política nacional dos atingidos"
-  },
-  {
-   "t": "00:13:45",
-   "id": "t-00-13-45",
-   "texto": "no caso Brumadinho, reconhecendo esses atrasos na"
-  },
-  {
-   "t": "00:13:48",
-   "id": "t-00-13-48",
-   "texto": "reparação e reconhecendo também que há danos"
-  },
-  {
-   "t": "00:13:51",
-   "id": "t-00-13-51",
-   "texto": "continuados, danos que vieram inclusive depois dos"
-  },
-  {
-   "t": "00:13:53",
-   "id": "t-00-13-53",
-   "texto": "grandes acordos judiciais que tiveram."
-  },
-  {
-   "t": "00:13:55",
-   "id": "t-00-13-55",
-   "texto": "Então o auxílio emergencial de 160 mil pessoas"
-  },
-  {
-   "t": "00:13:59",
-   "id": "t-00-13-59",
-   "texto": "é como se fosse um Bolsa Família, digamos assim,"
-  },
-  {
-   "t": "00:14:01",
-   "id": "t-00-14-01",
-   "texto": "para quem foi atingido, quem perdeu sua renda,"
-  },
-  {
-   "t": "00:14:03",
-   "id": "t-00-14-03",
-   "texto": "quem está precisando de tratamento de saúde, foi"
-  },
-  {
-   "t": "00:14:05",
-   "id": "t-00-14-05",
-   "texto": "cortado, então 160 mil pessoas de 26 municípios"
-  },
-  {
-   "t": "00:14:09",
-   "id": "t-00-14-09",
-   "texto": "do estado não vão ter agora o seu auxílio de"
-  },
-  {
-   "t": "00:14:13",
-   "id": "t-00-14-13",
-   "texto": "investigação para conseguir continuar até"
-  },
-  {
-   "t": "00:14:15",
-   "id": "t-00-14-15",
-   "texto": "ter sua analisação, até ter sua reparação"
-  },
-  {
-   "t": "00:14:17",
-   "id": "t-00-14-17",
-   "texto": "integral e estamos num momento de discussão"
-  },
-  {
-   "t": "00:14:20",
-   "id": "t-00-14-20",
-   "texto": "jurídica nos Tribunais Superiores sobre essa"
-  },
-  {
-   "t": "00:14:22",
-   "id": "t-00-14-22",
-   "texto": "questão, que é importantíssimo também a"
-  },
-  {
-   "t": "00:14:24",
-   "id": "t-00-14-24",
-   "texto": "advocacia se somar nesse debate, a OAB também"
-  },
-  {
-   "t": "00:14:27",
-   "id": "t-00-14-27",
-   "texto": "pode também atuar, inclusive como a Mikus"
-  },
-  {
-   "t": "00:14:30",
-   "id": "t-00-14-30",
-   "texto": "Curcum já fez na Corte da América de Direitos"
-  },
-  {
-   "t": "00:14:32",
-   "id": "t-00-14-32",
-   "texto": "Humanos, anteriormente no caso do Gabriel"
-  },
-  {
-   "t": "00:14:34",
-   "id": "t-00-14-34",
-   "texto": "Salles Pimenta, enfim, então é importantíssimo"
-  },
-  {
-   "t": "00:14:37",
-   "id": "t-00-14-37",
-   "texto": "que a advocacia se mantenha atualizada e possa"
-  },
-  {
-   "t": "00:14:39",
-   "id": "t-00-14-39",
-   "texto": "contribuir também com esses movimentos"
-  },
-  {
-   "t": "00:14:41",
-   "id": "t-00-14-41",
-   "texto": "populares, muito obrigado."
-  },
-  {
-   "t": "00:14:43",
-   "id": "t-00-14-43",
-   "texto": "Ótimo, e um recado para a Divocacia, doutores,"
-  },
-  {
-   "t": "00:14:45",
-   "id": "t-00-14-45",
-   "texto": "para a gente finalizar aqui o nosso bate-papo,"
-  },
-  {
-   "t": "00:14:48",
-   "id": "t-00-14-48",
-   "texto": "foi um prazer recebê-los aqui, a Rádio CAMG"
-  },
-  {
-   "t": "00:14:50",
-   "id": "t-00-14-50",
-   "texto": "lá em Belo Horizonte também está com as portas"
-  },
-  {
-   "t": "00:14:52",
-   "id": "t-00-14-52",
-   "texto": "abertas para vocês, para a gente gravar podcast"
-  },
-  {
-   "t": "00:14:54",
-   "id": "t-00-14-54",
-   "texto": "por lá, tá bom?"
-  },
-  {
-   "t": "00:14:55",
-   "id": "t-00-14-55",
-   "texto": "Agradecer a oportunidade e estaremos sempre"
-  },
-  {
-   "t": "00:14:57",
-   "id": "t-00-14-57",
-   "texto": "à disposição lá também, quando tivermos"
-  },
-  {
-   "t": "00:14:59",
-   "id": "t-00-14-59",
-   "texto": "a possibilidade de falar novamente, muito"
-  },
-  {
-   "t": "00:15:01",
-   "id": "t-00-15-01",
-   "texto": "obrigado."
-  },
-  {
-   "t": "00:15:02",
-   "id": "t-00-15-02",
-   "texto": "Obrigada e amanhã, às 15h30, o painel que"
-  },
-  {
-   "t": "00:15:05",
-   "id": "t-00-15-05",
-   "texto": "vai debater essa temática e vai aprofundar"
-  },
-  {
-   "t": "00:15:07",
-   "id": "t-00-15-07",
-   "texto": "muito mais no palco Voz e Valor."
-  }
- ]
+  "slug": "oab-mg-onze-anos-mariana-reparacao-saude",
+  "titulo": "Transcrição revisada da entrevista",
+  "nota": "Áudio de 15 min 43 s na Rádio OAB-MG. A revisão removeu repetições e vícios de fala (\"né\", \"então\", \"aí\") e corrigiu palavras que a transcrição automática trocou. Nenhuma ideia foi acrescentada.",
+  "secoes": [
+    {
+      "titulo": "Quem falou",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Estamos ao vivo na conferência da OAB-MG. Hoje recebemos o presidente da Comissão de Direitos Humanos da OAB-MG, Wagner Dias Ferreira, e o membro consultor da Comissão Nacional de Direitos Humanos do Conselho Federal, Artur Colito."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "É uma alegria falar na rádio da OAB em um dia importante: o marco temporal do rompimento de Mariana, que fez tanto mal à sociedade mineira."
+        }
+      ]
+    },
+    {
+      "titulo": "Onze anos depois",
+      "blocos": [
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Já se passaram 11 anos, no exato 5 de novembro. Minas Gerais aprendeu a se constituir nesse ambiente de mineração. Mas os últimos incidentes mostram a extrema vulnerabilidade do nosso povo diante da mineração e das negligências políticas."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Somam-se a isso um sistema carcerário falido, que não oferece possibilidade real de recuperação, e uma polícia com letalidade crescente. Em alguns lugares de Minas, a polícia militar fardada atua como grupo de extermínio."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "A preocupação com direitos humanos precisa encontrar caminhos para restaurar um mínimo de normalidade, que o Estado não tem conseguido garantir."
+        }
+      ]
+    },
+    {
+      "titulo": "O maior desafio da Comissão: o lítio",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Qual é o maior desafio que o senhor enfrenta hoje à frente da Comissão?"
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Fomos demandados pelo Conselho Nacional de Direitos Humanos para acompanhar famílias afetadas pela mineração de lítio. Minas tem muitos minerais raros, e a fome de minerar tem violado direitos de famílias que vivem no entorno ou próximas dessas áreas."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Além da violência policial e do cárcere, a afetação da mineração sobre as famílias é provavelmente o ponto mais importante a ser enfrentado no estado."
+        }
+      ]
+    },
+    {
+      "titulo": "Direitos humanos não se faz sozinho",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "E como a Comissão tem atuado com outras entidades, como o Ministério Público?"
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Todo trabalho em direitos humanos exige rede. Não é possível falar do tema sem estar ancorado nas comunidades e em outras instituições. Ninguém vence essa batalha sozinho."
+        }
+      ]
+    },
+    {
+      "titulo": "Desastre ou crime?",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Artur, qual é o nome que vocês usam: desastre, acidente, negligência?"
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Na academia se discute o conceito de desastre e de crime. Ninguém apertou um botão para explodir a barragem, mas houve crime: houve negligência e omissão. A responsabilização criminal ainda está sendo apurada nos dois casos."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Na esfera civil, as empresas já foram condenadas a reparar todos os danos. Não há discussão sobre a responsabilidade objetiva da empresa poluidora pelo dano socioambiental."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "As famílias reivindicam que o caso seja tratado como crime — e não um crime de 11 anos atrás, ou de 7 no caso de Brumadinho, mas um crime continuado. O crime se renova e passa pela vida das pessoas."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Hoje o impacto aparece na saúde, na contaminação. Até hoje não temos água de qualidade no Rio Doce nem tratamento de saúde adequado. No Rio Doce começam iniciativas; em Brumadinho começam os estudos para diagnosticar."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Se você tem uma pneumonia, tratar daqui a 11 anos não é solução. Esse é o estágio da reparação no estado: ainda muito grave."
+        }
+      ]
+    },
+    {
+      "titulo": "O entrave: articular muitos atores",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "E para o senhor, no Conselho Federal, qual é o maior entrave e qual é o caminho?"
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Não é uma solução pontual, é um processo. O grande desafio nesses crimes socioambientais é a interlocução entre os atores do sistema de justiça: juízes, promotores, defensores públicos, advocacia geral do estado, prefeituras, centenas de comunidades atingidas e governos de outros estados."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "O caso do Rio Doce nasceu em Mariana, mas se estendeu por toda a bacia, chegou ao litoral capixaba e ao litoral sul da Bahia, que só agora está sendo reconhecido — principalmente na região de Abrolhos. Pescadores e outras categorias sofreram danos graves e passaram quase uma década sem reconhecimento."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Demorou 11 anos para chegar à Bahia. O reconhecimento veio, mas ainda há desafios de acesso à justiça: indenização, políticas de saúde e, hoje, a luta por moradia."
+        }
+      ]
+    },
+    {
+      "titulo": "Moradia, reassentamento e saúde mental",
+      "blocos": [
+        {
+          "quem": "Artur Colito",
+          "texto": "Houve pessoas que perderam a casa para a lama. Com as obras da própria reparação, começou a passar caminhão dia e noite em estradas rurais, e as casas próximas não estavam preparadas. Não houve laudo técnico prévio para avaliar essas moradias: há casas rachando literalmente sobre as pessoas."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Os reassentamentos de quem perdeu a casa ainda não foram concluídos, e o modo de vida e as tradições das comunidades não foram bem considerados nesses processos."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Falta também o dano mental. Quem morava num lugar tranquilo viu a vida mudar da noite para o dia, com trânsito de caminhões e sem alternativa. Esse dano à saúde mental aparece no médio e no longo prazo, e demora muito para ser reconhecido."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "É uma alteração no modo de vida coletivo e no meio ambiente. Os animais sentem o barulho e procuram outro habitat, e isso não se mensura. O impacto ecológico é gravíssimo e a reparação tem de ser longa: é preciso retirar os rejeitos e tratar as margens contaminadas pelas enchentes que espalharam a contaminação, com efeito sobre a biota aquática."
+        }
+      ]
+    },
+    {
+      "titulo": "Saúde, PNAB e organização popular",
+      "blocos": [
+        {
+          "quem": "Artur Colito",
+          "texto": "A questão da saúde é central. Há o dano mais grave, dos familiares de vítimas fatais, que não tem como medir nem reparar: perdeu-se uma vida. Mas as comunidades têm direito à saúde, sobretudo à saúde psíquica."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Hoje existem marcos legais que não existiam antes desses crimes: a política estadual e a Política Nacional de Direitos das Populações Atingidas por Barragens, a PNAB, conquistadas pelos movimentos sociais. Elas reconhecem o direito à saúde e à mitigação."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Diante da dificuldade de articulação com o sistema de justiça — que muitas vezes faz acordos sem escuta das comunidades e sem levá-las à mesa de negociação —, o movimento popular organizado é a resposta. As comunidades seguem cobrando nas ruas, nas redes e das instituições por agilidade e por um devido processo legal."
+        }
+      ]
+    },
+    {
+      "titulo": "Criminalização de quem luta",
+      "blocos": [
+        {
+          "quem": "Artur Colito",
+          "texto": "Foram milhares de reuniões e formações de educação jurídica para que as pessoas entendam seus direitos e possam reivindicá-los. E também manifestações, ocupações de ferrovias e da sede da empresa."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Essas ações, muitas vezes no limite do direito de manifestação, têm gerado criminalização de defensores de direitos humanos no estado. Diversas pessoas atingidas entraram no programa de proteção a defensores, comunicadores e ambientalistas, diante de uma repressão que não é só estatal, mas também empresarial."
+        }
+      ]
+    },
+    {
+      "titulo": "O que acontece amanhã",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Doutor Wagner, qual é a participação de vocês amanhã na conferência?"
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Convido todos para o painel da Comissão de Direitos Humanos amanhã, às 15h30, no palco Voz e Valor. Vamos falar de direitos humanos, democracia e da necessidade de emancipação das comunidades e das instituições que as apoiam, entendendo a organização popular como mecanismo fundamental de proteção da democracia."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Amanhã, em Belo Horizonte, haverá encontro de atingidos e atingidas pelos 11 anos, na Assembleia Legislativa de Minas Gerais, organizado pelo MAB — Movimento dos Atingidos por Barragens. A pauta dos atingidos do Rio Doce e do caso Brumadinho será levada ao governo federal, e há tentativa de diálogo com o governo estadual."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "O Ministério Público de Minas Gerais estará presente, inclusive o núcleo de casos estruturais criado recentemente pelo Tribunal de Justiça de Minas Gerais. A Defensoria Pública também receberá os atingidos, pela Ouvidoria-Geral, junto aos defensores responsáveis pelo caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Brumadinho e o auxílio cortado",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Um recado para a advocacia, doutores?"
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "Deixo um recado específico sobre Brumadinho. Há discussão no Superior Tribunal de Justiça e no Supremo Tribunal Federal sobre a aplicação da política nacional dos atingidos ao caso, reconhecendo os atrasos na reparação e a existência de danos continuados — danos que vieram depois dos grandes acordos judiciais."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "O auxílio emergencial de 160 mil pessoas, uma espécie de Bolsa Família para quem foi atingido, perdeu renda ou precisa de tratamento de saúde, foi cortado. São 160 mil pessoas de 26 municípios que ficam sem o auxílio enquanto esperam a reparação integral."
+        },
+        {
+          "quem": "Artur Colito",
+          "texto": "É um momento de discussão jurídica nos tribunais superiores. É importantíssimo que a advocacia se some a esse debate e que a OAB também atue, como já ocorreu em caso anterior na Corte Interamericana de Direitos Humanos."
+        }
+      ]
+    },
+    {
+      "titulo": "Encerramento",
+      "blocos": [
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Foi um prazer recebê-los. A Rádio CA-MG, em Belo Horizonte, está de portas abertas para gravarmos podcast."
+        },
+        {
+          "quem": "Wagner Dias Ferreira",
+          "texto": "Agradecemos a oportunidade. Estaremos sempre à disposição para falar novamente."
+        },
+        {
+          "quem": "Rádio OAB-MG",
+          "texto": "Obrigada. Amanhã, às 15h30, o painel aprofunda essa temática no palco Voz e Valor."
+        }
+      ]
+    }
+  ]
 }
