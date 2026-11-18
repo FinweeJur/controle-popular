@@ -29,7 +29,7 @@ Três fontes abertas entregam o fundiário do Pará com número medido, hoje, se
 
 | Fonte | O que entrega | Registros medidos |
 |---|---|---|
-| INCRA (CSV SIPRA) | projeto de assentamento: nome, município, área, famílias, fase, ato de criação e data | **494 projetos no PA**, 13.216.380 ha, 70 municípios |
+| INCRA (CSV SIPRA) | projeto de assentamento: nome, município, área, famílias, fase, ato de criação e data | **1.196 projetos no PA**, 26.187.344 ha, 121 municípios (a contagem de 494 era só dos prefixos `PA`+`AT`; faltavam `MB` e `SM`) |
 | ITERPA (ArcGIS `Destinação de Terras`) | gleba arrecadada/matriculada: município, área, situação, % desmatamento, contagem de CAR e SIGEF dentro | **525 glebas**, 11.969.328 ha |
 | FUNAI (WFS `tis_poligonais_portarias`) | terra indígena: nome, etnia, município, área, fase e data de cada portaria | **51 TIs no PA**, 19.064.418 ha, 40 municípios |
 
@@ -99,7 +99,15 @@ Campos (na ordem, com o sentido que o próprio dicionário do INCRA dá):
 | `TIPO` / `NUMERO` / `DATA DE CRIACAO` | ato normativo (DEC/POR/RES) e data de publicação |
 | `FORMA OBTENCAO` / `DATA OBTENCAO` | Desapropriação, Arrecadação, Reconhecimento, Cessão, Compra e Venda, "Em Obtenção - T.Coop.Tec. SPU" |
 
-**Medido para o Pará** (9.964 linhas nacionais; 494 do PA):
+**Medido para o Pará** (9.964 linhas nacionais; **1.196 do PA**, não 494 — ver
+correção abaixo):
+
+> **18/11/2026 — correção medida no coletor.** A contagem de 494 era o recorte
+> por PREFIXO do código (`PA` e `AT`) e perdia as superintendências `MB` (Sul do
+> Pará) e `SM` (Santarém). Contando pela UF que sai do número da SR, o PA tem
+> **1.196 projetos, 26.187.344 ha, 121 municípios e 300.066 famílias de
+> capacidade**. Os números abaixo são o recorte errado, mantidos só como
+> registro do erro.
 
 - **494 projetos de assentamento** (421 com prefixo `PA`, 73 com `AT`)
 - **13.216.380 ha**

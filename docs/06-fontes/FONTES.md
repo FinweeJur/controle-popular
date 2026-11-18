@@ -547,6 +547,64 @@ Escrever coletor aqui geraria JSON vazio com cara de sucesso. Para o Pará
 seguem valendo só duas portas: SIMLAM Público (empreendimentos com município e
 CNPJ) e a API do Portal da Transparência Ambiental (audiências, EIA e RIMA).
 
+## FUNAI — terras indígenas do país inteiro pelo WFS (camada `tis_poligonais_portarias`)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-funai-terras-indigenas.py`,
+saída em `apps/web/data/funai-terras-indigenas.json`.
+
+- **URL:** `https://geoserver.funai.gov.br/geoserver/Funai/ows` — WFS 1.0.0,
+  camada `Funai:tis_poligonais_portarias`, publicada pela FUNAI na página
+  `/atuacao/terras-indigenas/geoprocessamento-e-mapas`. `robots.txt` do host:
+  **404** (sem declaração) em 18/11/2026 → liberado por padrão, UA honesto.
+- **1 requisição nacional** com `propertyname` (sem `the_geom`): **241.925 B,
+  667 TIs, 125.421.723,4 ha**. GeoJSON com polígono passaria de 100 MB — o
+  atributo é o que se publica; o desenho já vive em
+  `apps/web/public/terras/globo/dados/camadas/terras-indigenas.geojson`.
+- **Duas armadilhas de 403, medidas no mesmo host:** `resultType=hits` devolve
+  **403** do nginx, e `GetFeature` **sem `maxFeatures`** também devolve 403
+  (mesma URL, único parâmetro diferente: com `maxFeatures=2000` responde 200).
+  Consequência: não existe contagem declarada pelo servidor, e o CSV vem
+  inteiro numa resposta só.
+- **Campos:** `fase_ti` (Regularizada 494 · Declarada 73 · Delimitada 47 ·
+  Encaminhada RI 28 · Homologada 17 · Em Estudo 8 no país), `data_*`/`tit_*`
+  por fase, `cr`, `undadm_sigla` (Coordenação Regional), `municipio_nome` e
+  `uf_sigla` **concatenados** (`"AM,PA"`, `"... e ..."`).
+- **A camada não tem `data_atualizacao`** — esse campo é da irmã
+  `tis_poligonais`. Quem ler a sondagem de 17/11/2026 e procurar o campo aqui
+  vai receber `ServiceException` com status 200.
+- **19 TIs dividem UF.** A área delas não é atribuída a UF nenhuma (a fonte não
+  diz a proporção): ficam em `ti_compartilhadas`, e
+  `soma_por_uf_ha + area_ti_compartilhada_ha == total_ha`. Assim o Pará dá
+  exatamente **51 TIs / 19.064.417,8 ha**, igual ao medido com
+  `CQL_FILTER=uf_sigla='PA'`.
+- **`undadm_codigo` (11 dígitos internos) não é publicado:** não é CPF, mas 11
+  dígitos crus disparam o varredor de CPF do repositório, e a sigla da CR
+  identifica a mesma unidade.
+
+## INCRA — projetos de assentamento do país inteiro (CSV do SIPRA)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-incra-assentamentos.py`,
+saída em `apps/web/data/incra-assentamentos.json`.
+
+- **URL:** `https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentosgeral.csv/@@download/file`
+  (**1.412.756 B**, relatório gerado em **06/03/2026**, fonte SIPRA declarada
+  dentro do arquivo). `robots.txt` de `www.gov.br`: 200, só `/search` e
+  `/login` fora. Se o link mudar, a página
+  `/assuntos/reforma-agraria/assentamentos-relacao-de-projetos` é a origem.
+- **9.964 projetos, 140.912.141,2 ha.** Uma requisição, latin-1, `;`,
+  cabeçalho na linha 9, agrupado por Superintendência Regional.
+- **O arquivo NÃO tem campo de UF**, e o prefixo do código é da SR, não do
+  estado (`MB` = Sul do Pará, `SM`/`AT` = Santarém, `MF` = Médio São Francisco).
+  A UF sai do número da SR, com o município sede desempatando SE/BA, DF/GO/MG e
+  Médio São Francisco. **Consequência medida: o Pará tem 1.196 projetos /
+  26.187.344,4 ha**, não os 494 da sondagem de 17/11/2026 — aquela contagem
+  olhou só os prefixos `PA` e `AT` e perdeu `MB` e `SM`.
+- **Duas áreas impossíveis digitadas na fonte** (RTRQ Ribeirão Grande/SP com
+  34.709.055 ha e PA Serra do Rio Real/SE com 11.385.205 ha) vão como vieram,
+  listadas em `area_suspeita`: inflam a soma de SP e SE.
+- **Não coletar:** a "relação de beneficiários assentados" da mesma página tem
+  nome, CPF e lote de pessoa física — fora do escopo por regra (AGENTS § 5.2).
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.
@@ -1492,6 +1550,19 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](/docs/historico/planos/PLA
   é o recenseamento de 1872 — **a medir**).
 
 ## Decisões registradas
+
+- **2026-11-18:** FUNAI (`tis_poligonais_portarias`) e INCRA (CSV do SIPRA)
+  coletados para o país inteiro, um coletor cada. FUNAI: 1 requisição nacional
+  só com `propertyname` (sem `the_geom`), UA `finweejur/github artur colito`,
+  `maxFeatures` obrigatório porque **sem ele o nginx devolve 403** (e
+  `resultType=hits` também) — sem contagem declarada, a trava contra resposta
+  truncada é comparar com o último arquivo publicado. TI que divide UF não é
+  atribuída a estado nenhum (`ti_compartilhadas`), o que faz a soma por UF
+  fechar com o total e o Pará bater com o medido à parte por `CQL_FILTER`.
+  INCRA: a UF do projeto **não existe no arquivo** — sai do número da
+  Superintendência Regional, não do prefixo do código (foi assim que a
+  sondagem de 17/11 perdeu 702 projetos do Pará). `undadm_codigo` da FUNAI
+  (11 dígitos internos) fica de fora para não disparar o varredor de CPF.
 
 - **2026-09-30:** Capitanias hereditárias publicadas a partir do OpenHistoricalMap
   (CC0) — mapa colaborativo entra como ponto de partida, **conferido no modelo e
