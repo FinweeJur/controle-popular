@@ -13,6 +13,7 @@
 - [Princípios que valem para todo componente](#princípios-que-valem-para-todo-componente)
 - [Sanfona que se anuncia (regra 5.21)](#sanfona-que-se-anuncia-regra-521)
 - [Onde o componente mora](#onde-o-componente-mora)
+- [Repositório público](#repositório-público)
 - [Como usar no portal](#como-usar-no-portal)
 - [Como levar para outro site](#como-levar-para-outro-site)
 - [Checklist de componente novo](#checklist-de-componente-novo)
@@ -94,6 +95,17 @@ precisa **anunciar que é expansível**. A referência é
 
 O arquivo `.html` do modelo é autossuficiente: abre no navegador, não tem
 build, não tem JavaScript e não depende de nada do portal.
+
+## Repositório público
+
+O mesmo material vive num repositório paralelo, aberto para outros sites:
+**<https://github.com/FinweeJur/controle-popular-design>** (galeria em
+<https://finweejur.github.io/controle-popular-design/>). Lá estão os 8 temas
+extraídos de `globals.css`, a sanfona portável, o select com respiro e as oito
+qualidades da informação.
+
+Regra de sincronia: mudou tema, componente ou regra aqui? Atualize o repo
+público na mesma tarefa — os dois são a mesma promessa.
 
 ## Como usar no portal
 
