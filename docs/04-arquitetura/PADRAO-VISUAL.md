@@ -2,7 +2,7 @@
 
 > **Tipo:** ARQUITETURA
 > **Domínio:** global
-> **Última medição:** 2026-08-31
+> **Última medição:** 2026-11-18
 > **Leitura estimada:** rápida (< 5 min)
 > **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [CORES-E-PALETA.md](CORES-E-PALETA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** padrao visual, ui, ux, componentes, tabela estatica, graficos svg, acessibilidade
@@ -50,6 +50,14 @@ Cada página segue esta ordem:
 - **`BuscaMunicipio`**: busca por município com grade de resultados
 - **`BuscaUniversal`**: combobox ARIA global
 - **`BuscaLegislacaoUnificada`**: busca unificada de legislação
+
+### Controles (select, input, botão)
+- **`<select>`**: usa o chevron global de `app/globals.css` (regra 5.20), com
+  `right .75rem` e `padding-right: 2.25rem`; não desenhe uma segunda seta.
+  Se o controle já tem ícone próprio, marque `className="appearance-none"`.
+- **`<input>` com ícone**: o ícone fica dentro do padding, nunca encostado na
+  borda; mantenha `pr-8`/`pl-8` para o texto não passar por baixo.
+- **Botão de ícone**: `aria-label` obrigatório; alvo mínimo de 36 px.
 
 ### Animações (CSS)
 - `cp-card-hover`: elevação no hover

@@ -118,6 +118,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.17](docs/03-desenvolvimento/REGRAS-DURAS.md#517-custo-só-com-autorização-prévia-do-dono) | Nenhum gasto sem autorização prévia: calcule o custo, peça o "sim", só então dispare o lote pago. |
 | [5.18](docs/03-desenvolvimento/REGRAS-DURAS.md#518-leitura-de-jornal-e-conforto-visual) | Página longa com hierarquia de jornal: parágrafos curtos, destaques, rótulo e valor próximos, barra curta e centralizada, e setas Topo/Próxima seção no sumário lateral. |
 | [5.19](docs/03-desenvolvimento/REGRAS-DURAS.md#519-post-de-serviço-no-blog-segue-o-padrão) | Post de serviço no blog segue o [PADRAO-POST-BLOG](docs/03-desenvolvimento/PADRAO-POST-BLOG.md): slug legível, lead, “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela filtrável/ordenável. |
+| [5.20](docs/03-desenvolvimento/REGRAS-DURAS.md#520-seta-de-select-tem-respiro-até-a-borda) | Seta de `<select>` tem respiro até a borda: chevron global em `right .75rem` e `padding-right` de 36 px; não duplicar ícone. |
 
 ## Verificação mínima
 

@@ -473,6 +473,21 @@ O padrão completo, com componentes e verificação, está em
 - tabela com busca sem acento, faceta, ordenação e `aria-sort`;
 - no celular, a tabela cabe ou rola dentro do quadro.
 
+## 5.20. Seta de `<select>` tem respiro até a borda
+
+**Regra do dono, 18/11/2026.** A seta nativa do `<select>` fica a 2–4 px da
+borda e, no filtro da biblioteca, parecia colada. Em todo o site:
+
+- `select` (fora de `.appearance-none`) usa `appearance: none`, chevron SVG em
+  `right .75rem center` e `padding-right: 2.25rem` — 12 px de folga e 36 px de
+  área de texto;
+- quem já desenha o próprio ícone marca `className="appearance-none"` e não
+  recebe um segundo chevron;
+- vale para filtros, formulários e qualquer controle nativo novo.
+
+O CSS único mora em `app/globals.css`, bloco “Respiro da seta do `<select>`”;
+não repita o chevron por componente.
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.
