@@ -32,8 +32,8 @@ cobria, foram medidas em **18/11/2026** com amostra pequena e fechada:
 
 | Fonte | Prova | O que ficou versionado |
 |---|---|---|
-| Querido Diário (Open Knowledge Brasil) | 3 cidades de MG, janela de 7 dias, 22 linhas de menção a 4 termos | `apps/web/data/querido-diario/atos.json` (13,5 KB) |
-| Brasil API (Receita Federal) | 20 consultas de CNPJ, 17 fornecedores versionados | `apps/web/data/fornecedores/enriquecido.json` (10,2 KB) |
+| Querido Diário (Open Knowledge Brasil) | 3 cidades de MG, janela de 7 dias, 22 linhas de menção a 4 termos | `apps/web/data/querido-diario/atos.json` (13,7 KB) |
+| Brasil API (Receita Federal) | 20 consultas de CNPJ, 17 fornecedores versionados | `apps/web/data/fornecedores/enriquecido.json` (10,3 KB) |
 
 As duas têm coletor próprio, teste de contrato e este documento. Nenhuma
 delas exige pagamento, chave de API ou login.
