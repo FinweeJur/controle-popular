@@ -18,6 +18,8 @@ import {
 } from "@/lib/noticias/portal";
 import CitarArtigoClient from "./CitarArtigoClient";
 import LeitorAudioArtigoClient from "./LeitorAudioArtigoClient";
+import OutrosRelatorios from "./OutrosRelatorios";
+import TranscricaoAcordeao from "./TranscricaoAcordeao";
 import SecaoMetricas from "./SecaoMetricas";
 import GraficoBarrasArtigo from "./GraficoBarrasArtigo";
 import SecaoTabelas from "./SecaoTabelas";
@@ -317,30 +319,10 @@ export default async function PaginaNoticiaIndividual({ params }: Props) {
       </div>
 
       {/* OUTRAS REPORTAGENS RELACIONADAS */}
-      <section aria-label="Outros relatórios do observatório" className="my-12 pt-8 border-t border-border">
-        <h3 className="font-display text-lg font-bold text-foreground mb-4">
-          Outros Relatórios & Publicações do Observatório
-        </h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {outrasNoticias.map((outra) => (
-            <Link
-              key={outra.slug}
-              href={`/noticias/${outra.slug}`}
-              className="group rounded-xl border border-border bg-surface p-4 transition-all hover:border-primary/50"
-            >
-              <span className="text-xs font-semibold text-primary block mb-1">
-                {outra.categoria}
-              </span>
-              <h4 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                {outra.titulo}
-              </h4>
-              <p className="mt-1 text-xs text-muted line-clamp-2">
-                {outra.resumo}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <OutrosRelatorios noticias={outrasNoticias} />
+
+      {/* TRANSCRIÇÃO REVISADA — sanfona no fim do post */}
+      <TranscricaoAcordeao slug={noticia.slug} />
 
       {/* RODAPÉ GLOBAL */}
       <div className="mt-14">
