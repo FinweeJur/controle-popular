@@ -57,6 +57,7 @@ automáticamente pelos agentes de código.
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Oito qualidades da informação | QUALIDADES | [`04-arquitetura/QUALIDADES-DA-INFORMACAO.md`](04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
+| Design system (componentes, sanfona, movimento) | DESIGN-SYSTEM | [`04-arquitetura/DESIGN-SYSTEM.md`](04-arquitetura/DESIGN-SYSTEM.md) |
 | Manual de RAG, LLM, avaliação e agentes locais | MANUAL-RAG-E-LLM | [`03-desenvolvimento/MANUAL-RAG-E-LLM.md`](03-desenvolvimento/MANUAL-RAG-E-LLM.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |

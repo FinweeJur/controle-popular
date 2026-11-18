@@ -502,6 +502,24 @@ borda e, no filtro da biblioteca, parecia colada. Em todo o site:
 O CSS único mora em `app/globals.css`, bloco “Respiro da seta do `<select>`”;
 não repita o chevron por componente.
 
+## 5.21. Sanfona se anuncia como sanfona (design system)
+
+**Regra do dono, 18/11/2026.** Bloco expansível que esconde conteúdo precisa
+dizer que abre. Na auditoria do Paraopeba os `<summary>` eram só texto: sem
+seta, sem hover, sem cara de botão, o leitor passava reto.
+
+- Use `SanfonaTema` (`apps/web/app/components/sistema/SanfonaTema.tsx`) —
+  `<details>` nativo, zero JavaScript;
+- obrigatório: linha inteira clicável, hover **e** `focus-visible`, seta que
+  gira 180° ao abrir, pulso no selo enquanto fechado (para em
+  `prefers-reduced-motion`) e microtexto “Abrir/Fechar” no desktop;
+- o CSS compartilhado mora em `globals.css` (`.cp-sanfona-seta`); não copie a
+  animação para o componente;
+- outro site: copie `docs/design-system/sanfona.modelo.html`, que é
+  autossuficiente;
+- o vocabulário visual (princípios, estados, checklist de componente novo) é
+  [DESIGN-SYSTEM.md](../04-arquitetura/DESIGN-SYSTEM.md).
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

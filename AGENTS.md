@@ -119,6 +119,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.18](docs/03-desenvolvimento/REGRAS-DURAS.md#518-leitura-de-jornal-e-conforto-visual) | Página longa com hierarquia de jornal: parágrafos curtos, destaques, rótulo e valor próximos, barra curta e centralizada, e setas Topo/Próxima seção no sumário lateral. |
 | [5.19](docs/03-desenvolvimento/REGRAS-DURAS.md#519-post-de-serviço-no-blog-segue-o-padrão) | Post de serviço no blog segue o [PADRAO-POST-BLOG](docs/03-desenvolvimento/PADRAO-POST-BLOG.md): slug legível, lead, “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela filtrável/ordenável. |
 | [5.20](docs/03-desenvolvimento/REGRAS-DURAS.md#520-seta-de-select-tem-respiro-até-a-borda) | Seta de `<select>` tem respiro até a borda: chevron global em `right .75rem` e `padding-right` de 36 px; não duplicar ícone. |
+| [5.21](docs/03-desenvolvimento/REGRAS-DURAS.md#521-sanfona-se-anuncia-como-sanfona-design-system) | Sanfona usa `SanfonaTema`: seta que gira, pulso, hover/foco e “Abrir/Fechar”. Vocabulário visual em [DESIGN-SYSTEM](docs/04-arquitetura/DESIGN-SYSTEM.md) e modelo portável em `docs/design-system/`. |
 
 ## Verificação mínima
 
@@ -182,6 +183,7 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Verificação e entrega | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Padrão de página wiki | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | Padrão de post de serviço no blog | [PADRAO-POST-BLOG.md](docs/03-desenvolvimento/PADRAO-POST-BLOG.md) |
+| Design system (componentes, sanfona, movimento) | [DESIGN-SYSTEM.md](docs/04-arquitetura/DESIGN-SYSTEM.md) |
 | Glossário | [GLOSSARIO-DEV.md](docs/03-desenvolvimento/GLOSSARIO-DEV.md) |
 | Arquitetura e payload | [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md) |
 | Oito qualidades da informação | [QUALIDADES-DA-INFORMACAO.md](docs/04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |

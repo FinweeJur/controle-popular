@@ -51,6 +51,12 @@ Cada página segue esta ordem:
 - **`BuscaUniversal`**: combobox ARIA global
 - **`BuscaLegislacaoUnificada`**: busca unificada de legislação
 
+### Sanfona (`<details>`)
+- Use `app/components/sistema/SanfonaTema.tsx` (regra 5.21): seta que gira,
+  pulso no selo, hover e foco. O vocabulário visual completo está em
+  [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md); o modelo portável, em
+  [`docs/design-system/sanfona.modelo.html`](../design-system/sanfona.modelo.html).
+
 ### Controles (select, input, botão)
 - **`<select>`**: usa o chevron global de `app/globals.css` (regra 5.20), com
   `right .75rem` e `padding-right: 2.25rem`; não desenhe uma segunda seta.
