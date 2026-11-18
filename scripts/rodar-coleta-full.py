@@ -67,6 +67,30 @@ COLETORES = {
         "arquivo": "mppa-pa-tacs.json",
         "desc": "MPPA TAC do Pará (15 páginas-ano, 422 termos)",
     },
+    "inea-rj-estudos": {
+        "cmd": ["python", "scripts/coletar-inea-rj-estudos.py"],
+        "timeout_s": 20 * 60,  # 20 min
+        "arquivo": "inea-rj-estudos.json",
+        "desc": "INEA-RJ EIA-RIMA e audiências (19 páginas-ano, 136 docs)",
+    },
+    "funai-ti": {
+        "cmd": ["python", "scripts/coletar-funai-terras-indigenas.py"],
+        "timeout_s": 30 * 60,  # 30 min
+        "arquivo": "funai-terras-indigenas.json",
+        "desc": "FUNAI terras indígenas (WFS, 667 no Brasil)",
+    },
+    "incra-assentamentos": {
+        "cmd": ["python", "scripts/coletar-incra-assentamentos.py"],
+        "timeout_s": 20 * 60,  # 20 min
+        "arquivo": "incra-assentamentos.json",
+        "desc": "INCRA assentamentos (SIPRA, 9.964 no Brasil)",
+    },
+    "aneel-cfurh-pa": {
+        "cmd": ["python", "scripts/coletar-aneel-cfurh-pa.py"],
+        "timeout_s": 15 * 60,  # 15 min
+        "arquivo": "aneel-cfurh-pa.json",
+        "desc": "ANEEL CFURH do Pará (3.963 linhas, 15 municípios)",
+    },
     "ana": {
         "cmd": ["python", "scripts/coletar-ana-outorgas.py", "--limit", "0"],
         "timeout_s": 6 * 3600,  # 6h
