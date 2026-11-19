@@ -98,7 +98,7 @@ cai no lado protetor (`eh_pessoa_fisica=True`, sem raiz).
 ═══ MUNICÍPIO: CATÁLOGO LOCAL, NUNCA BANCO ═══
 
 A Neon está em HTTP 402 até 2026-09-01 — sem banco não há como rodar
-`resolver_municipio_mg` (que consulta `ref_municipios_mg` via SQL). Este
+`resolver_municipio` (que consulta `ref_municipios` via SQL). Este
 módulo resolve contra o GeoJSON estático
 `apps/web/public/terras/globo/dados/camadas/municipios-mg.geojson`
 (853 feições, `properties.nome` + `properties.geocodigo`) — o mesmo

@@ -6,11 +6,12 @@
  * 
  * Papel no portal:
  * Guia o cidadão por frentes temáticas (Cidades, Congresso, Judiciário, Meio Ambiente, Paraopeba),
- * respostas pré-curadas, sugestões contextuais da rota atual e degraus determinísticos da Regra de Escada.
+ * respostas pré-curadas, sugestões contextuais da rota atual e a IA do RAG.
  * Oferece modo widget flutuante e modo tela cheia expansível com histórico de turnos e painel de fontes.
  * 
  * Regras e decisões:
- * - Regra de Escada: intercepta termos diretos (Laboratório, Cidades, Empresas, Respostas Curadas) antes da IA.
+ * - Regra de Escada: a pergunta digitada vai à IA; a resposta curada só entra
+ *   por clique explícito na sugestão (não rouba o Enter).
  * - Efeito Typewriter: animação de digitação progressiva suave (~16ms) com cursor pulsante ▋ e fases de status.
  * - Acessibilidade: botão 'Pular animação', clique no cartão para aceleração e atalhos de alto contraste e fontes.
  * - Citação direta e auditável: marcadores [n] com deep links para fontes oficiais primárias.
@@ -29,8 +30,8 @@
  *   exige conferir as três (o comentário de cada uma traz a régua em px).
  * - Barra de busca fixa (pedido do dono, 03/10/2026): a janelinha abre com
  *   `SeuNonoBusca` no rodapé, não com o botão "Perguntar à IA". Digitar sugere
- *   páginas do portal e respostas pré-curadas (expandindo para cima); só o
- *   Enter SEM correspondência aciona a IA. Os níveis por baixo não mudaram.
+ *   páginas do portal e respostas pré-curadas (expandindo para cima); o
+ *   Enter sempre pergunta à IA. A curadoria só responde no clique do item.
  */
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
@@ -76,6 +77,7 @@ import { definirRastroCursor } from "@/app/components/RastroCursor";
 import CompanheiroToggle from "@/app/components/CompanheiroToggle";
 import { definirCompanheiroAtivo } from "@/app/components/CompanheiroOpcional";
 import { EVENTO_MENU_PET_FECHAR } from "@/lib/companheiro/eventos";
+import { navegarInterno } from "@/lib/navegacao/navegar";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -95,10 +97,7 @@ import {
   BotaoPularAnimacao,
   type StatusTypewriter,
 } from "./EfeitoTypewriter";
-import {
-  avaliarEscadaDeterminista,
-  type ResultadoEscada,
-} from "@/lib/assistente/escada-determinista";
+import type { ResultadoEscada } from "@/lib/assistente/escada-determinista";
 import { obterLinksRelacionadosGalho } from "@/lib/assistente/arvore-galhos";
 import PilhaBotao from "@/app/components/pilha/PilhaBotao";
 import useControlePilha from "@/app/components/pilha/useControlePilha";
@@ -708,9 +707,10 @@ const COMANDOS_COMPANHEIRO: ComandoAcessibilidade[] = [
  * 3) escolha a pergunta;
  * 4) vê a resposta com link para a página certa.
  *
- * No último degrau, a IA (RAG sobre o acervo do portal, `/api/chatbot`)
- * responde com citação `[n]` da fonte e ressalva visível. A IA é oferecida
- * sempre — o backend degrada com honestidade se não houver provedor.
+ * A pergunta digitada vai à IA (RAG sobre o acervo do portal, `/api/chatbot`)
+ * e responde com citação `[n]` da fonte e ressalva visível. A curadoria do
+ * menu continua disponível, mas só responde por clique explícito. O backend
+ * degrada com honestidade se não houver provedor.
  *
  * Expansível para TELA CHEIA (padrão NotebookLM): botão de expandir no
  * cabeçalho; em tela cheia, conversa com histórico à esquerda e painel de
@@ -1300,7 +1300,8 @@ export function SeuNono() {
     if (hrefEhExterno) {
       window.open(href, "_blank", "noopener,noreferrer");
     } else {
-      window.location.href = href;
+      // Client-side: preserva a casca, o pet e o áudio do rádio.
+      navegarInterno(href);
     }
   }
 
@@ -1346,25 +1347,10 @@ export function SeuNono() {
     setNivel("ia");
     setStatusChat("consultando");
 
-    // 1. Degraus Determinísticos (Regra de Escada — Revelação Imediata)
-    const degrau = avaliarEscadaDeterminista(trimmed, pathname ?? undefined);
-    if (degrau) {
-      setResultadoEscada(degrau);
-      setStatusChat("pronto");
-      setCarregando(false);
-      setTurnosIa((turnos) => [
-        ...turnos,
-        {
-          pergunta: trimmed,
-          resposta: degrau.texto,
-          fontes: [],
-          escada: degrau,
-        },
-      ]);
-      return;
-    }
-
-    // 2. Chamada à API RAG
+    // A pergunta digitada vai direto ao RAG. O degrau determinístico continua
+    // nas SUGESTÕES da barra (clique explícito em resposta pré-curada), mas
+    // não pode responder no lugar da IA: era o que fazia o leitor receber
+    // sempre a mesma resposta curada e nunca o texto gerado.
     try {
       const resp = await fetch("/api/chatbot", {
         method: "POST",
@@ -2347,9 +2333,9 @@ export function SeuNono() {
           </div>
 
           {/* Rodapé: barra de busca FIXA do Seu Nonô (pedido do dono,
-              03/10/2026). É o novo degrau de entrada — enquanto a pessoa
-              digita, as sugestões sobem acima da barra (páginas do portal e
-              respostas pré-curadas); Enter sem correspondência aciona a IA. */}
+              03/10/2026). Enquanto a pessoa digita, as sugestões sobem acima
+              da barra (páginas e respostas pré-curadas). Enter sempre pergunta
+              à IA; sugestão só responde/navega com clique ou setas. */}
           <div className="shrink-0 border-t border-border bg-surface-2 px-3 py-2">
             <SeuNonoBusca
               pathname={pathname}
@@ -2358,8 +2344,8 @@ export function SeuNono() {
               aoEnviarIa={executarPerguntaIa}
               aoEscolherCuradoria={aoEscolherCuradoria}
             />
-            <p className="mt-1 text-center text-[.65rem] text-text-soft">
-              {nivel === "frentes" && "Digite para navegar no portal ou perguntar à IA"}
+            <p className="mt-1 text-center text-xs text-text-soft">
+              {nivel === "frentes" && "Digite para perguntar à IA; ↑↓ e Enter abrem uma sugestão"}
               {nivel === "categorias" && "Passo 2: tema"}
               {nivel === "perguntas" && "Passo 3: pergunta"}
               {nivel === "resposta" && "Resposta pré-curada"}
@@ -2419,13 +2405,19 @@ export function SeuNono() {
               setAberto(true);
               if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
             }}
-            title="Arraste para mover; clique duplo volta ao canto"
-            className={`flex h-16 w-16 touch-none items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            data-cp-sem-dica
+            className={`group/fab relative flex h-16 w-16 touch-none items-center justify-center rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
               arrastando ? "cursor-grabbing" : "cursor-grab"
             }`}
             aria-label="Abrir assistente Seu Nonô"
           >
             <AvatarSeuNono size={64} className="h-full w-full rounded-full" />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-full top-1/2 ml-2 -translate-x-1 -translate-y-1/2 whitespace-nowrap rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-text opacity-0 shadow-lg transition-all duration-200 group-hover/fab:translate-x-0 group-hover/fab:opacity-100 group-focus-visible/fab:translate-x-0 group-focus-visible/fab:opacity-100 motion-reduce:transition-none"
+            >
+              Abrir o Seu Nonô
+            </span>
           </button>
         </div>
       )}
@@ -2451,7 +2443,7 @@ export function SeuNono() {
     {!aberto && (
       <div
         style={telaCheia ? undefined : estiloPata}
-        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] transition-[bottom] duration-75 motion-reduce:transition-none ${
+        className={`fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[46] ${
           pataVisivel ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         data-cp-slot={pata.indice}
@@ -2486,7 +2478,7 @@ export function SeuNono() {
           }}
           aria-expanded={menuPetAberto}
           aria-label="Trocar o bichinho do companheiro"
-          title="Trocar o bichinho do companheiro — arraste para mover; clique duplo volta ao canto"
+          estado={menuPetAberto ? "menu aberto" : undefined}
           className={arrastandoPata ? "cursor-grabbing" : "cursor-grab"}
           icone={<PawPrint size={20} aria-hidden="true" />}
         />

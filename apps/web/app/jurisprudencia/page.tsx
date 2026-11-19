@@ -23,6 +23,9 @@ import type { TipoGrafico } from "./graficos";
 import { CatalogoIndeterminados } from "./Catalogo";
 import { ResumoRealidadeBox } from "../components/ResumoRealidade";
 import { TrilhaFrentes } from "../components/TrilhaFrentes";
+import { TeseTema1280 } from "./TeseTema1280";
+import { metadataEditavel } from "@/lib/edicoes";
+import { MiniSumarioLateral } from "../components/wiki/MiniSumarioLateral";
 
 /**
  * @file Página /jurisprudencia — painel dos desastres.
@@ -40,11 +43,26 @@ import { TrilhaFrentes } from "../components/TrilhaFrentes";
  * em `RodapeMetodo` — ambos em `partes.tsx`.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/jurisprudencia", {
   title: "Jurisprudência dos desastres — Controle Popular",
   description:
     "Painel da jurisprudência dos desastres: acórdãos do TJMG (Brumadinho, Rio Doce e direitos humanos), do TJES (Fundão) e súmulas do STF, STJ e TST, com recorte por tema de indenização, danos PNAB/PEAB e valores.",
-};
+});
+
+const SECOES_JURIS = [
+  { id: "resumo-realidade", titulo: "Resumo de realidade" },
+  { id: "tema-1280", titulo: "Tema 1.280/STJ" },
+  { id: "cartoes", titulo: "Números do acervo" },
+  { id: "temas", titulo: "Recorte por tema" },
+  { id: "grafico", titulo: "Como ver" },
+  { id: "painel", titulo: "Painel" },
+  { id: "catalogo", titulo: "Catálogo" },
+  { id: "lista", titulo: "Lista de casos" },
+  { id: "sumulas", titulo: "Súmulas" },
+  { id: "legislacao", titulo: "Normas" },
+  { id: "noticias", titulo: "Notícias" },
+  { id: "metodo", titulo: "Como ler" },
+];
 
 export default async function Jurisprudencia({
   searchParams,
@@ -109,6 +127,7 @@ export default async function Jurisprudencia({
 
       <div className="mx-auto max-w-5xl space-y-10">
         <ResumoRealidadeBox rota="/jurisprudencia" />
+        <TeseTema1280 />
         <TrilhaFrentes atual="/jurisprudencia" />
         <Cartoes />
         <FaixaTemas filtros={filtros} />
@@ -119,7 +138,7 @@ export default async function Jurisprudencia({
 
         <CatalogoIndeterminados />
 
-        <section className="space-y-4" id="lista">
+        <section className="scroll-mt-24 space-y-4" id="lista">
           <h2 className="font-display text-xl font-semibold">Lista</h2>
           <Formulario filtros={filtros} />
           <Paginacao pagina={pagina} filtros={filtros} />
@@ -132,6 +151,7 @@ export default async function Jurisprudencia({
         <Notas semResumo={semResumo} />
         <RodapeMetodo />
       </div>
+      <MiniSumarioLateral itens={SECOES_JURIS} />
     </div>
   );
 }

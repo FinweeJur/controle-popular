@@ -13,12 +13,13 @@ import TabelaIbamaAutos from "./TabelaIbamaAutos";
 import { obterIbamaAutos } from "@/lib/server-only/dados-ibama-autos";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
 import DataColeta from "@/app/components/DataColeta";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/ibama", {
   title: "Licenciamento e Fiscalização Federal (IBAMA em MG) — Controle Popular",
   description:
     "Painel de licenciamento ambiental federal, autos de infração e julgamentos de penalidades aplicadas pelo IBAMA no estado de Minas Gerais.",
-};
+});
 
 export default function IbamaIndexPage() {
   const autos = obterIbamaAutos();

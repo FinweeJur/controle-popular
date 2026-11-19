@@ -17,6 +17,7 @@ import { lerSinteseAjri } from "@/lib/paraopeba/sintese-ajri-dados";
 /** Sinônimo para os usos abaixo — o dado agora vive no loader server-only. */
 const SINTESE_AJRI = lerSinteseAjri();
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import SanfonaTema from "@/app/components/sistema/SanfonaTema";
 import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
@@ -279,13 +280,8 @@ export default function AuditoriaAjriPage() {
         </p>
 
         <div className="mt-5 space-y-3">
-          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
-            <summary className="cursor-pointer list-none">
-              <span className="font-semibold text-text">
-                Tabela de prazos — o que foi prometido e o que está valendo hoje
-              </span>
-            </summary>
-            <div className="mt-3 overflow-x-auto text-[.9em] leading-relaxed text-text-soft">
+          <SanfonaTema titulo="Tabela de prazos — o que foi prometido e o que está valendo hoje">
+            <div className="overflow-x-auto text-[.9em] leading-relaxed text-text-soft">
               <table className="w-full min-w-[640px] border-collapse">
                 <thead>
                   <tr className="border-b border-border text-left text-text">
@@ -316,17 +312,11 @@ export default function AuditoriaAjriPage() {
                 </div>
               )}
             </div>
-          </details>
+          </SanfonaTema>
 
           {SINTESE_AJRI.eixos.map((eixo) => (
-            <details
-              key={eixo.titulo}
-              className="group rounded-xl border border-border bg-surface px-4 py-3"
-            >
-              <summary className="cursor-pointer list-none">
-                <span className="font-semibold text-text">{eixo.titulo}</span>
-              </summary>
-              <div className="mt-3 space-y-3 text-[.92em] leading-relaxed text-text-soft">
+            <SanfonaTema key={eixo.titulo} titulo={eixo.titulo}>
+              <div className="space-y-3 text-[.92em] leading-relaxed text-text-soft">
                 <p>
                   <strong className="font-medium text-text">Estado geral.</strong>{" "}
                   {eixo.estadoGeral}
@@ -355,16 +345,11 @@ export default function AuditoriaAjriPage() {
                   </div>
                 )}
               </div>
-            </details>
+            </SanfonaTema>
           ))}
 
-          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
-            <summary className="cursor-pointer list-none">
-              <span className="font-semibold text-text">
-                Pendências que atravessam o acervo inteiro
-              </span>
-            </summary>
-            <ol className="mt-3 space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
+          <SanfonaTema titulo="Pendências que atravessam o acervo inteiro">
+            <ol className="space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
               {SINTESE_AJRI.transversais.map((t, i) => (
                 <li key={i}>
                   <strong className="font-medium text-text">{t.titulo.replace(/\.$/, "")}.</strong>{" "}
@@ -372,13 +357,10 @@ export default function AuditoriaAjriPage() {
                 </li>
               ))}
             </ol>
-          </details>
+          </SanfonaTema>
 
-          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
-            <summary className="cursor-pointer list-none">
-              <span className="font-semibold text-text">Onde a base de evidência é mais rasa</span>
-            </summary>
-            <ul className="mt-3 space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
+          <SanfonaTema titulo="Onde a base de evidência é mais rasa">
+            <ul className="space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
               {SINTESE_AJRI.fragilidades.map((f, i) => (
                 <li key={i}>
                   <strong className="font-medium text-text">{f.titulo.replace(/\.$/, "")}.</strong>{" "}
@@ -386,7 +368,7 @@ export default function AuditoriaAjriPage() {
                 </li>
               ))}
             </ul>
-          </details>
+          </SanfonaTema>
         </div>
       </section>
 

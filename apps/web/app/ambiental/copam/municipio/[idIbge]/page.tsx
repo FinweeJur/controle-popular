@@ -14,7 +14,7 @@ type Params = Promise<{ idIbge: string }>;
 /**
  * Uma página por município com item de pauta do COPAM. Nome do município sai
  * do PRIMEIRO item (todos os itens do mesmo `idIbge` carregam o mesmo nome,
- * resolvido contra `ref_municipios_mg` — ver
+ * resolvido contra `ref_municipios` — ver
  * `etl.apis.copam_reunioes._municipio_estruturado` e `_municipios_do_texto`).
  *
  * ~500 municípios: pré-render total é uma leitura no banco por página no

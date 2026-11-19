@@ -1,0 +1,23 @@
+[
+  {
+    "id": "lei-organica-pbh",
+    "titulo": "Lei Orgânica do Município de Belo Horizonte",
+    "tipo": "Lei",
+    "orgao": "Prefeitura de Belo Horizonte",
+    "url": "https://prefeitura.pbh.gov.br/lei-organica.pdf",
+    "urlPdf": "https://prefeitura.pbh.gov.br/lei-organica.pdf"
+  },
+  {
+    "id": "somente-pdf",
+    "titulo": "Plano Diretor (só no campo urlPdf)",
+    "orgao": "Prefeitura de Betim",
+    "url": "/documentos/relativo-nao-serve.pdf",
+    "urlPdf": "https://www.betim.mg.gov.br/plano-diretor.pdf"
+  },
+  {
+    "id": "url-perigosa",
+    "titulo": "Documento com URL javascript",
+    "orgao": "Órgão de teste",
+    "url": "javascript:alert(document.cookie)"
+  }
+]

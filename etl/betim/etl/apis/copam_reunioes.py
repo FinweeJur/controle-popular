@@ -45,7 +45,7 @@ reabrir o F0 porque é achado de implementação, não de viabilidade):
   3. **Município por regex genérica (`[A-ZÀ-Ý][\w ]+/MG`) é ambíguo** para o
      caso de vários municípios com um `/MG` só no fim ("Manga e
      Montalvânia/MG"). Este módulo casa contra a lista REAL das 853 cidades
-     de `ref_municipios_mg` (substring exata pós-normalização, mais o bloco
+     de `ref_municipios` (substring exata pós-normalização, mais o bloco
      inteiro dividido por vírgula/" e " para pegar todas as cidades de uma
      lista) — nunca aceita nome que não está no catálogo, então falso
      positivo é estruturalmente impossível (o preço é falso negativo em
@@ -174,8 +174,18 @@ def _achatar(texto: str) -> str:
 def _carregar_catalogo(client) -> list[tuple[str, str, str]]:
     """`[(id_ibge, nome_oficial, nome_normalizado)]`, do mais longo para o
     mais curto — ordem importa para o casamento de bloco (§ abaixo prefere
-    "São Gonçalo do Rio Abaixo" inteiro a bater com pedaços)."""
-    linhas = client.table("ref_municipios_mg").select("id_ibge, nome").execute().data
+    "São Gonçalo do Rio Abaixo" inteiro a bater com pedaços).
+
+    Restrito a MG: o catálogo virou nacional na migration 0092 (5.571
+    cidades) e este módulo só lê pauta do COPAM mineiro — sem o recorte, um
+    "Bom Jesus" citado numa reunião casaria com o homônimo de PI ou de RN."""
+    linhas = (
+        client.table("ref_municipios")
+        .select("id_ibge, nome")
+        .eq("uf", "MG")
+        .execute()
+        .data
+    )
     catalogo = [(r["id_ibge"], r["nome"], _normalizar(r["nome"])) for r in linhas]
     catalogo.sort(key=lambda t: -len(t[2]))
     return catalogo
@@ -198,7 +208,7 @@ def _carregar_catalogo(client) -> list[tuple[str, str, str]]:
 # proíbe " - " (com espaços) DENTRO do bloco capturado — sem impedir hífen
 # sem espaço, que 5 municípios de MG têm no próprio nome (Sapucaí-Mirim,
 # Olhos-d'Água, Pingo-d'Água, Guarda-Mor, Sem-Peixe; medido contra o
-# catálogo completo de `ref_municipios_mg`).
+# catálogo completo de `ref_municipios`).
 #
 # Teto de 500, não 80: medido ao vivo na 1ª rodada completa (454 reuniões) —
 # linhas de transmissão de energia citam dezenas de municípios num item só

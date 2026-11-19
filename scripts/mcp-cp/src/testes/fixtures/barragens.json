@@ -1,0 +1,65 @@
+{
+  "fonte": "ANM — SIGBM (dados abertos)",
+  "url_fonte": "https://dadosabertos.anm.gov.br/SIGBM/Barragens.csv",
+  "ultima_atualizacao": "2026-11-11",
+  "coletado_em": "2026-11-11",
+  "total": 4,
+  "total_brasil": 908,
+  "municipios": 3,
+  "barragens": [
+    {
+      "id": "9000",
+      "nome": "Barragem Alerta",
+      "empreendedor": "MINERADORA TESTE LTDA",
+      "uf": "MG",
+      "municipio": "ITABIRA",
+      "situacao": "Ativa",
+      "nivel_emergencia": "Nível de Alerta",
+      "categoria_risco": "Alta",
+      "dano_potencial": "Alta",
+      "fase_descaracterizacao": null,
+      "data_finalizacao_dce": null
+    },
+    {
+      "id": "8955",
+      "nome": "Barragem Serra Azul",
+      "empreendedor": "ARCELORMITTAL BRASIL S.A.",
+      "uf": "MG",
+      "municipio": "ITATIAIUÇU",
+      "situacao": "Em Descaracterização",
+      "nivel_emergencia": "Emergência Nivel 3",
+      "categoria_risco": "Alta",
+      "dano_potencial": "Alta",
+      "fase_descaracterizacao": "Executivo",
+      "data_finalizacao_dce": "2024-05-02"
+    },
+    {
+      "id": "8389",
+      "nome": "Sul Superior",
+      "empreendedor": "VALE S.A.",
+      "uf": "MG",
+      "municipio": "BARÃO DE COCAIS",
+      "situacao": "Em Descaracterização",
+      "nivel_emergencia": "Emergência Nivel 2",
+      "categoria_risco": "Alta",
+      "dano_potencial": "Alta",
+      "fase_descaracterizacao": "Executivo",
+      "data_finalizacao_dce": null
+    },
+    {
+      "id": "9100",
+      "nome": "Barragem Norte",
+      "empreendedor": "MINERAÇÃO PARÁ S.A.",
+      "uf": "PA",
+      "municipio": "PARAUAPEBAS",
+      "situacao": "Ativa",
+      "nivel_emergencia": "Sem emergência",
+      "categoria_risco": "Baixa",
+      "dano_potencial": "Média",
+      "fase_descaracterizacao": null,
+      "data_finalizacao_dce": null
+    },
+    { "nome": "Sem id, descartada" },
+    { "id": "sem-nome" }
+  ]
+}

@@ -1303,15 +1303,20 @@ export const cap_autos_infracao = pgTable("cap_autos_infracao", {
 ]);
 
 /**
- * Catálogo de referência: as 853 cidades de MG (+ grandfather de cidade do
- * portal fora de MG), migration `0057_ref_municipios_mg.sql`. Existe só para
- * NORMALIZAR o município que `feam_barragens`/`snisb_barragens` gravam
- * contra um código IBGE estável — não é o cadastro de cidades do portal
+ * Catálogo de referência NACIONAL: as 5.571 cidades do Brasil (API do IBGE),
+ * migration `0092_ref_municipios_nacional.sql` — nasceu estadual em
+ * `0057_ref_municipios_mg.sql` com as 853 de MG. Existe só para NORMALIZAR o
+ * município que `feam_barragens`/`snisb_barragens`/`ambiental_licenciamento`
+ * gravam contra um código IBGE estável — não é o cadastro de cidades do portal
  * (`municipios`, 6 linhas, branding/geojson/fontes de ETL por cidade).
+ *
+ * `uf` é o que impede casamento por nome de atravessar estado ("Bom Jesus"
+ * existe em PI, RN, PB e RS) — ver `etl.common.resolver_municipio`.
  */
-export const ref_municipios_mg = pgTable("ref_municipios_mg", {
+export const ref_municipios = pgTable("ref_municipios", {
 	id_ibge: text().primaryKey().notNull(),
 	nome: text().notNull(),
+	uf: text().notNull(),
 });
 
 /**
@@ -1355,13 +1360,13 @@ export const snisb_barragens = pgTable("snisb_barragens", {
 }, (table) => [
 	index("snisb_barragens_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
 	index("snisb_barragens_risco_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.categoria_risco.asc().nullsLast().op("text_ops")),
-	// A FK real aponta para `ref_municipios_mg.id_ibge` desde a migration
+	// A FK real aponta para `ref_municipios.id_ibge` desde a migration
 	// 0057 (trocada de `municipios`, que travava barragem de fora das 6
 	// cidades do portal — ver a docstring daquela migration). Corrigido
 	// aqui em 2026-08-11 porque este arquivo tinha ficado com o alvo velho.
 	foreignKey({
 			columns: [table.id_municipio],
-			foreignColumns: [ref_municipios_mg.id_ibge],
+			foreignColumns: [ref_municipios.id_ibge],
 			name: "snisb_barragens_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("snisb_barragens_id_municipio_codigo_snisb_key").on(table.id_municipio, table.codigo_snisb),
@@ -1414,10 +1419,10 @@ export const feam_barragens = pgTable("feam_barragens", {
 	index("feam_barragens_emergencia_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.nivel_emergencia.desc().nullsFirst().op("int4_ops")),
 	index("feam_barragens_metodo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.metodo_construtivo.asc().nullsLast().op("text_ops")),
 	// Ver a nota equivalente em `snisb_barragens`, acima: FK real é
-	// `ref_municipios_mg.id_ibge` desde a migration 0057.
+	// `ref_municipios.id_ibge` desde a migration 0057.
 	foreignKey({
 			columns: [table.id_municipio],
-			foreignColumns: [ref_municipios_mg.id_ibge],
+			foreignColumns: [ref_municipios.id_ibge],
 			name: "feam_barragens_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("feam_barragens_id_municipio_nome_key").on(table.id_municipio, table.nome),
@@ -1540,13 +1545,11 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	index("ambiental_legislacao_municipio_idx").using("btree", table.id_ibge_municipio.asc().nullsLast().op("text_ops")),
 	index("ambiental_legislacao_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
 	index("ambiental_legislacao_tags_idx").using("gin", table.tags.asc().nullsLast().op("array_ops")),
-	// A FK real para `ref_municipios_mg(id_ibge)` existe no Postgres (migration
-	// 0063) — não declarada aqui porque `ref_municipios_mg` não tem `pgTable`
-	// próprio neste arquivo (mesmo drift já visto em `feam_barragens`/
-	// `snisb_barragens`, que apontam para `municipios` no Drizzle mas para
-	// `ref_municipios_mg` no banco de verdade). Sem consequência prática: esta
-	// coluna é sempre `null` hoje (ver a nota da migration), e a integridade
-	// referencial já é garantida pelo Postgres, não pelo Drizzle.
+	// A FK real para `ref_municipios(id_ibge)` existe no Postgres (migration
+	// 0063) — não declarada aqui porque o schema Drizzle não a modela (mesmo
+	// drift já visto em `feam_barragens`/`snisb_barragens`). Sem consequência
+	// prática: esta coluna é sempre `null` hoje (ver a nota da migration), e a
+	// integridade referencial já é garantida pelo Postgres, não pelo Drizzle.
 	unique("ambiental_legislacao_fonte_id_fonte_key").on(table.fonte, table.id_fonte),
 	check("ambiental_legislacao_fonte_check", sql`fonte = ANY (ARRAY['almg'::text, 'semad'::text, 'siam'::text, 'mma'::text, 'cndh'::text])`),
 	check("ambiental_legislacao_esfera_check", sql`esfera = ANY (ARRAY['municipal'::text, 'estadual'::text, 'nacional'::text, 'internacional'::text])`),
@@ -3003,7 +3006,7 @@ export const ambiental_licenciamento = pgTable("ambiental_licenciamento", {
 	index("ambiental_licenciamento_setor_idx").using("btree", table.setor_letra.asc().nullsLast().op("text_ops")),
 	foreignKey({
 			columns: [table.id_municipio],
-			foreignColumns: [ref_municipios_mg.id_ibge],
+			foreignColumns: [ref_municipios.id_ibge],
 			name: "ambiental_licenciamento_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("ambiental_licenciamento_id_fonte_key").on(table.id_fonte),

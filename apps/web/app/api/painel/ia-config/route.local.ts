@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { painelAutorizado } from "@/lib/painel/edicoes-io";
 import {
-  lerConfigIa,
   salvarConfigIa,
   resumoParaPainel,
   type IdProvedor,
@@ -50,9 +49,9 @@ export async function POST(request: Request) {
   }
 
   const pedido = body.provedorAtivo;
-  if (pedido !== "deepseek" && pedido !== "maritaca" && pedido !== "ling") {
+  if (pedido !== "glm" && pedido !== "maritaca" && pedido !== "deepseek" && pedido !== "ling") {
     return NextResponse.json(
-      { erro: "provedorAtivo precisa ser 'deepseek', 'maritaca' ou 'ling'." },
+      { erro: "provedorAtivo precisa ser 'glm', 'maritaca', 'deepseek' ou 'ling'." },
       { status: 400 }
     );
   }

@@ -5,9 +5,13 @@
  * Padrão Lightswind UI (React + Tailwind CSS + Framer Motion).
  *
  * Em repouso, ocupa espaço mínimo na navbar (ícone de 36px em mobile, pílula compacta em desktop).
- * Ao interagir (clique, foco ou atalho Ctrl+K), expande suavemente com mola física
+ * Ao interagir (clique, foco, hover ou começar a digitar), expande suavemente com mola física
  * (Framer Motion) e foca o campo de digitação automaticamente.
  * Fecha com Escape ou ao clicar fora da caixa.
+ *
+ * O atalho Ctrl+K pertence à paleta de comandos (`PaletaComandos`), não a este
+ * campo: os dois escutavam o mesmo evento e a paleta abria junto com a busca.
+ * Aqui o campo só expande por gesto do leitor.
  */
 
 import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
@@ -89,10 +93,10 @@ export const ExpandableSearch = forwardRef<ExpandableSearchRef, ExpandableSearch
       return () => window.removeEventListener("resize", updateMobile);
     }, []);
 
-    const expand = () => {
+    const expand = (focar = true) => {
       setIsExpanded(true);
       onExpand?.();
-      setTimeout(() => inputRef.current?.focus(), 50);
+      if (focar) setTimeout(() => inputRef.current?.focus(), 50);
     };
 
     const collapse = () => {
@@ -102,7 +106,7 @@ export const ExpandableSearch = forwardRef<ExpandableSearchRef, ExpandableSearch
     };
 
     useImperativeHandle(ref, () => ({
-      expand,
+      expand: () => expand(),
       collapse,
       focus: () => inputRef.current?.focus(),
     }));
@@ -118,10 +122,6 @@ export const ExpandableSearch = forwardRef<ExpandableSearchRef, ExpandableSearch
       }
 
       function handleKeyDown(ev: KeyboardEvent) {
-        if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "k") {
-          ev.preventDefault();
-          expand();
-        }
         if (ev.key === "Escape") {
           if (value.trim().length === 0) {
             collapse();
@@ -167,13 +167,16 @@ export const ExpandableSearch = forwardRef<ExpandableSearchRef, ExpandableSearch
         initial={false}
         animate={{ width: targetWidth }}
         transition={{ type: "spring", stiffness: 380, damping: 28 }}
-        className={`relative flex items-center ${className}`}
+        onMouseEnter={() => {
+          if (!isExpanded) expand(false);
+        }}
+        className={`relative flex shrink-0 items-center ${className}`}
       >
         {/* Estado compacto em mobile: botão redondo com ícone de lupa */}
         {!isExpanded && isMobile ? (
           <button
             type="button"
-            onClick={expand}
+            onClick={() => expand()}
             disabled={disabled}
             aria-label={ariaLabel}
             title={placeholder}
@@ -196,11 +199,11 @@ export const ExpandableSearch = forwardRef<ExpandableSearchRef, ExpandableSearch
               value={value}
               onChange={(e) => onChange?.(e.target.value)}
               onFocus={() => {
-                if (!isExpanded) setIsExpanded(true);
+                if (!isExpanded) expand();
               }}
               onKeyDown={handleKeyDown}
               disabled={disabled}
-              placeholder={placeholder}
+              placeholder={isExpanded ? placeholder : "Buscar"}
               aria-label={ariaLabel}
               className="w-full rounded-lg border border-border bg-surface-2 py-1.5 pr-8 pl-8.5 text-sm text-text outline-none transition-colors placeholder:text-text-soft focus:border-primary"
             />

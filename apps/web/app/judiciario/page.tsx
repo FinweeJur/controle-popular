@@ -9,12 +9,13 @@ import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/compone
 import { formatNumberBR } from "@/lib/betim/format";
 import resumoJurisprudencia from "@/data/jurisprudencia-buscador-resumo.json";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario", {
   title: "Judiciário brasileiro: ministros, indicações e próximas vagas — Controle Popular",
   description:
     "Acompanhe quem ocupa cada tribunal, quem indicou cada ministro, quando vaga cada cadeira e como o Judiciário é fiscalizado.",
-};
+});
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";

@@ -5,12 +5,13 @@ import LabExplorador from "./LabExplorador";
 import { montarCamadasCatalogo, listarCamadasLab } from "./lab-camadas";
 import { resumoBarragens, resumoLicencas, resumoEducacao, resumoEconomia, resumoCongresso, resumoJudiciario, resumoClima, resumoEsg } from "./lab-dados";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/laboratorio", {
   title: "Laboratório de Dados — Controle Popular",
   description:
     "Explorador interativo de dados públicos: 23 camadas ativáveis (barragens, licenciamento, salários, PNCP, educação, economia e mais).",
-};
+});
 
 export default function LaboratorioPage() {
   // 23 camadas do catálogo (PowerBI-style) + os resumos históricos

@@ -12,7 +12,9 @@ navegador real, que:
 3. as sugestoes abrem ACIMA da barra (o painel termina antes do campo);
 4. escolher uma sugestao navega no cliente (a casca nao recarrega);
 5. digitar um termo SEM correspondencia e apertar Enter aciona o fluxo de
-   IA existente (aparece o status "Consultando acervo publico oficial...").
+   IA existente (aparece o status "Consultando acervo publico oficial...");
+6. apertar Enter com sugestao de pagina NAO navega: pergunta e mantem a URL
+   (o defeito de 17/11/2026, em que o Enter pulava para a primeira pagina).
 
 FONTE DAS ROTAS E SELETORES (nada digitado a mao)
 -------------------------------------------------
@@ -113,6 +115,54 @@ def digitar(page: Page, termo: str) -> None:
     page.wait_for_timeout(700)
 
 
+def checar_curadoria(page: Page, base: str) -> tuple[bool, str]:
+    """5. O termo com resposta pronta aparece como sugestao de curadoria."""
+    abrir_widget(page, base)
+    digitar(page, TERMO_CURADO)
+    try:
+        page.wait_for_selector(SELETOR_CURADA, timeout=8000)
+        tem = page.locator(SELETOR_CURADA).count() > 0
+    except Exception:
+        tem = False
+    return tem, "" if tem else "curadoria nao apareceu"
+
+
+def checar_enter_sem_match(page: Page, base: str) -> tuple[bool, str]:
+    """6. Sem sugestao, Enter aciona o fluxo de IA."""
+    abrir_widget(page, base)
+    campo = page.locator(SELETOR_BARRA).first
+    campo.fill(TERMO_SEM_MATCH)
+    page.wait_for_timeout(700)
+    antes = page.locator(SELETOR_SUGESTAO).count()
+    campo.press("Enter")
+    try:
+        page.wait_for_selector(f"text={TEXTO_STATUS_IA}", timeout=6000)
+        status = True
+    except Exception:
+        status = False
+    return antes == 0 and status, f"sugestoes={antes}, status_ia={status}"
+
+
+def checar_enter_com_sugestao(page: Page, base: str) -> tuple[bool, str]:
+    """7. Com sugestao de pagina, Enter pergunta a IA e NAO navega."""
+    abrir_widget(page, base)
+    digitar(page, TERMO_COM_PAGINA)
+    page.wait_for_selector(SELETOR_SUGESTOES, timeout=8000)
+    antes = page.locator(SELETOR_SUGESTAO).count()
+    url_antes = page.url
+    page.locator(SELETOR_BARRA).first.press("Enter")
+    try:
+        page.wait_for_selector(f"text={TEXTO_STATUS_IA}", timeout=6000)
+        status = True
+    except Exception:
+        status = False
+    page.wait_for_timeout(800)
+    url_depois = page.url
+    depois = page.locator(SELETOR_SUGESTAO).count()
+    ok = antes > 0 and url_antes == url_depois and depois == 0 and status
+    return ok, f"sugestoes={antes}, status_ia={status}, url={url_antes} -> {url_depois}"
+
+
 def executar(args: argparse.Namespace) -> int:
     """Roda os checks no navegador e devolve o codigo de saida do processo."""
     checks: list[tuple[str, bool, str]] = []
@@ -181,34 +231,14 @@ def executar(args: argparse.Namespace) -> int:
         # Volta e reabre/carrega o widget para testar a curadoria e o Enter.
         abrir_widget(page, args.base)
 
-        # 5. A resposta pré-curada aparece como sugestao.
-        digitar(page, TERMO_CURADO)
-        try:
-            page.wait_for_selector(SELETOR_CURADA, timeout=8000)
-            tem_curada = page.locator(SELETOR_CURADA).count() > 0
-        except Exception:
-            tem_curada = False
-        check("5. resposta pre-curada aparece como sugestao", tem_curada)
+        ok5, det5 = checar_curadoria(page, args.base)
+        check("5. resposta pre-curada aparece como sugestao", ok5, det5)
 
-        # 6. Enter sem correspondencia aciona o fluxo de IA.
-        campo = page.locator(SELETOR_BARRA).first
-        campo.click()
-        campo.fill(TERMO_SEM_MATCH)
-        page.wait_for_timeout(700)
-        sugestoes_antes = page.locator(SELETOR_SUGESTAO).count()
-        campo.press("Enter")
-        try:
-            page.wait_for_selector(
-                f"text={TEXTO_STATUS_IA}", timeout=6000
-            )
-            status_ia = True
-        except Exception:
-            status_ia = False
-        check(
-            "6. Enter sem correspondencia aciona a IA",
-            sugestoes_antes == 0 and status_ia,
-            f"sugestoes={sugestoes_antes}, status_ia={status_ia}",
-        )
+        ok6, det6 = checar_enter_sem_match(page, args.base)
+        check("6. Enter sem correspondencia aciona a IA", ok6, det6)
+
+        ok7, det7 = checar_enter_com_sugestao(page, args.base)
+        check("7. Enter com sugestao pergunta em vez de navegar", ok7, det7)
 
         navegador.close()
 

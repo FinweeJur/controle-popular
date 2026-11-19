@@ -1,0 +1,33 @@
+[
+  {
+    "uf": "MG",
+    "slug": "mg",
+    "nome": "Minas Gerais",
+    "regiao": "Sudeste",
+    "capital": "Belo Horizonte",
+    "executivo": {
+      "portal_governo": "https://www.mg.gov.br",
+      "transparencia": "https://transparencia.mg.gov.br",
+      "diario_oficial": "https://www.jornalminasgerais.mg.gov.br"
+    },
+    "legislativo": {
+      "assembleia_sigla": "ALMG",
+      "portal_oficial": "https://www.almg.gov.br"
+    },
+    "judiciario_e_controle": {
+      "tribunal_justica": {
+        "sigla": "TJMG",
+        "portal": "https://www.tjmg.jus.br",
+        "datajud_api": "https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search"
+      },
+      "ministerio_publico": {
+        "sigla": "MPMG",
+        "portal": "https://www.mpmg.mp.br"
+      }
+    },
+    "sociedade_civil": {
+      "observatorio_social": "Observatório Social de Minas"
+    }
+  },
+  { "uf": "", "nome": "Estado sem UF: descartado" }
+]

@@ -30,12 +30,13 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import DestaqueLitigios from "./DestaqueLitigios";
 import { ArrowRight } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/europa", {
   title: "Europa & Conexões Transnacionais: Litígios, Devida Diligência & Concessões | Controle Popular",
   description:
     "Acervo de litígios internacionais e concessões europeias no Brasil: BHP Mariana no High Court de Londres (£36 bi), Braskem no Tribunal de Roterdã, BAFA LkSG na Alemanha, EUDR e multinacionais (Enel, Santander, EDP, Aperam).",
-};
+});
 
 export default function PaginaHubEuropa() {
   const dados = obterDadosEuropa();

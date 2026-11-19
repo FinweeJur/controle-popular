@@ -171,6 +171,7 @@ exige decisão explícita do dono.
 | B8 | **Expansão ambiental para 853 cidades** | 🚧 | **licenciamento ✅** (18/10): `listarMunicipiosComLicenciamento` virou LEFT JOIN a partir de `ref_municipios_mg` com corte `like '31%'` — busca lista os 853, os **22 sem dado** aparecem "sem registro na fonte" sem link; cartões contam os **831 com dado** (medido no Heroku em 18/10: 19.713 licenças, rodada completa `95007a2c` — antes 145 cidades/8.612, coleta de 22/09 interrompida no município 145); `generateStaticParams` filtra `total > 0`. **link do buscador ✅** (não era bug: o `Link` de `@/lib/ambiental/link` prefixa `/ambiental` sozinho — documentado). **CAR 🚧**: texto de amostra (56 imóveis/45 cidades) na tela; cobertura municipal completa exige coleta da base de 1,16 mi em ETL + agregado server-side (§5.1). **outorga IGAM ⏳**: grade não expõe Município; UI diz "não exposto pela fonte"; rotas possíveis (export xlsx com CSRF, detalhe por portaria) não implementadas |
 | B9 | **Plataforma Rio Doce — hub `/riodoce` (modelo do Projeto Brumadinho)** | 🚧 | Plano de 12/10: [PLANO-PLATAFORMA-RIO-DOCE.md](/docs/historico/planos/PLANO-PLATAFORMA-RIO-DOCE.md). Decisões do dono (12/10): zona nova `/riodoce` e Fase 1 = busca + processos. **Fase 0 concluída em 12/10** ([FONTES-RIO-DOCE.md](../06-fontes/FONTES-RIO-DOCE.md)): 8 processos CNJ confirmados no DataJud (TTAC/STF fora do índice público), 38 camadas SEMAD medidas (mancha do Fundão **1.243 feições**, 132,7 MB), ArcGIS REST da Renova com 87 tables públicas, CKAN MG sem dataset novo de Repactuação. **Esqueleto `/riodoce` no ar no mesmo dia** (hub + `/riodoce/processos` com lacuna declarada). Próximo: Fase 1b — lista dos 8 CNJ na tela + consulta ao vivo via `/api/datajud` |
 | B10 | **CNDH: PDFs específicos dos relatórios (2023 bacias Doce/Paraopeba e 2024 semiário)** | ⛔ | O `linkOficial` de cada entrada aponta para a página de relatórios do MDH (`gov.br/mdh/.../cndh/relatorios`); o PDF específico não foi achado publicamente — provável publicação interna ou bloqueio do defeso eleitoral. Ação: buscar o PDF direto **após o defeso** e atualizar `apps/web/data/relatorios-direitos-humanos.json`. Registrado em 15/10/2026 no [PLANO-CI-RAG-INGESTAO-UNIDADES.md, Pendencias](/docs/historico/entregas/PLANO-CI-RAG-INGESTAO-UNIDADES.md#pendencias-registradas) (linhas do commit `6c0d1efc` já corrigiram a página; falta o PDF) |
+| B11 | **Autarquias federais — INCRA e ANM (atos, relatórios, documentos, produtos, atividades)** | ⛔ | Plano medido em 11/11/2026 e escrito em 16/11: [PLANO-AUTARQUIAS-INCRA-ANM.md](/docs/planos/PLANO-AUTARQUIAS-INCRA-ANM.md). **ANM ✅ fácil** — `dadosabertos.anm.gov.br` é servidor de arquivos (14 pastas, 29 arquivos medidos, sem API e sem chave); SIGMINE, SIGBM e CFEM já estão no ar. **INCRA ⛔ duro** — `painel`, `acervofundiario` e `sigef` não responderam (DNS/timeout), `sncr.serpro.gov.br` deu 403 e a página das Superintendências Regionais devolve "Em breve". **Banco ✅ medido 16/11**: 537 MB de 1 GB (487 MB livres) — SCM + CFEM autuação cabem. Decididos em 16/11: nome de titular PF aparece sem CPF, Power BI só por via lícita (resto LAI) e relatório com link + cópia em R2. Abertos: rota `/autarquias`, escopo do DOU e autorização dos 2 LAIs do INCRA. Custo: zero |
 
 **Nota B4 — geração de imagem vai para a VM; a rede local é o teto (04/10).**
 O lote v6 (recortes 2 m) roda no `home-pc`, mas é **limitado pela rede**, não
@@ -469,10 +470,11 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
   Catuti...) devolvem 404 de propósito: a Semad não publica licença para elas
   (conferido na fonte em 18/10 — 22/22 dão zero no próprio WFS), e o índice
   marca "sem registro na fonte".
-- **Conferência — `ref_municipios_mg` com 854 linhas é intencional:** são 853
-  de MG + **São Paulo/SP `3550308`**, *grandfather* da migration `0057`
-  (FK das 28 barragens SNISB de SP, `on delete cascade`). A UI corta com
-  `like '31%'`. **Não remover.**
+- **Conferência — `ref_municipios` tem 5.571 linhas (migration `0092`):** as
+  5.571 cidades do IBGE nas 27 UF, com coluna `uf` `not null`. Até 17/11/2026
+  eram 854 (`ref_municipios_mg`: 853 de MG + São Paulo/SP `3550308`,
+  *grandfather* da `0057`). O recorte de MG da UI virou `uf = 'MG'` — o
+  `like '31%'` anterior deixou de bastar quando a tabela ficou nacional.
 - **EIA-RIMA regenerado (18/10):** 1.016 audiências, 2.439 linhas,
   **359 municípios**; status dos links medido — 740 abrem, **205 quebrados
   (404)**, resto instável/bloqueado/DNS. O gerador bruto→dataset foi

@@ -63,7 +63,7 @@
 
 import { FRENTES, PAGINAS_DADOS } from "@/app/components/SeuNonoData";
 import { CONTEXTOS } from "@/lib/seo/contexto-pagina";
-import { listarNoticiasPortal } from "@/lib/noticias/portal";
+import { listarNoticiasPortal, type NoticiaPortal } from "@/lib/noticias/portal";
 import { listarDesignacoes } from "@/lib/judiciario/designacoes";
 import serieCavas from "@/data/cavas-serie-mineracao-mg.json";
 import estadosCavas from "@/data/cavas-estados-mg.json";
@@ -252,9 +252,28 @@ function dePaginasDados(): AcervoFonte[] {
 
 /** Postagens do blog entram no acervo: o assistente precisa conhecer as
  *  publicações para citar o que o portal afirma (regra "todo contexto no
- *  chatbot", pedido do dev em 10/09/2026). Cada post vira um pedaço com
- *  o lead (resumo) + primeiro parágrafo — o texto inteiro pesaria demais
- *  na janela de contexto e não melhora a citação. */
+ *  chatbot", pedido do dev em 10/09/2026).
+ *
+ *  Pedaço = lead (resumo) + 2 primeiros parágrafos + os extras de serviço:
+ *  “O essencial”, notas de tabela e itens do gráfico. Sem os extras, a
+ *  pergunta “qual o salário?” não achava o número — ele vive na tabela e no
+ *  gráfico, não no lead. Texto inteiro de todo post ainda pesaria demais. */
+function extrasDoPost(post: NoticiaPortal): string[] {
+  const tabelas = [...(post.tabelas ?? []), ...(post.tabela ? [post.tabela] : [])];
+  const itensGrafico = (post.grafico?.itens ?? []).map(
+    (item) =>
+      `${item.rotulo}: ${item.valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`
+  );
+  return [
+    ...(post.essencial ?? []),
+    ...tabelas.flatMap((t) => [t.titulo, t.nota ?? ""]),
+    ...(post.grafico ? [post.grafico.titulo, post.grafico.nota ?? "", ...itensGrafico] : []),
+  ].filter((texto) => texto.trim().length > 0);
+}
+
 function dePostsDoBlog(): AcervoFonte[] {
   const fontes: AcervoFonte[] = [];
   for (const post of listarNoticiasPortal()) {
@@ -265,7 +284,7 @@ function dePostsDoBlog(): AcervoFonte[] {
       rota,
       titulo: post.titulo,
       fonteUrl: rota,
-      texto: [post.resumo, ...post.paragrafos.slice(0, 2)].join("\n"),
+      texto: [post.resumo, ...post.paragrafos.slice(0, 2), ...extrasDoPost(post)].join("\n"),
     });
   }
   return fontes;

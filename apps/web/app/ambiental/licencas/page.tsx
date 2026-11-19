@@ -8,12 +8,13 @@ import {
   type LinhaLicencaUnificada,
 } from "@/lib/ambiental/licencas-unificada";
 import TabelaLicencas from "./TabelaLicencas";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/licencas", {
   title: "Licenças, outorgas e infrações ambientais — Brasil e 15 estados | Controle Popular",
   description:
     "Feed unificado: IBAMA, ANA, IGAM (MG), SEMA-MT, INEMA-BA, SEMAS-PA, SEMA-MA, SEMAD-GO, FEPAM-RS, SEMARH-PI, IMASUL-MS, IEMA/AGERH-ES, SEDAM-RO, IBRAM-DF, CETESB-SP, IAT-PR e IMA-SC. Filtros por estado, ano, órgão, bacia, tags, microresumos e CSV.",
-};
+});
 
 const LABEL_CATEGORIA: Record<string, string> = {
   licenca: "Licença",

@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import type { Metadata } from "next";
+import textosSociais from "@/data/textos-sociais.json";
 
 /**
  * Sobreposição de título e descrição, editável sem tocar em código.
@@ -108,17 +110,121 @@ export function aplicarEdicao<T extends { title: string }>(
  * sem canonical o buscador resolve sozinho; página com canonical ERRADO o
  * buscador acredita e derruba a original do índice.
  */
+const TEXTOS_SOCIAIS = textosSociais as Record<
+  string,
+  { titulo: string; descricao: string }
+>;
+
+/**
+ * Descrição de último recurso.
+ *
+ * Só aparece quando a página não tem `description` E não tem texto curado —
+ * o caso das páginas de serviço (status, offline, ponte de URL antiga). Antes,
+ * `description: ""` era emitido como `<meta property="og:description" content="">`
+ * e o cartão do WhatsApp saía sem a segunda linha. Frase curta e verdadeira é
+ * melhor que campo vazio, e as duas fontes de texto (curado e da página)
+ * continuam tendo precedência sobre ela.
+ */
+const DESCRICAO_RESERVA = "Dado público com fonte oficial e link para conferir.";
+
+/** Título de compartilhamento: sem o sufixo do site e sem cortar a frase. */
+function limparTituloSocial(titulo: string): string {
+  return titulo
+    .replace(/\s*[|—–-]\s*Controle Popular\s*$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Descrição curta, cortada em fim de frase quando possível. */
+function cortarDescricao(texto: string, limite = 150): string {
+  const limpo = texto.replace(/\s+/g, " ").trim();
+  if (limpo.length <= limite) return limpo;
+  const corte = limpo.slice(0, limite);
+  const ponto = Math.max(
+    corte.lastIndexOf(". "),
+    corte.lastIndexOf("! "),
+    corte.lastIndexOf("? "),
+  );
+  if (ponto >= 60) return corte.slice(0, ponto + 1).trim();
+  const espaco = corte.lastIndexOf(" ");
+  return (espaco >= 60 ? corte.slice(0, espaco) : corte).trim();
+}
+
 export function metadataEditavel<T extends { title: string }>(
   rota: string,
   base: T
-): T & { description?: string; alternates?: { canonical: string } } {
+): T & {
+  description?: string;
+  alternates?: { canonical: string };
+  openGraph?: Metadata["openGraph"];
+  twitter?: Metadata["twitter"];
+} {
   const editado = aplicarEdicao(rota, base);
-  // O genérico `T` só promete `title`, então o `alternates` que a página
-  // trouxe é lido por asserção de forma — o valor em runtime é o mesmo.
-  const proprio = (editado as { alternates?: { canonical?: string } })
-    .alternates?.canonical;
-  if (proprio) return editado;
-  return { ...editado, alternates: { canonical: normalizar(rota) } };
+  const chave = normalizar(rota);
+  const canonical =
+    (editado as { alternates?: { canonical?: string } }).alternates?.canonical ??
+    chave;
+
+  // Texto de compartilhamento: mapa escrito à mão para os eixos e frentes;
+  // fallback no título/descrição da própria página, sem o sufixo do site.
+  const social = TEXTOS_SOCIAIS[chave];
+  const tituloSocial = social?.titulo ?? limparTituloSocial(editado.title);
+  const descricao = (editado as { description?: string }).description ?? "";
+  const descricaoSocial =
+    social?.descricao ??
+    (descricao.trim() ? cortarDescricao(descricao) : DESCRICAO_RESERVA);
+
+  // O texto curado é o que o dono escreveu PARA O WHATSAPP: ele vence o
+  // `openGraph` que a página já tinha. Antes, `ogBase.title ?? tituloSocial`
+  // deixava o título da página passar na frente e o mapa curado nunca saía
+  // nas rotas que já declaravam openGraph próprio (medido em /empresas/fortunas
+  // e /recursos/estados, 10/11/2026). O resto do `openGraph` da página — url,
+  // siteName, type, images — é preservado. Só título e descrição são nossos.
+  const ogBase = (editado as { openGraph?: Metadata["openGraph"] }).openGraph;
+  const twBase = (editado as { twitter?: Metadata["twitter"] }).twitter;
+  const openGraph = ogBase
+    ? {
+        ...ogBase,
+        title: tituloSocial,
+        description: descricaoSocial,
+      }
+    : {
+        title: tituloSocial,
+        description: descricaoSocial,
+        type: "website" as const,
+        locale: "pt_BR",
+        images: [
+          {
+            url: "/capas/home-page.webp",
+            width: 1200,
+            height: 630,
+            alt: tituloSocial,
+          },
+        ],
+      };
+  const twitter = twBase
+    ? {
+        ...twBase,
+        title: tituloSocial,
+        description: descricaoSocial,
+      }
+    : {
+        card: "summary_large_image" as const,
+        title: tituloSocial,
+        description: descricaoSocial,
+      };
+
+  return {
+    ...editado,
+    alternates: { canonical },
+    openGraph,
+    twitter,
+  } as T & {
+    description?: string;
+    alternates?: { canonical: string };
+    openGraph?: Metadata["openGraph"];
+    twitter?: Metadata["twitter"];
+  };
 }
 
 /** Todas as edições, para o script de listagem e para uma futura tela. */

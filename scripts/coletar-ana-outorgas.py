@@ -381,6 +381,18 @@ def main() -> None:
         "linhas": todas,
     }
 
+    # GUARDA MEDIDA EM 18/11/2026: com todos os datasets já `concluidos` no
+    # checkpoint, a rodada seguinte não busca nada, `todas` fica vazio e este
+    # write sobrescreveu 12,8 MB de outorga por um arquivo de 1,7 KB — perda
+    # silenciosa, sem erro. Agora rodada que não trouxe linha NÃO escreve; o
+    # arquivo anterior fica de pé e o aviso diz o que aconteceu.
+    if not todas:
+        print("\n[!] nenhuma linha coletada nesta rodada — o arquivo existente "
+              "NÃO foi sobrescrito.")
+        print("    Se quiser recoletar do zero, apague o checkpoint:")
+        print(f"    {CACHE / 'checkpoint.json'}")
+        return
+
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     SAIDA.write_text(
         json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

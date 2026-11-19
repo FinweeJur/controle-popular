@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Sparkles } from "lucide-react";
+import { navegarInterno } from "@/lib/navegacao/navegar";
 import { buscar, type IndiceBusca } from "@/lib/busca/indice";
 import { carregarIndiceBusca } from "@/lib/busca/carregarIndice";
 import { buscarPaginasPortal } from "@/lib/busca/paginas-portal";
@@ -76,7 +77,7 @@ export default function BuscaGlobal() {
 
   function handleSearch(query: string) {
     if (query.trim().length > 0) {
-      window.location.href = `/busca?q=${encodeURIComponent(query.trim())}`;
+      navegarInterno(`/busca?q=${encodeURIComponent(query.trim())}`);
     }
   }
 

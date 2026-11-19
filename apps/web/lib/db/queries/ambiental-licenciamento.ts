@@ -1,6 +1,6 @@
 import { asc, desc, eq, isNotNull, isNull, sql } from "drizzle-orm";
 import { comBancoReserva } from "@/lib/db/reserva";
-import { ambiental_licenciamento, ref_municipios_mg } from "@/lib/db/schema";
+import { ambiental_licenciamento, ref_municipios } from "@/lib/db/schema";
 import { extrairTagsDeCampos } from "@/lib/tags";
 import { REGRAS_TAGS_LICENCIAMENTO } from "@/lib/ambiental/tags-licenciamento";
 
@@ -206,54 +206,54 @@ export interface MunicipioComLicenciamento {
  * Mudança de 10/10/2026: a query era um `INNER JOIN` partindo da tabela de
  * licenças, que só devolvia os municípios COM dado — a tela dizia "853"
  * mas a lista trazia só 145 (medido no banco de produção: 8.612 licenças
- * em 145 municípios). Agora a base é `ref_municipios_mg` com `LEFT JOIN`
+ * em 145 municípios). Agora a base é `ref_municipios` com `LEFT JOIN`
  * das licenças: saem os 853, e os 708 sem dado vêm com `total: 0`.
  *
  * Dois detalhes que mudam o SQL e não são gosto:
  * - `count(ambiental_licenciamento.id_fonte)`, nunca `count(*)`: com
  *   `LEFT JOIN`, município sem dado vira UMA linha só de NULL e `count(*)`
  *   devolveria 1 — mentiria "1 licença" para 0;
- * - `ref_municipios_mg` tem 854 linhas: as 853 de MG + o grandfather de
- *   cidade fora de MG (São Paulo, 3550308, migration 0057). O
- *   `like '31%'` (dígito de estado no código IBGE de MG) corta a linha de
- *   fora — mesma técnica de `lib/ambiental/barragens.ts`.
+ * - o catálogo virou NACIONAL em 17/11/2026 (5.571 cidades, migration 0092),
+ *   então o recorte de MG não pode mais ser "a tabela inteira": agora é
+ *   `uf = 'MG'` explícito — antes era `like '31%'` no código IBGE, que só
+ *   servia enquanto a tabela era 853 + um grandfather de São Paulo.
  */
 export async function listarMunicipiosComLicenciamento(): Promise<MunicipioComLicenciamento[]> {
   return comBancoReserva(
     async (db) =>
       db
         .select({
-          idIbge: ref_municipios_mg.id_ibge,
-          nome: ref_municipios_mg.nome,
+          idIbge: ref_municipios.id_ibge,
+          nome: ref_municipios.nome,
           total: sql<number>`count(${ambiental_licenciamento.id_fonte})::int`,
         })
-        .from(ref_municipios_mg)
+        .from(ref_municipios)
         .leftJoin(
           ambiental_licenciamento,
-          eq(ambiental_licenciamento.id_municipio, ref_municipios_mg.id_ibge)
+          eq(ambiental_licenciamento.id_municipio, ref_municipios.id_ibge)
         )
-        .where(sql`${ref_municipios_mg.id_ibge} like '31%'`)
-        .groupBy(ref_municipios_mg.id_ibge, ref_municipios_mg.nome)
+        .where(eq(ref_municipios.uf, "MG"))
+        .groupBy(ref_municipios.id_ibge, ref_municipios.nome)
         // Desempate por nome: os 708 zeros ficam em ordem alfabética e
         // estável — sem isso a lista "pula" entre renders.
         .orderBy(
           desc(sql`count(${ambiental_licenciamento.id_fonte})`),
-          asc(ref_municipios_mg.nome)
+          asc(ref_municipios.nome)
         ),
     { vazio: (r) => r.length === 0, padrao: [], rotulo: "licenciamento" }
   );
 }
 
-/** Nome oficial de um município (de `ref_municipios_mg`), para o título da
+/** Nome oficial de um município (de `ref_municipios`), para o título da
  * página — não confundir com `municipioFonte` de cada linha, que é a
  * grafia crua da fonte (F0 §1.2: nome, não código IBGE). */
 export async function nomeMunicipioMg(idIbge: string): Promise<string | null> {
   return comBancoReserva(
     async (db) => {
       const [linha] = await db
-        .select({ nome: ref_municipios_mg.nome })
-        .from(ref_municipios_mg)
-        .where(eq(ref_municipios_mg.id_ibge, idIbge))
+        .select({ nome: ref_municipios.nome })
+        .from(ref_municipios)
+        .where(eq(ref_municipios.id_ibge, idIbge))
         .limit(1);
       return linha?.nome ?? null;
     },

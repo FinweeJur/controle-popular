@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadataEditavel } from "@/lib/edicoes";
 import NextLink from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
@@ -48,11 +49,11 @@ const CASOS = [
   { slug: "geral", rotulo: "Outros temas" },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/mab", {
   title: "MAB — notícias, artigos e notas | Controle Popular",
   description:
     "Notícias, artigos e notas oficiais do Movimento dos Atingidos por Barragens sobre Brumadinho, Mariana e o Rio Doce, com data e link para a fonte.",
-};
+});
 
 function semAcento(texto: string): string {
   return texto

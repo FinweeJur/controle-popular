@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import GlossarioClient from "./GlossarioClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/glossario` — o "o que é isto" dos termos do portal.
@@ -11,11 +12,11 @@ import GlossarioClient from "./GlossarioClient";
  * Definições em `lib/glossario/termos.ts`, fonte única.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/glossario", {
   title: "Glossário cívico — os termos do dinheiro público explicados | Controle Popular",
   description:
     "O que é licitação, empenho, TAC, LAI, cota-parte do ICMS, barragem a montante, condicionante e mais — em português comum, com a fonte oficial de cada termo.",
-};
+});
 
 export default function GlossarioPage() {
   return (

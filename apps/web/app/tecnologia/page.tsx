@@ -3,6 +3,7 @@ import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import FerramentasClient from "./FerramentasClient";
+import FerramentasExternas from "./FerramentasExternas";
 import TecnologiaClient from "./TecnologiaClient";
 
 export const metadata: Metadata = metadataEditavel("/tecnologia", {
@@ -54,6 +55,11 @@ export default function TecnologiaPage() {
 
       {/* FERRAMENTAS UTILITÁRIAS CLIENT-SIDE: horário, calculadora, verificador */}
       <FerramentasClient />
+
+      {/* RADAR EXTERNO: ferramentas de fora, curadas por público e licença */}
+      <div className="mt-14">
+        <FerramentasExternas />
+      </div>
 
       {/* COMPONENTE INTERATIVO DAS OFICINAS E DO CATÁLOGO */}
       <div className="mt-12">

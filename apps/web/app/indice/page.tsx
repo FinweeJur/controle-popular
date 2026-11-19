@@ -39,6 +39,7 @@ import { IndiceWiki, type ItemIndice } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Catalogo100PaginasClient, { type PaginaCatalogo } from "./Catalogo100PaginasClient";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Hub global de indice do portal: `/indice`.
@@ -82,11 +83,11 @@ const ICONES_FRENTE: Record<string, React.ReactNode> = {
   terras: <Map size={14} />,
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/indice", {
   title: "Índice — Controle Popular",
   description:
     "Todas as frentes, cidades e temas do Controle Popular num mapa só — dado público com fonte, organizado do seu jeito de procurar.",
-};
+});
 
 interface ItemNovidade {
   data: string;

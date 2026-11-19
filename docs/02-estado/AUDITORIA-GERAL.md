@@ -2,7 +2,7 @@
 
 > **Tipo:** RELATÓRIO
 > **Domínio:** operação (monitoramento do portal)
-> **Última medição:** 2026-11-09
+> **Última medição:** 2026-11-18
 > **Leitura estimada:** curta (até 5 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)
 > **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal
@@ -19,7 +19,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 09/11/2026 17:16 BRT |
+| 18/11/2026 15:29 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -101,6 +101,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/educacao-ibge-mg.json | OK |
 | data/educacao-inep-mg.json | OK |
 | data/educacao-periodicos.json | OK |
+| data/ementas-completas.json | OK |
 | data/empresas-documentos.json | OK |
 | data/esg-update.json | OK |
 | data/evidencias-cientificas-brumadinho.json | OK |
@@ -238,6 +239,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/socios-vale.json | OK |
 | data/tarifa-social-por-uf.json | OK |
 | data/telefonia-municipios-mg.json | OK |
+| data/textos-sociais.json | OK |
 | data/top-100-paginas.json | OK |
 | data/trechos-rotas.json | OK |
 | data/vale-sigma-lithium.json | OK |
@@ -262,12 +264,20 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 201 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 203 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 18/11/2026 15:29 BRT - 0 criticos; 0 avisos.
+- 17/11/2026 15:52 BRT - 0 criticos; 0 avisos.
+- 16/11/2026 16:56 BRT - 0 criticos; 0 avisos.
+- 15/11/2026 13:41 BRT - 0 criticos; 0 avisos.
+- 14/11/2026 13:13 BRT - 0 criticos; 0 avisos.
+- 13/11/2026 14:25 BRT - 0 criticos; 0 avisos.
+- 11/11/2026 14:33 BRT - 0 criticos; 0 avisos.
+- 10/11/2026 14:22 BRT - 0 criticos; 0 avisos.
 - 09/11/2026 17:16 BRT - 0 criticos; 0 avisos.
 - 08/11/2026 13:26 BRT - 0 criticos; 0 avisos.
 - 07/11/2026 12:58 BRT - 0 criticos; 0 avisos.

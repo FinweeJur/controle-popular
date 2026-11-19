@@ -20,6 +20,7 @@ import {
 import { ATI_LABEL } from "@/lib/paraopeba/clipping-ati";
 import { INSTITUICAO_JUSTICA_LABEL } from "@/lib/paraopeba/clipping-ij";
 import { relacionadosDaFicha } from "@/lib/paraopeba/relacionados";
+import SanfonaTema from "@/app/components/sistema/SanfonaTema";
 import { type NoticiaAti } from "@/lib/paraopeba/clipping-ati";
 import { type NoticiaInstituicaoJustica } from "@/lib/paraopeba/clipping-ij";
 import { type EstudoPericiaComTema } from "@/lib/paraopeba/pericia-ufmg";
@@ -607,12 +608,13 @@ function Ficha({
           o cabeçalho do próprio componente ResumoDaFicha. */}
       <ResumoDaFicha doc={doc} resumos={resumos} />
 
-      <details className="mt-2.5">
-        <summary className="cursor-pointer text-xs font-medium text-text-soft hover:text-text">
-          Ler a descrição original da AECOM, transcrita sem edição
-        </summary>
-        <p className="mt-2 text-sm text-text-soft">{doc.descricao}</p>
-      </details>
+      <SanfonaTema
+        variante="linha"
+        className="mt-2.5"
+        titulo="Ler a descrição original da AECOM, transcrita sem edição"
+      >
+        <p className="text-sm text-text-soft">{doc.descricao}</p>
+      </SanfonaTema>
 
       <p className="mt-2.5 flex flex-wrap items-center gap-1.5 text-xs text-text-soft">
         Sobre o quê:
@@ -854,11 +856,12 @@ function RelacionadosDaFicha({
   if (total === 0) return null;
 
   return (
-    <details className="mt-3 border-t border-border/60 pt-3">
-      <summary className="cursor-pointer text-xs font-medium text-text hover:text-primary">
-        Relacionados ({formatNumberBR(total)})
-      </summary>
-      <div className="mt-2.5 space-y-3 text-xs text-text-soft">
+    <SanfonaTema
+      variante="linha"
+      className="mt-3 border-t border-border/60 pt-3"
+      titulo={`Relacionados (${formatNumberBR(total)})`}
+    >
+      <div className="space-y-3 text-xs text-text-soft">
         {rel.mesmosTemas.length > 0 && (
           <div>
             <p className="font-medium text-text">Neste catálogo, mesmo tema</p>
@@ -970,7 +973,7 @@ function RelacionadosDaFicha({
           tempo. Regra fixa, sem modelo. Fichas do catálogo abrem com o código na busca.
         </p>
       </div>
-    </details>
+    </SanfonaTema>
   );
 }
 

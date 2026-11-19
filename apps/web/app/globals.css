@@ -184,6 +184,30 @@ select option {
   color: var(--cp-text);
 }
 
+/* ─── Respiro da seta do <select> (regra 5.20, dono 18/11/2026) ───────────
+   A seta nativa fica a 2–4 px da borda direita; no filtro da biblioteca isso
+   parecia colado. Aqui o controle perde a seta do sistema, ganha um chevron
+   SVG e 12 px de folga (`right .75rem`), com área de texto de 36 px
+   (`padding-right: 2.25rem`). `select.appearance-none` fica de fora: quem já
+   desenha o próprio ícone (OuvirNavbar) não pode ganhar um segundo. */
+select:not(.appearance-none) {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='none' stroke='%238a94a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.85rem 0.85rem;
+  padding-right: 2.25rem;
+}
+
+[data-theme="light"] select:not(.appearance-none) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme="high-contrast"] select:not(.appearance-none) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 :root {
   --cp-bg: #f7f8fa;
   --cp-surface: #ffffff;
@@ -1544,3 +1568,73 @@ html[data-scroll-perto] ::-webkit-scrollbar-thumb,
     animation: none;
   }
 }
+
+/* cache-bust 10/11: regras de slot da pilha no fim do arquivo. */
+
+/* ═══ SANFONA QUE SE ANUNCIA (dono, 18/11/2026) ══════════════════════════
+   Na auditoria do Paraopeba os blocos de tema eram `<summary>` só com texto:
+   sem seta, sem hover, sem cara de botão, o leitor passava reto. A seta mora
+   num selo redondo que gira ao abrir e pulsa enquanto fechado — o "aperte
+   aqui" que faltava. Movimento é escolha: em `prefers-reduced-motion` o pulso
+   para. O componente que usa isto é `app/components/SanfonaTema.tsx`. */
+.cp-sanfona-seta {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--cp-border);
+  border-radius: 9999px;
+  background-color: var(--cp-surface-2);
+  color: var(--cp-primary);
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+.cp-sanfona-seta::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--cp-primary);
+  border-radius: inherit;
+  opacity: 0;
+  animation: cp-sanfona-anel 2.6s ease-out infinite;
+}
+details[open] > summary .cp-sanfona-seta {
+  transform: rotate(180deg);
+  border-color: var(--cp-primary);
+}
+details[open] > summary .cp-sanfona-seta::after {
+  animation: none;
+  opacity: 0;
+}
+summary:hover .cp-sanfona-seta,
+summary:focus-visible .cp-sanfona-seta {
+  background-color: var(--cp-surface);
+  border-color: var(--cp-primary);
+}
+@keyframes cp-sanfona-anel {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.45;
+  }
+  70%,
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-sanfona-seta::after {
+    animation: none;
+  }
+}
+
+/* <main> é item de flex-col no body: com `min-width: auto` (padrão), uma
+   tabela larga dentro de `overflow-x-auto` estica a PÁGINA e cria rolagem
+   lateral no celular — medido em 18/11/2026 na /paraopeba/auditoria (main de
+   452 px num viewport de 422). `min-width: 0` devolve o encolhimento ao item;
+   o scroll interno da tabela continua funcionando. */
+main {
+  min-width: 0;
+}
+

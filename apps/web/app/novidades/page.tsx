@@ -5,14 +5,15 @@ import novidades from "@/data/novidades.json";
 import { listarNoticiasPortal } from "@/lib/noticias/portal";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/novidades", {
   title: "Novidades — Controle Popular",
   description:
     "Ultimas atualizacoes do portal: novos dados, coletas e funcionalidades.",
-};
+});
 
 const COR_FRENTE: Record<string, string> = {
   cidades: "var(--cp-accent)",

@@ -8,12 +8,13 @@ import { INSTRUMENTOS_REGIONAIS_ASIA } from "@/lib/direitos-globais/asia/tratado
 import TabelaAsiaInterativa from "../componentes/TabelaAsiaInterativa";
 import { DISPOSITIVOS_ASIA } from "@/lib/direitos-globais/asia/dispositivos";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/asia", {
   title: "Ásia e Direitos Fundamentais | Direitos Globais | Controle Popular",
   description:
     "Comparação dos 48 países asiáticos organizados por sub-regiões geográficas, dispositivos constitucionais conferidos, ausência de corte regional vinculante e controle no sistema ONU.",
-};
+});
 
 function ResumoAsia() {
   const totalPaises = PAISES_ASIA.length;

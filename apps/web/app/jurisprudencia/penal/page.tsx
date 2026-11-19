@@ -3,6 +3,8 @@ import Link from "next/link";
 import { filtrar, ordenar, paginar, type Filtros } from "@/lib/jurisprudencia";
 import { CASOS, Paginacao, TabelaCasos } from "../partes";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { MiniSumarioLateral } from "@/app/components/wiki/MiniSumarioLateral";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file /jurisprudencia/penal — acervo penal separado do de desastres.
@@ -20,11 +22,11 @@ import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
  *   responsabilização.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/jurisprudencia/penal", {
   title: "Jurisprudência penal — Controle Popular",
   description:
     "Acervo penal do portal: TJES e STF, com tribunal, ano, tema, resultado e resumo. Separado da jurisprudência dos desastres, que mantém só os casos de responsabilização criminal do rompimento.",
-};
+});
 
 function textoDoParam(valor: string | string[] | undefined): string {
   return (Array.isArray(valor) ? valor[0] : valor) ?? "";
@@ -83,10 +85,7 @@ export default async function JurisprudenciaPenal({
         </p>
       </header>
 
-      {/* Resumo de realidade (F2): números contados no próprio JSON da página. */}
-      <ResumoRealidadeBox rota="/jurisprudencia/penal" />
-
-      <section className="space-y-4" id="lista">
+      <section className="scroll-mt-24 space-y-4" id="lista">
         <div className="flex flex-wrap items-center gap-3 text-sm">
           <Link className="underline" href="/jurisprudencia/penal#lista">Todos</Link>
           <Link className="underline" href="/jurisprudencia/penal?tribunal=TJES#lista">TJES</Link>
@@ -98,6 +97,12 @@ export default async function JurisprudenciaPenal({
         <TabelaCasos itens={pagina.itens} />
         <Paginacao pagina={pagina} filtros={filtros} base="/jurisprudencia/penal" />
       </section>
+      <MiniSumarioLateral
+        itens={[
+          { id: "resumo-realidade", titulo: "Resumo de realidade" },
+          { id: "lista", titulo: "Lista de casos" },
+        ]}
+      />
     </div>
   );
 }

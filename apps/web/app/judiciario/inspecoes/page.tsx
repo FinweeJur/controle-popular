@@ -24,12 +24,13 @@ import TabelaInspecoesClient from "./TabelaInspecoesClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import { Scale, Building, ShieldAlert, FileText } from "lucide-react";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/judiciario/inspecoes", {
   title: "Inspeções do CNJ e Cobertura da Defensoria Pública | Judiciário",
   description:
     "Transparência estrutural do sistema de justiça: 343 relatórios de inspeção da Corregedoria Nacional do CNJ sobre 33 tribunais e déficit de comarcas da Defensoria Pública.",
-};
+});
 
 export default function PaginaInspecoesJudiciario() {
   const orgaos = listarOrgaosInspecionados();

@@ -15,6 +15,7 @@ import FonteRodape, {
   FONTE_REGUA,
   FONTE_SENADO,
 } from "@/app/judiciario/components/FonteRodape";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file `/judiciario/composicao` — painel único da composição dos tribunais.
@@ -52,11 +53,11 @@ interface Props {
  * o alvo não cumpre. O canonical de cada lente entra como `<link>` no corpo,
  * que o React promove ao `<head>` — mesmo recurso da página-ponte.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/composicao", {
   title: "Composição dos tribunais — Controle Popular · Judiciário",
   description:
     "Painel único do Judiciário: quem ocupa cada tribunal, quando cada cadeira vaga pela aposentadoria aos 75 anos e quem indicou cada ministro ao Senado.",
-};
+});
 
 type Lente = "tribunais" | "vagas" | "indicacoes";
 

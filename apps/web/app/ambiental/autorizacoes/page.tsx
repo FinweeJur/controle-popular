@@ -16,12 +16,13 @@
 import { carregarDestinacoesUniaoMg } from "@/lib/ambiental/destinacoes-uniao-dados";
 import AutorizacoesClient from "./AutorizacoesClient";
 import Link from "next/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/autorizacoes", {
   title: "Destinações de Imóveis da União em MG | Controle Popular",
   description:
     "Cadastro público dos imóveis da União em Minas Gerais: destinação, classe, proprietário e área, com fonte na SPU.",
-};
+});
 
 export default function PageAutorizacoes() {
   const { metadados, imoveis } = carregarDestinacoesUniaoMg();

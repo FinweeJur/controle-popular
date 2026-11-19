@@ -22,12 +22,13 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import DataColeta from "@/app/components/DataColeta";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/crimes-socioambientais", {
   title: "Biblioteca Unificada de Crimes Socioambientais — Mariana & Brumadinho | Meio Ambiente (ONSA)",
   description:
     "Acervo integrado de documentos periciais, termos de ajustamento de conduta (TAC), relatórios de saúde da Fiocruz e planos comunitários das bacias do Rio Doce e Paraopeba.",
-};
+});
 
 export default function PaginaCrimesSocioambientais() {
   const { geradoEm, documentos, totais, total_documentos, regioes_disponiveis, tipos_disponiveis } = carregarBibliotecaDesastres();

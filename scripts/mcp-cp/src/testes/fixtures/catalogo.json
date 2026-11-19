@@ -1,0 +1,15 @@
+[
+  {
+    "id": "municipios-mg",
+    "nome": "853 Municípios de Minas Gerais",
+    "orgaoFonte": "Instituto Brasileiro de Geografia e Estatística (IBGE)",
+    "urlFonte": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/MG/municipios",
+    "endpointApi": "/api/v1/municipios"
+  },
+  {
+    "id": "sem-url",
+    "nome": "Base sem URL oficial",
+    "orgaoFonte": "Órgão de teste",
+    "endpointApi": "/api/v1/nada"
+  }
+]

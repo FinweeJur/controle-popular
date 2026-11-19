@@ -31,12 +31,13 @@ import PainelAmbientalCanada from "./PainelAmbientalCanada";
 import NavegacaoAbasCanada from "../NavegacaoAbasCanada";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/canada/ambiental", {
   title: "Meio Ambiente Canadá: Emissões NPRI, Desastre de Mount Polley & Clima | Controle Popular",
   description:
     "Dados ambientais oficiais do Canadá: inventário de poluentes ECCC NPRI, estudo comparativo do colapso de Mount Polley (2014) versus Mariana e Brumadinho, e satélite Climate TRACE.",
-};
+});
 
 export default function PaginaAmbientalCanada() {
   const ambiental = obterAmbientalCanada();

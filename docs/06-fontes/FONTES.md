@@ -172,6 +172,7 @@ Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doaco
 | Terras indígenas | WFS FUNAI (EPSG:4674) | 16 polígonos em MG (15 TIs; Xacriabá em 2 fases); 2 na bacia do Paraopeba (Katurama, São Joaquim de Bicas; Caxixé, Pompéu, em fase *Delimitada*). **Paginar por UF — GetFeature sem filtro dá 403 do nginx**; mostrar todas as fases (direito originário, CF 231; Convenção 169); filtro por fase é decisão do usuário |
 | Processos minerários | SIGMINE/ANM, zip diário (exige UA de navegador) | 54.916 polígonos em MG; só 7.083 (12,9%) autorizam extrair, 3.184 (5,8%) são Concessão de Lavra. Publicar como "minas em operação" (7.083) + "interesse minerário" separadas; nunca somar nem chamar o conjunto de empreendimentos; CFEM não localiza mina |
 | Barragens de mineração | SIGBM/ANM, dump CSV aberto (dadosabertos.anm.gov.br, CC-BY, atualização diária) | 909 barragens no Brasil, 320 em MG (59 municípios) em 30/08/2026; 124 colunas, cp1252, sem API de consulta. Coletor `etl.apis.sigbm_anm` → `apps/web/data/barragens-sigbm.json`. Vocabulário: `Nível de Alerta` ≠ `Emergência Nivel 1..3`; situação Ativa/Inativa/Em Construção/Em Descaracterização. Não reconcilia com FEAM (249) nem WFS IDE (259) — cadastros sem identificador comum |
+| CFEM — repasse por município | CFEM/CFEM_Distribuicao.csv, dump CSV aberto (dadosabertos.anm.gov.br, CC-BY, atualização diária) | 2.239.128 linhas, 317 MB, série 2007–2026, medido 18/11/2026: 4.026 municípios com repasse, R$ 45,67 bi a municípios e R$ 2,59 bi a estados (sem linha de União no arquivo). PA: 100 municípios, R$ 17,79 bi somados. Coletor `scripts/coletar-anm-cfem.py` → `apps/web/data/anm-cfem.json`, agregado por município/ano. cp1252, vírgula decimal, chave `CodigoEnte` (IBGE de 7 dígitos) — filtrar por código, nunca por nome. Repasse ≠ arrecadação ≠ aplicação; valor nominal |
 | ZAS | FEAM/IDE-Sisema (geoserver já usado) | ZAS real (156) + mancha de inundação (156); a ZAS é trecho do **vale à jusante** (Res. ANM 95/2022; piso 10 km ou 30 min de onda), não círculo — o círculo de 8 km superestima até 127× e erra a direção. 8 km é outra coisa (raio de TI, Portaria Interministerial 60/2015): não fundir. 103 barragens sem mancha → "sem mancha ≠ sem risco"; 24 ZAS na bacia; `status_pae` na etiqueta; PAE textual só via LAI |
 | Quilombolas | INCRA WFS (22 feições MG, só GML, eixo lat,lon; "vedado uso comercial") + Palmares (lista CC-BY desatualizada 05/07/2022, não usada) | 13/14 feições antigas casaram por geometria; 13 territórios INCRA fora das camadas atuais (decisão pendente p/ Pimentel); sobreposições reais com lavra de granito: maior no Baú, Araçuaí (551,3 ha, GRANSENA) |
 | PCTs não indígenas/quilombolas | **Não existe base com poligonal** | Lacuna declarada; o mapa deve dizer que não os representa |
@@ -359,6 +360,392 @@ Existe um `POST /resolveocaptcha` no mesmo domínio, mas ele guarda outro fluxo 
 **Dado pessoal — atenção.** A API expõe `cpf_usuario` e `nome_usuario` (o servidor que cadastrou) em **todos** os 2.002 registros, e `cpf_cnpj` com **CPF de pessoa física em 355 deles**. O coletor redige na origem: sai CPF, saem os campos do servidor, ficam os 1.647 CNPJ e o nome do empreendimento (que é parte de acordo público). A quantidade redigida é publicada, não escondida.
 
 Dois achados do cadastro: **72 dos 150 termos marcados "Vigente" têm data de vencimento anterior à coleta** — a base discordando de si mesma (pode ser aditivo não lançado; não é prova de descumprimento). E **1.119 dos 2.002 não têm data de vencimento**, o que os deixa fora de qualquer conta de prazo — incluí-los em denominador de percentual seria mentir. Há ainda 1 registro com vencimento anterior à assinatura (id 23895), com as datas trocadas na fonte.
+
+## SEMAS-PA — audiências públicas, EIA e RIMA do Pará (API do portal da transparência)
+
+Medido em 17/11/2026. Coletor: `scripts/coletar-semas-pa-estudos.py` →
+`apps/web/data/semas-pa-estudos.json`. Sondagem completa em
+`docs/historico/descobertas/ambiental-PA-eia-rima.md`.
+
+**A SEMAS-PA não tem página de audiências por ano** (`www.semas.pa.gov.br`
+devolve a home na busca interna, sitemap 404, e "audi" não aparece em Editais,
+Serviços nem Sistemas). O acervo está na API da SPA do Portal da Transparência
+Ambiental: `GET https://portaldatransparencia.semas.pa.gov.br/portal-da-transparencia-api/api/v1/documentos?id_tipo_arquivo={id}&page={n}`
+(status 200 sem cookie, token ou CAPTCHA; `x-ratelimit-limit: 60`), e o PDF em
+`.../documentos/download/{id}`.
+
+📊 **175 documentos**, e o universo inteiro do endpoint é 5.128 documentos
+(257 páginas) — este coletor pega só os três tipos de estudo ambiental:
+
+| tipo | documentos | PDF na fonte | anos |
+|---|---:|---:|---|
+| Audiência pública (ata, dentro de "Relatórios") | 25 | 127,5 MB | 2019–2026 |
+| RIMA — Relatório de Impactos Ambientais | 78 | ~2,0 GiB | 2008–2026 |
+| EIA — Estudos de Impacto Ambiental | 72 | ~2,2 GiB | 2006–2026 |
+
+⚠️ **Não existe tipo "Audiências Públicas"**: a audiência vem como **ata**
+dentro do tipo genérico "Relatórios", identificada pelo campo `data_audiencia`
+(presente em 25/25). E ⚠️ **`id_tipo_arquivo` é número interno** (3, 5, 6 em
+17/11/2026) e pode ser renumerado: o coletor confere o **nome** do tipo em cada
+item, procura o id certo em 1..120 se houver renumeração e aborta se não achar —
+nunca grava dado de outro tipo.
+
+**O que a fonte não tem:** `numero_processo` (0/25 nas audiências) e
+`numero_licenca`. O vínculo audiência ↔ EIA/RIMA só sai por CNPJ + município +
+tipologia, então o coletor **não** cria esse vínculo. Cada linha traz município,
+empreendimento, CNPJ, tipologia, atividade, data e URL direta do PDF; os ~4,5 GiB
+de EIA+RIMA **não** são baixados (só 1 amostra por tipo, conferida por magic
+`%PDF-`).
+
+**Dado pessoal:** `cpf_cnpj` de 14 dígitos (CNPJ) é preservado; run de 11 dígitos
+válido por mod-11 vira `null` + `doc_redigido: 1` (1 documento nesta rodada).
+Varredor `scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
+
+**Ressalva editorial:** audiência publicada **não** é licença concedida, e
+EIA/RIMA publicado não é aprovação — a ata só registra que houve audiência.
+Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica`.
+
+## SEMACE-CE — licenciamento e fiscalização ambiental do Ceará (API aberta, sem CAPTCHA)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-semace-ce.py` →
+`apps/web/data/semace-ce.json` (resumo, 188 KB) + `scripts/.cache/semace-ce/completo.json`
+(acervo, 54 MB, fora do git). Sondagem completa em
+`docs/historico/descobertas/ambiental-PE-CE-licenciamento.md`.
+
+**A SEMACE publica o acervo em API REST, não em página.** O portal
+`https://servicos.semace.ce.gov.br/consultaProcesso` é uma casca React; o dado
+está em `SemaceMobileWS/webService/` (caminho revelado pelo `bundle.js`):
+
+| rota | método | acervo medido |
+|---|---|---:|
+| `consultaProcesso/processos` | POST | **205.820 processos** de licenciamento (e o declarado bate) |
+| `fiscalizacao/findProcessosFiscalizacao` | POST | declara **17.974** e serve **22.026**; o JSON publica **21.955** |
+| `consultaProcesso/infofilters` | GET | 184 municípios, 402 atividades, 125 tipos de licença |
+| `consultaProcesso/downloadListArquivo` | POST | XLS de 16 colunas (export do mesmo acervo) |
+
+Rodada de 18/11/2026: **205.820 processos** em **724 valores distintos** de
+`cidade` e **21.955 autos** de fiscalização em 218 municípios, com **R$ 283,5
+milhões** somados em 14.256 autos com valor lançado.
+
+📦 **Duas saídas, e nenhuma finge ser completa.** O acervo linha a linha
+(~54 MB) fica em `scripts/.cache/semace-ce/completo.json`, fora do git. O
+arquivo versionado é **resumo de 188 KB**: cabeçalho com os totais, as
+contagens (`resumo_por_situacao`, `resumo_por_ano`, `resumo_por_municipio`,
+`resumo_por_tipo`, `resumo_por_julgamento`, valor total autuado) e uma
+**amostra rotulada de 300 linhas por bloco** ("primeiras 300 de 205.820"),
+com `linhas_completas_em` dizendo onde está o resto. `--resumo` remonta esse
+arquivo a partir do cache **sem rede**.
+
+Sem login, sem CAPTCHA e sem `robots.txt` (`servicos.semace.ce.gov.br/robots.txt`
+→ 404; o portal `www.semace.ce.gov.br` responde 404 e hoje nem fecha o TLS).
+Não achei termo de uso que proíba acesso automatizado; ainda assim o coletor
+usa UA honesto, 2 s entre requisições e lotes de 1.000.
+
+⚠️ **Três armadilhas de protocolo, todas medidas.** `Content-Type` tem de ser
+`text/plain` (com `application/json` o servidor devolve **415**); o `filter` não
+aceita objeto vazio nem parcial (`{"filter":{}}` → **500**), então vai o objeto
+de 19 chaves que o app monta (`digital: "ambos"`, `unidadesConservacoes: ""`),
+e na fiscalização `cidadeId` tem de ser **null** — lista vazia dá 500.
+
+⚠️ **A paginação engana e é o erro caro.** `pagina` **não** é o índice do lote:
+o servidor multiplica por **10** (o limite padrão do app), não pelo `limit`
+enviado. Com `limit: 1000`, `pagina: 1` devolveu 990 dos 1.000 registros de
+`pagina: 0`; só `pagina: 100` começa no registro 1.000. Paginar de 1 em 1
+baixa 206 mil linhas e entrega **3.050 registros distintos** — a primeira
+rodada deste coletor fez exatamente isso e o dedupe por `processoId` pegou.
+O coletor anda `pagina = lote × 100`; a ordenação do servidor não é 100%
+estável, então o JSON publica `divergencia_fonte` e `duplicados_removidos`
+em vez de fingir que bateu.
+
+⚠️ **`totalRegistro` é piso, não tamanho do acervo.** A fiscalização declara
+17.974 e continua devolvendo autos em offset 21.000 (a última página, com 26
+registros, fica em 22.026); o licenciamento declara 205.820 e ainda tem 6
+registros no offset 205.820. A varredura vai **até a primeira página vazia**,
+com teto de segurança. Confiar no declarado teria perdido 4.052 autos.
+
+⚠️ **`processoId` não identifica auto.** Vem vazio em **1.333 dos 17.974** e se
+repete quando um processo tem mais de uma autuação: deduplicar por ele
+colapsou 3.690 linhas na primeira rodada. A chave do auto é
+`numeroDocumento`.
+
+⚠️ **`municipio` não é o local do empreendimento.** O campo `cidade` é o
+endereço do interessado/autuado — por isso "S/N" aparece 19.733 vezes e "São
+Paulo" 4.718. Os 724 valores distintos de `cidade` não são os 184 municípios do
+CE. Publicar ranking municipal sem dizer isso seria mentir.
+
+⚠️ **`statusJulgamento` é código, não texto.** Vem de 0 a 31 e o significado
+está no switch `statusJulgamento` do `bundle.js` — que o coletor copiou para
+`STATUS_JULGAMENTO`. Sem isso o leitor veria "16" no lugar de "Período de
+Recurso". Na rodada: 15.217 autos em "Aguardando Envio do Auto de Infração",
+2.740 em "Período de Recurso" e 1.052 com "Decisão de 1ª Instância Concluída".
+
+⚠️ **O XLS não é o caminho.** `downloadListArquivo` aceita só `{filter, limit}`
+e o app manda `limit: totalRegistro` — o acervo inteiro numa requisição só, que
+é exatamente o pedido que estoura o gateway (5.000 já deu **504** uma vez). A
+rota JSON gêmea aceita `pagina` (0-based) e traz mais campos. `fiscalizacao/downloadListArquivo`
+está 500/504 desde a sondagem.
+
+⚠️ **A fonte cai inteira, e o coletor sabe disso.** Em 18/11/2026, das 16h40 às
+21h15, TODA chamada ao `SemaceMobileWS` devolveu `504 Gateway Time-out` em 30 s
+— inclusive `infofilters`, que é lookup estático — enquanto o HTML do portal
+seguia em 200. Não é payload: é backend (o próprio app no navegador tomou 504).
+Por isso o checkpoint é por lote e há disjuntor: **3 falhas seguidas param a
+rota naquela rodada** (insistir nos 200 lotes restantes seria 1h40 martelando
+servidor quebrado) e os lotes que faltam ficam registrados. Re-rodar retoma de
+onde parou; lote em cache nunca é rebaixado.
+
+⚠️ **Filtro por município não funciona** (`cidadeId: [1122]` → 500;
+`cidade: "Abaiara"` → 0 registro). O recorte municipal é feito do nosso lado,
+pelo campo `cidade`; o de-para com código IBGE está em `infofilters`.
+
+**Dado pessoal.** As duas rotas devolvem `cpfCnpj`, `interessado` (licenciamento)
+e `cliente` (fiscalização) em texto claro. O coletor não grava CPF: run de 11
+dígitos vira `null` + `doc_redigido: 1`, só CNPJ de 14 dígitos é mantido, e os
+campos de nome de pessoa física **nem entram na linha**. Rodada de 18/11/2026:
+**7.756 linhas redigidas** nos autos, 14.177 CNPJs preservados, zero redação no
+licenciamento. O varredor pegou 2 números de auto que são 11 dígitos (ano +
+sequencial) e passam no mod-11 — esses também saem como `null`, porque a régua
+do repositório não distingue CPF deles. Antes de publicar, o JSON passa por
+`scripts/checar-dado-pessoal-em-dado.py --extra apps/web/data/semace-ce.json` —
+`apps/web/data` já está em `DIRETORIOS_DADO`, então o pré-push também varre.
+
+**Ressalva editorial:** processo em análise ou com licença emitida **não** é
+licença em vigor; auto de fiscalização **não** é condenação — cabe defesa e o
+julgamento pode arquivar. O JSON publica os números da fonte sem juízo nosso.
+
+## INEA-RJ — EIA/RIMA por ano e audiências públicas do Rio (HTML, uma página por ano)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-inea-rj-estudos.py` →
+`apps/web/data/inea-rj-estudos.json`. Sondagem de partida no plano
+[PLANO-AMBIENTAL-27-UF.md](../planos/PLANO-AMBIENTAL-27-UF.md), seção
+"RJ — sondado ao vivo em 17/11/2026".
+
+**O INEA não tem API nem busca para estudo ambiental.** A lista é HTML
+institucional: `GET https://www.inea.rj.gov.br/eia-rima-AAAA/` (uma página por
+ano) e `https://www.inea.rj.gov.br/audiencias-publicas/` (lista única, sem
+paginação). `robots.txt` veda só `/wp-admin/` — `Disallow: /wp-admin/`,
+`Allow: /wp-admin/admin-ajax.php` (lido 18/11/2026). O SELCA
+(`portallicenciamento.inea.rj.gov.br`), que teria o processo, é login de
+requerente com reCAPTCHA: fora de alcance.
+
+📊 **136 documentos**: 130 das 19 páginas-ano (2007–2025) + 6 de audiências.
+
+| tipo | documentos | o que é |
+|---|---:|---|
+| `eia` | 14 | estudo de impacto ambiental declarado no título ou no nome do arquivo |
+| `rima` | 12 | relatório de impacto ambiental |
+| `eia_rima` | 14 | volume único ou "EIA/RIMA" no título |
+| `outro` | 90 | arquivo da lista cujo nome não diz EIA nem RIMA (o acervo antigo é `.7z` sem rótulo) |
+| `audiencia` | 6 | edital ou ata da página de audiências |
+
+Formatos: **85 `.7z`**, 35 `.pdf`, 8 `.zip`, 2 `.rar` e 6 no Google Drive.
+Nada disso é baixado (centenas de MB por estudo): a linha traz a URL direta e
+só 1 amostra por formato é conferida pelo magic number (`%PDF-`, `PK`,
+`Rar!`, `7z¼¯'`, e a página `/view` do Drive).
+
+⚠️ **Quatro armadilhas medidas, todas silenciosas:**
+
+1. **2026 responde 404** (a página-mãe foi atualizada em 04/2024 e o ano
+   corrente ficou sem página). O coletor para no primeiro 404 e não pede 2027
+   em diante; quando a página de 2026 aparecer, ela entra sozinha.
+2. **2022 existe e a página-mãe NÃO linka.** Quem seguisse só os links da mãe
+   perderia 5 documentos. Por isso o laço vai de 2007 até o maior ano linkado,
+   e não apenas nos anos linkados.
+3. **2021 inteiro está no Google Drive** (`/file/d/<id>/view`), com href sem
+   extensão — o filtro por `.pdf` zerava o ano. Dos 6 links do Drive
+   conferidos, **2 respondem 404**: link morto da fonte, a mesma praga medida
+   em MG (27% dos EIA/RIMA não abrem).
+4. **href com espaço cru** (`...E_07_203.110_2005 Itaipava ...7z`): o navegador
+   codifica, o `urllib` recusa. O coletor grava a URL com `%20`/`%C3%A9` e o
+   resto igual.
+
+E uma exceção de ética registrada no cabeçalho do módulo: **403 num arquivo
+isolado** (um `.rar` de 2011, Apache "You don't have permission") não aborta a
+rodada, porque o mesmo host seguiu servindo o resto no mesmo minuto — vira
+dado (`erro: HTTP 403`). 429 e 403 na **página** param tudo.
+
+**Município não é publicado.** Sai do título + do parágrafo de descrição, com o
+dicionário das 92 cidades do RJ (o mesmo de
+`supabase/betim/migrations/0092_ref_municipios_nacional.sql`): (1) "município
+de X"; (2) "X/RJ"; (3) o único nome de município do texto. **79 identificados,
+57 `null`** (31 cidades). `municipio_base` diz de qual regra saiu. Casos que
+ficam `null` de propósito: "entre os municípios de Macaé e Casimiro de Abreu"
+(dois), "Rio de Janeiro" sozinho (cidade e estado, exige padrão explícito) e
+nome coloquial fora do dicionário ("Búzios" em vez de "Armação dos Búzios").
+Ambíguo vira `null`, nunca chute.
+
+**Dado pessoal:** nenhum CPF entra — todo campo de texto passa pelo varredor
+mod-11 do repo (CPF válido vira `[CPF redigido]`); o esperado aqui é nome de
+empreendimento. Varredor `--extra` passa limpo.
+
+**Ressalva editorial:** EIA/RIMA publicado **não** é licença aprovada, e
+edital/ata de audiência **não** é licença concedida — a fonte publica o estudo
+apresentado e o registro de que houve audiência. O INEA não publica número de
+licença nesta lista, e vínculo audiência ↔ estudo não é publicado. Consulta
+oficial: `https://www.inea.rj.gov.br/publicacoes/consulta-eia-rima/`.
+
+## MPPA-PA — TAC do Conselho Superior (uma tabela HTML por ano)
+
+Medido em 17/11/2026. Coletor: `scripts/coletar-mppa-pa-tacs.py` →
+`apps/web/data/mppa-pa-tacs.json`. Sondagem completa em
+`docs/historico/descobertas/ambiental-PA-mppa-tac.md`.
+
+O acervo de TAC do Ministério Público do Estado do Pará é **tabela por ano**,
+publicada por força da Resolução nº 002/2018 do Conselho Superior:
+`https://www2.mppa.mp.br/areas/institucional/conselho/tacs-de-{ano}.htm`
+(2013–2026, páginas de 94.177 B a 159.666 B). ⚠️ **2019 só existe no host
+`www` e sem o `-de`**: `https://www.mppa.mp.br/areas/institucional/conselho/tacs-2019.htm`
+— no `www2` esse ano dá 404.
+
+📊 **422 TAC** de 14 páginas-ano, depois de remover 29 linhas duplicadas (a
+fonte publica 26 cópias do mesmo termo na página de 2018, e às vezes o mesmo TAC
+duas vezes, uma com link e outra "SIGILOSO"). **105 (25%)** têm promotoria de
+Meio Ambiente/Ambiental no nome do órgão — recorte por texto, não por campo.
+
+| ano | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| TAC | 1 | 11 | 2 | 5 | 7 | 45 | 90 | 21 | 20 | 33 | 25 | 93 | 39 | 30 |
+
+**O que a fonte não tem:** filtro por município, paginação, export e API (o
+iframe `simpacervo/explorer.jsf` devolve 404 e só planta cookie de sessão). A
+tabela tem 4 colunas — Procedimento, Data, Órgão de execução, Partes — e é o
+**nome da promotoria** o único lugar onde aparece município. Não há tema, valor,
+status de cumprimento nem data de publicação. `robots.txt` dos dois hosts: 404,
+nada bloqueado; sem login e sem CAPTCHA.
+
+Cada linha traz procedimento (quatro padrões de numeração na mesma coluna),
+data, órgão de execução, `ambiental`, `sigiloso` (33 linhas marcadas
+"SIGILOSO" na fonte, sem link), `aditivo`/retificação (82), e as URLs de
+íntegra (372) e extrato (373). Os PDFs **não** são baixados (íntegra medida em
+1.843.177 B, extrato em 71.068 B); ⚠️ o caminho do PDF é `../../../data/files/…`
+e resolve para a **raiz do host**, não para `/areas/…` — concatenar errado dá
+404 de 790 B.
+
+**Checkpoint:** cada página-ano validada fica em `scripts/.cache/mppa-pa/` e a
+rodada retoma de onde parou; página em cache não se baixa de novo.
+
+**Dado pessoal:** a coluna "Partes" traz **nome de pessoa física** junto do CNPJ
+da empresa (medido: "… LTDA (Maurício Paracampos Junior)") — ela é **descartada
+inteira**, e a saída não tem nome de parte nem CNPJ. CPF nunca é gravado:
+0 linha redigida nesta rodada, e run de 12–13 dígitos (protocolo do MPPA, ex.
+"SIMP n.º 004837-040/2018") **não** é tratado como CPF. Varredor
+`scripts/checar-dado-pessoal-em-dado.py --extra` passa limpo.
+
+**Ressalva editorial:** TAC firmado não é sentença nem confissão: o compromisso
+vale entre as partes e pode ter sido cumprido, aditado ou extinto, e o MPPA não
+publica esse status. Consulta oficial: `https://www.mppa.mp.br/tacs.htm`.
+
+## SEMAS-PA — portal Sydle (`consulta-geral`, `consulta-mapa`, `atos-autorizativos`): API fechada, fora de alcance
+
+Sondado em 17/11/2026, 21 `GET` sem navegador, UA `finweejur/github artur colito`.
+Sondagem completa em `docs/historico/descobertas/ambiental-PA-sydia-api.md`.
+
+`portal-servicos-sistemas.semas.pa.gov.br` é SPA **Sydle ONE 8.38.10**. A API
+interna é `/api/1/www/{pacote}/{Classe}/{metodo}` — a forma foi lida no JS
+(`ui-api/chunk-TLCMRSG7.js`), não chutada. **Toda rota de dado exige
+autenticação:** sem token, `401 {"error":"authentication_error"}` (32 B); com o
+Bearer que o HTML entrega a qualquer visitante, `401 invalid_token` — o token
+embutido está vencido e a SPA o renova por caminho de login. Renovação não foi
+automatizada (regra: não contornar autenticação). robots.txt publica **dois
+blocos contraditórios** para `User-agent: *` (`Allow: /` no topo, `Disallow: /`
+no fim).
+
+**Não há coletor e não há número a publicar** — zero registro acessível, então
+também não há contagem, campo, filtro por município nem paginação medidos.
+Escrever coletor aqui geraria JSON vazio com cara de sucesso. Para o Pará
+seguem valendo só duas portas: SIMLAM Público (empreendimentos com município e
+CNPJ) e a API do Portal da Transparência Ambiental (audiências, EIA e RIMA).
+
+## FUNAI — terras indígenas do país inteiro pelo WFS (camada `tis_poligonais_portarias`)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-funai-terras-indigenas.py`,
+saída em `apps/web/data/funai-terras-indigenas.json`.
+
+- **URL:** `https://geoserver.funai.gov.br/geoserver/Funai/ows` — WFS 1.0.0,
+  camada `Funai:tis_poligonais_portarias`, publicada pela FUNAI na página
+  `/atuacao/terras-indigenas/geoprocessamento-e-mapas`. `robots.txt` do host:
+  **404** (sem declaração) em 18/11/2026 → liberado por padrão, UA honesto.
+- **1 requisição nacional** com `propertyname` (sem `the_geom`): **241.925 B,
+  667 TIs, 125.421.723,4 ha**. GeoJSON com polígono passaria de 100 MB — o
+  atributo é o que se publica; o desenho já vive em
+  `apps/web/public/terras/globo/dados/camadas/terras-indigenas.geojson`.
+- **Duas armadilhas de 403, medidas no mesmo host:** `resultType=hits` devolve
+  **403** do nginx, e `GetFeature` **sem `maxFeatures`** também devolve 403
+  (mesma URL, único parâmetro diferente: com `maxFeatures=2000` responde 200).
+  Consequência: não existe contagem declarada pelo servidor, e o CSV vem
+  inteiro numa resposta só.
+- **Campos:** `fase_ti` (Regularizada 494 · Declarada 73 · Delimitada 47 ·
+  Encaminhada RI 28 · Homologada 17 · Em Estudo 8 no país), `data_*`/`tit_*`
+  por fase, `cr`, `undadm_sigla` (Coordenação Regional), `municipio_nome` e
+  `uf_sigla` **concatenados** (`"AM,PA"`, `"... e ..."`).
+- **A camada não tem `data_atualizacao`** — esse campo é da irmã
+  `tis_poligonais`. Quem ler a sondagem de 17/11/2026 e procurar o campo aqui
+  vai receber `ServiceException` com status 200.
+- **19 TIs dividem UF.** A área delas não é atribuída a UF nenhuma (a fonte não
+  diz a proporção): ficam em `ti_compartilhadas`, e
+  `soma_por_uf_ha + area_ti_compartilhada_ha == total_ha`. Assim o Pará dá
+  exatamente **51 TIs / 19.064.417,8 ha**, igual ao medido com
+  `CQL_FILTER=uf_sigla='PA'`.
+- **`undadm_codigo` (11 dígitos internos) não é publicado:** não é CPF, mas 11
+  dígitos crus disparam o varredor de CPF do repositório, e a sigla da CR
+  identifica a mesma unidade.
+
+## DNIT — malha rodoviária federal por estado (GeoServer WFS, camada `vw_snv_rod`)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-dnit-rodovias.py`,
+saída em `apps/web/data/dnit-rodovias.json` (961 KB).
+
+- **URL:** `https://servicos.dnit.gov.br/dnitgeo/geoserver/ows` — WFS aberto,
+  sem chave, 73 camadas; é o mesmo serviço por trás do VGeo em
+  `https://servicos.dnit.gov.br/vgeo/`. `robots.txt` do host: **404** (sem
+  declaração) → liberado por padrão, UA honesto `finweejur/github artur colito`.
+- **A camada é HISTÓRICO.** `numberMatched` diz **343.892** no país, mas isso é
+  linha de versão do SNV (`Versao_SNV`, `dt_ini`), não trecho: o trecho
+  `307BAC0020` do Acre ocupa 45 linhas, e os 3.111 registros do AC são **87
+  trechos**. O coletor fica com a versão mais recente de cada `Codigo_SNV`:
+  **8.655 trechos, 27 UFs, 169 rodovias, 129.035,5 km de eixo** (144.745,3 km
+  somando a extensão trecho a trecho).
+- **`startIndex` exige `sortBy=id_snv`.** A camada é *view* sem chave: paginar
+  sem ordenação devolve `IOException: Cannot do natural order without a primary
+  key` — XML com status **200** (WFS 1.0.0) ou **400** (2.0.0). Com
+  `sortBy=id_snv` a paginação é estável (MG: 5 páginas, 43.615 linhas).
+- **Sem geometria.** 3 feições com `MultiLineString` medem 138.376 B; a malha
+  inteira passaria de 10 GB. O arquivo traz atributos (rodovia, km inicial/final,
+  UF, superfície, administração, extensão, versão) e **sem** bbox — bbox exige a
+  geometria que não cabe.
+- **A camada não tem município.** `Local_Inicio`/`Local_Fim` são pontos de
+  referência ("ENTR PA-370", "URUARÁ"), não município.
+- **Trecho se sobrepõe a trecho** da mesma rodovia: PA/BR-163 soma 2.540,9 km
+  sobre 2.000,0 km de eixo; MG/BR-040, 960,8 km sobre 831,2 km. Por isso o
+  arquivo publica `km` (soma declarada) e `km_eixo` (união), e nenhum dos dois é
+  a extensão oficial da rodovia.
+- **Superfície (`Superficie_Federal`) vem nula** em parte dos trechos, e o texto
+  de `Administracao` muda entre versões ("Adm Estadual" → "Estadual"). Nulo não
+  significa "sem pavimento".
+
+## INCRA — projetos de assentamento do país inteiro (CSV do SIPRA)
+
+Medido em 18/11/2026. Coletor: `scripts/coletar-incra-assentamentos.py`,
+saída em `apps/web/data/incra-assentamentos.json`.
+
+- **URL:** `https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentosgeral.csv/@@download/file`
+  (**1.412.756 B**, relatório gerado em **06/03/2026**, fonte SIPRA declarada
+  dentro do arquivo). `robots.txt` de `www.gov.br`: 200, só `/search` e
+  `/login` fora. Se o link mudar, a página
+  `/assuntos/reforma-agraria/assentamentos-relacao-de-projetos` é a origem.
+- **9.964 projetos, 140.912.141,2 ha.** Uma requisição, latin-1, `;`,
+  cabeçalho na linha 9, agrupado por Superintendência Regional.
+- **O arquivo NÃO tem campo de UF**, e o prefixo do código é da SR, não do
+  estado (`MB` = Sul do Pará, `SM`/`AT` = Santarém, `MF` = Médio São Francisco).
+  A UF sai do número da SR, com o município sede desempatando SE/BA, DF/GO/MG e
+  Médio São Francisco. **Consequência medida: o Pará tem 1.196 projetos /
+  26.187.344,4 ha**, não os 494 da sondagem de 17/11/2026 — aquela contagem
+  olhou só os prefixos `PA` e `AT` e perdeu `MB` e `SM`.
+- **Duas áreas impossíveis digitadas na fonte** (RTRQ Ribeirão Grande/SP com
+  34.709.055 ha e PA Serra do Rio Real/SE com 11.385.205 ha) vão como vieram,
+  listadas em `area_suspeita`: inflam a soma de SP e SE.
+- **Não coletar:** a "relação de beneficiários assentados" da mesma página tem
+  nome, CPF e lote de pessoa física — fora do escopo por regra (AGENTS § 5.2).
 
 ## Microsistema de lacunas — cobertura declarada
 
@@ -692,6 +1079,8 @@ fontes muda toda semana; o escopo, não — por isso esta página só aponta.
 | [`FONTES-TERRITORIO-E-MINERACAO.md`](FONTES-TERRITORIO-E-MINERACAO.md) | FUNAI, INCRA, CNUC, ANM/SIGMINE |
 | [`FONTES-PRO-BRUMADINHO.md`](FONTES-PRO-BRUMADINHO.md) | a coleta dos 129 documentos do Pró-Brumadinho |
 | [`FONTES-RIO-DOCE.md`](FONTES-RIO-DOCE.md) | Plataforma Rio Doce: DataJud, WFS da SEMAD, Fundação Renova e CKAN MG (Fase 0, 12/10/2026) |
+| [`ENERGIA-CONTRATOS.md`](ENERGIA-CONTRATOS.md) | energia elétrica: SIGA/ANEEL, leilões, tarifas, PLD/CMO, PIS/COFINS e ICMS (fase 2, 18/11/2026) |
+| [`PNTP-ATRICON.md`](PNTP-ATRICON.md) | PNTP/Atricon: índice de transparência por ente, recorte de MG 2022–2025 e resumo nacional (18/11/2026) |
 
 ## Condicionantes — piloto Irapé e Setúbal (descoberta 23/09 + downloads)
 
@@ -1305,6 +1694,19 @@ Para a Fase H do [PLANO-HISTORIA-CAMADAS-GLOBO-3D.md](/docs/historico/planos/PLA
   é o recenseamento de 1872 — **a medir**).
 
 ## Decisões registradas
+
+- **2026-11-18:** FUNAI (`tis_poligonais_portarias`) e INCRA (CSV do SIPRA)
+  coletados para o país inteiro, um coletor cada. FUNAI: 1 requisição nacional
+  só com `propertyname` (sem `the_geom`), UA `finweejur/github artur colito`,
+  `maxFeatures` obrigatório porque **sem ele o nginx devolve 403** (e
+  `resultType=hits` também) — sem contagem declarada, a trava contra resposta
+  truncada é comparar com o último arquivo publicado. TI que divide UF não é
+  atribuída a estado nenhum (`ti_compartilhadas`), o que faz a soma por UF
+  fechar com o total e o Pará bater com o medido à parte por `CQL_FILTER`.
+  INCRA: a UF do projeto **não existe no arquivo** — sai do número da
+  Superintendência Regional, não do prefixo do código (foi assim que a
+  sondagem de 17/11 perdeu 702 projetos do Pará). `undadm_codigo` da FUNAI
+  (11 dígitos internos) fica de fora para não disparar o varredor de CPF.
 
 - **2026-09-30:** Capitanias hereditárias publicadas a partir do OpenHistoricalMap
   (CC0) — mapa colaborativo entra como ponto de partida, **conferido no modelo e

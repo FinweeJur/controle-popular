@@ -56,12 +56,13 @@ import BorderGlow from "@/app/components/react-bits/BorderGlow";
 import Magnet from "@/app/components/react-bits/Magnet";
 import BotaoBrilho from "@/app/components/react-bits/BotaoBrilho";
 import { CATALOGO_EIXOS } from "@/lib/eixos/catalogo";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/central", {
   title: "Eixo Central: Inteligência Cívica & Ferramentas — ONSA | Controle Popular",
   description:
     "Hub transversal do Controle Popular: busca global no acervo, comparador de dados, radar de editais, biblioteca com 24 mil documentos, IA livre e método ONSA.",
-};
+});
 
 const ICONES_MAP: Record<string, React.ReactNode> = {
   Search: <Search size={20} className="text-primary" />,

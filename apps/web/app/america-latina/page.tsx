@@ -31,13 +31,14 @@ import PainelAmericaLatina from "./PainelAmericaLatina";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { Globe2, ArrowRight } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/america-latina", {
   title:
     "América Latina & Mineração Transnacional: Sedes, Megaminas & Lítio | Controle Popular",
   description:
     "Observatório de 51 instalações estratégicas de mineração em 9 países latino-americanos (Brasil, Chile, Peru, Argentina, México, Colômbia, Bolívia, Equador, Panamá). Georreferenciamento auditado e integrado ao Globo 3D Terras.",
-};
+});
 
 export default function PaginaAmericaLatina() {
   const instalacoes = obterInstalacoesAmericaLatina();

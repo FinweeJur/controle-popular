@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Índice da frente /ambiental.
@@ -90,11 +91,11 @@ const tópicos: Topico[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/indice", {
   title: "Índice — Meio Ambiente (ONSA) · Observatório Nacional Socioambiental — Controle Popular",
   description:
     "Navegue pelo Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, legislação, patrimônio cultural, estudos, Mariana e a Vale.",
-};
+});
 
 export default function ÍndiceAmbiental() {
   return (
