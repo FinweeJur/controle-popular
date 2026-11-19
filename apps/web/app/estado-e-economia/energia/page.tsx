@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import DataColeta from "@/app/components/DataColeta";
+import ExplicadorDaPagina from "@/app/components/ExplicadorDaPagina";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { IndiceWiki, LinksRelacionados, SecaoWiki } from "@/app/components/wiki";
 import { carregarUsinas } from "@/lib/energia/energia";
@@ -186,12 +188,16 @@ function competencia(registro: { mes: string; dias: number } | null): string {
 function CartaoNumero({
   rotulo,
   valor,
+  casas = 0,
+  sufixo,
   unidade,
   detalhe,
   destaque,
 }: {
   rotulo: string;
-  valor: string;
+  valor: number | null;
+  casas?: number;
+  sufixo?: string;
   unidade?: string;
   detalhe: string;
   destaque?: boolean;
@@ -204,7 +210,11 @@ function CartaoNumero({
     >
       <dt className="text-xs font-medium text-text-soft">{rotulo}</dt>
       <dd className="mt-1 font-tabular text-2xl font-bold text-text">
-        {valor}
+        {valor === null ? (
+          "—"
+        ) : (
+          <ContadorAnimado valor={valor} casas={casas} sufixo={sufixo} />
+        )}
         {unidade && <span className="ml-1 text-base font-semibold text-text-soft">{unidade}</span>}
       </dd>
       <p className="mt-1 text-xs leading-snug text-text-soft">{detalhe}</p>
@@ -367,6 +377,72 @@ export default function EnergiaPage() {
         <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
           Energia: quanto o país consome, do que é feita a eletricidade e quem gera em Minas
         </h1>
+        <ExplicadorDaPagina
+          frase="Quanta energia o país consome e quem gera em Minas. Dados do ONS e da ANEEL; o mês em curso é parcial."
+          itens={[
+            "A carga do Sudeste/Centro-Oeste em GWmed (gigawatts médios), no mês mais recente do ONS.",
+            "Quanto da eletricidade do Brasil vem de hidráulica, eólica e solar, em % de tudo o que foi gerado.",
+            "A energia armazenada nos reservatórios (EAR), em % do máximo de cada subsistema.",
+            "As 300 maiores usinas outorgadas em Minas, com potência em GW e o tipo de geração.",
+          ]}
+          glossario={[
+            {
+              termo: "ANEEL (Agência Nacional de Energia Elétrica)",
+              definicao:
+                "agência federal que autoriza, fiscaliza e outorga a geração de energia. O cadastro das usinas vem do SIGA, sistema da ANEEL.",
+            },
+            {
+              termo: "Carga",
+              definicao:
+                "energia que o sistema precisa entregar para abastecer casas, comércios e fábricas num período. O ONS mede hora a hora e publica a média do mês.",
+            },
+            {
+              termo: "EAR (energia armazenada nos reservatórios)",
+              definicao:
+                "quanto da água útil dos reservatórios ainda pode gerar energia, em % do máximo do próprio subsistema. Não é o volume total do rio.",
+            },
+            {
+              termo: "GWmed (gigawatt médio)",
+              definicao:
+                "potência média durante todo o período. 1 GWmed = 1.000 MWmed = 1 milhão de kW. Serve para comparar meses de tamanhos diferentes sem distorção.",
+            },
+            {
+              termo: "Mês em curso (parcial)",
+              definicao:
+                "o mês atual, com só os dias já apurados pelo ONS. A média muda quando o mês fecha; trate o número como leitura de meio de mês.",
+            },
+            {
+              termo: "MWmed (megawatt médio)",
+              definicao:
+                "milésima parte do GWmed. Mil MWmed formam 1 GWmed; é a unidade em que o ONS publica a carga por subsistema.",
+            },
+            {
+              termo: "ONS (Operador Nacional do Sistema Elétrico)",
+              definicao:
+                "órgão que opera a rede elétrica do país e publica carga, geração e reservatórios. As séries desta página são dos dados abertos do ONS.",
+            },
+            {
+              termo: "Renovável",
+              definicao:
+                "aqui, hidráulica + eólica + solar, como o ONS classifica a fonte. A térmica fica fora mesmo quando queima biomassa.",
+            },
+            {
+              termo: "SIN (Sistema Interligado Nacional)",
+              definicao:
+                "a rede que liga as regiões do país. A linha SIN do ONS é o total do Brasil e não se soma aos quatro subsistemas.",
+            },
+            {
+              termo: "Subsistema SE/CO (Sudeste/Centro-Oeste)",
+              definicao:
+                "área elétrica do ONS que reúne SP, RJ, MG, ES, GO, MT, MS e o DF. Não é um estado nem uma região administrativa.",
+            },
+            {
+              termo: "Usina outorgada",
+              definicao:
+                "empreendimento com autorização ou concessão da ANEEL para gerar. A potência outorgada é o limite autorizado, não o que a usina produz.",
+            },
+          ]}
+        />
         <ResumoExpandivel
           className="mt-3 max-w-3xl text-text-soft"
           texto="Carga média mensal por subsistema desde 2000, participação de hidráulica, térmica, eólica e solar na geração, energia armazenada nos reservatórios e as 300 maiores usinas outorgadas em Minas Gerais. Dados abertos do ONS e do SIGA/ANEEL, com a data de coleta de cada série. O mês corrente é parcial: o ONS publica a média dos dias já apurados."
@@ -403,16 +479,19 @@ export default function EnergiaPage() {
       <SecaoWiki id="resumo" titulo="1. O essencial em cinco números">
         <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <CartaoNumero
-            rotulo="Carga no Sudeste/Centro-Oeste"
-            valor={CARGA_SE ? formatarNumero(CARGA_SE.cargaMediaMWmed) : "—"}
-            unidade="MWmed"
-            detalhe={competencia(CARGA_SE)}
+            rotulo="Carga média · Sudeste/Centro-Oeste"
+            valor={CARGA_SE ? CARGA_SE.cargaMediaMWmed / 1000 : null}
+            casas={1}
+            unidade="GWmed"
+            detalhe={`${competencia(CARGA_SE)} · média do mês, não o pico`}
             destaque
           />
           <CartaoNumero
-            rotulo="Geração renovável no SIN"
-            valor={formatarPercentual(RENOVAVEIS_ULTIMO)}
-            detalhe={`Hidráulica + eólica + solar · ${
+            rotulo="Geração renovável · Brasil (SIN)"
+            valor={RENOVAVEIS_ULTIMO}
+            casas={1}
+            sufixo="%"
+            detalhe={`Hidráulica + eólica + solar · 100% da geração do SIN · ${
               BALANCO_SIN
                 ? `${formatarMesLongo(BALANCO_SIN.mes)}${
                     mesParcialPorHoras(BALANCO_SIN) ? ", mês em curso" : ", mês fechado"
@@ -421,25 +500,35 @@ export default function EnergiaPage() {
             }`}
           />
           <CartaoNumero
-            rotulo="Energia armazenada no SE/CO"
-            valor={EAR_SE ? formatarPercentual(EAR_SE.earPercentualMedio) : "—"}
-            detalhe={`Média do mês em % do máximo do subsistema · ${
-              EAR_SE && mesParcial(EAR_SE) ? "mês em curso" : "mês fechado"
+            rotulo="Energia armazenada · SE/CO"
+            valor={EAR_SE ? EAR_SE.earPercentualMedio : null}
+            casas={1}
+            sufixo="%"
+            detalhe={`% do máximo do próprio subsistema · ${
+              EAR_SE && mesParcial(EAR_SE)
+                ? `${formatarMesLongo(EAR_SE.mes)}, mês em curso`
+                : `${EAR_SE ? formatarMesLongo(EAR_SE.mes) : "sem mês publicado"}, mês fechado`
             }`}
           />
           <CartaoNumero
-            rotulo="Potência outorgada em MG"
-            valor={formatarPotenciaGw(POTENCIA_MG_KW)}
+            rotulo="Potência outorgada · MG"
+            valor={POTENCIA_MG_KW / 1_000_000}
+            casas={1}
+            unidade="GW"
             detalhe={`Soma das ${USINAS.length} usinas publicadas, de ${formatarNumero(
               SIGA.totalNoRecorte,
-            )} empreendimentos em MG`}
+            )} em MG · SIGA/ANEEL, conjunto de ${
+              SIGA.dataConjunto ? formatarDataIso(SIGA.dataConjunto) : "—"
+            }`}
           />
           <CartaoNumero
-            rotulo="Usinas no recorte"
-            valor={formatarNumero(USINAS.length)}
+            rotulo="Usinas no recorte · MG"
+            valor={USINAS.length}
             detalhe={`${formatarNumero(
               SIGA.totalIncluido,
-            )} maiores por potência, com piso de 10 por tipo de geração`}
+            )} maiores por potência, de ${formatarNumero(
+              SIGA.totalNoRecorte,
+            )} em MG · piso de 10 por tipo de geração`}
           />
         </dl>
 
@@ -448,23 +537,25 @@ export default function EnergiaPage() {
             A carga é a energia que o sistema precisou entregar. No Sudeste/Centro-Oeste, o maior
             subsistema do país, ela ficou em{" "}
             <strong className="font-tabular">
-              {CARGA_SE ? formatarNumero(CARGA_SE.cargaMediaMWmed) : "—"} MWmed
+              {CARGA_SE ? formatarNumero(CARGA_SE.cargaMediaMWmed / 1000, 1) : "—"} GWmed
             </strong>{" "}
-            no último mês publicado. A média mensal esconde o pico: o ONS mede a operação hora a
-            hora, e a ponta do fim de tarde é bem maior que a média.
+            (<span className="font-tabular">{CARGA_SE ? formatarNumero(CARGA_SE.cargaMediaMWmed) : "—"} MWmed</span>)
+            no último mês publicado — {competencia(CARGA_SE)}. A média mensal esconde o pico: o ONS
+            mede a operação hora a hora, e a ponta do fim de tarde é bem maior que a média.
           </p>
           <p>
-            Na geração do Sistema Interligado Nacional, hidráulica, eólica e solar somam{" "}
-            <strong>{formatarPercentual(RENOVAVEIS_ULTIMO)}</strong> no mês em curso. É o retrato do
-            mês, não a média do ano: a parcela hidráulica sobe na estação chuvosa e cede espaço para
-            a térmica quando os reservatórios baixam.
+            Na geração do Sistema Interligado Nacional (SIN, a rede que liga o país), hidráulica,
+            eólica e solar somam <strong>{formatarPercentual(RENOVAVEIS_ULTIMO)}</strong> de toda a
+            eletricidade gerada no Brasil no mês em curso. É o retrato do mês, não a média do ano: a
+            parcela hidráulica sobe na estação chuvosa e cede espaço para a térmica quando os
+            reservatórios baixam.
           </p>
           <p>
             Em Minas, as {USINAS.length} usinas do recorte somam{" "}
-            <strong>{formatarPotenciaGw(POTENCIA_MG_KW)}</strong> de potência outorgada. Não é a
-            capacidade instalada do estado: o SIGA tem{" "}
-            {formatarNumero(SIGA.totalNoRecorte)} empreendimentos em MG e a página publica os
-            maiores, com vagas garantidas para cada tipo de geração.
+            <strong>{formatarPotenciaGw(POTENCIA_MG_KW)}</strong> de potência outorgada — o limite
+            que a ANEEL autorizou, não o que elas geram. Não é a capacidade instalada do estado: o
+            SIGA tem {formatarNumero(SIGA.totalNoRecorte)} empreendimentos em MG e a página publica
+            os maiores, com vagas garantidas para cada tipo de geração.
           </p>
         </div>
       </SecaoWiki>
