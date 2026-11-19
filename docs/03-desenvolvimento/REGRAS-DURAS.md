@@ -537,8 +537,9 @@ de estatística.
   informação, não enfeite;
 - **“O que você vai ver”:** 3–5 marcadores, um por bloco ou número;
 - **Glossário da página:** `<details>` com termo e definição de dicionário;
-  sigla explicada na primeira aparição (“EAR — energia armazenada nos
-  reservatórios”);
+  sigla explicada **entre parênteses na primeira aparição** — “ONS (Operador
+  Nacional do Sistema Elétrico)”, “PNTP (Programa Nacional de Transparência
+  Pública)”;
 - **Unidade e recorte em cada número:** “GWmed médio · SE/CO · set/2026”,
   “% de avaliados · MG”, “R$ por MWh · leilão”;
 - **Porcentagem sempre com denominador:** “54,4% (1.581 de 1.712 entes
