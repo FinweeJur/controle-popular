@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import atosJson from "@/data/querido-diario/atos.json";
+import CartoesResumo from "@/app/components/CartoesResumo";
 import DataColeta from "@/app/components/DataColeta";
+import ExplicadorDaPagina from "@/app/components/ExplicadorDaPagina";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { IndiceWiki, LinksRelacionados, SecaoWiki } from "@/app/components/wiki";
@@ -116,6 +118,52 @@ export default function CoberturaDiariosPage() {
           <h1 className="mt-2 font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight text-text">
             Diários Oficiais Municipais pelo Querido Diário
           </h1>
+          <ExplicadorDaPagina
+            frase="Veja quais diários oficiais de Minas já estão no Querido Diário. Saiba quais cidades ficaram sem dados e o motivo."
+            itens={[
+              "As 3 cidades com diário medido: Betim, Contagem e Uberaba.",
+              "Quantos diários e quantas menções a decreto, portaria, licitação e nomeação — cada menção é uma ocorrência do termo no texto.",
+              "A lista de evidências, com data, edição e trecho do diário, filtrável e com CSV.",
+              "As 2 cidades da lista inicial sem diário no acervo: Mariana e Brumadinho, com o motivo.",
+            ]}
+            glossario={[
+              {
+                termo: "Diário oficial",
+                definicao:
+                  "jornal oficial em que a prefeitura publica decreto, portaria, licitação e nomeação. O ato só vale depois de publicado ali.",
+              },
+              {
+                termo: "Ato",
+                definicao:
+                  "decisão escrita do poder público: decreto, portaria, licitação ou nomeação. Aqui o termo é contado por menção, não classificado.",
+              },
+              {
+                termo: "Ocorrência (menção)",
+                definicao:
+                  "quantas vezes a palavra apareceu no texto do diário. Menção não é prova de que o ato foi praticado: o mesmo trecho pode citar outro órgão.",
+              },
+              {
+                termo: "Linha de evidência",
+                definicao:
+                  "um trecho de até 200 caracteres em volta da primeira ocorrência, com link para o PDF oficial. O portal não copia o diário inteiro.",
+              },
+              {
+                termo: "Cobertura",
+                definicao:
+                  "se o Querido Diário já coleta o diário daquela cidade. Nível 0 significa que a plataforma ainda não tem diário do município.",
+              },
+              {
+                termo: "Nível 3",
+                definicao:
+                  "grau mais completo de cobertura do Querido Diário: a plataforma declara que coleta o diário e há edição publicada na janela medida.",
+              },
+              {
+                termo: "Querido Diário",
+                definicao:
+                  "projeto do Open Knowledge Brasil que reúne diários oficiais de prefeituras numa API pública. A página usa a API em api.queridodiario.org.br.",
+              },
+            ]}
+          />
           <ResumoExpandivel
             texto="Onde cada prefeitura publica decreto, portaria e licitação em sistemas diferentes, o Querido Diário reúne os diários oficiais num só acervo. Esta página mostra a cobertura medida em três cidades mineiras e diz, com o motivo, quais cidades da lista inicial ainda não têm diário no acervo."
             className="mt-3 max-w-3xl text-text-soft"
@@ -155,7 +203,42 @@ export default function CoberturaDiariosPage() {
         </SecaoWiki>
 
         <SecaoWiki id="cobertura" titulo="2. Cidades cobertas">
-          <p className="max-w-3xl text-sm leading-relaxed text-text-soft">
+          <CartoesResumo
+            colunas={5}
+            itens={[
+              {
+                rotulo: "Cidades cobertas · MG",
+                valor: resumo.cidades,
+                detalhe: "Betim, Contagem e Uberaba · Querido Diário",
+                destaque: true,
+              },
+              {
+                rotulo: "Diários no acervo",
+                valor: resumo.diarios,
+                detalhe: `janela de ${formatarDataBR(dados.janela.de)} a ${formatarDataBR(
+                  dados.janela.ate
+                )} · 3 cidades`,
+              },
+              {
+                rotulo: "Linhas de evidência",
+                valor: resumo.atos,
+                detalhe: "trechos com link para o PDF oficial",
+              },
+              {
+                rotulo: "Menções aos 4 termos",
+                valor: resumo.ocorrencias,
+                detalhe: "decreto, portaria, licitação e nomeação · 6 diários",
+              },
+              {
+                rotulo: "Cidades sem cobertura",
+                valor: resumo.semCobertura,
+                detalhe: "Mariana e Brumadinho · nível 0 · sem diário coletado",
+                alerta: true,
+              },
+            ]}
+          />
+
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-text-soft">
             {formatNumberBR(resumo.cidades)} cidades, {formatNumberBR(resumo.diarios)} diários e{" "}
             {formatNumberBR(resumo.ocorrencias)} menções. Onde o hub da cidade já está publicado, o
             cartão leva até ele — é lá que fica o bloco “Diário oficial do município” com os

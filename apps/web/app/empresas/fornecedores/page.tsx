@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import fornecedoresJson from "@/data/fornecedores/enriquecido.json";
+import CartoesResumo from "@/app/components/CartoesResumo";
 import DataColeta from "@/app/components/DataColeta";
+import ExplicadorDaPagina from "@/app/components/ExplicadorDaPagina";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { IndiceWiki, LinksRelacionados, SecaoWiki } from "@/app/components/wiki";
@@ -111,6 +113,52 @@ export default function FornecedoresPage() {
           <h1 className="mt-2 font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight text-text">
             Fornecedores do acervo com CNPJ enriquecido
           </h1>
+          <ExplicadorDaPagina
+            frase="Veja 17 fornecedores de contratos públicos do portal, com CNPJ consultado na Receita. É uma amostra, não a lista completa."
+            itens={[
+              "Quantos CNPJ foram consultados e por que 3 ficaram de fora.",
+              "Situação cadastral, CNAE e município de cada fornecedor, com a data da consulta.",
+              "A tabela filtrável e ordenável, com CSV do que está na tela.",
+              "Os limites: lista parcial, sem sócios, CPF ou contato.",
+            ]}
+            glossario={[
+              {
+                termo: "CNPJ (Cadastro Nacional da Pessoa Jurídica)",
+                definicao:
+                  "número de 14 dígitos que identifica cada empresa no cadastro da Receita Federal. É o mesmo número que aparece no contrato público.",
+              },
+              {
+                termo: "CNAE (Classificação Nacional de Atividades Econômicas)",
+                definicao:
+                  "código que diz o ramo principal da empresa — por exemplo, construção, transporte ou consultoria. A tabela mostra o código e a descrição.",
+              },
+              {
+                termo: "Situação cadastral",
+                definicao:
+                  "estado do CNPJ na Receita: ATIVA, BAIXADA, INAPTA ou SUSPENSA. Muda sem avisar o portal; a data da consulta é a régua desta página.",
+              },
+              {
+                termo: "Natureza jurídica",
+                definicao:
+                  "forma legal da empresa: LTDA, S.A., EIRELI, MEI e outras. Aparece junto da razão social, com a data de início da atividade.",
+              },
+              {
+                termo: "Amostra",
+                definicao:
+                  "grupo fechado de casos escolhidos para medir, não o universo inteiro. Aqui, 17 empresas que já aparecem nos contratos do acervo.",
+              },
+              {
+                termo: "Empresário Individual",
+                definicao:
+                  "empresa cujo dono é uma pessoa física e a razão social é o nome dela. Ficou fora da amostra para não publicar nome de pessoa.",
+              },
+              {
+                termo: "Brasil API",
+                definicao:
+                  "serviço público que devolve, em texto, o cadastro da Receita Federal a partir do CNPJ. É a fonte da consulta desta página.",
+              },
+            ]}
+          />
           <ResumoExpandivel
             texto="Amostra de 17 fornecedores que já aparecem nos contratos públicos do portal, com o cadastro da Receita Federal completado pela Brasil API: situação cadastral, CNAE, natureza jurídica, município e data de abertura. É amostra, não o cadastro inteiro."
             className="mt-3 max-w-3xl text-text-soft"
@@ -149,38 +197,34 @@ export default function FornecedoresPage() {
         </SecaoWiki>
 
         <SecaoWiki id="numeros" titulo="2. O que foi medido">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            <div className="min-w-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-5">
-              <p className="text-xs font-semibold text-text-soft uppercase">Fornecedores</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-primary sm:text-3xl">
-                {formatNumberBR(resumo.total)}
-              </p>
-              <p className="mt-1 text-xs text-text-soft">linhas versionadas</p>
-            </div>
-            <div className="min-w-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-5">
-              <p className="text-xs font-semibold text-text-soft uppercase">Estados</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-text sm:text-3xl">
-                {formatNumberBR(ufs.length)}
-              </p>
-              <p className="mt-1 break-words text-xs text-text-soft">{ufs.join(" · ")}</p>
-            </div>
-            <div className="min-w-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-5">
-              <p className="text-xs font-semibold text-text-soft uppercase">CNAEs distintos</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-text sm:text-3xl">
-                {formatNumberBR(resumo.cnaesDistintos)}
-              </p>
-              <p className="mt-1 text-xs text-text-soft">atividade principal declarada</p>
-            </div>
-            <div className="min-w-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-5">
-              <p className="text-xs font-semibold text-text-soft uppercase">CNPJ consultados</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-text sm:text-3xl">
-                {formatNumberBR(resumo.consultados)}
-              </p>
-              <p className="mt-1 text-xs text-text-soft">
-                {formatNumberBR(resumo.descartados)} descartados por pessoa física
-              </p>
-            </div>
-          </div>
+          <CartoesResumo
+            colunas={4}
+            itens={[
+              {
+                rotulo: "Fornecedores · amostra",
+                valor: resumo.total,
+                detalhe: "linhas versionadas de 20 CNPJ consultados",
+                destaque: true,
+              },
+              {
+                rotulo: "Estados (UF)",
+                valor: ufs.length,
+                detalhe: `Brasil · ${ufs.length} UFs: ${ufs.join(" · ")}`,
+              },
+              {
+                rotulo: "CNAEs distintos",
+                valor: resumo.cnaesDistintos,
+                detalhe: "atividade principal declarada de cada empresa",
+              },
+              {
+                rotulo: "CNPJ consultados",
+                valor: resumo.consultados,
+                detalhe: `${formatNumberBR(
+                  resumo.descartados
+                )} descartados por serem Empresário Individual (pessoa física)`,
+              },
+            ]}
+          />
 
           <p className="mt-3 text-xs text-text-soft">
             Situações no arquivo:{" "}
