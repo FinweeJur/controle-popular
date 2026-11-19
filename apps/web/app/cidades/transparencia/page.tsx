@@ -198,9 +198,9 @@ export default function TransparenciaPage() {
             Transparência dos portais públicos de Minas pelo PNTP
           </h1>
           <ExplicadorDaPagina
-            frase="Cada órgão recebe nota de 0 a 100 pelo seu portal público. Esta página mostra Minas Gerais nos ciclos de 2022 a 2025."
+            frase="Órgãos de Minas recebem nota de 0 a 100 pela transparência do site. Veja a série de 2022 a 2025."
             itens={[
-              "Quantos entes de Minas foram avaliados em 2025 e qual foi a média — sempre com o N ao lado.",
+              "Quantos entes de Minas foram avaliados em 2025 e a média; N é o número de avaliados.",
               "A série de 2022 a 2025, com o aviso de que 2023 teve só 14 avaliados.",
               "A tabela do ciclo 2025, com busca, filtro por poder, esfera e selo e CSV do que está na tela.",
               "O que o índice mede e o que ele não mede: é o portal, não a gestão.",

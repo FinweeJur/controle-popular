@@ -378,7 +378,7 @@ export default function EnergiaPage() {
           Energia: quanto o país consome, do que é feita a eletricidade e quem gera em Minas
         </h1>
         <ExplicadorDaPagina
-          frase="Quanta energia o país consome e quem gera em Minas. Dados do ONS e da ANEEL; o mês em curso é parcial."
+          frase="Quanta energia o Brasil consome e quem gera em Minas. Os dados vêm do operador elétrico e da agência de energia."
           itens={[
             "A carga do Sudeste/Centro-Oeste em GWmed (gigawatts médios), no mês mais recente do ONS.",
             "Quanto da eletricidade do Brasil vem de hidráulica, eólica e solar, em % de tudo o que foi gerado.",

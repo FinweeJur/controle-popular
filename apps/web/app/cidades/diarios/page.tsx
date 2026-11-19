@@ -119,10 +119,10 @@ export default function CoberturaDiariosPage() {
             Diários Oficiais Municipais pelo Querido Diário
           </h1>
           <ExplicadorDaPagina
-            frase="Quais diários oficiais municipais já estão no acervo do Querido Diário em Minas. Também diz quais cidades ficaram sem cobertura e por quê."
+            frase="Veja quais diários oficiais de Minas já estão no Querido Diário. Saiba quais cidades ficaram sem dados e o motivo."
             itens={[
               "As 3 cidades com diário medido: Betim, Contagem e Uberaba.",
-              "Quantos diários, linhas de evidência e menções a decreto, portaria, licitação e nomeação.",
+              "Quantos diários e quantas menções a decreto, portaria, licitação e nomeação — cada menção é uma ocorrência do termo no texto.",
               "A lista de evidências, com data, edição e trecho do diário, filtrável e com CSV.",
               "As 2 cidades da lista inicial sem diário no acervo: Mariana e Brumadinho, com o motivo.",
             ]}

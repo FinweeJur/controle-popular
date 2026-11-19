@@ -12,7 +12,7 @@ COMO FUNCIONA
 1. lê o inventário (`apps/web/data/inventario-subfrentes.json`);
 2. para cada rota com dado, monta um perfil compacto dos JSON que a alimentam
    (contagem e valores mais frequentes dos campos categóricos);
-3. escreve o resumo no S5-free, com número só do perfil;
+3. escreve o resumo no S5, com número só do perfil;
 4. verifica: número fora do perfil, parágrafo sem marca, `[medido]` sem fonte;
 5. só grava o JSON publicado se a verificação fechar em zero falha.
 
@@ -52,8 +52,10 @@ MAX_VALORES = 6
 MAX_REGISTROS_AMOSTRA = 400
 
 DEGRAUS = [
-    {"nome": "S5-free", "url": "https://chat.maritaca.ai/api",
-     "modelo": "S5-free", "chave": "MARITACA_API_KEY"},
+    # "S5-free" foi aposentado pela Maritaca em nov/2026 (HTTP 404).
+    # O alias atual da família S5 é "s5"; reconferir preço antes de lote grande.
+    {"nome": "s5", "url": "https://chat.maritaca.ai/api",
+     "modelo": "s5", "chave": "MARITACA_API_KEY"},
     {"nome": "glm-4.5-flash", "url": "https://open.bigmodel.cn/api/paas/v4",
      "modelo": "glm-4.5-flash", "chave": "ZAI_API_KEY"},
 ]
@@ -258,7 +260,7 @@ def _postar(degrau: dict, sistema: str, usuario: str) -> str:
 
 
 def chamar(sistema: str, usuario: str) -> str:
-    """S5-free primeiro, GLM free depois; texto livre, não JSON.
+    """s5 primeiro, GLM free depois; texto livre, não JSON.
 
     O `provedores.py` vive no repo da jurimetria. Aqui a cadeia é repetida em
     vinte linhas para o gerador não depender de caminho de outro repositório.
