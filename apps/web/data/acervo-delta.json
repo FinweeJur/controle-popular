@@ -1,26 +1,50 @@
 {
-  "geradoEm": "2026-11-18T02:59:07.512Z",
-  "totalPecas": 5765,
-  "baselineSha": "83e952a3114ed94a",
+  "geradoEm": "2026-11-19T02:31:48.613Z",
+  "totalPecas": 5770,
+  "baselineSha": "33ed33dfbfe8bf14",
   "rebuild": false,
-  "novos": [],
-  "modificados": [
+  "novos": [
     {
-      "id": "blog:tarifa-social-energia-agua-como-acessar",
-      "frente": "geral",
-      "rota": "/noticias/tarifa-social-energia-agua-como-acessar",
-      "titulo": "Tarifa social de energia e água: veja como pedir o desconto em cada estado",
-      "fonteUrl": "/noticias/tarifa-social-energia-agua-como-acessar",
-      "texto": "Mais de 10 milhões de famílias têm direito ao desconto na conta de luz e água. O corte chega a até 65%. Mas muitas não sabem como pedir. O Controle Popular reúne o passo a passo por distribuidora. Inclui telefones e links oficiais de cada estado.\nA Tarifa Social de Energia Elétrica (TSEE) é um direito garantido por lei. O mesmo vale para o desconto na conta de água. Vale para famílias de baixa renda do Cadastro Único (CadÚnico). O CadÚnico é o cadastro do governo federal. Levantamento da ANEEL aponta um problema. A ANEEL é a Agência Nacional de Energia Elétrica. Mais de 10 milhões de famílias elegíveis ainda não recebem o benefício. O motivo é desconhecer o processo de cadastro.\nO primeiro passo é o mesmo para energia e água. É preciso estar inscrito no CadÚnico. A inscrição é gratuita. Ela acontece no CRAS mais próximo. O CRAS é o Centro de Referência de Assistência Social. Leve RG, CPF e comprovante de renda. Vale a renda de todos os moradores do imóvel. Famílias com renda por pessoa de até R$ 218 têm prioridade. Esse valor é meio salário mínimo de 2024.\nTarifa social de luz e água, estado por estado\nRequisitos comuns: CadÚnico atualizado (NIS), documento com CPF, comprovante de residência e conta no nome do titular. O desconto da luz é federal (100% até 80 kWh/mês); o da água varia por companhia. Telefone de água sem fonte oficial aparece como \"ver site oficial\" — o portal não inventa número."
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-10|Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA|CONCEDE LICENÇA MATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA MATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-11-10. Pessoa: CONCEDE LICENÇA MATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
     },
     {
-      "id": "blog:uemg-abre-83-vagas-para-professor",
-      "frente": "geral",
-      "rota": "/noticias/uemg-abre-83-vagas-para-professor",
-      "titulo": "UEMG abre 83 vagas de professor temporário em Ituiutaba e Diamantina",
-      "fonteUrl": "/noticias/uemg-abre-83-vagas-para-professor",
-      "texto": "A UEMG abriu 83 vagas temporárias de professor em Ituiutaba e Diamantina. A inscrição é gratuita e vai de 19 a 26 de novembro, com titulação mínima de especialista.\nA Universidade do Estado de Minas Gerais (UEMG) abriu 83 vagas de professor temporário. São 73 em Ituiutaba e 10 em Diamantina. A inscrição é gratuita. Vai de 19 a 26 de novembro de 2026. Os PDFs foram consultados em 17 de novembro de 2026.\nNão é concurso público. O contrato dura até 24 meses. A seleção tem uma etapa: análise do Currículo Lattes, que vale 100 pontos. Não há prova escrita. A banca tem ao menos três docentes efetivos.\nSalário de R$ 1.573,43 a R$ 5.875,83, conforme titulação e jornada.\nInscrição gratuita, de 19 a 26/11, em duas etapas.\nContrato de até 24 meses, com INSS e 13º proporcional.\nVagas por área, localização, salário e titulação mínima\nVagas por área conforme o item 1.2 de cada edital. Titulação mínima: especialização em todas as áreas. O salário depende da titulação e da jornada: de R$ 1.573,43 (especialista, 20 h) a R$ 5.875,83 (doutor, 30 h). As 9 vagas reservadas a pessoa com deficiência estão nos cartões acima. Em Diamantina, os dados vêm do [edital 47/2026](https://www.uemg.br/component/phocadownload/category/5290-edital-n-47-2026-unidade-diamantina?download=29882:edital-n-47-2026-unidade-diamantina).\nComo a remuneração mensal muda com titulação e jornada\nA barra compara o total mensal de cada faixa. O percentual dentro da barra é a fração do maior total, doutor em 30 horas. Os valores são os mesmos da tabela abaixo; onde as parcelas divergem do total, a nota da tabela explica.\nEspecialista · 20 h: R$ 1.573,43\nEspecialista · 30 h: R$ 2.360,14\nMestre · 20 h: R$ 2.669,05\nMestre · 30 h: R$ 4.003,57\nDoutor · 20 h: R$ 3.947,22\nDoutor · 30 h: R$ 5.875,83"
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|TORNA SEM EFEITO",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "TORNA SEM EFEITO",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-11-18. Pessoa: TORNA SEM EFEITO. Cargo: . Órgão/local: . Ato: Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|CONCEDE QUINQUÊNIO",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE QUINQUÊNIO",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-11-18. Pessoa: CONCEDE QUINQUÊNIO. Cargo: . Órgão/local: . Ato: Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|CONCEDE ADICIONAL POR TEMPO",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE ADICIONAL POR TEMPO",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-11-18. Pessoa: CONCEDE ADICIONAL POR TEMPO. Cargo: . Órgão/local: . Ato: Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA. Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
+    },
+    {
+      "id": "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA |CONCEDE LICENÇA MATERNIDADE",
+      "frente": "judiciario",
+      "rota": "/judiciario/contatos",
+      "titulo": "CONCEDE LICENÇA MATERNIDADE",
+      "fonteUrl": "/judiciario/contatos",
+      "texto": "OUTRO publicada em 2026-11-18. Pessoa: CONCEDE LICENÇA MATERNIDADE. Cargo: . Órgão/local: . Ato: Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA . Fonte: Diário Oficial de Minas Gerais (Jornal Minas Gerais)."
     }
   ],
+  "modificados": [],
   "removidos": []
 }

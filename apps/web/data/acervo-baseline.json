@@ -1,6 +1,6 @@
 {
-  "geradoEm": "2026-11-18T02:59:07.512Z",
-  "totalPecas": 5765,
+  "geradoEm": "2026-11-19T02:31:48.613Z",
+  "totalPecas": 5770,
   "sha": {
     "macro:soma-251-bi": "79a665d9d0a0ed67",
     "macro:acordo-mariana-171-bi": "6a3c7de1d8a24658",
@@ -366,6 +366,11 @@
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE": "91dfc649d573b2ca",
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-14|Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA |CONCEDE LICENÇA MATERNIDADE": "ebd3bda1ad5d5315",
     "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-10-15|Decreto nº 48. 651, de 11 de julho de 2023,CONCEDE LICENÇA P|CONCEDE LICENÇA PATERNIDADE": "f864e028948bc22d",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-10|Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA|CONCEDE LICENÇA MATERNIDADE": "2ee0c3194f269917",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|TORNA SEM EFEITO": "d110df2548ae6da2",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|CONCEDE QUINQUÊNIO": "a2350ba1cd033687",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA|CONCEDE ADICIONAL POR TEMPO": "bf7963e0ca670d6b",
+    "designacao:Diário Oficial de Minas Gerais (Jornal Minas Gerais)|2026-11-18|Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA |CONCEDE LICENÇA MATERNIDADE": "9a3a25aea51b24b7",
     "cavas:cobertura": "2c36e39aa80b4e25",
     "cavas:estado-janela": "391ad990104f9f08",
     "cavas:tres-estados": "f3f2cf6a7f78e5c0",

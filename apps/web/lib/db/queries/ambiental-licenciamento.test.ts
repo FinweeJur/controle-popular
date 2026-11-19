@@ -7,7 +7,7 @@
  * Em 10/10/2026 `listarMunicipiosComLicenciamento` deixou de ser
  * `INNER JOIN` a partir das licenças (só municípios COM dado — 145 de 853,
  * medido no banco de produção) e passou a ser `LEFT JOIN` a partir de
- * `ref_municipios_mg` (os 853, com `total: 0` para quem não tem dado).
+ * `ref_municipios` (os 853, com `total: 0` para quem não tem dado).
  * Mudança de SQL de lista inteira = tela muda inteira; "número errado é
  * dano" (AGENTS §1), então o SQL vai preso no teste.
  *
@@ -80,7 +80,7 @@ vi.mock("@/lib/db/reserva", async () => {
 import { listarMunicipiosComLicenciamento } from "./ambiental-licenciamento";
 
 describe("listarMunicipiosComLicenciamento — LEFT JOIN dos 853", () => {
-  it("parte de ref_municipios_mg, conta id_fonte (nunca count(*)) e corta o grandfather SP", async () => {
+  it("parte de ref_municipios, conta id_fonte (nunca count(*)) e corta o grandfather SP", async () => {
     caixa.consultas = [];
     caixa.vazio = false;
     // `caixa.opcoes` NÃO é resetado aqui: atribuir `null` estreitaria a
@@ -95,7 +95,7 @@ describe("listarMunicipiosComLicenciamento — LEFT JOIN dos 853", () => {
 
     // Base = a lista oficial de cidades (lado esquerdo do LEFT JOIN), não a
     // tabela de licenças: é o que faz os 708 sem dado aparecerem.
-    expect(sql).toContain(`from "ref_municipios_mg"`);
+    expect(sql).toContain(`from "ref_municipios"`);
     expect(sql).toContain(`left join "ambiental_licenciamento"`);
     expect(sql).not.toContain(`inner join`);
 
@@ -104,20 +104,21 @@ describe("listarMunicipiosComLicenciamento — LEFT JOIN dos 853", () => {
     expect(sql).toContain(`count("ambiental_licenciamento"."id_fonte")`);
     expect(sql).not.toContain(`count(*)`);
 
-    // Filtro das 853 de MG: ref_municipios_mg tem 854 linhas (grandfather
-    // São Paulo 3550308 da migration 0057); '31' é o dígito de estado do IBGE.
-    expect(sql).toContain(`like '31%'`);
-    expect(params).toBe("[]"); // o corte é literal, não parâmetro
+    // Filtro das 853 de MG: o catálogo tem 5.571 cidades desde a migration
+    // 0092 (era 854: 853 + grandfather de São Paulo); o recorte por `uf` é
+    // parâmetro, não literal — por isso `params` traz "MG".
+    expect(sql).toContain(`"ref_municipios"."uf" = `);
+    expect(params).toBe('["MG"]');
 
     // groupBy nos dois campos selecionados, para o count ser por município.
     expect(sql).toContain(
-      `group by "ref_municipios_mg"."id_ibge", "ref_municipios_mg"."nome"`
+      `group by "ref_municipios"."id_ibge", "ref_municipios"."nome"`
     );
 
     // Ordenação: mais licenciado primeiro e desempate estável por nome —
     // sem o desempate, os 708 zeros "pulam" entre renders.
     expect(sql).toContain(
-      `order by count("ambiental_licenciamento"."id_fonte") desc, "ref_municipios_mg"."nome" asc`
+      `order by count("ambiental_licenciamento"."id_fonte") desc, "ref_municipios"."nome" asc`
     );
 
     // Banco sem dado (reserva caiu): predicado vazio → [] (padrão), nunca

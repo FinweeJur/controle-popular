@@ -283,19 +283,33 @@ Vale para todo agente:
 
 ## 5.13. Casca persistente: link interno navega no cliente, nunca recarrega
 
-**Regra do dono, 03/10/2026.** A barra superior, a faixa de desenvolvimento,
-o rodapé, o assistente Seu Nonô, o companheiro (pet) e o player de rádio
-moram no layout raiz e NÃO podem desmontar na navegação. O `<audio>` do
-rádio e o estado do pet só sobrevivem se a troca de página for client-side.
+**Regra do dono, 03/10/2026** (ampliada em 18/11/2026). A barra superior, a
+faixa de desenvolvimento, o rodapé, o assistente Seu Nonô, o companheiro (pet)
+e o player de rádio moram no layout raiz e NÃO podem desmontar na navegação.
+O `<audio>` do rádio e o estado do pet só sobrevivem se a troca de página for
+client-side.
 
 - Todo link para PÁGINA interna usa `next/link` — inclusive os de `href`
   dinâmico (navbar, rodapé, cartões), que a regra `no-html-link-for-pages`
   do ESLint não enxerga;
+- **Nunca `window.location.href`/`assign` para rota interna.** Isso recarrega
+  o documento e mata o áudio. Em componente de cliente que navega por código
+  (busca, assistente, pet), use `useRouter().push` — foi a causa medida em
+  18/11/2026 (`BuscaGlobal`, `BuscaUniversal`, `SeuNono`,
+  `SessaoCompanheiro`);
 - `<a href>` cru fica só para externo, `mailto:`/`tel:`, âncora pura (`#`),
   arquivo (`.pdf`, `.json`, imagens…) e `/api/...`;
 - A rede de segurança é o `InterceptadorLinks` (`app/components/`), montado
   no layout raiz: captura o clique em qualquer `<a>` interno de página e o
   entrega ao router;
+- **Media Session:** enquanto a rádio toca, `PlayerRadio` publica título (a
+  estação), artista (Controle Popular · rádio ao vivo), álbum (cidade/UF ou
+  país + categoria) e a arte do portal, com handlers de play/pause. É o que
+  faz aparecer o controle na barra de notificação do celular/tablet e no
+  painel de mídia do navegador. Metadados em `lib/radio/mediasession.ts`;
+- **Estação lembrada:** a última rádio fica em `localStorage`
+  (`cp_radio_estacao`); depois de um reload o botão volta naquela estação e
+  um toque retoma, sem autoplay (o navegador bloqueia áudio sem gesto);
 - Verificação: `scripts/verificar-radio-navegacao.py` (Playwright) percorre
   eixos, subfrentes e o top-100 clicando e confere se o áudio segue vivo.
 
@@ -472,6 +486,67 @@ O padrão completo, com componentes e verificação, está em
 - uma tabela por assunto; valor uniforme vai na nota, não repetido por linha;
 - tabela com busca sem acento, faceta, ordenação e `aria-sort`;
 - no celular, a tabela cabe ou rola dentro do quadro.
+
+## 5.20. Seta de `<select>` tem respiro até a borda
+
+**Regra do dono, 18/11/2026.** A seta nativa do `<select>` fica a 2–4 px da
+borda e, no filtro da biblioteca, parecia colada. Em todo o site:
+
+- `select` (fora de `.appearance-none`) usa `appearance: none`, chevron SVG em
+  `right .75rem center` e `padding-right: 2.25rem` — 12 px de folga e 36 px de
+  área de texto;
+- quem já desenha o próprio ícone marca `className="appearance-none"` e não
+  recebe um segundo chevron;
+- vale para filtros, formulários e qualquer controle nativo novo.
+
+O CSS único mora em `app/globals.css`, bloco “Respiro da seta do `<select>`”;
+não repita o chevron por componente.
+
+## 5.21. Sanfona se anuncia como sanfona (design system)
+
+**Regra do dono, 18/11/2026.** Bloco expansível que esconde conteúdo precisa
+dizer que abre. Na auditoria do Paraopeba os `<summary>` eram só texto: sem
+seta, sem hover, sem cara de botão, o leitor passava reto.
+
+- Use `SanfonaTema` (`apps/web/app/components/sistema/SanfonaTema.tsx`) —
+  `<details>` nativo, zero JavaScript;
+- obrigatório: linha inteira clicável, hover **e** `focus-visible`, seta que
+  gira 180° ao abrir, pulso no selo enquanto fechado (para em
+  `prefers-reduced-motion`) e microtexto “Abrir/Fechar” no desktop;
+- o CSS compartilhado mora em `globals.css` (`.cp-sanfona-seta`); não copie a
+  animação para o componente;
+- outro site: copie `docs/design-system/sanfona.modelo.html`, que é
+  autossuficiente;
+- o vocabulário visual (princípios, estados, checklist de componente novo) é
+  [DESIGN-SYSTEM.md](../04-arquitetura/DESIGN-SYSTEM.md).
+
+## 5.22. Contador animado e leitura para quem não é técnico
+
+**Regra do dono, 19/11/2026.** Página de dado não é planilha na tela. Quem
+chega é leigo, muitas vezes no celular: precisa entender o número sem curso
+de estatística.
+
+- **Contador:** todo cartão de topo com número, % ou R$ usa
+  `CartoesResumo` ou `ContadorAnimado` (`app/components/dados/`). O HTML já
+  traz o valor final; a animação é enfeite e para em
+  `prefers-reduced-motion`;
+- **“Em uma frase”:** logo abaixo do `<h1>`, 1–2 frases de até 13 palavras
+  dizendo o que a página mostra e para que serve;
+- **“O que você vai ver”:** 3–5 marcadores, um por bloco ou número;
+- **Glossário da página:** `<details>` com termo e definição de dicionário;
+  sigla explicada na primeira aparição (“EAR — energia armazenada nos
+  reservatórios”);
+- **Unidade e recorte em cada número:** “GWmed médio · SE/CO · set/2026”,
+  “% de avaliados · MG”, “R$ por MWh · leilão”;
+- **Porcentagem sempre com denominador:** “54,4% (1.581 de 1.712 entes
+  avaliados)”, nunca “54,4%” solto;
+- **Território explícito:** Minas Gerais, SE/CO ou Brasil — nunca “aqui” ou
+  “no estado” sem dizer qual;
+- **Ressalva não se esconde para simplificar:** nulo é “Não avaliado”, nunca
+  zero; mês corrente é parcial; número oficial fora da faixa ganha legenda.
+
+Vale para página nova e para a que for editada. Checklist em
+[PADRAO-PAGINA-WIKI.md](PADRAO-PAGINA-WIKI.md).
 
 ## Origem / Histórico
 

@@ -240,5 +240,60 @@
   "orgao": "",
   "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-15",
   "criado_em": "2026-10-15T08:05:51.877Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-11-10",
+  "ato": "Decreto nº 48.651, de 11 de julho de 2023,CONCEDE LICENÇA MA",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-11-10",
+  "criado_em": "2026-11-10T08:05:14.916Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-11-18",
+  "ato": "Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA",
+  "tipo": "OUTRO",
+  "pessoa": "TORNA SEM EFEITO",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-11-18",
+  "criado_em": "2026-11-18T08:05:15.433Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-11-18",
+  "ato": "Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE QUINQUÊNIO",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-11-18",
+  "criado_em": "2026-11-18T08:05:15.433Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-11-18",
+  "ato": "Decreto nº 47. 859, de 07/02/2020, Artigo 5º da Portaria IMA",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE ADICIONAL POR TEMPO",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-11-18",
+  "criado_em": "2026-11-18T08:05:15.433Z"
+ },
+ {
+  "fonte": "Diário Oficial de Minas Gerais (Jornal Minas Gerais)",
+  "data_edicao": "2026-11-18",
+  "ato": "Decreto nº 48. 651, de 11 de julho de 2023, CONCEDE LICENÇA ",
+  "tipo": "OUTRO",
+  "pessoa": "CONCEDE LICENÇA MATERNIDADE",
+  "cargo": "",
+  "orgao": "",
+  "urlFonte": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-11-18",
+  "criado_em": "2026-11-18T08:05:15.436Z"
  }
 ]

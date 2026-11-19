@@ -260,6 +260,59 @@ def test_colunas_de_e_deterministico():
     assert _colunas_de(linhas) == _colunas_de(linhas)
 
 
+def test_normalizar_nome_municipio_tira_sufixo_de_qualquer_uf():
+    """Era só " - MG"; com o catálogo nacional (0092) vale para as 27 UF."""
+    from etl.common import _normalizar_nome_municipio
+
+    assert _normalizar_nome_municipio("São Paulo - SP") == "SAO PAULO"
+    assert _normalizar_nome_municipio("  Alto  Alegre -RR ") == "ALTO ALEGRE"
+    assert _normalizar_nome_municipio("Sapucaí-Mirim") == "SAPUCAI-MIRIM"
+
+
+def test_resolver_municipio_nao_atravessa_estado():
+    """Homônimo em outra UF não pode vencer o casamento (migration 0092).
+
+    "Bom Jesus" existe em PI e em RN: antes do catálogo nacional a tabela era
+    só MG e o problema não existia; agora a UF é obrigatória no recorte."""
+    from etl import common
+
+    class _Consulta:
+        def __init__(self, linhas):
+            self._linhas = linhas
+            self.colunas = None
+
+        def select(self, colunas, **_):
+            self.colunas = colunas
+            return self
+
+        def execute(self):
+            return type("R", (), {"data": self._linhas})()
+
+    class _Cliente:
+        def __init__(self, linhas):
+            self._linhas = linhas
+            self.tabela = None
+
+        def table(self, nome):
+            self.tabela = nome
+            return _Consulta(self._linhas)
+
+    cliente = _Cliente([
+        {"id_ibge": "2201903", "nome": "Bom Jesus", "uf": "PI"},
+        {"id_ibge": "2401107", "nome": "Bom Jesus", "uf": "RN"},
+    ])
+    cache_original = common._cache_catalogo_municipios
+    common._cache_catalogo_municipios = None
+    try:
+        rn = common.resolver_municipio(cliente, "BOM JESUS - RN", uf="RN")
+        pi = common.resolver_municipio(cliente, "bom jesus", uf="pi")
+        assert cliente.tabela == "ref_municipios"
+        assert rn["id_ibge"] == "2401107" and rn["via"] == "exato"
+        assert pi["id_ibge"] == "2201903" and pi["via"] == "exato"
+    finally:
+        common._cache_catalogo_municipios = cache_original
+
+
 if __name__ == "__main__":
     for nome, fn in sorted(globals().items()):
         if nome.startswith("test_") and callable(fn):

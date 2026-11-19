@@ -57,17 +57,22 @@ automáticamente pelos agentes de código.
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Oito qualidades da informação | QUALIDADES | [`04-arquitetura/QUALIDADES-DA-INFORMACAO.md`](04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
+| Design system (componentes, sanfona, movimento) | DESIGN-SYSTEM | [`04-arquitetura/DESIGN-SYSTEM.md`](04-arquitetura/DESIGN-SYSTEM.md) |
 | Manual de RAG, LLM, avaliação e agentes locais | MANUAL-RAG-E-LLM | [`03-desenvolvimento/MANUAL-RAG-E-LLM.md`](03-desenvolvimento/MANUAL-RAG-E-LLM.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
+| Servidor MCP do acervo (leitura para agentes) | MCP-CP | [`05-operacao/MCP-CP.md`](05-operacao/MCP-CP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
+| Diário municipal e CNPJ (fontes provadas) | QUERIDO-DIARIO-E-CNPJ | [`06-fontes/QUERIDO-DIARIO-E-CNPJ.md`](06-fontes/QUERIDO-DIARIO-E-CNPJ.md) |
 | Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
 | Verificação em camadas | VERIFICACAO-E-ENTREGA | [`03-desenvolvimento/VERIFICACAO-E-ENTREGA.md`](03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Conformidade e responsividade mobile | CONFORMIDADE-MOBILE | [`03-desenvolvimento/CONFORMIDADE-MOBILE.md`](03-desenvolvimento/CONFORMIDADE-MOBILE.md) |
 | Comunicação com o dono | COMUNICACAO-COM-O-DONO | [`03-desenvolvimento/COMUNICACAO-COM-O-DONO.md`](03-desenvolvimento/COMUNICACAO-COM-O-DONO.md) |
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
+| Energia: contratos, outorgas, leilões e impostos | ENERGIA-CONTRATOS | [`06-fontes/ENERGIA-CONTRATOS.md`](06-fontes/ENERGIA-CONTRATOS.md) |
+| Transparência pública: índice PNTP por ente | PNTP-ATRICON | [`06-fontes/PNTP-ATRICON.md`](06-fontes/PNTP-ATRICON.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
 | Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
@@ -85,6 +90,7 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
 - **Planos e handoffs:** a pasta [`planos/`](planos/) tem 42 arquivos (planos,
   handoffs e prompts); a lista abaixo é a porta de entrada, não o inventário.
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
+  [`PLANO-AMBIENTAL-27-UF.md`](planos/PLANO-AMBIENTAL-27-UF.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
   [`PLANO-INTEGRADO-OPERACAO-E-AGENTES.md`](planos/PLANO-INTEGRADO-OPERACAO-E-AGENTES.md),
   [`PLANO-CAVAS-MVP.md`](planos/PLANO-CAVAS-MVP.md),

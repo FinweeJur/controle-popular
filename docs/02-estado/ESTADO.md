@@ -470,10 +470,11 @@ O resto dos planos foi arquivado em [`historico/planos/`](../historico/planos/).
   Catuti...) devolvem 404 de propósito: a Semad não publica licença para elas
   (conferido na fonte em 18/10 — 22/22 dão zero no próprio WFS), e o índice
   marca "sem registro na fonte".
-- **Conferência — `ref_municipios_mg` com 854 linhas é intencional:** são 853
-  de MG + **São Paulo/SP `3550308`**, *grandfather* da migration `0057`
-  (FK das 28 barragens SNISB de SP, `on delete cascade`). A UI corta com
-  `like '31%'`. **Não remover.**
+- **Conferência — `ref_municipios` tem 5.571 linhas (migration `0092`):** as
+  5.571 cidades do IBGE nas 27 UF, com coluna `uf` `not null`. Até 17/11/2026
+  eram 854 (`ref_municipios_mg`: 853 de MG + São Paulo/SP `3550308`,
+  *grandfather* da `0057`). O recorte de MG da UI virou `uf = 'MG'` — o
+  `like '31%'` anterior deixou de bastar quando a tabela ficou nacional.
 - **EIA-RIMA regenerado (18/10):** 1.016 audiências, 2.439 linhas,
   **359 municípios**; status dos links medido — 740 abrem, **205 quebrados
   (404)**, resto instável/bloqueado/DNS. O gerador bruto→dataset foi

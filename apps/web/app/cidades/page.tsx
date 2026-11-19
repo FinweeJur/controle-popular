@@ -17,6 +17,9 @@ import DataColeta from "@/app/components/DataColeta";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import { IndiceWiki, LinksRelacionados } from "@/app/components/wiki";
+import avaliacoesPntpJson from "@/data/pntp/avaliacoes-mg.json";
+import { formatNumberBR } from "@/lib/betim/format";
+import { formatarDecimal, resumoDoAno, type AcervoPntp } from "@/lib/pntp/pagina";
 import {
   DATA_CIDADES_ESTRATEGICAS,
   listarCidadesEstrategicas,
@@ -67,6 +70,14 @@ const LINKS_RELACIONADOS = [
 export default function PaginaCidadesEstrategicas() {
   const cidades = listarCidadesEstrategicas();
   const stats = obterEstatisticasExpansao();
+
+  // PNTP/Atricon (2025): número medido do arquivo versionado, não digitado à
+  // mão. Só o agregado é usado aqui; a série e a tabela ficam em
+  // `/cidades/transparencia`.
+  const pntp2025 = resumoDoAno(
+    (avaliacoesPntpJson as unknown as AcervoPntp).entes,
+    2025
+  );
 
   // Cobertura de memória (F5): quantos verbetes por camada e por UF. O
   // município ainda não tem verbete próprio (fase F3); toda cidade, porém,
@@ -161,6 +172,57 @@ export default function PaginaCidadesEstrategicas() {
             className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-primary/90"
           >
             <span>Guia de Varas da Comarca →</span>
+          </Link>
+        </div>
+
+        {/* Banner de atalho para a cobertura de diários oficiais municipais
+            (Querido Diário). O diário é dado da cidade; a cobertura mora neste
+            tema e o hub de cada cidade coberta ganha a seção local. */}
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">
+              Diários oficiais municipais
+            </span>
+            <h3 className="mt-0.5 font-display text-base font-bold text-foreground">
+              O que Betim, Contagem e Uberaba publicaram no diário oficial
+            </h3>
+            <p className="mt-1 text-xs text-muted">
+              Cobertura do Querido Diário: contagem de decreto, portaria, licitação e nomeação,
+              com trecho e link para o PDF. Mariana e Brumadinho aparecem com o motivo de não
+              terem diário no acervo.
+            </p>
+          </div>
+          <Link
+            href="/cidades/diarios"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-2.5 text-xs font-bold text-primary transition-all hover:bg-primary/20"
+          >
+            <span>Ver cobertura dos diários →</span>
+          </Link>
+        </div>
+
+        {/* Banner de atalho para a transparência dos portais (PNTP/Atricon).
+            Também é dado da cidade: a nota da prefeitura e da câmara mora no
+            hub municipal, e a série de MG fica nesta rota. */}
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">
+              Transparência dos portais públicos
+            </span>
+            <h3 className="mt-0.5 font-display text-base font-bold text-foreground">
+              Índice do PNTP/Atricon para os entes de Minas Gerais
+            </h3>
+            <p className="mt-1 text-xs text-muted">
+              {formatNumberBR(pntp2025.n)} entes avaliados em 2025, média de{" "}
+              {formatarDecimal(pntp2025.media)} pontos (só avaliados) e a série de 2022 a 2025
+              com o número de avaliados em cada ciclo. A nota da prefeitura e da câmara aparece no
+              hub de cada cidade.
+            </p>
+          </div>
+          <Link
+            href="/cidades/transparencia"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-2.5 text-xs font-bold text-primary transition-all hover:bg-primary/20"
+          >
+            <span>Ver o índice de transparência →</span>
           </Link>
         </div>
 

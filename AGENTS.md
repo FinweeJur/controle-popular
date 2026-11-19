@@ -111,13 +111,16 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.10](docs/03-desenvolvimento/REGRAS-DURAS.md#510-fonte-mínima-da-descrição-da-página) | Descrição sob o `<h1>` nunca menor que `text-sm`; longa usa “Ver + Texto”. |
 | [5.11](docs/03-desenvolvimento/REGRAS-DURAS.md#511-o-webhook-do-bot-do-telegram-aponta-para-o-portal-só) | Webhook do bot público só em `https://www.controlepopular.com.br/api/telegram`. |
 | [5.12](docs/03-desenvolvimento/REGRAS-DURAS.md#512-ollama-local-confira-hardware-e-modelos-delegue-o-repetitivo-poupe-token) | Confira hardware e modelo antes de usar Ollama; delegue o repetitivo, não o julgamento. |
-| [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link`; a casca e o rádio não podem desmontar. |
+| [5.13](docs/03-desenvolvimento/REGRAS-DURAS.md#513-casca-persistente-link-interno-navega-no-cliente-nunca-recarrega) | Link interno usa `next/link` (nunca `window.location`); a casca, o pet e o rádio não podem desmontar. Rádio publica Media Session (nome, origem, play/pause) e lembra a estação. |
 | [5.14](docs/03-desenvolvimento/REGRAS-DURAS.md#514-o-celular-é-a-régua-responsividade-e-legibilidade-são-qualidade-do-dado) | O celular é a régua: 390 px, sem rolagem lateral falsa, `<main>` com `w-full`. |
 | [5.15](docs/03-desenvolvimento/REGRAS-DURAS.md#515-modelo-de-ia-escolhido-pela-dificuldade-da-tarefa-barato-primeiro) | Modelo pela dificuldade, barato primeiro; soberania do dado decide o motor. |
 | [5.16](docs/03-desenvolvimento/REGRAS-DURAS.md#516-fonte-mínima-de-12-px-em-texto-de-interface) | Texto de interface nunca abaixo de 12 px; para encurtar card, reduza leading/padding, não a fonte. |
 | [5.17](docs/03-desenvolvimento/REGRAS-DURAS.md#517-custo-só-com-autorização-prévia-do-dono) | Nenhum gasto sem autorização prévia: calcule o custo, peça o "sim", só então dispare o lote pago. |
 | [5.18](docs/03-desenvolvimento/REGRAS-DURAS.md#518-leitura-de-jornal-e-conforto-visual) | Página longa com hierarquia de jornal: parágrafos curtos, destaques, rótulo e valor próximos, barra curta e centralizada, e setas Topo/Próxima seção no sumário lateral. |
 | [5.19](docs/03-desenvolvimento/REGRAS-DURAS.md#519-post-de-serviço-no-blog-segue-o-padrão) | Post de serviço no blog segue o [PADRAO-POST-BLOG](docs/03-desenvolvimento/PADRAO-POST-BLOG.md): slug legível, lead, “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela filtrável/ordenável. |
+| [5.20](docs/03-desenvolvimento/REGRAS-DURAS.md#520-seta-de-select-tem-respiro-até-a-borda) | Seta de `<select>` tem respiro até a borda: chevron global em `right .75rem` e `padding-right` de 36 px; não duplicar ícone. |
+| [5.21](docs/03-desenvolvimento/REGRAS-DURAS.md#521-sanfona-se-anuncia-como-sanfona-design-system) | Sanfona usa `SanfonaTema`: seta que gira, pulso, hover/foco e “Abrir/Fechar”. Vocabulário visual em [DESIGN-SYSTEM](docs/04-arquitetura/DESIGN-SYSTEM.md) e modelo portável em `docs/design-system/`. |
+| [5.22](docs/03-desenvolvimento/REGRAS-DURAS.md#522-contador-animado-e-leitura-para-quem-não-é-técnico) | Número anima no cartão (`ContadorAnimado`), valor final no HTML; toda página tem “Em uma frase”, glossário, unidade, território e % com denominador. |
 
 ## Verificação mínima
 
@@ -181,12 +184,14 @@ Detalhe: [COMUNICACAO-COM-O-DONO.md](docs/03-desenvolvimento/COMUNICACAO-COM-O-D
 | Verificação e entrega | [VERIFICACAO-E-ENTREGA.md](docs/03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Padrão de página wiki | [PADRAO-PAGINA-WIKI.md](docs/03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
 | Padrão de post de serviço no blog | [PADRAO-POST-BLOG.md](docs/03-desenvolvimento/PADRAO-POST-BLOG.md) |
+| Design system (componentes, sanfona, movimento) | [DESIGN-SYSTEM.md](docs/04-arquitetura/DESIGN-SYSTEM.md) |
 | Glossário | [GLOSSARIO-DEV.md](docs/03-desenvolvimento/GLOSSARIO-DEV.md) |
 | Arquitetura e payload | [ARQUITETURA.md](docs/04-arquitetura/ARQUITETURA.md) |
 | Oito qualidades da informação | [QUALIDADES-DA-INFORMACAO.md](docs/04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código | [REVISAO-CODIGO.md](docs/04-arquitetura/REVISAO-CODIGO.md) |
 | Operação, build e deploy | [OPERACAO.md](docs/05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | [FERRAMENTAS-E-MCP.md](docs/05-operacao/FERRAMENTAS-E-MCP.md) |
+| Servidor MCP do acervo (leitura para agentes) | [MCP-CP.md](docs/05-operacao/MCP-CP.md) |
 | Fontes e coleta | [FONTES.md](docs/06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | [COLETA-ETICA.md](docs/06-fontes/COLETA-ETICA.md) |
 | Edição sem código | [EDICAO.md](docs/07-edicao/EDICAO.md) |

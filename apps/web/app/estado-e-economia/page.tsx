@@ -10,7 +10,6 @@ import BotaoBrilho from '@/app/components/react-bits/BotaoBrilho';
 import { CATALOGO_EIXOS } from '@/lib/eixos/catalogo';
 import { listarFichasPorEixo } from '@/lib/eixos/fichas';
 import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
-import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
 import { metadataEditavel } from "@/lib/edicoes";
 
 export const metadata: Metadata = metadataEditavel("/estado-e-economia", {
@@ -114,7 +113,7 @@ export default function EstadoEEconomiaHub() {
               Rastreamento direto dos cofres públicos, legislativos estaduais e integridade do Judiciário.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <CartaoDestaque
               href="/estado-e-economia/orcamento"
               etiqueta="✦ Contas Públicas"
@@ -145,6 +144,15 @@ export default function EstadoEEconomiaHub() {
               titulo="Radar de Compras & Contratos"
               descricao="Contratações públicas federais e municipais, fornecedores e atas de registro de preço."
               acao="Ver Contratos"
+            />
+
+            {/* Frente de energia: ONS (carga, fontes e EAR) + SIGA/ANEEL (usinas de MG). */}
+            <CartaoDestaque
+              href="/estado-e-economia/energia"
+              etiqueta="✦ Energia"
+              titulo="Energia e Usinas"
+              descricao="Carga por subsistema, participação das fontes e 300 usinas de MG."
+              acao="Ver Energia"
             />
           </div>
         </section>

@@ -158,15 +158,15 @@ def nome_para_fonte_externa(nome: str) -> str:
     return sem_acento.upper()
 
 
-# Abaixo do limiar, `resolver_municipio_mg` NÃO adivinha: devolve None e quem
+# Abaixo do limiar, `resolver_municipio` NÃO adivinha: devolve None e quem
 # chamou loga "sem match confiável" e pula o registro. 0.6 medido contra os
 # pares reais das fontes ("BELO HORIZONTE - MG" -> "Belo Horizonte" bate
 # 0.83; municípios sem relação nenhuma medidos abaixo de 0.35) — ver a nota
 # na migration `0057_ref_municipios_mg.sql`.
-LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
+LIMIAR_SIMILARIDADE_MUNICIPIO = 0.6
 
-# Grafi as de município que JÁ EXISTIRAM e mudaram de nome, ou que as fontes
-# publicam com a escrita antiga. Vira-e-vira de `ref_municipios_mg`: o
+# Grafias de município que JÁ EXISTIRAM e mudaram de nome, ou que as fontes
+# publicam com a escrita antiga. Vira-e-vira de `ref_municipios`: o
 # catálogo guarda o nome OFICIAL do IBGE, e a fonte publica o que o órgão
 # digita — as duas coisas nem sempre são a mesma palavra.
 #
@@ -178,19 +178,26 @@ LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
 # um limiar mais baixo que abriria a porta para match errado em toda a base.
 #
 # A chave é o nome JÁ NORMALIZADO (sem acento, maiúsculo), e o valor também:
-# os dois lados passam por `_normalizar_nome_municipio_mg` antes de virar
-# lookup no catálogo. Grafi as novas entram na migration 0057, não aqui.
-ALIAS_MUNICIPIO_MG: dict[str, str] = {
-    "BRASOPOLIS": "BRAZOPOLIS",
+# os dois lados passam por `_normalizar_nome_municipio` antes de virar
+# lookup no catálogo. Grafias novas entram na migration 0057, não aqui.
+#
+# O mapa é nacional desde 17/11/2026 (era `..._MG`, quando o catálogo era só
+# de MG): alvo ambíguo entre UFs não é problema, porque o lookup logo abaixo
+# é `(uf, nome)`. Cada entrada diz a UF entre parênteses.
+ALIAS_MUNICIPIO: dict[str, str] = {
+    "BRASOPOLIS": "BRAZOPOLIS",   # MG, ex-nome de Brazópolis
+    "ACU": "ASSU",                # RN, grafia antiga de Assú (IBGE 2400208)
+    "ARES": "AREZ",               # RN, grafia antiga de Arez (IBGE 2401206)
+    "AUGUSTO SEVERO": "CAMPO GRANDE",  # RN, Lei 10.501/2019 (IBGE 2401305)
 }
 
-_cache_catalogo_municipios_mg: dict[str, dict] | None = None
+_cache_catalogo_municipios: dict[tuple[str, str], dict] | None = None
 
 
-def _normalizar_nome_municipio_mg(s: str) -> str:
-    """Sem acento, maiúsculo, sem sufixo " - MG", espaço único.
+def _normalizar_nome_municipio(s: str) -> str:
+    """Sem acento, maiúsculo, sem sufixo " - UF", espaço único.
 
-    Usado só no passo 1 (igualdade) de `resolver_municipio_mg` — o passo 2
+    Usado só no passo 1 (igualdade) de `resolver_municipio` — o passo 2
     (similaridade) roda no banco, via `unaccent_immutable`/`pg_trgm`
     (migration `0046_busca_legislativa_unaccent.sql`), porque comparar
     trigrama em Python reimplementaria o que o Postgres já faz."""
@@ -200,50 +207,66 @@ def _normalizar_nome_municipio_mg(s: str) -> str:
     base = unicodedata.normalize("NFD", s or "")
     sem_acento = "".join(c for c in base if unicodedata.category(c) != "Mn")
     sem_acento = sem_acento.upper().replace("\xa0", " ")
-    sem_acento = re.sub(r"\s*-\s*MG\s*$", "", sem_acento)
+    sem_acento = re.sub(r"\s*-\s*[A-Z]{2}\s*$", "", sem_acento)
     return " ".join(sem_acento.split())
 
 
-def _catalogo_municipios_mg(client) -> dict[str, dict]:
-    """As linhas de `ref_municipios_mg` (as 853 cidades de MG + o
-    grandfather de cidade do portal fora de MG — ver migration `0057`),
-    indexadas pelo nome normalizado. Cacheada NO PROCESSO: cada rodada de
+def _catalogo_municipios(client) -> dict[tuple[str, str], dict]:
+    """As linhas de `ref_municipios` (as 5.571 cidades do Brasil, migration
+    `0092`; era `ref_municipios_mg` com 853 em `0057`), indexadas por
+    `(uf, nome normalizado)`. Cacheada NO PROCESSO: cada rodada de
     `etl.apis.feam_barragens`/`etl.apis.snisb_barragens` casa dezenas a
     milhares de nomes contra o mesmo catálogo, e ele cabe de sobra em
-    memória (~850 linhas) — sem a cache seriam outras tantas consultas."""
-    global _cache_catalogo_municipios_mg
-    if _cache_catalogo_municipios_mg is None:
-        linhas = client.table("ref_municipios_mg").select("id_ibge, nome").execute().data
-        _cache_catalogo_municipios_mg = {
-            _normalizar_nome_municipio_mg(r["nome"]): r for r in linhas
+    memória (~5.500 linhas) — sem a cache seriam outras tantas consultas."""
+    global _cache_catalogo_municipios
+    if _cache_catalogo_municipios is None:
+        linhas = (
+            client.table("ref_municipios")
+            .select("id_ibge, nome, uf")
+            .execute()
+            .data
+        )
+        _cache_catalogo_municipios = {
+            (r["uf"], _normalizar_nome_municipio(r["nome"])): r for r in linhas
         }
-    return _cache_catalogo_municipios_mg
+    return _cache_catalogo_municipios
 
 
-def resolver_municipio_mg(
-    client, nome_fonte: str | None, *, limiar: float = LIMIAR_SIMILARIDADE_MUNICIPIO_MG
+def resolver_municipio(
+    client,
+    nome_fonte: str | None,
+    *,
+    uf: str,
+    limiar: float = LIMIAR_SIMILARIDADE_MUNICIPIO,
 ) -> dict | None:
     """Casa `nome_fonte` (grafia CRUA da fonte — ex. `MUNICÍPIO` da FEAM,
-    `ING_NM_MUNICIPIO` do SNISB) contra `ref_municipios_mg.nome`.
+    `ING_NM_MUNICIPIO` do SNISB) contra `ref_municipios.nome`, DENTRO da UF.
 
     Existe para substituir o abort de `carregar_municipio` quando o alvo é
     UMA cidade de cada vez presa a `municipios` (6 linhas) — aqui o
-    casamento é por NOME, contra o catálogo estadual, então cobre qualquer
-    uma das ~853 cidades de MG sem depender de `municipios`.
+    casamento é por NOME, contra o catálogo nacional, então cobre qualquer
+    uma das 5.571 cidades do Brasil sem depender de `municipios`.
+
+    `uf` NÃO tem default de propósito. O catálogo virou nacional em
+    17/11/2026 e nome de município não é único no país ("Bom Jesus" existe
+    em PI, RN, PB e RS): sem o recorte, a similaridade escolheria o
+    homônimo de outro estado, e a barragem apareceria no município errado.
+    Quem chama sempre sabe a UF (a fonte diz, ou o coletor é estadual).
 
     Três passos, nesta ordem:
 
-      0. Alias de nome antigo (`ALIAS_MUNICIPIO_MG`) — "Brasópolis" é hoje
+      0. Alias de nome antigo (`ALIAS_MUNICIPIO`) — "Brasópolis" é hoje
          "Brazópolis", e a similaridade sozinha perde (0.5714 < 0.6).
-      1. Igualdade normalizada (sem acento, maiúsculo, sem sufixo " - MG") —
+      1. Igualdade normalizada (sem acento, maiúsculo, sem sufixo " - UF") —
          cobre a maioria: "BELO HORIZONTE - MG" == "Belo Horizonte".
       2. Se não bateu, similaridade via `pg_trgm` (`similarity()`) contra
-         TODAS as linhas do catálogo, no banco — ~850 linhas é barato para
-         sequential scan, não vale forçar o índice trigram (que ajudaria
-         mais numa tabela grande ou num `WHERE nome % $1`). Comparação já
-         passa por `unaccent_immutable(upper(...))` dos dois lados, senão
-         "BETIM" vs "Betim" perderia trigrama por causa da caixa/acento, não
-         por erro de digitação de verdade.
+         todas as linhas DA UF, no banco — few linhas por UF (a maior é MG,
+         853) é barato para sequential scan, não vale forçar o índice
+         trigram (que ajudaria mais numa tabela grande ou num
+         `WHERE nome % $1`). Comparação já passa por
+         `unaccent_immutable(upper(...))` dos dois lados, senão "BETIM" vs
+         "Betim" perderia trigrama por causa da caixa/acento, não por erro
+         de digitação de verdade.
 
     Abaixo do limiar NÃO adivinha: devolve `None`. Quem chamou decide (logar
     "sem match confiável" e pular o registro — nunca gravar linha órfã).
@@ -254,15 +277,16 @@ def resolver_municipio_mg(
     if not nome_fonte or not nome_fonte.strip():
         return None
 
-    alvo = _normalizar_nome_municipio_mg(nome_fonte)
-    # Passo 0 — nome antigo (ver `ALIAS_MUNICIPIO_MG`): a grafia mudou na
+    uf = uf.strip().upper()
+    alvo = _normalizar_nome_municipio(nome_fonte)
+    # Passo 0 — nome antigo (ver `ALIAS_MUNICIPIO`): a grafia mudou na
     # fonte, não no catálogo, e a similaridade perde por 0.03 (medido em
     # 18/10/2026: "Brasópolis" -> "Brazópolis" = 0.5714 < 0.6). Renomear aqui
     # em vez de abrir um `if` extra: o lookup do passo 1 é o mesmo, e a
     # complexidade ciclomática da função fica onde estava.
-    alvo = ALIAS_MUNICIPIO_MG.get(alvo, alvo)
-    catalogo = _catalogo_municipios_mg(client)
-    exato = catalogo.get(alvo)
+    alvo = ALIAS_MUNICIPIO.get(alvo, alvo)
+    catalogo = _catalogo_municipios(client)
+    exato = catalogo.get((uf, alvo))
     if exato:
         return {"id_ibge": exato["id_ibge"], "nome": exato["nome"], "via": "exato", "score": 1.0}
 
@@ -273,10 +297,11 @@ def resolver_municipio_mg(
             "select id_ibge, nome, "
             "similarity(upper(public.unaccent_immutable(nome)), "
             "upper(public.unaccent_immutable(%s))) as score "
-            "from ref_municipios_mg "
+            "from ref_municipios "
+            "where uf = %s "
             "order by score desc "
             "limit 1",
-            (nome_fonte,),
+            (nome_fonte, uf),
         )
         linha = cur.fetchone()
     if linha and linha["score"] is not None and linha["score"] >= limiar:

@@ -109,7 +109,7 @@ exceção nenhuma.
 ═══ MUNICÍPIO: MESMO PADRÃO DE `feam_barragens`/`snisb_barragens` ═══
 
 `mun_solic` é nome, não código IBGE (F0 §1.2). Resolvido contra
-`ref_municipios_mg` via `etl.common.resolver_municipio_mg` — 832 nomes
+`ref_municipios` via `etl.common.resolver_municipio` — 832 nomes
 distintos medidos, 831 resolvidos (826 por igualdade exata, 5 por
 similaridade), 1 sem match confiável ("Brasópolis", que é "Brazópolis" com
 S/Z trocado — abaixo do limiar de 0,6, corretamente não adivinhado).
@@ -133,7 +133,7 @@ import sys
 
 import requests
 
-from etl.common import get_db, refresh_completo_seguro, resolver_municipio_mg
+from etl.common import get_db, refresh_completo_seguro, resolver_municipio
 
 LOG = "[etl.apis.ambiental_licenciamento]"
 
@@ -355,7 +355,7 @@ def _setor_e_subsetor(cod_atvpri) -> tuple[str, str, str] | None:
 
 
 def _parse(feicao: dict) -> dict | None:
-    """Sem `id_municipio` — quem chama resolve contra `ref_municipios_mg` e
+    """Sem `id_municipio` — quem chama resolve contra `ref_municipios` e
     preenche depois. Devolve `None` para uma linha cujo `cod_atvpri` não bate
     no padrão esperado (ver `_setor_e_subsetor`) — melhor licença ausente da
     tela do que setor inventado."""
@@ -405,7 +405,7 @@ def _parse(feicao: dict) -> dict | None:
 
 def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]]:
     """As linhas da camada inteira, cada uma com `id_municipio` RESOLVIDO
-    contra `ref_municipios_mg`. Devolve `(linhas_casadas, sem_match)`."""
+    contra `ref_municipios`. Devolve `(linhas_casadas, sem_match)`."""
     sessao = _sessao()
     feicoes = _buscar_todas_as_licencas(sessao)
     print(f"{LOG} {len(feicoes)} feição(ões) recebida(s) da fonte.")
@@ -419,7 +419,7 @@ def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]
             ignoradas_setor += 1
             continue
         nome_fonte = linha["municipio_fonte"]
-        resolvido = resolver_municipio_mg(client, nome_fonte)
+        resolvido = resolver_municipio(client, nome_fonte, uf="MG")
         if resolvido is None:
             chave = nome_fonte or "(sem município)"
             sem_match[chave] = sem_match.get(chave, 0) + 1
@@ -472,7 +472,7 @@ def sync(*, permitir_reducao: bool) -> None:
     """Sincroniza a camada INTEIRA (a fonte é um WFS estadual único, sem
     filtro por cidade no lado do servidor)."""
     client = get_db()
-    print(f"{LOG} baixando e resolvendo município de cada licença contra ref_municipios_mg...")
+    print(f"{LOG} baixando e resolvendo município de cada licença contra ref_municipios...")
     linhas, sem_match = coletar_e_resolver_estado(client)
     if sem_match:
         total_sem_match = sum(n for _, n in sem_match)

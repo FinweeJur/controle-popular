@@ -75,6 +75,7 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
+from html import unescape
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # console Windows é cp1252
 from datetime import datetime, timezone
@@ -89,6 +90,7 @@ PAUSA = 3  # s entre QUALQUER par de requisições (ASP.NET pesado; <1 rps)
 UF = "PA"
 LIMITE_PADRAO = 5000
 SAIDA = Path(__file__).resolve().parent.parent / "apps" / "web" / "data" / "semas-pa-licencas.json"
+SAIDA_EMPRE = Path(__file__).resolve().parent.parent / "apps" / "web" / "data" / "semas-pa-empreendimentos.json"
 CACHE = Path(__file__).resolve().parent / ".cache" / "semas-pa"
 
 FONTES = {
@@ -132,7 +134,12 @@ def _http(url: str, corpo: "bytes | None" = None, timeout: int = 180):
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         bruto = resp.read()
         charset = resp.headers.get_content_charset() or "utf-8"
-    return bruto.decode(charset, errors="replace")
+    try:
+        return bruto.decode(charset)
+    except UnicodeDecodeError:
+        # O SIMLAM manda header utf-8 com corpo latin-1: "Pará" sai "Par�" e
+        # nome de município quebrado não casa com o catálogo do IBGE.
+        return bruto.decode("latin-1")
 
 
 def _get(url: str) -> str:
@@ -193,11 +200,18 @@ RE_11D = re.compile(r"\d[\d .\-/]{7,24}\d")
 
 
 def _cpf_valido(dig: str) -> bool:
+    """Mod-11 com os pesos CERTOS: 10..2 no primeiro dígito, 11..2 no segundo.
+
+    A versão anterior usava `range(n, 0, -1)` (9..1 e 10..1) e por isso dava
+    False em CPF real — ou seja, o varredor nunca apagava nada e a privacidade
+    dependia de sorte. Achado em 17/11/2026 por outro coletor do mesmo repo,
+    que comparou com `scripts/checar-dado-pessoal-em-dado.py`."""
     if not dig.isdigit() or len(dig) != 11 or len(set(dig)) == 1:
         return False
-    for n in (9, 10):
-        s = sum(int(x) * w for x, w in zip(dig[:n], range(n, 0, -1)))
-        if (s * 10) % 11 % 10 != int(dig[n]):
+    for ate, pos in ((9, 9), (10, 10)):
+        soma = sum(int(dig[i]) * (ate + 1 - i) for i in range(ate))
+        resto = (soma * 10) % 11
+        if (0 if resto == 10 else resto) != int(dig[pos]):
             return False
     return True
 
@@ -246,12 +260,9 @@ RE_ROW_PROC = re.compile(
 RE_PROP = re.compile(
     r'gvProprietarios_ctl\d+_fitTipo"\s+title="([^"]*)"[\s\S]{0,400}?'
     r'fitNome"\s+title="([^"]*)"')
-RE_PAGER_LINK = re.compile(
+RE_PAGER_ITEM = re.compile(
     r"__doPostBack\(&#39;ctl00\$baseBody\$dgListagem\$ctl14\$ctl(\d+)&#39;,&#39;&#39;\)"
-    r'">(\d{1,4})</a>')
-RE_PAGER_ELLIPSIS = re.compile(
-    r"__doPostBack\(&#39;ctl00\$baseBody\$dgListagem\$ctl14\$ctl(\d+)&#39;,&#39;&#39;\)"
-    r'">\.\.\.</a>')
+    r'">([^<]{1,10})</a>')
 
 TIPO_REDUZIDO = [
     ("licenciamento", "licenca"),
@@ -332,19 +343,36 @@ def _contar() -> int:
     _extrair_estado(ini)
     txt = _post_simples("ctl00$baseBody$btnPesquisa")
     m = re.search(r"Foram encontrados (\d+) registros", txt)
-    return int(m.group(1)) if m else 0
+    if not m:
+        # Contagem ausente já aconteceu (18/11/2026): a busca voltou sem o
+        # rótulo, `_contar` devolveu 0, e o guarda de "catálogo incompleto"
+        # deixou de valer porque comparava com zero. Melhor abortar.
+        raise RuntimeError("a busca não trouxe 'Foram encontrados N registros'")
+    return int(m.group(1))
 
 
-def _contem_link_proxima(txt: str) -> "str | None":
-    """Target do postback para (página atual + 1) do pager customizado."""
-    atual = re.search(r'<span>(\d{1,4})</span>&nbsp;', txt)  # página corrente do pager
-    if not atual:
-        return None
-    alvo = str(int(atual.group(1)) + 1)
-    for m in RE_PAGER_LINK.finditer(txt):
-        if m.group(2) == alvo:
-            return f"ctl00$baseBody$dgListagem$ctl14$ctl{m.group(1)}"
-    return None  # endereçou a última página do window -> pode haver '...'; checa __doPost de '...'
+def _alvo_proxima(txt: str, pagina: int) -> "str | None":
+    """Target do postback para a página `pagina + 1` do pager customizado.
+
+    `pagina` é o NOSSO contador, não o que a tela diz. A versão anterior lia a
+    página corrente de `<span>N</span>` e, quando o alvo saía da janela, clicava
+    no `...` sem saber para onde ia: em 17/11/2026 isso entrou num ciclo de 10
+    páginas (chunks 10, 21, 32 traziam as mesmas linhas) e 67 páginas renderam
+    199 empreendimentos únicos.
+
+    O pager medido ao vivo mostra uma janela de 10 páginas: na página 10 vem
+    `1..9, <span>10</span>, ...` e o `...` leva à 11; na 20, `... 11..19, <span>
+    20</span>, ...` e o `...` da DIREITA leva à 21. Por isso: número `pagina+1`
+    na tela é alvo exato; sem ele, o ÚLTIMO `...` do documento é o avanço
+    (o primeiro é o retrocesso); sem nenhum, é o fim do catálogo."""
+    itens = [{"target": f"ctl00$baseBody$dgListagem$ctl14$ctl{m.group(1)}",
+              "texto": m.group(2).strip()}
+             for m in RE_PAGER_ITEM.finditer(txt)]
+    for it in itens:
+        if it["texto"] == str(pagina + 1):
+            return it["target"]
+    reticencias = [it for it in itens if it["texto"] == "..."]
+    return reticencias[-1]["target"] if reticencias else None
 
 
 # ---------------------------------------------------------------------------
@@ -377,14 +405,19 @@ def _gravar_detalhe_chunks(regs: list, chunk: int, ckpt: dict) -> None:
                    encoding="utf-8")
 
 
-def _coletar(limite: int, ckpt: dict) -> "list[dict]":
-    """Anda paginação de ListarEmpreendimento e coleta detalhes; checkpoint por página."""
+def _coletar(limite: int, ckpt: dict) -> "tuple[list[dict], bool]":
+    """Anda paginação de ListarEmpreendimento e coleta detalhes; checkpoint por página.
+
+    Devolve `(registros, concluiu)`. `concluiu` só é True quando o pager chega
+    ao fim: o laço antigo parava em 1.200 páginas fixas (12.000 de 115.980) e
+    gravava `truncado: false` — mentira silenciosa."""
     registros: list[dict] = []
     alvo = None if limite == 0 else limite
     txt = _post_simples("ctl00$baseBody$btnPesquisa")  # busca vazia -> catálogo inteiro
 
     pagina = 1
-    while pagina <= 1200:
+    concluiu = False
+    while True:
         sub = CACHE / "empreendimento"
         sub.mkdir(parents=True, exist_ok=True)
         arq = sub / f"chunk-{pagina:04d}.json"
@@ -417,17 +450,120 @@ def _coletar(limite: int, ckpt: dict) -> "list[dict]":
                   f"{len(chunk_regs)} registros ({len(registros):,} no total)", flush=True)
         if alvo is not None and len(registros) >= alvo:
             break
-        prox = _contem_link_proxima(txt)
+        prox = _alvo_proxima(txt, pagina)
         if prox is None:
-            m_fim = RE_PAGER_ELLIPSIS.search(txt)
-            if m_fim:
-                prox = f"ctl00$baseBody$dgListagem$ctl14$ctl{m_fim.group(1)}"
-                print("    [i] pager saltou de janela (linha '...'), seguindo")
-            else:
-                break  # fim do catálogo
+            concluiu = True  # fim do catálogo
+            break
         txt = _post_simples(prox)
         pagina += 1
-    return registros if alvo is None else registros[:alvo]
+    return registros if alvo is None else registros[:alvo], concluiu
+
+
+# ---------------------------------------------------------------------------
+# modo empreendimentos: só a lista, 1 linha por empreendimento
+# ---------------------------------------------------------------------------
+
+# A lista é a única página pública que traz MUNICÍPIO por linha (o filtro
+# `ddlMunicipio` do site é ignorado pelo servidor — medido em 17/11/2026).
+# Uma requisição por página de 10 linhas: 11.598 páginas ~ 9h40 a 3 s, contra
+# ~106 h do modo completo, que ainda faz 1 GET de detalhe por empreendimento.
+RE_LINHA = re.compile(r"<tr>(.*?)</tr>", re.S)
+RE_CELULA = {
+    "razao_social": r'fitNomeRazaoSocialDominacao"[^>]*>(.*?)</span>',
+    "cnpj": r'fitCnpj"[^>]*>(.*?)</span>',
+    "inscricao_estadual": r'fitInteressado"[^>]*>(.*?)</span>',
+    "municipio": r'fitMunicipio"[^>]*>(.*?)</span>',
+}
+
+
+def _ler_lista(txt: str) -> "list[dict]":
+    """As 10 linhas da grade: empreendimento + razão social + CNPJ + I.E + município."""
+    linhas: list[dict] = []
+    for bloco in RE_LINHA.findall(txt):
+        m_id = re.search(r"abrirEmpreendimento\((\d+)\)", bloco)
+        if not m_id:
+            continue
+        reg = {"id_simlam": int(m_id.group(1))}
+        for campo, rx in RE_CELULA.items():
+            m = re.search(rx, bloco, re.S)
+            valor = unescape(m.group(1)).strip() if m else ""
+            if campo == "razao_social" and valor:
+                limpo = _apagar_cpf_em_texto(valor)
+                if limpo != valor:
+                    reg["doc_redigido"] = 1
+                valor = limpo
+            reg[campo] = valor or None
+        linhas.append(reg)
+    return linhas
+
+
+def _coletar_empreendimentos(ckpt: dict, total_fonte: int,
+                             offline: bool = False) -> "tuple[list[dict], bool]":
+    """Pagina ListarEmpreendimento e guarda a lista; checkpoint por página.
+
+    Retomar não economiza requisição (o pager do ASP.NET não tem acesso
+    aleatório: chegar à página 5.000 custa 5.000 POSTs de qualquer jeito), mas
+    economiza o dado: chunk já gravado não se perde se a rodada cair."""
+    por_id: dict[int, dict] = {}
+    concluiu = False
+    vistos: set[tuple] = set()  # ciclo de páginas já custou 67 requisições em 17/11
+    sub = CACHE / "lista"
+    sub.mkdir(parents=True, exist_ok=True)
+    if offline:
+        # Sem rede: monta a partir dos chunks que existem e para no primeiro que
+        # falta. É o caminho quando a fonte fecha no meio da rodada — em
+        # 18/11/2026 o SIMLAM passou a exigir login e as páginas de detalhe
+        # viraram 404, com 1.393 páginas já salvas.
+        pagina = 1
+        while (sub / f"chunk-{pagina:05d}.json").exists():
+            linhas = json.loads((sub / f"chunk-{pagina:05d}.json")
+                                .read_text(encoding="utf-8"))
+            for reg in linhas:
+                por_id.setdefault(reg["id_simlam"], reg)
+            pagina += 1
+        print(f"    cache: {pagina - 1} página(s), {len(por_id):,} empreendimentos "
+              f"(sem tocar na fonte)", flush=True)
+        return list(por_id.values()), False
+    txt = _post_simples("ctl00$baseBody$btnPesquisa")
+    pagina = 1
+    while True:
+        arq = sub / f"chunk-{pagina:05d}.json"
+        if arq.exists():
+            linhas = json.loads(arq.read_text(encoding="utf-8"))
+        else:
+            linhas = _ler_lista(txt)
+            arq.write_text(json.dumps(linhas, ensure_ascii=False, separators=(",", ":")),
+                           encoding="utf-8")
+            ckpt["paginas"] = pagina
+            _salvar_checkpoint(ckpt)
+            if pagina % 50 == 1:
+                print(f"    página {pagina:,}: {len(por_id) + len(linhas):,} "
+                      f"empreendimentos", flush=True)
+        chave = tuple(sorted(r["id_simlam"] for r in linhas))
+        if chave in vistos:
+            raise RuntimeError(
+                f"pager voltou para uma página já vista (página {pagina}, "
+                f"empreendimento {linhas[0]['id_simlam'] if linhas else '-'}): "
+                f"rodada abortada para não gravar catálogo repetido como completo")
+        vistos.add(chave)
+        for reg in linhas:
+            por_id.setdefault(reg["id_simlam"], reg)
+        prox = _alvo_proxima(txt, pagina)
+        if prox is None:
+            # "Sem próximo link" só é fim de catálogo se o que já temos bate com o
+            # que a fonte anuncia. Em 18/11/2026 uma página veio sem pager na
+            # 1.393 de 11.598 e o coletor gravou `concluido: true` — o
+            # supervisor então "terminou" o trabalho com 12% do catálogo.
+            if len(por_id) < total_fonte:
+                raise RuntimeError(
+                    f"pager sumiu na página {pagina} com {len(por_id):,} de "
+                    f"{total_fonte:,} empreendimentos — não marco concluído")
+            concluiu = True
+            break
+        txt = _post_simples(prox)
+        pagina += 1
+    return list(por_id.values()), concluiu
+
 
 
 def main() -> None:
@@ -438,6 +574,12 @@ def main() -> None:
                         help="trunca registros de processo (0 = tudo; padrão 5000)")
     parser.add_argument("--scan-cpf", action="store_true",
                         help="roda o varredor oficial de CPF ao final")
+    parser.add_argument("--empreendimentos", action="store_true",
+                        help="modo rápido: só a lista (1 linha por empreendimento, "
+                             "com município) — sem o GET de detalhe por empreendimento")
+    parser.add_argument("--so-cache", action="store_true",
+                        help="monta o JSON a partir dos chunks já gravados, sem tocar "
+                             "na fonte (para quando o portal fecha no meio da rodada)")
     args = parser.parse_args()
 
     print("=== SEMAS-PA licenciamento (SIMLAM, monitoramento.semas.pa.gov.br) ===\n")
@@ -446,20 +588,73 @@ def main() -> None:
     print(f"  robots : 404 em monitoramento.semas.pa.gov.br — pausa {PAUSA}s, UA honesto")
     print(f"  saida  : {SAIDA}")
 
-    try:
-        total_fonte = _contar()
-    except Exception as e:
-        print(f"\n[cancelado] contagem falhou: {e}")
-        print("  Nada coletado ou inventado. Verificar serviço e re-rodar.")
-        sys.exit(2)
-    print(f"  empreendimentos na fonte: {total_fonte:,}")
+    if args.so_cache:
+        total_fonte = 0  # a fonte não é consultada; o total entra como desconhecido
+        print("  modo   : --so-cache (sem rede)")
+    else:
+        try:
+            total_fonte = _contar()
+        except Exception as e:
+            print(f"\n[cancelado] contagem falhou: {e}")
+            print("  Nada coletado ou inventado. Verificar serviço e re-rodar.")
+            print("  Se a intenção é publicar o que já está no cache: --so-cache")
+            sys.exit(2)
+        print(f"  empreendimentos na fonte: {total_fonte:,}")
 
     if args.dry_run:
         print("  (dry-run: nada além destas contagens foi baixado)")
         return
 
     ckpt = _checkpoint()
-    produtos = _coletar(args.limit, ckpt)
+
+    if args.empreendimentos:
+        print(f"  modo   : empreendimentos (sem detalhe) -> {SAIDA_EMPRE.name}")
+        linhas, concluiu = _coletar_empreendimentos(ckpt, total_fonte,
+                                                    offline=args.so_cache)
+        por_municipio: dict[str, int] = {}
+        for r in linhas:
+            chave = r["municipio"] or "(sem município)"
+            por_municipio[chave] = por_municipio.get(chave, 0) + 1
+        dados = {
+            "gerado_em": datetime.now(timezone.utc).isoformat(),
+            "fonte": URL_LISTAR,
+            "fontes": FONTES,
+            "total_fonte": total_fonte or None,
+            "total_fonte_nota": (None if total_fonte else
+                                 "a fonte não pôde ser consultada nesta rodada "
+                                 "(portal fechado); 115.980 empreendimentos foi o "
+                                 "medido em 17/11/2026"),
+            "truncado": not concluiu,
+            "paginas": ckpt.get("paginas"),
+            "colunas": ["id_simlam", "razao_social", "cnpj", "inscricao_estadual",
+                        "municipio"],
+            "obs": "Catálogo de EMPREENDIMENTOS do SIMLAM público, um por linha da "
+                   "lista, com o município que a própria lista publica. Não é "
+                   "licença: tipo, validade e situação vivem no detalhe do "
+                   "empreendimento e no processo, que este modo não baixa "
+                   "(ver --help e o cabeçalho). A lista repete linha com razão "
+                   "social '.' e CNPJ vazio — é do site, não do coletor.",
+            "ressalva_editorial": RESSALVA,
+            "total_empreendimentos": len(linhas),
+            "municipios": len(por_municipio),
+            "resumo_por_municipio": dict(sorted(por_municipio.items(),
+                                                key=lambda kv: -kv[1])),
+            "linhas": linhas,
+        }
+        SAIDA_EMPRE.parent.mkdir(parents=True, exist_ok=True)
+        SAIDA_EMPRE.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")),
+                               encoding="utf-8")
+        tam_kb = SAIDA_EMPRE.stat().st_size / 1024
+        print(f"\n[ok] {len(linhas):,} empreendimentos em {len(por_municipio)} municípios "
+              f"-> {SAIDA_EMPRE.name} ({tam_kb:,.0f} KB)"
+              + ("" if concluiu else
+                 (f" — PARCIAL: {total_fonte:,} na fonte" if total_fonte
+                  else " — PARCIAL: total da fonte desconhecido nesta rodada")))
+        ckpt["concluido"] = concluiu
+        _salvar_checkpoint(ckpt)
+        return
+
+    produtos, concluiu = _coletar(args.limit, ckpt)
 
     # 1 linha por processo, denormalizada
     todos: list[dict] = []
@@ -507,7 +702,7 @@ def main() -> None:
         "fonte": URL_LISTAR,
         "fontes": FONTES,
         "total_fonte": total_fonte,
-        "truncado": bool(args.limit) and len(todos) < len(produtos),
+        "truncado": bool(args.limit) or not concluiu,
         "colunas": ["processo", "tipo", "empresa", "cnpj", "municipio", "uf",
                     "data", "situacao", "atividade", "fonte_url"],
         "obs": "CNPJ completo (14 dígitos) preservado; CPF nunca é gravado: "

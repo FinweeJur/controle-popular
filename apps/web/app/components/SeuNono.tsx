@@ -77,6 +77,7 @@ import { definirRastroCursor } from "@/app/components/RastroCursor";
 import CompanheiroToggle from "@/app/components/CompanheiroToggle";
 import { definirCompanheiroAtivo } from "@/app/components/CompanheiroOpcional";
 import { EVENTO_MENU_PET_FECHAR } from "@/lib/companheiro/eventos";
+import { navegarInterno } from "@/lib/navegacao/navegar";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
@@ -1299,7 +1300,8 @@ export function SeuNono() {
     if (hrefEhExterno) {
       window.open(href, "_blank", "noopener,noreferrer");
     } else {
-      window.location.href = href;
+      // Client-side: preserva a casca, o pet e o áudio do rádio.
+      navegarInterno(href);
     }
   }
 

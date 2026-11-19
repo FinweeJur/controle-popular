@@ -78,7 +78,8 @@ O critério não é dificuldade: é **quanto cada seção muda a decisão de alg
    reescritos): `feam_barragens` tem **249/249**, era 4. O bloqueio nunca foi
    a FK da tabela — era `carregar_municipio` abortando para qualquer cidade
    fora das 6 do portal; a correção soltou a FK de `municipios` para um
-   catálogo novo (`ref_municipios_mg`, as ~853 cidades de MG) e o coletor
+   catálogo novo (`ref_municipios`, então as ~853 cidades de MG; nacional
+   desde a `0092`) e o coletor
    passou a resolver o município de cada barragem pelo nome que a FEAM
    grafa, casamento normalizado + `pg_trgm` para erro de digitação.
 2. ~~Idem SNISB~~ — **feito em 2026-08-11**: `snisb_barragens` tem

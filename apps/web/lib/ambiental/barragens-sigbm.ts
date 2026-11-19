@@ -56,23 +56,25 @@ interface ArquivoSigbm {
   coletado_em: string;
   total: number;
   total_brasil: number;
+  por_uf?: Record<string, number>;
   municipios: number;
   barragens: BarragemSigbm[];
 }
 
 const ARQUIVO = bruto as unknown as ArquivoSigbm;
 
-/** O array inteiro, para componentes de CLIENTE (busca/filtro/CSV). 320
- *  registros (~92 KiB) cabem no chunk de cliente — o teto que vale é o do
- *  Worker (3 MiB gzip), e é por isso que a página de servidor importa só
- *  `COBERTURA_SIGBM` abaixo, nunca este array. */
-export const BARRAGENS_SIGBM: BarragemSigbm[] = ARQUIVO.barragens.map((b) => ({
-  ...b,
-  tags: extrairTagsDeCampos(
-    [b.nome, b.empreendedor, b.situacao, b.categoria_risco, b.dano_potencial],
-    REGRAS_TAGS_BARRAGENS
-  ),
-}));
+/** O arquivo é NACIONAL desde 17/11/2026; esta tela é de Minas. O recorte
+ *  mora aqui, não no coletor — assim o mesmo JSON serve as outras UF sem
+ *  nova coleta. Manter o nome: é o que as páginas importam desde 02/11. */
+export const BARRAGENS_SIGBM: BarragemSigbm[] = ARQUIVO.barragens
+  .filter((b) => b.uf === "MG")
+  .map((b) => ({
+    ...b,
+    tags: extrairTagsDeCampos(
+      [b.nome, b.empreendedor, b.situacao, b.categoria_risco, b.dano_potencial],
+      REGRAS_TAGS_BARRAGENS
+    ),
+  }));
 
 /** Vocabulário ORDINAL da fonte, na ordem em que a tela deve exibir —
  *  não é ordem alfabética, e comparar por texto erraria (ex.: "Alta" <
@@ -122,9 +124,9 @@ export const COBERTURA_SIGBM = {
   /** Last-Modified do CSV na coleta — a fonte atualiza diariamente. */
   ultimaAtualizacao: ARQUIVO.ultima_atualizacao,
   coletadoEm: ARQUIVO.coletado_em,
-  total: ARQUIVO.total,
+  total: BARRAGENS_SIGBM.length,
   totalBrasil: ARQUIVO.total_brasil,
-  municipios: ARQUIVO.municipios,
+  municipios: new Set(BARRAGENS_SIGBM.map((b) => b.municipio)).size,
   empreendedores: new Set(BARRAGENS_SIGBM.map((b) => b.empreendedor)).size,
   /** Nível 1, 2 ou 3 — NÃO inclui "Nível de Alerta" (instrumento distinto). */
   emEmergencia: BARRAGENS_SIGBM.filter(

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanfona que se anuncia — modelo do Controle Popular</title>
+<!--
+  MODELO DE SANFONA (accordion) DO CONTROLE POPULAR
+  =================================================
+  Arquivo ÚNICO, sem build, sem JavaScript e sem dependência externa.
+  Copie o bloco <style> e o <details> para qualquer site.
+
+  Por que existe (dono, 18/11/2026): na auditoria do Paraopeba os blocos de
+  tema eram <summary> só com texto. Nada dizia que ali dentro havia conteúdo —
+  sem seta, sem hover, sem cara de botão, o leitor passava reto.
+
+  O que a sanfona precisa ter, sempre (regra 5.21 do AGENTS.md):
+  1. a LINHA INTEIRA é o alvo do clique (summary), com cursor de botão;
+  2. hover e foco visíveis (fundo e borda);
+  3. SETA para baixo que gira 180° quando abre;
+  4. PULSO suave no selo da seta enquanto fechada — respeitando
+     prefers-reduced-motion;
+  5. microtexto "Abrir/Fechar" no desktop, para quem não lê o ícone;
+  6. nada de JavaScript: <details> nativo funciona sem hidratação.
+
+  Tokens: troque os valores de :root pelos do seu site. As únicas variáveis
+  usadas são --sf-fundo, --sf-fundo-2, --sf-borda, --sf-texto, --sf-texto-fraco,
+  --sf-acento e --sf-raio.
+-->
+<style>
+  :root {
+    color-scheme: dark;
+    --sf-fundo: #101112;
+    --sf-fundo-2: #1a1b1d;
+    --sf-borda: #2c2e31;
+    --sf-texto: #f4efe6;
+    --sf-texto-fraco: #a8a29a;
+    --sf-acento: #f28c28;
+    --sf-raio: 12px;
+    --sf-espaco: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 16px 96px;
+    background: var(--sf-fundo);
+    color: var(--sf-texto);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: 1.35rem; margin: 0 0 4px; }
+  .nota { color: var(--sf-texto-fraco); font-size: 0.95rem; margin: 0 0 24px; }
+  .pilha { display: grid; gap: 12px; }
+
+  /* ── 1. O contêiner ──────────────────────────────────────────────────── */
+  .sanfona {
+    border: 1px solid var(--sf-borda);
+    border-radius: var(--sf-raio);
+    background: var(--sf-fundo);
+    transition: border-color 0.2s ease;
+  }
+  .sanfona:hover { border-color: color-mix(in srgb, var(--sf-acento) 60%, transparent); }
+  .sanfona[open] { border-color: color-mix(in srgb, var(--sf-acento) 40%, transparent); }
+
+  /* ── 2. A linha clicável (alvo real do <details>) ────────────────────── */
+  .sanfona > summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px var(--sf-espaco);
+    border-radius: var(--sf-raio);
+    cursor: pointer;
+    list-style: none;
+    transition: background-color 0.2s ease;
+  }
+  .sanfona > summary::-webkit-details-marker { display: none; }
+  .sanfona > summary:hover { background: color-mix(in srgb, var(--sf-fundo-2) 60%, transparent); }
+  .sanfona > summary:focus-visible {
+    outline: 2px solid var(--sf-acento);
+    outline-offset: 2px;
+  }
+
+  .sanfona__titulo { flex: 1; min-width: 0; font-weight: 600; }
+
+  /* Microtexto "Abrir/Fechar": some no celular, onde a seta basta. */
+  .sanfona__dica {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sf-texto-fraco);
+    display: none;
+  }
+  @media (min-width: 640px) { .sanfona__dica { display: inline; } }
+  .sanfona[open] .sanfona__dica--abrir { display: none; }
+  .sanfona:not([open]) .sanfona__dica--fechar { display: none; }
+
+  /* ── 3. O selo da seta: gira ao abrir e pulsa enquanto fechado ───────── */
+  .sanfona__seta {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--sf-borda);
+    border-radius: 9999px;
+    background: var(--sf-fundo-2);
+    color: var(--sf-acento);
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .sanfona__seta svg { width: 16px; height: 16px; }
+
+  /* O pulso é só o anel: o fundo fica livre para o hover. */
+  .sanfona__seta::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border: 2px solid var(--sf-acento);
+    border-radius: inherit;
+    opacity: 0;
+    animation: sf-anel 2.6s ease-out infinite;
+  }
+  .sanfona[open] .sanfona__seta {
+    transform: rotate(180deg);
+    border-color: var(--sf-acento);
+  }
+  .sanfona[open] .sanfona__seta::after { animation: none; opacity: 0; }
+  .sanfona > summary:hover .sanfona__seta,
+  .sanfona > summary:focus-visible .sanfona__seta {
+    background: var(--sf-fundo);
+    border-color: var(--sf-acento);
+  }
+
+  @keyframes sf-anel {
+    0%   { transform: scale(0.9);  opacity: 0.45; }
+    70%, 100% { transform: scale(1.35); opacity: 0; }
+  }
+  /* Movimento é escolha: quem pediu menos animação não recebe pulso. */
+  @media (prefers-reduced-motion: reduce) {
+    .sanfona__seta::after { animation: none; }
+    .sanfona__seta { transition: none; }
+  }
+
+  /* ── 4. O corpo revelado ─────────────────────────────────────────────── */
+  .sanfona__corpo {
+    border-top: 1px solid color-mix(in srgb, var(--sf-borda) 60%, transparent);
+    padding: 12px var(--sf-espaco) var(--sf-espaco);
+    color: var(--sf-texto-fraco);
+    font-size: 0.95rem;
+  }
+  .sanfona__corpo p { margin: 0 0 10px; }
+  .sanfona__corpo strong { color: var(--sf-texto); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Sanfona que se anuncia</h1>
+  <p class="nota">
+    Modelo do Controle Popular — <code>&lt;details&gt;</code> nativo, sem
+    JavaScript. Copie o <code>&lt;style&gt;</code> e o bloco abaixo.
+  </p>
+
+  <div class="pilha">
+    <details class="sanfona">
+      <summary>
+        <span class="sanfona__titulo">Flora e vegetação</span>
+        <span class="sanfona__dica sanfona__dica--abrir" aria-hidden="true">Abrir</span>
+        <span class="sanfona__dica sanfona__dica--fechar" aria-hidden="true">Fechar</span>
+        <span class="sanfona__seta" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8l4 4 4-4"/>
+          </svg>
+        </span>
+      </summary>
+      <div class="sanfona__corpo">
+        <p><strong>Estado geral.</strong> Exemplo de conteúdo revelado: parágrafos curtos,
+          com o rótulo em destaque e o dado logo ao lado.</p>
+        <p><strong>Números-chave.</strong> Aqui entram os números medidos da página.</p>
+      </div>
+    </details>
+
+    <details class="sanfona">
+      <summary>
+        <span class="sanfona__titulo">Saúde humana e risco ecológico</span>
+        <span class="sanfona__dica sanfona__dica--abrir" aria-hidden="true">Abrir</span>
+        <span class="sanfona__dica sanfona__dica--fechar" aria-hidden="true">Fechar</span>
+        <span class="sanfona__seta" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8l4 4 4-4"/>
+          </svg>
+        </span>
+      </summary>
+      <div class="sanfona__corpo">
+        <p><strong>Estado geral.</strong> Segundo bloco, fechado por padrão.</p>
+      </div>
+    </details>
+  </div>
+</main>
+</body>
+</html>

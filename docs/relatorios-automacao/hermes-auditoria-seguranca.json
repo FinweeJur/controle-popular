@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-11-06T08:31:48.035Z",
+  "geradoEm": "2026-11-17T08:35:47.189Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 14,
-  "aprovados": 13,
-  "alertas": 0,
+  "totalVerificacoes": 11,
+  "aprovados": 8,
+  "alertas": 2,
   "falhas": 1,
   "itens": [
     {
@@ -26,27 +26,9 @@
     },
     {
       "categoria": "seguranca",
-      "item": "Produção: Content-Security-Policy",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://scripts.simpleanalyticscdn.com; worker-src 'self' ..."
-    },
-    {
-      "categoria": "seguranca",
-      "item": "Produção: Strict-Transport-Security",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains; preload"
-    },
-    {
-      "categoria": "seguranca",
-      "item": "Produção: X-Frame-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: SAMEORIGIN"
-    },
-    {
-      "categoria": "seguranca",
-      "item": "Produção: X-Content-Type-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
+      "item": "Sondagem de Produção (headers reais)",
+      "status": "ALERTA",
+      "detalhes": "Não foi possível conectar a https://controlepopular.com.br nesta máquina para sondar os headers reais de produção (fetch failed). A auditoria de código local foi executada normalmente; reexecute de uma máquina com acesso à rede."
     },
     {
       "categoria": "seguranca",
@@ -64,7 +46,7 @@
       "categoria": "cloudflare",
       "item": "Limite de 25 MiB: jurisprudencia-casos.json",
       "status": "FALHA",
-      "detalhes": "Arquivo possui 56.92 MiB, excedendo o teto do Cloudflare."
+      "detalhes": "Arquivo possui 57.03 MiB, excedendo o teto do Cloudflare."
     },
     {
       "categoria": "privacidade",
@@ -75,8 +57,8 @@
     {
       "categoria": "qualidade_dados",
       "item": "5 Regras de Qualidade: sigbm",
-      "status": "APROVADO",
-      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+      "status": "ALERTA",
+      "detalhes": "Possível ausência de componente obrigatório: Gráfico, Cartões de Topo, Ressalva Editorial."
     },
     {
       "categoria": "qualidade_dados",

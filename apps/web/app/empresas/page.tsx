@@ -95,6 +95,13 @@ export default async function EmpresasIndexPage({ searchParams }: Props) {
         subtitulo="Cruze o poder econômico das empresas com as fortunas globais, governança e impactos no território."
         paginas={[
           {
+            href: "/empresas/fornecedores",
+            titulo: "Fornecedores do Acervo com CNPJ Enriquecido",
+            descricao: "Amostra de 17 fornecedores dos contratos públicos com situação cadastral, CNAE e município, consultados na Brasil API.",
+            badge: "Fornecedores",
+            icone: "empresa",
+          },
+          {
             href: "/empresas/fortunas",
             titulo: "1.000 Maiores Fortunas Mundiais",
             descricao: "Mapeamento das dinastias e bilionários que controlam as corporações e fundos globais.",

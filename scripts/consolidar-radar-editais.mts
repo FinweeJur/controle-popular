@@ -26,6 +26,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { processarTrechoEdital } from "./radar-editais-extrator.mts";
+import { consolidarEditais } from "../apps/web/lib/editais/consolidar.ts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PENDENTES_PADRAO = path.join(RAIZ, "apps", "web", "data", "radar-editais", "pendentes");
@@ -271,7 +272,10 @@ function main(): void {
   }
 
   rodarGuarda();
-  const itens = [...novos, ...acervo.itens].sort((a, b) => b.dataPublicacao.localeCompare(a.dataPublicacao));
+  // Consolida por certame: publicações do mesmo objeto/número viram UMA linha
+  // com `atualizacoes` (andamento). Sem isso, cada dia do Diário virava uma
+  // linha repetida na /editais (medido 18/11/2026: 7 cópias de um ato).
+  const itens = consolidarEditais([...novos, ...acervo.itens]);
   const saida: Acervo = { total: itens.length, atualizadoEm: new Date().toISOString(), itens };
   fs.mkdirSync(path.dirname(CONSOLIDADO), { recursive: true });
   fs.writeFileSync(CONSOLIDADO, JSON.stringify(saida, null, 1) + "\n", "utf-8");

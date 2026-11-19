@@ -1,10 +1,10 @@
 {
  "rota": "/editais",
- "geradoEm": "2026-11-08",
+ "geradoEm": "2026-11-18",
  "verificado": true,
  "fontes": [
   "editais-consolidado.json"
  ],
- "impressao": "cb34d0ab900726e3",
- "markdown": "# O que os dados de Editais mostram\n\nA página lista 50 editais publicados, a maioria deles na seção \"Editais e Avisos\". [medido — dados da página]\n\nQuase todos os registros (44 de 50) estão na seção \"Editais e Avisos\"; os outros 6 aparecem sob secretarias estaduais, como Justiça e Segurança Pública, Saúde e Meio Ambiente. [medido — dados da página]\n\nAs publicações se concentram em três datas: 18 editais em 12/09/2026, 18 em 10/09/2026 e 14 em 15/09/2026. [medido — dados da página]\n\nEntre as modalidades, o Credenciamento é a mais frequente (11 registros), seguido por Pregão Eletrônico (7) e Chamamento Público (6). Há ainda 5 casos de Inabilitação de Credenciamento e 5 de Processo Seletivo. [medido — dados da página]\n\nO dado não mostra quem venceu, quais valores foram envolvidos nem se algum edital já foi concluído. Ele apenas registra que esses 50 documentos existem e em que data e seção apareceram. [não dá para concluir]"
+ "impressao": "eb903eb296843fb3",
+ "markdown": "# O que os dados de Editais mostram\n\nA página reúne 39 editais publicados por órgãos do estado. [medido — dados da pagina]\n\nA maioria saiu na seção \"Editais e Avisos\": 34 dos 39. Os outros 5 estão espalhados por quatro seções diferentes, cada uma com um ou dois registros. [medido — dados da pagina]\n\nAs publicações se concentram em três datas: 17 editais em 10 de setembro de 2026, 13 em 15 de setembro e 9 em 12 de setembro. [medido — dados da pagina]\n\nO tipo mais comum é o Pregão Eletrônico, com 6 registros. Chamamento Público, Credenciamento e Processo Seletivo aparecem 5 vezes cada. [medido — dados da pagina]\n\nA página não informa quanto dinheiro está envolvido, quem venceu cada disputa nem qual foi o resultado de nenhum dos processos. Ela lista os editais, não o que aconteceu depois. [nao da para concluir]"
 }

@@ -1,0 +1,2672 @@
+{
+ "fonte": "https://dados.ons.org.br/",
+ "api": "https://dados.ons.org.br/api/3/action/package_list",
+ "licenca": "Creative Commons Atribuição (CC-BY) — declarada em cada conjunto",
+ "coletadoEm": "2026-11-18T22:44:30Z",
+ "total": 88,
+ "itens": [
+  {
+   "nome": "ambiente-colaborativo",
+   "titulo": "Ambiente Colaborativo - GITHUB",
+   "resumo": "O ONS está disponibilizando um repositório colaborativo no GITHUB para criação de notebooks pela comunidade.<p><br> O endereço é **https://github.com/ONSBR/DadosAbertos** <p><br> Todos os notebooks a serem desenvolvidos e compartilhados devem utilizar pelo menos um dos conjuntos de dados disponíveis no Portal de Dados Abertos do ONS. Venha participar desta experiência. ----------------------------",
+   "url": "https://dados.ons.org.br/dataset/ambiente-colaborativo",
+   "recursos": 2,
+   "formatos": [
+    "PDF"
+   ],
+   "atualizadoEm": "2024-05-27T18:02:12.957393",
+   "criadoEm": "2024-05-27T18:02:12.957387",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "GITHUB"
+   ],
+   "grupos": [],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "balanco-energia-subsistema",
+   "titulo": "Balanço de Energia nos Subsistemas",
+   "resumo": "Informações da carga e oferta de energia verificados em periodicidade horária por subsistema. A oferta é representada pelos valores de geração das usinas hidráulicas, térmicas, eólicas e fotovoltaicas, em MWmed. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um",
+   "url": "https://dados.ons.org.br/dataset/balanco-energia-subsistema",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:59.675841",
+   "criadoEm": "2024-05-27T18:02:16.282610",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Geração",
+    "Histórico da Operação",
+    "Horário",
+    "Intercâmbio"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 244696281,
+   "tamanhoCsvBytes": 123714907
+  },
+  {
+   "nome": "capacidade-transformacao",
+   "titulo": "Capacidade de Transformação da Rede Básica",
+   "resumo": "Dados de potência nominal de transformadores da Rede Básica, bem como seus agentes proprietários e tensões terminais. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamente.",
+   "url": "https://dados.ons.org.br/dataset/capacidade-transformacao",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:46.167173",
+   "criadoEm": "2024-05-27T18:02:19.785867",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 689978,
+   "tamanhoCsvBytes": 432459
+  },
+  {
+   "nome": "capacidade-geracao",
+   "titulo": "Capacidade Instalada de Geração",
+   "resumo": "Dados de potência nominal de Unidades Geradoras de Usinas despachadas pelo ONS, que são aquelas classificadas com modalidade de operação Tipo I, Tipo II-A, Tipo II-B e Tipo II-C. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas o",
+   "url": "https://dados.ons.org.br/dataset/capacidade-geracao",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:53.658644",
+   "criadoEm": "2024-05-27T18:02:18.707999",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 2054642,
+   "tamanhoCsvBytes": 1318263
+  },
+  {
+   "nome": "carga-energia",
+   "titulo": "Carga de Energia Diária",
+   "resumo": "Dados de carga por subsistema em base diária, medida em MWmed. Até fevereiro/2021, os dados representam a carga atendida por usinas despachadas e/ou programadas pelo ONS, com base em dados recebidos pelo Sistema de Supervisão e Controle do ONS. Entre março/2021 e abril/23, os dados representam a carga atendida por usinas despachadas e/ou programadas pelo ONS, com base em dados recebidos pelo Siste",
+   "url": "https://dados.ons.org.br/dataset/carga-energia",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:50.189748",
+   "criadoEm": "2024-05-27T18:02:20.869640",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Diário",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 3296510,
+   "tamanhoCsvBytes": 1503278
+  },
+  {
+   "nome": "carga-mensal",
+   "titulo": "Carga de Energia Mensal",
+   "resumo": "Dados de carga por subsistema em base mensal, medida em MWmed. Até dezembro/2014, os dados representam a carga atendida por usinas despachadas e/ou programadas pelo ONS, com base em dados recebidos pelo Sistema de Supervisão e Controle do ONS. Entre janeiro/2015 e fevereiro/2021, os dados representam a carga atendida por usinas despachadas e/ou programadas pelo ONS, além de usinas não despachadas ",
+   "url": "https://dados.ons.org.br/dataset/carga-mensal",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:54.111420",
+   "criadoEm": "2024-05-27T18:02:23.694395",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Histórico da Operação",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 112218,
+   "tamanhoCsvBytes": 49705
+  },
+  {
+   "nome": "carga-energia-programada",
+   "titulo": "Carga de Energia Programada",
+   "resumo": "Dados de carga programada na periodicidade semi-horária por área de carga utilizada na programação diária eletroenergética e modelo DESSEM. -------------------------------------------------------------------------------------------------------------------------------------------------------- Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atua",
+   "url": "https://dados.ons.org.br/dataset/carga-energia-programada",
+   "recursos": 3,
+   "formatos": [
+    "API",
+    "JSON",
+    "PDF"
+   ],
+   "atualizadoEm": "2025-10-01T18:58:37.972641",
+   "criadoEm": "2024-05-27T18:02:22.280002",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "DESSEM",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "carga-energia-verificada",
+   "titulo": "Carga de Energia Verificada",
+   "resumo": "Dados de carga verificada na periodicidade semi-horária por área de carga e suas componentes de parcela supervisionada pelo ONS, parcela proveniente dos dados de medição (geração tipo I, IIA, IIB, IIC e intercâmbios), parcela proveniente do sistema de medição para faturamento da CCEE (geração tipo III), parcela atendida por micro e mini geração distribuída (MMGD), parcela atendida por redução de d",
+   "url": "https://dados.ons.org.br/dataset/carga-energia-verificada",
+   "recursos": 3,
+   "formatos": [
+    "API",
+    "JSON",
+    "PDF"
+   ],
+   "atualizadoEm": "2025-10-01T19:07:28.721986",
+   "criadoEm": "2024-05-27T18:02:22.951692",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "DESSEM",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "cargaglobal-roraima",
+   "titulo": "Carga global de Roraima",
+   "resumo": "Carga global de Roraima no período de **fevereiro-2022 a setembro-2026**, em atendimento ao Despacho nº 2.282, de 6 de agosto de 2024. ---------------------------------------------------------------------------------------------------------- Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/cargaglobal-roraima",
+   "recursos": 17,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-10-19T20:00:20.799360",
+   "criadoEm": "2025-06-12T20:03:56.574746",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "cmo-semanal",
+   "titulo": "CMO Semanal",
+   "resumo": "Valores do custo, por unidade de energia produzida, para atender ao incremento de uma unidade de carga no SIN, chamado de Custo Marginal de Operação – CMO. Valores para cada semana operativa por subsistema, e por patamar de carga, além da média semanal, estimados pelo modelo Decomp. --------------------------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/cmo-semanal",
+   "recursos": 68,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:00:58.101069",
+   "criadoEm": "2024-05-27T18:02:24.993380",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "CMO",
+    "Histórico da Operação",
+    "PMO",
+    "Semanal"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 862034,
+   "tamanhoCsvBytes": 290470
+  },
+  {
+   "nome": "cmo-semi-horario",
+   "titulo": "CMO Semi-Horário",
+   "resumo": "Valores do custo, por unidade de energia produzida, para atender ao incremento de uma unidade de carga no SIN, chamado de Custo Marginal de Operação – CMO. Este CMO é estimado pelo modelo DESSEM para cada barra do sistema em base semi-horária. O CMO do subsistema é obtido pelo média dos CMOs nas barras de cada subsistema, ponderados pelas respectivas cargas, considerando que um aumento de carga no",
+   "url": "https://dados.ons.org.br/dataset/cmo-semi-horario",
+   "recursos": 23,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:14.056246",
+   "criadoEm": "2024-05-27T18:02:26.752443",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "CMO",
+    "DESSEM",
+    "PMO",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 29550026,
+   "tamanhoCsvBytes": 17798049
+  },
+  {
+   "nome": "bacia_contorno",
+   "titulo": "Contornos das Bacias Hidrográficas",
+   "resumo": "Informações em formato shapefile, que são os dados geoespaciais e vetoriais em sistemas de informação geográfica, para apresentar as feições com os contornos das bacias hidrográficas com aproveitamentos no SIN.",
+   "url": "https://dados.ons.org.br/dataset/bacia_contorno",
+   "recursos": 1,
+   "formatos": [
+    "ZIP"
+   ],
+   "atualizadoEm": "2024-05-27T18:02:14.093661",
+   "criadoEm": "2024-05-27T18:02:14.093655",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral",
+    "Hidrologia"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "curva-carga",
+   "titulo": "Curva de Carga Horária",
+   "resumo": "Dados de curva de carga horária, que representam o perfil de consumo de energia elétrica com discretização horária. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/curva-carga",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:14.544324",
+   "criadoEm": "2024-05-27T18:02:28.019359",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 75313264,
+   "tamanhoCsvBytes": 41133649
+  },
+  {
+   "nome": "cvu-usitermica",
+   "titulo": "CVU das Usina Térmicas",
+   "resumo": "Custo Variável Unitário (CVU) de usinas térmicas considerado no Programa Mensal da Operação, conforme utilizado na execução do modelo NEWAVE, DECOMP, DESSEM, além de seu uso nas decisões de programação e acompanhamentos dos custos da operação. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados di",
+   "url": "https://dados.ons.org.br/dataset/cvu-usitermica",
+   "recursos": 68,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:27.809792",
+   "criadoEm": "2024-05-27T18:02:29.987463",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Geração",
+    "PMO",
+    "Semanal"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 15447780,
+   "tamanhoCsvBytes": 9939079
+  },
+  {
+   "nome": "classificacao-evt",
+   "titulo": "Dados de Classificação EVT",
+   "resumo": "**Estes dados não serão mais atualizados pois são históricos** Dados de Energia Vertida Turbinável - EVT em base horária com a classificação por razão energética e elétrica no período de 2024 e 2025 para fins de análise e estudos",
+   "url": "https://dados.ons.org.br/dataset/classificacao-evt",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-04-28T16:51:53.822265",
+   "criadoEm": "2026-03-26T18:35:53.064815",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Sem atualização"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "disponibilidade_usina",
+   "titulo": "Dados de Disponibilidade de Usinas",
+   "resumo": "Disponibilidade de usinas hidráulicas e térmicas com modalidade de operação Tipo I e II-A em base horária. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/disponibilidade_usina",
+   "recursos": 338,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:14.295179",
+   "criadoEm": "2024-05-27T18:02:39.032233",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 4660258240,
+   "tamanhoCsvBytes": 3507105825
+  },
+  {
+   "nome": "grandezas_fluviometricas",
+   "titulo": "Dados de Grandezas Fluviométricas",
+   "resumo": "Dados de medidas de grandezas obtidas nos postos fluviométricos (ou estação fluviométricas) consolidados pelo ONS na periodicidade diária. --------------------------------------------------------------------------------------------------------------------- Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/grandezas_fluviometricas",
+   "recursos": 203,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:04.971703",
+   "criadoEm": "2024-05-27T18:03:09.594421",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 360311572,
+   "tamanhoCsvBytes": 284246607
+  },
+  {
+   "nome": "intercambio_modalidade",
+   "titulo": "Dados de Intercâmbio de Energia por Modalidade",
+   "resumo": "Histórico de dados de intercâmbio de energia por modalidade discretizado em patamar horário, por conversora e montante de energia em MWh na periodicidade horária. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto,",
+   "url": "https://dados.ons.org.br/dataset/intercambio_modalidade",
+   "recursos": 60,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:54.271018",
+   "criadoEm": "2024-05-27T18:03:26.518457",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário",
+    "Intercâmbio"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 100025802,
+   "tamanhoCsvBytes": 69487894
+  },
+  {
+   "nome": "restricao_coff_eolica_usi",
+   "titulo": "Dados de Restrição de Operação por Constrained-off de Usinas Eólicas",
+   "resumo": "Informações associadas à apuração das restrições de operação por Constrained-off nas usinas eólicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, po",
+   "url": "https://dados.ons.org.br/dataset/restricao_coff_eolica_usi",
+   "recursos": 188,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:09:15.110174",
+   "criadoEm": "2024-05-27T18:03:34.261938",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 3369494404,
+   "tamanhoCsvBytes": 2258076946
+  },
+  {
+   "nome": "restricao_coff_eolica_detail",
+   "titulo": "Dados de Restrição De Operação Por Constrained-off de Usinas Eólicas - Detalhamento Por Usinas",
+   "resumo": "Informações associadas à apuração das restrições de operação por Constrained-off nas usinas eólicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C, detalhadas por usinas. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência re",
+   "url": "https://dados.ons.org.br/dataset/restricao_coff_eolica_detail",
+   "recursos": 190,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:19:34.159417",
+   "criadoEm": "2024-05-27T18:03:32.030231",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 20113663550,
+   "tamanhoCsvBytes": 13087058186
+  },
+  {
+   "nome": "coff_eolica_usi_intrasemihora",
+   "titulo": "Dados de Restrição de Operação por Constrained-off de Usinas Eólicas Intra SemiHora",
+   "resumo": "Informações associadas à apuração das restrições de operação por constrained-off nas usinas eólicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C. São apresentados os períodos de restrição dentro dos patamares semi-horários. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponi",
+   "url": "https://dados.ons.org.br/dataset/coff_eolica_usi_intrasemihora",
+   "recursos": 188,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:08:47.869414",
+   "criadoEm": "2026-09-08T10:49:34.727755",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 937972447,
+   "tamanhoCsvBytes": 669362622
+  },
+  {
+   "nome": "restricao_coff_fotovoltaica",
+   "titulo": "Dados de Restrição de Operação por Constrained-off de Usinas Fotovoltaicas",
+   "resumo": "Informações associadas à apuração das restrições de operação por Constrained-off nas usinas fotovoltaicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portan",
+   "url": "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica",
+   "recursos": 98,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:08:31.713630",
+   "criadoEm": "2024-05-27T18:03:36.121103",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 764964566,
+   "tamanhoCsvBytes": 524189317
+  },
+  {
+   "nome": "restricao_coff_fotovoltaica_detail",
+   "titulo": "Dados de Restrição De Operação Por Constrained-off de Usinas Fotovoltaicas - Detalhamento Por Usinas",
+   "resumo": "Informações associadas à apuração das restrições de operação por Constrained-off nas usinas fotovoltaicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C, detalhadas por usinas. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistên",
+   "url": "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica_detail",
+   "recursos": 100,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:14:31.497023",
+   "criadoEm": "2024-05-27T18:03:36.928110",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 5012385272,
+   "tamanhoCsvBytes": 3375699990
+  },
+  {
+   "nome": "coff_fotovoltaica_intrasemihora",
+   "titulo": "Dados de Restrição de Operação por Constrained-off de Usinas Fotovoltaicas Intra SemiHora",
+   "resumo": "Informações associadas à apuração das restrições de operação por constrained-off nas usinas fotovoltaicas classificadas nas modalidades Tipo I, Tipo II-B e Tipo II-C. São apresentados os períodos de restrição dentro dos patamares semi-horários. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados d",
+   "url": "https://dados.ons.org.br/dataset/coff_fotovoltaica_intrasemihora",
+   "recursos": 98,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:07:56.874559",
+   "criadoEm": "2026-09-08T10:19:51.054208",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 252362125,
+   "tamanhoCsvBytes": 179455873
+  },
+  {
+   "nome": "descontinuado-dados-do-historico-de-despacho-de-energia-de-01-2021-a-09-2024",
+   "titulo": "Dados do Histórico de Despacho de Energia de Janeiro/2021 A Setembro/2024",
+   "resumo": "**Estes dados não serão mais atualizados pois são históricos** Dados de geração considerados no fechamento da programação diária em base semi-horária. Os dados do histórico de despacho de energia de 01/2024 à 09/2024, podem apresentar algumas inconsistências devido as atualizações cadastrais das usinas participantes do balanço.",
+   "url": "https://dados.ons.org.br/dataset/descontinuado-dados-do-historico-de-despacho-de-energia-de-01-2021-a-09-2024",
+   "recursos": 10,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF"
+   ],
+   "atualizadoEm": "2026-04-28T13:46:30.183828",
+   "criadoEm": "2025-02-27T13:28:51.985280",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Sem atualização"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "usina_conjunto",
+   "titulo": "Dados do Relacionamento Entre Conjuntos e Usinas",
+   "resumo": "Histórico de relação das usinas Tipo II-C que compõem os Conjuntos de Usina. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamente.",
+   "url": "https://dados.ons.org.br/dataset/usina_conjunto",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:14.549874",
+   "criadoEm": "2024-05-27T18:03:38.567003",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral",
+    "Geração"
+   ],
+   "grupos": [
+    "Avaliação da Operação",
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 581012,
+   "tamanhoCsvBytes": 330601
+  },
+  {
+   "nome": "usina_pqu",
+   "titulo": "Dados do Relacionamento Entre Grupos de Pequenas Usinas e Usinas",
+   "resumo": "Relação das usinas Tipo III que compõem os Grupos de Pequenas Usinas. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamente.",
+   "url": "https://dados.ons.org.br/dataset/usina_pqu",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:18.862557",
+   "criadoEm": "2024-05-27T18:03:39.230127",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral",
+    "Geração"
+   ],
+   "grupos": [
+    "Avaliação da Operação",
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 287232,
+   "tamanhoCsvBytes": 157294
+  },
+  {
+   "nome": "ind_confiarb_atls",
+   "titulo": "Dados dos indicadores de confiabilidade da rede básica: ATLS – atendimento aos limites sistêmicos",
+   "resumo": "Indicador de Atendimento aos Limites Sistêmicos (ATLS), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. O indicador é apresentado por fluxo, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistê",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_atls",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:02.226118",
+   "criadoEm": "2025-02-26T18:29:26.304539",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 154403,
+   "tamanhoCsvBytes": 79769
+  },
+  {
+   "nome": "ind_confiarb_ccal",
+   "titulo": "Dados dos indicadores de confiabilidade da rede básica: CCAL – controle de carregamento de linhas de transmissão",
+   "resumo": "Indicador de Controle de Carregamento de Linhas de Transmissão (CCAL), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. O indicador é apresentado nas agregações SIN, Área de Controle e Agente, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disp",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_ccal",
+   "recursos": 6,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:05.163098",
+   "criadoEm": "2025-02-26T18:21:28.652428",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 2817620,
+   "tamanhoCsvBytes": 1150461
+  },
+  {
+   "nome": "ind_confiarb_ccat",
+   "titulo": "Dados dos indicadores de confiabilidade da rede básica: CCAT – controle de carregamento de transformadores",
+   "resumo": "Indicador de Controle de Carregamento de Transformadores (CCAT), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. O indicador é apresentado nas agregações SIN, Área de Controle e Agente, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibil",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_ccat",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:57.927370",
+   "criadoEm": "2025-02-26T17:56:58.882172",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 1601088,
+   "tamanhoCsvBytes": 935087
+  },
+  {
+   "nome": "ind_providencia_ecpa_pcpa",
+   "titulo": "Dados dos indicadores de cumprimento de providências: ECPA E PCPA",
+   "resumo": "Indicadores de Evolução do Cumprimento às Providências (ECPA) e Pontualidade do Cumprimento às Providências (PCPA), estabelecidos conforme Submódulo 9.5 dos Procedimentos de Rede. Os indicadores são apresentados nas agregações SIN, Agente, Área de Atuação do Agente e Gestor, na periodicidade mensal. ---------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/ind_providencia_ecpa_pcpa",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:49.619598",
+   "criadoEm": "2025-02-26T18:32:06.354445",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 4952831,
+   "tamanhoCsvBytes": 3098672
+  },
+  {
+   "nome": "ind_qualid_dfd_meano",
+   "titulo": "Dados dos indicadores de qualidade de energia da rede básica: DFD – desempenho da frequência em distúrbios - mensal e anual",
+   "resumo": "Indicador de Desempenho da Frequência em Distúrbios – DFD, estabelecido conforme Submódulo 9.7 dos Procedimentos de Rede, apresentado nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, por",
+   "url": "https://dados.ons.org.br/dataset/ind_qualid_dfd_meano",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:14.416096",
+   "criadoEm": "2025-02-26T18:56:32.169504",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 139836,
+   "tamanhoCsvBytes": 83877
+  },
+  {
+   "nome": "ind_qualid_dfd_evento",
+   "titulo": "Dados dos indicadores de qualidade de energia da rede básica: DFD – desempenho da frequência em distúrbios – por evento",
+   "resumo": "Indicador de Desempenho da Frequência em Distúrbios – DFD, estabelecido conforme Submódulo 9.7 dos Procedimentos de Rede, apresentado por evento. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atuali",
+   "url": "https://dados.ons.org.br/dataset/ind_qualid_dfd_evento",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:08.375467",
+   "criadoEm": "2025-02-26T18:46:16.225597",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 22630,
+   "tamanhoCsvBytes": 6743
+  },
+  {
+   "nome": "ind_qualid_dfp_regime",
+   "titulo": "Dados dos indicadores de qualidade de energia da rede básica: DFP – desempenho da frequência em regime permanente",
+   "resumo": "Indicador de Desempenho da Frequência em Regime Permanente (DFP), estabelecido conforme Submódulo 9.7 dos Procedimentos de Rede. O indicador é apresentado nas periodicidades diária, mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de c",
+   "url": "https://dados.ons.org.br/dataset/ind_qualid_dfp_regime",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:20.861573",
+   "criadoEm": "2025-02-26T18:51:10.780424",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 329297,
+   "tamanhoCsvBytes": 157918
+  },
+  {
+   "nome": "programacao_fluxo_controlado",
+   "titulo": "Dados dos Programados dos Elementos de Fluxo Controlado",
+   "resumo": "Dados programados dos elementos de fluxo controlado. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/programacao_fluxo_controlado",
+   "recursos": 2317,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-17T23:33:22.745282",
+   "criadoEm": "2024-09-13T17:41:24.620270",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Geração",
+    "Programação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 160058722,
+   "tamanhoCsvBytes": 110180713
+  },
+  {
+   "nome": "programacao_x_previsao",
+   "titulo": "Dados dos Valores da Previsão Versus Programado - Eólicas e Solares",
+   "resumo": "Dados de valores de previsão versus valores do programado de usinas eólicas e solares. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/programacao_x_previsao",
+   "recursos": 2306,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-17T23:34:06.571916",
+   "criadoEm": "2024-09-13T18:42:43.149059",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Geração",
+    "Programação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 2032025157,
+   "tamanhoCsvBytes": 1345807236
+  },
+  {
+   "nome": "programacao_diaria",
+   "titulo": "Dados dos Valores da Programação Diária",
+   "resumo": "Dados de carga e geração considerados no fechamento da programação diária, por submercado, em base semi-horária. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/programacao_diaria",
+   "recursos": 2279,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-17T23:34:14.629201",
+   "criadoEm": "2024-09-13T17:37:55.333801",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Geração",
+    "Programação",
+    "Semi-horário"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 33409483664,
+   "tamanhoCsvBytes": 26709098924
+  },
+  {
+   "nome": "res_volumeespera",
+   "titulo": "Dados Hidrológicos - Volume de Espera Recomendado",
+   "resumo": "Valores do volume de espera utilizados na programação hidráulica de um reservatório. Representa o nível máximo a ser atingido, em % do volume útil, de forma que o reservatório tenha capacidade de amortecer cheias e evitar danos por inundação em locais a jusante a partir de restrições de vazões máximas e tempos de recorrência definidos pelos agentes de geração. -------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/res_volumeespera",
+   "recursos": 66,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:12.809997",
+   "criadoEm": "2024-09-27T18:22:01.663996",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 23571029,
+   "tamanhoCsvBytes": 15911743
+  },
+  {
+   "nome": "deprec_hidro",
+   "titulo": "Dados Hidrológicos Depreciados de Reservatórios",
+   "resumo": "Dados hidráulicos verificados de reservatórios, consolidados pelo ONS em periodicidade diária. Produto descontinuado em 28/10/2026, mantido para consulta ao histórico publicado até essa data.",
+   "url": "https://dados.ons.org.br/dataset/deprec_hidro",
+   "recursos": 82,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-10-29T14:54:04.058839",
+   "criadoEm": "2026-10-28T21:25:22.077603",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 410836239,
+   "tamanhoCsvBytes": 228821849
+  },
+  {
+   "nome": "dados-hidrologicos-res",
+   "titulo": "Dados Hidráulicos por Reservatório – Base diária",
+   "resumo": "Dados hidráulicos verificados de reservatórios consolidados pelo ONS na periodicidade diária. **A atualização desses dados no Portal ocorrem as 9:15h, 14:15 e 17h.** ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portan",
+   "url": "https://dados.ons.org.br/dataset/dados-hidrologicos-res",
+   "recursos": 202,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T20:01:47.579470",
+   "criadoEm": "2024-05-27T18:02:31.115418",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 785661495,
+   "tamanhoCsvBytes": 440618642
+  },
+  {
+   "nome": "dados_hidrologicos_ho",
+   "titulo": "Dados Hidráulicos por Reservatório – Base horária",
+   "resumo": "Dados hidráulicos de reservatórios em periodicidade horária, **não consistidos pelo ONS**. Os dados disponibilizados são de responsabilidade dos agentes de geração e refletem uma réplica exata do que foi encaminhado ao ONS. Pode haver lacunas de dados e podem ser realizadas alterações de dados. --------------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/dados_hidrologicos_ho",
+   "recursos": 616,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:26:41.116228",
+   "criadoEm": "2024-05-27T18:02:32.941499",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Hidrologia",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 4405761600,
+   "tamanhoCsvBytes": 2914436051
+  },
+  {
+   "nome": "demanda_maxima_di",
+   "titulo": "Demanda Máxima Diária por Subsistema",
+   "resumo": "Dados diários relativos à apuração de demandas(carga) instantâneas e integralizadas por subsistema. Eles refletem a carga atendida por usinas supervisionadas e programadas pelo ONS, incluindo o valor estimado da micro e minigeração distribuída (MMGD) com base em dados meteorológicos previstos. ---------------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/demanda_maxima_di",
+   "recursos": 11,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:16.490290",
+   "criadoEm": "2026-05-18T18:47:53.969498",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Diário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 703922,
+   "tamanhoCsvBytes": 367762
+  },
+  {
+   "nome": "balanco_dessem_detalhe",
+   "titulo": "DESSEM - Balanço de Energia Detalhado",
+   "resumo": "Informação da programação eletro energética, resultante do modelo DESSEM no formato detalhado, da demanda de energia e geração por fontes previstas para um dia de referência em periodicidade semi-horária no subsistema. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem part",
+   "url": "https://dados.ons.org.br/dataset/balanco_dessem_detalhe",
+   "recursos": 1633,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T19:35:29.770158",
+   "criadoEm": "2024-09-19T14:07:52.260722",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "DESSEM",
+    "Diário",
+    "Geração",
+    "Programação"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 27281172,
+   "tamanhoCsvBytes": 9097381
+  },
+  {
+   "nome": "balanco_dessem_geral",
+   "titulo": "DESSEM - Balanço de Energia Geral",
+   "resumo": "Informação simplificada da programação eletro energética, resultante do modelo DESSEM, da demanda de energia e geração por fontes previstas para um dia de referência em periodicidade semi-horária no subsistema. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um ",
+   "url": "https://dados.ons.org.br/dataset/balanco_dessem_geral",
+   "recursos": 1636,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T19:35:22.003367",
+   "criadoEm": "2024-09-19T14:01:07.016280",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "DESSEM",
+    "Diário",
+    "Geração",
+    "Programação"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 20326178,
+   "tamanhoCsvBytes": 6133880
+  },
+  {
+   "nome": "ear-diario-por-bacia",
+   "titulo": "EAR Diário por Bacia",
+   "resumo": "Dados das grandezas de energia armazenada (EAR) em periodicidade diária por Bacias Hidro Energéticas. A Energia Armazenada (EAR) representa a energia associada ao volume de água disponível nos reservatórios que pode ser convertido em geração na própria usina e em todas as usinas à jusante na cascata. A grandeza de EAR leva em conta nível verificado nos reservatórios na data de referência. A grande",
+   "url": "https://dados.ons.org.br/dataset/ear-diario-por-bacia",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:37.980014",
+   "criadoEm": "2024-05-27T18:02:44.116980",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "EAR",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 17067313,
+   "tamanhoCsvBytes": 8828942
+  },
+  {
+   "nome": "ear-diario-por-ree-reservatorio-equivalente-de-energia",
+   "titulo": "EAR Diário por REE - Reservatório Equivalente de Energia",
+   "resumo": "Dados das grandezas de energia armazenada (EAR) em periodicidade diária por Reservatórios Equivalentes. A Energia Armazenada (EAR) representa a energia associada ao volume de água disponível nos reservatórios que pode ser convertido em geração na própria usina e em todas as usinas à jusante na cascata. A grandeza de EAR leva em conta nível verificado nos reservatórios na data de referência. A gran",
+   "url": "https://dados.ons.org.br/dataset/ear-diario-por-ree-reservatorio-equivalente-de-energia",
+   "recursos": 35,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:33.805809",
+   "criadoEm": "2024-05-27T18:02:45.891251",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "EAR",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 4782343,
+   "tamanhoCsvBytes": 2583982
+  },
+  {
+   "nome": "ear-diario-por-reservatorio",
+   "titulo": "EAR Diário por Reservatório",
+   "resumo": "Dados das grandezas de energia armazenada (EAR) em periodicidade diária por Reservatórios. A Energia Armazenada (EAR) representa a energia associada ao volume de água disponível nos reservatórios que pode ser convertido em geração na própria usina e em todas as usinas à jusante na cascata. A grandeza de EAR leva em conta nível verificado nos reservatórios na data de referência. A grandeza de EAR m",
+   "url": "https://dados.ons.org.br/dataset/ear-diario-por-reservatorio",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:00.896427",
+   "criadoEm": "2024-05-27T18:02:47.128443",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "EAR",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 286323129,
+   "tamanhoCsvBytes": 156550378
+  },
+  {
+   "nome": "ear-diario-por-subsistema",
+   "titulo": "EAR Diário por Subsistema",
+   "resumo": "Dados das grandezas de energia armazenada (EAR) em periodicidade diária por Subsistemas. A Energia Armazenada (EAR) representa a energia associada ao volume de água disponível nos reservatórios que pode ser convertido em geração na própria usina e em todas as usinas à jusante na cascata. A grandeza de EAR leva em conta nível verificado nos reservatórios na data de referência. A grandeza de EAR máx",
+   "url": "https://dados.ons.org.br/dataset/ear-diario-por-subsistema",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:42.838370",
+   "criadoEm": "2024-05-27T18:02:49.341566",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "EAR",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 3885657,
+   "tamanhoCsvBytes": 1758747
+  },
+  {
+   "nome": "ena-diario-por-bacia",
+   "titulo": "ENA Diário por Bacia",
+   "resumo": "Dados das grandezas de energia natural afluente (ENA) dos reservatórios com periodicidade diária por Bacias Hidro Energéticas. A Energia Natural Afluente (ENA) Bruta representa a energia produzível pela usina e é calculada pelo produto das vazões naturais aos reservatórios com as produtividades a 65% dos volumes úteis. A ENA Armazenável considera as vazões naturais descontadas das vazões vertidas ",
+   "url": "https://dados.ons.org.br/dataset/ena-diario-por-bacia",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:51.704410",
+   "criadoEm": "2024-05-27T18:02:51.099912",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "ENA",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 23502265,
+   "tamanhoCsvBytes": 10783070
+  },
+  {
+   "nome": "ena-diario-por-ree-reservatorio-equivalente-de-energia",
+   "titulo": "ENA Diário por REE - Reservatório Equivalente de Energia",
+   "resumo": "Dados das grandezas de energia natural afluente (ENA) dos reservatórios com periodicidade diária por Reservatórios Equivalentes. A Energia Natural Afluente (ENA) Bruta representa a energia produzível pela usina e é calculada pelo produto das vazões naturais aos reservatórios com as produtividades a 65% dos volumes úteis. A ENA Armazenável considera as vazões naturais descontadas das vazões vertida",
+   "url": "https://dados.ons.org.br/dataset/ena-diario-por-ree-reservatorio-equivalente-de-energia",
+   "recursos": 35,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:01:52.575660",
+   "criadoEm": "2024-05-27T18:02:52.750999",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "ENA",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 7072976,
+   "tamanhoCsvBytes": 3270325
+  },
+  {
+   "nome": "ena-diario-por-reservatorio",
+   "titulo": "ENA Diário por Reservatório",
+   "resumo": "Dados das grandezas de energia natural afluente (ENA) com periodicidade diária por Reservatório. A Energia Natural Afluente (ENA) Bruta representa a energia produzível pela usina e é calculada pelo produto das vazões naturais aos reservatórios com as produtividades a 65% dos volumes úteis. A ENA Armazenável considera as vazões naturais descontadas das vazões vertidas nos reservatórios. **Como esse",
+   "url": "https://dados.ons.org.br/dataset/ena-diario-por-reservatorio",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:26.976704",
+   "criadoEm": "2024-05-27T18:02:53.973097",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "ENA",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 308025136,
+   "tamanhoCsvBytes": 161447969
+  },
+  {
+   "nome": "ena-diario-por-subsistema",
+   "titulo": "ENA Diário por Subsistema",
+   "resumo": "Dados das grandezas de energia natural afluente (ENA) dos reservatórios com periodicidade diária por Subsistemas. A Energia Natural Afluente (ENA) Bruta representa a energia produzível pela usina e é calculada pelo produto das vazões naturais aos reservatórios com as produtividades a 65% dos volumes úteis. A ENA Armazenável considera as vazões naturais descontadas das vazões vertidas nos reservató",
+   "url": "https://dados.ons.org.br/dataset/ena-diario-por-subsistema",
+   "recursos": 83,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:05.123002",
+   "criadoEm": "2024-05-27T18:02:55.817270",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Diário",
+    "ENA",
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 5169353,
+   "tamanhoCsvBytes": 2100555
+  },
+  {
+   "nome": "energia-vertida-turbinavel",
+   "titulo": "Energia Vertida Turbinável",
+   "resumo": "Dados de energia vertida turbinável consolidados pelo ONS por reservatório em periodicidade horária. Para este conjunto de dados, a Hora Início (00:00) está representada pelo intervalo entre 00:00 até 00:59:59 -------------------------------------------------------------------------------------------------------- Os dados disponibilizados fazem parte de um processo de consistência recorrente e, po",
+   "url": "https://dados.ons.org.br/dataset/energia-vertida-turbinavel",
+   "recursos": 136,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:00.807566",
+   "criadoEm": "2024-05-27T18:02:57.861776",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Hidrologia",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 3763596355,
+   "tamanhoCsvBytes": 2230217603
+  },
+  {
+   "nome": "equipamento-controle-reativo",
+   "titulo": "Equipamentos de Controle de Reativos",
+   "resumo": "Dados de potência nominal de reatores, capacitores shunt, compensadores síncronos e compensadores estáticos da Rede de Operação, bem como seus Agentes proprietários. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atua",
+   "url": "https://dados.ons.org.br/dataset/equipamento-controle-reativo",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:21.753484",
+   "criadoEm": "2024-05-27T18:02:59.092460",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 616515,
+   "tamanhoCsvBytes": 436003
+  },
+  {
+   "nome": "fator-capacidade-2",
+   "titulo": "Fator de Capacidade de Geração Eólica e Solar",
+   "resumo": "Fator de capacidade de usinas e conjuntos de usinas eólicos e solares despachados pelo ONS em base horária. O fator de capacidade é obtido pela relação entre a geração e a capacidade instalada das usinas. Os dados dos anos de 2009 a 2011 estão disponibilizados em arquivos agrupados pelos respectivos anos, e a partir do ano de 2022 as informações estão agrupados em arquivos por mês/ano. -----------",
+   "url": "https://dados.ons.org.br/dataset/fator-capacidade-2",
+   "recursos": 220,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:29.302075",
+   "criadoEm": "2024-05-27T18:03:00.690938",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 5801995509,
+   "tamanhoCsvBytes": 3763255296
+  },
+  {
+   "nome": "geracao-exportacao-internacional",
+   "titulo": "Geração Comercial Para Exportação Internacional",
+   "resumo": "Dados de Geração e Fluxo de Energia para exportação internacional (Argentina e Uruguai), na modalidade comercial, em base horária, em MWmed. Os dados têm início em outubro de 2022, quando a Portaria MME nº 049/2022 teve início de vigência. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados dispon",
+   "url": "https://dados.ons.org.br/dataset/geracao-exportacao-internacional",
+   "recursos": 16,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:02:39.047716",
+   "criadoEm": "2024-05-27T18:03:03.311362",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 3160811,
+   "tamanhoCsvBytes": 1756946
+  },
+  {
+   "nome": "geracao_itaipu",
+   "titulo": "Geração de Itaipu Binacional - Base horária",
+   "resumo": "Dados de geração da UHE Itaipu Binacional em base horária, obtidos a partir do Sistema de Supervisão e Controle do ONS. Os dados contemplam a geração total da usina, separando os dados do setor de 60 Hz, 50 Hz, atendimento ao Brasil e ao Paraguai",
+   "url": "https://dados.ons.org.br/dataset/geracao_itaipu",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:32.621530",
+   "criadoEm": "2026-02-06T01:08:02.148037",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 35025114,
+   "tamanhoCsvBytes": 15692861
+  },
+  {
+   "nome": "geracao-usina-2",
+   "titulo": "Geração por Usina em Base Horária",
+   "resumo": "Geração verificada de usinas, conjuntos de usinas e grupos de pequenas usinas em base horária. Os Conjuntos são formados por usinas classificadas na modalidade Tipo II-C, conforme Submódulo 7.2 dos Procedimentos de Rede e são estabelecidos em Ajustamentos Operativos, disponíveis no MPO. Os grupos de pequenas usinas são formados por usinas Tipo III, que não possuem relacionamento com o ONS, e os da",
+   "url": "https://dados.ons.org.br/dataset/geracao-usina-2",
+   "recursos": 247,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:08:04.382785",
+   "criadoEm": "2024-05-27T18:03:07.067400",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 17855488764,
+   "tamanhoCsvBytes": 11511933493
+  },
+  {
+   "nome": "geracao-termica-despacho-2",
+   "titulo": "Geração Térmica por Motivo de Despacho",
+   "resumo": "Dados programados e verificados de geração de usinas térmicas despachadas pelo ONS por motivo de despacho em base horária. Os dados dos anos de 2013 a 2021 estão disponibilizados em arquivos agrupados pelos respectivos anos, e a partir do ano de 2022 as informações estão agrupados em arquivos por mês/ano. ---------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/geracao-termica-despacho-2",
+   "recursos": 212,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:07:19.612644",
+   "criadoEm": "2024-05-27T18:03:04.625159",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Histórico da Operação",
+    "Horário"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 6130053302,
+   "tamanhoCsvBytes": 4155677706
+  },
+  {
+   "nome": "deprec_fluv",
+   "titulo": "Grandezas Fluviométricas Depreciadas",
+   "resumo": "Dados de grandezas medidas em estações fluviométricas, consolidados pelo ONS em periodicidade diária. Produto descontinuado em 28/10/2026, mantido para consulta ao histórico publicado até essa data.",
+   "url": "https://dados.ons.org.br/dataset/deprec_fluv",
+   "recursos": 37,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-10-29T13:34:10.885014",
+   "criadoEm": "2026-10-28T21:14:37.706744",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Hidrologia",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 109903242,
+   "tamanhoCsvBytes": 82663627
+  },
+  {
+   "nome": "importacaoenergia-comercial-2",
+   "titulo": "Importação de Energia na Modalidade Comercial por Bloco",
+   "resumo": "Dados de importação de energia na modalidade comercial em base horária por bloco, em MWmed, e o preço correspondente ofertado pelo agente comercializador no PMO. Observação: Este modelo de importação foi estabelecido pela Portaria MME nº 339/2018, com vigência a partir de 01/01/2019. -------------------------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/importacaoenergia-comercial-2",
+   "recursos": 27,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:07.205595",
+   "criadoEm": "2024-05-27T18:03:10.997061",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário",
+    "Intercâmbio"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 224505683,
+   "tamanhoCsvBytes": 143781515
+  },
+  {
+   "nome": "ind_confiarb_ciper",
+   "titulo": "Indicadores de Confiabilidade da Rede Básica: CIPER – Carga Interrompida por Perturbações",
+   "resumo": "Indicador de Carga Interrompida por Perturbações (CIPER), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. O indicador é apresentado nas agregações SIN, Subsistema, Região geográfica e Estado, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disp",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_ciper",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:10.536954",
+   "criadoEm": "2024-05-27T18:03:13.736912",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 1013537,
+   "tamanhoCsvBytes": 674255
+  },
+  {
+   "nome": "ind_confiarb_dreq_freq",
+   "titulo": "Indicadores de Confiabilidade da Rede Básica: DREQ, FREQ",
+   "resumo": "Indicadores de Duração Equivalente de Interrupção de Carga (DREQ), Frequência Equivalente de Interrupção de Carga (FREQ), estabelecidos conforme Submódulo 9.1 dos Procedimentos de Rede. Os indicadores são apresentados nas agregações SIN, Subsistema, Região geográfica e Estado, nas periodicidades mensal e anual. ---------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_dreq_freq",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:18.015751",
+   "criadoEm": "2024-05-27T18:03:14.521221",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 1059596,
+   "tamanhoCsvBytes": 614965
+  },
+  {
+   "nome": "ind_confiarb_energianaosuprida",
+   "titulo": "Indicadores de Confiabilidade da Rede Básica: ENS – Energia Não Suprida",
+   "resumo": "Indicador de Energia Não Suprida (ENS), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. Os indicadores são apresentados nas agregações SIN, Subsistema, Região geográfica e Estado, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_energianaosuprida",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:20.731495",
+   "criadoEm": "2025-06-12T12:24:16.746987",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [],
+   "tamanhoBytes": 856639,
+   "tamanhoCsvBytes": 548412
+  },
+  {
+   "nome": "ind_confiarb_robustez",
+   "titulo": "Indicadores de Confiabilidade da Rede Básica: Robustez – RMAL, RMCS, RRB e RRBCS",
+   "resumo": "Indicadores de Robustez da Malha Sistêmica (RMAL), Robustez da Malha Sistêmica para Contingências Simples (RMCS), Robustez da Rede Básica (RRB), Robustez da Rede Básica para Contingências Simples (RRBCS), estabelecidos conforme Submódulo 9.1 dos Procedimentos de Rede. Os indicadores são apresentados nas agregações SIN, Subsistema, Região geográfica e Estado, nas periodicidades mensal e anual. ----",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_robustez",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:38.219718",
+   "criadoEm": "2024-05-27T18:03:15.193207",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 4967361,
+   "tamanhoCsvBytes": 3171375
+  },
+  {
+   "nome": "ind_confiarb_severidade",
+   "titulo": "Indicadores de Confiabilidade da Rede Básica: SM - Severidade das Perturbações",
+   "resumo": "Indicador de Severidade das Perturbações(SM), estabelecido conforme Submódulo 9.1 dos Procedimentos de Rede. O indicador é apresentado nas agregações SIN, subsistema, região geográfica e estado, nas periodicidades mensal e anual. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados",
+   "url": "https://dados.ons.org.br/dataset/ind_confiarb_severidade",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:31.654268",
+   "criadoEm": "2024-05-27T18:03:15.945206",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 1010974,
+   "tamanhoCsvBytes": 666291
+  },
+  {
+   "nome": "ind_disponibilidade_fgeracao_uge_anual",
+   "titulo": "Indicadores de Desempenho das Funções Geração por Unidade Geradora em Base Anual",
+   "resumo": "Indicadores de desempenho das funções geração por unidade geradora em base anual, conforme estabelecido no Submódulo 9.2 dos Procedimentos de Rede. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atua",
+   "url": "https://dados.ons.org.br/dataset/ind_disponibilidade_fgeracao_uge_anual",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:50.022208",
+   "criadoEm": "2024-05-27T18:03:16.665252",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Anual",
+    "Histórico da Operação",
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 6356153,
+   "tamanhoCsvBytes": 3993011
+  },
+  {
+   "nome": "ind_disponibilidade_fgeracao_uge_mensal",
+   "titulo": "Indicadores de Desempenho das Funções Geração por Unidade Geradora em Base Mensal",
+   "resumo": "Indicadores de desempenho das funções geração por unidade geradora em base mensal, conforme estabelecido no Submódulo 9.2 dos Procedimentos de Rede. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atu",
+   "url": "https://dados.ons.org.br/dataset/ind_disponibilidade_fgeracao_uge_mensal",
+   "recursos": 50,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:52.815623",
+   "criadoEm": "2024-05-27T18:03:17.575736",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 70392253,
+   "tamanhoCsvBytes": 46698728
+  },
+  {
+   "nome": "ind-disponibilidade-geracao-sin",
+   "titulo": "Indicadores de Disponibilidade de Função Geração para o SIN – Base Mensal",
+   "resumo": "Indicadores de Disponibilidade das Funções Geração (DISPF), Indisponibilidade Programada das Funções Geração (INDISPPF) e Indisponibilidade Forçada das Funções Geração (INDISPFF), agregados para o SIN, em base mensal, conforme estabelecido no Submódulo 9.2 dos Procedimentos de Rede. --------------------------------------------------------------------------------------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/ind-disponibilidade-geracao-sin",
+   "recursos": 51,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:49.207619",
+   "criadoEm": "2024-05-27T18:03:12.138068",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 158581,
+   "tamanhoCsvBytes": 7114
+  },
+  {
+   "nome": "ind_disponibilidade_ft_conversor",
+   "titulo": "Indicadores de Disponibilidade de Função Transmissão – Conversores",
+   "resumo": "Indicador de Disponibilidade das Funções Transmissão Conversora (DISPFTConv) agregados por nível de tensão, em base mensal. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publi",
+   "url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_conversor",
+   "recursos": 23,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:58.682784",
+   "criadoEm": "2024-05-27T18:03:18.744277",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 69243,
+   "tamanhoCsvBytes": 7211
+  },
+  {
+   "nome": "ind_disponibilidade_ft_reativo",
+   "titulo": "Indicadores de Disponibilidade de Função Transmissão – Equipamentos de Controle de Reativo",
+   "resumo": "Indicador de Disponibilidade das Funções Transmissão (DISP) agregados por função transmissão e nível de tensão, em base mensal, conforme estabelecido no Submódulo 9.2 dos Procedimentos de Rede. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consi",
+   "url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_reativo",
+   "recursos": 50,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:03:54.866208",
+   "criadoEm": "2024-05-27T18:03:19.768441",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 518879,
+   "tamanhoCsvBytes": 215969
+  },
+  {
+   "nome": "ind_disponibilidade_ft_trlt",
+   "titulo": "Indicadores de Disponibilidade de Função Transmissão – Linhas de Transmissão e Transformadores",
+   "resumo": "Indicadores de Disponibilidade das Funções Transmissão (DISP), Indisponibilidade Programada das Funções Transmissão (INDISPPF) e Indisponibilidade Forçada das Funções Transmissão (INDISPFF), agregados por função transmissão e nível de tensão para transformadores e linha de transmissão, em base mensal, conforme estabelecido no Submódulo 9.2 dos Procedimentos de Rede. -------------------------------",
+   "url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_trlt",
+   "recursos": 50,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:06.705942",
+   "criadoEm": "2024-05-27T18:03:21.184577",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores",
+    "Mensal"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 407109,
+   "tamanhoCsvBytes": 122506
+  },
+  {
+   "nome": "intercambio-internacional",
+   "titulo": "Intercâmbio do SIN com Outros Países",
+   "resumo": "Dados de intercâmbio entre o Sistema Interligado Nacional-SIN e outros países em base horária, em MWmed. As grandezas representam a soma das medidas de fluxo de potência ativa nas conversoras de frequência de fronteira entre os dois países. O intercâmbio com a Argentina pode ser realizado pelas conversoras de Garabi I, Garabi II e Uruguaiana. O intercâmbio com o Uruguai pode ser realizado pelas co",
+   "url": "https://dados.ons.org.br/dataset/intercambio-internacional",
+   "recursos": 60,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:29.384790",
+   "criadoEm": "2024-05-27T18:03:22.698336",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário",
+    "Intercâmbio"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 34871724,
+   "tamanhoCsvBytes": 24146953
+  },
+  {
+   "nome": "intercambio-nacional",
+   "titulo": "Intercâmbios Entre Subsistemas",
+   "resumo": "Dados de intercâmbio entre subsistemas em base horária, em MWmed. As grandezas representam a soma das medidas de fluxo de potência ativa nas linhas de transmissão de fronteira entre os subsistemas. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de c",
+   "url": "https://dados.ons.org.br/dataset/intercambio-nacional",
+   "recursos": 60,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:41.103321",
+   "criadoEm": "2024-05-27T18:03:24.579032",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação",
+    "Horário",
+    "Intercâmbio"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 77409347,
+   "tamanhoCsvBytes": 48650245
+  },
+  {
+   "nome": "interrupcao_carga",
+   "titulo": "Interrupção de Carga",
+   "resumo": "Dados de interrupção de carga relacionados a desligamentos forçados em equipamentos da Rede de Operação do ONS ou de desligamentos envolvendo apenas a Rede de Distribuição, quando maiores que 100 MW por 10 minutos ou mais. Os critérios de apuração dos dados são estabelecidos na RO-AO.BR.03 - Consistência dos Dados de Perturbações, disponível no MPO. Os dados são submetidos para consistência dos ag",
+   "url": "https://dados.ons.org.br/dataset/interrupcao_carga",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:48.494287",
+   "criadoEm": "2025-07-31T17:44:28.273649",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 1537587,
+   "tamanhoCsvBytes": 773193
+  },
+  {
+   "nome": "linha-transmissao",
+   "titulo": "Linhas de Transmissão da Rede de Operação",
+   "resumo": "Dados cadastrais das linhas de transmissão da Rede de Operação (Rede Básica + Rede Complementar) com tensão maior ou igual a 230 kV, contemplando subsistema, estado (Unidade Federativa), Agente proprietário, nível de tensão e comprimento da linha. O universo de linhas contemplado aqui é mais amplo que o apresentado na página de Histórico da Operação do site do ONS, onde são consideradas apenas as ",
+   "url": "https://dados.ons.org.br/dataset/linha-transmissao",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:01.613105",
+   "criadoEm": "2024-05-27T18:03:27.960139",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 1455816,
+   "tamanhoCsvBytes": 767829
+  },
+  {
+   "nome": "modalidade-usina",
+   "titulo": "Modalidade de Operação de Usinas",
+   "resumo": "As modalidades de operação de usinas são divididas em Tipo I, Tipos II-A, II-B e II-C e Tipo III. O processo de classificação de modalidade de operação de usinas é estabelecido pelas diretrizes contidas no Submódulo 7.2 dos Procedimentos de Rede e envolve análises sob responsabilidade do Operador a partir de informações fornecidas pelos agentes de geração. -----------------------------------------",
+   "url": "https://dados.ons.org.br/dataset/modalidade-usina",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:59.364348",
+   "criadoEm": "2024-08-12T17:40:01.966935",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 1385092,
+   "tamanhoCsvBytes": 828185
+  },
+  {
+   "nome": "oferta_respostademanda",
+   "titulo": "Oferta - Resposta à Demanda",
+   "resumo": "Ofertas aprovadas do programa de Resposta da Demanda a partir de novembro de 2023. -------------------------------------------------------------------------------------------------------------------------------- Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atualizados após a sua publicação.",
+   "url": "https://dados.ons.org.br/dataset/oferta_respostademanda",
+   "recursos": 14,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:04:58.194274",
+   "criadoEm": "2026-07-31T10:53:23.182480",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Carga",
+    "Histórico da Operação",
+    "Programação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 220643,
+   "tamanhoCsvBytes": 114713
+  },
+  {
+   "nome": "ofertapreco-importacao",
+   "titulo": "Ofertas de Preço para Importação",
+   "resumo": "Preços declarados semanalmente pelos Agentes comercializadores para oferta de energia da Argentina e Uruguai para o Sistema Interligado Nacional. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de consistência recorrente e, portanto, podem ser atuali",
+   "url": "https://dados.ons.org.br/dataset/ofertapreco-importacao",
+   "recursos": 26,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-09-01T15:05:14.137447",
+   "criadoEm": "2024-05-27T18:03:29.011889",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Intercâmbio",
+    "Semanal"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 482076,
+   "tamanhoCsvBytes": 240425
+  },
+  {
+   "nome": "precipitacao-estacao",
+   "titulo": "Precipitação Diária Observada",
+   "resumo": "**Estes dados não serão mais atualizados pois o ONS passou a utilizar a precipitação por satélite (combinação da chuva observada nos postos + estimativa por satélite) no processo de previsão de vazões.** Informações de precipitação diária observada nas estações meteorológicas e postos pluviométricos. Estes dados (2020-2021) que estão no Portal de Dados Abertos (DADOS DE PRECIPITAÇÃO DIÁRIA OBSERVA",
+   "url": "https://dados.ons.org.br/dataset/precipitacao-estacao",
+   "recursos": 4,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PDF"
+   ],
+   "atualizadoEm": "2026-04-28T13:46:55.366041",
+   "criadoEm": "2024-05-27T18:03:30.092287",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Sem atualização"
+   ],
+   "grupos": [
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 0,
+   "tamanhoCsvBytes": 0
+  },
+  {
+   "nome": "res_cotaareavolume",
+   "titulo": "Reservatório - tabelas cota x area x volume",
+   "resumo": "Tabelas oficiais de CAV (cota x area x volume) dos reservatórios em uso pelo ONS interpolada de 1 em 1 milimetro.",
+   "url": "https://dados.ons.org.br/dataset/res_cotaareavolume",
+   "recursos": 4,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF"
+   ],
+   "atualizadoEm": "2026-11-13T15:03:13.141849",
+   "criadoEm": "2026-10-13T10:17:22.599488",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [],
+   "grupos": [
+    "Operação do Sistema"
+   ],
+   "tamanhoBytes": 4106250,
+   "tamanhoCsvBytes": 3314780
+  },
+  {
+   "nome": "reservatorio",
+   "titulo": "Reservatórios",
+   "resumo": "Dados cadastrais dos reservatórios. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamente.",
+   "url": "https://dados.ons.org.br/dataset/reservatorio",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:05:22.709016",
+   "criadoEm": "2024-05-27T18:03:30.833944",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral",
+    "Hidrologia"
+   ],
+   "grupos": [
+    "Avaliação da Operação",
+    "Planejamento da Operação",
+    "Programação da Operação"
+   ],
+   "tamanhoBytes": 105197,
+   "tamanhoCsvBytes": 35738
+  },
+  {
+   "nome": "subestacao",
+   "titulo": "Subestação da Rede de Operação",
+   "resumo": "Dados cadastrais das subestações em operação existentes na Rede de Operação (Rede Básica + Rede Complementar) com tensão base maior ou igual a 69 kV. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamen",
+   "url": "https://dados.ons.org.br/dataset/subestacao",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:14.618014",
+   "criadoEm": "2025-06-11T23:00:26.472305",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Dado Cadastral"
+   ],
+   "grupos": [
+    "Integração de Instalações"
+   ],
+   "tamanhoBytes": 347835,
+   "tamanhoCsvBytes": 161670
+  },
+  {
+   "nome": "taxa_teif_teip",
+   "titulo": "Taxas TEIFa e TEIP",
+   "resumo": "Taxas TEIFa(Taxa Equivalente de Indisponibilidade Forçada) e TEIP(Taxa de Indisponibilidade Programada) das usinas despachadas centralizadamente pelo ONS (Tipo I e Tipo II-A) dos últimos 60 meses. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fazem parte de um processo de co",
+   "url": "https://dados.ons.org.br/dataset/taxa_teif_teip",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:25.384208",
+   "criadoEm": "2024-05-27T18:03:37.797759",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Histórico da Operação",
+    "Indicadores",
+    "Manutenção de Equipamento",
+    "Mensal",
+    "Receita"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 5202383,
+   "tamanhoCsvBytes": 3593976
+  },
+  {
+   "nome": "taxa_teif_teip_parametro",
+   "titulo": "Taxas TEIFa E TEIP - Parâmetros",
+   "resumo": "As informações dos parâmetros representam as horas de operação para efeito de cálculo das taxas equivalentes de indisponibilidade forçada apurada e programada.",
+   "url": "https://dados.ons.org.br/dataset/taxa_teif_teip_parametro",
+   "recursos": 23,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:53.829651",
+   "criadoEm": "2025-12-10T14:18:12.714287",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Indicadores"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 111394385,
+   "tamanhoCsvBytes": 89717158
+  },
+  {
+   "nome": "taxa_teif_teip_oper",
+   "titulo": "Taxas TEIFa Oper e TEIP Oper",
+   "resumo": "Taxas TEIFa_Oper(Taxa Equivalente de Indisponibilidade Forçada Operativa) e TEIP_Oper(Taxa de Indisponibilidade Programada Operativa) das usinas despachadas centralizadamente pelo ONS (Tipo I e Tipo II-A) dos últimos 60 meses. ------------------------------------------------------------------------------------------------------------------------------------------------ Os dados disponibilizados fa",
+   "url": "https://dados.ons.org.br/dataset/taxa_teif_teip_oper",
+   "recursos": 5,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:29.852744",
+   "criadoEm": "2025-11-07T15:46:25.964611",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Geração",
+    "Histórico da Operação",
+    "Indicadores",
+    "Manutenção de Equipamento",
+    "Mensal",
+    "Receita"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 5375276,
+   "tamanhoCsvBytes": 3743795
+  },
+  {
+   "nome": "uge_opera_csi",
+   "titulo": "Unidade Geradora em Operação como Compensador Síncrono",
+   "resumo": "Unidade geradora em operação como compensador síncrono. ------------------------------------------------------------------------------------------------------------------------------------------------ Estes dados não possuem informações históricas. Os dados são lidos de suas origens e atualizado diariamente.",
+   "url": "https://dados.ons.org.br/dataset/uge_opera_csi",
+   "recursos": 20,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-18T22:06:40.948013",
+   "criadoEm": "2025-09-20T18:15:04.850511",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Atribuição",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Avaliação da Operação"
+   ],
+   "tamanhoBytes": 41668561,
+   "tamanhoCsvBytes": 29613953
+  },
+  {
+   "nome": "usi_servicoancilar_sandbox",
+   "titulo": "Usinas prestando serviço ancilar de reativo conforme PRIMEIRO SANDBOX",
+   "resumo": "**Estes dados serão mais atualizados sob demanda, sem periodicidade definida** Usina em operação prestando serviço ancilar de compensação de reativo, conforme critérios do PRIMEIRO SANDBOX regulatório de suporte de reativos para controle de tensão ------------------------------------------------------------------------------------------------------------------------------------------------ Os dado",
+   "url": "https://dados.ons.org.br/dataset/usi_servicoancilar_sandbox",
+   "recursos": 38,
+   "formatos": [
+    "CSV",
+    "JSON",
+    "PARQUET",
+    "PDF",
+    "XLSX"
+   ],
+   "atualizadoEm": "2026-11-09T14:07:13.024317",
+   "criadoEm": "2026-01-26T23:44:11.317129",
+   "licenca": {
+    "id": "cc-by",
+    "titulo": "Creative Commons Attribution",
+    "url": "http://www.opendefinition.org/licenses/cc-by"
+   },
+   "tags": [
+    "Histórico da Operação"
+   ],
+   "grupos": [
+    "Operação do Sistema"
+   ],
+   "tamanhoBytes": 360854,
+   "tamanhoCsvBytes": 237066
+  }
+ ]
+}
