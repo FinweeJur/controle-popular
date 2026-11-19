@@ -408,7 +408,8 @@ Consulta oficial: `https://portaldatransparencia.semas.pa.gov.br/#/visao-publica
 ## SEMACE-CE — licenciamento e fiscalização ambiental do Ceará (API aberta, sem CAPTCHA)
 
 Medido em 18/11/2026. Coletor: `scripts/coletar-semace-ce.py` →
-`apps/web/data/semace-ce.json`. Sondagem completa em
+`apps/web/data/semace-ce.json` (resumo, 188 KB) + `scripts/.cache/semace-ce/completo.json`
+(acervo, 54 MB, fora do git). Sondagem completa em
 `docs/historico/descobertas/ambiental-PE-CE-licenciamento.md`.
 
 **A SEMACE publica o acervo em API REST, não em página.** O portal
@@ -417,21 +418,66 @@ está em `SemaceMobileWS/webService/` (caminho revelado pelo `bundle.js`):
 
 | rota | método | acervo medido |
 |---|---|---:|
-| `consultaProcesso/processos` | POST | **205.820 processos** de licenciamento |
-| `fiscalizacao/findProcessosFiscalizacao` | POST | **17.974 autos** de fiscalização |
+| `consultaProcesso/processos` | POST | **205.820 processos** de licenciamento (e o declarado bate) |
+| `fiscalizacao/findProcessosFiscalizacao` | POST | declara **17.974** e serve **22.026**; o JSON publica **21.955** |
 | `consultaProcesso/infofilters` | GET | 184 municípios, 402 atividades, 125 tipos de licença |
 | `consultaProcesso/downloadListArquivo` | POST | XLS de 16 colunas (export do mesmo acervo) |
+
+Rodada de 18/11/2026: **205.820 processos** em **724 valores distintos** de
+`cidade` e **21.955 autos** de fiscalização em 218 municípios, com **R$ 283,5
+milhões** somados em 14.256 autos com valor lançado.
+
+📦 **Duas saídas, e nenhuma finge ser completa.** O acervo linha a linha
+(~54 MB) fica em `scripts/.cache/semace-ce/completo.json`, fora do git. O
+arquivo versionado é **resumo de 188 KB**: cabeçalho com os totais, as
+contagens (`resumo_por_situacao`, `resumo_por_ano`, `resumo_por_municipio`,
+`resumo_por_tipo`, `resumo_por_julgamento`, valor total autuado) e uma
+**amostra rotulada de 300 linhas por bloco** ("primeiras 300 de 205.820"),
+com `linhas_completas_em` dizendo onde está o resto. `--resumo` remonta esse
+arquivo a partir do cache **sem rede**.
 
 Sem login, sem CAPTCHA e sem `robots.txt` (`servicos.semace.ce.gov.br/robots.txt`
 → 404; o portal `www.semace.ce.gov.br` responde 404 e hoje nem fecha o TLS).
 Não achei termo de uso que proíba acesso automatizado; ainda assim o coletor
 usa UA honesto, 2 s entre requisições e lotes de 1.000.
 
-⚠️ **Duas armadilhas de protocolo.** `Content-Type` tem de ser `text/plain`
-(com `application/json` o servidor devolve **415**), e o `filter` não aceita
-objeto vazio nem parcial: `{"filter":{}}` devolve **500**. Vai o objeto de 19
-chaves que o app monta (`digital: "ambos"`, `unidadesConservacoes: ""`, etc.).
-A fiscalização tem o seu, com 9 chaves.
+⚠️ **Três armadilhas de protocolo, todas medidas.** `Content-Type` tem de ser
+`text/plain` (com `application/json` o servidor devolve **415**); o `filter` não
+aceita objeto vazio nem parcial (`{"filter":{}}` → **500**), então vai o objeto
+de 19 chaves que o app monta (`digital: "ambos"`, `unidadesConservacoes: ""`),
+e na fiscalização `cidadeId` tem de ser **null** — lista vazia dá 500.
+
+⚠️ **A paginação engana e é o erro caro.** `pagina` **não** é o índice do lote:
+o servidor multiplica por **10** (o limite padrão do app), não pelo `limit`
+enviado. Com `limit: 1000`, `pagina: 1` devolveu 990 dos 1.000 registros de
+`pagina: 0`; só `pagina: 100` começa no registro 1.000. Paginar de 1 em 1
+baixa 206 mil linhas e entrega **3.050 registros distintos** — a primeira
+rodada deste coletor fez exatamente isso e o dedupe por `processoId` pegou.
+O coletor anda `pagina = lote × 100`; a ordenação do servidor não é 100%
+estável, então o JSON publica `divergencia_fonte` e `duplicados_removidos`
+em vez de fingir que bateu.
+
+⚠️ **`totalRegistro` é piso, não tamanho do acervo.** A fiscalização declara
+17.974 e continua devolvendo autos em offset 21.000 (a última página, com 26
+registros, fica em 22.026); o licenciamento declara 205.820 e ainda tem 6
+registros no offset 205.820. A varredura vai **até a primeira página vazia**,
+com teto de segurança. Confiar no declarado teria perdido 4.052 autos.
+
+⚠️ **`processoId` não identifica auto.** Vem vazio em **1.333 dos 17.974** e se
+repete quando um processo tem mais de uma autuação: deduplicar por ele
+colapsou 3.690 linhas na primeira rodada. A chave do auto é
+`numeroDocumento`.
+
+⚠️ **`municipio` não é o local do empreendimento.** O campo `cidade` é o
+endereço do interessado/autuado — por isso "S/N" aparece 19.733 vezes e "São
+Paulo" 4.718. Os 724 valores distintos de `cidade` não são os 184 municípios do
+CE. Publicar ranking municipal sem dizer isso seria mentir.
+
+⚠️ **`statusJulgamento` é código, não texto.** Vem de 0 a 31 e o significado
+está no switch `statusJulgamento` do `bundle.js` — que o coletor copiou para
+`STATUS_JULGAMENTO`. Sem isso o leitor veria "16" no lugar de "Período de
+Recurso". Na rodada: 15.217 autos em "Aguardando Envio do Auto de Infração",
+2.740 em "Período de Recurso" e 1.052 com "Decisão de 1ª Instância Concluída".
 
 ⚠️ **O XLS não é o caminho.** `downloadListArquivo` aceita só `{filter, limit}`
 e o app manda `limit: totalRegistro` — o acervo inteiro numa requisição só, que
@@ -440,13 +486,13 @@ rota JSON gêmea aceita `pagina` (0-based) e traz mais campos. `fiscalizacao/dow
 está 500/504 desde a sondagem.
 
 ⚠️ **A fonte cai inteira, e o coletor sabe disso.** Em 18/11/2026, das 16h40 às
-17h, TODA chamada ao `SemaceMobileWS` devolveu `504 Gateway Time-out` em 30 s —
-inclusive `infofilters`, que é lookup estático — enquanto o HTML do portal
-seguia em 200. Não é payload: é backend. Por isso o checkpoint é por lote e há
-disjuntor: **3 falhas seguidas param a rota naquela rodada** (insistir nos 200
-lotes restantes seria 1h40 martelando servidor quebrado) e os lotes que faltam
-ficam registrados. Re-rodar retoma de onde parou; lote em cache nunca é
-rebaixado.
+21h15, TODA chamada ao `SemaceMobileWS` devolveu `504 Gateway Time-out` em 30 s
+— inclusive `infofilters`, que é lookup estático — enquanto o HTML do portal
+seguia em 200. Não é payload: é backend (o próprio app no navegador tomou 504).
+Por isso o checkpoint é por lote e há disjuntor: **3 falhas seguidas param a
+rota naquela rodada** (insistir nos 200 lotes restantes seria 1h40 martelando
+servidor quebrado) e os lotes que faltam ficam registrados. Re-rodar retoma de
+onde parou; lote em cache nunca é rebaixado.
 
 ⚠️ **Filtro por município não funciona** (`cidadeId: [1122]` → 500;
 `cidade: "Abaiara"` → 0 registro). O recorte municipal é feito do nosso lado,
@@ -455,9 +501,13 @@ pelo campo `cidade`; o de-para com código IBGE está em `infofilters`.
 **Dado pessoal.** As duas rotas devolvem `cpfCnpj`, `interessado` (licenciamento)
 e `cliente` (fiscalização) em texto claro. O coletor não grava CPF: run de 11
 dígitos vira `null` + `doc_redigido: 1`, só CNPJ de 14 dígitos é mantido, e os
-campos de nome de pessoa física **nem entram na linha**. Varredor
-`scripts/checar-dado-pessoal-em-dado.py --extra apps/web/data/semace-ce.json`
-roda limpo.
+campos de nome de pessoa física **nem entram na linha**. Rodada de 18/11/2026:
+**7.756 linhas redigidas** nos autos, 14.177 CNPJs preservados, zero redação no
+licenciamento. O varredor pegou 2 números de auto que são 11 dígitos (ano +
+sequencial) e passam no mod-11 — esses também saem como `null`, porque a régua
+do repositório não distingue CPF deles. Antes de publicar, o JSON passa por
+`scripts/checar-dado-pessoal-em-dado.py --extra apps/web/data/semace-ce.json` —
+`apps/web/data` já está em `DIRETORIOS_DADO`, então o pré-push também varre.
 
 **Ressalva editorial:** processo em análise ou com licença emitida **não** é
 licença em vigor; auto de fiscalização **não** é condenação — cabe defesa e o

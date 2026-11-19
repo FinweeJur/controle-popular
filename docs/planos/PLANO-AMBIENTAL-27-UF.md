@@ -202,6 +202,25 @@ EIA-RIMA por UF. A segunda depende da Onda 1.2 para o SNISB.
 
 ## Origem / Histórico
 
+- **18/11/2026 — produção com o catálogo nacional, e três páginas novas.** A
+  `0092` foi aplicada no Heroku (5.571 municípios, 27 UF, 6 FKs) e o SNISB foi
+  rodado nas 27 UF **contra produção**: 28.167 barragens, 3.563 municípios.
+  Como o site publicado ainda consulta `ref_municipios_mg`, a `0093` criou essa
+  visão como ponte — apagar quando esta branch estiver publicada. Saíram
+  `/ambiental/para`, `/ambiental/mineracao` e `/ambiental/fundiario`, com JSON
+  lido por `readFileSync` (não `import`) por causa do teto de 3 MiB do Worker.
+- **18/11/2026 — quatro fontes nacionais novas.** CFEM por município (R$ 48,26
+  bi em 4.026 municípios), rodovias do DNIT (8.655 trechos; o WFS é histórico e
+  inflava para 343.892), terras indígenas da FUNAI (667) e assentamentos do
+  INCRA (9.964 — o PA tem 1.196, não os 494 da sondagem, que recortava por
+  prefixo de código). Ceará entrou pelo caminho aberto: 205.820 processos e
+  21.955 autos na API da SEMACE. Pernambuco ficou de fora: o `robots.txt` da
+  CPRH proíbe o `/silian`, onde o dado vive.
+- **18/11/2026 — o SIMLAM-PA fechou.** O acesso público passou a exigir login e
+  as páginas de detalhe dão 404. A rodada parou em 1.393 de 11.598 páginas e o
+  que veio (13.778 empreendimentos em 300 grafias de município) foi publicado
+  como **parcial**, com a tarefa agendada retomando se o portal reabrir.
+
 - **17/11/2026 — plano criado.** Pedido do dono: resgatar as pendências
   ambientais e levar EIA/RIMA, licenciamento, acordos e barragens para além de
   MG. Onda 1.1 executada no mesmo dia (SIGBM nacional) e RJ sondado ao vivo.
