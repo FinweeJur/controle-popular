@@ -260,6 +260,8 @@ Uma linha por item. Tudo `[x]` antes do commit.
 | [ ] | 10. `next/link` | nenhum `<a href>` cru para página interna |
 | [ ] | 11. Acessibilidade | `aria-label`, foco visível, AA 4,5:1, alvo ≥ 24 px |
 | [ ] | 12. Verificação em camadas | `tsc`, `eslint` do diff, `vitest` do escopo, validador de docs |
+| [ ] | 13. Leitura leiga (regra 5.22) | “Em uma frase”, “O que você vai ver”, glossário `<details>`, unidade e território em cada número, % com denominador |
+| [ ] | 14. Contador animado | cartões de topo com `CartoesResumo`/`ContadorAnimado`; valor final no HTML e parado em `prefers-reduced-motion` |
 
 ## Onde mora cada peça
 
