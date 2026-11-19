@@ -2,7 +2,7 @@
 
 > **Tipo:** RELATÓRIO
 > **Domínio:** operação (monitoramento do portal)
-> **Última medição:** 2026-11-18
+> **Última medição:** 2026-11-19
 > **Leitura estimada:** curta (até 5 min)
 > **Relacionados:** [AGENTS.md](/AGENTS.md), [ESTADO.md](ESTADO.md)
 > **Palavras-chave:** auditoria, monitoramento, rotas, dados versionados, seo, componentes, portal
@@ -19,7 +19,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 
 <!-- ULTIMA RODADA -->
 
-| 18/11/2026 15:29 BRT |
+| 19/11/2026 15:44 BRT |
 
 ## Rotas
 | Rota | Status | HTTP |
@@ -49,6 +49,8 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/acervo-embeddings.json | OK |
 | data/acordos-reparacao-mg.json | OK |
 | data/ana-outorgas.json | OK |
+| data/aneel-cfurh-pa.json | OK |
+| data/anm-cfem.json | OK |
 | data/apm-listas-populacao.json | OK |
 | data/apm-sesmarias-indice.json | OK |
 | data/apm-terras-publicas-indice.json | OK |
@@ -90,6 +92,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/decisoes-cge-lai.json | OK |
 | data/destinacoes-uniao-mg.json | OK |
 | data/diario-atos-municipios.json | OK |
+| data/dnit-rodovias.json | OK |
 | data/documentos-espelho-r2.json | OK |
 | data/documentos-rag-embeddings.json | OK |
 | data/documentos-rag-fontes.json | OK |
@@ -110,6 +113,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/expansao-mg.json | OK |
 | data/fepam-rs-licencas.json | OK |
 | data/fontes-27-estados.json | OK |
+| data/funai-terras-indigenas.json | OK |
 | data/iat-pr-licencas.json | OK |
 | data/ibama-autos-infracao.json | OK |
 | data/ibama-licencas.json | OK |
@@ -119,7 +123,9 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/igam-outorgas.json | OK |
 | data/ima-sc-licencas.json | OK |
 | data/imasul-ms-licencas.json | OK |
+| data/incra-assentamentos.json | OK |
 | data/indicadores-regionais.json | OK |
+| data/inea-rj-estudos.json | OK |
 | data/inema-ba-licencas.json | OK |
 | data/instituicoes-todas-esferas.json | OK |
 | data/inteiro-teor.json | OK |
@@ -140,6 +146,7 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/mpf-grandes-casos.json | OK |
 | data/mpmg-coerdoce.json | OK |
 | data/mpmg-nucard.json | OK |
+| data/mppa-pa-tacs.json | OK |
 | data/municipios-ac.compact.json | OK |
 | data/municipios-ac.json | OK |
 | data/municipios-al.compact.json | OK |
@@ -227,8 +234,11 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | data/sedam-ro-licencas.json | OK |
 | data/sema-ma-licencas.json | OK |
 | data/sema-mt-licencas.json | OK |
+| data/semace-ce.json | OK |
 | data/semad-go-licencas.json | OK |
 | data/semar-pi-licencas.json | OK |
+| data/semas-pa-empreendimentos.json | OK |
+| data/semas-pa-estudos.json | OK |
 | data/semas-pa-licencas.json | OK |
 | data/series-economicas-bcb.json | OK |
 | data/sgml-cotacoes.json | OK |
@@ -264,12 +274,13 @@ Fase 7 - Monitoramento. Rotina: scripts/monitoramento/verificar-geral.py.
 | title+description | /judiciario | OK | |
 | title+description | /congresso | OK | |
 
-Resumo: 16 rotas; 203 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
+Resumo: 16 rotas; 213 dados; SEO e componentes conferidos. Criticos: 0. Avisos: 0.
 
 Regra: CRITICO bloqueia merge (rotas fora do ar, JSON corrompido, robots/sitemap quebrado, pagina sem title). AVISO nao bloqueia.
 
 ## Historico de resumos
 
+- 19/11/2026 15:44 BRT - 0 criticos; 0 avisos.
 - 18/11/2026 15:29 BRT - 0 criticos; 0 avisos.
 - 17/11/2026 15:52 BRT - 0 criticos; 0 avisos.
 - 16/11/2026 16:56 BRT - 0 criticos; 0 avisos.
