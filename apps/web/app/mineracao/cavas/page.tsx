@@ -11,6 +11,7 @@ import {
 import TabelaCavas from "./TabelaCavas";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/mineracao/cavas` — Fase 5 do plano de cavas: a série anual da mineração
@@ -58,13 +59,13 @@ const RESUMO_ESTADOS = estadosDados.resumo as Record<string, number>;
  */
 const ULTIMO_ANO = serie.find((l) => l.ano === C.ultimoAno);
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/mineracao/cavas", {
   title: "Onde a mineração cresceu em Minas Gerais - Controle Popular",
   description:
     `${serieDados.cobertura.poligonos.toLocaleString("pt-BR")} polígonos de mineração em Minas Gerais, ` +
     `${Math.round(serieDados.cobertura.area_total).toLocaleString("pt-BR")} hectares, do primeiro ano ` +
     `da série (${C.primeiroAno}) ao último (${C.ultimoAno}) — com a resolução da imagem escrita em cada ficha.`,
-};
+});
 
 const fmt = (n: number, casas = 0) =>
   n.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas });

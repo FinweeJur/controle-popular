@@ -5,6 +5,7 @@
  * Papel no portal:
  * Intercepta comandos diretos e termos de alta frequência antes de acionar o modelo de IA,
  * garantindo respostas instantâneas, determinísticas e auditáveis para:
+ * 0. Contagem no acervo de jurisprudência ("quantos casos de dano moral no Rio Doce?");
  * 1. Laboratório de Dados / PowerBI / Cruzamento de indicadores e gráficos;
  * 2. Cidades estratégicas (Betim, BH, Diamantina, Araçuaí, Itinga, SP, 199 Cidades);
  * 3. Grandes empresas e mineradoras (Vale, Sigma Lithium, CSN, CEMIG, COPASA, Gerdau, Samarco);
@@ -56,6 +57,7 @@ import { degrau65Internacional } from "./escada-internacional";
 import { degrau35Justica } from "./escada-justica";
 import { degrau6Noticias } from "./escada-noticias";
 import { degrau15Tabelas } from "./escada-tabelas";
+import { responderJurisprudencia } from "./jurisprudencia-escada";
 
 // Os tipos da escada vivem em `escada-base.ts` para que os degraus novos os
 // importem sem depender deste arquivo (isso fecharia um ciclo de import).
@@ -83,6 +85,7 @@ function avaliarEscadaBruta(
   const normalizada = corrigirDigitacaoFrase(bruta);
 
   return (
+    degrau0Jurisprudencia(normalizada) ??
     degrau1Laboratorio(normalizada) ??
     degrau15Tabelas(normalizada) ??
     degrau2Cidades(normalizada) ??
@@ -95,6 +98,47 @@ function avaliarEscadaBruta(
     degrau65Internacional(normalizada) ??
     degrau7Paginas(prompt, normalizada)
   );
+}
+
+/**
+ * Degrau 0 — Contagem no acervo de jurisprudência.
+ *
+ * Fica ANTES de todos porque a pergunta de número não é navegação: "quantos
+ * casos de dano moral no Rio Doce?" não tem destino de página, tem medição.
+ * Sem este degrau ela caía no "não reconheci um destino" da `/assistente` e no
+ * "nenhum documento com esse termo" da busca de documentos — dois silêncios
+ * para um dado que o portal tem.
+ *
+ * Quem decide se a pergunta é de contagem é `interpretarPerguntaJurisprudencial`
+ * (sinal de contagem E desastre nomeado); qualquer outra coisa devolve `null`
+ * e a escada segue igual. O texto e o número vêm de
+ * `responderJurisprudencia`, sobre a tabela compacta derivada do acervo — este
+ * degrau não escreve número.
+ *
+ * @param normalizada Prompt sem acento, minúsculo, já corrigido ortográficamente.
+ * @returns Cartão de contagem, ou `null` para o degrau seguinte.
+ */
+function degrau0Jurisprudencia(normalizada: string): ResultadoEscada | null {
+  const resposta = responderJurisprudencia(normalizada);
+  if (!resposta) return null;
+
+  const atalhos: AtalhoAcao[] = [
+    { rotulo: "Ver a lista filtrada", href: resposta.link, principal: true },
+  ];
+  if (resposta.linkPainel !== resposta.link) {
+    atalhos.push({ rotulo: "Abrir o painel de jurisprudência", href: resposta.linkPainel });
+  }
+
+  return {
+    tipo: "ferramenta",
+    titulo: `Jurisprudência: ${resposta.frenteNome}`,
+    subtitulo: `${resposta.total.toLocaleString("pt-BR")} ${
+      resposta.total === 1 ? "caso no acervo" : "casos no acervo"
+    }`,
+    texto: resposta.texto,
+    categoria: "Acervo de jurisprudência",
+    atalhos,
+  };
 }
 
 /**

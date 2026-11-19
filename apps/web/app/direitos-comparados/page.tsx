@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BarChart3, GraduationCap } from "lucide-react";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Principal hub do módulo de Direitos Comparados.
@@ -17,10 +18,10 @@ import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
  * Integração: Eixo 1 - Direitos em Movimento.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-comparados", {
   title: "Direitos Comparados | Controle Popular",
   description: "Compare indicadores de direitos fundamentais entre estados e acesse o índice de educação, pesquisa e extensão das universidades.",
-};
+});
 
 export default function PaginaDireitosComparados() {
   return (

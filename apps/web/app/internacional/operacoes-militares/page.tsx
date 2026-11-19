@@ -37,12 +37,13 @@ import {
   DollarSign,
 } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional/operacoes-militares", {
   title: "Operações Militares, Golpes de Estado, PMCs e Contratos de Defesa | Controle Popular",
   description:
     "Acervo cívico unificado de intervenções armadas, deposições de regimes, mercenários (Blackwater, Wagner) e mega-contratos bélicos de potências globais com geolocalização e fontes oficiais.",
-};
+});
 
 const PAGINAS_RELACIONADAS: ItemPaginaRelacionada[] = [
   {

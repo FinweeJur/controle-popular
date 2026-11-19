@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { navegarInterno } from "@/lib/navegacao/navegar";
 import {
   DESTINOS_SEM_ASSISTENTE,
   TEXTO_SEM_ASSISTENTE,
@@ -117,7 +118,7 @@ export default function BuscaUniversal({
       chave: `s:${s.href}`,
       rotulo: s.titulo,
       acao: () => {
-        window.location.href = s.href;
+        navegarInterno(s.href);
       },
     })),
     ...perguntas.map((p) => ({

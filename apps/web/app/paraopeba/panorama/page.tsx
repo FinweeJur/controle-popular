@@ -24,7 +24,7 @@ import { MUNICIPIOS_EXECUCAO_FGV } from "@/lib/paraopeba/execucao-fgv-dados";
 import { RESUMO_AUXILIO_PARAOPEBA } from "@/lib/paraopeba/auxilio";
 import { COBERTURA_CLIPPING, PERIODO_CLIPPING } from "@/lib/paraopeba/clipping";
 import { COBERTURA_BIBLIOTECA_DESASTRES } from "@/lib/ambiental/desastres-cobertura";
-import jurisprudenciaBruta from "@/data/jurisprudencia-casos.json";
+import { ACERVO_JURISPRUDENCIA as jurisprudenciaBruta } from "@/lib/jurisprudencia-acervo";
 import noticiasBrutas from "@/data/noticias-desastres.json";
 import mabBruto from "@/data/mab-publicacoes.json";
 

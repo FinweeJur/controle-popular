@@ -3,6 +3,7 @@ import Link from "next/link";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { obterRenunciaFiscal } from "@/lib/server-only/dados-renuncia-fiscal";
 import TabelaRenunciaFiscal from "./TabelaRenunciaFiscal";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/estado-e-economia/renuncia-fiscal` — quanto o Governo Federal deixa de
@@ -21,13 +22,13 @@ const brl = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 const pct = (n: number | null) => (n == null ? "—" : (n * 100).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia/renuncia-fiscal", {
   title: "Renúncia Fiscal (Gastos Tributários) — Controle Popular",
   description:
     `Quanto o Governo Federal deixa de arrecadar por gasto tributário: ${brl(acervo.total_renuncia)} no ano-base ` +
     `${acervo.ano_base} (${pct(acervo.renuncia_sobre_arrecadacao)} da arrecadação), por função orçamentária e região. ` +
     `Fonte: Receita Federal (dados abertos).`,
-};
+});
 
 function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?: string }) {
   return (

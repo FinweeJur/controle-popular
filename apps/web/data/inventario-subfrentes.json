@@ -1901,7 +1901,7 @@
    "fontes": [
     "editais-consolidado.json"
    ],
-   "registros": 50,
+   "registros": 39,
    "classe": "tem-dado"
   },
   {
@@ -2801,7 +2801,7 @@
    "fontes": [
     "noticias-portal.json"
    ],
-   "registros": 204,
+   "registros": 76,
    "classe": "tem-dado"
   },
   {

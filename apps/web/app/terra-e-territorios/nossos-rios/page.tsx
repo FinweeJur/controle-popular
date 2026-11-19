@@ -8,12 +8,13 @@ import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
 
 import { DADOS_RIOS } from '@/lib/ambiental/nossos-rios-dados';
 import AvisoReferenciaTerritorio from '../AvisoReferencia';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/terra-e-territorios/nossos-rios", {
   title: 'Nossos Rios e Bacias — Eixo Terra e Territórios | Controle Popular',
   description:
     'Monitoramento hidrológico, qualidade das águas, bacias atingidas (Rio Doce, Paraopeba), saneamento básico e reparação integral.',
-};
+});
 
 /**
  * Subfrente Nossos Rios — observatório das calhas com catálogo próprio.

@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 import { EIXOS, portaDoEixo } from "@/lib/navegacao/mapa";
-import { arteDoEixo } from "@/lib/navegacao/arte-eixos";
+import { arteDoEixo, arteDoHeroEixo } from "@/lib/navegacao/arte-eixos";
 
 /**
  * @file HeroEixos.tsx
@@ -22,6 +22,12 @@ import { arteDoEixo } from "@/lib/navegacao/arte-eixos";
  * fauna) e de `public/capas/`, pela fonte única
  * `lib/navegacao/arte-eixos.ts`. Cada eixo tem uma arte diferente; eixo sem
  * arte própria herda a cachoeira do Cerrado, nunca fica em branco.
+ *
+ * CARREGAMENTO (18/11/2026): o cartão usa a miniatura de 720 px (~85 KB) e
+ * carrega de imediato, com prioridade baixa. O `loading="lazy"` no arquivo
+ * original deixava os eixos 5, 6, 8 e 9 em branco até a rolagem — e a captura
+ * de tela do dono pegou exatamente esse instante. Prioridade baixa evita
+ * disputar banda com o texto da primeira dobra.
  */
 
 export default function HeroEixos() {
@@ -61,11 +67,13 @@ export default function HeroEixos() {
                     deploy e o ganho seria pequeno. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={arte.src}
+                  src={arteDoHeroEixo(arte)}
                   alt={arte.alt}
-                  loading="lazy"
-                  width={1024}
-                  height={600}
+                  width={720}
+                  height={402}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="low"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />

@@ -43,12 +43,13 @@ import {
   Mountain,
 } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/barragens-globais", {
   title: "Grandes Barragens Mundiais (Água, Energia, Mineração) | Controle Popular",
   description:
     "Acervo cívico global de barragens de rejeitos (Fundão, Feijão, Mount Polley), megahidrelétricas (Três Gargantas, Itaipu, Belo Monte) e reservatórios de água com dados oficiais do ICOLD, Global Tailings Portal, USACE NID e ANM/SIGBM.",
-};
+});
 
 export default function PaginaBarragensGlobais() {
   const barragens = obterBarragensGlobais();

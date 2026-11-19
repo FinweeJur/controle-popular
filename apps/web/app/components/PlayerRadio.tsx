@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import {
+  ESTACAO_PADRAO_RADIO,
   ESTACOES_ORDENADAS,
   estacaoPorId,
   ORDEM_TIPOS,
@@ -23,6 +24,7 @@ import {
   EVENTO_TOCAR,
   type EstadoRadio,
 } from "@/lib/radio/eventos";
+import { useRadioDoSistema } from "@/lib/radio/useRadioDoSistema";
 import Bandeira, { BandeiraEstado } from "@/app/components/Bandeira";
 import LogoRadio from "@/app/components/LogoRadio";
 import TranscricaoRadio from "@/app/components/TranscricaoRadio";
@@ -81,10 +83,15 @@ import {
  * — o rádio voltou a usar `useArrastavel` (chave `cp_radio_pos`). O clique
  * de play/pause continua: o gesto só é arrasto depois de 5 px e o `onClick`
  * consulta `foiArrasto()` para não tocar a estação ao mover.
+ *
+ * MEDIA SESSION (dono, 18/11/2026): no celular, no tablet e no painel de mídia
+ * do navegador a estação agora tem nome e controle. `navigator.mediaSession`
+ * recebe título (a rádio), artista (Controle Popular · rádio ao vivo), álbum
+ * (cidade/UF ou país + categoria) e a arte do portal; os botões do sistema
+ * chamam play/pause daqui — não são um player paralelo. Sem isso, o Android
+ * tratava o áudio como aba em segundo plano e a barra de notificação não
+ * existia.
  */
-
-/** Estação acionada pelo botão do rodapé quando nada está carregado. */
-const ESTACAO_PADRAO = "radio-brasil-de-fato";
 
 /**
  * O índice abre AO LADO da coluna, não por cima dela.
@@ -119,6 +126,11 @@ function IconeRadio({ tocando, jaTocou }: { tocando: boolean; jaTocou: boolean }
   if (tocando) return <Pause size={20} aria-hidden="true" />;
   if (jaTocou) return <Play size={20} aria-hidden="true" />;
   return <RadioTower size={20} aria-hidden="true" />;
+}
+
+/** Palavra de estado do item da pilha (o rótulo mostra "Rádio · tocando"). */
+function estadoDoRadio(tocando: boolean): string | undefined {
+  return tocando ? "tocando" : undefined;
 }
 
 export default function PlayerRadio() {
@@ -191,6 +203,7 @@ export default function PlayerRadio() {
     audio.volume = volume;
     audio.muted = mudo;
   }, [volume, mudo]);
+
 
   // Índice abre no hover do botão. Ao sair, ele NÃO fecha na hora: há um
   // vão de alguns pixels entre o botão e o painel, e fechar na saída tornava
@@ -361,13 +374,17 @@ export default function PlayerRadio() {
     [idAtual, carregar],
   );
 
+  // Notificação do sistema + estação lembrada: hook próprio (ver
+  // `lib/radio/useRadioDoSistema`), para o componente não crescer.
+  useRadioDoSistema({ idAtual, setIdAtual, tocando, jaTocou, audioRef, tocar });
+
   // O índice do hover pede a estação direto; o rodapé usa o evento `toggle`.
   useEffect(() => {
     const aoTocar = (ev: Event) => {
       const d = (ev as CustomEvent<{ id?: string }>).detail;
       if (d?.id) void tocar(d.id);
     };
-    const aoAlternar = () => void tocar(idAtual ?? ESTACAO_PADRAO);
+    const aoAlternar = () => void tocar(idAtual ?? ESTACAO_PADRAO_RADIO);
     window.addEventListener(EVENTO_TOCAR, aoTocar);
     window.addEventListener("cp:radio-toggle", aoAlternar);
     return () => {
@@ -383,9 +400,7 @@ export default function PlayerRadio() {
     };
   }, []);
 
-  const rotulo = tocando
-    ? `Pausar ${estacaoAtual?.nome ?? "a rádio"}`
-    : `Ouvir ${estacaoAtual?.nome ?? "a rádio"}`;
+  const rotulo = `${tocando ? "Pausar" : "Ouvir"} ${estacaoAtual?.nome ?? "a rádio"}`;
 
   return (
     <>
@@ -426,7 +441,7 @@ export default function PlayerRadio() {
         // `left-5` fixo isso só valia porque 20 + 48/2 = 44 por coincidência.
         // `items-center`: o ícone da transcrição (36 px) também fica no eixo,
         // em vez de encostar na borda esquerda da coluna.
-        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] flex flex-col items-center transition-[bottom] duration-75 motion-reduce:transition-none print:hidden ${classesPilha(radio.visivel)}`}
+        className={`group fixed left-[calc(var(--cp-pilha-centro)-1.375rem)] z-[44] flex flex-col items-center print:hidden ${classesPilha(radio.visivel)}`}
         data-cp-slot={radio.indice}
         data-arrastavel-caixa
         data-nao-plataforma
@@ -459,18 +474,18 @@ export default function PlayerRadio() {
         <PilhaBotao
           {...handlers}
           rotulo="Rádio"
+          ativo={tocando}
+          estado={estadoDoRadio(tocando)}
           onDoubleClick={resetar}
           onClick={() => {
             // Gesto foi mover: não tocar a estação por acidente (limiar de
             // 5 px no hook). Sem isto, arrastar o rádio daria play/pause.
             if (foiArrasto()) return;
-            void tocar(idAtual ?? ESTACAO_PADRAO);
+            void tocar(idAtual ?? ESTACAO_PADRAO_RADIO);
           }}
           aria-label={rotulo}
-          title={`${rotulo} — arraste para mover; clique duplo volta ao canto; o índice abre ao passar o mouse`}
           aria-expanded={indiceAberto}
           aria-controls="cp-radio-indice"
-          aria-pressed={tocando}
           className={arrastando ? "cursor-grabbing" : "cursor-grab"}
           icone={<IconeRadio tocando={tocando} jaTocou={jaTocou} />}
         />

@@ -7,12 +7,13 @@ import { ORGAOS_TRATADOS_ONU, adesaoPaisONU, type OrgaoTratadoONU } from "@/lib/
 import { RECOMENDACOES_ONU_ASIA } from "@/lib/direitos-globais/onu/recomendacoes-upr";
 import { paisesPorLeva, type PaisAsiatico } from "@/lib/direitos-globais/asia/paises";
 import TabelaOnuInterativa from "../componentes/TabelaOnuInterativa";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/onu", {
   title: "Sistema ONU e Órgãos de Tratados | Direitos Globais | Controle Popular",
   description:
     "Acompanhamento das recomendações dos Comitês de Tratados da ONU e da Revisão Periódica Universal (UPR) para os países asiáticos.",
-};
+});
 
 function StatusBadge({ status }: { status: string }) {
   if (status === "cumprido" || status === "ratificado") {

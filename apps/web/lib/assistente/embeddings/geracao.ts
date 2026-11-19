@@ -1,34 +1,35 @@
 /**
  * Geracao de resposta por LLM para o pipeline de RAG do chatbot.
  *
- * Escolhe automaticamente o provedor:
- * - Se houver chave remota configurada (`AI_API_KEY_DEEPSEEK` ou
- *   `AI_API_KEY_MARITACA`), chama a API do provedor ATIVO (escolhido no
- *   painel de edicao, `data/ia-config.json`); em falha, tenta o outro
- *   provedor como fallback automatico.
- * - Se nao houver nenhuma chave, cai para Ollama local (laboratorio L4).
+ * Escolhe automaticamente o provedor na cascata de `provedores.ts`:
+ * GRATIS primeiro (GLM Flash), depois os pagos (Maritaca `sabiazinho-4`,
+ * DeepSeek, Ling). Provedor sem chave sai da fila. Se nenhum estiver
+ * configurado, lanca `IaIndisponivel` com mensagem clara.
  *
- * Ver decisoes 2-4 de `docs/ESTADO.md`, 22/08/2026, e o roteiro de
- * execucao de pendencias (docs/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md).
+ * ═══ OLLAMA FORA (10/11/2026) ═══
+ *
+ * O fallback para Ollama local foi removido deste modulo. O container do
+ * Azure nao alcanca `172.18.176.1:11434`; cada tentativa esperava 30-60 s e
+ * `POST /api/chatbot` ficou mais de 44 s sem responder (medido em
+ * 10/11/2026, duas vezes, com `/api/saude` respondendo em ~5 s). O Ollama
+ * continua em `ollama.ts` para script de indexacao e laboratorio local, mas
+ * nao e importado pelo caminho do chatbot — sem chave remota, a resposta e
+ * a degradada honesta de `rag.ts` (`responderSemModelo`), com as fontes.
+ *
+ * Timeout: 15 s POR PROVEDOR por padrao (env `IA_TIMEOUT_GERACAO_MS`
+ * sobrescreve; `opcoes.timeoutMs` sobrescreve por chamada). O teto total do
+ * endpoint e do route (`ORCAMENTO_CHATBOT_MS` em `rag.ts`), nao daqui.
  *
  * A resposta E obrigada a citar as fontes do contexto. O prompt inclui a
  * regra explicitamente.
  */
 
-import { OLLAMA_BASE_URL, OllamaIndisponivel, type OpcoesOllama } from "./ollama";
-import { listarProvedoresNaOrdem, temChaveRemota, type ProvedorIa } from "./provedores";
+import { listarProvedoresNaOrdem, IaIndisponivel, type ProvedorIa } from "./provedores";
 import { sanitizarTextoParaContexto } from "../../seguranca/blindagem-prompt";
-
-const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5-coder:3b";
 
 export interface MensagemChat {
   role: "system" | "user" | "assistant";
   content: string;
-}
-
-interface RespostaChatOllama {
-  message?: { content?: string };
-  error?: string;
 }
 
 interface RespostaChatApi {
@@ -62,9 +63,26 @@ export interface RespostaRag {
   ressalva: true;
   /** Resultado do verificador determinístico de citação (Fase 1). */
   verificacao?: "ok" | "parcial" | "falhou";
+  /**
+   * `false` quando o texto NAO saiu de um modelo — e a degradacao honesta
+   * de `responderSemModelo` (geracao fora ou orcamento estourado). A UI usa
+   * isto para nao anunciar "texto gerado por IA" num texto que nao foi.
+   */
+  textoGeradoPorModelo?: boolean;
+  /** Marcador curto do motivo da degradacao, para diagnostico. */
+  motivoDegradacao?: string;
 }
 
-const TIMEOUT_MS_PADRAO = 60_000;
+/**
+ * Timeout PADRAO por provedor, em ms. 15 s cabe no orcamento de ~25 s do
+ * endpoint com uma tentativa util; env `IA_TIMEOUT_GERACAO_MS` sobrescreve
+ * (valor invalido ou abaixo de 1 s e ignorado, para nao derrubar o servico
+ * por env mal digitada).
+ */
+export const TIMEOUT_GERACAO_PADRAO_MS = (() => {
+  const bruto = Number(process.env.IA_TIMEOUT_GERACAO_MS);
+  return Number.isFinite(bruto) && bruto >= 1_000 ? bruto : 15_000;
+})();
 
 const SYSTEM_PROMPT_RAG = `Voce e o Seu Nono, assistente do portal Controle Popular (controlepopular.com.br), um portal civico independente de transparencia publica que republica dado oficial.
 
@@ -119,55 +137,12 @@ function montarMensagens(
   ];
 }
 
-async function chamarOllama(mensagens: MensagemChat[], opcoes: OpcoesOllama): Promise<string> {
-  const baseUrl = opcoes.baseUrl ?? OLLAMA_BASE_URL;
-  const modelo = opcoes.modelo ?? OLLAMA_CHAT_MODEL;
-  const timeoutMs = opcoes.timeoutMs ?? TIMEOUT_MS_PADRAO;
-
-  let resp: Response;
-  try {
-    resp = await fetch(`${baseUrl}/api/chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: modelo,
-        messages: mensagens,
-        stream: false,
-        options: { temperature: 0.2 },
-      }),
-      signal: AbortSignal.timeout(timeoutMs),
-    });
-  } catch (e) {
-    const causa = e instanceof Error ? e.message : String(e);
-    throw new OllamaIndisponivel(`Ollama nao respondeu em ${baseUrl} (${causa})`);
-  }
-
-  if (!resp.ok) {
-    let corpo = "";
-    try {
-      corpo = await resp.text();
-    } catch {
-      // corpo ilegivel nao impede reportar o status
-    }
-    throw new OllamaIndisponivel(`Ollama respondeu HTTP ${resp.status} em ${baseUrl}/api/chat: ${corpo}`);
-  }
-
-  const dados = (await resp.json()) as RespostaChatOllama;
-  if (dados.error) {
-    throw new OllamaIndisponivel(`Ollama: ${dados.error}`);
-  }
-  const conteudo = dados.message?.content?.trim();
-  if (!conteudo) {
-    throw new OllamaIndisponivel("Ollama respondeu 200 sem conteudo em message.content");
-  }
-  return conteudo;
-}
-
 /**
  * Corpo do POST /chat/completions (funcao pura, exportada para teste).
  *
  * Sabiazinho-4 roda no tier Flex (decisao do dono, 08/11/2026): 50% mais
- * barato, sujeito a fila. Outros modelos nao recebem o campo.
+ * barato, sujeito a fila. Outros modelos nao recebem o campo. Esta funcao
+ * veio da `main` e continua valendo com a cascata nova.
  */
 export function montarCorpoRequisicao(
   provedor: Pick<ProvedorIa, "modelo">,
@@ -181,7 +156,11 @@ export function montarCorpoRequisicao(
   };
 }
 
-async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): Promise<string> {
+async function chamarProvedor(
+  mensagens: MensagemChat[],
+  provedor: ProvedorIa,
+  timeoutMs: number
+): Promise<string> {
   const baseUrl = provedor.baseUrl.replace(/\/$/, "");
 
   let resp: Response;
@@ -193,11 +172,11 @@ async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): 
         Authorization: `Bearer ${provedor.apiKey}`,
       },
       body: JSON.stringify(montarCorpoRequisicao(provedor, mensagens)),
-      signal: AbortSignal.timeout(TIMEOUT_MS_PADRAO),
+      signal: AbortSignal.timeout(timeoutMs),
     });
   } catch (e) {
     const causa = e instanceof Error ? e.message : String(e);
-    throw new Error(`${provedor.rotulo} nao respondeu em ${baseUrl} (${causa})`);
+    throw new Error(`${provedor.rotulo} não respondeu em ${baseUrl} (${causa})`);
   }
 
   const dados = (await resp.json()) as RespostaChatApi;
@@ -216,20 +195,25 @@ async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): 
 }
 
 /**
- * Tenta os provedores remotos na ordem configurada (ativo -> fallback).
- * Devolve o texto e o ROTULO do provedor que respondeu, para o `modelo`
- * do RespostaRag mostrar quem de fato gerou.
+ * Tenta os provedores remotos na ordem configurada (ativo -> cascata
+ * gratis/pago). Devolve o texto e o ROTULO do provedor que respondeu, para
+ * o `modelo` do RespostaRag mostrar quem de fato gerou.
  */
-async function chamarApiRemota(mensagens: MensagemChat[]): Promise<{ texto: string; rotulo: string }> {
+async function chamarApiRemota(
+  mensagens: MensagemChat[],
+  timeoutMs: number
+): Promise<{ texto: string; rotulo: string }> {
   const provedores = listarProvedoresNaOrdem();
   if (provedores.length === 0) {
-    throw new Error("Nenhum provedor remoto configurado (AI_API_KEY_DEEPSEEK / AI_API_KEY_MARITACA / AI_API_KEY_LING vazias)");
+    throw new IaIndisponivel(
+      "Nenhum provedor de IA configurado (ZAI_API_KEY/GLM_API_KEY, AI_API_KEY_MARITACA, AI_API_KEY_DEEPSEEK ou AI_API_KEY_LING)"
+    );
   }
 
   const erros: string[] = [];
   for (const provedor of provedores) {
     try {
-      const texto = await chamarProvedor(mensagens, provedor);
+      const texto = await chamarProvedor(mensagens, provedor, timeoutMs);
       return { texto, rotulo: provedor.rotulo };
     } catch (e) {
       erros.push(e instanceof Error ? e.message : String(e));
@@ -251,74 +235,58 @@ function respostaSemFontes(modelo: string): RespostaRag {
     modelo,
     data: dataDeHoje(),
     ressalva: true,
+    textoGeradoPorModelo: false,
+    motivoDegradacao: "sem-fontes",
   };
+}
+
+export interface OpcoesGeracaoApi {
+  /** Instrucao extra para a re-tentativa de citacao (verificador). */
+  instrucaoExtra?: string;
+  /** Timeout por provedor, em ms. Padrao: `TIMEOUT_GERACAO_PADRAO_MS`. */
+  timeoutMs?: number;
 }
 
 /**
  * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
- * similaridade, usando Ollama local.
- *
- * Mantida para chamadas explicitas ao laboratorio local.
- */
-export async function gerarRespostaLocal(
-  pergunta: string,
-  fontes: FonteRag[],
-  opcoes: OpcoesOllama & { instrucaoExtra?: string } = {}
-): Promise<RespostaRag> {
-  if (fontes.length === 0) {
-    return respostaSemFontes(opcoes.modelo ?? OLLAMA_CHAT_MODEL);
-  }
-
-  const mensagens = montarMensagens(pergunta, fontes, opcoes.instrucaoExtra);
-  const resposta = await chamarOllama(mensagens, opcoes);
-  return {
-    resposta,
-    fontes,
-    modelo: opcoes.modelo ?? OLLAMA_CHAT_MODEL,
-    data: dataDeHoje(),
-    ressalva: true,
-  };
-}
-
-/**
- * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
- * similaridade, usando API remota quando houver chave configurada.
- * Tenta o provedor ativo e, em falha, o fallback automatico.
+ * similaridade, usando os provedores remotos na cascata gratis -> pago.
+ * Tenta o provedor ativo e, em falha, os demais.
  */
 export async function gerarRespostaApi(
   pergunta: string,
   fontes: FonteRag[],
-  instrucaoExtra?: string
+  opcoes: OpcoesGeracaoApi = {}
 ): Promise<RespostaRag> {
   if (fontes.length === 0) {
     return respostaSemFontes("sem-fontes");
   }
 
-  const mensagens = montarMensagens(pergunta, fontes, instrucaoExtra);
-  const { texto, rotulo } = await chamarApiRemota(mensagens);
+  const mensagens = montarMensagens(pergunta, fontes, opcoes.instrucaoExtra);
+  const { texto, rotulo } = await chamarApiRemota(
+    mensagens,
+    opcoes.timeoutMs ?? TIMEOUT_GERACAO_PADRAO_MS
+  );
   return {
     resposta: texto,
     fontes,
     modelo: rotulo,
     data: dataDeHoje(),
     ressalva: true,
+    textoGeradoPorModelo: true,
   };
 }
 
 /**
  * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
- * similaridade. Escolhe automaticamente o provedor:
- * - API remota (provedor ativo -> fallback) se alguma chave estiver
- *   configurada.
- * - Ollama local como fallback final.
+ * similaridade, usando SEMPRE provedor remoto (nao ha mais fallback local).
+ *
+ * Sem nenhuma chave configurada lanca `IaIndisponivel` — o chamador decide
+ * se degrada com `responderSemModelo` (rag) ou se responde erro.
  */
 export async function gerarRespostaRag(
   pergunta: string,
   fontes: FonteRag[],
-  opcoes: OpcoesOllama & { instrucaoExtra?: string } = {}
+  opcoes: OpcoesGeracaoApi & { modelo?: string } = {}
 ): Promise<RespostaRag> {
-  if (temChaveRemota()) {
-    return gerarRespostaApi(pergunta, fontes, opcoes.instrucaoExtra);
-  }
-  return gerarRespostaLocal(pergunta, fontes, opcoes);
+  return gerarRespostaApi(pergunta, fontes, opcoes);
 }

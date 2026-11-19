@@ -7,6 +7,7 @@ import {
   resumirEstacoes,
 } from "@/lib/radio/estacoes";
 import PainelRadio from "./PainelRadio";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/radio` — o diretório de estações do portal.
@@ -23,12 +24,12 @@ import PainelRadio from "./PainelRadio";
 
 const RESUMO = resumirEstacoes();
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/radio", {
   title: "Rádios do Brasil e do mundo (públicas, universitárias e comunitárias) - Controle Popular",
   description:
     `Diretório de ${RESUMO.total} estações de rádio de ${RESUMO.paises} países — federais, universitárias, ` +
     `comunitárias e populares do Sul Global — com transmissão direta, fonte oficial e filtro por país.`,
-};
+});
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 

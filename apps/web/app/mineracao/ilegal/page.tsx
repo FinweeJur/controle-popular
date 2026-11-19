@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import dados from "@/data/comunidades-tradicionais-mineracao-mg.json";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import TabelaComunidades, { type Comunidade } from "./TabelaComunidades";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/mineracao/ilegal` — Fase C do PLANO-MAPEAMENTO-MINERACAO-ILEGAL.md.
@@ -34,13 +35,13 @@ const PUBLICACAO = dados.gerado_em;
 const COMUNIDADES = dados.comunidades as Comunidade[];
 const RESUMO = dados.resumo as Record<string, number>;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/mineracao/ilegal", {
   title: "Mineração e comunidades tradicionais em Minas Gerais - Controle Popular",
   description:
     `${RESUMO.terras_indigenas} terras indígenas e ${RESUMO.quilombolas} territórios quilombolas de ` +
     `Minas Gerais cruzados com a mineração detectada por satélite e com a bacia do rio Paraopeba — ` +
     `com fonte oficial, método e data em cada número.`,
-};
+});
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 

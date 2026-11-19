@@ -7,13 +7,14 @@ import {
 import { formatNumberBR } from "@/lib/betim/format";
 import TabelaCapacidade from "./TabelaCapacidade";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/capacidade-institucional", {
   title:
     "Capacidade Institucional, Servidores e Orçamento Ambiental — IEF, IGAM, FEAM, IEPHA, IPHAN, ANA, ANEEL, IBAMA | Meio Ambiente (ONSA)",
   description:
     "Radiografia da capacidade do Estado na fiscalização ambiental e patrimônio: evolução decenal do efetivo de servidores (2016-2026), orçamento real deflacionado pelo IPCA, sobrecarga de processos por analista, histórico de concursos e organograma completo com contatos.",
-};
+});
 
 export default function PaginaCapacidadeInstitucional() {
   const orgaos = ORGAOS_CAPACIDADE;

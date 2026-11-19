@@ -127,6 +127,11 @@ export const ROTAS_ANTIGAS: RotaAntiga[] = [
     para: "/indicadores",
     motivo: "unificado ao painel geral de indicadores civicos e regionais (02/11/2026)",
   },
+  {
+    de: "/noticias/uemg-pss-2027-ituiutaba-diamantina-83-vagas",
+    para: "/noticias/uemg-abre-83-vagas-para-professor",
+    motivo: "slug tecnico trocado por nome legivel no mesmo dia da publicacao (17/11/2026)",
+  },
 ];
 
 

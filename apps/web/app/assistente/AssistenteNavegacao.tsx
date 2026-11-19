@@ -23,18 +23,33 @@ import {
   type RespostaComposicao,
 } from "@/lib/assistente/compor";
 import { buscar, type Resultado } from "@/lib/busca/indice";
+import {
+  responderJurisprudencia,
+  type RespostaJurisprudencial,
+} from "@/lib/assistente/jurisprudencia-escada";
 
 /**
  * Assistente de navegação do portal — a metade DETERMINÍSTICA do N8.
  *
  * ═══ O QUE ELE FAZ, E O QUE ELE SE RECUSA A FAZER ═══
  *
- * Ele leva a pessoa a uma página. Ele não afirma dado: nenhum número desta
- * tela é escrito aqui: os botões são títulos de página e caminhos, e o que
- * afirma o dado é a página que abre. É a mesma disciplina de
- * `REGRAS_COMUNS` em `lib/chat-comum.ts`, só que aqui ela é estrutural —
- * `lib/assistente/catalogo.ts` não tem onde guardar um número, e
- * `navegacao.test.ts` reprova título com dígito.
+ * Ele leva a pessoa a uma página. Ele não afirma dado de navegação: os botões
+ * são títulos de página e caminhos, e o que afirma o dado é a página que abre.
+ * É a mesma disciplina de `REGRAS_COMUNS` em `lib/chat-comum.ts`, só que aqui
+ * ela é estrutural — `lib/assistente/catalogo.ts` não tem onde guardar um
+ * número, e `navegacao.test.ts` reprova título com dígito.
+ *
+ * ═══ A EXCEÇÃO DELIBERADA: CONTAGEM DE JURISPRUDÊNCIA ═══
+ *
+ * "Quantos casos de dano moral no Rio Doce?" não tem destino de página, tem
+ * medição — e a tela respondia "não reconheci um destino" para um dado que o
+ * portal já tem. `responderJurisprudencia` roda ANTES de `interpretar` e devolve
+ * um cartão com o número, a quebra por polo vencedor, a data da medição e o
+ * link para a lista filtrada. O número não é escrito aqui: vem de
+ * `lib/assistente/jurisprudencia-contagens.json`, tabela derivada do acervo por
+ * `scripts/gerar-contagens-jurisprudencia.mts` e conferida contra o acervo por
+ * `jurisprudencia-escada.test.ts`. O JSON do acervo tem 58 MB e NÃO entra no
+ * chunk do navegador (§5.1).
  *
  * Quando não reconhece a intenção, ele diz que não reconheceu. `interpretar()`
  * devolve `[]` para texto sem intenção e para cidade que o portal não
@@ -114,7 +129,16 @@ type Passo =
       decorrido: number;
       progresso: Progresso | null;
     }
-  | { fase: "resposta"; pergunta: string; candidatos: Candidato[]; documentos: Resultado[] | null; composicao: RespostaComposicao | null; ms: number }
+  | {
+      fase: "resposta";
+      pergunta: string;
+      candidatos: Candidato[];
+      documentos: Resultado[] | null;
+      composicao: RespostaComposicao | null;
+      /** Contagem do acervo de jurisprudência, quando a pergunta é de número. */
+      jurisprudencia: RespostaJurisprudencial | null;
+      ms: number;
+    }
   | { fase: "interrompido"; pergunta: string; candidatos: Candidato[]; ms: number }
   | { fase: "erro"; pergunta: string; candidatos: Candidato[]; texto: string; ms: number };
 
@@ -144,6 +168,17 @@ function formatarDuracao(ms: number): string {
 function formatarBytes(bytes: number): string {
   if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
   return `${(bytes / 1024 / 1024).toFixed(1).replace(".", ",")} MB`;
+}
+
+/**
+ * Data ISO da medição vira dd/mm/aaaa.
+ *
+ * Só fatia a string: `new Date()` aqui abriria fuso e hidratação, e a data do
+ * acervo é um dia de calendário, não um instante.
+ */
+function formatarDataJuris(iso: string): string {
+  const [ano, mes, dia] = (iso ?? "").slice(0, 10).split("-");
+  return ano && mes && dia ? `${dia}/${mes}/${ano}` : iso;
 }
 
 export default function AssistenteNavegacao() {
@@ -198,6 +233,26 @@ export default function AssistenteNavegacao() {
     const q = pergunta.trim();
     if (!q) return;
     const inicio = performance.now();
+
+    // Contagem de jurisprudência vem ANTES de `interpretar`: a pergunta de
+    // número não tem destino de página, e a navegação respondia "não reconheci
+    // um destino" para um dado que o portal tem medido. O número sai do acervo
+    // (tabela compacta derivada dele), com fonte, data e link auditável.
+    const jurisprudencia = responderJurisprudencia(q);
+    if (jurisprudencia) {
+      irPara({
+        fase: "resposta",
+        pergunta: q,
+        candidatos: [],
+        documentos: null,
+        composicao: null,
+        jurisprudencia,
+        ms: performance.now() - inicio,
+      });
+      setTexto("");
+      return;
+    }
+
     const candidatos = interpretar(q);
     const intencao = interpretarComposicao(q);
     if (intencao?.tipo === "cidadeNaoAtendida") {
@@ -211,6 +266,7 @@ export default function AssistenteNavegacao() {
           nome: intencao.nome,
           cidade: intencao.cidade ? cidadeDaResposta(intencao.cidade) : null,
         },
+        jurisprudencia: null,
         ms: performance.now() - inicio,
       });
       setTexto("");
@@ -222,6 +278,7 @@ export default function AssistenteNavegacao() {
       candidatos,
       documentos: null,
       composicao: null,
+      jurisprudencia: null,
       ms: performance.now() - inicio,
     });
     setTexto("");
@@ -250,12 +307,16 @@ export default function AssistenteNavegacao() {
       );
       const composicao = intencao ? compor(intencao, indice) : null;
       const documentos = intencao ? null : buscar(pergunta, indice, { limite: 5 });
+      // Quem chegou aqui a partir do cartão de contagem continua vendo o
+      // número: "procurar nos documentos" é um passo A MAIS, não um substituto.
+      const jurisprudencia = passo.fase === "resposta" ? passo.jurisprudencia : null;
       setPasso({
         fase: "resposta",
         pergunta,
         candidatos,
         documentos,
         composicao,
+        jurisprudencia,
         ms: performance.now() - inicio,
       });
     } catch (e) {
@@ -404,7 +465,44 @@ export default function AssistenteNavegacao() {
             Você pediu: <span className="text-[var(--cp-text)]">{passo.pergunta}</span>
           </p>
 
-          {passo.candidatos.length > 0 ? (
+          {passo.jurisprudencia ? (
+            <div className="mt-4 rounded-xl border border-[var(--cp-border)] bg-[var(--cp-surface-2)] p-4">
+              <p className="text-sm font-semibold">
+                Jurisprudência: {passo.jurisprudencia.frenteNome}
+                {passo.jurisprudencia.tema ? ` · ${passo.jurisprudencia.tema}` : ""}
+              </p>
+              <p className="font-tabular mt-1 text-3xl font-semibold">
+                {passo.jurisprudencia.total.toLocaleString("pt-BR")}
+              </p>
+              <p className="text-xs text-[var(--cp-text-soft)]">
+                {passo.jurisprudencia.total === 1 ? "caso no acervo" : "casos no acervo"} ·
+                medição de {formatarDataJuris(passo.jurisprudencia.geradoEm)}
+              </p>
+              <p className="mt-3 text-sm">{passo.jurisprudencia.texto}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Link
+                  href={passo.jurisprudencia.link}
+                  className="rounded-lg border border-[var(--cp-primary)] bg-[var(--cp-primary)] px-3 py-1.5 text-sm text-[var(--cp-primary-ink)]"
+                >
+                  Ver a lista filtrada
+                </Link>
+                {passo.jurisprudencia.linkPainel !== passo.jurisprudencia.link ? (
+                  <Link
+                    href={passo.jurisprudencia.linkPainel}
+                    className="rounded-lg border border-[var(--cp-border)] px-3 py-1.5 text-sm hover:border-[var(--cp-primary)]"
+                  >
+                    Abrir o painel de jurisprudência
+                  </Link>
+                ) : null}
+              </div>
+              <p className="mt-3 text-xs text-[var(--cp-text-soft)]">
+                Fonte: {passo.jurisprudencia.fonte}.
+                {passo.jurisprudencia.rotuloTema
+                  ? ` Filtro do acervo: tema “${passo.jurisprudencia.rotuloTema}”.`
+                  : ""}
+              </p>
+            </div>
+          ) : passo.candidatos.length > 0 ? (
             <>
               <p className="mt-3 text-sm">
                 {passo.candidatos.length === 1
@@ -595,9 +693,11 @@ export default function AssistenteNavegacao() {
           {/* Contagem de tempo que PERMANECE — exigência escrita do N8. */}
           <p className="font-tabular mt-4 text-xs text-[var(--cp-text-soft)]">
             Respondido em {formatarDuracao(passo.ms)}
-            {passo.documentos === null && passo.composicao === null
-              ? " · sem rede, sem modelo"
-              : " · índice de documentos"}
+            {passo.jurisprudencia
+              ? " · contagem no acervo, sem rede"
+              : passo.documentos === null && passo.composicao === null
+                ? " · sem rede, sem modelo"
+                : " · índice de documentos"}
           </p>
         </div>
       ) : null}

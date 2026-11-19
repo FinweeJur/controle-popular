@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import NextLink from "next/link";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/riodoce/processos` — processos-chave da reparação do Rio Doce.
@@ -28,11 +29,11 @@ import CaminhoSistema from "@/app/components/CaminhoSistema";
  * (3144805 = Mariana) devolveu a "3ª Câmara Cível" como primeiro hit —
  * código de município NÃO equivale a vara do caso.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/riodoce/processos", {
   title: "Processos do caso Rio Doce — consulta ao vivo no DataJud | Controle Popular",
   description:
     "Os processos-chave da reparação do Rio Doce, com a movimentação consultada ao vivo na API pública do DataJud (CNJ). O portal não arquiva nem republica autos.",
-};
+});
 
 export default function RioDoceProcessos() {
   return (

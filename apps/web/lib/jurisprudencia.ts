@@ -84,6 +84,26 @@ const ORDENS: Record<string, (a: CasoJurisprudencia, b: CasoJurisprudencia) => n
   polo: (a, b) => a.polo.localeCompare(b.polo) || a.processo.localeCompare(b.processo),
 };
 
+/**
+ * Forma de comparação de rótulo de tema: sem acento, sem caixa, sem espaço
+ * nas pontas.
+ *
+ * O acervo grava o MESMO assunto com mais de uma grafia — "dano moral",
+ * "Dano moral" e "Dano Moral" são três rótulos distintos, e "Prescrição" e
+ * "prescricao" também. Comparar por igualdade crua fazia o filtro `?tema=`
+ * mostrar 155 casos de "dano moral" no Rio Doce quando a medição do acervo dá
+ * 203 (medido em 10/11/2026). O assistente conta sem acento/caixa e manda o
+ * rótulo na URL; a página precisa usar a mesma régua, senão o número do
+ * cartão e a lista do link discordam — e a lista é a prova que o leitor clica.
+ */
+function chaveTema(valor: string): string {
+  return (valor ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
 const PREDICADOS: Record<string, (caso: CasoJurisprudencia, valor: string) => boolean> = {
   frente: (caso, valor) => caso.frente === valor,
   tipo: (caso, valor) => caso.tipo === valor,
@@ -92,7 +112,10 @@ const PREDICADOS: Record<string, (caso: CasoJurisprudencia, valor: string) => bo
   polo: (caso, valor) => caso.polo === valor,
   comarca: (caso, valor) => caso.comarca === valor,
   ano: (caso, valor) => caso.ano === valor,
-  tema: (caso, valor) => caso.temas.includes(valor),
+  tema: (caso, valor) => {
+    const alvo = chaveTema(valor);
+    return caso.temas.some((tema) => chaveTema(tema) === alvo);
+  },
 };
 
 export function filtrar(casos: CasoJurisprudencia[], filtros: Filtros): CasoJurisprudencia[] {

@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-10-21
+> **Última medição:** 2026-11-17
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -41,6 +41,7 @@ automáticamente pelos agentes de código.
 | Antes do primeiro commit — worktree, commit, push | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
 | Texto completo de cada regra dura | **REGRAS-DURAS** | [`03-desenvolvimento/REGRAS-DURAS.md`](03-desenvolvimento/REGRAS-DURAS.md) |
 | Criar página nova ou revisar o padrão wiki | **PADRAO-PAGINA-WIKI** | [`03-desenvolvimento/PADRAO-PAGINA-WIKI.md`](03-desenvolvimento/PADRAO-PAGINA-WIKI.md) |
+| Escrever post de serviço no blog (edital, concurso, prazo) | **PADRAO-POST-BLOG** | [`03-desenvolvimento/PADRAO-POST-BLOG.md`](03-desenvolvimento/PADRAO-POST-BLOG.md) |
 | Rodar o portal na sua máquina | **SETUP-LOCAL** | [`03-desenvolvimento/SETUP-LOCAL.md`](03-desenvolvimento/SETUP-LOCAL.md) |
 | Checkout canônico, worktree e arquivamento | **CHECKOUT-CANONICO** | [`03-desenvolvimento/CHECKOUT-CANONICO.md`](03-desenvolvimento/CHECKOUT-CANONICO.md) |
 | Prompt para sessão nova | **PROMPT-SESSAO-NOVA** | [`03-desenvolvimento/PROMPT-SESSAO-NOVA.md`](03-desenvolvimento/PROMPT-SESSAO-NOVA.md) |
@@ -56,17 +57,22 @@ automáticamente pelos agentes de código.
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Oito qualidades da informação | QUALIDADES | [`04-arquitetura/QUALIDADES-DA-INFORMACAO.md`](04-arquitetura/QUALIDADES-DA-INFORMACAO.md) |
 | Revisão de código e onboarding | REVISAO-CODIGO | [`04-arquitetura/REVISAO-CODIGO.md`](04-arquitetura/REVISAO-CODIGO.md) |
+| Design system (componentes, sanfona, movimento) | DESIGN-SYSTEM | [`04-arquitetura/DESIGN-SYSTEM.md`](04-arquitetura/DESIGN-SYSTEM.md) |
 | Manual de RAG, LLM, avaliação e agentes locais | MANUAL-RAG-E-LLM | [`03-desenvolvimento/MANUAL-RAG-E-LLM.md`](03-desenvolvimento/MANUAL-RAG-E-LLM.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
 | Ferramentas de CLI e MCP | FERRAMENTAS-E-MCP | [`05-operacao/FERRAMENTAS-E-MCP.md`](05-operacao/FERRAMENTAS-E-MCP.md) |
+| Servidor MCP do acervo (leitura para agentes) | MCP-CP | [`05-operacao/MCP-CP.md`](05-operacao/MCP-CP.md) |
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
 | Coleta ética e pesquisa na internet | COLETA-ETICA | [`06-fontes/COLETA-ETICA.md`](06-fontes/COLETA-ETICA.md) |
+| Diário municipal e CNPJ (fontes provadas) | QUERIDO-DIARIO-E-CNPJ | [`06-fontes/QUERIDO-DIARIO-E-CNPJ.md`](06-fontes/QUERIDO-DIARIO-E-CNPJ.md) |
 | Regra editorial | REGRA-EDITORIAL | [`01-produto/REGRA-EDITORIAL.md`](01-produto/REGRA-EDITORIAL.md) |
 | Verificação em camadas | VERIFICACAO-E-ENTREGA | [`03-desenvolvimento/VERIFICACAO-E-ENTREGA.md`](03-desenvolvimento/VERIFICACAO-E-ENTREGA.md) |
 | Conformidade e responsividade mobile | CONFORMIDADE-MOBILE | [`03-desenvolvimento/CONFORMIDADE-MOBILE.md`](03-desenvolvimento/CONFORMIDADE-MOBILE.md) |
 | Comunicação com o dono | COMUNICACAO-COM-O-DONO | [`03-desenvolvimento/COMUNICACAO-COM-O-DONO.md`](03-desenvolvimento/COMUNICACAO-COM-O-DONO.md) |
 | Transnacional G20 e Brasil | G20-TRANSNACIONAL | [`06-fontes/G20-TRANSNACIONAL-BRASIL.md`](06-fontes/G20-TRANSNACIONAL-BRASIL.md) |
 | Catálogo dados.gov.br | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
+| Energia: contratos, outorgas, leilões e impostos | ENERGIA-CONTRATOS | [`06-fontes/ENERGIA-CONTRATOS.md`](06-fontes/ENERGIA-CONTRATOS.md) |
+| Transparência pública: índice PNTP por ente | PNTP-ATRICON | [`06-fontes/PNTP-ATRICON.md`](06-fontes/PNTP-ATRICON.md) |
 | Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 | Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
 | Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
@@ -81,7 +87,8 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   — resumos finais, handoffs, planos abertos e worktrees.
 - **Radar de trabalho:** [`02-estado/RADAR-HOTSPOTS.md`](02-estado/RADAR-HOTSPOTS.md)
   — onde corrigir, atualizar, editar e ampliar.
-- **Planos ativos (12):**
+- **Planos e handoffs:** a pasta [`planos/`](planos/) tem 42 arquivos (planos,
+  handoffs e prompts); a lista abaixo é a porta de entrada, não o inventário.
   [`PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md`](planos/PLANO-INTEGRADO-AMBIENTAL-E-DADOS.md),
   [`PLANO-AMBIENTAL-27-UF.md`](planos/PLANO-AMBIENTAL-27-UF.md),
   [`PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md`](planos/PLANO-INTEGRADO-PRODUTO-E-INTERFACE.md),
@@ -93,7 +100,9 @@ Operação tem docs irmãos em `05-operacao/`: [GATILHO-REMOTO.md](05-operacao/G
   [`PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md`](planos/PLANO-JURISPRUDENCIA-ESCOPO-TOTAL.md)
   (com o prompt de delegação em
   [`PROMPT-DELEGACAO-BRUMADINHO.md`](planos/PROMPT-DELEGACAO-BRUMADINHO.md)) e
-  [`CADERNO-ATIS-PROCESSO-COLETIVO.md`](planos/CADERNO-ATIS-PROCESSO-COLETIVO.md).
+  [`CADERNO-ATIS-PROCESSO-COLETIVO.md`](planos/CADERNO-ATIS-PROCESSO-COLETIVO.md) e
+  [`PLANO-AUTARQUIAS-INCRA-ANM.md`](planos/PLANO-AUTARQUIAS-INCRA-ANM.md)
+  (mapeamento e ETL das autarquias federais, começando por INCRA e ANM).
   A estrutura de navegação está em
   [`UNIFICACAO-POR-EIXO.md`](planos/UNIFICACAO-POR-EIXO.md) e
   [`PROPOSTA-UNIFICACAO-DIREITOS-TERRITORIOS.md`](planos/PROPOSTA-UNIFICACAO-DIREITOS-TERRITORIOS.md).

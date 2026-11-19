@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
 import { listarNoticiasPortal, listarNoticiasPorFrente } from "@/lib/noticias/portal";
 import { responderComRag } from "@/lib/assistente/embeddings/rag";
-import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
+import { IaIndisponivel } from "@/lib/assistente/embeddings/provedores";
 import { sanitizarEntradaUsuario } from "@/lib/seguranca/blindagem-prompt";
 import { formatarRespostaNono } from "@/lib/telegram/formatar-nono";
 
@@ -449,7 +449,7 @@ async function responderPerguntaNono(chatId: string, texto: string) {
     const r = await responderComRag(d.textoSanitizado);
     await sendTelegram(chatId, { text: formatarRespostaNono(r) });
   } catch (e) {
-    if (e instanceof OllamaIndisponivel) {
+    if (e instanceof IaIndisponivel) {
       await sendTelegram(chatId, { text: "🤖 O assistente está indisponível agora. Use os menus: /menu" });
     } else {
       await sendTelegram(chatId, { text: "🤖 Não consegui responder agora. Tente de novo ou use /menu." });

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LinhaDoTempo from "@/app/components/LinhaDoTempo";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/historico", {
   title: "Linha do Tempo — a história do Controle Popular",
   description:
     " O que o portal Controle Popular foi abrindo mês a mês: frentes, conteúdos e ferramentas para quem fiscaliza o dinheiro público.",
-};
+});
 
 /*
  * Marcos do portal. A linha é desenhada pelo componente genérico

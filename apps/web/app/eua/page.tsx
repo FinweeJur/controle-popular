@@ -13,12 +13,13 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import SecaoPaginasRelacionadas, {
   type ItemPaginaRelacionada,
 } from "@/app/components/SecaoPaginasRelacionadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eua", {
   title: "Estados Unidos: SEC EDGAR, Fundos, Barragens NID & Comércio com o Brasil | Controle Popular",
   description:
     "Acervo oficial de transparência dos EUA e conexões com o Brasil: balanços na SEC EDGAR (BlackRock, Vanguard, Vale ADR), inventário de barragens NID (USACE), contratos federais no USAspending e ações judiciais em Nova York.",
-};
+});
 
 const PAGINAS_RELACIONADAS_EUA: ItemPaginaRelacionada[] = [
   {

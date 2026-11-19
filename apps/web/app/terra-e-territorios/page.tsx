@@ -13,12 +13,13 @@ import MeioAmbienteRelacionado from '@/app/components/MeioAmbienteRelacionado';
 import { obterEstatisticasExpansao } from '@/lib/cidades/estrategicas';
 import { DADOS_RIOS } from '@/lib/ambiental/nossos-rios-dados';
 import AvisoReferenciaTerritorio from './AvisoReferencia';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/terra-e-territorios", {
   title: 'Terra e Territórios - Eixo 2 | Controle Popular',
   description:
     'Soberania socioambiental, 203 cidades estratégicas, bacias hidrográficas, licenciamento ambiental, terras indígenas e defesa dos biomas.',
-};
+});
 
 /**
  * Hub do Eixo 2 — Terra e Territórios.

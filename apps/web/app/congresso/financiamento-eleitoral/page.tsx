@@ -3,6 +3,7 @@ import Link from "next/link";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { obterFornecedoresCampanha } from "@/lib/server-only/dados-fornecedores-campanha";
 import TabelaFornecedoresCampanha from "./TabelaFornecedoresCampanha";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/congresso/financiamento-eleitoral` — fornecedores de campanha das Eleições
@@ -27,13 +28,13 @@ const acervo = obterFornecedoresCampanha();
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 const brl = (n: number) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/financiamento-eleitoral", {
   title: "Fornecedores de Campanha 2022 (MG) — Controle Popular",
   description:
     `Empresas que receberam das campanhas de 2022 em Minas Gerais: ${fmt(acervo.total_fornecedores_publicados)} ` +
     `fornecedores pessoa jurídica, ${brl(acervo.total_geral_contratado)} contratados, com CNPJ e link para ` +
     `conferir os contratos públicos. Fonte: TSE (dados abertos).`,
-};
+});
 
 function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?: string }) {
   return (

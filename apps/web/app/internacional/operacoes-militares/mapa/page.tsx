@@ -33,12 +33,13 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional/operacoes-militares/mapa", {
   title: "Mapa Global de Operações Militares, Golpes e PMCs | Controle Popular",
   description:
     "Geolocalização interativa de intervenções militares, deposições de regime, mercenários e contratos bélicos de potências da América do Norte e Europa.",
-};
+});
 
 export default function PaginaMapaOperacoesMilitares() {
   const operacoes = obterOperacoesMilitares();

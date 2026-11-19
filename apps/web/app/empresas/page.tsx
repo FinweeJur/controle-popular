@@ -6,6 +6,7 @@ import { PainelFacetas } from "@/app/components/PainelFacetas";
 import CabecalhoObservatorio from "./CabecalhoObservatorio";
 import EmpresasClient from "./EmpresasClient";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file `/empresas` — Observatório de Grandes Empresas & Fundos.
@@ -41,11 +42,11 @@ interface Props {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas", {
   title: "Observatório de Grandes Empresas & Fundos de Investimento — Controle Popular",
   description:
     "Monitoramento cívico das 130 maiores empresas e fundos atuantes no Brasil: ações na B3 e NYSE, transparência, ESG, direitos humanos, licenciamentos ambientais, contratos no PNCP e TACs.",
-};
+});
 
 export default async function EmpresasIndexPage({ searchParams }: Props) {
   const params = await searchParams;
@@ -93,6 +94,13 @@ export default async function EmpresasIndexPage({ searchParams }: Props) {
         titulo="Investigações & Conexões Corporativas"
         subtitulo="Cruze o poder econômico das empresas com as fortunas globais, governança e impactos no território."
         paginas={[
+          {
+            href: "/empresas/fornecedores",
+            titulo: "Fornecedores do Acervo com CNPJ Enriquecido",
+            descricao: "Amostra de 17 fornecedores dos contratos públicos com situação cadastral, CNAE e município, consultados na Brasil API.",
+            badge: "Fornecedores",
+            icone: "empresa",
+          },
           {
             href: "/empresas/fortunas",
             titulo: "1.000 Maiores Fortunas Mundiais",

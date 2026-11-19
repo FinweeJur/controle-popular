@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { editaisParaCsv, type ItemEdital } from "@/lib/editais/dados";
 import { ordenarPor, type Direcao } from "@/lib/tabela/ordenar";
 import { semAcento } from "@/lib/busca/normalizar";
@@ -27,6 +26,25 @@ function dataBR(iso: string | null): string {
   if (!iso || Number.isNaN(Date.parse(iso))) return "—";
   const [a, m, d] = iso.split("-");
   return `${d}/${m}/${a}`;
+}
+
+/** Busca livre em todos os campos, inclusive o andamento (histórico). */
+function combinaBusca(item: ItemEdital, termo: string): boolean {
+  if (!termo) return true;
+  const campos = [
+    item.titulo,
+    item.orgao,
+    item.modalidade,
+    item.objeto,
+    item.condicoesEPrazos,
+    item.numero ?? "",
+    ...(item.atualizacoes ?? []).flatMap((a) => [
+      a.modalidade,
+      a.titulo,
+      a.condicoesEPrazos,
+    ]),
+  ];
+  return campos.some((campo) => semAcento(campo).includes(termo));
 }
 
 export default function PainelEditais({
@@ -58,15 +76,7 @@ export default function PainelEditais({
       if (orgaoFiltro && i.orgao !== orgaoFiltro) return false;
       if (modalidadeFiltro && i.modalidade !== modalidadeFiltro) return false;
       if (anoFiltro && !(i.dataPublicacao && i.dataPublicacao.startsWith(`${anoFiltro}-`))) return false;
-      if (!termo) return true;
-      return (
-        semAcento(i.titulo).includes(termo) ||
-        semAcento(i.orgao).includes(termo) ||
-        semAcento(i.modalidade).includes(termo) ||
-        semAcento(i.objeto).includes(termo) ||
-        semAcento(i.condicoesEPrazos).includes(termo) ||
-        (i.numero && semAcento(i.numero).includes(termo))
-      );
+      return combinaBusca(i, termo);
     });
 
     if (ordem) {
@@ -315,18 +325,7 @@ export default function PainelEditais({
                       {item.numero ? ` nº ${item.numero}` : ""}
                     </td>
                     <td className="max-w-md px-4 py-3">
-                      <div className="font-medium text-text">
-                        {item.slug ? (
-                          <Link
-                            href={`/noticias/${item.slug}`}
-                            className="hover:text-primary hover:underline"
-                          >
-                            {item.titulo}
-                          </Link>
-                        ) : (
-                          item.titulo
-                        )}
-                      </div>
+                      <div className="font-medium text-text">{item.titulo}</div>
                       <p className="mt-1 line-clamp-2 text-xs text-text-soft">
                         {item.objeto}
                       </p>
@@ -335,6 +334,22 @@ export default function PainelEditais({
                           Prazos: {item.condicoesEPrazos}
                         </p>
                       )}
+                      {item.atualizacoes && item.atualizacoes.length > 1 && (
+                        <details className="mt-1 text-xs text-text-soft">
+                          <summary className="cursor-pointer font-medium text-primary">
+                            Andamento ({item.atualizacoes.length})
+                          </summary>
+                          <ul className="mt-1 space-y-1">
+                            {item.atualizacoes.map((a) => (
+                              <li key={`${a.data}-${a.modalidade}-${a.titulo}`}>
+                                <span className="font-mono">{dataBR(a.data)}</span> ·{" "}
+                                {a.modalidade}
+                                {a.condicoesEPrazos ? <> — {a.condicoesEPrazos}</> : null}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      )}
                     </td>
                     <td className="px-4 py-3 font-mono text-xs whitespace-nowrap">
                       <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
@@ -342,25 +357,15 @@ export default function PainelEditais({
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right text-xs whitespace-nowrap">
-                      <div className="inline-flex items-center gap-2">
-                        {item.slug && (
-                          <Link
-                            href={`/noticias/${item.slug}`}
-                            className="rounded-md border border-border bg-surface px-2.5 py-1 text-xs font-medium text-text hover:border-primary hover:text-primary"
-                          >
-                            Matéria
-                          </Link>
-                        )}
-                        <a
-                          href={item.urlOficial}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="rounded-md bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft hover:text-text"
-                          title="Abrir página oficial do Diário Oficial"
-                        >
-                          Diário Oficial ↗
-                        </a>
-                      </div>
+                      <a
+                        href={item.urlOficial}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-md bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft hover:text-text"
+                        title="Abrir página oficial do Diário Oficial"
+                      >
+                        Diário Oficial ↗
+                      </a>
                     </td>
                   </tr>
                 ))

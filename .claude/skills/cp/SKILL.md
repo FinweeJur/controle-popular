@@ -93,7 +93,7 @@ presume máquina. Confira com `tailscale status --json` → `.Self.HostName`.
 | Máquina (medido 09/10/2026) | IP Tailscale | Papel |
 |---|---|---|
 | `DESKTOP-FEFPDDP` | `100.126.160.109` | **self** desta sessão — builda, testa, pusha |
-| `Home-PC` | `100.91.10.1` | servidor de produção e do túnel — ⛔ **OFFLINE** desde 08/10 23:38 UTC |
+| `Home-PC` | `100.91.10.1` | servidor de produção e do túnel — **online** (medido 17/11/2026, `idle`) |
 | `Redmi 14C` | `100.80.127.117` | celular, offline desde 09/10 05:01 UTC |
 
 > ⛔ **`Home-PC` offline = transferência Tailscale não sai.**
@@ -259,9 +259,9 @@ O destinatário retira com `tailscale file get <pasta>`.
 
 > ⛔ **Nunca mande segredo por chat, commit ou print** (AGENTS §5.8).
 > O Tailscale é fio privado, não conversa.
-> ⚠️ **Só funciona com o par online.** Medido 09/10: `Home-PC`
-> (`100.91.10.1`) está **OFFLINE desde 08/10 23:38 UTC** — o envio falha
-> até a máquina subir. Confira com `tailscale status` **antes** de prometer.
+> ⚠️ **Só funciona com o par online.** Medido 17/11/2026: `Home-PC`
+> (`100.91.10.1`) está **online** (`idle`). Confira com `tailscale status`
+> antes de prometer o envio; o estado muda sem aviso.
 
 **Ao chegar numa PC nova, na ordem:**
 

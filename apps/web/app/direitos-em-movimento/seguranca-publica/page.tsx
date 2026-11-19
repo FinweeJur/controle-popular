@@ -3,6 +3,7 @@ import Link from "next/link";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { obterMortesIntervencao } from "@/lib/server-only/dados-mortes-intervencao";
 import TabelaMortesIntervencao from "./TabelaMortesIntervencao";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento/seguranca-publica` — mortes por intervenção de agente
@@ -19,12 +20,12 @@ const acervo = obterMortesIntervencao();
 const num = (n: number) => n.toLocaleString("pt-BR");
 const pct = (n: number | null) => (n == null ? "—" : n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/seguranca-publica", {
   title: "Mortes por intervenção policial — Controle Popular",
   description:
     `Mortes por intervenção de agente do Estado no Brasil em ${acervo.ano}: ${num(acervo.brasil.mdip)} pessoas, ` +
     `${pct(acervo.brasil.participacao_pct)} das mortes violentas intencionais, por UF. Fonte: Sinesp VDE / MJSP.`,
-};
+});
 
 function Cartao({ valor, rotulo, nota }: { valor: string; rotulo: string; nota?: string }) {
   return (

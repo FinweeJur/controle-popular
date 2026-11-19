@@ -48,8 +48,9 @@ export default function AssistentePage() {
       <p className="mt-2 mb-6 max-w-2xl text-[1.02em] text-[var(--cp-text-soft)]">
         Escreva o assunto e, se quiser, a cidade — &quot;saúde em BH&quot;,
         &quot;contratos de Betim&quot;. O assistente devolve as páginas que
-        casam com o pedido, para você escolher. Ele não responde com números:
-        quem responde é a página.
+        casam com o pedido, para você escolher. Ele não inventa número: quando a
+        pergunta é de contagem da jurisprudência, mostra a medição do acervo,
+        com a data e o link para conferir a lista.
       </p>
       <AssistenteNavegacao />
     </main>

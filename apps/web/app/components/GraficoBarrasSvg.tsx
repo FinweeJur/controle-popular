@@ -41,19 +41,23 @@ interface RenderProps {
 function BarrasHorizontaisSvg(p: RenderProps) {
   const alturaCalc = p.altura || Math.max(160, p.itens.length * 36 + 40);
   const margemEsq = 140;
-  const margemDir = 60;
-  const margemTopo = 20;
-  const plotLargura = p.largura - margemEsq - margemDir;
+  const margemDir = 80;
+  // Barra curta e figura centrada: o valor fica logo ao lado da barra em vez de
+  // no canto da tela. O teto de 320 unidades evita a barra de 500 px que
+  // cansava a vista no cabeçalho largo.
+  const plotLargura = Math.min(p.largura - margemEsq - margemDir, 320);
+  const larguraSvg = margemEsq + plotLargura + margemDir;
   const alturaBarra = 18;
+  const margemTopo = 20;
   const espacamento = (alturaCalc - margemTopo - 20) / p.itens.length;
 
   return (
-    <figure className="w-full">
+    <figure className="mx-auto w-full max-w-xl">
       {p.titulo && <h3 className="font-display text-base font-semibold text-text">{p.titulo}</h3>}
       {p.subtitulo && <p className="mb-3 text-xs text-text-soft">{p.subtitulo}</p>}
       <div className="overflow-x-auto">
         <svg
-          viewBox={`0 0 ${p.largura} ${alturaCalc}`}
+          viewBox={`0 0 ${larguraSvg} ${alturaCalc}`}
           role="img"
           aria-label={p.descricaoAcessivel || `${p.titulo}. Total de ${p.itens.length} categorias.`}
           className="h-auto w-full min-w-[320px]"

@@ -6,12 +6,13 @@ import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
 import { obterRecomendacoes, DATA_RECOMENDACOES } from "@/lib/judiciario/recomendacoes";
 import DataColeta from "@/app/components/DataColeta";
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/recomendacoes", {
   title: "Recomendações e Cobranças do CNJ e CNMP | Controle Popular",
   description:
     "Catálogo transparente e em linguagem simples das determinações e recomendações emitidas pelo CNJ e CNMP em inspeções sobre tribunais e promotorias.",
-};
+});
 
 const SECOES_RECOMENDACOES = [
   { id: "resumo-metricas", titulo: "1. Indicadores de Cumprimento" },

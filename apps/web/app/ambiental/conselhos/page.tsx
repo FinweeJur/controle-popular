@@ -8,12 +8,13 @@ import FiltroConselhos from "./FiltroConselhos";
 
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado"
 import { ResumoRealidadeBox } from "@/app/components/ResumoRealidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/ambiental/conselhos", {
   title: "Conselhos Sociais, Bacias e Meio Ambiente | Meio Ambiente (ONSA)",
   description:
     "Mapeamento de comitês de bacia hidrográfica, CODEMAs, conselhos de direitos humanos, saúde e conselhos tutelares com contatos, atas e canais de fiscalização cidadã.",
-};
+});
 
 export default function PaginaConselhosSociais() {
   const conselhos = listarConselhos();

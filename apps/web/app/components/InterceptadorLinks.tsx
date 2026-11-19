@@ -39,6 +39,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { EVENTO_NAVEGAR } from "@/lib/navegacao/navegar";
 
 /** Extensões que nunca são página do App Router (arquivo/dado). */
 const EXTENSOES_ARQUIVO =
@@ -80,6 +81,18 @@ export function InterceptadorLinks() {
 
     document.addEventListener("click", aoClicar, true);
     return () => document.removeEventListener("click", aoClicar, true);
+  }, [router]);
+
+  // Canal para quem navega por CÓDIGO (busca, assistente, pet): `navegarInterno`
+  // dispara `cp:navegar` e a rota sai daqui, client-side. Sem isto o atalho
+  // usaria `window.location` e mataria o áudio do rádio (regra 5.13).
+  useEffect(() => {
+    const aoPedirNavegacao = (ev: Event) => {
+      const href = (ev as CustomEvent<{ href?: string }>).detail?.href;
+      if (href) router.push(href);
+    };
+    window.addEventListener(EVENTO_NAVEGAR, aoPedirNavegacao);
+    return () => window.removeEventListener(EVENTO_NAVEGAR, aoPedirNavegacao);
   }, [router]);
 
   return null;

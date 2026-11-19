@@ -22,6 +22,7 @@ import {
   listarProjetos,
   resumirUniversidades
 } from "@/lib/universidades";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * /educacao — Hub Unificado de Educação Básica, Superior, Pesquisa e Mobilidade (PowerBI Cívico)
@@ -45,11 +46,11 @@ import {
  *   8. Rastreável no Tempo (data visível e derivada dos arquivos de dados).
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/educacao", {
   title: "Educação, Pesquisa e Mobilidade Acadêmica (PowerBI Cívico) — Controle Popular",
   description:
     "Hub unificado de educação básica (Censo Escolar e IDEB), 1.414 grupos de pesquisa CNPq, 23.577 periódicos científicos abertos, editais de intercâmbio e direitos comparados.",
-};
+});
 
 export default function PaginaEducacao() {
   const { metricas, amostra_educacao, atualizado_em } = dadosEducacao;

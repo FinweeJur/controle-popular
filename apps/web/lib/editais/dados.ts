@@ -13,6 +13,17 @@ import bruto from "@/data/editais-consolidado.json";
  * - Valores medidos do arquivo JSON consolidado, nunca digitados à mão.
  */
 
+export interface AtualizacaoEdital {
+  /** Data da publicação no Diário Oficial (AAAA-MM-DD). */
+  data: string;
+  titulo: string;
+  modalidade: string;
+  condicoesEPrazos: string;
+  urlOficial: string;
+  pagina?: number | null;
+  secao?: string | null;
+}
+
 export interface ItemEdital {
   id: string;
   slug?: string;
@@ -27,6 +38,8 @@ export interface ItemEdital {
   score: number;
   pagina?: number | null;
   secao?: string | null;
+  /** Andamento do certame: uma linha por ato publicado, mais recente primeiro. */
+  atualizacoes?: AtualizacaoEdital[];
 }
 
 export interface AcervoEditais {
@@ -108,6 +121,8 @@ export function editaisParaCsv(linhas: readonly ItemEdital[]): string {
     "titulo",
     "objeto",
     "condicoes_e_prazos",
+    "qtd_atualizacoes",
+    "andamento",
     "url_oficial",
     "score_relevancia",
   ].join(";");
@@ -121,6 +136,8 @@ export function editaisParaCsv(linhas: readonly ItemEdital[]): string {
       i.titulo,
       i.objeto,
       i.condicoesEPrazos,
+      i.atualizacoes?.length ?? 1,
+      (i.atualizacoes ?? []).map((a) => `${a.data} ${a.modalidade}`).join(" | "),
       i.urlOficial,
       i.score,
     ]

@@ -3,6 +3,7 @@ import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { listarCidadesComparaveis } from "@/lib/comparador/projecao";
 import RecapitularClient from "./RecapitularClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/recapitular` — cartão-resumo compartilhável de uma cidade.
@@ -12,11 +13,11 @@ import RecapitularClient from "./RecapitularClient";
  * própria tela.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/recapitular", {
   title: "Recapitular uma cidade — números para compartilhar | Controle Popular",
   description:
     "Monte um resumo curto da sua cidade — população, PIB, repasses, saúde e escolas, com fonte e data — pronto para copiar e compartilhar no WhatsApp ou no e-mail.",
-};
+});
 
 export default function RecapitularPage() {
   const { cidades, dataAcervo } = listarCidadesComparaveis();

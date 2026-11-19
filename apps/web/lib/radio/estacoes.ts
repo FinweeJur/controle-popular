@@ -138,6 +138,13 @@ export interface EstacaoRadio {
 export const RADIO_VERIFICADO_EM = "2026-10-03";
 
 /**
+ * Estação que o player aciona quando nada está carregado — o botão da pilha
+ * lateral e o "play" da barra de notificação. É rádio comunitária brasileira,
+ * dentro da régua do acervo; trocar aqui muda o padrão do site.
+ */
+export const ESTACAO_PADRAO_RADIO = "radio-brasil-de-fato";
+
+/**
  * Acervo curado. O recorte é deliberado: menos grande mídia comercial, mais
  * rádio pública, universitária, comunitária e do Sul Global — com programação
  * musical. Ver `docs/06-fontes/FONTES.md` para o registro da coleta.

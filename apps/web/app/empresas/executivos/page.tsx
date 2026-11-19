@@ -25,12 +25,13 @@ import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import PainelExecutivosClient from "./PainelExecutivosClient";
 import PainelPortaGiratoria from "./PainelPortaGiratoria";
 import SecaoPaginasRelacionadas from "@/app/components/SecaoPaginasRelacionadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/empresas/executivos", {
   title: "Diretores, CEOs e Conselheiros das Grandes Empresas — Controle Popular",
   description:
     "Mapeamento cívico de executivos estatutários, conselhos de administração e comitês de auditoria das 36 maiores empresas e fundos globais. Análise de governança corporativa, remunerações, diretorias entrelaçadas e porta giratória entre cargos públicos e a iniciativa privada.",
-};
+});
 
 export default function ExecutivosEmpresasPage() {
   const executivos = obterExecutivosConselhos();

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import analise from "@/data/analises/rio-doce.json";
 import { MarkdownResumo } from "@/app/components/ResumoRealidade";
 import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/ambiental/rio-doce/analise` — análise integrada do Rio Doce e do litoral.
@@ -15,11 +16,11 @@ import { TrilhaFrentes } from "@/app/components/TrilhaFrentes";
  * republicado. Cada afirmação mantém a citação do trabalho que a sustenta.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/rio-doce/analise", {
   title: "Análise integrada — Rio Doce e litoral | Controle Popular",
   description:
     "O que a literatura documenta sobre a chegada dos rejeitos de Fundão ao litoral capixaba e a Abrolhos: extensão da pluma, danos ambientais, saúde, pesca e limites da reparação.",
-};
+});
 
 export default function AnaliseRioDoce() {
   const corpo = (analise.markdown ?? "").replace(/^#\s+.*\r?\n/, "").trim();

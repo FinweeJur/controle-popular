@@ -616,6 +616,14 @@ const nextConfig: NextConfig = {
               destination: "/universidades",
               permanent: true,
             },
+            // Posts de certame do radar retirados em 18/11/2026: a página
+            // `/editais` consolidou um registro por certame, com andamento.
+            // O padrão preserva links salvos ou indexados dos posts antigos.
+            {
+              source: "/noticias/:slug(radar-editais-.*)",
+              destination: "/editais",
+              permanent: true,
+            },
             // Rotas antigas que viraram recorte de painel. A lista mora em
             // `lib/redirects/rotas-antigas.ts` e é a MESMA que as páginas-ponte
             // leem: aqui valem onde há servidor; lá, no alvo `output: 'export'`

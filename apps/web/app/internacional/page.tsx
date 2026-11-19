@@ -26,12 +26,13 @@ import {
 import PainelMultilateral from "./PainelMultilateral";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { Globe, Users, ShieldAlert, Compass, ExternalLink, ArrowRight } from "lucide-react";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/internacional", {
   title: "Transparência Multilateral & Internacional: ONU, UNESCO, OMS, OMC, G8 e G20 | Controle Popular",
   description:
     "Portal cívico internacional comparando o Brasil com potências do G8 e G20: IDH e Gini da ONU/Banco Mundial, gastos em educação e saúde, comércio de minérios e direitos indígenas.",
-};
+});
 
 export default function PaginaHubInternacional() {
   const indicadores = obterIndicadoresSociais();

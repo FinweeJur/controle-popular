@@ -5,12 +5,13 @@ import EixoLayout from '@/app/components/eixos/EixoLayout';
 import FichaCard from '@/app/components/eixos/FichaCard';
 import RelacaoSuggestions from '@/app/components/eixos/RelacaoSuggestions';
 import { listarFichasPorSubfrente } from '@/lib/eixos/fichas';
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/estado-e-economia/judiciario", {
   title: 'Judiciário e Justiça — Eixo Estado e Economia | Controle Popular',
   description:
     'Composição dos sete tribunais superiores e regionais, vacância de magistrados, inspeções do CNJ e processos ambientais do SIRENEJud.',
-};
+});
 
 export default function JudiciarioEixoPage() {
   const fichas = listarFichasPorSubfrente('judiciario');

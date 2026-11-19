@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { metadataEditavel } from "@/lib/edicoes";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 import CaminhoSistema from "@/app/components/CaminhoSistema";
 import { formatNumberBR } from "@/lib/betim/format";
 import { EIXOS } from "@/lib/navegacao/mapa";
-import jurisprudenciaBruta from "@/data/jurisprudencia-casos.json";
+import { ACERVO_JURISPRUDENCIA as jurisprudenciaBruta } from "@/lib/jurisprudencia-acervo";
 import noticiasBrutas from "@/data/noticias-desastres.json";
 import mabBruto from "@/data/mab-publicacoes.json";
 import bibliotecaBruta from "@/public/data/biblioteca-desastres.json";
@@ -160,10 +161,10 @@ const DATA_MAB = dia(ARQUIVO_MAB.geradoEm);
 const DATA_BIBLIOTECA = dia(ARQUIVO_BIBLIOTECA.geradoEm);
 const JANELA_NOTICIAS = ARQUIVO_NOTICIAS.janela_dias ?? 60;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/eixos/casos", {
   title: "Casos — Brumadinho, Rio Doce e Itatiaiuçu | Controle Popular",
   description: `Os três casos que o portal acompanha: ${formatNumberBR(TOTAL_ACORDAOS)} acórdãos, ${formatNumberBR(TOTAL_DOCUMENTOS)} documentos de biblioteca, ${formatNumberBR(TOTAL_NOTICIAS)} notícias no radar e ${formatNumberBR(TOTAL_MAB)} publicações do MAB, com o que cada acervo mede e o que ainda falta medir.`,
-};
+});
 
 function percentual(valor: number, total: number): string {
   if (!total) return "—";

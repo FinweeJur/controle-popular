@@ -7,12 +7,13 @@ import { PAISES_AMERICA_DO_NORTE } from "@/lib/direitos-globais/america-do-norte
 import { DISPOSITIVOS_AMERICA_DO_NORTE } from "@/lib/direitos-globais/america-do-norte/dispositivos";
 import TabelaAmericaDoNorteInterativa from "../componentes/TabelaAmericaDoNorteInterativa";
 import { SecaoDispositivosComFiltro } from "../componentes/Dispositivos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-globais/america-do-norte", {
   title: "América do Norte | Direitos Globais | Controle Popular",
   description:
     "Comparação constitucional e direitos fundamentais dos Estados Unidos e do Canadá, com análise do Bill of Rights, Canadian Charter e Section 35 de povos indígenas.",
-};
+});
 
 function ResumoAmericaDoNorte() {
   return (

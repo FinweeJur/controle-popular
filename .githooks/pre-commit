@@ -30,7 +30,19 @@ if command -v npx >/dev/null 2>&1; then
   fi
 fi
 
-# 2. Achar o binario do CodeScene. No PATH ou na instalacao padrao do Windows.
+# 2. Vigia de Post de Servico (regra 5.19): countup, barras, tabela interativa
+if command -v npx >/dev/null 2>&1; then
+  npx tsx scripts/vigia-post-servico.mts
+  status_post=$?
+  if [ "$status_post" -ne 0 ]; then
+    echo ""
+    echo "Vigia de Post de Servico barrou o commit: o padrao do post de servico quebrou."
+    echo "Corrija ou leia docs/03-desenvolvimento/PADRAO-POST-BLOG.md."
+    exit "$status_post"
+  fi
+fi
+
+# 3. Achar o binario do CodeScene. No PATH ou na instalacao padrao do Windows.
 CS_BIN=""
 if command -v cs >/dev/null 2>&1; then
   CS_BIN="cs"

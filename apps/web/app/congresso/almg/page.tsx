@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/almg", {
   title: "Assembleia Legislativa de MG — Proposições Estaduais | Controle Popular",
   description:
     "Proposições legislativas de Minas Gerais com análise garantista de ampliação ou restrição de direitos fundamentais. Dados Abertos ALMG.",
-};
+});
 
 const NAV = [
   { href: "/congresso/almg/proposicoes", label: "Proposições" },

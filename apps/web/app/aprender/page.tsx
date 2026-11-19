@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import AprenderClient from "./AprenderClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Página `/aprender` — micro-lições cívicas com pergunta de fixação.
@@ -11,11 +12,11 @@ import AprenderClient from "./AprenderClient";
  * Conteúdo em `lib/aprender/licoes.ts`; a interação roda no aparelho.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/aprender", {
   title: "Aprender — micro-lições de cidadania e dinheiro público | Controle Popular",
   description:
     "Lições curtas e claras sobre como funciona o dinheiro público: LAI, licitação, PNCP, barragem a montante, ICMS, CAR, CadÚnico e código IBGE. Cada uma com a fonte oficial.",
-};
+});
 
 export default function AprenderPage() {
   return (

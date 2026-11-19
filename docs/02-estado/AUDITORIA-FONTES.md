@@ -55,3 +55,12 @@ Criterio: OK = 2xx/3xx; AVISO = 403/405/429/503 em host que bloqueia robot
 - 07/11/2026 12:21 BRT - 30 links; 0 criticos; 29 avisos.
 - 08/11/2026 12:43 BRT - 30 links; 0 criticos; 29 avisos.
 - 09/11/2026 16:26 BRT - 30 links; 0 criticos; 29 avisos.
+- 10/11/2026 13:44 BRT - 30 links; 0 criticos; 29 avisos.
+- 11/11/2026 13:50 BRT - 30 links; 0 criticos; 29 avisos.
+- 12/11/2026 14:18 BRT - 30 links; 0 criticos; 29 avisos.
+- 13/11/2026 13:54 BRT - 30 links; 0 criticos; 29 avisos.
+- 14/11/2026 12:29 BRT - 30 links; 0 criticos; 29 avisos.
+- 15/11/2026 13:01 BRT - 30 links; 0 criticos; 29 avisos.
+- 16/11/2026 16:11 BRT - 30 links; 0 criticos; 29 avisos.
+- 17/11/2026 15:04 BRT - 30 links; 0 criticos; 29 avisos.
+- 18/11/2026 14:44 BRT - 30 links; 0 criticos; 29 avisos.

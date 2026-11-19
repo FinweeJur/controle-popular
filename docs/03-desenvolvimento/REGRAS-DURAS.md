@@ -283,19 +283,33 @@ Vale para todo agente:
 
 ## 5.13. Casca persistente: link interno navega no cliente, nunca recarrega
 
-**Regra do dono, 03/10/2026.** A barra superior, a faixa de desenvolvimento,
-o rodapé, o assistente Seu Nonô, o companheiro (pet) e o player de rádio
-moram no layout raiz e NÃO podem desmontar na navegação. O `<audio>` do
-rádio e o estado do pet só sobrevivem se a troca de página for client-side.
+**Regra do dono, 03/10/2026** (ampliada em 18/11/2026). A barra superior, a
+faixa de desenvolvimento, o rodapé, o assistente Seu Nonô, o companheiro (pet)
+e o player de rádio moram no layout raiz e NÃO podem desmontar na navegação.
+O `<audio>` do rádio e o estado do pet só sobrevivem se a troca de página for
+client-side.
 
 - Todo link para PÁGINA interna usa `next/link` — inclusive os de `href`
   dinâmico (navbar, rodapé, cartões), que a regra `no-html-link-for-pages`
   do ESLint não enxerga;
+- **Nunca `window.location.href`/`assign` para rota interna.** Isso recarrega
+  o documento e mata o áudio. Em componente de cliente que navega por código
+  (busca, assistente, pet), use `useRouter().push` — foi a causa medida em
+  18/11/2026 (`BuscaGlobal`, `BuscaUniversal`, `SeuNono`,
+  `SessaoCompanheiro`);
 - `<a href>` cru fica só para externo, `mailto:`/`tel:`, âncora pura (`#`),
   arquivo (`.pdf`, `.json`, imagens…) e `/api/...`;
 - A rede de segurança é o `InterceptadorLinks` (`app/components/`), montado
   no layout raiz: captura o clique em qualquer `<a>` interno de página e o
   entrega ao router;
+- **Media Session:** enquanto a rádio toca, `PlayerRadio` publica título (a
+  estação), artista (Controle Popular · rádio ao vivo), álbum (cidade/UF ou
+  país + categoria) e a arte do portal, com handlers de play/pause. É o que
+  faz aparecer o controle na barra de notificação do celular/tablet e no
+  painel de mídia do navegador. Metadados em `lib/radio/mediasession.ts`;
+- **Estação lembrada:** a última rádio fica em `localStorage`
+  (`cp_radio_estacao`); depois de um reload o botão volta naquela estação e
+  um toque retoma, sem autoplay (o navegador bloqueia áudio sem gesto);
 - Verificação: `scripts/verificar-radio-navegacao.py` (Playwright) percorre
   eixos, subfrentes e o top-100 clicando e confere se o áudio segue vivo.
 
@@ -428,6 +442,83 @@ A regra nasce desse episódio.
 **Não é gasto** e não precisa de autorização: commit, push, leitura de fonte
 pública, chamada a modelo gratuito e execução local. Deploy continua exigindo
 ordem explícita (§5.7.1).
+
+## 5.18. Leitura de jornal e conforto visual
+
+**Regra do dono, 09–10/11/2026.** Página longa não é bloco de texto. A
+diagramação tem de ajudar o leitor a achar o número, a data e a frase que
+respondem — sem atravessar a tela com o olho.
+
+O padrão completo está em
+[PADRAO-LEITURA-JORNAL.md](PADRAO-LEITURA-JORNAL.md). O resumo:
+
+- **Hierarquia:** H1 único; lede de até 4 linhas; H2 com fio e respiro; H3 só
+  quando divide assunto; parágrafo de até ~6 linhas; largura de 72ch;
+  entrelinha 1,75.
+- **Destaques:** cartões `:::numeros` para 2–4 valores; citação `>` para uma
+  frase-síntese; tabela com cabeçalho em caixa alta e linhas zebradas.
+- **Conforto de número:** rótulo, barra e valor formam um grupo curto e
+  centralizado. O valor não pode ficar no canto oposto ao rótulo.
+- **Gráfico de barras:** largura máxima de ~48 rem, centralizado; N visível;
+  barra proporcional ao maior item; sem barra de ponta a ponta.
+- **Marcas:** `[medido]`, `[inferido]` e `[não dá para concluir]` ficam no
+  JSON, não na tela. Parágrafo que só declara limite não é renderizado.
+- **Sumário lateral:** reutilizar `MiniSumarioLateral` /
+  `CapitulosFlutuantes`; IDs reais e `scroll-mt-24`. Abaixo da lista, duas
+  setas só com símbolo: ↑ **Topo** e ↓ **Próxima seção**, com o rótulo no
+  hover e no foco; em tela larga elas substituem o `BackToTop`.
+
+A verificação é visual em 390 px e no desktop, além de `tsc` e da suíte.
+
+## 5.19. Post de serviço no blog segue o padrão
+
+**Regra do dono, 17/11/2026.** Post que responde pergunta prática (edital,
+concurso, PSS, benefício) não é bloco de texto: tem slug legível, lead maior,
+“O essencial”, olho com fonte, contador animado nos valores, gráfico de barras
+com legenda dentro e tabela filtrável/ordenável.
+
+O padrão completo, com componentes e verificação, está em
+[PADRAO-POST-BLOG.md](PADRAO-POST-BLOG.md). O resumo:
+
+- slug curto e legível; renomear depois de publicar exige 301 + ponte;
+- corpo de 10 a 12 parágrafos; frase de até 13 palavras;
+- animar só número simples (inteiro, decimal, %, moeda), com valor final no SSR;
+- uma tabela por assunto; valor uniforme vai na nota, não repetido por linha;
+- tabela com busca sem acento, faceta, ordenação e `aria-sort`;
+- no celular, a tabela cabe ou rola dentro do quadro.
+
+## 5.20. Seta de `<select>` tem respiro até a borda
+
+**Regra do dono, 18/11/2026.** A seta nativa do `<select>` fica a 2–4 px da
+borda e, no filtro da biblioteca, parecia colada. Em todo o site:
+
+- `select` (fora de `.appearance-none`) usa `appearance: none`, chevron SVG em
+  `right .75rem center` e `padding-right: 2.25rem` — 12 px de folga e 36 px de
+  área de texto;
+- quem já desenha o próprio ícone marca `className="appearance-none"` e não
+  recebe um segundo chevron;
+- vale para filtros, formulários e qualquer controle nativo novo.
+
+O CSS único mora em `app/globals.css`, bloco “Respiro da seta do `<select>`”;
+não repita o chevron por componente.
+
+## 5.21. Sanfona se anuncia como sanfona (design system)
+
+**Regra do dono, 18/11/2026.** Bloco expansível que esconde conteúdo precisa
+dizer que abre. Na auditoria do Paraopeba os `<summary>` eram só texto: sem
+seta, sem hover, sem cara de botão, o leitor passava reto.
+
+- Use `SanfonaTema` (`apps/web/app/components/sistema/SanfonaTema.tsx`) —
+  `<details>` nativo, zero JavaScript;
+- obrigatório: linha inteira clicável, hover **e** `focus-visible`, seta que
+  gira 180° ao abrir, pulso no selo enquanto fechado (para em
+  `prefers-reduced-motion`) e microtexto “Abrir/Fechar” no desktop;
+- o CSS compartilhado mora em `globals.css` (`.cp-sanfona-seta`); não copie a
+  animação para o componente;
+- outro site: copie `docs/design-system/sanfona.modelo.html`, que é
+  autossuficiente;
+- o vocabulário visual (princípios, estados, checklist de componente novo) é
+  [DESIGN-SYSTEM.md](../04-arquitetura/DESIGN-SYSTEM.md).
 
 ## Origem / Histórico
 

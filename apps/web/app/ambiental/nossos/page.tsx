@@ -15,6 +15,7 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * @file `/ambiental/nossos` — painel da Coleção Nossos (rios, serras e
@@ -44,11 +45,11 @@ import MeioAmbienteRelacionado from "@/app/components/MeioAmbienteRelacionado";
  * pedaço legível e não muda o HTML — nada aqui guarda estado.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/nossos", {
   title: "Nossos Rios, Serras, Territórios e Gente — Meio Ambiente (ONSA) · Controle Popular",
   description:
     "Coleção de lugares e territórios brasileiros sob a ótica do Observatório Nacional Socioambiental. Águas, relevo, cerrado e a nossa gente no centro da fiscalização cívica.",
-};
+});
 
 interface Props {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
