@@ -143,6 +143,15 @@ O resumo nacional traz, por ciclo: `entes`, `avaliados`, `naoAvaliados`,
 `itpMedio` e as listas `porEsfera` e `porPoder` com a mesma trinca. Nenhuma
 linha de ente mora ali.
 
+**Onde isso aparece no portal (18/11/2026):** a rota `/cidades/transparencia`
+(`apps/web/app/cidades/transparencia/`) publica a série 2022–2025, o gráfico
+com N por ano e a tabela filtrável do ciclo 2025; o hub `/[municipio]` ganha o
+cartão “Transparência do portal público” com a nota da prefeitura e a da câmara
+(`apps/web/app/[municipio]/components/CartaoTransparencia.tsx`), que só
+renderiza quando o município tem avaliação. A lógica pura — média só com
+avaliados, contagem por nível, CSV e o casamento por município — mora em
+`apps/web/lib/pntp/pagina.ts`, com teste ao lado.
+
 ## Números medidos
 
 Recorte de MG, medido em 18/11/2026:

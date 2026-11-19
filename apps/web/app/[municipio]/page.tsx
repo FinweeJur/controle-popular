@@ -13,6 +13,7 @@ import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelu
 import CartaoMemoria from "@/app/[municipio]/components/CartaoMemoria";
 import SecaoMaioresConsumidoresCidade from "@/app/[municipio]/components/SecaoMaioresConsumidoresCidade";
 import DiarioOficialMunicipio from "@/app/[municipio]/components/DiarioOficialMunicipio";
+import CartaoTransparencia from "@/app/[municipio]/components/CartaoTransparencia";
 import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
@@ -908,6 +909,11 @@ export default async function HomePage({
             (Betim, Contagem, Uberaba). A ausência é explicada em
             `/cidades/diarios`, não escondida numa lista vazia. */}
         <DiarioOficialMunicipio ibge={cidade.id_municipio} />
+
+        {/* PNTP/ATRICON — nota do portal de transparência da prefeitura e da
+            câmara. Só aparece quando o município tem avaliação no ciclo 2025;
+            cidade sem avaliação não ganha bloco vazio. */}
+        <CartaoTransparencia municipio={cidade.nome} />
 
         {/* PARAOPEBA — OBRAS MAIS LONGE DE CONCLUIR */}
         {obrasParaopeba.length > 0 && (
