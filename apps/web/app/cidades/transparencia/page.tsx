@@ -3,7 +3,9 @@ import Link from "next/link";
 
 import avaliacoesJson from "@/data/pntp/avaliacoes-mg.json";
 import resumoJson from "@/data/pntp/resumo-brasil.json";
+import ContadorAnimado from "@/app/components/dados/ContadorAnimado";
 import DataColeta from "@/app/components/DataColeta";
+import ExplicadorDaPagina from "@/app/components/ExplicadorDaPagina";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import ResumoExpandivel from "@/app/components/ResumoExpandivel";
 import { IndiceWiki, LinksRelacionados, SecaoWiki } from "@/app/components/wiki";
@@ -195,6 +197,61 @@ export default function TransparenciaPage() {
           <h1 className="mt-2 font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight text-text">
             Transparência dos portais públicos de Minas pelo PNTP
           </h1>
+          <ExplicadorDaPagina
+            frase="Cada órgão recebe nota de 0 a 100 pelo seu portal público. Esta página mostra Minas Gerais nos ciclos de 2022 a 2025."
+            itens={[
+              "Quantos entes de Minas foram avaliados em 2025 e qual foi a média — sempre com o N ao lado.",
+              "A série de 2022 a 2025, com o aviso de que 2023 teve só 14 avaliados.",
+              "A tabela do ciclo 2025, com busca, filtro por poder, esfera e selo e CSV do que está na tela.",
+              "O que o índice mede e o que ele não mede: é o portal, não a gestão.",
+            ]}
+            glossario={[
+              {
+                termo: "PNTP (Programa Nacional de Transparência Pública)",
+                definicao:
+                  "avaliação da Atricon com os Tribunais de Contas que confere, item por item, o que cada órgão publica no portal de transparência.",
+              },
+              {
+                termo: "ITP (Índice de Transparência Pública)",
+                definicao:
+                  "nota de 0 a 100 do PNTP. É o percentual de critérios de transparência atendidos; 100 significa que o portal cumpriu todos os itens avaliados.",
+              },
+              {
+                termo: "Ente",
+                definicao:
+                  "cada órgão avaliado: uma prefeitura, uma câmara, um governo estadual, um tribunal. Prefeitura e câmara do mesmo município são dois entes.",
+              },
+              {
+                termo: "Poder",
+                definicao:
+                  "Executivo (prefeitura ou governo) ou Legislativo (câmara ou assembleia). A tabela também traz Judiciário, Ministério Público e Tribunal de Contas.",
+              },
+              {
+                termo: "Esfera",
+                definicao: "o nível da federação a que o órgão pertence: municipal, estadual ou federal.",
+              },
+              {
+                termo: "Selo (Prata, Ouro e Diamante)",
+                definicao:
+                  "nível de transparência que a Atricon atribui ao ente, na planilha da fonte. Não é calculado pelo portal a partir do ITP.",
+              },
+              {
+                termo: "Nível",
+                definicao:
+                  "faixa publicada pela Atricon: Inicial, Básico, Intermediário, Elevado, Prata, Ouro e Diamante. É um selo, não uma conta que o portal refaz.",
+              },
+              {
+                termo: "Não avaliado",
+                definicao:
+                  "ente que está na planilha, mas não entregou o formulário. A nota aparece como “—” e fica fora da média; nunca vale zero.",
+              },
+              {
+                termo: "Critérios essenciais (%)",
+                definicao:
+                  "percentual dos itens obrigatórios da cartilha que o portal atende. Aparece na coluna “% essenciais” da tabela.",
+              },
+            ]}
+          />
           <ResumoExpandivel
             texto={`O Programa Nacional de Transparência Pública, da Atricon com os Tribunais de Contas, dá uma nota de 0 a 100 ao portal de transparência de cada órgão público — o ITP. Esta página mostra o recorte de Minas Gerais nos quatro ciclos publicados, 2022 a 2025: ${formatNumberBR(
               numeros.n
@@ -267,54 +324,65 @@ export default function TransparenciaPage() {
           <p className="max-w-3xl text-sm leading-relaxed text-text-soft">
             O ciclo 2025 é o mais completo do recorte: {formatNumberBR(numeros.entes)} entes
             públicos de Minas na planilha, {formatNumberBR(numeros.n)} com índice. A média de{" "}
-            {formatarDecimal(numeros.media)} é calculada{" "}
-            <strong className="text-text">só sobre os avaliados</strong> — os{" "}
-            {formatNumberBR(numeros.naoAvaliados)} entes marcados como “Não Avaliado” ficam fora
-            da conta e aparecem como “—” na tabela, nunca como zero.
+            {formatarDecimal(numeros.media)} pontos é calculada{" "}
+            <strong className="text-text">só sobre os avaliados</strong> — {formatNumberBR(numeros.n)}{" "}
+            de {formatNumberBR(numeros.entes)}. Os {formatNumberBR(numeros.naoAvaliados)} entes
+            marcados como “Não Avaliado” ficam fora da conta e aparecem como “—” na tabela, nunca
+            como zero.
           </p>
 
-          <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-4">
             <li className="min-w-0 rounded-xl border border-border bg-surface p-4 text-center">
               <p className="text-xs font-medium tracking-wide text-text-soft uppercase">
-                Entes avaliados
+                Entes avaliados · MG
               </p>
               <p className="mt-1 font-display text-2xl font-bold text-text sm:text-3xl">
-                {formatNumberBR(numeros.n)}
+                <ContadorAnimado valor={numeros.n} />
               </p>
               <p className="mt-1 text-xs text-text-soft">
-                de {formatNumberBR(numeros.entes)} no ciclo 2025
+                de {formatNumberBR(numeros.entes)} entes no ciclo 2025
               </p>
             </li>
             <li className="min-w-0 rounded-xl border border-border bg-surface p-4 text-center">
               <p className="text-xs font-medium tracking-wide text-text-soft uppercase">
-                Média de MG (só avaliados)
+                Média de MG · só avaliados
               </p>
               <p className="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl">
-                {formatarDecimal(numeros.media)}
+                {numeros.media === null ? (
+                  "—"
+                ) : (
+                  <ContadorAnimado valor={numeros.media} casas={1} />
+                )}
               </p>
               <p className="mt-1 text-xs text-text-soft">
-                N = {formatNumberBR(numeros.n)}
-                {brasil2025 ? ` · Brasil: ${formatarDecimal(brasil2025.itpMedio)}` : ""}
+                {formatNumberBR(numeros.n)} de {formatNumberBR(numeros.entes)} avaliados
+                {brasil2025
+                  ? ` · Brasil: ${formatarDecimal(brasil2025.itpMedio)} com ${formatNumberBR(
+                      brasil2025.avaliados
+                    )} de ${formatNumberBR(brasil2025.entes)}`
+                  : ""}
               </p>
             </li>
             <li className="min-w-0 rounded-xl border border-border bg-surface p-4 text-center">
               <p className="text-xs font-medium tracking-wide text-text-soft uppercase">
-                Municípios com avaliação
+                Municípios com avaliação · MG
               </p>
               <p className="mt-1 font-display text-2xl font-bold text-text sm:text-3xl">
-                {formatNumberBR(numeros.municipiosAvaliados)}
+                <ContadorAnimado valor={numeros.municipiosAvaliados} />
               </p>
               <p className="mt-1 text-xs text-text-soft">
-                de {formatNumberBR(numeros.municipios)} (
-                {formatarDecimal(numeros.pctMunicipiosAvaliados)}%)
+                {formatarDecimal(numeros.pctMunicipiosAvaliados)}% ({formatNumberBR(
+                  numeros.municipiosAvaliados
+                )}{" "}
+                de {formatNumberBR(numeros.municipios)} municípios)
               </p>
             </li>
             <li className="min-w-0 rounded-xl border border-border bg-surface p-4 text-center">
               <p className="text-xs font-medium tracking-wide text-text-soft uppercase">
-                Entes no recorte
+                Entes no recorte · MG
               </p>
               <p className="mt-1 font-display text-2xl font-bold text-text sm:text-3xl">
-                {formatNumberBR(numeros.entes)}
+                <ContadorAnimado valor={numeros.entes} />
               </p>
               <p className="mt-1 text-xs text-text-soft">
                 {formatNumberBR(numeros.municipios)} municípios + {estaduais2025} estaduais
@@ -326,9 +394,12 @@ export default function TransparenciaPage() {
             <div className="min-w-0 rounded-xl border border-border bg-surface-2 p-4">
               <p className="text-xs font-semibold text-text-soft uppercase">Selos de 2025</p>
               <p className="mt-1 text-sm leading-relaxed text-text-soft">
-                {formatNumberBR(totalSelos)} entes de MG tiraram selo:{" "}
-                {selos2025.map((item) => `${item.total} ${item.rotulo}`).join(", ")}. O selo é
-                atribuído pela Atricon ao ente, não calculado aqui a partir do índice.
+                {formatNumberBR(totalSelos)} de {formatNumberBR(numeros.n)} avaliados (
+                {formatarDecimal(
+                  numeros.n > 0 ? (totalSelos / numeros.n) * 100 : null
+                )}
+                %) tiraram selo: {selos2025.map((item) => `${item.total} ${item.rotulo}`).join(", ")}.
+                O selo é atribuído pela Atricon ao ente, não calculado aqui a partir do índice.
               </p>
             </div>
             <div className="min-w-0 rounded-xl border border-border bg-surface-2 p-4">
