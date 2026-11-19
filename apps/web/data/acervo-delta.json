@@ -1,18 +1,18 @@
 {
-  "geradoEm": "2026-11-19T20:29:13.582Z",
+  "geradoEm": "2026-11-19T20:31:39.892Z",
   "totalPecas": 5771,
-  "baselineSha": "d8c9f5be4e02d651",
+  "baselineSha": "325db65f28343f4e",
   "rebuild": false,
-  "novos": [
+  "novos": [],
+  "modificados": [
     {
       "id": "blog:ongs-eleitas-copam-2027-2029",
       "frente": "geral",
       "rota": "/noticias/ongs-eleitas-copam-2027-2029",
       "titulo": "COPAM elege sete ONGs para 2027–2029 e deixa 15 cadeiras desertas",
       "fonteUrl": "/noticias/ongs-eleitas-copam-2027-2029",
-      "texto": "A Semad divulgou em 19/11 as sete ONGs eleitas para o Copam no biênio 2027/2029. Elas ocupam 19 das 34 cadeiras e 15 ficaram desertas.\nA Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável (Semad) divulgou nesta quinta-feira (19) o resultado da votação das organizações não governamentais para o Copam. Sete entidades foram eleitas. Elas ocupam 19 das 34 cadeiras reservadas a ONGs no biênio 2027/2029. Os PDFs oficiais foram consultados em 19 de novembro de 2026.\nAs 34 cadeiras se dividem em três níveis. São 4 no plenário, 2 em cada uma das seis câmaras técnicas especializadas e 2 em cada uma das nove unidades regionais colegiadas (URCs).\nSete ONGs foram eleitas para 19 das 34 cadeiras de ONG do Copam.\nCAA/NM ocupa 6; Angá, 4; São Lourenço, 3.\nQuinze cadeiras ficaram desertas, 14 delas nas URCs.\nRecursos de 24 a 30/11; resultado final em 10/12.\nONGS eleitas por unidade colegiada do Copam\nSão 34 vagas de ONG: 4 no plenário, 2 em cada uma das seis câmaras técnicas e 2 em cada uma das nove URCs. A coluna Vagas é o total reservado ao segmento; o contador abaixo soma as 34. A lista de habilitadas tem nove entidades; a apuração traz oito. Cadeira deserta é preenchida por indicação do presidente do Copam, não por voto.\nCadeiras de ONG ocupadas por cada entidade eleita\nA barra conta cadeiras, não votos: a mesma entidade pode vencer em mais de uma unidade colegiada. O percentual dentro da barra é a fração das 6 cadeiras do CAA/NM, a maior bancada. As sete entidades somam 19 cadeiras.\nCAA/NM: R$ 6,00\nAngá: R$ 4,00\nSão Lourenço: R$ 3,00\nAmda: R$ 2,00\nIracambi: R$ 2,00\nIDAU-TAP: R$ 1,00\nPromutuca: R$ 1,00"
+      "texto": "A Semad divulgou em 19/11 as sete ONGs eleitas para o Copam no biênio 2027/2029. Elas ocupam 19 das 34 cadeiras e 15 ficaram desertas.\nA Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável (Semad) divulgou nesta quinta-feira (19) o resultado da votação das organizações não governamentais para o Copam (Conselho Estadual de Política Ambiental). Sete entidades foram eleitas. Elas ocupam 19 das 34 cadeiras reservadas a ONGs no biênio 2027/2029. Os PDFs oficiais foram consultados em 19 de novembro de 2026.\nAs 34 cadeiras se dividem em três níveis. São 4 no plenário, 2 em cada uma das seis câmaras técnicas especializadas e 2 em cada uma das nove unidades regionais colegiadas (URCs).\nSete ONGs foram eleitas para 19 das 34 cadeiras de ONG do Copam.\nCAA/NM ocupa 6; Angá, 4; São Lourenço, 3.\nQuinze cadeiras ficaram desertas, 14 delas nas URCs.\nRecursos de 24 a 30/11; resultado final em 10/12.\nONGS eleitas por unidade colegiada do Copam\nSão 34 vagas de ONG: 4 no plenário, 2 em cada uma das seis câmaras técnicas e 2 em cada uma das nove URCs. A coluna Vagas é o total reservado ao segmento; o contador abaixo soma as 34. A lista de habilitadas tem nove entidades; a apuração traz oito. Cadeira deserta é preenchida por indicação do presidente do Copam, não por voto.\nCadeiras de ONG ocupadas por cada entidade eleita\nA barra conta cadeiras, não votos: a mesma entidade pode vencer em mais de uma unidade colegiada. O percentual dentro da barra é a fração das 6 cadeiras do CAA/NM, a maior bancada. As sete entidades somam 19 cadeiras.\nCAA/NM: R$ 6,00\nAngá: R$ 4,00\nSão Lourenço: R$ 3,00\nAmda: R$ 2,00\nIracambi: R$ 2,00\nIDAU-TAP: R$ 1,00\nPromutuca: R$ 1,00"
     }
   ],
-  "modificados": [],
   "removidos": []
 }
