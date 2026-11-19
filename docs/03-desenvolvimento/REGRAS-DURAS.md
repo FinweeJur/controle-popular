@@ -520,6 +520,34 @@ seta, sem hover, sem cara de botão, o leitor passava reto.
 - o vocabulário visual (princípios, estados, checklist de componente novo) é
   [DESIGN-SYSTEM.md](../04-arquitetura/DESIGN-SYSTEM.md).
 
+## 5.22. Contador animado e leitura para quem não é técnico
+
+**Regra do dono, 19/11/2026.** Página de dado não é planilha na tela. Quem
+chega é leigo, muitas vezes no celular: precisa entender o número sem curso
+de estatística.
+
+- **Contador:** todo cartão de topo com número, % ou R$ usa
+  `CartoesResumo` ou `ContadorAnimado` (`app/components/dados/`). O HTML já
+  traz o valor final; a animação é enfeite e para em
+  `prefers-reduced-motion`;
+- **“Em uma frase”:** logo abaixo do `<h1>`, 1–2 frases de até 13 palavras
+  dizendo o que a página mostra e para que serve;
+- **“O que você vai ver”:** 3–5 marcadores, um por bloco ou número;
+- **Glossário da página:** `<details>` com termo e definição de dicionário;
+  sigla explicada na primeira aparição (“EAR — energia armazenada nos
+  reservatórios”);
+- **Unidade e recorte em cada número:** “GWmed médio · SE/CO · set/2026”,
+  “% de avaliados · MG”, “R$ por MWh · leilão”;
+- **Porcentagem sempre com denominador:** “54,4% (1.581 de 1.712 entes
+  avaliados)”, nunca “54,4%” solto;
+- **Território explícito:** Minas Gerais, SE/CO ou Brasil — nunca “aqui” ou
+  “no estado” sem dizer qual;
+- **Ressalva não se esconde para simplificar:** nulo é “Não avaliado”, nunca
+  zero; mês corrente é parcial; número oficial fora da faixa ganha legenda.
+
+Vale para página nova e para a que for editada. Checklist em
+[PADRAO-PAGINA-WIKI.md](PADRAO-PAGINA-WIKI.md).
+
 ## Origem / Histórico
 
 Movido do AGENTS.md §5 em 18/10/2026, sem perda de texto. O AGENTS.md passou a ser um mapa com link para cada regra.

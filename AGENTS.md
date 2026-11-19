@@ -120,6 +120,7 @@ Cada linha tem o resumo. O texto completo, a medição e o motivo estão em
 | [5.19](docs/03-desenvolvimento/REGRAS-DURAS.md#519-post-de-serviço-no-blog-segue-o-padrão) | Post de serviço no blog segue o [PADRAO-POST-BLOG](docs/03-desenvolvimento/PADRAO-POST-BLOG.md): slug legível, lead, “O essencial”, olho, contador animado, gráfico com legenda dentro e tabela filtrável/ordenável. |
 | [5.20](docs/03-desenvolvimento/REGRAS-DURAS.md#520-seta-de-select-tem-respiro-até-a-borda) | Seta de `<select>` tem respiro até a borda: chevron global em `right .75rem` e `padding-right` de 36 px; não duplicar ícone. |
 | [5.21](docs/03-desenvolvimento/REGRAS-DURAS.md#521-sanfona-se-anuncia-como-sanfona-design-system) | Sanfona usa `SanfonaTema`: seta que gira, pulso, hover/foco e “Abrir/Fechar”. Vocabulário visual em [DESIGN-SYSTEM](docs/04-arquitetura/DESIGN-SYSTEM.md) e modelo portável em `docs/design-system/`. |
+| [5.22](docs/03-desenvolvimento/REGRAS-DURAS.md#522-contador-animado-e-leitura-para-quem-não-é-técnico) | Número anima no cartão (`ContadorAnimado`), valor final no HTML; toda página tem “Em uma frase”, glossário, unidade, território e % com denominador. |
 
 ## Verificação mínima
 
