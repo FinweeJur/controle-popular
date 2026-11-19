@@ -164,6 +164,31 @@ export default function PaginaCidadesEstrategicas() {
           </Link>
         </div>
 
+        {/* Banner de atalho para a cobertura de diários oficiais municipais
+            (Querido Diário). O diário é dado da cidade; a cobertura mora neste
+            tema e o hub de cada cidade coberta ganha a seção local. */}
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">
+              Diários oficiais municipais
+            </span>
+            <h3 className="mt-0.5 font-display text-base font-bold text-foreground">
+              O que Betim, Contagem e Uberaba publicaram no diário oficial
+            </h3>
+            <p className="mt-1 text-xs text-muted">
+              Cobertura do Querido Diário: contagem de decreto, portaria, licitação e nomeação,
+              com trecho e link para o PDF. Mariana e Brumadinho aparecem com o motivo de não
+              terem diário no acervo.
+            </p>
+          </div>
+          <Link
+            href="/cidades/diarios"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-2.5 text-xs font-bold text-primary transition-all hover:bg-primary/20"
+          >
+            <span>Ver cobertura dos diários →</span>
+          </Link>
+        </div>
+
         {/* Sumário Interno (Padrão Wiki) */}
         <IndiceWiki itens={SECOES_CIDADES} />
 

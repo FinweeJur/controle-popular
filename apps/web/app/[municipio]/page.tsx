@@ -12,6 +12,7 @@ import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDir
 import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelular";
 import CartaoMemoria from "@/app/[municipio]/components/CartaoMemoria";
 import SecaoMaioresConsumidoresCidade from "@/app/[municipio]/components/SecaoMaioresConsumidoresCidade";
+import DiarioOficialMunicipio from "@/app/[municipio]/components/DiarioOficialMunicipio";
 import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
@@ -902,6 +903,11 @@ export default async function HomePage({
             ))}
           </div>
         </section>
+
+        {/* DIÁRIO OFICIAL — só nas cidades com cobertura do Querido Diário
+            (Betim, Contagem, Uberaba). A ausência é explicada em
+            `/cidades/diarios`, não escondida numa lista vazia. */}
+        <DiarioOficialMunicipio ibge={cidade.id_municipio} />
 
         {/* PARAOPEBA — OBRAS MAIS LONGE DE CONCLUIR */}
         {obrasParaopeba.length > 0 && (
