@@ -256,13 +256,13 @@ describe("Acervo Europa e Conexões Transnacionais", () => {
       let soma = 0;
       for (let i = 0; i < 9; i++) soma += parseInt(cpfLimpo[i], 10) * (10 - i);
       let resto = 11 - (soma % 11);
-      let dv1 = resto >= 10 ? 0 : resto;
+      const dv1 = resto >= 10 ? 0 : resto;
       if (dv1 !== parseInt(cpfLimpo[9], 10)) return false;
 
       soma = 0;
       for (let i = 0; i < 10; i++) soma += parseInt(cpfLimpo[i], 10) * (11 - i);
       resto = 11 - (soma % 11);
-      let dv2 = resto >= 10 ? 0 : resto;
+      const dv2 = resto >= 10 ? 0 : resto;
       return dv2 === parseInt(cpfLimpo[10], 10);
     }
 

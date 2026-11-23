@@ -47,21 +47,18 @@ export default function DonutChartResponsivo({
   // Normaliza os percentuais para garantir soma visual de 100% no anel SVG
   const somaPct = fatias.reduce((acc, f) => acc + Math.max(0, f.percentual), 0) || 100;
 
-  let acumuladoPct = 0;
-  const segmentosCalculados = fatias.map((fatia, index) => {
-    const proporcao = Math.max(0, fatia.percentual) / somaPct;
-    const comprimentoArco = proporcao * circunferencia;
-    const deslocamento = circunferencia - acumuladoPct * circunferencia;
-    acumuladoPct += proporcao;
-
-    return {
-      ...fatia,
-      indice: index + 1,
-      comprimentoArco,
-      deslocamento,
-    };
-  });
-
+  // Percentual normalizado e deslocamento acumulado sem mutação de `let`
+  // (o compilador do React rejeita reatribuição durante o render).
+  const proporcoes = fatias.map((f) => Math.max(0, f.percentual) / somaPct);
+  const acumulados = proporcoes.map((_, i) =>
+    proporcoes.slice(0, i).reduce((acc, p) => acc + p, 0)
+  );
+  const segmentosCalculados = fatias.map((fatia, index) => ({
+    ...fatia,
+    indice: index + 1,
+    comprimentoArco: proporcoes[index] * circunferencia,
+    deslocamento: circunferencia - acumulados[index] * circunferencia,
+  }));
   return (
     <div className="rounded-2xl border border-border bg-surface p-4 sm:p-6 shadow-xs space-y-5">
       {/* Cabeçalho do Gráfico */}

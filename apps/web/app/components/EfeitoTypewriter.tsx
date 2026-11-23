@@ -40,44 +40,39 @@ export function useTypewriter({
   aoConcluir,
   autoIniciar = true,
 }: UseTypewriterOptions) {
-  const [indice, setIndice] = useState(autoIniciar ? 0 : texto.length);
-  const [concluido, setConcluido] = useState(!autoIniciar || texto.length === 0);
+  const [anim, setAnim] = useState(() => ({
+    texto,
+    indice: autoIniciar ? 0 : texto.length,
+    concluido: !autoIniciar || texto.length === 0,
+  }));
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Troca de texto reinicia a digitação por derivação, sem setState em efeito.
+  const mesmoTexto = anim.texto === texto;
+  const indice = mesmoTexto ? anim.indice : autoIniciar ? 0 : texto.length;
+  const concluido = mesmoTexto ? anim.concluido : !autoIniciar || texto.length === 0;
 
   const pular = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    setIndice(texto.length);
-    setConcluido(true);
+    setAnim({ texto, indice: texto.length, concluido: true });
     aoConcluir?.();
-  }, [texto.length, aoConcluir]);
+  }, [texto, aoConcluir]);
 
   useEffect(() => {
-    if (!autoIniciar) {
-      setIndice(texto.length);
-      setConcluido(true);
-      return;
-    }
-
-    setIndice(0);
-    setConcluido(false);
-
-    if (!texto) {
-      setConcluido(true);
-      return;
-    }
+    if (!autoIniciar || !texto) return;
 
     // Avanço dinâmico para garantir fluidez constante sem arrastar textos longos
     const step = texto.length > 600 ? 3 : texto.length > 250 ? 2 : 1;
 
     timerRef.current = setInterval(() => {
-      setIndice((prev) => {
-        const next = Math.min(prev + step, texto.length);
+      setAnim((prev) => {
+        const base = prev.texto === texto ? prev.indice : 0;
+        const next = Math.min(base + step, texto.length);
         if (next >= texto.length) {
           if (timerRef.current) clearInterval(timerRef.current);
-          setConcluido(true);
           aoConcluir?.();
         }
-        return next;
+        return { texto, indice: next, concluido: next >= texto.length };
       });
     }, velocidadeMs);
 

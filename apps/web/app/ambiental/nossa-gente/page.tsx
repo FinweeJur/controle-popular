@@ -125,7 +125,7 @@ export default function PaginaNossaGente() {
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 4 · Ambiental, Torto Arado) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio." — Itamar Vieira Junior, sobre Torto Arado, 2021
+          &quot;Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio.&quot; — Itamar Vieira Junior, sobre Torto Arado, 2021
         </p>
       </header>
 

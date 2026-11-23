@@ -220,12 +220,12 @@ export function obterColunasCsvGestao(): ColunaCsv<Proposta>[] {
     {
       chave: "evidencias",
       rotulo: "Qtd. Evidências Documentadas",
-      formatar: (evs: any) => (Array.isArray(evs) ? evs.length : 0),
+      formatar: (evs) => (Array.isArray(evs) ? evs.length : 0),
     },
     {
       chave: "observacao",
       rotulo: "Observações e Fontes",
-      formatar: (val: any) => val || "Conferido em dados abertos",
+      formatar: (val) => val || "Conferido em dados abertos",
     },
   ];
 }

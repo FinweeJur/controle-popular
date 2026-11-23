@@ -30,7 +30,7 @@ export interface DocumentoAtoInstituicao {
   microResumo: string;
   tags: string[];
   urlOficial: string;
-  urlR2: string;
+  urlR2?: string;
   status: string;
 }
 

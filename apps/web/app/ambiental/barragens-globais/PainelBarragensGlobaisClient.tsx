@@ -197,8 +197,8 @@ export default function PainelBarragensGlobaisClient({
         return true;
       })
       .sort((a, b) => {
-        let valorA: string | number = a[colunaOrdenacao];
-        let valorB: string | number = b[colunaOrdenacao];
+        const valorA: string | number = a[colunaOrdenacao];
+        const valorB: string | number = b[colunaOrdenacao];
 
         if (typeof valorA === "string" && typeof valorB === "string") {
           const cmp = valorA.localeCompare(valorB, "pt-BR");

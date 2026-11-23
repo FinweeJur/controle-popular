@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   Bell,
@@ -27,8 +27,18 @@ export type { TipoAssuntoAlerta };
 function CentralAlertasInner() {
   const searchParams = useSearchParams();
 
+  // Parâmetros de URL (vindos de outra página do portal) preenchem o
+  // planejador já no primeiro render — sem efeito de sincronização.
+  const pTipo = searchParams.get("tipo") as TipoAssuntoAlerta | null;
+  const pTitulo = searchParams.get("titulo");
+  const pOrgao = searchParams.get("orgao");
+  const pNum = searchParams.get("num");
+  const pLink = searchParams.get("link");
+  const pResumo = searchParams.get("resumo");
+  const pTelefones = searchParams.get("tel");
+
   const [abaAtiva, setAbaAtiva] = useState<"inscricao" | "planejador" | "temas">(
-    "inscricao"
+    pTipo || pTitulo || pLink ? "planejador" : "inscricao"
   );
 
   // Estados da Inscrição
@@ -47,42 +57,20 @@ function CentralAlertasInner() {
 
   // Estados do Planejador de Disparo (WhatsApp / Telegram / Mailing)
   const [tipoMensagem, setTipoMensagem] =
-    useState<TipoAssuntoAlerta>("contrato");
-  const [cidadeMensagem, setCidadeMensagem] = useState("Betim, MG");
+    useState<TipoAssuntoAlerta>(pTipo || "contrato");
+  const [cidadeMensagem, setCidadeMensagem] = useState(pOrgao || "Betim, MG");
   const [tituloFato, setTituloFato] = useState(
-    "Contrato emergencial sem licitação no valor de R$ 4,8 milhões"
+    pTitulo || "Contrato emergencial sem licitação no valor de R$ 4,8 milhões"
   );
-  const [numeroReferencia, setNumeroReferencia] = useState("Dispensa nº 42/2026");
+  const [numeroReferencia, setNumeroReferencia] = useState(pNum || "Dispensa nº 42/2026");
   const [linkPortal, setLinkPortal] = useState(
-    "https://controlepopular.com.br/betim/prefeitura/contratos"
+    pLink || "https://controlepopular.com.br/betim/prefeitura/contratos"
   );
   const [detalheExtra, setDetalheExtra] = useState(
-    "Empresa vencedora foi aberta há menos de 6 meses segundo a Receita Federal."
+    pResumo || "Empresa vencedora foi aberta há menos de 6 meses segundo a Receita Federal."
   );
-  const [telefonesMensagem, setTelefonesMensagem] = useState("");
+  const [telefonesMensagem, setTelefonesMensagem] = useState(pTelefones || "");
   const [copiado, setCopiado] = useState(false);
-
-  // Se a página for aberta com parâmetros de URL (vindos de outra página do portal)
-  useEffect(() => {
-    const pTipo = searchParams.get("tipo") as TipoAssuntoAlerta | null;
-    const pTitulo = searchParams.get("titulo");
-    const pOrgao = searchParams.get("orgao");
-    const pNum = searchParams.get("num");
-    const pLink = searchParams.get("link");
-    const pResumo = searchParams.get("resumo");
-    const pTelefones = searchParams.get("tel");
-
-    if (pTipo || pTitulo || pLink) {
-      setAbaAtiva("planejador");
-      if (pTipo) setTipoMensagem(pTipo);
-      if (pTitulo) setTituloFato(pTitulo);
-      if (pOrgao) setCidadeMensagem(pOrgao);
-      if (pNum) setNumeroReferencia(pNum);
-      if (pLink) setLinkPortal(pLink);
-      if (pResumo) setDetalheExtra(pResumo);
-      if (pTelefones) setTelefonesMensagem(pTelefones);
-    }
-  }, [searchParams]);
 
   // Alternância de temas na inscrição
   const toggleTema = (tema: string) => {

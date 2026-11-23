@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import { Volume2, Play, Pause, Square, Headphones, FileText, FastForward } from "lucide-react";
+
+/** Nada a assinar: a presença de `speechSynthesis` não muda durante a sessão. */
+const semInscricao = () => () => {};
 
 interface Props {
   titulo: string;
@@ -25,7 +28,12 @@ function limparMarkdownParaAudio(texto: string): string {
 }
 
 export default function LeitorAudioArtigoClient({ titulo, resumo, paragrafos }: Props) {
-  const [suportado, setSuportado] = useState(false);
+  // Voz do navegador como fonte externa: o servidor não tem `speechSynthesis`.
+  const suportado = useSyncExternalStore(
+    semInscricao,
+    () => "speechSynthesis" in window,
+    () => false
+  );
   const [estado, setEstado] = useState<EstadoAudio>("parado");
   const [modo, setModo] = useState<ModoLeitura>("resumo");
   const [velocidade, setVelocidade] = useState<number>(1.0);
@@ -34,10 +42,6 @@ export default function LeitorAudioArtigoClient({ titulo, resumo, paragrafos }: 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      setSuportado(true);
-    }
-
     return () => {
       if (typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();

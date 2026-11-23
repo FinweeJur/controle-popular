@@ -15,7 +15,7 @@
  * 6. Exportação em planilha CSV com BOM UTF-8 (\uFEFF) e layout de impressão CSS nativo.
  */
 
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -276,21 +276,15 @@ export default function PainelOperacoesMilitares({ operacoes }: PainelOperacoesM
   const [colunaOrd, setColunaOrd] = useState<ColunaOrdenacao>("anoInicio");
   const [ordemDesc, setOrdemDesc] = useState<boolean>(true);
 
-  // Modal de Detalhes
-  const [operacaoSelecionada, setOperacaoSelecionada] = useState<OperacaoMilitarGlobal | null>(null);
-
   // Leitura de query param ?id=... para carregar ação vindo do mapa
   const searchParams = useSearchParams();
   const idParam = searchParams ? searchParams.get("id") : null;
 
-  useEffect(() => {
-    if (idParam) {
-      const op = operacoes.find((o) => o.id.toLowerCase() === idParam.toLowerCase());
-      if (op) {
-        setOperacaoSelecionada(op);
-      }
-    }
-  }, [idParam, operacoes]);
+  // Modal de Detalhes
+  const [operacaoSelecionada, setOperacaoSelecionada] = useState<OperacaoMilitarGlobal | null>(() => {
+    if (!idParam) return null;
+    return operacoes.find((o) => o.id.toLowerCase() === idParam.toLowerCase()) ?? null;
+  });
 
   const ui = DICIONARIOS_UI[idioma];
 

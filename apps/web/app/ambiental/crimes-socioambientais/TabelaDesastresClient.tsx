@@ -53,7 +53,7 @@ export default function TabelaDesastresClient({ documentos, total_documentos, to
   }, [documentos]);
 
   const filtrados = useMemo(() => {
-    let result = documentos.filter((d) => {
+    const result = documentos.filter((d) => {
       const matchBusca =
         d.titulo.toLowerCase().includes(busca.toLowerCase()) ||
         d.orgao.toLowerCase().includes(busca.toLowerCase()) ||

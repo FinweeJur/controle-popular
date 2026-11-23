@@ -16,9 +16,9 @@ export interface FeatureGeoJSON {
   type: "Feature";
   geometry: {
     type: "Point" | "Polygon" | "MultiPolygon";
-    coordinates: any;
+    coordinates: number[] | number[][] | number[][][];
   };
-  properties: Record<string, any>;
+  properties: Record<string, string | number | boolean | null>;
 }
 
 export interface FeatureCollectionGeoJSON {

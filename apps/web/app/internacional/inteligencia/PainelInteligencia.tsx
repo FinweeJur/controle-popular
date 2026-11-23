@@ -19,7 +19,7 @@
  * - Otimizado para smartphones (<= 640px) e adaptado aos 4 temas oficiais do portal.
  */
 
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -301,21 +301,15 @@ export default function PainelInteligencia({ documentos }: PainelInteligenciaPro
   const [colunaOrd, setColunaOrd] = useState<ColunaOrdenacao>("dataPublicacao");
   const [ordemDesc, setOrdemDesc] = useState<boolean>(true);
 
-  // Modal de Detalhes
-  const [documentoSelecionado, setDocumentoSelecionado] = useState<DocumentoDesclassificadoG20 | null>(null);
-
   // Leitura do parâmetro ?id=... para carregar documento vindo do mapa
   const searchParams = useSearchParams();
   const idParam = searchParams ? searchParams.get("id") : null;
 
-  useEffect(() => {
-    if (idParam) {
-      const doc = documentos.find((d) => d.id.toLowerCase() === idParam.toLowerCase());
-      if (doc) {
-        setDocumentoSelecionado(doc);
-      }
-    }
-  }, [idParam, documentos]);
+  // Modal de Detalhes
+  const [documentoSelecionado, setDocumentoSelecionado] = useState<DocumentoDesclassificadoG20 | null>(() => {
+    if (!idParam) return null;
+    return documentos.find((d) => d.id.toLowerCase() === idParam.toLowerCase()) ?? null;
+  });
 
   const ui = DICIONARIOS_UI[idioma];
 

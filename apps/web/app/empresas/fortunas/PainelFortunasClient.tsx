@@ -154,8 +154,8 @@ export default function PainelFortunasClient({ fortunas }: Props) {
     const copia = [...fortunasFiltradas];
 
     copia.sort((a, b) => {
-      let valorA = a[campoOrdem];
-      let valorB = b[campoOrdem];
+      const valorA = a[campoOrdem];
+      const valorB = b[campoOrdem];
 
       if (typeof valorA === "string" && typeof valorB === "string") {
         const cmp = valorA.localeCompare(valorB, "pt-BR", { sensitivity: "base" });

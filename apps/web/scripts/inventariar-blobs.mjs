@@ -1,5 +1,5 @@
 // Inventário dos maiores literais de string embutidos no handler.mjs.
-const fs = require("fs");
+import fs from "node:fs";
 const t = fs.readFileSync(
   ".open-next/server-functions/default/apps/web/handler.mjs",
   "utf8"

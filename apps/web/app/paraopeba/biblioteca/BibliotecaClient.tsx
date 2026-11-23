@@ -40,6 +40,55 @@ const CORES_MACRO: Record<string, string> = {
   "Sem classificacao": "var(--color-chart-6)",
 };
 
+/** Filtro e ordenação do acervo — puro, para o compilador preservar a memoização. */
+function filtrarBiblioteca(
+  itens: ItemBiblioteca[],
+  filtros: {
+    busca: string;
+    de: string;
+    ate: string;
+    ordem: Ordem;
+    atisAtivas: Set<AtiBiblioteca>;
+    tipo: string;
+    tema: string;
+    macro: string;
+    tag: string;
+  }
+): ItemBiblioteca[] {
+  const { busca, de, ate, ordem, atisAtivas, tipo, tema, macro, tag } = filtros;
+  const termo = semAcento(busca.trim());
+  const filtrada = itens.filter((i) => {
+    if (!atisAtivas.has(i.ati)) return false;
+    if (tipo !== "todos" && i.tipo !== tipo) return false;
+    if (tema !== "todos" && !(i.temas ?? []).includes(tema)) return false;
+    if (macro !== "todos" && i.macro_categoria !== macro) return false;
+    if (tag !== "todos" && !(i.tags ?? []).includes(tag)) return false;
+    // Item sem data não some quando há filtro de período: sumir seria o
+    // portal decidir que "não sei quando" é "fora do intervalo". Ele só é
+    // excluído se a data existir e estiver fora.
+    if (i.data && de && i.data < de) return false;
+    if (i.data && ate && i.data > ate) return false;
+    if (!termo) return true;
+    return (
+      semAcento(i.titulo).includes(termo) ||
+      (i.resumo && semAcento(i.resumo).includes(termo)) ||
+      (i.autoria && semAcento(i.autoria).includes(termo)) ||
+      (i.macro_categoria && semAcento(i.macro_categoria).includes(termo)) ||
+      (i.temas ?? []).some((t) => semAcento(t).includes(termo)) ||
+      (i.tags ?? []).some((t) => semAcento(t).includes(termo)) ||
+      (i.colecoes ?? []).some((c) => semAcento(c).includes(termo))
+    );
+  });
+  const copia = [...filtrada];
+  if (ordem === "az") {
+    return copia.sort(
+      (a, b) => a.titulo.localeCompare(b.titulo, "pt") || (b.data ?? "").localeCompare(a.data ?? "")
+    );
+  }
+  const sinal = ordem === "recente" ? -1 : 1;
+  return copia.sort((a, b) => sinal * (a.data ?? "").localeCompare(b.data ?? ""));
+}
+
 function contar<T extends string>(valores: T[]): { valor: T; count: number }[] {
   const mapa = new Map<T, number>();
   for (const v of valores) mapa.set(v, (mapa.get(v) ?? 0) + 1);
@@ -177,44 +226,26 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
   const contagemTag = useMemo(() => contar(itens.flatMap((i) => i.tags ?? [])), [itens]);
   const comTag = useMemo(() => itens.filter((i) => (i.tags?.length ?? 0) > 0).length, [itens]);
 
+  const lista = useMemo(
+    () =>
+      filtrarBiblioteca(itens, {
+        busca,
+        de,
+        ate,
+        ordem,
+        atisAtivas,
+        tipo,
+        tema,
+        macro,
+        tag,
+      }),
+    [itens, atisAtivas, tipo, tema, macro, tag, de, ate, busca, ordem]
+  );
+
   function exportarCsv() {
     const hoje = new Date().toISOString().slice(0, 10);
     baixarCsv(paraCsv(lista), `paraopeba-biblioteca-ati-${hoje}.csv`);
   }
-
-  const lista = useMemo(() => {
-    const termo = semAcento(busca.trim());
-    const filtrada = itens.filter((i) => {
-      if (!atisAtivas.has(i.ati)) return false;
-      if (tipo !== "todos" && i.tipo !== tipo) return false;
-      if (tema !== "todos" && !(i.temas ?? []).includes(tema)) return false;
-      if (macro !== "todos" && i.macro_categoria !== macro) return false;
-      if (tag !== "todos" && !(i.tags ?? []).includes(tag)) return false;
-      // Item sem data não some quando há filtro de período: sumir seria o
-      // portal decidir que "não sei quando" é "fora do intervalo". Ele só é
-      // excluído se a data existir e estiver fora.
-      if (i.data && de && i.data < de) return false;
-      if (i.data && ate && i.data > ate) return false;
-      if (!termo) return true;
-      return (
-        semAcento(i.titulo).includes(termo) ||
-        (i.resumo && semAcento(i.resumo).includes(termo)) ||
-        (i.autoria && semAcento(i.autoria).includes(termo)) ||
-        (i.macro_categoria && semAcento(i.macro_categoria).includes(termo)) ||
-        (i.temas ?? []).some((t) => semAcento(t).includes(termo)) ||
-        (i.tags ?? []).some((t) => semAcento(t).includes(termo)) ||
-        (i.colecoes ?? []).some((c) => semAcento(c).includes(termo))
-      );
-    });
-    const copia = [...filtrada];
-    if (ordem === "az") {
-      return copia.sort(
-        (a, b) => a.titulo.localeCompare(b.titulo, "pt") || (b.data ?? "").localeCompare(a.data ?? "")
-      );
-    }
-    const sinal = ordem === "recente" ? -1 : 1;
-    return copia.sort((a, b) => sinal * (a.data ?? "").localeCompare(b.data ?? ""));
-  }, [itens, atisAtivas, tipo, tema, macro, tag, de, ate, busca, ordem]);
 
   const filtroAtivo =
     busca !== "" || de !== "" || ate !== "" || ordem !== "recente" || tipo !== "todos" ||

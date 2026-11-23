@@ -566,7 +566,7 @@ export default function PainelAcordosClient({ itens, dataAtualizacao }: Props) {
                                 📢 Pronunciamentos Oficiais Verbatim
                               </h4>
                               <blockquote className="rounded-lg bg-surface-1 p-3 border-l-4 border-primary text-xs italic text-text leading-relaxed">
-                                "{item.pronunciamentos_oficiais}"
+                                &quot;{item.pronunciamentos_oficiais}&quot;
                               </blockquote>
                               <div className="text-[12px] text-text-soft pt-1">
                                 <span>Fonte Oficial Registrada: </span>
