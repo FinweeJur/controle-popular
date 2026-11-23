@@ -47,6 +47,10 @@ jobs:
         run: npm run test:lib -w @cp/web
 
       - name: Typecheck
+        # Mesmo tsc do guara-deploy.yml e o mesmo estouro de heap (ver comentário
+        # lá); o teto vale só para este passo.
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: npm run typecheck -w @cp/web
 
       - name: Validar camada de correções de links
