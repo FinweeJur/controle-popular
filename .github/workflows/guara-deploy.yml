@@ -57,6 +57,11 @@ jobs:
 
       - name: Typecheck (apps/web)
         if: always()
+        # tsc passou a estourar o heap padrão (~4 GB) em 23/11/2026: medido
+        # 4,96 GB na main e 5,07 GB com o LinkMender (450k linhas TS, 335k de
+        # JSON, 6,3M símbolos). 6144 dá ~20% de folga e vale só para este passo.
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: npm run typecheck -w @cp/web
 
       - name: Lint (apps/web) - informativo, nao bloqueia
