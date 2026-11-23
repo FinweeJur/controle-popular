@@ -9,8 +9,17 @@
  * prefixos (R$, etc.), sufixos (%, etc.) e respeita prefers-reduced-motion.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useSyncExternalStore } from "react";
 import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion";
+
+const CONSULTA_MOVIMENTO_REDUZIDO = "(prefers-reduced-motion: reduce)";
+
+/** Preferência de movimento do sistema como fonte externa do React. */
+function assinarMovimentoReduzido(aoMudar: () => void) {
+  const mediaQuery = window.matchMedia(CONSULTA_MOVIMENTO_REDUZIDO);
+  mediaQuery.addEventListener("change", aoMudar);
+  return () => mediaQuery.removeEventListener("change", aoMudar);
+}
 
 export interface CountUpProps {
   /** Valor final numérico */
@@ -49,15 +58,11 @@ export function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -40px 0px" });
-  const [hasReducedMotion, setHasReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setHasReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setHasReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+  const hasReducedMotion = useSyncExternalStore(
+    assinarMovimentoReduzido,
+    () => window.matchMedia(CONSULTA_MOVIMENTO_REDUZIDO).matches,
+    () => false
+  );
 
   const count = useMotionValue(from);
 

@@ -1,5 +1,5 @@
 // Alias SINTESE_AJRI via loader em sintese-integrada.test.ts.
-const fs = require("fs");
+import fs from "node:fs";
 const p = "lib/paraopeba/sintese-integrada.test.ts";
 let t = fs.readFileSync(p, "utf8");
 const a = 'import { SINTESE_AJRI } from "./sintese-ajri";';

@@ -26,13 +26,14 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
     return mandatos.map((m) => {
       const resumo = calcularResumoGestao(m);
       const isCapital = m.ente.endsWith("-capital");
+      const extras = m as MandatoGestao & { regiao?: RegiaoBrasil; uf?: string };
       let regiao: RegiaoBrasil | "Outra" | undefined = undefined;
       if (m.esfera === "estadual") {
         regiao = REGIAO_POR_UF[m.ente.toUpperCase()] ?? "Outra";
-      } else if ((m as any).regiao) {
-        regiao = (m as any).regiao;
-      } else if ((m as any).uf) {
-        regiao = REGIAO_POR_UF[(m as any).uf.toUpperCase()] ?? "Outra";
+      } else if (extras.regiao) {
+        regiao = extras.regiao;
+      } else if (extras.uf) {
+        regiao = REGIAO_POR_UF[extras.uf.toUpperCase()] ?? "Outra";
       }
 
       return {
@@ -85,7 +86,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
 
   // Totais agregados do que está filtrado
   const agregados = useMemo(() => {
-    let totalEntes = filtrados.length;
+    const totalEntes = filtrados.length;
     let totalPropostas = 0;
     let totalConcluidas = 0;
     let totalEmAndamento = 0;

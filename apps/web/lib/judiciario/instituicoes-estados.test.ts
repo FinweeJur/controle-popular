@@ -67,7 +67,7 @@ describe("Instituições de Justiça dos 27 Estados", () => {
       expect(inst.organograma).toBeDefined();
       expect(inst.organograma.length).toBeGreaterThanOrEqual(2);
 
-      for (const item of inst.organograma as any[]) {
+      for (const item of inst.organograma) {
         expect(item.area).toBeTruthy();
         expect(item.funcao).toBeTruthy();
         expect(item.site).toMatch(/^https?:\/\//);

@@ -18,7 +18,7 @@
  * - Descricoes com piso minimo text-sm (14px).
  */
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -108,20 +108,13 @@ export default function MapaOperacoesMilitaresClient({
   const searchParams = useSearchParams();
   const idInicial = searchParams ? searchParams.get("id") || "" : "";
 
-  const [operacaoSelecionada, setOperacaoSelecionada] = useState<OperacaoMilitarGlobal | null>(null);
+  const [operacaoSelecionada, setOperacaoSelecionada] = useState<OperacaoMilitarGlobal | null>(() => {
+    if (!idInicial) return null;
+    return operacoes.find((op) => op.id.toLowerCase() === idInicial.toLowerCase()) ?? null;
+  });
   const [camadaAtiva, setCamadaAtiva] = useState<CamadaTipo>("todas");
   const [filtroContinente, setFiltroContinente] = useState<string>("todos");
   const [busca, setBusca] = useState<string>("");
-
-  // Seleciona operacao da URL se fornecido
-  useEffect(() => {
-    if (idInicial) {
-      const achado = operacoes.find((op) => op.id.toLowerCase() === idInicial.toLowerCase());
-      if (achado) {
-        setOperacaoSelecionada(achado);
-      }
-    }
-  }, [idInicial, operacoes]);
 
   const continentesDisponiveis = useMemo(() => {
     return Array.from(new Set(operacoes.map((op) => op.continenteTeatro))).sort();

@@ -71,7 +71,7 @@ export default function PaginaLitigiosClimaticos() {
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 3 · Judiciário) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "O que a vida quer da gente é coragem." — João Guimarães Rosa, Grande Sertão: Veredas, 1956
+          &quot;O que a vida quer da gente é coragem.&quot; — João Guimarães Rosa, Grande Sertão: Veredas, 1956
         </p>
       </header>
 

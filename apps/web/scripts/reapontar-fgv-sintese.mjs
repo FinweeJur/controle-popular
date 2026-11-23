@@ -1,5 +1,5 @@
 // Reaponta consumidores para os loaders server-only (migração 3 MiB).
-const fs = require("fs");
+import fs from "node:fs";
 
 function edit(p, fn) {
   let t = fs.readFileSync(p, "utf8");

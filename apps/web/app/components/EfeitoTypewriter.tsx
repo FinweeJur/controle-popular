@@ -31,6 +31,58 @@ export interface UseTypewriterOptions {
   autoIniciar?: boolean;
 }
 
+/** Estado da digitação; `texto` identifica a qual conteúdo ele pertence. */
+interface AnimacaoTypewriter {
+  texto: string;
+  indice: number;
+  concluido: boolean;
+}
+
+/** Estado em que `texto` já aparece inteiro (sem animação pendente). */
+function animacaoParada(texto: string): AnimacaoTypewriter {
+  return { texto, indice: texto.length, concluido: true };
+}
+
+/**
+ * Estado de partida para `texto`. Sem `autoIniciar`, o texto já sai inteiro;
+ * com texto vazio, não há o que digitar.
+ */
+function animacaoDePartida(
+  texto: string,
+  autoIniciar: boolean
+): AnimacaoTypewriter {
+  if (!autoIniciar) return animacaoParada(texto);
+  return { texto, indice: 0, concluido: texto.length === 0 };
+}
+
+/**
+ * Caracteres por tique: textos longos avançam mais rápido para a digitação
+ * terminar no mesmo tempo percebido de um texto curto.
+ */
+function passoDaDigitacao(texto: string): number {
+  if (texto.length > 600) return 3;
+  if (texto.length > 250) return 2;
+  return 1;
+}
+
+/** Um tique do timer: avança `passo` e diz se a digitação acabou neste tique. */
+function avancarAnimacao(
+  anim: AnimacaoTypewriter,
+  texto: string,
+  passo: number
+): { proxima: AnimacaoTypewriter; terminou: boolean } {
+  const base = anim.texto === texto ? anim : animacaoDePartida(texto, true);
+  const indice = Math.min(base.indice + passo, texto.length);
+  return {
+    proxima: { texto, indice, concluido: indice >= texto.length },
+    terminou: indice >= texto.length,
+  };
+}
+
+function pararTimer(ref: { current: NodeJS.Timeout | null }) {
+  if (ref.current) clearInterval(ref.current);
+}
+
 /**
  * Hook para digitação progressiva palavra/caractere por caractere.
  */
@@ -40,59 +92,43 @@ export function useTypewriter({
   aoConcluir,
   autoIniciar = true,
 }: UseTypewriterOptions) {
-  const [indice, setIndice] = useState(autoIniciar ? 0 : texto.length);
-  const [concluido, setConcluido] = useState(!autoIniciar || texto.length === 0);
+  const [anim, setAnim] = useState(() => animacaoDePartida(texto, autoIniciar));
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Troca de texto reinicia a digitação por derivação, sem setState em efeito.
+  const atual = anim.texto === texto ? anim : animacaoDePartida(texto, autoIniciar);
+
   const pular = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    setIndice(texto.length);
-    setConcluido(true);
+    pararTimer(timerRef);
+    setAnim(animacaoParada(texto));
     aoConcluir?.();
-  }, [texto.length, aoConcluir]);
+  }, [texto, aoConcluir]);
 
   useEffect(() => {
-    if (!autoIniciar) {
-      setIndice(texto.length);
-      setConcluido(true);
-      return;
-    }
+    if (!autoIniciar || !texto) return;
 
-    setIndice(0);
-    setConcluido(false);
-
-    if (!texto) {
-      setConcluido(true);
-      return;
-    }
-
-    // Avanço dinâmico para garantir fluidez constante sem arrastar textos longos
-    const step = texto.length > 600 ? 3 : texto.length > 250 ? 2 : 1;
-
+    const passo = passoDaDigitacao(texto);
     timerRef.current = setInterval(() => {
-      setIndice((prev) => {
-        const next = Math.min(prev + step, texto.length);
-        if (next >= texto.length) {
-          if (timerRef.current) clearInterval(timerRef.current);
-          setConcluido(true);
+      setAnim((prev) => {
+        const { proxima, terminou } = avancarAnimacao(prev, texto, passo);
+        if (terminou) {
+          pararTimer(timerRef);
           aoConcluir?.();
         }
-        return next;
+        return proxima;
       });
     }, velocidadeMs);
 
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => pararTimer(timerRef);
   }, [texto, velocidadeMs, autoIniciar, aoConcluir]);
 
-  const textoExibido = texto.slice(0, indice);
+  const textoExibido = texto.slice(0, atual.indice);
 
   return {
     textoExibido,
-    concluido,
+    concluido: atual.concluido,
     pular,
-    progresso: texto.length > 0 ? indice / texto.length : 1,
+    progresso: texto.length > 0 ? atual.indice / texto.length : 1,
   };
 }
 

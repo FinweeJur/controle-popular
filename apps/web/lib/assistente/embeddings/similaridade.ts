@@ -93,7 +93,7 @@ const STOPWORDS_PT = new Set([
  * e sufixos comuns sem depender de bibliotecas externas pesadas.
  */
 export function stemPt(t: string): string {
-  let s = t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const s = t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   if (s.length <= 3) return s;
   if (s.endsWith("coes") || s.endsWith("cao")) return s.slice(0, -3);
   if (s.endsWith("mentos") || s.endsWith("mento")) return s.slice(0, -5);

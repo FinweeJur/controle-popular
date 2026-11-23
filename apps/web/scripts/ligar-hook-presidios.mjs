@@ -1,5 +1,5 @@
 // Liga o hook useEstabelecimentosMg no TabelaPresidios (deps + chamada).
-const fs = require("fs");
+import fs from "node:fs";
 const p = "app/judiciario/presidios/TabelaPresidios.tsx";
 let t = fs.readFileSync(p, "utf8");
 

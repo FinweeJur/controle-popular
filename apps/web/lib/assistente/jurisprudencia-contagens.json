@@ -1,25 +1,25 @@
 {
- "geradoEm": "2026-11-11",
+ "geradoEm": "2026-11-23",
  "fonte": "Acervo de jurisprudência do Controle Popular (TJMG, TJES, STF, STJ e TST)",
  "frentes": {
   "riodoce": {
    "total": 5361,
    "porPolo": {
-    "parcial": 667,
-    "indeterminado": 695,
-    "empresa": 2950,
+    "parcial": 669,
+    "indeterminado": 696,
+    "empresa": 2947,
     "atingido": 1049
    },
    "porResultado": {
-    "parcial": 350,
+    "parcial": 352,
     "nao consta": 129,
-    "indeterminado": 341,
+    "indeterminado": 343,
     "negado": 2732,
-    "provido": 1356,
+    "provido": 1354,
     "outro": 46,
-    "parcialmente provido": 293,
+    "parcialmente provido": 292,
     "negado, parcialmente provido": 2,
-    "desprovido": 78,
+    "desprovido": 77,
     "negado, provado": 1,
     "nao provido": 1,
     "rejeitado": 1,
@@ -87,17 +87,17 @@
     },
     "prescricao": {
      "rotulo": "prescricao",
-     "total": 303,
+     "total": 304,
      "porPolo": {
       "indeterminado": 89,
       "empresa": 124,
-      "parcial": 57,
+      "parcial": 58,
       "atingido": 33
      },
      "porResultado": {
       "indeterminado": 86,
       "negado": 108,
-      "parcial": 57,
+      "parcial": 58,
       "provido": 50,
       "outro": 2
      }

@@ -12,11 +12,11 @@ export const metadata: Metadata = metadataEditavel("/transparencia-internacional
 });
 
 export default function TransparenciaInternacionalPage() {
-  const usCensusData: any[] = [];
+  const usCensusData: Array<[string, string, string, string, string]> = [];
   
   // Preparação dos dados do US Census Bureau API
   const dadosTradeUS = Array.isArray(usCensusData) && usCensusData.length > 1
-    ? usCensusData.slice(1).map((row: any) => ({
+    ? usCensusData.slice(1).map((row) => ({
         pais: row[0] || "Brazil",
         valor_mensal_usd: Number(row[1]) || 0,
         nivel_comodidade: row[2] || "Geral",
@@ -29,7 +29,7 @@ export default function TransparenciaInternacionalPage() {
         { pais: "Brazil", valor_mensal_usd: 950000000, nivel_comodidade: "Tecnologia / Eletrônicos", ano: "2025", mes: "10" },
       ];
 
-  const fundosEua = (entidadesEua as any)?.fundos_investimento_eua || [];
+  const fundosEua = entidadesEua.fundos_investimento_eua ?? [];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8 space-y-10">
@@ -89,7 +89,7 @@ export default function TransparenciaInternacionalPage() {
           Valores mensais consolidados de exportação/importação (em USD) a partir do US Census Bureau API:
         </p>
         <div className="h-48 w-full flex items-end justify-between gap-4 pt-6 pb-2 px-4 bg-surface-2 rounded-xl">
-          {dadosTradeUS.slice(0, 6).map((d: any, i: number) => {
+          {dadosTradeUS.slice(0, 6).map((d, i: number) => {
             const altura = Math.min(100, Math.max(20, (d.valor_mensal_usd / 4000000000) * 100));
             return (
               <div key={i} className="flex-1 flex flex-col items-center gap-2">
@@ -127,7 +127,7 @@ export default function TransparenciaInternacionalPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {fundosEua.map((f: any) => (
+          {fundosEua.map((f) => (
             <div key={f.cik} className="rounded-2xl border border-border bg-surface p-5 space-y-2">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-text text-base">{f.nome}</h3>

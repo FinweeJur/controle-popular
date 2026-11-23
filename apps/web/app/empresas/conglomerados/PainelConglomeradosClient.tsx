@@ -269,6 +269,8 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
   const draggedNodeRef = useRef<SimNode | null>(null);
   const hoveredNodeRef = useRef<SimNode | null>(null);
   const isSimActiveRef = useRef(true);
+  // Espelho em estado do ref: o rótulo do botão precisa de re-render ao alternar.
+  const [simAtiva, setSimAtiva] = useState(true);
 
   // Inicializa nós da simulação física
   useEffect(() => {
@@ -792,10 +794,11 @@ export default function PainelConglomeradosClient({ nos, arestas, setores }: Pro
                   type="button"
                   onClick={() => {
                     isSimActiveRef.current = !isSimActiveRef.current;
+                    setSimAtiva(isSimActiveRef.current);
                   }}
                   className="rounded-lg px-2 py-1 text-[12px] font-medium hover:bg-white/10 transition"
                 >
-                  Física: {isSimActiveRef.current ? "Ativa" : "Pausada"}
+                  Física: {simAtiva ? "Ativa" : "Pausada"}
                 </button>
               </div>
 

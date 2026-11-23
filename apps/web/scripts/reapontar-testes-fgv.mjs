@@ -1,5 +1,5 @@
 // Reaponta os testes do execucao-fgv para o loader server-only.
-const fs = require("fs");
+import fs from "node:fs";
 
 function sub(p, re, novo) {
   let t = fs.readFileSync(p, "utf8");

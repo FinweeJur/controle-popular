@@ -1,12 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import { TagChip } from "@/app/components/TagChip";
 import { formatDateBR } from "@/lib/betim/format";
 import { ROTULOS_TIPO, TIPOS_ATO, type TipoAto } from "@/lib/diario/classificarAto";
 import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
+
+/** Nada a assinar: a URL não muda sozinha durante a vida do componente. */
+const semInscricao = () => () => {};
 
 export interface AtoDiarioRow {
   id: string;
@@ -48,22 +51,24 @@ export default function ListaDiario({
   base: string;
   municipioSlug: string;
 }) {
-  const [tipoAtivo, setTipoAtivo] = useState<string>("todos");
-  const [orgao, setOrgao] = useState<string>("");
-  const [ano, setAno] = useState<string>("");
+  // Query string como fonte externa: a página é pré-renderizada, então o
+  // servidor entrega "" e o valor real chega logo depois da hidratação.
+  const buscaDaUrl = useSyncExternalStore(
+    semInscricao,
+    () => window.location.search,
+    () => ""
+  );
+  const paramsDaUrl = useMemo(() => new URLSearchParams(buscaDaUrl), [buscaDaUrl]);
+
+  // O filtro escolhido pelo usuário vence a URL; sem escolha, vale a URL.
+  const [tipoEscolhido, setTipoAtivo] = useState<string | null>(null);
+  const [orgaoEscolhido, setOrgao] = useState<string | null>(null);
+  const [anoEscolhido, setAno] = useState<string | null>(null);
+  const tipoAtivo = tipoEscolhido ?? paramsDaUrl.get("tipo") ?? "todos";
+  const orgao = orgaoEscolhido ?? paramsDaUrl.get("orgao") ?? "";
+  const ano = anoEscolhido ?? paramsDaUrl.get("ano") ?? "";
   const [linhasCarregadas, setLinhasCarregadas] = useState<AtoDiarioRow[]>([]);
   const primeiraRenderizacao = useRef(true);
-
-  // Sincroniza estado inicial com a URL após montagem no cliente
-  useEffect(() => {
-    const sp = new URLSearchParams(window.location.search);
-    const tipoUrl = sp.get("tipo");
-    if (tipoUrl) setTipoAtivo(tipoUrl);
-    const orgaoUrl = sp.get("orgao");
-    if (orgaoUrl) setOrgao(orgaoUrl);
-    const anoUrl = sp.get("ano");
-    if (anoUrl) setAno(anoUrl);
-  }, []);
 
   // Atualiza query string na barra de endereço ao alterar filtros
   useEffect(() => {

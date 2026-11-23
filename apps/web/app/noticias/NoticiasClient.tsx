@@ -85,6 +85,12 @@ function dataCurta(iso: string): string {
   return new Date(iso).toLocaleDateString("pt-BR");
 }
 
+/**
+ * Instante de referência do filtro "últimos N dias", fixado no carregamento da
+ * página: fora do render para não ser uma função impura durante a renderização.
+ */
+const AGORA_DA_PAGINA = Date.now();
+
 export default function NoticiasClient({ noticias }: Props) {
   const [busca, setBusca] = useState("");
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>("Todas");
@@ -97,7 +103,7 @@ export default function NoticiasClient({ noticias }: Props) {
 
   const noticiasFiltradas = useMemo(() => {
     const dias = PERIODOS.find((p) => p.valor === periodoAtivo)?.dias ?? null;
-    const limite = dias ? Date.now() - dias * 24 * 60 * 60 * 1000 : null;
+    const limite = dias ? AGORA_DA_PAGINA - dias * 24 * 60 * 60 * 1000 : null;
 
     const filtradas = noticias.filter((n) => {
       const matchCategoria =

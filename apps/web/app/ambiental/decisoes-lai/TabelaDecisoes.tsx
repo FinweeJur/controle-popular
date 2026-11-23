@@ -242,7 +242,7 @@ export default function TabelaDecisoes() {
 
       {filtradas.length === 0 ? (
         <p className="mt-6 rounded-xl border border-border bg-surface px-4 py-6 text-center text-[.92em] text-text-soft">
-          Nenhuma decisão com esses filtros. Vazio aqui é resposta �?" não quer dizer que a busca
+          Nenhuma decisão com esses filtros. Vazio aqui é resposta �?&quot; não quer dizer que a busca
           falhou.
         </p>
       ) : (
