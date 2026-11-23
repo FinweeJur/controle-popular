@@ -34,3 +34,12 @@ paths = [
   # Documentos históricos citam exemplos e trechos de config antigos.
   '''docs/historico/''',
 ]
+regexes = [
+  # Link de compartilhamento do Power BI: `?r=` carrega base64 de
+  # {"k":"<guid do relatório>","t":"<guid do tenant>"}. O prefixo `eyJrIjoi`
+  # (base64 de `{"k":"`) é o mesmo de um token do Grafana, então a regra
+  # `grafana-api-key` casa por entropia. O discriminante é o `,"t":"` do
+  # Power BI (base64 `IiwidCI6`), que token do Grafana não tem (usa `,"n":"`).
+  # Falso positivo do PR #36, docs/relatorios-automacao/linkmender-v2-propostas.md.
+  '''(?i)^eyJrIjoi[A-Za-z0-9_\-+/=]*IiwidCI6[A-Za-z0-9_\-+/=]*$''',
+]

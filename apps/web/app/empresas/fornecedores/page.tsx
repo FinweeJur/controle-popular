@@ -114,7 +114,7 @@ export default function FornecedoresPage() {
             Fornecedores do acervo com CNPJ enriquecido
           </h1>
           <ExplicadorDaPagina
-            frase="Veja 17 fornecedores de contratos públicos do portal, com CNPJ consultado na Receita. É uma amostra, não a lista completa."
+            frase="Veja 17 fornecedores de contratos públicos do portal, com CNPJ (Cadastro Nacional da Pessoa Jurídica) consultado na Receita Federal. É uma amostra, não a lista completa."
             itens={[
               "Quantos CNPJ foram consultados e por que 3 ficaram de fora.",
               "Situação cadastral, CNAE e município de cada fornecedor, com a data da consulta.",

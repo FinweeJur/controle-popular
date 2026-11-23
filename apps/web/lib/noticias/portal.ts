@@ -39,6 +39,12 @@ export interface GraficoNoticia {
   titulo: string;
   /** Rótulos e valores da série; a barra é proporcional ao maior valor. */
   itens: { rotulo: string; valor: number }[];
+  /**
+   * Unidade do valor. `moeda` (padrão, mantém os posts antigos) formata em
+   * reais; `inteiro` serve para contagem — cadeiras, votos, processos — sem
+   * inventar "R$" onde a série não é dinheiro.
+   */
+  formato?: "moeda" | "inteiro";
   /** Explicação curta da escala, exibida abaixo do desenho. */
   nota?: string;
   /** Fonte oficial da série. */

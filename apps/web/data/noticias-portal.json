@@ -1,5 +1,281 @@
 [
  {
+  "slug": "ongs-eleitas-copam-2027-2029",
+  "titulo": "COPAM elege sete ONGs para 2027–2029 e deixa 15 cadeiras desertas",
+  "subtitulo": "Sete entidades ficam com 19 das 34 cadeiras reservadas a ONGs no plenário, nas câmaras técnicas e nas unidades regionais. Cinco URCs não tiveram nenhuma candidata. Recursos vão de 24 a 30 de novembro.",
+  "resumo": "A Semad divulgou em 19/11 as sete ONGs eleitas para o Copam no biênio 2027/2029. Elas ocupam 19 das 34 cadeiras e 15 ficaram desertas.",
+  "categoria": "Explicador",
+  "frente": "ambiental",
+  "subfrente": "COPAM — composição 2027/2029",
+  "autor": "ONSA — Observatório Nacional Socioambiental",
+  "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir do resultado oficial da votação de ONGs da Semad, do Edital Copam nº 01/2026 compilado e das deliberações 2.140, 2.142 e 2.143, conferido contra os PDFs originais pelo ONSA. A reportagem de O Fator foi usada como fonte secundária para o histórico do processo e está identificada no texto.",
+  "publicadoEm": "2026-11-19T21:10:00Z",
+  "atualizadoEm": "2026-11-19T21:10:00Z",
+  "tempoLeituraMin": 6,
+  "palavrasChave": [
+   "COPAM",
+   "Semad",
+   "eleição de ONGs",
+   "plenário do Copam",
+   "câmaras técnicas",
+   "unidades regionais colegiadas",
+   "licenciamento ambiental",
+   "Minas Gerais",
+   "MPMG",
+   "conflito de interesse",
+   "biênio 2027/2029"
+  ],
+  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. COPAM elege sete ONGs para 2027–2029 e deixa 15 cadeiras desertas. Controle Popular, nov. 2026.",
+  "citacaoBibtex": "@article{onsa2026copamongs2027,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {COPAM elege sete ONGs para 2027–2029 e deixa 15 cadeiras desertas},\n  journal = {Controle Popular},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/ongs-eleitas-copam-2027-2029}\n}",
+  "fontesOficiais": [
+   {
+    "nome": "Resultado da votação — Organizações não Governamentais (PDF, Semad)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/resultado-final-ongs"
+   },
+   {
+    "nome": "Resultados do Processo Eletivo Copam 2027-2029 (página oficial)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/w/resultados-copam-2026"
+   },
+   {
+    "nome": "Edital Copam nº 01/2026 — compilado com as cinco retificações (PDF)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/edital-compilado-5"
+   },
+   {
+    "nome": "Deliberação Copam nº 2.140/2026 — vagas do Plenário (PDF)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/deliberacao-copam-n-2-140-de-09-de-marco-de-2026-"
+   },
+   {
+    "nome": "Deliberação Copam nº 2.142/2026 — vagas das câmaras técnicas (PDF)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/deliberacao-copam-n-2-142-de-09-de-marco-de-2026-"
+   },
+   {
+    "nome": "Deliberação Copam nº 2.143/2026 — vagas das URCs (PDF)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/deliberacao-copam-n-2-143-de-09-de-marco-de-2026-"
+   },
+   {
+    "nome": "Listagem das ONGs habilitadas (PDF, 17/11/2026)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/nova-listagem-ongs"
+   },
+   {
+    "nome": "Termo de Compromisso — Inquérito Civil MPMG nº 04.16.0024.0302273.2025-83 (PDF)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/termo-de-compromisso-copam"
+   },
+   {
+    "nome": "Recomposição Copam 2026 — documentos do processo eletivo",
+    "url": "https://conselhos.meioambiente.mg.gov.br/recomposicao-copam-2026"
+   },
+   {
+    "nome": "O Fator — As ONGs eleitas para o plenário e câmaras técnicas do Copam (19/11/2026)",
+    "url": "https://ofator.com.br/informacao/as-ongs-eleitas-para-o-plenario-e-as-camaras-tecnicas-do-copam/"
+   },
+   {
+    "nome": "O Fator — Governo estadual e MPMG chegam a acordo sobre eleições para o Copam (26/10/2026)",
+    "url": "https://ofator.com.br/informacao/governo-estadual-e-mpmg-chegam-a-acordo-sobre-eleicoes-para-o-copam/"
+   },
+   {
+    "nome": "Reuniões do COPAM no portal",
+    "url": "/ambiental/copam"
+   }
+  ],
+  "metricas": [
+   {
+    "rotulo": "Cadeiras de ONG",
+    "valor": "34"
+   },
+   {
+    "rotulo": "Preenchidas na votação",
+    "valor": "19"
+   },
+   {
+    "rotulo": "Desertas",
+    "valor": "15"
+   },
+   {
+    "rotulo": "Entidades eleitas",
+    "valor": "7"
+   }
+  ],
+  "essencial": [
+   "Sete ONGs foram eleitas para 19 das 34 cadeiras de ONG do Copam.",
+   "CAA/NM ocupa 6; Angá, 4; São Lourenço, 3.",
+   "Quinze cadeiras ficaram desertas, 14 delas nas URCs.",
+   "Recursos de 24 a 30/11; resultado final em 10/12."
+  ],
+  "olho": {
+   "texto": "19 cadeiras preenchidas. 15 desertas. 34 no total.",
+   "fonte": "Resultado da votação de ONGs, Semad, 19/11/2026",
+   "citacao": false
+  },
+  "grafico": {
+   "titulo": "Cadeiras de ONG ocupadas por cada entidade eleita",
+   "formato": "inteiro",
+   "itens": [
+    {
+     "rotulo": "CAA/NM",
+     "valor": 6
+    },
+    {
+     "rotulo": "Angá",
+     "valor": 4
+    },
+    {
+     "rotulo": "São Lourenço",
+     "valor": 3
+    },
+    {
+     "rotulo": "Amda",
+     "valor": 2
+    },
+    {
+     "rotulo": "Iracambi",
+     "valor": 2
+    },
+    {
+     "rotulo": "IDAU-TAP",
+     "valor": 1
+    },
+    {
+     "rotulo": "Promutuca",
+     "valor": 1
+    }
+   ],
+   "nota": "A barra conta cadeiras, não votos: a mesma entidade pode vencer em mais de uma unidade colegiada. O percentual dentro da barra é a fração das 6 cadeiras do CAA/NM, a maior bancada. As sete entidades somam 19 cadeiras.",
+   "fonte": {
+    "nome": "Resultado da votação — Organizações não Governamentais (Semad)",
+    "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/resultado-final-ongs"
+   }
+  },
+  "tabelas": [
+   {
+    "titulo": "ONGS eleitas por unidade colegiada do Copam",
+    "colunas": [
+     "Unidade colegiada",
+     "Vagas",
+     "Eleitas (votos)",
+     "Situação"
+    ],
+    "linhas": [
+     [
+      "Plenário",
+      "4",
+      "CAA/NM (6), São Lourenço (6), Amda (5), Angá (5)",
+      "Completa"
+     ],
+     [
+      "CAP — Agrossilvipastoris",
+      "2",
+      "Amda (5), CAA/NM (5)",
+      "Completa"
+     ],
+     [
+      "CEM — Energia e Mudanças Climáticas",
+      "2",
+      "CAA/NM (5), Angá (4)",
+      "Completa"
+     ],
+     [
+      "CID — Industriais",
+      "2",
+      "Promutuca (1)",
+      "Parcial"
+     ],
+     [
+      "CIF — Infraestrutura e Urbanização",
+      "2",
+      "Angá (3), IDAU-TAP (2)",
+      "Completa"
+     ],
+     [
+      "CMI — Minerárias",
+      "2",
+      "Iracambi (5), CAA/NM (4)",
+      "Completa"
+     ],
+     [
+      "CPB — Biodiversidade e Áreas Protegidas",
+      "2",
+      "São Lourenço (6), CAA/NM (5)",
+      "Completa"
+     ],
+     [
+      "URC ASF — Alto São Francisco",
+      "2",
+      "Nenhuma candidata",
+      "Deserta"
+     ],
+     [
+      "URC CM — Central Metropolitana",
+      "2",
+      "Nenhuma candidata",
+      "Deserta"
+     ],
+     [
+      "URC JEQ — Jequitinhonha",
+      "2",
+      "Nenhuma candidata",
+      "Deserta"
+     ],
+     [
+      "URC LM — Leste Mineiro",
+      "2",
+      "Nenhuma candidata",
+      "Deserta"
+     ],
+     [
+      "URC NOR — Noroeste de Minas",
+      "2",
+      "Nenhuma candidata",
+      "Deserta"
+     ],
+     [
+      "URC NM — Norte de Minas",
+      "2",
+      "CAA/NM (1)",
+      "Parcial"
+     ],
+     [
+      "URC SM — Sul de Minas",
+      "2",
+      "São Lourenço (1)",
+      "Parcial"
+     ],
+     [
+      "URC TM — Triângulo Mineiro",
+      "2",
+      "Angá (1)",
+      "Parcial"
+     ],
+     [
+      "URC ZM — Zona da Mata",
+      "2",
+      "Iracambi (1)",
+      "Parcial"
+     ]
+    ],
+    "nota": "São 34 vagas de ONG: 4 no plenário, 2 em cada uma das seis câmaras técnicas e 2 em cada uma das nove URCs. A coluna Vagas é o total reservado ao segmento; o contador abaixo soma as 34. A lista de habilitadas tem nove entidades; a apuração traz oito. Cadeira deserta é preenchida por indicação do presidente do Copam, não por voto.",
+    "fonte": {
+     "nome": "Resultado da votação — Organizações não Governamentais (Semad, 19/11/2026)",
+     "url": "https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/resultado-final-ongs"
+    }
+   }
+  ],
+  "paragrafos": [
+   "A Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável (Semad) divulgou nesta quinta-feira (19) o resultado da votação das organizações não governamentais para o Copam (Conselho Estadual de Política Ambiental). Sete entidades foram eleitas. Elas ocupam 19 das 34 cadeiras reservadas a ONGs no biênio 2027/2029. Os PDFs oficiais foram consultados em 19 de novembro de 2026.",
+   "As 34 cadeiras se dividem em três níveis. São 4 no plenário, 2 em cada uma das seis câmaras técnicas especializadas e 2 em cada uma das nove unidades regionais colegiadas (URCs).",
+   "No plenário, o Centro de Agricultura Alternativa do Norte de Minas (CAA/NM) e a Associação São Lourenço Sustentável tiveram 6 votos cada. A Associação Mineira de Defesa do Ambiente (Amda) e a Associação para a Gestão Socioambiental do Triângulo Mineiro (Angá) ficaram com 5. A Promutuca (Associação para Proteção Ambiental do Vale do Mutuca, 2 votos) e a Ecophalt (Cidadania e Sustentabilidade, Ecologia com Praticidade, 1) não se elegeram.",
+   "A Câmara de Atividades Minerárias (CMI) terá a Associação Amigos de Iracambi (5 votos) e o CAA/NM (4). A CMI é o colegiado que analisa o licenciamento de grandes empreendimentos de mineração. Na Câmara de Proteção à Biodiversidade (CPB), São Lourenço tirou 6 votos e o CAA/NM, 5.",
+   "Na Câmara Agrossilvipastoris, Amda e CAA/NM empataram com 5 votos. Na de Energia e Mudanças Climáticas, ficaram CAA/NM (5) e Angá (4). Na de Infraestrutura, Saneamento e Urbanização, Angá (3) e o Instituto de Direito Ambiental e Urbanístico do Triângulo Mineiro e Alto Paranaíba (IDAU-TAP, 2).",
+   "A Câmara de Atividades Industriais ficou com uma cadeira vazia. Só a Promutuca se candidatou, com 1 voto. A segunda vaga não teve candidata.",
+   "Nas URCs, apenas 4 das 18 cadeiras foram preenchidas. O CAA/NM ficou com Norte de Minas, São Lourenço com Sul de Minas, Angá com Triângulo Mineiro e Iracambi com Zona da Mata. Todas com 1 voto. Alto São Francisco, Central Metropolitana, Jequitinhonha, Leste Mineiro e Noroeste ficaram sem nenhuma candidata.",
+   "Cadeira deserta não fica vazia por muito tempo. As deliberações 2.140, 2.142 e 2.143 mandam o presidente do Copam indicar uma entidade para o assento. A escolha é dele, não do voto.",
+   "A distribuição ficou concentrada. O CAA/NM ocupa 6 cadeiras, a maior bancada. Angá fica com 4; São Lourenço, 3; Amda e Iracambi, 2 cada; IDAU-TAP e Promutuca, 1 cada.",
+   "O caminho até aqui foi longo. A votação ocorreu em 18 de novembro. A lista de habilitadas saiu um dia antes. O processo estava parado desde junho, após suspeitas de conflito de interesse noticiadas por O Fator. Voltou depois de acordo entre a Semad e o Ministério Público de Minas Gerais (MPMG), em outubro.",
+   "O acordo exigiu declaração sobre conflito de interesse. O prazo de entrega foi de 28 de outubro a 6 de novembro. As declarações das nove habilitadas estão publicadas no site da Semad. A análise ficou marcada para 7 a 16 de novembro, com ciência ao MPMG, segundo o calendário do edital. O termo de compromisso está no inquérito civil nº 04.16.0024.0302273.2025-83.",
+   "Agora corre o prazo de recurso, de 24 a 30 de novembro. A comissão eleitoral analisa até 9 de dezembro. O resultado final sai em 10 de dezembro, e a nomeação vem depois. A posse dos conselheiros abre o biênio 2027/2029, que começa em 2027. Dúvidas vão para eleicaocopam@meioambiente.mg.gov.br."
+  ],
+  "recomendacaoVerificar": "Leia o [resultado da votação](https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/resultado-final-ongs) e confira a [lista de habilitadas](https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/nova-listagem-ongs). O calendário está no [Anexo I do edital](https://conselhos.meioambiente.mg.gov.br/documents/d/conselhos/edital-compilado-5): recursos de 24 a 30/11 e resultado final em 10/12. Acompanhe as reuniões em [COPAM no portal](/ambiental/copam) e no DOMG-e. O resultado final sai em 10/12; a posse dos conselheiros do biênio 2027/2029 vem depois. Dúvidas e recursos vão para eleicaocopam@meioambiente.mg.gov.br."
+ },
+ {
   "slug": "oab-mg-onze-anos-mariana-reparacao-saude",
   "titulo": "Onze anos de Mariana: OAB-MG cobra reparação em saúde e crime continuado",
   "subtitulo": "Em entrevista à Rádio OAB-MG, Wagner Dias Ferreira e Artur Colito falam do dano que não termina, do avanço do lítio e do auxílio cortado em Brumadinho.",

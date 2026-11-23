@@ -31,6 +31,7 @@ const NOMES_PROPIOS = new Set([
   "Goiás", "Horizonte", "Jequitinhonha", "Justiça", "Lithium", "Mariana",
   "Minas", "Mount", "Médio", "Nacional", "Oficial", "Polley", "Portal",
   "Públicas", "Rio", "S.A", "Selic", "Sino-Brasileiro", "TACs", "Toronto",
+  "ONGs",
   "USAspending", "União", "Vale", "R$", "João", "Pessoa", "Lenir", "Correia",
   "Itatiaiuçu", "Ituiutaba", "Diamantina",
 ]);

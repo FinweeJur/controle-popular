@@ -29,9 +29,18 @@ function formatarMoeda(valor: number): string {
   });
 }
 
+/** Unidade da série: `inteiro` para contagem, reais no padrão antigo. */
+function formatarValor(valor: number, formato?: "moeda" | "inteiro"): string {
+  if (formato === "inteiro") return valor.toLocaleString("pt-BR");
+  return formatarMoeda(valor);
+}
+
 export default function GraficoBarrasArtigo({ grafico }: { grafico?: GraficoNoticia | null }) {
   if (!grafico?.itens?.length) return null;
   const maior = Math.max(...grafico.itens.map((item) => item.valor), 1);
+  // Série de contagem não leva "R$" nem duas casas decimais no cartão.
+  const casas = grafico.formato === "inteiro" ? 0 : 2;
+  const prefixo = grafico.formato === "inteiro" ? "" : "R$ ";
 
   return (
     <section aria-label={grafico.titulo} className="my-8">
@@ -47,12 +56,12 @@ export default function GraficoBarrasArtigo({ grafico }: { grafico?: GraficoNoti
                     {item.rotulo}
                   </span>
                   <span className="shrink-0 whitespace-nowrap font-tabular font-semibold text-text">
-                    <ContadorAnimado valor={item.valor} casas={2} prefixo="R$ " />
+                    <ContadorAnimado valor={item.valor} casas={casas} prefixo={prefixo} />
                   </span>
                 </div>
                 <div
                   role="img"
-                  aria-label={`${item.rotulo}: ${formatarMoeda(item.valor)}`}
+                  aria-label={`${item.rotulo}: ${formatarValor(item.valor, grafico.formato)}`}
                   className="relative mt-1 block h-4 w-full overflow-hidden rounded bg-surface-2"
                 >
                   <BarraAnimada

@@ -530,12 +530,16 @@ de estatística.
   `CartoesResumo` ou `ContadorAnimado` (`app/components/dados/`). O HTML já
   traz o valor final; a animação é enfeite e para em
   `prefers-reduced-motion`;
-- **“Em uma frase”:** logo abaixo do `<h1>`, 1–2 frases de até 13 palavras
-  dizendo o que a página mostra e para que serve;
+- **“Em uma frase”:** logo abaixo do `<h1>`, 1–2 frases curtas (mediana de
+  13 palavras) dizendo o que a página mostra e para que serve. Pode passar do
+  limite para nomear o órgão que publica o dado — ONS, ANEEL, Atricon/TCEs,
+  Receita Federal, Open Knowledge Brasil —, porque a fonte é parte da
+  informação, não enfeite;
 - **“O que você vai ver”:** 3–5 marcadores, um por bloco ou número;
 - **Glossário da página:** `<details>` com termo e definição de dicionário;
-  sigla explicada na primeira aparição (“EAR — energia armazenada nos
-  reservatórios”);
+  sigla explicada **entre parênteses na primeira aparição** — “ONS (Operador
+  Nacional do Sistema Elétrico)”, “PNTP (Programa Nacional de Transparência
+  Pública)”;
 - **Unidade e recorte em cada número:** “GWmed médio · SE/CO · set/2026”,
   “% de avaliados · MG”, “R$ por MWh · leilão”;
 - **Porcentagem sempre com denominador:** “54,4% (1.581 de 1.712 entes

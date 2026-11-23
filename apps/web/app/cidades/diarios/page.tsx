@@ -119,7 +119,7 @@ export default function CoberturaDiariosPage() {
             Diários Oficiais Municipais pelo Querido Diário
           </h1>
           <ExplicadorDaPagina
-            frase="Veja quais diários oficiais de Minas já estão no Querido Diário. Saiba quais cidades ficaram sem dados e o motivo."
+            frase="Veja quais diários oficiais de Minas já estão no Querido Diário, do Open Knowledge Brasil. Saiba quais cidades ficaram sem dados e o motivo."
             itens={[
               "As 3 cidades com diário medido: Betim, Contagem e Uberaba.",
               "Quantos diários e quantas menções a decreto, portaria, licitação e nomeação — cada menção é uma ocorrência do termo no texto.",

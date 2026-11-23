@@ -198,7 +198,7 @@ export default function TransparenciaPage() {
             Transparência dos portais públicos de Minas pelo PNTP
           </h1>
           <ExplicadorDaPagina
-            frase="Órgãos de Minas recebem nota de 0 a 100 pela transparência do site. Veja a série de 2022 a 2025."
+            frase="O PNTP (Programa Nacional de Transparência Pública), da Atricon (Associação dos Membros dos Tribunais de Contas do Brasil), dá nota de 0 a 100 aos portais públicos de Minas. Veja a série de 2022 a 2025."
             itens={[
               "Quantos entes de Minas foram avaliados em 2025 e a média; N é o número de avaliados.",
               "A série de 2022 a 2025, com o aviso de que 2023 teve só 14 avaliados.",
