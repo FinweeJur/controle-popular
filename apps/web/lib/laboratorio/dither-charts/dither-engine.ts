@@ -10,7 +10,7 @@ export const smoothstep = (min: number, max: number, value: number) => {
 };
 
 export const hash = (x: number, y: number) => {
-  let h = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+  const h = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
   return h - Math.floor(h);
 };
 

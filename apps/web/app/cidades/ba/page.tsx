@@ -23,7 +23,7 @@ const COLUNAS: ColunaTabela<Municipio>[] = [
 export default async function PageCidadesBA() {
   // Verifica se os dados foram publicados via build (public/municipios/ba/)
   const publicDir = path.join(process.cwd(), "apps/web/public/municipios/ba");
-  let base = "/municipios/ba";
+  const base = "/municipios/ba";
   let total = 0;
 
   if (fs.existsSync(path.join(publicDir, "manifesto.json"))) {

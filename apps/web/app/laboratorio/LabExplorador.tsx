@@ -62,6 +62,25 @@ function escolherInicial(
   return null;
 }
 
+/**
+ * Camadas que casam com o termo do buscador global (`?q=`), das mais
+ * acertadas para as menos. Função pura: alimenta a seleção inicial dos
+ * comparadores sem efeito que dispara setState.
+ */
+function ranquearPorBusca(q: string, ids: Set<string>): string[] {
+  const tokens = semAcento(q).split(/[^a-z0-9]+/).filter((t) => t.length >= 3);
+  if (tokens.length === 0) return [];
+  const pontos: { key: string; acertos: number }[] = [];
+  for (const [key, palavras] of Object.entries(PALAVRAS)) {
+    if (!ids.has(key)) continue;
+    const acertos = tokens.filter((t) =>
+      palavras.some((p) => t === p || t.includes(p) || p.includes(t)),
+    ).length;
+    if (acertos > 0) pontos.push({ key, acertos });
+  }
+  return pontos.sort((a, b) => b.acertos - a.acertos).map((p) => p.key);
+}
+
 export default function LabExplorador({ datasets, camadas }: LabExploradorProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -69,10 +88,21 @@ export default function LabExplorador({ datasets, camadas }: LabExploradorProps)
   const ids = useMemo(() => new Set(Object.keys(datasets)), [datasets]);
   const idsCamadas = useMemo(() => camadas.map((c) => c.id), [camadas]);
 
-  const [esq, setEsq] = useState<string | null>(() =>
-    escolherInicial(searchParams.get("j1"), "sigbm-barragens", ids, idsCamadas),
+  const qInitial = React.useMemo(
+    () => (searchParams.get("q") ?? "").toLowerCase(),
+    [], // eslint-disable-line react-hooks/exhaustive-deps
+  );
+  // Seleção inicial por busca textual: resolvida ao inicializar o estado.
+  const ranqueadosPorBusca = ranquearPorBusca(qInitial, ids);
+
+  const [esq, setEsq] = useState<string | null>(
+    () =>
+      ranqueadosPorBusca[0] ??
+      escolherInicial(searchParams.get("j1"), "sigbm-barragens", ids, idsCamadas),
   );
   const [dir, setDir] = useState<string | null>(() => {
+    const daBusca = ranqueadosPorBusca[1];
+    if (daBusca) return daBusca;
     const daUrl = readSearchParam(searchParams.get("j2"), ids);
     if (daUrl) return daUrl;
     if (ids.has("licencas-unificadas")) return "licencas-unificadas";
@@ -80,36 +110,14 @@ export default function LabExplorador({ datasets, camadas }: LabExploradorProps)
     if (ids.has(idsCamadas[0] ?? "")) return idsCamadas[0] ?? null;
     return null;
   });
-  const [active, setActive] = useState<string | null>("sigbm-barragens");
+  const [active, setActive] = useState<string | null>(
+    () => ranqueadosPorBusca[0] ?? "sigbm-barragens",
+  );
   const [grafico, setGrafico] = useState<TipoGrafico>(() => readGraficoParam(searchParams.get("g")));
   const [graficoDir, setGraficoDir] = useState<TipoGrafico>(() => readGraficoParam(searchParams.get("g2")));
   const [nonoOpen, setNonoOpen] = useState(false);
   /** Camadas ligadas no painel do Seu Nonô (PowerBI-style). Vazio = todas. */
   const [ligadas, setLigadas] = useState<Set<string>>(() => new Set(idsCamadas));
-  const qInitial = React.useMemo(
-    () => (searchParams.get("q") ?? "").toLowerCase(),
-    [], // eslint-disable-line react-hooks/exhaustive-deps
-  );
-
-  React.useEffect(() => {
-    if (!qInitial) return;
-    const tokens = semAcento(qInitial).split(/[^a-z0-9]+/).filter((t) => t.length >= 3);
-    if (tokens.length === 0) return;
-    const pontos: { key: string; acertos: number }[] = [];
-    for (const [key, palavras] of Object.entries(PALAVRAS)) {
-      if (!ids.has(key)) continue;
-      const acertos = tokens.filter((t) =>
-        palavras.some((p) => t === p || t.includes(p) || p.includes(t)),
-      ).length;
-      if (acertos > 0) pontos.push({ key, acertos });
-    }
-    if (pontos.length === 0) return;
-    pontos.sort((a, b) => b.acertos - a.acertos);
-    setEsq(pontos[0].key);
-    setDir(pontos[1]?.key ?? dir);
-    setActive(pontos[0].key);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams();

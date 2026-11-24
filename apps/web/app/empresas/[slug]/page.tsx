@@ -487,7 +487,7 @@ export default async function EmpresaPage({ params }: Props) {
                 Processos Minerários Mapeados no SIGMINE/ANM ({processos.length})
               </h3>
               <div className="max-h-48 overflow-y-auto rounded-xl border border-border/60 divide-y divide-border/60">
-                {processos.slice(0, 10).map((proc: any, i: number) => (
+                {processos.slice(0, 10).map((proc, i: number) => (
                   <div key={i} className="flex items-center justify-between p-2.5 hover:bg-surface-2/40">
                     <div>
                       <span className="font-mono font-bold text-foreground">{proc.numero || proc.processo}</span>

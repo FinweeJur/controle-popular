@@ -130,6 +130,10 @@ const eslintConfig = defineConfig([
     // three.module.js sozinho (vendorizado, minificado) derruba o lint com
     // centenas de erros de regra React/TS que não se aplicam a ele.
     "public/terras/globo/**",
+    // Swagger UI vendorizado (public/api/docs/swagger-ui*.js): bundle
+    // minificado de terceiros, servido como arquivo estático. Mesmo caso do
+    // globo acima — 161 erros de regra React/TS que não se aplicam a ele.
+    "public/api/docs/**",
   ]),
 ]);
 

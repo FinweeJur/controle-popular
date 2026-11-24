@@ -67,7 +67,7 @@ export default function PaginaConselhosSociais() {
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 7 · Ação cidadã) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa." — Itamar Vieira Junior, Roda Viva, 2021
+          &quot;Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa.&quot; — Itamar Vieira Junior, Roda Viva, 2021
         </p>
       </header>
 

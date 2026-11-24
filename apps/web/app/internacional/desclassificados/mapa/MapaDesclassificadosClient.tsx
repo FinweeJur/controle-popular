@@ -18,7 +18,7 @@
  * - Leitura e descrições com piso mínimo text-sm (14px).
  */
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -93,20 +93,13 @@ export default function MapaDesclassificadosClient({
   const searchParams = useSearchParams();
   const idInicial = searchParams.get("id") || "";
 
-  const [documentoSelecionado, setDocumentoSelecionado] = useState<DocumentoDesclassificadoG20 | null>(null);
+  const [documentoSelecionado, setDocumentoSelecionado] = useState<DocumentoDesclassificadoG20 | null>(() => {
+    if (!idInicial) return null;
+    return documentos.find((d) => d.id.toLowerCase() === idInicial.toLowerCase()) ?? null;
+  });
   const [camadaAtiva, setCamadaAtiva] = useState<CamadaEscopo>("todos");
   const [filtroOrgao, setFiltroOrgao] = useState<string>("todos");
   const [busca, setBusca] = useState<string>("");
-
-  // Seleciona documento da URL se fornecido
-  useEffect(() => {
-    if (idInicial) {
-      const achado = documentos.find((d) => d.id.toLowerCase() === idInicial.toLowerCase());
-      if (achado) {
-        setDocumentoSelecionado(achado);
-      }
-    }
-  }, [idInicial, documentos]);
 
   const orgaosDisponiveis = useMemo(() => {
     return Array.from(new Set(documentos.map((d) => d.orgaoInteligencia))).sort();

@@ -371,7 +371,7 @@ export default function PainelConselhosClient({
 
           <select
             value={ordenacao}
-            onChange={(e) => setOrdenacao(e.target.value as any)}
+            onChange={(e) => setOrdenacao(e.target.value as "nome" | "sigla" | "uf" | "categoria")}
             aria-label="Ordenar resultados"
             className="ml-auto rounded-md border border-border bg-surface-2 px-2.5 py-1 text-xs text-foreground focus:border-primary focus:outline-none"
           >

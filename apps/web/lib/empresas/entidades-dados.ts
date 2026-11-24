@@ -75,6 +75,24 @@ export interface EntidadeDetalhada {
   linhaDoTempo: ItemLinhaTempo[];
 }
 
+/** Campos consumidos do JSON versionado antes de ganhar os campos derivados da ficha. */
+type EntidadeBruta = Pick<
+  EntidadeDetalhada,
+  | "slug"
+  | "nome"
+  | "tipo"
+  | "cnpj"
+  | "cik"
+  | "ticker"
+  | "bolsa"
+  | "cotacaoEstimada"
+  | "valorMercadoEstimado"
+  | "investimentoBrasil"
+  | "interessesDeclarados"
+  | "diretoresESocios"
+  | "contatos"
+> & { setor?: string };
+
 export const SETOR_NOMES: Record<string, string> = {
   mineracao: "Mineração & Metalurgia",
   energia: "Energia & Petróleo",
@@ -112,9 +130,9 @@ export function listarTodasEntidades(): EntidadeDetalhada[] {
       return [];
     }
 
-    const raw = JSON.parse(fs.readFileSync(caminhoFinal, "utf-8"));
+    const raw = JSON.parse(fs.readFileSync(caminhoFinal, "utf-8")) as EntidadeBruta[];
 
-    const resultado: EntidadeDetalhada[] = raw.map((item: any): EntidadeDetalhada => {
+    const resultado: EntidadeDetalhada[] = raw.map((item): EntidadeDetalhada => {
       const setorKey = item.setor || "outros";
       const setorRotulo = SETOR_NOMES[setorKey] || item.setor || "Setor Estratégico";
       const isMineracao = setorKey === "mineracao";

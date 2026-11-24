@@ -227,7 +227,7 @@ export default async function InstituicaoPage({ params }: Props) {
         </p>
 
         <div className="mt-4 space-y-3">
-          {inst.organograma.map((item: any, idx: number) => (
+          {inst.organograma.map((item, idx: number) => (
             <div
               key={idx}
               className="rounded-xl border border-border/60 bg-surface-2/30 p-4 transition-colors hover:border-border"
@@ -427,7 +427,7 @@ export default async function InstituicaoPage({ params }: Props) {
       </div>
 
       {/* Painel Interativo de Atos e Notícias Monitorados (5 elementos do AGENTS.md) */}
-      <TabelaInstituicaoClient instituicao={inst as any} />
+      <TabelaInstituicaoClient instituicao={inst} />
 
       {/* Navegação entre as instituições irmãs */}
       <nav aria-label="Outras instituições do Sistema de Justiça" className="mt-12 border-t border-border pt-8">

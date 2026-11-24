@@ -96,7 +96,7 @@ export default function PainelLugar({
 
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 6 · Terras, Salvar o Fogo) */}
         <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
-          "A vida humana é indissociável do território. E muitas pessoas estão privadas disso." — Itamar Vieira Junior, sobre Salvar o Fogo, 2023
+          &quot;A vida humana é indissociável do território. E muitas pessoas estão privadas disso.&quot; — Itamar Vieira Junior, sobre Salvar o Fogo, 2023
         </p>
       </header>
 
