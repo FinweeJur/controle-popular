@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-24T00:36:05.005Z",
+ "geradoEm": "2026-11-24T22:55:37.721Z",
  "regra": {
   "tempo-real": 2,
   "diaria": 3,
@@ -26,7 +26,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-15T19:30:29.679Z",
-   "lagDias": 100,
+   "lagDias": 101,
    "veredito": "atrasada"
   },
   {
@@ -46,7 +46,7 @@
    "frequencia": "mensal",
    "tetoDias": 40,
    "carimbo": "2026-08-31T21:00:32.820992+00:00",
-   "lagDias": 84,
+   "lagDias": 85,
    "veredito": "atrasada"
   },
   {
@@ -116,7 +116,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-08-15T21:51:45.965Z",
-   "lagDias": 100,
+   "lagDias": 101,
    "veredito": "isenta"
   },
   {
@@ -136,7 +136,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-08-26T17:39:14.994Z",
-   "lagDias": 89,
+   "lagDias": 90,
    "veredito": "atrasada"
   },
   {
@@ -145,8 +145,8 @@
    "arquivo": "apps/web/data/barragens-sigbm.json",
    "frequencia": "diaria",
    "tetoDias": 3,
-   "carimbo": "2026-11-23",
-   "lagDias": 1,
+   "carimbo": "2026-11-24",
+   "lagDias": 0,
    "veredito": "ok"
   },
   {
@@ -186,7 +186,7 @@
    "frequencia": "semanal",
    "tetoDias": 10,
    "carimbo": "2026-09-07T04:20:29.869Z",
-   "lagDias": 77,
+   "lagDias": 78,
    "veredito": "atrasada"
   },
   {
@@ -196,7 +196,7 @@
    "frequencia": "diaria",
    "tetoDias": 3,
    "carimbo": "2026-11-23T03:19:10.609642+00:00",
-   "lagDias": 0,
+   "lagDias": 1,
    "veredito": "ok"
   },
   {
@@ -216,7 +216,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-01T14:39:35.119Z",
-   "lagDias": 83,
+   "lagDias": 84,
    "veredito": "isenta"
   },
   {
@@ -226,7 +226,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.238458+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   },
   {
@@ -236,7 +236,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T14:23:57.413749+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   },
   {
@@ -246,7 +246,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:04:42.242456+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   },
   {
@@ -256,7 +256,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T03:01:25.201481+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   },
   {
@@ -276,7 +276,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T16:00:48.074119+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   },
   {
@@ -286,7 +286,7 @@
    "frequencia": "estatica",
    "tetoDias": null,
    "carimbo": "2026-09-06T15:01:13.024220+00:00",
-   "lagDias": 78,
+   "lagDias": 79,
    "veredito": "isenta"
   }
  ]
